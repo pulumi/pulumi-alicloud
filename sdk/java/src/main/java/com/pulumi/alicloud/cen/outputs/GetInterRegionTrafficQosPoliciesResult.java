@@ -17,67 +17,40 @@ public final class GetInterRegionTrafficQosPoliciesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Inter Region Traffic Qos Policy names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A list of Cen Inter Region Traffic Qos Policies. Each element contains the following attributes:
      * 
      */
-    private final List<GetInterRegionTrafficQosPoliciesPolicy> policies;
+    private List<GetInterRegionTrafficQosPoliciesPolicy> policies;
     /**
      * @return The status of the Inter Region Traffic Qos Policy.
      * 
      */
-    private final @Nullable String status;
-    private final @Nullable String trafficQosPolicyDescription;
-    private final @Nullable String trafficQosPolicyId;
-    private final @Nullable String trafficQosPolicyName;
+    private @Nullable String status;
+    private @Nullable String trafficQosPolicyDescription;
+    private @Nullable String trafficQosPolicyId;
+    private @Nullable String trafficQosPolicyName;
     /**
      * @return The ID of the inter-region connection.
      * 
      */
-    private final String transitRouterAttachmentId;
+    private String transitRouterAttachmentId;
     /**
      * @return The ID of the transit router.
      * 
      */
-    private final String transitRouterId;
+    private String transitRouterId;
 
-    @CustomType.Constructor
-    private GetInterRegionTrafficQosPoliciesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("policies") List<GetInterRegionTrafficQosPoliciesPolicy> policies,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("trafficQosPolicyDescription") @Nullable String trafficQosPolicyDescription,
-        @CustomType.Parameter("trafficQosPolicyId") @Nullable String trafficQosPolicyId,
-        @CustomType.Parameter("trafficQosPolicyName") @Nullable String trafficQosPolicyName,
-        @CustomType.Parameter("transitRouterAttachmentId") String transitRouterAttachmentId,
-        @CustomType.Parameter("transitRouterId") String transitRouterId) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.policies = policies;
-        this.status = status;
-        this.trafficQosPolicyDescription = trafficQosPolicyDescription;
-        this.trafficQosPolicyId = trafficQosPolicyId;
-        this.trafficQosPolicyName = trafficQosPolicyName;
-        this.transitRouterAttachmentId = transitRouterAttachmentId;
-        this.transitRouterId = transitRouterId;
-    }
-
+    private GetInterRegionTrafficQosPoliciesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -146,7 +119,7 @@ public final class GetInterRegionTrafficQosPoliciesResult {
     public static Builder builder(GetInterRegionTrafficQosPoliciesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -160,11 +133,7 @@ public final class GetInterRegionTrafficQosPoliciesResult {
         private @Nullable String trafficQosPolicyName;
         private String transitRouterAttachmentId;
         private String transitRouterId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInterRegionTrafficQosPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -181,10 +150,12 @@ public final class GetInterRegionTrafficQosPoliciesResult {
     	      this.transitRouterId = defaults.transitRouterId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -192,10 +163,12 @@ public final class GetInterRegionTrafficQosPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -203,10 +176,12 @@ public final class GetInterRegionTrafficQosPoliciesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder policies(List<GetInterRegionTrafficQosPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -214,31 +189,51 @@ public final class GetInterRegionTrafficQosPoliciesResult {
         public Builder policies(GetInterRegionTrafficQosPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder trafficQosPolicyDescription(@Nullable String trafficQosPolicyDescription) {
             this.trafficQosPolicyDescription = trafficQosPolicyDescription;
             return this;
         }
+        @CustomType.Setter
         public Builder trafficQosPolicyId(@Nullable String trafficQosPolicyId) {
             this.trafficQosPolicyId = trafficQosPolicyId;
             return this;
         }
+        @CustomType.Setter
         public Builder trafficQosPolicyName(@Nullable String trafficQosPolicyName) {
             this.trafficQosPolicyName = trafficQosPolicyName;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
-        }        public GetInterRegionTrafficQosPoliciesResult build() {
-            return new GetInterRegionTrafficQosPoliciesResult(id, ids, nameRegex, names, outputFile, policies, status, trafficQosPolicyDescription, trafficQosPolicyId, trafficQosPolicyName, transitRouterAttachmentId, transitRouterId);
+        }
+        public GetInterRegionTrafficQosPoliciesResult build() {
+            final var o = new GetInterRegionTrafficQosPoliciesResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.policies = policies;
+            o.status = status;
+            o.trafficQosPolicyDescription = trafficQosPolicyDescription;
+            o.trafficQosPolicyId = trafficQosPolicyId;
+            o.trafficQosPolicyName = trafficQosPolicyName;
+            o.transitRouterAttachmentId = transitRouterAttachmentId;
+            o.transitRouterId = transitRouterId;
+            return o;
         }
     }
 }

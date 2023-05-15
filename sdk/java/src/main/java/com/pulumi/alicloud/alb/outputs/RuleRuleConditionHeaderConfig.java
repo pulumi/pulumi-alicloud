@@ -16,21 +16,14 @@ public final class RuleRuleConditionHeaderConfig {
      * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
      * 
      */
-    private final @Nullable List<String> values;
+    private @Nullable List<String> values;
 
-    @CustomType.Constructor
-    private RuleRuleConditionHeaderConfig(
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("values") @Nullable List<String> values) {
-        this.key = key;
-        this.values = values;
-    }
-
+    private RuleRuleConditionHeaderConfig() {}
     /**
      * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
@@ -53,33 +46,35 @@ public final class RuleRuleConditionHeaderConfig {
     public static Builder builder(RuleRuleConditionHeaderConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String key;
         private @Nullable List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleConditionHeaderConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public RuleRuleConditionHeaderConfig build() {
-            return new RuleRuleConditionHeaderConfig(key, values);
+        }
+        public RuleRuleConditionHeaderConfig build() {
+            final var o = new RuleRuleConditionHeaderConfig();
+            o.key = key;
+            o.values = values;
+            return o;
         }
     }
 }

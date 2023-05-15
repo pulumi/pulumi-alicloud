@@ -17,41 +17,26 @@ public final class GetTransitRouterMulticastDomainMembersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
+    private String id;
+    private List<String> ids;
     /**
      * @return A list of Transit Router Multicast Domain Member Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetTransitRouterMulticastDomainMembersMember> members;
+    private List<GetTransitRouterMulticastDomainMembersMember> members;
     /**
      * @return ENI ID of multicast member.
      * 
      */
-    private final @Nullable String networkInterfaceId;
-    private final @Nullable String outputFile;
+    private @Nullable String networkInterfaceId;
+    private @Nullable String outputFile;
     /**
      * @return The ID of the multicast domain to which the multicast member belongs.
      * 
      */
-    private final String transitRouterMulticastDomainId;
+    private String transitRouterMulticastDomainId;
 
-    @CustomType.Constructor
-    private GetTransitRouterMulticastDomainMembersResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("members") List<GetTransitRouterMulticastDomainMembersMember> members,
-        @CustomType.Parameter("networkInterfaceId") @Nullable String networkInterfaceId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("transitRouterMulticastDomainId") String transitRouterMulticastDomainId) {
-        this.id = id;
-        this.ids = ids;
-        this.members = members;
-        this.networkInterfaceId = networkInterfaceId;
-        this.outputFile = outputFile;
-        this.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-    }
-
+    private GetTransitRouterMulticastDomainMembersResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -94,7 +79,7 @@ public final class GetTransitRouterMulticastDomainMembersResult {
     public static Builder builder(GetTransitRouterMulticastDomainMembersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -102,11 +87,7 @@ public final class GetTransitRouterMulticastDomainMembersResult {
         private @Nullable String networkInterfaceId;
         private @Nullable String outputFile;
         private String transitRouterMulticastDomainId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterMulticastDomainMembersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -117,10 +98,12 @@ public final class GetTransitRouterMulticastDomainMembersResult {
     	      this.transitRouterMulticastDomainId = defaults.transitRouterMulticastDomainId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -128,6 +111,7 @@ public final class GetTransitRouterMulticastDomainMembersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder members(List<GetTransitRouterMulticastDomainMembersMember> members) {
             this.members = Objects.requireNonNull(members);
             return this;
@@ -135,19 +119,30 @@ public final class GetTransitRouterMulticastDomainMembersResult {
         public Builder members(GetTransitRouterMulticastDomainMembersMember... members) {
             return members(List.of(members));
         }
+        @CustomType.Setter
         public Builder networkInterfaceId(@Nullable String networkInterfaceId) {
             this.networkInterfaceId = networkInterfaceId;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterMulticastDomainId(String transitRouterMulticastDomainId) {
             this.transitRouterMulticastDomainId = Objects.requireNonNull(transitRouterMulticastDomainId);
             return this;
-        }        public GetTransitRouterMulticastDomainMembersResult build() {
-            return new GetTransitRouterMulticastDomainMembersResult(id, ids, members, networkInterfaceId, outputFile, transitRouterMulticastDomainId);
+        }
+        public GetTransitRouterMulticastDomainMembersResult build() {
+            final var o = new GetTransitRouterMulticastDomainMembersResult();
+            o.id = id;
+            o.ids = ids;
+            o.members = members;
+            o.networkInterfaceId = networkInterfaceId;
+            o.outputFile = outputFile;
+            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            return o;
         }
     }
 }

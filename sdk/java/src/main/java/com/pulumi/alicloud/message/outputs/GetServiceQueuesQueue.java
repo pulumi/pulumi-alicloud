@@ -15,112 +15,79 @@ public final class GetServiceQueuesQueue {
      * @return The total number of messages that are in the Active state in the queue. The value is an approximate number.
      * 
      */
-    private final Integer activeMessages;
+    private Integer activeMessages;
     /**
      * @return The time when the queue was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
      * 
      */
-    private final Integer createTime;
+    private Integer createTime;
     /**
      * @return The total number of the messages that are in the Delayed state in the queue. The value is an approximate number.
      * 
      */
-    private final Integer delayMessages;
+    private Integer delayMessages;
     /**
      * @return The delay period after which all messages that are sent to the queue can be consumed. Unit: seconds.
      * 
      */
-    private final Integer delaySeconds;
+    private Integer delaySeconds;
     /**
      * @return The ID of the Queue. Its value is same as Queue Name.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The total number of the messages that are in the Inactive state in the queue. The value is an approximate number.
      * 
      */
-    private final Integer inactiveMessages;
+    private Integer inactiveMessages;
     /**
      * @return The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
      * 
      */
-    private final Integer lastModifyTime;
+    private Integer lastModifyTime;
     /**
      * @return Indicates whether the log management feature is enabled for the queue.
      * 
      */
-    private final Boolean loggingEnabled;
+    private Boolean loggingEnabled;
     /**
      * @return The maximum size of a message body that can be sent to the queue. Unit: bytes.
      * 
      */
-    private final Integer maximumMessageSize;
+    private Integer maximumMessageSize;
     /**
      * @return The maximum period for which a message can be retained in the queue. A message that is sent to the queue can be retained for a specified period. After the specified period ends, the message is deleted no matter whether it is consumed. Unit: seconds.
      * 
      */
-    private final Integer messageRetentionPeriod;
+    private Integer messageRetentionPeriod;
     /**
      * @return The maximum period for which a ReceiveMessage request waits if no message is available in the queue. Unit: seconds.
      * 
      */
-    private final Integer pollingWaitSeconds;
+    private Integer pollingWaitSeconds;
     /**
      * @return The internal url of the queue.
      * 
      */
-    private final String queueInternalUrl;
+    private String queueInternalUrl;
     /**
      * @return The name of the queue.
      * 
      */
-    private final String queueName;
+    private String queueName;
     /**
      * @return The url of the queue.
      * 
      */
-    private final String queueUrl;
+    private String queueUrl;
     /**
      * @return The invisibility period for which the received message remains the Inactive state. Unit: seconds.
      * 
      */
-    private final Integer visibilityTimeout;
+    private Integer visibilityTimeout;
 
-    @CustomType.Constructor
-    private GetServiceQueuesQueue(
-        @CustomType.Parameter("activeMessages") Integer activeMessages,
-        @CustomType.Parameter("createTime") Integer createTime,
-        @CustomType.Parameter("delayMessages") Integer delayMessages,
-        @CustomType.Parameter("delaySeconds") Integer delaySeconds,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("inactiveMessages") Integer inactiveMessages,
-        @CustomType.Parameter("lastModifyTime") Integer lastModifyTime,
-        @CustomType.Parameter("loggingEnabled") Boolean loggingEnabled,
-        @CustomType.Parameter("maximumMessageSize") Integer maximumMessageSize,
-        @CustomType.Parameter("messageRetentionPeriod") Integer messageRetentionPeriod,
-        @CustomType.Parameter("pollingWaitSeconds") Integer pollingWaitSeconds,
-        @CustomType.Parameter("queueInternalUrl") String queueInternalUrl,
-        @CustomType.Parameter("queueName") String queueName,
-        @CustomType.Parameter("queueUrl") String queueUrl,
-        @CustomType.Parameter("visibilityTimeout") Integer visibilityTimeout) {
-        this.activeMessages = activeMessages;
-        this.createTime = createTime;
-        this.delayMessages = delayMessages;
-        this.delaySeconds = delaySeconds;
-        this.id = id;
-        this.inactiveMessages = inactiveMessages;
-        this.lastModifyTime = lastModifyTime;
-        this.loggingEnabled = loggingEnabled;
-        this.maximumMessageSize = maximumMessageSize;
-        this.messageRetentionPeriod = messageRetentionPeriod;
-        this.pollingWaitSeconds = pollingWaitSeconds;
-        this.queueInternalUrl = queueInternalUrl;
-        this.queueName = queueName;
-        this.queueUrl = queueUrl;
-        this.visibilityTimeout = visibilityTimeout;
-    }
-
+    private GetServiceQueuesQueue() {}
     /**
      * @return The total number of messages that are in the Active state in the queue. The value is an approximate number.
      * 
@@ -234,7 +201,7 @@ public final class GetServiceQueuesQueue {
     public static Builder builder(GetServiceQueuesQueue defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer activeMessages;
         private Integer createTime;
@@ -251,11 +218,7 @@ public final class GetServiceQueuesQueue {
         private String queueName;
         private String queueUrl;
         private Integer visibilityTimeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceQueuesQueue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeMessages = defaults.activeMessages;
@@ -275,67 +238,99 @@ public final class GetServiceQueuesQueue {
     	      this.visibilityTimeout = defaults.visibilityTimeout;
         }
 
+        @CustomType.Setter
         public Builder activeMessages(Integer activeMessages) {
             this.activeMessages = Objects.requireNonNull(activeMessages);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder delayMessages(Integer delayMessages) {
             this.delayMessages = Objects.requireNonNull(delayMessages);
             return this;
         }
+        @CustomType.Setter
         public Builder delaySeconds(Integer delaySeconds) {
             this.delaySeconds = Objects.requireNonNull(delaySeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inactiveMessages(Integer inactiveMessages) {
             this.inactiveMessages = Objects.requireNonNull(inactiveMessages);
             return this;
         }
+        @CustomType.Setter
         public Builder lastModifyTime(Integer lastModifyTime) {
             this.lastModifyTime = Objects.requireNonNull(lastModifyTime);
             return this;
         }
+        @CustomType.Setter
         public Builder loggingEnabled(Boolean loggingEnabled) {
             this.loggingEnabled = Objects.requireNonNull(loggingEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder maximumMessageSize(Integer maximumMessageSize) {
             this.maximumMessageSize = Objects.requireNonNull(maximumMessageSize);
             return this;
         }
+        @CustomType.Setter
         public Builder messageRetentionPeriod(Integer messageRetentionPeriod) {
             this.messageRetentionPeriod = Objects.requireNonNull(messageRetentionPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder pollingWaitSeconds(Integer pollingWaitSeconds) {
             this.pollingWaitSeconds = Objects.requireNonNull(pollingWaitSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder queueInternalUrl(String queueInternalUrl) {
             this.queueInternalUrl = Objects.requireNonNull(queueInternalUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder queueName(String queueName) {
             this.queueName = Objects.requireNonNull(queueName);
             return this;
         }
+        @CustomType.Setter
         public Builder queueUrl(String queueUrl) {
             this.queueUrl = Objects.requireNonNull(queueUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder visibilityTimeout(Integer visibilityTimeout) {
             this.visibilityTimeout = Objects.requireNonNull(visibilityTimeout);
             return this;
-        }        public GetServiceQueuesQueue build() {
-            return new GetServiceQueuesQueue(activeMessages, createTime, delayMessages, delaySeconds, id, inactiveMessages, lastModifyTime, loggingEnabled, maximumMessageSize, messageRetentionPeriod, pollingWaitSeconds, queueInternalUrl, queueName, queueUrl, visibilityTimeout);
+        }
+        public GetServiceQueuesQueue build() {
+            final var o = new GetServiceQueuesQueue();
+            o.activeMessages = activeMessages;
+            o.createTime = createTime;
+            o.delayMessages = delayMessages;
+            o.delaySeconds = delaySeconds;
+            o.id = id;
+            o.inactiveMessages = inactiveMessages;
+            o.lastModifyTime = lastModifyTime;
+            o.loggingEnabled = loggingEnabled;
+            o.maximumMessageSize = maximumMessageSize;
+            o.messageRetentionPeriod = messageRetentionPeriod;
+            o.pollingWaitSeconds = pollingWaitSeconds;
+            o.queueInternalUrl = queueInternalUrl;
+            o.queueName = queueName;
+            o.queueUrl = queueUrl;
+            o.visibilityTimeout = visibilityTimeout;
+            return o;
         }
     }
 }

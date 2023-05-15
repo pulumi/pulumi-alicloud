@@ -18,57 +18,34 @@ public final class GetEnterpriseUsersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of DMS Enterprise User IDs (UID).
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of DMS Enterprise User names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String role;
-    private final @Nullable String searchKey;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String role;
+    private @Nullable String searchKey;
     /**
      * @return The status of the user.
      * 
      */
-    private final @Nullable String status;
-    private final @Nullable Integer tid;
+    private @Nullable String status;
+    private @Nullable Integer tid;
     /**
      * @return A list of DMS Enterprise Users. Each element contains the following attributes:
      * 
      */
-    private final List<GetEnterpriseUsersUser> users;
+    private List<GetEnterpriseUsersUser> users;
 
-    @CustomType.Constructor
-    private GetEnterpriseUsersResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("role") @Nullable String role,
-        @CustomType.Parameter("searchKey") @Nullable String searchKey,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tid") @Nullable Integer tid,
-        @CustomType.Parameter("users") List<GetEnterpriseUsersUser> users) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.role = role;
-        this.searchKey = searchKey;
-        this.status = status;
-        this.tid = tid;
-        this.users = users;
-    }
-
+    private GetEnterpriseUsersResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -127,7 +104,7 @@ public final class GetEnterpriseUsersResult {
     public static Builder builder(GetEnterpriseUsersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -139,11 +116,7 @@ public final class GetEnterpriseUsersResult {
         private @Nullable String status;
         private @Nullable Integer tid;
         private List<GetEnterpriseUsersUser> users;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnterpriseUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -158,10 +131,12 @@ public final class GetEnterpriseUsersResult {
     	      this.users = defaults.users;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -169,10 +144,12 @@ public final class GetEnterpriseUsersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -180,34 +157,52 @@ public final class GetEnterpriseUsersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder role(@Nullable String role) {
             this.role = role;
             return this;
         }
+        @CustomType.Setter
         public Builder searchKey(@Nullable String searchKey) {
             this.searchKey = searchKey;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tid(@Nullable Integer tid) {
             this.tid = tid;
             return this;
         }
+        @CustomType.Setter
         public Builder users(List<GetEnterpriseUsersUser> users) {
             this.users = Objects.requireNonNull(users);
             return this;
         }
         public Builder users(GetEnterpriseUsersUser... users) {
             return users(List.of(users));
-        }        public GetEnterpriseUsersResult build() {
-            return new GetEnterpriseUsersResult(id, ids, nameRegex, names, outputFile, role, searchKey, status, tid, users);
+        }
+        public GetEnterpriseUsersResult build() {
+            final var o = new GetEnterpriseUsersResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.role = role;
+            o.searchKey = searchKey;
+            o.status = status;
+            o.tid = tid;
+            o.users = users;
+            return o;
         }
     }
 }

@@ -15,70 +15,49 @@ public final class GetInstanceClassInfosInfo {
      * @return The code of the instance type.
      * 
      */
-    private final @Nullable String classCode;
+    private @Nullable String classCode;
     /**
      * @return The instance family of the instance.
      * 
      */
-    private final @Nullable String classGroup;
+    private @Nullable String classGroup;
     /**
      * @return The number of cores that are supported by the instance type. Unit: cores.
      * 
      */
-    private final @Nullable String cpu;
+    private @Nullable String cpu;
     /**
      * @return The architecture of the instance type.
      * 
      */
-    private final @Nullable String instructionSetArch;
+    private @Nullable String instructionSetArch;
     /**
      * @return The maximum number of connections that are supported by the instance type. Unit: connections.
      * 
      */
-    private final @Nullable String maxConnections;
+    private @Nullable String maxConnections;
     /**
      * @return The maximum I/O bandwidth that is supported by the instance type. Unit: Mbit/s.
      * 
      */
-    private final @Nullable String maxIombps;
+    private @Nullable String maxIombps;
     /**
      * @return The maximum input/output operations per second (IOPS) that is supported by the instance type. Unit: operations per second.
      * 
      */
-    private final @Nullable String maxIops;
+    private @Nullable String maxIops;
     /**
      * @return The memory capacity that is supported by the instance type. Unit: GB.
      * 
      */
-    private final @Nullable String memoryClass;
+    private @Nullable String memoryClass;
     /**
      * @return The fee that you must pay for the instance type. Unit: cent (USD).
      * 
      */
-    private final @Nullable String referencePrice;
+    private @Nullable String referencePrice;
 
-    @CustomType.Constructor
-    private GetInstanceClassInfosInfo(
-        @CustomType.Parameter("classCode") @Nullable String classCode,
-        @CustomType.Parameter("classGroup") @Nullable String classGroup,
-        @CustomType.Parameter("cpu") @Nullable String cpu,
-        @CustomType.Parameter("instructionSetArch") @Nullable String instructionSetArch,
-        @CustomType.Parameter("maxConnections") @Nullable String maxConnections,
-        @CustomType.Parameter("maxIombps") @Nullable String maxIombps,
-        @CustomType.Parameter("maxIops") @Nullable String maxIops,
-        @CustomType.Parameter("memoryClass") @Nullable String memoryClass,
-        @CustomType.Parameter("referencePrice") @Nullable String referencePrice) {
-        this.classCode = classCode;
-        this.classGroup = classGroup;
-        this.cpu = cpu;
-        this.instructionSetArch = instructionSetArch;
-        this.maxConnections = maxConnections;
-        this.maxIombps = maxIombps;
-        this.maxIops = maxIops;
-        this.memoryClass = memoryClass;
-        this.referencePrice = referencePrice;
-    }
-
+    private GetInstanceClassInfosInfo() {}
     /**
      * @return The code of the instance type.
      * 
@@ -150,7 +129,7 @@ public final class GetInstanceClassInfosInfo {
     public static Builder builder(GetInstanceClassInfosInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String classCode;
         private @Nullable String classGroup;
@@ -161,11 +140,7 @@ public final class GetInstanceClassInfosInfo {
         private @Nullable String maxIops;
         private @Nullable String memoryClass;
         private @Nullable String referencePrice;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceClassInfosInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.classCode = defaults.classCode;
@@ -179,43 +154,63 @@ public final class GetInstanceClassInfosInfo {
     	      this.referencePrice = defaults.referencePrice;
         }
 
+        @CustomType.Setter
         public Builder classCode(@Nullable String classCode) {
             this.classCode = classCode;
             return this;
         }
+        @CustomType.Setter
         public Builder classGroup(@Nullable String classGroup) {
             this.classGroup = classGroup;
             return this;
         }
+        @CustomType.Setter
         public Builder cpu(@Nullable String cpu) {
             this.cpu = cpu;
             return this;
         }
+        @CustomType.Setter
         public Builder instructionSetArch(@Nullable String instructionSetArch) {
             this.instructionSetArch = instructionSetArch;
             return this;
         }
+        @CustomType.Setter
         public Builder maxConnections(@Nullable String maxConnections) {
             this.maxConnections = maxConnections;
             return this;
         }
+        @CustomType.Setter
         public Builder maxIombps(@Nullable String maxIombps) {
             this.maxIombps = maxIombps;
             return this;
         }
+        @CustomType.Setter
         public Builder maxIops(@Nullable String maxIops) {
             this.maxIops = maxIops;
             return this;
         }
+        @CustomType.Setter
         public Builder memoryClass(@Nullable String memoryClass) {
             this.memoryClass = memoryClass;
             return this;
         }
+        @CustomType.Setter
         public Builder referencePrice(@Nullable String referencePrice) {
             this.referencePrice = referencePrice;
             return this;
-        }        public GetInstanceClassInfosInfo build() {
-            return new GetInstanceClassInfosInfo(classCode, classGroup, cpu, instructionSetArch, maxConnections, maxIombps, maxIops, memoryClass, referencePrice);
+        }
+        public GetInstanceClassInfosInfo build() {
+            final var o = new GetInstanceClassInfosInfo();
+            o.classCode = classCode;
+            o.classGroup = classGroup;
+            o.cpu = cpu;
+            o.instructionSetArch = instructionSetArch;
+            o.maxConnections = maxConnections;
+            o.maxIombps = maxIombps;
+            o.maxIops = maxIops;
+            o.memoryClass = memoryClass;
+            o.referencePrice = referencePrice;
+            return o;
         }
     }
 }

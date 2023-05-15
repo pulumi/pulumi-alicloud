@@ -15,13 +15,9 @@ public final class ReservedInstanceOperationLock {
      * @return The reason why the reserved instance was locked.
      * 
      */
-    private final @Nullable String lockReason;
+    private @Nullable String lockReason;
 
-    @CustomType.Constructor
-    private ReservedInstanceOperationLock(@CustomType.Parameter("lockReason") @Nullable String lockReason) {
-        this.lockReason = lockReason;
-    }
-
+    private ReservedInstanceOperationLock() {}
     /**
      * @return The reason why the reserved instance was locked.
      * 
@@ -37,24 +33,24 @@ public final class ReservedInstanceOperationLock {
     public static Builder builder(ReservedInstanceOperationLock defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String lockReason;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ReservedInstanceOperationLock defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lockReason = defaults.lockReason;
         }
 
+        @CustomType.Setter
         public Builder lockReason(@Nullable String lockReason) {
             this.lockReason = lockReason;
             return this;
-        }        public ReservedInstanceOperationLock build() {
-            return new ReservedInstanceOperationLock(lockReason);
+        }
+        public ReservedInstanceOperationLock build() {
+            final var o = new ReservedInstanceOperationLock();
+            o.lockReason = lockReason;
+            return o;
         }
     }
 }

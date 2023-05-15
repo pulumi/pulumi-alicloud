@@ -17,70 +17,49 @@ public final class GetVpcFirewallsFirewall {
      * @return Bandwidth specifications for high-speed channels. Unit: Mbps.
      * 
      */
-    private final Integer bandwidth;
+    private Integer bandwidth;
     /**
      * @return The communication type of the VPC firewall. Valid value: **expressconnect**, which indicates Express Connect.
      * 
      */
-    private final String connectType;
+    private String connectType;
     /**
      * @return The name of the VPC firewall instance and the value same as `vpc_firewall_id`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The details of the local VPC.
      * 
      */
-    private final List<GetVpcFirewallsFirewallLocalVpc> localVpcs;
+    private List<GetVpcFirewallsFirewallLocalVpc> localVpcs;
     /**
      * @return The details of the peer VPC.
      * 
      */
-    private final List<GetVpcFirewallsFirewallPeerVpc> peerVpcs;
+    private List<GetVpcFirewallsFirewallPeerVpc> peerVpcs;
     /**
      * @return The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
      * 
      */
-    private final String regionStatus;
+    private String regionStatus;
     /**
      * @return The status of the resource
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the VPC firewall instance.
      * 
      */
-    private final String vpcFirewallId;
+    private String vpcFirewallId;
     /**
      * @return The name of the VPC firewall instance.
      * 
      */
-    private final String vpcFirewallName;
+    private String vpcFirewallName;
 
-    @CustomType.Constructor
-    private GetVpcFirewallsFirewall(
-        @CustomType.Parameter("bandwidth") Integer bandwidth,
-        @CustomType.Parameter("connectType") String connectType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("localVpcs") List<GetVpcFirewallsFirewallLocalVpc> localVpcs,
-        @CustomType.Parameter("peerVpcs") List<GetVpcFirewallsFirewallPeerVpc> peerVpcs,
-        @CustomType.Parameter("regionStatus") String regionStatus,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcFirewallId") String vpcFirewallId,
-        @CustomType.Parameter("vpcFirewallName") String vpcFirewallName) {
-        this.bandwidth = bandwidth;
-        this.connectType = connectType;
-        this.id = id;
-        this.localVpcs = localVpcs;
-        this.peerVpcs = peerVpcs;
-        this.regionStatus = regionStatus;
-        this.status = status;
-        this.vpcFirewallId = vpcFirewallId;
-        this.vpcFirewallName = vpcFirewallName;
-    }
-
+    private GetVpcFirewallsFirewall() {}
     /**
      * @return Bandwidth specifications for high-speed channels. Unit: Mbps.
      * 
@@ -152,7 +131,7 @@ public final class GetVpcFirewallsFirewall {
     public static Builder builder(GetVpcFirewallsFirewall defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer bandwidth;
         private String connectType;
@@ -163,11 +142,7 @@ public final class GetVpcFirewallsFirewall {
         private String status;
         private String vpcFirewallId;
         private String vpcFirewallName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcFirewallsFirewall defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -181,18 +156,22 @@ public final class GetVpcFirewallsFirewall {
     	      this.vpcFirewallName = defaults.vpcFirewallName;
         }
 
+        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder connectType(String connectType) {
             this.connectType = Objects.requireNonNull(connectType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder localVpcs(List<GetVpcFirewallsFirewallLocalVpc> localVpcs) {
             this.localVpcs = Objects.requireNonNull(localVpcs);
             return this;
@@ -200,6 +179,7 @@ public final class GetVpcFirewallsFirewall {
         public Builder localVpcs(GetVpcFirewallsFirewallLocalVpc... localVpcs) {
             return localVpcs(List.of(localVpcs));
         }
+        @CustomType.Setter
         public Builder peerVpcs(List<GetVpcFirewallsFirewallPeerVpc> peerVpcs) {
             this.peerVpcs = Objects.requireNonNull(peerVpcs);
             return this;
@@ -207,23 +187,38 @@ public final class GetVpcFirewallsFirewall {
         public Builder peerVpcs(GetVpcFirewallsFirewallPeerVpc... peerVpcs) {
             return peerVpcs(List.of(peerVpcs));
         }
+        @CustomType.Setter
         public Builder regionStatus(String regionStatus) {
             this.regionStatus = Objects.requireNonNull(regionStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcFirewallId(String vpcFirewallId) {
             this.vpcFirewallId = Objects.requireNonNull(vpcFirewallId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcFirewallName(String vpcFirewallName) {
             this.vpcFirewallName = Objects.requireNonNull(vpcFirewallName);
             return this;
-        }        public GetVpcFirewallsFirewall build() {
-            return new GetVpcFirewallsFirewall(bandwidth, connectType, id, localVpcs, peerVpcs, regionStatus, status, vpcFirewallId, vpcFirewallName);
+        }
+        public GetVpcFirewallsFirewall build() {
+            final var o = new GetVpcFirewallsFirewall();
+            o.bandwidth = bandwidth;
+            o.connectType = connectType;
+            o.id = id;
+            o.localVpcs = localVpcs;
+            o.peerVpcs = peerVpcs;
+            o.regionStatus = regionStatus;
+            o.status = status;
+            o.vpcFirewallId = vpcFirewallId;
+            o.vpcFirewallName = vpcFirewallName;
+            return o;
         }
     }
 }

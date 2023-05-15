@@ -17,65 +17,42 @@ public final class GetImageCachesResult {
      * @return A list of caches. Each element contains the following attributes:
      * 
      */
-    private final List<GetImageCachesCach> caches;
+    private List<GetImageCachesCach> caches;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list ids of ECI Image Cache.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String image;
+    private List<String> ids;
+    private @Nullable String image;
     /**
      * @return The name of the ECI Image Cache.
      * 
      */
-    private final @Nullable String imageCacheName;
-    private final @Nullable String nameRegex;
+    private @Nullable String imageCacheName;
+    private @Nullable String nameRegex;
     /**
      * @return A list of ECI Image Cache names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The id of snapshot.
      * 
      */
-    private final @Nullable String snapshotId;
+    private @Nullable String snapshotId;
     /**
      * @return The status of ECI Image Cache.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetImageCachesResult(
-        @CustomType.Parameter("caches") List<GetImageCachesCach> caches,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("image") @Nullable String image,
-        @CustomType.Parameter("imageCacheName") @Nullable String imageCacheName,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("snapshotId") @Nullable String snapshotId,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.caches = caches;
-        this.id = id;
-        this.ids = ids;
-        this.image = image;
-        this.imageCacheName = imageCacheName;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.snapshotId = snapshotId;
-        this.status = status;
-    }
-
+    private GetImageCachesResult() {}
     /**
      * @return A list of caches. Each element contains the following attributes:
      * 
@@ -142,7 +119,7 @@ public final class GetImageCachesResult {
     public static Builder builder(GetImageCachesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetImageCachesCach> caches;
         private String id;
@@ -154,11 +131,7 @@ public final class GetImageCachesResult {
         private @Nullable String outputFile;
         private @Nullable String snapshotId;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImageCachesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caches = defaults.caches;
@@ -173,6 +146,7 @@ public final class GetImageCachesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder caches(List<GetImageCachesCach> caches) {
             this.caches = Objects.requireNonNull(caches);
             return this;
@@ -180,10 +154,12 @@ public final class GetImageCachesResult {
         public Builder caches(GetImageCachesCach... caches) {
             return caches(List.of(caches));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -191,18 +167,22 @@ public final class GetImageCachesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder image(@Nullable String image) {
             this.image = image;
             return this;
         }
+        @CustomType.Setter
         public Builder imageCacheName(@Nullable String imageCacheName) {
             this.imageCacheName = imageCacheName;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -210,19 +190,34 @@ public final class GetImageCachesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(@Nullable String snapshotId) {
             this.snapshotId = snapshotId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetImageCachesResult build() {
-            return new GetImageCachesResult(caches, id, ids, image, imageCacheName, nameRegex, names, outputFile, snapshotId, status);
+        }
+        public GetImageCachesResult build() {
+            final var o = new GetImageCachesResult();
+            o.caches = caches;
+            o.id = id;
+            o.ids = ids;
+            o.image = image;
+            o.imageCacheName = imageCacheName;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.snapshotId = snapshotId;
+            o.status = status;
+            return o;
         }
     }
 }

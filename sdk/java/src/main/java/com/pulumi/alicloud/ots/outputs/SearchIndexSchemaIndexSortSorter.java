@@ -15,35 +15,24 @@ public final class SearchIndexSchemaIndexSortSorter {
      * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
      * 
      */
-    private final @Nullable String fieldName;
+    private @Nullable String fieldName;
     /**
      * @return The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
     /**
      * @return The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
      * 
      */
-    private final @Nullable String order;
+    private @Nullable String order;
     /**
      * @return Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
      * 
      */
-    private final @Nullable String sorterType;
+    private @Nullable String sorterType;
 
-    @CustomType.Constructor
-    private SearchIndexSchemaIndexSortSorter(
-        @CustomType.Parameter("fieldName") @Nullable String fieldName,
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("order") @Nullable String order,
-        @CustomType.Parameter("sorterType") @Nullable String sorterType) {
-        this.fieldName = fieldName;
-        this.mode = mode;
-        this.order = order;
-        this.sorterType = sorterType;
-    }
-
+    private SearchIndexSchemaIndexSortSorter() {}
     /**
      * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
      * 
@@ -80,17 +69,13 @@ public final class SearchIndexSchemaIndexSortSorter {
     public static Builder builder(SearchIndexSchemaIndexSortSorter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String fieldName;
         private @Nullable String mode;
         private @Nullable String order;
         private @Nullable String sorterType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SearchIndexSchemaIndexSortSorter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fieldName = defaults.fieldName;
@@ -99,23 +84,33 @@ public final class SearchIndexSchemaIndexSortSorter {
     	      this.sorterType = defaults.sorterType;
         }
 
+        @CustomType.Setter
         public Builder fieldName(@Nullable String fieldName) {
             this.fieldName = fieldName;
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder order(@Nullable String order) {
             this.order = order;
             return this;
         }
+        @CustomType.Setter
         public Builder sorterType(@Nullable String sorterType) {
             this.sorterType = sorterType;
             return this;
-        }        public SearchIndexSchemaIndexSortSorter build() {
-            return new SearchIndexSchemaIndexSortSorter(fieldName, mode, order, sorterType);
+        }
+        public SearchIndexSchemaIndexSortSorter build() {
+            final var o = new SearchIndexSchemaIndexSortSorter();
+            o.fieldName = fieldName;
+            o.mode = mode;
+            o.order = order;
+            o.sorterType = sorterType;
+            return o;
         }
     }
 }

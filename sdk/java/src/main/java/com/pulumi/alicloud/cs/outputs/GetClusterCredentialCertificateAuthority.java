@@ -13,28 +13,19 @@ public final class GetClusterCredentialCertificateAuthority {
      * @return The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kube config file for your cluster.
      * 
      */
-    private final String clientCert;
+    private String clientCert;
     /**
      * @return The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kube config file for your cluster.
      * 
      */
-    private final String clientKey;
+    private String clientKey;
     /**
      * @return The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kube config file for your cluster.
      * 
      */
-    private final String clusterCert;
+    private String clusterCert;
 
-    @CustomType.Constructor
-    private GetClusterCredentialCertificateAuthority(
-        @CustomType.Parameter("clientCert") String clientCert,
-        @CustomType.Parameter("clientKey") String clientKey,
-        @CustomType.Parameter("clusterCert") String clusterCert) {
-        this.clientCert = clientCert;
-        this.clientKey = clientKey;
-        this.clusterCert = clusterCert;
-    }
-
+    private GetClusterCredentialCertificateAuthority() {}
     /**
      * @return The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kube config file for your cluster.
      * 
@@ -64,16 +55,12 @@ public final class GetClusterCredentialCertificateAuthority {
     public static Builder builder(GetClusterCredentialCertificateAuthority defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clientCert;
         private String clientKey;
         private String clusterCert;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterCredentialCertificateAuthority defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientCert = defaults.clientCert;
@@ -81,19 +68,27 @@ public final class GetClusterCredentialCertificateAuthority {
     	      this.clusterCert = defaults.clusterCert;
         }
 
+        @CustomType.Setter
         public Builder clientCert(String clientCert) {
             this.clientCert = Objects.requireNonNull(clientCert);
             return this;
         }
+        @CustomType.Setter
         public Builder clientKey(String clientKey) {
             this.clientKey = Objects.requireNonNull(clientKey);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterCert(String clusterCert) {
             this.clusterCert = Objects.requireNonNull(clusterCert);
             return this;
-        }        public GetClusterCredentialCertificateAuthority build() {
-            return new GetClusterCredentialCertificateAuthority(clientCert, clientKey, clusterCert);
+        }
+        public GetClusterCredentialCertificateAuthority build() {
+            final var o = new GetClusterCredentialCertificateAuthority();
+            o.clientCert = clientCert;
+            o.clientKey = clientKey;
+            o.clusterCert = clusterCert;
+            return o;
         }
     }
 }

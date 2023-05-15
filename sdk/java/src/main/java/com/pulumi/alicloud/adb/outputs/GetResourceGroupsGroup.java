@@ -14,17 +14,17 @@ public final class GetResourceGroupsGroup {
      * @return Creation time.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return DBClusterId
      * 
      */
-    private final String dbClusterId;
+    private String dbClusterId;
     /**
      * @return The name of the resource pool, which cannot exceed 64 bytes in length.
      * 
      */
-    private final String groupName;
+    private String groupName;
     /**
      * @return Query type, value description:
      * * **etl**: Batch query mode.
@@ -32,41 +32,24 @@ public final class GetResourceGroupsGroup {
      * * **default_type**: the default query mode.
      * 
      */
-    private final String groupType;
+    private String groupType;
     /**
      * @return The `key` of the resource supplied above.The value is formulated as `&lt;db_cluster_id&gt;:&lt;group_name&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
      * 
      */
-    private final Integer nodeNum;
+    private Integer nodeNum;
     /**
      * @return Binding User.
      * 
      */
-    private final String user;
+    private String user;
 
-    @CustomType.Constructor
-    private GetResourceGroupsGroup(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("dbClusterId") String dbClusterId,
-        @CustomType.Parameter("groupName") String groupName,
-        @CustomType.Parameter("groupType") String groupType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("nodeNum") Integer nodeNum,
-        @CustomType.Parameter("user") String user) {
-        this.createTime = createTime;
-        this.dbClusterId = dbClusterId;
-        this.groupName = groupName;
-        this.groupType = groupType;
-        this.id = id;
-        this.nodeNum = nodeNum;
-        this.user = user;
-    }
-
+    private GetResourceGroupsGroup() {}
     /**
      * @return Creation time.
      * 
@@ -127,7 +110,7 @@ public final class GetResourceGroupsGroup {
     public static Builder builder(GetResourceGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String dbClusterId;
@@ -136,11 +119,7 @@ public final class GetResourceGroupsGroup {
         private String id;
         private Integer nodeNum;
         private String user;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResourceGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -152,35 +131,51 @@ public final class GetResourceGroupsGroup {
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
+        @CustomType.Setter
         public Builder groupType(String groupType) {
             this.groupType = Objects.requireNonNull(groupType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeNum(Integer nodeNum) {
             this.nodeNum = Objects.requireNonNull(nodeNum);
             return this;
         }
+        @CustomType.Setter
         public Builder user(String user) {
             this.user = Objects.requireNonNull(user);
             return this;
-        }        public GetResourceGroupsGroup build() {
-            return new GetResourceGroupsGroup(createTime, dbClusterId, groupName, groupType, id, nodeNum, user);
+        }
+        public GetResourceGroupsGroup build() {
+            final var o = new GetResourceGroupsGroup();
+            o.createTime = createTime;
+            o.dbClusterId = dbClusterId;
+            o.groupName = groupName;
+            o.groupType = groupType;
+            o.id = id;
+            o.nodeNum = nodeNum;
+            o.user = user;
+            return o;
         }
     }
 }

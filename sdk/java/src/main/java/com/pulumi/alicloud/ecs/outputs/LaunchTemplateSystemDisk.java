@@ -24,26 +24,26 @@ public final class LaunchTemplateSystemDisk {
      * Default to `cloud_efficiency`.
      * 
      */
-    private final @Nullable String category;
+    private @Nullable String category;
     /**
      * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
      * 
      * Default to true
      * 
      */
-    private final @Nullable Boolean deleteWithInstance;
+    private @Nullable Boolean deleteWithInstance;
     /**
      * @return The description of the data disk.
      * 
      */
-    private final @Nullable String description;
-    private final @Nullable String iops;
+    private @Nullable String description;
+    private @Nullable String iops;
     /**
      * @return The name of the data disk.
      * 
      */
-    private final @Nullable String name;
-    private final @Nullable String performanceLevel;
+    private @Nullable String name;
+    private @Nullable String performanceLevel;
     /**
      * @return The size of the data disk.
      * - cloud：[5, 2000]
@@ -53,26 +53,9 @@ public final class LaunchTemplateSystemDisk {
      * - ephemeral_ssd: [5, 800]
      * 
      */
-    private final @Nullable Integer size;
+    private @Nullable Integer size;
 
-    @CustomType.Constructor
-    private LaunchTemplateSystemDisk(
-        @CustomType.Parameter("category") @Nullable String category,
-        @CustomType.Parameter("deleteWithInstance") @Nullable Boolean deleteWithInstance,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("iops") @Nullable String iops,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("performanceLevel") @Nullable String performanceLevel,
-        @CustomType.Parameter("size") @Nullable Integer size) {
-        this.category = category;
-        this.deleteWithInstance = deleteWithInstance;
-        this.description = description;
-        this.iops = iops;
-        this.name = name;
-        this.performanceLevel = performanceLevel;
-        this.size = size;
-    }
-
+    private LaunchTemplateSystemDisk() {}
     /**
      * @return The category of the disk:
      * - cloud: Basic cloud disk.
@@ -136,7 +119,7 @@ public final class LaunchTemplateSystemDisk {
     public static Builder builder(LaunchTemplateSystemDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String category;
         private @Nullable Boolean deleteWithInstance;
@@ -145,11 +128,7 @@ public final class LaunchTemplateSystemDisk {
         private @Nullable String name;
         private @Nullable String performanceLevel;
         private @Nullable Integer size;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(LaunchTemplateSystemDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -161,35 +140,51 @@ public final class LaunchTemplateSystemDisk {
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
+        @CustomType.Setter
         public Builder deleteWithInstance(@Nullable Boolean deleteWithInstance) {
             this.deleteWithInstance = deleteWithInstance;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder iops(@Nullable String iops) {
             this.iops = iops;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder performanceLevel(@Nullable String performanceLevel) {
             this.performanceLevel = performanceLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
             this.size = size;
             return this;
-        }        public LaunchTemplateSystemDisk build() {
-            return new LaunchTemplateSystemDisk(category, deleteWithInstance, description, iops, name, performanceLevel, size);
+        }
+        public LaunchTemplateSystemDisk build() {
+            final var o = new LaunchTemplateSystemDisk();
+            o.category = category;
+            o.deleteWithInstance = deleteWithInstance;
+            o.description = description;
+            o.iops = iops;
+            o.name = name;
+            o.performanceLevel = performanceLevel;
+            o.size = size;
+            return o;
         }
     }
 }

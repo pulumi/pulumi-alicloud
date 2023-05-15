@@ -16,104 +16,63 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSnapshotsResult {
-    private final @Nullable String category;
-    private final @Nullable Boolean dryRun;
+    private @Nullable String category;
+    private @Nullable Boolean dryRun;
     /**
      * @return Whether the snapshot is encrypted or not.
      * 
      */
-    private final @Nullable Boolean encrypted;
+    private @Nullable Boolean encrypted;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of snapshot IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String kmsKeyId;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String kmsKeyId;
+    private @Nullable String nameRegex;
     /**
      * @return A list of snapshots names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String snapshotLinkId;
-    private final @Nullable String snapshotName;
-    private final @Nullable String snapshotType;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String resourceGroupId;
+    private @Nullable String snapshotLinkId;
+    private @Nullable String snapshotName;
+    private @Nullable String snapshotType;
     /**
      * @return A list of snapshots. Each element contains the following attributes:
      * 
      */
-    private final List<GetSnapshotsSnapshot> snapshots;
+    private List<GetSnapshotsSnapshot> snapshots;
     /**
      * @return Source disk attribute. Value range: `System`,`Data`.
      * 
      */
-    private final @Nullable String sourceDiskType;
+    private @Nullable String sourceDiskType;
     /**
      * @return The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return A map of tags assigned to the snapshot.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
-    private final @Nullable String type;
+    private @Nullable Map<String,Object> tags;
+    private @Nullable String type;
     /**
      * @return Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
      * 
      */
-    private final @Nullable String usage;
+    private @Nullable String usage;
 
-    @CustomType.Constructor
-    private GetSnapshotsResult(
-        @CustomType.Parameter("category") @Nullable String category,
-        @CustomType.Parameter("dryRun") @Nullable Boolean dryRun,
-        @CustomType.Parameter("encrypted") @Nullable Boolean encrypted,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("kmsKeyId") @Nullable String kmsKeyId,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("snapshotLinkId") @Nullable String snapshotLinkId,
-        @CustomType.Parameter("snapshotName") @Nullable String snapshotName,
-        @CustomType.Parameter("snapshotType") @Nullable String snapshotType,
-        @CustomType.Parameter("snapshots") List<GetSnapshotsSnapshot> snapshots,
-        @CustomType.Parameter("sourceDiskType") @Nullable String sourceDiskType,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("usage") @Nullable String usage) {
-        this.category = category;
-        this.dryRun = dryRun;
-        this.encrypted = encrypted;
-        this.id = id;
-        this.ids = ids;
-        this.kmsKeyId = kmsKeyId;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.snapshotLinkId = snapshotLinkId;
-        this.snapshotName = snapshotName;
-        this.snapshotType = snapshotType;
-        this.snapshots = snapshots;
-        this.sourceDiskType = sourceDiskType;
-        this.status = status;
-        this.tags = tags;
-        this.type = type;
-        this.usage = usage;
-    }
-
+    private GetSnapshotsResult() {}
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
@@ -215,7 +174,7 @@ public final class GetSnapshotsResult {
     public static Builder builder(GetSnapshotsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String category;
         private @Nullable Boolean dryRun;
@@ -236,11 +195,7 @@ public final class GetSnapshotsResult {
         private @Nullable Map<String,Object> tags;
         private @Nullable String type;
         private @Nullable String usage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSnapshotsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -264,22 +219,27 @@ public final class GetSnapshotsResult {
     	      this.usage = defaults.usage;
         }
 
+        @CustomType.Setter
         public Builder category(@Nullable String category) {
             this.category = category;
             return this;
         }
+        @CustomType.Setter
         public Builder dryRun(@Nullable Boolean dryRun) {
             this.dryRun = dryRun;
             return this;
         }
+        @CustomType.Setter
         public Builder encrypted(@Nullable Boolean encrypted) {
             this.encrypted = encrypted;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -287,14 +247,17 @@ public final class GetSnapshotsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder kmsKeyId(@Nullable String kmsKeyId) {
             this.kmsKeyId = kmsKeyId;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -302,26 +265,32 @@ public final class GetSnapshotsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotLinkId(@Nullable String snapshotLinkId) {
             this.snapshotLinkId = snapshotLinkId;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotName(@Nullable String snapshotName) {
             this.snapshotName = snapshotName;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotType(@Nullable String snapshotType) {
             this.snapshotType = snapshotType;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshots(List<GetSnapshotsSnapshot> snapshots) {
             this.snapshots = Objects.requireNonNull(snapshots);
             return this;
@@ -329,27 +298,53 @@ public final class GetSnapshotsResult {
         public Builder snapshots(GetSnapshotsSnapshot... snapshots) {
             return snapshots(List.of(snapshots));
         }
+        @CustomType.Setter
         public Builder sourceDiskType(@Nullable String sourceDiskType) {
             this.sourceDiskType = sourceDiskType;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder usage(@Nullable String usage) {
             this.usage = usage;
             return this;
-        }        public GetSnapshotsResult build() {
-            return new GetSnapshotsResult(category, dryRun, encrypted, id, ids, kmsKeyId, nameRegex, names, outputFile, resourceGroupId, snapshotLinkId, snapshotName, snapshotType, snapshots, sourceDiskType, status, tags, type, usage);
+        }
+        public GetSnapshotsResult build() {
+            final var o = new GetSnapshotsResult();
+            o.category = category;
+            o.dryRun = dryRun;
+            o.encrypted = encrypted;
+            o.id = id;
+            o.ids = ids;
+            o.kmsKeyId = kmsKeyId;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.snapshotLinkId = snapshotLinkId;
+            o.snapshotName = snapshotName;
+            o.snapshotType = snapshotType;
+            o.snapshots = snapshots;
+            o.sourceDiskType = sourceDiskType;
+            o.status = status;
+            o.tags = tags;
+            o.type = type;
+            o.usage = usage;
+            return o;
         }
     }
 }

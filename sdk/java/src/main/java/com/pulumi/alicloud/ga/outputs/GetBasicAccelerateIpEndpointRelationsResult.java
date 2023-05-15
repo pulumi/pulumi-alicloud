@@ -17,55 +17,36 @@ public final class GetBasicAccelerateIpEndpointRelationsResult {
      * @return The ID of the Basic Accelerate IP.
      * 
      */
-    private final @Nullable String accelerateIpId;
+    private @Nullable String accelerateIpId;
     /**
      * @return The ID of the Global Accelerator Basic Accelerator instance.
      * 
      */
-    private final String acceleratorId;
+    private String acceleratorId;
     /**
      * @return The ID of the Basic Endpoint.
      * 
      */
-    private final @Nullable String endpointId;
+    private @Nullable String endpointId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
     /**
      * @return A list of Global Accelerator Basic Accelerate Ip Endpoint Relations. Each element contains the following attributes:
      * 
      */
-    private final List<GetBasicAccelerateIpEndpointRelationsRelation> relations;
+    private List<GetBasicAccelerateIpEndpointRelationsRelation> relations;
     /**
      * @return The status of the Basic Accelerate Ip Endpoint Relation.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetBasicAccelerateIpEndpointRelationsResult(
-        @CustomType.Parameter("accelerateIpId") @Nullable String accelerateIpId,
-        @CustomType.Parameter("acceleratorId") String acceleratorId,
-        @CustomType.Parameter("endpointId") @Nullable String endpointId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("relations") List<GetBasicAccelerateIpEndpointRelationsRelation> relations,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.accelerateIpId = accelerateIpId;
-        this.acceleratorId = acceleratorId;
-        this.endpointId = endpointId;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.relations = relations;
-        this.status = status;
-    }
-
+    private GetBasicAccelerateIpEndpointRelationsResult() {}
     /**
      * @return The ID of the Basic Accelerate IP.
      * 
@@ -122,7 +103,7 @@ public final class GetBasicAccelerateIpEndpointRelationsResult {
     public static Builder builder(GetBasicAccelerateIpEndpointRelationsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accelerateIpId;
         private String acceleratorId;
@@ -132,11 +113,7 @@ public final class GetBasicAccelerateIpEndpointRelationsResult {
         private @Nullable String outputFile;
         private List<GetBasicAccelerateIpEndpointRelationsRelation> relations;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBasicAccelerateIpEndpointRelationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accelerateIpId = defaults.accelerateIpId;
@@ -149,22 +126,27 @@ public final class GetBasicAccelerateIpEndpointRelationsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder accelerateIpId(@Nullable String accelerateIpId) {
             this.accelerateIpId = accelerateIpId;
             return this;
         }
+        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointId(@Nullable String endpointId) {
             this.endpointId = endpointId;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -172,10 +154,12 @@ public final class GetBasicAccelerateIpEndpointRelationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder relations(List<GetBasicAccelerateIpEndpointRelationsRelation> relations) {
             this.relations = Objects.requireNonNull(relations);
             return this;
@@ -183,11 +167,22 @@ public final class GetBasicAccelerateIpEndpointRelationsResult {
         public Builder relations(GetBasicAccelerateIpEndpointRelationsRelation... relations) {
             return relations(List.of(relations));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetBasicAccelerateIpEndpointRelationsResult build() {
-            return new GetBasicAccelerateIpEndpointRelationsResult(accelerateIpId, acceleratorId, endpointId, id, ids, outputFile, relations, status);
+        }
+        public GetBasicAccelerateIpEndpointRelationsResult build() {
+            final var o = new GetBasicAccelerateIpEndpointRelationsResult();
+            o.accelerateIpId = accelerateIpId;
+            o.acceleratorId = acceleratorId;
+            o.endpointId = endpointId;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.relations = relations;
+            o.status = status;
+            return o;
         }
     }
 }

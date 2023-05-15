@@ -14,28 +14,19 @@ public final class K8sSlbAttachmentSlbConfigPortMappingServicePort {
      * @return The port of k8s service, values should be within range [1, 65535].
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The protocol of k8s service, values can be &#39;TCP&#39; or &#39;UDP&#39;.
      * 
      */
-    private final String protocol;
+    private String protocol;
     /**
      * @return The port of k8s pod, values should be within range [1, 65535].
      * 
      */
-    private final Integer targetPort;
+    private Integer targetPort;
 
-    @CustomType.Constructor
-    private K8sSlbAttachmentSlbConfigPortMappingServicePort(
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("targetPort") Integer targetPort) {
-        this.port = port;
-        this.protocol = protocol;
-        this.targetPort = targetPort;
-    }
-
+    private K8sSlbAttachmentSlbConfigPortMappingServicePort() {}
     /**
      * @return The port of k8s service, values should be within range [1, 65535].
      * 
@@ -65,16 +56,12 @@ public final class K8sSlbAttachmentSlbConfigPortMappingServicePort {
     public static Builder builder(K8sSlbAttachmentSlbConfigPortMappingServicePort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer port;
         private String protocol;
         private Integer targetPort;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(K8sSlbAttachmentSlbConfigPortMappingServicePort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.port = defaults.port;
@@ -82,19 +69,27 @@ public final class K8sSlbAttachmentSlbConfigPortMappingServicePort {
     	      this.targetPort = defaults.targetPort;
         }
 
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder targetPort(Integer targetPort) {
             this.targetPort = Objects.requireNonNull(targetPort);
             return this;
-        }        public K8sSlbAttachmentSlbConfigPortMappingServicePort build() {
-            return new K8sSlbAttachmentSlbConfigPortMappingServicePort(port, protocol, targetPort);
+        }
+        public K8sSlbAttachmentSlbConfigPortMappingServicePort build() {
+            final var o = new K8sSlbAttachmentSlbConfigPortMappingServicePort();
+            o.port = port;
+            o.protocol = protocol;
+            o.targetPort = targetPort;
+            return o;
         }
     }
 }

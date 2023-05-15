@@ -17,133 +17,94 @@ public final class GetCapacityReservationsReservation {
      * @return Capacity Reservation id
      * 
      */
-    private final String capacityReservationId;
+    private String capacityReservationId;
     /**
      * @return Capacity reservation service name.
      * 
      */
-    private final String capacityReservationName;
+    private String capacityReservationName;
     /**
      * @return description of the capacity reservation instance
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
      * 
      */
-    private final String endTime;
+    private String endTime;
     /**
      * @return Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
      * 
      */
-    private final String endTimeType;
+    private String endTimeType;
     /**
      * @return The ID of the Capacity Reservation.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The total number of instances that need to be reserved within the capacity reservation
      * 
      */
-    private final String instanceAmount;
+    private String instanceAmount;
     /**
      * @return Instance type. Currently, you can only set the capacity reservation service for one instance type.
      * 
      */
-    private final String instanceType;
+    private String instanceType;
     /**
      * @return The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      * 
      */
-    private final String matchCriteria;
+    private String matchCriteria;
     /**
      * @return The payment type of the resource. value range `PostPaid`, `PrePaid`.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return platform of the capacity reservation , value range `windows`, `linux`, `all`.
      * 
      */
-    private final String platform;
+    private String platform;
     /**
      * @return The resource group id.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return time of the capacity reservation which become active
      * 
      */
-    private final String startTime;
+    private String startTime;
     /**
      * @return The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
      * 
      */
-    private final String startTimeType;
+    private String startTimeType;
     /**
      * @return The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The tag of the resource.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
     /**
      * @return This parameter is under test and is not yet open for use.
      * 
      */
-    private final String timeSlot;
+    private String timeSlot;
     /**
      * @return The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      * 
      */
-    private final List<String> zoneIds;
+    private List<String> zoneIds;
 
-    @CustomType.Constructor
-    private GetCapacityReservationsReservation(
-        @CustomType.Parameter("capacityReservationId") String capacityReservationId,
-        @CustomType.Parameter("capacityReservationName") String capacityReservationName,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("endTime") String endTime,
-        @CustomType.Parameter("endTimeType") String endTimeType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceAmount") String instanceAmount,
-        @CustomType.Parameter("instanceType") String instanceType,
-        @CustomType.Parameter("matchCriteria") String matchCriteria,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("platform") String platform,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("startTime") String startTime,
-        @CustomType.Parameter("startTimeType") String startTimeType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("timeSlot") String timeSlot,
-        @CustomType.Parameter("zoneIds") List<String> zoneIds) {
-        this.capacityReservationId = capacityReservationId;
-        this.capacityReservationName = capacityReservationName;
-        this.description = description;
-        this.endTime = endTime;
-        this.endTimeType = endTimeType;
-        this.id = id;
-        this.instanceAmount = instanceAmount;
-        this.instanceType = instanceType;
-        this.matchCriteria = matchCriteria;
-        this.paymentType = paymentType;
-        this.platform = platform;
-        this.resourceGroupId = resourceGroupId;
-        this.startTime = startTime;
-        this.startTimeType = startTimeType;
-        this.status = status;
-        this.tags = tags;
-        this.timeSlot = timeSlot;
-        this.zoneIds = zoneIds;
-    }
-
+    private GetCapacityReservationsReservation() {}
     /**
      * @return Capacity Reservation id
      * 
@@ -278,7 +239,7 @@ public final class GetCapacityReservationsReservation {
     public static Builder builder(GetCapacityReservationsReservation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String capacityReservationId;
         private String capacityReservationName;
@@ -298,11 +259,7 @@ public final class GetCapacityReservationsReservation {
         private @Nullable Map<String,Object> tags;
         private String timeSlot;
         private List<String> zoneIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCapacityReservationsReservation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.capacityReservationId = defaults.capacityReservationId;
@@ -325,82 +282,120 @@ public final class GetCapacityReservationsReservation {
     	      this.zoneIds = defaults.zoneIds;
         }
 
+        @CustomType.Setter
         public Builder capacityReservationId(String capacityReservationId) {
             this.capacityReservationId = Objects.requireNonNull(capacityReservationId);
             return this;
         }
+        @CustomType.Setter
         public Builder capacityReservationName(String capacityReservationName) {
             this.capacityReservationName = Objects.requireNonNull(capacityReservationName);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder endTimeType(String endTimeType) {
             this.endTimeType = Objects.requireNonNull(endTimeType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceAmount(String instanceAmount) {
             this.instanceAmount = Objects.requireNonNull(instanceAmount);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder matchCriteria(String matchCriteria) {
             this.matchCriteria = Objects.requireNonNull(matchCriteria);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder platform(String platform) {
             this.platform = Objects.requireNonNull(platform);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
+        @CustomType.Setter
         public Builder startTimeType(String startTimeType) {
             this.startTimeType = Objects.requireNonNull(startTimeType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder timeSlot(String timeSlot) {
             this.timeSlot = Objects.requireNonNull(timeSlot);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneIds(List<String> zoneIds) {
             this.zoneIds = Objects.requireNonNull(zoneIds);
             return this;
         }
         public Builder zoneIds(String... zoneIds) {
             return zoneIds(List.of(zoneIds));
-        }        public GetCapacityReservationsReservation build() {
-            return new GetCapacityReservationsReservation(capacityReservationId, capacityReservationName, description, endTime, endTimeType, id, instanceAmount, instanceType, matchCriteria, paymentType, platform, resourceGroupId, startTime, startTimeType, status, tags, timeSlot, zoneIds);
+        }
+        public GetCapacityReservationsReservation build() {
+            final var o = new GetCapacityReservationsReservation();
+            o.capacityReservationId = capacityReservationId;
+            o.capacityReservationName = capacityReservationName;
+            o.description = description;
+            o.endTime = endTime;
+            o.endTimeType = endTimeType;
+            o.id = id;
+            o.instanceAmount = instanceAmount;
+            o.instanceType = instanceType;
+            o.matchCriteria = matchCriteria;
+            o.paymentType = paymentType;
+            o.platform = platform;
+            o.resourceGroupId = resourceGroupId;
+            o.startTime = startTime;
+            o.startTimeType = startTimeType;
+            o.status = status;
+            o.tags = tags;
+            o.timeSlot = timeSlot;
+            o.zoneIds = zoneIds;
+            return o;
         }
     }
 }

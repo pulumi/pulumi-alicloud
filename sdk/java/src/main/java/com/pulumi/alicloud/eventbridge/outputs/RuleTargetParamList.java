@@ -15,12 +15,12 @@ public final class RuleTargetParamList {
      * @return The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
      * 
      */
-    private final String form;
+    private String form;
     /**
      * @return The resource key of param.  For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.htm)
      * 
      */
-    private final String resourceKey;
+    private String resourceKey;
     /**
      * @return The template of param.
      * 
@@ -52,25 +52,14 @@ public final class RuleTargetParamList {
      * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
      * 
      */
-    private final @Nullable String template;
+    private @Nullable String template;
     /**
      * @return The value of param.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private RuleTargetParamList(
-        @CustomType.Parameter("form") String form,
-        @CustomType.Parameter("resourceKey") String resourceKey,
-        @CustomType.Parameter("template") @Nullable String template,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.form = form;
-        this.resourceKey = resourceKey;
-        this.template = template;
-        this.value = value;
-    }
-
+    private RuleTargetParamList() {}
     /**
      * @return The format of param.  Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
      * 
@@ -134,17 +123,13 @@ public final class RuleTargetParamList {
     public static Builder builder(RuleTargetParamList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String form;
         private String resourceKey;
         private @Nullable String template;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleTargetParamList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.form = defaults.form;
@@ -153,23 +138,33 @@ public final class RuleTargetParamList {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder form(String form) {
             this.form = Objects.requireNonNull(form);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceKey(String resourceKey) {
             this.resourceKey = Objects.requireNonNull(resourceKey);
             return this;
         }
+        @CustomType.Setter
         public Builder template(@Nullable String template) {
             this.template = template;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public RuleTargetParamList build() {
-            return new RuleTargetParamList(form, resourceKey, template, value);
+        }
+        public RuleTargetParamList build() {
+            final var o = new RuleTargetParamList();
+            o.form = form;
+            o.resourceKey = resourceKey;
+            o.template = template;
+            o.value = value;
+            return o;
         }
     }
 }

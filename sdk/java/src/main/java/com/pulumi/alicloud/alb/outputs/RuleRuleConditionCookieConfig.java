@@ -15,13 +15,9 @@ public final class RuleRuleConditionCookieConfig {
      * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
      * 
      */
-    private final @Nullable List<RuleRuleConditionCookieConfigValue> values;
+    private @Nullable List<RuleRuleConditionCookieConfigValue> values;
 
-    @CustomType.Constructor
-    private RuleRuleConditionCookieConfig(@CustomType.Parameter("values") @Nullable List<RuleRuleConditionCookieConfigValue> values) {
-        this.values = values;
-    }
-
+    private RuleRuleConditionCookieConfig() {}
     /**
      * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
      * 
@@ -37,27 +33,27 @@ public final class RuleRuleConditionCookieConfig {
     public static Builder builder(RuleRuleConditionCookieConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<RuleRuleConditionCookieConfigValue> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleConditionCookieConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder values(@Nullable List<RuleRuleConditionCookieConfigValue> values) {
             this.values = values;
             return this;
         }
         public Builder values(RuleRuleConditionCookieConfigValue... values) {
             return values(List.of(values));
-        }        public RuleRuleConditionCookieConfig build() {
-            return new RuleRuleConditionCookieConfig(values);
+        }
+        public RuleRuleConditionCookieConfig build() {
+            final var o = new RuleRuleConditionCookieConfig();
+            o.values = values;
+            return o;
         }
     }
 }

@@ -14,21 +14,14 @@ public final class GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage {
      * @return The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
      * 
      */
-    private final Integer bandwidth;
+    private Integer bandwidth;
     /**
      * @return The ID of the cross-region acceleration bandwidth plan.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
 
-    @CustomType.Constructor
-    private GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage(
-        @CustomType.Parameter("bandwidth") Integer bandwidth,
-        @CustomType.Parameter("instanceId") String instanceId) {
-        this.bandwidth = bandwidth;
-        this.instanceId = instanceId;
-    }
-
+    private GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage() {}
     /**
      * @return The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
      * 
@@ -51,30 +44,32 @@ public final class GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage {
     public static Builder builder(GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer bandwidth;
         private String instanceId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
     	      this.instanceId = defaults.instanceId;
         }
 
+        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
-        }        public GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage build() {
-            return new GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage(bandwidth, instanceId);
+        }
+        public GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage build() {
+            final var o = new GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage();
+            o.bandwidth = bandwidth;
+            o.instanceId = instanceId;
+            return o;
         }
     }
 }

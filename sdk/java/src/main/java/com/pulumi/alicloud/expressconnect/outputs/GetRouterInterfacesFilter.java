@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRouterInterfacesFilter {
-    private final @Nullable String key;
-    private final @Nullable List<String> values;
+    private @Nullable String key;
+    private @Nullable List<String> values;
 
-    @CustomType.Constructor
-    private GetRouterInterfacesFilter(
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("values") @Nullable List<String> values) {
-        this.key = key;
-        this.values = values;
-    }
-
+    private GetRouterInterfacesFilter() {}
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
@@ -37,33 +30,35 @@ public final class GetRouterInterfacesFilter {
     public static Builder builder(GetRouterInterfacesFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String key;
         private @Nullable List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouterInterfacesFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public GetRouterInterfacesFilter build() {
-            return new GetRouterInterfacesFilter(key, values);
+        }
+        public GetRouterInterfacesFilter build() {
+            final var o = new GetRouterInterfacesFilter();
+            o.key = key;
+            o.values = values;
+            return o;
         }
     }
 }

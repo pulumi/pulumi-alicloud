@@ -13,17 +13,10 @@ public final class GetGlobalEventsStorageRegionResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String storageRegion;
+    private String id;
+    private String storageRegion;
 
-    @CustomType.Constructor
-    private GetGlobalEventsStorageRegionResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("storageRegion") String storageRegion) {
-        this.id = id;
-        this.storageRegion = storageRegion;
-    }
-
+    private GetGlobalEventsStorageRegionResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -42,30 +35,32 @@ public final class GetGlobalEventsStorageRegionResult {
     public static Builder builder(GetGlobalEventsStorageRegionResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String storageRegion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGlobalEventsStorageRegionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.storageRegion = defaults.storageRegion;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder storageRegion(String storageRegion) {
             this.storageRegion = Objects.requireNonNull(storageRegion);
             return this;
-        }        public GetGlobalEventsStorageRegionResult build() {
-            return new GetGlobalEventsStorageRegionResult(id, storageRegion);
+        }
+        public GetGlobalEventsStorageRegionResult build() {
+            final var o = new GetGlobalEventsStorageRegionResult();
+            o.id = id;
+            o.storageRegion = storageRegion;
+            return o;
         }
     }
 }

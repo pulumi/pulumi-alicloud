@@ -17,20 +17,11 @@ public final class GetReplicationVaultRegionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String outputFile;
-    private final List<GetReplicationVaultRegionsRegion> regions;
+    private String id;
+    private @Nullable String outputFile;
+    private List<GetReplicationVaultRegionsRegion> regions;
 
-    @CustomType.Constructor
-    private GetReplicationVaultRegionsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("regions") List<GetReplicationVaultRegionsRegion> regions) {
-        this.id = id;
-        this.outputFile = outputFile;
-        this.regions = regions;
-    }
-
+    private GetReplicationVaultRegionsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -52,16 +43,12 @@ public final class GetReplicationVaultRegionsResult {
     public static Builder builder(GetReplicationVaultRegionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable String outputFile;
         private List<GetReplicationVaultRegionsRegion> regions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetReplicationVaultRegionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -69,22 +56,30 @@ public final class GetReplicationVaultRegionsResult {
     	      this.regions = defaults.regions;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder regions(List<GetReplicationVaultRegionsRegion> regions) {
             this.regions = Objects.requireNonNull(regions);
             return this;
         }
         public Builder regions(GetReplicationVaultRegionsRegion... regions) {
             return regions(List.of(regions));
-        }        public GetReplicationVaultRegionsResult build() {
-            return new GetReplicationVaultRegionsResult(id, outputFile, regions);
+        }
+        public GetReplicationVaultRegionsResult build() {
+            final var o = new GetReplicationVaultRegionsResult();
+            o.id = id;
+            o.outputFile = outputFile;
+            o.regions = regions;
+            return o;
         }
     }
 }

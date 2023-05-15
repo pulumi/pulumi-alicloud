@@ -15,21 +15,14 @@ public final class DbInstancePlanPlanConfigResume {
      * @return The executed time of the Plan.
      * 
      */
-    private final @Nullable String executeTime;
+    private @Nullable String executeTime;
     /**
      * @return The Cron Time of the plan.
      * 
      */
-    private final @Nullable String planCronTime;
+    private @Nullable String planCronTime;
 
-    @CustomType.Constructor
-    private DbInstancePlanPlanConfigResume(
-        @CustomType.Parameter("executeTime") @Nullable String executeTime,
-        @CustomType.Parameter("planCronTime") @Nullable String planCronTime) {
-        this.executeTime = executeTime;
-        this.planCronTime = planCronTime;
-    }
-
+    private DbInstancePlanPlanConfigResume() {}
     /**
      * @return The executed time of the Plan.
      * 
@@ -52,30 +45,32 @@ public final class DbInstancePlanPlanConfigResume {
     public static Builder builder(DbInstancePlanPlanConfigResume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String executeTime;
         private @Nullable String planCronTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DbInstancePlanPlanConfigResume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.executeTime = defaults.executeTime;
     	      this.planCronTime = defaults.planCronTime;
         }
 
+        @CustomType.Setter
         public Builder executeTime(@Nullable String executeTime) {
             this.executeTime = executeTime;
             return this;
         }
+        @CustomType.Setter
         public Builder planCronTime(@Nullable String planCronTime) {
             this.planCronTime = planCronTime;
             return this;
-        }        public DbInstancePlanPlanConfigResume build() {
-            return new DbInstancePlanPlanConfigResume(executeTime, planCronTime);
+        }
+        public DbInstancePlanPlanConfigResume build() {
+            final var o = new DbInstancePlanPlanConfigResume();
+            o.executeTime = executeTime;
+            o.planCronTime = planCronTime;
+            return o;
         }
     }
 }

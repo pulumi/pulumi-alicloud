@@ -15,28 +15,19 @@ public final class InstanceIpWhitelist {
      * @return The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
      * 
      */
-    private final @Nullable String ipGroupAttribute;
+    private @Nullable String ipGroupAttribute;
     /**
      * @return IP whitelist group name
      * 
      */
-    private final @Nullable String ipGroupName;
+    private @Nullable String ipGroupName;
     /**
      * @return Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
      * 
      */
-    private final String securityIpList;
+    private String securityIpList;
 
-    @CustomType.Constructor
-    private InstanceIpWhitelist(
-        @CustomType.Parameter("ipGroupAttribute") @Nullable String ipGroupAttribute,
-        @CustomType.Parameter("ipGroupName") @Nullable String ipGroupName,
-        @CustomType.Parameter("securityIpList") String securityIpList) {
-        this.ipGroupAttribute = ipGroupAttribute;
-        this.ipGroupName = ipGroupName;
-        this.securityIpList = securityIpList;
-    }
-
+    private InstanceIpWhitelist() {}
     /**
      * @return The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
      * 
@@ -66,16 +57,12 @@ public final class InstanceIpWhitelist {
     public static Builder builder(InstanceIpWhitelist defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipGroupAttribute;
         private @Nullable String ipGroupName;
         private String securityIpList;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceIpWhitelist defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipGroupAttribute = defaults.ipGroupAttribute;
@@ -83,19 +70,27 @@ public final class InstanceIpWhitelist {
     	      this.securityIpList = defaults.securityIpList;
         }
 
+        @CustomType.Setter
         public Builder ipGroupAttribute(@Nullable String ipGroupAttribute) {
             this.ipGroupAttribute = ipGroupAttribute;
             return this;
         }
+        @CustomType.Setter
         public Builder ipGroupName(@Nullable String ipGroupName) {
             this.ipGroupName = ipGroupName;
             return this;
         }
+        @CustomType.Setter
         public Builder securityIpList(String securityIpList) {
             this.securityIpList = Objects.requireNonNull(securityIpList);
             return this;
-        }        public InstanceIpWhitelist build() {
-            return new InstanceIpWhitelist(ipGroupAttribute, ipGroupName, securityIpList);
+        }
+        public InstanceIpWhitelist build() {
+            final var o = new InstanceIpWhitelist();
+            o.ipGroupAttribute = ipGroupAttribute;
+            o.ipGroupName = ipGroupName;
+            o.securityIpList = securityIpList;
+            return o;
         }
     }
 }

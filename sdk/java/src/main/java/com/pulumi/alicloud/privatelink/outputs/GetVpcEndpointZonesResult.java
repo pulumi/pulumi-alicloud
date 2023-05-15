@@ -13,33 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVpcEndpointZonesResult {
-    private final String endpointId;
+    private String endpointId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final @Nullable String status;
-    private final List<GetVpcEndpointZonesZone> zones;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private @Nullable String status;
+    private List<GetVpcEndpointZonesZone> zones;
 
-    @CustomType.Constructor
-    private GetVpcEndpointZonesResult(
-        @CustomType.Parameter("endpointId") String endpointId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("zones") List<GetVpcEndpointZonesZone> zones) {
-        this.endpointId = endpointId;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.status = status;
-        this.zones = zones;
-    }
-
+    private GetVpcEndpointZonesResult() {}
     public String endpointId() {
         return this.endpointId;
     }
@@ -70,7 +55,7 @@ public final class GetVpcEndpointZonesResult {
     public static Builder builder(GetVpcEndpointZonesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String endpointId;
         private String id;
@@ -78,11 +63,7 @@ public final class GetVpcEndpointZonesResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private List<GetVpcEndpointZonesZone> zones;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcEndpointZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpointId = defaults.endpointId;
@@ -93,14 +74,17 @@ public final class GetVpcEndpointZonesResult {
     	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
         public Builder endpointId(String endpointId) {
             this.endpointId = Objects.requireNonNull(endpointId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -108,22 +92,33 @@ public final class GetVpcEndpointZonesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder zones(List<GetVpcEndpointZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetVpcEndpointZonesZone... zones) {
             return zones(List.of(zones));
-        }        public GetVpcEndpointZonesResult build() {
-            return new GetVpcEndpointZonesResult(endpointId, id, ids, outputFile, status, zones);
+        }
+        public GetVpcEndpointZonesResult build() {
+            final var o = new GetVpcEndpointZonesResult();
+            o.endpointId = endpointId;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.status = status;
+            o.zones = zones;
+            return o;
         }
     }
 }

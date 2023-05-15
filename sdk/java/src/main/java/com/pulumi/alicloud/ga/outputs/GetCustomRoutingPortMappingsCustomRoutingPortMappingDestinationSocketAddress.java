@@ -14,21 +14,14 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinati
      * @return The service IP address of the backend instance.
      * 
      */
-    private final String ipAddress;
+    private String ipAddress;
     /**
      * @return The service port of the backend instance.
      * 
      */
-    private final Integer port;
+    private Integer port;
 
-    @CustomType.Constructor
-    private GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress(
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("port") Integer port) {
-        this.ipAddress = ipAddress;
-        this.port = port;
-    }
-
+    private GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress() {}
     /**
      * @return The service IP address of the backend instance.
      * 
@@ -51,30 +44,32 @@ public final class GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinati
     public static Builder builder(GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ipAddress;
         private Integer port;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipAddress = defaults.ipAddress;
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
-        }        public GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress build() {
-            return new GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress(ipAddress, port);
+        }
+        public GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress build() {
+            final var o = new GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddress();
+            o.ipAddress = ipAddress;
+            o.port = port;
+            return o;
         }
     }
 }

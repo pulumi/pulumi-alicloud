@@ -13,28 +13,19 @@ public final class GetDbInstancePlansPlanPlanConfigResume {
      * @return The executed time of the Plan.
      * 
      */
-    private final String executeTime;
+    private String executeTime;
     /**
      * @return The Cron Time of the plan.
      * 
      */
-    private final String planCronTime;
+    private String planCronTime;
     /**
      * @return The Status of the plan Task.
      * 
      */
-    private final String planTaskStatus;
+    private String planTaskStatus;
 
-    @CustomType.Constructor
-    private GetDbInstancePlansPlanPlanConfigResume(
-        @CustomType.Parameter("executeTime") String executeTime,
-        @CustomType.Parameter("planCronTime") String planCronTime,
-        @CustomType.Parameter("planTaskStatus") String planTaskStatus) {
-        this.executeTime = executeTime;
-        this.planCronTime = planCronTime;
-        this.planTaskStatus = planTaskStatus;
-    }
-
+    private GetDbInstancePlansPlanPlanConfigResume() {}
     /**
      * @return The executed time of the Plan.
      * 
@@ -64,16 +55,12 @@ public final class GetDbInstancePlansPlanPlanConfigResume {
     public static Builder builder(GetDbInstancePlansPlanPlanConfigResume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String executeTime;
         private String planCronTime;
         private String planTaskStatus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDbInstancePlansPlanPlanConfigResume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.executeTime = defaults.executeTime;
@@ -81,19 +68,27 @@ public final class GetDbInstancePlansPlanPlanConfigResume {
     	      this.planTaskStatus = defaults.planTaskStatus;
         }
 
+        @CustomType.Setter
         public Builder executeTime(String executeTime) {
             this.executeTime = Objects.requireNonNull(executeTime);
             return this;
         }
+        @CustomType.Setter
         public Builder planCronTime(String planCronTime) {
             this.planCronTime = Objects.requireNonNull(planCronTime);
             return this;
         }
+        @CustomType.Setter
         public Builder planTaskStatus(String planTaskStatus) {
             this.planTaskStatus = Objects.requireNonNull(planTaskStatus);
             return this;
-        }        public GetDbInstancePlansPlanPlanConfigResume build() {
-            return new GetDbInstancePlansPlanPlanConfigResume(executeTime, planCronTime, planTaskStatus);
+        }
+        public GetDbInstancePlansPlanPlanConfigResume build() {
+            final var o = new GetDbInstancePlansPlanPlanConfigResume();
+            o.executeTime = executeTime;
+            o.planCronTime = planCronTime;
+            o.planTaskStatus = planTaskStatus;
+            return o;
         }
     }
 }

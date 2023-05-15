@@ -15,28 +15,19 @@ public final class StudioApplicationInstance {
      * @return The id of the instance.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return The name of the instance.
      * 
      */
-    private final @Nullable String nodeName;
+    private @Nullable String nodeName;
     /**
      * @return The type of the instance.
      * 
      */
-    private final @Nullable String nodeType;
+    private @Nullable String nodeType;
 
-    @CustomType.Constructor
-    private StudioApplicationInstance(
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("nodeName") @Nullable String nodeName,
-        @CustomType.Parameter("nodeType") @Nullable String nodeType) {
-        this.id = id;
-        this.nodeName = nodeName;
-        this.nodeType = nodeType;
-    }
-
+    private StudioApplicationInstance() {}
     /**
      * @return The id of the instance.
      * 
@@ -66,16 +57,12 @@ public final class StudioApplicationInstance {
     public static Builder builder(StudioApplicationInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
         private @Nullable String nodeName;
         private @Nullable String nodeType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StudioApplicationInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -83,19 +70,27 @@ public final class StudioApplicationInstance {
     	      this.nodeType = defaults.nodeType;
         }
 
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
             this.nodeName = nodeName;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeType(@Nullable String nodeType) {
             this.nodeType = nodeType;
             return this;
-        }        public StudioApplicationInstance build() {
-            return new StudioApplicationInstance(id, nodeName, nodeType);
+        }
+        public StudioApplicationInstance build() {
+            final var o = new StudioApplicationInstance();
+            o.id = id;
+            o.nodeName = nodeName;
+            o.nodeType = nodeType;
+            return o;
         }
     }
 }

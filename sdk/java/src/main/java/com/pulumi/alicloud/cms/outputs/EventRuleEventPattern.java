@@ -16,42 +16,29 @@ public final class EventRuleEventPattern {
      * @return The type of the event-triggered alert rule. Valid values:
      * 
      */
-    private final @Nullable List<String> eventTypeLists;
+    private @Nullable List<String> eventTypeLists;
     /**
      * @return The level of the event-triggered alert rule. Valid values:
      * 
      */
-    private final @Nullable List<String> levelLists;
+    private @Nullable List<String> levelLists;
     /**
      * @return The name of the event-triggered alert rule.
      * 
      */
-    private final @Nullable List<String> nameLists;
+    private @Nullable List<String> nameLists;
     /**
      * @return The type of the cloud service.
      * 
      */
-    private final String product;
+    private String product;
     /**
      * @return The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
      * 
      */
-    private final @Nullable String sqlFilter;
+    private @Nullable String sqlFilter;
 
-    @CustomType.Constructor
-    private EventRuleEventPattern(
-        @CustomType.Parameter("eventTypeLists") @Nullable List<String> eventTypeLists,
-        @CustomType.Parameter("levelLists") @Nullable List<String> levelLists,
-        @CustomType.Parameter("nameLists") @Nullable List<String> nameLists,
-        @CustomType.Parameter("product") String product,
-        @CustomType.Parameter("sqlFilter") @Nullable String sqlFilter) {
-        this.eventTypeLists = eventTypeLists;
-        this.levelLists = levelLists;
-        this.nameLists = nameLists;
-        this.product = product;
-        this.sqlFilter = sqlFilter;
-    }
-
+    private EventRuleEventPattern() {}
     /**
      * @return The type of the event-triggered alert rule. Valid values:
      * 
@@ -95,18 +82,14 @@ public final class EventRuleEventPattern {
     public static Builder builder(EventRuleEventPattern defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> eventTypeLists;
         private @Nullable List<String> levelLists;
         private @Nullable List<String> nameLists;
         private String product;
         private @Nullable String sqlFilter;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EventRuleEventPattern defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eventTypeLists = defaults.eventTypeLists;
@@ -116,6 +99,7 @@ public final class EventRuleEventPattern {
     	      this.sqlFilter = defaults.sqlFilter;
         }
 
+        @CustomType.Setter
         public Builder eventTypeLists(@Nullable List<String> eventTypeLists) {
             this.eventTypeLists = eventTypeLists;
             return this;
@@ -123,6 +107,7 @@ public final class EventRuleEventPattern {
         public Builder eventTypeLists(String... eventTypeLists) {
             return eventTypeLists(List.of(eventTypeLists));
         }
+        @CustomType.Setter
         public Builder levelLists(@Nullable List<String> levelLists) {
             this.levelLists = levelLists;
             return this;
@@ -130,6 +115,7 @@ public final class EventRuleEventPattern {
         public Builder levelLists(String... levelLists) {
             return levelLists(List.of(levelLists));
         }
+        @CustomType.Setter
         public Builder nameLists(@Nullable List<String> nameLists) {
             this.nameLists = nameLists;
             return this;
@@ -137,15 +123,24 @@ public final class EventRuleEventPattern {
         public Builder nameLists(String... nameLists) {
             return nameLists(List.of(nameLists));
         }
+        @CustomType.Setter
         public Builder product(String product) {
             this.product = Objects.requireNonNull(product);
             return this;
         }
+        @CustomType.Setter
         public Builder sqlFilter(@Nullable String sqlFilter) {
             this.sqlFilter = sqlFilter;
             return this;
-        }        public EventRuleEventPattern build() {
-            return new EventRuleEventPattern(eventTypeLists, levelLists, nameLists, product, sqlFilter);
+        }
+        public EventRuleEventPattern build() {
+            final var o = new EventRuleEventPattern();
+            o.eventTypeLists = eventTypeLists;
+            o.levelLists = levelLists;
+            o.nameLists = nameLists;
+            o.product = product;
+            o.sqlFilter = sqlFilter;
+            return o;
         }
     }
 }

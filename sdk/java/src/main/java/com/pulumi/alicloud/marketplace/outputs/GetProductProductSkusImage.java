@@ -13,28 +13,19 @@ public final class GetProductProductSkusImage {
      * @return The Ecs image id.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return The Ecs image display name.
      * 
      */
-    private final String imageName;
+    private String imageName;
     /**
      * @return The Ecs image region.
      * 
      */
-    private final String regionId;
+    private String regionId;
 
-    @CustomType.Constructor
-    private GetProductProductSkusImage(
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("imageName") String imageName,
-        @CustomType.Parameter("regionId") String regionId) {
-        this.imageId = imageId;
-        this.imageName = imageName;
-        this.regionId = regionId;
-    }
-
+    private GetProductProductSkusImage() {}
     /**
      * @return The Ecs image id.
      * 
@@ -64,16 +55,12 @@ public final class GetProductProductSkusImage {
     public static Builder builder(GetProductProductSkusImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String imageId;
         private String imageName;
         private String regionId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProductProductSkusImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.imageId = defaults.imageId;
@@ -81,19 +68,27 @@ public final class GetProductProductSkusImage {
     	      this.regionId = defaults.regionId;
         }
 
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder imageName(String imageName) {
             this.imageName = Objects.requireNonNull(imageName);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
-        }        public GetProductProductSkusImage build() {
-            return new GetProductProductSkusImage(imageId, imageName, regionId);
+        }
+        public GetProductProductSkusImage build() {
+            final var o = new GetProductProductSkusImage();
+            o.imageId = imageId;
+            o.imageName = imageName;
+            o.regionId = regionId;
+            return o;
         }
     }
 }

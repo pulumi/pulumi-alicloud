@@ -17,105 +17,74 @@ public final class GetClustersCluster {
      * @return The first ID of the resource.
      * 
      */
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return The name of the emr cluster.
      * 
      */
-    private final String clusterName;
+    private String clusterName;
     /**
      * @return The state of the emr cluster.
      * 
      */
-    private final String clusterState;
+    private String clusterState;
     /**
      * @return The type of the emr cluster.
      * 
      */
-    private final String clusterType;
+    private String clusterType;
     /**
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ecs default role belongs to this emr cluster.
      * 
      */
-    private final String emrDefaultRole;
+    private String emrDefaultRole;
     /**
      * @return The end time of the resource.
      * 
      */
-    private final String endTime;
+    private String endTime;
     /**
      * @return The expire time of the resource.
      * 
      */
-    private final String expireTime;
+    private String expireTime;
     /**
      * @return The payment type of the emr cluster.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return The ready time of the resource.
      * 
      */
-    private final String readyTime;
+    private String readyTime;
     /**
      * @return The release version of the resource.
      * 
      */
-    private final String releaseVersion;
+    private String releaseVersion;
     /**
      * @return The resource group id of the resource.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The cluster state change reason.
      * 
      */
-    private final Map<String,Object> stateChangeReason;
+    private Map<String,Object> stateChangeReason;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final List<GetClustersClusterTag> tags;
+    private List<GetClustersClusterTag> tags;
 
-    @CustomType.Constructor
-    private GetClustersCluster(
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("clusterName") String clusterName,
-        @CustomType.Parameter("clusterState") String clusterState,
-        @CustomType.Parameter("clusterType") String clusterType,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("emrDefaultRole") String emrDefaultRole,
-        @CustomType.Parameter("endTime") String endTime,
-        @CustomType.Parameter("expireTime") String expireTime,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("readyTime") String readyTime,
-        @CustomType.Parameter("releaseVersion") String releaseVersion,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("stateChangeReason") Map<String,Object> stateChangeReason,
-        @CustomType.Parameter("tags") List<GetClustersClusterTag> tags) {
-        this.clusterId = clusterId;
-        this.clusterName = clusterName;
-        this.clusterState = clusterState;
-        this.clusterType = clusterType;
-        this.createTime = createTime;
-        this.emrDefaultRole = emrDefaultRole;
-        this.endTime = endTime;
-        this.expireTime = expireTime;
-        this.paymentType = paymentType;
-        this.readyTime = readyTime;
-        this.releaseVersion = releaseVersion;
-        this.resourceGroupId = resourceGroupId;
-        this.stateChangeReason = stateChangeReason;
-        this.tags = tags;
-    }
-
+    private GetClustersCluster() {}
     /**
      * @return The first ID of the resource.
      * 
@@ -222,7 +191,7 @@ public final class GetClustersCluster {
     public static Builder builder(GetClustersCluster defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterId;
         private String clusterName;
@@ -238,11 +207,7 @@ public final class GetClustersCluster {
         private String resourceGroupId;
         private Map<String,Object> stateChangeReason;
         private List<GetClustersClusterTag> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersCluster defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -261,66 +226,96 @@ public final class GetClustersCluster {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterName(String clusterName) {
             this.clusterName = Objects.requireNonNull(clusterName);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterState(String clusterState) {
             this.clusterState = Objects.requireNonNull(clusterState);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterType(String clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder emrDefaultRole(String emrDefaultRole) {
             this.emrDefaultRole = Objects.requireNonNull(emrDefaultRole);
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder expireTime(String expireTime) {
             this.expireTime = Objects.requireNonNull(expireTime);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder readyTime(String readyTime) {
             this.readyTime = Objects.requireNonNull(readyTime);
             return this;
         }
+        @CustomType.Setter
         public Builder releaseVersion(String releaseVersion) {
             this.releaseVersion = Objects.requireNonNull(releaseVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder stateChangeReason(Map<String,Object> stateChangeReason) {
             this.stateChangeReason = Objects.requireNonNull(stateChangeReason);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<GetClustersClusterTag> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
         public Builder tags(GetClustersClusterTag... tags) {
             return tags(List.of(tags));
-        }        public GetClustersCluster build() {
-            return new GetClustersCluster(clusterId, clusterName, clusterState, clusterType, createTime, emrDefaultRole, endTime, expireTime, paymentType, readyTime, releaseVersion, resourceGroupId, stateChangeReason, tags);
+        }
+        public GetClustersCluster build() {
+            final var o = new GetClustersCluster();
+            o.clusterId = clusterId;
+            o.clusterName = clusterName;
+            o.clusterState = clusterState;
+            o.clusterType = clusterType;
+            o.createTime = createTime;
+            o.emrDefaultRole = emrDefaultRole;
+            o.endTime = endTime;
+            o.expireTime = expireTime;
+            o.paymentType = paymentType;
+            o.readyTime = readyTime;
+            o.releaseVersion = releaseVersion;
+            o.resourceGroupId = resourceGroupId;
+            o.stateChangeReason = stateChangeReason;
+            o.tags = tags;
+            return o;
         }
     }
 }

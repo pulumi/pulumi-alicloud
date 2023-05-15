@@ -18,77 +18,54 @@ public final class ServerBackupPlanDetail {
      * @return Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
      * 
      */
-    private final Boolean appConsistent;
+    private Boolean appConsistent;
     /**
      * @return Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      * 
      */
-    private final @Nullable String destinationRegionId;
+    private @Nullable String destinationRegionId;
     /**
      * @return Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      * 
      */
-    private final @Nullable Integer destinationRetention;
+    private @Nullable Integer destinationRetention;
     /**
      * @return The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
      * 
      */
-    private final @Nullable List<String> diskIdLists;
+    private @Nullable List<String> diskIdLists;
     /**
      * @return Whether replicate to another region. Valid values: `true`, `false`.
      * 
      */
-    private final @Nullable Boolean doCopy;
+    private @Nullable Boolean doCopy;
     /**
      * @return Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
      * 
      */
-    private final @Nullable Boolean enableFsFreeze;
+    private @Nullable Boolean enableFsFreeze;
     /**
      * @return Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
      * 
      */
-    private final @Nullable String postScriptPath;
+    private @Nullable String postScriptPath;
     /**
      * @return Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
      * 
      */
-    private final @Nullable String preScriptPath;
+    private @Nullable String preScriptPath;
     /**
      * @return Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
      * 
      */
-    private final Boolean snapshotGroup;
+    private Boolean snapshotGroup;
     /**
      * @return Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
      * 
      */
-    private final @Nullable Integer timeoutInSeconds;
+    private @Nullable Integer timeoutInSeconds;
 
-    @CustomType.Constructor
-    private ServerBackupPlanDetail(
-        @CustomType.Parameter("appConsistent") Boolean appConsistent,
-        @CustomType.Parameter("destinationRegionId") @Nullable String destinationRegionId,
-        @CustomType.Parameter("destinationRetention") @Nullable Integer destinationRetention,
-        @CustomType.Parameter("diskIdLists") @Nullable List<String> diskIdLists,
-        @CustomType.Parameter("doCopy") @Nullable Boolean doCopy,
-        @CustomType.Parameter("enableFsFreeze") @Nullable Boolean enableFsFreeze,
-        @CustomType.Parameter("postScriptPath") @Nullable String postScriptPath,
-        @CustomType.Parameter("preScriptPath") @Nullable String preScriptPath,
-        @CustomType.Parameter("snapshotGroup") Boolean snapshotGroup,
-        @CustomType.Parameter("timeoutInSeconds") @Nullable Integer timeoutInSeconds) {
-        this.appConsistent = appConsistent;
-        this.destinationRegionId = destinationRegionId;
-        this.destinationRetention = destinationRetention;
-        this.diskIdLists = diskIdLists;
-        this.doCopy = doCopy;
-        this.enableFsFreeze = enableFsFreeze;
-        this.postScriptPath = postScriptPath;
-        this.preScriptPath = preScriptPath;
-        this.snapshotGroup = snapshotGroup;
-        this.timeoutInSeconds = timeoutInSeconds;
-    }
-
+    private ServerBackupPlanDetail() {}
     /**
      * @return Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
      * 
@@ -167,7 +144,7 @@ public final class ServerBackupPlanDetail {
     public static Builder builder(ServerBackupPlanDetail defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean appConsistent;
         private @Nullable String destinationRegionId;
@@ -179,11 +156,7 @@ public final class ServerBackupPlanDetail {
         private @Nullable String preScriptPath;
         private Boolean snapshotGroup;
         private @Nullable Integer timeoutInSeconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServerBackupPlanDetail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appConsistent = defaults.appConsistent;
@@ -198,18 +171,22 @@ public final class ServerBackupPlanDetail {
     	      this.timeoutInSeconds = defaults.timeoutInSeconds;
         }
 
+        @CustomType.Setter
         public Builder appConsistent(Boolean appConsistent) {
             this.appConsistent = Objects.requireNonNull(appConsistent);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationRegionId(@Nullable String destinationRegionId) {
             this.destinationRegionId = destinationRegionId;
             return this;
         }
+        @CustomType.Setter
         public Builder destinationRetention(@Nullable Integer destinationRetention) {
             this.destinationRetention = destinationRetention;
             return this;
         }
+        @CustomType.Setter
         public Builder diskIdLists(@Nullable List<String> diskIdLists) {
             this.diskIdLists = diskIdLists;
             return this;
@@ -217,31 +194,49 @@ public final class ServerBackupPlanDetail {
         public Builder diskIdLists(String... diskIdLists) {
             return diskIdLists(List.of(diskIdLists));
         }
+        @CustomType.Setter
         public Builder doCopy(@Nullable Boolean doCopy) {
             this.doCopy = doCopy;
             return this;
         }
+        @CustomType.Setter
         public Builder enableFsFreeze(@Nullable Boolean enableFsFreeze) {
             this.enableFsFreeze = enableFsFreeze;
             return this;
         }
+        @CustomType.Setter
         public Builder postScriptPath(@Nullable String postScriptPath) {
             this.postScriptPath = postScriptPath;
             return this;
         }
+        @CustomType.Setter
         public Builder preScriptPath(@Nullable String preScriptPath) {
             this.preScriptPath = preScriptPath;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotGroup(Boolean snapshotGroup) {
             this.snapshotGroup = Objects.requireNonNull(snapshotGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder timeoutInSeconds(@Nullable Integer timeoutInSeconds) {
             this.timeoutInSeconds = timeoutInSeconds;
             return this;
-        }        public ServerBackupPlanDetail build() {
-            return new ServerBackupPlanDetail(appConsistent, destinationRegionId, destinationRetention, diskIdLists, doCopy, enableFsFreeze, postScriptPath, preScriptPath, snapshotGroup, timeoutInSeconds);
+        }
+        public ServerBackupPlanDetail build() {
+            final var o = new ServerBackupPlanDetail();
+            o.appConsistent = appConsistent;
+            o.destinationRegionId = destinationRegionId;
+            o.destinationRetention = destinationRetention;
+            o.diskIdLists = diskIdLists;
+            o.doCopy = doCopy;
+            o.enableFsFreeze = enableFsFreeze;
+            o.postScriptPath = postScriptPath;
+            o.preScriptPath = preScriptPath;
+            o.snapshotGroup = snapshotGroup;
+            o.timeoutInSeconds = timeoutInSeconds;
+            return o;
         }
     }
 }

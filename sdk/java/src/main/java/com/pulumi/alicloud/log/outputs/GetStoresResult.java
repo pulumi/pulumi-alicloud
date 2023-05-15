@@ -17,32 +17,15 @@ public final class GetStoresResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final String project;
-    private final List<GetStoresStore> stores;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private String project;
+    private List<GetStoresStore> stores;
 
-    @CustomType.Constructor
-    private GetStoresResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("stores") List<GetStoresStore> stores) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.project = project;
-        this.stores = stores;
-    }
-
+    private GetStoresResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -76,7 +59,7 @@ public final class GetStoresResult {
     public static Builder builder(GetStoresResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -85,11 +68,7 @@ public final class GetStoresResult {
         private @Nullable String outputFile;
         private String project;
         private List<GetStoresStore> stores;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetStoresResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -101,10 +80,12 @@ public final class GetStoresResult {
     	      this.stores = defaults.stores;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -112,10 +93,12 @@ public final class GetStoresResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -123,22 +106,34 @@ public final class GetStoresResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder stores(List<GetStoresStore> stores) {
             this.stores = Objects.requireNonNull(stores);
             return this;
         }
         public Builder stores(GetStoresStore... stores) {
             return stores(List.of(stores));
-        }        public GetStoresResult build() {
-            return new GetStoresResult(id, ids, nameRegex, names, outputFile, project, stores);
+        }
+        public GetStoresResult build() {
+            final var o = new GetStoresResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.project = project;
+            o.stores = stores;
+            return o;
         }
     }
 }

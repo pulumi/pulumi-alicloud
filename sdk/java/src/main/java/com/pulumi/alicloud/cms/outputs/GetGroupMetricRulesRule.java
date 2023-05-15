@@ -17,140 +17,99 @@ public final class GetGroupMetricRulesRule {
      * @return Alarm contact group.
      * 
      */
-    private final String contactGroups;
+    private String contactGroups;
     /**
      * @return The dimensions that specify the resources to be associated with the alert rule.
      * 
      */
-    private final String dimensions;
+    private String dimensions;
     /**
      * @return The time period during which the alert rule is effective.
      * 
      */
-    private final String effectiveInterval;
+    private String effectiveInterval;
     /**
      * @return The subject of the alert notification email.
      * 
      */
-    private final String emailSubject;
+    private String emailSubject;
     /**
      * @return Indicates whether the alert rule is enabled.
      * 
      */
-    private final Boolean enableState;
+    private Boolean enableState;
     /**
      * @return Alarm level.
      * 
      */
-    private final List<GetGroupMetricRulesRuleEscalation> escalations;
+    private List<GetGroupMetricRulesRuleEscalation> escalations;
     /**
      * @return The ID of the application group.
      * 
      */
-    private final String groupId;
+    private String groupId;
     /**
      * @return The name of the alert rule.
      * 
      */
-    private final String groupMetricRuleName;
+    private String groupMetricRuleName;
     /**
      * @return The ID of the Group Metric Rule.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the metric.
      * 
      */
-    private final String metricName;
+    private String metricName;
     /**
      * @return The namespace of the service.
      * 
      */
-    private final String namespace;
+    private String namespace;
     /**
      * @return The time period during which the alert rule is ineffective.
      * 
      */
-    private final String noEffectiveInterval;
+    private String noEffectiveInterval;
     /**
      * @return The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
      * 
      */
-    private final Integer period;
+    private Integer period;
     /**
      * @return The resources that are associated with the alert rule.
      * 
      */
-    private final String resources;
+    private String resources;
     /**
      * @return The ID of the alert rule.
      * 
      */
-    private final String ruleId;
+    private String ruleId;
     /**
      * @return The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
      * 
      */
-    private final Integer silenceTime;
+    private Integer silenceTime;
     /**
      * @return The type of the alert rule. The value is fixed to METRIC, indicating an alert rule for time series metrics.
      * 
      */
-    private final String sourceType;
+    private String sourceType;
     /**
      * @return The status of Group Metric Rule..
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The callback URL.
      * 
      */
-    private final String webhook;
+    private String webhook;
 
-    @CustomType.Constructor
-    private GetGroupMetricRulesRule(
-        @CustomType.Parameter("contactGroups") String contactGroups,
-        @CustomType.Parameter("dimensions") String dimensions,
-        @CustomType.Parameter("effectiveInterval") String effectiveInterval,
-        @CustomType.Parameter("emailSubject") String emailSubject,
-        @CustomType.Parameter("enableState") Boolean enableState,
-        @CustomType.Parameter("escalations") List<GetGroupMetricRulesRuleEscalation> escalations,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("groupMetricRuleName") String groupMetricRuleName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("metricName") String metricName,
-        @CustomType.Parameter("namespace") String namespace,
-        @CustomType.Parameter("noEffectiveInterval") String noEffectiveInterval,
-        @CustomType.Parameter("period") Integer period,
-        @CustomType.Parameter("resources") String resources,
-        @CustomType.Parameter("ruleId") String ruleId,
-        @CustomType.Parameter("silenceTime") Integer silenceTime,
-        @CustomType.Parameter("sourceType") String sourceType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("webhook") String webhook) {
-        this.contactGroups = contactGroups;
-        this.dimensions = dimensions;
-        this.effectiveInterval = effectiveInterval;
-        this.emailSubject = emailSubject;
-        this.enableState = enableState;
-        this.escalations = escalations;
-        this.groupId = groupId;
-        this.groupMetricRuleName = groupMetricRuleName;
-        this.id = id;
-        this.metricName = metricName;
-        this.namespace = namespace;
-        this.noEffectiveInterval = noEffectiveInterval;
-        this.period = period;
-        this.resources = resources;
-        this.ruleId = ruleId;
-        this.silenceTime = silenceTime;
-        this.sourceType = sourceType;
-        this.status = status;
-        this.webhook = webhook;
-    }
-
+    private GetGroupMetricRulesRule() {}
     /**
      * @return Alarm contact group.
      * 
@@ -292,7 +251,7 @@ public final class GetGroupMetricRulesRule {
     public static Builder builder(GetGroupMetricRulesRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String contactGroups;
         private String dimensions;
@@ -313,11 +272,7 @@ public final class GetGroupMetricRulesRule {
         private String sourceType;
         private String status;
         private String webhook;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupMetricRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.contactGroups = defaults.contactGroups;
@@ -341,26 +296,32 @@ public final class GetGroupMetricRulesRule {
     	      this.webhook = defaults.webhook;
         }
 
+        @CustomType.Setter
         public Builder contactGroups(String contactGroups) {
             this.contactGroups = Objects.requireNonNull(contactGroups);
             return this;
         }
+        @CustomType.Setter
         public Builder dimensions(String dimensions) {
             this.dimensions = Objects.requireNonNull(dimensions);
             return this;
         }
+        @CustomType.Setter
         public Builder effectiveInterval(String effectiveInterval) {
             this.effectiveInterval = Objects.requireNonNull(effectiveInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder emailSubject(String emailSubject) {
             this.emailSubject = Objects.requireNonNull(emailSubject);
             return this;
         }
+        @CustomType.Setter
         public Builder enableState(Boolean enableState) {
             this.enableState = Objects.requireNonNull(enableState);
             return this;
         }
+        @CustomType.Setter
         public Builder escalations(List<GetGroupMetricRulesRuleEscalation> escalations) {
             this.escalations = Objects.requireNonNull(escalations);
             return this;
@@ -368,59 +329,93 @@ public final class GetGroupMetricRulesRule {
         public Builder escalations(GetGroupMetricRulesRuleEscalation... escalations) {
             return escalations(List.of(escalations));
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupMetricRuleName(String groupMetricRuleName) {
             this.groupMetricRuleName = Objects.requireNonNull(groupMetricRuleName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder metricName(String metricName) {
             this.metricName = Objects.requireNonNull(metricName);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
+        @CustomType.Setter
         public Builder noEffectiveInterval(String noEffectiveInterval) {
             this.noEffectiveInterval = Objects.requireNonNull(noEffectiveInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder period(Integer period) {
             this.period = Objects.requireNonNull(period);
             return this;
         }
+        @CustomType.Setter
         public Builder resources(String resources) {
             this.resources = Objects.requireNonNull(resources);
             return this;
         }
+        @CustomType.Setter
         public Builder ruleId(String ruleId) {
             this.ruleId = Objects.requireNonNull(ruleId);
             return this;
         }
+        @CustomType.Setter
         public Builder silenceTime(Integer silenceTime) {
             this.silenceTime = Objects.requireNonNull(silenceTime);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder webhook(String webhook) {
             this.webhook = Objects.requireNonNull(webhook);
             return this;
-        }        public GetGroupMetricRulesRule build() {
-            return new GetGroupMetricRulesRule(contactGroups, dimensions, effectiveInterval, emailSubject, enableState, escalations, groupId, groupMetricRuleName, id, metricName, namespace, noEffectiveInterval, period, resources, ruleId, silenceTime, sourceType, status, webhook);
+        }
+        public GetGroupMetricRulesRule build() {
+            final var o = new GetGroupMetricRulesRule();
+            o.contactGroups = contactGroups;
+            o.dimensions = dimensions;
+            o.effectiveInterval = effectiveInterval;
+            o.emailSubject = emailSubject;
+            o.enableState = enableState;
+            o.escalations = escalations;
+            o.groupId = groupId;
+            o.groupMetricRuleName = groupMetricRuleName;
+            o.id = id;
+            o.metricName = metricName;
+            o.namespace = namespace;
+            o.noEffectiveInterval = noEffectiveInterval;
+            o.period = period;
+            o.resources = resources;
+            o.ruleId = ruleId;
+            o.silenceTime = silenceTime;
+            o.sourceType = sourceType;
+            o.status = status;
+            o.webhook = webhook;
+            return o;
         }
     }
 }

@@ -14,70 +14,49 @@ public final class GetWafPoliciesPolicy {
      * @return The first ID of the resource.
      * 
      */
-    private final String dcdnWafPolicyId;
+    private String dcdnWafPolicyId;
     /**
      * @return The type of protection policy.
      * 
      */
-    private final String defenseScene;
+    private String defenseScene;
     /**
      * @return The number of domain names that use this protection policy.
      * 
      */
-    private final Integer domainCount;
+    private Integer domainCount;
     /**
      * @return The time when the protection policy was modified.
      * 
      */
-    private final String gmtModified;
+    private String gmtModified;
     /**
      * @return The ID of the Waf Policy.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the protection policy.
      * 
      */
-    private final String policyName;
+    private String policyName;
     /**
      * @return The type of the protection policy.
      * 
      */
-    private final String policyType;
+    private String policyType;
     /**
      * @return The number of protection rules in this protection policy.
      * 
      */
-    private final String ruleCount;
+    private String ruleCount;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetWafPoliciesPolicy(
-        @CustomType.Parameter("dcdnWafPolicyId") String dcdnWafPolicyId,
-        @CustomType.Parameter("defenseScene") String defenseScene,
-        @CustomType.Parameter("domainCount") Integer domainCount,
-        @CustomType.Parameter("gmtModified") String gmtModified,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("policyName") String policyName,
-        @CustomType.Parameter("policyType") String policyType,
-        @CustomType.Parameter("ruleCount") String ruleCount,
-        @CustomType.Parameter("status") String status) {
-        this.dcdnWafPolicyId = dcdnWafPolicyId;
-        this.defenseScene = defenseScene;
-        this.domainCount = domainCount;
-        this.gmtModified = gmtModified;
-        this.id = id;
-        this.policyName = policyName;
-        this.policyType = policyType;
-        this.ruleCount = ruleCount;
-        this.status = status;
-    }
-
+    private GetWafPoliciesPolicy() {}
     /**
      * @return The first ID of the resource.
      * 
@@ -149,7 +128,7 @@ public final class GetWafPoliciesPolicy {
     public static Builder builder(GetWafPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dcdnWafPolicyId;
         private String defenseScene;
@@ -160,11 +139,7 @@ public final class GetWafPoliciesPolicy {
         private String policyType;
         private String ruleCount;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWafPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dcdnWafPolicyId = defaults.dcdnWafPolicyId;
@@ -178,43 +153,63 @@ public final class GetWafPoliciesPolicy {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder dcdnWafPolicyId(String dcdnWafPolicyId) {
             this.dcdnWafPolicyId = Objects.requireNonNull(dcdnWafPolicyId);
             return this;
         }
+        @CustomType.Setter
         public Builder defenseScene(String defenseScene) {
             this.defenseScene = Objects.requireNonNull(defenseScene);
             return this;
         }
+        @CustomType.Setter
         public Builder domainCount(Integer domainCount) {
             this.domainCount = Objects.requireNonNull(domainCount);
             return this;
         }
+        @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
             this.gmtModified = Objects.requireNonNull(gmtModified);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder policyName(String policyName) {
             this.policyName = Objects.requireNonNull(policyName);
             return this;
         }
+        @CustomType.Setter
         public Builder policyType(String policyType) {
             this.policyType = Objects.requireNonNull(policyType);
             return this;
         }
+        @CustomType.Setter
         public Builder ruleCount(String ruleCount) {
             this.ruleCount = Objects.requireNonNull(ruleCount);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetWafPoliciesPolicy build() {
-            return new GetWafPoliciesPolicy(dcdnWafPolicyId, defenseScene, domainCount, gmtModified, id, policyName, policyType, ruleCount, status);
+        }
+        public GetWafPoliciesPolicy build() {
+            final var o = new GetWafPoliciesPolicy();
+            o.dcdnWafPolicyId = dcdnWafPolicyId;
+            o.defenseScene = defenseScene;
+            o.domainCount = domainCount;
+            o.gmtModified = gmtModified;
+            o.id = id;
+            o.policyName = policyName;
+            o.policyType = policyType;
+            o.ruleCount = ruleCount;
+            o.status = status;
+            return o;
         }
     }
 }

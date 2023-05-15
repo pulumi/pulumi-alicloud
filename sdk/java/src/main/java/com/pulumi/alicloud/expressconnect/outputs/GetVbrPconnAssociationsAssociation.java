@@ -15,98 +15,69 @@ public final class GetVbrPconnAssociationsAssociation {
      * @return The circuit code provided by the operator for the physical connection.
      * 
      */
-    private final String circuitCode;
+    private String circuitCode;
     /**
      * @return Whether IPv6 is enabled.
      * 
      */
-    private final Boolean enableIpv6;
+    private Boolean enableIpv6;
     /**
      * @return The ID of the Vbr Pconn Association.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Alibaba cloud IP address of the VBR instance.
      * 
      */
-    private final String localGatewayIp;
+    private String localGatewayIp;
     /**
      * @return The IPv6 address on the Alibaba Cloud side of the VBR instance.
      * 
      */
-    private final String localIpv6GatewayIp;
+    private String localIpv6GatewayIp;
     /**
      * @return The client IP address of the VBR instance.
      * 
      */
-    private final String peerGatewayIp;
+    private String peerGatewayIp;
     /**
      * @return The IPv6 address of the client side of the VBR instance.
      * 
      */
-    private final String peerIpv6GatewayIp;
+    private String peerIpv6GatewayIp;
     /**
      * @return The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
      * 
      */
-    private final String peeringIpv6SubnetMask;
+    private String peeringIpv6SubnetMask;
     /**
      * @return The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
      * 
      */
-    private final String peeringSubnetMask;
+    private String peeringSubnetMask;
     /**
      * @return The ID of the leased line instance.
      * 
      */
-    private final String physicalConnectionId;
+    private String physicalConnectionId;
     /**
      * @return The status of the resource
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the VBR instance.
      * 
      */
-    private final String vbrId;
+    private String vbrId;
     /**
      * @return VLAN ID of the VBR.
      * 
      */
-    private final Integer vlanId;
+    private Integer vlanId;
 
-    @CustomType.Constructor
-    private GetVbrPconnAssociationsAssociation(
-        @CustomType.Parameter("circuitCode") String circuitCode,
-        @CustomType.Parameter("enableIpv6") Boolean enableIpv6,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("localGatewayIp") String localGatewayIp,
-        @CustomType.Parameter("localIpv6GatewayIp") String localIpv6GatewayIp,
-        @CustomType.Parameter("peerGatewayIp") String peerGatewayIp,
-        @CustomType.Parameter("peerIpv6GatewayIp") String peerIpv6GatewayIp,
-        @CustomType.Parameter("peeringIpv6SubnetMask") String peeringIpv6SubnetMask,
-        @CustomType.Parameter("peeringSubnetMask") String peeringSubnetMask,
-        @CustomType.Parameter("physicalConnectionId") String physicalConnectionId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vbrId") String vbrId,
-        @CustomType.Parameter("vlanId") Integer vlanId) {
-        this.circuitCode = circuitCode;
-        this.enableIpv6 = enableIpv6;
-        this.id = id;
-        this.localGatewayIp = localGatewayIp;
-        this.localIpv6GatewayIp = localIpv6GatewayIp;
-        this.peerGatewayIp = peerGatewayIp;
-        this.peerIpv6GatewayIp = peerIpv6GatewayIp;
-        this.peeringIpv6SubnetMask = peeringIpv6SubnetMask;
-        this.peeringSubnetMask = peeringSubnetMask;
-        this.physicalConnectionId = physicalConnectionId;
-        this.status = status;
-        this.vbrId = vbrId;
-        this.vlanId = vlanId;
-    }
-
+    private GetVbrPconnAssociationsAssociation() {}
     /**
      * @return The circuit code provided by the operator for the physical connection.
      * 
@@ -206,7 +177,7 @@ public final class GetVbrPconnAssociationsAssociation {
     public static Builder builder(GetVbrPconnAssociationsAssociation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String circuitCode;
         private Boolean enableIpv6;
@@ -221,11 +192,7 @@ public final class GetVbrPconnAssociationsAssociation {
         private String status;
         private String vbrId;
         private Integer vlanId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVbrPconnAssociationsAssociation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.circuitCode = defaults.circuitCode;
@@ -243,59 +210,87 @@ public final class GetVbrPconnAssociationsAssociation {
     	      this.vlanId = defaults.vlanId;
         }
 
+        @CustomType.Setter
         public Builder circuitCode(String circuitCode) {
             this.circuitCode = Objects.requireNonNull(circuitCode);
             return this;
         }
+        @CustomType.Setter
         public Builder enableIpv6(Boolean enableIpv6) {
             this.enableIpv6 = Objects.requireNonNull(enableIpv6);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder localGatewayIp(String localGatewayIp) {
             this.localGatewayIp = Objects.requireNonNull(localGatewayIp);
             return this;
         }
+        @CustomType.Setter
         public Builder localIpv6GatewayIp(String localIpv6GatewayIp) {
             this.localIpv6GatewayIp = Objects.requireNonNull(localIpv6GatewayIp);
             return this;
         }
+        @CustomType.Setter
         public Builder peerGatewayIp(String peerGatewayIp) {
             this.peerGatewayIp = Objects.requireNonNull(peerGatewayIp);
             return this;
         }
+        @CustomType.Setter
         public Builder peerIpv6GatewayIp(String peerIpv6GatewayIp) {
             this.peerIpv6GatewayIp = Objects.requireNonNull(peerIpv6GatewayIp);
             return this;
         }
+        @CustomType.Setter
         public Builder peeringIpv6SubnetMask(String peeringIpv6SubnetMask) {
             this.peeringIpv6SubnetMask = Objects.requireNonNull(peeringIpv6SubnetMask);
             return this;
         }
+        @CustomType.Setter
         public Builder peeringSubnetMask(String peeringSubnetMask) {
             this.peeringSubnetMask = Objects.requireNonNull(peeringSubnetMask);
             return this;
         }
+        @CustomType.Setter
         public Builder physicalConnectionId(String physicalConnectionId) {
             this.physicalConnectionId = Objects.requireNonNull(physicalConnectionId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vbrId(String vbrId) {
             this.vbrId = Objects.requireNonNull(vbrId);
             return this;
         }
+        @CustomType.Setter
         public Builder vlanId(Integer vlanId) {
             this.vlanId = Objects.requireNonNull(vlanId);
             return this;
-        }        public GetVbrPconnAssociationsAssociation build() {
-            return new GetVbrPconnAssociationsAssociation(circuitCode, enableIpv6, id, localGatewayIp, localIpv6GatewayIp, peerGatewayIp, peerIpv6GatewayIp, peeringIpv6SubnetMask, peeringSubnetMask, physicalConnectionId, status, vbrId, vlanId);
+        }
+        public GetVbrPconnAssociationsAssociation build() {
+            final var o = new GetVbrPconnAssociationsAssociation();
+            o.circuitCode = circuitCode;
+            o.enableIpv6 = enableIpv6;
+            o.id = id;
+            o.localGatewayIp = localGatewayIp;
+            o.localIpv6GatewayIp = localIpv6GatewayIp;
+            o.peerGatewayIp = peerGatewayIp;
+            o.peerIpv6GatewayIp = peerIpv6GatewayIp;
+            o.peeringIpv6SubnetMask = peeringIpv6SubnetMask;
+            o.peeringSubnetMask = peeringSubnetMask;
+            o.physicalConnectionId = physicalConnectionId;
+            o.status = status;
+            o.vbrId = vbrId;
+            o.vlanId = vlanId;
+            return o;
         }
     }
 }

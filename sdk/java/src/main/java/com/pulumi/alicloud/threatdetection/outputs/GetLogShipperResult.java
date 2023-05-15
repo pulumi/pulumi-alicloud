@@ -15,59 +15,40 @@ public final class GetLogShipperResult {
      * @return Log Analysis Service authorization status.
      * 
      */
-    private final String authStatus;
+    private String authStatus;
     /**
      * @return Cloud Security Center purchase status.
      * 
      */
-    private final String buyStatus;
-    private final @Nullable String enable;
+    private String buyStatus;
+    private @Nullable String enable;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Log analysis shipping activation status.
      * 
      */
-    private final String openStatus;
+    private String openStatus;
     /**
      * @return Log analysis project status.
      * 
      */
-    private final String slsProjectStatus;
+    private String slsProjectStatus;
     /**
      * @return Log Analysis Service is activated.
      * 
      */
-    private final String slsServiceStatus;
+    private String slsServiceStatus;
     /**
      * @return The current service enable status.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetLogShipperResult(
-        @CustomType.Parameter("authStatus") String authStatus,
-        @CustomType.Parameter("buyStatus") String buyStatus,
-        @CustomType.Parameter("enable") @Nullable String enable,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("openStatus") String openStatus,
-        @CustomType.Parameter("slsProjectStatus") String slsProjectStatus,
-        @CustomType.Parameter("slsServiceStatus") String slsServiceStatus,
-        @CustomType.Parameter("status") String status) {
-        this.authStatus = authStatus;
-        this.buyStatus = buyStatus;
-        this.enable = enable;
-        this.id = id;
-        this.openStatus = openStatus;
-        this.slsProjectStatus = slsProjectStatus;
-        this.slsServiceStatus = slsServiceStatus;
-        this.status = status;
-    }
-
+    private GetLogShipperResult() {}
     /**
      * @return Log Analysis Service authorization status.
      * 
@@ -128,7 +109,7 @@ public final class GetLogShipperResult {
     public static Builder builder(GetLogShipperResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String authStatus;
         private String buyStatus;
@@ -138,11 +119,7 @@ public final class GetLogShipperResult {
         private String slsProjectStatus;
         private String slsServiceStatus;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLogShipperResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authStatus = defaults.authStatus;
@@ -155,39 +132,57 @@ public final class GetLogShipperResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder authStatus(String authStatus) {
             this.authStatus = Objects.requireNonNull(authStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder buyStatus(String buyStatus) {
             this.buyStatus = Objects.requireNonNull(buyStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder enable(@Nullable String enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder openStatus(String openStatus) {
             this.openStatus = Objects.requireNonNull(openStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder slsProjectStatus(String slsProjectStatus) {
             this.slsProjectStatus = Objects.requireNonNull(slsProjectStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder slsServiceStatus(String slsServiceStatus) {
             this.slsServiceStatus = Objects.requireNonNull(slsServiceStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetLogShipperResult build() {
-            return new GetLogShipperResult(authStatus, buyStatus, enable, id, openStatus, slsProjectStatus, slsServiceStatus, status);
+        }
+        public GetLogShipperResult build() {
+            final var o = new GetLogShipperResult();
+            o.authStatus = authStatus;
+            o.buyStatus = buyStatus;
+            o.enable = enable;
+            o.id = id;
+            o.openStatus = openStatus;
+            o.slsProjectStatus = slsProjectStatus;
+            o.slsServiceStatus = slsServiceStatus;
+            o.status = status;
+            return o;
         }
     }
 }

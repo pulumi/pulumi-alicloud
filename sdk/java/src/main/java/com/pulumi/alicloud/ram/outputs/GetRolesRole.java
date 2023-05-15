@@ -13,63 +13,44 @@ public final class GetRolesRole {
      * @return Resource descriptor of the role.
      * 
      */
-    private final String arn;
+    private String arn;
     /**
      * @return Authorization strategy of the role. This parameter is deprecated and replaced by `document`.
      * 
      */
-    private final String assumeRolePolicyDocument;
+    private String assumeRolePolicyDocument;
     /**
      * @return Creation date of the role.
      * 
      */
-    private final String createDate;
+    private String createDate;
     /**
      * @return Description of the role.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Authorization strategy of the role.
      * 
      */
-    private final String document;
+    private String document;
     /**
      * @return Id of the role.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Name of the role.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Update date of the role.
      * 
      */
-    private final String updateDate;
+    private String updateDate;
 
-    @CustomType.Constructor
-    private GetRolesRole(
-        @CustomType.Parameter("arn") String arn,
-        @CustomType.Parameter("assumeRolePolicyDocument") String assumeRolePolicyDocument,
-        @CustomType.Parameter("createDate") String createDate,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("document") String document,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("updateDate") String updateDate) {
-        this.arn = arn;
-        this.assumeRolePolicyDocument = assumeRolePolicyDocument;
-        this.createDate = createDate;
-        this.description = description;
-        this.document = document;
-        this.id = id;
-        this.name = name;
-        this.updateDate = updateDate;
-    }
-
+    private GetRolesRole() {}
     /**
      * @return Resource descriptor of the role.
      * 
@@ -134,7 +115,7 @@ public final class GetRolesRole {
     public static Builder builder(GetRolesRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String arn;
         private String assumeRolePolicyDocument;
@@ -144,11 +125,7 @@ public final class GetRolesRole {
         private String id;
         private String name;
         private String updateDate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRolesRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
@@ -161,39 +138,57 @@ public final class GetRolesRole {
     	      this.updateDate = defaults.updateDate;
         }
 
+        @CustomType.Setter
         public Builder arn(String arn) {
             this.arn = Objects.requireNonNull(arn);
             return this;
         }
+        @CustomType.Setter
         public Builder assumeRolePolicyDocument(String assumeRolePolicyDocument) {
             this.assumeRolePolicyDocument = Objects.requireNonNull(assumeRolePolicyDocument);
             return this;
         }
+        @CustomType.Setter
         public Builder createDate(String createDate) {
             this.createDate = Objects.requireNonNull(createDate);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder document(String document) {
             this.document = Objects.requireNonNull(document);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder updateDate(String updateDate) {
             this.updateDate = Objects.requireNonNull(updateDate);
             return this;
-        }        public GetRolesRole build() {
-            return new GetRolesRole(arn, assumeRolePolicyDocument, createDate, description, document, id, name, updateDate);
+        }
+        public GetRolesRole build() {
+            final var o = new GetRolesRole();
+            o.arn = arn;
+            o.assumeRolePolicyDocument = assumeRolePolicyDocument;
+            o.createDate = createDate;
+            o.description = description;
+            o.document = document;
+            o.id = id;
+            o.name = name;
+            o.updateDate = updateDate;
+            return o;
         }
     }
 }

@@ -14,77 +14,54 @@ public final class GetParameterGroupsGroup {
      * @return The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The type of the database engine.
      * 
      */
-    private final String dbType;
+    private String dbType;
     /**
      * @return The version number of the database engine.
      * 
      */
-    private final String dbVersion;
+    private String dbVersion;
     /**
      * @return Indicates whether to restart the cluster when this parameter template is applied.
      * 
      */
-    private final String forceRestart;
+    private String forceRestart;
     /**
      * @return The ID of the Parameter Group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The number of parameters in the parameter template.
      * 
      */
-    private final Integer parameterCounts;
+    private Integer parameterCounts;
     /**
      * @return The description of the parameter template.
      * 
      */
-    private final String parameterGroupDesc;
+    private String parameterGroupDesc;
     /**
      * @return The ID of the Parameter Group.
      * 
      */
-    private final String parameterGroupId;
+    private String parameterGroupId;
     /**
      * @return The name of the parameter template.
      * 
      */
-    private final String parameterGroupName;
+    private String parameterGroupName;
     /**
      * @return The type of the parameter template.
      * 
      */
-    private final String parameterGroupType;
+    private String parameterGroupType;
 
-    @CustomType.Constructor
-    private GetParameterGroupsGroup(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("dbType") String dbType,
-        @CustomType.Parameter("dbVersion") String dbVersion,
-        @CustomType.Parameter("forceRestart") String forceRestart,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("parameterCounts") Integer parameterCounts,
-        @CustomType.Parameter("parameterGroupDesc") String parameterGroupDesc,
-        @CustomType.Parameter("parameterGroupId") String parameterGroupId,
-        @CustomType.Parameter("parameterGroupName") String parameterGroupName,
-        @CustomType.Parameter("parameterGroupType") String parameterGroupType) {
-        this.createTime = createTime;
-        this.dbType = dbType;
-        this.dbVersion = dbVersion;
-        this.forceRestart = forceRestart;
-        this.id = id;
-        this.parameterCounts = parameterCounts;
-        this.parameterGroupDesc = parameterGroupDesc;
-        this.parameterGroupId = parameterGroupId;
-        this.parameterGroupName = parameterGroupName;
-        this.parameterGroupType = parameterGroupType;
-    }
-
+    private GetParameterGroupsGroup() {}
     /**
      * @return The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
@@ -163,7 +140,7 @@ public final class GetParameterGroupsGroup {
     public static Builder builder(GetParameterGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String dbType;
@@ -175,11 +152,7 @@ public final class GetParameterGroupsGroup {
         private String parameterGroupId;
         private String parameterGroupName;
         private String parameterGroupType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetParameterGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -194,47 +167,69 @@ public final class GetParameterGroupsGroup {
     	      this.parameterGroupType = defaults.parameterGroupType;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dbType(String dbType) {
             this.dbType = Objects.requireNonNull(dbType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbVersion(String dbVersion) {
             this.dbVersion = Objects.requireNonNull(dbVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder forceRestart(String forceRestart) {
             this.forceRestart = Objects.requireNonNull(forceRestart);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterCounts(Integer parameterCounts) {
             this.parameterCounts = Objects.requireNonNull(parameterCounts);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterGroupDesc(String parameterGroupDesc) {
             this.parameterGroupDesc = Objects.requireNonNull(parameterGroupDesc);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterGroupId(String parameterGroupId) {
             this.parameterGroupId = Objects.requireNonNull(parameterGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterGroupName(String parameterGroupName) {
             this.parameterGroupName = Objects.requireNonNull(parameterGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterGroupType(String parameterGroupType) {
             this.parameterGroupType = Objects.requireNonNull(parameterGroupType);
             return this;
-        }        public GetParameterGroupsGroup build() {
-            return new GetParameterGroupsGroup(createTime, dbType, dbVersion, forceRestart, id, parameterCounts, parameterGroupDesc, parameterGroupId, parameterGroupName, parameterGroupType);
+        }
+        public GetParameterGroupsGroup build() {
+            final var o = new GetParameterGroupsGroup();
+            o.createTime = createTime;
+            o.dbType = dbType;
+            o.dbVersion = dbVersion;
+            o.forceRestart = forceRestart;
+            o.id = id;
+            o.parameterCounts = parameterCounts;
+            o.parameterGroupDesc = parameterGroupDesc;
+            o.parameterGroupId = parameterGroupId;
+            o.parameterGroupName = parameterGroupName;
+            o.parameterGroupType = parameterGroupType;
+            return o;
         }
     }
 }

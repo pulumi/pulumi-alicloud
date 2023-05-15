@@ -18,60 +18,35 @@ public final class GetStudioApplicationsResult {
      * @return A list of Cloud Architect Design Tools (BPStudio) Applications. Each element contains the following attributes:
      * 
      */
-    private final List<GetStudioApplicationsApplication> applications;
+    private List<GetStudioApplicationsApplication> applications;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String keyword;
-    private final @Nullable Integer maxResults;
-    private final @Nullable String nameRegex;
+    private String id;
+    private List<String> ids;
+    private @Nullable String keyword;
+    private @Nullable Integer maxResults;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Application names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable Integer orderType;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable Integer orderType;
+    private @Nullable String outputFile;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private final @Nullable String resourceGroupId;
+    private @Nullable String resourceGroupId;
     /**
      * @return The status of the Application.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetStudioApplicationsResult(
-        @CustomType.Parameter("applications") List<GetStudioApplicationsApplication> applications,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("keyword") @Nullable String keyword,
-        @CustomType.Parameter("maxResults") @Nullable Integer maxResults,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("orderType") @Nullable Integer orderType,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.applications = applications;
-        this.id = id;
-        this.ids = ids;
-        this.keyword = keyword;
-        this.maxResults = maxResults;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.orderType = orderType;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.status = status;
-    }
-
+    private GetStudioApplicationsResult() {}
     /**
      * @return A list of Cloud Architect Design Tools (BPStudio) Applications. Each element contains the following attributes:
      * 
@@ -133,7 +108,7 @@ public final class GetStudioApplicationsResult {
     public static Builder builder(GetStudioApplicationsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetStudioApplicationsApplication> applications;
         private String id;
@@ -146,11 +121,7 @@ public final class GetStudioApplicationsResult {
         private @Nullable String outputFile;
         private @Nullable String resourceGroupId;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetStudioApplicationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applications = defaults.applications;
@@ -166,6 +137,7 @@ public final class GetStudioApplicationsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder applications(List<GetStudioApplicationsApplication> applications) {
             this.applications = Objects.requireNonNull(applications);
             return this;
@@ -173,10 +145,12 @@ public final class GetStudioApplicationsResult {
         public Builder applications(GetStudioApplicationsApplication... applications) {
             return applications(List.of(applications));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -184,18 +158,22 @@ public final class GetStudioApplicationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder keyword(@Nullable String keyword) {
             this.keyword = keyword;
             return this;
         }
+        @CustomType.Setter
         public Builder maxResults(@Nullable Integer maxResults) {
             this.maxResults = maxResults;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -203,23 +181,40 @@ public final class GetStudioApplicationsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder orderType(@Nullable Integer orderType) {
             this.orderType = orderType;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetStudioApplicationsResult build() {
-            return new GetStudioApplicationsResult(applications, id, ids, keyword, maxResults, nameRegex, names, orderType, outputFile, resourceGroupId, status);
+        }
+        public GetStudioApplicationsResult build() {
+            final var o = new GetStudioApplicationsResult();
+            o.applications = applications;
+            o.id = id;
+            o.ids = ids;
+            o.keyword = keyword;
+            o.maxResults = maxResults;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.orderType = orderType;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.status = status;
+            return o;
         }
     }
 }

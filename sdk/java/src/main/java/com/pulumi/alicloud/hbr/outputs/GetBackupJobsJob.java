@@ -16,227 +16,160 @@ public final class GetBackupJobsJob {
      * @return The actual data volume of the backup task (After deduplication) . Unit byte.
      * 
      */
-    private final String actualBytes;
+    private String actualBytes;
     /**
      * @return The actual number of items in the backup task. (Currently only file backup is available).
      * 
      */
-    private final String actualItems;
+    private String actualItems;
     /**
      * @return The name of backup job.
      * 
      */
-    private final String backJobName;
+    private String backJobName;
     /**
      * @return The ID of the backup job.
      * 
      */
-    private final String backupJobId;
+    private String backupJobId;
     /**
      * @return Backup type. Valid values: `COMPLETE`(full backup).
      * 
      */
-    private final String backupType;
+    private String backupType;
     /**
      * @return The name of target OSS bucket.
      * 
      */
-    private final String bucket;
+    private String bucket;
     /**
      * @return The amount of backup data (Incremental). Unit byte.
      * 
      */
-    private final String bytesDone;
+    private String bytesDone;
     /**
      * @return The total amount of data sources. Unit byte.
      * 
      */
-    private final String bytesTotal;
+    private String bytesTotal;
     /**
      * @return The completion time of backup job. UNIX time seconds.
      * 
      */
-    private final String completeTime;
+    private String completeTime;
     /**
      * @return The creation time of backup job. UNIX time seconds.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
-    private final String crossAccountRoleName;
+    private String crossAccountRoleName;
     /**
      * @return The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
-    private final String crossAccountType;
+    private String crossAccountType;
     /**
      * @return The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
-    private final Integer crossAccountUserId;
+    private Integer crossAccountUserId;
     /**
      * @return Error message.
      * 
      */
-    private final String errorMessage;
+    private String errorMessage;
     /**
      * @return Exclude path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
      * 
      */
-    private final String exclude;
+    private String exclude;
     /**
      * @return The ID of destination file system.
      * 
      */
-    private final String fileSystemId;
+    private String fileSystemId;
     /**
      * @return The ID of the backup job.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Include path. String of Json list. Up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
      * 
      */
-    private final String include;
+    private String include;
     /**
      * @return The ID of target ECS instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The number of items restore job recovered.
      * 
      */
-    private final String itemsDone;
+    private String itemsDone;
     /**
      * @return The total number of items restore job recovered.
      * 
      */
-    private final String itemsTotal;
+    private String itemsTotal;
     /**
      * @return File system creation time. UNIX time in seconds.
      * 
      */
-    private final String nasCreateTime;
-    private final List<GetBackupJobsJobOtsDetail> otsDetails;
+    private String nasCreateTime;
+    private List<GetBackupJobsJobOtsDetail> otsDetails;
     /**
      * @return List of backup path. e.g. `[&#34;/home&#34;, &#34;/var&#34;]`.
      * 
      */
-    private final List<String> paths;
+    private List<String> paths;
     /**
      * @return The ID of a backup plan.
      * 
      */
-    private final String planId;
+    private String planId;
     /**
      * @return The prefix of Oss bucket files.
      * 
      */
-    private final String prefix;
+    private String prefix;
     /**
      * @return Backup progress. The value is 100%*100.
      * 
      */
-    private final String progress;
+    private String progress;
     /**
      * @return The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
      * 
      */
-    private final String sourceType;
+    private String sourceType;
     /**
      * @return The scheduled backup start time. UNIX time seconds.
      * 
      */
-    private final String startTime;
+    private String startTime;
     /**
      * @return The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The update time of backup job. UNIX time seconds.
      * 
      */
-    private final String updatedTime;
+    private String updatedTime;
     /**
      * @return The ID of backup vault.
      * 
      */
-    private final String vaultId;
+    private String vaultId;
 
-    @CustomType.Constructor
-    private GetBackupJobsJob(
-        @CustomType.Parameter("actualBytes") String actualBytes,
-        @CustomType.Parameter("actualItems") String actualItems,
-        @CustomType.Parameter("backJobName") String backJobName,
-        @CustomType.Parameter("backupJobId") String backupJobId,
-        @CustomType.Parameter("backupType") String backupType,
-        @CustomType.Parameter("bucket") String bucket,
-        @CustomType.Parameter("bytesDone") String bytesDone,
-        @CustomType.Parameter("bytesTotal") String bytesTotal,
-        @CustomType.Parameter("completeTime") String completeTime,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("crossAccountRoleName") String crossAccountRoleName,
-        @CustomType.Parameter("crossAccountType") String crossAccountType,
-        @CustomType.Parameter("crossAccountUserId") Integer crossAccountUserId,
-        @CustomType.Parameter("errorMessage") String errorMessage,
-        @CustomType.Parameter("exclude") String exclude,
-        @CustomType.Parameter("fileSystemId") String fileSystemId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("include") String include,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("itemsDone") String itemsDone,
-        @CustomType.Parameter("itemsTotal") String itemsTotal,
-        @CustomType.Parameter("nasCreateTime") String nasCreateTime,
-        @CustomType.Parameter("otsDetails") List<GetBackupJobsJobOtsDetail> otsDetails,
-        @CustomType.Parameter("paths") List<String> paths,
-        @CustomType.Parameter("planId") String planId,
-        @CustomType.Parameter("prefix") String prefix,
-        @CustomType.Parameter("progress") String progress,
-        @CustomType.Parameter("sourceType") String sourceType,
-        @CustomType.Parameter("startTime") String startTime,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("updatedTime") String updatedTime,
-        @CustomType.Parameter("vaultId") String vaultId) {
-        this.actualBytes = actualBytes;
-        this.actualItems = actualItems;
-        this.backJobName = backJobName;
-        this.backupJobId = backupJobId;
-        this.backupType = backupType;
-        this.bucket = bucket;
-        this.bytesDone = bytesDone;
-        this.bytesTotal = bytesTotal;
-        this.completeTime = completeTime;
-        this.createTime = createTime;
-        this.crossAccountRoleName = crossAccountRoleName;
-        this.crossAccountType = crossAccountType;
-        this.crossAccountUserId = crossAccountUserId;
-        this.errorMessage = errorMessage;
-        this.exclude = exclude;
-        this.fileSystemId = fileSystemId;
-        this.id = id;
-        this.include = include;
-        this.instanceId = instanceId;
-        this.itemsDone = itemsDone;
-        this.itemsTotal = itemsTotal;
-        this.nasCreateTime = nasCreateTime;
-        this.otsDetails = otsDetails;
-        this.paths = paths;
-        this.planId = planId;
-        this.prefix = prefix;
-        this.progress = progress;
-        this.sourceType = sourceType;
-        this.startTime = startTime;
-        this.status = status;
-        this.updatedTime = updatedTime;
-        this.vaultId = vaultId;
-    }
-
+    private GetBackupJobsJob() {}
     /**
      * @return The actual data volume of the backup task (After deduplication) . Unit byte.
      * 
@@ -465,7 +398,7 @@ public final class GetBackupJobsJob {
     public static Builder builder(GetBackupJobsJob defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String actualBytes;
         private String actualItems;
@@ -499,11 +432,7 @@ public final class GetBackupJobsJob {
         private String status;
         private String updatedTime;
         private String vaultId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackupJobsJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actualBytes = defaults.actualBytes;
@@ -540,94 +469,117 @@ public final class GetBackupJobsJob {
     	      this.vaultId = defaults.vaultId;
         }
 
+        @CustomType.Setter
         public Builder actualBytes(String actualBytes) {
             this.actualBytes = Objects.requireNonNull(actualBytes);
             return this;
         }
+        @CustomType.Setter
         public Builder actualItems(String actualItems) {
             this.actualItems = Objects.requireNonNull(actualItems);
             return this;
         }
+        @CustomType.Setter
         public Builder backJobName(String backJobName) {
             this.backJobName = Objects.requireNonNull(backJobName);
             return this;
         }
+        @CustomType.Setter
         public Builder backupJobId(String backupJobId) {
             this.backupJobId = Objects.requireNonNull(backupJobId);
             return this;
         }
+        @CustomType.Setter
         public Builder backupType(String backupType) {
             this.backupType = Objects.requireNonNull(backupType);
             return this;
         }
+        @CustomType.Setter
         public Builder bucket(String bucket) {
             this.bucket = Objects.requireNonNull(bucket);
             return this;
         }
+        @CustomType.Setter
         public Builder bytesDone(String bytesDone) {
             this.bytesDone = Objects.requireNonNull(bytesDone);
             return this;
         }
+        @CustomType.Setter
         public Builder bytesTotal(String bytesTotal) {
             this.bytesTotal = Objects.requireNonNull(bytesTotal);
             return this;
         }
+        @CustomType.Setter
         public Builder completeTime(String completeTime) {
             this.completeTime = Objects.requireNonNull(completeTime);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder crossAccountRoleName(String crossAccountRoleName) {
             this.crossAccountRoleName = Objects.requireNonNull(crossAccountRoleName);
             return this;
         }
+        @CustomType.Setter
         public Builder crossAccountType(String crossAccountType) {
             this.crossAccountType = Objects.requireNonNull(crossAccountType);
             return this;
         }
+        @CustomType.Setter
         public Builder crossAccountUserId(Integer crossAccountUserId) {
             this.crossAccountUserId = Objects.requireNonNull(crossAccountUserId);
             return this;
         }
+        @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
             this.errorMessage = Objects.requireNonNull(errorMessage);
             return this;
         }
+        @CustomType.Setter
         public Builder exclude(String exclude) {
             this.exclude = Objects.requireNonNull(exclude);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
             this.fileSystemId = Objects.requireNonNull(fileSystemId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder include(String include) {
             this.include = Objects.requireNonNull(include);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder itemsDone(String itemsDone) {
             this.itemsDone = Objects.requireNonNull(itemsDone);
             return this;
         }
+        @CustomType.Setter
         public Builder itemsTotal(String itemsTotal) {
             this.itemsTotal = Objects.requireNonNull(itemsTotal);
             return this;
         }
+        @CustomType.Setter
         public Builder nasCreateTime(String nasCreateTime) {
             this.nasCreateTime = Objects.requireNonNull(nasCreateTime);
             return this;
         }
+        @CustomType.Setter
         public Builder otsDetails(List<GetBackupJobsJobOtsDetail> otsDetails) {
             this.otsDetails = Objects.requireNonNull(otsDetails);
             return this;
@@ -635,6 +587,7 @@ public final class GetBackupJobsJob {
         public Builder otsDetails(GetBackupJobsJobOtsDetail... otsDetails) {
             return otsDetails(List.of(otsDetails));
         }
+        @CustomType.Setter
         public Builder paths(List<String> paths) {
             this.paths = Objects.requireNonNull(paths);
             return this;
@@ -642,39 +595,81 @@ public final class GetBackupJobsJob {
         public Builder paths(String... paths) {
             return paths(List.of(paths));
         }
+        @CustomType.Setter
         public Builder planId(String planId) {
             this.planId = Objects.requireNonNull(planId);
             return this;
         }
+        @CustomType.Setter
         public Builder prefix(String prefix) {
             this.prefix = Objects.requireNonNull(prefix);
             return this;
         }
+        @CustomType.Setter
         public Builder progress(String progress) {
             this.progress = Objects.requireNonNull(progress);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
             this.updatedTime = Objects.requireNonNull(updatedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
-        }        public GetBackupJobsJob build() {
-            return new GetBackupJobsJob(actualBytes, actualItems, backJobName, backupJobId, backupType, bucket, bytesDone, bytesTotal, completeTime, createTime, crossAccountRoleName, crossAccountType, crossAccountUserId, errorMessage, exclude, fileSystemId, id, include, instanceId, itemsDone, itemsTotal, nasCreateTime, otsDetails, paths, planId, prefix, progress, sourceType, startTime, status, updatedTime, vaultId);
+        }
+        public GetBackupJobsJob build() {
+            final var o = new GetBackupJobsJob();
+            o.actualBytes = actualBytes;
+            o.actualItems = actualItems;
+            o.backJobName = backJobName;
+            o.backupJobId = backupJobId;
+            o.backupType = backupType;
+            o.bucket = bucket;
+            o.bytesDone = bytesDone;
+            o.bytesTotal = bytesTotal;
+            o.completeTime = completeTime;
+            o.createTime = createTime;
+            o.crossAccountRoleName = crossAccountRoleName;
+            o.crossAccountType = crossAccountType;
+            o.crossAccountUserId = crossAccountUserId;
+            o.errorMessage = errorMessage;
+            o.exclude = exclude;
+            o.fileSystemId = fileSystemId;
+            o.id = id;
+            o.include = include;
+            o.instanceId = instanceId;
+            o.itemsDone = itemsDone;
+            o.itemsTotal = itemsTotal;
+            o.nasCreateTime = nasCreateTime;
+            o.otsDetails = otsDetails;
+            o.paths = paths;
+            o.planId = planId;
+            o.prefix = prefix;
+            o.progress = progress;
+            o.sourceType = sourceType;
+            o.startTime = startTime;
+            o.status = status;
+            o.updatedTime = updatedTime;
+            o.vaultId = vaultId;
+            return o;
         }
     }
 }

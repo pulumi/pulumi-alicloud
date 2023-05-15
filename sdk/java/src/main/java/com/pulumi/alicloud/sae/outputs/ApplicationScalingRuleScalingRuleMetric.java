@@ -19,42 +19,29 @@ public final class ApplicationScalingRuleScalingRuleMetric {
      * @return Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
      * 
      */
-    private final @Nullable Integer maxReplicas;
+    private @Nullable Integer maxReplicas;
     /**
      * @return Indicator rule configuration. See the following `Block metrics`.
      * 
      */
-    private final @Nullable List<ApplicationScalingRuleScalingRuleMetricMetric> metrics;
+    private @Nullable List<ApplicationScalingRuleScalingRuleMetricMetric> metrics;
     /**
      * @return Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
      * 
      */
-    private final @Nullable Integer minReplicas;
+    private @Nullable Integer minReplicas;
     /**
      * @return Apply shrink rules. See the following `Block scale_down_rules`.
      * 
      */
-    private final @Nullable ApplicationScalingRuleScalingRuleMetricScaleDownRules scaleDownRules;
+    private @Nullable ApplicationScalingRuleScalingRuleMetricScaleDownRules scaleDownRules;
     /**
      * @return Apply expansion rules. See the following `Block scale_up_rules`.
      * 
      */
-    private final @Nullable ApplicationScalingRuleScalingRuleMetricScaleUpRules scaleUpRules;
+    private @Nullable ApplicationScalingRuleScalingRuleMetricScaleUpRules scaleUpRules;
 
-    @CustomType.Constructor
-    private ApplicationScalingRuleScalingRuleMetric(
-        @CustomType.Parameter("maxReplicas") @Nullable Integer maxReplicas,
-        @CustomType.Parameter("metrics") @Nullable List<ApplicationScalingRuleScalingRuleMetricMetric> metrics,
-        @CustomType.Parameter("minReplicas") @Nullable Integer minReplicas,
-        @CustomType.Parameter("scaleDownRules") @Nullable ApplicationScalingRuleScalingRuleMetricScaleDownRules scaleDownRules,
-        @CustomType.Parameter("scaleUpRules") @Nullable ApplicationScalingRuleScalingRuleMetricScaleUpRules scaleUpRules) {
-        this.maxReplicas = maxReplicas;
-        this.metrics = metrics;
-        this.minReplicas = minReplicas;
-        this.scaleDownRules = scaleDownRules;
-        this.scaleUpRules = scaleUpRules;
-    }
-
+    private ApplicationScalingRuleScalingRuleMetric() {}
     /**
      * @return Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
      * 
@@ -98,18 +85,14 @@ public final class ApplicationScalingRuleScalingRuleMetric {
     public static Builder builder(ApplicationScalingRuleScalingRuleMetric defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer maxReplicas;
         private @Nullable List<ApplicationScalingRuleScalingRuleMetricMetric> metrics;
         private @Nullable Integer minReplicas;
         private @Nullable ApplicationScalingRuleScalingRuleMetricScaleDownRules scaleDownRules;
         private @Nullable ApplicationScalingRuleScalingRuleMetricScaleUpRules scaleUpRules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScalingRuleScalingRuleMetric defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.maxReplicas = defaults.maxReplicas;
@@ -119,10 +102,12 @@ public final class ApplicationScalingRuleScalingRuleMetric {
     	      this.scaleUpRules = defaults.scaleUpRules;
         }
 
+        @CustomType.Setter
         public Builder maxReplicas(@Nullable Integer maxReplicas) {
             this.maxReplicas = maxReplicas;
             return this;
         }
+        @CustomType.Setter
         public Builder metrics(@Nullable List<ApplicationScalingRuleScalingRuleMetricMetric> metrics) {
             this.metrics = metrics;
             return this;
@@ -130,19 +115,29 @@ public final class ApplicationScalingRuleScalingRuleMetric {
         public Builder metrics(ApplicationScalingRuleScalingRuleMetricMetric... metrics) {
             return metrics(List.of(metrics));
         }
+        @CustomType.Setter
         public Builder minReplicas(@Nullable Integer minReplicas) {
             this.minReplicas = minReplicas;
             return this;
         }
+        @CustomType.Setter
         public Builder scaleDownRules(@Nullable ApplicationScalingRuleScalingRuleMetricScaleDownRules scaleDownRules) {
             this.scaleDownRules = scaleDownRules;
             return this;
         }
+        @CustomType.Setter
         public Builder scaleUpRules(@Nullable ApplicationScalingRuleScalingRuleMetricScaleUpRules scaleUpRules) {
             this.scaleUpRules = scaleUpRules;
             return this;
-        }        public ApplicationScalingRuleScalingRuleMetric build() {
-            return new ApplicationScalingRuleScalingRuleMetric(maxReplicas, metrics, minReplicas, scaleDownRules, scaleUpRules);
+        }
+        public ApplicationScalingRuleScalingRuleMetric build() {
+            final var o = new ApplicationScalingRuleScalingRuleMetric();
+            o.maxReplicas = maxReplicas;
+            o.metrics = metrics;
+            o.minReplicas = minReplicas;
+            o.scaleDownRules = scaleDownRules;
+            o.scaleUpRules = scaleUpRules;
+            return o;
         }
     }
 }

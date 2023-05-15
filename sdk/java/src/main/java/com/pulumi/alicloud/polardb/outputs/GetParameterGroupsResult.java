@@ -13,39 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetParameterGroupsResult {
-    private final @Nullable String dbType;
-    private final @Nullable String dbVersion;
-    private final List<GetParameterGroupsGroup> groups;
+    private @Nullable String dbType;
+    private @Nullable String dbVersion;
+    private List<GetParameterGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetParameterGroupsResult(
-        @CustomType.Parameter("dbType") @Nullable String dbType,
-        @CustomType.Parameter("dbVersion") @Nullable String dbVersion,
-        @CustomType.Parameter("groups") List<GetParameterGroupsGroup> groups,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.dbType = dbType;
-        this.dbVersion = dbVersion;
-        this.groups = groups;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-    }
-
+    private GetParameterGroupsResult() {}
     public Optional<String> dbType() {
         return Optional.ofNullable(this.dbType);
     }
@@ -82,7 +63,7 @@ public final class GetParameterGroupsResult {
     public static Builder builder(GetParameterGroupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String dbType;
         private @Nullable String dbVersion;
@@ -92,11 +73,7 @@ public final class GetParameterGroupsResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetParameterGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbType = defaults.dbType;
@@ -109,14 +86,17 @@ public final class GetParameterGroupsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder dbType(@Nullable String dbType) {
             this.dbType = dbType;
             return this;
         }
+        @CustomType.Setter
         public Builder dbVersion(@Nullable String dbVersion) {
             this.dbVersion = dbVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder groups(List<GetParameterGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -124,10 +104,12 @@ public final class GetParameterGroupsResult {
         public Builder groups(GetParameterGroupsGroup... groups) {
             return groups(List.of(groups));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -135,10 +117,12 @@ public final class GetParameterGroupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -146,11 +130,22 @@ public final class GetParameterGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetParameterGroupsResult build() {
-            return new GetParameterGroupsResult(dbType, dbVersion, groups, id, ids, nameRegex, names, outputFile);
+        }
+        public GetParameterGroupsResult build() {
+            final var o = new GetParameterGroupsResult();
+            o.dbType = dbType;
+            o.dbVersion = dbVersion;
+            o.groups = groups;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

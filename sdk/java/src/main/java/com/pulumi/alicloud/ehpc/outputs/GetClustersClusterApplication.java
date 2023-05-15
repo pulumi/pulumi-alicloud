@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClustersClusterApplication {
-    private final String tag;
+    private String tag;
 
-    @CustomType.Constructor
-    private GetClustersClusterApplication(@CustomType.Parameter("tag") String tag) {
-        this.tag = tag;
-    }
-
+    private GetClustersClusterApplication() {}
     public String tag() {
         return this.tag;
     }
@@ -27,24 +23,24 @@ public final class GetClustersClusterApplication {
     public static Builder builder(GetClustersClusterApplication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String tag;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersClusterApplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.tag = defaults.tag;
         }
 
+        @CustomType.Setter
         public Builder tag(String tag) {
             this.tag = Objects.requireNonNull(tag);
             return this;
-        }        public GetClustersClusterApplication build() {
-            return new GetClustersClusterApplication(tag);
+        }
+        public GetClustersClusterApplication build() {
+            final var o = new GetClustersClusterApplication();
+            o.tag = tag;
+            return o;
         }
     }
 }

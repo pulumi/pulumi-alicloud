@@ -16,56 +16,39 @@ public final class GetConnectionsConnectionVpnBgpConfig {
      * @return The authentication keys for BGP routing protocols.
      * 
      */
-    private final @Nullable String authKey;
+    private @Nullable String authKey;
     /**
      * @return The ali cloud side autonomous system.
      * 
      */
-    private final @Nullable Integer localAsn;
+    private @Nullable Integer localAsn;
     /**
      * @return The ali cloud side BGP address.
      * 
      */
-    private final @Nullable String localBgpIp;
+    private @Nullable String localBgpIp;
     /**
      * @return The counterpart autonomous system number.
      * 
      */
-    private final @Nullable Integer peerAsn;
+    private @Nullable Integer peerAsn;
     /**
      * @return The BGP address on the other side.
      * 
      */
-    private final @Nullable String peerBgpIp;
+    private @Nullable String peerBgpIp;
     /**
      * @return The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return The ipsec tunnel segments.
      * 
      */
-    private final @Nullable String tunnelCidr;
+    private @Nullable String tunnelCidr;
 
-    @CustomType.Constructor
-    private GetConnectionsConnectionVpnBgpConfig(
-        @CustomType.Parameter("authKey") @Nullable String authKey,
-        @CustomType.Parameter("localAsn") @Nullable Integer localAsn,
-        @CustomType.Parameter("localBgpIp") @Nullable String localBgpIp,
-        @CustomType.Parameter("peerAsn") @Nullable Integer peerAsn,
-        @CustomType.Parameter("peerBgpIp") @Nullable String peerBgpIp,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tunnelCidr") @Nullable String tunnelCidr) {
-        this.authKey = authKey;
-        this.localAsn = localAsn;
-        this.localBgpIp = localBgpIp;
-        this.peerAsn = peerAsn;
-        this.peerBgpIp = peerBgpIp;
-        this.status = status;
-        this.tunnelCidr = tunnelCidr;
-    }
-
+    private GetConnectionsConnectionVpnBgpConfig() {}
     /**
      * @return The authentication keys for BGP routing protocols.
      * 
@@ -123,7 +106,7 @@ public final class GetConnectionsConnectionVpnBgpConfig {
     public static Builder builder(GetConnectionsConnectionVpnBgpConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String authKey;
         private @Nullable Integer localAsn;
@@ -132,11 +115,7 @@ public final class GetConnectionsConnectionVpnBgpConfig {
         private @Nullable String peerBgpIp;
         private @Nullable String status;
         private @Nullable String tunnelCidr;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetConnectionsConnectionVpnBgpConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authKey = defaults.authKey;
@@ -148,35 +127,51 @@ public final class GetConnectionsConnectionVpnBgpConfig {
     	      this.tunnelCidr = defaults.tunnelCidr;
         }
 
+        @CustomType.Setter
         public Builder authKey(@Nullable String authKey) {
             this.authKey = authKey;
             return this;
         }
+        @CustomType.Setter
         public Builder localAsn(@Nullable Integer localAsn) {
             this.localAsn = localAsn;
             return this;
         }
+        @CustomType.Setter
         public Builder localBgpIp(@Nullable String localBgpIp) {
             this.localBgpIp = localBgpIp;
             return this;
         }
+        @CustomType.Setter
         public Builder peerAsn(@Nullable Integer peerAsn) {
             this.peerAsn = peerAsn;
             return this;
         }
+        @CustomType.Setter
         public Builder peerBgpIp(@Nullable String peerBgpIp) {
             this.peerBgpIp = peerBgpIp;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tunnelCidr(@Nullable String tunnelCidr) {
             this.tunnelCidr = tunnelCidr;
             return this;
-        }        public GetConnectionsConnectionVpnBgpConfig build() {
-            return new GetConnectionsConnectionVpnBgpConfig(authKey, localAsn, localBgpIp, peerAsn, peerBgpIp, status, tunnelCidr);
+        }
+        public GetConnectionsConnectionVpnBgpConfig build() {
+            final var o = new GetConnectionsConnectionVpnBgpConfig();
+            o.authKey = authKey;
+            o.localAsn = localAsn;
+            o.localBgpIp = localBgpIp;
+            o.peerAsn = peerAsn;
+            o.peerBgpIp = peerBgpIp;
+            o.status = status;
+            o.tunnelCidr = tunnelCidr;
+            return o;
         }
     }
 }

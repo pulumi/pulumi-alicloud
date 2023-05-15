@@ -15,21 +15,14 @@ public final class FirewallVpcFirewallCenLocalVpcEniList {
      * @return The ID of the instance of the ENI in the VPC.
      * 
      */
-    private final @Nullable String eniId;
+    private @Nullable String eniId;
     /**
      * @return The private IP address of the ENI in the VPC.
      * 
      */
-    private final @Nullable String eniPrivateIpAddress;
+    private @Nullable String eniPrivateIpAddress;
 
-    @CustomType.Constructor
-    private FirewallVpcFirewallCenLocalVpcEniList(
-        @CustomType.Parameter("eniId") @Nullable String eniId,
-        @CustomType.Parameter("eniPrivateIpAddress") @Nullable String eniPrivateIpAddress) {
-        this.eniId = eniId;
-        this.eniPrivateIpAddress = eniPrivateIpAddress;
-    }
-
+    private FirewallVpcFirewallCenLocalVpcEniList() {}
     /**
      * @return The ID of the instance of the ENI in the VPC.
      * 
@@ -52,30 +45,32 @@ public final class FirewallVpcFirewallCenLocalVpcEniList {
     public static Builder builder(FirewallVpcFirewallCenLocalVpcEniList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String eniId;
         private @Nullable String eniPrivateIpAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FirewallVpcFirewallCenLocalVpcEniList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eniId = defaults.eniId;
     	      this.eniPrivateIpAddress = defaults.eniPrivateIpAddress;
         }
 
+        @CustomType.Setter
         public Builder eniId(@Nullable String eniId) {
             this.eniId = eniId;
             return this;
         }
+        @CustomType.Setter
         public Builder eniPrivateIpAddress(@Nullable String eniPrivateIpAddress) {
             this.eniPrivateIpAddress = eniPrivateIpAddress;
             return this;
-        }        public FirewallVpcFirewallCenLocalVpcEniList build() {
-            return new FirewallVpcFirewallCenLocalVpcEniList(eniId, eniPrivateIpAddress);
+        }
+        public FirewallVpcFirewallCenLocalVpcEniList build() {
+            final var o = new FirewallVpcFirewallCenLocalVpcEniList();
+            o.eniId = eniId;
+            o.eniPrivateIpAddress = eniPrivateIpAddress;
+            return o;
         }
     }
 }

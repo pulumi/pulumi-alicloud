@@ -14,91 +14,64 @@ public final class GetSnapshotsSnapshot {
      * @return The time when the snapshot was created.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the snapshot.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the cloud desktop to which the snapshot belongs.
      * 
      */
-    private final String desktopId;
+    private String desktopId;
     /**
      * @return The ID of the Snapshot.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The progress of creating the snapshot.
      * 
      */
-    private final String progress;
+    private String progress;
     /**
      * @return The remaining time that is required to create the snapshot. Unit: seconds.
      * 
      */
-    private final Integer remainTime;
+    private Integer remainTime;
     /**
      * @return The ID of the snapshot.
      * 
      */
-    private final String snapshotId;
+    private String snapshotId;
     /**
      * @return The name of the snapshot.
      * 
      */
-    private final String snapshotName;
+    private String snapshotName;
     /**
      * @return The type of the snapshot.
      * 
      */
-    private final String snapshotType;
+    private String snapshotType;
     /**
      * @return The capacity of the source disk. Unit: GiB.
      * 
      */
-    private final String sourceDiskSize;
+    private String sourceDiskSize;
     /**
      * @return The type of the source disk.
      * 
      */
-    private final String sourceDiskType;
+    private String sourceDiskType;
     /**
      * @return The status of the snapshot.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetSnapshotsSnapshot(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("desktopId") String desktopId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("progress") String progress,
-        @CustomType.Parameter("remainTime") Integer remainTime,
-        @CustomType.Parameter("snapshotId") String snapshotId,
-        @CustomType.Parameter("snapshotName") String snapshotName,
-        @CustomType.Parameter("snapshotType") String snapshotType,
-        @CustomType.Parameter("sourceDiskSize") String sourceDiskSize,
-        @CustomType.Parameter("sourceDiskType") String sourceDiskType,
-        @CustomType.Parameter("status") String status) {
-        this.createTime = createTime;
-        this.description = description;
-        this.desktopId = desktopId;
-        this.id = id;
-        this.progress = progress;
-        this.remainTime = remainTime;
-        this.snapshotId = snapshotId;
-        this.snapshotName = snapshotName;
-        this.snapshotType = snapshotType;
-        this.sourceDiskSize = sourceDiskSize;
-        this.sourceDiskType = sourceDiskType;
-        this.status = status;
-    }
-
+    private GetSnapshotsSnapshot() {}
     /**
      * @return The time when the snapshot was created.
      * 
@@ -191,7 +164,7 @@ public final class GetSnapshotsSnapshot {
     public static Builder builder(GetSnapshotsSnapshot defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -205,11 +178,7 @@ public final class GetSnapshotsSnapshot {
         private String sourceDiskSize;
         private String sourceDiskType;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSnapshotsSnapshot defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -226,55 +195,81 @@ public final class GetSnapshotsSnapshot {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder desktopId(String desktopId) {
             this.desktopId = Objects.requireNonNull(desktopId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder progress(String progress) {
             this.progress = Objects.requireNonNull(progress);
             return this;
         }
+        @CustomType.Setter
         public Builder remainTime(Integer remainTime) {
             this.remainTime = Objects.requireNonNull(remainTime);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotName(String snapshotName) {
             this.snapshotName = Objects.requireNonNull(snapshotName);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotType(String snapshotType) {
             this.snapshotType = Objects.requireNonNull(snapshotType);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceDiskSize(String sourceDiskSize) {
             this.sourceDiskSize = Objects.requireNonNull(sourceDiskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceDiskType(String sourceDiskType) {
             this.sourceDiskType = Objects.requireNonNull(sourceDiskType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetSnapshotsSnapshot build() {
-            return new GetSnapshotsSnapshot(createTime, description, desktopId, id, progress, remainTime, snapshotId, snapshotName, snapshotType, sourceDiskSize, sourceDiskType, status);
+        }
+        public GetSnapshotsSnapshot build() {
+            final var o = new GetSnapshotsSnapshot();
+            o.createTime = createTime;
+            o.description = description;
+            o.desktopId = desktopId;
+            o.id = id;
+            o.progress = progress;
+            o.remainTime = remainTime;
+            o.snapshotId = snapshotId;
+            o.snapshotName = snapshotName;
+            o.snapshotType = snapshotType;
+            o.sourceDiskSize = sourceDiskSize;
+            o.sourceDiskType = sourceDiskType;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -14,51 +14,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDomainRecordsResult {
-    private final String domainName;
-    private final @Nullable String hostRecordRegex;
+    private String domainName;
+    private @Nullable String hostRecordRegex;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable Boolean isLocked;
-    private final @Nullable String line;
-    private final @Nullable String outputFile;
-    private final List<GetDomainRecordsRecord> records;
-    private final @Nullable String status;
-    private final @Nullable String type;
-    private final List<String> urls;
-    private final @Nullable String valueRegex;
+    private String id;
+    private List<String> ids;
+    private @Nullable Boolean isLocked;
+    private @Nullable String line;
+    private @Nullable String outputFile;
+    private List<GetDomainRecordsRecord> records;
+    private @Nullable String status;
+    private @Nullable String type;
+    private List<String> urls;
+    private @Nullable String valueRegex;
 
-    @CustomType.Constructor
-    private GetDomainRecordsResult(
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("hostRecordRegex") @Nullable String hostRecordRegex,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("isLocked") @Nullable Boolean isLocked,
-        @CustomType.Parameter("line") @Nullable String line,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("records") List<GetDomainRecordsRecord> records,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("urls") List<String> urls,
-        @CustomType.Parameter("valueRegex") @Nullable String valueRegex) {
-        this.domainName = domainName;
-        this.hostRecordRegex = hostRecordRegex;
-        this.id = id;
-        this.ids = ids;
-        this.isLocked = isLocked;
-        this.line = line;
-        this.outputFile = outputFile;
-        this.records = records;
-        this.status = status;
-        this.type = type;
-        this.urls = urls;
-        this.valueRegex = valueRegex;
-    }
-
+    private GetDomainRecordsResult() {}
     public String domainName() {
         return this.domainName;
     }
@@ -107,7 +80,7 @@ public final class GetDomainRecordsResult {
     public static Builder builder(GetDomainRecordsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domainName;
         private @Nullable String hostRecordRegex;
@@ -121,11 +94,7 @@ public final class GetDomainRecordsResult {
         private @Nullable String type;
         private List<String> urls;
         private @Nullable String valueRegex;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainRecordsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainName = defaults.domainName;
@@ -142,18 +111,22 @@ public final class GetDomainRecordsResult {
     	      this.valueRegex = defaults.valueRegex;
         }
 
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder hostRecordRegex(@Nullable String hostRecordRegex) {
             this.hostRecordRegex = hostRecordRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -161,18 +134,22 @@ public final class GetDomainRecordsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder isLocked(@Nullable Boolean isLocked) {
             this.isLocked = isLocked;
             return this;
         }
+        @CustomType.Setter
         public Builder line(@Nullable String line) {
             this.line = line;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder records(List<GetDomainRecordsRecord> records) {
             this.records = Objects.requireNonNull(records);
             return this;
@@ -180,14 +157,17 @@ public final class GetDomainRecordsResult {
         public Builder records(GetDomainRecordsRecord... records) {
             return records(List.of(records));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder urls(List<String> urls) {
             this.urls = Objects.requireNonNull(urls);
             return this;
@@ -195,11 +175,26 @@ public final class GetDomainRecordsResult {
         public Builder urls(String... urls) {
             return urls(List.of(urls));
         }
+        @CustomType.Setter
         public Builder valueRegex(@Nullable String valueRegex) {
             this.valueRegex = valueRegex;
             return this;
-        }        public GetDomainRecordsResult build() {
-            return new GetDomainRecordsResult(domainName, hostRecordRegex, id, ids, isLocked, line, outputFile, records, status, type, urls, valueRegex);
+        }
+        public GetDomainRecordsResult build() {
+            final var o = new GetDomainRecordsResult();
+            o.domainName = domainName;
+            o.hostRecordRegex = hostRecordRegex;
+            o.id = id;
+            o.ids = ids;
+            o.isLocked = isLocked;
+            o.line = line;
+            o.outputFile = outputFile;
+            o.records = records;
+            o.status = status;
+            o.type = type;
+            o.urls = urls;
+            o.valueRegex = valueRegex;
+            return o;
         }
     }
 }

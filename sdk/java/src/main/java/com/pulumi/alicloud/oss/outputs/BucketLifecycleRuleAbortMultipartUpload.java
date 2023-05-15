@@ -16,23 +16,16 @@ public final class BucketLifecycleRuleAbortMultipartUpload {
      * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
      * 
      */
-    private final @Nullable String createdBeforeDate;
+    private @Nullable String createdBeforeDate;
     /**
      * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
      * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
      * 
      */
-    private final @Nullable Integer days;
+    private @Nullable Integer days;
 
-    @CustomType.Constructor
-    private BucketLifecycleRuleAbortMultipartUpload(
-        @CustomType.Parameter("createdBeforeDate") @Nullable String createdBeforeDate,
-        @CustomType.Parameter("days") @Nullable Integer days) {
-        this.createdBeforeDate = createdBeforeDate;
-        this.days = days;
-    }
-
+    private BucketLifecycleRuleAbortMultipartUpload() {}
     /**
      * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
      * 
@@ -57,30 +50,32 @@ public final class BucketLifecycleRuleAbortMultipartUpload {
     public static Builder builder(BucketLifecycleRuleAbortMultipartUpload defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String createdBeforeDate;
         private @Nullable Integer days;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketLifecycleRuleAbortMultipartUpload defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdBeforeDate = defaults.createdBeforeDate;
     	      this.days = defaults.days;
         }
 
+        @CustomType.Setter
         public Builder createdBeforeDate(@Nullable String createdBeforeDate) {
             this.createdBeforeDate = createdBeforeDate;
             return this;
         }
+        @CustomType.Setter
         public Builder days(@Nullable Integer days) {
             this.days = days;
             return this;
-        }        public BucketLifecycleRuleAbortMultipartUpload build() {
-            return new BucketLifecycleRuleAbortMultipartUpload(createdBeforeDate, days);
+        }
+        public BucketLifecycleRuleAbortMultipartUpload build() {
+            final var o = new BucketLifecycleRuleAbortMultipartUpload();
+            o.createdBeforeDate = createdBeforeDate;
+            o.days = days;
+            return o;
         }
     }
 }

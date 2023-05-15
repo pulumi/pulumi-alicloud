@@ -16,21 +16,14 @@ public final class AccessStrategyFailoverAddrPool {
      * @return The ID of the address pool in the secondary address pool group.
      * 
      */
-    private final @Nullable String addrPoolId;
+    private @Nullable String addrPoolId;
     /**
      * @return The weight of the address pool in the secondary address pool group.
      * 
      */
-    private final @Nullable Integer lbaWeight;
+    private @Nullable Integer lbaWeight;
 
-    @CustomType.Constructor
-    private AccessStrategyFailoverAddrPool(
-        @CustomType.Parameter("addrPoolId") @Nullable String addrPoolId,
-        @CustomType.Parameter("lbaWeight") @Nullable Integer lbaWeight) {
-        this.addrPoolId = addrPoolId;
-        this.lbaWeight = lbaWeight;
-    }
-
+    private AccessStrategyFailoverAddrPool() {}
     /**
      * @return The ID of the address pool in the secondary address pool group.
      * 
@@ -53,30 +46,32 @@ public final class AccessStrategyFailoverAddrPool {
     public static Builder builder(AccessStrategyFailoverAddrPool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String addrPoolId;
         private @Nullable Integer lbaWeight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AccessStrategyFailoverAddrPool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addrPoolId = defaults.addrPoolId;
     	      this.lbaWeight = defaults.lbaWeight;
         }
 
+        @CustomType.Setter
         public Builder addrPoolId(@Nullable String addrPoolId) {
             this.addrPoolId = addrPoolId;
             return this;
         }
+        @CustomType.Setter
         public Builder lbaWeight(@Nullable Integer lbaWeight) {
             this.lbaWeight = lbaWeight;
             return this;
-        }        public AccessStrategyFailoverAddrPool build() {
-            return new AccessStrategyFailoverAddrPool(addrPoolId, lbaWeight);
+        }
+        public AccessStrategyFailoverAddrPool build() {
+            final var o = new AccessStrategyFailoverAddrPool();
+            o.addrPoolId = addrPoolId;
+            o.lbaWeight = lbaWeight;
+            return o;
         }
     }
 }

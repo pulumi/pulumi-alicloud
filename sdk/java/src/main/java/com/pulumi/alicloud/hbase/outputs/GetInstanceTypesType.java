@@ -14,28 +14,19 @@ public final class GetInstanceTypesType {
      * @return Cpu size of the instance type.
      * 
      */
-    private final Integer cpuSize;
+    private Integer cpuSize;
     /**
      * @return Mem size of the instance type.
      * 
      */
-    private final Integer memSize;
+    private Integer memSize;
     /**
      * @return Name of the instance type.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetInstanceTypesType(
-        @CustomType.Parameter("cpuSize") Integer cpuSize,
-        @CustomType.Parameter("memSize") Integer memSize,
-        @CustomType.Parameter("value") String value) {
-        this.cpuSize = cpuSize;
-        this.memSize = memSize;
-        this.value = value;
-    }
-
+    private GetInstanceTypesType() {}
     /**
      * @return Cpu size of the instance type.
      * 
@@ -65,16 +56,12 @@ public final class GetInstanceTypesType {
     public static Builder builder(GetInstanceTypesType defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer cpuSize;
         private Integer memSize;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTypesType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuSize = defaults.cpuSize;
@@ -82,19 +69,27 @@ public final class GetInstanceTypesType {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder cpuSize(Integer cpuSize) {
             this.cpuSize = Objects.requireNonNull(cpuSize);
             return this;
         }
+        @CustomType.Setter
         public Builder memSize(Integer memSize) {
             this.memSize = Objects.requireNonNull(memSize);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetInstanceTypesType build() {
-            return new GetInstanceTypesType(cpuSize, memSize, value);
+        }
+        public GetInstanceTypesType build() {
+            final var o = new GetInstanceTypesType();
+            o.cpuSize = cpuSize;
+            o.memSize = memSize;
+            o.value = value;
+            return o;
         }
     }
 }

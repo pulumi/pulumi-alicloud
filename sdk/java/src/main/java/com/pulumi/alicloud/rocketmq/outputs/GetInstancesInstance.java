@@ -17,105 +17,74 @@ public final class GetInstancesInstance {
      * @return The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
      * 
      */
-    private final String httpInternalEndpoint;
+    private String httpInternalEndpoint;
     /**
      * @return The public HTTP endpoint for the Message Queue for Apache RocketMQ instance.
      * 
      */
-    private final String httpInternetEndpoint;
+    private String httpInternetEndpoint;
     /**
      * @return The public HTTPS endpoint for the Message Queue for Apache RocketMQ instance.
      * 
      */
-    private final String httpInternetSecureEndpoint;
+    private String httpInternetSecureEndpoint;
     /**
      * @return ID of the instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Indicates whether any namespace is configured for the Message Queue for Apache RocketMQ instance.
      * 
      */
-    private final Boolean independentNaming;
+    private Boolean independentNaming;
     /**
      * @return ID of the instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Name of the instance.
      * 
      */
-    private final String instanceName;
+    private String instanceName;
     /**
      * @return The status of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
      * 
      */
-    private final Integer instanceStatus;
+    private Integer instanceStatus;
     /**
      * @return The type of the instance. Read [Fields in InstanceVO](https://www.alibabacloud.com/help/doc-detail/106351.html) for further details.
      * 
      */
-    private final Integer instanceType;
+    private Integer instanceType;
     /**
      * @return The automatic release time of an Enterprise Platinum Edition instance.
      * 
      */
-    private final String releaseTime;
+    private String releaseTime;
     /**
      * @return This attribute is a concise description of instance.
      * 
      */
-    private final String remark;
+    private String remark;
     /**
      * @return The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
      * 
      */
-    private final Integer status;
+    private Integer status;
     /**
      * @return A map of tags assigned to the Ons instance.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return The TCP endpoint for the Message Queue for Apache RocketMQ instance.
      * 
      */
-    private final String tcpEndpoint;
+    private String tcpEndpoint;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("httpInternalEndpoint") String httpInternalEndpoint,
-        @CustomType.Parameter("httpInternetEndpoint") String httpInternetEndpoint,
-        @CustomType.Parameter("httpInternetSecureEndpoint") String httpInternetSecureEndpoint,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("independentNaming") Boolean independentNaming,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("instanceName") String instanceName,
-        @CustomType.Parameter("instanceStatus") Integer instanceStatus,
-        @CustomType.Parameter("instanceType") Integer instanceType,
-        @CustomType.Parameter("releaseTime") String releaseTime,
-        @CustomType.Parameter("remark") String remark,
-        @CustomType.Parameter("status") Integer status,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("tcpEndpoint") String tcpEndpoint) {
-        this.httpInternalEndpoint = httpInternalEndpoint;
-        this.httpInternetEndpoint = httpInternetEndpoint;
-        this.httpInternetSecureEndpoint = httpInternetSecureEndpoint;
-        this.id = id;
-        this.independentNaming = independentNaming;
-        this.instanceId = instanceId;
-        this.instanceName = instanceName;
-        this.instanceStatus = instanceStatus;
-        this.instanceType = instanceType;
-        this.releaseTime = releaseTime;
-        this.remark = remark;
-        this.status = status;
-        this.tags = tags;
-        this.tcpEndpoint = tcpEndpoint;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return The internal HTTP endpoint for the Message Queue for Apache RocketMQ instance.
      * 
@@ -222,7 +191,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String httpInternalEndpoint;
         private String httpInternetEndpoint;
@@ -238,11 +207,7 @@ public final class GetInstancesInstance {
         private Integer status;
         private Map<String,Object> tags;
         private String tcpEndpoint;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.httpInternalEndpoint = defaults.httpInternalEndpoint;
@@ -261,63 +226,93 @@ public final class GetInstancesInstance {
     	      this.tcpEndpoint = defaults.tcpEndpoint;
         }
 
+        @CustomType.Setter
         public Builder httpInternalEndpoint(String httpInternalEndpoint) {
             this.httpInternalEndpoint = Objects.requireNonNull(httpInternalEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder httpInternetEndpoint(String httpInternetEndpoint) {
             this.httpInternetEndpoint = Objects.requireNonNull(httpInternetEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder httpInternetSecureEndpoint(String httpInternetSecureEndpoint) {
             this.httpInternetSecureEndpoint = Objects.requireNonNull(httpInternetSecureEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder independentNaming(Boolean independentNaming) {
             this.independentNaming = Objects.requireNonNull(independentNaming);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceStatus(Integer instanceStatus) {
             this.instanceStatus = Objects.requireNonNull(instanceStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(Integer instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder releaseTime(String releaseTime) {
             this.releaseTime = Objects.requireNonNull(releaseTime);
             return this;
         }
+        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
         }
+        @CustomType.Setter
         public Builder status(Integer status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder tcpEndpoint(String tcpEndpoint) {
             this.tcpEndpoint = Objects.requireNonNull(tcpEndpoint);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(httpInternalEndpoint, httpInternetEndpoint, httpInternetSecureEndpoint, id, independentNaming, instanceId, instanceName, instanceStatus, instanceType, releaseTime, remark, status, tags, tcpEndpoint);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.httpInternalEndpoint = httpInternalEndpoint;
+            o.httpInternetEndpoint = httpInternetEndpoint;
+            o.httpInternetSecureEndpoint = httpInternetSecureEndpoint;
+            o.id = id;
+            o.independentNaming = independentNaming;
+            o.instanceId = instanceId;
+            o.instanceName = instanceName;
+            o.instanceStatus = instanceStatus;
+            o.instanceType = instanceType;
+            o.releaseTime = releaseTime;
+            o.remark = remark;
+            o.status = status;
+            o.tags = tags;
+            o.tcpEndpoint = tcpEndpoint;
+            return o;
         }
     }
 }

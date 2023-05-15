@@ -13,21 +13,14 @@ public final class GetTemplateScratchesScratchPreferenceParameter {
      * @return Priority parameter key.
      * 
      */
-    private final String parameterKey;
+    private String parameterKey;
     /**
      * @return Priority parameter value.
      * 
      */
-    private final String parameterValue;
+    private String parameterValue;
 
-    @CustomType.Constructor
-    private GetTemplateScratchesScratchPreferenceParameter(
-        @CustomType.Parameter("parameterKey") String parameterKey,
-        @CustomType.Parameter("parameterValue") String parameterValue) {
-        this.parameterKey = parameterKey;
-        this.parameterValue = parameterValue;
-    }
-
+    private GetTemplateScratchesScratchPreferenceParameter() {}
     /**
      * @return Priority parameter key.
      * 
@@ -50,30 +43,32 @@ public final class GetTemplateScratchesScratchPreferenceParameter {
     public static Builder builder(GetTemplateScratchesScratchPreferenceParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String parameterKey;
         private String parameterValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTemplateScratchesScratchPreferenceParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterKey = defaults.parameterKey;
     	      this.parameterValue = defaults.parameterValue;
         }
 
+        @CustomType.Setter
         public Builder parameterKey(String parameterKey) {
             this.parameterKey = Objects.requireNonNull(parameterKey);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterValue(String parameterValue) {
             this.parameterValue = Objects.requireNonNull(parameterValue);
             return this;
-        }        public GetTemplateScratchesScratchPreferenceParameter build() {
-            return new GetTemplateScratchesScratchPreferenceParameter(parameterKey, parameterValue);
+        }
+        public GetTemplateScratchesScratchPreferenceParameter build() {
+            final var o = new GetTemplateScratchesScratchPreferenceParameter();
+            o.parameterKey = parameterKey;
+            o.parameterValue = parameterValue;
+            return o;
         }
     }
 }

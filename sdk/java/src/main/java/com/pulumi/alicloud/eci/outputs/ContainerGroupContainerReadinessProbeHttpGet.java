@@ -16,28 +16,19 @@ public final class ContainerGroupContainerReadinessProbeHttpGet {
      * @return The relative file path.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
     /**
      * @return The port number. Valid values: 1 to 65535.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
     /**
      * @return The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
      * 
      */
-    private final @Nullable String scheme;
+    private @Nullable String scheme;
 
-    @CustomType.Constructor
-    private ContainerGroupContainerReadinessProbeHttpGet(
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("port") @Nullable Integer port,
-        @CustomType.Parameter("scheme") @Nullable String scheme) {
-        this.path = path;
-        this.port = port;
-        this.scheme = scheme;
-    }
-
+    private ContainerGroupContainerReadinessProbeHttpGet() {}
     /**
      * @return The relative file path.
      * 
@@ -67,16 +58,12 @@ public final class ContainerGroupContainerReadinessProbeHttpGet {
     public static Builder builder(ContainerGroupContainerReadinessProbeHttpGet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String path;
         private @Nullable Integer port;
         private @Nullable String scheme;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupContainerReadinessProbeHttpGet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
@@ -84,19 +71,27 @@ public final class ContainerGroupContainerReadinessProbeHttpGet {
     	      this.scheme = defaults.scheme;
         }
 
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder scheme(@Nullable String scheme) {
             this.scheme = scheme;
             return this;
-        }        public ContainerGroupContainerReadinessProbeHttpGet build() {
-            return new ContainerGroupContainerReadinessProbeHttpGet(path, port, scheme);
+        }
+        public ContainerGroupContainerReadinessProbeHttpGet build() {
+            final var o = new ContainerGroupContainerReadinessProbeHttpGet();
+            o.path = path;
+            o.port = port;
+            o.scheme = scheme;
+            return o;
         }
     }
 }

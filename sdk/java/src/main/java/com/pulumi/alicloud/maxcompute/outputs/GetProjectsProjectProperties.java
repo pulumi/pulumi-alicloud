@@ -16,63 +16,44 @@ public final class GetProjectsProjectProperties {
      * @return Whether to allow full table scan.
      * 
      */
-    private final Boolean allowFullScan;
+    private Boolean allowFullScan;
     /**
      * @return Whether to turn on Decimal2.0.
      * 
      */
-    private final Boolean enableDecimal2;
+    private Boolean enableDecimal2;
     /**
      * @return Whether encryption is turned on.
      * 
      */
-    private final GetProjectsProjectPropertiesEncryption encryption;
+    private GetProjectsProjectPropertiesEncryption encryption;
     /**
      * @return Job default retention time.
      * 
      */
-    private final String retentionDays;
+    private String retentionDays;
     /**
      * @return SQL charge limit.
      * 
      */
-    private final String sqlMeteringMax;
+    private String sqlMeteringMax;
     /**
      * @return Life cycle of tables.
      * 
      */
-    private final GetProjectsProjectPropertiesTableLifecycle tableLifecycle;
+    private GetProjectsProjectPropertiesTableLifecycle tableLifecycle;
     /**
      * @return Project time zone.
      * 
      */
-    private final String timezone;
+    private String timezone;
     /**
      * @return Type system.
      * 
      */
-    private final String typeSystem;
+    private String typeSystem;
 
-    @CustomType.Constructor
-    private GetProjectsProjectProperties(
-        @CustomType.Parameter("allowFullScan") Boolean allowFullScan,
-        @CustomType.Parameter("enableDecimal2") Boolean enableDecimal2,
-        @CustomType.Parameter("encryption") GetProjectsProjectPropertiesEncryption encryption,
-        @CustomType.Parameter("retentionDays") String retentionDays,
-        @CustomType.Parameter("sqlMeteringMax") String sqlMeteringMax,
-        @CustomType.Parameter("tableLifecycle") GetProjectsProjectPropertiesTableLifecycle tableLifecycle,
-        @CustomType.Parameter("timezone") String timezone,
-        @CustomType.Parameter("typeSystem") String typeSystem) {
-        this.allowFullScan = allowFullScan;
-        this.enableDecimal2 = enableDecimal2;
-        this.encryption = encryption;
-        this.retentionDays = retentionDays;
-        this.sqlMeteringMax = sqlMeteringMax;
-        this.tableLifecycle = tableLifecycle;
-        this.timezone = timezone;
-        this.typeSystem = typeSystem;
-    }
-
+    private GetProjectsProjectProperties() {}
     /**
      * @return Whether to allow full table scan.
      * 
@@ -137,7 +118,7 @@ public final class GetProjectsProjectProperties {
     public static Builder builder(GetProjectsProjectProperties defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean allowFullScan;
         private Boolean enableDecimal2;
@@ -147,11 +128,7 @@ public final class GetProjectsProjectProperties {
         private GetProjectsProjectPropertiesTableLifecycle tableLifecycle;
         private String timezone;
         private String typeSystem;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectsProjectProperties defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowFullScan = defaults.allowFullScan;
@@ -164,39 +141,57 @@ public final class GetProjectsProjectProperties {
     	      this.typeSystem = defaults.typeSystem;
         }
 
+        @CustomType.Setter
         public Builder allowFullScan(Boolean allowFullScan) {
             this.allowFullScan = Objects.requireNonNull(allowFullScan);
             return this;
         }
+        @CustomType.Setter
         public Builder enableDecimal2(Boolean enableDecimal2) {
             this.enableDecimal2 = Objects.requireNonNull(enableDecimal2);
             return this;
         }
+        @CustomType.Setter
         public Builder encryption(GetProjectsProjectPropertiesEncryption encryption) {
             this.encryption = Objects.requireNonNull(encryption);
             return this;
         }
+        @CustomType.Setter
         public Builder retentionDays(String retentionDays) {
             this.retentionDays = Objects.requireNonNull(retentionDays);
             return this;
         }
+        @CustomType.Setter
         public Builder sqlMeteringMax(String sqlMeteringMax) {
             this.sqlMeteringMax = Objects.requireNonNull(sqlMeteringMax);
             return this;
         }
+        @CustomType.Setter
         public Builder tableLifecycle(GetProjectsProjectPropertiesTableLifecycle tableLifecycle) {
             this.tableLifecycle = Objects.requireNonNull(tableLifecycle);
             return this;
         }
+        @CustomType.Setter
         public Builder timezone(String timezone) {
             this.timezone = Objects.requireNonNull(timezone);
             return this;
         }
+        @CustomType.Setter
         public Builder typeSystem(String typeSystem) {
             this.typeSystem = Objects.requireNonNull(typeSystem);
             return this;
-        }        public GetProjectsProjectProperties build() {
-            return new GetProjectsProjectProperties(allowFullScan, enableDecimal2, encryption, retentionDays, sqlMeteringMax, tableLifecycle, timezone, typeSystem);
+        }
+        public GetProjectsProjectProperties build() {
+            final var o = new GetProjectsProjectProperties();
+            o.allowFullScan = allowFullScan;
+            o.enableDecimal2 = enableDecimal2;
+            o.encryption = encryption;
+            o.retentionDays = retentionDays;
+            o.sqlMeteringMax = sqlMeteringMax;
+            o.tableLifecycle = tableLifecycle;
+            o.timezone = timezone;
+            o.typeSystem = typeSystem;
+            return o;
         }
     }
 }

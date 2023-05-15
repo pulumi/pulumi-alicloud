@@ -14,39 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetActivationsResult {
-    private final List<GetActivationsActivation> activations;
+    private List<GetActivationsActivation> activations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String instanceName;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final Integer totalCount;
+    private String id;
+    private List<String> ids;
+    private @Nullable String instanceName;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private Integer totalCount;
 
-    @CustomType.Constructor
-    private GetActivationsResult(
-        @CustomType.Parameter("activations") List<GetActivationsActivation> activations,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceName") @Nullable String instanceName,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("totalCount") Integer totalCount) {
-        this.activations = activations;
-        this.id = id;
-        this.ids = ids;
-        this.instanceName = instanceName;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.totalCount = totalCount;
-    }
-
+    private GetActivationsResult() {}
     public List<GetActivationsActivation> activations() {
         return this.activations;
     }
@@ -83,7 +64,7 @@ public final class GetActivationsResult {
     public static Builder builder(GetActivationsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetActivationsActivation> activations;
         private String id;
@@ -93,11 +74,7 @@ public final class GetActivationsResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private Integer totalCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetActivationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activations = defaults.activations;
@@ -110,6 +87,7 @@ public final class GetActivationsResult {
     	      this.totalCount = defaults.totalCount;
         }
 
+        @CustomType.Setter
         public Builder activations(List<GetActivationsActivation> activations) {
             this.activations = Objects.requireNonNull(activations);
             return this;
@@ -117,10 +95,12 @@ public final class GetActivationsResult {
         public Builder activations(GetActivationsActivation... activations) {
             return activations(List.of(activations));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -128,27 +108,42 @@ public final class GetActivationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceName(@Nullable String instanceName) {
             this.instanceName = instanceName;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
-        }        public GetActivationsResult build() {
-            return new GetActivationsResult(activations, id, ids, instanceName, outputFile, pageNumber, pageSize, totalCount);
+        }
+        public GetActivationsResult build() {
+            final var o = new GetActivationsResult();
+            o.activations = activations;
+            o.id = id;
+            o.ids = ids;
+            o.instanceName = instanceName;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.totalCount = totalCount;
+            return o;
         }
     }
 }

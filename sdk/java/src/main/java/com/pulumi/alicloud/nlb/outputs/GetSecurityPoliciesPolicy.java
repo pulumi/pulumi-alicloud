@@ -16,56 +16,39 @@ public final class GetSecurityPoliciesPolicy {
      * @return The supported cipher suites, which are determined by the TLS protocol version.
      * 
      */
-    private final List<String> ciphers;
+    private List<String> ciphers;
     /**
      * @return The id of the TLS security policy.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the resource group.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The name of the TLS security policy.
      * 
      */
-    private final String securityPolicyName;
+    private String securityPolicyName;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return The TLS protocol versions that are supported.
      * 
      */
-    private final List<String> tlsVersions;
+    private List<String> tlsVersions;
 
-    @CustomType.Constructor
-    private GetSecurityPoliciesPolicy(
-        @CustomType.Parameter("ciphers") List<String> ciphers,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("securityPolicyName") String securityPolicyName,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("tlsVersions") List<String> tlsVersions) {
-        this.ciphers = ciphers;
-        this.id = id;
-        this.resourceGroupId = resourceGroupId;
-        this.securityPolicyName = securityPolicyName;
-        this.status = status;
-        this.tags = tags;
-        this.tlsVersions = tlsVersions;
-    }
-
+    private GetSecurityPoliciesPolicy() {}
     /**
      * @return The supported cipher suites, which are determined by the TLS protocol version.
      * 
@@ -123,7 +106,7 @@ public final class GetSecurityPoliciesPolicy {
     public static Builder builder(GetSecurityPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> ciphers;
         private String id;
@@ -132,11 +115,7 @@ public final class GetSecurityPoliciesPolicy {
         private String status;
         private Map<String,Object> tags;
         private List<String> tlsVersions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecurityPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ciphers = defaults.ciphers;
@@ -148,6 +127,7 @@ public final class GetSecurityPoliciesPolicy {
     	      this.tlsVersions = defaults.tlsVersions;
         }
 
+        @CustomType.Setter
         public Builder ciphers(List<String> ciphers) {
             this.ciphers = Objects.requireNonNull(ciphers);
             return this;
@@ -155,34 +135,49 @@ public final class GetSecurityPoliciesPolicy {
         public Builder ciphers(String... ciphers) {
             return ciphers(List.of(ciphers));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder securityPolicyName(String securityPolicyName) {
             this.securityPolicyName = Objects.requireNonNull(securityPolicyName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder tlsVersions(List<String> tlsVersions) {
             this.tlsVersions = Objects.requireNonNull(tlsVersions);
             return this;
         }
         public Builder tlsVersions(String... tlsVersions) {
             return tlsVersions(List.of(tlsVersions));
-        }        public GetSecurityPoliciesPolicy build() {
-            return new GetSecurityPoliciesPolicy(ciphers, id, resourceGroupId, securityPolicyName, status, tags, tlsVersions);
+        }
+        public GetSecurityPoliciesPolicy build() {
+            final var o = new GetSecurityPoliciesPolicy();
+            o.ciphers = ciphers;
+            o.id = id;
+            o.resourceGroupId = resourceGroupId;
+            o.securityPolicyName = securityPolicyName;
+            o.status = status;
+            o.tags = tags;
+            o.tlsVersions = tlsVersions;
+            return o;
         }
     }
 }

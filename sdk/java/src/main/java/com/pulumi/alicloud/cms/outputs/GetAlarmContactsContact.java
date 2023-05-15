@@ -14,94 +14,65 @@ public final class GetAlarmContactsContact {
      * @return The name of the alarm contact.
      * 
      */
-    private final String alarmContactName;
+    private String alarmContactName;
     /**
      * @return The TradeManager ID of the alarm contact.
      * 
      */
-    private final String channelsAliim;
+    private String channelsAliim;
     /**
      * @return The webhook URL of the DingTalk chatbot.
      * 
      */
-    private final String channelsDingWebHook;
+    private String channelsDingWebHook;
     /**
      * @return The email address of the alarm contact.
      * 
      */
-    private final String channelsMail;
+    private String channelsMail;
     /**
      * @return The phone number of the alarm contact.
      * 
      */
-    private final String channelsSms;
+    private String channelsSms;
     /**
      * @return Indicates whether the TradeManager ID is valid.
      * 
      */
-    private final String channelsStateAliim;
+    private String channelsStateAliim;
     /**
      * @return Indicates whether the DingTalk chatbot is normal.
      * 
      */
-    private final String channelsStateDingWebHook;
+    private String channelsStateDingWebHook;
     /**
      * @return The status of the email address.
      * 
      */
-    private final String channelsStateMail;
+    private String channelsStateMail;
     /**
      * @return The status of the phone number.
      * 
      */
-    private final String channelsStatusSms;
+    private String channelsStatusSms;
     /**
      * @return The alert groups to which the alarm contact is added.
      * 
      */
-    private final List<String> contactGroups;
+    private List<String> contactGroups;
     /**
      * @return The description of the alarm contact.
      * 
      */
-    private final String describe;
+    private String describe;
     /**
      * @return The ID of the alarm contact.
      * 
      */
-    private final String id;
-    private final String lang;
+    private String id;
+    private String lang;
 
-    @CustomType.Constructor
-    private GetAlarmContactsContact(
-        @CustomType.Parameter("alarmContactName") String alarmContactName,
-        @CustomType.Parameter("channelsAliim") String channelsAliim,
-        @CustomType.Parameter("channelsDingWebHook") String channelsDingWebHook,
-        @CustomType.Parameter("channelsMail") String channelsMail,
-        @CustomType.Parameter("channelsSms") String channelsSms,
-        @CustomType.Parameter("channelsStateAliim") String channelsStateAliim,
-        @CustomType.Parameter("channelsStateDingWebHook") String channelsStateDingWebHook,
-        @CustomType.Parameter("channelsStateMail") String channelsStateMail,
-        @CustomType.Parameter("channelsStatusSms") String channelsStatusSms,
-        @CustomType.Parameter("contactGroups") List<String> contactGroups,
-        @CustomType.Parameter("describe") String describe,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lang") String lang) {
-        this.alarmContactName = alarmContactName;
-        this.channelsAliim = channelsAliim;
-        this.channelsDingWebHook = channelsDingWebHook;
-        this.channelsMail = channelsMail;
-        this.channelsSms = channelsSms;
-        this.channelsStateAliim = channelsStateAliim;
-        this.channelsStateDingWebHook = channelsStateDingWebHook;
-        this.channelsStateMail = channelsStateMail;
-        this.channelsStatusSms = channelsStatusSms;
-        this.contactGroups = contactGroups;
-        this.describe = describe;
-        this.id = id;
-        this.lang = lang;
-    }
-
+    private GetAlarmContactsContact() {}
     /**
      * @return The name of the alarm contact.
      * 
@@ -197,7 +168,7 @@ public final class GetAlarmContactsContact {
     public static Builder builder(GetAlarmContactsContact defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alarmContactName;
         private String channelsAliim;
@@ -212,11 +183,7 @@ public final class GetAlarmContactsContact {
         private String describe;
         private String id;
         private String lang;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAlarmContactsContact defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alarmContactName = defaults.alarmContactName;
@@ -234,42 +201,52 @@ public final class GetAlarmContactsContact {
     	      this.lang = defaults.lang;
         }
 
+        @CustomType.Setter
         public Builder alarmContactName(String alarmContactName) {
             this.alarmContactName = Objects.requireNonNull(alarmContactName);
             return this;
         }
+        @CustomType.Setter
         public Builder channelsAliim(String channelsAliim) {
             this.channelsAliim = Objects.requireNonNull(channelsAliim);
             return this;
         }
+        @CustomType.Setter
         public Builder channelsDingWebHook(String channelsDingWebHook) {
             this.channelsDingWebHook = Objects.requireNonNull(channelsDingWebHook);
             return this;
         }
+        @CustomType.Setter
         public Builder channelsMail(String channelsMail) {
             this.channelsMail = Objects.requireNonNull(channelsMail);
             return this;
         }
+        @CustomType.Setter
         public Builder channelsSms(String channelsSms) {
             this.channelsSms = Objects.requireNonNull(channelsSms);
             return this;
         }
+        @CustomType.Setter
         public Builder channelsStateAliim(String channelsStateAliim) {
             this.channelsStateAliim = Objects.requireNonNull(channelsStateAliim);
             return this;
         }
+        @CustomType.Setter
         public Builder channelsStateDingWebHook(String channelsStateDingWebHook) {
             this.channelsStateDingWebHook = Objects.requireNonNull(channelsStateDingWebHook);
             return this;
         }
+        @CustomType.Setter
         public Builder channelsStateMail(String channelsStateMail) {
             this.channelsStateMail = Objects.requireNonNull(channelsStateMail);
             return this;
         }
+        @CustomType.Setter
         public Builder channelsStatusSms(String channelsStatusSms) {
             this.channelsStatusSms = Objects.requireNonNull(channelsStatusSms);
             return this;
         }
+        @CustomType.Setter
         public Builder contactGroups(List<String> contactGroups) {
             this.contactGroups = Objects.requireNonNull(contactGroups);
             return this;
@@ -277,19 +254,37 @@ public final class GetAlarmContactsContact {
         public Builder contactGroups(String... contactGroups) {
             return contactGroups(List.of(contactGroups));
         }
+        @CustomType.Setter
         public Builder describe(String describe) {
             this.describe = Objects.requireNonNull(describe);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lang(String lang) {
             this.lang = Objects.requireNonNull(lang);
             return this;
-        }        public GetAlarmContactsContact build() {
-            return new GetAlarmContactsContact(alarmContactName, channelsAliim, channelsDingWebHook, channelsMail, channelsSms, channelsStateAliim, channelsStateDingWebHook, channelsStateMail, channelsStatusSms, contactGroups, describe, id, lang);
+        }
+        public GetAlarmContactsContact build() {
+            final var o = new GetAlarmContactsContact();
+            o.alarmContactName = alarmContactName;
+            o.channelsAliim = channelsAliim;
+            o.channelsDingWebHook = channelsDingWebHook;
+            o.channelsMail = channelsMail;
+            o.channelsSms = channelsSms;
+            o.channelsStateAliim = channelsStateAliim;
+            o.channelsStateDingWebHook = channelsStateDingWebHook;
+            o.channelsStateMail = channelsStateMail;
+            o.channelsStatusSms = channelsStatusSms;
+            o.contactGroups = contactGroups;
+            o.describe = describe;
+            o.id = id;
+            o.lang = lang;
+            return o;
         }
     }
 }

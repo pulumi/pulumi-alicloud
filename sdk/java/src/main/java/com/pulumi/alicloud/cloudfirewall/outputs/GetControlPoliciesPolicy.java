@@ -16,142 +16,89 @@ public final class GetControlPoliciesPolicy {
      * @return The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      * 
      */
-    private final String aclAction;
+    private String aclAction;
     /**
      * @return The unique ID of the access control policy.
      * 
      */
-    private final String aclUuid;
-    private final String applicationId;
+    private String aclUuid;
+    private String applicationId;
     /**
      * @return The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
      * 
      */
-    private final String applicationName;
+    private String applicationName;
     /**
      * @return The description of the access control policy.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The destination port defined in the access control policy.
      * 
      */
-    private final String destPort;
+    private String destPort;
     /**
      * @return The destination port address book defined in the access control policy.
      * 
      */
-    private final String destPortGroup;
-    private final List<String> destPortGroupPorts;
+    private String destPortGroup;
+    private List<String> destPortGroupPorts;
     /**
      * @return The destination port type defined in the access control policy. Valid values: `group`, `port`.
      * 
      */
-    private final String destPortType;
+    private String destPortType;
     /**
      * @return The destination address defined in the access control policy.
      * 
      */
-    private final String destination;
-    private final List<String> destinationGroupCidrs;
-    private final String destinationGroupType;
+    private String destination;
+    private List<String> destinationGroupCidrs;
+    private String destinationGroupType;
     /**
      * @return The destination address type defined in the access control policy.Valid values: If `direction` is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
      * 
      */
-    private final String destinationType;
+    private String destinationType;
     /**
      * @return The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
-    private final String direction;
-    private final String dnsResult;
-    private final String dnsResultTime;
-    private final String hitTimes;
+    private String direction;
+    private String dnsResult;
+    private String dnsResultTime;
+    private String hitTimes;
     /**
      * @return The ID of the Control Policy.
      * 
      */
-    private final String id;
-    private final Integer order;
+    private String id;
+    private Integer order;
     /**
      * @return The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      * 
      */
-    private final String proto;
+    private String proto;
     /**
      * @return Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
      * 
      */
-    private final Boolean release;
+    private Boolean release;
     /**
      * @return The source address defined in the access control policy.
      * 
      */
-    private final String source;
-    private final List<String> sourceGroupCidrs;
-    private final String sourceGroupType;
+    private String source;
+    private List<String> sourceGroupCidrs;
+    private String sourceGroupType;
     /**
      * @return The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
      * 
      */
-    private final String sourceType;
+    private String sourceType;
 
-    @CustomType.Constructor
-    private GetControlPoliciesPolicy(
-        @CustomType.Parameter("aclAction") String aclAction,
-        @CustomType.Parameter("aclUuid") String aclUuid,
-        @CustomType.Parameter("applicationId") String applicationId,
-        @CustomType.Parameter("applicationName") String applicationName,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("destPort") String destPort,
-        @CustomType.Parameter("destPortGroup") String destPortGroup,
-        @CustomType.Parameter("destPortGroupPorts") List<String> destPortGroupPorts,
-        @CustomType.Parameter("destPortType") String destPortType,
-        @CustomType.Parameter("destination") String destination,
-        @CustomType.Parameter("destinationGroupCidrs") List<String> destinationGroupCidrs,
-        @CustomType.Parameter("destinationGroupType") String destinationGroupType,
-        @CustomType.Parameter("destinationType") String destinationType,
-        @CustomType.Parameter("direction") String direction,
-        @CustomType.Parameter("dnsResult") String dnsResult,
-        @CustomType.Parameter("dnsResultTime") String dnsResultTime,
-        @CustomType.Parameter("hitTimes") String hitTimes,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("order") Integer order,
-        @CustomType.Parameter("proto") String proto,
-        @CustomType.Parameter("release") Boolean release,
-        @CustomType.Parameter("source") String source,
-        @CustomType.Parameter("sourceGroupCidrs") List<String> sourceGroupCidrs,
-        @CustomType.Parameter("sourceGroupType") String sourceGroupType,
-        @CustomType.Parameter("sourceType") String sourceType) {
-        this.aclAction = aclAction;
-        this.aclUuid = aclUuid;
-        this.applicationId = applicationId;
-        this.applicationName = applicationName;
-        this.description = description;
-        this.destPort = destPort;
-        this.destPortGroup = destPortGroup;
-        this.destPortGroupPorts = destPortGroupPorts;
-        this.destPortType = destPortType;
-        this.destination = destination;
-        this.destinationGroupCidrs = destinationGroupCidrs;
-        this.destinationGroupType = destinationGroupType;
-        this.destinationType = destinationType;
-        this.direction = direction;
-        this.dnsResult = dnsResult;
-        this.dnsResultTime = dnsResultTime;
-        this.hitTimes = hitTimes;
-        this.id = id;
-        this.order = order;
-        this.proto = proto;
-        this.release = release;
-        this.source = source;
-        this.sourceGroupCidrs = sourceGroupCidrs;
-        this.sourceGroupType = sourceGroupType;
-        this.sourceType = sourceType;
-    }
-
+    private GetControlPoliciesPolicy() {}
     /**
      * @return The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      * 
@@ -295,7 +242,7 @@ public final class GetControlPoliciesPolicy {
     public static Builder builder(GetControlPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String aclAction;
         private String aclUuid;
@@ -322,11 +269,7 @@ public final class GetControlPoliciesPolicy {
         private List<String> sourceGroupCidrs;
         private String sourceGroupType;
         private String sourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetControlPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclAction = defaults.aclAction;
@@ -356,34 +299,42 @@ public final class GetControlPoliciesPolicy {
     	      this.sourceType = defaults.sourceType;
         }
 
+        @CustomType.Setter
         public Builder aclAction(String aclAction) {
             this.aclAction = Objects.requireNonNull(aclAction);
             return this;
         }
+        @CustomType.Setter
         public Builder aclUuid(String aclUuid) {
             this.aclUuid = Objects.requireNonNull(aclUuid);
             return this;
         }
+        @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
             return this;
         }
+        @CustomType.Setter
         public Builder applicationName(String applicationName) {
             this.applicationName = Objects.requireNonNull(applicationName);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder destPort(String destPort) {
             this.destPort = Objects.requireNonNull(destPort);
             return this;
         }
+        @CustomType.Setter
         public Builder destPortGroup(String destPortGroup) {
             this.destPortGroup = Objects.requireNonNull(destPortGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder destPortGroupPorts(List<String> destPortGroupPorts) {
             this.destPortGroupPorts = Objects.requireNonNull(destPortGroupPorts);
             return this;
@@ -391,14 +342,17 @@ public final class GetControlPoliciesPolicy {
         public Builder destPortGroupPorts(String... destPortGroupPorts) {
             return destPortGroupPorts(List.of(destPortGroupPorts));
         }
+        @CustomType.Setter
         public Builder destPortType(String destPortType) {
             this.destPortType = Objects.requireNonNull(destPortType);
             return this;
         }
+        @CustomType.Setter
         public Builder destination(String destination) {
             this.destination = Objects.requireNonNull(destination);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationGroupCidrs(List<String> destinationGroupCidrs) {
             this.destinationGroupCidrs = Objects.requireNonNull(destinationGroupCidrs);
             return this;
@@ -406,50 +360,62 @@ public final class GetControlPoliciesPolicy {
         public Builder destinationGroupCidrs(String... destinationGroupCidrs) {
             return destinationGroupCidrs(List.of(destinationGroupCidrs));
         }
+        @CustomType.Setter
         public Builder destinationGroupType(String destinationGroupType) {
             this.destinationGroupType = Objects.requireNonNull(destinationGroupType);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationType(String destinationType) {
             this.destinationType = Objects.requireNonNull(destinationType);
             return this;
         }
+        @CustomType.Setter
         public Builder direction(String direction) {
             this.direction = Objects.requireNonNull(direction);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsResult(String dnsResult) {
             this.dnsResult = Objects.requireNonNull(dnsResult);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsResultTime(String dnsResultTime) {
             this.dnsResultTime = Objects.requireNonNull(dnsResultTime);
             return this;
         }
+        @CustomType.Setter
         public Builder hitTimes(String hitTimes) {
             this.hitTimes = Objects.requireNonNull(hitTimes);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder order(Integer order) {
             this.order = Objects.requireNonNull(order);
             return this;
         }
+        @CustomType.Setter
         public Builder proto(String proto) {
             this.proto = Objects.requireNonNull(proto);
             return this;
         }
+        @CustomType.Setter
         public Builder release(Boolean release) {
             this.release = Objects.requireNonNull(release);
             return this;
         }
+        @CustomType.Setter
         public Builder source(String source) {
             this.source = Objects.requireNonNull(source);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceGroupCidrs(List<String> sourceGroupCidrs) {
             this.sourceGroupCidrs = Objects.requireNonNull(sourceGroupCidrs);
             return this;
@@ -457,15 +423,44 @@ public final class GetControlPoliciesPolicy {
         public Builder sourceGroupCidrs(String... sourceGroupCidrs) {
             return sourceGroupCidrs(List.of(sourceGroupCidrs));
         }
+        @CustomType.Setter
         public Builder sourceGroupType(String sourceGroupType) {
             this.sourceGroupType = Objects.requireNonNull(sourceGroupType);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
-        }        public GetControlPoliciesPolicy build() {
-            return new GetControlPoliciesPolicy(aclAction, aclUuid, applicationId, applicationName, description, destPort, destPortGroup, destPortGroupPorts, destPortType, destination, destinationGroupCidrs, destinationGroupType, destinationType, direction, dnsResult, dnsResultTime, hitTimes, id, order, proto, release, source, sourceGroupCidrs, sourceGroupType, sourceType);
+        }
+        public GetControlPoliciesPolicy build() {
+            final var o = new GetControlPoliciesPolicy();
+            o.aclAction = aclAction;
+            o.aclUuid = aclUuid;
+            o.applicationId = applicationId;
+            o.applicationName = applicationName;
+            o.description = description;
+            o.destPort = destPort;
+            o.destPortGroup = destPortGroup;
+            o.destPortGroupPorts = destPortGroupPorts;
+            o.destPortType = destPortType;
+            o.destination = destination;
+            o.destinationGroupCidrs = destinationGroupCidrs;
+            o.destinationGroupType = destinationGroupType;
+            o.destinationType = destinationType;
+            o.direction = direction;
+            o.dnsResult = dnsResult;
+            o.dnsResultTime = dnsResultTime;
+            o.hitTimes = hitTimes;
+            o.id = id;
+            o.order = order;
+            o.proto = proto;
+            o.release = release;
+            o.source = source;
+            o.sourceGroupCidrs = sourceGroupCidrs;
+            o.sourceGroupType = sourceGroupType;
+            o.sourceType = sourceType;
+            return o;
         }
     }
 }

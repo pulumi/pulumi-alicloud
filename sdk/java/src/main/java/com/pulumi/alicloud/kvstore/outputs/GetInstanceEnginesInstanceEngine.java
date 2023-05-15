@@ -13,28 +13,19 @@ public final class GetInstanceEnginesInstanceEngine {
      * @return Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
      * 
      */
-    private final String engine;
+    private String engine;
     /**
      * @return Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
      * 
      */
-    private final String engineVersion;
+    private String engineVersion;
     /**
      * @return The Zone to launch the KVStore instance.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetInstanceEnginesInstanceEngine(
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("engineVersion") String engineVersion,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.engine = engine;
-        this.engineVersion = engineVersion;
-        this.zoneId = zoneId;
-    }
-
+    private GetInstanceEnginesInstanceEngine() {}
     /**
      * @return Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
      * 
@@ -64,16 +55,12 @@ public final class GetInstanceEnginesInstanceEngine {
     public static Builder builder(GetInstanceEnginesInstanceEngine defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String engine;
         private String engineVersion;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceEnginesInstanceEngine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.engine = defaults.engine;
@@ -81,19 +68,27 @@ public final class GetInstanceEnginesInstanceEngine {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder engineVersion(String engineVersion) {
             this.engineVersion = Objects.requireNonNull(engineVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetInstanceEnginesInstanceEngine build() {
-            return new GetInstanceEnginesInstanceEngine(engine, engineVersion, zoneId);
+        }
+        public GetInstanceEnginesInstanceEngine build() {
+            final var o = new GetInstanceEnginesInstanceEngine();
+            o.engine = engine;
+            o.engineVersion = engineVersion;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

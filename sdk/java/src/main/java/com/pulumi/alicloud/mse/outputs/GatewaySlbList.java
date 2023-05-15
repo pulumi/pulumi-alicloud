@@ -15,63 +15,44 @@ public final class GatewaySlbList {
      * @return The associate id.
      * 
      */
-    private final @Nullable String associateId;
+    private @Nullable String associateId;
     /**
      * @return The Mode of the gateway slb.
      * 
      */
-    private final @Nullable String gatewaySlbMode;
+    private @Nullable String gatewaySlbMode;
     /**
      * @return The Status of the gateway slb.
      * 
      */
-    private final @Nullable String gatewaySlbStatus;
+    private @Nullable String gatewaySlbStatus;
     /**
      * @return The creation time of the gateway slb.
      * 
      */
-    private final @Nullable String gmtCreate;
+    private @Nullable String gmtCreate;
     /**
      * @return The ID of the gateway slb.
      * 
      */
-    private final @Nullable String slbId;
+    private @Nullable String slbId;
     /**
      * @return The ip of the gateway slb.
      * 
      */
-    private final @Nullable String slbIp;
+    private @Nullable String slbIp;
     /**
      * @return The port of the gateway slb.
      * 
      */
-    private final @Nullable String slbPort;
+    private @Nullable String slbPort;
     /**
      * @return The type of the gateway slb.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GatewaySlbList(
-        @CustomType.Parameter("associateId") @Nullable String associateId,
-        @CustomType.Parameter("gatewaySlbMode") @Nullable String gatewaySlbMode,
-        @CustomType.Parameter("gatewaySlbStatus") @Nullable String gatewaySlbStatus,
-        @CustomType.Parameter("gmtCreate") @Nullable String gmtCreate,
-        @CustomType.Parameter("slbId") @Nullable String slbId,
-        @CustomType.Parameter("slbIp") @Nullable String slbIp,
-        @CustomType.Parameter("slbPort") @Nullable String slbPort,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.associateId = associateId;
-        this.gatewaySlbMode = gatewaySlbMode;
-        this.gatewaySlbStatus = gatewaySlbStatus;
-        this.gmtCreate = gmtCreate;
-        this.slbId = slbId;
-        this.slbIp = slbIp;
-        this.slbPort = slbPort;
-        this.type = type;
-    }
-
+    private GatewaySlbList() {}
     /**
      * @return The associate id.
      * 
@@ -136,7 +117,7 @@ public final class GatewaySlbList {
     public static Builder builder(GatewaySlbList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String associateId;
         private @Nullable String gatewaySlbMode;
@@ -146,11 +127,7 @@ public final class GatewaySlbList {
         private @Nullable String slbIp;
         private @Nullable String slbPort;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GatewaySlbList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associateId = defaults.associateId;
@@ -163,39 +140,57 @@ public final class GatewaySlbList {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder associateId(@Nullable String associateId) {
             this.associateId = associateId;
             return this;
         }
+        @CustomType.Setter
         public Builder gatewaySlbMode(@Nullable String gatewaySlbMode) {
             this.gatewaySlbMode = gatewaySlbMode;
             return this;
         }
+        @CustomType.Setter
         public Builder gatewaySlbStatus(@Nullable String gatewaySlbStatus) {
             this.gatewaySlbStatus = gatewaySlbStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder gmtCreate(@Nullable String gmtCreate) {
             this.gmtCreate = gmtCreate;
             return this;
         }
+        @CustomType.Setter
         public Builder slbId(@Nullable String slbId) {
             this.slbId = slbId;
             return this;
         }
+        @CustomType.Setter
         public Builder slbIp(@Nullable String slbIp) {
             this.slbIp = slbIp;
             return this;
         }
+        @CustomType.Setter
         public Builder slbPort(@Nullable String slbPort) {
             this.slbPort = slbPort;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GatewaySlbList build() {
-            return new GatewaySlbList(associateId, gatewaySlbMode, gatewaySlbStatus, gmtCreate, slbId, slbIp, slbPort, type);
+        }
+        public GatewaySlbList build() {
+            final var o = new GatewaySlbList();
+            o.associateId = associateId;
+            o.gatewaySlbMode = gatewaySlbMode;
+            o.gatewaySlbStatus = gatewaySlbStatus;
+            o.gmtCreate = gmtCreate;
+            o.slbId = slbId;
+            o.slbIp = slbIp;
+            o.slbPort = slbPort;
+            o.type = type;
+            return o;
         }
     }
 }

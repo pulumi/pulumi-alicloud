@@ -13,35 +13,24 @@ public final class GetDbInstancePlansPlanPlanConfigScaleOut {
      * @return The executed time of the Plan.
      * 
      */
-    private final String executeTime;
+    private String executeTime;
     /**
      * @return The Cron Time of the plan.
      * 
      */
-    private final String planCronTime;
+    private String planCronTime;
     /**
      * @return The Status of the plan Task.
      * 
      */
-    private final String planTaskStatus;
+    private String planTaskStatus;
     /**
      * @return The segment Node Num of the Plan.
      * 
      */
-    private final String segmentNodeNum;
+    private String segmentNodeNum;
 
-    @CustomType.Constructor
-    private GetDbInstancePlansPlanPlanConfigScaleOut(
-        @CustomType.Parameter("executeTime") String executeTime,
-        @CustomType.Parameter("planCronTime") String planCronTime,
-        @CustomType.Parameter("planTaskStatus") String planTaskStatus,
-        @CustomType.Parameter("segmentNodeNum") String segmentNodeNum) {
-        this.executeTime = executeTime;
-        this.planCronTime = planCronTime;
-        this.planTaskStatus = planTaskStatus;
-        this.segmentNodeNum = segmentNodeNum;
-    }
-
+    private GetDbInstancePlansPlanPlanConfigScaleOut() {}
     /**
      * @return The executed time of the Plan.
      * 
@@ -78,17 +67,13 @@ public final class GetDbInstancePlansPlanPlanConfigScaleOut {
     public static Builder builder(GetDbInstancePlansPlanPlanConfigScaleOut defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String executeTime;
         private String planCronTime;
         private String planTaskStatus;
         private String segmentNodeNum;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDbInstancePlansPlanPlanConfigScaleOut defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.executeTime = defaults.executeTime;
@@ -97,23 +82,33 @@ public final class GetDbInstancePlansPlanPlanConfigScaleOut {
     	      this.segmentNodeNum = defaults.segmentNodeNum;
         }
 
+        @CustomType.Setter
         public Builder executeTime(String executeTime) {
             this.executeTime = Objects.requireNonNull(executeTime);
             return this;
         }
+        @CustomType.Setter
         public Builder planCronTime(String planCronTime) {
             this.planCronTime = Objects.requireNonNull(planCronTime);
             return this;
         }
+        @CustomType.Setter
         public Builder planTaskStatus(String planTaskStatus) {
             this.planTaskStatus = Objects.requireNonNull(planTaskStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder segmentNodeNum(String segmentNodeNum) {
             this.segmentNodeNum = Objects.requireNonNull(segmentNodeNum);
             return this;
-        }        public GetDbInstancePlansPlanPlanConfigScaleOut build() {
-            return new GetDbInstancePlansPlanPlanConfigScaleOut(executeTime, planCronTime, planTaskStatus, segmentNodeNum);
+        }
+        public GetDbInstancePlansPlanPlanConfigScaleOut build() {
+            final var o = new GetDbInstancePlansPlanPlanConfigScaleOut();
+            o.executeTime = executeTime;
+            o.planCronTime = planCronTime;
+            o.planTaskStatus = planTaskStatus;
+            o.segmentNodeNum = segmentNodeNum;
+            return o;
         }
     }
 }

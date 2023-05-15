@@ -16,21 +16,14 @@ public final class RuleRuleActionForwardGroupConfigServerGroupStickySession {
      * @return Whether to enable session persistence.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
      * 
      */
-    private final @Nullable Integer timeout;
+    private @Nullable Integer timeout;
 
-    @CustomType.Constructor
-    private RuleRuleActionForwardGroupConfigServerGroupStickySession(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("timeout") @Nullable Integer timeout) {
-        this.enabled = enabled;
-        this.timeout = timeout;
-    }
-
+    private RuleRuleActionForwardGroupConfigServerGroupStickySession() {}
     /**
      * @return Whether to enable session persistence.
      * 
@@ -53,30 +46,32 @@ public final class RuleRuleActionForwardGroupConfigServerGroupStickySession {
     public static Builder builder(RuleRuleActionForwardGroupConfigServerGroupStickySession defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable Integer timeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleActionForwardGroupConfigServerGroupStickySession defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
             this.timeout = timeout;
             return this;
-        }        public RuleRuleActionForwardGroupConfigServerGroupStickySession build() {
-            return new RuleRuleActionForwardGroupConfigServerGroupStickySession(enabled, timeout);
+        }
+        public RuleRuleActionForwardGroupConfigServerGroupStickySession build() {
+            final var o = new RuleRuleActionForwardGroupConfigServerGroupStickySession();
+            o.enabled = enabled;
+            o.timeout = timeout;
+            return o;
         }
     }
 }

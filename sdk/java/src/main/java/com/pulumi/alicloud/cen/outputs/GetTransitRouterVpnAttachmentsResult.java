@@ -13,42 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTransitRouterVpnAttachmentsResult {
-    private final List<GetTransitRouterVpnAttachmentsAttachment> attachments;
-    private final String cenId;
+    private List<GetTransitRouterVpnAttachmentsAttachment> attachments;
+    private String cenId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String status;
-    private final @Nullable String transitRouterId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String status;
+    private @Nullable String transitRouterId;
 
-    @CustomType.Constructor
-    private GetTransitRouterVpnAttachmentsResult(
-        @CustomType.Parameter("attachments") List<GetTransitRouterVpnAttachmentsAttachment> attachments,
-        @CustomType.Parameter("cenId") String cenId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("transitRouterId") @Nullable String transitRouterId) {
-        this.attachments = attachments;
-        this.cenId = cenId;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-        this.transitRouterId = transitRouterId;
-    }
-
+    private GetTransitRouterVpnAttachmentsResult() {}
     public List<GetTransitRouterVpnAttachmentsAttachment> attachments() {
         return this.attachments;
     }
@@ -88,7 +67,7 @@ public final class GetTransitRouterVpnAttachmentsResult {
     public static Builder builder(GetTransitRouterVpnAttachmentsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetTransitRouterVpnAttachmentsAttachment> attachments;
         private String cenId;
@@ -99,11 +78,7 @@ public final class GetTransitRouterVpnAttachmentsResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private @Nullable String transitRouterId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterVpnAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachments = defaults.attachments;
@@ -117,6 +92,7 @@ public final class GetTransitRouterVpnAttachmentsResult {
     	      this.transitRouterId = defaults.transitRouterId;
         }
 
+        @CustomType.Setter
         public Builder attachments(List<GetTransitRouterVpnAttachmentsAttachment> attachments) {
             this.attachments = Objects.requireNonNull(attachments);
             return this;
@@ -124,14 +100,17 @@ public final class GetTransitRouterVpnAttachmentsResult {
         public Builder attachments(GetTransitRouterVpnAttachmentsAttachment... attachments) {
             return attachments(List.of(attachments));
         }
+        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -139,10 +118,12 @@ public final class GetTransitRouterVpnAttachmentsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -150,19 +131,33 @@ public final class GetTransitRouterVpnAttachmentsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterId(@Nullable String transitRouterId) {
             this.transitRouterId = transitRouterId;
             return this;
-        }        public GetTransitRouterVpnAttachmentsResult build() {
-            return new GetTransitRouterVpnAttachmentsResult(attachments, cenId, id, ids, nameRegex, names, outputFile, status, transitRouterId);
+        }
+        public GetTransitRouterVpnAttachmentsResult build() {
+            final var o = new GetTransitRouterVpnAttachmentsResult();
+            o.attachments = attachments;
+            o.cenId = cenId;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            o.transitRouterId = transitRouterId;
+            return o;
         }
     }
 }

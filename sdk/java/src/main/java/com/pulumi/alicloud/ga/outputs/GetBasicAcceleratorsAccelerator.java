@@ -17,105 +17,74 @@ public final class GetBasicAcceleratorsAccelerator {
      * @return The bandwidth billing method.
      * 
      */
-    private final String bandwidthBillingType;
+    private String bandwidthBillingType;
     /**
      * @return The id of the Global Accelerator Basic Accelerator instance.
      * 
      */
-    private final String basicAcceleratorId;
+    private String basicAcceleratorId;
     /**
      * @return The name of the Global Accelerator Basic Accelerator instance.
      * 
      */
-    private final String basicAcceleratorName;
+    private String basicAcceleratorName;
     /**
      * @return The details about the basic bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance.
      * 
      */
-    private final List<GetBasicAcceleratorsAcceleratorBasicBandwidthPackage> basicBandwidthPackages;
+    private List<GetBasicAcceleratorsAcceleratorBasicBandwidthPackage> basicBandwidthPackages;
     /**
      * @return The ID of the endpoint group that is associated with the Global Accelerator Basic Accelerator instance.
      * 
      */
-    private final String basicEndpointGroupId;
+    private String basicEndpointGroupId;
     /**
      * @return The ID of the acceleration region.
      * 
      */
-    private final String basicIpSetId;
+    private String basicIpSetId;
     /**
      * @return The timestamp that indicates when the Global Accelerator Basic Accelerator instance was created.
      * 
      */
-    private final Integer createTime;
+    private Integer createTime;
     /**
      * @return The details about the cross-region acceleration bandwidth plan that is associated with the Global Accelerator Basic Accelerator instance. **NOTE:** This array is returned only for Global Accelerator Basic Accelerator instances that are created on the International site.
      * 
      */
-    private final List<GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage> crossDomainBandwidthPackages;
+    private List<GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage> crossDomainBandwidthPackages;
     /**
      * @return The description of the Global Accelerator Basic Accelerator instance.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The timestamp that indicates when the Global Accelerator Basic Accelerator instance was expired.
      * 
      */
-    private final Integer expiredTime;
+    private Integer expiredTime;
     /**
      * @return The id of the Global Accelerator Basic Accelerator.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The billing method of the Global Accelerator Basic Accelerator instance. Only `PREPAY` is returned, which indicates the subscription billing method.
      * 
      */
-    private final String instanceChargeType;
+    private String instanceChargeType;
     /**
      * @return The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetBasicAcceleratorsAccelerator(
-        @CustomType.Parameter("bandwidthBillingType") String bandwidthBillingType,
-        @CustomType.Parameter("basicAcceleratorId") String basicAcceleratorId,
-        @CustomType.Parameter("basicAcceleratorName") String basicAcceleratorName,
-        @CustomType.Parameter("basicBandwidthPackages") List<GetBasicAcceleratorsAcceleratorBasicBandwidthPackage> basicBandwidthPackages,
-        @CustomType.Parameter("basicEndpointGroupId") String basicEndpointGroupId,
-        @CustomType.Parameter("basicIpSetId") String basicIpSetId,
-        @CustomType.Parameter("createTime") Integer createTime,
-        @CustomType.Parameter("crossDomainBandwidthPackages") List<GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage> crossDomainBandwidthPackages,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("expiredTime") Integer expiredTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceChargeType") String instanceChargeType,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("status") String status) {
-        this.bandwidthBillingType = bandwidthBillingType;
-        this.basicAcceleratorId = basicAcceleratorId;
-        this.basicAcceleratorName = basicAcceleratorName;
-        this.basicBandwidthPackages = basicBandwidthPackages;
-        this.basicEndpointGroupId = basicEndpointGroupId;
-        this.basicIpSetId = basicIpSetId;
-        this.createTime = createTime;
-        this.crossDomainBandwidthPackages = crossDomainBandwidthPackages;
-        this.description = description;
-        this.expiredTime = expiredTime;
-        this.id = id;
-        this.instanceChargeType = instanceChargeType;
-        this.regionId = regionId;
-        this.status = status;
-    }
-
+    private GetBasicAcceleratorsAccelerator() {}
     /**
      * @return The bandwidth billing method.
      * 
@@ -222,7 +191,7 @@ public final class GetBasicAcceleratorsAccelerator {
     public static Builder builder(GetBasicAcceleratorsAccelerator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bandwidthBillingType;
         private String basicAcceleratorId;
@@ -238,11 +207,7 @@ public final class GetBasicAcceleratorsAccelerator {
         private String instanceChargeType;
         private String regionId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBasicAcceleratorsAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidthBillingType = defaults.bandwidthBillingType;
@@ -261,18 +226,22 @@ public final class GetBasicAcceleratorsAccelerator {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder bandwidthBillingType(String bandwidthBillingType) {
             this.bandwidthBillingType = Objects.requireNonNull(bandwidthBillingType);
             return this;
         }
+        @CustomType.Setter
         public Builder basicAcceleratorId(String basicAcceleratorId) {
             this.basicAcceleratorId = Objects.requireNonNull(basicAcceleratorId);
             return this;
         }
+        @CustomType.Setter
         public Builder basicAcceleratorName(String basicAcceleratorName) {
             this.basicAcceleratorName = Objects.requireNonNull(basicAcceleratorName);
             return this;
         }
+        @CustomType.Setter
         public Builder basicBandwidthPackages(List<GetBasicAcceleratorsAcceleratorBasicBandwidthPackage> basicBandwidthPackages) {
             this.basicBandwidthPackages = Objects.requireNonNull(basicBandwidthPackages);
             return this;
@@ -280,18 +249,22 @@ public final class GetBasicAcceleratorsAccelerator {
         public Builder basicBandwidthPackages(GetBasicAcceleratorsAcceleratorBasicBandwidthPackage... basicBandwidthPackages) {
             return basicBandwidthPackages(List.of(basicBandwidthPackages));
         }
+        @CustomType.Setter
         public Builder basicEndpointGroupId(String basicEndpointGroupId) {
             this.basicEndpointGroupId = Objects.requireNonNull(basicEndpointGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder basicIpSetId(String basicIpSetId) {
             this.basicIpSetId = Objects.requireNonNull(basicIpSetId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder crossDomainBandwidthPackages(List<GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage> crossDomainBandwidthPackages) {
             this.crossDomainBandwidthPackages = Objects.requireNonNull(crossDomainBandwidthPackages);
             return this;
@@ -299,31 +272,53 @@ public final class GetBasicAcceleratorsAccelerator {
         public Builder crossDomainBandwidthPackages(GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage... crossDomainBandwidthPackages) {
             return crossDomainBandwidthPackages(List.of(crossDomainBandwidthPackages));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(Integer expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
             this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetBasicAcceleratorsAccelerator build() {
-            return new GetBasicAcceleratorsAccelerator(bandwidthBillingType, basicAcceleratorId, basicAcceleratorName, basicBandwidthPackages, basicEndpointGroupId, basicIpSetId, createTime, crossDomainBandwidthPackages, description, expiredTime, id, instanceChargeType, regionId, status);
+        }
+        public GetBasicAcceleratorsAccelerator build() {
+            final var o = new GetBasicAcceleratorsAccelerator();
+            o.bandwidthBillingType = bandwidthBillingType;
+            o.basicAcceleratorId = basicAcceleratorId;
+            o.basicAcceleratorName = basicAcceleratorName;
+            o.basicBandwidthPackages = basicBandwidthPackages;
+            o.basicEndpointGroupId = basicEndpointGroupId;
+            o.basicIpSetId = basicIpSetId;
+            o.createTime = createTime;
+            o.crossDomainBandwidthPackages = crossDomainBandwidthPackages;
+            o.description = description;
+            o.expiredTime = expiredTime;
+            o.id = id;
+            o.instanceChargeType = instanceChargeType;
+            o.regionId = regionId;
+            o.status = status;
+            return o;
         }
     }
 }

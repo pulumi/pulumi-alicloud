@@ -13,42 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccessAssignmentsResult {
-    private final @Nullable String accessConfigurationId;
-    private final List<GetAccessAssignmentsAssignment> assignments;
-    private final String directoryId;
+    private @Nullable String accessConfigurationId;
+    private List<GetAccessAssignmentsAssignment> assignments;
+    private String directoryId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final @Nullable String principalType;
-    private final @Nullable String targetId;
-    private final @Nullable String targetType;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private @Nullable String principalType;
+    private @Nullable String targetId;
+    private @Nullable String targetType;
 
-    @CustomType.Constructor
-    private GetAccessAssignmentsResult(
-        @CustomType.Parameter("accessConfigurationId") @Nullable String accessConfigurationId,
-        @CustomType.Parameter("assignments") List<GetAccessAssignmentsAssignment> assignments,
-        @CustomType.Parameter("directoryId") String directoryId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("principalType") @Nullable String principalType,
-        @CustomType.Parameter("targetId") @Nullable String targetId,
-        @CustomType.Parameter("targetType") @Nullable String targetType) {
-        this.accessConfigurationId = accessConfigurationId;
-        this.assignments = assignments;
-        this.directoryId = directoryId;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.principalType = principalType;
-        this.targetId = targetId;
-        this.targetType = targetType;
-    }
-
+    private GetAccessAssignmentsResult() {}
     public Optional<String> accessConfigurationId() {
         return Optional.ofNullable(this.accessConfigurationId);
     }
@@ -88,7 +67,7 @@ public final class GetAccessAssignmentsResult {
     public static Builder builder(GetAccessAssignmentsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessConfigurationId;
         private List<GetAccessAssignmentsAssignment> assignments;
@@ -99,11 +78,7 @@ public final class GetAccessAssignmentsResult {
         private @Nullable String principalType;
         private @Nullable String targetId;
         private @Nullable String targetType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccessAssignmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigurationId = defaults.accessConfigurationId;
@@ -117,10 +92,12 @@ public final class GetAccessAssignmentsResult {
     	      this.targetType = defaults.targetType;
         }
 
+        @CustomType.Setter
         public Builder accessConfigurationId(@Nullable String accessConfigurationId) {
             this.accessConfigurationId = accessConfigurationId;
             return this;
         }
+        @CustomType.Setter
         public Builder assignments(List<GetAccessAssignmentsAssignment> assignments) {
             this.assignments = Objects.requireNonNull(assignments);
             return this;
@@ -128,14 +105,17 @@ public final class GetAccessAssignmentsResult {
         public Builder assignments(GetAccessAssignmentsAssignment... assignments) {
             return assignments(List.of(assignments));
         }
+        @CustomType.Setter
         public Builder directoryId(String directoryId) {
             this.directoryId = Objects.requireNonNull(directoryId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -143,23 +123,38 @@ public final class GetAccessAssignmentsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder principalType(@Nullable String principalType) {
             this.principalType = principalType;
             return this;
         }
+        @CustomType.Setter
         public Builder targetId(@Nullable String targetId) {
             this.targetId = targetId;
             return this;
         }
+        @CustomType.Setter
         public Builder targetType(@Nullable String targetType) {
             this.targetType = targetType;
             return this;
-        }        public GetAccessAssignmentsResult build() {
-            return new GetAccessAssignmentsResult(accessConfigurationId, assignments, directoryId, id, ids, outputFile, principalType, targetId, targetType);
+        }
+        public GetAccessAssignmentsResult build() {
+            final var o = new GetAccessAssignmentsResult();
+            o.accessConfigurationId = accessConfigurationId;
+            o.assignments = assignments;
+            o.directoryId = directoryId;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.principalType = principalType;
+            o.targetId = targetId;
+            o.targetType = targetType;
+            return o;
         }
     }
 }

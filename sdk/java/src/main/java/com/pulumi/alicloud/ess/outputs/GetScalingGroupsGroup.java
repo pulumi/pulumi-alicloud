@@ -19,196 +19,139 @@ public final class GetScalingGroupsGroup {
      * @return Number of active instances in scaling group.
      * 
      */
-    private final Integer activeCapacity;
+    private Integer activeCapacity;
     /**
      * @return Active scaling configuration for scaling group.
      * 
      */
-    private final String activeScalingConfiguration;
+    private String activeScalingConfiguration;
     /**
      * @return Default cooldown time of scaling group.
      * 
      */
-    private final Integer cooldownTime;
+    private Integer cooldownTime;
     /**
      * @return Creation time of scaling group.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return Db instances id which the ECS instance attached to.
      * 
      */
-    private final List<String> dbInstanceIds;
+    private List<String> dbInstanceIds;
     /**
      * @return Whether the scaling group deletion protection is enabled.
      * 
      */
-    private final Boolean groupDeletionProtection;
+    private Boolean groupDeletionProtection;
     /**
      * @return The health check method of the scaling group.
      * 
      */
-    private final String healthCheckType;
+    private String healthCheckType;
     /**
      * @return ID of the scaling group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Active launch template ID for scaling group.
      * 
      */
-    private final String launchTemplateId;
+    private String launchTemplateId;
     /**
      * @return Version of active launch template.
      * 
      */
-    private final String launchTemplateVersion;
+    private String launchTemplateVersion;
     /**
      * @return Lifecycle state of scaling group.
      * 
      */
-    private final String lifecycleState;
+    private String lifecycleState;
     /**
      * @return Slb instances id which the ECS instance attached to.
      * 
      */
-    private final List<String> loadBalancerIds;
+    private List<String> loadBalancerIds;
     /**
      * @return The maximum number of ECS instances.
      * 
      */
-    private final Integer maxSize;
+    private Integer maxSize;
     /**
      * @return The minimum number of ECS instances.
      * 
      */
-    private final Integer minSize;
+    private Integer minSize;
     /**
      * @return The modification time.
      * 
      */
-    private final String modificationTime;
+    private String modificationTime;
     /**
      * @return Name of the scaling group.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Number of pending instances in scaling group.
      * 
      */
-    private final Integer pendingCapacity;
+    private Integer pendingCapacity;
     /**
      * @return Region ID the scaling group belongs to.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return Removal policy used to select the ECS instance to remove from the scaling group.
      * 
      */
-    private final List<String> removalPolicies;
+    private List<String> removalPolicies;
     /**
      * @return Number of removing instances in scaling group.
      * 
      */
-    private final Integer removingCapacity;
+    private Integer removingCapacity;
     /**
      * @return The Process in suspension.
      * 
      */
-    private final List<String> suspendedProcesses;
+    private List<String> suspendedProcesses;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
     /**
      * @return Number of instances in scaling group.
      * 
      */
-    private final Integer totalCapacity;
+    private Integer totalCapacity;
     /**
      * @return The number of all ECS instances in the scaling group.
      * 
      */
-    private final Integer totalInstanceCount;
+    private Integer totalInstanceCount;
     /**
      * @return The ID of the VPC to which the scaling group belongs.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The ID of the vSwitch to which the scaling group belongs.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return Vswitches id in which the ECS instance launched.
      * 
      */
-    private final List<String> vswitchIds;
+    private List<String> vswitchIds;
 
-    @CustomType.Constructor
-    private GetScalingGroupsGroup(
-        @CustomType.Parameter("activeCapacity") Integer activeCapacity,
-        @CustomType.Parameter("activeScalingConfiguration") String activeScalingConfiguration,
-        @CustomType.Parameter("cooldownTime") Integer cooldownTime,
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("dbInstanceIds") List<String> dbInstanceIds,
-        @CustomType.Parameter("groupDeletionProtection") Boolean groupDeletionProtection,
-        @CustomType.Parameter("healthCheckType") String healthCheckType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("launchTemplateId") String launchTemplateId,
-        @CustomType.Parameter("launchTemplateVersion") String launchTemplateVersion,
-        @CustomType.Parameter("lifecycleState") String lifecycleState,
-        @CustomType.Parameter("loadBalancerIds") List<String> loadBalancerIds,
-        @CustomType.Parameter("maxSize") Integer maxSize,
-        @CustomType.Parameter("minSize") Integer minSize,
-        @CustomType.Parameter("modificationTime") String modificationTime,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("pendingCapacity") Integer pendingCapacity,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("removalPolicies") List<String> removalPolicies,
-        @CustomType.Parameter("removingCapacity") Integer removingCapacity,
-        @CustomType.Parameter("suspendedProcesses") List<String> suspendedProcesses,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("totalCapacity") Integer totalCapacity,
-        @CustomType.Parameter("totalInstanceCount") Integer totalInstanceCount,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("vswitchIds") List<String> vswitchIds) {
-        this.activeCapacity = activeCapacity;
-        this.activeScalingConfiguration = activeScalingConfiguration;
-        this.cooldownTime = cooldownTime;
-        this.creationTime = creationTime;
-        this.dbInstanceIds = dbInstanceIds;
-        this.groupDeletionProtection = groupDeletionProtection;
-        this.healthCheckType = healthCheckType;
-        this.id = id;
-        this.launchTemplateId = launchTemplateId;
-        this.launchTemplateVersion = launchTemplateVersion;
-        this.lifecycleState = lifecycleState;
-        this.loadBalancerIds = loadBalancerIds;
-        this.maxSize = maxSize;
-        this.minSize = minSize;
-        this.modificationTime = modificationTime;
-        this.name = name;
-        this.pendingCapacity = pendingCapacity;
-        this.regionId = regionId;
-        this.removalPolicies = removalPolicies;
-        this.removingCapacity = removingCapacity;
-        this.suspendedProcesses = suspendedProcesses;
-        this.tags = tags;
-        this.totalCapacity = totalCapacity;
-        this.totalInstanceCount = totalInstanceCount;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.vswitchIds = vswitchIds;
-    }
-
+    private GetScalingGroupsGroup() {}
     /**
      * @return Number of active instances in scaling group.
      * 
@@ -406,7 +349,7 @@ public final class GetScalingGroupsGroup {
     public static Builder builder(GetScalingGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer activeCapacity;
         private String activeScalingConfiguration;
@@ -435,11 +378,7 @@ public final class GetScalingGroupsGroup {
         private String vpcId;
         private String vswitchId;
         private List<String> vswitchIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetScalingGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.activeCapacity = defaults.activeCapacity;
@@ -471,22 +410,27 @@ public final class GetScalingGroupsGroup {
     	      this.vswitchIds = defaults.vswitchIds;
         }
 
+        @CustomType.Setter
         public Builder activeCapacity(Integer activeCapacity) {
             this.activeCapacity = Objects.requireNonNull(activeCapacity);
             return this;
         }
+        @CustomType.Setter
         public Builder activeScalingConfiguration(String activeScalingConfiguration) {
             this.activeScalingConfiguration = Objects.requireNonNull(activeScalingConfiguration);
             return this;
         }
+        @CustomType.Setter
         public Builder cooldownTime(Integer cooldownTime) {
             this.cooldownTime = Objects.requireNonNull(cooldownTime);
             return this;
         }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceIds(List<String> dbInstanceIds) {
             this.dbInstanceIds = Objects.requireNonNull(dbInstanceIds);
             return this;
@@ -494,30 +438,37 @@ public final class GetScalingGroupsGroup {
         public Builder dbInstanceIds(String... dbInstanceIds) {
             return dbInstanceIds(List.of(dbInstanceIds));
         }
+        @CustomType.Setter
         public Builder groupDeletionProtection(Boolean groupDeletionProtection) {
             this.groupDeletionProtection = Objects.requireNonNull(groupDeletionProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckType(String healthCheckType) {
             this.healthCheckType = Objects.requireNonNull(healthCheckType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder launchTemplateId(String launchTemplateId) {
             this.launchTemplateId = Objects.requireNonNull(launchTemplateId);
             return this;
         }
+        @CustomType.Setter
         public Builder launchTemplateVersion(String launchTemplateVersion) {
             this.launchTemplateVersion = Objects.requireNonNull(launchTemplateVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder lifecycleState(String lifecycleState) {
             this.lifecycleState = Objects.requireNonNull(lifecycleState);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerIds(List<String> loadBalancerIds) {
             this.loadBalancerIds = Objects.requireNonNull(loadBalancerIds);
             return this;
@@ -525,30 +476,37 @@ public final class GetScalingGroupsGroup {
         public Builder loadBalancerIds(String... loadBalancerIds) {
             return loadBalancerIds(List.of(loadBalancerIds));
         }
+        @CustomType.Setter
         public Builder maxSize(Integer maxSize) {
             this.maxSize = Objects.requireNonNull(maxSize);
             return this;
         }
+        @CustomType.Setter
         public Builder minSize(Integer minSize) {
             this.minSize = Objects.requireNonNull(minSize);
             return this;
         }
+        @CustomType.Setter
         public Builder modificationTime(String modificationTime) {
             this.modificationTime = Objects.requireNonNull(modificationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder pendingCapacity(Integer pendingCapacity) {
             this.pendingCapacity = Objects.requireNonNull(pendingCapacity);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder removalPolicies(List<String> removalPolicies) {
             this.removalPolicies = Objects.requireNonNull(removalPolicies);
             return this;
@@ -556,10 +514,12 @@ public final class GetScalingGroupsGroup {
         public Builder removalPolicies(String... removalPolicies) {
             return removalPolicies(List.of(removalPolicies));
         }
+        @CustomType.Setter
         public Builder removingCapacity(Integer removingCapacity) {
             this.removingCapacity = Objects.requireNonNull(removingCapacity);
             return this;
         }
+        @CustomType.Setter
         public Builder suspendedProcesses(List<String> suspendedProcesses) {
             this.suspendedProcesses = Objects.requireNonNull(suspendedProcesses);
             return this;
@@ -567,34 +527,69 @@ public final class GetScalingGroupsGroup {
         public Builder suspendedProcesses(String... suspendedProcesses) {
             return suspendedProcesses(List.of(suspendedProcesses));
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder totalCapacity(Integer totalCapacity) {
             this.totalCapacity = Objects.requireNonNull(totalCapacity);
             return this;
         }
+        @CustomType.Setter
         public Builder totalInstanceCount(Integer totalInstanceCount) {
             this.totalInstanceCount = Objects.requireNonNull(totalInstanceCount);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchIds(List<String> vswitchIds) {
             this.vswitchIds = Objects.requireNonNull(vswitchIds);
             return this;
         }
         public Builder vswitchIds(String... vswitchIds) {
             return vswitchIds(List.of(vswitchIds));
-        }        public GetScalingGroupsGroup build() {
-            return new GetScalingGroupsGroup(activeCapacity, activeScalingConfiguration, cooldownTime, creationTime, dbInstanceIds, groupDeletionProtection, healthCheckType, id, launchTemplateId, launchTemplateVersion, lifecycleState, loadBalancerIds, maxSize, minSize, modificationTime, name, pendingCapacity, regionId, removalPolicies, removingCapacity, suspendedProcesses, tags, totalCapacity, totalInstanceCount, vpcId, vswitchId, vswitchIds);
+        }
+        public GetScalingGroupsGroup build() {
+            final var o = new GetScalingGroupsGroup();
+            o.activeCapacity = activeCapacity;
+            o.activeScalingConfiguration = activeScalingConfiguration;
+            o.cooldownTime = cooldownTime;
+            o.creationTime = creationTime;
+            o.dbInstanceIds = dbInstanceIds;
+            o.groupDeletionProtection = groupDeletionProtection;
+            o.healthCheckType = healthCheckType;
+            o.id = id;
+            o.launchTemplateId = launchTemplateId;
+            o.launchTemplateVersion = launchTemplateVersion;
+            o.lifecycleState = lifecycleState;
+            o.loadBalancerIds = loadBalancerIds;
+            o.maxSize = maxSize;
+            o.minSize = minSize;
+            o.modificationTime = modificationTime;
+            o.name = name;
+            o.pendingCapacity = pendingCapacity;
+            o.regionId = regionId;
+            o.removalPolicies = removalPolicies;
+            o.removingCapacity = removingCapacity;
+            o.suspendedProcesses = suspendedProcesses;
+            o.tags = tags;
+            o.totalCapacity = totalCapacity;
+            o.totalInstanceCount = totalInstanceCount;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.vswitchIds = vswitchIds;
+            return o;
         }
     }
 }

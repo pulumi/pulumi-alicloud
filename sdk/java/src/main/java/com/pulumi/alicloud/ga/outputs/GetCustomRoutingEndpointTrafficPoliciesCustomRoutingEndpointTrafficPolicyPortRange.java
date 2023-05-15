@@ -13,21 +13,14 @@ public final class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointT
      * @return The first port of the port range.
      * 
      */
-    private final Integer fromPort;
+    private Integer fromPort;
     /**
      * @return The last port of the port range.
      * 
      */
-    private final Integer toPort;
+    private Integer toPort;
 
-    @CustomType.Constructor
-    private GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange(
-        @CustomType.Parameter("fromPort") Integer fromPort,
-        @CustomType.Parameter("toPort") Integer toPort) {
-        this.fromPort = fromPort;
-        this.toPort = toPort;
-    }
-
+    private GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange() {}
     /**
      * @return The first port of the port range.
      * 
@@ -50,30 +43,32 @@ public final class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointT
     public static Builder builder(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer fromPort;
         private Integer toPort;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fromPort = defaults.fromPort;
     	      this.toPort = defaults.toPort;
         }
 
+        @CustomType.Setter
         public Builder fromPort(Integer fromPort) {
             this.fromPort = Objects.requireNonNull(fromPort);
             return this;
         }
+        @CustomType.Setter
         public Builder toPort(Integer toPort) {
             this.toPort = Objects.requireNonNull(toPort);
             return this;
-        }        public GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange build() {
-            return new GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange(fromPort, toPort);
+        }
+        public GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange build() {
+            final var o = new GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange();
+            o.fromPort = fromPort;
+            o.toPort = toPort;
+            return o;
         }
     }
 }

@@ -17,41 +17,26 @@ public final class GetEnterpriseDatabasesResult {
      * @return A list of Database Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetEnterpriseDatabasesDatabase> databases;
+    private List<GetEnterpriseDatabasesDatabase> databases;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Database IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return The instance ID of the target database.
      * 
      */
-    private final String instanceId;
-    private final @Nullable String nameRegex;
-    private final @Nullable String outputFile;
+    private String instanceId;
+    private @Nullable String nameRegex;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetEnterpriseDatabasesResult(
-        @CustomType.Parameter("databases") List<GetEnterpriseDatabasesDatabase> databases,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.databases = databases;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.nameRegex = nameRegex;
-        this.outputFile = outputFile;
-    }
-
+    private GetEnterpriseDatabasesResult() {}
     /**
      * @return A list of Database Entries. Each element contains the following attributes:
      * 
@@ -94,7 +79,7 @@ public final class GetEnterpriseDatabasesResult {
     public static Builder builder(GetEnterpriseDatabasesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetEnterpriseDatabasesDatabase> databases;
         private String id;
@@ -102,11 +87,7 @@ public final class GetEnterpriseDatabasesResult {
         private String instanceId;
         private @Nullable String nameRegex;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnterpriseDatabasesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databases = defaults.databases;
@@ -117,6 +98,7 @@ public final class GetEnterpriseDatabasesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder databases(List<GetEnterpriseDatabasesDatabase> databases) {
             this.databases = Objects.requireNonNull(databases);
             return this;
@@ -124,10 +106,12 @@ public final class GetEnterpriseDatabasesResult {
         public Builder databases(GetEnterpriseDatabasesDatabase... databases) {
             return databases(List.of(databases));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -135,19 +119,30 @@ public final class GetEnterpriseDatabasesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetEnterpriseDatabasesResult build() {
-            return new GetEnterpriseDatabasesResult(databases, id, ids, instanceId, nameRegex, outputFile);
+        }
+        public GetEnterpriseDatabasesResult build() {
+            final var o = new GetEnterpriseDatabasesResult();
+            o.databases = databases;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.nameRegex = nameRegex;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

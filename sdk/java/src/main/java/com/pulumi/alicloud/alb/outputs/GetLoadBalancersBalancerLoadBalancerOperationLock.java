@@ -13,21 +13,14 @@ public final class GetLoadBalancersBalancerLoadBalancerOperationLock {
      * @return The Locking of the Reasons.
      * 
      */
-    private final String lockReason;
+    private String lockReason;
     /**
      * @return The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
      * 
      */
-    private final String lockType;
+    private String lockType;
 
-    @CustomType.Constructor
-    private GetLoadBalancersBalancerLoadBalancerOperationLock(
-        @CustomType.Parameter("lockReason") String lockReason,
-        @CustomType.Parameter("lockType") String lockType) {
-        this.lockReason = lockReason;
-        this.lockType = lockType;
-    }
-
+    private GetLoadBalancersBalancerLoadBalancerOperationLock() {}
     /**
      * @return The Locking of the Reasons.
      * 
@@ -50,30 +43,32 @@ public final class GetLoadBalancersBalancerLoadBalancerOperationLock {
     public static Builder builder(GetLoadBalancersBalancerLoadBalancerOperationLock defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String lockReason;
         private String lockType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancersBalancerLoadBalancerOperationLock defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lockReason = defaults.lockReason;
     	      this.lockType = defaults.lockType;
         }
 
+        @CustomType.Setter
         public Builder lockReason(String lockReason) {
             this.lockReason = Objects.requireNonNull(lockReason);
             return this;
         }
+        @CustomType.Setter
         public Builder lockType(String lockType) {
             this.lockType = Objects.requireNonNull(lockType);
             return this;
-        }        public GetLoadBalancersBalancerLoadBalancerOperationLock build() {
-            return new GetLoadBalancersBalancerLoadBalancerOperationLock(lockReason, lockType);
+        }
+        public GetLoadBalancersBalancerLoadBalancerOperationLock build() {
+            final var o = new GetLoadBalancersBalancerLoadBalancerOperationLock();
+            o.lockReason = lockReason;
+            o.lockType = lockType;
+            return o;
         }
     }
 }

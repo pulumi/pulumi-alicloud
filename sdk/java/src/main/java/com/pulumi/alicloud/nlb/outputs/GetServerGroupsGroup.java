@@ -19,119 +19,84 @@ public final class GetServerGroupsGroup {
      * @return The protocol version.
      * 
      */
-    private final String addressIpVersion;
+    private String addressIpVersion;
     /**
      * @return Indicates whether connection draining is enabled.
      * 
      */
-    private final Boolean connectionDrain;
+    private Boolean connectionDrain;
     /**
      * @return The timeout period of connection draining. Unit: seconds.
      * 
      */
-    private final Integer connectionDrainTimeout;
+    private Integer connectionDrainTimeout;
     /**
      * @return The configurations of health checks.
      * 
      */
-    private final List<GetServerGroupsGroupHealthCheck> healthChecks;
+    private List<GetServerGroupsGroupHealthCheck> healthChecks;
     /**
      * @return The ID of the Server Group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Indicates whether client address retention is enabled.
      * 
      */
-    private final Boolean preserveClientIpEnabled;
+    private Boolean preserveClientIpEnabled;
     /**
      * @return The protocol used to forward requests to the backend servers.
      * 
      */
-    private final String protocol;
+    private String protocol;
     /**
      * @return The NLB instance.
      * 
      */
-    private final List<String> relatedLoadBalancerIds;
+    private List<String> relatedLoadBalancerIds;
     /**
      * @return The ID of the resource group to which the security group belongs.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The routing algorithm.
      * 
      */
-    private final String scheduler;
+    private String scheduler;
     /**
      * @return The number of server groups associated with the NLB instance.
      * 
      */
-    private final Integer serverCount;
+    private Integer serverCount;
     /**
      * @return The name of the server group.
      * 
      */
-    private final String serverGroupName;
+    private String serverGroupName;
     /**
      * @return The type of the server group.
      * 
      */
-    private final String serverGroupType;
+    private String serverGroupType;
     /**
      * @return The status of the server group.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return The ID of the VPC to which the server group belongs.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetServerGroupsGroup(
-        @CustomType.Parameter("addressIpVersion") String addressIpVersion,
-        @CustomType.Parameter("connectionDrain") Boolean connectionDrain,
-        @CustomType.Parameter("connectionDrainTimeout") Integer connectionDrainTimeout,
-        @CustomType.Parameter("healthChecks") List<GetServerGroupsGroupHealthCheck> healthChecks,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("preserveClientIpEnabled") Boolean preserveClientIpEnabled,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("relatedLoadBalancerIds") List<String> relatedLoadBalancerIds,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("scheduler") String scheduler,
-        @CustomType.Parameter("serverCount") Integer serverCount,
-        @CustomType.Parameter("serverGroupName") String serverGroupName,
-        @CustomType.Parameter("serverGroupType") String serverGroupType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.addressIpVersion = addressIpVersion;
-        this.connectionDrain = connectionDrain;
-        this.connectionDrainTimeout = connectionDrainTimeout;
-        this.healthChecks = healthChecks;
-        this.id = id;
-        this.preserveClientIpEnabled = preserveClientIpEnabled;
-        this.protocol = protocol;
-        this.relatedLoadBalancerIds = relatedLoadBalancerIds;
-        this.resourceGroupId = resourceGroupId;
-        this.scheduler = scheduler;
-        this.serverCount = serverCount;
-        this.serverGroupName = serverGroupName;
-        this.serverGroupType = serverGroupType;
-        this.status = status;
-        this.tags = tags;
-        this.vpcId = vpcId;
-    }
-
+    private GetServerGroupsGroup() {}
     /**
      * @return The protocol version.
      * 
@@ -252,7 +217,7 @@ public final class GetServerGroupsGroup {
     public static Builder builder(GetServerGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String addressIpVersion;
         private Boolean connectionDrain;
@@ -270,11 +235,7 @@ public final class GetServerGroupsGroup {
         private String status;
         private Map<String,Object> tags;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addressIpVersion = defaults.addressIpVersion;
@@ -295,18 +256,22 @@ public final class GetServerGroupsGroup {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder addressIpVersion(String addressIpVersion) {
             this.addressIpVersion = Objects.requireNonNull(addressIpVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder connectionDrain(Boolean connectionDrain) {
             this.connectionDrain = Objects.requireNonNull(connectionDrain);
             return this;
         }
+        @CustomType.Setter
         public Builder connectionDrainTimeout(Integer connectionDrainTimeout) {
             this.connectionDrainTimeout = Objects.requireNonNull(connectionDrainTimeout);
             return this;
         }
+        @CustomType.Setter
         public Builder healthChecks(List<GetServerGroupsGroupHealthCheck> healthChecks) {
             this.healthChecks = Objects.requireNonNull(healthChecks);
             return this;
@@ -314,18 +279,22 @@ public final class GetServerGroupsGroup {
         public Builder healthChecks(GetServerGroupsGroupHealthCheck... healthChecks) {
             return healthChecks(List.of(healthChecks));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder preserveClientIpEnabled(Boolean preserveClientIpEnabled) {
             this.preserveClientIpEnabled = Objects.requireNonNull(preserveClientIpEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder relatedLoadBalancerIds(List<String> relatedLoadBalancerIds) {
             this.relatedLoadBalancerIds = Objects.requireNonNull(relatedLoadBalancerIds);
             return this;
@@ -333,39 +302,65 @@ public final class GetServerGroupsGroup {
         public Builder relatedLoadBalancerIds(String... relatedLoadBalancerIds) {
             return relatedLoadBalancerIds(List.of(relatedLoadBalancerIds));
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduler(String scheduler) {
             this.scheduler = Objects.requireNonNull(scheduler);
             return this;
         }
+        @CustomType.Setter
         public Builder serverCount(Integer serverCount) {
             this.serverCount = Objects.requireNonNull(serverCount);
             return this;
         }
+        @CustomType.Setter
         public Builder serverGroupName(String serverGroupName) {
             this.serverGroupName = Objects.requireNonNull(serverGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder serverGroupType(String serverGroupType) {
             this.serverGroupType = Objects.requireNonNull(serverGroupType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetServerGroupsGroup build() {
-            return new GetServerGroupsGroup(addressIpVersion, connectionDrain, connectionDrainTimeout, healthChecks, id, preserveClientIpEnabled, protocol, relatedLoadBalancerIds, resourceGroupId, scheduler, serverCount, serverGroupName, serverGroupType, status, tags, vpcId);
+        }
+        public GetServerGroupsGroup build() {
+            final var o = new GetServerGroupsGroup();
+            o.addressIpVersion = addressIpVersion;
+            o.connectionDrain = connectionDrain;
+            o.connectionDrainTimeout = connectionDrainTimeout;
+            o.healthChecks = healthChecks;
+            o.id = id;
+            o.preserveClientIpEnabled = preserveClientIpEnabled;
+            o.protocol = protocol;
+            o.relatedLoadBalancerIds = relatedLoadBalancerIds;
+            o.resourceGroupId = resourceGroupId;
+            o.scheduler = scheduler;
+            o.serverCount = serverCount;
+            o.serverGroupName = serverGroupName;
+            o.serverGroupType = serverGroupType;
+            o.status = status;
+            o.tags = tags;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

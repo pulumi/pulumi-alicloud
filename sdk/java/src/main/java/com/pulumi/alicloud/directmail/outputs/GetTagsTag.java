@@ -13,28 +13,19 @@ public final class GetTagsTag {
      * @return The ID of the tag.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the tag.
      * 
      */
-    private final String tagId;
+    private String tagId;
     /**
      * @return The name of the tag.
      * 
      */
-    private final String tagName;
+    private String tagName;
 
-    @CustomType.Constructor
-    private GetTagsTag(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("tagId") String tagId,
-        @CustomType.Parameter("tagName") String tagName) {
-        this.id = id;
-        this.tagId = tagId;
-        this.tagName = tagName;
-    }
-
+    private GetTagsTag() {}
     /**
      * @return The ID of the tag.
      * 
@@ -64,16 +55,12 @@ public final class GetTagsTag {
     public static Builder builder(GetTagsTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String tagId;
         private String tagName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTagsTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -81,19 +68,27 @@ public final class GetTagsTag {
     	      this.tagName = defaults.tagName;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder tagId(String tagId) {
             this.tagId = Objects.requireNonNull(tagId);
             return this;
         }
+        @CustomType.Setter
         public Builder tagName(String tagName) {
             this.tagName = Objects.requireNonNull(tagName);
             return this;
-        }        public GetTagsTag build() {
-            return new GetTagsTag(id, tagId, tagName);
+        }
+        public GetTagsTag build() {
+            final var o = new GetTagsTag();
+            o.id = id;
+            o.tagId = tagId;
+            o.tagName = tagName;
+            return o;
         }
     }
 }

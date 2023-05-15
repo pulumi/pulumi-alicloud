@@ -15,28 +15,19 @@ public final class GetAggregateCompliancePacksPackConfigRule {
      * @return The ID of the rule.
      * 
      */
-    private final String configRuleId;
+    private String configRuleId;
     /**
      * @return A list of parameter rules.
      * 
      */
-    private final List<GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter> configRuleParameters;
+    private List<GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter> configRuleParameters;
     /**
      * @return Managed Rule Identifier.
      * 
      */
-    private final String managedRuleIdentifier;
+    private String managedRuleIdentifier;
 
-    @CustomType.Constructor
-    private GetAggregateCompliancePacksPackConfigRule(
-        @CustomType.Parameter("configRuleId") String configRuleId,
-        @CustomType.Parameter("configRuleParameters") List<GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter> configRuleParameters,
-        @CustomType.Parameter("managedRuleIdentifier") String managedRuleIdentifier) {
-        this.configRuleId = configRuleId;
-        this.configRuleParameters = configRuleParameters;
-        this.managedRuleIdentifier = managedRuleIdentifier;
-    }
-
+    private GetAggregateCompliancePacksPackConfigRule() {}
     /**
      * @return The ID of the rule.
      * 
@@ -66,16 +57,12 @@ public final class GetAggregateCompliancePacksPackConfigRule {
     public static Builder builder(GetAggregateCompliancePacksPackConfigRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String configRuleId;
         private List<GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter> configRuleParameters;
         private String managedRuleIdentifier;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAggregateCompliancePacksPackConfigRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configRuleId = defaults.configRuleId;
@@ -83,10 +70,12 @@ public final class GetAggregateCompliancePacksPackConfigRule {
     	      this.managedRuleIdentifier = defaults.managedRuleIdentifier;
         }
 
+        @CustomType.Setter
         public Builder configRuleId(String configRuleId) {
             this.configRuleId = Objects.requireNonNull(configRuleId);
             return this;
         }
+        @CustomType.Setter
         public Builder configRuleParameters(List<GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter> configRuleParameters) {
             this.configRuleParameters = Objects.requireNonNull(configRuleParameters);
             return this;
@@ -94,11 +83,17 @@ public final class GetAggregateCompliancePacksPackConfigRule {
         public Builder configRuleParameters(GetAggregateCompliancePacksPackConfigRuleConfigRuleParameter... configRuleParameters) {
             return configRuleParameters(List.of(configRuleParameters));
         }
+        @CustomType.Setter
         public Builder managedRuleIdentifier(String managedRuleIdentifier) {
             this.managedRuleIdentifier = Objects.requireNonNull(managedRuleIdentifier);
             return this;
-        }        public GetAggregateCompliancePacksPackConfigRule build() {
-            return new GetAggregateCompliancePacksPackConfigRule(configRuleId, configRuleParameters, managedRuleIdentifier);
+        }
+        public GetAggregateCompliancePacksPackConfigRule build() {
+            final var o = new GetAggregateCompliancePacksPackConfigRule();
+            o.configRuleId = configRuleId;
+            o.configRuleParameters = configRuleParameters;
+            o.managedRuleIdentifier = managedRuleIdentifier;
+            return o;
         }
     }
 }

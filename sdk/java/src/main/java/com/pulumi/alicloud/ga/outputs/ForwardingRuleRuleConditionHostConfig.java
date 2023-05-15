@@ -15,13 +15,9 @@ public final class ForwardingRuleRuleConditionHostConfig {
      * @return The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&amp;), wavy line (~), at (@), half width colon (:), apostrophe (&#39;). It supports asterisk (*) and half width question mark (?) as wildcards.
      * 
      */
-    private final @Nullable List<String> values;
+    private @Nullable List<String> values;
 
-    @CustomType.Constructor
-    private ForwardingRuleRuleConditionHostConfig(@CustomType.Parameter("values") @Nullable List<String> values) {
-        this.values = values;
-    }
-
+    private ForwardingRuleRuleConditionHostConfig() {}
     /**
      * @return The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&amp;), wavy line (~), at (@), half width colon (:), apostrophe (&#39;). It supports asterisk (*) and half width question mark (?) as wildcards.
      * 
@@ -37,27 +33,27 @@ public final class ForwardingRuleRuleConditionHostConfig {
     public static Builder builder(ForwardingRuleRuleConditionHostConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ForwardingRuleRuleConditionHostConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public ForwardingRuleRuleConditionHostConfig build() {
-            return new ForwardingRuleRuleConditionHostConfig(values);
+        }
+        public ForwardingRuleRuleConditionHostConfig build() {
+            final var o = new ForwardingRuleRuleConditionHostConfig();
+            o.values = values;
+            return o;
         }
     }
 }

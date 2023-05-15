@@ -16,28 +16,19 @@ public final class K8sSlbAttachmentSlbConfigPortMapping {
      * @return The ID of your tls certification, this is used for &#39;HTTPS&#39; protocol only.
      * 
      */
-    private final @Nullable String certId;
+    private @Nullable String certId;
     /**
      * @return The protocol of SLB instance configuration, values can be &#39;TCP&#39;, &#39;HTTP&#39; or &#39;HTTPS&#39;.
      * 
      */
-    private final String loadbalancerProtocol;
+    private String loadbalancerProtocol;
     /**
      * @return The backend k8s service configuration for SLB instance, which is supported for multiple configurations.
      * 
      */
-    private final K8sSlbAttachmentSlbConfigPortMappingServicePort servicePort;
+    private K8sSlbAttachmentSlbConfigPortMappingServicePort servicePort;
 
-    @CustomType.Constructor
-    private K8sSlbAttachmentSlbConfigPortMapping(
-        @CustomType.Parameter("certId") @Nullable String certId,
-        @CustomType.Parameter("loadbalancerProtocol") String loadbalancerProtocol,
-        @CustomType.Parameter("servicePort") K8sSlbAttachmentSlbConfigPortMappingServicePort servicePort) {
-        this.certId = certId;
-        this.loadbalancerProtocol = loadbalancerProtocol;
-        this.servicePort = servicePort;
-    }
-
+    private K8sSlbAttachmentSlbConfigPortMapping() {}
     /**
      * @return The ID of your tls certification, this is used for &#39;HTTPS&#39; protocol only.
      * 
@@ -67,16 +58,12 @@ public final class K8sSlbAttachmentSlbConfigPortMapping {
     public static Builder builder(K8sSlbAttachmentSlbConfigPortMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String certId;
         private String loadbalancerProtocol;
         private K8sSlbAttachmentSlbConfigPortMappingServicePort servicePort;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(K8sSlbAttachmentSlbConfigPortMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certId = defaults.certId;
@@ -84,19 +71,27 @@ public final class K8sSlbAttachmentSlbConfigPortMapping {
     	      this.servicePort = defaults.servicePort;
         }
 
+        @CustomType.Setter
         public Builder certId(@Nullable String certId) {
             this.certId = certId;
             return this;
         }
+        @CustomType.Setter
         public Builder loadbalancerProtocol(String loadbalancerProtocol) {
             this.loadbalancerProtocol = Objects.requireNonNull(loadbalancerProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder servicePort(K8sSlbAttachmentSlbConfigPortMappingServicePort servicePort) {
             this.servicePort = Objects.requireNonNull(servicePort);
             return this;
-        }        public K8sSlbAttachmentSlbConfigPortMapping build() {
-            return new K8sSlbAttachmentSlbConfigPortMapping(certId, loadbalancerProtocol, servicePort);
+        }
+        public K8sSlbAttachmentSlbConfigPortMapping build() {
+            final var o = new K8sSlbAttachmentSlbConfigPortMapping();
+            o.certId = certId;
+            o.loadbalancerProtocol = loadbalancerProtocol;
+            o.servicePort = servicePort;
+            return o;
         }
     }
 }

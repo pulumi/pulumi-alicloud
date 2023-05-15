@@ -18,37 +18,26 @@ public final class ServerGroupStickySessionConfig {
      * parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
      * 
      */
-    private final @Nullable String cookie;
+    private @Nullable String cookie;
     /**
      * @return The timeout period of a cookie. The timeout period of a cookie. Unit: seconds. Valid values: `1`
      * to `86400`. Default value: `1000`.
      * 
      */
-    private final @Nullable Integer cookieTimeout;
+    private @Nullable Integer cookieTimeout;
     /**
      * @return Indicates whether sticky session is enabled. Values: `true` and `false`. Default
      * value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
      * 
      */
-    private final @Nullable Boolean stickySessionEnabled;
+    private @Nullable Boolean stickySessionEnabled;
     /**
      * @return The method that is used to handle a cookie. Values: `Server` and `Insert`.
      * 
      */
-    private final @Nullable String stickySessionType;
+    private @Nullable String stickySessionType;
 
-    @CustomType.Constructor
-    private ServerGroupStickySessionConfig(
-        @CustomType.Parameter("cookie") @Nullable String cookie,
-        @CustomType.Parameter("cookieTimeout") @Nullable Integer cookieTimeout,
-        @CustomType.Parameter("stickySessionEnabled") @Nullable Boolean stickySessionEnabled,
-        @CustomType.Parameter("stickySessionType") @Nullable String stickySessionType) {
-        this.cookie = cookie;
-        this.cookieTimeout = cookieTimeout;
-        this.stickySessionEnabled = stickySessionEnabled;
-        this.stickySessionType = stickySessionType;
-    }
-
+    private ServerGroupStickySessionConfig() {}
     /**
      * @return the cookie that is configured on the server. **NOTE:** This parameter exists if the `StickySession`
      * parameter is set to `On` and the `StickySessionType` parameter is set to `server`.
@@ -88,17 +77,13 @@ public final class ServerGroupStickySessionConfig {
     public static Builder builder(ServerGroupStickySessionConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cookie;
         private @Nullable Integer cookieTimeout;
         private @Nullable Boolean stickySessionEnabled;
         private @Nullable String stickySessionType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServerGroupStickySessionConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cookie = defaults.cookie;
@@ -107,23 +92,33 @@ public final class ServerGroupStickySessionConfig {
     	      this.stickySessionType = defaults.stickySessionType;
         }
 
+        @CustomType.Setter
         public Builder cookie(@Nullable String cookie) {
             this.cookie = cookie;
             return this;
         }
+        @CustomType.Setter
         public Builder cookieTimeout(@Nullable Integer cookieTimeout) {
             this.cookieTimeout = cookieTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder stickySessionEnabled(@Nullable Boolean stickySessionEnabled) {
             this.stickySessionEnabled = stickySessionEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder stickySessionType(@Nullable String stickySessionType) {
             this.stickySessionType = stickySessionType;
             return this;
-        }        public ServerGroupStickySessionConfig build() {
-            return new ServerGroupStickySessionConfig(cookie, cookieTimeout, stickySessionEnabled, stickySessionType);
+        }
+        public ServerGroupStickySessionConfig build() {
+            final var o = new ServerGroupStickySessionConfig();
+            o.cookie = cookie;
+            o.cookieTimeout = cookieTimeout;
+            o.stickySessionEnabled = stickySessionEnabled;
+            o.stickySessionType = stickySessionType;
+            return o;
         }
     }
 }

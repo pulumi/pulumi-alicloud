@@ -16,63 +16,44 @@ public final class IpsecServerIkeConfig {
      * @return The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
      * 
      */
-    private final @Nullable String ikeAuthAlg;
+    private @Nullable String ikeAuthAlg;
     /**
      * @return The encryption algorithm that is used in Phase 1 negotiations. Default value: `aes`.
      * 
      */
-    private final @Nullable String ikeEncAlg;
+    private @Nullable String ikeEncAlg;
     /**
      * @return IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
      * 
      */
-    private final @Nullable Integer ikeLifetime;
+    private @Nullable Integer ikeLifetime;
     /**
      * @return The IKE negotiation mode. Default value: `main`.
      * 
      */
-    private final @Nullable String ikeMode;
+    private @Nullable String ikeMode;
     /**
      * @return The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `group2`.
      * 
      */
-    private final @Nullable String ikePfs;
+    private @Nullable String ikePfs;
     /**
      * @return The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
      * 
      */
-    private final @Nullable String ikeVersion;
+    private @Nullable String ikeVersion;
     /**
      * @return The identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
      * 
      */
-    private final @Nullable String localId;
+    private @Nullable String localId;
     /**
      * @return The identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
      * 
      */
-    private final @Nullable String remoteId;
+    private @Nullable String remoteId;
 
-    @CustomType.Constructor
-    private IpsecServerIkeConfig(
-        @CustomType.Parameter("ikeAuthAlg") @Nullable String ikeAuthAlg,
-        @CustomType.Parameter("ikeEncAlg") @Nullable String ikeEncAlg,
-        @CustomType.Parameter("ikeLifetime") @Nullable Integer ikeLifetime,
-        @CustomType.Parameter("ikeMode") @Nullable String ikeMode,
-        @CustomType.Parameter("ikePfs") @Nullable String ikePfs,
-        @CustomType.Parameter("ikeVersion") @Nullable String ikeVersion,
-        @CustomType.Parameter("localId") @Nullable String localId,
-        @CustomType.Parameter("remoteId") @Nullable String remoteId) {
-        this.ikeAuthAlg = ikeAuthAlg;
-        this.ikeEncAlg = ikeEncAlg;
-        this.ikeLifetime = ikeLifetime;
-        this.ikeMode = ikeMode;
-        this.ikePfs = ikePfs;
-        this.ikeVersion = ikeVersion;
-        this.localId = localId;
-        this.remoteId = remoteId;
-    }
-
+    private IpsecServerIkeConfig() {}
     /**
      * @return The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
      * 
@@ -137,7 +118,7 @@ public final class IpsecServerIkeConfig {
     public static Builder builder(IpsecServerIkeConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ikeAuthAlg;
         private @Nullable String ikeEncAlg;
@@ -147,11 +128,7 @@ public final class IpsecServerIkeConfig {
         private @Nullable String ikeVersion;
         private @Nullable String localId;
         private @Nullable String remoteId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IpsecServerIkeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ikeAuthAlg = defaults.ikeAuthAlg;
@@ -164,39 +141,57 @@ public final class IpsecServerIkeConfig {
     	      this.remoteId = defaults.remoteId;
         }
 
+        @CustomType.Setter
         public Builder ikeAuthAlg(@Nullable String ikeAuthAlg) {
             this.ikeAuthAlg = ikeAuthAlg;
             return this;
         }
+        @CustomType.Setter
         public Builder ikeEncAlg(@Nullable String ikeEncAlg) {
             this.ikeEncAlg = ikeEncAlg;
             return this;
         }
+        @CustomType.Setter
         public Builder ikeLifetime(@Nullable Integer ikeLifetime) {
             this.ikeLifetime = ikeLifetime;
             return this;
         }
+        @CustomType.Setter
         public Builder ikeMode(@Nullable String ikeMode) {
             this.ikeMode = ikeMode;
             return this;
         }
+        @CustomType.Setter
         public Builder ikePfs(@Nullable String ikePfs) {
             this.ikePfs = ikePfs;
             return this;
         }
+        @CustomType.Setter
         public Builder ikeVersion(@Nullable String ikeVersion) {
             this.ikeVersion = ikeVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder localId(@Nullable String localId) {
             this.localId = localId;
             return this;
         }
+        @CustomType.Setter
         public Builder remoteId(@Nullable String remoteId) {
             this.remoteId = remoteId;
             return this;
-        }        public IpsecServerIkeConfig build() {
-            return new IpsecServerIkeConfig(ikeAuthAlg, ikeEncAlg, ikeLifetime, ikeMode, ikePfs, ikeVersion, localId, remoteId);
+        }
+        public IpsecServerIkeConfig build() {
+            final var o = new IpsecServerIkeConfig();
+            o.ikeAuthAlg = ikeAuthAlg;
+            o.ikeEncAlg = ikeEncAlg;
+            o.ikeLifetime = ikeLifetime;
+            o.ikeMode = ikeMode;
+            o.ikePfs = ikePfs;
+            o.ikeVersion = ikeVersion;
+            o.localId = localId;
+            o.remoteId = remoteId;
+            return o;
         }
     }
 }

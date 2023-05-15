@@ -16,76 +16,51 @@ public final class GetAscriptsAscript {
      * @return Script identification.
      * 
      */
-    private final String ascriptId;
+    private String ascriptId;
     /**
      * @return Script name.
      * 
      */
-    private final String ascriptName;
+    private String ascriptName;
     /**
      * @return Whether scripts are enabled.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Whether extension parameters are enabled.
      * 
      */
-    private final Boolean extAttributeEnabled;
+    private Boolean extAttributeEnabled;
     /**
      * @return Extended attribute list.
      * 
      */
-    private final List<GetAscriptsAscriptExtAttribute> extAttributes;
-    private final String id;
+    private List<GetAscriptsAscriptExtAttribute> extAttributes;
+    private String id;
     /**
      * @return Listener ID of script attribution
      * 
      */
-    private final String listenerId;
-    private final String loadBalancerId;
+    private String listenerId;
+    private String loadBalancerId;
     /**
      * @return Script execution location.
      * 
      */
-    private final String position;
+    private String position;
     /**
      * @return Script content.
      * 
      */
-    private final String scriptContent;
+    private String scriptContent;
     /**
      * @return Script status.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetAscriptsAscript(
-        @CustomType.Parameter("ascriptId") String ascriptId,
-        @CustomType.Parameter("ascriptName") String ascriptName,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("extAttributeEnabled") Boolean extAttributeEnabled,
-        @CustomType.Parameter("extAttributes") List<GetAscriptsAscriptExtAttribute> extAttributes,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("listenerId") String listenerId,
-        @CustomType.Parameter("loadBalancerId") String loadBalancerId,
-        @CustomType.Parameter("position") String position,
-        @CustomType.Parameter("scriptContent") String scriptContent,
-        @CustomType.Parameter("status") String status) {
-        this.ascriptId = ascriptId;
-        this.ascriptName = ascriptName;
-        this.enabled = enabled;
-        this.extAttributeEnabled = extAttributeEnabled;
-        this.extAttributes = extAttributes;
-        this.id = id;
-        this.listenerId = listenerId;
-        this.loadBalancerId = loadBalancerId;
-        this.position = position;
-        this.scriptContent = scriptContent;
-        this.status = status;
-    }
-
+    private GetAscriptsAscript() {}
     /**
      * @return Script identification.
      * 
@@ -163,7 +138,7 @@ public final class GetAscriptsAscript {
     public static Builder builder(GetAscriptsAscript defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ascriptId;
         private String ascriptName;
@@ -176,11 +151,7 @@ public final class GetAscriptsAscript {
         private String position;
         private String scriptContent;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAscriptsAscript defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ascriptId = defaults.ascriptId;
@@ -196,22 +167,27 @@ public final class GetAscriptsAscript {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder ascriptId(String ascriptId) {
             this.ascriptId = Objects.requireNonNull(ascriptId);
             return this;
         }
+        @CustomType.Setter
         public Builder ascriptName(String ascriptName) {
             this.ascriptName = Objects.requireNonNull(ascriptName);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder extAttributeEnabled(Boolean extAttributeEnabled) {
             this.extAttributeEnabled = Objects.requireNonNull(extAttributeEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder extAttributes(List<GetAscriptsAscriptExtAttribute> extAttributes) {
             this.extAttributes = Objects.requireNonNull(extAttributes);
             return this;
@@ -219,31 +195,50 @@ public final class GetAscriptsAscript {
         public Builder extAttributes(GetAscriptsAscriptExtAttribute... extAttributes) {
             return extAttributes(List.of(extAttributes));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerId(String loadBalancerId) {
             this.loadBalancerId = Objects.requireNonNull(loadBalancerId);
             return this;
         }
+        @CustomType.Setter
         public Builder position(String position) {
             this.position = Objects.requireNonNull(position);
             return this;
         }
+        @CustomType.Setter
         public Builder scriptContent(String scriptContent) {
             this.scriptContent = Objects.requireNonNull(scriptContent);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetAscriptsAscript build() {
-            return new GetAscriptsAscript(ascriptId, ascriptName, enabled, extAttributeEnabled, extAttributes, id, listenerId, loadBalancerId, position, scriptContent, status);
+        }
+        public GetAscriptsAscript build() {
+            final var o = new GetAscriptsAscript();
+            o.ascriptId = ascriptId;
+            o.ascriptName = ascriptName;
+            o.enabled = enabled;
+            o.extAttributeEnabled = extAttributeEnabled;
+            o.extAttributes = extAttributes;
+            o.id = id;
+            o.listenerId = listenerId;
+            o.loadBalancerId = loadBalancerId;
+            o.position = position;
+            o.scriptContent = scriptContent;
+            o.status = status;
+            return o;
         }
     }
 }

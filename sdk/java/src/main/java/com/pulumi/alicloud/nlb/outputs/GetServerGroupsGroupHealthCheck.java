@@ -16,84 +16,59 @@ public final class GetServerGroupsGroupHealthCheck {
      * @return The backend port that is used for health checks.
      * 
      */
-    private final Integer healthCheckConnectPort;
+    private Integer healthCheckConnectPort;
     /**
      * @return The maximum timeout period of a health check response.
      * 
      */
-    private final Integer healthCheckConnectTimeout;
+    private Integer healthCheckConnectTimeout;
     /**
      * @return The domain name that is used for health checks.
      * 
      */
-    private final String healthCheckDomain;
+    private String healthCheckDomain;
     /**
      * @return Specifies whether to enable health checks.
      * 
      */
-    private final Boolean healthCheckEnabled;
+    private Boolean healthCheckEnabled;
     /**
      * @return The HTTP status codes returned for health checks.
      * 
      */
-    private final List<String> healthCheckHttpCodes;
+    private List<String> healthCheckHttpCodes;
     /**
      * @return The interval between two consecutive health checks.
      * 
      */
-    private final Integer healthCheckInterval;
+    private Integer healthCheckInterval;
     /**
      * @return The protocol that is used for health checks.
      * 
      */
-    private final String healthCheckType;
+    private String healthCheckType;
     /**
      * @return The path to which health check requests are sent.
      * 
      */
-    private final String healthCheckUrl;
+    private String healthCheckUrl;
     /**
      * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy.
      * 
      */
-    private final Integer healthyThreshold;
+    private Integer healthyThreshold;
     /**
      * @return The HTTP method that is used for health checks.
      * 
      */
-    private final String httpCheckMethod;
+    private String httpCheckMethod;
     /**
      * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy.
      * 
      */
-    private final Integer unhealthyThreshold;
+    private Integer unhealthyThreshold;
 
-    @CustomType.Constructor
-    private GetServerGroupsGroupHealthCheck(
-        @CustomType.Parameter("healthCheckConnectPort") Integer healthCheckConnectPort,
-        @CustomType.Parameter("healthCheckConnectTimeout") Integer healthCheckConnectTimeout,
-        @CustomType.Parameter("healthCheckDomain") String healthCheckDomain,
-        @CustomType.Parameter("healthCheckEnabled") Boolean healthCheckEnabled,
-        @CustomType.Parameter("healthCheckHttpCodes") List<String> healthCheckHttpCodes,
-        @CustomType.Parameter("healthCheckInterval") Integer healthCheckInterval,
-        @CustomType.Parameter("healthCheckType") String healthCheckType,
-        @CustomType.Parameter("healthCheckUrl") String healthCheckUrl,
-        @CustomType.Parameter("healthyThreshold") Integer healthyThreshold,
-        @CustomType.Parameter("httpCheckMethod") String httpCheckMethod,
-        @CustomType.Parameter("unhealthyThreshold") Integer unhealthyThreshold) {
-        this.healthCheckConnectPort = healthCheckConnectPort;
-        this.healthCheckConnectTimeout = healthCheckConnectTimeout;
-        this.healthCheckDomain = healthCheckDomain;
-        this.healthCheckEnabled = healthCheckEnabled;
-        this.healthCheckHttpCodes = healthCheckHttpCodes;
-        this.healthCheckInterval = healthCheckInterval;
-        this.healthCheckType = healthCheckType;
-        this.healthCheckUrl = healthCheckUrl;
-        this.healthyThreshold = healthyThreshold;
-        this.httpCheckMethod = httpCheckMethod;
-        this.unhealthyThreshold = unhealthyThreshold;
-    }
-
+    private GetServerGroupsGroupHealthCheck() {}
     /**
      * @return The backend port that is used for health checks.
      * 
@@ -179,7 +154,7 @@ public final class GetServerGroupsGroupHealthCheck {
     public static Builder builder(GetServerGroupsGroupHealthCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer healthCheckConnectPort;
         private Integer healthCheckConnectTimeout;
@@ -192,11 +167,7 @@ public final class GetServerGroupsGroupHealthCheck {
         private Integer healthyThreshold;
         private String httpCheckMethod;
         private Integer unhealthyThreshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerGroupsGroupHealthCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.healthCheckConnectPort = defaults.healthCheckConnectPort;
@@ -212,22 +183,27 @@ public final class GetServerGroupsGroupHealthCheck {
     	      this.unhealthyThreshold = defaults.unhealthyThreshold;
         }
 
+        @CustomType.Setter
         public Builder healthCheckConnectPort(Integer healthCheckConnectPort) {
             this.healthCheckConnectPort = Objects.requireNonNull(healthCheckConnectPort);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckConnectTimeout(Integer healthCheckConnectTimeout) {
             this.healthCheckConnectTimeout = Objects.requireNonNull(healthCheckConnectTimeout);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckDomain(String healthCheckDomain) {
             this.healthCheckDomain = Objects.requireNonNull(healthCheckDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckEnabled(Boolean healthCheckEnabled) {
             this.healthCheckEnabled = Objects.requireNonNull(healthCheckEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckHttpCodes(List<String> healthCheckHttpCodes) {
             this.healthCheckHttpCodes = Objects.requireNonNull(healthCheckHttpCodes);
             return this;
@@ -235,31 +211,50 @@ public final class GetServerGroupsGroupHealthCheck {
         public Builder healthCheckHttpCodes(String... healthCheckHttpCodes) {
             return healthCheckHttpCodes(List.of(healthCheckHttpCodes));
         }
+        @CustomType.Setter
         public Builder healthCheckInterval(Integer healthCheckInterval) {
             this.healthCheckInterval = Objects.requireNonNull(healthCheckInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckType(String healthCheckType) {
             this.healthCheckType = Objects.requireNonNull(healthCheckType);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckUrl(String healthCheckUrl) {
             this.healthCheckUrl = Objects.requireNonNull(healthCheckUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder healthyThreshold(Integer healthyThreshold) {
             this.healthyThreshold = Objects.requireNonNull(healthyThreshold);
             return this;
         }
+        @CustomType.Setter
         public Builder httpCheckMethod(String httpCheckMethod) {
             this.httpCheckMethod = Objects.requireNonNull(httpCheckMethod);
             return this;
         }
+        @CustomType.Setter
         public Builder unhealthyThreshold(Integer unhealthyThreshold) {
             this.unhealthyThreshold = Objects.requireNonNull(unhealthyThreshold);
             return this;
-        }        public GetServerGroupsGroupHealthCheck build() {
-            return new GetServerGroupsGroupHealthCheck(healthCheckConnectPort, healthCheckConnectTimeout, healthCheckDomain, healthCheckEnabled, healthCheckHttpCodes, healthCheckInterval, healthCheckType, healthCheckUrl, healthyThreshold, httpCheckMethod, unhealthyThreshold);
+        }
+        public GetServerGroupsGroupHealthCheck build() {
+            final var o = new GetServerGroupsGroupHealthCheck();
+            o.healthCheckConnectPort = healthCheckConnectPort;
+            o.healthCheckConnectTimeout = healthCheckConnectTimeout;
+            o.healthCheckDomain = healthCheckDomain;
+            o.healthCheckEnabled = healthCheckEnabled;
+            o.healthCheckHttpCodes = healthCheckHttpCodes;
+            o.healthCheckInterval = healthCheckInterval;
+            o.healthCheckType = healthCheckType;
+            o.healthCheckUrl = healthCheckUrl;
+            o.healthyThreshold = healthyThreshold;
+            o.httpCheckMethod = httpCheckMethod;
+            o.unhealthyThreshold = unhealthyThreshold;
+            return o;
         }
     }
 }

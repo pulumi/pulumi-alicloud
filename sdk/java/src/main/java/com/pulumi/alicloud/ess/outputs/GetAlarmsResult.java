@@ -17,55 +17,36 @@ public final class GetAlarmsResult {
      * @return A list of alarms. Each element contains the following attributes:
      * 
      */
-    private final List<GetAlarmsAlarm> alarms;
+    private List<GetAlarmsAlarm> alarms;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of alarm ids.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return The type for the alarm&#39;s associated metric.
      * 
      */
-    private final @Nullable String metricType;
-    private final @Nullable String nameRegex;
+    private @Nullable String metricType;
+    private @Nullable String nameRegex;
     /**
      * @return A list of alarm names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The scaling group associated with this alarm.
      * 
      */
-    private final @Nullable String scalingGroupId;
+    private @Nullable String scalingGroupId;
 
-    @CustomType.Constructor
-    private GetAlarmsResult(
-        @CustomType.Parameter("alarms") List<GetAlarmsAlarm> alarms,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("metricType") @Nullable String metricType,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("scalingGroupId") @Nullable String scalingGroupId) {
-        this.alarms = alarms;
-        this.id = id;
-        this.ids = ids;
-        this.metricType = metricType;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.scalingGroupId = scalingGroupId;
-    }
-
+    private GetAlarmsResult() {}
     /**
      * @return A list of alarms. Each element contains the following attributes:
      * 
@@ -122,7 +103,7 @@ public final class GetAlarmsResult {
     public static Builder builder(GetAlarmsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetAlarmsAlarm> alarms;
         private String id;
@@ -132,11 +113,7 @@ public final class GetAlarmsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String scalingGroupId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAlarmsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alarms = defaults.alarms;
@@ -149,6 +126,7 @@ public final class GetAlarmsResult {
     	      this.scalingGroupId = defaults.scalingGroupId;
         }
 
+        @CustomType.Setter
         public Builder alarms(List<GetAlarmsAlarm> alarms) {
             this.alarms = Objects.requireNonNull(alarms);
             return this;
@@ -156,10 +134,12 @@ public final class GetAlarmsResult {
         public Builder alarms(GetAlarmsAlarm... alarms) {
             return alarms(List.of(alarms));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -167,14 +147,17 @@ public final class GetAlarmsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder metricType(@Nullable String metricType) {
             this.metricType = metricType;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -182,15 +165,27 @@ public final class GetAlarmsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder scalingGroupId(@Nullable String scalingGroupId) {
             this.scalingGroupId = scalingGroupId;
             return this;
-        }        public GetAlarmsResult build() {
-            return new GetAlarmsResult(alarms, id, ids, metricType, nameRegex, names, outputFile, scalingGroupId);
+        }
+        public GetAlarmsResult build() {
+            final var o = new GetAlarmsResult();
+            o.alarms = alarms;
+            o.id = id;
+            o.ids = ids;
+            o.metricType = metricType;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.scalingGroupId = scalingGroupId;
+            return o;
         }
     }
 }

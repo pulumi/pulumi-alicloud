@@ -13,49 +13,34 @@ public final class GetTransitRouterMulticastDomainsDomain {
      * @return The ID of the Transit Router Multicast Domain.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The status of the multicast domain. Valid Value: `Active`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the transit router.
      * 
      */
-    private final String transitRouterId;
+    private String transitRouterId;
     /**
      * @return The description of the Transit Router Multicast Domain.
      * 
      */
-    private final String transitRouterMulticastDomainDescription;
+    private String transitRouterMulticastDomainDescription;
     /**
      * @return The ID of the multicast domain.
      * 
      */
-    private final String transitRouterMulticastDomainId;
+    private String transitRouterMulticastDomainId;
     /**
      * @return The name of the Transit Router Multicast Domain.
      * 
      */
-    private final String transitRouterMulticastDomainName;
+    private String transitRouterMulticastDomainName;
 
-    @CustomType.Constructor
-    private GetTransitRouterMulticastDomainsDomain(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("transitRouterId") String transitRouterId,
-        @CustomType.Parameter("transitRouterMulticastDomainDescription") String transitRouterMulticastDomainDescription,
-        @CustomType.Parameter("transitRouterMulticastDomainId") String transitRouterMulticastDomainId,
-        @CustomType.Parameter("transitRouterMulticastDomainName") String transitRouterMulticastDomainName) {
-        this.id = id;
-        this.status = status;
-        this.transitRouterId = transitRouterId;
-        this.transitRouterMulticastDomainDescription = transitRouterMulticastDomainDescription;
-        this.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-        this.transitRouterMulticastDomainName = transitRouterMulticastDomainName;
-    }
-
+    private GetTransitRouterMulticastDomainsDomain() {}
     /**
      * @return The ID of the Transit Router Multicast Domain.
      * 
@@ -106,7 +91,7 @@ public final class GetTransitRouterMulticastDomainsDomain {
     public static Builder builder(GetTransitRouterMulticastDomainsDomain defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String status;
@@ -114,11 +99,7 @@ public final class GetTransitRouterMulticastDomainsDomain {
         private String transitRouterMulticastDomainDescription;
         private String transitRouterMulticastDomainId;
         private String transitRouterMulticastDomainName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterMulticastDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -129,31 +110,45 @@ public final class GetTransitRouterMulticastDomainsDomain {
     	      this.transitRouterMulticastDomainName = defaults.transitRouterMulticastDomainName;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterMulticastDomainDescription(String transitRouterMulticastDomainDescription) {
             this.transitRouterMulticastDomainDescription = Objects.requireNonNull(transitRouterMulticastDomainDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterMulticastDomainId(String transitRouterMulticastDomainId) {
             this.transitRouterMulticastDomainId = Objects.requireNonNull(transitRouterMulticastDomainId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterMulticastDomainName(String transitRouterMulticastDomainName) {
             this.transitRouterMulticastDomainName = Objects.requireNonNull(transitRouterMulticastDomainName);
             return this;
-        }        public GetTransitRouterMulticastDomainsDomain build() {
-            return new GetTransitRouterMulticastDomainsDomain(id, status, transitRouterId, transitRouterMulticastDomainDescription, transitRouterMulticastDomainId, transitRouterMulticastDomainName);
+        }
+        public GetTransitRouterMulticastDomainsDomain build() {
+            final var o = new GetTransitRouterMulticastDomainsDomain();
+            o.id = id;
+            o.status = status;
+            o.transitRouterId = transitRouterId;
+            o.transitRouterMulticastDomainDescription = transitRouterMulticastDomainDescription;
+            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            o.transitRouterMulticastDomainName = transitRouterMulticastDomainName;
+            return o;
         }
     }
 }

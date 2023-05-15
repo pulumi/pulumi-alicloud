@@ -17,41 +17,26 @@ public final class GetDeployGroupsResult {
      * @return The ID of the application that you want to deploy.
      * 
      */
-    private final String appId;
+    private String appId;
     /**
      * @return A list of consumer group ids.
      * 
      */
-    private final List<GetDeployGroupsGroup> groups;
+    private List<GetDeployGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String nameRegex;
+    private String id;
+    private @Nullable String nameRegex;
     /**
      * @return A list of deploy group names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetDeployGroupsResult(
-        @CustomType.Parameter("appId") String appId,
-        @CustomType.Parameter("groups") List<GetDeployGroupsGroup> groups,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.appId = appId;
-        this.groups = groups;
-        this.id = id;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-    }
-
+    private GetDeployGroupsResult() {}
     /**
      * @return The ID of the application that you want to deploy.
      * 
@@ -94,7 +79,7 @@ public final class GetDeployGroupsResult {
     public static Builder builder(GetDeployGroupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String appId;
         private List<GetDeployGroupsGroup> groups;
@@ -102,11 +87,7 @@ public final class GetDeployGroupsResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDeployGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
@@ -117,10 +98,12 @@ public final class GetDeployGroupsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
             return this;
         }
+        @CustomType.Setter
         public Builder groups(List<GetDeployGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -128,14 +111,17 @@ public final class GetDeployGroupsResult {
         public Builder groups(GetDeployGroupsGroup... groups) {
             return groups(List.of(groups));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -143,11 +129,20 @@ public final class GetDeployGroupsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetDeployGroupsResult build() {
-            return new GetDeployGroupsResult(appId, groups, id, nameRegex, names, outputFile);
+        }
+        public GetDeployGroupsResult build() {
+            final var o = new GetDeployGroupsResult();
+            o.appId = appId;
+            o.groups = groups;
+            o.id = id;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

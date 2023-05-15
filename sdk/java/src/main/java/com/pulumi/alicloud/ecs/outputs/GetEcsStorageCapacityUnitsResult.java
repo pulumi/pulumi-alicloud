@@ -17,32 +17,15 @@ public final class GetEcsStorageCapacityUnitsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String status;
-    private final List<GetEcsStorageCapacityUnitsUnit> units;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String status;
+    private List<GetEcsStorageCapacityUnitsUnit> units;
 
-    @CustomType.Constructor
-    private GetEcsStorageCapacityUnitsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("units") List<GetEcsStorageCapacityUnitsUnit> units) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-        this.units = units;
-    }
-
+    private GetEcsStorageCapacityUnitsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -76,7 +59,7 @@ public final class GetEcsStorageCapacityUnitsResult {
     public static Builder builder(GetEcsStorageCapacityUnitsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -85,11 +68,7 @@ public final class GetEcsStorageCapacityUnitsResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private List<GetEcsStorageCapacityUnitsUnit> units;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsStorageCapacityUnitsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -101,10 +80,12 @@ public final class GetEcsStorageCapacityUnitsResult {
     	      this.units = defaults.units;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -112,10 +93,12 @@ public final class GetEcsStorageCapacityUnitsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -123,22 +106,34 @@ public final class GetEcsStorageCapacityUnitsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder units(List<GetEcsStorageCapacityUnitsUnit> units) {
             this.units = Objects.requireNonNull(units);
             return this;
         }
         public Builder units(GetEcsStorageCapacityUnitsUnit... units) {
             return units(List.of(units));
-        }        public GetEcsStorageCapacityUnitsResult build() {
-            return new GetEcsStorageCapacityUnitsResult(id, ids, nameRegex, names, outputFile, status, units);
+        }
+        public GetEcsStorageCapacityUnitsResult build() {
+            final var o = new GetEcsStorageCapacityUnitsResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            o.units = units;
+            return o;
         }
     }
 }

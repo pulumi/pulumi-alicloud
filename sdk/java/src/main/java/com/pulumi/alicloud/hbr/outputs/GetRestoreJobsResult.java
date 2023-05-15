@@ -17,47 +17,20 @@ public final class GetRestoreJobsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final List<GetRestoreJobsJob> jobs;
-    private final @Nullable String outputFile;
-    private final @Nullable List<String> restoreIds;
-    private final String restoreType;
-    private final @Nullable List<String> sourceTypes;
-    private final @Nullable String status;
-    private final @Nullable List<String> targetBuckets;
-    private final @Nullable List<String> targetFileSystemIds;
-    private final @Nullable List<String> targetInstanceIds;
-    private final @Nullable List<String> vaultIds;
+    private String id;
+    private List<String> ids;
+    private List<GetRestoreJobsJob> jobs;
+    private @Nullable String outputFile;
+    private @Nullable List<String> restoreIds;
+    private String restoreType;
+    private @Nullable List<String> sourceTypes;
+    private @Nullable String status;
+    private @Nullable List<String> targetBuckets;
+    private @Nullable List<String> targetFileSystemIds;
+    private @Nullable List<String> targetInstanceIds;
+    private @Nullable List<String> vaultIds;
 
-    @CustomType.Constructor
-    private GetRestoreJobsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("jobs") List<GetRestoreJobsJob> jobs,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("restoreIds") @Nullable List<String> restoreIds,
-        @CustomType.Parameter("restoreType") String restoreType,
-        @CustomType.Parameter("sourceTypes") @Nullable List<String> sourceTypes,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("targetBuckets") @Nullable List<String> targetBuckets,
-        @CustomType.Parameter("targetFileSystemIds") @Nullable List<String> targetFileSystemIds,
-        @CustomType.Parameter("targetInstanceIds") @Nullable List<String> targetInstanceIds,
-        @CustomType.Parameter("vaultIds") @Nullable List<String> vaultIds) {
-        this.id = id;
-        this.ids = ids;
-        this.jobs = jobs;
-        this.outputFile = outputFile;
-        this.restoreIds = restoreIds;
-        this.restoreType = restoreType;
-        this.sourceTypes = sourceTypes;
-        this.status = status;
-        this.targetBuckets = targetBuckets;
-        this.targetFileSystemIds = targetFileSystemIds;
-        this.targetInstanceIds = targetInstanceIds;
-        this.vaultIds = vaultIds;
-    }
-
+    private GetRestoreJobsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -106,7 +79,7 @@ public final class GetRestoreJobsResult {
     public static Builder builder(GetRestoreJobsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -120,11 +93,7 @@ public final class GetRestoreJobsResult {
         private @Nullable List<String> targetFileSystemIds;
         private @Nullable List<String> targetInstanceIds;
         private @Nullable List<String> vaultIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRestoreJobsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -141,10 +110,12 @@ public final class GetRestoreJobsResult {
     	      this.vaultIds = defaults.vaultIds;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -152,6 +123,7 @@ public final class GetRestoreJobsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder jobs(List<GetRestoreJobsJob> jobs) {
             this.jobs = Objects.requireNonNull(jobs);
             return this;
@@ -159,10 +131,12 @@ public final class GetRestoreJobsResult {
         public Builder jobs(GetRestoreJobsJob... jobs) {
             return jobs(List.of(jobs));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder restoreIds(@Nullable List<String> restoreIds) {
             this.restoreIds = restoreIds;
             return this;
@@ -170,10 +144,12 @@ public final class GetRestoreJobsResult {
         public Builder restoreIds(String... restoreIds) {
             return restoreIds(List.of(restoreIds));
         }
+        @CustomType.Setter
         public Builder restoreType(String restoreType) {
             this.restoreType = Objects.requireNonNull(restoreType);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceTypes(@Nullable List<String> sourceTypes) {
             this.sourceTypes = sourceTypes;
             return this;
@@ -181,10 +157,12 @@ public final class GetRestoreJobsResult {
         public Builder sourceTypes(String... sourceTypes) {
             return sourceTypes(List.of(sourceTypes));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder targetBuckets(@Nullable List<String> targetBuckets) {
             this.targetBuckets = targetBuckets;
             return this;
@@ -192,6 +170,7 @@ public final class GetRestoreJobsResult {
         public Builder targetBuckets(String... targetBuckets) {
             return targetBuckets(List.of(targetBuckets));
         }
+        @CustomType.Setter
         public Builder targetFileSystemIds(@Nullable List<String> targetFileSystemIds) {
             this.targetFileSystemIds = targetFileSystemIds;
             return this;
@@ -199,6 +178,7 @@ public final class GetRestoreJobsResult {
         public Builder targetFileSystemIds(String... targetFileSystemIds) {
             return targetFileSystemIds(List.of(targetFileSystemIds));
         }
+        @CustomType.Setter
         public Builder targetInstanceIds(@Nullable List<String> targetInstanceIds) {
             this.targetInstanceIds = targetInstanceIds;
             return this;
@@ -206,14 +186,29 @@ public final class GetRestoreJobsResult {
         public Builder targetInstanceIds(String... targetInstanceIds) {
             return targetInstanceIds(List.of(targetInstanceIds));
         }
+        @CustomType.Setter
         public Builder vaultIds(@Nullable List<String> vaultIds) {
             this.vaultIds = vaultIds;
             return this;
         }
         public Builder vaultIds(String... vaultIds) {
             return vaultIds(List.of(vaultIds));
-        }        public GetRestoreJobsResult build() {
-            return new GetRestoreJobsResult(id, ids, jobs, outputFile, restoreIds, restoreType, sourceTypes, status, targetBuckets, targetFileSystemIds, targetInstanceIds, vaultIds);
+        }
+        public GetRestoreJobsResult build() {
+            final var o = new GetRestoreJobsResult();
+            o.id = id;
+            o.ids = ids;
+            o.jobs = jobs;
+            o.outputFile = outputFile;
+            o.restoreIds = restoreIds;
+            o.restoreType = restoreType;
+            o.sourceTypes = sourceTypes;
+            o.status = status;
+            o.targetBuckets = targetBuckets;
+            o.targetFileSystemIds = targetFileSystemIds;
+            o.targetInstanceIds = targetInstanceIds;
+            o.vaultIds = vaultIds;
+            return o;
         }
     }
 }

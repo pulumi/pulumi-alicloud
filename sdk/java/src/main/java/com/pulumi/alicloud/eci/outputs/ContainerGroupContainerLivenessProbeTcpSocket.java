@@ -15,13 +15,9 @@ public final class ContainerGroupContainerLivenessProbeTcpSocket {
      * @return The port number. Valid values: 1 to 65535.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
 
-    @CustomType.Constructor
-    private ContainerGroupContainerLivenessProbeTcpSocket(@CustomType.Parameter("port") @Nullable Integer port) {
-        this.port = port;
-    }
-
+    private ContainerGroupContainerLivenessProbeTcpSocket() {}
     /**
      * @return The port number. Valid values: 1 to 65535.
      * 
@@ -37,24 +33,24 @@ public final class ContainerGroupContainerLivenessProbeTcpSocket {
     public static Builder builder(ContainerGroupContainerLivenessProbeTcpSocket defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer port;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupContainerLivenessProbeTcpSocket defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
-        }        public ContainerGroupContainerLivenessProbeTcpSocket build() {
-            return new ContainerGroupContainerLivenessProbeTcpSocket(port);
+        }
+        public ContainerGroupContainerLivenessProbeTcpSocket build() {
+            final var o = new ContainerGroupContainerLivenessProbeTcpSocket();
+            o.port = port;
+            return o;
         }
     }
 }

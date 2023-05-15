@@ -13,13 +13,9 @@ public final class GetInstancesInstanceUpgradeServiceDetailInfo {
      * @return The Current2OpenSourceVersion of the instance.
      * 
      */
-    private final String current2OpenSourceVersion;
+    private String current2OpenSourceVersion;
 
-    @CustomType.Constructor
-    private GetInstancesInstanceUpgradeServiceDetailInfo(@CustomType.Parameter("current2OpenSourceVersion") String current2OpenSourceVersion) {
-        this.current2OpenSourceVersion = current2OpenSourceVersion;
-    }
-
+    private GetInstancesInstanceUpgradeServiceDetailInfo() {}
     /**
      * @return The Current2OpenSourceVersion of the instance.
      * 
@@ -35,24 +31,24 @@ public final class GetInstancesInstanceUpgradeServiceDetailInfo {
     public static Builder builder(GetInstancesInstanceUpgradeServiceDetailInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String current2OpenSourceVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstanceUpgradeServiceDetailInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.current2OpenSourceVersion = defaults.current2OpenSourceVersion;
         }
 
+        @CustomType.Setter
         public Builder current2OpenSourceVersion(String current2OpenSourceVersion) {
             this.current2OpenSourceVersion = Objects.requireNonNull(current2OpenSourceVersion);
             return this;
-        }        public GetInstancesInstanceUpgradeServiceDetailInfo build() {
-            return new GetInstancesInstanceUpgradeServiceDetailInfo(current2OpenSourceVersion);
+        }
+        public GetInstancesInstanceUpgradeServiceDetailInfo build() {
+            final var o = new GetInstancesInstanceUpgradeServiceDetailInfo();
+            o.current2OpenSourceVersion = current2OpenSourceVersion;
+            return o;
         }
     }
 }

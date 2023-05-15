@@ -13,56 +13,39 @@ public final class GetPortfoliosPortfolio {
      * @return The creation time of the portfolio
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the portfolio
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the portfolio
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ARN of the portfolio
      * 
      */
-    private final String portfolioArn;
+    private String portfolioArn;
     /**
      * @return The ID of the portfolio
      * 
      */
-    private final String portfolioId;
+    private String portfolioId;
     /**
      * @return The name of the portfolio
      * 
      */
-    private final String portfolioName;
+    private String portfolioName;
     /**
      * @return The provider name of the portfolio
      * 
      */
-    private final String providerName;
+    private String providerName;
 
-    @CustomType.Constructor
-    private GetPortfoliosPortfolio(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("portfolioArn") String portfolioArn,
-        @CustomType.Parameter("portfolioId") String portfolioId,
-        @CustomType.Parameter("portfolioName") String portfolioName,
-        @CustomType.Parameter("providerName") String providerName) {
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.portfolioArn = portfolioArn;
-        this.portfolioId = portfolioId;
-        this.portfolioName = portfolioName;
-        this.providerName = providerName;
-    }
-
+    private GetPortfoliosPortfolio() {}
     /**
      * @return The creation time of the portfolio
      * 
@@ -120,7 +103,7 @@ public final class GetPortfoliosPortfolio {
     public static Builder builder(GetPortfoliosPortfolio defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -129,11 +112,7 @@ public final class GetPortfoliosPortfolio {
         private String portfolioId;
         private String portfolioName;
         private String providerName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPortfoliosPortfolio defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -145,35 +124,51 @@ public final class GetPortfoliosPortfolio {
     	      this.providerName = defaults.providerName;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder portfolioArn(String portfolioArn) {
             this.portfolioArn = Objects.requireNonNull(portfolioArn);
             return this;
         }
+        @CustomType.Setter
         public Builder portfolioId(String portfolioId) {
             this.portfolioId = Objects.requireNonNull(portfolioId);
             return this;
         }
+        @CustomType.Setter
         public Builder portfolioName(String portfolioName) {
             this.portfolioName = Objects.requireNonNull(portfolioName);
             return this;
         }
+        @CustomType.Setter
         public Builder providerName(String providerName) {
             this.providerName = Objects.requireNonNull(providerName);
             return this;
-        }        public GetPortfoliosPortfolio build() {
-            return new GetPortfoliosPortfolio(createTime, description, id, portfolioArn, portfolioId, portfolioName, providerName);
+        }
+        public GetPortfoliosPortfolio build() {
+            final var o = new GetPortfoliosPortfolio();
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.portfolioArn = portfolioArn;
+            o.portfolioId = portfolioId;
+            o.portfolioName = portfolioName;
+            o.providerName = providerName;
+            return o;
         }
     }
 }

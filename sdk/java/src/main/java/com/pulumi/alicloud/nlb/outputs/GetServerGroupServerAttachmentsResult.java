@@ -13,36 +13,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServerGroupServerAttachmentsResult {
-    private final List<GetServerGroupServerAttachmentsAttachment> attachments;
+    private List<GetServerGroupServerAttachmentsAttachment> attachments;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final @Nullable String serverGroupId;
-    private final @Nullable List<String> serverIds;
-    private final @Nullable List<String> serverIps;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private @Nullable String serverGroupId;
+    private @Nullable List<String> serverIds;
+    private @Nullable List<String> serverIps;
 
-    @CustomType.Constructor
-    private GetServerGroupServerAttachmentsResult(
-        @CustomType.Parameter("attachments") List<GetServerGroupServerAttachmentsAttachment> attachments,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("serverGroupId") @Nullable String serverGroupId,
-        @CustomType.Parameter("serverIds") @Nullable List<String> serverIds,
-        @CustomType.Parameter("serverIps") @Nullable List<String> serverIps) {
-        this.attachments = attachments;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.serverGroupId = serverGroupId;
-        this.serverIds = serverIds;
-        this.serverIps = serverIps;
-    }
-
+    private GetServerGroupServerAttachmentsResult() {}
     public List<GetServerGroupServerAttachmentsAttachment> attachments() {
         return this.attachments;
     }
@@ -76,7 +59,7 @@ public final class GetServerGroupServerAttachmentsResult {
     public static Builder builder(GetServerGroupServerAttachmentsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetServerGroupServerAttachmentsAttachment> attachments;
         private String id;
@@ -85,11 +68,7 @@ public final class GetServerGroupServerAttachmentsResult {
         private @Nullable String serverGroupId;
         private @Nullable List<String> serverIds;
         private @Nullable List<String> serverIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerGroupServerAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachments = defaults.attachments;
@@ -101,6 +80,7 @@ public final class GetServerGroupServerAttachmentsResult {
     	      this.serverIps = defaults.serverIps;
         }
 
+        @CustomType.Setter
         public Builder attachments(List<GetServerGroupServerAttachmentsAttachment> attachments) {
             this.attachments = Objects.requireNonNull(attachments);
             return this;
@@ -108,10 +88,12 @@ public final class GetServerGroupServerAttachmentsResult {
         public Builder attachments(GetServerGroupServerAttachmentsAttachment... attachments) {
             return attachments(List.of(attachments));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -119,14 +101,17 @@ public final class GetServerGroupServerAttachmentsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder serverGroupId(@Nullable String serverGroupId) {
             this.serverGroupId = serverGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder serverIds(@Nullable List<String> serverIds) {
             this.serverIds = serverIds;
             return this;
@@ -134,14 +119,24 @@ public final class GetServerGroupServerAttachmentsResult {
         public Builder serverIds(String... serverIds) {
             return serverIds(List.of(serverIds));
         }
+        @CustomType.Setter
         public Builder serverIps(@Nullable List<String> serverIps) {
             this.serverIps = serverIps;
             return this;
         }
         public Builder serverIps(String... serverIps) {
             return serverIps(List.of(serverIps));
-        }        public GetServerGroupServerAttachmentsResult build() {
-            return new GetServerGroupServerAttachmentsResult(attachments, id, ids, outputFile, serverGroupId, serverIds, serverIps);
+        }
+        public GetServerGroupServerAttachmentsResult build() {
+            final var o = new GetServerGroupServerAttachmentsResult();
+            o.attachments = attachments;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.serverGroupId = serverGroupId;
+            o.serverIds = serverIds;
+            o.serverIps = serverIps;
+            return o;
         }
     }
 }

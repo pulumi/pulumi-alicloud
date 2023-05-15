@@ -15,13 +15,9 @@ public final class ContainerGroupContainerReadinessProbeTcpSocket {
      * @return The port number. Valid values: 1 to 65535.
      * 
      */
-    private final @Nullable Integer port;
+    private @Nullable Integer port;
 
-    @CustomType.Constructor
-    private ContainerGroupContainerReadinessProbeTcpSocket(@CustomType.Parameter("port") @Nullable Integer port) {
-        this.port = port;
-    }
-
+    private ContainerGroupContainerReadinessProbeTcpSocket() {}
     /**
      * @return The port number. Valid values: 1 to 65535.
      * 
@@ -37,24 +33,24 @@ public final class ContainerGroupContainerReadinessProbeTcpSocket {
     public static Builder builder(ContainerGroupContainerReadinessProbeTcpSocket defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer port;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupContainerReadinessProbeTcpSocket defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.port = defaults.port;
         }
 
+        @CustomType.Setter
         public Builder port(@Nullable Integer port) {
             this.port = port;
             return this;
-        }        public ContainerGroupContainerReadinessProbeTcpSocket build() {
-            return new ContainerGroupContainerReadinessProbeTcpSocket(port);
+        }
+        public ContainerGroupContainerReadinessProbeTcpSocket build() {
+            final var o = new ContainerGroupContainerReadinessProbeTcpSocket();
+            o.port = port;
+            return o;
         }
     }
 }

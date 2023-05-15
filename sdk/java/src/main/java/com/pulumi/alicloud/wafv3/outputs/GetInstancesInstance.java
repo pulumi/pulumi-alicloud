@@ -13,35 +13,24 @@ public final class GetInstancesInstance {
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("status") String status) {
-        this.createTime = createTime;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.status = status;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return The creation time of the resource.
      * 
@@ -78,17 +67,13 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String id;
         private String instanceId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -97,23 +82,33 @@ public final class GetInstancesInstance {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(createTime, id, instanceId, status);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.createTime = createTime;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.status = status;
+            return o;
         }
     }
 }

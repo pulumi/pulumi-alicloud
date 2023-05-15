@@ -17,133 +17,94 @@ public final class GetDdosCooDomainResourcesResource {
      * @return The IP addresses in the blacklist for the domain name.
      * 
      */
-    private final List<String> blackLists;
+    private List<String> blackLists;
     /**
      * @return Whether frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
      * 
      */
-    private final Boolean ccEnabled;
+    private Boolean ccEnabled;
     /**
      * @return Whether custom frequency control guard (CC guard) is enabled. Values: `True`: Opened, `False`: Not enabled.
      * 
      */
-    private final Boolean ccRuleEnabled;
+    private Boolean ccRuleEnabled;
     /**
      * @return The mode of the Frequency Control policy.
      * 
      */
-    private final String ccTemplate;
+    private String ccTemplate;
     /**
      * @return The name of the certificate.
      * 
      */
-    private final String certName;
+    private String certName;
     /**
      * @return The domain name of the website that you want to add to the instance.
      * 
      */
-    private final String domain;
+    private String domain;
     /**
      * @return Whether Http2.0 is enabled.
      * 
      */
-    private final Boolean http2Enable;
+    private Boolean http2Enable;
     /**
      * @return The advanced HTTPS settings.
      * 
      */
-    private final String httpsExt;
+    private String httpsExt;
     /**
      * @return The ID of the Domain Resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list ID of instance that you want to associate.
      * 
      */
-    private final List<String> instanceIds;
+    private List<String> instanceIds;
     /**
      * @return The type of backload algorithm.
      * 
      */
-    private final String policyMode;
+    private String policyMode;
     /**
      * @return Whether the website service forwarding rules have been turned on.
      * 
      */
-    private final Boolean proxyEnabled;
+    private Boolean proxyEnabled;
     /**
      * @return Protocol type and port number information.
      * 
      */
-    private final List<GetDdosCooDomainResourcesResourceProxyType> proxyTypes;
+    private List<GetDdosCooDomainResourcesResourceProxyType> proxyTypes;
     /**
      * @return Server address information of the source station.
      * 
      */
-    private final List<String> realServers;
+    private List<String> realServers;
     /**
      * @return Server address type.
      * 
      */
-    private final Integer rsType;
+    private Integer rsType;
     /**
      * @return The type of the cipher suite.
      * 
      */
-    private final String sslCiphers;
+    private String sslCiphers;
     /**
      * @return The version of the TLS protocol.
      * 
      */
-    private final String sslProtocols;
+    private String sslProtocols;
     /**
      * @return The IP addresses in the whitelist for the domain name.
      * 
      */
-    private final List<String> whiteLists;
+    private List<String> whiteLists;
 
-    @CustomType.Constructor
-    private GetDdosCooDomainResourcesResource(
-        @CustomType.Parameter("blackLists") List<String> blackLists,
-        @CustomType.Parameter("ccEnabled") Boolean ccEnabled,
-        @CustomType.Parameter("ccRuleEnabled") Boolean ccRuleEnabled,
-        @CustomType.Parameter("ccTemplate") String ccTemplate,
-        @CustomType.Parameter("certName") String certName,
-        @CustomType.Parameter("domain") String domain,
-        @CustomType.Parameter("http2Enable") Boolean http2Enable,
-        @CustomType.Parameter("httpsExt") String httpsExt,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceIds") List<String> instanceIds,
-        @CustomType.Parameter("policyMode") String policyMode,
-        @CustomType.Parameter("proxyEnabled") Boolean proxyEnabled,
-        @CustomType.Parameter("proxyTypes") List<GetDdosCooDomainResourcesResourceProxyType> proxyTypes,
-        @CustomType.Parameter("realServers") List<String> realServers,
-        @CustomType.Parameter("rsType") Integer rsType,
-        @CustomType.Parameter("sslCiphers") String sslCiphers,
-        @CustomType.Parameter("sslProtocols") String sslProtocols,
-        @CustomType.Parameter("whiteLists") List<String> whiteLists) {
-        this.blackLists = blackLists;
-        this.ccEnabled = ccEnabled;
-        this.ccRuleEnabled = ccRuleEnabled;
-        this.ccTemplate = ccTemplate;
-        this.certName = certName;
-        this.domain = domain;
-        this.http2Enable = http2Enable;
-        this.httpsExt = httpsExt;
-        this.id = id;
-        this.instanceIds = instanceIds;
-        this.policyMode = policyMode;
-        this.proxyEnabled = proxyEnabled;
-        this.proxyTypes = proxyTypes;
-        this.realServers = realServers;
-        this.rsType = rsType;
-        this.sslCiphers = sslCiphers;
-        this.sslProtocols = sslProtocols;
-        this.whiteLists = whiteLists;
-    }
-
+    private GetDdosCooDomainResourcesResource() {}
     /**
      * @return The IP addresses in the blacklist for the domain name.
      * 
@@ -278,7 +239,7 @@ public final class GetDdosCooDomainResourcesResource {
     public static Builder builder(GetDdosCooDomainResourcesResource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> blackLists;
         private Boolean ccEnabled;
@@ -298,11 +259,7 @@ public final class GetDdosCooDomainResourcesResource {
         private String sslCiphers;
         private String sslProtocols;
         private List<String> whiteLists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDdosCooDomainResourcesResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.blackLists = defaults.blackLists;
@@ -325,6 +282,7 @@ public final class GetDdosCooDomainResourcesResource {
     	      this.whiteLists = defaults.whiteLists;
         }
 
+        @CustomType.Setter
         public Builder blackLists(List<String> blackLists) {
             this.blackLists = Objects.requireNonNull(blackLists);
             return this;
@@ -332,38 +290,47 @@ public final class GetDdosCooDomainResourcesResource {
         public Builder blackLists(String... blackLists) {
             return blackLists(List.of(blackLists));
         }
+        @CustomType.Setter
         public Builder ccEnabled(Boolean ccEnabled) {
             this.ccEnabled = Objects.requireNonNull(ccEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder ccRuleEnabled(Boolean ccRuleEnabled) {
             this.ccRuleEnabled = Objects.requireNonNull(ccRuleEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder ccTemplate(String ccTemplate) {
             this.ccTemplate = Objects.requireNonNull(ccTemplate);
             return this;
         }
+        @CustomType.Setter
         public Builder certName(String certName) {
             this.certName = Objects.requireNonNull(certName);
             return this;
         }
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
+        @CustomType.Setter
         public Builder http2Enable(Boolean http2Enable) {
             this.http2Enable = Objects.requireNonNull(http2Enable);
             return this;
         }
+        @CustomType.Setter
         public Builder httpsExt(String httpsExt) {
             this.httpsExt = Objects.requireNonNull(httpsExt);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceIds(List<String> instanceIds) {
             this.instanceIds = Objects.requireNonNull(instanceIds);
             return this;
@@ -371,14 +338,17 @@ public final class GetDdosCooDomainResourcesResource {
         public Builder instanceIds(String... instanceIds) {
             return instanceIds(List.of(instanceIds));
         }
+        @CustomType.Setter
         public Builder policyMode(String policyMode) {
             this.policyMode = Objects.requireNonNull(policyMode);
             return this;
         }
+        @CustomType.Setter
         public Builder proxyEnabled(Boolean proxyEnabled) {
             this.proxyEnabled = Objects.requireNonNull(proxyEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder proxyTypes(List<GetDdosCooDomainResourcesResourceProxyType> proxyTypes) {
             this.proxyTypes = Objects.requireNonNull(proxyTypes);
             return this;
@@ -386,6 +356,7 @@ public final class GetDdosCooDomainResourcesResource {
         public Builder proxyTypes(GetDdosCooDomainResourcesResourceProxyType... proxyTypes) {
             return proxyTypes(List.of(proxyTypes));
         }
+        @CustomType.Setter
         public Builder realServers(List<String> realServers) {
             this.realServers = Objects.requireNonNull(realServers);
             return this;
@@ -393,26 +364,50 @@ public final class GetDdosCooDomainResourcesResource {
         public Builder realServers(String... realServers) {
             return realServers(List.of(realServers));
         }
+        @CustomType.Setter
         public Builder rsType(Integer rsType) {
             this.rsType = Objects.requireNonNull(rsType);
             return this;
         }
+        @CustomType.Setter
         public Builder sslCiphers(String sslCiphers) {
             this.sslCiphers = Objects.requireNonNull(sslCiphers);
             return this;
         }
+        @CustomType.Setter
         public Builder sslProtocols(String sslProtocols) {
             this.sslProtocols = Objects.requireNonNull(sslProtocols);
             return this;
         }
+        @CustomType.Setter
         public Builder whiteLists(List<String> whiteLists) {
             this.whiteLists = Objects.requireNonNull(whiteLists);
             return this;
         }
         public Builder whiteLists(String... whiteLists) {
             return whiteLists(List.of(whiteLists));
-        }        public GetDdosCooDomainResourcesResource build() {
-            return new GetDdosCooDomainResourcesResource(blackLists, ccEnabled, ccRuleEnabled, ccTemplate, certName, domain, http2Enable, httpsExt, id, instanceIds, policyMode, proxyEnabled, proxyTypes, realServers, rsType, sslCiphers, sslProtocols, whiteLists);
+        }
+        public GetDdosCooDomainResourcesResource build() {
+            final var o = new GetDdosCooDomainResourcesResource();
+            o.blackLists = blackLists;
+            o.ccEnabled = ccEnabled;
+            o.ccRuleEnabled = ccRuleEnabled;
+            o.ccTemplate = ccTemplate;
+            o.certName = certName;
+            o.domain = domain;
+            o.http2Enable = http2Enable;
+            o.httpsExt = httpsExt;
+            o.id = id;
+            o.instanceIds = instanceIds;
+            o.policyMode = policyMode;
+            o.proxyEnabled = proxyEnabled;
+            o.proxyTypes = proxyTypes;
+            o.realServers = realServers;
+            o.rsType = rsType;
+            o.sslCiphers = sslCiphers;
+            o.sslProtocols = sslProtocols;
+            o.whiteLists = whiteLists;
+            return o;
         }
     }
 }

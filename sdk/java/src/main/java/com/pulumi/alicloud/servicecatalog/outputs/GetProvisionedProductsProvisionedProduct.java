@@ -19,152 +19,103 @@ public final class GetProvisionedProductsProvisionedProduct {
      * @return The creation time of the product instance
      * 
      */
-    private final String createTime;
-    private final String id;
+    private String createTime;
+    private String id;
     /**
      * @return The ID of the last instance operation task
      * 
      */
-    private final String lastProvisioningTaskId;
+    private String lastProvisioningTaskId;
     /**
      * @return The ID of the last successful instance operation task
      * 
      */
-    private final String lastSuccessfulProvisioningTaskId;
+    private String lastSuccessfulProvisioningTaskId;
     /**
      * @return The ID of the last task
      * 
      */
-    private final String lastTaskId;
-    private final List<GetProvisionedProductsProvisionedProductOutput> outputs;
+    private String lastTaskId;
+    private List<GetProvisionedProductsProvisionedProductOutput> outputs;
     /**
      * @return The RAM entity ID of the owner
      * 
      */
-    private final String ownerPrincipalId;
+    private String ownerPrincipalId;
     /**
      * @return The RAM entity type of the owner
      * 
      */
-    private final String ownerPrincipalType;
-    private final List<GetProvisionedProductsProvisionedProductParameter> parameters;
+    private String ownerPrincipalType;
+    private List<GetProvisionedProductsProvisionedProductParameter> parameters;
     /**
      * @return Product mix ID.&gt; When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
      * 
      */
-    private final String portfolioId;
+    private String portfolioId;
     /**
      * @return Product ID.
      * 
      */
-    private final String productId;
+    private String productId;
     /**
      * @return The name of the product
      * 
      */
-    private final String productName;
+    private String productName;
     /**
      * @return Product version ID.
      * 
      */
-    private final String productVersionId;
+    private String productVersionId;
     /**
      * @return The name of the product version
      * 
      */
-    private final String productVersionName;
+    private String productVersionName;
     /**
      * @return The ARN of the product instance
      * 
      */
-    private final String provisionedProductArn;
+    private String provisionedProductArn;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String provisionedProductId;
+    private String provisionedProductId;
     /**
      * @return The name of the instance.The length is 1~128 characters.
      * 
      */
-    private final String provisionedProductName;
+    private String provisionedProductName;
     /**
      * @return Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
      * 
      */
-    private final String provisionedProductType;
+    private String provisionedProductType;
     /**
      * @return The ID of the ROS stack
      * 
      */
-    private final String stackId;
+    private String stackId;
     /**
      * @return The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
      * 
      */
-    private final String stackRegionId;
+    private String stackRegionId;
     /**
      * @return Instance status
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The status message of the product instance
      * 
      */
-    private final String statusMessage;
-    private final @Nullable Map<String,Object> tags;
+    private String statusMessage;
+    private @Nullable Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetProvisionedProductsProvisionedProduct(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lastProvisioningTaskId") String lastProvisioningTaskId,
-        @CustomType.Parameter("lastSuccessfulProvisioningTaskId") String lastSuccessfulProvisioningTaskId,
-        @CustomType.Parameter("lastTaskId") String lastTaskId,
-        @CustomType.Parameter("outputs") List<GetProvisionedProductsProvisionedProductOutput> outputs,
-        @CustomType.Parameter("ownerPrincipalId") String ownerPrincipalId,
-        @CustomType.Parameter("ownerPrincipalType") String ownerPrincipalType,
-        @CustomType.Parameter("parameters") List<GetProvisionedProductsProvisionedProductParameter> parameters,
-        @CustomType.Parameter("portfolioId") String portfolioId,
-        @CustomType.Parameter("productId") String productId,
-        @CustomType.Parameter("productName") String productName,
-        @CustomType.Parameter("productVersionId") String productVersionId,
-        @CustomType.Parameter("productVersionName") String productVersionName,
-        @CustomType.Parameter("provisionedProductArn") String provisionedProductArn,
-        @CustomType.Parameter("provisionedProductId") String provisionedProductId,
-        @CustomType.Parameter("provisionedProductName") String provisionedProductName,
-        @CustomType.Parameter("provisionedProductType") String provisionedProductType,
-        @CustomType.Parameter("stackId") String stackId,
-        @CustomType.Parameter("stackRegionId") String stackRegionId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("statusMessage") String statusMessage,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
-        this.createTime = createTime;
-        this.id = id;
-        this.lastProvisioningTaskId = lastProvisioningTaskId;
-        this.lastSuccessfulProvisioningTaskId = lastSuccessfulProvisioningTaskId;
-        this.lastTaskId = lastTaskId;
-        this.outputs = outputs;
-        this.ownerPrincipalId = ownerPrincipalId;
-        this.ownerPrincipalType = ownerPrincipalType;
-        this.parameters = parameters;
-        this.portfolioId = portfolioId;
-        this.productId = productId;
-        this.productName = productName;
-        this.productVersionId = productVersionId;
-        this.productVersionName = productVersionName;
-        this.provisionedProductArn = provisionedProductArn;
-        this.provisionedProductId = provisionedProductId;
-        this.provisionedProductName = provisionedProductName;
-        this.provisionedProductType = provisionedProductType;
-        this.stackId = stackId;
-        this.stackRegionId = stackRegionId;
-        this.status = status;
-        this.statusMessage = statusMessage;
-        this.tags = tags;
-    }
-
+    private GetProvisionedProductsProvisionedProduct() {}
     /**
      * @return The creation time of the product instance
      * 
@@ -318,7 +269,7 @@ public final class GetProvisionedProductsProvisionedProduct {
     public static Builder builder(GetProvisionedProductsProvisionedProduct defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String id;
@@ -343,11 +294,7 @@ public final class GetProvisionedProductsProvisionedProduct {
         private String status;
         private String statusMessage;
         private @Nullable Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProvisionedProductsProvisionedProduct defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -375,26 +322,32 @@ public final class GetProvisionedProductsProvisionedProduct {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lastProvisioningTaskId(String lastProvisioningTaskId) {
             this.lastProvisioningTaskId = Objects.requireNonNull(lastProvisioningTaskId);
             return this;
         }
+        @CustomType.Setter
         public Builder lastSuccessfulProvisioningTaskId(String lastSuccessfulProvisioningTaskId) {
             this.lastSuccessfulProvisioningTaskId = Objects.requireNonNull(lastSuccessfulProvisioningTaskId);
             return this;
         }
+        @CustomType.Setter
         public Builder lastTaskId(String lastTaskId) {
             this.lastTaskId = Objects.requireNonNull(lastTaskId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputs(List<GetProvisionedProductsProvisionedProductOutput> outputs) {
             this.outputs = Objects.requireNonNull(outputs);
             return this;
@@ -402,14 +355,17 @@ public final class GetProvisionedProductsProvisionedProduct {
         public Builder outputs(GetProvisionedProductsProvisionedProductOutput... outputs) {
             return outputs(List.of(outputs));
         }
+        @CustomType.Setter
         public Builder ownerPrincipalId(String ownerPrincipalId) {
             this.ownerPrincipalId = Objects.requireNonNull(ownerPrincipalId);
             return this;
         }
+        @CustomType.Setter
         public Builder ownerPrincipalType(String ownerPrincipalType) {
             this.ownerPrincipalType = Objects.requireNonNull(ownerPrincipalType);
             return this;
         }
+        @CustomType.Setter
         public Builder parameters(List<GetProvisionedProductsProvisionedProductParameter> parameters) {
             this.parameters = Objects.requireNonNull(parameters);
             return this;
@@ -417,63 +373,102 @@ public final class GetProvisionedProductsProvisionedProduct {
         public Builder parameters(GetProvisionedProductsProvisionedProductParameter... parameters) {
             return parameters(List.of(parameters));
         }
+        @CustomType.Setter
         public Builder portfolioId(String portfolioId) {
             this.portfolioId = Objects.requireNonNull(portfolioId);
             return this;
         }
+        @CustomType.Setter
         public Builder productId(String productId) {
             this.productId = Objects.requireNonNull(productId);
             return this;
         }
+        @CustomType.Setter
         public Builder productName(String productName) {
             this.productName = Objects.requireNonNull(productName);
             return this;
         }
+        @CustomType.Setter
         public Builder productVersionId(String productVersionId) {
             this.productVersionId = Objects.requireNonNull(productVersionId);
             return this;
         }
+        @CustomType.Setter
         public Builder productVersionName(String productVersionName) {
             this.productVersionName = Objects.requireNonNull(productVersionName);
             return this;
         }
+        @CustomType.Setter
         public Builder provisionedProductArn(String provisionedProductArn) {
             this.provisionedProductArn = Objects.requireNonNull(provisionedProductArn);
             return this;
         }
+        @CustomType.Setter
         public Builder provisionedProductId(String provisionedProductId) {
             this.provisionedProductId = Objects.requireNonNull(provisionedProductId);
             return this;
         }
+        @CustomType.Setter
         public Builder provisionedProductName(String provisionedProductName) {
             this.provisionedProductName = Objects.requireNonNull(provisionedProductName);
             return this;
         }
+        @CustomType.Setter
         public Builder provisionedProductType(String provisionedProductType) {
             this.provisionedProductType = Objects.requireNonNull(provisionedProductType);
             return this;
         }
+        @CustomType.Setter
         public Builder stackId(String stackId) {
             this.stackId = Objects.requireNonNull(stackId);
             return this;
         }
+        @CustomType.Setter
         public Builder stackRegionId(String stackRegionId) {
             this.stackRegionId = Objects.requireNonNull(stackRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder statusMessage(String statusMessage) {
             this.statusMessage = Objects.requireNonNull(statusMessage);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }        public GetProvisionedProductsProvisionedProduct build() {
-            return new GetProvisionedProductsProvisionedProduct(createTime, id, lastProvisioningTaskId, lastSuccessfulProvisioningTaskId, lastTaskId, outputs, ownerPrincipalId, ownerPrincipalType, parameters, portfolioId, productId, productName, productVersionId, productVersionName, provisionedProductArn, provisionedProductId, provisionedProductName, provisionedProductType, stackId, stackRegionId, status, statusMessage, tags);
+        }
+        public GetProvisionedProductsProvisionedProduct build() {
+            final var o = new GetProvisionedProductsProvisionedProduct();
+            o.createTime = createTime;
+            o.id = id;
+            o.lastProvisioningTaskId = lastProvisioningTaskId;
+            o.lastSuccessfulProvisioningTaskId = lastSuccessfulProvisioningTaskId;
+            o.lastTaskId = lastTaskId;
+            o.outputs = outputs;
+            o.ownerPrincipalId = ownerPrincipalId;
+            o.ownerPrincipalType = ownerPrincipalType;
+            o.parameters = parameters;
+            o.portfolioId = portfolioId;
+            o.productId = productId;
+            o.productName = productName;
+            o.productVersionId = productVersionId;
+            o.productVersionName = productVersionName;
+            o.provisionedProductArn = provisionedProductArn;
+            o.provisionedProductId = provisionedProductId;
+            o.provisionedProductName = provisionedProductName;
+            o.provisionedProductType = provisionedProductType;
+            o.stackId = stackId;
+            o.stackRegionId = stackRegionId;
+            o.status = status;
+            o.statusMessage = statusMessage;
+            o.tags = tags;
+            return o;
         }
     }
 }

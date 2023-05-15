@@ -9,54 +9,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTransitRouterRouteEntriesEntry {
-    private final String id;
-    private final String status;
-    private final String transitRouterRouteEntryDescription;
+    private String id;
+    private String status;
+    private String transitRouterRouteEntryDescription;
     /**
      * @return The target network segment of the route entry.
      * 
      */
-    private final String transitRouterRouteEntryDestinationCidrBlock;
-    private final String transitRouterRouteEntryId;
-    private final String transitRouterRouteEntryName;
+    private String transitRouterRouteEntryDestinationCidrBlock;
+    private String transitRouterRouteEntryId;
+    private String transitRouterRouteEntryName;
     /**
      * @return ID of the next hop.
      * 
      */
-    private final String transitRouterRouteEntryNextHopId;
+    private String transitRouterRouteEntryNextHopId;
     /**
      * @return Type of the next hop.
      * 
      */
-    private final String transitRouterRouteEntryNextHopType;
+    private String transitRouterRouteEntryNextHopType;
     /**
      * @return Type of the route entry.
      * 
      */
-    private final String transitRouterRouteEntryType;
+    private String transitRouterRouteEntryType;
 
-    @CustomType.Constructor
-    private GetTransitRouterRouteEntriesEntry(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("transitRouterRouteEntryDescription") String transitRouterRouteEntryDescription,
-        @CustomType.Parameter("transitRouterRouteEntryDestinationCidrBlock") String transitRouterRouteEntryDestinationCidrBlock,
-        @CustomType.Parameter("transitRouterRouteEntryId") String transitRouterRouteEntryId,
-        @CustomType.Parameter("transitRouterRouteEntryName") String transitRouterRouteEntryName,
-        @CustomType.Parameter("transitRouterRouteEntryNextHopId") String transitRouterRouteEntryNextHopId,
-        @CustomType.Parameter("transitRouterRouteEntryNextHopType") String transitRouterRouteEntryNextHopType,
-        @CustomType.Parameter("transitRouterRouteEntryType") String transitRouterRouteEntryType) {
-        this.id = id;
-        this.status = status;
-        this.transitRouterRouteEntryDescription = transitRouterRouteEntryDescription;
-        this.transitRouterRouteEntryDestinationCidrBlock = transitRouterRouteEntryDestinationCidrBlock;
-        this.transitRouterRouteEntryId = transitRouterRouteEntryId;
-        this.transitRouterRouteEntryName = transitRouterRouteEntryName;
-        this.transitRouterRouteEntryNextHopId = transitRouterRouteEntryNextHopId;
-        this.transitRouterRouteEntryNextHopType = transitRouterRouteEntryNextHopType;
-        this.transitRouterRouteEntryType = transitRouterRouteEntryType;
-    }
-
+    private GetTransitRouterRouteEntriesEntry() {}
     public String id() {
         return this.id;
     }
@@ -108,7 +87,7 @@ public final class GetTransitRouterRouteEntriesEntry {
     public static Builder builder(GetTransitRouterRouteEntriesEntry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String status;
@@ -119,11 +98,7 @@ public final class GetTransitRouterRouteEntriesEntry {
         private String transitRouterRouteEntryNextHopId;
         private String transitRouterRouteEntryNextHopType;
         private String transitRouterRouteEntryType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterRouteEntriesEntry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -137,43 +112,63 @@ public final class GetTransitRouterRouteEntriesEntry {
     	      this.transitRouterRouteEntryType = defaults.transitRouterRouteEntryType;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterRouteEntryDescription(String transitRouterRouteEntryDescription) {
             this.transitRouterRouteEntryDescription = Objects.requireNonNull(transitRouterRouteEntryDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterRouteEntryDestinationCidrBlock(String transitRouterRouteEntryDestinationCidrBlock) {
             this.transitRouterRouteEntryDestinationCidrBlock = Objects.requireNonNull(transitRouterRouteEntryDestinationCidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterRouteEntryId(String transitRouterRouteEntryId) {
             this.transitRouterRouteEntryId = Objects.requireNonNull(transitRouterRouteEntryId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterRouteEntryName(String transitRouterRouteEntryName) {
             this.transitRouterRouteEntryName = Objects.requireNonNull(transitRouterRouteEntryName);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterRouteEntryNextHopId(String transitRouterRouteEntryNextHopId) {
             this.transitRouterRouteEntryNextHopId = Objects.requireNonNull(transitRouterRouteEntryNextHopId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterRouteEntryNextHopType(String transitRouterRouteEntryNextHopType) {
             this.transitRouterRouteEntryNextHopType = Objects.requireNonNull(transitRouterRouteEntryNextHopType);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterRouteEntryType(String transitRouterRouteEntryType) {
             this.transitRouterRouteEntryType = Objects.requireNonNull(transitRouterRouteEntryType);
             return this;
-        }        public GetTransitRouterRouteEntriesEntry build() {
-            return new GetTransitRouterRouteEntriesEntry(id, status, transitRouterRouteEntryDescription, transitRouterRouteEntryDestinationCidrBlock, transitRouterRouteEntryId, transitRouterRouteEntryName, transitRouterRouteEntryNextHopId, transitRouterRouteEntryNextHopType, transitRouterRouteEntryType);
+        }
+        public GetTransitRouterRouteEntriesEntry build() {
+            final var o = new GetTransitRouterRouteEntriesEntry();
+            o.id = id;
+            o.status = status;
+            o.transitRouterRouteEntryDescription = transitRouterRouteEntryDescription;
+            o.transitRouterRouteEntryDestinationCidrBlock = transitRouterRouteEntryDestinationCidrBlock;
+            o.transitRouterRouteEntryId = transitRouterRouteEntryId;
+            o.transitRouterRouteEntryName = transitRouterRouteEntryName;
+            o.transitRouterRouteEntryNextHopId = transitRouterRouteEntryNextHopId;
+            o.transitRouterRouteEntryNextHopType = transitRouterRouteEntryNextHopType;
+            o.transitRouterRouteEntryType = transitRouterRouteEntryType;
+            return o;
         }
     }
 }

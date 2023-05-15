@@ -17,31 +17,20 @@ public final class GetEnterpriseLogicDatabasesResult {
      * @return A list of Logic Database Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetEnterpriseLogicDatabasesDatabase> databases;
+    private List<GetEnterpriseLogicDatabasesDatabase> databases;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Logic Database IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String outputFile;
+    private List<String> ids;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetEnterpriseLogicDatabasesResult(
-        @CustomType.Parameter("databases") List<GetEnterpriseLogicDatabasesDatabase> databases,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.databases = databases;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-    }
-
+    private GetEnterpriseLogicDatabasesResult() {}
     /**
      * @return A list of Logic Database Entries. Each element contains the following attributes:
      * 
@@ -74,17 +63,13 @@ public final class GetEnterpriseLogicDatabasesResult {
     public static Builder builder(GetEnterpriseLogicDatabasesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetEnterpriseLogicDatabasesDatabase> databases;
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnterpriseLogicDatabasesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databases = defaults.databases;
@@ -93,6 +78,7 @@ public final class GetEnterpriseLogicDatabasesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder databases(List<GetEnterpriseLogicDatabasesDatabase> databases) {
             this.databases = Objects.requireNonNull(databases);
             return this;
@@ -100,10 +86,12 @@ public final class GetEnterpriseLogicDatabasesResult {
         public Builder databases(GetEnterpriseLogicDatabasesDatabase... databases) {
             return databases(List.of(databases));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -111,11 +99,18 @@ public final class GetEnterpriseLogicDatabasesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetEnterpriseLogicDatabasesResult build() {
-            return new GetEnterpriseLogicDatabasesResult(databases, id, ids, outputFile);
+        }
+        public GetEnterpriseLogicDatabasesResult build() {
+            final var o = new GetEnterpriseLogicDatabasesResult();
+            o.databases = databases;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

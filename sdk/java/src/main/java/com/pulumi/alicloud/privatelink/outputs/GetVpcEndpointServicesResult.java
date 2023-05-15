@@ -14,45 +14,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVpcEndpointServicesResult {
-    private final @Nullable Boolean autoAcceptConnection;
+    private @Nullable Boolean autoAcceptConnection;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String serviceBusinessStatus;
-    private final List<GetVpcEndpointServicesService> services;
-    private final @Nullable String status;
-    private final @Nullable String vpcEndpointServiceName;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String serviceBusinessStatus;
+    private List<GetVpcEndpointServicesService> services;
+    private @Nullable String status;
+    private @Nullable String vpcEndpointServiceName;
 
-    @CustomType.Constructor
-    private GetVpcEndpointServicesResult(
-        @CustomType.Parameter("autoAcceptConnection") @Nullable Boolean autoAcceptConnection,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("serviceBusinessStatus") @Nullable String serviceBusinessStatus,
-        @CustomType.Parameter("services") List<GetVpcEndpointServicesService> services,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("vpcEndpointServiceName") @Nullable String vpcEndpointServiceName) {
-        this.autoAcceptConnection = autoAcceptConnection;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.serviceBusinessStatus = serviceBusinessStatus;
-        this.services = services;
-        this.status = status;
-        this.vpcEndpointServiceName = vpcEndpointServiceName;
-    }
-
+    private GetVpcEndpointServicesResult() {}
     public Optional<Boolean> autoAcceptConnection() {
         return Optional.ofNullable(this.autoAcceptConnection);
     }
@@ -95,7 +72,7 @@ public final class GetVpcEndpointServicesResult {
     public static Builder builder(GetVpcEndpointServicesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean autoAcceptConnection;
         private String id;
@@ -107,11 +84,7 @@ public final class GetVpcEndpointServicesResult {
         private List<GetVpcEndpointServicesService> services;
         private @Nullable String status;
         private @Nullable String vpcEndpointServiceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcEndpointServicesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoAcceptConnection = defaults.autoAcceptConnection;
@@ -126,14 +99,17 @@ public final class GetVpcEndpointServicesResult {
     	      this.vpcEndpointServiceName = defaults.vpcEndpointServiceName;
         }
 
+        @CustomType.Setter
         public Builder autoAcceptConnection(@Nullable Boolean autoAcceptConnection) {
             this.autoAcceptConnection = autoAcceptConnection;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -141,10 +117,12 @@ public final class GetVpcEndpointServicesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -152,14 +130,17 @@ public final class GetVpcEndpointServicesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceBusinessStatus(@Nullable String serviceBusinessStatus) {
             this.serviceBusinessStatus = serviceBusinessStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder services(List<GetVpcEndpointServicesService> services) {
             this.services = Objects.requireNonNull(services);
             return this;
@@ -167,15 +148,29 @@ public final class GetVpcEndpointServicesResult {
         public Builder services(GetVpcEndpointServicesService... services) {
             return services(List.of(services));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcEndpointServiceName(@Nullable String vpcEndpointServiceName) {
             this.vpcEndpointServiceName = vpcEndpointServiceName;
             return this;
-        }        public GetVpcEndpointServicesResult build() {
-            return new GetVpcEndpointServicesResult(autoAcceptConnection, id, ids, nameRegex, names, outputFile, serviceBusinessStatus, services, status, vpcEndpointServiceName);
+        }
+        public GetVpcEndpointServicesResult build() {
+            final var o = new GetVpcEndpointServicesResult();
+            o.autoAcceptConnection = autoAcceptConnection;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.serviceBusinessStatus = serviceBusinessStatus;
+            o.services = services;
+            o.status = status;
+            o.vpcEndpointServiceName = vpcEndpointServiceName;
+            return o;
         }
     }
 }

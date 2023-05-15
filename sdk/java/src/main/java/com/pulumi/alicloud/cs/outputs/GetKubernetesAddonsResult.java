@@ -17,41 +17,26 @@ public final class GetKubernetesAddonsResult {
      * @return A list of addons.
      * 
      */
-    private final @Nullable List<GetKubernetesAddonsAddon> addons;
+    private @Nullable List<GetKubernetesAddonsAddon> addons;
     /**
      * @return The id of kubernetes cluster.
      * 
      */
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of addon names.
      * 
      */
-    private final List<String> names;
+    private List<String> names;
 
-    @CustomType.Constructor
-    private GetKubernetesAddonsResult(
-        @CustomType.Parameter("addons") @Nullable List<GetKubernetesAddonsAddon> addons,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names) {
-        this.addons = addons;
-        this.clusterId = clusterId;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-    }
-
+    private GetKubernetesAddonsResult() {}
     /**
      * @return A list of addons.
      * 
@@ -94,7 +79,7 @@ public final class GetKubernetesAddonsResult {
     public static Builder builder(GetKubernetesAddonsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetKubernetesAddonsAddon> addons;
         private String clusterId;
@@ -102,11 +87,7 @@ public final class GetKubernetesAddonsResult {
         private List<String> ids;
         private @Nullable String nameRegex;
         private List<String> names;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesAddonsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addons = defaults.addons;
@@ -117,6 +98,7 @@ public final class GetKubernetesAddonsResult {
     	      this.names = defaults.names;
         }
 
+        @CustomType.Setter
         public Builder addons(@Nullable List<GetKubernetesAddonsAddon> addons) {
             this.addons = addons;
             return this;
@@ -124,14 +106,17 @@ public final class GetKubernetesAddonsResult {
         public Builder addons(GetKubernetesAddonsAddon... addons) {
             return addons(List.of(addons));
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -139,18 +124,28 @@ public final class GetKubernetesAddonsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
         }
         public Builder names(String... names) {
             return names(List.of(names));
-        }        public GetKubernetesAddonsResult build() {
-            return new GetKubernetesAddonsResult(addons, clusterId, id, ids, nameRegex, names);
+        }
+        public GetKubernetesAddonsResult build() {
+            final var o = new GetKubernetesAddonsResult();
+            o.addons = addons;
+            o.clusterId = clusterId;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            return o;
         }
     }
 }

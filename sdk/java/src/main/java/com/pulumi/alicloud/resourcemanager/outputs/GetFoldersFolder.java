@@ -13,35 +13,24 @@ public final class GetFoldersFolder {
      * @return The ID of the folder.
      * 
      */
-    private final String folderId;
+    private String folderId;
     /**
      * @return The name of the folder.
      * 
      */
-    private final String folderName;
+    private String folderName;
     /**
      * @return The ID of the folder.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the parent folder.
      * 
      */
-    private final String parentFolderId;
+    private String parentFolderId;
 
-    @CustomType.Constructor
-    private GetFoldersFolder(
-        @CustomType.Parameter("folderId") String folderId,
-        @CustomType.Parameter("folderName") String folderName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("parentFolderId") String parentFolderId) {
-        this.folderId = folderId;
-        this.folderName = folderName;
-        this.id = id;
-        this.parentFolderId = parentFolderId;
-    }
-
+    private GetFoldersFolder() {}
     /**
      * @return The ID of the folder.
      * 
@@ -78,17 +67,13 @@ public final class GetFoldersFolder {
     public static Builder builder(GetFoldersFolder defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String folderId;
         private String folderName;
         private String id;
         private String parentFolderId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFoldersFolder defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.folderId = defaults.folderId;
@@ -97,23 +82,33 @@ public final class GetFoldersFolder {
     	      this.parentFolderId = defaults.parentFolderId;
         }
 
+        @CustomType.Setter
         public Builder folderId(String folderId) {
             this.folderId = Objects.requireNonNull(folderId);
             return this;
         }
+        @CustomType.Setter
         public Builder folderName(String folderName) {
             this.folderName = Objects.requireNonNull(folderName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder parentFolderId(String parentFolderId) {
             this.parentFolderId = Objects.requireNonNull(parentFolderId);
             return this;
-        }        public GetFoldersFolder build() {
-            return new GetFoldersFolder(folderId, folderName, id, parentFolderId);
+        }
+        public GetFoldersFolder build() {
+            final var o = new GetFoldersFolder();
+            o.folderId = folderId;
+            o.folderName = folderName;
+            o.id = id;
+            o.parentFolderId = parentFolderId;
+            return o;
         }
     }
 }

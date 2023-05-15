@@ -15,28 +15,19 @@ public final class GetDbInstancesInstanceDbInstanceIpArray {
      * @return The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
      * 
      */
-    private final @Nullable String dbInstanceIpArrayAttribute;
+    private @Nullable String dbInstanceIpArrayAttribute;
     /**
      * @return IP ADDRESS whitelist group name.
      * 
      */
-    private final @Nullable String dbInstanceIpArrayName;
+    private @Nullable String dbInstanceIpArrayName;
     /**
      * @return IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
      * 
      */
-    private final @Nullable String securityIps;
+    private @Nullable String securityIps;
 
-    @CustomType.Constructor
-    private GetDbInstancesInstanceDbInstanceIpArray(
-        @CustomType.Parameter("dbInstanceIpArrayAttribute") @Nullable String dbInstanceIpArrayAttribute,
-        @CustomType.Parameter("dbInstanceIpArrayName") @Nullable String dbInstanceIpArrayName,
-        @CustomType.Parameter("securityIps") @Nullable String securityIps) {
-        this.dbInstanceIpArrayAttribute = dbInstanceIpArrayAttribute;
-        this.dbInstanceIpArrayName = dbInstanceIpArrayName;
-        this.securityIps = securityIps;
-    }
-
+    private GetDbInstancesInstanceDbInstanceIpArray() {}
     /**
      * @return The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
      * 
@@ -66,16 +57,12 @@ public final class GetDbInstancesInstanceDbInstanceIpArray {
     public static Builder builder(GetDbInstancesInstanceDbInstanceIpArray defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String dbInstanceIpArrayAttribute;
         private @Nullable String dbInstanceIpArrayName;
         private @Nullable String securityIps;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDbInstancesInstanceDbInstanceIpArray defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbInstanceIpArrayAttribute = defaults.dbInstanceIpArrayAttribute;
@@ -83,19 +70,27 @@ public final class GetDbInstancesInstanceDbInstanceIpArray {
     	      this.securityIps = defaults.securityIps;
         }
 
+        @CustomType.Setter
         public Builder dbInstanceIpArrayAttribute(@Nullable String dbInstanceIpArrayAttribute) {
             this.dbInstanceIpArrayAttribute = dbInstanceIpArrayAttribute;
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceIpArrayName(@Nullable String dbInstanceIpArrayName) {
             this.dbInstanceIpArrayName = dbInstanceIpArrayName;
             return this;
         }
+        @CustomType.Setter
         public Builder securityIps(@Nullable String securityIps) {
             this.securityIps = securityIps;
             return this;
-        }        public GetDbInstancesInstanceDbInstanceIpArray build() {
-            return new GetDbInstancesInstanceDbInstanceIpArray(dbInstanceIpArrayAttribute, dbInstanceIpArrayName, securityIps);
+        }
+        public GetDbInstancesInstanceDbInstanceIpArray build() {
+            final var o = new GetDbInstancesInstanceDbInstanceIpArray();
+            o.dbInstanceIpArrayAttribute = dbInstanceIpArrayAttribute;
+            o.dbInstanceIpArrayName = dbInstanceIpArrayName;
+            o.securityIps = securityIps;
+            return o;
         }
     }
 }

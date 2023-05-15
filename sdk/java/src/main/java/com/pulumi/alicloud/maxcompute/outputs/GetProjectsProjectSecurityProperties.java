@@ -14,56 +14,39 @@ public final class GetProjectsProjectSecurityProperties {
      * @return Whether to enable download permission check.
      * 
      */
-    private final Boolean enableDownloadPrivilege;
+    private Boolean enableDownloadPrivilege;
     /**
      * @return Label authorization.
      * 
      */
-    private final Boolean labelSecurity;
+    private Boolean labelSecurity;
     /**
      * @return Project creator permissions.
      * 
      */
-    private final Boolean objectCreatorHasAccessPermission;
+    private Boolean objectCreatorHasAccessPermission;
     /**
      * @return Does the project creator have authorization rights.
      * 
      */
-    private final Boolean objectCreatorHasGrantPermission;
+    private Boolean objectCreatorHasGrantPermission;
     /**
      * @return Project protection.
      * 
      */
-    private final GetProjectsProjectSecurityPropertiesProjectProtection projectProtection;
+    private GetProjectsProjectSecurityPropertiesProjectProtection projectProtection;
     /**
      * @return Whether to turn on ACL.
      * 
      */
-    private final Boolean usingAcl;
+    private Boolean usingAcl;
     /**
      * @return Whether to enable Policy.
      * 
      */
-    private final Boolean usingPolicy;
+    private Boolean usingPolicy;
 
-    @CustomType.Constructor
-    private GetProjectsProjectSecurityProperties(
-        @CustomType.Parameter("enableDownloadPrivilege") Boolean enableDownloadPrivilege,
-        @CustomType.Parameter("labelSecurity") Boolean labelSecurity,
-        @CustomType.Parameter("objectCreatorHasAccessPermission") Boolean objectCreatorHasAccessPermission,
-        @CustomType.Parameter("objectCreatorHasGrantPermission") Boolean objectCreatorHasGrantPermission,
-        @CustomType.Parameter("projectProtection") GetProjectsProjectSecurityPropertiesProjectProtection projectProtection,
-        @CustomType.Parameter("usingAcl") Boolean usingAcl,
-        @CustomType.Parameter("usingPolicy") Boolean usingPolicy) {
-        this.enableDownloadPrivilege = enableDownloadPrivilege;
-        this.labelSecurity = labelSecurity;
-        this.objectCreatorHasAccessPermission = objectCreatorHasAccessPermission;
-        this.objectCreatorHasGrantPermission = objectCreatorHasGrantPermission;
-        this.projectProtection = projectProtection;
-        this.usingAcl = usingAcl;
-        this.usingPolicy = usingPolicy;
-    }
-
+    private GetProjectsProjectSecurityProperties() {}
     /**
      * @return Whether to enable download permission check.
      * 
@@ -121,7 +104,7 @@ public final class GetProjectsProjectSecurityProperties {
     public static Builder builder(GetProjectsProjectSecurityProperties defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enableDownloadPrivilege;
         private Boolean labelSecurity;
@@ -130,11 +113,7 @@ public final class GetProjectsProjectSecurityProperties {
         private GetProjectsProjectSecurityPropertiesProjectProtection projectProtection;
         private Boolean usingAcl;
         private Boolean usingPolicy;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectsProjectSecurityProperties defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableDownloadPrivilege = defaults.enableDownloadPrivilege;
@@ -146,35 +125,51 @@ public final class GetProjectsProjectSecurityProperties {
     	      this.usingPolicy = defaults.usingPolicy;
         }
 
+        @CustomType.Setter
         public Builder enableDownloadPrivilege(Boolean enableDownloadPrivilege) {
             this.enableDownloadPrivilege = Objects.requireNonNull(enableDownloadPrivilege);
             return this;
         }
+        @CustomType.Setter
         public Builder labelSecurity(Boolean labelSecurity) {
             this.labelSecurity = Objects.requireNonNull(labelSecurity);
             return this;
         }
+        @CustomType.Setter
         public Builder objectCreatorHasAccessPermission(Boolean objectCreatorHasAccessPermission) {
             this.objectCreatorHasAccessPermission = Objects.requireNonNull(objectCreatorHasAccessPermission);
             return this;
         }
+        @CustomType.Setter
         public Builder objectCreatorHasGrantPermission(Boolean objectCreatorHasGrantPermission) {
             this.objectCreatorHasGrantPermission = Objects.requireNonNull(objectCreatorHasGrantPermission);
             return this;
         }
+        @CustomType.Setter
         public Builder projectProtection(GetProjectsProjectSecurityPropertiesProjectProtection projectProtection) {
             this.projectProtection = Objects.requireNonNull(projectProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder usingAcl(Boolean usingAcl) {
             this.usingAcl = Objects.requireNonNull(usingAcl);
             return this;
         }
+        @CustomType.Setter
         public Builder usingPolicy(Boolean usingPolicy) {
             this.usingPolicy = Objects.requireNonNull(usingPolicy);
             return this;
-        }        public GetProjectsProjectSecurityProperties build() {
-            return new GetProjectsProjectSecurityProperties(enableDownloadPrivilege, labelSecurity, objectCreatorHasAccessPermission, objectCreatorHasGrantPermission, projectProtection, usingAcl, usingPolicy);
+        }
+        public GetProjectsProjectSecurityProperties build() {
+            final var o = new GetProjectsProjectSecurityProperties();
+            o.enableDownloadPrivilege = enableDownloadPrivilege;
+            o.labelSecurity = labelSecurity;
+            o.objectCreatorHasAccessPermission = objectCreatorHasAccessPermission;
+            o.objectCreatorHasGrantPermission = objectCreatorHasGrantPermission;
+            o.projectProtection = projectProtection;
+            o.usingAcl = usingAcl;
+            o.usingPolicy = usingPolicy;
+            return o;
         }
     }
 }

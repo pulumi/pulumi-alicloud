@@ -13,33 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGatewaySmbUsersResult {
-    private final String gatewayId;
+    private String gatewayId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final @Nullable String outputFile;
-    private final List<GetGatewaySmbUsersUser> users;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private @Nullable String outputFile;
+    private List<GetGatewaySmbUsersUser> users;
 
-    @CustomType.Constructor
-    private GetGatewaySmbUsersResult(
-        @CustomType.Parameter("gatewayId") String gatewayId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("users") List<GetGatewaySmbUsersUser> users) {
-        this.gatewayId = gatewayId;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.outputFile = outputFile;
-        this.users = users;
-    }
-
+    private GetGatewaySmbUsersResult() {}
     public String gatewayId() {
         return this.gatewayId;
     }
@@ -70,7 +55,7 @@ public final class GetGatewaySmbUsersResult {
     public static Builder builder(GetGatewaySmbUsersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String gatewayId;
         private String id;
@@ -78,11 +63,7 @@ public final class GetGatewaySmbUsersResult {
         private @Nullable String nameRegex;
         private @Nullable String outputFile;
         private List<GetGatewaySmbUsersUser> users;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewaySmbUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gatewayId = defaults.gatewayId;
@@ -93,14 +74,17 @@ public final class GetGatewaySmbUsersResult {
     	      this.users = defaults.users;
         }
 
+        @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
             this.gatewayId = Objects.requireNonNull(gatewayId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -108,22 +92,33 @@ public final class GetGatewaySmbUsersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder users(List<GetGatewaySmbUsersUser> users) {
             this.users = Objects.requireNonNull(users);
             return this;
         }
         public Builder users(GetGatewaySmbUsersUser... users) {
             return users(List.of(users));
-        }        public GetGatewaySmbUsersResult build() {
-            return new GetGatewaySmbUsersResult(gatewayId, id, ids, nameRegex, outputFile, users);
+        }
+        public GetGatewaySmbUsersResult build() {
+            final var o = new GetGatewaySmbUsersResult();
+            o.gatewayId = gatewayId;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.outputFile = outputFile;
+            o.users = users;
+            return o;
         }
     }
 }

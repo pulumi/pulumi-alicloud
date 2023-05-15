@@ -15,21 +15,14 @@ public final class ProjectIpWhiteList {
      * @return Classic network IP white list.
      * 
      */
-    private final @Nullable String ipList;
+    private @Nullable String ipList;
     /**
      * @return VPC network whitelist.
      * 
      */
-    private final @Nullable String vpcIpList;
+    private @Nullable String vpcIpList;
 
-    @CustomType.Constructor
-    private ProjectIpWhiteList(
-        @CustomType.Parameter("ipList") @Nullable String ipList,
-        @CustomType.Parameter("vpcIpList") @Nullable String vpcIpList) {
-        this.ipList = ipList;
-        this.vpcIpList = vpcIpList;
-    }
-
+    private ProjectIpWhiteList() {}
     /**
      * @return Classic network IP white list.
      * 
@@ -52,30 +45,32 @@ public final class ProjectIpWhiteList {
     public static Builder builder(ProjectIpWhiteList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipList;
         private @Nullable String vpcIpList;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ProjectIpWhiteList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipList = defaults.ipList;
     	      this.vpcIpList = defaults.vpcIpList;
         }
 
+        @CustomType.Setter
         public Builder ipList(@Nullable String ipList) {
             this.ipList = ipList;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcIpList(@Nullable String vpcIpList) {
             this.vpcIpList = vpcIpList;
             return this;
-        }        public ProjectIpWhiteList build() {
-            return new ProjectIpWhiteList(ipList, vpcIpList);
+        }
+        public ProjectIpWhiteList build() {
+            final var o = new ProjectIpWhiteList();
+            o.ipList = ipList;
+            o.vpcIpList = vpcIpList;
+            return o;
         }
     }
 }

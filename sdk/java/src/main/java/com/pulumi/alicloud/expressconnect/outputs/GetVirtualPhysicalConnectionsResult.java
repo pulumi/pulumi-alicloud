@@ -19,78 +19,49 @@ public final class GetVirtualPhysicalConnectionsResult {
      * @return The commercial status of the physical line. Value:-**Normal**: activated.-**Financialized**: Arrears locked.-**SecurityLocked**: locked for security reasons.
      * 
      */
-    private final @Nullable String businessStatus;
+    private @Nullable String businessStatus;
     /**
      * @return A list of Virtual Physical Connection Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetVirtualPhysicalConnectionsConnection> connections;
+    private List<GetVirtualPhysicalConnectionsConnection> connections;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Virtual Physical Connection IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable Boolean isConfirmed;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable Boolean isConfirmed;
+    private @Nullable String nameRegex;
     /**
      * @return A list of name of Virtual Physical Connections.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The ID of the instance of the physical connection.
      * 
      */
-    private final @Nullable String parentPhysicalConnectionId;
-    private final @Nullable List<String> virtualPhysicalConnectionIds;
+    private @Nullable String parentPhysicalConnectionId;
+    private @Nullable List<String> virtualPhysicalConnectionIds;
     /**
      * @return The business status of the shared line. Value:-**Confirmed**: The shared line has been Confirmed to receive.-**UnConfirmed**: The shared line has not been confirmed to be received.-**Deleted**: The shared line has been Deleted.
      * 
      */
-    private final @Nullable String virtualPhysicalConnectionStatus;
-    private final @Nullable List<Integer> vlanIds;
+    private @Nullable String virtualPhysicalConnectionStatus;
+    private @Nullable List<Integer> vlanIds;
     /**
      * @return The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      * 
      */
-    private final @Nullable String vpconnAliUid;
+    private @Nullable String vpconnAliUid;
 
-    @CustomType.Constructor
-    private GetVirtualPhysicalConnectionsResult(
-        @CustomType.Parameter("businessStatus") @Nullable String businessStatus,
-        @CustomType.Parameter("connections") List<GetVirtualPhysicalConnectionsConnection> connections,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("isConfirmed") @Nullable Boolean isConfirmed,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("parentPhysicalConnectionId") @Nullable String parentPhysicalConnectionId,
-        @CustomType.Parameter("virtualPhysicalConnectionIds") @Nullable List<String> virtualPhysicalConnectionIds,
-        @CustomType.Parameter("virtualPhysicalConnectionStatus") @Nullable String virtualPhysicalConnectionStatus,
-        @CustomType.Parameter("vlanIds") @Nullable List<Integer> vlanIds,
-        @CustomType.Parameter("vpconnAliUid") @Nullable String vpconnAliUid) {
-        this.businessStatus = businessStatus;
-        this.connections = connections;
-        this.id = id;
-        this.ids = ids;
-        this.isConfirmed = isConfirmed;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.parentPhysicalConnectionId = parentPhysicalConnectionId;
-        this.virtualPhysicalConnectionIds = virtualPhysicalConnectionIds;
-        this.virtualPhysicalConnectionStatus = virtualPhysicalConnectionStatus;
-        this.vlanIds = vlanIds;
-        this.vpconnAliUid = vpconnAliUid;
-    }
-
+    private GetVirtualPhysicalConnectionsResult() {}
     /**
      * @return The commercial status of the physical line. Value:-**Normal**: activated.-**Financialized**: Arrears locked.-**SecurityLocked**: locked for security reasons.
      * 
@@ -170,7 +141,7 @@ public final class GetVirtualPhysicalConnectionsResult {
     public static Builder builder(GetVirtualPhysicalConnectionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String businessStatus;
         private List<GetVirtualPhysicalConnectionsConnection> connections;
@@ -185,11 +156,7 @@ public final class GetVirtualPhysicalConnectionsResult {
         private @Nullable String virtualPhysicalConnectionStatus;
         private @Nullable List<Integer> vlanIds;
         private @Nullable String vpconnAliUid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVirtualPhysicalConnectionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.businessStatus = defaults.businessStatus;
@@ -207,10 +174,12 @@ public final class GetVirtualPhysicalConnectionsResult {
     	      this.vpconnAliUid = defaults.vpconnAliUid;
         }
 
+        @CustomType.Setter
         public Builder businessStatus(@Nullable String businessStatus) {
             this.businessStatus = businessStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder connections(List<GetVirtualPhysicalConnectionsConnection> connections) {
             this.connections = Objects.requireNonNull(connections);
             return this;
@@ -218,10 +187,12 @@ public final class GetVirtualPhysicalConnectionsResult {
         public Builder connections(GetVirtualPhysicalConnectionsConnection... connections) {
             return connections(List.of(connections));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -229,14 +200,17 @@ public final class GetVirtualPhysicalConnectionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder isConfirmed(@Nullable Boolean isConfirmed) {
             this.isConfirmed = isConfirmed;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -244,14 +218,17 @@ public final class GetVirtualPhysicalConnectionsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder parentPhysicalConnectionId(@Nullable String parentPhysicalConnectionId) {
             this.parentPhysicalConnectionId = parentPhysicalConnectionId;
             return this;
         }
+        @CustomType.Setter
         public Builder virtualPhysicalConnectionIds(@Nullable List<String> virtualPhysicalConnectionIds) {
             this.virtualPhysicalConnectionIds = virtualPhysicalConnectionIds;
             return this;
@@ -259,10 +236,12 @@ public final class GetVirtualPhysicalConnectionsResult {
         public Builder virtualPhysicalConnectionIds(String... virtualPhysicalConnectionIds) {
             return virtualPhysicalConnectionIds(List.of(virtualPhysicalConnectionIds));
         }
+        @CustomType.Setter
         public Builder virtualPhysicalConnectionStatus(@Nullable String virtualPhysicalConnectionStatus) {
             this.virtualPhysicalConnectionStatus = virtualPhysicalConnectionStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder vlanIds(@Nullable List<Integer> vlanIds) {
             this.vlanIds = vlanIds;
             return this;
@@ -270,11 +249,27 @@ public final class GetVirtualPhysicalConnectionsResult {
         public Builder vlanIds(Integer... vlanIds) {
             return vlanIds(List.of(vlanIds));
         }
+        @CustomType.Setter
         public Builder vpconnAliUid(@Nullable String vpconnAliUid) {
             this.vpconnAliUid = vpconnAliUid;
             return this;
-        }        public GetVirtualPhysicalConnectionsResult build() {
-            return new GetVirtualPhysicalConnectionsResult(businessStatus, connections, id, ids, isConfirmed, nameRegex, names, outputFile, parentPhysicalConnectionId, virtualPhysicalConnectionIds, virtualPhysicalConnectionStatus, vlanIds, vpconnAliUid);
+        }
+        public GetVirtualPhysicalConnectionsResult build() {
+            final var o = new GetVirtualPhysicalConnectionsResult();
+            o.businessStatus = businessStatus;
+            o.connections = connections;
+            o.id = id;
+            o.ids = ids;
+            o.isConfirmed = isConfirmed;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.parentPhysicalConnectionId = parentPhysicalConnectionId;
+            o.virtualPhysicalConnectionIds = virtualPhysicalConnectionIds;
+            o.virtualPhysicalConnectionStatus = virtualPhysicalConnectionStatus;
+            o.vlanIds = vlanIds;
+            o.vpconnAliUid = vpconnAliUid;
+            return o;
         }
     }
 }

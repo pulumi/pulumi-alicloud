@@ -13,48 +13,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCrossRegionBackupsResult {
-    private final @Nullable String backupId;
-    private final List<GetCrossRegionBackupsBackup> backups;
-    private final @Nullable String crossBackupId;
-    private final @Nullable String crossBackupRegion;
-    private final String dbInstanceId;
-    private final @Nullable String endTime;
+    private @Nullable String backupId;
+    private List<GetCrossRegionBackupsBackup> backups;
+    private @Nullable String crossBackupId;
+    private @Nullable String crossBackupRegion;
+    private String dbInstanceId;
+    private @Nullable String endTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String startTime;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private @Nullable String resourceGroupId;
+    private @Nullable String startTime;
 
-    @CustomType.Constructor
-    private GetCrossRegionBackupsResult(
-        @CustomType.Parameter("backupId") @Nullable String backupId,
-        @CustomType.Parameter("backups") List<GetCrossRegionBackupsBackup> backups,
-        @CustomType.Parameter("crossBackupId") @Nullable String crossBackupId,
-        @CustomType.Parameter("crossBackupRegion") @Nullable String crossBackupRegion,
-        @CustomType.Parameter("dbInstanceId") String dbInstanceId,
-        @CustomType.Parameter("endTime") @Nullable String endTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("startTime") @Nullable String startTime) {
-        this.backupId = backupId;
-        this.backups = backups;
-        this.crossBackupId = crossBackupId;
-        this.crossBackupRegion = crossBackupRegion;
-        this.dbInstanceId = dbInstanceId;
-        this.endTime = endTime;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.startTime = startTime;
-    }
-
+    private GetCrossRegionBackupsResult() {}
     public Optional<String> backupId() {
         return Optional.ofNullable(this.backupId);
     }
@@ -100,7 +75,7 @@ public final class GetCrossRegionBackupsResult {
     public static Builder builder(GetCrossRegionBackupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String backupId;
         private List<GetCrossRegionBackupsBackup> backups;
@@ -113,11 +88,7 @@ public final class GetCrossRegionBackupsResult {
         private @Nullable String outputFile;
         private @Nullable String resourceGroupId;
         private @Nullable String startTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCrossRegionBackupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupId = defaults.backupId;
@@ -133,10 +104,12 @@ public final class GetCrossRegionBackupsResult {
     	      this.startTime = defaults.startTime;
         }
 
+        @CustomType.Setter
         public Builder backupId(@Nullable String backupId) {
             this.backupId = backupId;
             return this;
         }
+        @CustomType.Setter
         public Builder backups(List<GetCrossRegionBackupsBackup> backups) {
             this.backups = Objects.requireNonNull(backups);
             return this;
@@ -144,26 +117,32 @@ public final class GetCrossRegionBackupsResult {
         public Builder backups(GetCrossRegionBackupsBackup... backups) {
             return backups(List.of(backups));
         }
+        @CustomType.Setter
         public Builder crossBackupId(@Nullable String crossBackupId) {
             this.crossBackupId = crossBackupId;
             return this;
         }
+        @CustomType.Setter
         public Builder crossBackupRegion(@Nullable String crossBackupRegion) {
             this.crossBackupRegion = crossBackupRegion;
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceId(String dbInstanceId) {
             this.dbInstanceId = Objects.requireNonNull(dbInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
             this.endTime = endTime;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -171,19 +150,35 @@ public final class GetCrossRegionBackupsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
             this.startTime = startTime;
             return this;
-        }        public GetCrossRegionBackupsResult build() {
-            return new GetCrossRegionBackupsResult(backupId, backups, crossBackupId, crossBackupRegion, dbInstanceId, endTime, id, ids, outputFile, resourceGroupId, startTime);
+        }
+        public GetCrossRegionBackupsResult build() {
+            final var o = new GetCrossRegionBackupsResult();
+            o.backupId = backupId;
+            o.backups = backups;
+            o.crossBackupId = crossBackupId;
+            o.crossBackupRegion = crossBackupRegion;
+            o.dbInstanceId = dbInstanceId;
+            o.endTime = endTime;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.startTime = startTime;
+            return o;
         }
     }
 }

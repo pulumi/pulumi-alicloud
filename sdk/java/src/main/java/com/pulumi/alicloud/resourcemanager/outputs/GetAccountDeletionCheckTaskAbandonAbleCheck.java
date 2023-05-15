@@ -13,28 +13,19 @@ public final class GetAccountDeletionCheckTaskAbandonAbleCheck {
      * @return The ID of the check item.
      * 
      */
-    private final String checkId;
+    private String checkId;
     /**
      * @return The name of the cloud service to which the check item belongs.
      * 
      */
-    private final String checkName;
+    private String checkName;
     /**
      * @return The description of the check item.
      * 
      */
-    private final String description;
+    private String description;
 
-    @CustomType.Constructor
-    private GetAccountDeletionCheckTaskAbandonAbleCheck(
-        @CustomType.Parameter("checkId") String checkId,
-        @CustomType.Parameter("checkName") String checkName,
-        @CustomType.Parameter("description") String description) {
-        this.checkId = checkId;
-        this.checkName = checkName;
-        this.description = description;
-    }
-
+    private GetAccountDeletionCheckTaskAbandonAbleCheck() {}
     /**
      * @return The ID of the check item.
      * 
@@ -64,16 +55,12 @@ public final class GetAccountDeletionCheckTaskAbandonAbleCheck {
     public static Builder builder(GetAccountDeletionCheckTaskAbandonAbleCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String checkId;
         private String checkName;
         private String description;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountDeletionCheckTaskAbandonAbleCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checkId = defaults.checkId;
@@ -81,19 +68,27 @@ public final class GetAccountDeletionCheckTaskAbandonAbleCheck {
     	      this.description = defaults.description;
         }
 
+        @CustomType.Setter
         public Builder checkId(String checkId) {
             this.checkId = Objects.requireNonNull(checkId);
             return this;
         }
+        @CustomType.Setter
         public Builder checkName(String checkName) {
             this.checkName = Objects.requireNonNull(checkName);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
-        }        public GetAccountDeletionCheckTaskAbandonAbleCheck build() {
-            return new GetAccountDeletionCheckTaskAbandonAbleCheck(checkId, checkName, description);
+        }
+        public GetAccountDeletionCheckTaskAbandonAbleCheck build() {
+            final var o = new GetAccountDeletionCheckTaskAbandonAbleCheck();
+            o.checkId = checkId;
+            o.checkName = checkName;
+            o.description = description;
+            return o;
         }
     }
 }

@@ -14,28 +14,19 @@ public final class GetContainerGroupsGroupContainerVolumeMount {
      * @return The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
      * 
      */
-    private final String mountPath;
+    private String mountPath;
     /**
      * @return The name of the volume.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Default value: `false`.
      * 
      */
-    private final Boolean readOnly;
+    private Boolean readOnly;
 
-    @CustomType.Constructor
-    private GetContainerGroupsGroupContainerVolumeMount(
-        @CustomType.Parameter("mountPath") String mountPath,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("readOnly") Boolean readOnly) {
-        this.mountPath = mountPath;
-        this.name = name;
-        this.readOnly = readOnly;
-    }
-
+    private GetContainerGroupsGroupContainerVolumeMount() {}
     /**
      * @return The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
      * 
@@ -65,16 +56,12 @@ public final class GetContainerGroupsGroupContainerVolumeMount {
     public static Builder builder(GetContainerGroupsGroupContainerVolumeMount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String mountPath;
         private String name;
         private Boolean readOnly;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerGroupsGroupContainerVolumeMount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
@@ -82,19 +69,27 @@ public final class GetContainerGroupsGroupContainerVolumeMount {
     	      this.readOnly = defaults.readOnly;
         }
 
+        @CustomType.Setter
         public Builder mountPath(String mountPath) {
             this.mountPath = Objects.requireNonNull(mountPath);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder readOnly(Boolean readOnly) {
             this.readOnly = Objects.requireNonNull(readOnly);
             return this;
-        }        public GetContainerGroupsGroupContainerVolumeMount build() {
-            return new GetContainerGroupsGroupContainerVolumeMount(mountPath, name, readOnly);
+        }
+        public GetContainerGroupsGroupContainerVolumeMount build() {
+            final var o = new GetContainerGroupsGroupContainerVolumeMount();
+            o.mountPath = mountPath;
+            o.name = name;
+            o.readOnly = readOnly;
+            return o;
         }
     }
 }

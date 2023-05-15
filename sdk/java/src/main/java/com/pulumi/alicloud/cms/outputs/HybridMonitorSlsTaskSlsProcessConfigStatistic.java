@@ -15,44 +15,31 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatistic {
      * @return The alias of the aggregation result.
      * 
      */
-    private final @Nullable String alias;
+    private @Nullable String alias;
     /**
      * @return The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
      * 
      */
-    private final @Nullable String function;
+    private @Nullable String function;
     /**
      * @return The value of the function that is used to aggregate logs imported from Log Service.
      * - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
      * - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
      * 
      */
-    private final @Nullable String parameterOne;
+    private @Nullable String parameterOne;
     /**
      * @return The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
      * 
      */
-    private final @Nullable String parameterTwo;
+    private @Nullable String parameterTwo;
     /**
      * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
-    private final @Nullable String slsKeyName;
+    private @Nullable String slsKeyName;
 
-    @CustomType.Constructor
-    private HybridMonitorSlsTaskSlsProcessConfigStatistic(
-        @CustomType.Parameter("alias") @Nullable String alias,
-        @CustomType.Parameter("function") @Nullable String function,
-        @CustomType.Parameter("parameterOne") @Nullable String parameterOne,
-        @CustomType.Parameter("parameterTwo") @Nullable String parameterTwo,
-        @CustomType.Parameter("slsKeyName") @Nullable String slsKeyName) {
-        this.alias = alias;
-        this.function = function;
-        this.parameterOne = parameterOne;
-        this.parameterTwo = parameterTwo;
-        this.slsKeyName = slsKeyName;
-    }
-
+    private HybridMonitorSlsTaskSlsProcessConfigStatistic() {}
     /**
      * @return The alias of the aggregation result.
      * 
@@ -98,18 +85,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatistic {
     public static Builder builder(HybridMonitorSlsTaskSlsProcessConfigStatistic defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String alias;
         private @Nullable String function;
         private @Nullable String parameterOne;
         private @Nullable String parameterTwo;
         private @Nullable String slsKeyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HybridMonitorSlsTaskSlsProcessConfigStatistic defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alias = defaults.alias;
@@ -119,27 +102,39 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatistic {
     	      this.slsKeyName = defaults.slsKeyName;
         }
 
+        @CustomType.Setter
         public Builder alias(@Nullable String alias) {
             this.alias = alias;
             return this;
         }
+        @CustomType.Setter
         public Builder function(@Nullable String function) {
             this.function = function;
             return this;
         }
+        @CustomType.Setter
         public Builder parameterOne(@Nullable String parameterOne) {
             this.parameterOne = parameterOne;
             return this;
         }
+        @CustomType.Setter
         public Builder parameterTwo(@Nullable String parameterTwo) {
             this.parameterTwo = parameterTwo;
             return this;
         }
+        @CustomType.Setter
         public Builder slsKeyName(@Nullable String slsKeyName) {
             this.slsKeyName = slsKeyName;
             return this;
-        }        public HybridMonitorSlsTaskSlsProcessConfigStatistic build() {
-            return new HybridMonitorSlsTaskSlsProcessConfigStatistic(alias, function, parameterOne, parameterTwo, slsKeyName);
+        }
+        public HybridMonitorSlsTaskSlsProcessConfigStatistic build() {
+            final var o = new HybridMonitorSlsTaskSlsProcessConfigStatistic();
+            o.alias = alias;
+            o.function = function;
+            o.parameterOne = parameterOne;
+            o.parameterTwo = parameterTwo;
+            o.slsKeyName = slsKeyName;
+            return o;
         }
     }
 }

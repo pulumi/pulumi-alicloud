@@ -13,13 +13,9 @@ public final class GetRegionsRegionZone {
      * @return The ID of the zone.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetRegionsRegionZone(@CustomType.Parameter("zoneId") String zoneId) {
-        this.zoneId = zoneId;
-    }
-
+    private GetRegionsRegionZone() {}
     /**
      * @return The ID of the zone.
      * 
@@ -35,24 +31,24 @@ public final class GetRegionsRegionZone {
     public static Builder builder(GetRegionsRegionZone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegionsRegionZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetRegionsRegionZone build() {
-            return new GetRegionsRegionZone(zoneId);
+        }
+        public GetRegionsRegionZone build() {
+            final var o = new GetRegionsRegionZone();
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

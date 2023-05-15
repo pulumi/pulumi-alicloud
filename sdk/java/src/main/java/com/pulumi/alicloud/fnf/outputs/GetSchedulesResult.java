@@ -14,39 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSchedulesResult {
-    private final String flowName;
+    private String flowName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable Integer limit;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final List<GetSchedulesSchedule> schedules;
+    private String id;
+    private List<String> ids;
+    private @Nullable Integer limit;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private List<GetSchedulesSchedule> schedules;
 
-    @CustomType.Constructor
-    private GetSchedulesResult(
-        @CustomType.Parameter("flowName") String flowName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("limit") @Nullable Integer limit,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("schedules") List<GetSchedulesSchedule> schedules) {
-        this.flowName = flowName;
-        this.id = id;
-        this.ids = ids;
-        this.limit = limit;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.schedules = schedules;
-    }
-
+    private GetSchedulesResult() {}
     public String flowName() {
         return this.flowName;
     }
@@ -83,7 +64,7 @@ public final class GetSchedulesResult {
     public static Builder builder(GetSchedulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String flowName;
         private String id;
@@ -93,11 +74,7 @@ public final class GetSchedulesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetSchedulesSchedule> schedules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSchedulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.flowName = defaults.flowName;
@@ -110,14 +87,17 @@ public final class GetSchedulesResult {
     	      this.schedules = defaults.schedules;
         }
 
+        @CustomType.Setter
         public Builder flowName(String flowName) {
             this.flowName = Objects.requireNonNull(flowName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -125,14 +105,17 @@ public final class GetSchedulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder limit(@Nullable Integer limit) {
             this.limit = limit;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -140,18 +123,30 @@ public final class GetSchedulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder schedules(List<GetSchedulesSchedule> schedules) {
             this.schedules = Objects.requireNonNull(schedules);
             return this;
         }
         public Builder schedules(GetSchedulesSchedule... schedules) {
             return schedules(List.of(schedules));
-        }        public GetSchedulesResult build() {
-            return new GetSchedulesResult(flowName, id, ids, limit, nameRegex, names, outputFile, schedules);
+        }
+        public GetSchedulesResult build() {
+            final var o = new GetSchedulesResult();
+            o.flowName = flowName;
+            o.id = id;
+            o.ids = ids;
+            o.limit = limit;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.schedules = schedules;
+            return o;
         }
     }
 }

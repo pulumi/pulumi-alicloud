@@ -14,63 +14,44 @@ public final class GetIngressesIngress {
      * @return Cert Id.
      * 
      */
-    private final String certId;
+    private String certId;
     /**
      * @return Default Rule.
      * 
      */
-    private final String defaultRule;
+    private String defaultRule;
     /**
      * @return Description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Ingress.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String ingressId;
+    private String ingressId;
     /**
      * @return SLB listening port.
      * 
      */
-    private final Integer listenerPort;
+    private Integer listenerPort;
     /**
      * @return The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
      * 
      */
-    private final String namespaceId;
+    private String namespaceId;
     /**
      * @return SLB ID.
      * 
      */
-    private final String slbId;
+    private String slbId;
 
-    @CustomType.Constructor
-    private GetIngressesIngress(
-        @CustomType.Parameter("certId") String certId,
-        @CustomType.Parameter("defaultRule") String defaultRule,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ingressId") String ingressId,
-        @CustomType.Parameter("listenerPort") Integer listenerPort,
-        @CustomType.Parameter("namespaceId") String namespaceId,
-        @CustomType.Parameter("slbId") String slbId) {
-        this.certId = certId;
-        this.defaultRule = defaultRule;
-        this.description = description;
-        this.id = id;
-        this.ingressId = ingressId;
-        this.listenerPort = listenerPort;
-        this.namespaceId = namespaceId;
-        this.slbId = slbId;
-    }
-
+    private GetIngressesIngress() {}
     /**
      * @return Cert Id.
      * 
@@ -135,7 +116,7 @@ public final class GetIngressesIngress {
     public static Builder builder(GetIngressesIngress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String certId;
         private String defaultRule;
@@ -145,11 +126,7 @@ public final class GetIngressesIngress {
         private Integer listenerPort;
         private String namespaceId;
         private String slbId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIngressesIngress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certId = defaults.certId;
@@ -162,39 +139,57 @@ public final class GetIngressesIngress {
     	      this.slbId = defaults.slbId;
         }
 
+        @CustomType.Setter
         public Builder certId(String certId) {
             this.certId = Objects.requireNonNull(certId);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultRule(String defaultRule) {
             this.defaultRule = Objects.requireNonNull(defaultRule);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ingressId(String ingressId) {
             this.ingressId = Objects.requireNonNull(ingressId);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerPort(Integer listenerPort) {
             this.listenerPort = Objects.requireNonNull(listenerPort);
             return this;
         }
+        @CustomType.Setter
         public Builder namespaceId(String namespaceId) {
             this.namespaceId = Objects.requireNonNull(namespaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder slbId(String slbId) {
             this.slbId = Objects.requireNonNull(slbId);
             return this;
-        }        public GetIngressesIngress build() {
-            return new GetIngressesIngress(certId, defaultRule, description, id, ingressId, listenerPort, namespaceId, slbId);
+        }
+        public GetIngressesIngress build() {
+            final var o = new GetIngressesIngress();
+            o.certId = certId;
+            o.defaultRule = defaultRule;
+            o.description = description;
+            o.id = id;
+            o.ingressId = ingressId;
+            o.listenerPort = listenerPort;
+            o.namespaceId = namespaceId;
+            o.slbId = slbId;
+            return o;
         }
     }
 }

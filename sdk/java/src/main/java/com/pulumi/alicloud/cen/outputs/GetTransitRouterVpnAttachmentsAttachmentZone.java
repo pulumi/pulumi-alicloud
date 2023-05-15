@@ -13,13 +13,9 @@ public final class GetTransitRouterVpnAttachmentsAttachmentZone {
      * @return The id of the zone.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetTransitRouterVpnAttachmentsAttachmentZone(@CustomType.Parameter("zoneId") String zoneId) {
-        this.zoneId = zoneId;
-    }
-
+    private GetTransitRouterVpnAttachmentsAttachmentZone() {}
     /**
      * @return The id of the zone.
      * 
@@ -35,24 +31,24 @@ public final class GetTransitRouterVpnAttachmentsAttachmentZone {
     public static Builder builder(GetTransitRouterVpnAttachmentsAttachmentZone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterVpnAttachmentsAttachmentZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetTransitRouterVpnAttachmentsAttachmentZone build() {
-            return new GetTransitRouterVpnAttachmentsAttachmentZone(zoneId);
+        }
+        public GetTransitRouterVpnAttachmentsAttachmentZone build() {
+            final var o = new GetTransitRouterVpnAttachmentsAttachmentZone();
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

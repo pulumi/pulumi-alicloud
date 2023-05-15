@@ -15,13 +15,9 @@ public final class ServiceMeshExtraConfiguration {
      * @return Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
      * 
      */
-    private final @Nullable Boolean crAggregationEnabled;
+    private @Nullable Boolean crAggregationEnabled;
 
-    @CustomType.Constructor
-    private ServiceMeshExtraConfiguration(@CustomType.Parameter("crAggregationEnabled") @Nullable Boolean crAggregationEnabled) {
-        this.crAggregationEnabled = crAggregationEnabled;
-    }
-
+    private ServiceMeshExtraConfiguration() {}
     /**
      * @return Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
      * 
@@ -37,24 +33,24 @@ public final class ServiceMeshExtraConfiguration {
     public static Builder builder(ServiceMeshExtraConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean crAggregationEnabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceMeshExtraConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.crAggregationEnabled = defaults.crAggregationEnabled;
         }
 
+        @CustomType.Setter
         public Builder crAggregationEnabled(@Nullable Boolean crAggregationEnabled) {
             this.crAggregationEnabled = crAggregationEnabled;
             return this;
-        }        public ServiceMeshExtraConfiguration build() {
-            return new ServiceMeshExtraConfiguration(crAggregationEnabled);
+        }
+        public ServiceMeshExtraConfiguration build() {
+            final var o = new ServiceMeshExtraConfiguration();
+            o.crAggregationEnabled = crAggregationEnabled;
+            return o;
         }
     }
 }

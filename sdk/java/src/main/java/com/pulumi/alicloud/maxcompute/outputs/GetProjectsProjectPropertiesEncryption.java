@@ -14,28 +14,19 @@ public final class GetProjectsProjectPropertiesEncryption {
      * @return Algorithm.
      * 
      */
-    private final String algorithm;
+    private String algorithm;
     /**
      * @return Whether to open.
      * 
      */
-    private final Boolean enable;
+    private Boolean enable;
     /**
      * @return Encryption algorithm key.
      * 
      */
-    private final String key;
+    private String key;
 
-    @CustomType.Constructor
-    private GetProjectsProjectPropertiesEncryption(
-        @CustomType.Parameter("algorithm") String algorithm,
-        @CustomType.Parameter("enable") Boolean enable,
-        @CustomType.Parameter("key") String key) {
-        this.algorithm = algorithm;
-        this.enable = enable;
-        this.key = key;
-    }
-
+    private GetProjectsProjectPropertiesEncryption() {}
     /**
      * @return Algorithm.
      * 
@@ -65,16 +56,12 @@ public final class GetProjectsProjectPropertiesEncryption {
     public static Builder builder(GetProjectsProjectPropertiesEncryption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String algorithm;
         private Boolean enable;
         private String key;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectsProjectPropertiesEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.algorithm = defaults.algorithm;
@@ -82,19 +69,27 @@ public final class GetProjectsProjectPropertiesEncryption {
     	      this.key = defaults.key;
         }
 
+        @CustomType.Setter
         public Builder algorithm(String algorithm) {
             this.algorithm = Objects.requireNonNull(algorithm);
             return this;
         }
+        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
-        }        public GetProjectsProjectPropertiesEncryption build() {
-            return new GetProjectsProjectPropertiesEncryption(algorithm, enable, key);
+        }
+        public GetProjectsProjectPropertiesEncryption build() {
+            final var o = new GetProjectsProjectPropertiesEncryption();
+            o.algorithm = algorithm;
+            o.enable = enable;
+            o.key = key;
+            return o;
         }
     }
 }

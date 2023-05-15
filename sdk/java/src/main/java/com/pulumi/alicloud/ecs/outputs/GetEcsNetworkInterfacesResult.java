@@ -20,80 +20,39 @@ public final class GetEcsNetworkInterfacesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String instanceId;
-    private final List<GetEcsNetworkInterfacesInterface> interfaces;
+    private String id;
+    private List<String> ids;
+    private @Nullable String instanceId;
+    private List<GetEcsNetworkInterfacesInterface> interfaces;
     /**
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
-    private final @Nullable String name;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String networkInterfaceName;
-    private final @Nullable String outputFile;
-    private final @Nullable String primaryIpAddress;
+    private @Nullable String name;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String networkInterfaceName;
+    private @Nullable String outputFile;
+    private @Nullable String primaryIpAddress;
     /**
      * @deprecated
      * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
      * 
      */
     @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
-    private final @Nullable String privateIp;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String securityGroupId;
-    private final @Nullable Boolean serviceManaged;
-    private final @Nullable String status;
-    private final @Nullable Map<String,Object> tags;
-    private final @Nullable String type;
-    private final @Nullable String vpcId;
-    private final @Nullable String vswitchId;
+    private @Nullable String privateIp;
+    private @Nullable String resourceGroupId;
+    private @Nullable String securityGroupId;
+    private @Nullable Boolean serviceManaged;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
+    private @Nullable String type;
+    private @Nullable String vpcId;
+    private @Nullable String vswitchId;
 
-    @CustomType.Constructor
-    private GetEcsNetworkInterfacesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") @Nullable String instanceId,
-        @CustomType.Parameter("interfaces") List<GetEcsNetworkInterfacesInterface> interfaces,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("networkInterfaceName") @Nullable String networkInterfaceName,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("primaryIpAddress") @Nullable String primaryIpAddress,
-        @CustomType.Parameter("privateIp") @Nullable String privateIp,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("securityGroupId") @Nullable String securityGroupId,
-        @CustomType.Parameter("serviceManaged") @Nullable Boolean serviceManaged,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId,
-        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.interfaces = interfaces;
-        this.name = name;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.networkInterfaceName = networkInterfaceName;
-        this.outputFile = outputFile;
-        this.primaryIpAddress = primaryIpAddress;
-        this.privateIp = privateIp;
-        this.resourceGroupId = resourceGroupId;
-        this.securityGroupId = securityGroupId;
-        this.serviceManaged = serviceManaged;
-        this.status = status;
-        this.tags = tags;
-        this.type = type;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetEcsNetworkInterfacesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -175,7 +134,7 @@ public final class GetEcsNetworkInterfacesResult {
     public static Builder builder(GetEcsNetworkInterfacesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -196,11 +155,7 @@ public final class GetEcsNetworkInterfacesResult {
         private @Nullable String type;
         private @Nullable String vpcId;
         private @Nullable String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsNetworkInterfacesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -224,10 +179,12 @@ public final class GetEcsNetworkInterfacesResult {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -235,10 +192,12 @@ public final class GetEcsNetworkInterfacesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder interfaces(List<GetEcsNetworkInterfacesInterface> interfaces) {
             this.interfaces = Objects.requireNonNull(interfaces);
             return this;
@@ -246,14 +205,17 @@ public final class GetEcsNetworkInterfacesResult {
         public Builder interfaces(GetEcsNetworkInterfacesInterface... interfaces) {
             return interfaces(List.of(interfaces));
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -261,55 +223,88 @@ public final class GetEcsNetworkInterfacesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder networkInterfaceName(@Nullable String networkInterfaceName) {
             this.networkInterfaceName = networkInterfaceName;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder primaryIpAddress(@Nullable String primaryIpAddress) {
             this.primaryIpAddress = primaryIpAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder privateIp(@Nullable String privateIp) {
             this.privateIp = privateIp;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupId(@Nullable String securityGroupId) {
             this.securityGroupId = securityGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceManaged(@Nullable Boolean serviceManaged) {
             this.serviceManaged = serviceManaged;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }        public GetEcsNetworkInterfacesResult build() {
-            return new GetEcsNetworkInterfacesResult(id, ids, instanceId, interfaces, name, nameRegex, names, networkInterfaceName, outputFile, primaryIpAddress, privateIp, resourceGroupId, securityGroupId, serviceManaged, status, tags, type, vpcId, vswitchId);
+        }
+        public GetEcsNetworkInterfacesResult build() {
+            final var o = new GetEcsNetworkInterfacesResult();
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.interfaces = interfaces;
+            o.name = name;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.networkInterfaceName = networkInterfaceName;
+            o.outputFile = outputFile;
+            o.primaryIpAddress = primaryIpAddress;
+            o.privateIp = privateIp;
+            o.resourceGroupId = resourceGroupId;
+            o.securityGroupId = securityGroupId;
+            o.serviceManaged = serviceManaged;
+            o.status = status;
+            o.tags = tags;
+            o.type = type;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

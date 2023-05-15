@@ -18,54 +18,33 @@ public final class GetInstancesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Instance IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return A list of Instance Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetInstancesInstance> instances;
-    private final @Nullable String nameRegex;
+    private List<GetInstancesInstance> instances;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Instance names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
     /**
      * @return Resource Group ID.
      * 
      */
-    private final @Nullable String resourceGroupId;
+    private @Nullable String resourceGroupId;
 
-    @CustomType.Constructor
-    private GetInstancesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId) {
-        this.id = id;
-        this.ids = ids;
-        this.instances = instances;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.resourceGroupId = resourceGroupId;
-    }
-
+    private GetInstancesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -121,7 +100,7 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -132,11 +111,7 @@ public final class GetInstancesResult {
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
         private @Nullable String resourceGroupId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -150,10 +125,12 @@ public final class GetInstancesResult {
     	      this.resourceGroupId = defaults.resourceGroupId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -161,6 +138,7 @@ public final class GetInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -168,10 +146,12 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -179,23 +159,38 @@ public final class GetInstancesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
-        }        public GetInstancesResult build() {
-            return new GetInstancesResult(id, ids, instances, nameRegex, names, outputFile, pageNumber, pageSize, resourceGroupId);
+        }
+        public GetInstancesResult build() {
+            final var o = new GetInstancesResult();
+            o.id = id;
+            o.ids = ids;
+            o.instances = instances;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.resourceGroupId = resourceGroupId;
+            return o;
         }
     }
 }

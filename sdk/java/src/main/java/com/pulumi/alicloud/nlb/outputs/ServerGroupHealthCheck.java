@@ -18,85 +18,60 @@ public final class ServerGroupHealthCheck {
      * @return The backend port that is used for health checks. Valid values: 0 to 65535. Default value: 0. If you set the value to 0, the port of a backend server is used for health checks.
      * 
      */
-    private final @Nullable Integer healthCheckConnectPort;
+    private @Nullable Integer healthCheckConnectPort;
     /**
      * @return The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
      * 
      */
-    private final @Nullable Integer healthCheckConnectTimeout;
+    private @Nullable Integer healthCheckConnectTimeout;
     /**
      * @return The domain name that is used for health checks. Valid values:
      * - `$SERVER_IP`: the private IP address of a backend server.
      * 
      */
-    private final @Nullable String healthCheckDomain;
+    private @Nullable String healthCheckDomain;
     /**
      * @return Specifies whether to enable health checks.
      * 
      */
-    private final @Nullable Boolean healthCheckEnabled;
+    private @Nullable Boolean healthCheckEnabled;
     /**
      * @return The HTTP status codes to return to health checks. Separate multiple HTTP status codes with commas (,). Valid values: http_2xx (default), http_3xx, http_4xx, and http_5xx. **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
      * 
      */
-    private final @Nullable List<String> healthCheckHttpCodes;
+    private @Nullable List<String> healthCheckHttpCodes;
     /**
      * @return The interval between two consecutive health checks. Unit: seconds. Valid values: 5 to 5000. Default value: 10.
      * 
      */
-    private final @Nullable Integer healthCheckInterval;
+    private @Nullable Integer healthCheckInterval;
     /**
      * @return The protocol that is used for health checks. Valid values: `TCP` (default) and `HTTP`.
      * 
      */
-    private final @Nullable String healthCheckType;
+    private @Nullable String healthCheckType;
     /**
      * @return The path to which health check requests are sent. The path must be 1 to 80 characters in length, and can contain only letters, digits, and the following special characters: `- / . % ? # &amp; =`. It can also contain the following extended characters: `_ ; ~ ! ( ) * [ ] @ $ ^ : &#39; , +`. The path must start with a forward slash (/). **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
      * 
      */
-    private final @Nullable String healthCheckUrl;
+    private @Nullable String healthCheckUrl;
     /**
      * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status is changed from fail to success. Valid values: 2 to 10. Default value: 2.
      * 
      */
-    private final @Nullable Integer healthyThreshold;
+    private @Nullable Integer healthyThreshold;
     /**
      * @return The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
      * 
      */
-    private final @Nullable String httpCheckMethod;
+    private @Nullable String httpCheckMethod;
     /**
      * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
      * 
      */
-    private final @Nullable Integer unhealthyThreshold;
+    private @Nullable Integer unhealthyThreshold;
 
-    @CustomType.Constructor
-    private ServerGroupHealthCheck(
-        @CustomType.Parameter("healthCheckConnectPort") @Nullable Integer healthCheckConnectPort,
-        @CustomType.Parameter("healthCheckConnectTimeout") @Nullable Integer healthCheckConnectTimeout,
-        @CustomType.Parameter("healthCheckDomain") @Nullable String healthCheckDomain,
-        @CustomType.Parameter("healthCheckEnabled") @Nullable Boolean healthCheckEnabled,
-        @CustomType.Parameter("healthCheckHttpCodes") @Nullable List<String> healthCheckHttpCodes,
-        @CustomType.Parameter("healthCheckInterval") @Nullable Integer healthCheckInterval,
-        @CustomType.Parameter("healthCheckType") @Nullable String healthCheckType,
-        @CustomType.Parameter("healthCheckUrl") @Nullable String healthCheckUrl,
-        @CustomType.Parameter("healthyThreshold") @Nullable Integer healthyThreshold,
-        @CustomType.Parameter("httpCheckMethod") @Nullable String httpCheckMethod,
-        @CustomType.Parameter("unhealthyThreshold") @Nullable Integer unhealthyThreshold) {
-        this.healthCheckConnectPort = healthCheckConnectPort;
-        this.healthCheckConnectTimeout = healthCheckConnectTimeout;
-        this.healthCheckDomain = healthCheckDomain;
-        this.healthCheckEnabled = healthCheckEnabled;
-        this.healthCheckHttpCodes = healthCheckHttpCodes;
-        this.healthCheckInterval = healthCheckInterval;
-        this.healthCheckType = healthCheckType;
-        this.healthCheckUrl = healthCheckUrl;
-        this.healthyThreshold = healthyThreshold;
-        this.httpCheckMethod = httpCheckMethod;
-        this.unhealthyThreshold = unhealthyThreshold;
-    }
-
+    private ServerGroupHealthCheck() {}
     /**
      * @return The backend port that is used for health checks. Valid values: 0 to 65535. Default value: 0. If you set the value to 0, the port of a backend server is used for health checks.
      * 
@@ -183,7 +158,7 @@ public final class ServerGroupHealthCheck {
     public static Builder builder(ServerGroupHealthCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer healthCheckConnectPort;
         private @Nullable Integer healthCheckConnectTimeout;
@@ -196,11 +171,7 @@ public final class ServerGroupHealthCheck {
         private @Nullable Integer healthyThreshold;
         private @Nullable String httpCheckMethod;
         private @Nullable Integer unhealthyThreshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServerGroupHealthCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.healthCheckConnectPort = defaults.healthCheckConnectPort;
@@ -216,22 +187,27 @@ public final class ServerGroupHealthCheck {
     	      this.unhealthyThreshold = defaults.unhealthyThreshold;
         }
 
+        @CustomType.Setter
         public Builder healthCheckConnectPort(@Nullable Integer healthCheckConnectPort) {
             this.healthCheckConnectPort = healthCheckConnectPort;
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckConnectTimeout(@Nullable Integer healthCheckConnectTimeout) {
             this.healthCheckConnectTimeout = healthCheckConnectTimeout;
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckDomain(@Nullable String healthCheckDomain) {
             this.healthCheckDomain = healthCheckDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckEnabled(@Nullable Boolean healthCheckEnabled) {
             this.healthCheckEnabled = healthCheckEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckHttpCodes(@Nullable List<String> healthCheckHttpCodes) {
             this.healthCheckHttpCodes = healthCheckHttpCodes;
             return this;
@@ -239,31 +215,50 @@ public final class ServerGroupHealthCheck {
         public Builder healthCheckHttpCodes(String... healthCheckHttpCodes) {
             return healthCheckHttpCodes(List.of(healthCheckHttpCodes));
         }
+        @CustomType.Setter
         public Builder healthCheckInterval(@Nullable Integer healthCheckInterval) {
             this.healthCheckInterval = healthCheckInterval;
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckType(@Nullable String healthCheckType) {
             this.healthCheckType = healthCheckType;
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckUrl(@Nullable String healthCheckUrl) {
             this.healthCheckUrl = healthCheckUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder healthyThreshold(@Nullable Integer healthyThreshold) {
             this.healthyThreshold = healthyThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder httpCheckMethod(@Nullable String httpCheckMethod) {
             this.httpCheckMethod = httpCheckMethod;
             return this;
         }
+        @CustomType.Setter
         public Builder unhealthyThreshold(@Nullable Integer unhealthyThreshold) {
             this.unhealthyThreshold = unhealthyThreshold;
             return this;
-        }        public ServerGroupHealthCheck build() {
-            return new ServerGroupHealthCheck(healthCheckConnectPort, healthCheckConnectTimeout, healthCheckDomain, healthCheckEnabled, healthCheckHttpCodes, healthCheckInterval, healthCheckType, healthCheckUrl, healthyThreshold, httpCheckMethod, unhealthyThreshold);
+        }
+        public ServerGroupHealthCheck build() {
+            final var o = new ServerGroupHealthCheck();
+            o.healthCheckConnectPort = healthCheckConnectPort;
+            o.healthCheckConnectTimeout = healthCheckConnectTimeout;
+            o.healthCheckDomain = healthCheckDomain;
+            o.healthCheckEnabled = healthCheckEnabled;
+            o.healthCheckHttpCodes = healthCheckHttpCodes;
+            o.healthCheckInterval = healthCheckInterval;
+            o.healthCheckType = healthCheckType;
+            o.healthCheckUrl = healthCheckUrl;
+            o.healthyThreshold = healthyThreshold;
+            o.httpCheckMethod = httpCheckMethod;
+            o.unhealthyThreshold = unhealthyThreshold;
+            return o;
         }
     }
 }

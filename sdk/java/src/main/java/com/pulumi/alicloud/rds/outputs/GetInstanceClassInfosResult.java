@@ -13,44 +13,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceClassInfosResult {
-    private final String commodityCode;
-    private final @Nullable String dbInstanceId;
+    private String commodityCode;
+    private @Nullable String dbInstanceId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Rds instance class codes.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return A list of Rds available resource. Each element contains the following attributes:
      * 
      */
-    private final @Nullable List<GetInstanceClassInfosInfo> infos;
-    private final String orderType;
-    private final @Nullable String outputFile;
+    private @Nullable List<GetInstanceClassInfosInfo> infos;
+    private String orderType;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetInstanceClassInfosResult(
-        @CustomType.Parameter("commodityCode") String commodityCode,
-        @CustomType.Parameter("dbInstanceId") @Nullable String dbInstanceId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("infos") @Nullable List<GetInstanceClassInfosInfo> infos,
-        @CustomType.Parameter("orderType") String orderType,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.commodityCode = commodityCode;
-        this.dbInstanceId = dbInstanceId;
-        this.id = id;
-        this.ids = ids;
-        this.infos = infos;
-        this.orderType = orderType;
-        this.outputFile = outputFile;
-    }
-
+    private GetInstanceClassInfosResult() {}
     public String commodityCode() {
         return this.commodityCode;
     }
@@ -92,7 +75,7 @@ public final class GetInstanceClassInfosResult {
     public static Builder builder(GetInstanceClassInfosResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String commodityCode;
         private @Nullable String dbInstanceId;
@@ -101,11 +84,7 @@ public final class GetInstanceClassInfosResult {
         private @Nullable List<GetInstanceClassInfosInfo> infos;
         private String orderType;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceClassInfosResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commodityCode = defaults.commodityCode;
@@ -117,18 +96,22 @@ public final class GetInstanceClassInfosResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder commodityCode(String commodityCode) {
             this.commodityCode = Objects.requireNonNull(commodityCode);
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceId(@Nullable String dbInstanceId) {
             this.dbInstanceId = dbInstanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -136,6 +119,7 @@ public final class GetInstanceClassInfosResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder infos(@Nullable List<GetInstanceClassInfosInfo> infos) {
             this.infos = infos;
             return this;
@@ -143,15 +127,26 @@ public final class GetInstanceClassInfosResult {
         public Builder infos(GetInstanceClassInfosInfo... infos) {
             return infos(List.of(infos));
         }
+        @CustomType.Setter
         public Builder orderType(String orderType) {
             this.orderType = Objects.requireNonNull(orderType);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetInstanceClassInfosResult build() {
-            return new GetInstanceClassInfosResult(commodityCode, dbInstanceId, id, ids, infos, orderType, outputFile);
+        }
+        public GetInstanceClassInfosResult build() {
+            final var o = new GetInstanceClassInfosResult();
+            o.commodityCode = commodityCode;
+            o.dbInstanceId = dbInstanceId;
+            o.id = id;
+            o.ids = ids;
+            o.infos = infos;
+            o.orderType = orderType;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

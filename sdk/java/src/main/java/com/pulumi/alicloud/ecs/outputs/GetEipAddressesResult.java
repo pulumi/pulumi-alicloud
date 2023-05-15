@@ -17,93 +17,46 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEipAddressesResult {
-    private final @Nullable String addressName;
-    private final List<GetEipAddressesAddress> addresses;
-    private final @Nullable String associatedInstanceId;
-    private final @Nullable String associatedInstanceType;
-    private final @Nullable Boolean dryRun;
+    private @Nullable String addressName;
+    private List<GetEipAddressesAddress> addresses;
+    private @Nullable String associatedInstanceId;
+    private @Nullable String associatedInstanceType;
+    private @Nullable Boolean dryRun;
     /**
      * @deprecated
      * Field &#39;eips&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;addresses&#39; instead.
      * 
      */
     @Deprecated /* Field 'eips' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'addresses' instead. */
-    private final List<GetEipAddressesEip> eips;
-    private final @Nullable Boolean enableDetails;
+    private List<GetEipAddressesEip> eips;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable Boolean includeReservationData;
-    private final @Nullable String ipAddress;
+    private String id;
+    private List<String> ids;
+    private @Nullable Boolean includeReservationData;
+    private @Nullable String ipAddress;
     /**
      * @deprecated
      * Field &#39;ip_addresses&#39; has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute &#39;ip_address&#39; instead.
      * 
      */
     @Deprecated /* Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead. */
-    private final @Nullable List<String> ipAddresses;
-    private final @Nullable String isp;
-    private final @Nullable String lockReason;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String paymentType;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String segmentInstanceId;
-    private final @Nullable String status;
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable List<String> ipAddresses;
+    private @Nullable String isp;
+    private @Nullable String lockReason;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String paymentType;
+    private @Nullable String resourceGroupId;
+    private @Nullable String segmentInstanceId;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetEipAddressesResult(
-        @CustomType.Parameter("addressName") @Nullable String addressName,
-        @CustomType.Parameter("addresses") List<GetEipAddressesAddress> addresses,
-        @CustomType.Parameter("associatedInstanceId") @Nullable String associatedInstanceId,
-        @CustomType.Parameter("associatedInstanceType") @Nullable String associatedInstanceType,
-        @CustomType.Parameter("dryRun") @Nullable Boolean dryRun,
-        @CustomType.Parameter("eips") List<GetEipAddressesEip> eips,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("includeReservationData") @Nullable Boolean includeReservationData,
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("ipAddresses") @Nullable List<String> ipAddresses,
-        @CustomType.Parameter("isp") @Nullable String isp,
-        @CustomType.Parameter("lockReason") @Nullable String lockReason,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("paymentType") @Nullable String paymentType,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("segmentInstanceId") @Nullable String segmentInstanceId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
-        this.addressName = addressName;
-        this.addresses = addresses;
-        this.associatedInstanceId = associatedInstanceId;
-        this.associatedInstanceType = associatedInstanceType;
-        this.dryRun = dryRun;
-        this.eips = eips;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.includeReservationData = includeReservationData;
-        this.ipAddress = ipAddress;
-        this.ipAddresses = ipAddresses;
-        this.isp = isp;
-        this.lockReason = lockReason;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.paymentType = paymentType;
-        this.resourceGroupId = resourceGroupId;
-        this.segmentInstanceId = segmentInstanceId;
-        this.status = status;
-        this.tags = tags;
-    }
-
+    private GetEipAddressesResult() {}
     public Optional<String> addressName() {
         return Optional.ofNullable(this.addressName);
     }
@@ -194,7 +147,7 @@ public final class GetEipAddressesResult {
     public static Builder builder(GetEipAddressesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String addressName;
         private List<GetEipAddressesAddress> addresses;
@@ -218,11 +171,7 @@ public final class GetEipAddressesResult {
         private @Nullable String segmentInstanceId;
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEipAddressesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addressName = defaults.addressName;
@@ -249,10 +198,12 @@ public final class GetEipAddressesResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder addressName(@Nullable String addressName) {
             this.addressName = addressName;
             return this;
         }
+        @CustomType.Setter
         public Builder addresses(List<GetEipAddressesAddress> addresses) {
             this.addresses = Objects.requireNonNull(addresses);
             return this;
@@ -260,18 +211,22 @@ public final class GetEipAddressesResult {
         public Builder addresses(GetEipAddressesAddress... addresses) {
             return addresses(List.of(addresses));
         }
+        @CustomType.Setter
         public Builder associatedInstanceId(@Nullable String associatedInstanceId) {
             this.associatedInstanceId = associatedInstanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder associatedInstanceType(@Nullable String associatedInstanceType) {
             this.associatedInstanceType = associatedInstanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder dryRun(@Nullable Boolean dryRun) {
             this.dryRun = dryRun;
             return this;
         }
+        @CustomType.Setter
         public Builder eips(List<GetEipAddressesEip> eips) {
             this.eips = Objects.requireNonNull(eips);
             return this;
@@ -279,14 +234,17 @@ public final class GetEipAddressesResult {
         public Builder eips(GetEipAddressesEip... eips) {
             return eips(List.of(eips));
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -294,14 +252,17 @@ public final class GetEipAddressesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder includeReservationData(@Nullable Boolean includeReservationData) {
             this.includeReservationData = includeReservationData;
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddresses(@Nullable List<String> ipAddresses) {
             this.ipAddresses = ipAddresses;
             return this;
@@ -309,18 +270,22 @@ public final class GetEipAddressesResult {
         public Builder ipAddresses(String... ipAddresses) {
             return ipAddresses(List.of(ipAddresses));
         }
+        @CustomType.Setter
         public Builder isp(@Nullable String isp) {
             this.isp = isp;
             return this;
         }
+        @CustomType.Setter
         public Builder lockReason(@Nullable String lockReason) {
             this.lockReason = lockReason;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -328,31 +293,61 @@ public final class GetEipAddressesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
             this.paymentType = paymentType;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder segmentInstanceId(@Nullable String segmentInstanceId) {
             this.segmentInstanceId = segmentInstanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }        public GetEipAddressesResult build() {
-            return new GetEipAddressesResult(addressName, addresses, associatedInstanceId, associatedInstanceType, dryRun, eips, enableDetails, id, ids, includeReservationData, ipAddress, ipAddresses, isp, lockReason, nameRegex, names, outputFile, paymentType, resourceGroupId, segmentInstanceId, status, tags);
+        }
+        public GetEipAddressesResult build() {
+            final var o = new GetEipAddressesResult();
+            o.addressName = addressName;
+            o.addresses = addresses;
+            o.associatedInstanceId = associatedInstanceId;
+            o.associatedInstanceType = associatedInstanceType;
+            o.dryRun = dryRun;
+            o.eips = eips;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.includeReservationData = includeReservationData;
+            o.ipAddress = ipAddress;
+            o.ipAddresses = ipAddresses;
+            o.isp = isp;
+            o.lockReason = lockReason;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.paymentType = paymentType;
+            o.resourceGroupId = resourceGroupId;
+            o.segmentInstanceId = segmentInstanceId;
+            o.status = status;
+            o.tags = tags;
+            return o;
         }
     }
 }

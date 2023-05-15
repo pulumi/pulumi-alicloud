@@ -17,41 +17,18 @@ public final class GetIpv6EgressRulesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String instanceId;
-    private final @Nullable String ipv6EgressRuleName;
-    private final String ipv6GatewayId;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final List<GetIpv6EgressRulesRule> rules;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String instanceId;
+    private @Nullable String ipv6EgressRuleName;
+    private String ipv6GatewayId;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private List<GetIpv6EgressRulesRule> rules;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetIpv6EgressRulesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") @Nullable String instanceId,
-        @CustomType.Parameter("ipv6EgressRuleName") @Nullable String ipv6EgressRuleName,
-        @CustomType.Parameter("ipv6GatewayId") String ipv6GatewayId,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("rules") List<GetIpv6EgressRulesRule> rules,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.ipv6EgressRuleName = ipv6EgressRuleName;
-        this.ipv6GatewayId = ipv6GatewayId;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.rules = rules;
-        this.status = status;
-    }
-
+    private GetIpv6EgressRulesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -94,7 +71,7 @@ public final class GetIpv6EgressRulesResult {
     public static Builder builder(GetIpv6EgressRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -106,11 +83,7 @@ public final class GetIpv6EgressRulesResult {
         private @Nullable String outputFile;
         private List<GetIpv6EgressRulesRule> rules;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIpv6EgressRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -125,10 +98,12 @@ public final class GetIpv6EgressRulesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -136,22 +111,27 @@ public final class GetIpv6EgressRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6EgressRuleName(@Nullable String ipv6EgressRuleName) {
             this.ipv6EgressRuleName = ipv6EgressRuleName;
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6GatewayId(String ipv6GatewayId) {
             this.ipv6GatewayId = Objects.requireNonNull(ipv6GatewayId);
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -159,10 +139,12 @@ public final class GetIpv6EgressRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder rules(List<GetIpv6EgressRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -170,11 +152,24 @@ public final class GetIpv6EgressRulesResult {
         public Builder rules(GetIpv6EgressRulesRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetIpv6EgressRulesResult build() {
-            return new GetIpv6EgressRulesResult(id, ids, instanceId, ipv6EgressRuleName, ipv6GatewayId, nameRegex, names, outputFile, rules, status);
+        }
+        public GetIpv6EgressRulesResult build() {
+            final var o = new GetIpv6EgressRulesResult();
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.ipv6EgressRuleName = ipv6EgressRuleName;
+            o.ipv6GatewayId = ipv6GatewayId;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.rules = rules;
+            o.status = status;
+            return o;
         }
     }
 }

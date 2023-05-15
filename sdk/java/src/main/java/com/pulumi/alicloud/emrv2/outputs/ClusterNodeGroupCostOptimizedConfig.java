@@ -13,28 +13,19 @@ public final class ClusterNodeGroupCostOptimizedConfig {
      * @return The cost optimized configuration which on demand based capacity.
      * 
      */
-    private final Integer onDemandBaseCapacity;
+    private Integer onDemandBaseCapacity;
     /**
      * @return The cost optimized configuration which on demand percentage above based capacity.
      * 
      */
-    private final Integer onDemandPercentageAboveBaseCapacity;
+    private Integer onDemandPercentageAboveBaseCapacity;
     /**
      * @return The cost optimized configuration with spot instance pools.
      * 
      */
-    private final Integer spotInstancePools;
+    private Integer spotInstancePools;
 
-    @CustomType.Constructor
-    private ClusterNodeGroupCostOptimizedConfig(
-        @CustomType.Parameter("onDemandBaseCapacity") Integer onDemandBaseCapacity,
-        @CustomType.Parameter("onDemandPercentageAboveBaseCapacity") Integer onDemandPercentageAboveBaseCapacity,
-        @CustomType.Parameter("spotInstancePools") Integer spotInstancePools) {
-        this.onDemandBaseCapacity = onDemandBaseCapacity;
-        this.onDemandPercentageAboveBaseCapacity = onDemandPercentageAboveBaseCapacity;
-        this.spotInstancePools = spotInstancePools;
-    }
-
+    private ClusterNodeGroupCostOptimizedConfig() {}
     /**
      * @return The cost optimized configuration which on demand based capacity.
      * 
@@ -64,16 +55,12 @@ public final class ClusterNodeGroupCostOptimizedConfig {
     public static Builder builder(ClusterNodeGroupCostOptimizedConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer onDemandBaseCapacity;
         private Integer onDemandPercentageAboveBaseCapacity;
         private Integer spotInstancePools;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodeGroupCostOptimizedConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.onDemandBaseCapacity = defaults.onDemandBaseCapacity;
@@ -81,19 +68,27 @@ public final class ClusterNodeGroupCostOptimizedConfig {
     	      this.spotInstancePools = defaults.spotInstancePools;
         }
 
+        @CustomType.Setter
         public Builder onDemandBaseCapacity(Integer onDemandBaseCapacity) {
             this.onDemandBaseCapacity = Objects.requireNonNull(onDemandBaseCapacity);
             return this;
         }
+        @CustomType.Setter
         public Builder onDemandPercentageAboveBaseCapacity(Integer onDemandPercentageAboveBaseCapacity) {
             this.onDemandPercentageAboveBaseCapacity = Objects.requireNonNull(onDemandPercentageAboveBaseCapacity);
             return this;
         }
+        @CustomType.Setter
         public Builder spotInstancePools(Integer spotInstancePools) {
             this.spotInstancePools = Objects.requireNonNull(spotInstancePools);
             return this;
-        }        public ClusterNodeGroupCostOptimizedConfig build() {
-            return new ClusterNodeGroupCostOptimizedConfig(onDemandBaseCapacity, onDemandPercentageAboveBaseCapacity, spotInstancePools);
+        }
+        public ClusterNodeGroupCostOptimizedConfig build() {
+            final var o = new ClusterNodeGroupCostOptimizedConfig();
+            o.onDemandBaseCapacity = onDemandBaseCapacity;
+            o.onDemandPercentageAboveBaseCapacity = onDemandPercentageAboveBaseCapacity;
+            o.spotInstancePools = spotInstancePools;
+            return o;
         }
     }
 }

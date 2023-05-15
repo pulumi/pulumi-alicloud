@@ -15,63 +15,44 @@ public final class GetVpcFirewallCensCen {
      * @return The ID of the CEN instance.
      * 
      */
-    private final String cenId;
+    private String cenId;
     /**
      * @return Intercommunication type, value: `expressconnect`: Express Channel `cen`: Cloud Enterprise Network
      * 
      */
-    private final String connectType;
+    private String connectType;
     /**
      * @return The ID of the CEN instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The details of the VPC.
      * 
      */
-    private final List<GetVpcFirewallCensCenLocalVpc> localVpcs;
+    private List<GetVpcFirewallCensCenLocalVpc> localVpcs;
     /**
      * @return The ID of the VPC instance that created the VPC firewall.
      * 
      */
-    private final String networkInstanceId;
+    private String networkInstanceId;
     /**
      * @return Firewall switch status
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return VPC firewall ID
      * 
      */
-    private final String vpcFirewallId;
+    private String vpcFirewallId;
     /**
      * @return The name of the VPC firewall instance.
      * 
      */
-    private final String vpcFirewallName;
+    private String vpcFirewallName;
 
-    @CustomType.Constructor
-    private GetVpcFirewallCensCen(
-        @CustomType.Parameter("cenId") String cenId,
-        @CustomType.Parameter("connectType") String connectType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("localVpcs") List<GetVpcFirewallCensCenLocalVpc> localVpcs,
-        @CustomType.Parameter("networkInstanceId") String networkInstanceId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcFirewallId") String vpcFirewallId,
-        @CustomType.Parameter("vpcFirewallName") String vpcFirewallName) {
-        this.cenId = cenId;
-        this.connectType = connectType;
-        this.id = id;
-        this.localVpcs = localVpcs;
-        this.networkInstanceId = networkInstanceId;
-        this.status = status;
-        this.vpcFirewallId = vpcFirewallId;
-        this.vpcFirewallName = vpcFirewallName;
-    }
-
+    private GetVpcFirewallCensCen() {}
     /**
      * @return The ID of the CEN instance.
      * 
@@ -136,7 +117,7 @@ public final class GetVpcFirewallCensCen {
     public static Builder builder(GetVpcFirewallCensCen defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cenId;
         private String connectType;
@@ -146,11 +127,7 @@ public final class GetVpcFirewallCensCen {
         private String status;
         private String vpcFirewallId;
         private String vpcFirewallName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcFirewallCensCen defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
@@ -163,18 +140,22 @@ public final class GetVpcFirewallCensCen {
     	      this.vpcFirewallName = defaults.vpcFirewallName;
         }
 
+        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
+        @CustomType.Setter
         public Builder connectType(String connectType) {
             this.connectType = Objects.requireNonNull(connectType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder localVpcs(List<GetVpcFirewallCensCenLocalVpc> localVpcs) {
             this.localVpcs = Objects.requireNonNull(localVpcs);
             return this;
@@ -182,23 +163,37 @@ public final class GetVpcFirewallCensCen {
         public Builder localVpcs(GetVpcFirewallCensCenLocalVpc... localVpcs) {
             return localVpcs(List.of(localVpcs));
         }
+        @CustomType.Setter
         public Builder networkInstanceId(String networkInstanceId) {
             this.networkInstanceId = Objects.requireNonNull(networkInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcFirewallId(String vpcFirewallId) {
             this.vpcFirewallId = Objects.requireNonNull(vpcFirewallId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcFirewallName(String vpcFirewallName) {
             this.vpcFirewallName = Objects.requireNonNull(vpcFirewallName);
             return this;
-        }        public GetVpcFirewallCensCen build() {
-            return new GetVpcFirewallCensCen(cenId, connectType, id, localVpcs, networkInstanceId, status, vpcFirewallId, vpcFirewallName);
+        }
+        public GetVpcFirewallCensCen build() {
+            final var o = new GetVpcFirewallCensCen();
+            o.cenId = cenId;
+            o.connectType = connectType;
+            o.id = id;
+            o.localVpcs = localVpcs;
+            o.networkInstanceId = networkInstanceId;
+            o.status = status;
+            o.vpcFirewallId = vpcFirewallId;
+            o.vpcFirewallName = vpcFirewallName;
+            return o;
         }
     }
 }

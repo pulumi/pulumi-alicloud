@@ -17,70 +17,49 @@ public final class ClusterModifyClusterServiceConfig {
      * @return Cluster service configuration modification comment, e.g. &#34;Modify tez configuration&#34;.
      * 
      */
-    private final @Nullable String comment;
+    private @Nullable String comment;
     /**
      * @return Cluster service configuration modification params, e.g. ’{&#34;hdfs-site&#34;:{&#34;dfs.replication&#34;:&#34;3&#34;}}’.
      * 
      */
-    private final String configParams;
+    private String configParams;
     /**
      * @return Cluster service configuration modification type.
      * 
      */
-    private final @Nullable String configType;
+    private @Nullable String configType;
     /**
      * @return Cluster service configuration modification custom params, e.g. ’{&#34;tez-site&#34;:{&#34;key&#34;:{&#34;Value&#34;:&#34;value&#34;}}}’.
      * 
      */
-    private final @Nullable String customConfigParams;
+    private @Nullable String customConfigParams;
     /**
      * @return Cluster service configuration modification related gateway cluster id list.
      * 
      */
-    private final @Nullable List<String> gatewayClusterIdLists;
+    private @Nullable List<String> gatewayClusterIdLists;
     /**
      * @return Cluster service configuration modification node group id, e.g. ’G-XXX’.
      * 
      */
-    private final @Nullable String groupId;
+    private @Nullable String groupId;
     /**
      * @return Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
      * 
      */
-    private final @Nullable String hostInstanceId;
+    private @Nullable String hostInstanceId;
     /**
      * @return Cluster service configuration modification refresh host config, ’true’ or ’false’.
      * 
      */
-    private final @Nullable Boolean refreshHostConfig;
+    private @Nullable Boolean refreshHostConfig;
     /**
      * @return Custom configuration service name, e.g. ’HDFS’.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
 
-    @CustomType.Constructor
-    private ClusterModifyClusterServiceConfig(
-        @CustomType.Parameter("comment") @Nullable String comment,
-        @CustomType.Parameter("configParams") String configParams,
-        @CustomType.Parameter("configType") @Nullable String configType,
-        @CustomType.Parameter("customConfigParams") @Nullable String customConfigParams,
-        @CustomType.Parameter("gatewayClusterIdLists") @Nullable List<String> gatewayClusterIdLists,
-        @CustomType.Parameter("groupId") @Nullable String groupId,
-        @CustomType.Parameter("hostInstanceId") @Nullable String hostInstanceId,
-        @CustomType.Parameter("refreshHostConfig") @Nullable Boolean refreshHostConfig,
-        @CustomType.Parameter("serviceName") String serviceName) {
-        this.comment = comment;
-        this.configParams = configParams;
-        this.configType = configType;
-        this.customConfigParams = customConfigParams;
-        this.gatewayClusterIdLists = gatewayClusterIdLists;
-        this.groupId = groupId;
-        this.hostInstanceId = hostInstanceId;
-        this.refreshHostConfig = refreshHostConfig;
-        this.serviceName = serviceName;
-    }
-
+    private ClusterModifyClusterServiceConfig() {}
     /**
      * @return Cluster service configuration modification comment, e.g. &#34;Modify tez configuration&#34;.
      * 
@@ -152,7 +131,7 @@ public final class ClusterModifyClusterServiceConfig {
     public static Builder builder(ClusterModifyClusterServiceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String comment;
         private String configParams;
@@ -163,11 +142,7 @@ public final class ClusterModifyClusterServiceConfig {
         private @Nullable String hostInstanceId;
         private @Nullable Boolean refreshHostConfig;
         private String serviceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterModifyClusterServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
@@ -181,22 +156,27 @@ public final class ClusterModifyClusterServiceConfig {
     	      this.serviceName = defaults.serviceName;
         }
 
+        @CustomType.Setter
         public Builder comment(@Nullable String comment) {
             this.comment = comment;
             return this;
         }
+        @CustomType.Setter
         public Builder configParams(String configParams) {
             this.configParams = Objects.requireNonNull(configParams);
             return this;
         }
+        @CustomType.Setter
         public Builder configType(@Nullable String configType) {
             this.configType = configType;
             return this;
         }
+        @CustomType.Setter
         public Builder customConfigParams(@Nullable String customConfigParams) {
             this.customConfigParams = customConfigParams;
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayClusterIdLists(@Nullable List<String> gatewayClusterIdLists) {
             this.gatewayClusterIdLists = gatewayClusterIdLists;
             return this;
@@ -204,23 +184,38 @@ public final class ClusterModifyClusterServiceConfig {
         public Builder gatewayClusterIdLists(String... gatewayClusterIdLists) {
             return gatewayClusterIdLists(List.of(gatewayClusterIdLists));
         }
+        @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
             this.groupId = groupId;
             return this;
         }
+        @CustomType.Setter
         public Builder hostInstanceId(@Nullable String hostInstanceId) {
             this.hostInstanceId = hostInstanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder refreshHostConfig(@Nullable Boolean refreshHostConfig) {
             this.refreshHostConfig = refreshHostConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
-        }        public ClusterModifyClusterServiceConfig build() {
-            return new ClusterModifyClusterServiceConfig(comment, configParams, configType, customConfigParams, gatewayClusterIdLists, groupId, hostInstanceId, refreshHostConfig, serviceName);
+        }
+        public ClusterModifyClusterServiceConfig build() {
+            final var o = new ClusterModifyClusterServiceConfig();
+            o.comment = comment;
+            o.configParams = configParams;
+            o.configType = configType;
+            o.customConfigParams = customConfigParams;
+            o.gatewayClusterIdLists = gatewayClusterIdLists;
+            o.groupId = groupId;
+            o.hostInstanceId = hostInstanceId;
+            o.refreshHostConfig = refreshHostConfig;
+            o.serviceName = serviceName;
+            return o;
         }
     }
 }

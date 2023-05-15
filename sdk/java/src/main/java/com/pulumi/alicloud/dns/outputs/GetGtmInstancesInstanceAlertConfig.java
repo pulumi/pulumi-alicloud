@@ -14,35 +14,24 @@ public final class GetGtmInstancesInstanceAlertConfig {
      * @return Whether to configure DingTalk notifications.
      * 
      */
-    private final Boolean dingtalkNotice;
+    private Boolean dingtalkNotice;
     /**
      * @return Whether to configure mail notification.
      * 
      */
-    private final Boolean emailNotice;
+    private Boolean emailNotice;
     /**
      * @return The Alarm Event Type.
      * 
      */
-    private final String noticeType;
+    private String noticeType;
     /**
      * @return Whether to configure SMS notification.
      * 
      */
-    private final Boolean smsNotice;
+    private Boolean smsNotice;
 
-    @CustomType.Constructor
-    private GetGtmInstancesInstanceAlertConfig(
-        @CustomType.Parameter("dingtalkNotice") Boolean dingtalkNotice,
-        @CustomType.Parameter("emailNotice") Boolean emailNotice,
-        @CustomType.Parameter("noticeType") String noticeType,
-        @CustomType.Parameter("smsNotice") Boolean smsNotice) {
-        this.dingtalkNotice = dingtalkNotice;
-        this.emailNotice = emailNotice;
-        this.noticeType = noticeType;
-        this.smsNotice = smsNotice;
-    }
-
+    private GetGtmInstancesInstanceAlertConfig() {}
     /**
      * @return Whether to configure DingTalk notifications.
      * 
@@ -79,17 +68,13 @@ public final class GetGtmInstancesInstanceAlertConfig {
     public static Builder builder(GetGtmInstancesInstanceAlertConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean dingtalkNotice;
         private Boolean emailNotice;
         private String noticeType;
         private Boolean smsNotice;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGtmInstancesInstanceAlertConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dingtalkNotice = defaults.dingtalkNotice;
@@ -98,23 +83,33 @@ public final class GetGtmInstancesInstanceAlertConfig {
     	      this.smsNotice = defaults.smsNotice;
         }
 
+        @CustomType.Setter
         public Builder dingtalkNotice(Boolean dingtalkNotice) {
             this.dingtalkNotice = Objects.requireNonNull(dingtalkNotice);
             return this;
         }
+        @CustomType.Setter
         public Builder emailNotice(Boolean emailNotice) {
             this.emailNotice = Objects.requireNonNull(emailNotice);
             return this;
         }
+        @CustomType.Setter
         public Builder noticeType(String noticeType) {
             this.noticeType = Objects.requireNonNull(noticeType);
             return this;
         }
+        @CustomType.Setter
         public Builder smsNotice(Boolean smsNotice) {
             this.smsNotice = Objects.requireNonNull(smsNotice);
             return this;
-        }        public GetGtmInstancesInstanceAlertConfig build() {
-            return new GetGtmInstancesInstanceAlertConfig(dingtalkNotice, emailNotice, noticeType, smsNotice);
+        }
+        public GetGtmInstancesInstanceAlertConfig build() {
+            final var o = new GetGtmInstancesInstanceAlertConfig();
+            o.dingtalkNotice = dingtalkNotice;
+            o.emailNotice = emailNotice;
+            o.noticeType = noticeType;
+            o.smsNotice = smsNotice;
+            return o;
         }
     }
 }

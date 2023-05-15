@@ -13,101 +13,70 @@ public final class GetDiskReplicaPairsPair {
      * @return The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
      * 
      */
-    private final String bandwidth;
+    private String bandwidth;
     /**
      * @return The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with&#39; http:// &#39;or&#39; https.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the standby disk.
      * 
      */
-    private final String destinationDiskId;
+    private String destinationDiskId;
     /**
      * @return The ID of the region to which the disaster recovery site belongs.
      * 
      */
-    private final String destinationRegionId;
+    private String destinationRegionId;
     /**
      * @return The ID of the zone to which the disaster recovery site belongs.
      * 
      */
-    private final String destinationZoneId;
+    private String destinationZoneId;
     /**
      * @return The ID of the primary disk.
      * 
      */
-    private final String diskId;
-    private final String id;
+    private String diskId;
+    private String id;
     /**
      * @return The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
      * 
      */
-    private final String pairName;
+    private String pairName;
     /**
      * @return The payment type of the resource.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return The first ID of the resource
      * 
      */
-    private final String replicaPairId;
+    private String replicaPairId;
     /**
      * @return The ID of the resource group
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      * 
      */
-    private final String rpo;
+    private String rpo;
     /**
      * @return The ID of the zone to which the production site belongs.
      * 
      */
-    private final String sourceZoneId;
+    private String sourceZoneId;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetDiskReplicaPairsPair(
-        @CustomType.Parameter("bandwidth") String bandwidth,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("destinationDiskId") String destinationDiskId,
-        @CustomType.Parameter("destinationRegionId") String destinationRegionId,
-        @CustomType.Parameter("destinationZoneId") String destinationZoneId,
-        @CustomType.Parameter("diskId") String diskId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("pairName") String pairName,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("replicaPairId") String replicaPairId,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("rpo") String rpo,
-        @CustomType.Parameter("sourceZoneId") String sourceZoneId,
-        @CustomType.Parameter("status") String status) {
-        this.bandwidth = bandwidth;
-        this.description = description;
-        this.destinationDiskId = destinationDiskId;
-        this.destinationRegionId = destinationRegionId;
-        this.destinationZoneId = destinationZoneId;
-        this.diskId = diskId;
-        this.id = id;
-        this.pairName = pairName;
-        this.paymentType = paymentType;
-        this.replicaPairId = replicaPairId;
-        this.resourceGroupId = resourceGroupId;
-        this.rpo = rpo;
-        this.sourceZoneId = sourceZoneId;
-        this.status = status;
-    }
-
+    private GetDiskReplicaPairsPair() {}
     /**
      * @return The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
      * 
@@ -210,7 +179,7 @@ public final class GetDiskReplicaPairsPair {
     public static Builder builder(GetDiskReplicaPairsPair defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bandwidth;
         private String description;
@@ -226,11 +195,7 @@ public final class GetDiskReplicaPairsPair {
         private String rpo;
         private String sourceZoneId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDiskReplicaPairsPair defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -249,63 +214,93 @@ public final class GetDiskReplicaPairsPair {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder bandwidth(String bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationDiskId(String destinationDiskId) {
             this.destinationDiskId = Objects.requireNonNull(destinationDiskId);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationRegionId(String destinationRegionId) {
             this.destinationRegionId = Objects.requireNonNull(destinationRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationZoneId(String destinationZoneId) {
             this.destinationZoneId = Objects.requireNonNull(destinationZoneId);
             return this;
         }
+        @CustomType.Setter
         public Builder diskId(String diskId) {
             this.diskId = Objects.requireNonNull(diskId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder pairName(String pairName) {
             this.pairName = Objects.requireNonNull(pairName);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder replicaPairId(String replicaPairId) {
             this.replicaPairId = Objects.requireNonNull(replicaPairId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder rpo(String rpo) {
             this.rpo = Objects.requireNonNull(rpo);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceZoneId(String sourceZoneId) {
             this.sourceZoneId = Objects.requireNonNull(sourceZoneId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetDiskReplicaPairsPair build() {
-            return new GetDiskReplicaPairsPair(bandwidth, description, destinationDiskId, destinationRegionId, destinationZoneId, diskId, id, pairName, paymentType, replicaPairId, resourceGroupId, rpo, sourceZoneId, status);
+        }
+        public GetDiskReplicaPairsPair build() {
+            final var o = new GetDiskReplicaPairsPair();
+            o.bandwidth = bandwidth;
+            o.description = description;
+            o.destinationDiskId = destinationDiskId;
+            o.destinationRegionId = destinationRegionId;
+            o.destinationZoneId = destinationZoneId;
+            o.diskId = diskId;
+            o.id = id;
+            o.pairName = pairName;
+            o.paymentType = paymentType;
+            o.replicaPairId = replicaPairId;
+            o.resourceGroupId = resourceGroupId;
+            o.rpo = rpo;
+            o.sourceZoneId = sourceZoneId;
+            o.status = status;
+            return o;
         }
     }
 }

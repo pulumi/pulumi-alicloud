@@ -14,70 +14,49 @@ public final class GetDeployGroupsGroup {
      * @return ID of the EDAS application.
      * 
      */
-    private final String appId;
+    private String appId;
     /**
      * @return The version of the deployment package for the application.
      * 
      */
-    private final String appVersionId;
+    private String appVersionId;
     /**
      * @return The ID of the cluster that you want to create the application.
      * 
      */
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return The time when the instance group was created.
      * 
      */
-    private final Integer createTime;
+    private Integer createTime;
     /**
      * @return The ID of the instance group.
      * 
      */
-    private final String groupId;
+    private String groupId;
     /**
      * @return The name of the instance group. The length cannot exceed 64 characters.
      * 
      */
-    private final String groupName;
+    private String groupName;
     /**
      * @return The type of the instance group. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
      * 
      */
-    private final Integer groupType;
+    private Integer groupType;
     /**
      * @return The version of the deployment package for the instance group that was created.
      * 
      */
-    private final String packageVersionId;
+    private String packageVersionId;
     /**
      * @return The time when the instance group was updated.
      * 
      */
-    private final Integer updateTime;
+    private Integer updateTime;
 
-    @CustomType.Constructor
-    private GetDeployGroupsGroup(
-        @CustomType.Parameter("appId") String appId,
-        @CustomType.Parameter("appVersionId") String appVersionId,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("createTime") Integer createTime,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("groupName") String groupName,
-        @CustomType.Parameter("groupType") Integer groupType,
-        @CustomType.Parameter("packageVersionId") String packageVersionId,
-        @CustomType.Parameter("updateTime") Integer updateTime) {
-        this.appId = appId;
-        this.appVersionId = appVersionId;
-        this.clusterId = clusterId;
-        this.createTime = createTime;
-        this.groupId = groupId;
-        this.groupName = groupName;
-        this.groupType = groupType;
-        this.packageVersionId = packageVersionId;
-        this.updateTime = updateTime;
-    }
-
+    private GetDeployGroupsGroup() {}
     /**
      * @return ID of the EDAS application.
      * 
@@ -149,7 +128,7 @@ public final class GetDeployGroupsGroup {
     public static Builder builder(GetDeployGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String appId;
         private String appVersionId;
@@ -160,11 +139,7 @@ public final class GetDeployGroupsGroup {
         private Integer groupType;
         private String packageVersionId;
         private Integer updateTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDeployGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
@@ -178,43 +153,63 @@ public final class GetDeployGroupsGroup {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
             return this;
         }
+        @CustomType.Setter
         public Builder appVersionId(String appVersionId) {
             this.appVersionId = Objects.requireNonNull(appVersionId);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
+        @CustomType.Setter
         public Builder groupType(Integer groupType) {
             this.groupType = Objects.requireNonNull(groupType);
             return this;
         }
+        @CustomType.Setter
         public Builder packageVersionId(String packageVersionId) {
             this.packageVersionId = Objects.requireNonNull(packageVersionId);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(Integer updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
-        }        public GetDeployGroupsGroup build() {
-            return new GetDeployGroupsGroup(appId, appVersionId, clusterId, createTime, groupId, groupName, groupType, packageVersionId, updateTime);
+        }
+        public GetDeployGroupsGroup build() {
+            final var o = new GetDeployGroupsGroup();
+            o.appId = appId;
+            o.appVersionId = appVersionId;
+            o.clusterId = clusterId;
+            o.createTime = createTime;
+            o.groupId = groupId;
+            o.groupName = groupName;
+            o.groupType = groupType;
+            o.packageVersionId = packageVersionId;
+            o.updateTime = updateTime;
+            return o;
         }
     }
 }

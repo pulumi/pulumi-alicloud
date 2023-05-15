@@ -16,49 +16,34 @@ public final class ServiceMeshMeshConfigOpa {
      * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The limit cpu of the Sidecar injector Pods.
      * 
      */
-    private final @Nullable String limitCpu;
+    private @Nullable String limitCpu;
     /**
      * @return Sidecar injector Pods on the throttle.
      * 
      */
-    private final @Nullable String limitMemory;
+    private @Nullable String limitMemory;
     /**
      * @return The log level of the OPA proxy container .
      * 
      */
-    private final @Nullable String logLevel;
+    private @Nullable String logLevel;
     /**
      * @return The requested cpu the Sidecar injector Pods.
      * 
      */
-    private final @Nullable String requestCpu;
+    private @Nullable String requestCpu;
     /**
      * @return The requested memory the Sidecar injector Pods.
      * 
      */
-    private final @Nullable String requestMemory;
+    private @Nullable String requestMemory;
 
-    @CustomType.Constructor
-    private ServiceMeshMeshConfigOpa(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("limitCpu") @Nullable String limitCpu,
-        @CustomType.Parameter("limitMemory") @Nullable String limitMemory,
-        @CustomType.Parameter("logLevel") @Nullable String logLevel,
-        @CustomType.Parameter("requestCpu") @Nullable String requestCpu,
-        @CustomType.Parameter("requestMemory") @Nullable String requestMemory) {
-        this.enabled = enabled;
-        this.limitCpu = limitCpu;
-        this.limitMemory = limitMemory;
-        this.logLevel = logLevel;
-        this.requestCpu = requestCpu;
-        this.requestMemory = requestMemory;
-    }
-
+    private ServiceMeshMeshConfigOpa() {}
     /**
      * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
@@ -109,7 +94,7 @@ public final class ServiceMeshMeshConfigOpa {
     public static Builder builder(ServiceMeshMeshConfigOpa defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable String limitCpu;
@@ -117,11 +102,7 @@ public final class ServiceMeshMeshConfigOpa {
         private @Nullable String logLevel;
         private @Nullable String requestCpu;
         private @Nullable String requestMemory;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceMeshMeshConfigOpa defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -132,31 +113,45 @@ public final class ServiceMeshMeshConfigOpa {
     	      this.requestMemory = defaults.requestMemory;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder limitCpu(@Nullable String limitCpu) {
             this.limitCpu = limitCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder limitMemory(@Nullable String limitMemory) {
             this.limitMemory = limitMemory;
             return this;
         }
+        @CustomType.Setter
         public Builder logLevel(@Nullable String logLevel) {
             this.logLevel = logLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder requestCpu(@Nullable String requestCpu) {
             this.requestCpu = requestCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder requestMemory(@Nullable String requestMemory) {
             this.requestMemory = requestMemory;
             return this;
-        }        public ServiceMeshMeshConfigOpa build() {
-            return new ServiceMeshMeshConfigOpa(enabled, limitCpu, limitMemory, logLevel, requestCpu, requestMemory);
+        }
+        public ServiceMeshMeshConfigOpa build() {
+            final var o = new ServiceMeshMeshConfigOpa();
+            o.enabled = enabled;
+            o.limitCpu = limitCpu;
+            o.limitMemory = limitMemory;
+            o.logLevel = logLevel;
+            o.requestCpu = requestCpu;
+            o.requestMemory = requestMemory;
+            return o;
         }
     }
 }

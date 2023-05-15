@@ -14,49 +14,34 @@ public final class GetDomainsDomainSource {
      * @return The origin address.
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return The status of the origin.
      * 
      */
-    private final String enabled;
+    private String enabled;
     /**
      * @return The port number.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The priority of the origin if multiple origins are specified.
      * 
      */
-    private final String priority;
+    private String priority;
     /**
      * @return The type of the origin. Valid values:
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The weight of the origin if multiple origins are specified.
      * 
      */
-    private final String weight;
+    private String weight;
 
-    @CustomType.Constructor
-    private GetDomainsDomainSource(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("enabled") String enabled,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("priority") String priority,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("weight") String weight) {
-        this.content = content;
-        this.enabled = enabled;
-        this.port = port;
-        this.priority = priority;
-        this.type = type;
-        this.weight = weight;
-    }
-
+    private GetDomainsDomainSource() {}
     /**
      * @return The origin address.
      * 
@@ -107,7 +92,7 @@ public final class GetDomainsDomainSource {
     public static Builder builder(GetDomainsDomainSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private String enabled;
@@ -115,11 +100,7 @@ public final class GetDomainsDomainSource {
         private String priority;
         private String type;
         private String weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainsDomainSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
@@ -130,31 +111,45 @@ public final class GetDomainsDomainSource {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(String enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(String priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(String weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public GetDomainsDomainSource build() {
-            return new GetDomainsDomainSource(content, enabled, port, priority, type, weight);
+        }
+        public GetDomainsDomainSource build() {
+            final var o = new GetDomainsDomainSource();
+            o.content = content;
+            o.enabled = enabled;
+            o.port = port;
+            o.priority = priority;
+            o.type = type;
+            o.weight = weight;
+            return o;
         }
     }
 }

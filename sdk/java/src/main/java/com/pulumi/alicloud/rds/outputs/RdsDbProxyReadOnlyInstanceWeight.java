@@ -13,17 +13,10 @@ public final class RdsDbProxyReadOnlyInstanceWeight {
      * @return The Id of instance that can run database.
      * 
      */
-    private final String instanceId;
-    private final String weight;
+    private String instanceId;
+    private String weight;
 
-    @CustomType.Constructor
-    private RdsDbProxyReadOnlyInstanceWeight(
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("weight") String weight) {
-        this.instanceId = instanceId;
-        this.weight = weight;
-    }
-
+    private RdsDbProxyReadOnlyInstanceWeight() {}
     /**
      * @return The Id of instance that can run database.
      * 
@@ -42,30 +35,32 @@ public final class RdsDbProxyReadOnlyInstanceWeight {
     public static Builder builder(RdsDbProxyReadOnlyInstanceWeight defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String instanceId;
         private String weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RdsDbProxyReadOnlyInstanceWeight defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceId = defaults.instanceId;
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(String weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public RdsDbProxyReadOnlyInstanceWeight build() {
-            return new RdsDbProxyReadOnlyInstanceWeight(instanceId, weight);
+        }
+        public RdsDbProxyReadOnlyInstanceWeight build() {
+            final var o = new RdsDbProxyReadOnlyInstanceWeight();
+            o.instanceId = instanceId;
+            o.weight = weight;
+            return o;
         }
     }
 }

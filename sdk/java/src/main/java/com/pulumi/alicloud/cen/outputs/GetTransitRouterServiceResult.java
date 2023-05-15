@@ -11,28 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTransitRouterServiceResult {
-    private final @Nullable String enable;
+    private @Nullable String enable;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The current service enable status.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetTransitRouterServiceResult(
-        @CustomType.Parameter("enable") @Nullable String enable,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status) {
-        this.enable = enable;
-        this.id = id;
-        this.status = status;
-    }
-
+    private GetTransitRouterServiceResult() {}
     public Optional<String> enable() {
         return Optional.ofNullable(this.enable);
     }
@@ -58,16 +49,12 @@ public final class GetTransitRouterServiceResult {
     public static Builder builder(GetTransitRouterServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String enable;
         private String id;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
@@ -75,19 +62,27 @@ public final class GetTransitRouterServiceResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable String enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetTransitRouterServiceResult build() {
-            return new GetTransitRouterServiceResult(enable, id, status);
+        }
+        public GetTransitRouterServiceResult build() {
+            final var o = new GetTransitRouterServiceResult();
+            o.enable = enable;
+            o.id = id;
+            o.status = status;
+            return o;
         }
     }
 }

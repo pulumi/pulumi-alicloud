@@ -16,44 +16,31 @@ public final class ImageImportDiskDeviceMapping {
      * @return The name of disk N in the custom image.
      * 
      */
-    private final @Nullable String device;
+    private @Nullable String device;
     /**
      * @return Resolution size. You must ensure that the system disk space ≥ file system space. Ranges: When n = 1, the system disk: 5 ~ 500GiB, When n = 2 ~ 17, that is, data disk: 5 ~ 1000GiB, When temporary is introduced, the system automatically detects the size, which is subject to the detection result.
      * 
      */
-    private final @Nullable Integer diskImageSize;
+    private @Nullable Integer diskImageSize;
     /**
      * @return Image format. Value range: When the `RAW`, `VHD`, `qcow2` is imported into the image, the system automatically detects the image format, whichever comes first.
      * 
      */
-    private final @Nullable String format;
+    private @Nullable String format;
     /**
      * @return Save the exported OSS bucket.
      * 
      */
-    private final @Nullable String ossBucket;
+    private @Nullable String ossBucket;
     /**
      * @return The file name of your OSS Object.
      * 
      * &gt; **NOTE:** The disk_device_mapping is a list and it&#39;s first item will be used to system disk and other items are used to data disks.
      * 
      */
-    private final @Nullable String ossObject;
+    private @Nullable String ossObject;
 
-    @CustomType.Constructor
-    private ImageImportDiskDeviceMapping(
-        @CustomType.Parameter("device") @Nullable String device,
-        @CustomType.Parameter("diskImageSize") @Nullable Integer diskImageSize,
-        @CustomType.Parameter("format") @Nullable String format,
-        @CustomType.Parameter("ossBucket") @Nullable String ossBucket,
-        @CustomType.Parameter("ossObject") @Nullable String ossObject) {
-        this.device = device;
-        this.diskImageSize = diskImageSize;
-        this.format = format;
-        this.ossBucket = ossBucket;
-        this.ossObject = ossObject;
-    }
-
+    private ImageImportDiskDeviceMapping() {}
     /**
      * @return The name of disk N in the custom image.
      * 
@@ -99,18 +86,14 @@ public final class ImageImportDiskDeviceMapping {
     public static Builder builder(ImageImportDiskDeviceMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String device;
         private @Nullable Integer diskImageSize;
         private @Nullable String format;
         private @Nullable String ossBucket;
         private @Nullable String ossObject;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ImageImportDiskDeviceMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.device = defaults.device;
@@ -120,27 +103,39 @@ public final class ImageImportDiskDeviceMapping {
     	      this.ossObject = defaults.ossObject;
         }
 
+        @CustomType.Setter
         public Builder device(@Nullable String device) {
             this.device = device;
             return this;
         }
+        @CustomType.Setter
         public Builder diskImageSize(@Nullable Integer diskImageSize) {
             this.diskImageSize = diskImageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder format(@Nullable String format) {
             this.format = format;
             return this;
         }
+        @CustomType.Setter
         public Builder ossBucket(@Nullable String ossBucket) {
             this.ossBucket = ossBucket;
             return this;
         }
+        @CustomType.Setter
         public Builder ossObject(@Nullable String ossObject) {
             this.ossObject = ossObject;
             return this;
-        }        public ImageImportDiskDeviceMapping build() {
-            return new ImageImportDiskDeviceMapping(device, diskImageSize, format, ossBucket, ossObject);
+        }
+        public ImageImportDiskDeviceMapping build() {
+            final var o = new ImageImportDiskDeviceMapping();
+            o.device = device;
+            o.diskImageSize = diskImageSize;
+            o.format = format;
+            o.ossBucket = ossBucket;
+            o.ossObject = ossObject;
+            return o;
         }
     }
 }

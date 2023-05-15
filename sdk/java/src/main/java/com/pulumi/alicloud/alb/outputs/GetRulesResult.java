@@ -17,41 +17,18 @@ public final class GetRulesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable List<String> listenerIds;
-    private final @Nullable List<String> loadBalancerIds;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable List<String> ruleIds;
-    private final List<GetRulesRule> rules;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable List<String> listenerIds;
+    private @Nullable List<String> loadBalancerIds;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable List<String> ruleIds;
+    private List<GetRulesRule> rules;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetRulesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("listenerIds") @Nullable List<String> listenerIds,
-        @CustomType.Parameter("loadBalancerIds") @Nullable List<String> loadBalancerIds,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("ruleIds") @Nullable List<String> ruleIds,
-        @CustomType.Parameter("rules") List<GetRulesRule> rules,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.id = id;
-        this.ids = ids;
-        this.listenerIds = listenerIds;
-        this.loadBalancerIds = loadBalancerIds;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.ruleIds = ruleIds;
-        this.rules = rules;
-        this.status = status;
-    }
-
+    private GetRulesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -94,7 +71,7 @@ public final class GetRulesResult {
     public static Builder builder(GetRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -106,11 +83,7 @@ public final class GetRulesResult {
         private @Nullable List<String> ruleIds;
         private List<GetRulesRule> rules;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -125,10 +98,12 @@ public final class GetRulesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -136,6 +111,7 @@ public final class GetRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder listenerIds(@Nullable List<String> listenerIds) {
             this.listenerIds = listenerIds;
             return this;
@@ -143,6 +119,7 @@ public final class GetRulesResult {
         public Builder listenerIds(String... listenerIds) {
             return listenerIds(List.of(listenerIds));
         }
+        @CustomType.Setter
         public Builder loadBalancerIds(@Nullable List<String> loadBalancerIds) {
             this.loadBalancerIds = loadBalancerIds;
             return this;
@@ -150,10 +127,12 @@ public final class GetRulesResult {
         public Builder loadBalancerIds(String... loadBalancerIds) {
             return loadBalancerIds(List.of(loadBalancerIds));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -161,10 +140,12 @@ public final class GetRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder ruleIds(@Nullable List<String> ruleIds) {
             this.ruleIds = ruleIds;
             return this;
@@ -172,6 +153,7 @@ public final class GetRulesResult {
         public Builder ruleIds(String... ruleIds) {
             return ruleIds(List.of(ruleIds));
         }
+        @CustomType.Setter
         public Builder rules(List<GetRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -179,11 +161,24 @@ public final class GetRulesResult {
         public Builder rules(GetRulesRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetRulesResult build() {
-            return new GetRulesResult(id, ids, listenerIds, loadBalancerIds, nameRegex, names, outputFile, ruleIds, rules, status);
+        }
+        public GetRulesResult build() {
+            final var o = new GetRulesResult();
+            o.id = id;
+            o.ids = ids;
+            o.listenerIds = listenerIds;
+            o.loadBalancerIds = loadBalancerIds;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.ruleIds = ruleIds;
+            o.rules = rules;
+            o.status = status;
+            return o;
         }
     }
 }

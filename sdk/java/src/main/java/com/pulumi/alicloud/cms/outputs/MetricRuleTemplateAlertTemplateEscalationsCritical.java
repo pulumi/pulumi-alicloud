@@ -15,35 +15,24 @@ public final class MetricRuleTemplateAlertTemplateEscalationsCritical {
      * @return The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
      * 
      */
-    private final @Nullable String comparisonOperator;
+    private @Nullable String comparisonOperator;
     /**
      * @return The statistical aggregation method for warn-level alerts.
      * 
      */
-    private final @Nullable String statistics;
+    private @Nullable String statistics;
     /**
      * @return The threshold for warn-level alerts.
      * 
      */
-    private final @Nullable String threshold;
+    private @Nullable String threshold;
     /**
      * @return The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
      * 
      */
-    private final @Nullable String times;
+    private @Nullable String times;
 
-    @CustomType.Constructor
-    private MetricRuleTemplateAlertTemplateEscalationsCritical(
-        @CustomType.Parameter("comparisonOperator") @Nullable String comparisonOperator,
-        @CustomType.Parameter("statistics") @Nullable String statistics,
-        @CustomType.Parameter("threshold") @Nullable String threshold,
-        @CustomType.Parameter("times") @Nullable String times) {
-        this.comparisonOperator = comparisonOperator;
-        this.statistics = statistics;
-        this.threshold = threshold;
-        this.times = times;
-    }
-
+    private MetricRuleTemplateAlertTemplateEscalationsCritical() {}
     /**
      * @return The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
      * 
@@ -80,17 +69,13 @@ public final class MetricRuleTemplateAlertTemplateEscalationsCritical {
     public static Builder builder(MetricRuleTemplateAlertTemplateEscalationsCritical defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String comparisonOperator;
         private @Nullable String statistics;
         private @Nullable String threshold;
         private @Nullable String times;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MetricRuleTemplateAlertTemplateEscalationsCritical defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comparisonOperator = defaults.comparisonOperator;
@@ -99,23 +84,33 @@ public final class MetricRuleTemplateAlertTemplateEscalationsCritical {
     	      this.times = defaults.times;
         }
 
+        @CustomType.Setter
         public Builder comparisonOperator(@Nullable String comparisonOperator) {
             this.comparisonOperator = comparisonOperator;
             return this;
         }
+        @CustomType.Setter
         public Builder statistics(@Nullable String statistics) {
             this.statistics = statistics;
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(@Nullable String threshold) {
             this.threshold = threshold;
             return this;
         }
+        @CustomType.Setter
         public Builder times(@Nullable String times) {
             this.times = times;
             return this;
-        }        public MetricRuleTemplateAlertTemplateEscalationsCritical build() {
-            return new MetricRuleTemplateAlertTemplateEscalationsCritical(comparisonOperator, statistics, threshold, times);
+        }
+        public MetricRuleTemplateAlertTemplateEscalationsCritical build() {
+            final var o = new MetricRuleTemplateAlertTemplateEscalationsCritical();
+            o.comparisonOperator = comparisonOperator;
+            o.statistics = statistics;
+            o.threshold = threshold;
+            o.times = times;
+            return o;
         }
     }
 }

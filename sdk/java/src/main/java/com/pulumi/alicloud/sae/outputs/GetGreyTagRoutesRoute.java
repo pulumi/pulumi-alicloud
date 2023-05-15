@@ -16,42 +16,29 @@ public final class GetGreyTagRoutesRoute {
      * @return The description of GreyTagRoute.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The grayscale rule created for Dubbo Application.
      * 
      */
-    private final List<GetGreyTagRoutesRouteDubboRule> dubboRules;
+    private List<GetGreyTagRoutesRouteDubboRule> dubboRules;
     /**
      * @return The name of GreyTagRoute.
      * 
      */
-    private final String greyTagRouteName;
+    private String greyTagRouteName;
     /**
      * @return The ID of the GreyTagRoute.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The grayscale rule created for SpringCloud Application.
      * 
      */
-    private final List<GetGreyTagRoutesRouteScRule> scRules;
+    private List<GetGreyTagRoutesRouteScRule> scRules;
 
-    @CustomType.Constructor
-    private GetGreyTagRoutesRoute(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("dubboRules") List<GetGreyTagRoutesRouteDubboRule> dubboRules,
-        @CustomType.Parameter("greyTagRouteName") String greyTagRouteName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("scRules") List<GetGreyTagRoutesRouteScRule> scRules) {
-        this.description = description;
-        this.dubboRules = dubboRules;
-        this.greyTagRouteName = greyTagRouteName;
-        this.id = id;
-        this.scRules = scRules;
-    }
-
+    private GetGreyTagRoutesRoute() {}
     /**
      * @return The description of GreyTagRoute.
      * 
@@ -95,18 +82,14 @@ public final class GetGreyTagRoutesRoute {
     public static Builder builder(GetGreyTagRoutesRoute defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private List<GetGreyTagRoutesRouteDubboRule> dubboRules;
         private String greyTagRouteName;
         private String id;
         private List<GetGreyTagRoutesRouteScRule> scRules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGreyTagRoutesRoute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -116,10 +99,12 @@ public final class GetGreyTagRoutesRoute {
     	      this.scRules = defaults.scRules;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder dubboRules(List<GetGreyTagRoutesRouteDubboRule> dubboRules) {
             this.dubboRules = Objects.requireNonNull(dubboRules);
             return this;
@@ -127,22 +112,32 @@ public final class GetGreyTagRoutesRoute {
         public Builder dubboRules(GetGreyTagRoutesRouteDubboRule... dubboRules) {
             return dubboRules(List.of(dubboRules));
         }
+        @CustomType.Setter
         public Builder greyTagRouteName(String greyTagRouteName) {
             this.greyTagRouteName = Objects.requireNonNull(greyTagRouteName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder scRules(List<GetGreyTagRoutesRouteScRule> scRules) {
             this.scRules = Objects.requireNonNull(scRules);
             return this;
         }
         public Builder scRules(GetGreyTagRoutesRouteScRule... scRules) {
             return scRules(List.of(scRules));
-        }        public GetGreyTagRoutesRoute build() {
-            return new GetGreyTagRoutesRoute(description, dubboRules, greyTagRouteName, id, scRules);
+        }
+        public GetGreyTagRoutesRoute build() {
+            final var o = new GetGreyTagRoutesRoute();
+            o.description = description;
+            o.dubboRules = dubboRules;
+            o.greyTagRouteName = greyTagRouteName;
+            o.id = id;
+            o.scRules = scRules;
+            return o;
         }
     }
 }

@@ -17,112 +17,79 @@ public final class GetEndpointGroupsGroup {
      * @return The description of the endpoint group.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The endpointConfigurations of the endpoint group.
      * 
      */
-    private final List<GetEndpointGroupsGroupEndpointConfiguration> endpointConfigurations;
+    private List<GetEndpointGroupsGroupEndpointConfiguration> endpointConfigurations;
     /**
      * @return The endpoint_group_id of the Endpoint Group.
      * 
      */
-    private final String endpointGroupId;
+    private String endpointGroupId;
     /**
      * @return The ID of the region where the endpoint group is deployed.
      * 
      */
-    private final String endpointGroupRegion;
+    private String endpointGroupRegion;
     /**
      * @return The interval between two consecutive health checks. Unit: seconds.
      * 
      */
-    private final Integer healthCheckIntervalSeconds;
+    private Integer healthCheckIntervalSeconds;
     /**
      * @return The path specified as the destination of the targets for health checks.
      * 
      */
-    private final String healthCheckPath;
+    private String healthCheckPath;
     /**
      * @return The port that is used for health checks.
      * 
      */
-    private final Integer healthCheckPort;
+    private Integer healthCheckPort;
     /**
      * @return The protocol that is used to connect to the targets for health checks.
      * 
      */
-    private final String healthCheckProtocol;
+    private String healthCheckProtocol;
     /**
      * @return The ID of the Endpoint Group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the listener that is associated with the endpoint group.
      * 
      */
-    private final String listenerId;
+    private String listenerId;
     /**
      * @return The name of the endpoint group.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Mapping between listening port and forwarding port of boarding point.
      * 
      */
-    private final List<GetEndpointGroupsGroupPortOverride> portOverrides;
+    private List<GetEndpointGroupsGroupPortOverride> portOverrides;
     /**
      * @return The status of the endpoint group.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
      * 
      */
-    private final Integer thresholdCount;
+    private Integer thresholdCount;
     /**
      * @return The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
      * 
      */
-    private final Integer trafficPercentage;
+    private Integer trafficPercentage;
 
-    @CustomType.Constructor
-    private GetEndpointGroupsGroup(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("endpointConfigurations") List<GetEndpointGroupsGroupEndpointConfiguration> endpointConfigurations,
-        @CustomType.Parameter("endpointGroupId") String endpointGroupId,
-        @CustomType.Parameter("endpointGroupRegion") String endpointGroupRegion,
-        @CustomType.Parameter("healthCheckIntervalSeconds") Integer healthCheckIntervalSeconds,
-        @CustomType.Parameter("healthCheckPath") String healthCheckPath,
-        @CustomType.Parameter("healthCheckPort") Integer healthCheckPort,
-        @CustomType.Parameter("healthCheckProtocol") String healthCheckProtocol,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("listenerId") String listenerId,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("portOverrides") List<GetEndpointGroupsGroupPortOverride> portOverrides,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("thresholdCount") Integer thresholdCount,
-        @CustomType.Parameter("trafficPercentage") Integer trafficPercentage) {
-        this.description = description;
-        this.endpointConfigurations = endpointConfigurations;
-        this.endpointGroupId = endpointGroupId;
-        this.endpointGroupRegion = endpointGroupRegion;
-        this.healthCheckIntervalSeconds = healthCheckIntervalSeconds;
-        this.healthCheckPath = healthCheckPath;
-        this.healthCheckPort = healthCheckPort;
-        this.healthCheckProtocol = healthCheckProtocol;
-        this.id = id;
-        this.listenerId = listenerId;
-        this.name = name;
-        this.portOverrides = portOverrides;
-        this.status = status;
-        this.thresholdCount = thresholdCount;
-        this.trafficPercentage = trafficPercentage;
-    }
-
+    private GetEndpointGroupsGroup() {}
     /**
      * @return The description of the endpoint group.
      * 
@@ -236,7 +203,7 @@ public final class GetEndpointGroupsGroup {
     public static Builder builder(GetEndpointGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private List<GetEndpointGroupsGroupEndpointConfiguration> endpointConfigurations;
@@ -253,11 +220,7 @@ public final class GetEndpointGroupsGroup {
         private String status;
         private Integer thresholdCount;
         private Integer trafficPercentage;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEndpointGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -277,10 +240,12 @@ public final class GetEndpointGroupsGroup {
     	      this.trafficPercentage = defaults.trafficPercentage;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointConfigurations(List<GetEndpointGroupsGroupEndpointConfiguration> endpointConfigurations) {
             this.endpointConfigurations = Objects.requireNonNull(endpointConfigurations);
             return this;
@@ -288,42 +253,52 @@ public final class GetEndpointGroupsGroup {
         public Builder endpointConfigurations(GetEndpointGroupsGroupEndpointConfiguration... endpointConfigurations) {
             return endpointConfigurations(List.of(endpointConfigurations));
         }
+        @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
             this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointGroupRegion(String endpointGroupRegion) {
             this.endpointGroupRegion = Objects.requireNonNull(endpointGroupRegion);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckIntervalSeconds(Integer healthCheckIntervalSeconds) {
             this.healthCheckIntervalSeconds = Objects.requireNonNull(healthCheckIntervalSeconds);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckPath(String healthCheckPath) {
             this.healthCheckPath = Objects.requireNonNull(healthCheckPath);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckPort(Integer healthCheckPort) {
             this.healthCheckPort = Objects.requireNonNull(healthCheckPort);
             return this;
         }
+        @CustomType.Setter
         public Builder healthCheckProtocol(String healthCheckProtocol) {
             this.healthCheckProtocol = Objects.requireNonNull(healthCheckProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder portOverrides(List<GetEndpointGroupsGroupPortOverride> portOverrides) {
             this.portOverrides = Objects.requireNonNull(portOverrides);
             return this;
@@ -331,19 +306,39 @@ public final class GetEndpointGroupsGroup {
         public Builder portOverrides(GetEndpointGroupsGroupPortOverride... portOverrides) {
             return portOverrides(List.of(portOverrides));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder thresholdCount(Integer thresholdCount) {
             this.thresholdCount = Objects.requireNonNull(thresholdCount);
             return this;
         }
+        @CustomType.Setter
         public Builder trafficPercentage(Integer trafficPercentage) {
             this.trafficPercentage = Objects.requireNonNull(trafficPercentage);
             return this;
-        }        public GetEndpointGroupsGroup build() {
-            return new GetEndpointGroupsGroup(description, endpointConfigurations, endpointGroupId, endpointGroupRegion, healthCheckIntervalSeconds, healthCheckPath, healthCheckPort, healthCheckProtocol, id, listenerId, name, portOverrides, status, thresholdCount, trafficPercentage);
+        }
+        public GetEndpointGroupsGroup build() {
+            final var o = new GetEndpointGroupsGroup();
+            o.description = description;
+            o.endpointConfigurations = endpointConfigurations;
+            o.endpointGroupId = endpointGroupId;
+            o.endpointGroupRegion = endpointGroupRegion;
+            o.healthCheckIntervalSeconds = healthCheckIntervalSeconds;
+            o.healthCheckPath = healthCheckPath;
+            o.healthCheckPort = healthCheckPort;
+            o.healthCheckProtocol = healthCheckProtocol;
+            o.id = id;
+            o.listenerId = listenerId;
+            o.name = name;
+            o.portOverrides = portOverrides;
+            o.status = status;
+            o.thresholdCount = thresholdCount;
+            o.trafficPercentage = trafficPercentage;
+            return o;
         }
     }
 }

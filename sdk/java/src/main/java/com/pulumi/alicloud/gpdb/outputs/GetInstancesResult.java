@@ -16,63 +16,28 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesResult {
-    private final @Nullable String availabilityZone;
-    private final @Nullable String dbInstanceCategories;
-    private final @Nullable String dbInstanceModes;
-    private final @Nullable String description;
-    private final @Nullable Boolean enableDetails;
+    private @Nullable String availabilityZone;
+    private @Nullable String dbInstanceCategories;
+    private @Nullable String dbInstanceModes;
+    private @Nullable String description;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String instanceNetworkType;
-    private final List<GetInstancesInstance> instances;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String status;
-    private final @Nullable Map<String,Object> tags;
-    private final @Nullable String vswitchId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String instanceNetworkType;
+    private List<GetInstancesInstance> instances;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String resourceGroupId;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
+    private @Nullable String vswitchId;
 
-    @CustomType.Constructor
-    private GetInstancesResult(
-        @CustomType.Parameter("availabilityZone") @Nullable String availabilityZone,
-        @CustomType.Parameter("dbInstanceCategories") @Nullable String dbInstanceCategories,
-        @CustomType.Parameter("dbInstanceModes") @Nullable String dbInstanceModes,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceNetworkType") @Nullable String instanceNetworkType,
-        @CustomType.Parameter("instances") List<GetInstancesInstance> instances,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
-        this.availabilityZone = availabilityZone;
-        this.dbInstanceCategories = dbInstanceCategories;
-        this.dbInstanceModes = dbInstanceModes;
-        this.description = description;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.instanceNetworkType = instanceNetworkType;
-        this.instances = instances;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.status = status;
-        this.tags = tags;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetInstancesResult() {}
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
@@ -133,7 +98,7 @@ public final class GetInstancesResult {
     public static Builder builder(GetInstancesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availabilityZone;
         private @Nullable String dbInstanceCategories;
@@ -151,11 +116,7 @@ public final class GetInstancesResult {
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
         private @Nullable String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
@@ -176,30 +137,37 @@ public final class GetInstancesResult {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder availabilityZone(@Nullable String availabilityZone) {
             this.availabilityZone = availabilityZone;
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceCategories(@Nullable String dbInstanceCategories) {
             this.dbInstanceCategories = dbInstanceCategories;
             return this;
         }
+        @CustomType.Setter
         public Builder dbInstanceModes(@Nullable String dbInstanceModes) {
             this.dbInstanceModes = dbInstanceModes;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -207,10 +175,12 @@ public final class GetInstancesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceNetworkType(@Nullable String instanceNetworkType) {
             this.instanceNetworkType = instanceNetworkType;
             return this;
         }
+        @CustomType.Setter
         public Builder instances(List<GetInstancesInstance> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -218,10 +188,12 @@ public final class GetInstancesResult {
         public Builder instances(GetInstancesInstance... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -229,27 +201,50 @@ public final class GetInstancesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }        public GetInstancesResult build() {
-            return new GetInstancesResult(availabilityZone, dbInstanceCategories, dbInstanceModes, description, enableDetails, id, ids, instanceNetworkType, instances, nameRegex, names, outputFile, resourceGroupId, status, tags, vswitchId);
+        }
+        public GetInstancesResult build() {
+            final var o = new GetInstancesResult();
+            o.availabilityZone = availabilityZone;
+            o.dbInstanceCategories = dbInstanceCategories;
+            o.dbInstanceModes = dbInstanceModes;
+            o.description = description;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.instanceNetworkType = instanceNetworkType;
+            o.instances = instances;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.status = status;
+            o.tags = tags;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

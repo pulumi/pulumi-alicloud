@@ -15,13 +15,9 @@ public final class ContainerGroupEciSecurityContext {
      * @return system.
      * 
      */
-    private final @Nullable List<ContainerGroupEciSecurityContextSysctl> sysctls;
+    private @Nullable List<ContainerGroupEciSecurityContextSysctl> sysctls;
 
-    @CustomType.Constructor
-    private ContainerGroupEciSecurityContext(@CustomType.Parameter("sysctls") @Nullable List<ContainerGroupEciSecurityContextSysctl> sysctls) {
-        this.sysctls = sysctls;
-    }
-
+    private ContainerGroupEciSecurityContext() {}
     /**
      * @return system.
      * 
@@ -37,27 +33,27 @@ public final class ContainerGroupEciSecurityContext {
     public static Builder builder(ContainerGroupEciSecurityContext defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ContainerGroupEciSecurityContextSysctl> sysctls;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupEciSecurityContext defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sysctls = defaults.sysctls;
         }
 
+        @CustomType.Setter
         public Builder sysctls(@Nullable List<ContainerGroupEciSecurityContextSysctl> sysctls) {
             this.sysctls = sysctls;
             return this;
         }
         public Builder sysctls(ContainerGroupEciSecurityContextSysctl... sysctls) {
             return sysctls(List.of(sysctls));
-        }        public ContainerGroupEciSecurityContext build() {
-            return new ContainerGroupEciSecurityContext(sysctls);
+        }
+        public ContainerGroupEciSecurityContext build() {
+            final var o = new ContainerGroupEciSecurityContext();
+            o.sysctls = sysctls;
+            return o;
         }
     }
 }

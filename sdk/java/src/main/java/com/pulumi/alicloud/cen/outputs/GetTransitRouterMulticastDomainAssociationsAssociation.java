@@ -14,63 +14,44 @@ public final class GetTransitRouterMulticastDomainAssociationsAssociation {
      * @return The ID of the Transit Router Multicast Domain Association. It formats as `&lt;transit_router_multicast_domain_id&gt;:&lt;transit_router_attachment_id&gt;:&lt;vswitch_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the resource associated with the multicast domain.
      * 
      */
-    private final String resourceId;
+    private String resourceId;
     /**
      * @return The ID of the Alibaba Cloud account to which the resource associated with the multicast domain belongs.
      * 
      */
-    private final Integer resourceOwnerId;
+    private Integer resourceOwnerId;
     /**
      * @return The type of resource associated with the multicast domain. Valid Value: `VPC`.
      * 
      */
-    private final String resourceType;
+    private String resourceType;
     /**
      * @return The status of the associated resource. Valid Value: `Associated`, `Associating`, `Dissociating`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the network instance connection.
      * 
      */
-    private final String transitRouterAttachmentId;
+    private String transitRouterAttachmentId;
     /**
      * @return The ID of the multicast domain.
      * 
      */
-    private final String transitRouterMulticastDomainId;
+    private String transitRouterMulticastDomainId;
     /**
      * @return The ID of the vSwitch.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetTransitRouterMulticastDomainAssociationsAssociation(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("resourceId") String resourceId,
-        @CustomType.Parameter("resourceOwnerId") Integer resourceOwnerId,
-        @CustomType.Parameter("resourceType") String resourceType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("transitRouterAttachmentId") String transitRouterAttachmentId,
-        @CustomType.Parameter("transitRouterMulticastDomainId") String transitRouterMulticastDomainId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.id = id;
-        this.resourceId = resourceId;
-        this.resourceOwnerId = resourceOwnerId;
-        this.resourceType = resourceType;
-        this.status = status;
-        this.transitRouterAttachmentId = transitRouterAttachmentId;
-        this.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetTransitRouterMulticastDomainAssociationsAssociation() {}
     /**
      * @return The ID of the Transit Router Multicast Domain Association. It formats as `&lt;transit_router_multicast_domain_id&gt;:&lt;transit_router_attachment_id&gt;:&lt;vswitch_id&gt;`.
      * 
@@ -135,7 +116,7 @@ public final class GetTransitRouterMulticastDomainAssociationsAssociation {
     public static Builder builder(GetTransitRouterMulticastDomainAssociationsAssociation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String resourceId;
@@ -145,11 +126,7 @@ public final class GetTransitRouterMulticastDomainAssociationsAssociation {
         private String transitRouterAttachmentId;
         private String transitRouterMulticastDomainId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterMulticastDomainAssociationsAssociation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -162,39 +139,57 @@ public final class GetTransitRouterMulticastDomainAssociationsAssociation {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceId(String resourceId) {
             this.resourceId = Objects.requireNonNull(resourceId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceOwnerId(Integer resourceOwnerId) {
             this.resourceOwnerId = Objects.requireNonNull(resourceOwnerId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterMulticastDomainId(String transitRouterMulticastDomainId) {
             this.transitRouterMulticastDomainId = Objects.requireNonNull(transitRouterMulticastDomainId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetTransitRouterMulticastDomainAssociationsAssociation build() {
-            return new GetTransitRouterMulticastDomainAssociationsAssociation(id, resourceId, resourceOwnerId, resourceType, status, transitRouterAttachmentId, transitRouterMulticastDomainId, vswitchId);
+        }
+        public GetTransitRouterMulticastDomainAssociationsAssociation build() {
+            final var o = new GetTransitRouterMulticastDomainAssociationsAssociation();
+            o.id = id;
+            o.resourceId = resourceId;
+            o.resourceOwnerId = resourceOwnerId;
+            o.resourceType = resourceType;
+            o.status = status;
+            o.transitRouterAttachmentId = transitRouterAttachmentId;
+            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

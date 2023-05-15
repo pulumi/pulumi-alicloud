@@ -16,75 +16,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLoadBalancersResult {
-    private final @Nullable String addressType;
-    private final List<GetLoadBalancersBalancer> balancers;
-    private final @Nullable Boolean enableDetails;
+    private @Nullable String addressType;
+    private List<GetLoadBalancersBalancer> balancers;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String loadBalancerBusinessStatus;
+    private String id;
+    private List<String> ids;
+    private @Nullable String loadBalancerBusinessStatus;
     /**
      * @deprecated
      * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
      * 
      */
     @Deprecated /* Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead. */
-    private final @Nullable String loadBalancerBussinessStatus;
-    private final @Nullable List<String> loadBalancerIds;
-    private final @Nullable String loadBalancerName;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String status;
-    private final @Nullable Map<String,Object> tags;
-    private final @Nullable String vpcId;
-    private final @Nullable List<String> vpcIds;
-    private final @Nullable String zoneId;
+    private @Nullable String loadBalancerBussinessStatus;
+    private @Nullable List<String> loadBalancerIds;
+    private @Nullable String loadBalancerName;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String resourceGroupId;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
+    private @Nullable String vpcId;
+    private @Nullable List<String> vpcIds;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private GetLoadBalancersResult(
-        @CustomType.Parameter("addressType") @Nullable String addressType,
-        @CustomType.Parameter("balancers") List<GetLoadBalancersBalancer> balancers,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("loadBalancerBusinessStatus") @Nullable String loadBalancerBusinessStatus,
-        @CustomType.Parameter("loadBalancerBussinessStatus") @Nullable String loadBalancerBussinessStatus,
-        @CustomType.Parameter("loadBalancerIds") @Nullable List<String> loadBalancerIds,
-        @CustomType.Parameter("loadBalancerName") @Nullable String loadBalancerName,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId,
-        @CustomType.Parameter("vpcIds") @Nullable List<String> vpcIds,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.addressType = addressType;
-        this.balancers = balancers;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
-        this.loadBalancerBussinessStatus = loadBalancerBussinessStatus;
-        this.loadBalancerIds = loadBalancerIds;
-        this.loadBalancerName = loadBalancerName;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.status = status;
-        this.tags = tags;
-        this.vpcId = vpcId;
-        this.vpcIds = vpcIds;
-        this.zoneId = zoneId;
-    }
-
+    private GetLoadBalancersResult() {}
     public Optional<String> addressType() {
         return Optional.ofNullable(this.addressType);
     }
@@ -157,7 +118,7 @@ public final class GetLoadBalancersResult {
     public static Builder builder(GetLoadBalancersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String addressType;
         private List<GetLoadBalancersBalancer> balancers;
@@ -177,11 +138,7 @@ public final class GetLoadBalancersResult {
         private @Nullable String vpcId;
         private @Nullable List<String> vpcIds;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addressType = defaults.addressType;
@@ -204,10 +161,12 @@ public final class GetLoadBalancersResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder addressType(@Nullable String addressType) {
             this.addressType = addressType;
             return this;
         }
+        @CustomType.Setter
         public Builder balancers(List<GetLoadBalancersBalancer> balancers) {
             this.balancers = Objects.requireNonNull(balancers);
             return this;
@@ -215,14 +174,17 @@ public final class GetLoadBalancersResult {
         public Builder balancers(GetLoadBalancersBalancer... balancers) {
             return balancers(List.of(balancers));
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -230,14 +192,17 @@ public final class GetLoadBalancersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder loadBalancerBusinessStatus(@Nullable String loadBalancerBusinessStatus) {
             this.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerBussinessStatus(@Nullable String loadBalancerBussinessStatus) {
             this.loadBalancerBussinessStatus = loadBalancerBussinessStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancerIds(@Nullable List<String> loadBalancerIds) {
             this.loadBalancerIds = loadBalancerIds;
             return this;
@@ -245,14 +210,17 @@ public final class GetLoadBalancersResult {
         public Builder loadBalancerIds(String... loadBalancerIds) {
             return loadBalancerIds(List.of(loadBalancerIds));
         }
+        @CustomType.Setter
         public Builder loadBalancerName(@Nullable String loadBalancerName) {
             this.loadBalancerName = loadBalancerName;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -260,26 +228,32 @@ public final class GetLoadBalancersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcIds(@Nullable List<String> vpcIds) {
             this.vpcIds = vpcIds;
             return this;
@@ -287,11 +261,32 @@ public final class GetLoadBalancersResult {
         public Builder vpcIds(String... vpcIds) {
             return vpcIds(List.of(vpcIds));
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public GetLoadBalancersResult build() {
-            return new GetLoadBalancersResult(addressType, balancers, enableDetails, id, ids, loadBalancerBusinessStatus, loadBalancerBussinessStatus, loadBalancerIds, loadBalancerName, nameRegex, names, outputFile, resourceGroupId, status, tags, vpcId, vpcIds, zoneId);
+        }
+        public GetLoadBalancersResult build() {
+            final var o = new GetLoadBalancersResult();
+            o.addressType = addressType;
+            o.balancers = balancers;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
+            o.loadBalancerBussinessStatus = loadBalancerBussinessStatus;
+            o.loadBalancerIds = loadBalancerIds;
+            o.loadBalancerName = loadBalancerName;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.status = status;
+            o.tags = tags;
+            o.vpcId = vpcId;
+            o.vpcIds = vpcIds;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

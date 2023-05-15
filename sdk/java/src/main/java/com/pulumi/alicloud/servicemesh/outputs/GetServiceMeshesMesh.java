@@ -18,112 +18,79 @@ public final class GetServiceMeshesMesh {
      * @return Cluster List.
      * 
      */
-    private final List<String> clusters;
+    private List<String> clusters;
     /**
      * @return The created time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Grid instance version type. Valid values: `Default` and `Pro`. `Default`:the standard. `Pro`:the Pro version.
      * 
      */
-    private final String edition;
+    private String edition;
     /**
      * @return The endpoint details.
      * 
      */
-    private final List<GetServiceMeshesMeshEndpoint> endpoints;
+    private List<GetServiceMeshesMeshEndpoint> endpoints;
     /**
      * @return The Cause of the Error.
      * 
      */
-    private final String errorMessage;
+    private String errorMessage;
     /**
      * @return The ID of the Service Mesh.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Istio Operator Version. **Note:** the `istio_operator_version` is available from the version v1.170.0.
      * 
      */
-    private final String istioOperatorVersion;
+    private String istioOperatorVersion;
     /**
      * @return The configuration of the Load Balancer.
      * 
      */
-    private final List<GetServiceMeshesMeshLoadBalancer> loadBalancers;
+    private List<GetServiceMeshesMeshLoadBalancer> loadBalancers;
     /**
      * @return The configuration of the Service grid.
      * 
      */
-    private final List<GetServiceMeshesMeshMeshConfig> meshConfigs;
+    private List<GetServiceMeshesMeshMeshConfig> meshConfigs;
     /**
      * @return The configuration of the Service grid network.
      * 
      */
-    private final List<GetServiceMeshesMeshNetwork> networks;
+    private List<GetServiceMeshesMeshNetwork> networks;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String serviceMeshId;
+    private String serviceMeshId;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String serviceMeshName;
+    private String serviceMeshName;
     /**
      * @return The SideCar Version. **Note:** the `sidecar_version` is available from the version v1.170.0.
      * 
      */
-    private final String sidecarVersion;
+    private String sidecarVersion;
     /**
      * @return The status of the resource. Valid values: `running` or `initial`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The version of the resource.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private GetServiceMeshesMesh(
-        @CustomType.Parameter("clusters") List<String> clusters,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("edition") String edition,
-        @CustomType.Parameter("endpoints") List<GetServiceMeshesMeshEndpoint> endpoints,
-        @CustomType.Parameter("errorMessage") String errorMessage,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("istioOperatorVersion") String istioOperatorVersion,
-        @CustomType.Parameter("loadBalancers") List<GetServiceMeshesMeshLoadBalancer> loadBalancers,
-        @CustomType.Parameter("meshConfigs") List<GetServiceMeshesMeshMeshConfig> meshConfigs,
-        @CustomType.Parameter("networks") List<GetServiceMeshesMeshNetwork> networks,
-        @CustomType.Parameter("serviceMeshId") String serviceMeshId,
-        @CustomType.Parameter("serviceMeshName") String serviceMeshName,
-        @CustomType.Parameter("sidecarVersion") String sidecarVersion,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("version") String version) {
-        this.clusters = clusters;
-        this.createTime = createTime;
-        this.edition = edition;
-        this.endpoints = endpoints;
-        this.errorMessage = errorMessage;
-        this.id = id;
-        this.istioOperatorVersion = istioOperatorVersion;
-        this.loadBalancers = loadBalancers;
-        this.meshConfigs = meshConfigs;
-        this.networks = networks;
-        this.serviceMeshId = serviceMeshId;
-        this.serviceMeshName = serviceMeshName;
-        this.sidecarVersion = sidecarVersion;
-        this.status = status;
-        this.version = version;
-    }
-
+    private GetServiceMeshesMesh() {}
     /**
      * @return Cluster List.
      * 
@@ -237,7 +204,7 @@ public final class GetServiceMeshesMesh {
     public static Builder builder(GetServiceMeshesMesh defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> clusters;
         private String createTime;
@@ -254,11 +221,7 @@ public final class GetServiceMeshesMesh {
         private String sidecarVersion;
         private String status;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceMeshesMesh defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusters = defaults.clusters;
@@ -278,6 +241,7 @@ public final class GetServiceMeshesMesh {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder clusters(List<String> clusters) {
             this.clusters = Objects.requireNonNull(clusters);
             return this;
@@ -285,14 +249,17 @@ public final class GetServiceMeshesMesh {
         public Builder clusters(String... clusters) {
             return clusters(List.of(clusters));
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder edition(String edition) {
             this.edition = Objects.requireNonNull(edition);
             return this;
         }
+        @CustomType.Setter
         public Builder endpoints(List<GetServiceMeshesMeshEndpoint> endpoints) {
             this.endpoints = Objects.requireNonNull(endpoints);
             return this;
@@ -300,18 +267,22 @@ public final class GetServiceMeshesMesh {
         public Builder endpoints(GetServiceMeshesMeshEndpoint... endpoints) {
             return endpoints(List.of(endpoints));
         }
+        @CustomType.Setter
         public Builder errorMessage(String errorMessage) {
             this.errorMessage = Objects.requireNonNull(errorMessage);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder istioOperatorVersion(String istioOperatorVersion) {
             this.istioOperatorVersion = Objects.requireNonNull(istioOperatorVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder loadBalancers(List<GetServiceMeshesMeshLoadBalancer> loadBalancers) {
             this.loadBalancers = Objects.requireNonNull(loadBalancers);
             return this;
@@ -319,6 +290,7 @@ public final class GetServiceMeshesMesh {
         public Builder loadBalancers(GetServiceMeshesMeshLoadBalancer... loadBalancers) {
             return loadBalancers(List.of(loadBalancers));
         }
+        @CustomType.Setter
         public Builder meshConfigs(List<GetServiceMeshesMeshMeshConfig> meshConfigs) {
             this.meshConfigs = Objects.requireNonNull(meshConfigs);
             return this;
@@ -326,6 +298,7 @@ public final class GetServiceMeshesMesh {
         public Builder meshConfigs(GetServiceMeshesMeshMeshConfig... meshConfigs) {
             return meshConfigs(List.of(meshConfigs));
         }
+        @CustomType.Setter
         public Builder networks(List<GetServiceMeshesMeshNetwork> networks) {
             this.networks = Objects.requireNonNull(networks);
             return this;
@@ -333,27 +306,49 @@ public final class GetServiceMeshesMesh {
         public Builder networks(GetServiceMeshesMeshNetwork... networks) {
             return networks(List.of(networks));
         }
+        @CustomType.Setter
         public Builder serviceMeshId(String serviceMeshId) {
             this.serviceMeshId = Objects.requireNonNull(serviceMeshId);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceMeshName(String serviceMeshName) {
             this.serviceMeshName = Objects.requireNonNull(serviceMeshName);
             return this;
         }
+        @CustomType.Setter
         public Builder sidecarVersion(String sidecarVersion) {
             this.sidecarVersion = Objects.requireNonNull(sidecarVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetServiceMeshesMesh build() {
-            return new GetServiceMeshesMesh(clusters, createTime, edition, endpoints, errorMessage, id, istioOperatorVersion, loadBalancers, meshConfigs, networks, serviceMeshId, serviceMeshName, sidecarVersion, status, version);
+        }
+        public GetServiceMeshesMesh build() {
+            final var o = new GetServiceMeshesMesh();
+            o.clusters = clusters;
+            o.createTime = createTime;
+            o.edition = edition;
+            o.endpoints = endpoints;
+            o.errorMessage = errorMessage;
+            o.id = id;
+            o.istioOperatorVersion = istioOperatorVersion;
+            o.loadBalancers = loadBalancers;
+            o.meshConfigs = meshConfigs;
+            o.networks = networks;
+            o.serviceMeshId = serviceMeshId;
+            o.serviceMeshName = serviceMeshName;
+            o.sidecarVersion = sidecarVersion;
+            o.status = status;
+            o.version = version;
+            return o;
         }
     }
 }

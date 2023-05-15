@@ -16,35 +16,24 @@ public final class ImageDiskDeviceMapping {
      * @return Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
      * 
      */
-    private final @Nullable String device;
+    private @Nullable String device;
     /**
      * @return Specifies the type of a disk in the combined custom image. If you specify this parameter, you can use a data disk snapshot as the data source of a system disk for creating an image. If it is not specified, the disk type is determined by the corresponding snapshot. Valid values: `system`, `data`,
      * 
      */
-    private final @Nullable String diskType;
+    private @Nullable String diskType;
     /**
      * @return Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
      * 
      */
-    private final @Nullable Integer size;
+    private @Nullable Integer size;
     /**
      * @return Specifies a snapshot that is used to create a combined custom image.
      * 
      */
-    private final @Nullable String snapshotId;
+    private @Nullable String snapshotId;
 
-    @CustomType.Constructor
-    private ImageDiskDeviceMapping(
-        @CustomType.Parameter("device") @Nullable String device,
-        @CustomType.Parameter("diskType") @Nullable String diskType,
-        @CustomType.Parameter("size") @Nullable Integer size,
-        @CustomType.Parameter("snapshotId") @Nullable String snapshotId) {
-        this.device = device;
-        this.diskType = diskType;
-        this.size = size;
-        this.snapshotId = snapshotId;
-    }
-
+    private ImageDiskDeviceMapping() {}
     /**
      * @return Specifies the name of a disk in the combined custom image. Value range: /dev/xvda to /dev/xvdz.
      * 
@@ -81,17 +70,13 @@ public final class ImageDiskDeviceMapping {
     public static Builder builder(ImageDiskDeviceMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String device;
         private @Nullable String diskType;
         private @Nullable Integer size;
         private @Nullable String snapshotId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ImageDiskDeviceMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.device = defaults.device;
@@ -100,23 +85,33 @@ public final class ImageDiskDeviceMapping {
     	      this.snapshotId = defaults.snapshotId;
         }
 
+        @CustomType.Setter
         public Builder device(@Nullable String device) {
             this.device = device;
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
             return this;
         }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
             this.size = size;
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(@Nullable String snapshotId) {
             this.snapshotId = snapshotId;
             return this;
-        }        public ImageDiskDeviceMapping build() {
-            return new ImageDiskDeviceMapping(device, diskType, size, snapshotId);
+        }
+        public ImageDiskDeviceMapping build() {
+            final var o = new ImageDiskDeviceMapping();
+            o.device = device;
+            o.diskType = diskType;
+            o.size = size;
+            o.snapshotId = snapshotId;
+            return o;
         }
     }
 }

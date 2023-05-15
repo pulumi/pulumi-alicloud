@@ -9,29 +9,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetStorageBundlesBundle {
-    private final String createTime;
-    private final String description;
-    private final String id;
-    private final String location;
-    private final String storageBundleId;
-    private final String storageBundleName;
+    private String createTime;
+    private String description;
+    private String id;
+    private String location;
+    private String storageBundleId;
+    private String storageBundleName;
 
-    @CustomType.Constructor
-    private GetStorageBundlesBundle(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("location") String location,
-        @CustomType.Parameter("storageBundleId") String storageBundleId,
-        @CustomType.Parameter("storageBundleName") String storageBundleName) {
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.location = location;
-        this.storageBundleId = storageBundleId;
-        this.storageBundleName = storageBundleName;
-    }
-
+    private GetStorageBundlesBundle() {}
     public String createTime() {
         return this.createTime;
     }
@@ -58,7 +43,7 @@ public final class GetStorageBundlesBundle {
     public static Builder builder(GetStorageBundlesBundle defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -66,11 +51,7 @@ public final class GetStorageBundlesBundle {
         private String location;
         private String storageBundleId;
         private String storageBundleName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetStorageBundlesBundle defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -81,31 +62,45 @@ public final class GetStorageBundlesBundle {
     	      this.storageBundleName = defaults.storageBundleName;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
+        @CustomType.Setter
         public Builder storageBundleId(String storageBundleId) {
             this.storageBundleId = Objects.requireNonNull(storageBundleId);
             return this;
         }
+        @CustomType.Setter
         public Builder storageBundleName(String storageBundleName) {
             this.storageBundleName = Objects.requireNonNull(storageBundleName);
             return this;
-        }        public GetStorageBundlesBundle build() {
-            return new GetStorageBundlesBundle(createTime, description, id, location, storageBundleId, storageBundleName);
+        }
+        public GetStorageBundlesBundle build() {
+            final var o = new GetStorageBundlesBundle();
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.location = location;
+            o.storageBundleId = storageBundleId;
+            o.storageBundleName = storageBundleName;
+            return o;
         }
     }
 }

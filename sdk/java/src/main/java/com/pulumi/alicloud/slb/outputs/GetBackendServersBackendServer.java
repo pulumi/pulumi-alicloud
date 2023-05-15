@@ -14,28 +14,19 @@ public final class GetBackendServersBackendServer {
      * @return backend server ID.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Type of the backend server.
      * 
      */
-    private final String serverType;
+    private String serverType;
     /**
      * @return Weight associated to the ECS instance.
      * 
      */
-    private final Integer weight;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private GetBackendServersBackendServer(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("serverType") String serverType,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.id = id;
-        this.serverType = serverType;
-        this.weight = weight;
-    }
-
+    private GetBackendServersBackendServer() {}
     /**
      * @return backend server ID.
      * 
@@ -65,16 +56,12 @@ public final class GetBackendServersBackendServer {
     public static Builder builder(GetBackendServersBackendServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String serverType;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackendServersBackendServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -82,19 +69,27 @@ public final class GetBackendServersBackendServer {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder serverType(String serverType) {
             this.serverType = Objects.requireNonNull(serverType);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public GetBackendServersBackendServer build() {
-            return new GetBackendServersBackendServer(id, serverType, weight);
+        }
+        public GetBackendServersBackendServer build() {
+            final var o = new GetBackendServersBackendServer();
+            o.id = id;
+            o.serverType = serverType;
+            o.weight = weight;
+            return o;
         }
     }
 }

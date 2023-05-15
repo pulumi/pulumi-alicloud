@@ -13,49 +13,34 @@ public final class GetServerFirewallRulesRule {
      * @return The ID of the firewall rule.
      * 
      */
-    private final String firewallRuleId;
+    private String firewallRuleId;
     /**
      * @return The ID of the Firewall Rule. The value formats as `&lt;instance_id&gt;:&lt;firewall_rule_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Alibaba Cloud simple application server instance ID.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The port range of the firewall rule.
      * 
      */
-    private final String port;
+    private String port;
     /**
      * @return The remarks of the firewall rule.
      * 
      */
-    private final String remark;
+    private String remark;
     /**
      * @return The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
      * 
      */
-    private final String ruleProtocol;
+    private String ruleProtocol;
 
-    @CustomType.Constructor
-    private GetServerFirewallRulesRule(
-        @CustomType.Parameter("firewallRuleId") String firewallRuleId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("port") String port,
-        @CustomType.Parameter("remark") String remark,
-        @CustomType.Parameter("ruleProtocol") String ruleProtocol) {
-        this.firewallRuleId = firewallRuleId;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.port = port;
-        this.remark = remark;
-        this.ruleProtocol = ruleProtocol;
-    }
-
+    private GetServerFirewallRulesRule() {}
     /**
      * @return The ID of the firewall rule.
      * 
@@ -106,7 +91,7 @@ public final class GetServerFirewallRulesRule {
     public static Builder builder(GetServerFirewallRulesRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String firewallRuleId;
         private String id;
@@ -114,11 +99,7 @@ public final class GetServerFirewallRulesRule {
         private String port;
         private String remark;
         private String ruleProtocol;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServerFirewallRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.firewallRuleId = defaults.firewallRuleId;
@@ -129,31 +110,45 @@ public final class GetServerFirewallRulesRule {
     	      this.ruleProtocol = defaults.ruleProtocol;
         }
 
+        @CustomType.Setter
         public Builder firewallRuleId(String firewallRuleId) {
             this.firewallRuleId = Objects.requireNonNull(firewallRuleId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder port(String port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
         }
+        @CustomType.Setter
         public Builder ruleProtocol(String ruleProtocol) {
             this.ruleProtocol = Objects.requireNonNull(ruleProtocol);
             return this;
-        }        public GetServerFirewallRulesRule build() {
-            return new GetServerFirewallRulesRule(firewallRuleId, id, instanceId, port, remark, ruleProtocol);
+        }
+        public GetServerFirewallRulesRule build() {
+            final var o = new GetServerFirewallRulesRule();
+            o.firewallRuleId = firewallRuleId;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.port = port;
+            o.remark = remark;
+            o.ruleProtocol = ruleProtocol;
+            return o;
         }
     }
 }

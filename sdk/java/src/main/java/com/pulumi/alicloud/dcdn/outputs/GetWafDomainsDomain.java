@@ -15,35 +15,24 @@ public final class GetWafDomainsDomain {
      * @return The client ip tag.
      * 
      */
-    private final String clientIpTag;
+    private String clientIpTag;
     /**
      * @return Protection policy type.
      * 
      */
-    private final List<GetWafDomainsDomainDefenseScene> defenseScenes;
+    private List<GetWafDomainsDomainDefenseScene> defenseScenes;
     /**
      * @return The accelerated domain name.
      * 
      */
-    private final String domainName;
+    private String domainName;
     /**
      * @return The ID of the Waf Domain.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetWafDomainsDomain(
-        @CustomType.Parameter("clientIpTag") String clientIpTag,
-        @CustomType.Parameter("defenseScenes") List<GetWafDomainsDomainDefenseScene> defenseScenes,
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("id") String id) {
-        this.clientIpTag = clientIpTag;
-        this.defenseScenes = defenseScenes;
-        this.domainName = domainName;
-        this.id = id;
-    }
-
+    private GetWafDomainsDomain() {}
     /**
      * @return The client ip tag.
      * 
@@ -80,17 +69,13 @@ public final class GetWafDomainsDomain {
     public static Builder builder(GetWafDomainsDomain defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clientIpTag;
         private List<GetWafDomainsDomainDefenseScene> defenseScenes;
         private String domainName;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWafDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientIpTag = defaults.clientIpTag;
@@ -99,10 +84,12 @@ public final class GetWafDomainsDomain {
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder clientIpTag(String clientIpTag) {
             this.clientIpTag = Objects.requireNonNull(clientIpTag);
             return this;
         }
+        @CustomType.Setter
         public Builder defenseScenes(List<GetWafDomainsDomainDefenseScene> defenseScenes) {
             this.defenseScenes = Objects.requireNonNull(defenseScenes);
             return this;
@@ -110,15 +97,23 @@ public final class GetWafDomainsDomain {
         public Builder defenseScenes(GetWafDomainsDomainDefenseScene... defenseScenes) {
             return defenseScenes(List.of(defenseScenes));
         }
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetWafDomainsDomain build() {
-            return new GetWafDomainsDomain(clientIpTag, defenseScenes, domainName, id);
+        }
+        public GetWafDomainsDomain build() {
+            final var o = new GetWafDomainsDomain();
+            o.clientIpTag = clientIpTag;
+            o.defenseScenes = defenseScenes;
+            o.domainName = domainName;
+            o.id = id;
+            return o;
         }
     }
 }

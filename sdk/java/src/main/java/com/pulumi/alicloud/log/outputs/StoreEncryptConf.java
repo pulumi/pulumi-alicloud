@@ -17,12 +17,12 @@ public final class StoreEncryptConf {
      * @return enable encryption. Default `false`
      * 
      */
-    private final @Nullable Boolean enable;
+    private @Nullable Boolean enable;
     /**
      * @return Supported encryption type, only supports `default(AES)`,`  m4 `
      * 
      */
-    private final @Nullable String encryptType;
+    private @Nullable String encryptType;
     /**
      * @return User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows:
      * ```java
@@ -50,18 +50,9 @@ public final class StoreEncryptConf {
      * #### Block user_cmk_info
      * 
      */
-    private final @Nullable StoreEncryptConfUserCmkInfo userCmkInfo;
+    private @Nullable StoreEncryptConfUserCmkInfo userCmkInfo;
 
-    @CustomType.Constructor
-    private StoreEncryptConf(
-        @CustomType.Parameter("enable") @Nullable Boolean enable,
-        @CustomType.Parameter("encryptType") @Nullable String encryptType,
-        @CustomType.Parameter("userCmkInfo") @Nullable StoreEncryptConfUserCmkInfo userCmkInfo) {
-        this.enable = enable;
-        this.encryptType = encryptType;
-        this.userCmkInfo = userCmkInfo;
-    }
-
+    private StoreEncryptConf() {}
     /**
      * @return enable encryption. Default `false`
      * 
@@ -114,16 +105,12 @@ public final class StoreEncryptConf {
     public static Builder builder(StoreEncryptConf defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enable;
         private @Nullable String encryptType;
         private @Nullable StoreEncryptConfUserCmkInfo userCmkInfo;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StoreEncryptConf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
@@ -131,19 +118,27 @@ public final class StoreEncryptConf {
     	      this.userCmkInfo = defaults.userCmkInfo;
         }
 
+        @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
             this.enable = enable;
             return this;
         }
+        @CustomType.Setter
         public Builder encryptType(@Nullable String encryptType) {
             this.encryptType = encryptType;
             return this;
         }
+        @CustomType.Setter
         public Builder userCmkInfo(@Nullable StoreEncryptConfUserCmkInfo userCmkInfo) {
             this.userCmkInfo = userCmkInfo;
             return this;
-        }        public StoreEncryptConf build() {
-            return new StoreEncryptConf(enable, encryptType, userCmkInfo);
+        }
+        public StoreEncryptConf build() {
+            final var o = new StoreEncryptConf();
+            o.enable = enable;
+            o.encryptType = encryptType;
+            o.userCmkInfo = userCmkInfo;
+            return o;
         }
     }
 }

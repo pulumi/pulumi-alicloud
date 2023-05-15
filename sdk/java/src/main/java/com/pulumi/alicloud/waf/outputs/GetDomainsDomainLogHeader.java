@@ -13,21 +13,14 @@ public final class GetDomainsDomainLogHeader {
      * @return The key of label.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return The value of label.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetDomainsDomainLogHeader(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetDomainsDomainLogHeader() {}
     /**
      * @return The key of label.
      * 
@@ -50,30 +43,32 @@ public final class GetDomainsDomainLogHeader {
     public static Builder builder(GetDomainsDomainLogHeader defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainsDomainLogHeader defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetDomainsDomainLogHeader build() {
-            return new GetDomainsDomainLogHeader(key, value);
+        }
+        public GetDomainsDomainLogHeader build() {
+            final var o = new GetDomainsDomainLogHeader();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

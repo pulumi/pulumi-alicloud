@@ -15,13 +15,9 @@ public final class ClusterAdditionalVolumeRole {
      * @return The type of the nodes to which the additional file system is attached.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
 
-    @CustomType.Constructor
-    private ClusterAdditionalVolumeRole(@CustomType.Parameter("name") @Nullable String name) {
-        this.name = name;
-    }
-
+    private ClusterAdditionalVolumeRole() {}
     /**
      * @return The type of the nodes to which the additional file system is attached.
      * 
@@ -37,24 +33,24 @@ public final class ClusterAdditionalVolumeRole {
     public static Builder builder(ClusterAdditionalVolumeRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterAdditionalVolumeRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }        public ClusterAdditionalVolumeRole build() {
-            return new ClusterAdditionalVolumeRole(name);
+        }
+        public ClusterAdditionalVolumeRole build() {
+            final var o = new ClusterAdditionalVolumeRole();
+            o.name = name;
+            return o;
         }
     }
 }

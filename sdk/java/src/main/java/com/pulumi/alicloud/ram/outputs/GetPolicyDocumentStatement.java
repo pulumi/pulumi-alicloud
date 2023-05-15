@@ -18,42 +18,29 @@ public final class GetPolicyDocumentStatement {
      * @return Action of the RAM policy document. If you want to create a RAM role policy document, it must be `[&#34;sts:AssumeRole&#34;]`.
      * 
      */
-    private final List<String> actions;
+    private List<String> actions;
     /**
      * @return Specifies the condition that are required for a policy to take effect. See the following `Block condition`.
      * 
      */
-    private final @Nullable List<GetPolicyDocumentStatementCondition> conditions;
+    private @Nullable List<GetPolicyDocumentStatementCondition> conditions;
     /**
      * @return This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
      * 
      */
-    private final @Nullable String effect;
+    private @Nullable String effect;
     /**
      * @return Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See the following `Block principal`.
      * 
      */
-    private final @Nullable List<GetPolicyDocumentStatementPrincipal> principals;
+    private @Nullable List<GetPolicyDocumentStatementPrincipal> principals;
     /**
      * @return List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
      * 
      */
-    private final @Nullable List<String> resources;
+    private @Nullable List<String> resources;
 
-    @CustomType.Constructor
-    private GetPolicyDocumentStatement(
-        @CustomType.Parameter("actions") List<String> actions,
-        @CustomType.Parameter("conditions") @Nullable List<GetPolicyDocumentStatementCondition> conditions,
-        @CustomType.Parameter("effect") @Nullable String effect,
-        @CustomType.Parameter("principals") @Nullable List<GetPolicyDocumentStatementPrincipal> principals,
-        @CustomType.Parameter("resources") @Nullable List<String> resources) {
-        this.actions = actions;
-        this.conditions = conditions;
-        this.effect = effect;
-        this.principals = principals;
-        this.resources = resources;
-    }
-
+    private GetPolicyDocumentStatement() {}
     /**
      * @return Action of the RAM policy document. If you want to create a RAM role policy document, it must be `[&#34;sts:AssumeRole&#34;]`.
      * 
@@ -97,18 +84,14 @@ public final class GetPolicyDocumentStatement {
     public static Builder builder(GetPolicyDocumentStatement defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> actions;
         private @Nullable List<GetPolicyDocumentStatementCondition> conditions;
         private @Nullable String effect;
         private @Nullable List<GetPolicyDocumentStatementPrincipal> principals;
         private @Nullable List<String> resources;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPolicyDocumentStatement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
@@ -118,6 +101,7 @@ public final class GetPolicyDocumentStatement {
     	      this.resources = defaults.resources;
         }
 
+        @CustomType.Setter
         public Builder actions(List<String> actions) {
             this.actions = Objects.requireNonNull(actions);
             return this;
@@ -125,6 +109,7 @@ public final class GetPolicyDocumentStatement {
         public Builder actions(String... actions) {
             return actions(List.of(actions));
         }
+        @CustomType.Setter
         public Builder conditions(@Nullable List<GetPolicyDocumentStatementCondition> conditions) {
             this.conditions = conditions;
             return this;
@@ -132,10 +117,12 @@ public final class GetPolicyDocumentStatement {
         public Builder conditions(GetPolicyDocumentStatementCondition... conditions) {
             return conditions(List.of(conditions));
         }
+        @CustomType.Setter
         public Builder effect(@Nullable String effect) {
             this.effect = effect;
             return this;
         }
+        @CustomType.Setter
         public Builder principals(@Nullable List<GetPolicyDocumentStatementPrincipal> principals) {
             this.principals = principals;
             return this;
@@ -143,14 +130,22 @@ public final class GetPolicyDocumentStatement {
         public Builder principals(GetPolicyDocumentStatementPrincipal... principals) {
             return principals(List.of(principals));
         }
+        @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
             this.resources = resources;
             return this;
         }
         public Builder resources(String... resources) {
             return resources(List.of(resources));
-        }        public GetPolicyDocumentStatement build() {
-            return new GetPolicyDocumentStatement(actions, conditions, effect, principals, resources);
+        }
+        public GetPolicyDocumentStatement build() {
+            final var o = new GetPolicyDocumentStatement();
+            o.actions = actions;
+            o.conditions = conditions;
+            o.effect = effect;
+            o.principals = principals;
+            o.resources = resources;
+            return o;
         }
     }
 }

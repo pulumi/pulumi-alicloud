@@ -14,52 +14,35 @@ public final class GetInstanceMembersMember {
      * @return When the cloud firewall member account was added.&gt; use second-level timestamp format.
      * 
      */
-    private final Integer createTime;
-    private final String id;
+    private Integer createTime;
+    private String id;
     /**
      * @return Remarks of cloud firewall member accounts.
      * 
      */
-    private final String memberDesc;
+    private String memberDesc;
     /**
      * @return The name of the cloud firewall member account.
      * 
      */
-    private final String memberDisplayName;
+    private String memberDisplayName;
     /**
      * @return The UID of the cloud firewall member account.
      * 
      */
-    private final String memberUid;
+    private String memberUid;
     /**
      * @return The last modification time of the cloud firewall member account.&gt; use second-level timestamp format.
      * 
      */
-    private final Integer modifyTime;
+    private Integer modifyTime;
     /**
      * @return The resource attribute field that represents the resource status.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetInstanceMembersMember(
-        @CustomType.Parameter("createTime") Integer createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("memberDesc") String memberDesc,
-        @CustomType.Parameter("memberDisplayName") String memberDisplayName,
-        @CustomType.Parameter("memberUid") String memberUid,
-        @CustomType.Parameter("modifyTime") Integer modifyTime,
-        @CustomType.Parameter("status") String status) {
-        this.createTime = createTime;
-        this.id = id;
-        this.memberDesc = memberDesc;
-        this.memberDisplayName = memberDisplayName;
-        this.memberUid = memberUid;
-        this.modifyTime = modifyTime;
-        this.status = status;
-    }
-
+    private GetInstanceMembersMember() {}
     /**
      * @return When the cloud firewall member account was added.&gt; use second-level timestamp format.
      * 
@@ -113,7 +96,7 @@ public final class GetInstanceMembersMember {
     public static Builder builder(GetInstanceMembersMember defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer createTime;
         private String id;
@@ -122,11 +105,7 @@ public final class GetInstanceMembersMember {
         private String memberUid;
         private Integer modifyTime;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceMembersMember defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -138,35 +117,51 @@ public final class GetInstanceMembersMember {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder createTime(Integer createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder memberDesc(String memberDesc) {
             this.memberDesc = Objects.requireNonNull(memberDesc);
             return this;
         }
+        @CustomType.Setter
         public Builder memberDisplayName(String memberDisplayName) {
             this.memberDisplayName = Objects.requireNonNull(memberDisplayName);
             return this;
         }
+        @CustomType.Setter
         public Builder memberUid(String memberUid) {
             this.memberUid = Objects.requireNonNull(memberUid);
             return this;
         }
+        @CustomType.Setter
         public Builder modifyTime(Integer modifyTime) {
             this.modifyTime = Objects.requireNonNull(modifyTime);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetInstanceMembersMember build() {
-            return new GetInstanceMembersMember(createTime, id, memberDesc, memberDisplayName, memberUid, modifyTime, status);
+        }
+        public GetInstanceMembersMember build() {
+            final var o = new GetInstanceMembersMember();
+            o.createTime = createTime;
+            o.id = id;
+            o.memberDesc = memberDesc;
+            o.memberDisplayName = memberDisplayName;
+            o.memberUid = memberUid;
+            o.modifyTime = modifyTime;
+            o.status = status;
+            return o;
         }
     }
 }

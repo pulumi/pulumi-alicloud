@@ -12,42 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApiHttpVpcServiceConfig {
-    private final @Nullable String aoneName;
+    private @Nullable String aoneName;
     /**
      * @return The method of the api, including &#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39; etc.
      * 
      */
-    private final String method;
+    private String method;
     /**
      * @return The name of the api gateway api. Defaults to null.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The request path of the api.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return Backend service time-out time; unit: millisecond.
      * 
      */
-    private final Integer timeout;
+    private Integer timeout;
 
-    @CustomType.Constructor
-    private ApiHttpVpcServiceConfig(
-        @CustomType.Parameter("aoneName") @Nullable String aoneName,
-        @CustomType.Parameter("method") String method,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("timeout") Integer timeout) {
-        this.aoneName = aoneName;
-        this.method = method;
-        this.name = name;
-        this.path = path;
-        this.timeout = timeout;
-    }
-
+    private ApiHttpVpcServiceConfig() {}
     public Optional<String> aoneName() {
         return Optional.ofNullable(this.aoneName);
     }
@@ -87,18 +74,14 @@ public final class ApiHttpVpcServiceConfig {
     public static Builder builder(ApiHttpVpcServiceConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String aoneName;
         private String method;
         private String name;
         private String path;
         private Integer timeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiHttpVpcServiceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aoneName = defaults.aoneName;
@@ -108,27 +91,39 @@ public final class ApiHttpVpcServiceConfig {
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
         public Builder aoneName(@Nullable String aoneName) {
             this.aoneName = aoneName;
             return this;
         }
+        @CustomType.Setter
         public Builder method(String method) {
             this.method = Objects.requireNonNull(method);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(Integer timeout) {
             this.timeout = Objects.requireNonNull(timeout);
             return this;
-        }        public ApiHttpVpcServiceConfig build() {
-            return new ApiHttpVpcServiceConfig(aoneName, method, name, path, timeout);
+        }
+        public ApiHttpVpcServiceConfig build() {
+            final var o = new ApiHttpVpcServiceConfig();
+            o.aoneName = aoneName;
+            o.method = method;
+            o.name = name;
+            o.path = path;
+            o.timeout = timeout;
+            return o;
         }
     }
 }

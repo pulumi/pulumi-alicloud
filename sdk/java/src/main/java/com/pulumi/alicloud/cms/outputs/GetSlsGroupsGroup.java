@@ -15,42 +15,29 @@ public final class GetSlsGroupsGroup {
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the Sls Group. Its value is same as Queue Name.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Config of the Sls Group.
      * 
      */
-    private final List<GetSlsGroupsGroupSlsGroupConfig> slsGroupConfigs;
+    private List<GetSlsGroupsGroupSlsGroupConfig> slsGroupConfigs;
     /**
      * @return The Description of the Sls Group.
      * 
      */
-    private final String slsGroupDescription;
+    private String slsGroupDescription;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String slsGroupName;
+    private String slsGroupName;
 
-    @CustomType.Constructor
-    private GetSlsGroupsGroup(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("slsGroupConfigs") List<GetSlsGroupsGroupSlsGroupConfig> slsGroupConfigs,
-        @CustomType.Parameter("slsGroupDescription") String slsGroupDescription,
-        @CustomType.Parameter("slsGroupName") String slsGroupName) {
-        this.createTime = createTime;
-        this.id = id;
-        this.slsGroupConfigs = slsGroupConfigs;
-        this.slsGroupDescription = slsGroupDescription;
-        this.slsGroupName = slsGroupName;
-    }
-
+    private GetSlsGroupsGroup() {}
     /**
      * @return The creation time of the resource.
      * 
@@ -94,18 +81,14 @@ public final class GetSlsGroupsGroup {
     public static Builder builder(GetSlsGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String id;
         private List<GetSlsGroupsGroupSlsGroupConfig> slsGroupConfigs;
         private String slsGroupDescription;
         private String slsGroupName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSlsGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -115,14 +98,17 @@ public final class GetSlsGroupsGroup {
     	      this.slsGroupName = defaults.slsGroupName;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder slsGroupConfigs(List<GetSlsGroupsGroupSlsGroupConfig> slsGroupConfigs) {
             this.slsGroupConfigs = Objects.requireNonNull(slsGroupConfigs);
             return this;
@@ -130,15 +116,24 @@ public final class GetSlsGroupsGroup {
         public Builder slsGroupConfigs(GetSlsGroupsGroupSlsGroupConfig... slsGroupConfigs) {
             return slsGroupConfigs(List.of(slsGroupConfigs));
         }
+        @CustomType.Setter
         public Builder slsGroupDescription(String slsGroupDescription) {
             this.slsGroupDescription = Objects.requireNonNull(slsGroupDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder slsGroupName(String slsGroupName) {
             this.slsGroupName = Objects.requireNonNull(slsGroupName);
             return this;
-        }        public GetSlsGroupsGroup build() {
-            return new GetSlsGroupsGroup(createTime, id, slsGroupConfigs, slsGroupDescription, slsGroupName);
+        }
+        public GetSlsGroupsGroup build() {
+            final var o = new GetSlsGroupsGroup();
+            o.createTime = createTime;
+            o.id = id;
+            o.slsGroupConfigs = slsGroupConfigs;
+            o.slsGroupDescription = slsGroupDescription;
+            o.slsGroupName = slsGroupName;
+            return o;
         }
     }
 }

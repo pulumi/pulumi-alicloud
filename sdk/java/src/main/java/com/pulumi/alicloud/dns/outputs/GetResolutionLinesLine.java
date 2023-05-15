@@ -9,28 +9,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResolutionLinesLine {
-    private final String lineCode;
+    private String lineCode;
     /**
      * @return Line display name.
      * 
      */
-    private final String lineDisplayName;
+    private String lineDisplayName;
     /**
      * @return Line name.
      * 
      */
-    private final String lineName;
+    private String lineName;
 
-    @CustomType.Constructor
-    private GetResolutionLinesLine(
-        @CustomType.Parameter("lineCode") String lineCode,
-        @CustomType.Parameter("lineDisplayName") String lineDisplayName,
-        @CustomType.Parameter("lineName") String lineName) {
-        this.lineCode = lineCode;
-        this.lineDisplayName = lineDisplayName;
-        this.lineName = lineName;
-    }
-
+    private GetResolutionLinesLine() {}
     public String lineCode() {
         return this.lineCode;
     }
@@ -56,16 +47,12 @@ public final class GetResolutionLinesLine {
     public static Builder builder(GetResolutionLinesLine defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String lineCode;
         private String lineDisplayName;
         private String lineName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResolutionLinesLine defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.lineCode = defaults.lineCode;
@@ -73,19 +60,27 @@ public final class GetResolutionLinesLine {
     	      this.lineName = defaults.lineName;
         }
 
+        @CustomType.Setter
         public Builder lineCode(String lineCode) {
             this.lineCode = Objects.requireNonNull(lineCode);
             return this;
         }
+        @CustomType.Setter
         public Builder lineDisplayName(String lineDisplayName) {
             this.lineDisplayName = Objects.requireNonNull(lineDisplayName);
             return this;
         }
+        @CustomType.Setter
         public Builder lineName(String lineName) {
             this.lineName = Objects.requireNonNull(lineName);
             return this;
-        }        public GetResolutionLinesLine build() {
-            return new GetResolutionLinesLine(lineCode, lineDisplayName, lineName);
+        }
+        public GetResolutionLinesLine build() {
+            final var o = new GetResolutionLinesLine();
+            o.lineCode = lineCode;
+            o.lineDisplayName = lineDisplayName;
+            o.lineName = lineName;
+            return o;
         }
     }
 }

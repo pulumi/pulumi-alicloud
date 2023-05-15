@@ -23,72 +23,47 @@ public final class GetRulesResult {
      * 
      */
     @Deprecated /* Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead. */
-    private final @Nullable String configRuleState;
-    private final @Nullable Boolean enableDetails;
+    private @Nullable String configRuleState;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Config Rule IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Config Rule names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The risk level of the Config Rule.
      * 
      */
-    private final @Nullable Integer riskLevel;
+    private @Nullable Integer riskLevel;
     /**
      * @return The name of the Config Rule.
      * 
      */
-    private final @Nullable String ruleName;
+    private @Nullable String ruleName;
     /**
      * @return A list of Config Rules. Each element contains the following attributes:
      * 
      */
-    private final List<GetRulesRule> rules;
+    private List<GetRulesRule> rules;
     /**
      * @return (Available in 1.124.1+) The status of config rule.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetRulesResult(
-        @CustomType.Parameter("configRuleState") @Nullable String configRuleState,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("riskLevel") @Nullable Integer riskLevel,
-        @CustomType.Parameter("ruleName") @Nullable String ruleName,
-        @CustomType.Parameter("rules") List<GetRulesRule> rules,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.configRuleState = configRuleState;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.riskLevel = riskLevel;
-        this.ruleName = ruleName;
-        this.rules = rules;
-        this.status = status;
-    }
-
+    private GetRulesResult() {}
     /**
      * @return The state of the Config Rule.
      * 
@@ -166,7 +141,7 @@ public final class GetRulesResult {
     public static Builder builder(GetRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String configRuleState;
         private @Nullable Boolean enableDetails;
@@ -179,11 +154,7 @@ public final class GetRulesResult {
         private @Nullable String ruleName;
         private List<GetRulesRule> rules;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configRuleState = defaults.configRuleState;
@@ -199,18 +170,22 @@ public final class GetRulesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder configRuleState(@Nullable String configRuleState) {
             this.configRuleState = configRuleState;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -218,10 +193,12 @@ public final class GetRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -229,18 +206,22 @@ public final class GetRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder riskLevel(@Nullable Integer riskLevel) {
             this.riskLevel = riskLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder ruleName(@Nullable String ruleName) {
             this.ruleName = ruleName;
             return this;
         }
+        @CustomType.Setter
         public Builder rules(List<GetRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -248,11 +229,25 @@ public final class GetRulesResult {
         public Builder rules(GetRulesRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetRulesResult build() {
-            return new GetRulesResult(configRuleState, enableDetails, id, ids, nameRegex, names, outputFile, riskLevel, ruleName, rules, status);
+        }
+        public GetRulesResult build() {
+            final var o = new GetRulesResult();
+            o.configRuleState = configRuleState;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.riskLevel = riskLevel;
+            o.ruleName = ruleName;
+            o.rules = rules;
+            o.status = status;
+            return o;
         }
     }
 }

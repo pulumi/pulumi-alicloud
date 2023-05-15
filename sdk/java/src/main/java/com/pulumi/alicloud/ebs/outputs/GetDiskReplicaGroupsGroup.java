@@ -14,115 +14,80 @@ public final class GetDiskReplicaGroupsGroup {
      * @return The description of the consistent replication group.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the region to which the disaster recovery site belongs.
      * 
      */
-    private final String destinationRegionId;
+    private String destinationRegionId;
     /**
      * @return The ID of the zone to which the disaster recovery site belongs.
      * 
      */
-    private final String destinationZoneId;
+    private String destinationZoneId;
     /**
      * @return Consistent replication group name.
      * 
      */
-    private final String groupName;
+    private String groupName;
     /**
      * @return The ID of the Disk Replica Group.
      * 
      */
-    private final String id;
-    private final String lastRecoverPoint;
+    private String id;
+    private String lastRecoverPoint;
     /**
      * @return The initial source region of the replication group.
      * 
      */
-    private final String primaryRegion;
+    private String primaryRegion;
     /**
      * @return The initial source available area of the replication group.
      * 
      */
-    private final String primaryZone;
+    private String primaryZone;
     /**
      * @return The ID of the consistent replication group.
      * 
      */
-    private final String replicaGroupId;
+    private String replicaGroupId;
     /**
      * @return The recovery point objective (RPO) of the replication pair-consistent group.
      * 
      */
-    private final Integer rpo;
+    private Integer rpo;
     /**
      * @return Site information sources for replication pairs and consistent replication groups.
      * 
      */
-    private final String site;
+    private String site;
     /**
      * @return The ID of the region to which the production site belongs.
      * 
      */
-    private final String sourceRegionId;
+    private String sourceRegionId;
     /**
      * @return The ID of the zone to which the production site belongs.
      * 
      */
-    private final String sourceZoneId;
+    private String sourceZoneId;
     /**
      * @return The initial destination region of the replication group.
      * 
      */
-    private final String standbyRegion;
+    private String standbyRegion;
     /**
      * @return The initial destination zone of the replication group.
      * 
      */
-    private final String standbyZone;
+    private String standbyZone;
     /**
      * @return The status of the consistent replication group. Possible values:
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetDiskReplicaGroupsGroup(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("destinationRegionId") String destinationRegionId,
-        @CustomType.Parameter("destinationZoneId") String destinationZoneId,
-        @CustomType.Parameter("groupName") String groupName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lastRecoverPoint") String lastRecoverPoint,
-        @CustomType.Parameter("primaryRegion") String primaryRegion,
-        @CustomType.Parameter("primaryZone") String primaryZone,
-        @CustomType.Parameter("replicaGroupId") String replicaGroupId,
-        @CustomType.Parameter("rpo") Integer rpo,
-        @CustomType.Parameter("site") String site,
-        @CustomType.Parameter("sourceRegionId") String sourceRegionId,
-        @CustomType.Parameter("sourceZoneId") String sourceZoneId,
-        @CustomType.Parameter("standbyRegion") String standbyRegion,
-        @CustomType.Parameter("standbyZone") String standbyZone,
-        @CustomType.Parameter("status") String status) {
-        this.description = description;
-        this.destinationRegionId = destinationRegionId;
-        this.destinationZoneId = destinationZoneId;
-        this.groupName = groupName;
-        this.id = id;
-        this.lastRecoverPoint = lastRecoverPoint;
-        this.primaryRegion = primaryRegion;
-        this.primaryZone = primaryZone;
-        this.replicaGroupId = replicaGroupId;
-        this.rpo = rpo;
-        this.site = site;
-        this.sourceRegionId = sourceRegionId;
-        this.sourceZoneId = sourceZoneId;
-        this.standbyRegion = standbyRegion;
-        this.standbyZone = standbyZone;
-        this.status = status;
-    }
-
+    private GetDiskReplicaGroupsGroup() {}
     /**
      * @return The description of the consistent replication group.
      * 
@@ -239,7 +204,7 @@ public final class GetDiskReplicaGroupsGroup {
     public static Builder builder(GetDiskReplicaGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String destinationRegionId;
@@ -257,11 +222,7 @@ public final class GetDiskReplicaGroupsGroup {
         private String standbyRegion;
         private String standbyZone;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDiskReplicaGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -282,71 +243,105 @@ public final class GetDiskReplicaGroupsGroup {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationRegionId(String destinationRegionId) {
             this.destinationRegionId = Objects.requireNonNull(destinationRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationZoneId(String destinationZoneId) {
             this.destinationZoneId = Objects.requireNonNull(destinationZoneId);
             return this;
         }
+        @CustomType.Setter
         public Builder groupName(String groupName) {
             this.groupName = Objects.requireNonNull(groupName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lastRecoverPoint(String lastRecoverPoint) {
             this.lastRecoverPoint = Objects.requireNonNull(lastRecoverPoint);
             return this;
         }
+        @CustomType.Setter
         public Builder primaryRegion(String primaryRegion) {
             this.primaryRegion = Objects.requireNonNull(primaryRegion);
             return this;
         }
+        @CustomType.Setter
         public Builder primaryZone(String primaryZone) {
             this.primaryZone = Objects.requireNonNull(primaryZone);
             return this;
         }
+        @CustomType.Setter
         public Builder replicaGroupId(String replicaGroupId) {
             this.replicaGroupId = Objects.requireNonNull(replicaGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder rpo(Integer rpo) {
             this.rpo = Objects.requireNonNull(rpo);
             return this;
         }
+        @CustomType.Setter
         public Builder site(String site) {
             this.site = Objects.requireNonNull(site);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceRegionId(String sourceRegionId) {
             this.sourceRegionId = Objects.requireNonNull(sourceRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceZoneId(String sourceZoneId) {
             this.sourceZoneId = Objects.requireNonNull(sourceZoneId);
             return this;
         }
+        @CustomType.Setter
         public Builder standbyRegion(String standbyRegion) {
             this.standbyRegion = Objects.requireNonNull(standbyRegion);
             return this;
         }
+        @CustomType.Setter
         public Builder standbyZone(String standbyZone) {
             this.standbyZone = Objects.requireNonNull(standbyZone);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetDiskReplicaGroupsGroup build() {
-            return new GetDiskReplicaGroupsGroup(description, destinationRegionId, destinationZoneId, groupName, id, lastRecoverPoint, primaryRegion, primaryZone, replicaGroupId, rpo, site, sourceRegionId, sourceZoneId, standbyRegion, standbyZone, status);
+        }
+        public GetDiskReplicaGroupsGroup build() {
+            final var o = new GetDiskReplicaGroupsGroup();
+            o.description = description;
+            o.destinationRegionId = destinationRegionId;
+            o.destinationZoneId = destinationZoneId;
+            o.groupName = groupName;
+            o.id = id;
+            o.lastRecoverPoint = lastRecoverPoint;
+            o.primaryRegion = primaryRegion;
+            o.primaryZone = primaryZone;
+            o.replicaGroupId = replicaGroupId;
+            o.rpo = rpo;
+            o.site = site;
+            o.sourceRegionId = sourceRegionId;
+            o.sourceZoneId = sourceZoneId;
+            o.standbyRegion = standbyRegion;
+            o.standbyZone = standbyZone;
+            o.status = status;
+            return o;
         }
     }
 }

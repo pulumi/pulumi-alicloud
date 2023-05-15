@@ -18,50 +18,29 @@ public final class GetAgentsResult {
      * @return The agent Name.
      * 
      */
-    private final String agentName;
+    private String agentName;
     /**
      * @return A list of availability zones. Each element contains the following attributes:
      * 
      */
-    private final List<GetAgentsAgent> agents;
+    private List<GetAgentsAgent> agents;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of chatbot agents names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
 
-    @CustomType.Constructor
-    private GetAgentsResult(
-        @CustomType.Parameter("agentName") String agentName,
-        @CustomType.Parameter("agents") List<GetAgentsAgent> agents,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
-        this.agentName = agentName;
-        this.agents = agents;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-    }
-
+    private GetAgentsResult() {}
     /**
      * @return The agent Name.
      * 
@@ -113,7 +92,7 @@ public final class GetAgentsResult {
     public static Builder builder(GetAgentsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String agentName;
         private List<GetAgentsAgent> agents;
@@ -124,11 +103,7 @@ public final class GetAgentsResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAgentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agentName = defaults.agentName;
@@ -142,10 +117,12 @@ public final class GetAgentsResult {
     	      this.pageSize = defaults.pageSize;
         }
 
+        @CustomType.Setter
         public Builder agentName(String agentName) {
             this.agentName = Objects.requireNonNull(agentName);
             return this;
         }
+        @CustomType.Setter
         public Builder agents(List<GetAgentsAgent> agents) {
             this.agents = Objects.requireNonNull(agents);
             return this;
@@ -153,10 +130,12 @@ public final class GetAgentsResult {
         public Builder agents(GetAgentsAgent... agents) {
             return agents(List.of(agents));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -164,10 +143,12 @@ public final class GetAgentsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -175,19 +156,33 @@ public final class GetAgentsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }        public GetAgentsResult build() {
-            return new GetAgentsResult(agentName, agents, id, ids, nameRegex, names, outputFile, pageNumber, pageSize);
+        }
+        public GetAgentsResult build() {
+            final var o = new GetAgentsResult();
+            o.agentName = agentName;
+            o.agents = agents;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            return o;
         }
     }
 }

@@ -20,97 +20,58 @@ public final class GetAlidnsDomainsResult {
      * @return Indicates whether the domain is an Alibaba Cloud domain.
      * 
      */
-    private final @Nullable Boolean aliDomain;
-    private final @Nullable String domainNameRegex;
+    private @Nullable Boolean aliDomain;
+    private @Nullable String domainNameRegex;
     /**
      * @return A list of domains. Each element contains the following attributes:
      * 
      */
-    private final List<GetAlidnsDomainsDomain> domains;
-    private final @Nullable Boolean enableDetails;
+    private List<GetAlidnsDomainsDomain> domains;
+    private @Nullable Boolean enableDetails;
     /**
      * @return Id of group that contains the domain.
      * 
      */
-    private final @Nullable String groupId;
-    private final @Nullable String groupNameRegex;
+    private @Nullable String groupId;
+    private @Nullable String groupNameRegex;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of domain IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return Cloud analysis product ID of the domain.
      * 
      */
-    private final @Nullable String instanceId;
-    private final @Nullable String keyWord;
-    private final @Nullable String lang;
+    private @Nullable String instanceId;
+    private @Nullable String keyWord;
+    private @Nullable String lang;
     /**
      * @return A list of domain names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The Id of resource group which the dns belongs.
      * 
      */
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String searchMode;
-    private final @Nullable Boolean starmark;
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable String resourceGroupId;
+    private @Nullable String searchMode;
+    private @Nullable Boolean starmark;
+    private @Nullable Map<String,Object> tags;
     /**
      * @return Cloud resolution version ID.
      * 
      */
-    private final @Nullable String versionCode;
+    private @Nullable String versionCode;
 
-    @CustomType.Constructor
-    private GetAlidnsDomainsResult(
-        @CustomType.Parameter("aliDomain") @Nullable Boolean aliDomain,
-        @CustomType.Parameter("domainNameRegex") @Nullable String domainNameRegex,
-        @CustomType.Parameter("domains") List<GetAlidnsDomainsDomain> domains,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("groupId") @Nullable String groupId,
-        @CustomType.Parameter("groupNameRegex") @Nullable String groupNameRegex,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") @Nullable String instanceId,
-        @CustomType.Parameter("keyWord") @Nullable String keyWord,
-        @CustomType.Parameter("lang") @Nullable String lang,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("searchMode") @Nullable String searchMode,
-        @CustomType.Parameter("starmark") @Nullable Boolean starmark,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("versionCode") @Nullable String versionCode) {
-        this.aliDomain = aliDomain;
-        this.domainNameRegex = domainNameRegex;
-        this.domains = domains;
-        this.enableDetails = enableDetails;
-        this.groupId = groupId;
-        this.groupNameRegex = groupNameRegex;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.keyWord = keyWord;
-        this.lang = lang;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.searchMode = searchMode;
-        this.starmark = starmark;
-        this.tags = tags;
-        this.versionCode = versionCode;
-    }
-
+    private GetAlidnsDomainsResult() {}
     /**
      * @return Indicates whether the domain is an Alibaba Cloud domain.
      * 
@@ -209,7 +170,7 @@ public final class GetAlidnsDomainsResult {
     public static Builder builder(GetAlidnsDomainsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean aliDomain;
         private @Nullable String domainNameRegex;
@@ -229,11 +190,7 @@ public final class GetAlidnsDomainsResult {
         private @Nullable Boolean starmark;
         private @Nullable Map<String,Object> tags;
         private @Nullable String versionCode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAlidnsDomainsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aliDomain = defaults.aliDomain;
@@ -256,14 +213,17 @@ public final class GetAlidnsDomainsResult {
     	      this.versionCode = defaults.versionCode;
         }
 
+        @CustomType.Setter
         public Builder aliDomain(@Nullable Boolean aliDomain) {
             this.aliDomain = aliDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder domainNameRegex(@Nullable String domainNameRegex) {
             this.domainNameRegex = domainNameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder domains(List<GetAlidnsDomainsDomain> domains) {
             this.domains = Objects.requireNonNull(domains);
             return this;
@@ -271,22 +231,27 @@ public final class GetAlidnsDomainsResult {
         public Builder domains(GetAlidnsDomainsDomain... domains) {
             return domains(List.of(domains));
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
             this.groupId = groupId;
             return this;
         }
+        @CustomType.Setter
         public Builder groupNameRegex(@Nullable String groupNameRegex) {
             this.groupNameRegex = groupNameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -294,18 +259,22 @@ public final class GetAlidnsDomainsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder keyWord(@Nullable String keyWord) {
             this.keyWord = keyWord;
             return this;
         }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -313,31 +282,57 @@ public final class GetAlidnsDomainsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder searchMode(@Nullable String searchMode) {
             this.searchMode = searchMode;
             return this;
         }
+        @CustomType.Setter
         public Builder starmark(@Nullable Boolean starmark) {
             this.starmark = starmark;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder versionCode(@Nullable String versionCode) {
             this.versionCode = versionCode;
             return this;
-        }        public GetAlidnsDomainsResult build() {
-            return new GetAlidnsDomainsResult(aliDomain, domainNameRegex, domains, enableDetails, groupId, groupNameRegex, id, ids, instanceId, keyWord, lang, names, outputFile, resourceGroupId, searchMode, starmark, tags, versionCode);
+        }
+        public GetAlidnsDomainsResult build() {
+            final var o = new GetAlidnsDomainsResult();
+            o.aliDomain = aliDomain;
+            o.domainNameRegex = domainNameRegex;
+            o.domains = domains;
+            o.enableDetails = enableDetails;
+            o.groupId = groupId;
+            o.groupNameRegex = groupNameRegex;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.keyWord = keyWord;
+            o.lang = lang;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.searchMode = searchMode;
+            o.starmark = starmark;
+            o.tags = tags;
+            o.versionCode = versionCode;
+            return o;
         }
     }
 }

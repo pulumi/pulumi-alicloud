@@ -16,42 +16,29 @@ public final class HoneypotProbeHoneypotBindListBindPortList {
      * @return Whether to bind the port.
      * 
      */
-    private final @Nullable Boolean bindPort;
+    private @Nullable Boolean bindPort;
     /**
      * @return End port.
      * 
      */
-    private final @Nullable Integer endPort;
+    private @Nullable Integer endPort;
     /**
      * @return Whether the port is fixed.
      * 
      */
-    private final @Nullable Boolean fixed;
+    private @Nullable Boolean fixed;
     /**
      * @return Start port.
      * 
      */
-    private final @Nullable Integer startPort;
+    private @Nullable Integer startPort;
     /**
      * @return Destination port.
      * 
      */
-    private final @Nullable Integer targetPort;
+    private @Nullable Integer targetPort;
 
-    @CustomType.Constructor
-    private HoneypotProbeHoneypotBindListBindPortList(
-        @CustomType.Parameter("bindPort") @Nullable Boolean bindPort,
-        @CustomType.Parameter("endPort") @Nullable Integer endPort,
-        @CustomType.Parameter("fixed") @Nullable Boolean fixed,
-        @CustomType.Parameter("startPort") @Nullable Integer startPort,
-        @CustomType.Parameter("targetPort") @Nullable Integer targetPort) {
-        this.bindPort = bindPort;
-        this.endPort = endPort;
-        this.fixed = fixed;
-        this.startPort = startPort;
-        this.targetPort = targetPort;
-    }
-
+    private HoneypotProbeHoneypotBindListBindPortList() {}
     /**
      * @return Whether to bind the port.
      * 
@@ -95,18 +82,14 @@ public final class HoneypotProbeHoneypotBindListBindPortList {
     public static Builder builder(HoneypotProbeHoneypotBindListBindPortList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean bindPort;
         private @Nullable Integer endPort;
         private @Nullable Boolean fixed;
         private @Nullable Integer startPort;
         private @Nullable Integer targetPort;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HoneypotProbeHoneypotBindListBindPortList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bindPort = defaults.bindPort;
@@ -116,27 +99,39 @@ public final class HoneypotProbeHoneypotBindListBindPortList {
     	      this.targetPort = defaults.targetPort;
         }
 
+        @CustomType.Setter
         public Builder bindPort(@Nullable Boolean bindPort) {
             this.bindPort = bindPort;
             return this;
         }
+        @CustomType.Setter
         public Builder endPort(@Nullable Integer endPort) {
             this.endPort = endPort;
             return this;
         }
+        @CustomType.Setter
         public Builder fixed(@Nullable Boolean fixed) {
             this.fixed = fixed;
             return this;
         }
+        @CustomType.Setter
         public Builder startPort(@Nullable Integer startPort) {
             this.startPort = startPort;
             return this;
         }
+        @CustomType.Setter
         public Builder targetPort(@Nullable Integer targetPort) {
             this.targetPort = targetPort;
             return this;
-        }        public HoneypotProbeHoneypotBindListBindPortList build() {
-            return new HoneypotProbeHoneypotBindListBindPortList(bindPort, endPort, fixed, startPort, targetPort);
+        }
+        public HoneypotProbeHoneypotBindListBindPortList build() {
+            final var o = new HoneypotProbeHoneypotBindListBindPortList();
+            o.bindPort = bindPort;
+            o.endPort = endPort;
+            o.fixed = fixed;
+            o.startPort = startPort;
+            o.targetPort = targetPort;
+            return o;
         }
     }
 }

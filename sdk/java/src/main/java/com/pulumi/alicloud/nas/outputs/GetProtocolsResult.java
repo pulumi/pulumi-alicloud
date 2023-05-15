@@ -16,30 +16,17 @@ public final class GetProtocolsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String outputFile;
+    private String id;
+    private @Nullable String outputFile;
     /**
      * @return A list of supported protocol type..
      * 
      */
-    private final List<String> protocols;
-    private final String type;
-    private final @Nullable String zoneId;
+    private List<String> protocols;
+    private String type;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private GetProtocolsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("protocols") List<String> protocols,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.id = id;
-        this.outputFile = outputFile;
-        this.protocols = protocols;
-        this.type = type;
-        this.zoneId = zoneId;
-    }
-
+    private GetProtocolsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -71,18 +58,14 @@ public final class GetProtocolsResult {
     public static Builder builder(GetProtocolsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable String outputFile;
         private List<String> protocols;
         private String type;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProtocolsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -92,14 +75,17 @@ public final class GetProtocolsResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder protocols(List<String> protocols) {
             this.protocols = Objects.requireNonNull(protocols);
             return this;
@@ -107,15 +93,24 @@ public final class GetProtocolsResult {
         public Builder protocols(String... protocols) {
             return protocols(List.of(protocols));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public GetProtocolsResult build() {
-            return new GetProtocolsResult(id, outputFile, protocols, type, zoneId);
+        }
+        public GetProtocolsResult build() {
+            final var o = new GetProtocolsResult();
+            o.id = id;
+            o.outputFile = outputFile;
+            o.protocols = protocols;
+            o.type = type;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

@@ -13,84 +13,59 @@ public final class GetBasicEndpointsEndpoint {
      * @return The ID of the Global Accelerator Basic Accelerator instance.
      * 
      */
-    private final String acceleratorId;
+    private String acceleratorId;
     /**
      * @return The name of the Basic Endpoint.
      * 
      */
-    private final String basicEndpointName;
+    private String basicEndpointName;
     /**
      * @return The address of the Basic Endpoint.
      * 
      */
-    private final String endpointAddress;
+    private String endpointAddress;
     /**
      * @return The ID of the Basic Endpoint Group.
      * 
      */
-    private final String endpointGroupId;
+    private String endpointGroupId;
     /**
      * @return The ID of the Basic Endpoint.
      * 
      */
-    private final String endpointId;
+    private String endpointId;
     /**
      * @return The sub address of the Basic Endpoint.
      * 
      */
-    private final String endpointSubAddress;
+    private String endpointSubAddress;
     /**
      * @return The sub address type of the Basic Endpoint.
      * 
      */
-    private final String endpointSubAddressType;
+    private String endpointSubAddressType;
     /**
      * @return The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
      * 
      */
-    private final String endpointType;
+    private String endpointType;
     /**
      * @return The zone id of the Basic Endpoint.
      * 
      */
-    private final String endpointZoneId;
+    private String endpointZoneId;
     /**
      * @return The id of the Global Accelerator Basic Endpoint. It formats as `&lt;endpoint_group_id&gt;:&lt;endpoint_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetBasicEndpointsEndpoint(
-        @CustomType.Parameter("acceleratorId") String acceleratorId,
-        @CustomType.Parameter("basicEndpointName") String basicEndpointName,
-        @CustomType.Parameter("endpointAddress") String endpointAddress,
-        @CustomType.Parameter("endpointGroupId") String endpointGroupId,
-        @CustomType.Parameter("endpointId") String endpointId,
-        @CustomType.Parameter("endpointSubAddress") String endpointSubAddress,
-        @CustomType.Parameter("endpointSubAddressType") String endpointSubAddressType,
-        @CustomType.Parameter("endpointType") String endpointType,
-        @CustomType.Parameter("endpointZoneId") String endpointZoneId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status) {
-        this.acceleratorId = acceleratorId;
-        this.basicEndpointName = basicEndpointName;
-        this.endpointAddress = endpointAddress;
-        this.endpointGroupId = endpointGroupId;
-        this.endpointId = endpointId;
-        this.endpointSubAddress = endpointSubAddress;
-        this.endpointSubAddressType = endpointSubAddressType;
-        this.endpointType = endpointType;
-        this.endpointZoneId = endpointZoneId;
-        this.id = id;
-        this.status = status;
-    }
-
+    private GetBasicEndpointsEndpoint() {}
     /**
      * @return The ID of the Global Accelerator Basic Accelerator instance.
      * 
@@ -176,7 +151,7 @@ public final class GetBasicEndpointsEndpoint {
     public static Builder builder(GetBasicEndpointsEndpoint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String acceleratorId;
         private String basicEndpointName;
@@ -189,11 +164,7 @@ public final class GetBasicEndpointsEndpoint {
         private String endpointZoneId;
         private String id;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBasicEndpointsEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -209,51 +180,75 @@ public final class GetBasicEndpointsEndpoint {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
+        @CustomType.Setter
         public Builder basicEndpointName(String basicEndpointName) {
             this.basicEndpointName = Objects.requireNonNull(basicEndpointName);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointAddress(String endpointAddress) {
             this.endpointAddress = Objects.requireNonNull(endpointAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
             this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointId(String endpointId) {
             this.endpointId = Objects.requireNonNull(endpointId);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointSubAddress(String endpointSubAddress) {
             this.endpointSubAddress = Objects.requireNonNull(endpointSubAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointSubAddressType(String endpointSubAddressType) {
             this.endpointSubAddressType = Objects.requireNonNull(endpointSubAddressType);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointType(String endpointType) {
             this.endpointType = Objects.requireNonNull(endpointType);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointZoneId(String endpointZoneId) {
             this.endpointZoneId = Objects.requireNonNull(endpointZoneId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetBasicEndpointsEndpoint build() {
-            return new GetBasicEndpointsEndpoint(acceleratorId, basicEndpointName, endpointAddress, endpointGroupId, endpointId, endpointSubAddress, endpointSubAddressType, endpointType, endpointZoneId, id, status);
+        }
+        public GetBasicEndpointsEndpoint build() {
+            final var o = new GetBasicEndpointsEndpoint();
+            o.acceleratorId = acceleratorId;
+            o.basicEndpointName = basicEndpointName;
+            o.endpointAddress = endpointAddress;
+            o.endpointGroupId = endpointGroupId;
+            o.endpointId = endpointId;
+            o.endpointSubAddress = endpointSubAddress;
+            o.endpointSubAddressType = endpointSubAddressType;
+            o.endpointType = endpointType;
+            o.endpointZoneId = endpointZoneId;
+            o.id = id;
+            o.status = status;
+            return o;
         }
     }
 }

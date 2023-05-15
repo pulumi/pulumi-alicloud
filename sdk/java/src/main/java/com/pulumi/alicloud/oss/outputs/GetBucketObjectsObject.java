@@ -13,105 +13,74 @@ public final class GetBucketObjectsObject {
      * @return Object access control list. Possible values: `default`, `private`, `public-read` and `public-read-write`.
      * 
      */
-    private final String acl;
+    private String acl;
     /**
      * @return Caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      * 
      */
-    private final String cacheControl;
+    private String cacheControl;
     /**
      * @return Presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      * 
      */
-    private final String contentDisposition;
+    private String contentDisposition;
     /**
      * @return Content encodings that have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      * 
      */
-    private final String contentEncoding;
+    private String contentEncoding;
     /**
      * @return Size of the object in bytes.
      * 
      */
-    private final String contentLength;
+    private String contentLength;
     /**
      * @return MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
      * 
      */
-    private final String contentMd5;
+    private String contentMd5;
     /**
      * @return Standard MIME type describing the format of the object data, e.g. &#34;application/octet-stream&#34;.
      * 
      */
-    private final String contentType;
+    private String contentType;
     /**
      * @return ETag generated for the object (MD5 sum of the object content).
      * 
      */
-    private final String etag;
+    private String etag;
     /**
      * @return Expiration date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      * 
      */
-    private final String expires;
+    private String expires;
     /**
      * @return Object key.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return Last modification time of the object.
      * 
      */
-    private final String lastModificationTime;
+    private String lastModificationTime;
     /**
      * @return Server-side encryption of the object in OSS. It can be empty or `AES256`.
      * 
      */
-    private final String serverSideEncryption;
+    private String serverSideEncryption;
     /**
      * @return If present, specifies the ID of the Key Management Service(KMS) master encryption key that was used for the object.
      * 
      */
-    private final String sseKmsKeyId;
+    private String sseKmsKeyId;
     /**
      * @return Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
      * 
      */
-    private final String storageClass;
+    private String storageClass;
 
-    @CustomType.Constructor
-    private GetBucketObjectsObject(
-        @CustomType.Parameter("acl") String acl,
-        @CustomType.Parameter("cacheControl") String cacheControl,
-        @CustomType.Parameter("contentDisposition") String contentDisposition,
-        @CustomType.Parameter("contentEncoding") String contentEncoding,
-        @CustomType.Parameter("contentLength") String contentLength,
-        @CustomType.Parameter("contentMd5") String contentMd5,
-        @CustomType.Parameter("contentType") String contentType,
-        @CustomType.Parameter("etag") String etag,
-        @CustomType.Parameter("expires") String expires,
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("lastModificationTime") String lastModificationTime,
-        @CustomType.Parameter("serverSideEncryption") String serverSideEncryption,
-        @CustomType.Parameter("sseKmsKeyId") String sseKmsKeyId,
-        @CustomType.Parameter("storageClass") String storageClass) {
-        this.acl = acl;
-        this.cacheControl = cacheControl;
-        this.contentDisposition = contentDisposition;
-        this.contentEncoding = contentEncoding;
-        this.contentLength = contentLength;
-        this.contentMd5 = contentMd5;
-        this.contentType = contentType;
-        this.etag = etag;
-        this.expires = expires;
-        this.key = key;
-        this.lastModificationTime = lastModificationTime;
-        this.serverSideEncryption = serverSideEncryption;
-        this.sseKmsKeyId = sseKmsKeyId;
-        this.storageClass = storageClass;
-    }
-
+    private GetBucketObjectsObject() {}
     /**
      * @return Object access control list. Possible values: `default`, `private`, `public-read` and `public-read-write`.
      * 
@@ -218,7 +187,7 @@ public final class GetBucketObjectsObject {
     public static Builder builder(GetBucketObjectsObject defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String acl;
         private String cacheControl;
@@ -234,11 +203,7 @@ public final class GetBucketObjectsObject {
         private String serverSideEncryption;
         private String sseKmsKeyId;
         private String storageClass;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketObjectsObject defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acl = defaults.acl;
@@ -257,63 +222,93 @@ public final class GetBucketObjectsObject {
     	      this.storageClass = defaults.storageClass;
         }
 
+        @CustomType.Setter
         public Builder acl(String acl) {
             this.acl = Objects.requireNonNull(acl);
             return this;
         }
+        @CustomType.Setter
         public Builder cacheControl(String cacheControl) {
             this.cacheControl = Objects.requireNonNull(cacheControl);
             return this;
         }
+        @CustomType.Setter
         public Builder contentDisposition(String contentDisposition) {
             this.contentDisposition = Objects.requireNonNull(contentDisposition);
             return this;
         }
+        @CustomType.Setter
         public Builder contentEncoding(String contentEncoding) {
             this.contentEncoding = Objects.requireNonNull(contentEncoding);
             return this;
         }
+        @CustomType.Setter
         public Builder contentLength(String contentLength) {
             this.contentLength = Objects.requireNonNull(contentLength);
             return this;
         }
+        @CustomType.Setter
         public Builder contentMd5(String contentMd5) {
             this.contentMd5 = Objects.requireNonNull(contentMd5);
             return this;
         }
+        @CustomType.Setter
         public Builder contentType(String contentType) {
             this.contentType = Objects.requireNonNull(contentType);
             return this;
         }
+        @CustomType.Setter
         public Builder etag(String etag) {
             this.etag = Objects.requireNonNull(etag);
             return this;
         }
+        @CustomType.Setter
         public Builder expires(String expires) {
             this.expires = Objects.requireNonNull(expires);
             return this;
         }
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder lastModificationTime(String lastModificationTime) {
             this.lastModificationTime = Objects.requireNonNull(lastModificationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder serverSideEncryption(String serverSideEncryption) {
             this.serverSideEncryption = Objects.requireNonNull(serverSideEncryption);
             return this;
         }
+        @CustomType.Setter
         public Builder sseKmsKeyId(String sseKmsKeyId) {
             this.sseKmsKeyId = Objects.requireNonNull(sseKmsKeyId);
             return this;
         }
+        @CustomType.Setter
         public Builder storageClass(String storageClass) {
             this.storageClass = Objects.requireNonNull(storageClass);
             return this;
-        }        public GetBucketObjectsObject build() {
-            return new GetBucketObjectsObject(acl, cacheControl, contentDisposition, contentEncoding, contentLength, contentMd5, contentType, etag, expires, key, lastModificationTime, serverSideEncryption, sseKmsKeyId, storageClass);
+        }
+        public GetBucketObjectsObject build() {
+            final var o = new GetBucketObjectsObject();
+            o.acl = acl;
+            o.cacheControl = cacheControl;
+            o.contentDisposition = contentDisposition;
+            o.contentEncoding = contentEncoding;
+            o.contentLength = contentLength;
+            o.contentMd5 = contentMd5;
+            o.contentType = contentType;
+            o.etag = etag;
+            o.expires = expires;
+            o.key = key;
+            o.lastModificationTime = lastModificationTime;
+            o.serverSideEncryption = serverSideEncryption;
+            o.sseKmsKeyId = sseKmsKeyId;
+            o.storageClass = storageClass;
+            return o;
         }
     }
 }

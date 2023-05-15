@@ -13,47 +13,47 @@ public final class GetSubnetsSubnet {
      * @return Network segment
      * 
      */
-    private final String cidr;
+    private String cidr;
     /**
      * @return The creation time of the resource
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Modification time
      * 
      */
-    private final String gmtModified;
+    private String gmtModified;
     /**
      * @return The ID of the resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Error message
      * 
      */
-    private final String message;
+    private String message;
     /**
      * @return Resource Group ID.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Primary key ID.
      * 
      */
-    private final String subnetId;
+    private String subnetId;
     /**
      * @return The Subnet name.
      * 
      */
-    private final String subnetName;
+    private String subnetName;
     /**
      * @return Eflo subnet usage type, optional value:
      * - General type is not filled in
@@ -61,46 +61,19 @@ public final class GetSubnetsSubnet {
      * - LB: LB type
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The Eflo VPD ID.
      * 
      */
-    private final String vpdId;
+    private String vpdId;
     /**
      * @return The zone ID of the resource.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetSubnetsSubnet(
-        @CustomType.Parameter("cidr") String cidr,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("gmtModified") String gmtModified,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("message") String message,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("subnetId") String subnetId,
-        @CustomType.Parameter("subnetName") String subnetName,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("vpdId") String vpdId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.cidr = cidr;
-        this.createTime = createTime;
-        this.gmtModified = gmtModified;
-        this.id = id;
-        this.message = message;
-        this.resourceGroupId = resourceGroupId;
-        this.status = status;
-        this.subnetId = subnetId;
-        this.subnetName = subnetName;
-        this.type = type;
-        this.vpdId = vpdId;
-        this.zoneId = zoneId;
-    }
-
+    private GetSubnetsSubnet() {}
     /**
      * @return Network segment
      * 
@@ -196,7 +169,7 @@ public final class GetSubnetsSubnet {
     public static Builder builder(GetSubnetsSubnet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidr;
         private String createTime;
@@ -210,11 +183,7 @@ public final class GetSubnetsSubnet {
         private String type;
         private String vpdId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSubnetsSubnet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidr = defaults.cidr;
@@ -231,55 +200,81 @@ public final class GetSubnetsSubnet {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder cidr(String cidr) {
             this.cidr = Objects.requireNonNull(cidr);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
             this.gmtModified = Objects.requireNonNull(gmtModified);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder message(String message) {
             this.message = Objects.requireNonNull(message);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetId(String subnetId) {
             this.subnetId = Objects.requireNonNull(subnetId);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetName(String subnetName) {
             this.subnetName = Objects.requireNonNull(subnetName);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder vpdId(String vpdId) {
             this.vpdId = Objects.requireNonNull(vpdId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetSubnetsSubnet build() {
-            return new GetSubnetsSubnet(cidr, createTime, gmtModified, id, message, resourceGroupId, status, subnetId, subnetName, type, vpdId, zoneId);
+        }
+        public GetSubnetsSubnet build() {
+            final var o = new GetSubnetsSubnet();
+            o.cidr = cidr;
+            o.createTime = createTime;
+            o.gmtModified = gmtModified;
+            o.id = id;
+            o.message = message;
+            o.resourceGroupId = resourceGroupId;
+            o.status = status;
+            o.subnetId = subnetId;
+            o.subnetName = subnetName;
+            o.type = type;
+            o.vpdId = vpdId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

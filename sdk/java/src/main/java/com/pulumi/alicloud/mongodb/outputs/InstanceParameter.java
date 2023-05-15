@@ -13,21 +13,14 @@ public final class InstanceParameter {
      * @return The name of DB instance. It a string of 2 to 256 characters.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The value of the parameter.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private InstanceParameter(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.name = name;
-        this.value = value;
-    }
-
+    private InstanceParameter() {}
     /**
      * @return The name of DB instance. It a string of 2 to 256 characters.
      * 
@@ -50,30 +43,32 @@ public final class InstanceParameter {
     public static Builder builder(InstanceParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public InstanceParameter build() {
-            return new InstanceParameter(name, value);
+        }
+        public InstanceParameter build() {
+            final var o = new InstanceParameter();
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

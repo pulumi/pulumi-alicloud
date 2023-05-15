@@ -14,42 +14,29 @@ public final class GetCustomDomainsDomainRouteConfig {
      * @return The name of the Function Compute function that requests are routed to.
      * 
      */
-    private final String functionName;
+    private String functionName;
     /**
      * @return The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
      * 
      */
-    private final List<String> methods;
+    private List<String> methods;
     /**
      * @return The path that requests are routed from.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service.
      * 
      */
-    private final String qualifier;
+    private String qualifier;
     /**
      * @return The name of the Function Compute service that requests are routed to.
      * 
      */
-    private final String serviceName;
+    private String serviceName;
 
-    @CustomType.Constructor
-    private GetCustomDomainsDomainRouteConfig(
-        @CustomType.Parameter("functionName") String functionName,
-        @CustomType.Parameter("methods") List<String> methods,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("qualifier") String qualifier,
-        @CustomType.Parameter("serviceName") String serviceName) {
-        this.functionName = functionName;
-        this.methods = methods;
-        this.path = path;
-        this.qualifier = qualifier;
-        this.serviceName = serviceName;
-    }
-
+    private GetCustomDomainsDomainRouteConfig() {}
     /**
      * @return The name of the Function Compute function that requests are routed to.
      * 
@@ -93,18 +80,14 @@ public final class GetCustomDomainsDomainRouteConfig {
     public static Builder builder(GetCustomDomainsDomainRouteConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String functionName;
         private List<String> methods;
         private String path;
         private String qualifier;
         private String serviceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomDomainsDomainRouteConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.functionName = defaults.functionName;
@@ -114,10 +97,12 @@ public final class GetCustomDomainsDomainRouteConfig {
     	      this.serviceName = defaults.serviceName;
         }
 
+        @CustomType.Setter
         public Builder functionName(String functionName) {
             this.functionName = Objects.requireNonNull(functionName);
             return this;
         }
+        @CustomType.Setter
         public Builder methods(List<String> methods) {
             this.methods = Objects.requireNonNull(methods);
             return this;
@@ -125,19 +110,29 @@ public final class GetCustomDomainsDomainRouteConfig {
         public Builder methods(String... methods) {
             return methods(List.of(methods));
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder qualifier(String qualifier) {
             this.qualifier = Objects.requireNonNull(qualifier);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
-        }        public GetCustomDomainsDomainRouteConfig build() {
-            return new GetCustomDomainsDomainRouteConfig(functionName, methods, path, qualifier, serviceName);
+        }
+        public GetCustomDomainsDomainRouteConfig build() {
+            final var o = new GetCustomDomainsDomainRouteConfig();
+            o.functionName = functionName;
+            o.methods = methods;
+            o.path = path;
+            o.qualifier = qualifier;
+            o.serviceName = serviceName;
+            return o;
         }
     }
 }

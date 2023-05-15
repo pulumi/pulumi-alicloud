@@ -17,104 +17,71 @@ public final class GetZonesZone {
      * @return List of the VPCs is bound to the Private Zone:
      * 
      */
-    private final List<GetZonesZoneBindVpc> bindVpcs;
+    private List<GetZonesZoneBindVpc> bindVpcs;
     /**
      * @return Time of create of the Private Zone.
      * 
      */
-    private final Integer createTimestamp;
-    private final String creationTime;
+    private Integer createTimestamp;
+    private String creationTime;
     /**
      * @return ID of the Private Zone.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Whether the Private Zone is ptr.
      * 
      */
-    private final Boolean isPtr;
+    private Boolean isPtr;
     /**
      * @return Name of the Private Zone.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The recursive DNS proxy.
      * 
      */
-    private final String proxyPattern;
+    private String proxyPattern;
     /**
      * @return Count of the Private Zone Record.
      * 
      */
-    private final Integer recordCount;
+    private Integer recordCount;
     /**
      * @return Remark of the Private Zone.
      * 
      */
-    private final String remark;
+    private String remark;
     /**
      * @return resource_group_id for zone resourceGroupId.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return Whether to turn on secondary DNS.
      * 
      */
-    private final Boolean slaveDns;
-    private final String updateTime;
+    private Boolean slaveDns;
+    private String updateTime;
     /**
      * @return Time of update of the Private Zone.
      * 
      */
-    private final Integer updateTimestamp;
+    private Integer updateTimestamp;
     /**
      * @return ZoneId of the Private Zone.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
     /**
      * @return ZoneName of the Private Zone.
      * 
      */
-    private final String zoneName;
+    private String zoneName;
 
-    @CustomType.Constructor
-    private GetZonesZone(
-        @CustomType.Parameter("bindVpcs") List<GetZonesZoneBindVpc> bindVpcs,
-        @CustomType.Parameter("createTimestamp") Integer createTimestamp,
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isPtr") Boolean isPtr,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("proxyPattern") String proxyPattern,
-        @CustomType.Parameter("recordCount") Integer recordCount,
-        @CustomType.Parameter("remark") String remark,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("slaveDns") Boolean slaveDns,
-        @CustomType.Parameter("updateTime") String updateTime,
-        @CustomType.Parameter("updateTimestamp") Integer updateTimestamp,
-        @CustomType.Parameter("zoneId") String zoneId,
-        @CustomType.Parameter("zoneName") String zoneName) {
-        this.bindVpcs = bindVpcs;
-        this.createTimestamp = createTimestamp;
-        this.creationTime = creationTime;
-        this.id = id;
-        this.isPtr = isPtr;
-        this.name = name;
-        this.proxyPattern = proxyPattern;
-        this.recordCount = recordCount;
-        this.remark = remark;
-        this.resourceGroupId = resourceGroupId;
-        this.slaveDns = slaveDns;
-        this.updateTime = updateTime;
-        this.updateTimestamp = updateTimestamp;
-        this.zoneId = zoneId;
-        this.zoneName = zoneName;
-    }
-
+    private GetZonesZone() {}
     /**
      * @return List of the VPCs is bound to the Private Zone:
      * 
@@ -220,7 +187,7 @@ public final class GetZonesZone {
     public static Builder builder(GetZonesZone defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetZonesZoneBindVpc> bindVpcs;
         private Integer createTimestamp;
@@ -237,11 +204,7 @@ public final class GetZonesZone {
         private Integer updateTimestamp;
         private String zoneId;
         private String zoneName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesZone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bindVpcs = defaults.bindVpcs;
@@ -261,6 +224,7 @@ public final class GetZonesZone {
     	      this.zoneName = defaults.zoneName;
         }
 
+        @CustomType.Setter
         public Builder bindVpcs(List<GetZonesZoneBindVpc> bindVpcs) {
             this.bindVpcs = Objects.requireNonNull(bindVpcs);
             return this;
@@ -268,63 +232,94 @@ public final class GetZonesZone {
         public Builder bindVpcs(GetZonesZoneBindVpc... bindVpcs) {
             return bindVpcs(List.of(bindVpcs));
         }
+        @CustomType.Setter
         public Builder createTimestamp(Integer createTimestamp) {
             this.createTimestamp = Objects.requireNonNull(createTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isPtr(Boolean isPtr) {
             this.isPtr = Objects.requireNonNull(isPtr);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder proxyPattern(String proxyPattern) {
             this.proxyPattern = Objects.requireNonNull(proxyPattern);
             return this;
         }
+        @CustomType.Setter
         public Builder recordCount(Integer recordCount) {
             this.recordCount = Objects.requireNonNull(recordCount);
             return this;
         }
+        @CustomType.Setter
         public Builder remark(String remark) {
             this.remark = Objects.requireNonNull(remark);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder slaveDns(Boolean slaveDns) {
             this.slaveDns = Objects.requireNonNull(slaveDns);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
         }
+        @CustomType.Setter
         public Builder updateTimestamp(Integer updateTimestamp) {
             this.updateTimestamp = Objects.requireNonNull(updateTimestamp);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneName(String zoneName) {
             this.zoneName = Objects.requireNonNull(zoneName);
             return this;
-        }        public GetZonesZone build() {
-            return new GetZonesZone(bindVpcs, createTimestamp, creationTime, id, isPtr, name, proxyPattern, recordCount, remark, resourceGroupId, slaveDns, updateTime, updateTimestamp, zoneId, zoneName);
+        }
+        public GetZonesZone build() {
+            final var o = new GetZonesZone();
+            o.bindVpcs = bindVpcs;
+            o.createTimestamp = createTimestamp;
+            o.creationTime = creationTime;
+            o.id = id;
+            o.isPtr = isPtr;
+            o.name = name;
+            o.proxyPattern = proxyPattern;
+            o.recordCount = recordCount;
+            o.remark = remark;
+            o.resourceGroupId = resourceGroupId;
+            o.slaveDns = slaveDns;
+            o.updateTime = updateTime;
+            o.updateTimestamp = updateTimestamp;
+            o.zoneId = zoneId;
+            o.zoneName = zoneName;
+            return o;
         }
     }
 }

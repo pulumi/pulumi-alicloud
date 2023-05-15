@@ -18,54 +18,33 @@ public final class GetHoneypotProbesResult {
      * @return Probe name.
      * 
      */
-    private final @Nullable String displayName;
-    private final @Nullable Boolean enableDetails;
+    private @Nullable String displayName;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Honeypot Probe IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final @Nullable String outputFile;
-    private final @Nullable String probeStatus;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private @Nullable String outputFile;
+    private @Nullable String probeStatus;
     /**
      * @return Probe type, support `host_probe` and `vpc_black_hole_probe`.
      * 
      */
-    private final @Nullable String probeType;
+    private @Nullable String probeType;
     /**
      * @return A list of Honeypot Probe Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetHoneypotProbesProbe> probes;
+    private List<GetHoneypotProbesProbe> probes;
 
-    @CustomType.Constructor
-    private GetHoneypotProbesResult(
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("probeStatus") @Nullable String probeStatus,
-        @CustomType.Parameter("probeType") @Nullable String probeType,
-        @CustomType.Parameter("probes") List<GetHoneypotProbesProbe> probes) {
-        this.displayName = displayName;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.outputFile = outputFile;
-        this.probeStatus = probeStatus;
-        this.probeType = probeType;
-        this.probes = probes;
-    }
-
+    private GetHoneypotProbesResult() {}
     /**
      * @return Probe name.
      * 
@@ -121,7 +100,7 @@ public final class GetHoneypotProbesResult {
     public static Builder builder(GetHoneypotProbesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String displayName;
         private @Nullable Boolean enableDetails;
@@ -132,11 +111,7 @@ public final class GetHoneypotProbesResult {
         private @Nullable String probeStatus;
         private @Nullable String probeType;
         private List<GetHoneypotProbesProbe> probes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHoneypotProbesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayName = defaults.displayName;
@@ -150,18 +125,22 @@ public final class GetHoneypotProbesResult {
     	      this.probes = defaults.probes;
         }
 
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -169,30 +148,46 @@ public final class GetHoneypotProbesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder probeStatus(@Nullable String probeStatus) {
             this.probeStatus = probeStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder probeType(@Nullable String probeType) {
             this.probeType = probeType;
             return this;
         }
+        @CustomType.Setter
         public Builder probes(List<GetHoneypotProbesProbe> probes) {
             this.probes = Objects.requireNonNull(probes);
             return this;
         }
         public Builder probes(GetHoneypotProbesProbe... probes) {
             return probes(List.of(probes));
-        }        public GetHoneypotProbesResult build() {
-            return new GetHoneypotProbesResult(displayName, enableDetails, id, ids, nameRegex, outputFile, probeStatus, probeType, probes);
+        }
+        public GetHoneypotProbesResult build() {
+            final var o = new GetHoneypotProbesResult();
+            o.displayName = displayName;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.outputFile = outputFile;
+            o.probeStatus = probeStatus;
+            o.probeType = probeType;
+            o.probes = probes;
+            return o;
         }
     }
 }

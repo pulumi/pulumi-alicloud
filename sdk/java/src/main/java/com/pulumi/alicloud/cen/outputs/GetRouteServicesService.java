@@ -14,77 +14,54 @@ public final class GetRouteServicesService {
      * @return The region of the network instances that access the cloud services.
      * 
      */
-    private final String accessRegionId;
+    private String accessRegionId;
     /**
      * @return The ID of the CEN instance.
      * 
      */
-    private final String cenId;
+    private String cenId;
     /**
      * @return The IP address of the cloud service.
      * 
      */
-    private final List<String> cidrs;
+    private List<String> cidrs;
     /**
      * @return The description of the cloud service.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The domain name or IP address of the cloud service.
      * 
      */
-    private final String host;
+    private String host;
     /**
      * @return The region of the cloud service.
      * 
      */
-    private final String hostRegionId;
+    private String hostRegionId;
     /**
      * @return The VPC associated with the cloud service.
      * 
      */
-    private final String hostVpcId;
+    private String hostVpcId;
     /**
      * @return The ID of the route service.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The update interval. Default value: 5. The value cannot be modified.
      * 
      */
-    private final String updateInterval;
+    private String updateInterval;
 
-    @CustomType.Constructor
-    private GetRouteServicesService(
-        @CustomType.Parameter("accessRegionId") String accessRegionId,
-        @CustomType.Parameter("cenId") String cenId,
-        @CustomType.Parameter("cidrs") List<String> cidrs,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("hostRegionId") String hostRegionId,
-        @CustomType.Parameter("hostVpcId") String hostVpcId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("updateInterval") String updateInterval) {
-        this.accessRegionId = accessRegionId;
-        this.cenId = cenId;
-        this.cidrs = cidrs;
-        this.description = description;
-        this.host = host;
-        this.hostRegionId = hostRegionId;
-        this.hostVpcId = hostVpcId;
-        this.id = id;
-        this.status = status;
-        this.updateInterval = updateInterval;
-    }
-
+    private GetRouteServicesService() {}
     /**
      * @return The region of the network instances that access the cloud services.
      * 
@@ -163,7 +140,7 @@ public final class GetRouteServicesService {
     public static Builder builder(GetRouteServicesService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessRegionId;
         private String cenId;
@@ -175,11 +152,7 @@ public final class GetRouteServicesService {
         private String id;
         private String status;
         private String updateInterval;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouteServicesService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessRegionId = defaults.accessRegionId;
@@ -194,14 +167,17 @@ public final class GetRouteServicesService {
     	      this.updateInterval = defaults.updateInterval;
         }
 
+        @CustomType.Setter
         public Builder accessRegionId(String accessRegionId) {
             this.accessRegionId = Objects.requireNonNull(accessRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
+        @CustomType.Setter
         public Builder cidrs(List<String> cidrs) {
             this.cidrs = Objects.requireNonNull(cidrs);
             return this;
@@ -209,35 +185,54 @@ public final class GetRouteServicesService {
         public Builder cidrs(String... cidrs) {
             return cidrs(List.of(cidrs));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder hostRegionId(String hostRegionId) {
             this.hostRegionId = Objects.requireNonNull(hostRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder hostVpcId(String hostVpcId) {
             this.hostVpcId = Objects.requireNonNull(hostVpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder updateInterval(String updateInterval) {
             this.updateInterval = Objects.requireNonNull(updateInterval);
             return this;
-        }        public GetRouteServicesService build() {
-            return new GetRouteServicesService(accessRegionId, cenId, cidrs, description, host, hostRegionId, hostVpcId, id, status, updateInterval);
+        }
+        public GetRouteServicesService build() {
+            final var o = new GetRouteServicesService();
+            o.accessRegionId = accessRegionId;
+            o.cenId = cenId;
+            o.cidrs = cidrs;
+            o.description = description;
+            o.host = host;
+            o.hostRegionId = hostRegionId;
+            o.hostVpcId = hostVpcId;
+            o.id = id;
+            o.status = status;
+            o.updateInterval = updateInterval;
+            return o;
         }
     }
 }

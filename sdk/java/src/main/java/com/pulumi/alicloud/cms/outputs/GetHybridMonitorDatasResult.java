@@ -13,39 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHybridMonitorDatasResult {
-    private final List<GetHybridMonitorDatasData> datas;
-    private final String end;
+    private List<GetHybridMonitorDatasData> datas;
+    private String end;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final String namespace;
-    private final @Nullable String outputFile;
-    private final @Nullable String period;
-    private final String promSql;
-    private final String start;
+    private String id;
+    private String namespace;
+    private @Nullable String outputFile;
+    private @Nullable String period;
+    private String promSql;
+    private String start;
 
-    @CustomType.Constructor
-    private GetHybridMonitorDatasResult(
-        @CustomType.Parameter("datas") List<GetHybridMonitorDatasData> datas,
-        @CustomType.Parameter("end") String end,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("namespace") String namespace,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("period") @Nullable String period,
-        @CustomType.Parameter("promSql") String promSql,
-        @CustomType.Parameter("start") String start) {
-        this.datas = datas;
-        this.end = end;
-        this.id = id;
-        this.namespace = namespace;
-        this.outputFile = outputFile;
-        this.period = period;
-        this.promSql = promSql;
-        this.start = start;
-    }
-
+    private GetHybridMonitorDatasResult() {}
     public List<GetHybridMonitorDatasData> datas() {
         return this.datas;
     }
@@ -82,7 +63,7 @@ public final class GetHybridMonitorDatasResult {
     public static Builder builder(GetHybridMonitorDatasResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetHybridMonitorDatasData> datas;
         private String end;
@@ -92,11 +73,7 @@ public final class GetHybridMonitorDatasResult {
         private @Nullable String period;
         private String promSql;
         private String start;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHybridMonitorDatasResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datas = defaults.datas;
@@ -109,6 +86,7 @@ public final class GetHybridMonitorDatasResult {
     	      this.start = defaults.start;
         }
 
+        @CustomType.Setter
         public Builder datas(List<GetHybridMonitorDatasData> datas) {
             this.datas = Objects.requireNonNull(datas);
             return this;
@@ -116,35 +94,52 @@ public final class GetHybridMonitorDatasResult {
         public Builder datas(GetHybridMonitorDatasData... datas) {
             return datas(List.of(datas));
         }
+        @CustomType.Setter
         public Builder end(String end) {
             this.end = Objects.requireNonNull(end);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder period(@Nullable String period) {
             this.period = period;
             return this;
         }
+        @CustomType.Setter
         public Builder promSql(String promSql) {
             this.promSql = Objects.requireNonNull(promSql);
             return this;
         }
+        @CustomType.Setter
         public Builder start(String start) {
             this.start = Objects.requireNonNull(start);
             return this;
-        }        public GetHybridMonitorDatasResult build() {
-            return new GetHybridMonitorDatasResult(datas, end, id, namespace, outputFile, period, promSql, start);
+        }
+        public GetHybridMonitorDatasResult build() {
+            final var o = new GetHybridMonitorDatasResult();
+            o.datas = datas;
+            o.end = end;
+            o.id = id;
+            o.namespace = namespace;
+            o.outputFile = outputFile;
+            o.period = period;
+            o.promSql = promSql;
+            o.start = start;
+            return o;
         }
     }
 }

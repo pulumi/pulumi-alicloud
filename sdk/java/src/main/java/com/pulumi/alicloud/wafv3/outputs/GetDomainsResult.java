@@ -15,53 +15,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDomainsResult {
-    private final @Nullable String backend;
+    private @Nullable String backend;
     /**
      * @return The name of the domain.
      * 
      */
-    private final @Nullable String domain;
+    private @Nullable String domain;
     /**
      * @return A list of Domain Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetDomainsDomain> domains;
-    private final @Nullable Boolean enableDetails;
+    private List<GetDomainsDomain> domains;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final String instanceId;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private String id;
+    private List<String> ids;
+    private String instanceId;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
 
-    @CustomType.Constructor
-    private GetDomainsResult(
-        @CustomType.Parameter("backend") @Nullable String backend,
-        @CustomType.Parameter("domain") @Nullable String domain,
-        @CustomType.Parameter("domains") List<GetDomainsDomain> domains,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
-        this.backend = backend;
-        this.domain = domain;
-        this.domains = domains;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-    }
-
+    private GetDomainsResult() {}
     public Optional<String> backend() {
         return Optional.ofNullable(this.backend);
     }
@@ -112,7 +89,7 @@ public final class GetDomainsResult {
     public static Builder builder(GetDomainsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String backend;
         private @Nullable String domain;
@@ -124,11 +101,7 @@ public final class GetDomainsResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backend = defaults.backend;
@@ -143,14 +116,17 @@ public final class GetDomainsResult {
     	      this.pageSize = defaults.pageSize;
         }
 
+        @CustomType.Setter
         public Builder backend(@Nullable String backend) {
             this.backend = backend;
             return this;
         }
+        @CustomType.Setter
         public Builder domain(@Nullable String domain) {
             this.domain = domain;
             return this;
         }
+        @CustomType.Setter
         public Builder domains(List<GetDomainsDomain> domains) {
             this.domains = Objects.requireNonNull(domains);
             return this;
@@ -158,14 +134,17 @@ public final class GetDomainsResult {
         public Builder domains(GetDomainsDomain... domains) {
             return domains(List.of(domains));
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -173,23 +152,39 @@ public final class GetDomainsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }        public GetDomainsResult build() {
-            return new GetDomainsResult(backend, domain, domains, enableDetails, id, ids, instanceId, outputFile, pageNumber, pageSize);
+        }
+        public GetDomainsResult build() {
+            final var o = new GetDomainsResult();
+            o.backend = backend;
+            o.domain = domain;
+            o.domains = domains;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            return o;
         }
     }
 }

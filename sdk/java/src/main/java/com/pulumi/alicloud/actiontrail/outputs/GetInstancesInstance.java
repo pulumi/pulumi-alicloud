@@ -20,210 +20,149 @@ public final class GetInstancesInstance {
      * @return The allowed list of the instance.
      * 
      */
-    private final List<GetInstancesInstanceAllowedList> allowedLists;
+    private List<GetInstancesInstanceAllowedList> allowedLists;
     /**
      * @return The config the instance.
      * 
      */
-    private final String config;
+    private String config;
     /**
      * @return The create time of the instance.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The deployed type of the instance.
      * 
      */
-    private final Integer deployType;
+    private Integer deployType;
     /**
      * @return The disk size of the instance.
      * 
      */
-    private final Integer diskSize;
+    private Integer diskSize;
     /**
      * @return The disk type of the instance. 0: efficient cloud disk , 1: SSD.
      * 
      */
-    private final Integer diskType;
+    private Integer diskType;
     /**
      * @return The domain point of the instance.
      * 
      */
-    private final String domainEndpoint;
+    private String domainEndpoint;
     /**
      * @return The peak bandwidth of the instance.
      * 
      */
-    private final Integer eipMax;
+    private Integer eipMax;
     /**
      * @return The endPoint to access the instance.
      * 
      */
-    private final String endPoint;
+    private String endPoint;
     /**
      * @return The expired time  of the instance.
      * 
      */
-    private final Integer expiredTime;
+    private Integer expiredTime;
     /**
      * @return ID of the instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The peak value of io of the instance.
      * 
      */
-    private final Integer ioMax;
+    private Integer ioMax;
     /**
      * @return The msg retain of the instance.
      * 
      */
-    private final Integer msgRetain;
+    private Integer msgRetain;
     /**
      * @return Name of the instance.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The paid type of the instance.
      * 
      */
-    private final String paidType;
+    private String paidType;
     /**
      * @return (Available in 1.194.0+) The number of partitions.
      * 
      */
-    private final Integer partitionNum;
+    private Integer partitionNum;
     /**
      * @return The SASL domain point of the instance.
      * 
      */
-    private final String saslDomainEndpoint;
+    private String saslDomainEndpoint;
     /**
      * @return The security group of the instance.
      * 
      */
-    private final String securityGroup;
+    private String securityGroup;
     /**
      * @return The current status of the instance. -1: unknown status, 0: wait deploy, 1: initializing, 2: preparing, 3 starting, 5: in service, 7: wait upgrade, 8: upgrading, 10: released, 15: freeze, 101: deploy error, 102: upgrade error.
      * 
      */
-    private final Integer serviceStatus;
+    private Integer serviceStatus;
     /**
      * @return The kafka openSource version of the instance.
      * 
      */
-    private final String serviceVersion;
+    private String serviceVersion;
     /**
      * @return The spec type of the instance.
      * 
      */
-    private final String specType;
+    private String specType;
     /**
      * @return The SSL domain point of the instance.
      * 
      */
-    private final String sslDomainEndpoint;
+    private String sslDomainEndpoint;
     /**
      * @return The SSL end point of the instance.
      * 
      */
-    private final String sslEndPoint;
+    private String sslEndPoint;
     /**
      * @return A mapping of tags to assign to the instance.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
     /**
      * @return The max num of topic can be create of the instance.
      * 
      */
-    private final Integer topicQuota;
+    private Integer topicQuota;
     /**
      * @return The UpgradeServiceDetailInfo List.
      * 
      */
-    private final List<GetInstancesInstanceUpgradeServiceDetailInfo> upgradeServiceDetailInfos;
+    private List<GetInstancesInstanceUpgradeServiceDetailInfo> upgradeServiceDetailInfos;
     /**
      * @return The ID of attaching VPC to instance.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The ID of attaching vswitch to instance.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The ID of attaching zone to instance.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("allowedLists") List<GetInstancesInstanceAllowedList> allowedLists,
-        @CustomType.Parameter("config") String config,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("deployType") Integer deployType,
-        @CustomType.Parameter("diskSize") Integer diskSize,
-        @CustomType.Parameter("diskType") Integer diskType,
-        @CustomType.Parameter("domainEndpoint") String domainEndpoint,
-        @CustomType.Parameter("eipMax") Integer eipMax,
-        @CustomType.Parameter("endPoint") String endPoint,
-        @CustomType.Parameter("expiredTime") Integer expiredTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ioMax") Integer ioMax,
-        @CustomType.Parameter("msgRetain") Integer msgRetain,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("paidType") String paidType,
-        @CustomType.Parameter("partitionNum") Integer partitionNum,
-        @CustomType.Parameter("saslDomainEndpoint") String saslDomainEndpoint,
-        @CustomType.Parameter("securityGroup") String securityGroup,
-        @CustomType.Parameter("serviceStatus") Integer serviceStatus,
-        @CustomType.Parameter("serviceVersion") String serviceVersion,
-        @CustomType.Parameter("specType") String specType,
-        @CustomType.Parameter("sslDomainEndpoint") String sslDomainEndpoint,
-        @CustomType.Parameter("sslEndPoint") String sslEndPoint,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("topicQuota") Integer topicQuota,
-        @CustomType.Parameter("upgradeServiceDetailInfos") List<GetInstancesInstanceUpgradeServiceDetailInfo> upgradeServiceDetailInfos,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.allowedLists = allowedLists;
-        this.config = config;
-        this.createTime = createTime;
-        this.deployType = deployType;
-        this.diskSize = diskSize;
-        this.diskType = diskType;
-        this.domainEndpoint = domainEndpoint;
-        this.eipMax = eipMax;
-        this.endPoint = endPoint;
-        this.expiredTime = expiredTime;
-        this.id = id;
-        this.ioMax = ioMax;
-        this.msgRetain = msgRetain;
-        this.name = name;
-        this.paidType = paidType;
-        this.partitionNum = partitionNum;
-        this.saslDomainEndpoint = saslDomainEndpoint;
-        this.securityGroup = securityGroup;
-        this.serviceStatus = serviceStatus;
-        this.serviceVersion = serviceVersion;
-        this.specType = specType;
-        this.sslDomainEndpoint = sslDomainEndpoint;
-        this.sslEndPoint = sslEndPoint;
-        this.tags = tags;
-        this.topicQuota = topicQuota;
-        this.upgradeServiceDetailInfos = upgradeServiceDetailInfos;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return The allowed list of the instance.
      * 
@@ -435,7 +374,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetInstancesInstanceAllowedList> allowedLists;
         private String config;
@@ -466,11 +405,7 @@ public final class GetInstancesInstance {
         private String vpcId;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedLists = defaults.allowedLists;
@@ -504,6 +439,7 @@ public final class GetInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder allowedLists(List<GetInstancesInstanceAllowedList> allowedLists) {
             this.allowedLists = Objects.requireNonNull(allowedLists);
             return this;
@@ -511,102 +447,127 @@ public final class GetInstancesInstance {
         public Builder allowedLists(GetInstancesInstanceAllowedList... allowedLists) {
             return allowedLists(List.of(allowedLists));
         }
+        @CustomType.Setter
         public Builder config(String config) {
             this.config = Objects.requireNonNull(config);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder deployType(Integer deployType) {
             this.deployType = Objects.requireNonNull(deployType);
             return this;
         }
+        @CustomType.Setter
         public Builder diskSize(Integer diskSize) {
             this.diskSize = Objects.requireNonNull(diskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(Integer diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
+        @CustomType.Setter
         public Builder domainEndpoint(String domainEndpoint) {
             this.domainEndpoint = Objects.requireNonNull(domainEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder eipMax(Integer eipMax) {
             this.eipMax = Objects.requireNonNull(eipMax);
             return this;
         }
+        @CustomType.Setter
         public Builder endPoint(String endPoint) {
             this.endPoint = Objects.requireNonNull(endPoint);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(Integer expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ioMax(Integer ioMax) {
             this.ioMax = Objects.requireNonNull(ioMax);
             return this;
         }
+        @CustomType.Setter
         public Builder msgRetain(Integer msgRetain) {
             this.msgRetain = Objects.requireNonNull(msgRetain);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder paidType(String paidType) {
             this.paidType = Objects.requireNonNull(paidType);
             return this;
         }
+        @CustomType.Setter
         public Builder partitionNum(Integer partitionNum) {
             this.partitionNum = Objects.requireNonNull(partitionNum);
             return this;
         }
+        @CustomType.Setter
         public Builder saslDomainEndpoint(String saslDomainEndpoint) {
             this.saslDomainEndpoint = Objects.requireNonNull(saslDomainEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroup(String securityGroup) {
             this.securityGroup = Objects.requireNonNull(securityGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceStatus(Integer serviceStatus) {
             this.serviceStatus = Objects.requireNonNull(serviceStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceVersion(String serviceVersion) {
             this.serviceVersion = Objects.requireNonNull(serviceVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder specType(String specType) {
             this.specType = Objects.requireNonNull(specType);
             return this;
         }
+        @CustomType.Setter
         public Builder sslDomainEndpoint(String sslDomainEndpoint) {
             this.sslDomainEndpoint = Objects.requireNonNull(sslDomainEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder sslEndPoint(String sslEndPoint) {
             this.sslEndPoint = Objects.requireNonNull(sslEndPoint);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder topicQuota(Integer topicQuota) {
             this.topicQuota = Objects.requireNonNull(topicQuota);
             return this;
         }
+        @CustomType.Setter
         public Builder upgradeServiceDetailInfos(List<GetInstancesInstanceUpgradeServiceDetailInfo> upgradeServiceDetailInfos) {
             this.upgradeServiceDetailInfos = Objects.requireNonNull(upgradeServiceDetailInfos);
             return this;
@@ -614,19 +575,53 @@ public final class GetInstancesInstance {
         public Builder upgradeServiceDetailInfos(GetInstancesInstanceUpgradeServiceDetailInfo... upgradeServiceDetailInfos) {
             return upgradeServiceDetailInfos(List.of(upgradeServiceDetailInfos));
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(allowedLists, config, createTime, deployType, diskSize, diskType, domainEndpoint, eipMax, endPoint, expiredTime, id, ioMax, msgRetain, name, paidType, partitionNum, saslDomainEndpoint, securityGroup, serviceStatus, serviceVersion, specType, sslDomainEndpoint, sslEndPoint, tags, topicQuota, upgradeServiceDetailInfos, vpcId, vswitchId, zoneId);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.allowedLists = allowedLists;
+            o.config = config;
+            o.createTime = createTime;
+            o.deployType = deployType;
+            o.diskSize = diskSize;
+            o.diskType = diskType;
+            o.domainEndpoint = domainEndpoint;
+            o.eipMax = eipMax;
+            o.endPoint = endPoint;
+            o.expiredTime = expiredTime;
+            o.id = id;
+            o.ioMax = ioMax;
+            o.msgRetain = msgRetain;
+            o.name = name;
+            o.paidType = paidType;
+            o.partitionNum = partitionNum;
+            o.saslDomainEndpoint = saslDomainEndpoint;
+            o.securityGroup = securityGroup;
+            o.serviceStatus = serviceStatus;
+            o.serviceVersion = serviceVersion;
+            o.specType = specType;
+            o.sslDomainEndpoint = sslDomainEndpoint;
+            o.sslEndPoint = sslEndPoint;
+            o.tags = tags;
+            o.topicQuota = topicQuota;
+            o.upgradeServiceDetailInfos = upgradeServiceDetailInfos;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

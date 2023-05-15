@@ -18,61 +18,38 @@ public final class GetHoneypotNodesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Honeypot Node IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Honeypot Node names.
      * 
      */
-    private final List<String> names;
+    private List<String> names;
     /**
      * @return Honeypot management node id.
      * 
      */
-    private final @Nullable String nodeId;
+    private @Nullable String nodeId;
     /**
      * @return Management node name.
      * 
      */
-    private final @Nullable String nodeName;
+    private @Nullable String nodeName;
     /**
      * @return A list of Honeypot Node Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetHoneypotNodesNode> nodes;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private List<GetHoneypotNodesNode> nodes;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
 
-    @CustomType.Constructor
-    private GetHoneypotNodesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("nodeId") @Nullable String nodeId,
-        @CustomType.Parameter("nodeName") @Nullable String nodeName,
-        @CustomType.Parameter("nodes") List<GetHoneypotNodesNode> nodes,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.nodeId = nodeId;
-        this.nodeName = nodeName;
-        this.nodes = nodes;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-    }
-
+    private GetHoneypotNodesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -135,7 +112,7 @@ public final class GetHoneypotNodesResult {
     public static Builder builder(GetHoneypotNodesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -147,11 +124,7 @@ public final class GetHoneypotNodesResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHoneypotNodesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -166,10 +139,12 @@ public final class GetHoneypotNodesResult {
     	      this.pageSize = defaults.pageSize;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -177,10 +152,12 @@ public final class GetHoneypotNodesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -188,14 +165,17 @@ public final class GetHoneypotNodesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
             this.nodeName = nodeName;
             return this;
         }
+        @CustomType.Setter
         public Builder nodes(List<GetHoneypotNodesNode> nodes) {
             this.nodes = Objects.requireNonNull(nodes);
             return this;
@@ -203,19 +183,34 @@ public final class GetHoneypotNodesResult {
         public Builder nodes(GetHoneypotNodesNode... nodes) {
             return nodes(List.of(nodes));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }        public GetHoneypotNodesResult build() {
-            return new GetHoneypotNodesResult(id, ids, nameRegex, names, nodeId, nodeName, nodes, outputFile, pageNumber, pageSize);
+        }
+        public GetHoneypotNodesResult build() {
+            final var o = new GetHoneypotNodesResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.nodeId = nodeId;
+            o.nodeName = nodeName;
+            o.nodes = nodes;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            return o;
         }
     }
 }

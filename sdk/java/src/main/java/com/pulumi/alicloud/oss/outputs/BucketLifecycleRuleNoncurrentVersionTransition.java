@@ -16,21 +16,14 @@ public final class BucketLifecycleRuleNoncurrentVersionTransition {
      * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
      * 
      */
-    private final Integer days;
+    private Integer days;
     /**
      * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34; and &#34;ColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available in 1.203.0+.
      * 
      */
-    private final String storageClass;
+    private String storageClass;
 
-    @CustomType.Constructor
-    private BucketLifecycleRuleNoncurrentVersionTransition(
-        @CustomType.Parameter("days") Integer days,
-        @CustomType.Parameter("storageClass") String storageClass) {
-        this.days = days;
-        this.storageClass = storageClass;
-    }
-
+    private BucketLifecycleRuleNoncurrentVersionTransition() {}
     /**
      * @return Specifies the number of days after object creation when the specific rule action takes effect.
      * 
@@ -55,30 +48,32 @@ public final class BucketLifecycleRuleNoncurrentVersionTransition {
     public static Builder builder(BucketLifecycleRuleNoncurrentVersionTransition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer days;
         private String storageClass;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketLifecycleRuleNoncurrentVersionTransition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.days = defaults.days;
     	      this.storageClass = defaults.storageClass;
         }
 
+        @CustomType.Setter
         public Builder days(Integer days) {
             this.days = Objects.requireNonNull(days);
             return this;
         }
+        @CustomType.Setter
         public Builder storageClass(String storageClass) {
             this.storageClass = Objects.requireNonNull(storageClass);
             return this;
-        }        public BucketLifecycleRuleNoncurrentVersionTransition build() {
-            return new BucketLifecycleRuleNoncurrentVersionTransition(days, storageClass);
+        }
+        public BucketLifecycleRuleNoncurrentVersionTransition build() {
+            final var o = new BucketLifecycleRuleNoncurrentVersionTransition();
+            o.days = days;
+            o.storageClass = storageClass;
+            return o;
         }
     }
 }

@@ -16,40 +16,27 @@ public final class CustomDomainRouteConfig {
      * @return The name of the Function Compute function that requests are routed to.
      * 
      */
-    private final String functionName;
+    private String functionName;
     /**
      * @return The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
      * 
      * **cert_config** includes the following arguments:
      * 
      */
-    private final @Nullable List<String> methods;
+    private @Nullable List<String> methods;
     /**
      * @return The path that requests are routed from.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
      * 
      */
-    private final @Nullable String qualifier;
-    private final String serviceName;
+    private @Nullable String qualifier;
+    private String serviceName;
 
-    @CustomType.Constructor
-    private CustomDomainRouteConfig(
-        @CustomType.Parameter("functionName") String functionName,
-        @CustomType.Parameter("methods") @Nullable List<String> methods,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("qualifier") @Nullable String qualifier,
-        @CustomType.Parameter("serviceName") String serviceName) {
-        this.functionName = functionName;
-        this.methods = methods;
-        this.path = path;
-        this.qualifier = qualifier;
-        this.serviceName = serviceName;
-    }
-
+    private CustomDomainRouteConfig() {}
     /**
      * @return The name of the Function Compute function that requests are routed to.
      * 
@@ -91,18 +78,14 @@ public final class CustomDomainRouteConfig {
     public static Builder builder(CustomDomainRouteConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String functionName;
         private @Nullable List<String> methods;
         private String path;
         private @Nullable String qualifier;
         private String serviceName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(CustomDomainRouteConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.functionName = defaults.functionName;
@@ -112,10 +95,12 @@ public final class CustomDomainRouteConfig {
     	      this.serviceName = defaults.serviceName;
         }
 
+        @CustomType.Setter
         public Builder functionName(String functionName) {
             this.functionName = Objects.requireNonNull(functionName);
             return this;
         }
+        @CustomType.Setter
         public Builder methods(@Nullable List<String> methods) {
             this.methods = methods;
             return this;
@@ -123,19 +108,29 @@ public final class CustomDomainRouteConfig {
         public Builder methods(String... methods) {
             return methods(List.of(methods));
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder qualifier(@Nullable String qualifier) {
             this.qualifier = qualifier;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(String serviceName) {
             this.serviceName = Objects.requireNonNull(serviceName);
             return this;
-        }        public CustomDomainRouteConfig build() {
-            return new CustomDomainRouteConfig(functionName, methods, path, qualifier, serviceName);
+        }
+        public CustomDomainRouteConfig build() {
+            final var o = new CustomDomainRouteConfig();
+            o.functionName = functionName;
+            o.methods = methods;
+            o.path = path;
+            o.qualifier = qualifier;
+            o.serviceName = serviceName;
+            return o;
         }
     }
 }

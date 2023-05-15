@@ -17,44 +17,27 @@ public final class GetAutoSnapshotPoliciesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Auto Snapshot Policy names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A list of Auto Snapshot Policies. Each element contains the following attributes:
      * 
      */
-    private final List<GetAutoSnapshotPoliciesPolicy> policies;
+    private List<GetAutoSnapshotPoliciesPolicy> policies;
     /**
      * @return The status of the automatic snapshot policy.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetAutoSnapshotPoliciesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("policies") List<GetAutoSnapshotPoliciesPolicy> policies,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.policies = policies;
-        this.status = status;
-    }
-
+    private GetAutoSnapshotPoliciesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -100,7 +83,7 @@ public final class GetAutoSnapshotPoliciesResult {
     public static Builder builder(GetAutoSnapshotPoliciesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -109,11 +92,7 @@ public final class GetAutoSnapshotPoliciesResult {
         private @Nullable String outputFile;
         private List<GetAutoSnapshotPoliciesPolicy> policies;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAutoSnapshotPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -125,10 +104,12 @@ public final class GetAutoSnapshotPoliciesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -136,10 +117,12 @@ public final class GetAutoSnapshotPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -147,10 +130,12 @@ public final class GetAutoSnapshotPoliciesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder policies(List<GetAutoSnapshotPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -158,11 +143,21 @@ public final class GetAutoSnapshotPoliciesResult {
         public Builder policies(GetAutoSnapshotPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetAutoSnapshotPoliciesResult build() {
-            return new GetAutoSnapshotPoliciesResult(id, ids, nameRegex, names, outputFile, policies, status);
+        }
+        public GetAutoSnapshotPoliciesResult build() {
+            final var o = new GetAutoSnapshotPoliciesResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.policies = policies;
+            o.status = status;
+            return o;
         }
     }
 }

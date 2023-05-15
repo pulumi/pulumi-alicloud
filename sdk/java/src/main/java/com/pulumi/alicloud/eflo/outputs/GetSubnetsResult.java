@@ -18,92 +18,59 @@ public final class GetSubnetsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of name of Subnets.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
     /**
      * @return Resource Group ID.
      * 
      */
-    private final @Nullable String resourceGroupId;
+    private @Nullable String resourceGroupId;
     /**
      * @return The status of the resource.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return The Eflo subnet ID.
      * 
      */
-    private final @Nullable String subnetId;
+    private @Nullable String subnetId;
     /**
      * @return The Subnet name.
      * 
      */
-    private final @Nullable String subnetName;
+    private @Nullable String subnetName;
     /**
      * @return A list of Subnet Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetSubnetsSubnet> subnets;
+    private List<GetSubnetsSubnet> subnets;
     /**
      * @return Eflo subnet usage type.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
     /**
      * @return Eflo VPD ID.
      * 
      */
-    private final @Nullable String vpdId;
+    private @Nullable String vpdId;
     /**
      * @return The zone ID of the resource.
      * 
      */
-    private final @Nullable String zoneId;
+    private @Nullable String zoneId;
 
-    @CustomType.Constructor
-    private GetSubnetsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("subnetId") @Nullable String subnetId,
-        @CustomType.Parameter("subnetName") @Nullable String subnetName,
-        @CustomType.Parameter("subnets") List<GetSubnetsSubnet> subnets,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("vpdId") @Nullable String vpdId,
-        @CustomType.Parameter("zoneId") @Nullable String zoneId) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.resourceGroupId = resourceGroupId;
-        this.status = status;
-        this.subnetId = subnetId;
-        this.subnetName = subnetName;
-        this.subnets = subnets;
-        this.type = type;
-        this.vpdId = vpdId;
-        this.zoneId = zoneId;
-    }
-
+    private GetSubnetsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -197,7 +164,7 @@ public final class GetSubnetsResult {
     public static Builder builder(GetSubnetsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -214,11 +181,7 @@ public final class GetSubnetsResult {
         private @Nullable String type;
         private @Nullable String vpdId;
         private @Nullable String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSubnetsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -238,10 +201,12 @@ public final class GetSubnetsResult {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -249,10 +214,12 @@ public final class GetSubnetsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -260,34 +227,42 @@ public final class GetSubnetsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetId(@Nullable String subnetId) {
             this.subnetId = subnetId;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetName(@Nullable String subnetName) {
             this.subnetName = subnetName;
             return this;
         }
+        @CustomType.Setter
         public Builder subnets(List<GetSubnetsSubnet> subnets) {
             this.subnets = Objects.requireNonNull(subnets);
             return this;
@@ -295,19 +270,39 @@ public final class GetSubnetsResult {
         public Builder subnets(GetSubnetsSubnet... subnets) {
             return subnets(List.of(subnets));
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder vpdId(@Nullable String vpdId) {
             this.vpdId = vpdId;
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
             this.zoneId = zoneId;
             return this;
-        }        public GetSubnetsResult build() {
-            return new GetSubnetsResult(id, ids, nameRegex, names, outputFile, pageNumber, pageSize, resourceGroupId, status, subnetId, subnetName, subnets, type, vpdId, zoneId);
+        }
+        public GetSubnetsResult build() {
+            final var o = new GetSubnetsResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.resourceGroupId = resourceGroupId;
+            o.status = status;
+            o.subnetId = subnetId;
+            o.subnetName = subnetName;
+            o.subnets = subnets;
+            o.type = type;
+            o.vpdId = vpdId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

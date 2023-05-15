@@ -13,21 +13,14 @@ public final class GetAccountsAccountDatabasePrivilege {
      * @return Account privilege of database
      * 
      */
-    private final String accountPrivilege;
+    private String accountPrivilege;
     /**
      * @return The account owned database name
      * 
      */
-    private final String dbName;
+    private String dbName;
 
-    @CustomType.Constructor
-    private GetAccountsAccountDatabasePrivilege(
-        @CustomType.Parameter("accountPrivilege") String accountPrivilege,
-        @CustomType.Parameter("dbName") String dbName) {
-        this.accountPrivilege = accountPrivilege;
-        this.dbName = dbName;
-    }
-
+    private GetAccountsAccountDatabasePrivilege() {}
     /**
      * @return Account privilege of database
      * 
@@ -50,30 +43,32 @@ public final class GetAccountsAccountDatabasePrivilege {
     public static Builder builder(GetAccountsAccountDatabasePrivilege defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountPrivilege;
         private String dbName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountsAccountDatabasePrivilege defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountPrivilege = defaults.accountPrivilege;
     	      this.dbName = defaults.dbName;
         }
 
+        @CustomType.Setter
         public Builder accountPrivilege(String accountPrivilege) {
             this.accountPrivilege = Objects.requireNonNull(accountPrivilege);
             return this;
         }
+        @CustomType.Setter
         public Builder dbName(String dbName) {
             this.dbName = Objects.requireNonNull(dbName);
             return this;
-        }        public GetAccountsAccountDatabasePrivilege build() {
-            return new GetAccountsAccountDatabasePrivilege(accountPrivilege, dbName);
+        }
+        public GetAccountsAccountDatabasePrivilege build() {
+            final var o = new GetAccountsAccountDatabasePrivilege();
+            o.accountPrivilege = accountPrivilege;
+            o.dbName = dbName;
+            return o;
         }
     }
 }

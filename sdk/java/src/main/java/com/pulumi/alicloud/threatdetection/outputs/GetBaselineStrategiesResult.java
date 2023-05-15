@@ -19,47 +19,28 @@ public final class GetBaselineStrategiesResult {
      * * **custom**: custom policy
      * 
      */
-    private final @Nullable String customType;
+    private @Nullable String customType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Baseline Strategy IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of name of Baseline Strategys.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final List<GetBaselineStrategiesStrategy> strategies;
-    private final @Nullable String strategyIds;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private List<GetBaselineStrategiesStrategy> strategies;
+    private @Nullable String strategyIds;
 
-    @CustomType.Constructor
-    private GetBaselineStrategiesResult(
-        @CustomType.Parameter("customType") @Nullable String customType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("strategies") List<GetBaselineStrategiesStrategy> strategies,
-        @CustomType.Parameter("strategyIds") @Nullable String strategyIds) {
-        this.customType = customType;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.strategies = strategies;
-        this.strategyIds = strategyIds;
-    }
-
+    private GetBaselineStrategiesResult() {}
     /**
      * @return The type of policy. Value:
      * * **common**: standard policy
@@ -110,7 +91,7 @@ public final class GetBaselineStrategiesResult {
     public static Builder builder(GetBaselineStrategiesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String customType;
         private String id;
@@ -120,11 +101,7 @@ public final class GetBaselineStrategiesResult {
         private @Nullable String outputFile;
         private List<GetBaselineStrategiesStrategy> strategies;
         private @Nullable String strategyIds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBaselineStrategiesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customType = defaults.customType;
@@ -137,14 +114,17 @@ public final class GetBaselineStrategiesResult {
     	      this.strategyIds = defaults.strategyIds;
         }
 
+        @CustomType.Setter
         public Builder customType(@Nullable String customType) {
             this.customType = customType;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -152,10 +132,12 @@ public final class GetBaselineStrategiesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -163,10 +145,12 @@ public final class GetBaselineStrategiesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder strategies(List<GetBaselineStrategiesStrategy> strategies) {
             this.strategies = Objects.requireNonNull(strategies);
             return this;
@@ -174,11 +158,22 @@ public final class GetBaselineStrategiesResult {
         public Builder strategies(GetBaselineStrategiesStrategy... strategies) {
             return strategies(List.of(strategies));
         }
+        @CustomType.Setter
         public Builder strategyIds(@Nullable String strategyIds) {
             this.strategyIds = strategyIds;
             return this;
-        }        public GetBaselineStrategiesResult build() {
-            return new GetBaselineStrategiesResult(customType, id, ids, nameRegex, names, outputFile, strategies, strategyIds);
+        }
+        public GetBaselineStrategiesResult build() {
+            final var o = new GetBaselineStrategiesResult();
+            o.customType = customType;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.strategies = strategies;
+            o.strategyIds = strategyIds;
+            return o;
         }
     }
 }

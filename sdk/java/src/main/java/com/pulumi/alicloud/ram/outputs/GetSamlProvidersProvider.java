@@ -13,49 +13,34 @@ public final class GetSamlProvidersProvider {
      * @return The Alibaba Cloud Resource Name (ARN) of the IdP.
      * 
      */
-    private final String arn;
+    private String arn;
     /**
      * @return The description of SAML Provider.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The encodedsaml metadata document.
      * 
      */
-    private final String encodedsamlMetadataDocument;
+    private String encodedsamlMetadataDocument;
     /**
      * @return The ID of the SAML Provider.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The saml provider name.
      * 
      */
-    private final String samlProviderName;
+    private String samlProviderName;
     /**
      * @return The update time.
      * 
      */
-    private final String updateDate;
+    private String updateDate;
 
-    @CustomType.Constructor
-    private GetSamlProvidersProvider(
-        @CustomType.Parameter("arn") String arn,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("encodedsamlMetadataDocument") String encodedsamlMetadataDocument,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("samlProviderName") String samlProviderName,
-        @CustomType.Parameter("updateDate") String updateDate) {
-        this.arn = arn;
-        this.description = description;
-        this.encodedsamlMetadataDocument = encodedsamlMetadataDocument;
-        this.id = id;
-        this.samlProviderName = samlProviderName;
-        this.updateDate = updateDate;
-    }
-
+    private GetSamlProvidersProvider() {}
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the IdP.
      * 
@@ -106,7 +91,7 @@ public final class GetSamlProvidersProvider {
     public static Builder builder(GetSamlProvidersProvider defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String arn;
         private String description;
@@ -114,11 +99,7 @@ public final class GetSamlProvidersProvider {
         private String id;
         private String samlProviderName;
         private String updateDate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSamlProvidersProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
@@ -129,31 +110,45 @@ public final class GetSamlProvidersProvider {
     	      this.updateDate = defaults.updateDate;
         }
 
+        @CustomType.Setter
         public Builder arn(String arn) {
             this.arn = Objects.requireNonNull(arn);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder encodedsamlMetadataDocument(String encodedsamlMetadataDocument) {
             this.encodedsamlMetadataDocument = Objects.requireNonNull(encodedsamlMetadataDocument);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder samlProviderName(String samlProviderName) {
             this.samlProviderName = Objects.requireNonNull(samlProviderName);
             return this;
         }
+        @CustomType.Setter
         public Builder updateDate(String updateDate) {
             this.updateDate = Objects.requireNonNull(updateDate);
             return this;
-        }        public GetSamlProvidersProvider build() {
-            return new GetSamlProvidersProvider(arn, description, encodedsamlMetadataDocument, id, samlProviderName, updateDate);
+        }
+        public GetSamlProvidersProvider build() {
+            final var o = new GetSamlProvidersProvider();
+            o.arn = arn;
+            o.description = description;
+            o.encodedsamlMetadataDocument = encodedsamlMetadataDocument;
+            o.id = id;
+            o.samlProviderName = samlProviderName;
+            o.updateDate = updateDate;
+            return o;
         }
     }
 }

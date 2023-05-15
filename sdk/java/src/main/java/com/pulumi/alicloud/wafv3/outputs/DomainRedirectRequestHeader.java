@@ -15,21 +15,14 @@ public final class DomainRedirectRequestHeader {
      * @return The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private DomainRedirectRequestHeader(
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private DomainRedirectRequestHeader() {}
     /**
      * @return The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{&#34; k &#34;:&#34;_key_&#34;,&#34; v &#34;:&#34;_value_&#34;}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
      * 
@@ -52,30 +45,32 @@ public final class DomainRedirectRequestHeader {
     public static Builder builder(DomainRedirectRequestHeader defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DomainRedirectRequestHeader defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public DomainRedirectRequestHeader build() {
-            return new DomainRedirectRequestHeader(key, value);
+        }
+        public DomainRedirectRequestHeader build() {
+            final var o = new DomainRedirectRequestHeader();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

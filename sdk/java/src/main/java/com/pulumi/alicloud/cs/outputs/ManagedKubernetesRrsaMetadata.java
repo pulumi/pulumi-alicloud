@@ -16,35 +16,24 @@ public final class ManagedKubernetesRrsaMetadata {
      * @return Whether the RRSA feature has been enabled.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The arn of OIDC provider that was registered in RAM.
      * 
      */
-    private final @Nullable String ramOidcProviderArn;
+    private @Nullable String ramOidcProviderArn;
     /**
      * @return The name of OIDC Provider that was registered in RAM.
      * 
      */
-    private final @Nullable String ramOidcProviderName;
+    private @Nullable String ramOidcProviderName;
     /**
      * @return The issuer URL of RRSA OIDC Token.
      * 
      */
-    private final @Nullable String rrsaOidcIssuerUrl;
+    private @Nullable String rrsaOidcIssuerUrl;
 
-    @CustomType.Constructor
-    private ManagedKubernetesRrsaMetadata(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("ramOidcProviderArn") @Nullable String ramOidcProviderArn,
-        @CustomType.Parameter("ramOidcProviderName") @Nullable String ramOidcProviderName,
-        @CustomType.Parameter("rrsaOidcIssuerUrl") @Nullable String rrsaOidcIssuerUrl) {
-        this.enabled = enabled;
-        this.ramOidcProviderArn = ramOidcProviderArn;
-        this.ramOidcProviderName = ramOidcProviderName;
-        this.rrsaOidcIssuerUrl = rrsaOidcIssuerUrl;
-    }
-
+    private ManagedKubernetesRrsaMetadata() {}
     /**
      * @return Whether the RRSA feature has been enabled.
      * 
@@ -81,17 +70,13 @@ public final class ManagedKubernetesRrsaMetadata {
     public static Builder builder(ManagedKubernetesRrsaMetadata defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable String ramOidcProviderArn;
         private @Nullable String ramOidcProviderName;
         private @Nullable String rrsaOidcIssuerUrl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ManagedKubernetesRrsaMetadata defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
@@ -100,23 +85,33 @@ public final class ManagedKubernetesRrsaMetadata {
     	      this.rrsaOidcIssuerUrl = defaults.rrsaOidcIssuerUrl;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder ramOidcProviderArn(@Nullable String ramOidcProviderArn) {
             this.ramOidcProviderArn = ramOidcProviderArn;
             return this;
         }
+        @CustomType.Setter
         public Builder ramOidcProviderName(@Nullable String ramOidcProviderName) {
             this.ramOidcProviderName = ramOidcProviderName;
             return this;
         }
+        @CustomType.Setter
         public Builder rrsaOidcIssuerUrl(@Nullable String rrsaOidcIssuerUrl) {
             this.rrsaOidcIssuerUrl = rrsaOidcIssuerUrl;
             return this;
-        }        public ManagedKubernetesRrsaMetadata build() {
-            return new ManagedKubernetesRrsaMetadata(enabled, ramOidcProviderArn, ramOidcProviderName, rrsaOidcIssuerUrl);
+        }
+        public ManagedKubernetesRrsaMetadata build() {
+            final var o = new ManagedKubernetesRrsaMetadata();
+            o.enabled = enabled;
+            o.ramOidcProviderArn = ramOidcProviderArn;
+            o.ramOidcProviderName = ramOidcProviderName;
+            o.rrsaOidcIssuerUrl = rrsaOidcIssuerUrl;
+            return o;
         }
     }
 }

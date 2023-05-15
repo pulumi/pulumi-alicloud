@@ -13,56 +13,39 @@ public final class GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
      * @return The cidrip of security rules.
      * 
      */
-    private final String cidrIp;
+    private String cidrIp;
     /**
      * @return The description of security rules.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ip protocol of security rules.
      * 
      */
-    private final String ipProtocol;
+    private String ipProtocol;
     /**
      * @return The policy of security rules.
      * 
      */
-    private final String policy;
+    private String policy;
     /**
      * @return The port range of security rules.
      * 
      */
-    private final String portRange;
+    private String portRange;
     /**
      * @return The priority of security rules.
      * 
      */
-    private final String priority;
+    private String priority;
     /**
      * @return The type of security rules.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetPolicyGroupsGroupAuthorizeSecurityPolicyRule(
-        @CustomType.Parameter("cidrIp") String cidrIp,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("ipProtocol") String ipProtocol,
-        @CustomType.Parameter("policy") String policy,
-        @CustomType.Parameter("portRange") String portRange,
-        @CustomType.Parameter("priority") String priority,
-        @CustomType.Parameter("type") String type) {
-        this.cidrIp = cidrIp;
-        this.description = description;
-        this.ipProtocol = ipProtocol;
-        this.policy = policy;
-        this.portRange = portRange;
-        this.priority = priority;
-        this.type = type;
-    }
-
+    private GetPolicyGroupsGroupAuthorizeSecurityPolicyRule() {}
     /**
      * @return The cidrip of security rules.
      * 
@@ -120,7 +103,7 @@ public final class GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
     public static Builder builder(GetPolicyGroupsGroupAuthorizeSecurityPolicyRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidrIp;
         private String description;
@@ -129,11 +112,7 @@ public final class GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
         private String portRange;
         private String priority;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPolicyGroupsGroupAuthorizeSecurityPolicyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrIp = defaults.cidrIp;
@@ -145,35 +124,51 @@ public final class GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder cidrIp(String cidrIp) {
             this.cidrIp = Objects.requireNonNull(cidrIp);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
             this.ipProtocol = Objects.requireNonNull(ipProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder policy(String policy) {
             this.policy = Objects.requireNonNull(policy);
             return this;
         }
+        @CustomType.Setter
         public Builder portRange(String portRange) {
             this.portRange = Objects.requireNonNull(portRange);
             return this;
         }
+        @CustomType.Setter
         public Builder priority(String priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetPolicyGroupsGroupAuthorizeSecurityPolicyRule build() {
-            return new GetPolicyGroupsGroupAuthorizeSecurityPolicyRule(cidrIp, description, ipProtocol, policy, portRange, priority, type);
+        }
+        public GetPolicyGroupsGroupAuthorizeSecurityPolicyRule build() {
+            final var o = new GetPolicyGroupsGroupAuthorizeSecurityPolicyRule();
+            o.cidrIp = cidrIp;
+            o.description = description;
+            o.ipProtocol = ipProtocol;
+            o.policy = policy;
+            o.portRange = portRange;
+            o.priority = priority;
+            o.type = type;
+            return o;
         }
     }
 }

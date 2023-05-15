@@ -15,28 +15,19 @@ public final class RepoDomainList {
      * @return Domain of internal endpoint, only in some regions.
      * 
      */
-    private final @Nullable String internal;
+    private @Nullable String internal;
     /**
      * @return Domain of public endpoint.
      * 
      */
-    private final @Nullable String public_;
+    private @Nullable String public_;
     /**
      * @return Domain of vpc endpoint.
      * 
      */
-    private final @Nullable String vpc;
+    private @Nullable String vpc;
 
-    @CustomType.Constructor
-    private RepoDomainList(
-        @CustomType.Parameter("internal") @Nullable String internal,
-        @CustomType.Parameter("public") @Nullable String public_,
-        @CustomType.Parameter("vpc") @Nullable String vpc) {
-        this.internal = internal;
-        this.public_ = public_;
-        this.vpc = vpc;
-    }
-
+    private RepoDomainList() {}
     /**
      * @return Domain of internal endpoint, only in some regions.
      * 
@@ -66,16 +57,12 @@ public final class RepoDomainList {
     public static Builder builder(RepoDomainList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String internal;
         private @Nullable String public_;
         private @Nullable String vpc;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RepoDomainList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.internal = defaults.internal;
@@ -83,19 +70,27 @@ public final class RepoDomainList {
     	      this.vpc = defaults.vpc;
         }
 
+        @CustomType.Setter
         public Builder internal(@Nullable String internal) {
             this.internal = internal;
             return this;
         }
+        @CustomType.Setter("public")
         public Builder public_(@Nullable String public_) {
             this.public_ = public_;
             return this;
         }
+        @CustomType.Setter
         public Builder vpc(@Nullable String vpc) {
             this.vpc = vpc;
             return this;
-        }        public RepoDomainList build() {
-            return new RepoDomainList(internal, public_, vpc);
+        }
+        public RepoDomainList build() {
+            final var o = new RepoDomainList();
+            o.internal = internal;
+            o.public_ = public_;
+            o.vpc = vpc;
+            return o;
         }
     }
 }

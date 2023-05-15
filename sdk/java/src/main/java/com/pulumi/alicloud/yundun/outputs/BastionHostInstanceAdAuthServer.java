@@ -13,47 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BastionHostInstanceAdAuthServer {
-    private final String account;
-    private final String baseDn;
-    private final String domain;
-    private final @Nullable String emailMapping;
-    private final @Nullable String filter;
-    private final Boolean isSsl;
-    private final @Nullable String mobileMapping;
-    private final @Nullable String nameMapping;
-    private final String password;
-    private final Integer port;
-    private final String server;
-    private final @Nullable String standbyServer;
+    private String account;
+    private String baseDn;
+    private String domain;
+    private @Nullable String emailMapping;
+    private @Nullable String filter;
+    private Boolean isSsl;
+    private @Nullable String mobileMapping;
+    private @Nullable String nameMapping;
+    private String password;
+    private Integer port;
+    private String server;
+    private @Nullable String standbyServer;
 
-    @CustomType.Constructor
-    private BastionHostInstanceAdAuthServer(
-        @CustomType.Parameter("account") String account,
-        @CustomType.Parameter("baseDn") String baseDn,
-        @CustomType.Parameter("domain") String domain,
-        @CustomType.Parameter("emailMapping") @Nullable String emailMapping,
-        @CustomType.Parameter("filter") @Nullable String filter,
-        @CustomType.Parameter("isSsl") Boolean isSsl,
-        @CustomType.Parameter("mobileMapping") @Nullable String mobileMapping,
-        @CustomType.Parameter("nameMapping") @Nullable String nameMapping,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("server") String server,
-        @CustomType.Parameter("standbyServer") @Nullable String standbyServer) {
-        this.account = account;
-        this.baseDn = baseDn;
-        this.domain = domain;
-        this.emailMapping = emailMapping;
-        this.filter = filter;
-        this.isSsl = isSsl;
-        this.mobileMapping = mobileMapping;
-        this.nameMapping = nameMapping;
-        this.password = password;
-        this.port = port;
-        this.server = server;
-        this.standbyServer = standbyServer;
-    }
-
+    private BastionHostInstanceAdAuthServer() {}
     public String account() {
         return this.account;
     }
@@ -98,7 +71,7 @@ public final class BastionHostInstanceAdAuthServer {
     public static Builder builder(BastionHostInstanceAdAuthServer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String account;
         private String baseDn;
@@ -112,11 +85,7 @@ public final class BastionHostInstanceAdAuthServer {
         private Integer port;
         private String server;
         private @Nullable String standbyServer;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BastionHostInstanceAdAuthServer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.account = defaults.account;
@@ -133,55 +102,81 @@ public final class BastionHostInstanceAdAuthServer {
     	      this.standbyServer = defaults.standbyServer;
         }
 
+        @CustomType.Setter
         public Builder account(String account) {
             this.account = Objects.requireNonNull(account);
             return this;
         }
+        @CustomType.Setter
         public Builder baseDn(String baseDn) {
             this.baseDn = Objects.requireNonNull(baseDn);
             return this;
         }
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
+        @CustomType.Setter
         public Builder emailMapping(@Nullable String emailMapping) {
             this.emailMapping = emailMapping;
             return this;
         }
+        @CustomType.Setter
         public Builder filter(@Nullable String filter) {
             this.filter = filter;
             return this;
         }
+        @CustomType.Setter
         public Builder isSsl(Boolean isSsl) {
             this.isSsl = Objects.requireNonNull(isSsl);
             return this;
         }
+        @CustomType.Setter
         public Builder mobileMapping(@Nullable String mobileMapping) {
             this.mobileMapping = mobileMapping;
             return this;
         }
+        @CustomType.Setter
         public Builder nameMapping(@Nullable String nameMapping) {
             this.nameMapping = nameMapping;
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder server(String server) {
             this.server = Objects.requireNonNull(server);
             return this;
         }
+        @CustomType.Setter
         public Builder standbyServer(@Nullable String standbyServer) {
             this.standbyServer = standbyServer;
             return this;
-        }        public BastionHostInstanceAdAuthServer build() {
-            return new BastionHostInstanceAdAuthServer(account, baseDn, domain, emailMapping, filter, isSsl, mobileMapping, nameMapping, password, port, server, standbyServer);
+        }
+        public BastionHostInstanceAdAuthServer build() {
+            final var o = new BastionHostInstanceAdAuthServer();
+            o.account = account;
+            o.baseDn = baseDn;
+            o.domain = domain;
+            o.emailMapping = emailMapping;
+            o.filter = filter;
+            o.isSsl = isSsl;
+            o.mobileMapping = mobileMapping;
+            o.nameMapping = nameMapping;
+            o.password = password;
+            o.port = port;
+            o.server = server;
+            o.standbyServer = standbyServer;
+            return o;
         }
     }
 }

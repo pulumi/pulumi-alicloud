@@ -13,13 +13,9 @@ public final class GetEcsNetworkInterfacesInterfaceAssociatedPublicIp {
      * @return The EIP of the ENI.
      * 
      */
-    private final String publicIpAddress;
+    private String publicIpAddress;
 
-    @CustomType.Constructor
-    private GetEcsNetworkInterfacesInterfaceAssociatedPublicIp(@CustomType.Parameter("publicIpAddress") String publicIpAddress) {
-        this.publicIpAddress = publicIpAddress;
-    }
-
+    private GetEcsNetworkInterfacesInterfaceAssociatedPublicIp() {}
     /**
      * @return The EIP of the ENI.
      * 
@@ -35,24 +31,24 @@ public final class GetEcsNetworkInterfacesInterfaceAssociatedPublicIp {
     public static Builder builder(GetEcsNetworkInterfacesInterfaceAssociatedPublicIp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String publicIpAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsNetworkInterfacesInterfaceAssociatedPublicIp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.publicIpAddress = defaults.publicIpAddress;
         }
 
+        @CustomType.Setter
         public Builder publicIpAddress(String publicIpAddress) {
             this.publicIpAddress = Objects.requireNonNull(publicIpAddress);
             return this;
-        }        public GetEcsNetworkInterfacesInterfaceAssociatedPublicIp build() {
-            return new GetEcsNetworkInterfacesInterfaceAssociatedPublicIp(publicIpAddress);
+        }
+        public GetEcsNetworkInterfacesInterfaceAssociatedPublicIp build() {
+            final var o = new GetEcsNetworkInterfacesInterfaceAssociatedPublicIp();
+            o.publicIpAddress = publicIpAddress;
+            return o;
         }
     }
 }

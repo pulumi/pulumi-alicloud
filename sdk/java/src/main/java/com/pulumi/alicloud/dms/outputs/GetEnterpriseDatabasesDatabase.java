@@ -15,126 +15,89 @@ public final class GetEnterpriseDatabasesDatabase {
      * @return The name of the Database Directory.&gt; PG Series databases will display the database name.
      * 
      */
-    private final String catalogName;
+    private String catalogName;
     /**
      * @return The ID of the physical library.
      * 
      */
-    private final String databaseId;
+    private String databaseId;
     /**
      * @return Database type.
      * 
      */
-    private final String dbType;
+    private String dbType;
     /**
      * @return The DBA user ID of the target database.
      * 
      */
-    private final String dbaId;
+    private String dbaId;
     /**
      * @return The DBA nickname of the target Library.
      * 
      */
-    private final String dbaName;
+    private String dbaName;
     /**
      * @return Database encoding.
      * 
      */
-    private final String encoding;
+    private String encoding;
     /**
      * @return The environment type of the database.
      * 
      */
-    private final String envType;
+    private String envType;
     /**
      * @return The database connection address.
      * 
      */
-    private final String host;
+    private String host;
     /**
      * @return The Database ID, same value as `database_id`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The instance ID of the target database.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return Library Owner User ID list.
      * 
      */
-    private final List<String> ownerIdLists;
+    private List<String> ownerIdLists;
     /**
      * @return Library Owner nickname list.
      * 
      */
-    private final List<String> ownerNameLists;
+    private List<String> ownerNameLists;
     /**
      * @return The connection port of the database.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return The name of the database.&gt; PG Series databases will display schema names.
      * 
      */
-    private final String schemaName;
+    private String schemaName;
     /**
      * @return Library search name.
      * 
      */
-    private final String searchName;
+    private String searchName;
     /**
      * @return Database SID.&gt; only Oracle Database Display.
      * 
      */
-    private final String sid;
+    private String sid;
     /**
      * @return Library status, value description:-**NORMAL**: NORMAL-**DISABLE**: Disabled-**OFFLINE**: OFFLINE-**NOT_EXIST**: does not exist
      * 
      */
-    private final String state;
+    private String state;
 
-    @CustomType.Constructor
-    private GetEnterpriseDatabasesDatabase(
-        @CustomType.Parameter("catalogName") String catalogName,
-        @CustomType.Parameter("databaseId") String databaseId,
-        @CustomType.Parameter("dbType") String dbType,
-        @CustomType.Parameter("dbaId") String dbaId,
-        @CustomType.Parameter("dbaName") String dbaName,
-        @CustomType.Parameter("encoding") String encoding,
-        @CustomType.Parameter("envType") String envType,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("ownerIdLists") List<String> ownerIdLists,
-        @CustomType.Parameter("ownerNameLists") List<String> ownerNameLists,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("schemaName") String schemaName,
-        @CustomType.Parameter("searchName") String searchName,
-        @CustomType.Parameter("sid") String sid,
-        @CustomType.Parameter("state") String state) {
-        this.catalogName = catalogName;
-        this.databaseId = databaseId;
-        this.dbType = dbType;
-        this.dbaId = dbaId;
-        this.dbaName = dbaName;
-        this.encoding = encoding;
-        this.envType = envType;
-        this.host = host;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.ownerIdLists = ownerIdLists;
-        this.ownerNameLists = ownerNameLists;
-        this.port = port;
-        this.schemaName = schemaName;
-        this.searchName = searchName;
-        this.sid = sid;
-        this.state = state;
-    }
-
+    private GetEnterpriseDatabasesDatabase() {}
     /**
      * @return The name of the Database Directory.&gt; PG Series databases will display the database name.
      * 
@@ -262,7 +225,7 @@ public final class GetEnterpriseDatabasesDatabase {
     public static Builder builder(GetEnterpriseDatabasesDatabase defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String catalogName;
         private String databaseId;
@@ -281,11 +244,7 @@ public final class GetEnterpriseDatabasesDatabase {
         private String searchName;
         private String sid;
         private String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnterpriseDatabasesDatabase defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.catalogName = defaults.catalogName;
@@ -307,46 +266,57 @@ public final class GetEnterpriseDatabasesDatabase {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder catalogName(String catalogName) {
             this.catalogName = Objects.requireNonNull(catalogName);
             return this;
         }
+        @CustomType.Setter
         public Builder databaseId(String databaseId) {
             this.databaseId = Objects.requireNonNull(databaseId);
             return this;
         }
+        @CustomType.Setter
         public Builder dbType(String dbType) {
             this.dbType = Objects.requireNonNull(dbType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbaId(String dbaId) {
             this.dbaId = Objects.requireNonNull(dbaId);
             return this;
         }
+        @CustomType.Setter
         public Builder dbaName(String dbaName) {
             this.dbaName = Objects.requireNonNull(dbaName);
             return this;
         }
+        @CustomType.Setter
         public Builder encoding(String encoding) {
             this.encoding = Objects.requireNonNull(encoding);
             return this;
         }
+        @CustomType.Setter
         public Builder envType(String envType) {
             this.envType = Objects.requireNonNull(envType);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder ownerIdLists(List<String> ownerIdLists) {
             this.ownerIdLists = Objects.requireNonNull(ownerIdLists);
             return this;
@@ -354,6 +324,7 @@ public final class GetEnterpriseDatabasesDatabase {
         public Builder ownerIdLists(String... ownerIdLists) {
             return ownerIdLists(List.of(ownerIdLists));
         }
+        @CustomType.Setter
         public Builder ownerNameLists(List<String> ownerNameLists) {
             this.ownerNameLists = Objects.requireNonNull(ownerNameLists);
             return this;
@@ -361,27 +332,51 @@ public final class GetEnterpriseDatabasesDatabase {
         public Builder ownerNameLists(String... ownerNameLists) {
             return ownerNameLists(List.of(ownerNameLists));
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder schemaName(String schemaName) {
             this.schemaName = Objects.requireNonNull(schemaName);
             return this;
         }
+        @CustomType.Setter
         public Builder searchName(String searchName) {
             this.searchName = Objects.requireNonNull(searchName);
             return this;
         }
+        @CustomType.Setter
         public Builder sid(String sid) {
             this.sid = Objects.requireNonNull(sid);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
-        }        public GetEnterpriseDatabasesDatabase build() {
-            return new GetEnterpriseDatabasesDatabase(catalogName, databaseId, dbType, dbaId, dbaName, encoding, envType, host, id, instanceId, ownerIdLists, ownerNameLists, port, schemaName, searchName, sid, state);
+        }
+        public GetEnterpriseDatabasesDatabase build() {
+            final var o = new GetEnterpriseDatabasesDatabase();
+            o.catalogName = catalogName;
+            o.databaseId = databaseId;
+            o.dbType = dbType;
+            o.dbaId = dbaId;
+            o.dbaName = dbaName;
+            o.encoding = encoding;
+            o.envType = envType;
+            o.host = host;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.ownerIdLists = ownerIdLists;
+            o.ownerNameLists = ownerNameLists;
+            o.port = port;
+            o.schemaName = schemaName;
+            o.searchName = searchName;
+            o.sid = sid;
+            o.state = state;
+            return o;
         }
     }
 }

@@ -18,38 +18,17 @@ public final class GetTlsCipherPoliciesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable Boolean includeListener;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final List<GetTlsCipherPoliciesPolicy> policies;
-    private final @Nullable String status;
-    private final @Nullable String tlsCipherPolicyName;
+    private String id;
+    private List<String> ids;
+    private @Nullable Boolean includeListener;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private List<GetTlsCipherPoliciesPolicy> policies;
+    private @Nullable String status;
+    private @Nullable String tlsCipherPolicyName;
 
-    @CustomType.Constructor
-    private GetTlsCipherPoliciesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("includeListener") @Nullable Boolean includeListener,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("policies") List<GetTlsCipherPoliciesPolicy> policies,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tlsCipherPolicyName") @Nullable String tlsCipherPolicyName) {
-        this.id = id;
-        this.ids = ids;
-        this.includeListener = includeListener;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.policies = policies;
-        this.status = status;
-        this.tlsCipherPolicyName = tlsCipherPolicyName;
-    }
-
+    private GetTlsCipherPoliciesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -89,7 +68,7 @@ public final class GetTlsCipherPoliciesResult {
     public static Builder builder(GetTlsCipherPoliciesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -100,11 +79,7 @@ public final class GetTlsCipherPoliciesResult {
         private List<GetTlsCipherPoliciesPolicy> policies;
         private @Nullable String status;
         private @Nullable String tlsCipherPolicyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTlsCipherPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -118,10 +93,12 @@ public final class GetTlsCipherPoliciesResult {
     	      this.tlsCipherPolicyName = defaults.tlsCipherPolicyName;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -129,14 +106,17 @@ public final class GetTlsCipherPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder includeListener(@Nullable Boolean includeListener) {
             this.includeListener = includeListener;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -144,10 +124,12 @@ public final class GetTlsCipherPoliciesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder policies(List<GetTlsCipherPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -155,15 +137,28 @@ public final class GetTlsCipherPoliciesResult {
         public Builder policies(GetTlsCipherPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tlsCipherPolicyName(@Nullable String tlsCipherPolicyName) {
             this.tlsCipherPolicyName = tlsCipherPolicyName;
             return this;
-        }        public GetTlsCipherPoliciesResult build() {
-            return new GetTlsCipherPoliciesResult(id, ids, includeListener, nameRegex, names, outputFile, policies, status, tlsCipherPolicyName);
+        }
+        public GetTlsCipherPoliciesResult build() {
+            final var o = new GetTlsCipherPoliciesResult();
+            o.id = id;
+            o.ids = ids;
+            o.includeListener = includeListener;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.policies = policies;
+            o.status = status;
+            o.tlsCipherPolicyName = tlsCipherPolicyName;
+            return o;
         }
     }
 }

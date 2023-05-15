@@ -16,21 +16,14 @@ public final class RuleCompliance {
      * @return The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
      * 
      */
-    private final @Nullable String complianceType;
+    private @Nullable String complianceType;
     /**
      * @return The count of compliance.
      * 
      */
-    private final @Nullable Integer count;
+    private @Nullable Integer count;
 
-    @CustomType.Constructor
-    private RuleCompliance(
-        @CustomType.Parameter("complianceType") @Nullable String complianceType,
-        @CustomType.Parameter("count") @Nullable Integer count) {
-        this.complianceType = complianceType;
-        this.count = count;
-    }
-
+    private RuleCompliance() {}
     /**
      * @return The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
      * 
@@ -53,30 +46,32 @@ public final class RuleCompliance {
     public static Builder builder(RuleCompliance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String complianceType;
         private @Nullable Integer count;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleCompliance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.complianceType = defaults.complianceType;
     	      this.count = defaults.count;
         }
 
+        @CustomType.Setter
         public Builder complianceType(@Nullable String complianceType) {
             this.complianceType = complianceType;
             return this;
         }
+        @CustomType.Setter
         public Builder count(@Nullable Integer count) {
             this.count = count;
             return this;
-        }        public RuleCompliance build() {
-            return new RuleCompliance(complianceType, count);
+        }
+        public RuleCompliance build() {
+            final var o = new RuleCompliance();
+            o.complianceType = complianceType;
+            o.count = count;
+            return o;
         }
     }
 }

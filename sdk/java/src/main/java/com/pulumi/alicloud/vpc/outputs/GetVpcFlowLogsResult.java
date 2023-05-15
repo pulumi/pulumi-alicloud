@@ -13,57 +13,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVpcFlowLogsResult {
-    private final @Nullable String description;
-    private final @Nullable String flowLogName;
+    private @Nullable String description;
+    private @Nullable String flowLogName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String logStoreName;
-    private final List<GetVpcFlowLogsLog> logs;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String projectName;
-    private final @Nullable String resourceId;
-    private final @Nullable String resourceType;
-    private final @Nullable String status;
-    private final @Nullable String trafficType;
+    private String id;
+    private List<String> ids;
+    private @Nullable String logStoreName;
+    private List<GetVpcFlowLogsLog> logs;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String projectName;
+    private @Nullable String resourceId;
+    private @Nullable String resourceType;
+    private @Nullable String status;
+    private @Nullable String trafficType;
 
-    @CustomType.Constructor
-    private GetVpcFlowLogsResult(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("flowLogName") @Nullable String flowLogName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("logStoreName") @Nullable String logStoreName,
-        @CustomType.Parameter("logs") List<GetVpcFlowLogsLog> logs,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("projectName") @Nullable String projectName,
-        @CustomType.Parameter("resourceId") @Nullable String resourceId,
-        @CustomType.Parameter("resourceType") @Nullable String resourceType,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("trafficType") @Nullable String trafficType) {
-        this.description = description;
-        this.flowLogName = flowLogName;
-        this.id = id;
-        this.ids = ids;
-        this.logStoreName = logStoreName;
-        this.logs = logs;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.projectName = projectName;
-        this.resourceId = resourceId;
-        this.resourceType = resourceType;
-        this.status = status;
-        this.trafficType = trafficType;
-    }
-
+    private GetVpcFlowLogsResult() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -118,7 +87,7 @@ public final class GetVpcFlowLogsResult {
     public static Builder builder(GetVpcFlowLogsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String flowLogName;
@@ -134,11 +103,7 @@ public final class GetVpcFlowLogsResult {
         private @Nullable String resourceType;
         private @Nullable String status;
         private @Nullable String trafficType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcFlowLogsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -157,18 +122,22 @@ public final class GetVpcFlowLogsResult {
     	      this.trafficType = defaults.trafficType;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder flowLogName(@Nullable String flowLogName) {
             this.flowLogName = flowLogName;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -176,10 +145,12 @@ public final class GetVpcFlowLogsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder logStoreName(@Nullable String logStoreName) {
             this.logStoreName = logStoreName;
             return this;
         }
+        @CustomType.Setter
         public Builder logs(List<GetVpcFlowLogsLog> logs) {
             this.logs = Objects.requireNonNull(logs);
             return this;
@@ -187,10 +158,12 @@ public final class GetVpcFlowLogsResult {
         public Builder logs(GetVpcFlowLogsLog... logs) {
             return logs(List.of(logs));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -198,31 +171,53 @@ public final class GetVpcFlowLogsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder projectName(@Nullable String projectName) {
             this.projectName = projectName;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceId(@Nullable String resourceId) {
             this.resourceId = resourceId;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(@Nullable String resourceType) {
             this.resourceType = resourceType;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder trafficType(@Nullable String trafficType) {
             this.trafficType = trafficType;
             return this;
-        }        public GetVpcFlowLogsResult build() {
-            return new GetVpcFlowLogsResult(description, flowLogName, id, ids, logStoreName, logs, nameRegex, names, outputFile, projectName, resourceId, resourceType, status, trafficType);
+        }
+        public GetVpcFlowLogsResult build() {
+            final var o = new GetVpcFlowLogsResult();
+            o.description = description;
+            o.flowLogName = flowLogName;
+            o.id = id;
+            o.ids = ids;
+            o.logStoreName = logStoreName;
+            o.logs = logs;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.projectName = projectName;
+            o.resourceId = resourceId;
+            o.resourceType = resourceType;
+            o.status = status;
+            o.trafficType = trafficType;
+            return o;
         }
     }
 }

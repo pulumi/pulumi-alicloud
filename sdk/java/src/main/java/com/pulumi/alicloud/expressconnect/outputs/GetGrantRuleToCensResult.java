@@ -18,36 +18,19 @@ public final class GetGrantRuleToCensResult {
      * @return A list of Express Connect Grant Rule To Cens. Each element contains the following attributes:
      * 
      */
-    private final List<GetGrantRuleToCensCen> cens;
+    private List<GetGrantRuleToCensCen> cens;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final String instanceId;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private String id;
+    private List<String> ids;
+    private String instanceId;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
 
-    @CustomType.Constructor
-    private GetGrantRuleToCensResult(
-        @CustomType.Parameter("cens") List<GetGrantRuleToCensCen> cens,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize) {
-        this.cens = cens;
-        this.id = id;
-        this.ids = ids;
-        this.instanceId = instanceId;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-    }
-
+    private GetGrantRuleToCensResult() {}
     /**
      * @return A list of Express Connect Grant Rule To Cens. Each element contains the following attributes:
      * 
@@ -85,7 +68,7 @@ public final class GetGrantRuleToCensResult {
     public static Builder builder(GetGrantRuleToCensResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetGrantRuleToCensCen> cens;
         private String id;
@@ -94,11 +77,7 @@ public final class GetGrantRuleToCensResult {
         private @Nullable String outputFile;
         private @Nullable Integer pageNumber;
         private @Nullable Integer pageSize;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGrantRuleToCensResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cens = defaults.cens;
@@ -110,6 +89,7 @@ public final class GetGrantRuleToCensResult {
     	      this.pageSize = defaults.pageSize;
         }
 
+        @CustomType.Setter
         public Builder cens(List<GetGrantRuleToCensCen> cens) {
             this.cens = Objects.requireNonNull(cens);
             return this;
@@ -117,10 +97,12 @@ public final class GetGrantRuleToCensResult {
         public Builder cens(GetGrantRuleToCensCen... cens) {
             return cens(List.of(cens));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -128,23 +110,36 @@ public final class GetGrantRuleToCensResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
-        }        public GetGrantRuleToCensResult build() {
-            return new GetGrantRuleToCensResult(cens, id, ids, instanceId, outputFile, pageNumber, pageSize);
+        }
+        public GetGrantRuleToCensResult build() {
+            final var o = new GetGrantRuleToCensResult();
+            o.cens = cens;
+            o.id = id;
+            o.ids = ids;
+            o.instanceId = instanceId;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            return o;
         }
     }
 }

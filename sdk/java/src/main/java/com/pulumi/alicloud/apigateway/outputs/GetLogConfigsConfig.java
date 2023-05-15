@@ -13,42 +13,29 @@ public final class GetLogConfigsConfig {
      * @return The ID of the Log Config.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The type the of log.
      * 
      */
-    private final String logType;
+    private String logType;
     /**
      * @return The region ID of the Log Config.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return The name of the Log Store.
      * 
      */
-    private final String slsLogStore;
+    private String slsLogStore;
     /**
      * @return The name of the Project.
      * 
      */
-    private final String slsProject;
+    private String slsProject;
 
-    @CustomType.Constructor
-    private GetLogConfigsConfig(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("logType") String logType,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("slsLogStore") String slsLogStore,
-        @CustomType.Parameter("slsProject") String slsProject) {
-        this.id = id;
-        this.logType = logType;
-        this.regionId = regionId;
-        this.slsLogStore = slsLogStore;
-        this.slsProject = slsProject;
-    }
-
+    private GetLogConfigsConfig() {}
     /**
      * @return The ID of the Log Config.
      * 
@@ -92,18 +79,14 @@ public final class GetLogConfigsConfig {
     public static Builder builder(GetLogConfigsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String logType;
         private String regionId;
         private String slsLogStore;
         private String slsProject;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLogConfigsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -113,27 +96,39 @@ public final class GetLogConfigsConfig {
     	      this.slsProject = defaults.slsProject;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder logType(String logType) {
             this.logType = Objects.requireNonNull(logType);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder slsLogStore(String slsLogStore) {
             this.slsLogStore = Objects.requireNonNull(slsLogStore);
             return this;
         }
+        @CustomType.Setter
         public Builder slsProject(String slsProject) {
             this.slsProject = Objects.requireNonNull(slsProject);
             return this;
-        }        public GetLogConfigsConfig build() {
-            return new GetLogConfigsConfig(id, logType, regionId, slsLogStore, slsProject);
+        }
+        public GetLogConfigsConfig build() {
+            final var o = new GetLogConfigsConfig();
+            o.id = id;
+            o.logType = logType;
+            o.regionId = regionId;
+            o.slsLogStore = slsLogStore;
+            o.slsProject = slsProject;
+            return o;
         }
     }
 }

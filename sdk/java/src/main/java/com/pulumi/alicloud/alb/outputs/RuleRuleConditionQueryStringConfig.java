@@ -15,13 +15,9 @@ public final class RuleRuleConditionQueryStringConfig {
      * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
      * 
      */
-    private final @Nullable List<RuleRuleConditionQueryStringConfigValue> values;
+    private @Nullable List<RuleRuleConditionQueryStringConfigValue> values;
 
-    @CustomType.Constructor
-    private RuleRuleConditionQueryStringConfig(@CustomType.Parameter("values") @Nullable List<RuleRuleConditionQueryStringConfigValue> values) {
-        this.values = values;
-    }
-
+    private RuleRuleConditionQueryStringConfig() {}
     /**
      * @return The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable ASCII characters whose values are ch &gt;= 32 &amp;&amp; ch &lt; 127, asterisks (*), and question marks (?). The value cannot start or end with a space.
      * 
@@ -37,27 +33,27 @@ public final class RuleRuleConditionQueryStringConfig {
     public static Builder builder(RuleRuleConditionQueryStringConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<RuleRuleConditionQueryStringConfigValue> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleConditionQueryStringConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder values(@Nullable List<RuleRuleConditionQueryStringConfigValue> values) {
             this.values = values;
             return this;
         }
         public Builder values(RuleRuleConditionQueryStringConfigValue... values) {
             return values(List.of(values));
-        }        public RuleRuleConditionQueryStringConfig build() {
-            return new RuleRuleConditionQueryStringConfig(values);
+        }
+        public RuleRuleConditionQueryStringConfig build() {
+            final var o = new RuleRuleConditionQueryStringConfig();
+            o.values = values;
+            return o;
         }
     }
 }

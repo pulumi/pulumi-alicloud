@@ -13,70 +13,49 @@ public final class GetModelsModel {
      * @return The creation time of the model.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the model.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the api group.
      * 
      */
-    private final String groupId;
+    private String groupId;
     /**
      * @return The ID of the Api Gateway Model.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The id of the model.
      * 
      */
-    private final String modelId;
+    private String modelId;
     /**
      * @return The name of the Model.
      * 
      */
-    private final String modelName;
+    private String modelName;
     /**
      * @return The reference of the model.
      * 
      */
-    private final String modelRef;
+    private String modelRef;
     /**
      * @return The modified time of the model.
      * 
      */
-    private final String modifiedTime;
+    private String modifiedTime;
     /**
      * @return The schema of the model.
      * 
      */
-    private final String schema;
+    private String schema;
 
-    @CustomType.Constructor
-    private GetModelsModel(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("modelId") String modelId,
-        @CustomType.Parameter("modelName") String modelName,
-        @CustomType.Parameter("modelRef") String modelRef,
-        @CustomType.Parameter("modifiedTime") String modifiedTime,
-        @CustomType.Parameter("schema") String schema) {
-        this.createTime = createTime;
-        this.description = description;
-        this.groupId = groupId;
-        this.id = id;
-        this.modelId = modelId;
-        this.modelName = modelName;
-        this.modelRef = modelRef;
-        this.modifiedTime = modifiedTime;
-        this.schema = schema;
-    }
-
+    private GetModelsModel() {}
     /**
      * @return The creation time of the model.
      * 
@@ -148,7 +127,7 @@ public final class GetModelsModel {
     public static Builder builder(GetModelsModel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -159,11 +138,7 @@ public final class GetModelsModel {
         private String modelRef;
         private String modifiedTime;
         private String schema;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetModelsModel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -177,43 +152,63 @@ public final class GetModelsModel {
     	      this.schema = defaults.schema;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder modelId(String modelId) {
             this.modelId = Objects.requireNonNull(modelId);
             return this;
         }
+        @CustomType.Setter
         public Builder modelName(String modelName) {
             this.modelName = Objects.requireNonNull(modelName);
             return this;
         }
+        @CustomType.Setter
         public Builder modelRef(String modelRef) {
             this.modelRef = Objects.requireNonNull(modelRef);
             return this;
         }
+        @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
             this.modifiedTime = Objects.requireNonNull(modifiedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder schema(String schema) {
             this.schema = Objects.requireNonNull(schema);
             return this;
-        }        public GetModelsModel build() {
-            return new GetModelsModel(createTime, description, groupId, id, modelId, modelName, modelRef, modifiedTime, schema);
+        }
+        public GetModelsModel build() {
+            final var o = new GetModelsModel();
+            o.createTime = createTime;
+            o.description = description;
+            o.groupId = groupId;
+            o.id = id;
+            o.modelId = modelId;
+            o.modelName = modelName;
+            o.modelRef = modelRef;
+            o.modifiedTime = modifiedTime;
+            o.schema = schema;
+            return o;
         }
     }
 }

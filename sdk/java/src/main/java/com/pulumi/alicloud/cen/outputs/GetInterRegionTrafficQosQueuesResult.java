@@ -17,48 +17,31 @@ public final class GetInterRegionTrafficQosQueuesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Inter Region Traffic Qos Queue IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of name of Inter Region Traffic Qos Queues.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A list of Inter Region Traffic Qos Queue Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetInterRegionTrafficQosQueuesQueue> queues;
+    private List<GetInterRegionTrafficQosQueuesQueue> queues;
     /**
      * @return The ID of the traffic scheduling policy.
      * 
      */
-    private final String trafficQosPolicyId;
+    private String trafficQosPolicyId;
 
-    @CustomType.Constructor
-    private GetInterRegionTrafficQosQueuesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("queues") List<GetInterRegionTrafficQosQueuesQueue> queues,
-        @CustomType.Parameter("trafficQosPolicyId") String trafficQosPolicyId) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.queues = queues;
-        this.trafficQosPolicyId = trafficQosPolicyId;
-    }
-
+    private GetInterRegionTrafficQosQueuesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -108,7 +91,7 @@ public final class GetInterRegionTrafficQosQueuesResult {
     public static Builder builder(GetInterRegionTrafficQosQueuesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -117,11 +100,7 @@ public final class GetInterRegionTrafficQosQueuesResult {
         private @Nullable String outputFile;
         private List<GetInterRegionTrafficQosQueuesQueue> queues;
         private String trafficQosPolicyId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInterRegionTrafficQosQueuesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -133,10 +112,12 @@ public final class GetInterRegionTrafficQosQueuesResult {
     	      this.trafficQosPolicyId = defaults.trafficQosPolicyId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -144,10 +125,12 @@ public final class GetInterRegionTrafficQosQueuesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -155,10 +138,12 @@ public final class GetInterRegionTrafficQosQueuesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder queues(List<GetInterRegionTrafficQosQueuesQueue> queues) {
             this.queues = Objects.requireNonNull(queues);
             return this;
@@ -166,11 +151,21 @@ public final class GetInterRegionTrafficQosQueuesResult {
         public Builder queues(GetInterRegionTrafficQosQueuesQueue... queues) {
             return queues(List.of(queues));
         }
+        @CustomType.Setter
         public Builder trafficQosPolicyId(String trafficQosPolicyId) {
             this.trafficQosPolicyId = Objects.requireNonNull(trafficQosPolicyId);
             return this;
-        }        public GetInterRegionTrafficQosQueuesResult build() {
-            return new GetInterRegionTrafficQosQueuesResult(id, ids, nameRegex, names, outputFile, queues, trafficQosPolicyId);
+        }
+        public GetInterRegionTrafficQosQueuesResult build() {
+            final var o = new GetInterRegionTrafficQosQueuesResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.queues = queues;
+            o.trafficQosPolicyId = trafficQosPolicyId;
+            return o;
         }
     }
 }

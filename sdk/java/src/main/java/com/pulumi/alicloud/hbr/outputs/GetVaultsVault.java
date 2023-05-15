@@ -15,178 +15,125 @@ public final class GetVaultsVault {
      * @return The name of the OSS bucket of the Vault.
      * 
      */
-    private final String bucketName;
+    private String bucketName;
     /**
      * @return The amount of backup data. The unit is Byte.
      * 
      */
-    private final String bytesDone;
+    private String bytesDone;
     /**
      * @return The creation time of the Vault. UNIX time in seconds.
      * 
      */
-    private final String createdTime;
+    private String createdTime;
     /**
      * @return Whether to enable the deduplication function for the database backup Vault.
      * 
      */
-    private final Boolean dedup;
+    private Boolean dedup;
     /**
      * @return The description of the vault.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of vault.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Index available.
      * 
      */
-    private final Boolean indexAvailable;
+    private Boolean indexAvailable;
     /**
      * @return Index level.
      * 
      */
-    private final String indexLevel;
+    private String indexLevel;
     /**
      * @return Index update time.
      * 
      */
-    private final String indexUpdateTime;
+    private String indexUpdateTime;
     /**
      * @return The time of the last remote backup synchronization.
      * 
      */
-    private final String latestReplicationTime;
+    private String latestReplicationTime;
     /**
      * @return Billing model, possible values:
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return Whether it is a remote backup warehouse. It&#39;s a boolean value.
      * 
      */
-    private final Boolean replication;
+    private Boolean replication;
     /**
      * @return The region ID to which the remote backup Vault belongs.
      * 
      */
-    private final String replicationSourceRegionId;
+    private String replicationSourceRegionId;
     /**
      * @return The source vault ID of the remote backup Vault.
      * 
      */
-    private final String replicationSourceVaultId;
+    private String replicationSourceVaultId;
     /**
      * @return Warehouse-level data retention days, only valid for archive libraries.
      * 
      */
-    private final String retention;
+    private String retention;
     /**
      * @return Whether to enable the backup search function.
      * 
      */
-    private final Boolean searchEnabled;
-    private final List<String> sourceTypes;
+    private Boolean searchEnabled;
+    private List<String> sourceTypes;
     /**
      * @return The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Backup vault storage usage. The unit is Byte.
      * 
      */
-    private final String storageSize;
+    private String storageSize;
     /**
      * @return The update time of the Vault. UNIX time in seconds.
      * 
      */
-    private final String updatedTime;
+    private String updatedTime;
     /**
      * @return The ID of vault, same as `id`.
      * 
      */
-    private final String vaultId;
+    private String vaultId;
     /**
      * @return The name of vault.
      * 
      */
-    private final String vaultName;
+    private String vaultName;
     /**
      * @return Error status information of Vault. Only valid for remote backup warehouses. Only the remote backup warehouse is valid.
      * 
      */
-    private final String vaultStatusMessage;
+    private String vaultStatusMessage;
     /**
      * @return The storage class of vault. Valid values: `STANDARD`.
      * 
      */
-    private final String vaultStorageClass;
+    private String vaultStorageClass;
     /**
      * @return The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
      * 
      */
-    private final String vaultType;
+    private String vaultType;
 
-    @CustomType.Constructor
-    private GetVaultsVault(
-        @CustomType.Parameter("bucketName") String bucketName,
-        @CustomType.Parameter("bytesDone") String bytesDone,
-        @CustomType.Parameter("createdTime") String createdTime,
-        @CustomType.Parameter("dedup") Boolean dedup,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("indexAvailable") Boolean indexAvailable,
-        @CustomType.Parameter("indexLevel") String indexLevel,
-        @CustomType.Parameter("indexUpdateTime") String indexUpdateTime,
-        @CustomType.Parameter("latestReplicationTime") String latestReplicationTime,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("replication") Boolean replication,
-        @CustomType.Parameter("replicationSourceRegionId") String replicationSourceRegionId,
-        @CustomType.Parameter("replicationSourceVaultId") String replicationSourceVaultId,
-        @CustomType.Parameter("retention") String retention,
-        @CustomType.Parameter("searchEnabled") Boolean searchEnabled,
-        @CustomType.Parameter("sourceTypes") List<String> sourceTypes,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("storageSize") String storageSize,
-        @CustomType.Parameter("updatedTime") String updatedTime,
-        @CustomType.Parameter("vaultId") String vaultId,
-        @CustomType.Parameter("vaultName") String vaultName,
-        @CustomType.Parameter("vaultStatusMessage") String vaultStatusMessage,
-        @CustomType.Parameter("vaultStorageClass") String vaultStorageClass,
-        @CustomType.Parameter("vaultType") String vaultType) {
-        this.bucketName = bucketName;
-        this.bytesDone = bytesDone;
-        this.createdTime = createdTime;
-        this.dedup = dedup;
-        this.description = description;
-        this.id = id;
-        this.indexAvailable = indexAvailable;
-        this.indexLevel = indexLevel;
-        this.indexUpdateTime = indexUpdateTime;
-        this.latestReplicationTime = latestReplicationTime;
-        this.paymentType = paymentType;
-        this.replication = replication;
-        this.replicationSourceRegionId = replicationSourceRegionId;
-        this.replicationSourceVaultId = replicationSourceVaultId;
-        this.retention = retention;
-        this.searchEnabled = searchEnabled;
-        this.sourceTypes = sourceTypes;
-        this.status = status;
-        this.storageSize = storageSize;
-        this.updatedTime = updatedTime;
-        this.vaultId = vaultId;
-        this.vaultName = vaultName;
-        this.vaultStatusMessage = vaultStatusMessage;
-        this.vaultStorageClass = vaultStorageClass;
-        this.vaultType = vaultType;
-    }
-
+    private GetVaultsVault() {}
     /**
      * @return The name of the OSS bucket of the Vault.
      * 
@@ -366,7 +313,7 @@ public final class GetVaultsVault {
     public static Builder builder(GetVaultsVault defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bucketName;
         private String bytesDone;
@@ -393,11 +340,7 @@ public final class GetVaultsVault {
         private String vaultStatusMessage;
         private String vaultStorageClass;
         private String vaultType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVaultsVault defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
@@ -427,70 +370,87 @@ public final class GetVaultsVault {
     	      this.vaultType = defaults.vaultType;
         }
 
+        @CustomType.Setter
         public Builder bucketName(String bucketName) {
             this.bucketName = Objects.requireNonNull(bucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder bytesDone(String bytesDone) {
             this.bytesDone = Objects.requireNonNull(bytesDone);
             return this;
         }
+        @CustomType.Setter
         public Builder createdTime(String createdTime) {
             this.createdTime = Objects.requireNonNull(createdTime);
             return this;
         }
+        @CustomType.Setter
         public Builder dedup(Boolean dedup) {
             this.dedup = Objects.requireNonNull(dedup);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder indexAvailable(Boolean indexAvailable) {
             this.indexAvailable = Objects.requireNonNull(indexAvailable);
             return this;
         }
+        @CustomType.Setter
         public Builder indexLevel(String indexLevel) {
             this.indexLevel = Objects.requireNonNull(indexLevel);
             return this;
         }
+        @CustomType.Setter
         public Builder indexUpdateTime(String indexUpdateTime) {
             this.indexUpdateTime = Objects.requireNonNull(indexUpdateTime);
             return this;
         }
+        @CustomType.Setter
         public Builder latestReplicationTime(String latestReplicationTime) {
             this.latestReplicationTime = Objects.requireNonNull(latestReplicationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder replication(Boolean replication) {
             this.replication = Objects.requireNonNull(replication);
             return this;
         }
+        @CustomType.Setter
         public Builder replicationSourceRegionId(String replicationSourceRegionId) {
             this.replicationSourceRegionId = Objects.requireNonNull(replicationSourceRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder replicationSourceVaultId(String replicationSourceVaultId) {
             this.replicationSourceVaultId = Objects.requireNonNull(replicationSourceVaultId);
             return this;
         }
+        @CustomType.Setter
         public Builder retention(String retention) {
             this.retention = Objects.requireNonNull(retention);
             return this;
         }
+        @CustomType.Setter
         public Builder searchEnabled(Boolean searchEnabled) {
             this.searchEnabled = Objects.requireNonNull(searchEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceTypes(List<String> sourceTypes) {
             this.sourceTypes = Objects.requireNonNull(sourceTypes);
             return this;
@@ -498,39 +458,74 @@ public final class GetVaultsVault {
         public Builder sourceTypes(String... sourceTypes) {
             return sourceTypes(List.of(sourceTypes));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder storageSize(String storageSize) {
             this.storageSize = Objects.requireNonNull(storageSize);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedTime(String updatedTime) {
             this.updatedTime = Objects.requireNonNull(updatedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
         }
+        @CustomType.Setter
         public Builder vaultName(String vaultName) {
             this.vaultName = Objects.requireNonNull(vaultName);
             return this;
         }
+        @CustomType.Setter
         public Builder vaultStatusMessage(String vaultStatusMessage) {
             this.vaultStatusMessage = Objects.requireNonNull(vaultStatusMessage);
             return this;
         }
+        @CustomType.Setter
         public Builder vaultStorageClass(String vaultStorageClass) {
             this.vaultStorageClass = Objects.requireNonNull(vaultStorageClass);
             return this;
         }
+        @CustomType.Setter
         public Builder vaultType(String vaultType) {
             this.vaultType = Objects.requireNonNull(vaultType);
             return this;
-        }        public GetVaultsVault build() {
-            return new GetVaultsVault(bucketName, bytesDone, createdTime, dedup, description, id, indexAvailable, indexLevel, indexUpdateTime, latestReplicationTime, paymentType, replication, replicationSourceRegionId, replicationSourceVaultId, retention, searchEnabled, sourceTypes, status, storageSize, updatedTime, vaultId, vaultName, vaultStatusMessage, vaultStorageClass, vaultType);
+        }
+        public GetVaultsVault build() {
+            final var o = new GetVaultsVault();
+            o.bucketName = bucketName;
+            o.bytesDone = bytesDone;
+            o.createdTime = createdTime;
+            o.dedup = dedup;
+            o.description = description;
+            o.id = id;
+            o.indexAvailable = indexAvailable;
+            o.indexLevel = indexLevel;
+            o.indexUpdateTime = indexUpdateTime;
+            o.latestReplicationTime = latestReplicationTime;
+            o.paymentType = paymentType;
+            o.replication = replication;
+            o.replicationSourceRegionId = replicationSourceRegionId;
+            o.replicationSourceVaultId = replicationSourceVaultId;
+            o.retention = retention;
+            o.searchEnabled = searchEnabled;
+            o.sourceTypes = sourceTypes;
+            o.status = status;
+            o.storageSize = storageSize;
+            o.updatedTime = updatedTime;
+            o.vaultId = vaultId;
+            o.vaultName = vaultName;
+            o.vaultStatusMessage = vaultStatusMessage;
+            o.vaultStorageClass = vaultStorageClass;
+            o.vaultType = vaultType;
+            return o;
         }
     }
 }

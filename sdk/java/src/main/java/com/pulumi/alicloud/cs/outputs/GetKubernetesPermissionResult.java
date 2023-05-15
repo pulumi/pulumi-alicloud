@@ -16,28 +16,19 @@ public final class GetKubernetesPermissionResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of user permission.
      * 
      */
-    private final @Nullable List<GetKubernetesPermissionPermission> permissions;
+    private @Nullable List<GetKubernetesPermissionPermission> permissions;
     /**
      * @return The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
      * 
      */
-    private final String uid;
+    private String uid;
 
-    @CustomType.Constructor
-    private GetKubernetesPermissionResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("permissions") @Nullable List<GetKubernetesPermissionPermission> permissions,
-        @CustomType.Parameter("uid") String uid) {
-        this.id = id;
-        this.permissions = permissions;
-        this.uid = uid;
-    }
-
+    private GetKubernetesPermissionResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -67,16 +58,12 @@ public final class GetKubernetesPermissionResult {
     public static Builder builder(GetKubernetesPermissionResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable List<GetKubernetesPermissionPermission> permissions;
         private String uid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesPermissionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -84,10 +71,12 @@ public final class GetKubernetesPermissionResult {
     	      this.uid = defaults.uid;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder permissions(@Nullable List<GetKubernetesPermissionPermission> permissions) {
             this.permissions = permissions;
             return this;
@@ -95,11 +84,17 @@ public final class GetKubernetesPermissionResult {
         public Builder permissions(GetKubernetesPermissionPermission... permissions) {
             return permissions(List.of(permissions));
         }
+        @CustomType.Setter
         public Builder uid(String uid) {
             this.uid = Objects.requireNonNull(uid);
             return this;
-        }        public GetKubernetesPermissionResult build() {
-            return new GetKubernetesPermissionResult(id, permissions, uid);
+        }
+        public GetKubernetesPermissionResult build() {
+            final var o = new GetKubernetesPermissionResult();
+            o.id = id;
+            o.permissions = permissions;
+            o.uid = uid;
+            return o;
         }
     }
 }

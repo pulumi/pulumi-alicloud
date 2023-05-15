@@ -15,73 +15,50 @@ public final class GetGatewaysGateway {
      * @return The creation time of Gateway.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of Gateway.
      * 
      */
-    private final String gatewayDesc;
-    private final List<GetGatewaysGatewayGatewayInstance> gatewayInstances;
+    private String gatewayDesc;
+    private List<GetGatewaysGatewayGatewayInstance> gatewayInstances;
     /**
      * @return The name of the Gateway.
      * 
      */
-    private final String gatewayName;
+    private String gatewayName;
     /**
      * @return A host of information.
      * 
      */
-    private final String hosts;
+    private String hosts;
     /**
      * @return The ID of Gateway.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Modify time of Gateway.
      * 
      */
-    private final String modifiedTime;
+    private String modifiedTime;
     /**
      * @return The parent node Id of Gateway.
      * 
      */
-    private final String parentId;
+    private String parentId;
     /**
      * @return The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The user&#39;s id.
      * 
      */
-    private final String userId;
+    private String userId;
 
-    @CustomType.Constructor
-    private GetGatewaysGateway(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("gatewayDesc") String gatewayDesc,
-        @CustomType.Parameter("gatewayInstances") List<GetGatewaysGatewayGatewayInstance> gatewayInstances,
-        @CustomType.Parameter("gatewayName") String gatewayName,
-        @CustomType.Parameter("hosts") String hosts,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("modifiedTime") String modifiedTime,
-        @CustomType.Parameter("parentId") String parentId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("userId") String userId) {
-        this.createTime = createTime;
-        this.gatewayDesc = gatewayDesc;
-        this.gatewayInstances = gatewayInstances;
-        this.gatewayName = gatewayName;
-        this.hosts = hosts;
-        this.id = id;
-        this.modifiedTime = modifiedTime;
-        this.parentId = parentId;
-        this.status = status;
-        this.userId = userId;
-    }
-
+    private GetGatewaysGateway() {}
     /**
      * @return The creation time of Gateway.
      * 
@@ -156,7 +133,7 @@ public final class GetGatewaysGateway {
     public static Builder builder(GetGatewaysGateway defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String gatewayDesc;
@@ -168,11 +145,7 @@ public final class GetGatewaysGateway {
         private String parentId;
         private String status;
         private String userId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -187,14 +160,17 @@ public final class GetGatewaysGateway {
     	      this.userId = defaults.userId;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayDesc(String gatewayDesc) {
             this.gatewayDesc = Objects.requireNonNull(gatewayDesc);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayInstances(List<GetGatewaysGatewayGatewayInstance> gatewayInstances) {
             this.gatewayInstances = Objects.requireNonNull(gatewayInstances);
             return this;
@@ -202,35 +178,54 @@ public final class GetGatewaysGateway {
         public Builder gatewayInstances(GetGatewaysGatewayGatewayInstance... gatewayInstances) {
             return gatewayInstances(List.of(gatewayInstances));
         }
+        @CustomType.Setter
         public Builder gatewayName(String gatewayName) {
             this.gatewayName = Objects.requireNonNull(gatewayName);
             return this;
         }
+        @CustomType.Setter
         public Builder hosts(String hosts) {
             this.hosts = Objects.requireNonNull(hosts);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder modifiedTime(String modifiedTime) {
             this.modifiedTime = Objects.requireNonNull(modifiedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder parentId(String parentId) {
             this.parentId = Objects.requireNonNull(parentId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
-        }        public GetGatewaysGateway build() {
-            return new GetGatewaysGateway(createTime, gatewayDesc, gatewayInstances, gatewayName, hosts, id, modifiedTime, parentId, status, userId);
+        }
+        public GetGatewaysGateway build() {
+            final var o = new GetGatewaysGateway();
+            o.createTime = createTime;
+            o.gatewayDesc = gatewayDesc;
+            o.gatewayInstances = gatewayInstances;
+            o.gatewayName = gatewayName;
+            o.hosts = hosts;
+            o.id = id;
+            o.modifiedTime = modifiedTime;
+            o.parentId = parentId;
+            o.status = status;
+            o.userId = userId;
+            return o;
         }
     }
 }

@@ -23,112 +23,79 @@ public final class ClusterNodeGroup {
      * @return Additional security Group IDS for Cluster, you can also specify this key for each node group.
      * 
      */
-    private final @Nullable List<String> additionalSecurityGroupIds;
+    private @Nullable List<String> additionalSecurityGroupIds;
     /**
      * @return The detail cost optimized configuration of emr cluster.
      * 
      */
-    private final @Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig;
+    private @Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig;
     /**
      * @return Host Ecs data disks information in this node group.
      * 
      */
-    private final List<ClusterNodeGroupDataDisk> dataDisks;
+    private List<ClusterNodeGroupDataDisk> dataDisks;
     /**
      * @return Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
      * 
      */
-    private final @Nullable Boolean gracefulShutdown;
+    private @Nullable Boolean gracefulShutdown;
     /**
      * @return Host Ecs instance types.
      * 
      */
-    private final List<String> instanceTypes;
+    private List<String> instanceTypes;
     /**
      * @return Host Ecs number in this node group.
      * 
      */
-    private final Integer nodeCount;
+    private Integer nodeCount;
     /**
      * @return The configuration effected which node group name of emr cluster.
      * 
      */
-    private final String nodeGroupName;
+    private String nodeGroupName;
     /**
      * @return The node group type of emr cluster, supported value: MASTER, CORE or TASK.
      * 
      */
-    private final String nodeGroupType;
+    private String nodeGroupType;
     /**
      * @return Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
      * 
      */
-    private final @Nullable String paymentType;
+    private @Nullable String paymentType;
     /**
      * @return The spot bid prices of a PayAsYouGo instance.
      * 
      */
-    private final @Nullable List<ClusterNodeGroupSpotBidPrice> spotBidPrices;
+    private @Nullable List<ClusterNodeGroupSpotBidPrice> spotBidPrices;
     /**
      * @return Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
      * 
      */
-    private final @Nullable Boolean spotInstanceRemedy;
+    private @Nullable Boolean spotInstanceRemedy;
     /**
      * @return The detail configuration of subscription payment type.
      * 
      */
-    private final @Nullable ClusterNodeGroupSubscriptionConfig subscriptionConfig;
+    private @Nullable ClusterNodeGroupSubscriptionConfig subscriptionConfig;
     /**
      * @return Host Ecs system disk information in this node group.
      * 
      */
-    private final ClusterNodeGroupSystemDisk systemDisk;
+    private ClusterNodeGroupSystemDisk systemDisk;
     /**
      * @return Global vSwitch ids, you can also specify it in node group.
      * 
      */
-    private final @Nullable List<String> vswitchIds;
+    private @Nullable List<String> vswitchIds;
     /**
      * @return Whether the node has a public IP address enabled.
      * 
      */
-    private final @Nullable Boolean withPublicIp;
+    private @Nullable Boolean withPublicIp;
 
-    @CustomType.Constructor
-    private ClusterNodeGroup(
-        @CustomType.Parameter("additionalSecurityGroupIds") @Nullable List<String> additionalSecurityGroupIds,
-        @CustomType.Parameter("costOptimizedConfig") @Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig,
-        @CustomType.Parameter("dataDisks") List<ClusterNodeGroupDataDisk> dataDisks,
-        @CustomType.Parameter("gracefulShutdown") @Nullable Boolean gracefulShutdown,
-        @CustomType.Parameter("instanceTypes") List<String> instanceTypes,
-        @CustomType.Parameter("nodeCount") Integer nodeCount,
-        @CustomType.Parameter("nodeGroupName") String nodeGroupName,
-        @CustomType.Parameter("nodeGroupType") String nodeGroupType,
-        @CustomType.Parameter("paymentType") @Nullable String paymentType,
-        @CustomType.Parameter("spotBidPrices") @Nullable List<ClusterNodeGroupSpotBidPrice> spotBidPrices,
-        @CustomType.Parameter("spotInstanceRemedy") @Nullable Boolean spotInstanceRemedy,
-        @CustomType.Parameter("subscriptionConfig") @Nullable ClusterNodeGroupSubscriptionConfig subscriptionConfig,
-        @CustomType.Parameter("systemDisk") ClusterNodeGroupSystemDisk systemDisk,
-        @CustomType.Parameter("vswitchIds") @Nullable List<String> vswitchIds,
-        @CustomType.Parameter("withPublicIp") @Nullable Boolean withPublicIp) {
-        this.additionalSecurityGroupIds = additionalSecurityGroupIds;
-        this.costOptimizedConfig = costOptimizedConfig;
-        this.dataDisks = dataDisks;
-        this.gracefulShutdown = gracefulShutdown;
-        this.instanceTypes = instanceTypes;
-        this.nodeCount = nodeCount;
-        this.nodeGroupName = nodeGroupName;
-        this.nodeGroupType = nodeGroupType;
-        this.paymentType = paymentType;
-        this.spotBidPrices = spotBidPrices;
-        this.spotInstanceRemedy = spotInstanceRemedy;
-        this.subscriptionConfig = subscriptionConfig;
-        this.systemDisk = systemDisk;
-        this.vswitchIds = vswitchIds;
-        this.withPublicIp = withPublicIp;
-    }
-
+    private ClusterNodeGroup() {}
     /**
      * @return Additional security Group IDS for Cluster, you can also specify this key for each node group.
      * 
@@ -242,7 +209,7 @@ public final class ClusterNodeGroup {
     public static Builder builder(ClusterNodeGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> additionalSecurityGroupIds;
         private @Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig;
@@ -259,11 +226,7 @@ public final class ClusterNodeGroup {
         private ClusterNodeGroupSystemDisk systemDisk;
         private @Nullable List<String> vswitchIds;
         private @Nullable Boolean withPublicIp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodeGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalSecurityGroupIds = defaults.additionalSecurityGroupIds;
@@ -283,6 +246,7 @@ public final class ClusterNodeGroup {
     	      this.withPublicIp = defaults.withPublicIp;
         }
 
+        @CustomType.Setter
         public Builder additionalSecurityGroupIds(@Nullable List<String> additionalSecurityGroupIds) {
             this.additionalSecurityGroupIds = additionalSecurityGroupIds;
             return this;
@@ -290,10 +254,12 @@ public final class ClusterNodeGroup {
         public Builder additionalSecurityGroupIds(String... additionalSecurityGroupIds) {
             return additionalSecurityGroupIds(List.of(additionalSecurityGroupIds));
         }
+        @CustomType.Setter
         public Builder costOptimizedConfig(@Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig) {
             this.costOptimizedConfig = costOptimizedConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder dataDisks(List<ClusterNodeGroupDataDisk> dataDisks) {
             this.dataDisks = Objects.requireNonNull(dataDisks);
             return this;
@@ -301,10 +267,12 @@ public final class ClusterNodeGroup {
         public Builder dataDisks(ClusterNodeGroupDataDisk... dataDisks) {
             return dataDisks(List.of(dataDisks));
         }
+        @CustomType.Setter
         public Builder gracefulShutdown(@Nullable Boolean gracefulShutdown) {
             this.gracefulShutdown = gracefulShutdown;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceTypes(List<String> instanceTypes) {
             this.instanceTypes = Objects.requireNonNull(instanceTypes);
             return this;
@@ -312,22 +280,27 @@ public final class ClusterNodeGroup {
         public Builder instanceTypes(String... instanceTypes) {
             return instanceTypes(List.of(instanceTypes));
         }
+        @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
             this.nodeCount = Objects.requireNonNull(nodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeGroupName(String nodeGroupName) {
             this.nodeGroupName = Objects.requireNonNull(nodeGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeGroupType(String nodeGroupType) {
             this.nodeGroupType = Objects.requireNonNull(nodeGroupType);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
             this.paymentType = paymentType;
             return this;
         }
+        @CustomType.Setter
         public Builder spotBidPrices(@Nullable List<ClusterNodeGroupSpotBidPrice> spotBidPrices) {
             this.spotBidPrices = spotBidPrices;
             return this;
@@ -335,18 +308,22 @@ public final class ClusterNodeGroup {
         public Builder spotBidPrices(ClusterNodeGroupSpotBidPrice... spotBidPrices) {
             return spotBidPrices(List.of(spotBidPrices));
         }
+        @CustomType.Setter
         public Builder spotInstanceRemedy(@Nullable Boolean spotInstanceRemedy) {
             this.spotInstanceRemedy = spotInstanceRemedy;
             return this;
         }
+        @CustomType.Setter
         public Builder subscriptionConfig(@Nullable ClusterNodeGroupSubscriptionConfig subscriptionConfig) {
             this.subscriptionConfig = subscriptionConfig;
             return this;
         }
+        @CustomType.Setter
         public Builder systemDisk(ClusterNodeGroupSystemDisk systemDisk) {
             this.systemDisk = Objects.requireNonNull(systemDisk);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchIds(@Nullable List<String> vswitchIds) {
             this.vswitchIds = vswitchIds;
             return this;
@@ -354,11 +331,29 @@ public final class ClusterNodeGroup {
         public Builder vswitchIds(String... vswitchIds) {
             return vswitchIds(List.of(vswitchIds));
         }
+        @CustomType.Setter
         public Builder withPublicIp(@Nullable Boolean withPublicIp) {
             this.withPublicIp = withPublicIp;
             return this;
-        }        public ClusterNodeGroup build() {
-            return new ClusterNodeGroup(additionalSecurityGroupIds, costOptimizedConfig, dataDisks, gracefulShutdown, instanceTypes, nodeCount, nodeGroupName, nodeGroupType, paymentType, spotBidPrices, spotInstanceRemedy, subscriptionConfig, systemDisk, vswitchIds, withPublicIp);
+        }
+        public ClusterNodeGroup build() {
+            final var o = new ClusterNodeGroup();
+            o.additionalSecurityGroupIds = additionalSecurityGroupIds;
+            o.costOptimizedConfig = costOptimizedConfig;
+            o.dataDisks = dataDisks;
+            o.gracefulShutdown = gracefulShutdown;
+            o.instanceTypes = instanceTypes;
+            o.nodeCount = nodeCount;
+            o.nodeGroupName = nodeGroupName;
+            o.nodeGroupType = nodeGroupType;
+            o.paymentType = paymentType;
+            o.spotBidPrices = spotBidPrices;
+            o.spotInstanceRemedy = spotInstanceRemedy;
+            o.subscriptionConfig = subscriptionConfig;
+            o.systemDisk = systemDisk;
+            o.vswitchIds = vswitchIds;
+            o.withPublicIp = withPublicIp;
+            return o;
         }
     }
 }

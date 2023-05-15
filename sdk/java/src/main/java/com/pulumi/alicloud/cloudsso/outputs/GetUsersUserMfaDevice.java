@@ -13,35 +13,24 @@ public final class GetUsersUserMfaDevice {
      * @return The MFA Device ID.
      * 
      */
-    private final String deviceId;
+    private String deviceId;
     /**
      * @return The MFA Device Name.
      * 
      */
-    private final String deviceName;
+    private String deviceName;
     /**
      * @return The MFA Device Type.
      * 
      */
-    private final String deviceType;
+    private String deviceType;
     /**
      * @return The Effective Time of MFA Device.
      * 
      */
-    private final String effectiveTime;
+    private String effectiveTime;
 
-    @CustomType.Constructor
-    private GetUsersUserMfaDevice(
-        @CustomType.Parameter("deviceId") String deviceId,
-        @CustomType.Parameter("deviceName") String deviceName,
-        @CustomType.Parameter("deviceType") String deviceType,
-        @CustomType.Parameter("effectiveTime") String effectiveTime) {
-        this.deviceId = deviceId;
-        this.deviceName = deviceName;
-        this.deviceType = deviceType;
-        this.effectiveTime = effectiveTime;
-    }
-
+    private GetUsersUserMfaDevice() {}
     /**
      * @return The MFA Device ID.
      * 
@@ -78,17 +67,13 @@ public final class GetUsersUserMfaDevice {
     public static Builder builder(GetUsersUserMfaDevice defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String deviceId;
         private String deviceName;
         private String deviceType;
         private String effectiveTime;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUsersUserMfaDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deviceId = defaults.deviceId;
@@ -97,23 +82,33 @@ public final class GetUsersUserMfaDevice {
     	      this.effectiveTime = defaults.effectiveTime;
         }
 
+        @CustomType.Setter
         public Builder deviceId(String deviceId) {
             this.deviceId = Objects.requireNonNull(deviceId);
             return this;
         }
+        @CustomType.Setter
         public Builder deviceName(String deviceName) {
             this.deviceName = Objects.requireNonNull(deviceName);
             return this;
         }
+        @CustomType.Setter
         public Builder deviceType(String deviceType) {
             this.deviceType = Objects.requireNonNull(deviceType);
             return this;
         }
+        @CustomType.Setter
         public Builder effectiveTime(String effectiveTime) {
             this.effectiveTime = Objects.requireNonNull(effectiveTime);
             return this;
-        }        public GetUsersUserMfaDevice build() {
-            return new GetUsersUserMfaDevice(deviceId, deviceName, deviceType, effectiveTime);
+        }
+        public GetUsersUserMfaDevice build() {
+            final var o = new GetUsersUserMfaDevice();
+            o.deviceId = deviceId;
+            o.deviceName = deviceName;
+            o.deviceType = deviceType;
+            o.effectiveTime = effectiveTime;
+            return o;
         }
     }
 }

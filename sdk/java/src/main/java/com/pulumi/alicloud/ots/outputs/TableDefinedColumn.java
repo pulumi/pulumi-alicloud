@@ -13,21 +13,14 @@ public final class TableDefinedColumn {
      * @return Name for defined column.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private TableDefinedColumn(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("type") String type) {
-        this.name = name;
-        this.type = type;
-    }
-
+    private TableDefinedColumn() {}
     /**
      * @return Name for defined column.
      * 
@@ -50,30 +43,32 @@ public final class TableDefinedColumn {
     public static Builder builder(TableDefinedColumn defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TableDefinedColumn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public TableDefinedColumn build() {
-            return new TableDefinedColumn(name, type);
+        }
+        public TableDefinedColumn build() {
+            final var o = new TableDefinedColumn();
+            o.name = name;
+            o.type = type;
+            return o;
         }
     }
 }

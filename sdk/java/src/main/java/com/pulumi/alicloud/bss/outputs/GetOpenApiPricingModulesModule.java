@@ -15,65 +15,46 @@ public final class GetOpenApiPricingModulesModule {
      * @return Property Code.
      * 
      */
-    private final String code;
+    private String code;
     /**
      * @return A list of Price Module IDs.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Attribute name.
      * 
      */
-    private final String pricingModuleName;
+    private String pricingModuleName;
     /**
      * @return The product code.
      * 
      */
-    private final String productCode;
+    private String productCode;
     /**
      * @return The product type.
      * 
      */
-    private final String productType;
+    private String productType;
     /**
      * @return Subscription type. Value:
      * * Subscription: Prepaid.
      * * PayAsYouGo: postpaid.
      * 
      */
-    private final String subscriptionType;
+    private String subscriptionType;
     /**
      * @return Attribute unit.
      * 
      */
-    private final String unit;
+    private String unit;
     /**
      * @return Property.
      * 
      */
-    private final List<GetOpenApiPricingModulesModuleValue> values;
+    private List<GetOpenApiPricingModulesModuleValue> values;
 
-    @CustomType.Constructor
-    private GetOpenApiPricingModulesModule(
-        @CustomType.Parameter("code") String code,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("pricingModuleName") String pricingModuleName,
-        @CustomType.Parameter("productCode") String productCode,
-        @CustomType.Parameter("productType") String productType,
-        @CustomType.Parameter("subscriptionType") String subscriptionType,
-        @CustomType.Parameter("unit") String unit,
-        @CustomType.Parameter("values") List<GetOpenApiPricingModulesModuleValue> values) {
-        this.code = code;
-        this.id = id;
-        this.pricingModuleName = pricingModuleName;
-        this.productCode = productCode;
-        this.productType = productType;
-        this.subscriptionType = subscriptionType;
-        this.unit = unit;
-        this.values = values;
-    }
-
+    private GetOpenApiPricingModulesModule() {}
     /**
      * @return Property Code.
      * 
@@ -140,7 +121,7 @@ public final class GetOpenApiPricingModulesModule {
     public static Builder builder(GetOpenApiPricingModulesModule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String code;
         private String id;
@@ -150,11 +131,7 @@ public final class GetOpenApiPricingModulesModule {
         private String subscriptionType;
         private String unit;
         private List<GetOpenApiPricingModulesModuleValue> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOpenApiPricingModulesModule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
@@ -167,42 +144,60 @@ public final class GetOpenApiPricingModulesModule {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder code(String code) {
             this.code = Objects.requireNonNull(code);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder pricingModuleName(String pricingModuleName) {
             this.pricingModuleName = Objects.requireNonNull(pricingModuleName);
             return this;
         }
+        @CustomType.Setter
         public Builder productCode(String productCode) {
             this.productCode = Objects.requireNonNull(productCode);
             return this;
         }
+        @CustomType.Setter
         public Builder productType(String productType) {
             this.productType = Objects.requireNonNull(productType);
             return this;
         }
+        @CustomType.Setter
         public Builder subscriptionType(String subscriptionType) {
             this.subscriptionType = Objects.requireNonNull(subscriptionType);
             return this;
         }
+        @CustomType.Setter
         public Builder unit(String unit) {
             this.unit = Objects.requireNonNull(unit);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<GetOpenApiPricingModulesModuleValue> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(GetOpenApiPricingModulesModuleValue... values) {
             return values(List.of(values));
-        }        public GetOpenApiPricingModulesModule build() {
-            return new GetOpenApiPricingModulesModule(code, id, pricingModuleName, productCode, productType, subscriptionType, unit, values);
+        }
+        public GetOpenApiPricingModulesModule build() {
+            final var o = new GetOpenApiPricingModulesModule();
+            o.code = code;
+            o.id = id;
+            o.pricingModuleName = pricingModuleName;
+            o.productCode = productCode;
+            o.productType = productType;
+            o.subscriptionType = subscriptionType;
+            o.unit = unit;
+            o.values = values;
+            return o;
         }
     }
 }

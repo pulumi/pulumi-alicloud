@@ -13,144 +13,79 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEipsAddress {
-    private final String addressName;
-    private final String allocationId;
-    private final List<String> availableRegions;
+    private String addressName;
+    private String allocationId;
+    private List<String> availableRegions;
     /**
      * @return EIP internet max bandwidth in Mbps.
      * 
      */
-    private final String bandwidth;
-    private final String bandwidthPackageBandwidth;
-    private final String bandwidthPackageId;
-    private final String bandwidthPackageType;
-    private final String createTime;
+    private String bandwidth;
+    private String bandwidthPackageBandwidth;
+    private String bandwidthPackageId;
+    private String bandwidthPackageType;
+    private String createTime;
     /**
      * @return (Optional, Available in v1.124.4+) Whether enable the deletion protection or not.
      * 
      */
-    private final Boolean deletionProtection;
-    private final String description;
-    private final String expiredTime;
-    private final String hasReservationData;
-    private final String hdMonitorStatus;
+    private Boolean deletionProtection;
+    private String description;
+    private String expiredTime;
+    private String hasReservationData;
+    private String hdMonitorStatus;
     /**
      * @return ID of the EIP.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the instance that is being bound.
      * 
      */
-    private final String instanceId;
-    private final String instanceRegionId;
+    private String instanceId;
+    private String instanceRegionId;
     /**
      * @return The instance type of that the EIP is bound.
      * 
      */
-    private final String instanceType;
+    private String instanceType;
     /**
      * @return EIP internet charge type.
      * 
      */
-    private final String internetChargeType;
+    private String internetChargeType;
     /**
      * @return Public IP Address of the the EIP.
      * 
      */
-    private final String ipAddress;
-    private final String isp;
-    private final List<String> operationLocks;
-    private final String paymentType;
-    private final String reservationActiveTime;
-    private final String reservationBandwidth;
-    private final String reservationInternetChargeType;
-    private final String reservationOrderType;
+    private String ipAddress;
+    private String isp;
+    private List<String> operationLocks;
+    private String paymentType;
+    private String reservationActiveTime;
+    private String reservationBandwidth;
+    private String reservationInternetChargeType;
+    private String reservationOrderType;
     /**
      * @return The Id of resource group which the eips belongs.
      * 
      */
-    private final String resourceGroupId;
-    private final Boolean secondLimited;
-    private final String segmentInstanceId;
+    private String resourceGroupId;
+    private Boolean secondLimited;
+    private String segmentInstanceId;
     /**
      * @return EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetEipsAddress(
-        @CustomType.Parameter("addressName") String addressName,
-        @CustomType.Parameter("allocationId") String allocationId,
-        @CustomType.Parameter("availableRegions") List<String> availableRegions,
-        @CustomType.Parameter("bandwidth") String bandwidth,
-        @CustomType.Parameter("bandwidthPackageBandwidth") String bandwidthPackageBandwidth,
-        @CustomType.Parameter("bandwidthPackageId") String bandwidthPackageId,
-        @CustomType.Parameter("bandwidthPackageType") String bandwidthPackageType,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("deletionProtection") Boolean deletionProtection,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("hasReservationData") String hasReservationData,
-        @CustomType.Parameter("hdMonitorStatus") String hdMonitorStatus,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("instanceRegionId") String instanceRegionId,
-        @CustomType.Parameter("instanceType") String instanceType,
-        @CustomType.Parameter("internetChargeType") String internetChargeType,
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("isp") String isp,
-        @CustomType.Parameter("operationLocks") List<String> operationLocks,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("reservationActiveTime") String reservationActiveTime,
-        @CustomType.Parameter("reservationBandwidth") String reservationBandwidth,
-        @CustomType.Parameter("reservationInternetChargeType") String reservationInternetChargeType,
-        @CustomType.Parameter("reservationOrderType") String reservationOrderType,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("secondLimited") Boolean secondLimited,
-        @CustomType.Parameter("segmentInstanceId") String segmentInstanceId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") Map<String,Object> tags) {
-        this.addressName = addressName;
-        this.allocationId = allocationId;
-        this.availableRegions = availableRegions;
-        this.bandwidth = bandwidth;
-        this.bandwidthPackageBandwidth = bandwidthPackageBandwidth;
-        this.bandwidthPackageId = bandwidthPackageId;
-        this.bandwidthPackageType = bandwidthPackageType;
-        this.createTime = createTime;
-        this.deletionProtection = deletionProtection;
-        this.description = description;
-        this.expiredTime = expiredTime;
-        this.hasReservationData = hasReservationData;
-        this.hdMonitorStatus = hdMonitorStatus;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.instanceRegionId = instanceRegionId;
-        this.instanceType = instanceType;
-        this.internetChargeType = internetChargeType;
-        this.ipAddress = ipAddress;
-        this.isp = isp;
-        this.operationLocks = operationLocks;
-        this.paymentType = paymentType;
-        this.reservationActiveTime = reservationActiveTime;
-        this.reservationBandwidth = reservationBandwidth;
-        this.reservationInternetChargeType = reservationInternetChargeType;
-        this.reservationOrderType = reservationOrderType;
-        this.resourceGroupId = resourceGroupId;
-        this.secondLimited = secondLimited;
-        this.segmentInstanceId = segmentInstanceId;
-        this.status = status;
-        this.tags = tags;
-    }
-
+    private GetEipsAddress() {}
     public String addressName() {
         return this.addressName;
     }
@@ -292,7 +227,7 @@ public final class GetEipsAddress {
     public static Builder builder(GetEipsAddress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String addressName;
         private String allocationId;
@@ -325,11 +260,7 @@ public final class GetEipsAddress {
         private String segmentInstanceId;
         private String status;
         private Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEipsAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addressName = defaults.addressName;
@@ -365,14 +296,17 @@ public final class GetEipsAddress {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder addressName(String addressName) {
             this.addressName = Objects.requireNonNull(addressName);
             return this;
         }
+        @CustomType.Setter
         public Builder allocationId(String allocationId) {
             this.allocationId = Objects.requireNonNull(allocationId);
             return this;
         }
+        @CustomType.Setter
         public Builder availableRegions(List<String> availableRegions) {
             this.availableRegions = Objects.requireNonNull(availableRegions);
             return this;
@@ -380,74 +314,92 @@ public final class GetEipsAddress {
         public Builder availableRegions(String... availableRegions) {
             return availableRegions(List.of(availableRegions));
         }
+        @CustomType.Setter
         public Builder bandwidth(String bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidthPackageBandwidth(String bandwidthPackageBandwidth) {
             this.bandwidthPackageBandwidth = Objects.requireNonNull(bandwidthPackageBandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidthPackageId(String bandwidthPackageId) {
             this.bandwidthPackageId = Objects.requireNonNull(bandwidthPackageId);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidthPackageType(String bandwidthPackageType) {
             this.bandwidthPackageType = Objects.requireNonNull(bandwidthPackageType);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
             this.deletionProtection = Objects.requireNonNull(deletionProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder hasReservationData(String hasReservationData) {
             this.hasReservationData = Objects.requireNonNull(hasReservationData);
             return this;
         }
+        @CustomType.Setter
         public Builder hdMonitorStatus(String hdMonitorStatus) {
             this.hdMonitorStatus = Objects.requireNonNull(hdMonitorStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceRegionId(String instanceRegionId) {
             this.instanceRegionId = Objects.requireNonNull(instanceRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
             this.internetChargeType = Objects.requireNonNull(internetChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder isp(String isp) {
             this.isp = Objects.requireNonNull(isp);
             return this;
         }
+        @CustomType.Setter
         public Builder operationLocks(List<String> operationLocks) {
             this.operationLocks = Objects.requireNonNull(operationLocks);
             return this;
@@ -455,47 +407,90 @@ public final class GetEipsAddress {
         public Builder operationLocks(String... operationLocks) {
             return operationLocks(List.of(operationLocks));
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder reservationActiveTime(String reservationActiveTime) {
             this.reservationActiveTime = Objects.requireNonNull(reservationActiveTime);
             return this;
         }
+        @CustomType.Setter
         public Builder reservationBandwidth(String reservationBandwidth) {
             this.reservationBandwidth = Objects.requireNonNull(reservationBandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder reservationInternetChargeType(String reservationInternetChargeType) {
             this.reservationInternetChargeType = Objects.requireNonNull(reservationInternetChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder reservationOrderType(String reservationOrderType) {
             this.reservationOrderType = Objects.requireNonNull(reservationOrderType);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder secondLimited(Boolean secondLimited) {
             this.secondLimited = Objects.requireNonNull(secondLimited);
             return this;
         }
+        @CustomType.Setter
         public Builder segmentInstanceId(String segmentInstanceId) {
             this.segmentInstanceId = Objects.requireNonNull(segmentInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
-        }        public GetEipsAddress build() {
-            return new GetEipsAddress(addressName, allocationId, availableRegions, bandwidth, bandwidthPackageBandwidth, bandwidthPackageId, bandwidthPackageType, createTime, deletionProtection, description, expiredTime, hasReservationData, hdMonitorStatus, id, instanceId, instanceRegionId, instanceType, internetChargeType, ipAddress, isp, operationLocks, paymentType, reservationActiveTime, reservationBandwidth, reservationInternetChargeType, reservationOrderType, resourceGroupId, secondLimited, segmentInstanceId, status, tags);
+        }
+        public GetEipsAddress build() {
+            final var o = new GetEipsAddress();
+            o.addressName = addressName;
+            o.allocationId = allocationId;
+            o.availableRegions = availableRegions;
+            o.bandwidth = bandwidth;
+            o.bandwidthPackageBandwidth = bandwidthPackageBandwidth;
+            o.bandwidthPackageId = bandwidthPackageId;
+            o.bandwidthPackageType = bandwidthPackageType;
+            o.createTime = createTime;
+            o.deletionProtection = deletionProtection;
+            o.description = description;
+            o.expiredTime = expiredTime;
+            o.hasReservationData = hasReservationData;
+            o.hdMonitorStatus = hdMonitorStatus;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.instanceRegionId = instanceRegionId;
+            o.instanceType = instanceType;
+            o.internetChargeType = internetChargeType;
+            o.ipAddress = ipAddress;
+            o.isp = isp;
+            o.operationLocks = operationLocks;
+            o.paymentType = paymentType;
+            o.reservationActiveTime = reservationActiveTime;
+            o.reservationBandwidth = reservationBandwidth;
+            o.reservationInternetChargeType = reservationInternetChargeType;
+            o.reservationOrderType = reservationOrderType;
+            o.resourceGroupId = resourceGroupId;
+            o.secondLimited = secondLimited;
+            o.segmentInstanceId = segmentInstanceId;
+            o.status = status;
+            o.tags = tags;
+            return o;
         }
     }
 }

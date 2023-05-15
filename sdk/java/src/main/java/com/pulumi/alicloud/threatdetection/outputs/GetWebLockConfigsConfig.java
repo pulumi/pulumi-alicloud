@@ -13,77 +13,54 @@ public final class GetWebLockConfigsConfig {
      * @return The prevention mode.
      * 
      */
-    private final String defenceMode;
+    private String defenceMode;
     /**
      * @return The directory that has web tamper proofing enabled.
      * 
      */
-    private final String dir;
+    private String dir;
     /**
      * @return The directory that has web tamper proofing disabled.
      * 
      */
-    private final String exclusiveDir;
+    private String exclusiveDir;
     /**
      * @return The file that has web tamper proofing disabled. **Note:** If the value of `mode` is `blacklist`, this parameter is returned.
      * 
      */
-    private final String exclusiveFile;
+    private String exclusiveFile;
     /**
      * @return The type of the file that has web tamper proofing disabled. **Note:** If the value of `mode` is `blacklist`, this parameter is returned.
      * 
      */
-    private final String exclusiveFileType;
+    private String exclusiveFileType;
     /**
      * @return The ID of the resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The type of the file that has web tamper proofing enabled. **Note:** If the value of `mode` is `whitelist`, this parameter is returned.
      * 
      */
-    private final String inclusiveFileType;
+    private String inclusiveFileType;
     /**
      * @return The local path to the backup files of the protected directory.
      * 
      */
-    private final String localBackupDir;
+    private String localBackupDir;
     /**
      * @return The protection mode of web tamper proofing.
      * 
      */
-    private final String mode;
+    private String mode;
     /**
      * @return The UUID of the server that has web tamper proofing enabled.
      * 
      */
-    private final String uuid;
+    private String uuid;
 
-    @CustomType.Constructor
-    private GetWebLockConfigsConfig(
-        @CustomType.Parameter("defenceMode") String defenceMode,
-        @CustomType.Parameter("dir") String dir,
-        @CustomType.Parameter("exclusiveDir") String exclusiveDir,
-        @CustomType.Parameter("exclusiveFile") String exclusiveFile,
-        @CustomType.Parameter("exclusiveFileType") String exclusiveFileType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("inclusiveFileType") String inclusiveFileType,
-        @CustomType.Parameter("localBackupDir") String localBackupDir,
-        @CustomType.Parameter("mode") String mode,
-        @CustomType.Parameter("uuid") String uuid) {
-        this.defenceMode = defenceMode;
-        this.dir = dir;
-        this.exclusiveDir = exclusiveDir;
-        this.exclusiveFile = exclusiveFile;
-        this.exclusiveFileType = exclusiveFileType;
-        this.id = id;
-        this.inclusiveFileType = inclusiveFileType;
-        this.localBackupDir = localBackupDir;
-        this.mode = mode;
-        this.uuid = uuid;
-    }
-
+    private GetWebLockConfigsConfig() {}
     /**
      * @return The prevention mode.
      * 
@@ -162,7 +139,7 @@ public final class GetWebLockConfigsConfig {
     public static Builder builder(GetWebLockConfigsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String defenceMode;
         private String dir;
@@ -174,11 +151,7 @@ public final class GetWebLockConfigsConfig {
         private String localBackupDir;
         private String mode;
         private String uuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWebLockConfigsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defenceMode = defaults.defenceMode;
@@ -193,47 +166,69 @@ public final class GetWebLockConfigsConfig {
     	      this.uuid = defaults.uuid;
         }
 
+        @CustomType.Setter
         public Builder defenceMode(String defenceMode) {
             this.defenceMode = Objects.requireNonNull(defenceMode);
             return this;
         }
+        @CustomType.Setter
         public Builder dir(String dir) {
             this.dir = Objects.requireNonNull(dir);
             return this;
         }
+        @CustomType.Setter
         public Builder exclusiveDir(String exclusiveDir) {
             this.exclusiveDir = Objects.requireNonNull(exclusiveDir);
             return this;
         }
+        @CustomType.Setter
         public Builder exclusiveFile(String exclusiveFile) {
             this.exclusiveFile = Objects.requireNonNull(exclusiveFile);
             return this;
         }
+        @CustomType.Setter
         public Builder exclusiveFileType(String exclusiveFileType) {
             this.exclusiveFileType = Objects.requireNonNull(exclusiveFileType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inclusiveFileType(String inclusiveFileType) {
             this.inclusiveFileType = Objects.requireNonNull(inclusiveFileType);
             return this;
         }
+        @CustomType.Setter
         public Builder localBackupDir(String localBackupDir) {
             this.localBackupDir = Objects.requireNonNull(localBackupDir);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder uuid(String uuid) {
             this.uuid = Objects.requireNonNull(uuid);
             return this;
-        }        public GetWebLockConfigsConfig build() {
-            return new GetWebLockConfigsConfig(defenceMode, dir, exclusiveDir, exclusiveFile, exclusiveFileType, id, inclusiveFileType, localBackupDir, mode, uuid);
+        }
+        public GetWebLockConfigsConfig build() {
+            final var o = new GetWebLockConfigsConfig();
+            o.defenceMode = defenceMode;
+            o.dir = dir;
+            o.exclusiveDir = exclusiveDir;
+            o.exclusiveFile = exclusiveFile;
+            o.exclusiveFileType = exclusiveFileType;
+            o.id = id;
+            o.inclusiveFileType = inclusiveFileType;
+            o.localBackupDir = localBackupDir;
+            o.mode = mode;
+            o.uuid = uuid;
+            return o;
         }
     }
 }

@@ -15,48 +15,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupPlansResult {
-    private final @Nullable String backupPlanName;
-    private final @Nullable Boolean enableDetails;
+    private @Nullable String backupPlanName;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final List<GetBackupPlansPlan> plans;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private List<GetBackupPlansPlan> plans;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetBackupPlansResult(
-        @CustomType.Parameter("backupPlanName") @Nullable String backupPlanName,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("plans") List<GetBackupPlansPlan> plans,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.backupPlanName = backupPlanName;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.plans = plans;
-        this.status = status;
-    }
-
+    private GetBackupPlansResult() {}
     public Optional<String> backupPlanName() {
         return Optional.ofNullable(this.backupPlanName);
     }
@@ -102,7 +77,7 @@ public final class GetBackupPlansResult {
     public static Builder builder(GetBackupPlansResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String backupPlanName;
         private @Nullable Boolean enableDetails;
@@ -115,11 +90,7 @@ public final class GetBackupPlansResult {
         private @Nullable Integer pageSize;
         private List<GetBackupPlansPlan> plans;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackupPlansResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupPlanName = defaults.backupPlanName;
@@ -135,18 +106,22 @@ public final class GetBackupPlansResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder backupPlanName(@Nullable String backupPlanName) {
             this.backupPlanName = backupPlanName;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -154,10 +129,12 @@ public final class GetBackupPlansResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -165,18 +142,22 @@ public final class GetBackupPlansResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder plans(List<GetBackupPlansPlan> plans) {
             this.plans = Objects.requireNonNull(plans);
             return this;
@@ -184,11 +165,25 @@ public final class GetBackupPlansResult {
         public Builder plans(GetBackupPlansPlan... plans) {
             return plans(List.of(plans));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetBackupPlansResult build() {
-            return new GetBackupPlansResult(backupPlanName, enableDetails, id, ids, nameRegex, names, outputFile, pageNumber, pageSize, plans, status);
+        }
+        public GetBackupPlansResult build() {
+            final var o = new GetBackupPlansResult();
+            o.backupPlanName = backupPlanName;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.plans = plans;
+            o.status = status;
+            return o;
         }
     }
 }

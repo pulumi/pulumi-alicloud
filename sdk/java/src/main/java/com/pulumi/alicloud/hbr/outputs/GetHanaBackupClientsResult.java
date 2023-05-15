@@ -18,61 +18,38 @@ public final class GetHanaBackupClientsResult {
      * @return The ID of the backup client.
      * 
      */
-    private final @Nullable String clientId;
+    private @Nullable String clientId;
     /**
      * @return The ID of the SAP HANA instance.
      * 
      */
-    private final @Nullable String clusterId;
+    private @Nullable String clusterId;
     /**
      * @return A list of Hana Backup Clients. Each element contains the following attributes:
      * 
      */
-    private final List<GetHanaBackupClientsHanaBackupClient> hanaBackupClients;
+    private List<GetHanaBackupClientsHanaBackupClient> hanaBackupClients;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
     /**
      * @return The status of the backup client.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return The ID of the backup vault.
      * 
      */
-    private final String vaultId;
+    private String vaultId;
 
-    @CustomType.Constructor
-    private GetHanaBackupClientsResult(
-        @CustomType.Parameter("clientId") @Nullable String clientId,
-        @CustomType.Parameter("clusterId") @Nullable String clusterId,
-        @CustomType.Parameter("hanaBackupClients") List<GetHanaBackupClientsHanaBackupClient> hanaBackupClients,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("vaultId") String vaultId) {
-        this.clientId = clientId;
-        this.clusterId = clusterId;
-        this.hanaBackupClients = hanaBackupClients;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.status = status;
-        this.vaultId = vaultId;
-    }
-
+    private GetHanaBackupClientsResult() {}
     /**
      * @return The ID of the backup client.
      * 
@@ -135,7 +112,7 @@ public final class GetHanaBackupClientsResult {
     public static Builder builder(GetHanaBackupClientsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clientId;
         private @Nullable String clusterId;
@@ -147,11 +124,7 @@ public final class GetHanaBackupClientsResult {
         private @Nullable Integer pageSize;
         private @Nullable String status;
         private String vaultId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHanaBackupClientsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientId = defaults.clientId;
@@ -166,14 +139,17 @@ public final class GetHanaBackupClientsResult {
     	      this.vaultId = defaults.vaultId;
         }
 
+        @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
             this.clientId = clientId;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(@Nullable String clusterId) {
             this.clusterId = clusterId;
             return this;
         }
+        @CustomType.Setter
         public Builder hanaBackupClients(List<GetHanaBackupClientsHanaBackupClient> hanaBackupClients) {
             this.hanaBackupClients = Objects.requireNonNull(hanaBackupClients);
             return this;
@@ -181,10 +157,12 @@ public final class GetHanaBackupClientsResult {
         public Builder hanaBackupClients(GetHanaBackupClientsHanaBackupClient... hanaBackupClients) {
             return hanaBackupClients(List.of(hanaBackupClients));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -192,27 +170,44 @@ public final class GetHanaBackupClientsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
-        }        public GetHanaBackupClientsResult build() {
-            return new GetHanaBackupClientsResult(clientId, clusterId, hanaBackupClients, id, ids, outputFile, pageNumber, pageSize, status, vaultId);
+        }
+        public GetHanaBackupClientsResult build() {
+            final var o = new GetHanaBackupClientsResult();
+            o.clientId = clientId;
+            o.clusterId = clusterId;
+            o.hanaBackupClients = hanaBackupClients;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.status = status;
+            o.vaultId = vaultId;
+            return o;
         }
     }
 }

@@ -16,35 +16,24 @@ public final class ClusterNodeGroupSystemDisk {
      * @return The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
      * 
      */
-    private final String category;
+    private String category;
     /**
      * @return The count of a data disk.
      * 
      */
-    private final @Nullable Integer count;
+    private @Nullable Integer count;
     /**
      * @return Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
      * 
      */
-    private final @Nullable String performanceLevel;
+    private @Nullable String performanceLevel;
     /**
      * @return The size of a data disk, at least 40. Unit: GiB.
      * 
      */
-    private final Integer size;
+    private Integer size;
 
-    @CustomType.Constructor
-    private ClusterNodeGroupSystemDisk(
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("count") @Nullable Integer count,
-        @CustomType.Parameter("performanceLevel") @Nullable String performanceLevel,
-        @CustomType.Parameter("size") Integer size) {
-        this.category = category;
-        this.count = count;
-        this.performanceLevel = performanceLevel;
-        this.size = size;
-    }
-
+    private ClusterNodeGroupSystemDisk() {}
     /**
      * @return The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
      * 
@@ -81,17 +70,13 @@ public final class ClusterNodeGroupSystemDisk {
     public static Builder builder(ClusterNodeGroupSystemDisk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String category;
         private @Nullable Integer count;
         private @Nullable String performanceLevel;
         private Integer size;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodeGroupSystemDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -100,23 +85,33 @@ public final class ClusterNodeGroupSystemDisk {
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder count(@Nullable Integer count) {
             this.count = count;
             return this;
         }
+        @CustomType.Setter
         public Builder performanceLevel(@Nullable String performanceLevel) {
             this.performanceLevel = performanceLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
-        }        public ClusterNodeGroupSystemDisk build() {
-            return new ClusterNodeGroupSystemDisk(category, count, performanceLevel, size);
+        }
+        public ClusterNodeGroupSystemDisk build() {
+            final var o = new ClusterNodeGroupSystemDisk();
+            o.category = category;
+            o.count = count;
+            o.performanceLevel = performanceLevel;
+            o.size = size;
+            return o;
         }
     }
 }

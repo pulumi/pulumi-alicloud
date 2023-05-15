@@ -15,21 +15,14 @@ public final class AggregateCompliancePackConfigRuleConfigRuleParameter {
      * @return The Parameter Name.
      * 
      */
-    private final @Nullable String parameterName;
+    private @Nullable String parameterName;
     /**
      * @return The Parameter Value.
      * 
      */
-    private final @Nullable String parameterValue;
+    private @Nullable String parameterValue;
 
-    @CustomType.Constructor
-    private AggregateCompliancePackConfigRuleConfigRuleParameter(
-        @CustomType.Parameter("parameterName") @Nullable String parameterName,
-        @CustomType.Parameter("parameterValue") @Nullable String parameterValue) {
-        this.parameterName = parameterName;
-        this.parameterValue = parameterValue;
-    }
-
+    private AggregateCompliancePackConfigRuleConfigRuleParameter() {}
     /**
      * @return The Parameter Name.
      * 
@@ -52,30 +45,32 @@ public final class AggregateCompliancePackConfigRuleConfigRuleParameter {
     public static Builder builder(AggregateCompliancePackConfigRuleConfigRuleParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String parameterName;
         private @Nullable String parameterValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AggregateCompliancePackConfigRuleConfigRuleParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.parameterName = defaults.parameterName;
     	      this.parameterValue = defaults.parameterValue;
         }
 
+        @CustomType.Setter
         public Builder parameterName(@Nullable String parameterName) {
             this.parameterName = parameterName;
             return this;
         }
+        @CustomType.Setter
         public Builder parameterValue(@Nullable String parameterValue) {
             this.parameterValue = parameterValue;
             return this;
-        }        public AggregateCompliancePackConfigRuleConfigRuleParameter build() {
-            return new AggregateCompliancePackConfigRuleConfigRuleParameter(parameterName, parameterValue);
+        }
+        public AggregateCompliancePackConfigRuleConfigRuleParameter build() {
+            final var o = new AggregateCompliancePackConfigRuleConfigRuleParameter();
+            o.parameterName = parameterName;
+            o.parameterValue = parameterValue;
+            return o;
         }
     }
 }

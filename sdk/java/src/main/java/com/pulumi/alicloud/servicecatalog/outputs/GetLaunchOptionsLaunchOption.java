@@ -15,35 +15,24 @@ public final class GetLaunchOptionsLaunchOption {
      * @return List of constraints.
      * 
      */
-    private final List<GetLaunchOptionsLaunchOptionConstraintSummary> constraintSummaries;
+    private List<GetLaunchOptionsLaunchOptionConstraintSummary> constraintSummaries;
     /**
      * @return ID of Service Catalog Launch Option.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Product mix ID.
      * 
      */
-    private final String portfolioId;
+    private String portfolioId;
     /**
      * @return Product portfolio name.
      * 
      */
-    private final String portfolioName;
+    private String portfolioName;
 
-    @CustomType.Constructor
-    private GetLaunchOptionsLaunchOption(
-        @CustomType.Parameter("constraintSummaries") List<GetLaunchOptionsLaunchOptionConstraintSummary> constraintSummaries,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("portfolioId") String portfolioId,
-        @CustomType.Parameter("portfolioName") String portfolioName) {
-        this.constraintSummaries = constraintSummaries;
-        this.id = id;
-        this.portfolioId = portfolioId;
-        this.portfolioName = portfolioName;
-    }
-
+    private GetLaunchOptionsLaunchOption() {}
     /**
      * @return List of constraints.
      * 
@@ -80,17 +69,13 @@ public final class GetLaunchOptionsLaunchOption {
     public static Builder builder(GetLaunchOptionsLaunchOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetLaunchOptionsLaunchOptionConstraintSummary> constraintSummaries;
         private String id;
         private String portfolioId;
         private String portfolioName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLaunchOptionsLaunchOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.constraintSummaries = defaults.constraintSummaries;
@@ -99,6 +84,7 @@ public final class GetLaunchOptionsLaunchOption {
     	      this.portfolioName = defaults.portfolioName;
         }
 
+        @CustomType.Setter
         public Builder constraintSummaries(List<GetLaunchOptionsLaunchOptionConstraintSummary> constraintSummaries) {
             this.constraintSummaries = Objects.requireNonNull(constraintSummaries);
             return this;
@@ -106,19 +92,28 @@ public final class GetLaunchOptionsLaunchOption {
         public Builder constraintSummaries(GetLaunchOptionsLaunchOptionConstraintSummary... constraintSummaries) {
             return constraintSummaries(List.of(constraintSummaries));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder portfolioId(String portfolioId) {
             this.portfolioId = Objects.requireNonNull(portfolioId);
             return this;
         }
+        @CustomType.Setter
         public Builder portfolioName(String portfolioName) {
             this.portfolioName = Objects.requireNonNull(portfolioName);
             return this;
-        }        public GetLaunchOptionsLaunchOption build() {
-            return new GetLaunchOptionsLaunchOption(constraintSummaries, id, portfolioId, portfolioName);
+        }
+        public GetLaunchOptionsLaunchOption build() {
+            final var o = new GetLaunchOptionsLaunchOption();
+            o.constraintSummaries = constraintSummaries;
+            o.id = id;
+            o.portfolioId = portfolioId;
+            o.portfolioName = portfolioName;
+            return o;
         }
     }
 }

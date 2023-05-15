@@ -18,36 +18,19 @@ public final class GetWafRulesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final @Nullable String queryArgs;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private @Nullable String queryArgs;
     /**
      * @return A list of Waf Rule Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetWafRulesWafRule> wafRules;
+    private List<GetWafRulesWafRule> wafRules;
 
-    @CustomType.Constructor
-    private GetWafRulesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("queryArgs") @Nullable String queryArgs,
-        @CustomType.Parameter("wafRules") List<GetWafRulesWafRule> wafRules) {
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.queryArgs = queryArgs;
-        this.wafRules = wafRules;
-    }
-
+    private GetWafRulesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -85,7 +68,7 @@ public final class GetWafRulesResult {
     public static Builder builder(GetWafRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -94,11 +77,7 @@ public final class GetWafRulesResult {
         private @Nullable Integer pageSize;
         private @Nullable String queryArgs;
         private List<GetWafRulesWafRule> wafRules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWafRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -110,10 +89,12 @@ public final class GetWafRulesResult {
     	      this.wafRules = defaults.wafRules;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -121,30 +102,44 @@ public final class GetWafRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder queryArgs(@Nullable String queryArgs) {
             this.queryArgs = queryArgs;
             return this;
         }
+        @CustomType.Setter
         public Builder wafRules(List<GetWafRulesWafRule> wafRules) {
             this.wafRules = Objects.requireNonNull(wafRules);
             return this;
         }
         public Builder wafRules(GetWafRulesWafRule... wafRules) {
             return wafRules(List.of(wafRules));
-        }        public GetWafRulesResult build() {
-            return new GetWafRulesResult(id, ids, outputFile, pageNumber, pageSize, queryArgs, wafRules);
+        }
+        public GetWafRulesResult build() {
+            final var o = new GetWafRulesResult();
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.queryArgs = queryArgs;
+            o.wafRules = wafRules;
+            return o;
         }
     }
 }

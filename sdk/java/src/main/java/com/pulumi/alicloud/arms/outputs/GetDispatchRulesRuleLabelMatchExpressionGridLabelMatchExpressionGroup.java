@@ -14,13 +14,9 @@ public final class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpress
      * @return Sets the dispatch rule.
      * 
      */
-    private final List<GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression> labelMatchExpressions;
+    private List<GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression> labelMatchExpressions;
 
-    @CustomType.Constructor
-    private GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup(@CustomType.Parameter("labelMatchExpressions") List<GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression> labelMatchExpressions) {
-        this.labelMatchExpressions = labelMatchExpressions;
-    }
-
+    private GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup() {}
     /**
      * @return Sets the dispatch rule.
      * 
@@ -36,27 +32,27 @@ public final class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpress
     public static Builder builder(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression> labelMatchExpressions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.labelMatchExpressions = defaults.labelMatchExpressions;
         }
 
+        @CustomType.Setter
         public Builder labelMatchExpressions(List<GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression> labelMatchExpressions) {
             this.labelMatchExpressions = Objects.requireNonNull(labelMatchExpressions);
             return this;
         }
         public Builder labelMatchExpressions(GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression... labelMatchExpressions) {
             return labelMatchExpressions(List.of(labelMatchExpressions));
-        }        public GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup build() {
-            return new GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup(labelMatchExpressions);
+        }
+        public GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup build() {
+            final var o = new GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroup();
+            o.labelMatchExpressions = labelMatchExpressions;
+            return o;
         }
     }
 }

@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class DbInstanceEndpointNodeItem {
-    private final String nodeId;
-    private final Integer weight;
+    private String nodeId;
+    private Integer weight;
 
-    @CustomType.Constructor
-    private DbInstanceEndpointNodeItem(
-        @CustomType.Parameter("nodeId") String nodeId,
-        @CustomType.Parameter("weight") Integer weight) {
-        this.nodeId = nodeId;
-        this.weight = weight;
-    }
-
+    private DbInstanceEndpointNodeItem() {}
     public String nodeId() {
         return this.nodeId;
     }
@@ -35,30 +28,32 @@ public final class DbInstanceEndpointNodeItem {
     public static Builder builder(DbInstanceEndpointNodeItem defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String nodeId;
         private Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DbInstanceEndpointNodeItem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nodeId = defaults.nodeId;
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder nodeId(String nodeId) {
             this.nodeId = Objects.requireNonNull(nodeId);
             return this;
         }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             this.weight = Objects.requireNonNull(weight);
             return this;
-        }        public DbInstanceEndpointNodeItem build() {
-            return new DbInstanceEndpointNodeItem(nodeId, weight);
+        }
+        public DbInstanceEndpointNodeItem build() {
+            final var o = new DbInstanceEndpointNodeItem();
+            o.nodeId = nodeId;
+            o.weight = weight;
+            return o;
         }
     }
 }

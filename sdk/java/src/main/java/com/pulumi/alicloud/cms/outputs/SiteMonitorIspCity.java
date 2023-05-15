@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class SiteMonitorIspCity {
-    private final String city;
-    private final String isp;
+    private String city;
+    private String isp;
 
-    @CustomType.Constructor
-    private SiteMonitorIspCity(
-        @CustomType.Parameter("city") String city,
-        @CustomType.Parameter("isp") String isp) {
-        this.city = city;
-        this.isp = isp;
-    }
-
+    private SiteMonitorIspCity() {}
     public String city() {
         return this.city;
     }
@@ -34,30 +27,32 @@ public final class SiteMonitorIspCity {
     public static Builder builder(SiteMonitorIspCity defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String city;
         private String isp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SiteMonitorIspCity defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.city = defaults.city;
     	      this.isp = defaults.isp;
         }
 
+        @CustomType.Setter
         public Builder city(String city) {
             this.city = Objects.requireNonNull(city);
             return this;
         }
+        @CustomType.Setter
         public Builder isp(String isp) {
             this.isp = Objects.requireNonNull(isp);
             return this;
-        }        public SiteMonitorIspCity build() {
-            return new SiteMonitorIspCity(city, isp);
+        }
+        public SiteMonitorIspCity build() {
+            final var o = new SiteMonitorIspCity();
+            o.city = city;
+            o.isp = isp;
+            return o;
         }
     }
 }

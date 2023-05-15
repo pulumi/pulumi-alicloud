@@ -17,58 +17,37 @@ public final class GetTransitRouterMulticastDomainsResult {
      * @return A list of Cen Transit Router Multicast Domains. Each element contains the following attributes:
      * 
      */
-    private final List<GetTransitRouterMulticastDomainsDomain> domains;
+    private List<GetTransitRouterMulticastDomainsDomain> domains;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Transit Router Multicast Domain names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The status of the Transit Router Multicast Domain.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return The ID of the transit router.
      * 
      */
-    private final String transitRouterId;
+    private String transitRouterId;
     /**
      * @return The ID of the Transit Router Multicast Domain.
      * 
      */
-    private final @Nullable String transitRouterMulticastDomainId;
+    private @Nullable String transitRouterMulticastDomainId;
 
-    @CustomType.Constructor
-    private GetTransitRouterMulticastDomainsResult(
-        @CustomType.Parameter("domains") List<GetTransitRouterMulticastDomainsDomain> domains,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("transitRouterId") String transitRouterId,
-        @CustomType.Parameter("transitRouterMulticastDomainId") @Nullable String transitRouterMulticastDomainId) {
-        this.domains = domains;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-        this.transitRouterId = transitRouterId;
-        this.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-    }
-
+    private GetTransitRouterMulticastDomainsResult() {}
     /**
      * @return A list of Cen Transit Router Multicast Domains. Each element contains the following attributes:
      * 
@@ -128,7 +107,7 @@ public final class GetTransitRouterMulticastDomainsResult {
     public static Builder builder(GetTransitRouterMulticastDomainsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetTransitRouterMulticastDomainsDomain> domains;
         private String id;
@@ -139,11 +118,7 @@ public final class GetTransitRouterMulticastDomainsResult {
         private @Nullable String status;
         private String transitRouterId;
         private @Nullable String transitRouterMulticastDomainId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterMulticastDomainsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domains = defaults.domains;
@@ -157,6 +132,7 @@ public final class GetTransitRouterMulticastDomainsResult {
     	      this.transitRouterMulticastDomainId = defaults.transitRouterMulticastDomainId;
         }
 
+        @CustomType.Setter
         public Builder domains(List<GetTransitRouterMulticastDomainsDomain> domains) {
             this.domains = Objects.requireNonNull(domains);
             return this;
@@ -164,10 +140,12 @@ public final class GetTransitRouterMulticastDomainsResult {
         public Builder domains(GetTransitRouterMulticastDomainsDomain... domains) {
             return domains(List.of(domains));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -175,10 +153,12 @@ public final class GetTransitRouterMulticastDomainsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -186,23 +166,38 @@ public final class GetTransitRouterMulticastDomainsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterMulticastDomainId(@Nullable String transitRouterMulticastDomainId) {
             this.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
             return this;
-        }        public GetTransitRouterMulticastDomainsResult build() {
-            return new GetTransitRouterMulticastDomainsResult(domains, id, ids, nameRegex, names, outputFile, status, transitRouterId, transitRouterMulticastDomainId);
+        }
+        public GetTransitRouterMulticastDomainsResult build() {
+            final var o = new GetTransitRouterMulticastDomainsResult();
+            o.domains = domains;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            o.transitRouterId = transitRouterId;
+            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            return o;
         }
     }
 }

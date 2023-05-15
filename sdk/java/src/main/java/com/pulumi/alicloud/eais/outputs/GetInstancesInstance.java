@@ -13,70 +13,49 @@ public final class GetInstancesInstance {
      * @return The ID of the ECS instance to be bound.
      * 
      */
-    private final String clientInstanceId;
+    private String clientInstanceId;
     /**
      * @return The name of the ECS instance bound to the EAIS instance.
      * 
      */
-    private final String clientInstanceName;
+    private String clientInstanceName;
     /**
      * @return The type of the ECS instance bound to the EAIS instance.
      * 
      */
-    private final String clientInstanceType;
+    private String clientInstanceType;
     /**
      * @return The ID of the Instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the resource.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String instanceName;
+    private String instanceName;
     /**
      * @return The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
      * 
      */
-    private final String instanceType;
+    private String instanceType;
     /**
      * @return The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the region to which the EAIS instance belongs.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("clientInstanceId") String clientInstanceId,
-        @CustomType.Parameter("clientInstanceName") String clientInstanceName,
-        @CustomType.Parameter("clientInstanceType") String clientInstanceType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("instanceName") String instanceName,
-        @CustomType.Parameter("instanceType") String instanceType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.clientInstanceId = clientInstanceId;
-        this.clientInstanceName = clientInstanceName;
-        this.clientInstanceType = clientInstanceType;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.instanceName = instanceName;
-        this.instanceType = instanceType;
-        this.status = status;
-        this.zoneId = zoneId;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return The ID of the ECS instance to be bound.
      * 
@@ -148,7 +127,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clientInstanceId;
         private String clientInstanceName;
@@ -159,11 +138,7 @@ public final class GetInstancesInstance {
         private String instanceType;
         private String status;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientInstanceId = defaults.clientInstanceId;
@@ -177,43 +152,63 @@ public final class GetInstancesInstance {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder clientInstanceId(String clientInstanceId) {
             this.clientInstanceId = Objects.requireNonNull(clientInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder clientInstanceName(String clientInstanceName) {
             this.clientInstanceName = Objects.requireNonNull(clientInstanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder clientInstanceType(String clientInstanceType) {
             this.clientInstanceType = Objects.requireNonNull(clientInstanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceType(String instanceType) {
             this.instanceType = Objects.requireNonNull(instanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(clientInstanceId, clientInstanceName, clientInstanceType, id, instanceId, instanceName, instanceType, status, zoneId);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.clientInstanceId = clientInstanceId;
+            o.clientInstanceName = clientInstanceName;
+            o.clientInstanceType = clientInstanceType;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.instanceName = instanceName;
+            o.instanceType = instanceType;
+            o.status = status;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

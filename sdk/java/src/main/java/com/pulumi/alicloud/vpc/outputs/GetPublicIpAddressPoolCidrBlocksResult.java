@@ -17,48 +17,31 @@ public final class GetPublicIpAddressPoolCidrBlocksResult {
      * @return A list of Vpc Public Ip Address Pool Cidr Blocks. Each element contains the following attributes:
      * 
      */
-    private final List<GetPublicIpAddressPoolCidrBlocksBlock> blocks;
+    private List<GetPublicIpAddressPoolCidrBlocksBlock> blocks;
     /**
      * @return The CIDR block.
      * 
      */
-    private final @Nullable String cidrBlock;
+    private @Nullable String cidrBlock;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
     /**
      * @return The ID of the Vpc Public IP address pool.
      * 
      */
-    private final String publicIpAddressPoolId;
+    private String publicIpAddressPoolId;
     /**
      * @return The status of the CIDR block in the Vpc Public IP address pool.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetPublicIpAddressPoolCidrBlocksResult(
-        @CustomType.Parameter("blocks") List<GetPublicIpAddressPoolCidrBlocksBlock> blocks,
-        @CustomType.Parameter("cidrBlock") @Nullable String cidrBlock,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("publicIpAddressPoolId") String publicIpAddressPoolId,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.blocks = blocks;
-        this.cidrBlock = cidrBlock;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.publicIpAddressPoolId = publicIpAddressPoolId;
-        this.status = status;
-    }
-
+    private GetPublicIpAddressPoolCidrBlocksResult() {}
     /**
      * @return A list of Vpc Public Ip Address Pool Cidr Blocks. Each element contains the following attributes:
      * 
@@ -108,7 +91,7 @@ public final class GetPublicIpAddressPoolCidrBlocksResult {
     public static Builder builder(GetPublicIpAddressPoolCidrBlocksResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetPublicIpAddressPoolCidrBlocksBlock> blocks;
         private @Nullable String cidrBlock;
@@ -117,11 +100,7 @@ public final class GetPublicIpAddressPoolCidrBlocksResult {
         private @Nullable String outputFile;
         private String publicIpAddressPoolId;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPublicIpAddressPoolCidrBlocksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.blocks = defaults.blocks;
@@ -133,6 +112,7 @@ public final class GetPublicIpAddressPoolCidrBlocksResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder blocks(List<GetPublicIpAddressPoolCidrBlocksBlock> blocks) {
             this.blocks = Objects.requireNonNull(blocks);
             return this;
@@ -140,14 +120,17 @@ public final class GetPublicIpAddressPoolCidrBlocksResult {
         public Builder blocks(GetPublicIpAddressPoolCidrBlocksBlock... blocks) {
             return blocks(List.of(blocks));
         }
+        @CustomType.Setter
         public Builder cidrBlock(@Nullable String cidrBlock) {
             this.cidrBlock = cidrBlock;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -155,19 +138,31 @@ public final class GetPublicIpAddressPoolCidrBlocksResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder publicIpAddressPoolId(String publicIpAddressPoolId) {
             this.publicIpAddressPoolId = Objects.requireNonNull(publicIpAddressPoolId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetPublicIpAddressPoolCidrBlocksResult build() {
-            return new GetPublicIpAddressPoolCidrBlocksResult(blocks, cidrBlock, id, ids, outputFile, publicIpAddressPoolId, status);
+        }
+        public GetPublicIpAddressPoolCidrBlocksResult build() {
+            final var o = new GetPublicIpAddressPoolCidrBlocksResult();
+            o.blocks = blocks;
+            o.cidrBlock = cidrBlock;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.publicIpAddressPoolId = publicIpAddressPoolId;
+            o.status = status;
+            return o;
         }
     }
 }

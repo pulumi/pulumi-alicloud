@@ -18,46 +18,25 @@ public final class GetEndUserProductsResult {
      * @return A list of End User Product Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetEndUserProductsEndUserProduct> endUserProducts;
+    private List<GetEndUserProductsEndUserProduct> endUserProducts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of End User Product IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final @Nullable String sortBy;
-    private final @Nullable String sortOrder;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private @Nullable String sortBy;
+    private @Nullable String sortOrder;
 
-    @CustomType.Constructor
-    private GetEndUserProductsResult(
-        @CustomType.Parameter("endUserProducts") List<GetEndUserProductsEndUserProduct> endUserProducts,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("sortBy") @Nullable String sortBy,
-        @CustomType.Parameter("sortOrder") @Nullable String sortOrder) {
-        this.endUserProducts = endUserProducts;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.sortBy = sortBy;
-        this.sortOrder = sortOrder;
-    }
-
+    private GetEndUserProductsResult() {}
     /**
      * @return A list of End User Product Entries. Each element contains the following attributes:
      * 
@@ -105,7 +84,7 @@ public final class GetEndUserProductsResult {
     public static Builder builder(GetEndUserProductsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetEndUserProductsEndUserProduct> endUserProducts;
         private String id;
@@ -116,11 +95,7 @@ public final class GetEndUserProductsResult {
         private @Nullable Integer pageSize;
         private @Nullable String sortBy;
         private @Nullable String sortOrder;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEndUserProductsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endUserProducts = defaults.endUserProducts;
@@ -134,6 +109,7 @@ public final class GetEndUserProductsResult {
     	      this.sortOrder = defaults.sortOrder;
         }
 
+        @CustomType.Setter
         public Builder endUserProducts(List<GetEndUserProductsEndUserProduct> endUserProducts) {
             this.endUserProducts = Objects.requireNonNull(endUserProducts);
             return this;
@@ -141,10 +117,12 @@ public final class GetEndUserProductsResult {
         public Builder endUserProducts(GetEndUserProductsEndUserProduct... endUserProducts) {
             return endUserProducts(List.of(endUserProducts));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -152,31 +130,48 @@ public final class GetEndUserProductsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder sortBy(@Nullable String sortBy) {
             this.sortBy = sortBy;
             return this;
         }
+        @CustomType.Setter
         public Builder sortOrder(@Nullable String sortOrder) {
             this.sortOrder = sortOrder;
             return this;
-        }        public GetEndUserProductsResult build() {
-            return new GetEndUserProductsResult(endUserProducts, id, ids, nameRegex, outputFile, pageNumber, pageSize, sortBy, sortOrder);
+        }
+        public GetEndUserProductsResult build() {
+            final var o = new GetEndUserProductsResult();
+            o.endUserProducts = endUserProducts;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.sortBy = sortBy;
+            o.sortOrder = sortOrder;
+            return o;
         }
     }
 }

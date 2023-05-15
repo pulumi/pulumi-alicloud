@@ -15,21 +15,14 @@ public final class EdgeKubernetesLogConfig {
      * @return Log Service project name, cluster logs will output to this project.
      * 
      */
-    private final @Nullable String project;
+    private @Nullable String project;
     /**
      * @return Type of collecting logs, only `SLS` are supported currently.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private EdgeKubernetesLogConfig(
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("type") String type) {
-        this.project = project;
-        this.type = type;
-    }
-
+    private EdgeKubernetesLogConfig() {}
     /**
      * @return Log Service project name, cluster logs will output to this project.
      * 
@@ -52,30 +45,32 @@ public final class EdgeKubernetesLogConfig {
     public static Builder builder(EdgeKubernetesLogConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String project;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EdgeKubernetesLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.project = defaults.project;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public EdgeKubernetesLogConfig build() {
-            return new EdgeKubernetesLogConfig(project, type);
+        }
+        public EdgeKubernetesLogConfig build() {
+            final var o = new EdgeKubernetesLogConfig();
+            o.project = project;
+            o.type = type;
+            return o;
         }
     }
 }

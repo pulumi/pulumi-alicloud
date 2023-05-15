@@ -13,91 +13,64 @@ public final class GetAccountsAccount {
      * @return The ID of the account.
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return (Available in v1.125.0+) The Alibaba Cloud account name of the member account.
      * 
      */
-    private final String accountName;
+    private String accountName;
     /**
      * @return The name of the member account.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return The ID of the folder.
      * 
      */
-    private final String folderId;
+    private String folderId;
     /**
      * @return The ID of the resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The way in which the member account joined the resource directory.
      * 
      */
-    private final String joinMethod;
+    private String joinMethod;
     /**
      * @return The time when the member account joined the resource directory.
      * 
      */
-    private final String joinTime;
+    private String joinTime;
     /**
      * @return The time when the member account was modified.
      * 
      */
-    private final String modifyTime;
+    private String modifyTime;
     /**
      * @return (Available in v1.124.3+) Settlement account ID. If the value is empty, the current account will be used for settlement.
      * 
      */
-    private final String payerAccountId;
+    private String payerAccountId;
     /**
      * @return The ID of the resource directory.
      * 
      */
-    private final String resourceDirectoryId;
+    private String resourceDirectoryId;
     /**
      * @return The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The type of the member account.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetAccountsAccount(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("accountName") String accountName,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("folderId") String folderId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("joinMethod") String joinMethod,
-        @CustomType.Parameter("joinTime") String joinTime,
-        @CustomType.Parameter("modifyTime") String modifyTime,
-        @CustomType.Parameter("payerAccountId") String payerAccountId,
-        @CustomType.Parameter("resourceDirectoryId") String resourceDirectoryId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("type") String type) {
-        this.accountId = accountId;
-        this.accountName = accountName;
-        this.displayName = displayName;
-        this.folderId = folderId;
-        this.id = id;
-        this.joinMethod = joinMethod;
-        this.joinTime = joinTime;
-        this.modifyTime = modifyTime;
-        this.payerAccountId = payerAccountId;
-        this.resourceDirectoryId = resourceDirectoryId;
-        this.status = status;
-        this.type = type;
-    }
-
+    private GetAccountsAccount() {}
     /**
      * @return The ID of the account.
      * 
@@ -190,7 +163,7 @@ public final class GetAccountsAccount {
     public static Builder builder(GetAccountsAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String accountName;
@@ -204,11 +177,7 @@ public final class GetAccountsAccount {
         private String resourceDirectoryId;
         private String status;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountsAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -225,55 +194,81 @@ public final class GetAccountsAccount {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder accountName(String accountName) {
             this.accountName = Objects.requireNonNull(accountName);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder folderId(String folderId) {
             this.folderId = Objects.requireNonNull(folderId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder joinMethod(String joinMethod) {
             this.joinMethod = Objects.requireNonNull(joinMethod);
             return this;
         }
+        @CustomType.Setter
         public Builder joinTime(String joinTime) {
             this.joinTime = Objects.requireNonNull(joinTime);
             return this;
         }
+        @CustomType.Setter
         public Builder modifyTime(String modifyTime) {
             this.modifyTime = Objects.requireNonNull(modifyTime);
             return this;
         }
+        @CustomType.Setter
         public Builder payerAccountId(String payerAccountId) {
             this.payerAccountId = Objects.requireNonNull(payerAccountId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceDirectoryId(String resourceDirectoryId) {
             this.resourceDirectoryId = Objects.requireNonNull(resourceDirectoryId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetAccountsAccount build() {
-            return new GetAccountsAccount(accountId, accountName, displayName, folderId, id, joinMethod, joinTime, modifyTime, payerAccountId, resourceDirectoryId, status, type);
+        }
+        public GetAccountsAccount build() {
+            final var o = new GetAccountsAccount();
+            o.accountId = accountId;
+            o.accountName = accountName;
+            o.displayName = displayName;
+            o.folderId = folderId;
+            o.id = id;
+            o.joinMethod = joinMethod;
+            o.joinTime = joinTime;
+            o.modifyTime = modifyTime;
+            o.payerAccountId = payerAccountId;
+            o.resourceDirectoryId = resourceDirectoryId;
+            o.status = status;
+            o.type = type;
+            return o;
         }
     }
 }

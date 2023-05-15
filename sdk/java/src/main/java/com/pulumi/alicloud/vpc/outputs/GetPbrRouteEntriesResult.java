@@ -17,34 +17,21 @@ public final class GetPbrRouteEntriesResult {
      * @return A list of VPN Pbr Route Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetPbrRouteEntriesEntry> entries;
+    private List<GetPbrRouteEntriesEntry> entries;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
     /**
      * @return The ID of the vpn gateway.
      * 
      */
-    private final String vpnGatewayId;
+    private String vpnGatewayId;
 
-    @CustomType.Constructor
-    private GetPbrRouteEntriesResult(
-        @CustomType.Parameter("entries") List<GetPbrRouteEntriesEntry> entries,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("vpnGatewayId") String vpnGatewayId) {
-        this.entries = entries;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.vpnGatewayId = vpnGatewayId;
-    }
-
+    private GetPbrRouteEntriesResult() {}
     /**
      * @return A list of VPN Pbr Route Entries. Each element contains the following attributes:
      * 
@@ -80,18 +67,14 @@ public final class GetPbrRouteEntriesResult {
     public static Builder builder(GetPbrRouteEntriesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetPbrRouteEntriesEntry> entries;
         private String id;
         private List<String> ids;
         private @Nullable String outputFile;
         private String vpnGatewayId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPbrRouteEntriesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.entries = defaults.entries;
@@ -101,6 +84,7 @@ public final class GetPbrRouteEntriesResult {
     	      this.vpnGatewayId = defaults.vpnGatewayId;
         }
 
+        @CustomType.Setter
         public Builder entries(List<GetPbrRouteEntriesEntry> entries) {
             this.entries = Objects.requireNonNull(entries);
             return this;
@@ -108,10 +92,12 @@ public final class GetPbrRouteEntriesResult {
         public Builder entries(GetPbrRouteEntriesEntry... entries) {
             return entries(List.of(entries));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -119,15 +105,24 @@ public final class GetPbrRouteEntriesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder vpnGatewayId(String vpnGatewayId) {
             this.vpnGatewayId = Objects.requireNonNull(vpnGatewayId);
             return this;
-        }        public GetPbrRouteEntriesResult build() {
-            return new GetPbrRouteEntriesResult(entries, id, ids, outputFile, vpnGatewayId);
+        }
+        public GetPbrRouteEntriesResult build() {
+            final var o = new GetPbrRouteEntriesResult();
+            o.entries = entries;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.vpnGatewayId = vpnGatewayId;
+            return o;
         }
     }
 }

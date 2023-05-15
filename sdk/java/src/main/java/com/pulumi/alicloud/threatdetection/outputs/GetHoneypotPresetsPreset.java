@@ -15,49 +15,34 @@ public final class GetHoneypotPresetsPreset {
      * @return Honeypot mirror name
      * 
      */
-    private final String honeypotImageName;
+    private String honeypotImageName;
     /**
      * @return Unique ID of honeypot Template.
      * 
      */
-    private final String honeypotPresetId;
+    private String honeypotPresetId;
     /**
      * @return The id of the Honeypot template.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Honeypot template custom parameters.
      * 
      */
-    private final List<GetHoneypotPresetsPresetMeta> metas;
+    private List<GetHoneypotPresetsPresetMeta> metas;
     /**
      * @return Unique id of management node
      * 
      */
-    private final String nodeId;
+    private String nodeId;
     /**
      * @return Honeypot template custom name
      * 
      */
-    private final String presetName;
+    private String presetName;
 
-    @CustomType.Constructor
-    private GetHoneypotPresetsPreset(
-        @CustomType.Parameter("honeypotImageName") String honeypotImageName,
-        @CustomType.Parameter("honeypotPresetId") String honeypotPresetId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("metas") List<GetHoneypotPresetsPresetMeta> metas,
-        @CustomType.Parameter("nodeId") String nodeId,
-        @CustomType.Parameter("presetName") String presetName) {
-        this.honeypotImageName = honeypotImageName;
-        this.honeypotPresetId = honeypotPresetId;
-        this.id = id;
-        this.metas = metas;
-        this.nodeId = nodeId;
-        this.presetName = presetName;
-    }
-
+    private GetHoneypotPresetsPreset() {}
     /**
      * @return Honeypot mirror name
      * 
@@ -108,7 +93,7 @@ public final class GetHoneypotPresetsPreset {
     public static Builder builder(GetHoneypotPresetsPreset defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String honeypotImageName;
         private String honeypotPresetId;
@@ -116,11 +101,7 @@ public final class GetHoneypotPresetsPreset {
         private List<GetHoneypotPresetsPresetMeta> metas;
         private String nodeId;
         private String presetName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHoneypotPresetsPreset defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.honeypotImageName = defaults.honeypotImageName;
@@ -131,18 +112,22 @@ public final class GetHoneypotPresetsPreset {
     	      this.presetName = defaults.presetName;
         }
 
+        @CustomType.Setter
         public Builder honeypotImageName(String honeypotImageName) {
             this.honeypotImageName = Objects.requireNonNull(honeypotImageName);
             return this;
         }
+        @CustomType.Setter
         public Builder honeypotPresetId(String honeypotPresetId) {
             this.honeypotPresetId = Objects.requireNonNull(honeypotPresetId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder metas(List<GetHoneypotPresetsPresetMeta> metas) {
             this.metas = Objects.requireNonNull(metas);
             return this;
@@ -150,15 +135,25 @@ public final class GetHoneypotPresetsPreset {
         public Builder metas(GetHoneypotPresetsPresetMeta... metas) {
             return metas(List.of(metas));
         }
+        @CustomType.Setter
         public Builder nodeId(String nodeId) {
             this.nodeId = Objects.requireNonNull(nodeId);
             return this;
         }
+        @CustomType.Setter
         public Builder presetName(String presetName) {
             this.presetName = Objects.requireNonNull(presetName);
             return this;
-        }        public GetHoneypotPresetsPreset build() {
-            return new GetHoneypotPresetsPreset(honeypotImageName, honeypotPresetId, id, metas, nodeId, presetName);
+        }
+        public GetHoneypotPresetsPreset build() {
+            final var o = new GetHoneypotPresetsPreset();
+            o.honeypotImageName = honeypotImageName;
+            o.honeypotPresetId = honeypotPresetId;
+            o.id = id;
+            o.metas = metas;
+            o.nodeId = nodeId;
+            o.presetName = presetName;
+            return o;
         }
     }
 }

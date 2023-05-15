@@ -19,38 +19,17 @@ public final class GetEcsImagePipelineResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String name;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final List<GetEcsImagePipelinePipeline> pipelines;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable Map<String,Object> tags;
+    private String id;
+    private List<String> ids;
+    private @Nullable String name;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private List<GetEcsImagePipelinePipeline> pipelines;
+    private @Nullable String resourceGroupId;
+    private @Nullable Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetEcsImagePipelineResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pipelines") List<GetEcsImagePipelinePipeline> pipelines,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
-        this.id = id;
-        this.ids = ids;
-        this.name = name;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pipelines = pipelines;
-        this.resourceGroupId = resourceGroupId;
-        this.tags = tags;
-    }
-
+    private GetEcsImagePipelineResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -90,7 +69,7 @@ public final class GetEcsImagePipelineResult {
     public static Builder builder(GetEcsImagePipelineResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -101,11 +80,7 @@ public final class GetEcsImagePipelineResult {
         private List<GetEcsImagePipelinePipeline> pipelines;
         private @Nullable String resourceGroupId;
         private @Nullable Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsImagePipelineResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -119,10 +94,12 @@ public final class GetEcsImagePipelineResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -130,14 +107,17 @@ public final class GetEcsImagePipelineResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -145,10 +125,12 @@ public final class GetEcsImagePipelineResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pipelines(List<GetEcsImagePipelinePipeline> pipelines) {
             this.pipelines = Objects.requireNonNull(pipelines);
             return this;
@@ -156,15 +138,28 @@ public final class GetEcsImagePipelineResult {
         public Builder pipelines(GetEcsImagePipelinePipeline... pipelines) {
             return pipelines(List.of(pipelines));
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }        public GetEcsImagePipelineResult build() {
-            return new GetEcsImagePipelineResult(id, ids, name, nameRegex, names, outputFile, pipelines, resourceGroupId, tags);
+        }
+        public GetEcsImagePipelineResult build() {
+            final var o = new GetEcsImagePipelineResult();
+            o.id = id;
+            o.ids = ids;
+            o.name = name;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pipelines = pipelines;
+            o.resourceGroupId = resourceGroupId;
+            o.tags = tags;
+            return o;
         }
     }
 }

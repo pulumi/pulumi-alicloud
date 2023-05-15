@@ -15,63 +15,44 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
      * @return The ID of the GA instance.
      * 
      */
-    private final String acceleratorId;
+    private String acceleratorId;
     /**
      * @return The ID of the Custom Routing Endpoint Group Destination.
      * 
      */
-    private final String customRoutingEndpointGroupDestinationId;
+    private String customRoutingEndpointGroupDestinationId;
     /**
      * @return The ID of the endpoint group.
      * 
      */
-    private final String endpointGroupId;
+    private String endpointGroupId;
     /**
      * @return The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
      * 
      */
-    private final Integer fromPort;
+    private Integer fromPort;
     /**
      * @return The id of the Global Accelerator Custom Routing Endpoint Group Destination. It formats as `&lt;endpoint_group_id&gt;:&lt;custom_routing_endpoint_group_destination_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the listener.
      * 
      */
-    private final String listenerId;
+    private String listenerId;
     /**
      * @return The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
      * 
      */
-    private final List<String> protocols;
+    private List<String> protocols;
     /**
      * @return The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
      * 
      */
-    private final Integer toPort;
+    private Integer toPort;
 
-    @CustomType.Constructor
-    private GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination(
-        @CustomType.Parameter("acceleratorId") String acceleratorId,
-        @CustomType.Parameter("customRoutingEndpointGroupDestinationId") String customRoutingEndpointGroupDestinationId,
-        @CustomType.Parameter("endpointGroupId") String endpointGroupId,
-        @CustomType.Parameter("fromPort") Integer fromPort,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("listenerId") String listenerId,
-        @CustomType.Parameter("protocols") List<String> protocols,
-        @CustomType.Parameter("toPort") Integer toPort) {
-        this.acceleratorId = acceleratorId;
-        this.customRoutingEndpointGroupDestinationId = customRoutingEndpointGroupDestinationId;
-        this.endpointGroupId = endpointGroupId;
-        this.fromPort = fromPort;
-        this.id = id;
-        this.listenerId = listenerId;
-        this.protocols = protocols;
-        this.toPort = toPort;
-    }
-
+    private GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination() {}
     /**
      * @return The ID of the GA instance.
      * 
@@ -136,7 +117,7 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
     public static Builder builder(GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String acceleratorId;
         private String customRoutingEndpointGroupDestinationId;
@@ -146,11 +127,7 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
         private String listenerId;
         private List<String> protocols;
         private Integer toPort;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -163,30 +140,37 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
     	      this.toPort = defaults.toPort;
         }
 
+        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
+        @CustomType.Setter
         public Builder customRoutingEndpointGroupDestinationId(String customRoutingEndpointGroupDestinationId) {
             this.customRoutingEndpointGroupDestinationId = Objects.requireNonNull(customRoutingEndpointGroupDestinationId);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
             this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder fromPort(Integer fromPort) {
             this.fromPort = Objects.requireNonNull(fromPort);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
+        @CustomType.Setter
         public Builder protocols(List<String> protocols) {
             this.protocols = Objects.requireNonNull(protocols);
             return this;
@@ -194,11 +178,22 @@ public final class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpoin
         public Builder protocols(String... protocols) {
             return protocols(List.of(protocols));
         }
+        @CustomType.Setter
         public Builder toPort(Integer toPort) {
             this.toPort = Objects.requireNonNull(toPort);
             return this;
-        }        public GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination build() {
-            return new GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination(acceleratorId, customRoutingEndpointGroupDestinationId, endpointGroupId, fromPort, id, listenerId, protocols, toPort);
+        }
+        public GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination build() {
+            final var o = new GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestination();
+            o.acceleratorId = acceleratorId;
+            o.customRoutingEndpointGroupDestinationId = customRoutingEndpointGroupDestinationId;
+            o.endpointGroupId = endpointGroupId;
+            o.fromPort = fromPort;
+            o.id = id;
+            o.listenerId = listenerId;
+            o.protocols = protocols;
+            o.toPort = toPort;
+            return o;
         }
     }
 }

@@ -18,38 +18,17 @@ public final class GetGatewayVcoRoutesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final @Nullable String routeEntryType;
-    private final List<GetGatewayVcoRoutesRoute> routes;
-    private final @Nullable String status;
-    private final String vpnConnectionId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private @Nullable String routeEntryType;
+    private List<GetGatewayVcoRoutesRoute> routes;
+    private @Nullable String status;
+    private String vpnConnectionId;
 
-    @CustomType.Constructor
-    private GetGatewayVcoRoutesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("routeEntryType") @Nullable String routeEntryType,
-        @CustomType.Parameter("routes") List<GetGatewayVcoRoutesRoute> routes,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("vpnConnectionId") String vpnConnectionId) {
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.routeEntryType = routeEntryType;
-        this.routes = routes;
-        this.status = status;
-        this.vpnConnectionId = vpnConnectionId;
-    }
-
+    private GetGatewayVcoRoutesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -89,7 +68,7 @@ public final class GetGatewayVcoRoutesResult {
     public static Builder builder(GetGatewayVcoRoutesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -100,11 +79,7 @@ public final class GetGatewayVcoRoutesResult {
         private List<GetGatewayVcoRoutesRoute> routes;
         private @Nullable String status;
         private String vpnConnectionId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewayVcoRoutesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -118,10 +93,12 @@ public final class GetGatewayVcoRoutesResult {
     	      this.vpnConnectionId = defaults.vpnConnectionId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -129,22 +106,27 @@ public final class GetGatewayVcoRoutesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder routeEntryType(@Nullable String routeEntryType) {
             this.routeEntryType = routeEntryType;
             return this;
         }
+        @CustomType.Setter
         public Builder routes(List<GetGatewayVcoRoutesRoute> routes) {
             this.routes = Objects.requireNonNull(routes);
             return this;
@@ -152,15 +134,28 @@ public final class GetGatewayVcoRoutesResult {
         public Builder routes(GetGatewayVcoRoutesRoute... routes) {
             return routes(List.of(routes));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder vpnConnectionId(String vpnConnectionId) {
             this.vpnConnectionId = Objects.requireNonNull(vpnConnectionId);
             return this;
-        }        public GetGatewayVcoRoutesResult build() {
-            return new GetGatewayVcoRoutesResult(id, ids, outputFile, pageNumber, pageSize, routeEntryType, routes, status, vpnConnectionId);
+        }
+        public GetGatewayVcoRoutesResult build() {
+            final var o = new GetGatewayVcoRoutesResult();
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.routeEntryType = routeEntryType;
+            o.routes = routes;
+            o.status = status;
+            o.vpnConnectionId = vpnConnectionId;
+            return o;
         }
     }
 }

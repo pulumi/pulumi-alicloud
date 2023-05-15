@@ -14,54 +14,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGroupMetricRulesResult {
-    private final @Nullable String dimensions;
-    private final @Nullable Boolean enableState;
-    private final @Nullable String groupId;
-    private final @Nullable String groupMetricRuleName;
+    private @Nullable String dimensions;
+    private @Nullable Boolean enableState;
+    private @Nullable String groupId;
+    private @Nullable String groupMetricRuleName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String metricName;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String namespace;
-    private final @Nullable String outputFile;
-    private final List<GetGroupMetricRulesRule> rules;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String metricName;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String namespace;
+    private @Nullable String outputFile;
+    private List<GetGroupMetricRulesRule> rules;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetGroupMetricRulesResult(
-        @CustomType.Parameter("dimensions") @Nullable String dimensions,
-        @CustomType.Parameter("enableState") @Nullable Boolean enableState,
-        @CustomType.Parameter("groupId") @Nullable String groupId,
-        @CustomType.Parameter("groupMetricRuleName") @Nullable String groupMetricRuleName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("metricName") @Nullable String metricName,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("namespace") @Nullable String namespace,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("rules") List<GetGroupMetricRulesRule> rules,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.dimensions = dimensions;
-        this.enableState = enableState;
-        this.groupId = groupId;
-        this.groupMetricRuleName = groupMetricRuleName;
-        this.id = id;
-        this.ids = ids;
-        this.metricName = metricName;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.namespace = namespace;
-        this.outputFile = outputFile;
-        this.rules = rules;
-        this.status = status;
-    }
-
+    private GetGroupMetricRulesResult() {}
     public Optional<String> dimensions() {
         return Optional.ofNullable(this.dimensions);
     }
@@ -113,7 +84,7 @@ public final class GetGroupMetricRulesResult {
     public static Builder builder(GetGroupMetricRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String dimensions;
         private @Nullable Boolean enableState;
@@ -128,11 +99,7 @@ public final class GetGroupMetricRulesResult {
         private @Nullable String outputFile;
         private List<GetGroupMetricRulesRule> rules;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupMetricRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dimensions = defaults.dimensions;
@@ -150,26 +117,32 @@ public final class GetGroupMetricRulesResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder dimensions(@Nullable String dimensions) {
             this.dimensions = dimensions;
             return this;
         }
+        @CustomType.Setter
         public Builder enableState(@Nullable Boolean enableState) {
             this.enableState = enableState;
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
             this.groupId = groupId;
             return this;
         }
+        @CustomType.Setter
         public Builder groupMetricRuleName(@Nullable String groupMetricRuleName) {
             this.groupMetricRuleName = groupMetricRuleName;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -177,14 +150,17 @@ public final class GetGroupMetricRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder metricName(@Nullable String metricName) {
             this.metricName = metricName;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -192,14 +168,17 @@ public final class GetGroupMetricRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder rules(List<GetGroupMetricRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -207,11 +186,27 @@ public final class GetGroupMetricRulesResult {
         public Builder rules(GetGroupMetricRulesRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetGroupMetricRulesResult build() {
-            return new GetGroupMetricRulesResult(dimensions, enableState, groupId, groupMetricRuleName, id, ids, metricName, nameRegex, names, namespace, outputFile, rules, status);
+        }
+        public GetGroupMetricRulesResult build() {
+            final var o = new GetGroupMetricRulesResult();
+            o.dimensions = dimensions;
+            o.enableState = enableState;
+            o.groupId = groupId;
+            o.groupMetricRuleName = groupMetricRuleName;
+            o.id = id;
+            o.ids = ids;
+            o.metricName = metricName;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.namespace = namespace;
+            o.outputFile = outputFile;
+            o.rules = rules;
+            o.status = status;
+            return o;
         }
     }
 }

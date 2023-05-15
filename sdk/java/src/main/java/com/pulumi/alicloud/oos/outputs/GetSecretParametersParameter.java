@@ -16,112 +16,79 @@ public final class GetSecretParametersParameter {
      * @return The constraints of the encryption parameter.
      * 
      */
-    private final String constraints;
+    private String constraints;
     /**
      * @return The time when the encryption parameter was created.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The user who created the encryption parameter.
      * 
      */
-    private final String createdBy;
+    private String createdBy;
     /**
      * @return The description of the encryption parameter.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Secret Parameter.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return KeyId of KMS used for encryption.
      * 
      */
-    private final String keyId;
+    private String keyId;
     /**
      * @return The version number of the encryption parameter.
      * 
      */
-    private final Integer parameterVersion;
+    private Integer parameterVersion;
     /**
      * @return The ID of the Resource Group.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The ID of the encryption parameter.
      * 
      */
-    private final String secretParameterId;
+    private String secretParameterId;
     /**
      * @return The name of the encryption parameter.
      * 
      */
-    private final String secretParameterName;
+    private String secretParameterName;
     /**
      * @return The share type of the encryption parameter.
      * 
      */
-    private final String shareType;
+    private String shareType;
     /**
      * @return The tag of the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return The data type of the encryption parameter.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The user who updated the encryption parameter.
      * 
      */
-    private final String updatedBy;
+    private String updatedBy;
     /**
      * @return The time when the encryption parameter was updated.
      * 
      */
-    private final String updatedDate;
+    private String updatedDate;
 
-    @CustomType.Constructor
-    private GetSecretParametersParameter(
-        @CustomType.Parameter("constraints") String constraints,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("createdBy") String createdBy,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("keyId") String keyId,
-        @CustomType.Parameter("parameterVersion") Integer parameterVersion,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("secretParameterId") String secretParameterId,
-        @CustomType.Parameter("secretParameterName") String secretParameterName,
-        @CustomType.Parameter("shareType") String shareType,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("updatedBy") String updatedBy,
-        @CustomType.Parameter("updatedDate") String updatedDate) {
-        this.constraints = constraints;
-        this.createTime = createTime;
-        this.createdBy = createdBy;
-        this.description = description;
-        this.id = id;
-        this.keyId = keyId;
-        this.parameterVersion = parameterVersion;
-        this.resourceGroupId = resourceGroupId;
-        this.secretParameterId = secretParameterId;
-        this.secretParameterName = secretParameterName;
-        this.shareType = shareType;
-        this.tags = tags;
-        this.type = type;
-        this.updatedBy = updatedBy;
-        this.updatedDate = updatedDate;
-    }
-
+    private GetSecretParametersParameter() {}
     /**
      * @return The constraints of the encryption parameter.
      * 
@@ -235,7 +202,7 @@ public final class GetSecretParametersParameter {
     public static Builder builder(GetSecretParametersParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String constraints;
         private String createTime;
@@ -252,11 +219,7 @@ public final class GetSecretParametersParameter {
         private String type;
         private String updatedBy;
         private String updatedDate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecretParametersParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.constraints = defaults.constraints;
@@ -276,67 +239,99 @@ public final class GetSecretParametersParameter {
     	      this.updatedDate = defaults.updatedDate;
         }
 
+        @CustomType.Setter
         public Builder constraints(String constraints) {
             this.constraints = Objects.requireNonNull(constraints);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder createdBy(String createdBy) {
             this.createdBy = Objects.requireNonNull(createdBy);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder keyId(String keyId) {
             this.keyId = Objects.requireNonNull(keyId);
             return this;
         }
+        @CustomType.Setter
         public Builder parameterVersion(Integer parameterVersion) {
             this.parameterVersion = Objects.requireNonNull(parameterVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder secretParameterId(String secretParameterId) {
             this.secretParameterId = Objects.requireNonNull(secretParameterId);
             return this;
         }
+        @CustomType.Setter
         public Builder secretParameterName(String secretParameterName) {
             this.secretParameterName = Objects.requireNonNull(secretParameterName);
             return this;
         }
+        @CustomType.Setter
         public Builder shareType(String shareType) {
             this.shareType = Objects.requireNonNull(shareType);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedBy(String updatedBy) {
             this.updatedBy = Objects.requireNonNull(updatedBy);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedDate(String updatedDate) {
             this.updatedDate = Objects.requireNonNull(updatedDate);
             return this;
-        }        public GetSecretParametersParameter build() {
-            return new GetSecretParametersParameter(constraints, createTime, createdBy, description, id, keyId, parameterVersion, resourceGroupId, secretParameterId, secretParameterName, shareType, tags, type, updatedBy, updatedDate);
+        }
+        public GetSecretParametersParameter build() {
+            final var o = new GetSecretParametersParameter();
+            o.constraints = constraints;
+            o.createTime = createTime;
+            o.createdBy = createdBy;
+            o.description = description;
+            o.id = id;
+            o.keyId = keyId;
+            o.parameterVersion = parameterVersion;
+            o.resourceGroupId = resourceGroupId;
+            o.secretParameterId = secretParameterId;
+            o.secretParameterName = secretParameterName;
+            o.shareType = shareType;
+            o.tags = tags;
+            o.type = type;
+            o.updatedBy = updatedBy;
+            o.updatedDate = updatedDate;
+            return o;
         }
     }
 }

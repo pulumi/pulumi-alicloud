@@ -15,74 +15,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHoneypotPresetsResult {
-    private final @Nullable Integer currentPage;
-    private final @Nullable Boolean enableDetails;
+    private @Nullable Integer currentPage;
+    private @Nullable Boolean enableDetails;
     /**
      * @return Honeypot mirror name.
      * 
      */
-    private final @Nullable String honeypotImageName;
+    private @Nullable String honeypotImageName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Honeypot Preset IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String lang;
+    private List<String> ids;
+    private @Nullable String lang;
     /**
      * @return Unique id of management node.
      * 
      */
-    private final @Nullable String nodeId;
-    private final @Nullable String nodeName;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private @Nullable String nodeId;
+    private @Nullable String nodeName;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
     /**
      * @return Honeypot template custom name.
      * 
      */
-    private final @Nullable String presetName;
+    private @Nullable String presetName;
     /**
      * @return A list of Honeypot Preset Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetHoneypotPresetsPreset> presets;
+    private List<GetHoneypotPresetsPreset> presets;
 
-    @CustomType.Constructor
-    private GetHoneypotPresetsResult(
-        @CustomType.Parameter("currentPage") @Nullable Integer currentPage,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("honeypotImageName") @Nullable String honeypotImageName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("lang") @Nullable String lang,
-        @CustomType.Parameter("nodeId") @Nullable String nodeId,
-        @CustomType.Parameter("nodeName") @Nullable String nodeName,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("presetName") @Nullable String presetName,
-        @CustomType.Parameter("presets") List<GetHoneypotPresetsPreset> presets) {
-        this.currentPage = currentPage;
-        this.enableDetails = enableDetails;
-        this.honeypotImageName = honeypotImageName;
-        this.id = id;
-        this.ids = ids;
-        this.lang = lang;
-        this.nodeId = nodeId;
-        this.nodeName = nodeName;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.presetName = presetName;
-        this.presets = presets;
-    }
-
+    private GetHoneypotPresetsResult() {}
     public Optional<Integer> currentPage() {
         return Optional.ofNullable(this.currentPage);
     }
@@ -154,7 +125,7 @@ public final class GetHoneypotPresetsResult {
     public static Builder builder(GetHoneypotPresetsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer currentPage;
         private @Nullable Boolean enableDetails;
@@ -169,11 +140,7 @@ public final class GetHoneypotPresetsResult {
         private @Nullable Integer pageSize;
         private @Nullable String presetName;
         private List<GetHoneypotPresetsPreset> presets;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHoneypotPresetsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.currentPage = defaults.currentPage;
@@ -191,22 +158,27 @@ public final class GetHoneypotPresetsResult {
     	      this.presets = defaults.presets;
         }
 
+        @CustomType.Setter
         public Builder currentPage(@Nullable Integer currentPage) {
             this.currentPage = currentPage;
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder honeypotImageName(@Nullable String honeypotImageName) {
             this.honeypotImageName = honeypotImageName;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -214,42 +186,65 @@ public final class GetHoneypotPresetsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeId(@Nullable String nodeId) {
             this.nodeId = nodeId;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeName(@Nullable String nodeName) {
             this.nodeName = nodeName;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder presetName(@Nullable String presetName) {
             this.presetName = presetName;
             return this;
         }
+        @CustomType.Setter
         public Builder presets(List<GetHoneypotPresetsPreset> presets) {
             this.presets = Objects.requireNonNull(presets);
             return this;
         }
         public Builder presets(GetHoneypotPresetsPreset... presets) {
             return presets(List.of(presets));
-        }        public GetHoneypotPresetsResult build() {
-            return new GetHoneypotPresetsResult(currentPage, enableDetails, honeypotImageName, id, ids, lang, nodeId, nodeName, outputFile, pageNumber, pageSize, presetName, presets);
+        }
+        public GetHoneypotPresetsResult build() {
+            final var o = new GetHoneypotPresetsResult();
+            o.currentPage = currentPage;
+            o.enableDetails = enableDetails;
+            o.honeypotImageName = honeypotImageName;
+            o.id = id;
+            o.ids = ids;
+            o.lang = lang;
+            o.nodeId = nodeId;
+            o.nodeName = nodeName;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.presetName = presetName;
+            o.presets = presets;
+            return o;
         }
     }
 }

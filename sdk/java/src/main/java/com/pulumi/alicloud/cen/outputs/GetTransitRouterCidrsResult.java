@@ -13,39 +13,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTransitRouterCidrsResult {
-    private final List<GetTransitRouterCidrsCidr> cidrs;
+    private List<GetTransitRouterCidrsCidr> cidrs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final @Nullable String transitRouterCidrId;
-    private final String transitRouterId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private @Nullable String transitRouterCidrId;
+    private String transitRouterId;
 
-    @CustomType.Constructor
-    private GetTransitRouterCidrsResult(
-        @CustomType.Parameter("cidrs") List<GetTransitRouterCidrsCidr> cidrs,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("transitRouterCidrId") @Nullable String transitRouterCidrId,
-        @CustomType.Parameter("transitRouterId") String transitRouterId) {
-        this.cidrs = cidrs;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.transitRouterCidrId = transitRouterCidrId;
-        this.transitRouterId = transitRouterId;
-    }
-
+    private GetTransitRouterCidrsResult() {}
     public List<GetTransitRouterCidrsCidr> cidrs() {
         return this.cidrs;
     }
@@ -82,7 +63,7 @@ public final class GetTransitRouterCidrsResult {
     public static Builder builder(GetTransitRouterCidrsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetTransitRouterCidrsCidr> cidrs;
         private String id;
@@ -92,11 +73,7 @@ public final class GetTransitRouterCidrsResult {
         private @Nullable String outputFile;
         private @Nullable String transitRouterCidrId;
         private String transitRouterId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterCidrsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrs = defaults.cidrs;
@@ -109,6 +86,7 @@ public final class GetTransitRouterCidrsResult {
     	      this.transitRouterId = defaults.transitRouterId;
         }
 
+        @CustomType.Setter
         public Builder cidrs(List<GetTransitRouterCidrsCidr> cidrs) {
             this.cidrs = Objects.requireNonNull(cidrs);
             return this;
@@ -116,10 +94,12 @@ public final class GetTransitRouterCidrsResult {
         public Builder cidrs(GetTransitRouterCidrsCidr... cidrs) {
             return cidrs(List.of(cidrs));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -127,10 +107,12 @@ public final class GetTransitRouterCidrsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -138,19 +120,32 @@ public final class GetTransitRouterCidrsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterCidrId(@Nullable String transitRouterCidrId) {
             this.transitRouterCidrId = transitRouterCidrId;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
-        }        public GetTransitRouterCidrsResult build() {
-            return new GetTransitRouterCidrsResult(cidrs, id, ids, nameRegex, names, outputFile, transitRouterCidrId, transitRouterId);
+        }
+        public GetTransitRouterCidrsResult build() {
+            final var o = new GetTransitRouterCidrsResult();
+            o.cidrs = cidrs;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.transitRouterCidrId = transitRouterCidrId;
+            o.transitRouterId = transitRouterId;
+            return o;
         }
     }
 }

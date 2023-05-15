@@ -14,28 +14,19 @@ public final class GetHoneypotPresetsPresetMeta {
      * @return Burp counter.
      * 
      */
-    private final String burp;
+    private String burp;
     /**
      * @return Social traceability.
      * 
      */
-    private final Boolean portraitOption;
+    private Boolean portraitOption;
     /**
      * @return Git countered.
      * 
      */
-    private final String trojanGit;
+    private String trojanGit;
 
-    @CustomType.Constructor
-    private GetHoneypotPresetsPresetMeta(
-        @CustomType.Parameter("burp") String burp,
-        @CustomType.Parameter("portraitOption") Boolean portraitOption,
-        @CustomType.Parameter("trojanGit") String trojanGit) {
-        this.burp = burp;
-        this.portraitOption = portraitOption;
-        this.trojanGit = trojanGit;
-    }
-
+    private GetHoneypotPresetsPresetMeta() {}
     /**
      * @return Burp counter.
      * 
@@ -65,16 +56,12 @@ public final class GetHoneypotPresetsPresetMeta {
     public static Builder builder(GetHoneypotPresetsPresetMeta defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String burp;
         private Boolean portraitOption;
         private String trojanGit;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHoneypotPresetsPresetMeta defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.burp = defaults.burp;
@@ -82,19 +69,27 @@ public final class GetHoneypotPresetsPresetMeta {
     	      this.trojanGit = defaults.trojanGit;
         }
 
+        @CustomType.Setter
         public Builder burp(String burp) {
             this.burp = Objects.requireNonNull(burp);
             return this;
         }
+        @CustomType.Setter
         public Builder portraitOption(Boolean portraitOption) {
             this.portraitOption = Objects.requireNonNull(portraitOption);
             return this;
         }
+        @CustomType.Setter
         public Builder trojanGit(String trojanGit) {
             this.trojanGit = Objects.requireNonNull(trojanGit);
             return this;
-        }        public GetHoneypotPresetsPresetMeta build() {
-            return new GetHoneypotPresetsPresetMeta(burp, portraitOption, trojanGit);
+        }
+        public GetHoneypotPresetsPresetMeta build() {
+            final var o = new GetHoneypotPresetsPresetMeta();
+            o.burp = burp;
+            o.portraitOption = portraitOption;
+            o.trojanGit = trojanGit;
+            return o;
         }
     }
 }

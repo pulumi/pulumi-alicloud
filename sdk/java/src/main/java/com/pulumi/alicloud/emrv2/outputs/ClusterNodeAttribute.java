@@ -16,56 +16,39 @@ public final class ClusterNodeAttribute {
      * @return Whether to enable data disk encryption.
      * 
      */
-    private final @Nullable Boolean dataDiskEncrypted;
+    private @Nullable Boolean dataDiskEncrypted;
     /**
      * @return The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
      * 
      */
-    private final @Nullable String dataDiskKmsKeyId;
+    private @Nullable String dataDiskKmsKeyId;
     /**
      * @return The name of the key pair.
      * 
      */
-    private final String keyPairName;
+    private String keyPairName;
     /**
      * @return Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
      * 
      */
-    private final String ramRole;
+    private String ramRole;
     /**
      * @return Security Group ID for Cluster.
      * 
      */
-    private final String securityGroupId;
+    private String securityGroupId;
     /**
      * @return Used to retrieve instances belong to specified VPC.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return Zone ID, e.g. cn-hangzhou-i
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private ClusterNodeAttribute(
-        @CustomType.Parameter("dataDiskEncrypted") @Nullable Boolean dataDiskEncrypted,
-        @CustomType.Parameter("dataDiskKmsKeyId") @Nullable String dataDiskKmsKeyId,
-        @CustomType.Parameter("keyPairName") String keyPairName,
-        @CustomType.Parameter("ramRole") String ramRole,
-        @CustomType.Parameter("securityGroupId") String securityGroupId,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.dataDiskEncrypted = dataDiskEncrypted;
-        this.dataDiskKmsKeyId = dataDiskKmsKeyId;
-        this.keyPairName = keyPairName;
-        this.ramRole = ramRole;
-        this.securityGroupId = securityGroupId;
-        this.vpcId = vpcId;
-        this.zoneId = zoneId;
-    }
-
+    private ClusterNodeAttribute() {}
     /**
      * @return Whether to enable data disk encryption.
      * 
@@ -123,7 +106,7 @@ public final class ClusterNodeAttribute {
     public static Builder builder(ClusterNodeAttribute defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean dataDiskEncrypted;
         private @Nullable String dataDiskKmsKeyId;
@@ -132,11 +115,7 @@ public final class ClusterNodeAttribute {
         private String securityGroupId;
         private String vpcId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterNodeAttribute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dataDiskEncrypted = defaults.dataDiskEncrypted;
@@ -148,35 +127,51 @@ public final class ClusterNodeAttribute {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder dataDiskEncrypted(@Nullable Boolean dataDiskEncrypted) {
             this.dataDiskEncrypted = dataDiskEncrypted;
             return this;
         }
+        @CustomType.Setter
         public Builder dataDiskKmsKeyId(@Nullable String dataDiskKmsKeyId) {
             this.dataDiskKmsKeyId = dataDiskKmsKeyId;
             return this;
         }
+        @CustomType.Setter
         public Builder keyPairName(String keyPairName) {
             this.keyPairName = Objects.requireNonNull(keyPairName);
             return this;
         }
+        @CustomType.Setter
         public Builder ramRole(String ramRole) {
             this.ramRole = Objects.requireNonNull(ramRole);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupId(String securityGroupId) {
             this.securityGroupId = Objects.requireNonNull(securityGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public ClusterNodeAttribute build() {
-            return new ClusterNodeAttribute(dataDiskEncrypted, dataDiskKmsKeyId, keyPairName, ramRole, securityGroupId, vpcId, zoneId);
+        }
+        public ClusterNodeAttribute build() {
+            final var o = new ClusterNodeAttribute();
+            o.dataDiskEncrypted = dataDiskEncrypted;
+            o.dataDiskKmsKeyId = dataDiskKmsKeyId;
+            o.keyPairName = keyPairName;
+            o.ramRole = ramRole;
+            o.securityGroupId = securityGroupId;
+            o.vpcId = vpcId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

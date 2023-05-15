@@ -14,42 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCustomLinesResult {
-    private final String domainName;
-    private final @Nullable Boolean enableDetails;
+    private String domainName;
+    private @Nullable Boolean enableDetails;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String lang;
-    private final List<GetCustomLinesLine> lines;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private @Nullable String lang;
+    private List<GetCustomLinesLine> lines;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetCustomLinesResult(
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("enableDetails") @Nullable Boolean enableDetails,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("lang") @Nullable String lang,
-        @CustomType.Parameter("lines") List<GetCustomLinesLine> lines,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.domainName = domainName;
-        this.enableDetails = enableDetails;
-        this.id = id;
-        this.ids = ids;
-        this.lang = lang;
-        this.lines = lines;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-    }
-
+    private GetCustomLinesResult() {}
     public String domainName() {
         return this.domainName;
     }
@@ -89,7 +68,7 @@ public final class GetCustomLinesResult {
     public static Builder builder(GetCustomLinesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domainName;
         private @Nullable Boolean enableDetails;
@@ -100,11 +79,7 @@ public final class GetCustomLinesResult {
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomLinesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainName = defaults.domainName;
@@ -118,18 +93,22 @@ public final class GetCustomLinesResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             this.enableDetails = enableDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -137,10 +116,12 @@ public final class GetCustomLinesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
+        @CustomType.Setter
         public Builder lines(List<GetCustomLinesLine> lines) {
             this.lines = Objects.requireNonNull(lines);
             return this;
@@ -148,10 +129,12 @@ public final class GetCustomLinesResult {
         public Builder lines(GetCustomLinesLine... lines) {
             return lines(List.of(lines));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -159,11 +142,23 @@ public final class GetCustomLinesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetCustomLinesResult build() {
-            return new GetCustomLinesResult(domainName, enableDetails, id, ids, lang, lines, nameRegex, names, outputFile);
+        }
+        public GetCustomLinesResult build() {
+            final var o = new GetCustomLinesResult();
+            o.domainName = domainName;
+            o.enableDetails = enableDetails;
+            o.id = id;
+            o.ids = ids;
+            o.lang = lang;
+            o.lines = lines;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

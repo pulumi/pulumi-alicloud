@@ -13,35 +13,24 @@ public final class GetRemoteWritesRemoteWrite {
      * @return The ID of the Prometheus instance.
      * 
      */
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return The ID of the Remote Write. It formats as `&lt;cluster_id&gt;:&lt;remote_write_name&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the Remote Write configuration item.
      * 
      */
-    private final String remoteWriteName;
+    private String remoteWriteName;
     /**
      * @return The details of the Remote Write configuration item. The value is in the YAML format.
      * 
      */
-    private final String remoteWriteYaml;
+    private String remoteWriteYaml;
 
-    @CustomType.Constructor
-    private GetRemoteWritesRemoteWrite(
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("remoteWriteName") String remoteWriteName,
-        @CustomType.Parameter("remoteWriteYaml") String remoteWriteYaml) {
-        this.clusterId = clusterId;
-        this.id = id;
-        this.remoteWriteName = remoteWriteName;
-        this.remoteWriteYaml = remoteWriteYaml;
-    }
-
+    private GetRemoteWritesRemoteWrite() {}
     /**
      * @return The ID of the Prometheus instance.
      * 
@@ -78,17 +67,13 @@ public final class GetRemoteWritesRemoteWrite {
     public static Builder builder(GetRemoteWritesRemoteWrite defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterId;
         private String id;
         private String remoteWriteName;
         private String remoteWriteYaml;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRemoteWritesRemoteWrite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -97,23 +82,33 @@ public final class GetRemoteWritesRemoteWrite {
     	      this.remoteWriteYaml = defaults.remoteWriteYaml;
         }
 
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder remoteWriteName(String remoteWriteName) {
             this.remoteWriteName = Objects.requireNonNull(remoteWriteName);
             return this;
         }
+        @CustomType.Setter
         public Builder remoteWriteYaml(String remoteWriteYaml) {
             this.remoteWriteYaml = Objects.requireNonNull(remoteWriteYaml);
             return this;
-        }        public GetRemoteWritesRemoteWrite build() {
-            return new GetRemoteWritesRemoteWrite(clusterId, id, remoteWriteName, remoteWriteYaml);
+        }
+        public GetRemoteWritesRemoteWrite build() {
+            final var o = new GetRemoteWritesRemoteWrite();
+            o.clusterId = clusterId;
+            o.id = id;
+            o.remoteWriteName = remoteWriteName;
+            o.remoteWriteYaml = remoteWriteYaml;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class GetNodeClassesClass {
      * @return A list of PolarDB node classes in the zone.
      * 
      */
-    private final List<GetNodeClassesClassSupportedEngine> supportedEngines;
+    private List<GetNodeClassesClassSupportedEngine> supportedEngines;
     /**
      * @return The Zone to launch the PolarDB cluster.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetNodeClassesClass(
-        @CustomType.Parameter("supportedEngines") List<GetNodeClassesClassSupportedEngine> supportedEngines,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.supportedEngines = supportedEngines;
-        this.zoneId = zoneId;
-    }
-
+    private GetNodeClassesClass() {}
     /**
      * @return A list of PolarDB node classes in the zone.
      * 
@@ -52,21 +45,18 @@ public final class GetNodeClassesClass {
     public static Builder builder(GetNodeClassesClass defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetNodeClassesClassSupportedEngine> supportedEngines;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeClassesClass defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.supportedEngines = defaults.supportedEngines;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder supportedEngines(List<GetNodeClassesClassSupportedEngine> supportedEngines) {
             this.supportedEngines = Objects.requireNonNull(supportedEngines);
             return this;
@@ -74,11 +64,16 @@ public final class GetNodeClassesClass {
         public Builder supportedEngines(GetNodeClassesClassSupportedEngine... supportedEngines) {
             return supportedEngines(List.of(supportedEngines));
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetNodeClassesClass build() {
-            return new GetNodeClassesClass(supportedEngines, zoneId);
+        }
+        public GetNodeClassesClass build() {
+            final var o = new GetNodeClassesClass();
+            o.supportedEngines = supportedEngines;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

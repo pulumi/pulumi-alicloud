@@ -15,21 +15,14 @@ public final class RuleRuleConditionCookieConfigValue {
      * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
      */
-    private final @Nullable String key;
+    private @Nullable String key;
     /**
      * @return The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private RuleRuleConditionCookieConfigValue(
-        @CustomType.Parameter("key") @Nullable String key,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private RuleRuleConditionCookieConfigValue() {}
     /**
      * @return The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
      * 
@@ -52,30 +45,32 @@ public final class RuleRuleConditionCookieConfigValue {
     public static Builder builder(RuleRuleConditionCookieConfigValue defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String key;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleConditionCookieConfigValue defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(@Nullable String key) {
             this.key = key;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public RuleRuleConditionCookieConfigValue build() {
-            return new RuleRuleConditionCookieConfigValue(key, value);
+        }
+        public RuleRuleConditionCookieConfigValue build() {
+            final var o = new RuleRuleConditionCookieConfigValue();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

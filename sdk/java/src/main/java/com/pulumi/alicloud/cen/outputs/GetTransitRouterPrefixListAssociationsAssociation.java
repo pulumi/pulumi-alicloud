@@ -14,70 +14,49 @@ public final class GetTransitRouterPrefixListAssociationsAssociation {
      * @return The ID of the Cen Transit Router Prefix List Association. It formats as `&lt;prefix_list_id&gt;:&lt;transit_router_id&gt;:&lt;transit_router_table_id&gt;:&lt;next_hop&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the next hop connection.
      * 
      */
-    private final String nextHop;
+    private String nextHop;
     /**
      * @return The ID of the network instance associated with the next hop connection.
      * 
      */
-    private final String nextHopInstanceId;
+    private String nextHopInstanceId;
     /**
      * @return The type of the next hop.
      * 
      */
-    private final String nextHopType;
+    private String nextHopType;
     /**
      * @return The ID of the Alibaba Cloud account to which the prefix list belongs.
      * 
      */
-    private final Integer ownerUid;
+    private Integer ownerUid;
     /**
      * @return The ID of the prefix list.
      * 
      */
-    private final String prefixListId;
+    private String prefixListId;
     /**
      * @return The status of the prefix list.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the transit router.
      * 
      */
-    private final String transitRouterId;
+    private String transitRouterId;
     /**
      * @return The ID of the route table of the transit router.
      * 
      */
-    private final String transitRouterTableId;
+    private String transitRouterTableId;
 
-    @CustomType.Constructor
-    private GetTransitRouterPrefixListAssociationsAssociation(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("nextHop") String nextHop,
-        @CustomType.Parameter("nextHopInstanceId") String nextHopInstanceId,
-        @CustomType.Parameter("nextHopType") String nextHopType,
-        @CustomType.Parameter("ownerUid") Integer ownerUid,
-        @CustomType.Parameter("prefixListId") String prefixListId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("transitRouterId") String transitRouterId,
-        @CustomType.Parameter("transitRouterTableId") String transitRouterTableId) {
-        this.id = id;
-        this.nextHop = nextHop;
-        this.nextHopInstanceId = nextHopInstanceId;
-        this.nextHopType = nextHopType;
-        this.ownerUid = ownerUid;
-        this.prefixListId = prefixListId;
-        this.status = status;
-        this.transitRouterId = transitRouterId;
-        this.transitRouterTableId = transitRouterTableId;
-    }
-
+    private GetTransitRouterPrefixListAssociationsAssociation() {}
     /**
      * @return The ID of the Cen Transit Router Prefix List Association. It formats as `&lt;prefix_list_id&gt;:&lt;transit_router_id&gt;:&lt;transit_router_table_id&gt;:&lt;next_hop&gt;`.
      * 
@@ -149,7 +128,7 @@ public final class GetTransitRouterPrefixListAssociationsAssociation {
     public static Builder builder(GetTransitRouterPrefixListAssociationsAssociation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String nextHop;
@@ -160,11 +139,7 @@ public final class GetTransitRouterPrefixListAssociationsAssociation {
         private String status;
         private String transitRouterId;
         private String transitRouterTableId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterPrefixListAssociationsAssociation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -178,43 +153,63 @@ public final class GetTransitRouterPrefixListAssociationsAssociation {
     	      this.transitRouterTableId = defaults.transitRouterTableId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHop(String nextHop) {
             this.nextHop = Objects.requireNonNull(nextHop);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopInstanceId(String nextHopInstanceId) {
             this.nextHopInstanceId = Objects.requireNonNull(nextHopInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHopType(String nextHopType) {
             this.nextHopType = Objects.requireNonNull(nextHopType);
             return this;
         }
+        @CustomType.Setter
         public Builder ownerUid(Integer ownerUid) {
             this.ownerUid = Objects.requireNonNull(ownerUid);
             return this;
         }
+        @CustomType.Setter
         public Builder prefixListId(String prefixListId) {
             this.prefixListId = Objects.requireNonNull(prefixListId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterTableId(String transitRouterTableId) {
             this.transitRouterTableId = Objects.requireNonNull(transitRouterTableId);
             return this;
-        }        public GetTransitRouterPrefixListAssociationsAssociation build() {
-            return new GetTransitRouterPrefixListAssociationsAssociation(id, nextHop, nextHopInstanceId, nextHopType, ownerUid, prefixListId, status, transitRouterId, transitRouterTableId);
+        }
+        public GetTransitRouterPrefixListAssociationsAssociation build() {
+            final var o = new GetTransitRouterPrefixListAssociationsAssociation();
+            o.id = id;
+            o.nextHop = nextHop;
+            o.nextHopInstanceId = nextHopInstanceId;
+            o.nextHopType = nextHopType;
+            o.ownerUid = ownerUid;
+            o.prefixListId = prefixListId;
+            o.status = status;
+            o.transitRouterId = transitRouterId;
+            o.transitRouterTableId = transitRouterTableId;
+            return o;
         }
     }
 }

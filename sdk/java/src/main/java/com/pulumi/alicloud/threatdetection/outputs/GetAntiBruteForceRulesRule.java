@@ -16,63 +16,44 @@ public final class GetAntiBruteForceRulesRule {
      * @return The ID of the defense rule.
      * 
      */
-    private final String antiBruteForceRuleId;
+    private String antiBruteForceRuleId;
     /**
      * @return The name of the defense rule.
      * 
      */
-    private final String antiBruteForceRuleName;
+    private String antiBruteForceRuleName;
     /**
      * @return Specifies whether to set the defense rule as the default rule.
      * 
      */
-    private final Boolean defaultRule;
+    private Boolean defaultRule;
     /**
      * @return The threshold for the number of failed user logins when the brute-force defense rule takes effect.
      * 
      */
-    private final Integer failCount;
+    private Integer failCount;
     /**
      * @return The period of time during which logons from an account are not allowed. Unit: minutes.
      * 
      */
-    private final Integer forbiddenTime;
+    private Integer forbiddenTime;
     /**
      * @return The ID of the defense rule.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
      * 
      */
-    private final Integer span;
+    private Integer span;
     /**
      * @return An array consisting of the UUIDs of servers to which the defense rule is applied.
      * 
      */
-    private final List<String> uuidLists;
+    private List<String> uuidLists;
 
-    @CustomType.Constructor
-    private GetAntiBruteForceRulesRule(
-        @CustomType.Parameter("antiBruteForceRuleId") String antiBruteForceRuleId,
-        @CustomType.Parameter("antiBruteForceRuleName") String antiBruteForceRuleName,
-        @CustomType.Parameter("defaultRule") Boolean defaultRule,
-        @CustomType.Parameter("failCount") Integer failCount,
-        @CustomType.Parameter("forbiddenTime") Integer forbiddenTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("span") Integer span,
-        @CustomType.Parameter("uuidLists") List<String> uuidLists) {
-        this.antiBruteForceRuleId = antiBruteForceRuleId;
-        this.antiBruteForceRuleName = antiBruteForceRuleName;
-        this.defaultRule = defaultRule;
-        this.failCount = failCount;
-        this.forbiddenTime = forbiddenTime;
-        this.id = id;
-        this.span = span;
-        this.uuidLists = uuidLists;
-    }
-
+    private GetAntiBruteForceRulesRule() {}
     /**
      * @return The ID of the defense rule.
      * 
@@ -137,7 +118,7 @@ public final class GetAntiBruteForceRulesRule {
     public static Builder builder(GetAntiBruteForceRulesRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String antiBruteForceRuleId;
         private String antiBruteForceRuleName;
@@ -147,11 +128,7 @@ public final class GetAntiBruteForceRulesRule {
         private String id;
         private Integer span;
         private List<String> uuidLists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAntiBruteForceRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.antiBruteForceRuleId = defaults.antiBruteForceRuleId;
@@ -164,42 +141,60 @@ public final class GetAntiBruteForceRulesRule {
     	      this.uuidLists = defaults.uuidLists;
         }
 
+        @CustomType.Setter
         public Builder antiBruteForceRuleId(String antiBruteForceRuleId) {
             this.antiBruteForceRuleId = Objects.requireNonNull(antiBruteForceRuleId);
             return this;
         }
+        @CustomType.Setter
         public Builder antiBruteForceRuleName(String antiBruteForceRuleName) {
             this.antiBruteForceRuleName = Objects.requireNonNull(antiBruteForceRuleName);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultRule(Boolean defaultRule) {
             this.defaultRule = Objects.requireNonNull(defaultRule);
             return this;
         }
+        @CustomType.Setter
         public Builder failCount(Integer failCount) {
             this.failCount = Objects.requireNonNull(failCount);
             return this;
         }
+        @CustomType.Setter
         public Builder forbiddenTime(Integer forbiddenTime) {
             this.forbiddenTime = Objects.requireNonNull(forbiddenTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder span(Integer span) {
             this.span = Objects.requireNonNull(span);
             return this;
         }
+        @CustomType.Setter
         public Builder uuidLists(List<String> uuidLists) {
             this.uuidLists = Objects.requireNonNull(uuidLists);
             return this;
         }
         public Builder uuidLists(String... uuidLists) {
             return uuidLists(List.of(uuidLists));
-        }        public GetAntiBruteForceRulesRule build() {
-            return new GetAntiBruteForceRulesRule(antiBruteForceRuleId, antiBruteForceRuleName, defaultRule, failCount, forbiddenTime, id, span, uuidLists);
+        }
+        public GetAntiBruteForceRulesRule build() {
+            final var o = new GetAntiBruteForceRulesRule();
+            o.antiBruteForceRuleId = antiBruteForceRuleId;
+            o.antiBruteForceRuleName = antiBruteForceRuleName;
+            o.defaultRule = defaultRule;
+            o.failCount = failCount;
+            o.forbiddenTime = forbiddenTime;
+            o.id = id;
+            o.span = span;
+            o.uuidLists = uuidLists;
+            return o;
         }
     }
 }

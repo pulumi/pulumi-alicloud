@@ -14,84 +14,59 @@ public final class GetPeerConnectionsConnection {
      * @return The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
      * 
      */
-    private final Integer acceptingAliUid;
+    private Integer acceptingAliUid;
     /**
      * @return The region ID of the recipient of the VPC peering connection to be created.
      * 
      */
-    private final String acceptingRegionId;
+    private String acceptingRegionId;
     /**
      * @return The VPC ID of the receiving end of the VPC peer connection.
      * 
      */
-    private final String acceptingVpcId;
+    private String acceptingVpcId;
     /**
      * @return The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
      * 
      */
-    private final Integer bandwidth;
+    private Integer bandwidth;
     /**
      * @return The creation time of the resource.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the VPC peer connection to be created.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the PeerConnection.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The first ID of the resource.
      * 
      */
-    private final String peerConnectionId;
+    private String peerConnectionId;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String peerConnectionName;
+    private String peerConnectionName;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the requester VPC.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetPeerConnectionsConnection(
-        @CustomType.Parameter("acceptingAliUid") Integer acceptingAliUid,
-        @CustomType.Parameter("acceptingRegionId") String acceptingRegionId,
-        @CustomType.Parameter("acceptingVpcId") String acceptingVpcId,
-        @CustomType.Parameter("bandwidth") Integer bandwidth,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("peerConnectionId") String peerConnectionId,
-        @CustomType.Parameter("peerConnectionName") String peerConnectionName,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.acceptingAliUid = acceptingAliUid;
-        this.acceptingRegionId = acceptingRegionId;
-        this.acceptingVpcId = acceptingVpcId;
-        this.bandwidth = bandwidth;
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.peerConnectionId = peerConnectionId;
-        this.peerConnectionName = peerConnectionName;
-        this.status = status;
-        this.vpcId = vpcId;
-    }
-
+    private GetPeerConnectionsConnection() {}
     /**
      * @return The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
      * 
@@ -177,7 +152,7 @@ public final class GetPeerConnectionsConnection {
     public static Builder builder(GetPeerConnectionsConnection defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer acceptingAliUid;
         private String acceptingRegionId;
@@ -190,11 +165,7 @@ public final class GetPeerConnectionsConnection {
         private String peerConnectionName;
         private String status;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPeerConnectionsConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceptingAliUid = defaults.acceptingAliUid;
@@ -210,51 +181,75 @@ public final class GetPeerConnectionsConnection {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder acceptingAliUid(Integer acceptingAliUid) {
             this.acceptingAliUid = Objects.requireNonNull(acceptingAliUid);
             return this;
         }
+        @CustomType.Setter
         public Builder acceptingRegionId(String acceptingRegionId) {
             this.acceptingRegionId = Objects.requireNonNull(acceptingRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder acceptingVpcId(String acceptingVpcId) {
             this.acceptingVpcId = Objects.requireNonNull(acceptingVpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder peerConnectionId(String peerConnectionId) {
             this.peerConnectionId = Objects.requireNonNull(peerConnectionId);
             return this;
         }
+        @CustomType.Setter
         public Builder peerConnectionName(String peerConnectionName) {
             this.peerConnectionName = Objects.requireNonNull(peerConnectionName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetPeerConnectionsConnection build() {
-            return new GetPeerConnectionsConnection(acceptingAliUid, acceptingRegionId, acceptingVpcId, bandwidth, createTime, description, id, peerConnectionId, peerConnectionName, status, vpcId);
+        }
+        public GetPeerConnectionsConnection build() {
+            final var o = new GetPeerConnectionsConnection();
+            o.acceptingAliUid = acceptingAliUid;
+            o.acceptingRegionId = acceptingRegionId;
+            o.acceptingVpcId = acceptingVpcId;
+            o.bandwidth = bandwidth;
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.peerConnectionId = peerConnectionId;
+            o.peerConnectionName = peerConnectionName;
+            o.status = status;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

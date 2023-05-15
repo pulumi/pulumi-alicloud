@@ -13,56 +13,39 @@ public final class GetChildInstanceRouteEntryToAttachmentsAttachment {
      * @return The ID of the CEN instance.
      * 
      */
-    private final String cenId;
+    private String cenId;
     /**
      * @return The first ID of the resource
      * 
      */
-    private final String childInstanceRouteTableId;
+    private String childInstanceRouteTableId;
     /**
      * @return DestinationCidrBlock
      * 
      */
-    private final String destinationCidrBlock;
+    private String destinationCidrBlock;
     /**
      * @return The ID of the resource. The value is formulated as `&lt;cen_id&gt;:&lt;child_instance_route_table_id&gt;:&lt;transit_router_attachment_id&gt;:&lt;destination_cidr_block&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return ServiceType
      * 
      */
-    private final String serviceType;
+    private String serviceType;
     /**
      * @return The status of the resource
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return TransitRouterAttachmentId
      * 
      */
-    private final String transitRouterAttachmentId;
+    private String transitRouterAttachmentId;
 
-    @CustomType.Constructor
-    private GetChildInstanceRouteEntryToAttachmentsAttachment(
-        @CustomType.Parameter("cenId") String cenId,
-        @CustomType.Parameter("childInstanceRouteTableId") String childInstanceRouteTableId,
-        @CustomType.Parameter("destinationCidrBlock") String destinationCidrBlock,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("serviceType") String serviceType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("transitRouterAttachmentId") String transitRouterAttachmentId) {
-        this.cenId = cenId;
-        this.childInstanceRouteTableId = childInstanceRouteTableId;
-        this.destinationCidrBlock = destinationCidrBlock;
-        this.id = id;
-        this.serviceType = serviceType;
-        this.status = status;
-        this.transitRouterAttachmentId = transitRouterAttachmentId;
-    }
-
+    private GetChildInstanceRouteEntryToAttachmentsAttachment() {}
     /**
      * @return The ID of the CEN instance.
      * 
@@ -120,7 +103,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsAttachment {
     public static Builder builder(GetChildInstanceRouteEntryToAttachmentsAttachment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cenId;
         private String childInstanceRouteTableId;
@@ -129,11 +112,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsAttachment {
         private String serviceType;
         private String status;
         private String transitRouterAttachmentId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetChildInstanceRouteEntryToAttachmentsAttachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
@@ -145,35 +124,51 @@ public final class GetChildInstanceRouteEntryToAttachmentsAttachment {
     	      this.transitRouterAttachmentId = defaults.transitRouterAttachmentId;
         }
 
+        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
+        @CustomType.Setter
         public Builder childInstanceRouteTableId(String childInstanceRouteTableId) {
             this.childInstanceRouteTableId = Objects.requireNonNull(childInstanceRouteTableId);
             return this;
         }
+        @CustomType.Setter
         public Builder destinationCidrBlock(String destinationCidrBlock) {
             this.destinationCidrBlock = Objects.requireNonNull(destinationCidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceType(String serviceType) {
             this.serviceType = Objects.requireNonNull(serviceType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
             return this;
-        }        public GetChildInstanceRouteEntryToAttachmentsAttachment build() {
-            return new GetChildInstanceRouteEntryToAttachmentsAttachment(cenId, childInstanceRouteTableId, destinationCidrBlock, id, serviceType, status, transitRouterAttachmentId);
+        }
+        public GetChildInstanceRouteEntryToAttachmentsAttachment build() {
+            final var o = new GetChildInstanceRouteEntryToAttachmentsAttachment();
+            o.cenId = cenId;
+            o.childInstanceRouteTableId = childInstanceRouteTableId;
+            o.destinationCidrBlock = destinationCidrBlock;
+            o.id = id;
+            o.serviceType = serviceType;
+            o.status = status;
+            o.transitRouterAttachmentId = transitRouterAttachmentId;
+            return o;
         }
     }
 }

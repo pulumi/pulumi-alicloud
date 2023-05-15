@@ -19,47 +19,20 @@ public final class GetVirtualNodesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final List<GetVirtualNodesNode> nodes;
-    private final @Nullable String outputFile;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable String securityGroupId;
-    private final @Nullable String status;
-    private final @Nullable Map<String,Object> tags;
-    private final @Nullable String virtualNodeName;
-    private final @Nullable String vswitchId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private List<GetVirtualNodesNode> nodes;
+    private @Nullable String outputFile;
+    private @Nullable String resourceGroupId;
+    private @Nullable String securityGroupId;
+    private @Nullable String status;
+    private @Nullable Map<String,Object> tags;
+    private @Nullable String virtualNodeName;
+    private @Nullable String vswitchId;
 
-    @CustomType.Constructor
-    private GetVirtualNodesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("nodes") List<GetVirtualNodesNode> nodes,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("securityGroupId") @Nullable String securityGroupId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("virtualNodeName") @Nullable String virtualNodeName,
-        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.nodes = nodes;
-        this.outputFile = outputFile;
-        this.resourceGroupId = resourceGroupId;
-        this.securityGroupId = securityGroupId;
-        this.status = status;
-        this.tags = tags;
-        this.virtualNodeName = virtualNodeName;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetVirtualNodesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -108,7 +81,7 @@ public final class GetVirtualNodesResult {
     public static Builder builder(GetVirtualNodesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -122,11 +95,7 @@ public final class GetVirtualNodesResult {
         private @Nullable Map<String,Object> tags;
         private @Nullable String virtualNodeName;
         private @Nullable String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVirtualNodesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -143,10 +112,12 @@ public final class GetVirtualNodesResult {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -154,10 +125,12 @@ public final class GetVirtualNodesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -165,6 +138,7 @@ public final class GetVirtualNodesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder nodes(List<GetVirtualNodesNode> nodes) {
             this.nodes = Objects.requireNonNull(nodes);
             return this;
@@ -172,35 +146,56 @@ public final class GetVirtualNodesResult {
         public Builder nodes(GetVirtualNodesNode... nodes) {
             return nodes(List.of(nodes));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupId(@Nullable String securityGroupId) {
             this.securityGroupId = securityGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder virtualNodeName(@Nullable String virtualNodeName) {
             this.virtualNodeName = virtualNodeName;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }        public GetVirtualNodesResult build() {
-            return new GetVirtualNodesResult(id, ids, nameRegex, names, nodes, outputFile, resourceGroupId, securityGroupId, status, tags, virtualNodeName, vswitchId);
+        }
+        public GetVirtualNodesResult build() {
+            final var o = new GetVirtualNodesResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.nodes = nodes;
+            o.outputFile = outputFile;
+            o.resourceGroupId = resourceGroupId;
+            o.securityGroupId = securityGroupId;
+            o.status = status;
+            o.tags = tags;
+            o.virtualNodeName = virtualNodeName;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

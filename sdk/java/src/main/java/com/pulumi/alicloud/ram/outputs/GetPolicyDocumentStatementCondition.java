@@ -14,28 +14,19 @@ public final class GetPolicyDocumentStatementCondition {
      * @return The operator of the condition.
      * 
      */
-    private final String operator;
+    private String operator;
     /**
      * @return The values of the condition.
      * 
      */
-    private final List<String> values;
+    private List<String> values;
     /**
      * @return The variable of the condition.
      * 
      */
-    private final String variable;
+    private String variable;
 
-    @CustomType.Constructor
-    private GetPolicyDocumentStatementCondition(
-        @CustomType.Parameter("operator") String operator,
-        @CustomType.Parameter("values") List<String> values,
-        @CustomType.Parameter("variable") String variable) {
-        this.operator = operator;
-        this.values = values;
-        this.variable = variable;
-    }
-
+    private GetPolicyDocumentStatementCondition() {}
     /**
      * @return The operator of the condition.
      * 
@@ -65,16 +56,12 @@ public final class GetPolicyDocumentStatementCondition {
     public static Builder builder(GetPolicyDocumentStatementCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String operator;
         private List<String> values;
         private String variable;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPolicyDocumentStatementCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.operator = defaults.operator;
@@ -82,10 +69,12 @@ public final class GetPolicyDocumentStatementCondition {
     	      this.variable = defaults.variable;
         }
 
+        @CustomType.Setter
         public Builder operator(String operator) {
             this.operator = Objects.requireNonNull(operator);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
@@ -93,11 +82,17 @@ public final class GetPolicyDocumentStatementCondition {
         public Builder values(String... values) {
             return values(List.of(values));
         }
+        @CustomType.Setter
         public Builder variable(String variable) {
             this.variable = Objects.requireNonNull(variable);
             return this;
-        }        public GetPolicyDocumentStatementCondition build() {
-            return new GetPolicyDocumentStatementCondition(operator, values, variable);
+        }
+        public GetPolicyDocumentStatementCondition build() {
+            final var o = new GetPolicyDocumentStatementCondition();
+            o.operator = operator;
+            o.values = values;
+            o.variable = variable;
+            return o;
         }
     }
 }

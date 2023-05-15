@@ -13,21 +13,14 @@ public final class GetDedicatedHostsHostNetworkAttribute {
      * @return The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
      * 
      */
-    private final Integer slbUdpTimeout;
+    private Integer slbUdpTimeout;
     /**
      * @return (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
      * 
      */
-    private final Integer udpTimeout;
+    private Integer udpTimeout;
 
-    @CustomType.Constructor
-    private GetDedicatedHostsHostNetworkAttribute(
-        @CustomType.Parameter("slbUdpTimeout") Integer slbUdpTimeout,
-        @CustomType.Parameter("udpTimeout") Integer udpTimeout) {
-        this.slbUdpTimeout = slbUdpTimeout;
-        this.udpTimeout = udpTimeout;
-    }
-
+    private GetDedicatedHostsHostNetworkAttribute() {}
     /**
      * @return The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
      * 
@@ -50,30 +43,32 @@ public final class GetDedicatedHostsHostNetworkAttribute {
     public static Builder builder(GetDedicatedHostsHostNetworkAttribute defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer slbUdpTimeout;
         private Integer udpTimeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDedicatedHostsHostNetworkAttribute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.slbUdpTimeout = defaults.slbUdpTimeout;
     	      this.udpTimeout = defaults.udpTimeout;
         }
 
+        @CustomType.Setter
         public Builder slbUdpTimeout(Integer slbUdpTimeout) {
             this.slbUdpTimeout = Objects.requireNonNull(slbUdpTimeout);
             return this;
         }
+        @CustomType.Setter
         public Builder udpTimeout(Integer udpTimeout) {
             this.udpTimeout = Objects.requireNonNull(udpTimeout);
             return this;
-        }        public GetDedicatedHostsHostNetworkAttribute build() {
-            return new GetDedicatedHostsHostNetworkAttribute(slbUdpTimeout, udpTimeout);
+        }
+        public GetDedicatedHostsHostNetworkAttribute build() {
+            final var o = new GetDedicatedHostsHostNetworkAttribute();
+            o.slbUdpTimeout = slbUdpTimeout;
+            o.udpTimeout = udpTimeout;
+            return o;
         }
     }
 }

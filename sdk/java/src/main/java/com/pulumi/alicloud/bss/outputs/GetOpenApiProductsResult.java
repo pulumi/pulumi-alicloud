@@ -17,37 +17,22 @@ public final class GetOpenApiProductsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of name of Products.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A list of Product Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetOpenApiProductsProduct> products;
+    private List<GetOpenApiProductsProduct> products;
 
-    @CustomType.Constructor
-    private GetOpenApiProductsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("products") List<GetOpenApiProductsProduct> products) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.products = products;
-    }
-
+    private GetOpenApiProductsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -86,7 +71,7 @@ public final class GetOpenApiProductsResult {
     public static Builder builder(GetOpenApiProductsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -94,11 +79,7 @@ public final class GetOpenApiProductsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetOpenApiProductsProduct> products;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetOpenApiProductsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -109,10 +90,12 @@ public final class GetOpenApiProductsResult {
     	      this.products = defaults.products;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -120,10 +103,12 @@ public final class GetOpenApiProductsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -131,18 +116,28 @@ public final class GetOpenApiProductsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder products(List<GetOpenApiProductsProduct> products) {
             this.products = Objects.requireNonNull(products);
             return this;
         }
         public Builder products(GetOpenApiProductsProduct... products) {
             return products(List.of(products));
-        }        public GetOpenApiProductsResult build() {
-            return new GetOpenApiProductsResult(id, ids, nameRegex, names, outputFile, products);
+        }
+        public GetOpenApiProductsResult build() {
+            final var o = new GetOpenApiProductsResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.products = products;
+            return o;
         }
     }
 }

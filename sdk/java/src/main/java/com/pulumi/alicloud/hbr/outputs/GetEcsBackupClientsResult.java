@@ -13,33 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetEcsBackupClientsResult {
-    private final List<GetEcsBackupClientsClient> clients;
+    private List<GetEcsBackupClientsClient> clients;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable List<String> instanceIds;
-    private final @Nullable String outputFile;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable List<String> instanceIds;
+    private @Nullable String outputFile;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetEcsBackupClientsResult(
-        @CustomType.Parameter("clients") List<GetEcsBackupClientsClient> clients,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceIds") @Nullable List<String> instanceIds,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.clients = clients;
-        this.id = id;
-        this.ids = ids;
-        this.instanceIds = instanceIds;
-        this.outputFile = outputFile;
-        this.status = status;
-    }
-
+    private GetEcsBackupClientsResult() {}
     public List<GetEcsBackupClientsClient> clients() {
         return this.clients;
     }
@@ -70,7 +55,7 @@ public final class GetEcsBackupClientsResult {
     public static Builder builder(GetEcsBackupClientsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetEcsBackupClientsClient> clients;
         private String id;
@@ -78,11 +63,7 @@ public final class GetEcsBackupClientsResult {
         private @Nullable List<String> instanceIds;
         private @Nullable String outputFile;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEcsBackupClientsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clients = defaults.clients;
@@ -93,6 +74,7 @@ public final class GetEcsBackupClientsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder clients(List<GetEcsBackupClientsClient> clients) {
             this.clients = Objects.requireNonNull(clients);
             return this;
@@ -100,10 +82,12 @@ public final class GetEcsBackupClientsResult {
         public Builder clients(GetEcsBackupClientsClient... clients) {
             return clients(List.of(clients));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -111,6 +95,7 @@ public final class GetEcsBackupClientsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceIds(@Nullable List<String> instanceIds) {
             this.instanceIds = instanceIds;
             return this;
@@ -118,15 +103,25 @@ public final class GetEcsBackupClientsResult {
         public Builder instanceIds(String... instanceIds) {
             return instanceIds(List.of(instanceIds));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetEcsBackupClientsResult build() {
-            return new GetEcsBackupClientsResult(clients, id, ids, instanceIds, outputFile, status);
+        }
+        public GetEcsBackupClientsResult build() {
+            final var o = new GetEcsBackupClientsResult();
+            o.clients = clients;
+            o.id = id;
+            o.ids = ids;
+            o.instanceIds = instanceIds;
+            o.outputFile = outputFile;
+            o.status = status;
+            return o;
         }
     }
 }

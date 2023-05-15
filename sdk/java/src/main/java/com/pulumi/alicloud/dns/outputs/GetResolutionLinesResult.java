@@ -13,54 +13,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetResolutionLinesResult {
-    private final @Nullable String domainName;
+    private @Nullable String domainName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String lang;
+    private String id;
+    private @Nullable String lang;
     /**
      * @return Line code.
      * 
      */
-    private final List<String> lineCodes;
+    private List<String> lineCodes;
     /**
      * @return A list of line display names.
      * 
      */
-    private final List<String> lineDisplayNames;
-    private final @Nullable List<String> lineNames;
+    private List<String> lineDisplayNames;
+    private @Nullable List<String> lineNames;
     /**
      * @return A list of cloud resolution line. Each element contains the following attributes:
      * 
      */
-    private final List<GetResolutionLinesLine> lines;
-    private final @Nullable String outputFile;
-    private final @Nullable String userClientIp;
+    private List<GetResolutionLinesLine> lines;
+    private @Nullable String outputFile;
+    private @Nullable String userClientIp;
 
-    @CustomType.Constructor
-    private GetResolutionLinesResult(
-        @CustomType.Parameter("domainName") @Nullable String domainName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lang") @Nullable String lang,
-        @CustomType.Parameter("lineCodes") List<String> lineCodes,
-        @CustomType.Parameter("lineDisplayNames") List<String> lineDisplayNames,
-        @CustomType.Parameter("lineNames") @Nullable List<String> lineNames,
-        @CustomType.Parameter("lines") List<GetResolutionLinesLine> lines,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("userClientIp") @Nullable String userClientIp) {
-        this.domainName = domainName;
-        this.id = id;
-        this.lang = lang;
-        this.lineCodes = lineCodes;
-        this.lineDisplayNames = lineDisplayNames;
-        this.lineNames = lineNames;
-        this.lines = lines;
-        this.outputFile = outputFile;
-        this.userClientIp = userClientIp;
-    }
-
+    private GetResolutionLinesResult() {}
     public Optional<String> domainName() {
         return Optional.ofNullable(this.domainName);
     }
@@ -112,7 +91,7 @@ public final class GetResolutionLinesResult {
     public static Builder builder(GetResolutionLinesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String domainName;
         private String id;
@@ -123,11 +102,7 @@ public final class GetResolutionLinesResult {
         private List<GetResolutionLinesLine> lines;
         private @Nullable String outputFile;
         private @Nullable String userClientIp;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetResolutionLinesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainName = defaults.domainName;
@@ -141,18 +116,22 @@ public final class GetResolutionLinesResult {
     	      this.userClientIp = defaults.userClientIp;
         }
 
+        @CustomType.Setter
         public Builder domainName(@Nullable String domainName) {
             this.domainName = domainName;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
+        @CustomType.Setter
         public Builder lineCodes(List<String> lineCodes) {
             this.lineCodes = Objects.requireNonNull(lineCodes);
             return this;
@@ -160,6 +139,7 @@ public final class GetResolutionLinesResult {
         public Builder lineCodes(String... lineCodes) {
             return lineCodes(List.of(lineCodes));
         }
+        @CustomType.Setter
         public Builder lineDisplayNames(List<String> lineDisplayNames) {
             this.lineDisplayNames = Objects.requireNonNull(lineDisplayNames);
             return this;
@@ -167,6 +147,7 @@ public final class GetResolutionLinesResult {
         public Builder lineDisplayNames(String... lineDisplayNames) {
             return lineDisplayNames(List.of(lineDisplayNames));
         }
+        @CustomType.Setter
         public Builder lineNames(@Nullable List<String> lineNames) {
             this.lineNames = lineNames;
             return this;
@@ -174,6 +155,7 @@ public final class GetResolutionLinesResult {
         public Builder lineNames(String... lineNames) {
             return lineNames(List.of(lineNames));
         }
+        @CustomType.Setter
         public Builder lines(List<GetResolutionLinesLine> lines) {
             this.lines = Objects.requireNonNull(lines);
             return this;
@@ -181,15 +163,28 @@ public final class GetResolutionLinesResult {
         public Builder lines(GetResolutionLinesLine... lines) {
             return lines(List.of(lines));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder userClientIp(@Nullable String userClientIp) {
             this.userClientIp = userClientIp;
             return this;
-        }        public GetResolutionLinesResult build() {
-            return new GetResolutionLinesResult(domainName, id, lang, lineCodes, lineDisplayNames, lineNames, lines, outputFile, userClientIp);
+        }
+        public GetResolutionLinesResult build() {
+            final var o = new GetResolutionLinesResult();
+            o.domainName = domainName;
+            o.id = id;
+            o.lang = lang;
+            o.lineCodes = lineCodes;
+            o.lineDisplayNames = lineDisplayNames;
+            o.lineNames = lineNames;
+            o.lines = lines;
+            o.outputFile = outputFile;
+            o.userClientIp = userClientIp;
+            return o;
         }
     }
 }

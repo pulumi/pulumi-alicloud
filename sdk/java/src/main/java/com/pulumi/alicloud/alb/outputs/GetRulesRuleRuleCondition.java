@@ -21,63 +21,44 @@ public final class GetRulesRuleRuleCondition {
      * @return The configuration of the cookie.
      * 
      */
-    private final List<GetRulesRuleRuleConditionCookieConfig> cookieConfigs;
+    private List<GetRulesRuleRuleConditionCookieConfig> cookieConfigs;
     /**
      * @return The configuration of the header field.
      * 
      */
-    private final List<GetRulesRuleRuleConditionHeaderConfig> headerConfigs;
+    private List<GetRulesRuleRuleConditionHeaderConfig> headerConfigs;
     /**
      * @return The configuration of the host.
      * 
      */
-    private final List<GetRulesRuleRuleConditionHostConfig> hostConfigs;
+    private List<GetRulesRuleRuleConditionHostConfig> hostConfigs;
     /**
      * @return The configuration of the request method.
      * 
      */
-    private final List<GetRulesRuleRuleConditionMethodConfig> methodConfigs;
+    private List<GetRulesRuleRuleConditionMethodConfig> methodConfigs;
     /**
      * @return The configuration of the path for the request to be forwarded.
      * 
      */
-    private final List<GetRulesRuleRuleConditionPathConfig> pathConfigs;
+    private List<GetRulesRuleRuleConditionPathConfig> pathConfigs;
     /**
      * @return The configuration of the query string.
      * 
      */
-    private final List<GetRulesRuleRuleConditionQueryStringConfig> queryStringConfigs;
+    private List<GetRulesRuleRuleConditionQueryStringConfig> queryStringConfigs;
     /**
      * @return The Based on source IP traffic matching.
      * 
      */
-    private final List<GetRulesRuleRuleConditionSourceIpConfig> sourceIpConfigs;
+    private List<GetRulesRuleRuleConditionSourceIpConfig> sourceIpConfigs;
     /**
      * @return The type of the forwarding rule.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetRulesRuleRuleCondition(
-        @CustomType.Parameter("cookieConfigs") List<GetRulesRuleRuleConditionCookieConfig> cookieConfigs,
-        @CustomType.Parameter("headerConfigs") List<GetRulesRuleRuleConditionHeaderConfig> headerConfigs,
-        @CustomType.Parameter("hostConfigs") List<GetRulesRuleRuleConditionHostConfig> hostConfigs,
-        @CustomType.Parameter("methodConfigs") List<GetRulesRuleRuleConditionMethodConfig> methodConfigs,
-        @CustomType.Parameter("pathConfigs") List<GetRulesRuleRuleConditionPathConfig> pathConfigs,
-        @CustomType.Parameter("queryStringConfigs") List<GetRulesRuleRuleConditionQueryStringConfig> queryStringConfigs,
-        @CustomType.Parameter("sourceIpConfigs") List<GetRulesRuleRuleConditionSourceIpConfig> sourceIpConfigs,
-        @CustomType.Parameter("type") String type) {
-        this.cookieConfigs = cookieConfigs;
-        this.headerConfigs = headerConfigs;
-        this.hostConfigs = hostConfigs;
-        this.methodConfigs = methodConfigs;
-        this.pathConfigs = pathConfigs;
-        this.queryStringConfigs = queryStringConfigs;
-        this.sourceIpConfigs = sourceIpConfigs;
-        this.type = type;
-    }
-
+    private GetRulesRuleRuleCondition() {}
     /**
      * @return The configuration of the cookie.
      * 
@@ -142,7 +123,7 @@ public final class GetRulesRuleRuleCondition {
     public static Builder builder(GetRulesRuleRuleCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetRulesRuleRuleConditionCookieConfig> cookieConfigs;
         private List<GetRulesRuleRuleConditionHeaderConfig> headerConfigs;
@@ -152,11 +133,7 @@ public final class GetRulesRuleRuleCondition {
         private List<GetRulesRuleRuleConditionQueryStringConfig> queryStringConfigs;
         private List<GetRulesRuleRuleConditionSourceIpConfig> sourceIpConfigs;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRulesRuleRuleCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cookieConfigs = defaults.cookieConfigs;
@@ -169,6 +146,7 @@ public final class GetRulesRuleRuleCondition {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder cookieConfigs(List<GetRulesRuleRuleConditionCookieConfig> cookieConfigs) {
             this.cookieConfigs = Objects.requireNonNull(cookieConfigs);
             return this;
@@ -176,6 +154,7 @@ public final class GetRulesRuleRuleCondition {
         public Builder cookieConfigs(GetRulesRuleRuleConditionCookieConfig... cookieConfigs) {
             return cookieConfigs(List.of(cookieConfigs));
         }
+        @CustomType.Setter
         public Builder headerConfigs(List<GetRulesRuleRuleConditionHeaderConfig> headerConfigs) {
             this.headerConfigs = Objects.requireNonNull(headerConfigs);
             return this;
@@ -183,6 +162,7 @@ public final class GetRulesRuleRuleCondition {
         public Builder headerConfigs(GetRulesRuleRuleConditionHeaderConfig... headerConfigs) {
             return headerConfigs(List.of(headerConfigs));
         }
+        @CustomType.Setter
         public Builder hostConfigs(List<GetRulesRuleRuleConditionHostConfig> hostConfigs) {
             this.hostConfigs = Objects.requireNonNull(hostConfigs);
             return this;
@@ -190,6 +170,7 @@ public final class GetRulesRuleRuleCondition {
         public Builder hostConfigs(GetRulesRuleRuleConditionHostConfig... hostConfigs) {
             return hostConfigs(List.of(hostConfigs));
         }
+        @CustomType.Setter
         public Builder methodConfigs(List<GetRulesRuleRuleConditionMethodConfig> methodConfigs) {
             this.methodConfigs = Objects.requireNonNull(methodConfigs);
             return this;
@@ -197,6 +178,7 @@ public final class GetRulesRuleRuleCondition {
         public Builder methodConfigs(GetRulesRuleRuleConditionMethodConfig... methodConfigs) {
             return methodConfigs(List.of(methodConfigs));
         }
+        @CustomType.Setter
         public Builder pathConfigs(List<GetRulesRuleRuleConditionPathConfig> pathConfigs) {
             this.pathConfigs = Objects.requireNonNull(pathConfigs);
             return this;
@@ -204,6 +186,7 @@ public final class GetRulesRuleRuleCondition {
         public Builder pathConfigs(GetRulesRuleRuleConditionPathConfig... pathConfigs) {
             return pathConfigs(List.of(pathConfigs));
         }
+        @CustomType.Setter
         public Builder queryStringConfigs(List<GetRulesRuleRuleConditionQueryStringConfig> queryStringConfigs) {
             this.queryStringConfigs = Objects.requireNonNull(queryStringConfigs);
             return this;
@@ -211,6 +194,7 @@ public final class GetRulesRuleRuleCondition {
         public Builder queryStringConfigs(GetRulesRuleRuleConditionQueryStringConfig... queryStringConfigs) {
             return queryStringConfigs(List.of(queryStringConfigs));
         }
+        @CustomType.Setter
         public Builder sourceIpConfigs(List<GetRulesRuleRuleConditionSourceIpConfig> sourceIpConfigs) {
             this.sourceIpConfigs = Objects.requireNonNull(sourceIpConfigs);
             return this;
@@ -218,11 +202,22 @@ public final class GetRulesRuleRuleCondition {
         public Builder sourceIpConfigs(GetRulesRuleRuleConditionSourceIpConfig... sourceIpConfigs) {
             return sourceIpConfigs(List.of(sourceIpConfigs));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetRulesRuleRuleCondition build() {
-            return new GetRulesRuleRuleCondition(cookieConfigs, headerConfigs, hostConfigs, methodConfigs, pathConfigs, queryStringConfigs, sourceIpConfigs, type);
+        }
+        public GetRulesRuleRuleCondition build() {
+            final var o = new GetRulesRuleRuleCondition();
+            o.cookieConfigs = cookieConfigs;
+            o.headerConfigs = headerConfigs;
+            o.hostConfigs = hostConfigs;
+            o.methodConfigs = methodConfigs;
+            o.pathConfigs = pathConfigs;
+            o.queryStringConfigs = queryStringConfigs;
+            o.sourceIpConfigs = sourceIpConfigs;
+            o.type = type;
+            return o;
         }
     }
 }

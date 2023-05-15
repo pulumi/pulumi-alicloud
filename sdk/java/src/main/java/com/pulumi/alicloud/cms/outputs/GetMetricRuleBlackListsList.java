@@ -16,101 +16,70 @@ public final class GetMetricRuleBlackListsList {
      * @return Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      * 
      */
-    private final String category;
+    private String category;
     /**
      * @return The timestamp for creating an alert blacklist policy.Unit: milliseconds.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The effective time range of the alert blacklist policy.
      * 
      */
-    private final String effectiveTime;
+    private String effectiveTime;
     /**
      * @return The start timestamp of the alert blacklist policy.Unit: milliseconds.
      * 
      */
-    private final String enableEndTime;
+    private String enableEndTime;
     /**
      * @return The end timestamp of the alert blacklist policy.Unit: milliseconds.
      * 
      */
-    private final String enableStartTime;
-    private final String id;
+    private String enableStartTime;
+    private String id;
     /**
      * @return The list of instances of cloud services specified in the alert blacklist policy.
      * 
      */
-    private final List<String> instances;
+    private List<String> instances;
     /**
      * @return The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
      * 
      */
-    private final Boolean isEnable;
+    private Boolean isEnable;
     /**
      * @return The first ID of the resource
      * 
      */
-    private final String metricRuleBlackListId;
+    private String metricRuleBlackListId;
     /**
      * @return The name of the alert blacklist policy.
      * 
      */
-    private final String metricRuleBlackListName;
+    private String metricRuleBlackListName;
     /**
      * @return Monitoring metrics in the instance.
      * 
      */
-    private final List<GetMetricRuleBlackListsListMetric> metrics;
+    private List<GetMetricRuleBlackListsListMetric> metrics;
     /**
      * @return The data namespace of the cloud service.
      * 
      */
-    private final String namespace;
+    private String namespace;
     /**
      * @return The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
      * 
      */
-    private final String scopeType;
+    private String scopeType;
     /**
      * @return Application Group ID list. The format is JSON Array.&gt; This parameter is displayed only when &#39;ScopeType&#39; is &#39;GROUP.
      * 
      */
-    private final List<String> scopeValues;
+    private List<String> scopeValues;
 
-    @CustomType.Constructor
-    private GetMetricRuleBlackListsList(
-        @CustomType.Parameter("category") String category,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("effectiveTime") String effectiveTime,
-        @CustomType.Parameter("enableEndTime") String enableEndTime,
-        @CustomType.Parameter("enableStartTime") String enableStartTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instances") List<String> instances,
-        @CustomType.Parameter("isEnable") Boolean isEnable,
-        @CustomType.Parameter("metricRuleBlackListId") String metricRuleBlackListId,
-        @CustomType.Parameter("metricRuleBlackListName") String metricRuleBlackListName,
-        @CustomType.Parameter("metrics") List<GetMetricRuleBlackListsListMetric> metrics,
-        @CustomType.Parameter("namespace") String namespace,
-        @CustomType.Parameter("scopeType") String scopeType,
-        @CustomType.Parameter("scopeValues") List<String> scopeValues) {
-        this.category = category;
-        this.createTime = createTime;
-        this.effectiveTime = effectiveTime;
-        this.enableEndTime = enableEndTime;
-        this.enableStartTime = enableStartTime;
-        this.id = id;
-        this.instances = instances;
-        this.isEnable = isEnable;
-        this.metricRuleBlackListId = metricRuleBlackListId;
-        this.metricRuleBlackListName = metricRuleBlackListName;
-        this.metrics = metrics;
-        this.namespace = namespace;
-        this.scopeType = scopeType;
-        this.scopeValues = scopeValues;
-    }
-
+    private GetMetricRuleBlackListsList() {}
     /**
      * @return Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      * 
@@ -213,7 +182,7 @@ public final class GetMetricRuleBlackListsList {
     public static Builder builder(GetMetricRuleBlackListsList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String category;
         private String createTime;
@@ -229,11 +198,7 @@ public final class GetMetricRuleBlackListsList {
         private String namespace;
         private String scopeType;
         private List<String> scopeValues;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetMetricRuleBlackListsList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
@@ -252,30 +217,37 @@ public final class GetMetricRuleBlackListsList {
     	      this.scopeValues = defaults.scopeValues;
         }
 
+        @CustomType.Setter
         public Builder category(String category) {
             this.category = Objects.requireNonNull(category);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder effectiveTime(String effectiveTime) {
             this.effectiveTime = Objects.requireNonNull(effectiveTime);
             return this;
         }
+        @CustomType.Setter
         public Builder enableEndTime(String enableEndTime) {
             this.enableEndTime = Objects.requireNonNull(enableEndTime);
             return this;
         }
+        @CustomType.Setter
         public Builder enableStartTime(String enableStartTime) {
             this.enableStartTime = Objects.requireNonNull(enableStartTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instances(List<String> instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
@@ -283,18 +255,22 @@ public final class GetMetricRuleBlackListsList {
         public Builder instances(String... instances) {
             return instances(List.of(instances));
         }
+        @CustomType.Setter
         public Builder isEnable(Boolean isEnable) {
             this.isEnable = Objects.requireNonNull(isEnable);
             return this;
         }
+        @CustomType.Setter
         public Builder metricRuleBlackListId(String metricRuleBlackListId) {
             this.metricRuleBlackListId = Objects.requireNonNull(metricRuleBlackListId);
             return this;
         }
+        @CustomType.Setter
         public Builder metricRuleBlackListName(String metricRuleBlackListName) {
             this.metricRuleBlackListName = Objects.requireNonNull(metricRuleBlackListName);
             return this;
         }
+        @CustomType.Setter
         public Builder metrics(List<GetMetricRuleBlackListsListMetric> metrics) {
             this.metrics = Objects.requireNonNull(metrics);
             return this;
@@ -302,22 +278,41 @@ public final class GetMetricRuleBlackListsList {
         public Builder metrics(GetMetricRuleBlackListsListMetric... metrics) {
             return metrics(List.of(metrics));
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
+        @CustomType.Setter
         public Builder scopeType(String scopeType) {
             this.scopeType = Objects.requireNonNull(scopeType);
             return this;
         }
+        @CustomType.Setter
         public Builder scopeValues(List<String> scopeValues) {
             this.scopeValues = Objects.requireNonNull(scopeValues);
             return this;
         }
         public Builder scopeValues(String... scopeValues) {
             return scopeValues(List.of(scopeValues));
-        }        public GetMetricRuleBlackListsList build() {
-            return new GetMetricRuleBlackListsList(category, createTime, effectiveTime, enableEndTime, enableStartTime, id, instances, isEnable, metricRuleBlackListId, metricRuleBlackListName, metrics, namespace, scopeType, scopeValues);
+        }
+        public GetMetricRuleBlackListsList build() {
+            final var o = new GetMetricRuleBlackListsList();
+            o.category = category;
+            o.createTime = createTime;
+            o.effectiveTime = effectiveTime;
+            o.enableEndTime = enableEndTime;
+            o.enableStartTime = enableStartTime;
+            o.id = id;
+            o.instances = instances;
+            o.isEnable = isEnable;
+            o.metricRuleBlackListId = metricRuleBlackListId;
+            o.metricRuleBlackListName = metricRuleBlackListName;
+            o.metrics = metrics;
+            o.namespace = namespace;
+            o.scopeType = scopeType;
+            o.scopeValues = scopeValues;
+            return o;
         }
     }
 }

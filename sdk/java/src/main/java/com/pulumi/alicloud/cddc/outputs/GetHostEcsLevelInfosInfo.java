@@ -13,35 +13,24 @@ public final class GetHostEcsLevelInfosInfo {
      * @return The description of the host ecs level info.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The instance family of the host ecs level info.
      * 
      */
-    private final String ecsClass;
+    private String ecsClass;
     /**
      * @return The Elastic Compute Service (ECS) instance type.
      * 
      */
-    private final String ecsClassCode;
+    private String ecsClassCode;
     /**
      * @return The ApsaraDB RDS instance type of the host ecs level info.
      * 
      */
-    private final String resClassCode;
+    private String resClassCode;
 
-    @CustomType.Constructor
-    private GetHostEcsLevelInfosInfo(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("ecsClass") String ecsClass,
-        @CustomType.Parameter("ecsClassCode") String ecsClassCode,
-        @CustomType.Parameter("resClassCode") String resClassCode) {
-        this.description = description;
-        this.ecsClass = ecsClass;
-        this.ecsClassCode = ecsClassCode;
-        this.resClassCode = resClassCode;
-    }
-
+    private GetHostEcsLevelInfosInfo() {}
     /**
      * @return The description of the host ecs level info.
      * 
@@ -78,17 +67,13 @@ public final class GetHostEcsLevelInfosInfo {
     public static Builder builder(GetHostEcsLevelInfosInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String ecsClass;
         private String ecsClassCode;
         private String resClassCode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHostEcsLevelInfosInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -97,23 +82,33 @@ public final class GetHostEcsLevelInfosInfo {
     	      this.resClassCode = defaults.resClassCode;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder ecsClass(String ecsClass) {
             this.ecsClass = Objects.requireNonNull(ecsClass);
             return this;
         }
+        @CustomType.Setter
         public Builder ecsClassCode(String ecsClassCode) {
             this.ecsClassCode = Objects.requireNonNull(ecsClassCode);
             return this;
         }
+        @CustomType.Setter
         public Builder resClassCode(String resClassCode) {
             this.resClassCode = Objects.requireNonNull(resClassCode);
             return this;
-        }        public GetHostEcsLevelInfosInfo build() {
-            return new GetHostEcsLevelInfosInfo(description, ecsClass, ecsClassCode, resClassCode);
+        }
+        public GetHostEcsLevelInfosInfo build() {
+            final var o = new GetHostEcsLevelInfosInfo();
+            o.description = description;
+            o.ecsClass = ecsClass;
+            o.ecsClassCode = ecsClassCode;
+            o.resClassCode = resClassCode;
+            return o;
         }
     }
 }

@@ -15,63 +15,44 @@ public final class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointT
      * @return The ID of the GA instance to which the traffic policies belong.
      * 
      */
-    private final String acceleratorId;
+    private String acceleratorId;
     /**
      * @return The IP addresses of the traffic policies.
      * 
      */
-    private final String address;
+    private String address;
     /**
      * @return The ID of the Custom Routing Endpoint Traffic Policy.
      * 
      */
-    private final String customRoutingEndpointTrafficPolicyId;
+    private String customRoutingEndpointTrafficPolicyId;
     /**
      * @return The ID of the endpoint group to which the traffic policies belong.
      * 
      */
-    private final String endpointGroupId;
+    private String endpointGroupId;
     /**
      * @return The ID of the endpoint to which the traffic policies belong.
      * 
      */
-    private final String endpointId;
+    private String endpointId;
     /**
      * @return The id of the Global Accelerator Custom Routing Endpoint Traffic Policy. It formats as `&lt;endpoint_id&gt;:&lt;custom_routing_endpoint_traffic_policy_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the listener to which the traffic policies belong.
      * 
      */
-    private final String listenerId;
+    private String listenerId;
     /**
      * @return The port range of the traffic policy.
      * 
      */
-    private final List<GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange> portRanges;
+    private List<GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange> portRanges;
 
-    @CustomType.Constructor
-    private GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy(
-        @CustomType.Parameter("acceleratorId") String acceleratorId,
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("customRoutingEndpointTrafficPolicyId") String customRoutingEndpointTrafficPolicyId,
-        @CustomType.Parameter("endpointGroupId") String endpointGroupId,
-        @CustomType.Parameter("endpointId") String endpointId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("listenerId") String listenerId,
-        @CustomType.Parameter("portRanges") List<GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange> portRanges) {
-        this.acceleratorId = acceleratorId;
-        this.address = address;
-        this.customRoutingEndpointTrafficPolicyId = customRoutingEndpointTrafficPolicyId;
-        this.endpointGroupId = endpointGroupId;
-        this.endpointId = endpointId;
-        this.id = id;
-        this.listenerId = listenerId;
-        this.portRanges = portRanges;
-    }
-
+    private GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy() {}
     /**
      * @return The ID of the GA instance to which the traffic policies belong.
      * 
@@ -136,7 +117,7 @@ public final class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointT
     public static Builder builder(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String acceleratorId;
         private String address;
@@ -146,11 +127,7 @@ public final class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointT
         private String id;
         private String listenerId;
         private List<GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange> portRanges;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorId = defaults.acceleratorId;
@@ -163,42 +140,60 @@ public final class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointT
     	      this.portRanges = defaults.portRanges;
         }
 
+        @CustomType.Setter
         public Builder acceleratorId(String acceleratorId) {
             this.acceleratorId = Objects.requireNonNull(acceleratorId);
             return this;
         }
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder customRoutingEndpointTrafficPolicyId(String customRoutingEndpointTrafficPolicyId) {
             this.customRoutingEndpointTrafficPolicyId = Objects.requireNonNull(customRoutingEndpointTrafficPolicyId);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
             this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointId(String endpointId) {
             this.endpointId = Objects.requireNonNull(endpointId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder listenerId(String listenerId) {
             this.listenerId = Objects.requireNonNull(listenerId);
             return this;
         }
+        @CustomType.Setter
         public Builder portRanges(List<GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange> portRanges) {
             this.portRanges = Objects.requireNonNull(portRanges);
             return this;
         }
         public Builder portRanges(GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange... portRanges) {
             return portRanges(List.of(portRanges));
-        }        public GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy build() {
-            return new GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy(acceleratorId, address, customRoutingEndpointTrafficPolicyId, endpointGroupId, endpointId, id, listenerId, portRanges);
+        }
+        public GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy build() {
+            final var o = new GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy();
+            o.acceleratorId = acceleratorId;
+            o.address = address;
+            o.customRoutingEndpointTrafficPolicyId = customRoutingEndpointTrafficPolicyId;
+            o.endpointGroupId = endpointGroupId;
+            o.endpointId = endpointId;
+            o.id = id;
+            o.listenerId = listenerId;
+            o.portRanges = portRanges;
+            return o;
         }
     }
 }

@@ -13,21 +13,14 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryL
      * @return The target network segment of the peer VPC.
      * 
      */
-    private final String peerDestinationCidr;
+    private String peerDestinationCidr;
     /**
      * @return The ID of the next-hop instance in the peer VPC.
      * 
      */
-    private final String peerNextHopInstanceId;
+    private String peerNextHopInstanceId;
 
-    @CustomType.Constructor
-    private FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList(
-        @CustomType.Parameter("peerDestinationCidr") String peerDestinationCidr,
-        @CustomType.Parameter("peerNextHopInstanceId") String peerNextHopInstanceId) {
-        this.peerDestinationCidr = peerDestinationCidr;
-        this.peerNextHopInstanceId = peerNextHopInstanceId;
-    }
-
+    private FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList() {}
     /**
      * @return The target network segment of the peer VPC.
      * 
@@ -50,30 +43,32 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryL
     public static Builder builder(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String peerDestinationCidr;
         private String peerNextHopInstanceId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.peerDestinationCidr = defaults.peerDestinationCidr;
     	      this.peerNextHopInstanceId = defaults.peerNextHopInstanceId;
         }
 
+        @CustomType.Setter
         public Builder peerDestinationCidr(String peerDestinationCidr) {
             this.peerDestinationCidr = Objects.requireNonNull(peerDestinationCidr);
             return this;
         }
+        @CustomType.Setter
         public Builder peerNextHopInstanceId(String peerNextHopInstanceId) {
             this.peerNextHopInstanceId = Objects.requireNonNull(peerNextHopInstanceId);
             return this;
-        }        public FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList build() {
-            return new FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList(peerDestinationCidr, peerNextHopInstanceId);
+        }
+        public FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList build() {
+            final var o = new FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList();
+            o.peerDestinationCidr = peerDestinationCidr;
+            o.peerNextHopInstanceId = peerNextHopInstanceId;
+            return o;
         }
     }
 }

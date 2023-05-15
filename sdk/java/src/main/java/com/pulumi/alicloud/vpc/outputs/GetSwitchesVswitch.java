@@ -17,119 +17,84 @@ public final class GetSwitchesVswitch {
      * @return The available ip address count of the VSwitch.
      * 
      */
-    private final Integer availableIpAddressCount;
+    private Integer availableIpAddressCount;
     /**
      * @return Filter results by a specific CIDR block. For example: &#34;172.16.0.0/12&#34;.
      * 
      */
-    private final String cidrBlock;
+    private String cidrBlock;
     /**
      * @return Time of creation.
      * 
      */
-    private final String creationTime;
+    private String creationTime;
     /**
      * @return Description of the VSwitch.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return ID of the VSwitch.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The IPv6 CIDR block of the switch.
      * 
      */
-    private final String ipv6CidrBlock;
+    private String ipv6CidrBlock;
     /**
      * @return Indicate whether the VSwitch is created by the system.
      * 
      */
-    private final Boolean isDefault;
+    private Boolean isDefault;
     /**
      * @return Name of the VSwitch.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The Id of resource group which VSWitch belongs.
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The route table ID of the VSwitch.
      * 
      */
-    private final String routeTableId;
+    private String routeTableId;
     /**
      * @return The status of the VSwitch. Valid values: `Available` and `Pending`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return A mapping of tags to assign to the resource.
      * 
      */
-    private final Map<String,Object> tags;
+    private Map<String,Object> tags;
     /**
      * @return ID of the VPC that owns the VSwitch.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return ID of the VSwitch.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The name of the VSwitch.
      * 
      */
-    private final String vswitchName;
+    private String vswitchName;
     /**
      * @return The availability zone of the VSwitch.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetSwitchesVswitch(
-        @CustomType.Parameter("availableIpAddressCount") Integer availableIpAddressCount,
-        @CustomType.Parameter("cidrBlock") String cidrBlock,
-        @CustomType.Parameter("creationTime") String creationTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipv6CidrBlock") String ipv6CidrBlock,
-        @CustomType.Parameter("isDefault") Boolean isDefault,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("routeTableId") String routeTableId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("vswitchName") String vswitchName,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.availableIpAddressCount = availableIpAddressCount;
-        this.cidrBlock = cidrBlock;
-        this.creationTime = creationTime;
-        this.description = description;
-        this.id = id;
-        this.ipv6CidrBlock = ipv6CidrBlock;
-        this.isDefault = isDefault;
-        this.name = name;
-        this.resourceGroupId = resourceGroupId;
-        this.routeTableId = routeTableId;
-        this.status = status;
-        this.tags = tags;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-        this.vswitchName = vswitchName;
-        this.zoneId = zoneId;
-    }
-
+    private GetSwitchesVswitch() {}
     /**
      * @return The available ip address count of the VSwitch.
      * 
@@ -250,7 +215,7 @@ public final class GetSwitchesVswitch {
     public static Builder builder(GetSwitchesVswitch defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer availableIpAddressCount;
         private String cidrBlock;
@@ -268,11 +233,7 @@ public final class GetSwitchesVswitch {
         private String vswitchId;
         private String vswitchName;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSwitchesVswitch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availableIpAddressCount = defaults.availableIpAddressCount;
@@ -293,71 +254,105 @@ public final class GetSwitchesVswitch {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder availableIpAddressCount(Integer availableIpAddressCount) {
             this.availableIpAddressCount = Objects.requireNonNull(availableIpAddressCount);
             return this;
         }
+        @CustomType.Setter
         public Builder cidrBlock(String cidrBlock) {
             this.cidrBlock = Objects.requireNonNull(cidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder creationTime(String creationTime) {
             this.creationTime = Objects.requireNonNull(creationTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6CidrBlock(String ipv6CidrBlock) {
             this.ipv6CidrBlock = Objects.requireNonNull(ipv6CidrBlock);
             return this;
         }
+        @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
             this.isDefault = Objects.requireNonNull(isDefault);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder routeTableId(String routeTableId) {
             this.routeTableId = Objects.requireNonNull(routeTableId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchName(String vswitchName) {
             this.vswitchName = Objects.requireNonNull(vswitchName);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetSwitchesVswitch build() {
-            return new GetSwitchesVswitch(availableIpAddressCount, cidrBlock, creationTime, description, id, ipv6CidrBlock, isDefault, name, resourceGroupId, routeTableId, status, tags, vpcId, vswitchId, vswitchName, zoneId);
+        }
+        public GetSwitchesVswitch build() {
+            final var o = new GetSwitchesVswitch();
+            o.availableIpAddressCount = availableIpAddressCount;
+            o.cidrBlock = cidrBlock;
+            o.creationTime = creationTime;
+            o.description = description;
+            o.id = id;
+            o.ipv6CidrBlock = ipv6CidrBlock;
+            o.isDefault = isDefault;
+            o.name = name;
+            o.resourceGroupId = resourceGroupId;
+            o.routeTableId = routeTableId;
+            o.status = status;
+            o.tags = tags;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            o.vswitchName = vswitchName;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

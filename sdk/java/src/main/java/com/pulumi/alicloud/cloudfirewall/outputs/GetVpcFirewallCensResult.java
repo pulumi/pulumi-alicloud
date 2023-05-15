@@ -18,82 +18,53 @@ public final class GetVpcFirewallCensResult {
      * @return The ID of the CEN instance.
      * 
      */
-    private final @Nullable String cenId;
+    private @Nullable String cenId;
     /**
      * @return A list of Vpc Firewall Cen Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetVpcFirewallCensCen> cens;
+    private List<GetVpcFirewallCensCen> cens;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Vpc Firewall Cen IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String lang;
+    private List<String> ids;
+    private @Nullable String lang;
     /**
      * @return The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
      * 
      */
-    private final @Nullable String memberUid;
+    private @Nullable String memberUid;
     /**
      * @return The ID of the VPC instance that created the VPC firewall.
      * 
      */
-    private final @Nullable String networkInstanceId;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
+    private @Nullable String networkInstanceId;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
     /**
      * @return Firewall switch status
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return VPC firewall ID
      * 
      */
-    private final @Nullable String vpcFirewallId;
+    private @Nullable String vpcFirewallId;
     /**
      * @return The name of the VPC firewall instance.
      * 
      */
-    private final @Nullable String vpcFirewallName;
+    private @Nullable String vpcFirewallName;
 
-    @CustomType.Constructor
-    private GetVpcFirewallCensResult(
-        @CustomType.Parameter("cenId") @Nullable String cenId,
-        @CustomType.Parameter("cens") List<GetVpcFirewallCensCen> cens,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("lang") @Nullable String lang,
-        @CustomType.Parameter("memberUid") @Nullable String memberUid,
-        @CustomType.Parameter("networkInstanceId") @Nullable String networkInstanceId,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("vpcFirewallId") @Nullable String vpcFirewallId,
-        @CustomType.Parameter("vpcFirewallName") @Nullable String vpcFirewallName) {
-        this.cenId = cenId;
-        this.cens = cens;
-        this.id = id;
-        this.ids = ids;
-        this.lang = lang;
-        this.memberUid = memberUid;
-        this.networkInstanceId = networkInstanceId;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.status = status;
-        this.vpcFirewallId = vpcFirewallId;
-        this.vpcFirewallName = vpcFirewallName;
-    }
-
+    private GetVpcFirewallCensResult() {}
     /**
      * @return The ID of the CEN instance.
      * 
@@ -177,7 +148,7 @@ public final class GetVpcFirewallCensResult {
     public static Builder builder(GetVpcFirewallCensResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cenId;
         private List<GetVpcFirewallCensCen> cens;
@@ -192,11 +163,7 @@ public final class GetVpcFirewallCensResult {
         private @Nullable String status;
         private @Nullable String vpcFirewallId;
         private @Nullable String vpcFirewallName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcFirewallCensResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
@@ -214,10 +181,12 @@ public final class GetVpcFirewallCensResult {
     	      this.vpcFirewallName = defaults.vpcFirewallName;
         }
 
+        @CustomType.Setter
         public Builder cenId(@Nullable String cenId) {
             this.cenId = cenId;
             return this;
         }
+        @CustomType.Setter
         public Builder cens(List<GetVpcFirewallCensCen> cens) {
             this.cens = Objects.requireNonNull(cens);
             return this;
@@ -225,10 +194,12 @@ public final class GetVpcFirewallCensResult {
         public Builder cens(GetVpcFirewallCensCen... cens) {
             return cens(List.of(cens));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -236,43 +207,67 @@ public final class GetVpcFirewallCensResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
+        @CustomType.Setter
         public Builder memberUid(@Nullable String memberUid) {
             this.memberUid = memberUid;
             return this;
         }
+        @CustomType.Setter
         public Builder networkInstanceId(@Nullable String networkInstanceId) {
             this.networkInstanceId = networkInstanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcFirewallId(@Nullable String vpcFirewallId) {
             this.vpcFirewallId = vpcFirewallId;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcFirewallName(@Nullable String vpcFirewallName) {
             this.vpcFirewallName = vpcFirewallName;
             return this;
-        }        public GetVpcFirewallCensResult build() {
-            return new GetVpcFirewallCensResult(cenId, cens, id, ids, lang, memberUid, networkInstanceId, outputFile, pageNumber, pageSize, status, vpcFirewallId, vpcFirewallName);
+        }
+        public GetVpcFirewallCensResult build() {
+            final var o = new GetVpcFirewallCensResult();
+            o.cenId = cenId;
+            o.cens = cens;
+            o.id = id;
+            o.ids = ids;
+            o.lang = lang;
+            o.memberUid = memberUid;
+            o.networkInstanceId = networkInstanceId;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.status = status;
+            o.vpcFirewallId = vpcFirewallId;
+            o.vpcFirewallName = vpcFirewallName;
+            return o;
         }
     }
 }

@@ -15,73 +15,50 @@ public final class GetDbInstancePlansPlan {
      * @return The name of the Plan.
      * 
      */
-    private final String dbInstancePlanName;
+    private String dbInstancePlanName;
     /**
      * @return The ID of the resource. The value formats as `&lt;db_instance_id&gt;:&lt;plan_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Plan configuration information.
      * 
      */
-    private final List<GetDbInstancePlansPlanPlanConfig> planConfigs;
-    private final String planDesc;
+    private List<GetDbInstancePlansPlanPlanConfig> planConfigs;
+    private String planDesc;
     /**
      * @return The end time of the Plan.
      * 
      */
-    private final String planEndDate;
+    private String planEndDate;
     /**
      * @return The ID of DB Instance Plan.
      * 
      */
-    private final String planId;
+    private String planId;
     /**
      * @return Plan scheduling type. Valid values: `Postpone`, `Regular`.
      * 
      */
-    private final String planScheduleType;
+    private String planScheduleType;
     /**
      * @return The start time of the Plan.
      * 
      */
-    private final String planStartDate;
+    private String planStartDate;
     /**
      * @return The type of the Plan. Valid values: `PauseResume`, `Resize`.
      * 
      */
-    private final String planType;
+    private String planType;
     /**
      * @return The Status of the Plan.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetDbInstancePlansPlan(
-        @CustomType.Parameter("dbInstancePlanName") String dbInstancePlanName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("planConfigs") List<GetDbInstancePlansPlanPlanConfig> planConfigs,
-        @CustomType.Parameter("planDesc") String planDesc,
-        @CustomType.Parameter("planEndDate") String planEndDate,
-        @CustomType.Parameter("planId") String planId,
-        @CustomType.Parameter("planScheduleType") String planScheduleType,
-        @CustomType.Parameter("planStartDate") String planStartDate,
-        @CustomType.Parameter("planType") String planType,
-        @CustomType.Parameter("status") String status) {
-        this.dbInstancePlanName = dbInstancePlanName;
-        this.id = id;
-        this.planConfigs = planConfigs;
-        this.planDesc = planDesc;
-        this.planEndDate = planEndDate;
-        this.planId = planId;
-        this.planScheduleType = planScheduleType;
-        this.planStartDate = planStartDate;
-        this.planType = planType;
-        this.status = status;
-    }
-
+    private GetDbInstancePlansPlan() {}
     /**
      * @return The name of the Plan.
      * 
@@ -156,7 +133,7 @@ public final class GetDbInstancePlansPlan {
     public static Builder builder(GetDbInstancePlansPlan defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dbInstancePlanName;
         private String id;
@@ -168,11 +145,7 @@ public final class GetDbInstancePlansPlan {
         private String planStartDate;
         private String planType;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDbInstancePlansPlan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dbInstancePlanName = defaults.dbInstancePlanName;
@@ -187,14 +160,17 @@ public final class GetDbInstancePlansPlan {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder dbInstancePlanName(String dbInstancePlanName) {
             this.dbInstancePlanName = Objects.requireNonNull(dbInstancePlanName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder planConfigs(List<GetDbInstancePlansPlanPlanConfig> planConfigs) {
             this.planConfigs = Objects.requireNonNull(planConfigs);
             return this;
@@ -202,35 +178,54 @@ public final class GetDbInstancePlansPlan {
         public Builder planConfigs(GetDbInstancePlansPlanPlanConfig... planConfigs) {
             return planConfigs(List.of(planConfigs));
         }
+        @CustomType.Setter
         public Builder planDesc(String planDesc) {
             this.planDesc = Objects.requireNonNull(planDesc);
             return this;
         }
+        @CustomType.Setter
         public Builder planEndDate(String planEndDate) {
             this.planEndDate = Objects.requireNonNull(planEndDate);
             return this;
         }
+        @CustomType.Setter
         public Builder planId(String planId) {
             this.planId = Objects.requireNonNull(planId);
             return this;
         }
+        @CustomType.Setter
         public Builder planScheduleType(String planScheduleType) {
             this.planScheduleType = Objects.requireNonNull(planScheduleType);
             return this;
         }
+        @CustomType.Setter
         public Builder planStartDate(String planStartDate) {
             this.planStartDate = Objects.requireNonNull(planStartDate);
             return this;
         }
+        @CustomType.Setter
         public Builder planType(String planType) {
             this.planType = Objects.requireNonNull(planType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetDbInstancePlansPlan build() {
-            return new GetDbInstancePlansPlan(dbInstancePlanName, id, planConfigs, planDesc, planEndDate, planId, planScheduleType, planStartDate, planType, status);
+        }
+        public GetDbInstancePlansPlan build() {
+            final var o = new GetDbInstancePlansPlan();
+            o.dbInstancePlanName = dbInstancePlanName;
+            o.id = id;
+            o.planConfigs = planConfigs;
+            o.planDesc = planDesc;
+            o.planEndDate = planEndDate;
+            o.planId = planId;
+            o.planScheduleType = planScheduleType;
+            o.planStartDate = planStartDate;
+            o.planType = planType;
+            o.status = status;
+            return o;
         }
     }
 }

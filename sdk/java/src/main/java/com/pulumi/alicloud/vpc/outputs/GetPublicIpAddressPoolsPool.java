@@ -15,91 +15,64 @@ public final class GetPublicIpAddressPoolsPool {
      * @return The time when the Vpc Public Ip Address Pool was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the Vpc Public Ip Address Pool.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The ID of the Vpc Public Ip Address Pool.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Indicates whether the Vpc Public Ip Address Pool has idle IP addresses.
      * 
      */
-    private final Boolean ipAddressRemaining;
+    private Boolean ipAddressRemaining;
     /**
      * @return The Internet service provider.
      * 
      */
-    private final String isp;
+    private String isp;
     /**
      * @return The ID of the Vpc Public Ip Address Pool.
      * 
      */
-    private final String publicIpAddressPoolId;
+    private String publicIpAddressPoolId;
     /**
      * @return The name of the Vpc Public Ip Address Pool.
      * 
      */
-    private final String publicIpAddressPoolName;
+    private String publicIpAddressPoolName;
     /**
      * @return The region ID of the Vpc Public Ip Address Pool.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return The status of the Vpc Public Ip Address Pool.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The total number of IP addresses in the Vpc Public Ip Address Pool.
      * 
      */
-    private final Integer totalIpNum;
+    private Integer totalIpNum;
     /**
      * @return The number of occupied IP addresses in the Vpc Public Ip Address Pool.
      * 
      */
-    private final Integer usedIpNum;
+    private Integer usedIpNum;
     /**
      * @return The user type.
      * 
      */
-    private final String userType;
+    private String userType;
 
-    @CustomType.Constructor
-    private GetPublicIpAddressPoolsPool(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipAddressRemaining") Boolean ipAddressRemaining,
-        @CustomType.Parameter("isp") String isp,
-        @CustomType.Parameter("publicIpAddressPoolId") String publicIpAddressPoolId,
-        @CustomType.Parameter("publicIpAddressPoolName") String publicIpAddressPoolName,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("totalIpNum") Integer totalIpNum,
-        @CustomType.Parameter("usedIpNum") Integer usedIpNum,
-        @CustomType.Parameter("userType") String userType) {
-        this.createTime = createTime;
-        this.description = description;
-        this.id = id;
-        this.ipAddressRemaining = ipAddressRemaining;
-        this.isp = isp;
-        this.publicIpAddressPoolId = publicIpAddressPoolId;
-        this.publicIpAddressPoolName = publicIpAddressPoolName;
-        this.regionId = regionId;
-        this.status = status;
-        this.totalIpNum = totalIpNum;
-        this.usedIpNum = usedIpNum;
-        this.userType = userType;
-    }
-
+    private GetPublicIpAddressPoolsPool() {}
     /**
      * @return The time when the Vpc Public Ip Address Pool was created. The time is displayed in YYYY-MM-DDThh:mm:ssZ format.
      * 
@@ -192,7 +165,7 @@ public final class GetPublicIpAddressPoolsPool {
     public static Builder builder(GetPublicIpAddressPoolsPool defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String description;
@@ -206,11 +179,7 @@ public final class GetPublicIpAddressPoolsPool {
         private Integer totalIpNum;
         private Integer usedIpNum;
         private String userType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPublicIpAddressPoolsPool defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -227,55 +196,81 @@ public final class GetPublicIpAddressPoolsPool {
     	      this.userType = defaults.userType;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddressRemaining(Boolean ipAddressRemaining) {
             this.ipAddressRemaining = Objects.requireNonNull(ipAddressRemaining);
             return this;
         }
+        @CustomType.Setter
         public Builder isp(String isp) {
             this.isp = Objects.requireNonNull(isp);
             return this;
         }
+        @CustomType.Setter
         public Builder publicIpAddressPoolId(String publicIpAddressPoolId) {
             this.publicIpAddressPoolId = Objects.requireNonNull(publicIpAddressPoolId);
             return this;
         }
+        @CustomType.Setter
         public Builder publicIpAddressPoolName(String publicIpAddressPoolName) {
             this.publicIpAddressPoolName = Objects.requireNonNull(publicIpAddressPoolName);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder totalIpNum(Integer totalIpNum) {
             this.totalIpNum = Objects.requireNonNull(totalIpNum);
             return this;
         }
+        @CustomType.Setter
         public Builder usedIpNum(Integer usedIpNum) {
             this.usedIpNum = Objects.requireNonNull(usedIpNum);
             return this;
         }
+        @CustomType.Setter
         public Builder userType(String userType) {
             this.userType = Objects.requireNonNull(userType);
             return this;
-        }        public GetPublicIpAddressPoolsPool build() {
-            return new GetPublicIpAddressPoolsPool(createTime, description, id, ipAddressRemaining, isp, publicIpAddressPoolId, publicIpAddressPoolName, regionId, status, totalIpNum, usedIpNum, userType);
+        }
+        public GetPublicIpAddressPoolsPool build() {
+            final var o = new GetPublicIpAddressPoolsPool();
+            o.createTime = createTime;
+            o.description = description;
+            o.id = id;
+            o.ipAddressRemaining = ipAddressRemaining;
+            o.isp = isp;
+            o.publicIpAddressPoolId = publicIpAddressPoolId;
+            o.publicIpAddressPoolName = publicIpAddressPoolName;
+            o.regionId = regionId;
+            o.status = status;
+            o.totalIpNum = totalIpNum;
+            o.usedIpNum = usedIpNum;
+            o.userType = userType;
+            return o;
         }
     }
 }

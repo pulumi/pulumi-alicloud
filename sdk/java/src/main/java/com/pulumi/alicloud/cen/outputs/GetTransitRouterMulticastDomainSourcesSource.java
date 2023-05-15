@@ -13,45 +13,30 @@ public final class GetTransitRouterMulticastDomainSourcesSource {
      * @return The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
      * 
      */
-    private final String groupIpAddress;
-    private final String id;
+    private String groupIpAddress;
+    private String id;
     /**
      * @return ENI ID of the multicast source.
      * 
      */
-    private final String networkInterfaceId;
+    private String networkInterfaceId;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the multicast domain to which the multicast source belongs.
      * 
      */
-    private final String transitRouterMulticastDomainId;
+    private String transitRouterMulticastDomainId;
     /**
      * @return The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
 
-    @CustomType.Constructor
-    private GetTransitRouterMulticastDomainSourcesSource(
-        @CustomType.Parameter("groupIpAddress") String groupIpAddress,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("networkInterfaceId") String networkInterfaceId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("transitRouterMulticastDomainId") String transitRouterMulticastDomainId,
-        @CustomType.Parameter("vpcId") String vpcId) {
-        this.groupIpAddress = groupIpAddress;
-        this.id = id;
-        this.networkInterfaceId = networkInterfaceId;
-        this.status = status;
-        this.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-        this.vpcId = vpcId;
-    }
-
+    private GetTransitRouterMulticastDomainSourcesSource() {}
     /**
      * @return The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
      * 
@@ -98,7 +83,7 @@ public final class GetTransitRouterMulticastDomainSourcesSource {
     public static Builder builder(GetTransitRouterMulticastDomainSourcesSource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String groupIpAddress;
         private String id;
@@ -106,11 +91,7 @@ public final class GetTransitRouterMulticastDomainSourcesSource {
         private String status;
         private String transitRouterMulticastDomainId;
         private String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterMulticastDomainSourcesSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupIpAddress = defaults.groupIpAddress;
@@ -121,31 +102,45 @@ public final class GetTransitRouterMulticastDomainSourcesSource {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder groupIpAddress(String groupIpAddress) {
             this.groupIpAddress = Objects.requireNonNull(groupIpAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInterfaceId(String networkInterfaceId) {
             this.networkInterfaceId = Objects.requireNonNull(networkInterfaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterMulticastDomainId(String transitRouterMulticastDomainId) {
             this.transitRouterMulticastDomainId = Objects.requireNonNull(transitRouterMulticastDomainId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
-        }        public GetTransitRouterMulticastDomainSourcesSource build() {
-            return new GetTransitRouterMulticastDomainSourcesSource(groupIpAddress, id, networkInterfaceId, status, transitRouterMulticastDomainId, vpcId);
+        }
+        public GetTransitRouterMulticastDomainSourcesSource build() {
+            final var o = new GetTransitRouterMulticastDomainSourcesSource();
+            o.groupIpAddress = groupIpAddress;
+            o.id = id;
+            o.networkInterfaceId = networkInterfaceId;
+            o.status = status;
+            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

@@ -11,48 +11,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVpcFirewallsFirewallLocalVpc {
-    private final String eniId;
-    private final String eniPrivateIpAddress;
+    private String eniId;
+    private String eniPrivateIpAddress;
     /**
      * @return The network segment list of the local VPC.
      * 
      */
-    private final List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList> localVpcCidrTableLists;
+    private List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList> localVpcCidrTableLists;
     /**
      * @return The region ID of the peer VPC.
      * 
      */
-    private final String regionNo;
-    private final String routerInterfaceId;
+    private String regionNo;
+    private String routerInterfaceId;
     /**
      * @return The ID of the peer VPC instance.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The instance name of the peer VPC.
      * 
      */
-    private final String vpcName;
+    private String vpcName;
 
-    @CustomType.Constructor
-    private GetVpcFirewallsFirewallLocalVpc(
-        @CustomType.Parameter("eniId") String eniId,
-        @CustomType.Parameter("eniPrivateIpAddress") String eniPrivateIpAddress,
-        @CustomType.Parameter("localVpcCidrTableLists") List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList> localVpcCidrTableLists,
-        @CustomType.Parameter("regionNo") String regionNo,
-        @CustomType.Parameter("routerInterfaceId") String routerInterfaceId,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vpcName") String vpcName) {
-        this.eniId = eniId;
-        this.eniPrivateIpAddress = eniPrivateIpAddress;
-        this.localVpcCidrTableLists = localVpcCidrTableLists;
-        this.regionNo = regionNo;
-        this.routerInterfaceId = routerInterfaceId;
-        this.vpcId = vpcId;
-        this.vpcName = vpcName;
-    }
-
+    private GetVpcFirewallsFirewallLocalVpc() {}
     public String eniId() {
         return this.eniId;
     }
@@ -98,7 +81,7 @@ public final class GetVpcFirewallsFirewallLocalVpc {
     public static Builder builder(GetVpcFirewallsFirewallLocalVpc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String eniId;
         private String eniPrivateIpAddress;
@@ -107,11 +90,7 @@ public final class GetVpcFirewallsFirewallLocalVpc {
         private String routerInterfaceId;
         private String vpcId;
         private String vpcName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcFirewallsFirewallLocalVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.eniId = defaults.eniId;
@@ -123,14 +102,17 @@ public final class GetVpcFirewallsFirewallLocalVpc {
     	      this.vpcName = defaults.vpcName;
         }
 
+        @CustomType.Setter
         public Builder eniId(String eniId) {
             this.eniId = Objects.requireNonNull(eniId);
             return this;
         }
+        @CustomType.Setter
         public Builder eniPrivateIpAddress(String eniPrivateIpAddress) {
             this.eniPrivateIpAddress = Objects.requireNonNull(eniPrivateIpAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder localVpcCidrTableLists(List<GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList> localVpcCidrTableLists) {
             this.localVpcCidrTableLists = Objects.requireNonNull(localVpcCidrTableLists);
             return this;
@@ -138,23 +120,36 @@ public final class GetVpcFirewallsFirewallLocalVpc {
         public Builder localVpcCidrTableLists(GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList... localVpcCidrTableLists) {
             return localVpcCidrTableLists(List.of(localVpcCidrTableLists));
         }
+        @CustomType.Setter
         public Builder regionNo(String regionNo) {
             this.regionNo = Objects.requireNonNull(regionNo);
             return this;
         }
+        @CustomType.Setter
         public Builder routerInterfaceId(String routerInterfaceId) {
             this.routerInterfaceId = Objects.requireNonNull(routerInterfaceId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcName(String vpcName) {
             this.vpcName = Objects.requireNonNull(vpcName);
             return this;
-        }        public GetVpcFirewallsFirewallLocalVpc build() {
-            return new GetVpcFirewallsFirewallLocalVpc(eniId, eniPrivateIpAddress, localVpcCidrTableLists, regionNo, routerInterfaceId, vpcId, vpcName);
+        }
+        public GetVpcFirewallsFirewallLocalVpc build() {
+            final var o = new GetVpcFirewallsFirewallLocalVpc();
+            o.eniId = eniId;
+            o.eniPrivateIpAddress = eniPrivateIpAddress;
+            o.localVpcCidrTableLists = localVpcCidrTableLists;
+            o.regionNo = regionNo;
+            o.routerInterfaceId = routerInterfaceId;
+            o.vpcId = vpcId;
+            o.vpcName = vpcName;
+            return o;
         }
     }
 }

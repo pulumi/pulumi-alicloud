@@ -14,63 +14,44 @@ public final class GetSchedulesSchedule {
      * @return The CRON expression of the time-based schedule to be created.
      * 
      */
-    private final String cronExpression;
+    private String cronExpression;
     /**
      * @return The description of the time-based schedule to be created.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Specifies whether to enable the time-based schedule you want to create.
      * 
      */
-    private final Boolean enable;
+    private Boolean enable;
     /**
      * @return The ID of the Schedule.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The time when the time-based schedule was last updated.
      * 
      */
-    private final String lastModifiedTime;
+    private String lastModifiedTime;
     /**
      * @return The trigger message of the time-based schedule to be created. It must be in JSON object format.
      * 
      */
-    private final String payload;
+    private String payload;
     /**
      * @return The ID of the time-based schedule.
      * 
      */
-    private final String scheduleId;
+    private String scheduleId;
     /**
      * @return The name of the time-based schedule to be created.
      * 
      */
-    private final String scheduleName;
+    private String scheduleName;
 
-    @CustomType.Constructor
-    private GetSchedulesSchedule(
-        @CustomType.Parameter("cronExpression") String cronExpression,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enable") Boolean enable,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lastModifiedTime") String lastModifiedTime,
-        @CustomType.Parameter("payload") String payload,
-        @CustomType.Parameter("scheduleId") String scheduleId,
-        @CustomType.Parameter("scheduleName") String scheduleName) {
-        this.cronExpression = cronExpression;
-        this.description = description;
-        this.enable = enable;
-        this.id = id;
-        this.lastModifiedTime = lastModifiedTime;
-        this.payload = payload;
-        this.scheduleId = scheduleId;
-        this.scheduleName = scheduleName;
-    }
-
+    private GetSchedulesSchedule() {}
     /**
      * @return The CRON expression of the time-based schedule to be created.
      * 
@@ -135,7 +116,7 @@ public final class GetSchedulesSchedule {
     public static Builder builder(GetSchedulesSchedule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cronExpression;
         private String description;
@@ -145,11 +126,7 @@ public final class GetSchedulesSchedule {
         private String payload;
         private String scheduleId;
         private String scheduleName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSchedulesSchedule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cronExpression = defaults.cronExpression;
@@ -162,39 +139,57 @@ public final class GetSchedulesSchedule {
     	      this.scheduleName = defaults.scheduleName;
         }
 
+        @CustomType.Setter
         public Builder cronExpression(String cronExpression) {
             this.cronExpression = Objects.requireNonNull(cronExpression);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enable(Boolean enable) {
             this.enable = Objects.requireNonNull(enable);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lastModifiedTime(String lastModifiedTime) {
             this.lastModifiedTime = Objects.requireNonNull(lastModifiedTime);
             return this;
         }
+        @CustomType.Setter
         public Builder payload(String payload) {
             this.payload = Objects.requireNonNull(payload);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduleId(String scheduleId) {
             this.scheduleId = Objects.requireNonNull(scheduleId);
             return this;
         }
+        @CustomType.Setter
         public Builder scheduleName(String scheduleName) {
             this.scheduleName = Objects.requireNonNull(scheduleName);
             return this;
-        }        public GetSchedulesSchedule build() {
-            return new GetSchedulesSchedule(cronExpression, description, enable, id, lastModifiedTime, payload, scheduleId, scheduleName);
+        }
+        public GetSchedulesSchedule build() {
+            final var o = new GetSchedulesSchedule();
+            o.cronExpression = cronExpression;
+            o.description = description;
+            o.enable = enable;
+            o.id = id;
+            o.lastModifiedTime = lastModifiedTime;
+            o.payload = payload;
+            o.scheduleId = scheduleId;
+            o.scheduleName = scheduleName;
+            return o;
         }
     }
 }

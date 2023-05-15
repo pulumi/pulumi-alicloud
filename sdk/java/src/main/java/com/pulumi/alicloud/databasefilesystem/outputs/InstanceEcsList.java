@@ -15,13 +15,9 @@ public final class InstanceEcsList {
      * @return The ID of the ECS instance.
      * 
      */
-    private final @Nullable String ecsId;
+    private @Nullable String ecsId;
 
-    @CustomType.Constructor
-    private InstanceEcsList(@CustomType.Parameter("ecsId") @Nullable String ecsId) {
-        this.ecsId = ecsId;
-    }
-
+    private InstanceEcsList() {}
     /**
      * @return The ID of the ECS instance.
      * 
@@ -37,24 +33,24 @@ public final class InstanceEcsList {
     public static Builder builder(InstanceEcsList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ecsId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceEcsList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ecsId = defaults.ecsId;
         }
 
+        @CustomType.Setter
         public Builder ecsId(@Nullable String ecsId) {
             this.ecsId = ecsId;
             return this;
-        }        public InstanceEcsList build() {
-            return new InstanceEcsList(ecsId);
+        }
+        public InstanceEcsList build() {
+            final var o = new InstanceEcsList();
+            o.ecsId = ecsId;
+            return o;
         }
     }
 }

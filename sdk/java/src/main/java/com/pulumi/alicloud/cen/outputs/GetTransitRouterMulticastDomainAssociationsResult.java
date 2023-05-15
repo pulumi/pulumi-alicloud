@@ -17,69 +17,46 @@ public final class GetTransitRouterMulticastDomainAssociationsResult {
      * @return A list of Cen Transit Router Multicast Domain Associations. Each element contains the following attributes:
      * 
      */
-    private final List<GetTransitRouterMulticastDomainAssociationsAssociation> associations;
+    private List<GetTransitRouterMulticastDomainAssociationsAssociation> associations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
     /**
      * @return The ID of the resource associated with the multicast domain.
      * 
      */
-    private final @Nullable String resourceId;
+    private @Nullable String resourceId;
     /**
      * @return The type of resource associated with the multicast domain.
      * 
      */
-    private final @Nullable String resourceType;
+    private @Nullable String resourceType;
     /**
      * @return The status of the associated resource.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return The ID of the network instance connection.
      * 
      */
-    private final @Nullable String transitRouterAttachmentId;
+    private @Nullable String transitRouterAttachmentId;
     /**
      * @return The ID of the multicast domain.
      * 
      */
-    private final String transitRouterMulticastDomainId;
+    private String transitRouterMulticastDomainId;
     /**
      * @return The ID of the vSwitch.
      * 
      */
-    private final @Nullable String vswitchId;
+    private @Nullable String vswitchId;
 
-    @CustomType.Constructor
-    private GetTransitRouterMulticastDomainAssociationsResult(
-        @CustomType.Parameter("associations") List<GetTransitRouterMulticastDomainAssociationsAssociation> associations,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("resourceId") @Nullable String resourceId,
-        @CustomType.Parameter("resourceType") @Nullable String resourceType,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("transitRouterAttachmentId") @Nullable String transitRouterAttachmentId,
-        @CustomType.Parameter("transitRouterMulticastDomainId") String transitRouterMulticastDomainId,
-        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
-        this.associations = associations;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.resourceId = resourceId;
-        this.resourceType = resourceType;
-        this.status = status;
-        this.transitRouterAttachmentId = transitRouterAttachmentId;
-        this.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetTransitRouterMulticastDomainAssociationsResult() {}
     /**
      * @return A list of Cen Transit Router Multicast Domain Associations. Each element contains the following attributes:
      * 
@@ -150,7 +127,7 @@ public final class GetTransitRouterMulticastDomainAssociationsResult {
     public static Builder builder(GetTransitRouterMulticastDomainAssociationsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetTransitRouterMulticastDomainAssociationsAssociation> associations;
         private String id;
@@ -162,11 +139,7 @@ public final class GetTransitRouterMulticastDomainAssociationsResult {
         private @Nullable String transitRouterAttachmentId;
         private String transitRouterMulticastDomainId;
         private @Nullable String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterMulticastDomainAssociationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associations = defaults.associations;
@@ -181,6 +154,7 @@ public final class GetTransitRouterMulticastDomainAssociationsResult {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder associations(List<GetTransitRouterMulticastDomainAssociationsAssociation> associations) {
             this.associations = Objects.requireNonNull(associations);
             return this;
@@ -188,10 +162,12 @@ public final class GetTransitRouterMulticastDomainAssociationsResult {
         public Builder associations(GetTransitRouterMulticastDomainAssociationsAssociation... associations) {
             return associations(List.of(associations));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -199,35 +175,54 @@ public final class GetTransitRouterMulticastDomainAssociationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceId(@Nullable String resourceId) {
             this.resourceId = resourceId;
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(@Nullable String resourceType) {
             this.resourceType = resourceType;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterAttachmentId(@Nullable String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterMulticastDomainId(String transitRouterMulticastDomainId) {
             this.transitRouterMulticastDomainId = Objects.requireNonNull(transitRouterMulticastDomainId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }        public GetTransitRouterMulticastDomainAssociationsResult build() {
-            return new GetTransitRouterMulticastDomainAssociationsResult(associations, id, ids, outputFile, resourceId, resourceType, status, transitRouterAttachmentId, transitRouterMulticastDomainId, vswitchId);
+        }
+        public GetTransitRouterMulticastDomainAssociationsResult build() {
+            final var o = new GetTransitRouterMulticastDomainAssociationsResult();
+            o.associations = associations;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.resourceId = resourceId;
+            o.resourceType = resourceType;
+            o.status = status;
+            o.transitRouterAttachmentId = transitRouterAttachmentId;
+            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

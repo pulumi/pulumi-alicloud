@@ -15,42 +15,29 @@ public final class EcsLaunchTemplateNetworkInterfaces {
      * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The primary private IP address of the ENI.
      * 
      */
-    private final @Nullable String primaryIp;
+    private @Nullable String primaryIp;
     /**
      * @return The security group ID.
      * 
      */
-    private final @Nullable String securityGroupId;
+    private @Nullable String securityGroupId;
     /**
      * @return When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
-    private final @Nullable String vswitchId;
+    private @Nullable String vswitchId;
 
-    @CustomType.Constructor
-    private EcsLaunchTemplateNetworkInterfaces(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("primaryIp") @Nullable String primaryIp,
-        @CustomType.Parameter("securityGroupId") @Nullable String securityGroupId,
-        @CustomType.Parameter("vswitchId") @Nullable String vswitchId) {
-        this.description = description;
-        this.name = name;
-        this.primaryIp = primaryIp;
-        this.securityGroupId = securityGroupId;
-        this.vswitchId = vswitchId;
-    }
-
+    private EcsLaunchTemplateNetworkInterfaces() {}
     /**
      * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
@@ -94,18 +81,14 @@ public final class EcsLaunchTemplateNetworkInterfaces {
     public static Builder builder(EcsLaunchTemplateNetworkInterfaces defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private @Nullable String name;
         private @Nullable String primaryIp;
         private @Nullable String securityGroupId;
         private @Nullable String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EcsLaunchTemplateNetworkInterfaces defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -115,27 +98,39 @@ public final class EcsLaunchTemplateNetworkInterfaces {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder primaryIp(@Nullable String primaryIp) {
             this.primaryIp = primaryIp;
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupId(@Nullable String securityGroupId) {
             this.securityGroupId = securityGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(@Nullable String vswitchId) {
             this.vswitchId = vswitchId;
             return this;
-        }        public EcsLaunchTemplateNetworkInterfaces build() {
-            return new EcsLaunchTemplateNetworkInterfaces(description, name, primaryIp, securityGroupId, vswitchId);
+        }
+        public EcsLaunchTemplateNetworkInterfaces build() {
+            final var o = new EcsLaunchTemplateNetworkInterfaces();
+            o.description = description;
+            o.name = name;
+            o.primaryIp = primaryIp;
+            o.securityGroupId = securityGroupId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

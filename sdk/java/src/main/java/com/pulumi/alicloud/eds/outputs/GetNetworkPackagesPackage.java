@@ -15,77 +15,54 @@ public final class GetNetworkPackagesPackage {
      * @return The bandwidth of package.
      * 
      */
-    private final Integer bandwidth;
+    private Integer bandwidth;
     /**
      * @return The creation time of network package.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The public IP address list of the network packet.
      * 
      */
-    private final List<String> eipAddresses;
+    private List<String> eipAddresses;
     /**
      * @return The expired time of package.
      * 
      */
-    private final String expiredTime;
+    private String expiredTime;
     /**
      * @return The ID of the Network Package.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The internet charge type  of  package.
      * 
      */
-    private final String internetChargeType;
+    private String internetChargeType;
     /**
      * @return The ID of network package.
      * 
      */
-    private final String networkPackageId;
+    private String networkPackageId;
     /**
      * @return The ID of office site.
      * 
      */
-    private final String officeSiteId;
+    private String officeSiteId;
     /**
      * @return The name of office site.
      * 
      */
-    private final String officeSiteName;
+    private String officeSiteName;
     /**
      * @return The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetNetworkPackagesPackage(
-        @CustomType.Parameter("bandwidth") Integer bandwidth,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("eipAddresses") List<String> eipAddresses,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("internetChargeType") String internetChargeType,
-        @CustomType.Parameter("networkPackageId") String networkPackageId,
-        @CustomType.Parameter("officeSiteId") String officeSiteId,
-        @CustomType.Parameter("officeSiteName") String officeSiteName,
-        @CustomType.Parameter("status") String status) {
-        this.bandwidth = bandwidth;
-        this.createTime = createTime;
-        this.eipAddresses = eipAddresses;
-        this.expiredTime = expiredTime;
-        this.id = id;
-        this.internetChargeType = internetChargeType;
-        this.networkPackageId = networkPackageId;
-        this.officeSiteId = officeSiteId;
-        this.officeSiteName = officeSiteName;
-        this.status = status;
-    }
-
+    private GetNetworkPackagesPackage() {}
     /**
      * @return The bandwidth of package.
      * 
@@ -164,7 +141,7 @@ public final class GetNetworkPackagesPackage {
     public static Builder builder(GetNetworkPackagesPackage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer bandwidth;
         private String createTime;
@@ -176,11 +153,7 @@ public final class GetNetworkPackagesPackage {
         private String officeSiteId;
         private String officeSiteName;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNetworkPackagesPackage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -195,14 +168,17 @@ public final class GetNetworkPackagesPackage {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder eipAddresses(List<String> eipAddresses) {
             this.eipAddresses = Objects.requireNonNull(eipAddresses);
             return this;
@@ -210,35 +186,54 @@ public final class GetNetworkPackagesPackage {
         public Builder eipAddresses(String... eipAddresses) {
             return eipAddresses(List.of(eipAddresses));
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder internetChargeType(String internetChargeType) {
             this.internetChargeType = Objects.requireNonNull(internetChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder networkPackageId(String networkPackageId) {
             this.networkPackageId = Objects.requireNonNull(networkPackageId);
             return this;
         }
+        @CustomType.Setter
         public Builder officeSiteId(String officeSiteId) {
             this.officeSiteId = Objects.requireNonNull(officeSiteId);
             return this;
         }
+        @CustomType.Setter
         public Builder officeSiteName(String officeSiteName) {
             this.officeSiteName = Objects.requireNonNull(officeSiteName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetNetworkPackagesPackage build() {
-            return new GetNetworkPackagesPackage(bandwidth, createTime, eipAddresses, expiredTime, id, internetChargeType, networkPackageId, officeSiteId, officeSiteName, status);
+        }
+        public GetNetworkPackagesPackage build() {
+            final var o = new GetNetworkPackagesPackage();
+            o.bandwidth = bandwidth;
+            o.createTime = createTime;
+            o.eipAddresses = eipAddresses;
+            o.expiredTime = expiredTime;
+            o.id = id;
+            o.internetChargeType = internetChargeType;
+            o.networkPackageId = networkPackageId;
+            o.officeSiteId = officeSiteId;
+            o.officeSiteName = officeSiteName;
+            o.status = status;
+            return o;
         }
     }
 }

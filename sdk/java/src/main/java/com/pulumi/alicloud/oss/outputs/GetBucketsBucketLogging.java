@@ -13,21 +13,14 @@ public final class GetBucketsBucketLogging {
      * @return Bucket for storing access logs.
      * 
      */
-    private final String targetBucket;
+    private String targetBucket;
     /**
      * @return Prefix of the saved access log file paths.
      * 
      */
-    private final String targetPrefix;
+    private String targetPrefix;
 
-    @CustomType.Constructor
-    private GetBucketsBucketLogging(
-        @CustomType.Parameter("targetBucket") String targetBucket,
-        @CustomType.Parameter("targetPrefix") String targetPrefix) {
-        this.targetBucket = targetBucket;
-        this.targetPrefix = targetPrefix;
-    }
-
+    private GetBucketsBucketLogging() {}
     /**
      * @return Bucket for storing access logs.
      * 
@@ -50,30 +43,32 @@ public final class GetBucketsBucketLogging {
     public static Builder builder(GetBucketsBucketLogging defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String targetBucket;
         private String targetPrefix;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBucketsBucketLogging defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.targetBucket = defaults.targetBucket;
     	      this.targetPrefix = defaults.targetPrefix;
         }
 
+        @CustomType.Setter
         public Builder targetBucket(String targetBucket) {
             this.targetBucket = Objects.requireNonNull(targetBucket);
             return this;
         }
+        @CustomType.Setter
         public Builder targetPrefix(String targetPrefix) {
             this.targetPrefix = Objects.requireNonNull(targetPrefix);
             return this;
-        }        public GetBucketsBucketLogging build() {
-            return new GetBucketsBucketLogging(targetBucket, targetPrefix);
+        }
+        public GetBucketsBucketLogging build() {
+            final var o = new GetBucketsBucketLogging();
+            o.targetBucket = targetBucket;
+            o.targetPrefix = targetPrefix;
+            return o;
         }
     }
 }

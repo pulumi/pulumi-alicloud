@@ -13,35 +13,24 @@ public final class GetSharedTargetsTarget {
      * @return The ID of the Shared Target.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The resource shared ID of resource manager.
      * 
      */
-    private final String resourceShareId;
+    private String resourceShareId;
     /**
      * @return The status of shared target.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The member account ID in resource directory.
      * 
      */
-    private final String targetId;
+    private String targetId;
 
-    @CustomType.Constructor
-    private GetSharedTargetsTarget(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("resourceShareId") String resourceShareId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("targetId") String targetId) {
-        this.id = id;
-        this.resourceShareId = resourceShareId;
-        this.status = status;
-        this.targetId = targetId;
-    }
-
+    private GetSharedTargetsTarget() {}
     /**
      * @return The ID of the Shared Target.
      * 
@@ -78,17 +67,13 @@ public final class GetSharedTargetsTarget {
     public static Builder builder(GetSharedTargetsTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private String resourceShareId;
         private String status;
         private String targetId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSharedTargetsTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -97,23 +82,33 @@ public final class GetSharedTargetsTarget {
     	      this.targetId = defaults.targetId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceShareId(String resourceShareId) {
             this.resourceShareId = Objects.requireNonNull(resourceShareId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder targetId(String targetId) {
             this.targetId = Objects.requireNonNull(targetId);
             return this;
-        }        public GetSharedTargetsTarget build() {
-            return new GetSharedTargetsTarget(id, resourceShareId, status, targetId);
+        }
+        public GetSharedTargetsTarget build() {
+            final var o = new GetSharedTargetsTarget();
+            o.id = id;
+            o.resourceShareId = resourceShareId;
+            o.status = status;
+            o.targetId = targetId;
+            return o;
         }
     }
 }

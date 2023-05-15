@@ -15,17 +15,17 @@ public final class AlertQueryList {
      * @return Chart title, optional from 1.161.0+.
      * 
      */
-    private final @Nullable String chartTitle;
+    private @Nullable String chartTitle;
     /**
      * @return Query dashboard id.
      * 
      */
-    private final @Nullable String dashboardId;
+    private @Nullable String dashboardId;
     /**
      * @return End time. example: 20s.
      * 
      */
-    private final String end;
+    private String end;
     /**
      * @return Query logstore, use store for new alert, Deprecated from 1.161.0+.
      * 
@@ -34,83 +34,54 @@ public final class AlertQueryList {
      * 
      */
     @Deprecated /* Deprecated from 1.161.0+, use store */
-    private final @Nullable String logstore;
+    private @Nullable String logstore;
     /**
      * @return default disable, whether to use power sql. support auto, enable, disable.
      * 
      */
-    private final @Nullable String powerSqlMode;
+    private @Nullable String powerSqlMode;
     /**
      * @return Query project.
      * 
      */
-    private final @Nullable String project;
+    private @Nullable String project;
     /**
      * @return Query corresponding to chart. example: * AND aliyun.
      * 
      */
-    private final String query;
+    private String query;
     /**
      * @return Query project region.
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return Query project store&#39;s ARN.
      * 
      */
-    private final @Nullable String roleArn;
+    private @Nullable String roleArn;
     /**
      * @return Begin time. example: -60s.
      * 
      */
-    private final String start;
+    private String start;
     /**
      * @return Query store for new alert.
      * 
      */
-    private final @Nullable String store;
+    private @Nullable String store;
     /**
      * @return Query store type for new alert, including log,metric,meta.
      * 
      */
-    private final @Nullable String storeType;
+    private @Nullable String storeType;
     /**
      * @return default Custom. No need to configure this parameter.
      * 
      */
-    private final @Nullable String timeSpanType;
+    private @Nullable String timeSpanType;
 
-    @CustomType.Constructor
-    private AlertQueryList(
-        @CustomType.Parameter("chartTitle") @Nullable String chartTitle,
-        @CustomType.Parameter("dashboardId") @Nullable String dashboardId,
-        @CustomType.Parameter("end") String end,
-        @CustomType.Parameter("logstore") @Nullable String logstore,
-        @CustomType.Parameter("powerSqlMode") @Nullable String powerSqlMode,
-        @CustomType.Parameter("project") @Nullable String project,
-        @CustomType.Parameter("query") String query,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("roleArn") @Nullable String roleArn,
-        @CustomType.Parameter("start") String start,
-        @CustomType.Parameter("store") @Nullable String store,
-        @CustomType.Parameter("storeType") @Nullable String storeType,
-        @CustomType.Parameter("timeSpanType") @Nullable String timeSpanType) {
-        this.chartTitle = chartTitle;
-        this.dashboardId = dashboardId;
-        this.end = end;
-        this.logstore = logstore;
-        this.powerSqlMode = powerSqlMode;
-        this.project = project;
-        this.query = query;
-        this.region = region;
-        this.roleArn = roleArn;
-        this.start = start;
-        this.store = store;
-        this.storeType = storeType;
-        this.timeSpanType = timeSpanType;
-    }
-
+    private AlertQueryList() {}
     /**
      * @return Chart title, optional from 1.161.0+.
      * 
@@ -214,7 +185,7 @@ public final class AlertQueryList {
     public static Builder builder(AlertQueryList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String chartTitle;
         private @Nullable String dashboardId;
@@ -229,11 +200,7 @@ public final class AlertQueryList {
         private @Nullable String store;
         private @Nullable String storeType;
         private @Nullable String timeSpanType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlertQueryList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.chartTitle = defaults.chartTitle;
@@ -251,59 +218,87 @@ public final class AlertQueryList {
     	      this.timeSpanType = defaults.timeSpanType;
         }
 
+        @CustomType.Setter
         public Builder chartTitle(@Nullable String chartTitle) {
             this.chartTitle = chartTitle;
             return this;
         }
+        @CustomType.Setter
         public Builder dashboardId(@Nullable String dashboardId) {
             this.dashboardId = dashboardId;
             return this;
         }
+        @CustomType.Setter
         public Builder end(String end) {
             this.end = Objects.requireNonNull(end);
             return this;
         }
+        @CustomType.Setter
         public Builder logstore(@Nullable String logstore) {
             this.logstore = logstore;
             return this;
         }
+        @CustomType.Setter
         public Builder powerSqlMode(@Nullable String powerSqlMode) {
             this.powerSqlMode = powerSqlMode;
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
         }
+        @CustomType.Setter
         public Builder query(String query) {
             this.query = Objects.requireNonNull(query);
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
             this.roleArn = roleArn;
             return this;
         }
+        @CustomType.Setter
         public Builder start(String start) {
             this.start = Objects.requireNonNull(start);
             return this;
         }
+        @CustomType.Setter
         public Builder store(@Nullable String store) {
             this.store = store;
             return this;
         }
+        @CustomType.Setter
         public Builder storeType(@Nullable String storeType) {
             this.storeType = storeType;
             return this;
         }
+        @CustomType.Setter
         public Builder timeSpanType(@Nullable String timeSpanType) {
             this.timeSpanType = timeSpanType;
             return this;
-        }        public AlertQueryList build() {
-            return new AlertQueryList(chartTitle, dashboardId, end, logstore, powerSqlMode, project, query, region, roleArn, start, store, storeType, timeSpanType);
+        }
+        public AlertQueryList build() {
+            final var o = new AlertQueryList();
+            o.chartTitle = chartTitle;
+            o.dashboardId = dashboardId;
+            o.end = end;
+            o.logstore = logstore;
+            o.powerSqlMode = powerSqlMode;
+            o.project = project;
+            o.query = query;
+            o.region = region;
+            o.roleArn = roleArn;
+            o.start = start;
+            o.store = store;
+            o.storeType = storeType;
+            o.timeSpanType = timeSpanType;
+            return o;
         }
     }
 }

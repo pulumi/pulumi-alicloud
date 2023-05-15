@@ -14,112 +14,79 @@ public final class GetHanaBackupClientsHanaBackupClient {
      * @return The alert settings.
      * 
      */
-    private final String alertSetting;
+    private String alertSetting;
     /**
      * @return The ID of the backup client.
      * 
      */
-    private final String clientId;
+    private String clientId;
     /**
      * @return The name of the backup client.
      * 
      */
-    private final String clientName;
+    private String clientName;
     /**
      * @return The type of the backup client.
      * 
      */
-    private final String clientType;
+    private String clientType;
     /**
      * @return The version number of the backup client.
      * 
      */
-    private final String clientVersion;
+    private String clientVersion;
     /**
      * @return The ID of the SAP HANA instance.
      * 
      */
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return The id of the Hana Backup Client. It formats as `&lt;vault_id&gt;:&lt;client_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The name of the ECS instance.
      * 
      */
-    private final String instanceName;
+    private String instanceName;
     /**
      * @return The maximum version number of the backup client.
      * 
      */
-    private final String maxVersion;
+    private String maxVersion;
     /**
      * @return The network type.
      * 
      */
-    private final String networkType;
+    private String networkType;
     /**
      * @return The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The status information.
      * 
      */
-    private final String statusMessage;
+    private String statusMessage;
     /**
      * @return Indicates whether data is transmitted over HTTPS.
      * 
      */
-    private final Boolean useHttps;
+    private Boolean useHttps;
     /**
      * @return The ID of the backup vault.
      * 
      */
-    private final String vaultId;
+    private String vaultId;
 
-    @CustomType.Constructor
-    private GetHanaBackupClientsHanaBackupClient(
-        @CustomType.Parameter("alertSetting") String alertSetting,
-        @CustomType.Parameter("clientId") String clientId,
-        @CustomType.Parameter("clientName") String clientName,
-        @CustomType.Parameter("clientType") String clientType,
-        @CustomType.Parameter("clientVersion") String clientVersion,
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("instanceName") String instanceName,
-        @CustomType.Parameter("maxVersion") String maxVersion,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("statusMessage") String statusMessage,
-        @CustomType.Parameter("useHttps") Boolean useHttps,
-        @CustomType.Parameter("vaultId") String vaultId) {
-        this.alertSetting = alertSetting;
-        this.clientId = clientId;
-        this.clientName = clientName;
-        this.clientType = clientType;
-        this.clientVersion = clientVersion;
-        this.clusterId = clusterId;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.instanceName = instanceName;
-        this.maxVersion = maxVersion;
-        this.networkType = networkType;
-        this.status = status;
-        this.statusMessage = statusMessage;
-        this.useHttps = useHttps;
-        this.vaultId = vaultId;
-    }
-
+    private GetHanaBackupClientsHanaBackupClient() {}
     /**
      * @return The alert settings.
      * 
@@ -233,7 +200,7 @@ public final class GetHanaBackupClientsHanaBackupClient {
     public static Builder builder(GetHanaBackupClientsHanaBackupClient defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alertSetting;
         private String clientId;
@@ -250,11 +217,7 @@ public final class GetHanaBackupClientsHanaBackupClient {
         private String statusMessage;
         private Boolean useHttps;
         private String vaultId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHanaBackupClientsHanaBackupClient defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertSetting = defaults.alertSetting;
@@ -274,67 +237,99 @@ public final class GetHanaBackupClientsHanaBackupClient {
     	      this.vaultId = defaults.vaultId;
         }
 
+        @CustomType.Setter
         public Builder alertSetting(String alertSetting) {
             this.alertSetting = Objects.requireNonNull(alertSetting);
             return this;
         }
+        @CustomType.Setter
         public Builder clientId(String clientId) {
             this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
+        @CustomType.Setter
         public Builder clientName(String clientName) {
             this.clientName = Objects.requireNonNull(clientName);
             return this;
         }
+        @CustomType.Setter
         public Builder clientType(String clientType) {
             this.clientType = Objects.requireNonNull(clientType);
             return this;
         }
+        @CustomType.Setter
         public Builder clientVersion(String clientVersion) {
             this.clientVersion = Objects.requireNonNull(clientVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder maxVersion(String maxVersion) {
             this.maxVersion = Objects.requireNonNull(maxVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder statusMessage(String statusMessage) {
             this.statusMessage = Objects.requireNonNull(statusMessage);
             return this;
         }
+        @CustomType.Setter
         public Builder useHttps(Boolean useHttps) {
             this.useHttps = Objects.requireNonNull(useHttps);
             return this;
         }
+        @CustomType.Setter
         public Builder vaultId(String vaultId) {
             this.vaultId = Objects.requireNonNull(vaultId);
             return this;
-        }        public GetHanaBackupClientsHanaBackupClient build() {
-            return new GetHanaBackupClientsHanaBackupClient(alertSetting, clientId, clientName, clientType, clientVersion, clusterId, id, instanceId, instanceName, maxVersion, networkType, status, statusMessage, useHttps, vaultId);
+        }
+        public GetHanaBackupClientsHanaBackupClient build() {
+            final var o = new GetHanaBackupClientsHanaBackupClient();
+            o.alertSetting = alertSetting;
+            o.clientId = clientId;
+            o.clientName = clientName;
+            o.clientType = clientType;
+            o.clientVersion = clientVersion;
+            o.clusterId = clusterId;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.instanceName = instanceName;
+            o.maxVersion = maxVersion;
+            o.networkType = networkType;
+            o.status = status;
+            o.statusMessage = statusMessage;
+            o.useHttps = useHttps;
+            o.vaultId = vaultId;
+            return o;
         }
     }
 }

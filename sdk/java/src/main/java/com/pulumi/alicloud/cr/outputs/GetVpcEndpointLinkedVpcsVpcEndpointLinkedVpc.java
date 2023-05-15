@@ -14,63 +14,44 @@ public final class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
      * @return Indicates whether the default policy is used to access the instance.
      * 
      */
-    private final Boolean defaultAccess;
+    private Boolean defaultAccess;
     /**
      * @return The ID of the Vpc Endpoint Linked Vpc. It formats as `&lt;instance_id&gt;:&lt;vpc_id&gt;:&lt;vswitch_id&gt;:&lt;module_name&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return IP address.
      * 
      */
-    private final String ip;
+    private String ip;
     /**
      * @return The name of the module that you want to access. Valid Values:
      * 
      */
-    private final String moduleName;
+    private String moduleName;
     /**
      * @return The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the VPC.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The ID of the vSwitch.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc(
-        @CustomType.Parameter("defaultAccess") Boolean defaultAccess,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("ip") String ip,
-        @CustomType.Parameter("moduleName") String moduleName,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.defaultAccess = defaultAccess;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.ip = ip;
-        this.moduleName = moduleName;
-        this.status = status;
-        this.vpcId = vpcId;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc() {}
     /**
      * @return Indicates whether the default policy is used to access the instance.
      * 
@@ -135,7 +116,7 @@ public final class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
     public static Builder builder(GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean defaultAccess;
         private String id;
@@ -145,11 +126,7 @@ public final class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
         private String status;
         private String vpcId;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultAccess = defaults.defaultAccess;
@@ -162,39 +139,57 @@ public final class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder defaultAccess(Boolean defaultAccess) {
             this.defaultAccess = Objects.requireNonNull(defaultAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder ip(String ip) {
             this.ip = Objects.requireNonNull(ip);
             return this;
         }
+        @CustomType.Setter
         public Builder moduleName(String moduleName) {
             this.moduleName = Objects.requireNonNull(moduleName);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc build() {
-            return new GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc(defaultAccess, id, instanceId, ip, moduleName, status, vpcId, vswitchId);
+        }
+        public GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc build() {
+            final var o = new GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc();
+            o.defaultAccess = defaultAccess;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.ip = ip;
+            o.moduleName = moduleName;
+            o.status = status;
+            o.vpcId = vpcId;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

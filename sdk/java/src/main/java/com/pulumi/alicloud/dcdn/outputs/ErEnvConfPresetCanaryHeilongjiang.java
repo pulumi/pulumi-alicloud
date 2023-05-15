@@ -16,28 +16,19 @@ public final class ErEnvConfPresetCanaryHeilongjiang {
      * @return Allowed DCDN domain names.
      * 
      */
-    private final @Nullable List<String> allowedHosts;
+    private @Nullable List<String> allowedHosts;
     /**
      * @return The version number of the code.
      * 
      */
-    private final @Nullable String codeRev;
+    private @Nullable String codeRev;
     /**
      * @return The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
      * 
      */
-    private final @Nullable String specName;
+    private @Nullable String specName;
 
-    @CustomType.Constructor
-    private ErEnvConfPresetCanaryHeilongjiang(
-        @CustomType.Parameter("allowedHosts") @Nullable List<String> allowedHosts,
-        @CustomType.Parameter("codeRev") @Nullable String codeRev,
-        @CustomType.Parameter("specName") @Nullable String specName) {
-        this.allowedHosts = allowedHosts;
-        this.codeRev = codeRev;
-        this.specName = specName;
-    }
-
+    private ErEnvConfPresetCanaryHeilongjiang() {}
     /**
      * @return Allowed DCDN domain names.
      * 
@@ -67,16 +58,12 @@ public final class ErEnvConfPresetCanaryHeilongjiang {
     public static Builder builder(ErEnvConfPresetCanaryHeilongjiang defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowedHosts;
         private @Nullable String codeRev;
         private @Nullable String specName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ErEnvConfPresetCanaryHeilongjiang defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedHosts = defaults.allowedHosts;
@@ -84,6 +71,7 @@ public final class ErEnvConfPresetCanaryHeilongjiang {
     	      this.specName = defaults.specName;
         }
 
+        @CustomType.Setter
         public Builder allowedHosts(@Nullable List<String> allowedHosts) {
             this.allowedHosts = allowedHosts;
             return this;
@@ -91,15 +79,22 @@ public final class ErEnvConfPresetCanaryHeilongjiang {
         public Builder allowedHosts(String... allowedHosts) {
             return allowedHosts(List.of(allowedHosts));
         }
+        @CustomType.Setter
         public Builder codeRev(@Nullable String codeRev) {
             this.codeRev = codeRev;
             return this;
         }
+        @CustomType.Setter
         public Builder specName(@Nullable String specName) {
             this.specName = specName;
             return this;
-        }        public ErEnvConfPresetCanaryHeilongjiang build() {
-            return new ErEnvConfPresetCanaryHeilongjiang(allowedHosts, codeRev, specName);
+        }
+        public ErEnvConfPresetCanaryHeilongjiang build() {
+            final var o = new ErEnvConfPresetCanaryHeilongjiang();
+            o.allowedHosts = allowedHosts;
+            o.codeRev = codeRev;
+            o.specName = specName;
+            return o;
         }
     }
 }

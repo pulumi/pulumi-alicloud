@@ -13,49 +13,34 @@ public final class GetAccountsAccount {
      * @return In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
      * 
      */
-    private final String accountDescription;
+    private String accountDescription;
     /**
      * @return Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
      * 
      */
-    private final String accountName;
+    private String accountName;
     /**
      * @return The Valid Account type: `Normal`, `Super`.
      * 
      */
-    private final String accountType;
+    private String accountType;
     /**
      * @return The DBCluster id.
      * 
      */
-    private final String dbClusterId;
+    private String dbClusterId;
     /**
      * @return The ID of the Account. Its value is same as Queue Name.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetAccountsAccount(
-        @CustomType.Parameter("accountDescription") String accountDescription,
-        @CustomType.Parameter("accountName") String accountName,
-        @CustomType.Parameter("accountType") String accountType,
-        @CustomType.Parameter("dbClusterId") String dbClusterId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("status") String status) {
-        this.accountDescription = accountDescription;
-        this.accountName = accountName;
-        this.accountType = accountType;
-        this.dbClusterId = dbClusterId;
-        this.id = id;
-        this.status = status;
-    }
-
+    private GetAccountsAccount() {}
     /**
      * @return In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
      * 
@@ -106,7 +91,7 @@ public final class GetAccountsAccount {
     public static Builder builder(GetAccountsAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountDescription;
         private String accountName;
@@ -114,11 +99,7 @@ public final class GetAccountsAccount {
         private String dbClusterId;
         private String id;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAccountsAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountDescription = defaults.accountDescription;
@@ -129,31 +110,45 @@ public final class GetAccountsAccount {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder accountDescription(String accountDescription) {
             this.accountDescription = Objects.requireNonNull(accountDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder accountName(String accountName) {
             this.accountName = Objects.requireNonNull(accountName);
             return this;
         }
+        @CustomType.Setter
         public Builder accountType(String accountType) {
             this.accountType = Objects.requireNonNull(accountType);
             return this;
         }
+        @CustomType.Setter
         public Builder dbClusterId(String dbClusterId) {
             this.dbClusterId = Objects.requireNonNull(dbClusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetAccountsAccount build() {
-            return new GetAccountsAccount(accountDescription, accountName, accountType, dbClusterId, id, status);
+        }
+        public GetAccountsAccount build() {
+            final var o = new GetAccountsAccount();
+            o.accountDescription = accountDescription;
+            o.accountName = accountName;
+            o.accountType = accountType;
+            o.dbClusterId = dbClusterId;
+            o.id = id;
+            o.status = status;
+            return o;
         }
     }
 }

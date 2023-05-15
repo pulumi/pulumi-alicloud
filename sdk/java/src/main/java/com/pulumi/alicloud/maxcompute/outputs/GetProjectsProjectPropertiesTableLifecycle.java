@@ -13,21 +13,14 @@ public final class GetProjectsProjectPropertiesTableLifecycle {
      * @return Project type
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The value of the life cycle.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetProjectsProjectPropertiesTableLifecycle(
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("value") String value) {
-        this.type = type;
-        this.value = value;
-    }
-
+    private GetProjectsProjectPropertiesTableLifecycle() {}
     /**
      * @return Project type
      * 
@@ -50,30 +43,32 @@ public final class GetProjectsProjectPropertiesTableLifecycle {
     public static Builder builder(GetProjectsProjectPropertiesTableLifecycle defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String type;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectsProjectPropertiesTableLifecycle defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetProjectsProjectPropertiesTableLifecycle build() {
-            return new GetProjectsProjectPropertiesTableLifecycle(type, value);
+        }
+        public GetProjectsProjectPropertiesTableLifecycle build() {
+            final var o = new GetProjectsProjectPropertiesTableLifecycle();
+            o.type = type;
+            o.value = value;
+            return o;
         }
     }
 }

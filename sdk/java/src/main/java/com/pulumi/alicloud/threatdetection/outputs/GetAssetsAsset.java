@@ -13,28 +13,19 @@ public final class GetAssetsAsset {
      * @return The creation time of the resource
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The UUID of the instance.
      * 
      */
-    private final String uuid;
+    private String uuid;
 
-    @CustomType.Constructor
-    private GetAssetsAsset(
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("uuid") String uuid) {
-        this.createTime = createTime;
-        this.id = id;
-        this.uuid = uuid;
-    }
-
+    private GetAssetsAsset() {}
     /**
      * @return The creation time of the resource
      * 
@@ -64,16 +55,12 @@ public final class GetAssetsAsset {
     public static Builder builder(GetAssetsAsset defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createTime;
         private String id;
         private String uuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAssetsAsset defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
@@ -81,19 +68,27 @@ public final class GetAssetsAsset {
     	      this.uuid = defaults.uuid;
         }
 
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder uuid(String uuid) {
             this.uuid = Objects.requireNonNull(uuid);
             return this;
-        }        public GetAssetsAsset build() {
-            return new GetAssetsAsset(createTime, id, uuid);
+        }
+        public GetAssetsAsset build() {
+            final var o = new GetAssetsAsset();
+            o.createTime = createTime;
+            o.id = id;
+            o.uuid = uuid;
+            return o;
         }
     }
 }

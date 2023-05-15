@@ -14,63 +14,44 @@ public final class GetTransitRouterCidrsCidr {
      * @return The cidr of the transit router.
      * 
      */
-    private final String cidr;
+    private String cidr;
     /**
      * @return The description of the transit router.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The type of the transit router cidr.
      * 
      */
-    private final String family;
+    private String family;
     /**
      * @return The ID of the Cen Transit Router Cidr. It formats as `&lt;transit_router_id&gt;:&lt;transit_router_cidr_id&gt;`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table.
      * 
      */
-    private final Boolean publishCidrRoute;
+    private Boolean publishCidrRoute;
     /**
      * @return The ID of the transit router cidr.
      * 
      */
-    private final String transitRouterCidrId;
+    private String transitRouterCidrId;
     /**
      * @return The name of the transit router.
      * 
      */
-    private final String transitRouterCidrName;
+    private String transitRouterCidrName;
     /**
      * @return The ID of the transit router.
      * 
      */
-    private final String transitRouterId;
+    private String transitRouterId;
 
-    @CustomType.Constructor
-    private GetTransitRouterCidrsCidr(
-        @CustomType.Parameter("cidr") String cidr,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("family") String family,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("publishCidrRoute") Boolean publishCidrRoute,
-        @CustomType.Parameter("transitRouterCidrId") String transitRouterCidrId,
-        @CustomType.Parameter("transitRouterCidrName") String transitRouterCidrName,
-        @CustomType.Parameter("transitRouterId") String transitRouterId) {
-        this.cidr = cidr;
-        this.description = description;
-        this.family = family;
-        this.id = id;
-        this.publishCidrRoute = publishCidrRoute;
-        this.transitRouterCidrId = transitRouterCidrId;
-        this.transitRouterCidrName = transitRouterCidrName;
-        this.transitRouterId = transitRouterId;
-    }
-
+    private GetTransitRouterCidrsCidr() {}
     /**
      * @return The cidr of the transit router.
      * 
@@ -135,7 +116,7 @@ public final class GetTransitRouterCidrsCidr {
     public static Builder builder(GetTransitRouterCidrsCidr defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidr;
         private String description;
@@ -145,11 +126,7 @@ public final class GetTransitRouterCidrsCidr {
         private String transitRouterCidrId;
         private String transitRouterCidrName;
         private String transitRouterId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterCidrsCidr defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidr = defaults.cidr;
@@ -162,39 +139,57 @@ public final class GetTransitRouterCidrsCidr {
     	      this.transitRouterId = defaults.transitRouterId;
         }
 
+        @CustomType.Setter
         public Builder cidr(String cidr) {
             this.cidr = Objects.requireNonNull(cidr);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder family(String family) {
             this.family = Objects.requireNonNull(family);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder publishCidrRoute(Boolean publishCidrRoute) {
             this.publishCidrRoute = Objects.requireNonNull(publishCidrRoute);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterCidrId(String transitRouterCidrId) {
             this.transitRouterCidrId = Objects.requireNonNull(transitRouterCidrId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterCidrName(String transitRouterCidrName) {
             this.transitRouterCidrName = Objects.requireNonNull(transitRouterCidrName);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
-        }        public GetTransitRouterCidrsCidr build() {
-            return new GetTransitRouterCidrsCidr(cidr, description, family, id, publishCidrRoute, transitRouterCidrId, transitRouterCidrName, transitRouterId);
+        }
+        public GetTransitRouterCidrsCidr build() {
+            final var o = new GetTransitRouterCidrsCidr();
+            o.cidr = cidr;
+            o.description = description;
+            o.family = family;
+            o.id = id;
+            o.publishCidrRoute = publishCidrRoute;
+            o.transitRouterCidrId = transitRouterCidrId;
+            o.transitRouterCidrName = transitRouterCidrName;
+            o.transitRouterId = transitRouterId;
+            return o;
         }
     }
 }

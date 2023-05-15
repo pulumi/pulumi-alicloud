@@ -15,28 +15,19 @@ public final class GetClustersClusterSoftwareInfo {
      * @return Cluster type:
      * 
      */
-    private final String clusterType;
+    private String clusterType;
     /**
      * @return E-MapReduce version number.
      * 
      */
-    private final String emrVer;
+    private String emrVer;
     /**
      * @return Service list.
      * 
      */
-    private final List<GetClustersClusterSoftwareInfoSoftware> softwares;
+    private List<GetClustersClusterSoftwareInfoSoftware> softwares;
 
-    @CustomType.Constructor
-    private GetClustersClusterSoftwareInfo(
-        @CustomType.Parameter("clusterType") String clusterType,
-        @CustomType.Parameter("emrVer") String emrVer,
-        @CustomType.Parameter("softwares") List<GetClustersClusterSoftwareInfoSoftware> softwares) {
-        this.clusterType = clusterType;
-        this.emrVer = emrVer;
-        this.softwares = softwares;
-    }
-
+    private GetClustersClusterSoftwareInfo() {}
     /**
      * @return Cluster type:
      * 
@@ -66,16 +57,12 @@ public final class GetClustersClusterSoftwareInfo {
     public static Builder builder(GetClustersClusterSoftwareInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterType;
         private String emrVer;
         private List<GetClustersClusterSoftwareInfoSoftware> softwares;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersClusterSoftwareInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterType = defaults.clusterType;
@@ -83,22 +70,30 @@ public final class GetClustersClusterSoftwareInfo {
     	      this.softwares = defaults.softwares;
         }
 
+        @CustomType.Setter
         public Builder clusterType(String clusterType) {
             this.clusterType = Objects.requireNonNull(clusterType);
             return this;
         }
+        @CustomType.Setter
         public Builder emrVer(String emrVer) {
             this.emrVer = Objects.requireNonNull(emrVer);
             return this;
         }
+        @CustomType.Setter
         public Builder softwares(List<GetClustersClusterSoftwareInfoSoftware> softwares) {
             this.softwares = Objects.requireNonNull(softwares);
             return this;
         }
         public Builder softwares(GetClustersClusterSoftwareInfoSoftware... softwares) {
             return softwares(List.of(softwares));
-        }        public GetClustersClusterSoftwareInfo build() {
-            return new GetClustersClusterSoftwareInfo(clusterType, emrVer, softwares);
+        }
+        public GetClustersClusterSoftwareInfo build() {
+            final var o = new GetClustersClusterSoftwareInfo();
+            o.clusterType = clusterType;
+            o.emrVer = emrVer;
+            o.softwares = softwares;
+            return o;
         }
     }
 }

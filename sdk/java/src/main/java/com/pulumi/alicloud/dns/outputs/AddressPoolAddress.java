@@ -16,42 +16,29 @@ public final class AddressPoolAddress {
      * @return The address lists of the Address Pool. See the following `Block address`.
      * 
      */
-    private final String address;
+    private String address;
     /**
      * @return The source region of the address. expressed as a JSON string. The structure is as follows:
      * 
      */
-    private final String attributeInfo;
+    private String attributeInfo;
     /**
      * @return The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
      * 
      */
-    private final @Nullable Integer lbaWeight;
+    private @Nullable Integer lbaWeight;
     /**
      * @return The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
      * 
      */
-    private final String mode;
+    private String mode;
     /**
      * @return The description of the address.
      * 
      */
-    private final @Nullable String remark;
+    private @Nullable String remark;
 
-    @CustomType.Constructor
-    private AddressPoolAddress(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("attributeInfo") String attributeInfo,
-        @CustomType.Parameter("lbaWeight") @Nullable Integer lbaWeight,
-        @CustomType.Parameter("mode") String mode,
-        @CustomType.Parameter("remark") @Nullable String remark) {
-        this.address = address;
-        this.attributeInfo = attributeInfo;
-        this.lbaWeight = lbaWeight;
-        this.mode = mode;
-        this.remark = remark;
-    }
-
+    private AddressPoolAddress() {}
     /**
      * @return The address lists of the Address Pool. See the following `Block address`.
      * 
@@ -95,18 +82,14 @@ public final class AddressPoolAddress {
     public static Builder builder(AddressPoolAddress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private String attributeInfo;
         private @Nullable Integer lbaWeight;
         private String mode;
         private @Nullable String remark;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AddressPoolAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -116,27 +99,39 @@ public final class AddressPoolAddress {
     	      this.remark = defaults.remark;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder attributeInfo(String attributeInfo) {
             this.attributeInfo = Objects.requireNonNull(attributeInfo);
             return this;
         }
+        @CustomType.Setter
         public Builder lbaWeight(@Nullable Integer lbaWeight) {
             this.lbaWeight = lbaWeight;
             return this;
         }
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder remark(@Nullable String remark) {
             this.remark = remark;
             return this;
-        }        public AddressPoolAddress build() {
-            return new AddressPoolAddress(address, attributeInfo, lbaWeight, mode, remark);
+        }
+        public AddressPoolAddress build() {
+            final var o = new AddressPoolAddress();
+            o.address = address;
+            o.attributeInfo = attributeInfo;
+            o.lbaWeight = lbaWeight;
+            o.mode = mode;
+            o.remark = remark;
+            return o;
         }
     }
 }

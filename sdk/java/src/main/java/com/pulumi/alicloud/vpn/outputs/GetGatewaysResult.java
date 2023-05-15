@@ -18,7 +18,7 @@ public final class GetGatewaysResult {
      * @return The business status of the VPN gateway.
      * 
      */
-    private final @Nullable String businessStatus;
+    private @Nullable String businessStatus;
     /**
      * @return Whether the ipsec function is enabled.
      * 
@@ -27,67 +27,42 @@ public final class GetGatewaysResult {
      * 
      */
     @Deprecated /* Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version. */
-    private final @Nullable Boolean enableIpsec;
+    private @Nullable Boolean enableIpsec;
     /**
      * @return A list of VPN gateways. Each element contains the following attributes:
      * 
      */
-    private final List<GetGatewaysGateway> gateways;
+    private List<GetGatewaysGateway> gateways;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return IDs of the VPN.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable Boolean includeReservationData;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable Boolean includeReservationData;
+    private @Nullable String nameRegex;
     /**
      * @return names of the VPN.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The status of the VPN
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return ID of the VPC that the VPN belongs.
      * 
      */
-    private final @Nullable String vpcId;
+    private @Nullable String vpcId;
 
-    @CustomType.Constructor
-    private GetGatewaysResult(
-        @CustomType.Parameter("businessStatus") @Nullable String businessStatus,
-        @CustomType.Parameter("enableIpsec") @Nullable Boolean enableIpsec,
-        @CustomType.Parameter("gateways") List<GetGatewaysGateway> gateways,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("includeReservationData") @Nullable Boolean includeReservationData,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("vpcId") @Nullable String vpcId) {
-        this.businessStatus = businessStatus;
-        this.enableIpsec = enableIpsec;
-        this.gateways = gateways;
-        this.id = id;
-        this.ids = ids;
-        this.includeReservationData = includeReservationData;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-        this.vpcId = vpcId;
-    }
-
+    private GetGatewaysResult() {}
     /**
      * @return The business status of the VPN gateway.
      * 
@@ -165,7 +140,7 @@ public final class GetGatewaysResult {
     public static Builder builder(GetGatewaysResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String businessStatus;
         private @Nullable Boolean enableIpsec;
@@ -178,11 +153,7 @@ public final class GetGatewaysResult {
         private @Nullable String outputFile;
         private @Nullable String status;
         private @Nullable String vpcId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewaysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.businessStatus = defaults.businessStatus;
@@ -198,14 +169,17 @@ public final class GetGatewaysResult {
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
         public Builder businessStatus(@Nullable String businessStatus) {
             this.businessStatus = businessStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder enableIpsec(@Nullable Boolean enableIpsec) {
             this.enableIpsec = enableIpsec;
             return this;
         }
+        @CustomType.Setter
         public Builder gateways(List<GetGatewaysGateway> gateways) {
             this.gateways = Objects.requireNonNull(gateways);
             return this;
@@ -213,10 +187,12 @@ public final class GetGatewaysResult {
         public Builder gateways(GetGatewaysGateway... gateways) {
             return gateways(List.of(gateways));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -224,14 +200,17 @@ public final class GetGatewaysResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder includeReservationData(@Nullable Boolean includeReservationData) {
             this.includeReservationData = includeReservationData;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -239,19 +218,35 @@ public final class GetGatewaysResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder vpcId(@Nullable String vpcId) {
             this.vpcId = vpcId;
             return this;
-        }        public GetGatewaysResult build() {
-            return new GetGatewaysResult(businessStatus, enableIpsec, gateways, id, ids, includeReservationData, nameRegex, names, outputFile, status, vpcId);
+        }
+        public GetGatewaysResult build() {
+            final var o = new GetGatewaysResult();
+            o.businessStatus = businessStatus;
+            o.enableIpsec = enableIpsec;
+            o.gateways = gateways;
+            o.id = id;
+            o.ids = ids;
+            o.includeReservationData = includeReservationData;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            o.vpcId = vpcId;
+            return o;
         }
     }
 }

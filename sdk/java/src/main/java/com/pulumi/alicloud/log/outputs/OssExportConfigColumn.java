@@ -13,21 +13,14 @@ public final class OssExportConfigColumn {
      * @return The name of the key.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Type of configuration name.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private OssExportConfigColumn(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("type") String type) {
-        this.name = name;
-        this.type = type;
-    }
-
+    private OssExportConfigColumn() {}
     /**
      * @return The name of the key.
      * 
@@ -50,30 +43,32 @@ public final class OssExportConfigColumn {
     public static Builder builder(OssExportConfigColumn defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OssExportConfigColumn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public OssExportConfigColumn build() {
-            return new OssExportConfigColumn(name, type);
+        }
+        public OssExportConfigColumn build() {
+            final var o = new OssExportConfigColumn();
+            o.name = name;
+            o.type = type;
+            return o;
         }
     }
 }

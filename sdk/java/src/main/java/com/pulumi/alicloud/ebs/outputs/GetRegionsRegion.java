@@ -15,21 +15,14 @@ public final class GetRegionsRegion {
      * @return The ID of the region.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return A list of Ebs Zones.
      * 
      */
-    private final List<GetRegionsRegionZone> zones;
+    private List<GetRegionsRegionZone> zones;
 
-    @CustomType.Constructor
-    private GetRegionsRegion(
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("zones") List<GetRegionsRegionZone> zones) {
-        this.regionId = regionId;
-        this.zones = zones;
-    }
-
+    private GetRegionsRegion() {}
     /**
      * @return The ID of the region.
      * 
@@ -52,33 +45,35 @@ public final class GetRegionsRegion {
     public static Builder builder(GetRegionsRegion defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String regionId;
         private List<GetRegionsRegionZone> zones;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRegionsRegion defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.regionId = defaults.regionId;
     	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder zones(List<GetRegionsRegionZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetRegionsRegionZone... zones) {
             return zones(List.of(zones));
-        }        public GetRegionsRegion build() {
-            return new GetRegionsRegion(regionId, zones);
+        }
+        public GetRegionsRegion build() {
+            final var o = new GetRegionsRegion();
+            o.regionId = regionId;
+            o.zones = zones;
+            return o;
         }
     }
 }

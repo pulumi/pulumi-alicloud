@@ -17,37 +17,22 @@ public final class GetDiskReplicaPairsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Disk Replica Pair IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String outputFile;
+    private List<String> ids;
+    private @Nullable String outputFile;
     /**
      * @return A list of Disk Replica Pair Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetDiskReplicaPairsPair> pairs;
-    private final @Nullable String replicaGroupId;
-    private final @Nullable String site;
+    private List<GetDiskReplicaPairsPair> pairs;
+    private @Nullable String replicaGroupId;
+    private @Nullable String site;
 
-    @CustomType.Constructor
-    private GetDiskReplicaPairsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pairs") List<GetDiskReplicaPairsPair> pairs,
-        @CustomType.Parameter("replicaGroupId") @Nullable String replicaGroupId,
-        @CustomType.Parameter("site") @Nullable String site) {
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.pairs = pairs;
-        this.replicaGroupId = replicaGroupId;
-        this.site = site;
-    }
-
+    private GetDiskReplicaPairsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -86,7 +71,7 @@ public final class GetDiskReplicaPairsResult {
     public static Builder builder(GetDiskReplicaPairsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -94,11 +79,7 @@ public final class GetDiskReplicaPairsResult {
         private List<GetDiskReplicaPairsPair> pairs;
         private @Nullable String replicaGroupId;
         private @Nullable String site;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDiskReplicaPairsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -109,10 +90,12 @@ public final class GetDiskReplicaPairsResult {
     	      this.site = defaults.site;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -120,10 +103,12 @@ public final class GetDiskReplicaPairsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pairs(List<GetDiskReplicaPairsPair> pairs) {
             this.pairs = Objects.requireNonNull(pairs);
             return this;
@@ -131,15 +116,25 @@ public final class GetDiskReplicaPairsResult {
         public Builder pairs(GetDiskReplicaPairsPair... pairs) {
             return pairs(List.of(pairs));
         }
+        @CustomType.Setter
         public Builder replicaGroupId(@Nullable String replicaGroupId) {
             this.replicaGroupId = replicaGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder site(@Nullable String site) {
             this.site = site;
             return this;
-        }        public GetDiskReplicaPairsResult build() {
-            return new GetDiskReplicaPairsResult(id, ids, outputFile, pairs, replicaGroupId, site);
+        }
+        public GetDiskReplicaPairsResult build() {
+            final var o = new GetDiskReplicaPairsResult();
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.pairs = pairs;
+            o.replicaGroupId = replicaGroupId;
+            o.site = site;
+            return o;
         }
     }
 }

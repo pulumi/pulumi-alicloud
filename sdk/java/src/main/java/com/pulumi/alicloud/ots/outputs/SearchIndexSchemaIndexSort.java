@@ -14,13 +14,9 @@ public final class SearchIndexSchemaIndexSort {
      * @return Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
      * 
      */
-    private final List<SearchIndexSchemaIndexSortSorter> sorters;
+    private List<SearchIndexSchemaIndexSortSorter> sorters;
 
-    @CustomType.Constructor
-    private SearchIndexSchemaIndexSort(@CustomType.Parameter("sorters") List<SearchIndexSchemaIndexSortSorter> sorters) {
-        this.sorters = sorters;
-    }
-
+    private SearchIndexSchemaIndexSort() {}
     /**
      * @return Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported.
      * 
@@ -36,27 +32,27 @@ public final class SearchIndexSchemaIndexSort {
     public static Builder builder(SearchIndexSchemaIndexSort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<SearchIndexSchemaIndexSortSorter> sorters;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SearchIndexSchemaIndexSort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sorters = defaults.sorters;
         }
 
+        @CustomType.Setter
         public Builder sorters(List<SearchIndexSchemaIndexSortSorter> sorters) {
             this.sorters = Objects.requireNonNull(sorters);
             return this;
         }
         public Builder sorters(SearchIndexSchemaIndexSortSorter... sorters) {
             return sorters(List.of(sorters));
-        }        public SearchIndexSchemaIndexSort build() {
-            return new SearchIndexSchemaIndexSort(sorters);
+        }
+        public SearchIndexSchemaIndexSort build() {
+            final var o = new SearchIndexSchemaIndexSort();
+            o.sorters = sorters;
+            return o;
         }
     }
 }

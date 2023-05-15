@@ -16,35 +16,24 @@ public final class ContainerGroupAcrRegistryInfo {
      * @return The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
      * 
      */
-    private final @Nullable List<String> domains;
+    private @Nullable List<String> domains;
     /**
      * @return The ACR enterprise edition example ID.
      * 
      */
-    private final @Nullable String instanceId;
+    private @Nullable String instanceId;
     /**
      * @return The name of the ACR enterprise edition instance.
      * 
      */
-    private final @Nullable String instanceName;
+    private @Nullable String instanceName;
     /**
      * @return The ACR enterprise edition instance belongs to the region.
      * 
      */
-    private final @Nullable String regionId;
+    private @Nullable String regionId;
 
-    @CustomType.Constructor
-    private ContainerGroupAcrRegistryInfo(
-        @CustomType.Parameter("domains") @Nullable List<String> domains,
-        @CustomType.Parameter("instanceId") @Nullable String instanceId,
-        @CustomType.Parameter("instanceName") @Nullable String instanceName,
-        @CustomType.Parameter("regionId") @Nullable String regionId) {
-        this.domains = domains;
-        this.instanceId = instanceId;
-        this.instanceName = instanceName;
-        this.regionId = regionId;
-    }
-
+    private ContainerGroupAcrRegistryInfo() {}
     /**
      * @return The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
      * 
@@ -81,17 +70,13 @@ public final class ContainerGroupAcrRegistryInfo {
     public static Builder builder(ContainerGroupAcrRegistryInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> domains;
         private @Nullable String instanceId;
         private @Nullable String instanceName;
         private @Nullable String regionId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupAcrRegistryInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domains = defaults.domains;
@@ -100,6 +85,7 @@ public final class ContainerGroupAcrRegistryInfo {
     	      this.regionId = defaults.regionId;
         }
 
+        @CustomType.Setter
         public Builder domains(@Nullable List<String> domains) {
             this.domains = domains;
             return this;
@@ -107,19 +93,28 @@ public final class ContainerGroupAcrRegistryInfo {
         public Builder domains(String... domains) {
             return domains(List.of(domains));
         }
+        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(@Nullable String instanceName) {
             this.instanceName = instanceName;
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(@Nullable String regionId) {
             this.regionId = regionId;
             return this;
-        }        public ContainerGroupAcrRegistryInfo build() {
-            return new ContainerGroupAcrRegistryInfo(domains, instanceId, instanceName, regionId);
+        }
+        public ContainerGroupAcrRegistryInfo build() {
+            final var o = new ContainerGroupAcrRegistryInfo();
+            o.domains = domains;
+            o.instanceId = instanceId;
+            o.instanceName = instanceName;
+            o.regionId = regionId;
+            return o;
         }
     }
 }

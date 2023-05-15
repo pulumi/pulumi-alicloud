@@ -13,21 +13,14 @@ public final class MonitorConfigIspCityNode {
      * @return The code of the city node to monitor.
      * 
      */
-    private final String cityCode;
+    private String cityCode;
     /**
      * @return The code of the Internet provider service (ISP) node to monitor.
      * 
      */
-    private final String ispCode;
+    private String ispCode;
 
-    @CustomType.Constructor
-    private MonitorConfigIspCityNode(
-        @CustomType.Parameter("cityCode") String cityCode,
-        @CustomType.Parameter("ispCode") String ispCode) {
-        this.cityCode = cityCode;
-        this.ispCode = ispCode;
-    }
-
+    private MonitorConfigIspCityNode() {}
     /**
      * @return The code of the city node to monitor.
      * 
@@ -50,30 +43,32 @@ public final class MonitorConfigIspCityNode {
     public static Builder builder(MonitorConfigIspCityNode defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cityCode;
         private String ispCode;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MonitorConfigIspCityNode defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cityCode = defaults.cityCode;
     	      this.ispCode = defaults.ispCode;
         }
 
+        @CustomType.Setter
         public Builder cityCode(String cityCode) {
             this.cityCode = Objects.requireNonNull(cityCode);
             return this;
         }
+        @CustomType.Setter
         public Builder ispCode(String ispCode) {
             this.ispCode = Objects.requireNonNull(ispCode);
             return this;
-        }        public MonitorConfigIspCityNode build() {
-            return new MonitorConfigIspCityNode(cityCode, ispCode);
+        }
+        public MonitorConfigIspCityNode build() {
+            final var o = new MonitorConfigIspCityNode();
+            o.cityCode = cityCode;
+            o.ispCode = ispCode;
+            return o;
         }
     }
 }

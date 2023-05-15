@@ -14,49 +14,34 @@ public final class GetDdosCooPortsPort {
      * @return The source station port.
      * 
      */
-    private final String backendPort;
+    private String backendPort;
     /**
      * @return The forwarding port.
      * 
      */
-    private final String frontendPort;
+    private String frontendPort;
     /**
      * @return The forwarding protocol.
      * 
      */
-    private final String frontendProtocol;
+    private String frontendProtocol;
     /**
      * @return The ID of the Port.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Ddoscoo instance ID.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return List of source IP addresses.
      * 
      */
-    private final List<String> realServers;
+    private List<String> realServers;
 
-    @CustomType.Constructor
-    private GetDdosCooPortsPort(
-        @CustomType.Parameter("backendPort") String backendPort,
-        @CustomType.Parameter("frontendPort") String frontendPort,
-        @CustomType.Parameter("frontendProtocol") String frontendProtocol,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("realServers") List<String> realServers) {
-        this.backendPort = backendPort;
-        this.frontendPort = frontendPort;
-        this.frontendProtocol = frontendProtocol;
-        this.id = id;
-        this.instanceId = instanceId;
-        this.realServers = realServers;
-    }
-
+    private GetDdosCooPortsPort() {}
     /**
      * @return The source station port.
      * 
@@ -107,7 +92,7 @@ public final class GetDdosCooPortsPort {
     public static Builder builder(GetDdosCooPortsPort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String backendPort;
         private String frontendPort;
@@ -115,11 +100,7 @@ public final class GetDdosCooPortsPort {
         private String id;
         private String instanceId;
         private List<String> realServers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDdosCooPortsPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backendPort = defaults.backendPort;
@@ -130,34 +111,48 @@ public final class GetDdosCooPortsPort {
     	      this.realServers = defaults.realServers;
         }
 
+        @CustomType.Setter
         public Builder backendPort(String backendPort) {
             this.backendPort = Objects.requireNonNull(backendPort);
             return this;
         }
+        @CustomType.Setter
         public Builder frontendPort(String frontendPort) {
             this.frontendPort = Objects.requireNonNull(frontendPort);
             return this;
         }
+        @CustomType.Setter
         public Builder frontendProtocol(String frontendProtocol) {
             this.frontendProtocol = Objects.requireNonNull(frontendProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder realServers(List<String> realServers) {
             this.realServers = Objects.requireNonNull(realServers);
             return this;
         }
         public Builder realServers(String... realServers) {
             return realServers(List.of(realServers));
-        }        public GetDdosCooPortsPort build() {
-            return new GetDdosCooPortsPort(backendPort, frontendPort, frontendProtocol, id, instanceId, realServers);
+        }
+        public GetDdosCooPortsPort build() {
+            final var o = new GetDdosCooPortsPort();
+            o.backendPort = backendPort;
+            o.frontendPort = frontendPort;
+            o.frontendProtocol = frontendProtocol;
+            o.id = id;
+            o.instanceId = instanceId;
+            o.realServers = realServers;
+            return o;
         }
     }
 }

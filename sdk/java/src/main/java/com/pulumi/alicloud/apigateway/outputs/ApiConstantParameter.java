@@ -15,35 +15,24 @@ public final class ApiConstantParameter {
      * @return The description of the api. Defaults to null.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Request&#39;s parameter location; values: BODY, HEAD, QUERY, and PATH.
      * 
      */
-    private final String in;
+    private String in;
     /**
      * @return The name of the api gateway api. Defaults to null.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Constant parameter value.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private ApiConstantParameter(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("in") String in,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.description = description;
-        this.in = in;
-        this.name = name;
-        this.value = value;
-    }
-
+    private ApiConstantParameter() {}
     /**
      * @return The description of the api. Defaults to null.
      * 
@@ -80,17 +69,13 @@ public final class ApiConstantParameter {
     public static Builder builder(ApiConstantParameter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String in;
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApiConstantParameter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -99,23 +84,33 @@ public final class ApiConstantParameter {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder in(String in) {
             this.in = Objects.requireNonNull(in);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public ApiConstantParameter build() {
-            return new ApiConstantParameter(description, in, name, value);
+        }
+        public ApiConstantParameter build() {
+            final var o = new ApiConstantParameter();
+            o.description = description;
+            o.in = in;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

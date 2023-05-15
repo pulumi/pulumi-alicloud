@@ -16,35 +16,24 @@ public final class AlarmEscalationsWarn {
      * @return Critical level alarm comparison operator. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;]. Default to &#34;==&#34;.
      * 
      */
-    private final @Nullable String comparisonOperator;
+    private @Nullable String comparisonOperator;
     /**
      * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.statistics&#39; instead.
      * 
      */
-    private final @Nullable String statistics;
+    private @Nullable String statistics;
     /**
      * @return It has been deprecated from provider version 1.94.0 and &#39;escalations_critical.threshold&#39; instead.
      * 
      */
-    private final @Nullable String threshold;
+    private @Nullable String threshold;
     /**
      * @return Critical level alarm retry times. Default to 3.
      * 
      */
-    private final @Nullable Integer times;
+    private @Nullable Integer times;
 
-    @CustomType.Constructor
-    private AlarmEscalationsWarn(
-        @CustomType.Parameter("comparisonOperator") @Nullable String comparisonOperator,
-        @CustomType.Parameter("statistics") @Nullable String statistics,
-        @CustomType.Parameter("threshold") @Nullable String threshold,
-        @CustomType.Parameter("times") @Nullable Integer times) {
-        this.comparisonOperator = comparisonOperator;
-        this.statistics = statistics;
-        this.threshold = threshold;
-        this.times = times;
-    }
-
+    private AlarmEscalationsWarn() {}
     /**
      * @return Critical level alarm comparison operator. Valid values: [&#34;&lt;=&#34;, &#34;&lt;&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;, &#34;!=&#34;]. Default to &#34;==&#34;.
      * 
@@ -81,17 +70,13 @@ public final class AlarmEscalationsWarn {
     public static Builder builder(AlarmEscalationsWarn defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String comparisonOperator;
         private @Nullable String statistics;
         private @Nullable String threshold;
         private @Nullable Integer times;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AlarmEscalationsWarn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comparisonOperator = defaults.comparisonOperator;
@@ -100,23 +85,33 @@ public final class AlarmEscalationsWarn {
     	      this.times = defaults.times;
         }
 
+        @CustomType.Setter
         public Builder comparisonOperator(@Nullable String comparisonOperator) {
             this.comparisonOperator = comparisonOperator;
             return this;
         }
+        @CustomType.Setter
         public Builder statistics(@Nullable String statistics) {
             this.statistics = statistics;
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(@Nullable String threshold) {
             this.threshold = threshold;
             return this;
         }
+        @CustomType.Setter
         public Builder times(@Nullable Integer times) {
             this.times = times;
             return this;
-        }        public AlarmEscalationsWarn build() {
-            return new AlarmEscalationsWarn(comparisonOperator, statistics, threshold, times);
+        }
+        public AlarmEscalationsWarn build() {
+            final var o = new AlarmEscalationsWarn();
+            o.comparisonOperator = comparisonOperator;
+            o.statistics = statistics;
+            o.threshold = threshold;
+            o.times = times;
+            return o;
         }
     }
 }

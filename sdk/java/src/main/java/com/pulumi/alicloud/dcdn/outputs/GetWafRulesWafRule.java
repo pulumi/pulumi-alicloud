@@ -16,140 +16,99 @@ public final class GetWafRulesWafRule {
      * @return Specifies the action of the rule.
      * 
      */
-    private final String action;
+    private String action;
     /**
      * @return Whether to turn on Frequency Control, on/off
      * 
      */
-    private final String ccStatus;
+    private String ccStatus;
     /**
      * @return The blocked regions in the Chinese mainland, separated by commas (,).
      * 
      */
-    private final String cnRegionList;
+    private String cnRegionList;
     /**
      * @return The trigger condition of the rule.
      * 
      */
-    private final List<GetWafRulesWafRuleCondition> conditions;
+    private List<GetWafRulesWafRuleCondition> conditions;
     /**
      * @return The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
      * 
      */
-    private final String defenseScene;
+    private String defenseScene;
     /**
      * @return The effective range of the frequency control blacklist.
      * 
      */
-    private final String effect;
+    private String effect;
     /**
      * @return Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
      * 
      */
-    private final String gmtModified;
+    private String gmtModified;
     /**
      * @return The ID of the Waf Rule.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The effective range of the frequency control blacklist.
      * 
      */
-    private final String otherRegionList;
+    private String otherRegionList;
     /**
      * @return The protection policy ID.
      * 
      */
-    private final String policyId;
+    private String policyId;
     /**
      * @return The rules of rate limiting.
      * 
      */
-    private final List<GetWafRulesWafRuleRateLimit> rateLimits;
+    private List<GetWafRulesWafRuleRateLimit> rateLimits;
     /**
      * @return The regular expression.
      * 
      */
-    private final List<String> regularRules;
+    private List<String> regularRules;
     /**
      * @return The type of the regular expression. If the value of the tags field contains waf_group, you can specify this field.
      * 
      */
-    private final List<String> regularTypes;
+    private List<String> regularTypes;
     /**
      * @return Filter by IP address.
      * 
      */
-    private final List<String> remoteAddrs;
+    private List<String> remoteAddrs;
     /**
      * @return The name of the protection rule.
      * 
      */
-    private final String ruleName;
+    private String ruleName;
     /**
      * @return List of protection scenarios
      * 
      */
-    private final List<String> scenes;
+    private List<String> scenes;
     /**
      * @return The information about the HTTP status code.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The id of the waf rule group.
      * 
      */
-    private final String wafGroupIds;
+    private String wafGroupIds;
     /**
      * @return The first ID of the resource
      * 
      */
-    private final String wafRuleId;
+    private String wafRuleId;
 
-    @CustomType.Constructor
-    private GetWafRulesWafRule(
-        @CustomType.Parameter("action") String action,
-        @CustomType.Parameter("ccStatus") String ccStatus,
-        @CustomType.Parameter("cnRegionList") String cnRegionList,
-        @CustomType.Parameter("conditions") List<GetWafRulesWafRuleCondition> conditions,
-        @CustomType.Parameter("defenseScene") String defenseScene,
-        @CustomType.Parameter("effect") String effect,
-        @CustomType.Parameter("gmtModified") String gmtModified,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("otherRegionList") String otherRegionList,
-        @CustomType.Parameter("policyId") String policyId,
-        @CustomType.Parameter("rateLimits") List<GetWafRulesWafRuleRateLimit> rateLimits,
-        @CustomType.Parameter("regularRules") List<String> regularRules,
-        @CustomType.Parameter("regularTypes") List<String> regularTypes,
-        @CustomType.Parameter("remoteAddrs") List<String> remoteAddrs,
-        @CustomType.Parameter("ruleName") String ruleName,
-        @CustomType.Parameter("scenes") List<String> scenes,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("wafGroupIds") String wafGroupIds,
-        @CustomType.Parameter("wafRuleId") String wafRuleId) {
-        this.action = action;
-        this.ccStatus = ccStatus;
-        this.cnRegionList = cnRegionList;
-        this.conditions = conditions;
-        this.defenseScene = defenseScene;
-        this.effect = effect;
-        this.gmtModified = gmtModified;
-        this.id = id;
-        this.otherRegionList = otherRegionList;
-        this.policyId = policyId;
-        this.rateLimits = rateLimits;
-        this.regularRules = regularRules;
-        this.regularTypes = regularTypes;
-        this.remoteAddrs = remoteAddrs;
-        this.ruleName = ruleName;
-        this.scenes = scenes;
-        this.status = status;
-        this.wafGroupIds = wafGroupIds;
-        this.wafRuleId = wafRuleId;
-    }
-
+    private GetWafRulesWafRule() {}
     /**
      * @return Specifies the action of the rule.
      * 
@@ -291,7 +250,7 @@ public final class GetWafRulesWafRule {
     public static Builder builder(GetWafRulesWafRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String action;
         private String ccStatus;
@@ -312,11 +271,7 @@ public final class GetWafRulesWafRule {
         private String status;
         private String wafGroupIds;
         private String wafRuleId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWafRulesWafRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
@@ -340,18 +295,22 @@ public final class GetWafRulesWafRule {
     	      this.wafRuleId = defaults.wafRuleId;
         }
 
+        @CustomType.Setter
         public Builder action(String action) {
             this.action = Objects.requireNonNull(action);
             return this;
         }
+        @CustomType.Setter
         public Builder ccStatus(String ccStatus) {
             this.ccStatus = Objects.requireNonNull(ccStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder cnRegionList(String cnRegionList) {
             this.cnRegionList = Objects.requireNonNull(cnRegionList);
             return this;
         }
+        @CustomType.Setter
         public Builder conditions(List<GetWafRulesWafRuleCondition> conditions) {
             this.conditions = Objects.requireNonNull(conditions);
             return this;
@@ -359,30 +318,37 @@ public final class GetWafRulesWafRule {
         public Builder conditions(GetWafRulesWafRuleCondition... conditions) {
             return conditions(List.of(conditions));
         }
+        @CustomType.Setter
         public Builder defenseScene(String defenseScene) {
             this.defenseScene = Objects.requireNonNull(defenseScene);
             return this;
         }
+        @CustomType.Setter
         public Builder effect(String effect) {
             this.effect = Objects.requireNonNull(effect);
             return this;
         }
+        @CustomType.Setter
         public Builder gmtModified(String gmtModified) {
             this.gmtModified = Objects.requireNonNull(gmtModified);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder otherRegionList(String otherRegionList) {
             this.otherRegionList = Objects.requireNonNull(otherRegionList);
             return this;
         }
+        @CustomType.Setter
         public Builder policyId(String policyId) {
             this.policyId = Objects.requireNonNull(policyId);
             return this;
         }
+        @CustomType.Setter
         public Builder rateLimits(List<GetWafRulesWafRuleRateLimit> rateLimits) {
             this.rateLimits = Objects.requireNonNull(rateLimits);
             return this;
@@ -390,6 +356,7 @@ public final class GetWafRulesWafRule {
         public Builder rateLimits(GetWafRulesWafRuleRateLimit... rateLimits) {
             return rateLimits(List.of(rateLimits));
         }
+        @CustomType.Setter
         public Builder regularRules(List<String> regularRules) {
             this.regularRules = Objects.requireNonNull(regularRules);
             return this;
@@ -397,6 +364,7 @@ public final class GetWafRulesWafRule {
         public Builder regularRules(String... regularRules) {
             return regularRules(List.of(regularRules));
         }
+        @CustomType.Setter
         public Builder regularTypes(List<String> regularTypes) {
             this.regularTypes = Objects.requireNonNull(regularTypes);
             return this;
@@ -404,6 +372,7 @@ public final class GetWafRulesWafRule {
         public Builder regularTypes(String... regularTypes) {
             return regularTypes(List.of(regularTypes));
         }
+        @CustomType.Setter
         public Builder remoteAddrs(List<String> remoteAddrs) {
             this.remoteAddrs = Objects.requireNonNull(remoteAddrs);
             return this;
@@ -411,10 +380,12 @@ public final class GetWafRulesWafRule {
         public Builder remoteAddrs(String... remoteAddrs) {
             return remoteAddrs(List.of(remoteAddrs));
         }
+        @CustomType.Setter
         public Builder ruleName(String ruleName) {
             this.ruleName = Objects.requireNonNull(ruleName);
             return this;
         }
+        @CustomType.Setter
         public Builder scenes(List<String> scenes) {
             this.scenes = Objects.requireNonNull(scenes);
             return this;
@@ -422,19 +393,43 @@ public final class GetWafRulesWafRule {
         public Builder scenes(String... scenes) {
             return scenes(List.of(scenes));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder wafGroupIds(String wafGroupIds) {
             this.wafGroupIds = Objects.requireNonNull(wafGroupIds);
             return this;
         }
+        @CustomType.Setter
         public Builder wafRuleId(String wafRuleId) {
             this.wafRuleId = Objects.requireNonNull(wafRuleId);
             return this;
-        }        public GetWafRulesWafRule build() {
-            return new GetWafRulesWafRule(action, ccStatus, cnRegionList, conditions, defenseScene, effect, gmtModified, id, otherRegionList, policyId, rateLimits, regularRules, regularTypes, remoteAddrs, ruleName, scenes, status, wafGroupIds, wafRuleId);
+        }
+        public GetWafRulesWafRule build() {
+            final var o = new GetWafRulesWafRule();
+            o.action = action;
+            o.ccStatus = ccStatus;
+            o.cnRegionList = cnRegionList;
+            o.conditions = conditions;
+            o.defenseScene = defenseScene;
+            o.effect = effect;
+            o.gmtModified = gmtModified;
+            o.id = id;
+            o.otherRegionList = otherRegionList;
+            o.policyId = policyId;
+            o.rateLimits = rateLimits;
+            o.regularRules = regularRules;
+            o.regularTypes = regularTypes;
+            o.remoteAddrs = remoteAddrs;
+            o.ruleName = ruleName;
+            o.scenes = scenes;
+            o.status = status;
+            o.wafGroupIds = wafGroupIds;
+            o.wafRuleId = wafRuleId;
+            return o;
         }
     }
 }

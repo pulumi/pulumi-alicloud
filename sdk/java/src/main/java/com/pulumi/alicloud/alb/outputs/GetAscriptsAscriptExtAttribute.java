@@ -13,21 +13,14 @@ public final class GetAscriptsAscriptExtAttribute {
      * @return The key of the extended attribute.
      * 
      */
-    private final String attributeKey;
+    private String attributeKey;
     /**
      * @return The value of the extended attribute.
      * 
      */
-    private final String attributeValue;
+    private String attributeValue;
 
-    @CustomType.Constructor
-    private GetAscriptsAscriptExtAttribute(
-        @CustomType.Parameter("attributeKey") String attributeKey,
-        @CustomType.Parameter("attributeValue") String attributeValue) {
-        this.attributeKey = attributeKey;
-        this.attributeValue = attributeValue;
-    }
-
+    private GetAscriptsAscriptExtAttribute() {}
     /**
      * @return The key of the extended attribute.
      * 
@@ -50,30 +43,32 @@ public final class GetAscriptsAscriptExtAttribute {
     public static Builder builder(GetAscriptsAscriptExtAttribute defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attributeKey;
         private String attributeValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAscriptsAscriptExtAttribute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attributeKey = defaults.attributeKey;
     	      this.attributeValue = defaults.attributeValue;
         }
 
+        @CustomType.Setter
         public Builder attributeKey(String attributeKey) {
             this.attributeKey = Objects.requireNonNull(attributeKey);
             return this;
         }
+        @CustomType.Setter
         public Builder attributeValue(String attributeValue) {
             this.attributeValue = Objects.requireNonNull(attributeValue);
             return this;
-        }        public GetAscriptsAscriptExtAttribute build() {
-            return new GetAscriptsAscriptExtAttribute(attributeKey, attributeValue);
+        }
+        public GetAscriptsAscriptExtAttribute build() {
+            final var o = new GetAscriptsAscriptExtAttribute();
+            o.attributeKey = attributeKey;
+            o.attributeValue = attributeValue;
+            return o;
         }
     }
 }

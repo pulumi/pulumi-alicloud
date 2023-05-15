@@ -17,35 +17,16 @@ public final class GetKeyPairsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String keyPairName;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final List<GetKeyPairsPair> pairs;
-    private final String version;
+    private String id;
+    private List<String> ids;
+    private @Nullable String keyPairName;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private List<GetKeyPairsPair> pairs;
+    private String version;
 
-    @CustomType.Constructor
-    private GetKeyPairsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("keyPairName") @Nullable String keyPairName,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pairs") List<GetKeyPairsPair> pairs,
-        @CustomType.Parameter("version") String version) {
-        this.id = id;
-        this.ids = ids;
-        this.keyPairName = keyPairName;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.pairs = pairs;
-        this.version = version;
-    }
-
+    private GetKeyPairsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -82,7 +63,7 @@ public final class GetKeyPairsResult {
     public static Builder builder(GetKeyPairsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -92,11 +73,7 @@ public final class GetKeyPairsResult {
         private @Nullable String outputFile;
         private List<GetKeyPairsPair> pairs;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeyPairsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -109,10 +86,12 @@ public final class GetKeyPairsResult {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -120,14 +99,17 @@ public final class GetKeyPairsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder keyPairName(@Nullable String keyPairName) {
             this.keyPairName = keyPairName;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -135,10 +117,12 @@ public final class GetKeyPairsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pairs(List<GetKeyPairsPair> pairs) {
             this.pairs = Objects.requireNonNull(pairs);
             return this;
@@ -146,11 +130,22 @@ public final class GetKeyPairsResult {
         public Builder pairs(GetKeyPairsPair... pairs) {
             return pairs(List.of(pairs));
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetKeyPairsResult build() {
-            return new GetKeyPairsResult(id, ids, keyPairName, nameRegex, names, outputFile, pairs, version);
+        }
+        public GetKeyPairsResult build() {
+            final var o = new GetKeyPairsResult();
+            o.id = id;
+            o.ids = ids;
+            o.keyPairName = keyPairName;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.pairs = pairs;
+            o.version = version;
+            return o;
         }
     }
 }

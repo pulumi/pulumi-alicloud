@@ -15,63 +15,44 @@ public final class GetBackupPoliciesPolicy {
      * @return The ID of the anti-ransomware policy.
      * 
      */
-    private final Integer backupPolicyId;
+    private Integer backupPolicyId;
     /**
      * @return The name of the anti-ransomware policy.
      * 
      */
-    private final String backupPolicyName;
+    private String backupPolicyName;
     /**
      * @return The ID of the anti-ransomware policy.
      * 
      */
-    private final Integer id;
+    private Integer id;
     /**
      * @return The configurations of the anti-ransomware policy.
      * 
      */
-    private final String policy;
+    private String policy;
     /**
      * @return The ID of the region that you specified for data backup when you installed the anti-ransomware agent for the server not deployed on Alibaba Cloud.
      * 
      */
-    private final String policyRegionId;
+    private String policyRegionId;
     /**
      * @return The version of the anti-ransomware policy.
      * 
      */
-    private final String policyVersion;
+    private String policyVersion;
     /**
      * @return The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The UUIDs of the servers to which the anti-ransomware policy is applied.
      * 
      */
-    private final List<String> uuidLists;
+    private List<String> uuidLists;
 
-    @CustomType.Constructor
-    private GetBackupPoliciesPolicy(
-        @CustomType.Parameter("backupPolicyId") Integer backupPolicyId,
-        @CustomType.Parameter("backupPolicyName") String backupPolicyName,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("policy") String policy,
-        @CustomType.Parameter("policyRegionId") String policyRegionId,
-        @CustomType.Parameter("policyVersion") String policyVersion,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("uuidLists") List<String> uuidLists) {
-        this.backupPolicyId = backupPolicyId;
-        this.backupPolicyName = backupPolicyName;
-        this.id = id;
-        this.policy = policy;
-        this.policyRegionId = policyRegionId;
-        this.policyVersion = policyVersion;
-        this.status = status;
-        this.uuidLists = uuidLists;
-    }
-
+    private GetBackupPoliciesPolicy() {}
     /**
      * @return The ID of the anti-ransomware policy.
      * 
@@ -136,7 +117,7 @@ public final class GetBackupPoliciesPolicy {
     public static Builder builder(GetBackupPoliciesPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer backupPolicyId;
         private String backupPolicyName;
@@ -146,11 +127,7 @@ public final class GetBackupPoliciesPolicy {
         private String policyVersion;
         private String status;
         private List<String> uuidLists;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBackupPoliciesPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupPolicyId = defaults.backupPolicyId;
@@ -163,42 +140,60 @@ public final class GetBackupPoliciesPolicy {
     	      this.uuidLists = defaults.uuidLists;
         }
 
+        @CustomType.Setter
         public Builder backupPolicyId(Integer backupPolicyId) {
             this.backupPolicyId = Objects.requireNonNull(backupPolicyId);
             return this;
         }
+        @CustomType.Setter
         public Builder backupPolicyName(String backupPolicyName) {
             this.backupPolicyName = Objects.requireNonNull(backupPolicyName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder policy(String policy) {
             this.policy = Objects.requireNonNull(policy);
             return this;
         }
+        @CustomType.Setter
         public Builder policyRegionId(String policyRegionId) {
             this.policyRegionId = Objects.requireNonNull(policyRegionId);
             return this;
         }
+        @CustomType.Setter
         public Builder policyVersion(String policyVersion) {
             this.policyVersion = Objects.requireNonNull(policyVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder uuidLists(List<String> uuidLists) {
             this.uuidLists = Objects.requireNonNull(uuidLists);
             return this;
         }
         public Builder uuidLists(String... uuidLists) {
             return uuidLists(List.of(uuidLists));
-        }        public GetBackupPoliciesPolicy build() {
-            return new GetBackupPoliciesPolicy(backupPolicyId, backupPolicyName, id, policy, policyRegionId, policyVersion, status, uuidLists);
+        }
+        public GetBackupPoliciesPolicy build() {
+            final var o = new GetBackupPoliciesPolicy();
+            o.backupPolicyId = backupPolicyId;
+            o.backupPolicyName = backupPolicyName;
+            o.id = id;
+            o.policy = policy;
+            o.policyRegionId = policyRegionId;
+            o.policyVersion = policyVersion;
+            o.status = status;
+            o.uuidLists = uuidLists;
+            return o;
         }
     }
 }

@@ -16,21 +16,14 @@ public final class ServiceMeshMeshConfigAccessLog {
      * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The SLS Project of the access logging.
      * 
      */
-    private final @Nullable String project;
+    private @Nullable String project;
 
-    @CustomType.Constructor
-    private ServiceMeshMeshConfigAccessLog(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("project") @Nullable String project) {
-        this.enabled = enabled;
-        this.project = project;
-    }
-
+    private ServiceMeshMeshConfigAccessLog() {}
     /**
      * @return Whether to enable of the access logging. Valid values: `true` and `false`.
      * 
@@ -53,30 +46,32 @@ public final class ServiceMeshMeshConfigAccessLog {
     public static Builder builder(ServiceMeshMeshConfigAccessLog defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable String project;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceMeshMeshConfigAccessLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
-        }        public ServiceMeshMeshConfigAccessLog build() {
-            return new ServiceMeshMeshConfigAccessLog(enabled, project);
+        }
+        public ServiceMeshMeshConfigAccessLog build() {
+            final var o = new ServiceMeshMeshConfigAccessLog();
+            o.enabled = enabled;
+            o.project = project;
+            return o;
         }
     }
 }

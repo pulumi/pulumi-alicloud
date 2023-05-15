@@ -13,56 +13,39 @@ public final class GetLoadBalancersBalancerZoneMapping {
      * @return The ID of the elastic IP address (EIP).
      * 
      */
-    private final String allocationId;
+    private String allocationId;
     /**
      * @return The ID of the elastic network interface (ENI) attached to the NLB instance.
      * 
      */
-    private final String eniId;
+    private String eniId;
     /**
      * @return The IPv6 address of the NLB instance.
      * 
      */
-    private final String ipv6Address;
+    private String ipv6Address;
     /**
      * @return The private IPv4 address used by the NLB instance.
      * 
      */
-    private final String privateIpv4Address;
+    private String privateIpv4Address;
     /**
      * @return The public IPv4 address used by the NLB instance.
      * 
      */
-    private final String publicIpv4Address;
+    private String publicIpv4Address;
     /**
      * @return The ID of the vSwitch. By default, you can specify one vSwitch (subnet) in each zone of the NLB instance.
      * 
      */
-    private final String vswitchId;
+    private String vswitchId;
     /**
      * @return The name of the zone.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetLoadBalancersBalancerZoneMapping(
-        @CustomType.Parameter("allocationId") String allocationId,
-        @CustomType.Parameter("eniId") String eniId,
-        @CustomType.Parameter("ipv6Address") String ipv6Address,
-        @CustomType.Parameter("privateIpv4Address") String privateIpv4Address,
-        @CustomType.Parameter("publicIpv4Address") String publicIpv4Address,
-        @CustomType.Parameter("vswitchId") String vswitchId,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.allocationId = allocationId;
-        this.eniId = eniId;
-        this.ipv6Address = ipv6Address;
-        this.privateIpv4Address = privateIpv4Address;
-        this.publicIpv4Address = publicIpv4Address;
-        this.vswitchId = vswitchId;
-        this.zoneId = zoneId;
-    }
-
+    private GetLoadBalancersBalancerZoneMapping() {}
     /**
      * @return The ID of the elastic IP address (EIP).
      * 
@@ -120,7 +103,7 @@ public final class GetLoadBalancersBalancerZoneMapping {
     public static Builder builder(GetLoadBalancersBalancerZoneMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String allocationId;
         private String eniId;
@@ -129,11 +112,7 @@ public final class GetLoadBalancersBalancerZoneMapping {
         private String publicIpv4Address;
         private String vswitchId;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancersBalancerZoneMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocationId = defaults.allocationId;
@@ -145,35 +124,51 @@ public final class GetLoadBalancersBalancerZoneMapping {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder allocationId(String allocationId) {
             this.allocationId = Objects.requireNonNull(allocationId);
             return this;
         }
+        @CustomType.Setter
         public Builder eniId(String eniId) {
             this.eniId = Objects.requireNonNull(eniId);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6Address(String ipv6Address) {
             this.ipv6Address = Objects.requireNonNull(ipv6Address);
             return this;
         }
+        @CustomType.Setter
         public Builder privateIpv4Address(String privateIpv4Address) {
             this.privateIpv4Address = Objects.requireNonNull(privateIpv4Address);
             return this;
         }
+        @CustomType.Setter
         public Builder publicIpv4Address(String publicIpv4Address) {
             this.publicIpv4Address = Objects.requireNonNull(publicIpv4Address);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetLoadBalancersBalancerZoneMapping build() {
-            return new GetLoadBalancersBalancerZoneMapping(allocationId, eniId, ipv6Address, privateIpv4Address, publicIpv4Address, vswitchId, zoneId);
+        }
+        public GetLoadBalancersBalancerZoneMapping build() {
+            final var o = new GetLoadBalancersBalancerZoneMapping();
+            o.allocationId = allocationId;
+            o.eniId = eniId;
+            o.ipv6Address = ipv6Address;
+            o.privateIpv4Address = privateIpv4Address;
+            o.publicIpv4Address = publicIpv4Address;
+            o.vswitchId = vswitchId;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }

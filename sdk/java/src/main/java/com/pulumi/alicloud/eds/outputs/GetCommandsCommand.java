@@ -15,56 +15,39 @@ public final class GetCommandsCommand {
      * @return The Contents of the Script to Base64 Encoded Transmission.
      * 
      */
-    private final String commandContent;
+    private String commandContent;
     /**
      * @return The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
      * 
      */
-    private final String commandType;
+    private String commandType;
     /**
      * @return The Task of Creation Time.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the Command.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The Implementation of the Target Cloud Desktop Collection.
      * 
      */
-    private final List<GetCommandsCommandInvokeDesktop> invokeDesktops;
+    private List<GetCommandsCommandInvokeDesktop> invokeDesktops;
     /**
      * @return The invoke id of the Command.
      * 
      */
-    private final String invokeId;
+    private String invokeId;
     /**
      * @return Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetCommandsCommand(
-        @CustomType.Parameter("commandContent") String commandContent,
-        @CustomType.Parameter("commandType") String commandType,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("invokeDesktops") List<GetCommandsCommandInvokeDesktop> invokeDesktops,
-        @CustomType.Parameter("invokeId") String invokeId,
-        @CustomType.Parameter("status") String status) {
-        this.commandContent = commandContent;
-        this.commandType = commandType;
-        this.createTime = createTime;
-        this.id = id;
-        this.invokeDesktops = invokeDesktops;
-        this.invokeId = invokeId;
-        this.status = status;
-    }
-
+    private GetCommandsCommand() {}
     /**
      * @return The Contents of the Script to Base64 Encoded Transmission.
      * 
@@ -122,7 +105,7 @@ public final class GetCommandsCommand {
     public static Builder builder(GetCommandsCommand defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String commandContent;
         private String commandType;
@@ -131,11 +114,7 @@ public final class GetCommandsCommand {
         private List<GetCommandsCommandInvokeDesktop> invokeDesktops;
         private String invokeId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCommandsCommand defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.commandContent = defaults.commandContent;
@@ -147,22 +126,27 @@ public final class GetCommandsCommand {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder commandContent(String commandContent) {
             this.commandContent = Objects.requireNonNull(commandContent);
             return this;
         }
+        @CustomType.Setter
         public Builder commandType(String commandType) {
             this.commandType = Objects.requireNonNull(commandType);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder invokeDesktops(List<GetCommandsCommandInvokeDesktop> invokeDesktops) {
             this.invokeDesktops = Objects.requireNonNull(invokeDesktops);
             return this;
@@ -170,15 +154,26 @@ public final class GetCommandsCommand {
         public Builder invokeDesktops(GetCommandsCommandInvokeDesktop... invokeDesktops) {
             return invokeDesktops(List.of(invokeDesktops));
         }
+        @CustomType.Setter
         public Builder invokeId(String invokeId) {
             this.invokeId = Objects.requireNonNull(invokeId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetCommandsCommand build() {
-            return new GetCommandsCommand(commandContent, commandType, createTime, id, invokeDesktops, invokeId, status);
+        }
+        public GetCommandsCommand build() {
+            final var o = new GetCommandsCommand();
+            o.commandContent = commandContent;
+            o.commandType = commandType;
+            o.createTime = createTime;
+            o.id = id;
+            o.invokeDesktops = invokeDesktops;
+            o.invokeId = invokeId;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -13,65 +13,42 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTransitRouterPeerAttachmentsResult {
-    private final List<GetTransitRouterPeerAttachmentsAttachment> attachments;
-    private final String cenId;
+    private List<GetTransitRouterPeerAttachmentsAttachment> attachments;
+    private String cenId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of CEN Transit Router peer attachments IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of CEN Transit Router peer attachments names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The status of the transit router attachment.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return ID of the transit router attachment.
      * 
      */
-    private final @Nullable String transitRouterAttachmentId;
+    private @Nullable String transitRouterAttachmentId;
     /**
      * @return ID of the transit router.
      * 
      */
-    private final @Nullable String transitRouterId;
+    private @Nullable String transitRouterId;
 
-    @CustomType.Constructor
-    private GetTransitRouterPeerAttachmentsResult(
-        @CustomType.Parameter("attachments") List<GetTransitRouterPeerAttachmentsAttachment> attachments,
-        @CustomType.Parameter("cenId") String cenId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("transitRouterAttachmentId") @Nullable String transitRouterAttachmentId,
-        @CustomType.Parameter("transitRouterId") @Nullable String transitRouterId) {
-        this.attachments = attachments;
-        this.cenId = cenId;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-        this.transitRouterAttachmentId = transitRouterAttachmentId;
-        this.transitRouterId = transitRouterId;
-    }
-
+    private GetTransitRouterPeerAttachmentsResult() {}
     public List<GetTransitRouterPeerAttachmentsAttachment> attachments() {
         return this.attachments;
     }
@@ -134,7 +111,7 @@ public final class GetTransitRouterPeerAttachmentsResult {
     public static Builder builder(GetTransitRouterPeerAttachmentsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetTransitRouterPeerAttachmentsAttachment> attachments;
         private String cenId;
@@ -146,11 +123,7 @@ public final class GetTransitRouterPeerAttachmentsResult {
         private @Nullable String status;
         private @Nullable String transitRouterAttachmentId;
         private @Nullable String transitRouterId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTransitRouterPeerAttachmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachments = defaults.attachments;
@@ -165,6 +138,7 @@ public final class GetTransitRouterPeerAttachmentsResult {
     	      this.transitRouterId = defaults.transitRouterId;
         }
 
+        @CustomType.Setter
         public Builder attachments(List<GetTransitRouterPeerAttachmentsAttachment> attachments) {
             this.attachments = Objects.requireNonNull(attachments);
             return this;
@@ -172,14 +146,17 @@ public final class GetTransitRouterPeerAttachmentsResult {
         public Builder attachments(GetTransitRouterPeerAttachmentsAttachment... attachments) {
             return attachments(List.of(attachments));
         }
+        @CustomType.Setter
         public Builder cenId(String cenId) {
             this.cenId = Objects.requireNonNull(cenId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -187,10 +164,12 @@ public final class GetTransitRouterPeerAttachmentsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -198,23 +177,39 @@ public final class GetTransitRouterPeerAttachmentsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterAttachmentId(@Nullable String transitRouterAttachmentId) {
             this.transitRouterAttachmentId = transitRouterAttachmentId;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterId(@Nullable String transitRouterId) {
             this.transitRouterId = transitRouterId;
             return this;
-        }        public GetTransitRouterPeerAttachmentsResult build() {
-            return new GetTransitRouterPeerAttachmentsResult(attachments, cenId, id, ids, nameRegex, names, outputFile, status, transitRouterAttachmentId, transitRouterId);
+        }
+        public GetTransitRouterPeerAttachmentsResult build() {
+            final var o = new GetTransitRouterPeerAttachmentsResult();
+            o.attachments = attachments;
+            o.cenId = cenId;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            o.transitRouterAttachmentId = transitRouterAttachmentId;
+            o.transitRouterId = transitRouterId;
+            return o;
         }
     }
 }

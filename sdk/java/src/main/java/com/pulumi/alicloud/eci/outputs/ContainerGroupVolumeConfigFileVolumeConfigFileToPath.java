@@ -15,21 +15,14 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
      * @return The content of the configuration file. Maximum size: 32 KB.
      * 
      */
-    private final @Nullable String content;
+    private @Nullable String content;
     /**
      * @return The relative file path.
      * 
      */
-    private final @Nullable String path;
+    private @Nullable String path;
 
-    @CustomType.Constructor
-    private ContainerGroupVolumeConfigFileVolumeConfigFileToPath(
-        @CustomType.Parameter("content") @Nullable String content,
-        @CustomType.Parameter("path") @Nullable String path) {
-        this.content = content;
-        this.path = path;
-    }
-
+    private ContainerGroupVolumeConfigFileVolumeConfigFileToPath() {}
     /**
      * @return The content of the configuration file. Maximum size: 32 KB.
      * 
@@ -52,30 +45,32 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
     public static Builder builder(ContainerGroupVolumeConfigFileVolumeConfigFileToPath defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String content;
         private @Nullable String path;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupVolumeConfigFileVolumeConfigFileToPath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
         public Builder content(@Nullable String content) {
             this.content = content;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
-        }        public ContainerGroupVolumeConfigFileVolumeConfigFileToPath build() {
-            return new ContainerGroupVolumeConfigFileVolumeConfigFileToPath(content, path);
+        }
+        public ContainerGroupVolumeConfigFileVolumeConfigFileToPath build() {
+            final var o = new ContainerGroupVolumeConfigFileVolumeConfigFileToPath();
+            o.content = content;
+            o.path = path;
+            return o;
         }
     }
 }

@@ -13,30 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLogConfigsResult {
-    private final List<GetLogConfigsConfig> configs;
+    private List<GetLogConfigsConfig> configs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String logType;
-    private final @Nullable String outputFile;
+    private String id;
+    private List<String> ids;
+    private @Nullable String logType;
+    private @Nullable String outputFile;
 
-    @CustomType.Constructor
-    private GetLogConfigsResult(
-        @CustomType.Parameter("configs") List<GetLogConfigsConfig> configs,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("logType") @Nullable String logType,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile) {
-        this.configs = configs;
-        this.id = id;
-        this.ids = ids;
-        this.logType = logType;
-        this.outputFile = outputFile;
-    }
-
+    private GetLogConfigsResult() {}
     public List<GetLogConfigsConfig> configs() {
         return this.configs;
     }
@@ -64,18 +51,14 @@ public final class GetLogConfigsResult {
     public static Builder builder(GetLogConfigsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetLogConfigsConfig> configs;
         private String id;
         private List<String> ids;
         private @Nullable String logType;
         private @Nullable String outputFile;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLogConfigsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
@@ -85,6 +68,7 @@ public final class GetLogConfigsResult {
     	      this.outputFile = defaults.outputFile;
         }
 
+        @CustomType.Setter
         public Builder configs(List<GetLogConfigsConfig> configs) {
             this.configs = Objects.requireNonNull(configs);
             return this;
@@ -92,10 +76,12 @@ public final class GetLogConfigsResult {
         public Builder configs(GetLogConfigsConfig... configs) {
             return configs(List.of(configs));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -103,15 +89,24 @@ public final class GetLogConfigsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder logType(@Nullable String logType) {
             this.logType = logType;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
-        }        public GetLogConfigsResult build() {
-            return new GetLogConfigsResult(configs, id, ids, logType, outputFile);
+        }
+        public GetLogConfigsResult build() {
+            final var o = new GetLogConfigsResult();
+            o.configs = configs;
+            o.id = id;
+            o.ids = ids;
+            o.logType = logType;
+            o.outputFile = outputFile;
+            return o;
         }
     }
 }

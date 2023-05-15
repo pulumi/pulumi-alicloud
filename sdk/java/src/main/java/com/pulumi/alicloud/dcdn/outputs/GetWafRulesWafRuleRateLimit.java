@@ -16,49 +16,34 @@ public final class GetWafRulesWafRuleRateLimit {
      * @return The statistical interval. Valid values: 5 to 1800. Unit: seconds.
      * 
      */
-    private final Integer interval;
+    private Integer interval;
     /**
      * @return The information about the HTTP status code.
      * 
      */
-    private final List<GetWafRulesWafRuleRateLimitStatus> statuses;
+    private List<GetWafRulesWafRuleRateLimitStatus> statuses;
     /**
      * @return The subfield of the target field.
      * 
      */
-    private final String subKey;
+    private String subKey;
     /**
      * @return The statistical field for frequency control.
      * 
      */
-    private final String target;
+    private String target;
     /**
      * @return The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
      * 
      */
-    private final Integer threshold;
+    private Integer threshold;
     /**
      * @return The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
      * 
      */
-    private final Integer ttl;
+    private Integer ttl;
 
-    @CustomType.Constructor
-    private GetWafRulesWafRuleRateLimit(
-        @CustomType.Parameter("interval") Integer interval,
-        @CustomType.Parameter("statuses") List<GetWafRulesWafRuleRateLimitStatus> statuses,
-        @CustomType.Parameter("subKey") String subKey,
-        @CustomType.Parameter("target") String target,
-        @CustomType.Parameter("threshold") Integer threshold,
-        @CustomType.Parameter("ttl") Integer ttl) {
-        this.interval = interval;
-        this.statuses = statuses;
-        this.subKey = subKey;
-        this.target = target;
-        this.threshold = threshold;
-        this.ttl = ttl;
-    }
-
+    private GetWafRulesWafRuleRateLimit() {}
     /**
      * @return The statistical interval. Valid values: 5 to 1800. Unit: seconds.
      * 
@@ -109,7 +94,7 @@ public final class GetWafRulesWafRuleRateLimit {
     public static Builder builder(GetWafRulesWafRuleRateLimit defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer interval;
         private List<GetWafRulesWafRuleRateLimitStatus> statuses;
@@ -117,11 +102,7 @@ public final class GetWafRulesWafRuleRateLimit {
         private String target;
         private Integer threshold;
         private Integer ttl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWafRulesWafRuleRateLimit defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.interval = defaults.interval;
@@ -132,10 +113,12 @@ public final class GetWafRulesWafRuleRateLimit {
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
         public Builder interval(Integer interval) {
             this.interval = Objects.requireNonNull(interval);
             return this;
         }
+        @CustomType.Setter
         public Builder statuses(List<GetWafRulesWafRuleRateLimitStatus> statuses) {
             this.statuses = Objects.requireNonNull(statuses);
             return this;
@@ -143,23 +126,35 @@ public final class GetWafRulesWafRuleRateLimit {
         public Builder statuses(GetWafRulesWafRuleRateLimitStatus... statuses) {
             return statuses(List.of(statuses));
         }
+        @CustomType.Setter
         public Builder subKey(String subKey) {
             this.subKey = Objects.requireNonNull(subKey);
             return this;
         }
+        @CustomType.Setter
         public Builder target(String target) {
             this.target = Objects.requireNonNull(target);
             return this;
         }
+        @CustomType.Setter
         public Builder threshold(Integer threshold) {
             this.threshold = Objects.requireNonNull(threshold);
             return this;
         }
+        @CustomType.Setter
         public Builder ttl(Integer ttl) {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
-        }        public GetWafRulesWafRuleRateLimit build() {
-            return new GetWafRulesWafRuleRateLimit(interval, statuses, subKey, target, threshold, ttl);
+        }
+        public GetWafRulesWafRuleRateLimit build() {
+            final var o = new GetWafRulesWafRuleRateLimit();
+            o.interval = interval;
+            o.statuses = statuses;
+            o.subKey = subKey;
+            o.target = target;
+            o.threshold = threshold;
+            o.ttl = ttl;
+            return o;
         }
     }
 }

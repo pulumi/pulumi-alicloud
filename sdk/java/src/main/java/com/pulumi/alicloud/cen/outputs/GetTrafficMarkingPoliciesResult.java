@@ -13,42 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTrafficMarkingPoliciesResult {
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final List<GetTrafficMarkingPoliciesPolicy> policies;
-    private final @Nullable String status;
-    private final String transitRouterId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private List<GetTrafficMarkingPoliciesPolicy> policies;
+    private @Nullable String status;
+    private String transitRouterId;
 
-    @CustomType.Constructor
-    private GetTrafficMarkingPoliciesResult(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("policies") List<GetTrafficMarkingPoliciesPolicy> policies,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("transitRouterId") String transitRouterId) {
-        this.description = description;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.policies = policies;
-        this.status = status;
-        this.transitRouterId = transitRouterId;
-    }
-
+    private GetTrafficMarkingPoliciesResult() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -88,7 +67,7 @@ public final class GetTrafficMarkingPoliciesResult {
     public static Builder builder(GetTrafficMarkingPoliciesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String id;
@@ -99,11 +78,7 @@ public final class GetTrafficMarkingPoliciesResult {
         private List<GetTrafficMarkingPoliciesPolicy> policies;
         private @Nullable String status;
         private String transitRouterId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTrafficMarkingPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -117,14 +92,17 @@ public final class GetTrafficMarkingPoliciesResult {
     	      this.transitRouterId = defaults.transitRouterId;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -132,10 +110,12 @@ public final class GetTrafficMarkingPoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -143,10 +123,12 @@ public final class GetTrafficMarkingPoliciesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder policies(List<GetTrafficMarkingPoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -154,15 +136,28 @@ public final class GetTrafficMarkingPoliciesResult {
         public Builder policies(GetTrafficMarkingPoliciesPolicy... policies) {
             return policies(List.of(policies));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
-        }        public GetTrafficMarkingPoliciesResult build() {
-            return new GetTrafficMarkingPoliciesResult(description, id, ids, nameRegex, names, outputFile, policies, status, transitRouterId);
+        }
+        public GetTrafficMarkingPoliciesResult build() {
+            final var o = new GetTrafficMarkingPoliciesResult();
+            o.description = description;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.policies = policies;
+            o.status = status;
+            o.transitRouterId = transitRouterId;
+            return o;
         }
     }
 }

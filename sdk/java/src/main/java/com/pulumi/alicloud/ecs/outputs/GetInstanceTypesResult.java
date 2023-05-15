@@ -16,95 +16,52 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceTypesResult {
-    private final @Nullable String availabilityZone;
+    private @Nullable String availabilityZone;
     /**
      * @return Number of CPU cores.
      * 
      */
-    private final @Nullable Integer cpuCoreCount;
+    private @Nullable Integer cpuCoreCount;
     /**
      * @return The maximum number of network interfaces that an instance type can be attached to.
      * 
      */
-    private final @Nullable Integer eniAmount;
-    private final @Nullable Integer gpuAmount;
-    private final @Nullable String gpuSpec;
+    private @Nullable Integer eniAmount;
+    private @Nullable Integer gpuAmount;
+    private @Nullable String gpuSpec;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of instance type IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String imageId;
-    private final @Nullable String instanceChargeType;
-    private final @Nullable String instanceTypeFamily;
+    private List<String> ids;
+    private @Nullable String imageId;
+    private @Nullable String instanceChargeType;
+    private @Nullable String instanceTypeFamily;
     /**
      * @return A list of image types. Each element contains the following attributes:
      * 
      */
-    private final List<GetInstanceTypesInstanceType> instanceTypes;
-    private final @Nullable Boolean isOutdated;
-    private final @Nullable String kubernetesNodeRole;
+    private List<GetInstanceTypesInstanceType> instanceTypes;
+    private @Nullable Boolean isOutdated;
+    private @Nullable String kubernetesNodeRole;
     /**
      * @return Size of memory, measured in GB.
      * 
      */
-    private final @Nullable Double memorySize;
-    private final @Nullable Integer minimumEniIpv6AddressQuantity;
-    private final @Nullable String networkType;
-    private final @Nullable String outputFile;
-    private final @Nullable String sortedBy;
-    private final @Nullable String spotStrategy;
-    private final @Nullable String systemDiskCategory;
+    private @Nullable Double memorySize;
+    private @Nullable Integer minimumEniIpv6AddressQuantity;
+    private @Nullable String networkType;
+    private @Nullable String outputFile;
+    private @Nullable String sortedBy;
+    private @Nullable String spotStrategy;
+    private @Nullable String systemDiskCategory;
 
-    @CustomType.Constructor
-    private GetInstanceTypesResult(
-        @CustomType.Parameter("availabilityZone") @Nullable String availabilityZone,
-        @CustomType.Parameter("cpuCoreCount") @Nullable Integer cpuCoreCount,
-        @CustomType.Parameter("eniAmount") @Nullable Integer eniAmount,
-        @CustomType.Parameter("gpuAmount") @Nullable Integer gpuAmount,
-        @CustomType.Parameter("gpuSpec") @Nullable String gpuSpec,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("imageId") @Nullable String imageId,
-        @CustomType.Parameter("instanceChargeType") @Nullable String instanceChargeType,
-        @CustomType.Parameter("instanceTypeFamily") @Nullable String instanceTypeFamily,
-        @CustomType.Parameter("instanceTypes") List<GetInstanceTypesInstanceType> instanceTypes,
-        @CustomType.Parameter("isOutdated") @Nullable Boolean isOutdated,
-        @CustomType.Parameter("kubernetesNodeRole") @Nullable String kubernetesNodeRole,
-        @CustomType.Parameter("memorySize") @Nullable Double memorySize,
-        @CustomType.Parameter("minimumEniIpv6AddressQuantity") @Nullable Integer minimumEniIpv6AddressQuantity,
-        @CustomType.Parameter("networkType") @Nullable String networkType,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("sortedBy") @Nullable String sortedBy,
-        @CustomType.Parameter("spotStrategy") @Nullable String spotStrategy,
-        @CustomType.Parameter("systemDiskCategory") @Nullable String systemDiskCategory) {
-        this.availabilityZone = availabilityZone;
-        this.cpuCoreCount = cpuCoreCount;
-        this.eniAmount = eniAmount;
-        this.gpuAmount = gpuAmount;
-        this.gpuSpec = gpuSpec;
-        this.id = id;
-        this.ids = ids;
-        this.imageId = imageId;
-        this.instanceChargeType = instanceChargeType;
-        this.instanceTypeFamily = instanceTypeFamily;
-        this.instanceTypes = instanceTypes;
-        this.isOutdated = isOutdated;
-        this.kubernetesNodeRole = kubernetesNodeRole;
-        this.memorySize = memorySize;
-        this.minimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
-        this.networkType = networkType;
-        this.outputFile = outputFile;
-        this.sortedBy = sortedBy;
-        this.spotStrategy = spotStrategy;
-        this.systemDiskCategory = systemDiskCategory;
-    }
-
+    private GetInstanceTypesResult() {}
     public Optional<String> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
@@ -197,7 +154,7 @@ public final class GetInstanceTypesResult {
     public static Builder builder(GetInstanceTypesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String availabilityZone;
         private @Nullable Integer cpuCoreCount;
@@ -219,11 +176,7 @@ public final class GetInstanceTypesResult {
         private @Nullable String sortedBy;
         private @Nullable String spotStrategy;
         private @Nullable String systemDiskCategory;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
@@ -248,30 +201,37 @@ public final class GetInstanceTypesResult {
     	      this.systemDiskCategory = defaults.systemDiskCategory;
         }
 
+        @CustomType.Setter
         public Builder availabilityZone(@Nullable String availabilityZone) {
             this.availabilityZone = availabilityZone;
             return this;
         }
+        @CustomType.Setter
         public Builder cpuCoreCount(@Nullable Integer cpuCoreCount) {
             this.cpuCoreCount = cpuCoreCount;
             return this;
         }
+        @CustomType.Setter
         public Builder eniAmount(@Nullable Integer eniAmount) {
             this.eniAmount = eniAmount;
             return this;
         }
+        @CustomType.Setter
         public Builder gpuAmount(@Nullable Integer gpuAmount) {
             this.gpuAmount = gpuAmount;
             return this;
         }
+        @CustomType.Setter
         public Builder gpuSpec(@Nullable String gpuSpec) {
             this.gpuSpec = gpuSpec;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -279,18 +239,22 @@ public final class GetInstanceTypesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder imageId(@Nullable String imageId) {
             this.imageId = imageId;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
             this.instanceChargeType = instanceChargeType;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceTypeFamily(@Nullable String instanceTypeFamily) {
             this.instanceTypeFamily = instanceTypeFamily;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceTypes(List<GetInstanceTypesInstanceType> instanceTypes) {
             this.instanceTypes = Objects.requireNonNull(instanceTypes);
             return this;
@@ -298,43 +262,74 @@ public final class GetInstanceTypesResult {
         public Builder instanceTypes(GetInstanceTypesInstanceType... instanceTypes) {
             return instanceTypes(List.of(instanceTypes));
         }
+        @CustomType.Setter
         public Builder isOutdated(@Nullable Boolean isOutdated) {
             this.isOutdated = isOutdated;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetesNodeRole(@Nullable String kubernetesNodeRole) {
             this.kubernetesNodeRole = kubernetesNodeRole;
             return this;
         }
+        @CustomType.Setter
         public Builder memorySize(@Nullable Double memorySize) {
             this.memorySize = memorySize;
             return this;
         }
+        @CustomType.Setter
         public Builder minimumEniIpv6AddressQuantity(@Nullable Integer minimumEniIpv6AddressQuantity) {
             this.minimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
             this.networkType = networkType;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder sortedBy(@Nullable String sortedBy) {
             this.sortedBy = sortedBy;
             return this;
         }
+        @CustomType.Setter
         public Builder spotStrategy(@Nullable String spotStrategy) {
             this.spotStrategy = spotStrategy;
             return this;
         }
+        @CustomType.Setter
         public Builder systemDiskCategory(@Nullable String systemDiskCategory) {
             this.systemDiskCategory = systemDiskCategory;
             return this;
-        }        public GetInstanceTypesResult build() {
-            return new GetInstanceTypesResult(availabilityZone, cpuCoreCount, eniAmount, gpuAmount, gpuSpec, id, ids, imageId, instanceChargeType, instanceTypeFamily, instanceTypes, isOutdated, kubernetesNodeRole, memorySize, minimumEniIpv6AddressQuantity, networkType, outputFile, sortedBy, spotStrategy, systemDiskCategory);
+        }
+        public GetInstanceTypesResult build() {
+            final var o = new GetInstanceTypesResult();
+            o.availabilityZone = availabilityZone;
+            o.cpuCoreCount = cpuCoreCount;
+            o.eniAmount = eniAmount;
+            o.gpuAmount = gpuAmount;
+            o.gpuSpec = gpuSpec;
+            o.id = id;
+            o.ids = ids;
+            o.imageId = imageId;
+            o.instanceChargeType = instanceChargeType;
+            o.instanceTypeFamily = instanceTypeFamily;
+            o.instanceTypes = instanceTypes;
+            o.isOutdated = isOutdated;
+            o.kubernetesNodeRole = kubernetesNodeRole;
+            o.memorySize = memorySize;
+            o.minimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
+            o.networkType = networkType;
+            o.outputFile = outputFile;
+            o.sortedBy = sortedBy;
+            o.spotStrategy = spotStrategy;
+            o.systemDiskCategory = systemDiskCategory;
+            return o;
         }
     }
 }

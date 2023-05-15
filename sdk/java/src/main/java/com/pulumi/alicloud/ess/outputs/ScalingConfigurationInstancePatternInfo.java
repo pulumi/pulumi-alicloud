@@ -13,23 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ScalingConfigurationInstancePatternInfo {
-    private final @Nullable Integer cores;
-    private final @Nullable String instanceFamilyLevel;
-    private final @Nullable Double maxPrice;
-    private final @Nullable Double memory;
+    private @Nullable Integer cores;
+    private @Nullable String instanceFamilyLevel;
+    private @Nullable Double maxPrice;
+    private @Nullable Double memory;
 
-    @CustomType.Constructor
-    private ScalingConfigurationInstancePatternInfo(
-        @CustomType.Parameter("cores") @Nullable Integer cores,
-        @CustomType.Parameter("instanceFamilyLevel") @Nullable String instanceFamilyLevel,
-        @CustomType.Parameter("maxPrice") @Nullable Double maxPrice,
-        @CustomType.Parameter("memory") @Nullable Double memory) {
-        this.cores = cores;
-        this.instanceFamilyLevel = instanceFamilyLevel;
-        this.maxPrice = maxPrice;
-        this.memory = memory;
-    }
-
+    private ScalingConfigurationInstancePatternInfo() {}
     public Optional<Integer> cores() {
         return Optional.ofNullable(this.cores);
     }
@@ -50,17 +39,13 @@ public final class ScalingConfigurationInstancePatternInfo {
     public static Builder builder(ScalingConfigurationInstancePatternInfo defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer cores;
         private @Nullable String instanceFamilyLevel;
         private @Nullable Double maxPrice;
         private @Nullable Double memory;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ScalingConfigurationInstancePatternInfo defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cores = defaults.cores;
@@ -69,23 +54,33 @@ public final class ScalingConfigurationInstancePatternInfo {
     	      this.memory = defaults.memory;
         }
 
+        @CustomType.Setter
         public Builder cores(@Nullable Integer cores) {
             this.cores = cores;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceFamilyLevel(@Nullable String instanceFamilyLevel) {
             this.instanceFamilyLevel = instanceFamilyLevel;
             return this;
         }
+        @CustomType.Setter
         public Builder maxPrice(@Nullable Double maxPrice) {
             this.maxPrice = maxPrice;
             return this;
         }
+        @CustomType.Setter
         public Builder memory(@Nullable Double memory) {
             this.memory = memory;
             return this;
-        }        public ScalingConfigurationInstancePatternInfo build() {
-            return new ScalingConfigurationInstancePatternInfo(cores, instanceFamilyLevel, maxPrice, memory);
+        }
+        public ScalingConfigurationInstancePatternInfo build() {
+            final var o = new ScalingConfigurationInstancePatternInfo();
+            o.cores = cores;
+            o.instanceFamilyLevel = instanceFamilyLevel;
+            o.maxPrice = maxPrice;
+            o.memory = memory;
+            return o;
         }
     }
 }

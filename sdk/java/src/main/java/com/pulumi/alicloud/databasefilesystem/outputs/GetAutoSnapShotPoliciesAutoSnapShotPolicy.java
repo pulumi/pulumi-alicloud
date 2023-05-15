@@ -15,84 +15,59 @@ public final class GetAutoSnapShotPoliciesAutoSnapShotPolicy {
      * @return The number of database file systems set by the automatic snapshot policy.
      * 
      */
-    private final Integer appliedDbfsNumber;
+    private Integer appliedDbfsNumber;
     /**
      * @return The creation time of the resource
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The ID of the policy.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Last modification time of automatic snapshot policy
      * 
      */
-    private final String lastModified;
+    private String lastModified;
     /**
      * @return Automatic snapshot policy ID
      * 
      */
-    private final String policyId;
+    private String policyId;
     /**
      * @return Automatic snapshot policy name
      * 
      */
-    private final String policyName;
+    private String policyName;
     /**
      * @return A collection of automatic snapshots performed on several days of the week.
      * 
      */
-    private final List<String> repeatWeekdays;
+    private List<String> repeatWeekdays;
     /**
      * @return Automatic snapshot retention days
      * 
      */
-    private final Integer retentionDays;
+    private Integer retentionDays;
     /**
      * @return Automatic snapshot policy status
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return Automatic snapshot policy status details
      * 
      */
-    private final String statusDetail;
+    private String statusDetail;
     /**
      * @return The set of times at which the snapshot is taken on the day the automatic snapshot is executed.
      * 
      */
-    private final List<String> timePoints;
+    private List<String> timePoints;
 
-    @CustomType.Constructor
-    private GetAutoSnapShotPoliciesAutoSnapShotPolicy(
-        @CustomType.Parameter("appliedDbfsNumber") Integer appliedDbfsNumber,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lastModified") String lastModified,
-        @CustomType.Parameter("policyId") String policyId,
-        @CustomType.Parameter("policyName") String policyName,
-        @CustomType.Parameter("repeatWeekdays") List<String> repeatWeekdays,
-        @CustomType.Parameter("retentionDays") Integer retentionDays,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("statusDetail") String statusDetail,
-        @CustomType.Parameter("timePoints") List<String> timePoints) {
-        this.appliedDbfsNumber = appliedDbfsNumber;
-        this.createTime = createTime;
-        this.id = id;
-        this.lastModified = lastModified;
-        this.policyId = policyId;
-        this.policyName = policyName;
-        this.repeatWeekdays = repeatWeekdays;
-        this.retentionDays = retentionDays;
-        this.status = status;
-        this.statusDetail = statusDetail;
-        this.timePoints = timePoints;
-    }
-
+    private GetAutoSnapShotPoliciesAutoSnapShotPolicy() {}
     /**
      * @return The number of database file systems set by the automatic snapshot policy.
      * 
@@ -178,7 +153,7 @@ public final class GetAutoSnapShotPoliciesAutoSnapShotPolicy {
     public static Builder builder(GetAutoSnapShotPoliciesAutoSnapShotPolicy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer appliedDbfsNumber;
         private String createTime;
@@ -191,11 +166,7 @@ public final class GetAutoSnapShotPoliciesAutoSnapShotPolicy {
         private String status;
         private String statusDetail;
         private List<String> timePoints;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAutoSnapShotPoliciesAutoSnapShotPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appliedDbfsNumber = defaults.appliedDbfsNumber;
@@ -211,30 +182,37 @@ public final class GetAutoSnapShotPoliciesAutoSnapShotPolicy {
     	      this.timePoints = defaults.timePoints;
         }
 
+        @CustomType.Setter
         public Builder appliedDbfsNumber(Integer appliedDbfsNumber) {
             this.appliedDbfsNumber = Objects.requireNonNull(appliedDbfsNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lastModified(String lastModified) {
             this.lastModified = Objects.requireNonNull(lastModified);
             return this;
         }
+        @CustomType.Setter
         public Builder policyId(String policyId) {
             this.policyId = Objects.requireNonNull(policyId);
             return this;
         }
+        @CustomType.Setter
         public Builder policyName(String policyName) {
             this.policyName = Objects.requireNonNull(policyName);
             return this;
         }
+        @CustomType.Setter
         public Builder repeatWeekdays(List<String> repeatWeekdays) {
             this.repeatWeekdays = Objects.requireNonNull(repeatWeekdays);
             return this;
@@ -242,26 +220,43 @@ public final class GetAutoSnapShotPoliciesAutoSnapShotPolicy {
         public Builder repeatWeekdays(String... repeatWeekdays) {
             return repeatWeekdays(List.of(repeatWeekdays));
         }
+        @CustomType.Setter
         public Builder retentionDays(Integer retentionDays) {
             this.retentionDays = Objects.requireNonNull(retentionDays);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder statusDetail(String statusDetail) {
             this.statusDetail = Objects.requireNonNull(statusDetail);
             return this;
         }
+        @CustomType.Setter
         public Builder timePoints(List<String> timePoints) {
             this.timePoints = Objects.requireNonNull(timePoints);
             return this;
         }
         public Builder timePoints(String... timePoints) {
             return timePoints(List.of(timePoints));
-        }        public GetAutoSnapShotPoliciesAutoSnapShotPolicy build() {
-            return new GetAutoSnapShotPoliciesAutoSnapShotPolicy(appliedDbfsNumber, createTime, id, lastModified, policyId, policyName, repeatWeekdays, retentionDays, status, statusDetail, timePoints);
+        }
+        public GetAutoSnapShotPoliciesAutoSnapShotPolicy build() {
+            final var o = new GetAutoSnapShotPoliciesAutoSnapShotPolicy();
+            o.appliedDbfsNumber = appliedDbfsNumber;
+            o.createTime = createTime;
+            o.id = id;
+            o.lastModified = lastModified;
+            o.policyId = policyId;
+            o.policyName = policyName;
+            o.repeatWeekdays = repeatWeekdays;
+            o.retentionDays = retentionDays;
+            o.status = status;
+            o.statusDetail = statusDetail;
+            o.timePoints = timePoints;
+            return o;
         }
     }
 }

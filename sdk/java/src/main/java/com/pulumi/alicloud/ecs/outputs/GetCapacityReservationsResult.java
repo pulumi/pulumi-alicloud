@@ -15,90 +15,61 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCapacityReservationsResult {
-    private final @Nullable List<String> capacityReservationIds;
+    private @Nullable List<String> capacityReservationIds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Capacity Reservation IDs.
      * 
      */
-    private final List<String> ids;
+    private List<String> ids;
     /**
      * @return Instance type. Currently, you can only set the capacity reservation service for one instance type.
      * 
      */
-    private final @Nullable String instanceType;
-    private final @Nullable String nameRegex;
+    private @Nullable String instanceType;
+    private @Nullable String nameRegex;
     /**
      * @return A list of name of Capacity Reservations.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The payment type of the resource
      * 
      */
-    private final @Nullable String paymentType;
+    private @Nullable String paymentType;
     /**
      * @return platform of the capacity reservation.
      * 
      */
-    private final @Nullable String platform;
+    private @Nullable String platform;
     /**
      * @return A list of Capacity Reservation Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetCapacityReservationsReservation> reservations;
+    private List<GetCapacityReservationsReservation> reservations;
     /**
      * @return The resource group id
      * 
      */
-    private final @Nullable String resourceGroupId;
+    private @Nullable String resourceGroupId;
     /**
      * @return The status of the capacity reservation.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return A mapping of tags to assign to the Capacity Reservation.
      * 
      */
-    private final @Nullable Map<String,Object> tags;
+    private @Nullable Map<String,Object> tags;
 
-    @CustomType.Constructor
-    private GetCapacityReservationsResult(
-        @CustomType.Parameter("capacityReservationIds") @Nullable List<String> capacityReservationIds,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("instanceType") @Nullable String instanceType,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("paymentType") @Nullable String paymentType,
-        @CustomType.Parameter("platform") @Nullable String platform,
-        @CustomType.Parameter("reservations") List<GetCapacityReservationsReservation> reservations,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags) {
-        this.capacityReservationIds = capacityReservationIds;
-        this.id = id;
-        this.ids = ids;
-        this.instanceType = instanceType;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.paymentType = paymentType;
-        this.platform = platform;
-        this.reservations = reservations;
-        this.resourceGroupId = resourceGroupId;
-        this.status = status;
-        this.tags = tags;
-    }
-
+    private GetCapacityReservationsResult() {}
     public List<String> capacityReservationIds() {
         return this.capacityReservationIds == null ? List.of() : this.capacityReservationIds;
     }
@@ -186,7 +157,7 @@ public final class GetCapacityReservationsResult {
     public static Builder builder(GetCapacityReservationsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> capacityReservationIds;
         private String id;
@@ -201,11 +172,7 @@ public final class GetCapacityReservationsResult {
         private @Nullable String resourceGroupId;
         private @Nullable String status;
         private @Nullable Map<String,Object> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetCapacityReservationsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.capacityReservationIds = defaults.capacityReservationIds;
@@ -223,6 +190,7 @@ public final class GetCapacityReservationsResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder capacityReservationIds(@Nullable List<String> capacityReservationIds) {
             this.capacityReservationIds = capacityReservationIds;
             return this;
@@ -230,10 +198,12 @@ public final class GetCapacityReservationsResult {
         public Builder capacityReservationIds(String... capacityReservationIds) {
             return capacityReservationIds(List.of(capacityReservationIds));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -241,14 +211,17 @@ public final class GetCapacityReservationsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
             this.instanceType = instanceType;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -256,18 +229,22 @@ public final class GetCapacityReservationsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(@Nullable String paymentType) {
             this.paymentType = paymentType;
             return this;
         }
+        @CustomType.Setter
         public Builder platform(@Nullable String platform) {
             this.platform = platform;
             return this;
         }
+        @CustomType.Setter
         public Builder reservations(List<GetCapacityReservationsReservation> reservations) {
             this.reservations = Objects.requireNonNull(reservations);
             return this;
@@ -275,19 +252,37 @@ public final class GetCapacityReservationsResult {
         public Builder reservations(GetCapacityReservationsReservation... reservations) {
             return reservations(List.of(reservations));
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
-        }        public GetCapacityReservationsResult build() {
-            return new GetCapacityReservationsResult(capacityReservationIds, id, ids, instanceType, nameRegex, names, outputFile, paymentType, platform, reservations, resourceGroupId, status, tags);
+        }
+        public GetCapacityReservationsResult build() {
+            final var o = new GetCapacityReservationsResult();
+            o.capacityReservationIds = capacityReservationIds;
+            o.id = id;
+            o.ids = ids;
+            o.instanceType = instanceType;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.paymentType = paymentType;
+            o.platform = platform;
+            o.reservations = reservations;
+            o.resourceGroupId = resourceGroupId;
+            o.status = status;
+            o.tags = tags;
+            return o;
         }
     }
 }

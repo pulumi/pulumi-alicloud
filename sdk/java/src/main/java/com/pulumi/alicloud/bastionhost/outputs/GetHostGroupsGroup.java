@@ -13,42 +13,29 @@ public final class GetHostGroupsGroup {
      * @return Specify the New Host Group of Notes, Supports up to 500 Characters.
      * 
      */
-    private final String comment;
+    private String comment;
     /**
      * @return Host Group ID.
      * 
      */
-    private final String hostGroupId;
+    private String hostGroupId;
     /**
      * @return Specify the New Host Group Name, Supports up to 128 Characters.
      * 
      */
-    private final String hostGroupName;
+    private String hostGroupName;
     /**
      * @return The ID of the Host Group.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Specify the New Host Group Where the Bastion Host ID of.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
 
-    @CustomType.Constructor
-    private GetHostGroupsGroup(
-        @CustomType.Parameter("comment") String comment,
-        @CustomType.Parameter("hostGroupId") String hostGroupId,
-        @CustomType.Parameter("hostGroupName") String hostGroupName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceId") String instanceId) {
-        this.comment = comment;
-        this.hostGroupId = hostGroupId;
-        this.hostGroupName = hostGroupName;
-        this.id = id;
-        this.instanceId = instanceId;
-    }
-
+    private GetHostGroupsGroup() {}
     /**
      * @return Specify the New Host Group of Notes, Supports up to 500 Characters.
      * 
@@ -92,18 +79,14 @@ public final class GetHostGroupsGroup {
     public static Builder builder(GetHostGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String comment;
         private String hostGroupId;
         private String hostGroupName;
         private String id;
         private String instanceId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHostGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
@@ -113,27 +96,39 @@ public final class GetHostGroupsGroup {
     	      this.instanceId = defaults.instanceId;
         }
 
+        @CustomType.Setter
         public Builder comment(String comment) {
             this.comment = Objects.requireNonNull(comment);
             return this;
         }
+        @CustomType.Setter
         public Builder hostGroupId(String hostGroupId) {
             this.hostGroupId = Objects.requireNonNull(hostGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder hostGroupName(String hostGroupName) {
             this.hostGroupName = Objects.requireNonNull(hostGroupName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
-        }        public GetHostGroupsGroup build() {
-            return new GetHostGroupsGroup(comment, hostGroupId, hostGroupName, id, instanceId);
+        }
+        public GetHostGroupsGroup build() {
+            final var o = new GetHostGroupsGroup();
+            o.comment = comment;
+            o.hostGroupId = hostGroupId;
+            o.hostGroupName = hostGroupName;
+            o.id = id;
+            o.instanceId = instanceId;
+            return o;
         }
     }
 }

@@ -13,35 +13,24 @@ public final class GetWafRulesWafRuleCondition {
      * @return The match field.
      * 
      */
-    private final String key;
+    private String key;
     /**
      * @return The logical symbol.
      * 
      */
-    private final String opValue;
+    private String opValue;
     /**
      * @return The subfield of the target field.
      * 
      */
-    private final String subKey;
+    private String subKey;
     /**
      * @return The match content. Separate multiple values with commas (,).
      * 
      */
-    private final String values;
+    private String values;
 
-    @CustomType.Constructor
-    private GetWafRulesWafRuleCondition(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("opValue") String opValue,
-        @CustomType.Parameter("subKey") String subKey,
-        @CustomType.Parameter("values") String values) {
-        this.key = key;
-        this.opValue = opValue;
-        this.subKey = subKey;
-        this.values = values;
-    }
-
+    private GetWafRulesWafRuleCondition() {}
     /**
      * @return The match field.
      * 
@@ -78,17 +67,13 @@ public final class GetWafRulesWafRuleCondition {
     public static Builder builder(GetWafRulesWafRuleCondition defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String opValue;
         private String subKey;
         private String values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWafRulesWafRuleCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
@@ -97,23 +82,33 @@ public final class GetWafRulesWafRuleCondition {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder opValue(String opValue) {
             this.opValue = Objects.requireNonNull(opValue);
             return this;
         }
+        @CustomType.Setter
         public Builder subKey(String subKey) {
             this.subKey = Objects.requireNonNull(subKey);
             return this;
         }
+        @CustomType.Setter
         public Builder values(String values) {
             this.values = Objects.requireNonNull(values);
             return this;
-        }        public GetWafRulesWafRuleCondition build() {
-            return new GetWafRulesWafRuleCondition(key, opValue, subKey, values);
+        }
+        public GetWafRulesWafRuleCondition build() {
+            final var o = new GetWafRulesWafRuleCondition();
+            o.key = key;
+            o.opValue = opValue;
+            o.subKey = subKey;
+            o.values = values;
+            return o;
         }
     }
 }

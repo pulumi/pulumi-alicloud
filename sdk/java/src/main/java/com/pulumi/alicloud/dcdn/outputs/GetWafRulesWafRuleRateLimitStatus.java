@@ -10,28 +10,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWafRulesWafRuleRateLimitStatus {
-    private final String code;
+    private String code;
     /**
      * @return The number of times that the HTTP status code that was returned.
      * 
      */
-    private final Integer count;
+    private Integer count;
     /**
      * @return The percentage of HTTP status codes.
      * 
      */
-    private final Integer ratio;
+    private Integer ratio;
 
-    @CustomType.Constructor
-    private GetWafRulesWafRuleRateLimitStatus(
-        @CustomType.Parameter("code") String code,
-        @CustomType.Parameter("count") Integer count,
-        @CustomType.Parameter("ratio") Integer ratio) {
-        this.code = code;
-        this.count = count;
-        this.ratio = ratio;
-    }
-
+    private GetWafRulesWafRuleRateLimitStatus() {}
     public String code() {
         return this.code;
     }
@@ -57,16 +48,12 @@ public final class GetWafRulesWafRuleRateLimitStatus {
     public static Builder builder(GetWafRulesWafRuleRateLimitStatus defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String code;
         private Integer count;
         private Integer ratio;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWafRulesWafRuleRateLimitStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
@@ -74,19 +61,27 @@ public final class GetWafRulesWafRuleRateLimitStatus {
     	      this.ratio = defaults.ratio;
         }
 
+        @CustomType.Setter
         public Builder code(String code) {
             this.code = Objects.requireNonNull(code);
             return this;
         }
+        @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
         }
+        @CustomType.Setter
         public Builder ratio(Integer ratio) {
             this.ratio = Objects.requireNonNull(ratio);
             return this;
-        }        public GetWafRulesWafRuleRateLimitStatus build() {
-            return new GetWafRulesWafRuleRateLimitStatus(code, count, ratio);
+        }
+        public GetWafRulesWafRuleRateLimitStatus build() {
+            final var o = new GetWafRulesWafRuleRateLimitStatus();
+            o.code = code;
+            o.count = count;
+            o.ratio = ratio;
+            return o;
         }
     }
 }

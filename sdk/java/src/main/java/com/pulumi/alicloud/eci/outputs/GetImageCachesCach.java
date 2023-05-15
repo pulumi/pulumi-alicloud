@@ -15,77 +15,54 @@ public final class GetImageCachesCach {
      * @return The id of container group.
      * 
      */
-    private final String containerGroupId;
+    private String containerGroupId;
     /**
      * @return Image cache pulls image event information.
      * 
      */
-    private final List<GetImageCachesCachEvent> events;
+    private List<GetImageCachesCachEvent> events;
     /**
      * @return The time of expired.
      * 
      */
-    private final String expireDateTime;
+    private String expireDateTime;
     /**
      * @return The ID of the ECI Image Cache.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The id of the ECI Image Cache.
      * 
      */
-    private final String imageCacheId;
+    private String imageCacheId;
     /**
      * @return The name of ECI Image Cache.
      * 
      */
-    private final String imageCacheName;
+    private String imageCacheName;
     /**
      * @return The list of cached images.
      * 
      */
-    private final List<String> images;
+    private List<String> images;
     /**
      * @return The progress of ECI Image Cache.
      * 
      */
-    private final String progress;
+    private String progress;
     /**
      * @return The id of snapshot.
      * 
      */
-    private final String snapshotId;
+    private String snapshotId;
     /**
      * @return The status of ECI Image Cache.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetImageCachesCach(
-        @CustomType.Parameter("containerGroupId") String containerGroupId,
-        @CustomType.Parameter("events") List<GetImageCachesCachEvent> events,
-        @CustomType.Parameter("expireDateTime") String expireDateTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageCacheId") String imageCacheId,
-        @CustomType.Parameter("imageCacheName") String imageCacheName,
-        @CustomType.Parameter("images") List<String> images,
-        @CustomType.Parameter("progress") String progress,
-        @CustomType.Parameter("snapshotId") String snapshotId,
-        @CustomType.Parameter("status") String status) {
-        this.containerGroupId = containerGroupId;
-        this.events = events;
-        this.expireDateTime = expireDateTime;
-        this.id = id;
-        this.imageCacheId = imageCacheId;
-        this.imageCacheName = imageCacheName;
-        this.images = images;
-        this.progress = progress;
-        this.snapshotId = snapshotId;
-        this.status = status;
-    }
-
+    private GetImageCachesCach() {}
     /**
      * @return The id of container group.
      * 
@@ -164,7 +141,7 @@ public final class GetImageCachesCach {
     public static Builder builder(GetImageCachesCach defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String containerGroupId;
         private List<GetImageCachesCachEvent> events;
@@ -176,11 +153,7 @@ public final class GetImageCachesCach {
         private String progress;
         private String snapshotId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImageCachesCach defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containerGroupId = defaults.containerGroupId;
@@ -195,10 +168,12 @@ public final class GetImageCachesCach {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder containerGroupId(String containerGroupId) {
             this.containerGroupId = Objects.requireNonNull(containerGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder events(List<GetImageCachesCachEvent> events) {
             this.events = Objects.requireNonNull(events);
             return this;
@@ -206,22 +181,27 @@ public final class GetImageCachesCach {
         public Builder events(GetImageCachesCachEvent... events) {
             return events(List.of(events));
         }
+        @CustomType.Setter
         public Builder expireDateTime(String expireDateTime) {
             this.expireDateTime = Objects.requireNonNull(expireDateTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageCacheId(String imageCacheId) {
             this.imageCacheId = Objects.requireNonNull(imageCacheId);
             return this;
         }
+        @CustomType.Setter
         public Builder imageCacheName(String imageCacheName) {
             this.imageCacheName = Objects.requireNonNull(imageCacheName);
             return this;
         }
+        @CustomType.Setter
         public Builder images(List<String> images) {
             this.images = Objects.requireNonNull(images);
             return this;
@@ -229,19 +209,34 @@ public final class GetImageCachesCach {
         public Builder images(String... images) {
             return images(List.of(images));
         }
+        @CustomType.Setter
         public Builder progress(String progress) {
             this.progress = Objects.requireNonNull(progress);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetImageCachesCach build() {
-            return new GetImageCachesCach(containerGroupId, events, expireDateTime, id, imageCacheId, imageCacheName, images, progress, snapshotId, status);
+        }
+        public GetImageCachesCach build() {
+            final var o = new GetImageCachesCach();
+            o.containerGroupId = containerGroupId;
+            o.events = events;
+            o.expireDateTime = expireDateTime;
+            o.id = id;
+            o.imageCacheId = imageCacheId;
+            o.imageCacheName = imageCacheName;
+            o.images = images;
+            o.progress = progress;
+            o.snapshotId = snapshotId;
+            o.status = status;
+            return o;
         }
     }
 }

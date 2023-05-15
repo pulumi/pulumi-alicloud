@@ -14,17 +14,17 @@ public final class GetVirtualPhysicalConnectionsConnection {
      * @return The ID of the access point of the physical connection.
      * 
      */
-    private final String accessPointId;
+    private String accessPointId;
     /**
      * @return The physical location where the physical connection access device is located.
      * 
      */
-    private final String adLocation;
+    private String adLocation;
     /**
      * @return The bandwidth of the physical connection. Unit: Mbps.
      * 
      */
-    private final String bandwidth;
+    private String bandwidth;
     /**
      * @return The commercial status of the physical line. Value:
      * - **Normal**: activated.
@@ -32,112 +32,112 @@ public final class GetVirtualPhysicalConnectionsConnection {
      * - **SecurityLocked**: locked for security reasons.
      * 
      */
-    private final String businessStatus;
+    private String businessStatus;
     /**
      * @return The circuit code provided by the operator for the physical connection.
      * 
      */
-    private final String circuitCode;
+    private String circuitCode;
     /**
      * @return The creation time of the resource
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The description of the physical connection.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The opening time of the physical connection.
      * 
      */
-    private final String enabledTime;
+    private String enabledTime;
     /**
      * @return The expiration time of the shared line.Time is expressed according to ISO8601 standard and UTC time is used. The format is: YYYY-MM-DDThh:mm:ssZ.
      * 
      */
-    private final String endTime;
+    private String endTime;
     /**
      * @return The estimated bandwidth value of the shared line. The expected bandwidth value will not take effect until the payment is completed.Unit: **M** indicates Mbps,**G** indicates Gbps.
      * 
      */
-    private final String expectSpec;
+    private String expectSpec;
     /**
      * @return The ID of the Virtual Physical Connection.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Operators that provide access to physical lines. Value:-**CT**: China Telecom.-**CU**: China Unicom.-**CM**: China Mobile.-**CO**: China Other.-**Equinix**:Equinix.-**Other**: Other abroad.
      * 
      */
-    private final String lineOperator;
+    private String lineOperator;
     /**
      * @return The state of LOA. Value:-**Applying**:LOA application.-**Accept**:LOA application passed.-**Available**:LOA is Available.-**Rejected**:LOA application Rejected.-**Completing**: The dedicated line is under construction.-**Complete**: The construction of the dedicated line is completed.-**Deleted**:LOA has been Deleted.
      * 
      */
-    private final String loaStatus;
+    private String loaStatus;
     /**
      * @return The payment method of shared dedicated line. Value:-**PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.-**PayByVirtualPhysicalConnectionOwner**: indicates that the owner of the shared line pays.
      * 
      */
-    private final String orderMode;
+    private String orderMode;
     /**
      * @return The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
      * 
      */
-    private final String parentPhysicalConnectionAliUid;
+    private String parentPhysicalConnectionAliUid;
     /**
      * @return The ID of the instance of the physical connection.
      * 
      */
-    private final String parentPhysicalConnectionId;
+    private String parentPhysicalConnectionId;
     /**
      * @return The geographic location of the local data center.
      * 
      */
-    private final String peerLocation;
+    private String peerLocation;
     /**
      * @return The port number of the physical connection device.
      * 
      */
-    private final String portNumber;
+    private String portNumber;
     /**
      * @return Physical connection port type. Value:-**100Base-T**: 100 megabytes port.-**1000Base-T**: Gigabit port.-**1000Base-LX**: Gigabit single mode optical port (10km).-**10GBase-T**: 10 Gigabit port.-**10GBase-LR**: 10 Gigabit single mode optical port (10km).-**40GBase-LR**: 40 megabytes single-mode optical port.-**100GBase-LR**: 100,000 megabytes single-mode optical port.
      * 
      */
-    private final String portType;
+    private String portType;
     /**
      * @return The ID of the redundant physical connection.
      * 
      */
-    private final String redundantPhysicalConnectionId;
+    private String redundantPhysicalConnectionId;
     /**
      * @return The resource group id
      * 
      */
-    private final String resourceGroupId;
+    private String resourceGroupId;
     /**
      * @return The bandwidth value of the shared line.Unit: **M** indicates Mbps,**G** indicates Gbps.
      * 
      */
-    private final String spec;
+    private String spec;
     /**
      * @return The status of the resource
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The ID of the hosted connection
      * 
      */
-    private final String virtualPhysicalConnectionId;
+    private String virtualPhysicalConnectionId;
     /**
      * @return The name of the physical connection.
      * 
      */
-    private final String virtualPhysicalConnectionName;
+    private String virtualPhysicalConnectionName;
     /**
      * @return The business status of the shared line. Value:
      * - **Confirmed**: The shared line has been Confirmed to receive.
@@ -145,78 +145,19 @@ public final class GetVirtualPhysicalConnectionsConnection {
      * - **Deleted**: The shared line has been Deleted.
      * 
      */
-    private final String virtualPhysicalConnectionStatus;
+    private String virtualPhysicalConnectionStatus;
     /**
      * @return The VLAN ID of the shared leased line.
      * 
      */
-    private final Integer vlanId;
+    private Integer vlanId;
     /**
      * @return The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      * 
      */
-    private final String vpconnAliUid;
+    private String vpconnAliUid;
 
-    @CustomType.Constructor
-    private GetVirtualPhysicalConnectionsConnection(
-        @CustomType.Parameter("accessPointId") String accessPointId,
-        @CustomType.Parameter("adLocation") String adLocation,
-        @CustomType.Parameter("bandwidth") String bandwidth,
-        @CustomType.Parameter("businessStatus") String businessStatus,
-        @CustomType.Parameter("circuitCode") String circuitCode,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enabledTime") String enabledTime,
-        @CustomType.Parameter("endTime") String endTime,
-        @CustomType.Parameter("expectSpec") String expectSpec,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("lineOperator") String lineOperator,
-        @CustomType.Parameter("loaStatus") String loaStatus,
-        @CustomType.Parameter("orderMode") String orderMode,
-        @CustomType.Parameter("parentPhysicalConnectionAliUid") String parentPhysicalConnectionAliUid,
-        @CustomType.Parameter("parentPhysicalConnectionId") String parentPhysicalConnectionId,
-        @CustomType.Parameter("peerLocation") String peerLocation,
-        @CustomType.Parameter("portNumber") String portNumber,
-        @CustomType.Parameter("portType") String portType,
-        @CustomType.Parameter("redundantPhysicalConnectionId") String redundantPhysicalConnectionId,
-        @CustomType.Parameter("resourceGroupId") String resourceGroupId,
-        @CustomType.Parameter("spec") String spec,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("virtualPhysicalConnectionId") String virtualPhysicalConnectionId,
-        @CustomType.Parameter("virtualPhysicalConnectionName") String virtualPhysicalConnectionName,
-        @CustomType.Parameter("virtualPhysicalConnectionStatus") String virtualPhysicalConnectionStatus,
-        @CustomType.Parameter("vlanId") Integer vlanId,
-        @CustomType.Parameter("vpconnAliUid") String vpconnAliUid) {
-        this.accessPointId = accessPointId;
-        this.adLocation = adLocation;
-        this.bandwidth = bandwidth;
-        this.businessStatus = businessStatus;
-        this.circuitCode = circuitCode;
-        this.createTime = createTime;
-        this.description = description;
-        this.enabledTime = enabledTime;
-        this.endTime = endTime;
-        this.expectSpec = expectSpec;
-        this.id = id;
-        this.lineOperator = lineOperator;
-        this.loaStatus = loaStatus;
-        this.orderMode = orderMode;
-        this.parentPhysicalConnectionAliUid = parentPhysicalConnectionAliUid;
-        this.parentPhysicalConnectionId = parentPhysicalConnectionId;
-        this.peerLocation = peerLocation;
-        this.portNumber = portNumber;
-        this.portType = portType;
-        this.redundantPhysicalConnectionId = redundantPhysicalConnectionId;
-        this.resourceGroupId = resourceGroupId;
-        this.spec = spec;
-        this.status = status;
-        this.virtualPhysicalConnectionId = virtualPhysicalConnectionId;
-        this.virtualPhysicalConnectionName = virtualPhysicalConnectionName;
-        this.virtualPhysicalConnectionStatus = virtualPhysicalConnectionStatus;
-        this.vlanId = vlanId;
-        this.vpconnAliUid = vpconnAliUid;
-    }
-
+    private GetVirtualPhysicalConnectionsConnection() {}
     /**
      * @return The ID of the access point of the physical connection.
      * 
@@ -427,7 +368,7 @@ public final class GetVirtualPhysicalConnectionsConnection {
     public static Builder builder(GetVirtualPhysicalConnectionsConnection defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessPointId;
         private String adLocation;
@@ -457,11 +398,7 @@ public final class GetVirtualPhysicalConnectionsConnection {
         private String virtualPhysicalConnectionStatus;
         private Integer vlanId;
         private String vpconnAliUid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVirtualPhysicalConnectionsConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessPointId = defaults.accessPointId;
@@ -494,119 +431,177 @@ public final class GetVirtualPhysicalConnectionsConnection {
     	      this.vpconnAliUid = defaults.vpconnAliUid;
         }
 
+        @CustomType.Setter
         public Builder accessPointId(String accessPointId) {
             this.accessPointId = Objects.requireNonNull(accessPointId);
             return this;
         }
+        @CustomType.Setter
         public Builder adLocation(String adLocation) {
             this.adLocation = Objects.requireNonNull(adLocation);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidth(String bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
             this.businessStatus = Objects.requireNonNull(businessStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder circuitCode(String circuitCode) {
             this.circuitCode = Objects.requireNonNull(circuitCode);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enabledTime(String enabledTime) {
             this.enabledTime = Objects.requireNonNull(enabledTime);
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder expectSpec(String expectSpec) {
             this.expectSpec = Objects.requireNonNull(expectSpec);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder lineOperator(String lineOperator) {
             this.lineOperator = Objects.requireNonNull(lineOperator);
             return this;
         }
+        @CustomType.Setter
         public Builder loaStatus(String loaStatus) {
             this.loaStatus = Objects.requireNonNull(loaStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder orderMode(String orderMode) {
             this.orderMode = Objects.requireNonNull(orderMode);
             return this;
         }
+        @CustomType.Setter
         public Builder parentPhysicalConnectionAliUid(String parentPhysicalConnectionAliUid) {
             this.parentPhysicalConnectionAliUid = Objects.requireNonNull(parentPhysicalConnectionAliUid);
             return this;
         }
+        @CustomType.Setter
         public Builder parentPhysicalConnectionId(String parentPhysicalConnectionId) {
             this.parentPhysicalConnectionId = Objects.requireNonNull(parentPhysicalConnectionId);
             return this;
         }
+        @CustomType.Setter
         public Builder peerLocation(String peerLocation) {
             this.peerLocation = Objects.requireNonNull(peerLocation);
             return this;
         }
+        @CustomType.Setter
         public Builder portNumber(String portNumber) {
             this.portNumber = Objects.requireNonNull(portNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder portType(String portType) {
             this.portType = Objects.requireNonNull(portType);
             return this;
         }
+        @CustomType.Setter
         public Builder redundantPhysicalConnectionId(String redundantPhysicalConnectionId) {
             this.redundantPhysicalConnectionId = Objects.requireNonNull(redundantPhysicalConnectionId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceGroupId(String resourceGroupId) {
             this.resourceGroupId = Objects.requireNonNull(resourceGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder spec(String spec) {
             this.spec = Objects.requireNonNull(spec);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualPhysicalConnectionId(String virtualPhysicalConnectionId) {
             this.virtualPhysicalConnectionId = Objects.requireNonNull(virtualPhysicalConnectionId);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualPhysicalConnectionName(String virtualPhysicalConnectionName) {
             this.virtualPhysicalConnectionName = Objects.requireNonNull(virtualPhysicalConnectionName);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualPhysicalConnectionStatus(String virtualPhysicalConnectionStatus) {
             this.virtualPhysicalConnectionStatus = Objects.requireNonNull(virtualPhysicalConnectionStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder vlanId(Integer vlanId) {
             this.vlanId = Objects.requireNonNull(vlanId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpconnAliUid(String vpconnAliUid) {
             this.vpconnAliUid = Objects.requireNonNull(vpconnAliUid);
             return this;
-        }        public GetVirtualPhysicalConnectionsConnection build() {
-            return new GetVirtualPhysicalConnectionsConnection(accessPointId, adLocation, bandwidth, businessStatus, circuitCode, createTime, description, enabledTime, endTime, expectSpec, id, lineOperator, loaStatus, orderMode, parentPhysicalConnectionAliUid, parentPhysicalConnectionId, peerLocation, portNumber, portType, redundantPhysicalConnectionId, resourceGroupId, spec, status, virtualPhysicalConnectionId, virtualPhysicalConnectionName, virtualPhysicalConnectionStatus, vlanId, vpconnAliUid);
+        }
+        public GetVirtualPhysicalConnectionsConnection build() {
+            final var o = new GetVirtualPhysicalConnectionsConnection();
+            o.accessPointId = accessPointId;
+            o.adLocation = adLocation;
+            o.bandwidth = bandwidth;
+            o.businessStatus = businessStatus;
+            o.circuitCode = circuitCode;
+            o.createTime = createTime;
+            o.description = description;
+            o.enabledTime = enabledTime;
+            o.endTime = endTime;
+            o.expectSpec = expectSpec;
+            o.id = id;
+            o.lineOperator = lineOperator;
+            o.loaStatus = loaStatus;
+            o.orderMode = orderMode;
+            o.parentPhysicalConnectionAliUid = parentPhysicalConnectionAliUid;
+            o.parentPhysicalConnectionId = parentPhysicalConnectionId;
+            o.peerLocation = peerLocation;
+            o.portNumber = portNumber;
+            o.portType = portType;
+            o.redundantPhysicalConnectionId = redundantPhysicalConnectionId;
+            o.resourceGroupId = resourceGroupId;
+            o.spec = spec;
+            o.status = status;
+            o.virtualPhysicalConnectionId = virtualPhysicalConnectionId;
+            o.virtualPhysicalConnectionName = virtualPhysicalConnectionName;
+            o.virtualPhysicalConnectionStatus = virtualPhysicalConnectionStatus;
+            o.vlanId = vlanId;
+            o.vpconnAliUid = vpconnAliUid;
+            return o;
         }
     }
 }

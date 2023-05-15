@@ -17,55 +17,36 @@ public final class GetBasicAccelerateIpsResult {
      * @return The address of the Basic Accelerate IP.
      * 
      */
-    private final @Nullable String accelerateIpAddress;
+    private @Nullable String accelerateIpAddress;
     /**
      * @return The id of the Basic Accelerate IP.
      * 
      */
-    private final @Nullable String accelerateIpId;
+    private @Nullable String accelerateIpId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
+    private String id;
+    private List<String> ids;
     /**
      * @return The ID of the Basic Ip Set.
      * 
      */
-    private final String ipSetId;
+    private String ipSetId;
     /**
      * @return A list of Global Accelerator Basic Accelerate IPs. Each element contains the following attributes:
      * 
      */
-    private final List<GetBasicAccelerateIpsIp> ips;
-    private final @Nullable String outputFile;
+    private List<GetBasicAccelerateIpsIp> ips;
+    private @Nullable String outputFile;
     /**
      * @return The status of the Basic Accelerate IP instance.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetBasicAccelerateIpsResult(
-        @CustomType.Parameter("accelerateIpAddress") @Nullable String accelerateIpAddress,
-        @CustomType.Parameter("accelerateIpId") @Nullable String accelerateIpId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("ipSetId") String ipSetId,
-        @CustomType.Parameter("ips") List<GetBasicAccelerateIpsIp> ips,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.accelerateIpAddress = accelerateIpAddress;
-        this.accelerateIpId = accelerateIpId;
-        this.id = id;
-        this.ids = ids;
-        this.ipSetId = ipSetId;
-        this.ips = ips;
-        this.outputFile = outputFile;
-        this.status = status;
-    }
-
+    private GetBasicAccelerateIpsResult() {}
     /**
      * @return The address of the Basic Accelerate IP.
      * 
@@ -122,7 +103,7 @@ public final class GetBasicAccelerateIpsResult {
     public static Builder builder(GetBasicAccelerateIpsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accelerateIpAddress;
         private @Nullable String accelerateIpId;
@@ -132,11 +113,7 @@ public final class GetBasicAccelerateIpsResult {
         private List<GetBasicAccelerateIpsIp> ips;
         private @Nullable String outputFile;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBasicAccelerateIpsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accelerateIpAddress = defaults.accelerateIpAddress;
@@ -149,18 +126,22 @@ public final class GetBasicAccelerateIpsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder accelerateIpAddress(@Nullable String accelerateIpAddress) {
             this.accelerateIpAddress = accelerateIpAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder accelerateIpId(@Nullable String accelerateIpId) {
             this.accelerateIpId = accelerateIpId;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -168,10 +149,12 @@ public final class GetBasicAccelerateIpsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder ipSetId(String ipSetId) {
             this.ipSetId = Objects.requireNonNull(ipSetId);
             return this;
         }
+        @CustomType.Setter
         public Builder ips(List<GetBasicAccelerateIpsIp> ips) {
             this.ips = Objects.requireNonNull(ips);
             return this;
@@ -179,15 +162,27 @@ public final class GetBasicAccelerateIpsResult {
         public Builder ips(GetBasicAccelerateIpsIp... ips) {
             return ips(List.of(ips));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetBasicAccelerateIpsResult build() {
-            return new GetBasicAccelerateIpsResult(accelerateIpAddress, accelerateIpId, id, ids, ipSetId, ips, outputFile, status);
+        }
+        public GetBasicAccelerateIpsResult build() {
+            final var o = new GetBasicAccelerateIpsResult();
+            o.accelerateIpAddress = accelerateIpAddress;
+            o.accelerateIpId = accelerateIpId;
+            o.id = id;
+            o.ids = ids;
+            o.ipSetId = ipSetId;
+            o.ips = ips;
+            o.outputFile = outputFile;
+            o.status = status;
+            return o;
         }
     }
 }

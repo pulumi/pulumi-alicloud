@@ -15,441 +15,314 @@ public final class GetGatewayFileSharesShare {
      * @return The set up gateway file share Server Message Block (SMB) protocol, whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.45 above support.
      * 
      */
-    private final Boolean accessBasedEnumeration;
+    private Boolean accessBasedEnumeration;
     /**
      * @return Share the private IP address of the RDS instance.
      * 
      */
-    private final String address;
+    private String address;
     /**
      * @return The set up gateway file share Max upload speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
      * 
      */
-    private final Integer backendLimit;
+    private Integer backendLimit;
     /**
      * @return The set up gateway file share Server Message Block (SMB) protocol whether browsable (that is, in the network neighborhood of whether you can find). The parameters in the NFS protocol not valid under. Default value: `true`.
      * 
      */
-    private final Boolean browsable;
+    private Boolean browsable;
     /**
      * @return Multi-Bucket information.
      * 
      */
-    private final String bucketInfos;
+    private String bucketInfos;
     /**
      * @return Whether there are multiple buckets.
      * 
      */
-    private final Boolean bucketsStub;
+    private Boolean bucketsStub;
     /**
      * @return Direct reading OSS of the gateway file share.
      * 
      */
-    private final Boolean bypassCacheRead;
+    private Boolean bypassCacheRead;
     /**
      * @return The cache mode of the gateway file share. Value range: Cache: cached mode. Sync: replication mode are available.
      * 
      */
-    private final String cacheMode;
+    private String cacheMode;
     /**
      * @return File share is enabled to client-side encryption, the encryption by the use of the KMS key. **NOTE:** note: This KMS key must be the gateway and is in the same Region.
      * 
      */
-    private final String clientSideCmk;
+    private String clientSideCmk;
     /**
      * @return Whether to enabled to client-side encryption of the gateway file share. Default value: `false`. **NOTE:** need to contact us open whitelist before you can the settings, and only supports enhanced more than online gateway, at the same time, server-side encryption and to client-side encryption can not simultaneously configuration.
      * 
      */
-    private final Boolean clientSideEncryption;
+    private Boolean clientSideEncryption;
     /**
      * @return Whether directio (direct I/O data transfer) is enabled for file share. Default: `false`.
      * 
      */
-    private final Boolean directIo;
+    private Boolean directIo;
     /**
      * @return The ID of the disk.
      * 
      */
-    private final String diskId;
+    private String diskId;
     /**
      * @return The cache disk type. Valid values: `cloud_efficiency`: Ultra cloud disk. `cloud_ssd`:SSD cloud disk.
      * 
      */
-    private final String diskType;
+    private String diskType;
     /**
      * @return The set up gateway file share maximum download speed. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version &gt;= 1.3.0 above support.
      * 
      */
-    private final Integer downloadLimit;
+    private Integer downloadLimit;
     /**
      * @return Shared whether the changes take effect.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Speed synchronization group ID.
      * 
      */
-    private final String expressSyncId;
+    private String expressSyncId;
     /**
      * @return The set up gateway file share whether to enable Upload optimization, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.39 above support.
      * 
      */
-    private final Boolean fastReclaim;
+    private Boolean fastReclaim;
     /**
      * @return The set up gateway file share and the maximum write speed. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
      * 
      */
-    private final Integer feLimit;
+    private Integer feLimit;
     /**
      * @return Supported by the file system file number.
      * 
      */
-    private final String fileNumLimit;
+    private String fileNumLimit;
     /**
      * @return File system capacity. Unit: `B`.
      * 
      */
-    private final String fsSizeLimit;
+    private String fsSizeLimit;
     /**
      * @return The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
      * 
      */
-    private final String gatewayFileShareName;
+    private String gatewayFileShareName;
     /**
      * @return The ID of the gateway.
      * 
      */
-    private final String gatewayId;
+    private String gatewayId;
     /**
      * @return The ID of the Gateway File Share.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.40 above support.
      * 
      */
-    private final Boolean ignoreDelete;
+    private Boolean ignoreDelete;
     /**
      * @return Whether debris optimization of the gateway file share. Default value: `false`.
      * 
      */
-    private final Boolean inPlace;
+    private Boolean inPlace;
     /**
      * @return Cache growth. Unit: `B/s`.
      * 
      */
-    private final String inRate;
+    private String inRate;
     /**
      * @return The ID of the file share.
      * 
      */
-    private final String indexId;
+    private String indexId;
     /**
      * @return File share is enabled to client-side encryption, key rotation period of time. Seconds. 0 represents no rotation. Rotation of the value range: `3600` ~ `86400`. Default value: `0`.
      * 
      */
-    private final Integer kmsRotatePeriod;
+    private Integer kmsRotatePeriod;
     /**
      * @return The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version &gt;= 1.0.40 above support.
      * 
      */
-    private final String lagPeriod;
+    private String lagPeriod;
     /**
      * @return The cache disk inside the device name.
      * 
      */
-    private final String localPath;
+    private String localPath;
     /**
      * @return The messages from the queue health types. Valid values: `TopicAndQueueFailure`: A Message Queuing message theme can be accessed during the black hole period. `TopicFailure`: a message theme can be accessed during the black hole period. `MNSFullSyncInit`: full synchronization wait. `MNSFullSyncing`: full synchronization in progress. `QueueFailure`: a message queue can be accessed during the black hole period. `MNSNotEnabled`: Top speed synchronization is not enabled. `MNSHealthy`: sync fine.
      * 
      */
-    private final String mnsHealth;
+    private String mnsHealth;
     /**
      * @return The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** turns on after I will not support NFS v3 mount the filesystem on a. Gateway version &gt;= 1.2.0 above support.
      * 
      */
-    private final Boolean nfsV4Optimization;
+    private Boolean nfsV4Optimization;
     /**
      * @return Multi-Bucket, removing the Bucket.
      * 
      */
-    private final String obsoleteBuckets;
+    private String obsoleteBuckets;
     /**
      * @return The name of the Bucket.
      * 
      */
-    private final String ossBucketName;
+    private String ossBucketName;
     /**
      * @return Whether they are using SSL connect to OSS Bucket.
      * 
      */
-    private final Boolean ossBucketSsl;
+    private Boolean ossBucketSsl;
     /**
      * @return The set up gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint:oss-cn-hangzhou-internal.aliyuncs.com.
      * 
      */
-    private final String ossEndpoint;
+    private String ossEndpoint;
     /**
      * @return The OSS Bucket of type. Valid values: `BucketHealthy`: OSS connectivity. `BucketAccessDenied`: OBJECT STORAGE Service (OSS) access to an exception. `BucketMiscFailure`: OBJECT STORAGE Service (OSS) access to additional exception. `BucketNetworkFailure`: OBJECT STORAGE Service (OSS) access network an exception. `BucketNotExist`: OSS Bucket does not exist. `Nothing returns`: We may not have ever known existed.
      * 
      */
-    private final String ossHealth;
+    private String ossHealth;
     /**
      * @return For a cloud-based data is. Unit: `B`.
      * 
      */
-    private final String ossUsed;
+    private String ossUsed;
     /**
      * @return Upload speed. Unit: `B/s`.
      * 
      */
-    private final String outRate;
+    private String outRate;
     /**
      * @return In part mode, the directory path group JSON format.
      * 
      */
-    private final String partialSyncPaths;
+    private String partialSyncPaths;
     /**
      * @return The prefix of the OSS.
      * 
      */
-    private final String pathPrefix;
+    private String pathPrefix;
     /**
      * @return The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
      * 
      */
-    private final Integer pollingInterval;
+    private Integer pollingInterval;
     /**
      * @return Share types. Valid values: `SMB`, `NFS`.
      * 
      */
-    private final String protocol;
+    private String protocol;
     /**
      * @return You can use the metadata space. Unit: `B`.
      * 
      */
-    private final String remainingMetaSpace;
+    private String remainingMetaSpace;
     /**
      * @return Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
      * 
      */
-    private final Boolean remoteSync;
+    private Boolean remoteSync;
     /**
      * @return Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the shared opens the reverse synchronization or acceded to by the speed synchronization group, this parameter will not take effect.
      * 
      */
-    private final Boolean remoteSyncDownload;
+    private Boolean remoteSyncDownload;
     /**
      * @return The read-only client list. When Protocol NFS is returned when the status is.
      * 
      */
-    private final String roClientList;
+    private String roClientList;
     /**
      * @return The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
      * 
      */
-    private final String roUserList;
+    private String roUserList;
     /**
      * @return Read and write the client list. When Protocol NFS is returned when the status is.
      * 
      */
-    private final String rwClientList;
+    private String rwClientList;
     /**
      * @return Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
      * 
      */
-    private final String rwUserList;
+    private String rwUserList;
     /**
      * @return File share is enabled server-side encryption, encryption used by the KMS key.
      * 
      */
-    private final String serverSideCmk;
+    private String serverSideCmk;
     /**
      * @return If the OSS Bucket side encryption.
      * 
      */
-    private final Boolean serverSideEncryption;
+    private Boolean serverSideEncryption;
     /**
      * @return The caching capacity. Unit: `B`.
      * 
      */
-    private final String size;
+    private String size;
     /**
      * @return The set up gateway file share NFS protocol user mapping. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`.
      * 
      */
-    private final String squash;
+    private String squash;
     /**
      * @return File synchronization types. Valid values: `clean`, `dirty`. `clean`: synchronization is complete. `dirty`: synchronization has not been completed.
      * 
      */
-    private final String state;
+    private String state;
     /**
      * @return Whether to support the archive transparent read.
      * 
      */
-    private final Boolean supportArchive;
+    private Boolean supportArchive;
     /**
      * @return Full synchronization progress. When the share has been added for a synchronization group, the return parameters are valid, that shared full synchronization progress (0~100). `-2`: indicates that share the Gateway version does not support this feature. `-1`: the share does not occur full synchronization.
      * 
      */
-    private final Integer syncProgress;
+    private Integer syncProgress;
     /**
      * @return The OSS Bucket to the Gateway total downloads. Unit: `B`.
      * 
      */
-    private final String totalDownload;
+    private String totalDownload;
     /**
      * @return The OSS Bucket to the Gateway total Upload amount. Unit: `B`.
      * 
      */
-    private final String totalUpload;
+    private String totalUpload;
     /**
      * @return The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version &gt;= 1.3.0 above support.
      * 
      */
-    private final Boolean transferAcceleration;
+    private Boolean transferAcceleration;
     /**
      * @return Used cache. Unit: `B`.
      * 
      */
-    private final String used;
+    private String used;
     /**
      * @return The set up gateway file share Server Message Block (SMB) protocol, whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.45 above support.
      * 
      */
-    private final Boolean windowsAcl;
+    private Boolean windowsAcl;
 
-    @CustomType.Constructor
-    private GetGatewayFileSharesShare(
-        @CustomType.Parameter("accessBasedEnumeration") Boolean accessBasedEnumeration,
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("backendLimit") Integer backendLimit,
-        @CustomType.Parameter("browsable") Boolean browsable,
-        @CustomType.Parameter("bucketInfos") String bucketInfos,
-        @CustomType.Parameter("bucketsStub") Boolean bucketsStub,
-        @CustomType.Parameter("bypassCacheRead") Boolean bypassCacheRead,
-        @CustomType.Parameter("cacheMode") String cacheMode,
-        @CustomType.Parameter("clientSideCmk") String clientSideCmk,
-        @CustomType.Parameter("clientSideEncryption") Boolean clientSideEncryption,
-        @CustomType.Parameter("directIo") Boolean directIo,
-        @CustomType.Parameter("diskId") String diskId,
-        @CustomType.Parameter("diskType") String diskType,
-        @CustomType.Parameter("downloadLimit") Integer downloadLimit,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("expressSyncId") String expressSyncId,
-        @CustomType.Parameter("fastReclaim") Boolean fastReclaim,
-        @CustomType.Parameter("feLimit") Integer feLimit,
-        @CustomType.Parameter("fileNumLimit") String fileNumLimit,
-        @CustomType.Parameter("fsSizeLimit") String fsSizeLimit,
-        @CustomType.Parameter("gatewayFileShareName") String gatewayFileShareName,
-        @CustomType.Parameter("gatewayId") String gatewayId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ignoreDelete") Boolean ignoreDelete,
-        @CustomType.Parameter("inPlace") Boolean inPlace,
-        @CustomType.Parameter("inRate") String inRate,
-        @CustomType.Parameter("indexId") String indexId,
-        @CustomType.Parameter("kmsRotatePeriod") Integer kmsRotatePeriod,
-        @CustomType.Parameter("lagPeriod") String lagPeriod,
-        @CustomType.Parameter("localPath") String localPath,
-        @CustomType.Parameter("mnsHealth") String mnsHealth,
-        @CustomType.Parameter("nfsV4Optimization") Boolean nfsV4Optimization,
-        @CustomType.Parameter("obsoleteBuckets") String obsoleteBuckets,
-        @CustomType.Parameter("ossBucketName") String ossBucketName,
-        @CustomType.Parameter("ossBucketSsl") Boolean ossBucketSsl,
-        @CustomType.Parameter("ossEndpoint") String ossEndpoint,
-        @CustomType.Parameter("ossHealth") String ossHealth,
-        @CustomType.Parameter("ossUsed") String ossUsed,
-        @CustomType.Parameter("outRate") String outRate,
-        @CustomType.Parameter("partialSyncPaths") String partialSyncPaths,
-        @CustomType.Parameter("pathPrefix") String pathPrefix,
-        @CustomType.Parameter("pollingInterval") Integer pollingInterval,
-        @CustomType.Parameter("protocol") String protocol,
-        @CustomType.Parameter("remainingMetaSpace") String remainingMetaSpace,
-        @CustomType.Parameter("remoteSync") Boolean remoteSync,
-        @CustomType.Parameter("remoteSyncDownload") Boolean remoteSyncDownload,
-        @CustomType.Parameter("roClientList") String roClientList,
-        @CustomType.Parameter("roUserList") String roUserList,
-        @CustomType.Parameter("rwClientList") String rwClientList,
-        @CustomType.Parameter("rwUserList") String rwUserList,
-        @CustomType.Parameter("serverSideCmk") String serverSideCmk,
-        @CustomType.Parameter("serverSideEncryption") Boolean serverSideEncryption,
-        @CustomType.Parameter("size") String size,
-        @CustomType.Parameter("squash") String squash,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("supportArchive") Boolean supportArchive,
-        @CustomType.Parameter("syncProgress") Integer syncProgress,
-        @CustomType.Parameter("totalDownload") String totalDownload,
-        @CustomType.Parameter("totalUpload") String totalUpload,
-        @CustomType.Parameter("transferAcceleration") Boolean transferAcceleration,
-        @CustomType.Parameter("used") String used,
-        @CustomType.Parameter("windowsAcl") Boolean windowsAcl) {
-        this.accessBasedEnumeration = accessBasedEnumeration;
-        this.address = address;
-        this.backendLimit = backendLimit;
-        this.browsable = browsable;
-        this.bucketInfos = bucketInfos;
-        this.bucketsStub = bucketsStub;
-        this.bypassCacheRead = bypassCacheRead;
-        this.cacheMode = cacheMode;
-        this.clientSideCmk = clientSideCmk;
-        this.clientSideEncryption = clientSideEncryption;
-        this.directIo = directIo;
-        this.diskId = diskId;
-        this.diskType = diskType;
-        this.downloadLimit = downloadLimit;
-        this.enabled = enabled;
-        this.expressSyncId = expressSyncId;
-        this.fastReclaim = fastReclaim;
-        this.feLimit = feLimit;
-        this.fileNumLimit = fileNumLimit;
-        this.fsSizeLimit = fsSizeLimit;
-        this.gatewayFileShareName = gatewayFileShareName;
-        this.gatewayId = gatewayId;
-        this.id = id;
-        this.ignoreDelete = ignoreDelete;
-        this.inPlace = inPlace;
-        this.inRate = inRate;
-        this.indexId = indexId;
-        this.kmsRotatePeriod = kmsRotatePeriod;
-        this.lagPeriod = lagPeriod;
-        this.localPath = localPath;
-        this.mnsHealth = mnsHealth;
-        this.nfsV4Optimization = nfsV4Optimization;
-        this.obsoleteBuckets = obsoleteBuckets;
-        this.ossBucketName = ossBucketName;
-        this.ossBucketSsl = ossBucketSsl;
-        this.ossEndpoint = ossEndpoint;
-        this.ossHealth = ossHealth;
-        this.ossUsed = ossUsed;
-        this.outRate = outRate;
-        this.partialSyncPaths = partialSyncPaths;
-        this.pathPrefix = pathPrefix;
-        this.pollingInterval = pollingInterval;
-        this.protocol = protocol;
-        this.remainingMetaSpace = remainingMetaSpace;
-        this.remoteSync = remoteSync;
-        this.remoteSyncDownload = remoteSyncDownload;
-        this.roClientList = roClientList;
-        this.roUserList = roUserList;
-        this.rwClientList = rwClientList;
-        this.rwUserList = rwUserList;
-        this.serverSideCmk = serverSideCmk;
-        this.serverSideEncryption = serverSideEncryption;
-        this.size = size;
-        this.squash = squash;
-        this.state = state;
-        this.supportArchive = supportArchive;
-        this.syncProgress = syncProgress;
-        this.totalDownload = totalDownload;
-        this.totalUpload = totalUpload;
-        this.transferAcceleration = transferAcceleration;
-        this.used = used;
-        this.windowsAcl = windowsAcl;
-    }
-
+    private GetGatewayFileSharesShare() {}
     /**
      * @return The set up gateway file share Server Message Block (SMB) protocol, whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.45 above support.
      * 
@@ -892,7 +765,7 @@ public final class GetGatewayFileSharesShare {
     public static Builder builder(GetGatewayFileSharesShare defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean accessBasedEnumeration;
         private String address;
@@ -956,11 +829,7 @@ public final class GetGatewayFileSharesShare {
         private Boolean transferAcceleration;
         private String used;
         private Boolean windowsAcl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewayFileSharesShare defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessBasedEnumeration = defaults.accessBasedEnumeration;
@@ -1027,255 +896,381 @@ public final class GetGatewayFileSharesShare {
     	      this.windowsAcl = defaults.windowsAcl;
         }
 
+        @CustomType.Setter
         public Builder accessBasedEnumeration(Boolean accessBasedEnumeration) {
             this.accessBasedEnumeration = Objects.requireNonNull(accessBasedEnumeration);
             return this;
         }
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder backendLimit(Integer backendLimit) {
             this.backendLimit = Objects.requireNonNull(backendLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder browsable(Boolean browsable) {
             this.browsable = Objects.requireNonNull(browsable);
             return this;
         }
+        @CustomType.Setter
         public Builder bucketInfos(String bucketInfos) {
             this.bucketInfos = Objects.requireNonNull(bucketInfos);
             return this;
         }
+        @CustomType.Setter
         public Builder bucketsStub(Boolean bucketsStub) {
             this.bucketsStub = Objects.requireNonNull(bucketsStub);
             return this;
         }
+        @CustomType.Setter
         public Builder bypassCacheRead(Boolean bypassCacheRead) {
             this.bypassCacheRead = Objects.requireNonNull(bypassCacheRead);
             return this;
         }
+        @CustomType.Setter
         public Builder cacheMode(String cacheMode) {
             this.cacheMode = Objects.requireNonNull(cacheMode);
             return this;
         }
+        @CustomType.Setter
         public Builder clientSideCmk(String clientSideCmk) {
             this.clientSideCmk = Objects.requireNonNull(clientSideCmk);
             return this;
         }
+        @CustomType.Setter
         public Builder clientSideEncryption(Boolean clientSideEncryption) {
             this.clientSideEncryption = Objects.requireNonNull(clientSideEncryption);
             return this;
         }
+        @CustomType.Setter
         public Builder directIo(Boolean directIo) {
             this.directIo = Objects.requireNonNull(directIo);
             return this;
         }
+        @CustomType.Setter
         public Builder diskId(String diskId) {
             this.diskId = Objects.requireNonNull(diskId);
             return this;
         }
+        @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
             return this;
         }
+        @CustomType.Setter
         public Builder downloadLimit(Integer downloadLimit) {
             this.downloadLimit = Objects.requireNonNull(downloadLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder expressSyncId(String expressSyncId) {
             this.expressSyncId = Objects.requireNonNull(expressSyncId);
             return this;
         }
+        @CustomType.Setter
         public Builder fastReclaim(Boolean fastReclaim) {
             this.fastReclaim = Objects.requireNonNull(fastReclaim);
             return this;
         }
+        @CustomType.Setter
         public Builder feLimit(Integer feLimit) {
             this.feLimit = Objects.requireNonNull(feLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder fileNumLimit(String fileNumLimit) {
             this.fileNumLimit = Objects.requireNonNull(fileNumLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder fsSizeLimit(String fsSizeLimit) {
             this.fsSizeLimit = Objects.requireNonNull(fsSizeLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayFileShareName(String gatewayFileShareName) {
             this.gatewayFileShareName = Objects.requireNonNull(gatewayFileShareName);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
             this.gatewayId = Objects.requireNonNull(gatewayId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreDelete(Boolean ignoreDelete) {
             this.ignoreDelete = Objects.requireNonNull(ignoreDelete);
             return this;
         }
+        @CustomType.Setter
         public Builder inPlace(Boolean inPlace) {
             this.inPlace = Objects.requireNonNull(inPlace);
             return this;
         }
+        @CustomType.Setter
         public Builder inRate(String inRate) {
             this.inRate = Objects.requireNonNull(inRate);
             return this;
         }
+        @CustomType.Setter
         public Builder indexId(String indexId) {
             this.indexId = Objects.requireNonNull(indexId);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsRotatePeriod(Integer kmsRotatePeriod) {
             this.kmsRotatePeriod = Objects.requireNonNull(kmsRotatePeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder lagPeriod(String lagPeriod) {
             this.lagPeriod = Objects.requireNonNull(lagPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder localPath(String localPath) {
             this.localPath = Objects.requireNonNull(localPath);
             return this;
         }
+        @CustomType.Setter
         public Builder mnsHealth(String mnsHealth) {
             this.mnsHealth = Objects.requireNonNull(mnsHealth);
             return this;
         }
+        @CustomType.Setter
         public Builder nfsV4Optimization(Boolean nfsV4Optimization) {
             this.nfsV4Optimization = Objects.requireNonNull(nfsV4Optimization);
             return this;
         }
+        @CustomType.Setter
         public Builder obsoleteBuckets(String obsoleteBuckets) {
             this.obsoleteBuckets = Objects.requireNonNull(obsoleteBuckets);
             return this;
         }
+        @CustomType.Setter
         public Builder ossBucketName(String ossBucketName) {
             this.ossBucketName = Objects.requireNonNull(ossBucketName);
             return this;
         }
+        @CustomType.Setter
         public Builder ossBucketSsl(Boolean ossBucketSsl) {
             this.ossBucketSsl = Objects.requireNonNull(ossBucketSsl);
             return this;
         }
+        @CustomType.Setter
         public Builder ossEndpoint(String ossEndpoint) {
             this.ossEndpoint = Objects.requireNonNull(ossEndpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder ossHealth(String ossHealth) {
             this.ossHealth = Objects.requireNonNull(ossHealth);
             return this;
         }
+        @CustomType.Setter
         public Builder ossUsed(String ossUsed) {
             this.ossUsed = Objects.requireNonNull(ossUsed);
             return this;
         }
+        @CustomType.Setter
         public Builder outRate(String outRate) {
             this.outRate = Objects.requireNonNull(outRate);
             return this;
         }
+        @CustomType.Setter
         public Builder partialSyncPaths(String partialSyncPaths) {
             this.partialSyncPaths = Objects.requireNonNull(partialSyncPaths);
             return this;
         }
+        @CustomType.Setter
         public Builder pathPrefix(String pathPrefix) {
             this.pathPrefix = Objects.requireNonNull(pathPrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder pollingInterval(Integer pollingInterval) {
             this.pollingInterval = Objects.requireNonNull(pollingInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             this.protocol = Objects.requireNonNull(protocol);
             return this;
         }
+        @CustomType.Setter
         public Builder remainingMetaSpace(String remainingMetaSpace) {
             this.remainingMetaSpace = Objects.requireNonNull(remainingMetaSpace);
             return this;
         }
+        @CustomType.Setter
         public Builder remoteSync(Boolean remoteSync) {
             this.remoteSync = Objects.requireNonNull(remoteSync);
             return this;
         }
+        @CustomType.Setter
         public Builder remoteSyncDownload(Boolean remoteSyncDownload) {
             this.remoteSyncDownload = Objects.requireNonNull(remoteSyncDownload);
             return this;
         }
+        @CustomType.Setter
         public Builder roClientList(String roClientList) {
             this.roClientList = Objects.requireNonNull(roClientList);
             return this;
         }
+        @CustomType.Setter
         public Builder roUserList(String roUserList) {
             this.roUserList = Objects.requireNonNull(roUserList);
             return this;
         }
+        @CustomType.Setter
         public Builder rwClientList(String rwClientList) {
             this.rwClientList = Objects.requireNonNull(rwClientList);
             return this;
         }
+        @CustomType.Setter
         public Builder rwUserList(String rwUserList) {
             this.rwUserList = Objects.requireNonNull(rwUserList);
             return this;
         }
+        @CustomType.Setter
         public Builder serverSideCmk(String serverSideCmk) {
             this.serverSideCmk = Objects.requireNonNull(serverSideCmk);
             return this;
         }
+        @CustomType.Setter
         public Builder serverSideEncryption(Boolean serverSideEncryption) {
             this.serverSideEncryption = Objects.requireNonNull(serverSideEncryption);
             return this;
         }
+        @CustomType.Setter
         public Builder size(String size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder squash(String squash) {
             this.squash = Objects.requireNonNull(squash);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder supportArchive(Boolean supportArchive) {
             this.supportArchive = Objects.requireNonNull(supportArchive);
             return this;
         }
+        @CustomType.Setter
         public Builder syncProgress(Integer syncProgress) {
             this.syncProgress = Objects.requireNonNull(syncProgress);
             return this;
         }
+        @CustomType.Setter
         public Builder totalDownload(String totalDownload) {
             this.totalDownload = Objects.requireNonNull(totalDownload);
             return this;
         }
+        @CustomType.Setter
         public Builder totalUpload(String totalUpload) {
             this.totalUpload = Objects.requireNonNull(totalUpload);
             return this;
         }
+        @CustomType.Setter
         public Builder transferAcceleration(Boolean transferAcceleration) {
             this.transferAcceleration = Objects.requireNonNull(transferAcceleration);
             return this;
         }
+        @CustomType.Setter
         public Builder used(String used) {
             this.used = Objects.requireNonNull(used);
             return this;
         }
+        @CustomType.Setter
         public Builder windowsAcl(Boolean windowsAcl) {
             this.windowsAcl = Objects.requireNonNull(windowsAcl);
             return this;
-        }        public GetGatewayFileSharesShare build() {
-            return new GetGatewayFileSharesShare(accessBasedEnumeration, address, backendLimit, browsable, bucketInfos, bucketsStub, bypassCacheRead, cacheMode, clientSideCmk, clientSideEncryption, directIo, diskId, diskType, downloadLimit, enabled, expressSyncId, fastReclaim, feLimit, fileNumLimit, fsSizeLimit, gatewayFileShareName, gatewayId, id, ignoreDelete, inPlace, inRate, indexId, kmsRotatePeriod, lagPeriod, localPath, mnsHealth, nfsV4Optimization, obsoleteBuckets, ossBucketName, ossBucketSsl, ossEndpoint, ossHealth, ossUsed, outRate, partialSyncPaths, pathPrefix, pollingInterval, protocol, remainingMetaSpace, remoteSync, remoteSyncDownload, roClientList, roUserList, rwClientList, rwUserList, serverSideCmk, serverSideEncryption, size, squash, state, supportArchive, syncProgress, totalDownload, totalUpload, transferAcceleration, used, windowsAcl);
+        }
+        public GetGatewayFileSharesShare build() {
+            final var o = new GetGatewayFileSharesShare();
+            o.accessBasedEnumeration = accessBasedEnumeration;
+            o.address = address;
+            o.backendLimit = backendLimit;
+            o.browsable = browsable;
+            o.bucketInfos = bucketInfos;
+            o.bucketsStub = bucketsStub;
+            o.bypassCacheRead = bypassCacheRead;
+            o.cacheMode = cacheMode;
+            o.clientSideCmk = clientSideCmk;
+            o.clientSideEncryption = clientSideEncryption;
+            o.directIo = directIo;
+            o.diskId = diskId;
+            o.diskType = diskType;
+            o.downloadLimit = downloadLimit;
+            o.enabled = enabled;
+            o.expressSyncId = expressSyncId;
+            o.fastReclaim = fastReclaim;
+            o.feLimit = feLimit;
+            o.fileNumLimit = fileNumLimit;
+            o.fsSizeLimit = fsSizeLimit;
+            o.gatewayFileShareName = gatewayFileShareName;
+            o.gatewayId = gatewayId;
+            o.id = id;
+            o.ignoreDelete = ignoreDelete;
+            o.inPlace = inPlace;
+            o.inRate = inRate;
+            o.indexId = indexId;
+            o.kmsRotatePeriod = kmsRotatePeriod;
+            o.lagPeriod = lagPeriod;
+            o.localPath = localPath;
+            o.mnsHealth = mnsHealth;
+            o.nfsV4Optimization = nfsV4Optimization;
+            o.obsoleteBuckets = obsoleteBuckets;
+            o.ossBucketName = ossBucketName;
+            o.ossBucketSsl = ossBucketSsl;
+            o.ossEndpoint = ossEndpoint;
+            o.ossHealth = ossHealth;
+            o.ossUsed = ossUsed;
+            o.outRate = outRate;
+            o.partialSyncPaths = partialSyncPaths;
+            o.pathPrefix = pathPrefix;
+            o.pollingInterval = pollingInterval;
+            o.protocol = protocol;
+            o.remainingMetaSpace = remainingMetaSpace;
+            o.remoteSync = remoteSync;
+            o.remoteSyncDownload = remoteSyncDownload;
+            o.roClientList = roClientList;
+            o.roUserList = roUserList;
+            o.rwClientList = rwClientList;
+            o.rwUserList = rwUserList;
+            o.serverSideCmk = serverSideCmk;
+            o.serverSideEncryption = serverSideEncryption;
+            o.size = size;
+            o.squash = squash;
+            o.state = state;
+            o.supportArchive = supportArchive;
+            o.syncProgress = syncProgress;
+            o.totalDownload = totalDownload;
+            o.totalUpload = totalUpload;
+            o.transferAcceleration = transferAcceleration;
+            o.used = used;
+            o.windowsAcl = windowsAcl;
+            return o;
         }
     }
 }

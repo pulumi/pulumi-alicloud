@@ -16,49 +16,34 @@ public final class ServiceMeshMeshConfigSidecarInjector {
      * @return Whether to enable by Pod Annotations automatic injection Sidecar.
      * 
      */
-    private final @Nullable Boolean autoInjectionPolicyEnabled;
+    private @Nullable Boolean autoInjectionPolicyEnabled;
     /**
      * @return Whether it is the all namespaces you turn on the auto injection capabilities.
      * 
      */
-    private final @Nullable Boolean enableNamespacesByDefault;
+    private @Nullable Boolean enableNamespacesByDefault;
     /**
      * @return The limit cpu of the Sidecar injector Pods.
      * 
      */
-    private final @Nullable String limitCpu;
+    private @Nullable String limitCpu;
     /**
      * @return Sidecar injector Pods on the throttle.
      * 
      */
-    private final @Nullable String limitMemory;
+    private @Nullable String limitMemory;
     /**
      * @return The requested cpu the Sidecar injector Pods.
      * 
      */
-    private final @Nullable String requestCpu;
+    private @Nullable String requestCpu;
     /**
      * @return The requested memory the Sidecar injector Pods.
      * 
      */
-    private final @Nullable String requestMemory;
+    private @Nullable String requestMemory;
 
-    @CustomType.Constructor
-    private ServiceMeshMeshConfigSidecarInjector(
-        @CustomType.Parameter("autoInjectionPolicyEnabled") @Nullable Boolean autoInjectionPolicyEnabled,
-        @CustomType.Parameter("enableNamespacesByDefault") @Nullable Boolean enableNamespacesByDefault,
-        @CustomType.Parameter("limitCpu") @Nullable String limitCpu,
-        @CustomType.Parameter("limitMemory") @Nullable String limitMemory,
-        @CustomType.Parameter("requestCpu") @Nullable String requestCpu,
-        @CustomType.Parameter("requestMemory") @Nullable String requestMemory) {
-        this.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
-        this.enableNamespacesByDefault = enableNamespacesByDefault;
-        this.limitCpu = limitCpu;
-        this.limitMemory = limitMemory;
-        this.requestCpu = requestCpu;
-        this.requestMemory = requestMemory;
-    }
-
+    private ServiceMeshMeshConfigSidecarInjector() {}
     /**
      * @return Whether to enable by Pod Annotations automatic injection Sidecar.
      * 
@@ -109,7 +94,7 @@ public final class ServiceMeshMeshConfigSidecarInjector {
     public static Builder builder(ServiceMeshMeshConfigSidecarInjector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean autoInjectionPolicyEnabled;
         private @Nullable Boolean enableNamespacesByDefault;
@@ -117,11 +102,7 @@ public final class ServiceMeshMeshConfigSidecarInjector {
         private @Nullable String limitMemory;
         private @Nullable String requestCpu;
         private @Nullable String requestMemory;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceMeshMeshConfigSidecarInjector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoInjectionPolicyEnabled = defaults.autoInjectionPolicyEnabled;
@@ -132,31 +113,45 @@ public final class ServiceMeshMeshConfigSidecarInjector {
     	      this.requestMemory = defaults.requestMemory;
         }
 
+        @CustomType.Setter
         public Builder autoInjectionPolicyEnabled(@Nullable Boolean autoInjectionPolicyEnabled) {
             this.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder enableNamespacesByDefault(@Nullable Boolean enableNamespacesByDefault) {
             this.enableNamespacesByDefault = enableNamespacesByDefault;
             return this;
         }
+        @CustomType.Setter
         public Builder limitCpu(@Nullable String limitCpu) {
             this.limitCpu = limitCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder limitMemory(@Nullable String limitMemory) {
             this.limitMemory = limitMemory;
             return this;
         }
+        @CustomType.Setter
         public Builder requestCpu(@Nullable String requestCpu) {
             this.requestCpu = requestCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder requestMemory(@Nullable String requestMemory) {
             this.requestMemory = requestMemory;
             return this;
-        }        public ServiceMeshMeshConfigSidecarInjector build() {
-            return new ServiceMeshMeshConfigSidecarInjector(autoInjectionPolicyEnabled, enableNamespacesByDefault, limitCpu, limitMemory, requestCpu, requestMemory);
+        }
+        public ServiceMeshMeshConfigSidecarInjector build() {
+            final var o = new ServiceMeshMeshConfigSidecarInjector();
+            o.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
+            o.enableNamespacesByDefault = enableNamespacesByDefault;
+            o.limitCpu = limitCpu;
+            o.limitMemory = limitMemory;
+            o.requestCpu = requestCpu;
+            o.requestMemory = requestMemory;
+            return o;
         }
     }
 }

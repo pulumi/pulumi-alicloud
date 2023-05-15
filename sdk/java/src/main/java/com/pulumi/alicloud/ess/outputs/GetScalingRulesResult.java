@@ -17,55 +17,36 @@ public final class GetScalingRulesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of scaling rule ids.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
+    private List<String> ids;
+    private @Nullable String nameRegex;
     /**
      * @return A list of scaling rule names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return A list of scaling rules. Each element contains the following attributes:
      * 
      */
-    private final List<GetScalingRulesRule> rules;
+    private List<GetScalingRulesRule> rules;
     /**
      * @return ID of the scaling group.
      * 
      */
-    private final @Nullable String scalingGroupId;
+    private @Nullable String scalingGroupId;
     /**
      * @return Type of the scaling rule.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GetScalingRulesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("rules") List<GetScalingRulesRule> rules,
-        @CustomType.Parameter("scalingGroupId") @Nullable String scalingGroupId,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.rules = rules;
-        this.scalingGroupId = scalingGroupId;
-        this.type = type;
-    }
-
+    private GetScalingRulesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -122,7 +103,7 @@ public final class GetScalingRulesResult {
     public static Builder builder(GetScalingRulesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -132,11 +113,7 @@ public final class GetScalingRulesResult {
         private List<GetScalingRulesRule> rules;
         private @Nullable String scalingGroupId;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetScalingRulesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -149,10 +126,12 @@ public final class GetScalingRulesResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -160,10 +139,12 @@ public final class GetScalingRulesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -171,10 +152,12 @@ public final class GetScalingRulesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder rules(List<GetScalingRulesRule> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -182,15 +165,27 @@ public final class GetScalingRulesResult {
         public Builder rules(GetScalingRulesRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
         public Builder scalingGroupId(@Nullable String scalingGroupId) {
             this.scalingGroupId = scalingGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GetScalingRulesResult build() {
-            return new GetScalingRulesResult(id, ids, nameRegex, names, outputFile, rules, scalingGroupId, type);
+        }
+        public GetScalingRulesResult build() {
+            final var o = new GetScalingRulesResult();
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.rules = rules;
+            o.scalingGroupId = scalingGroupId;
+            o.type = type;
+            return o;
         }
     }
 }

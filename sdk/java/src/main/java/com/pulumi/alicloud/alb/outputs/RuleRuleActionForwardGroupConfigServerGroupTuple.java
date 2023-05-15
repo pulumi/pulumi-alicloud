@@ -16,21 +16,14 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTuple {
      * @return The ID of the destination server group to which requests are forwarded.
      * 
      */
-    private final @Nullable String serverGroupId;
+    private @Nullable String serverGroupId;
     /**
      * @return The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
      * 
      */
-    private final @Nullable Integer weight;
+    private @Nullable Integer weight;
 
-    @CustomType.Constructor
-    private RuleRuleActionForwardGroupConfigServerGroupTuple(
-        @CustomType.Parameter("serverGroupId") @Nullable String serverGroupId,
-        @CustomType.Parameter("weight") @Nullable Integer weight) {
-        this.serverGroupId = serverGroupId;
-        this.weight = weight;
-    }
-
+    private RuleRuleActionForwardGroupConfigServerGroupTuple() {}
     /**
      * @return The ID of the destination server group to which requests are forwarded.
      * 
@@ -53,30 +46,32 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTuple {
     public static Builder builder(RuleRuleActionForwardGroupConfigServerGroupTuple defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String serverGroupId;
         private @Nullable Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RuleRuleActionForwardGroupConfigServerGroupTuple defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.serverGroupId = defaults.serverGroupId;
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder serverGroupId(@Nullable String serverGroupId) {
             this.serverGroupId = serverGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }        public RuleRuleActionForwardGroupConfigServerGroupTuple build() {
-            return new RuleRuleActionForwardGroupConfigServerGroupTuple(serverGroupId, weight);
+        }
+        public RuleRuleActionForwardGroupConfigServerGroupTuple build() {
+            final var o = new RuleRuleActionForwardGroupConfigServerGroupTuple();
+            o.serverGroupId = serverGroupId;
+            o.weight = weight;
+            return o;
         }
     }
 }

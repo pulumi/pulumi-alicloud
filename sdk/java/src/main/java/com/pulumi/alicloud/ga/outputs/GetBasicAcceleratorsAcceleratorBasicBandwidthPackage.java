@@ -14,28 +14,19 @@ public final class GetBasicAcceleratorsAcceleratorBasicBandwidthPackage {
      * @return The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
      * 
      */
-    private final Integer bandwidth;
+    private Integer bandwidth;
     /**
      * @return The type of the bandwidth that is provided by the basic bandwidth plan.
      * 
      */
-    private final String bandwidthType;
+    private String bandwidthType;
     /**
      * @return The ID of the cross-region acceleration bandwidth plan.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
 
-    @CustomType.Constructor
-    private GetBasicAcceleratorsAcceleratorBasicBandwidthPackage(
-        @CustomType.Parameter("bandwidth") Integer bandwidth,
-        @CustomType.Parameter("bandwidthType") String bandwidthType,
-        @CustomType.Parameter("instanceId") String instanceId) {
-        this.bandwidth = bandwidth;
-        this.bandwidthType = bandwidthType;
-        this.instanceId = instanceId;
-    }
-
+    private GetBasicAcceleratorsAcceleratorBasicBandwidthPackage() {}
     /**
      * @return The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
      * 
@@ -65,16 +56,12 @@ public final class GetBasicAcceleratorsAcceleratorBasicBandwidthPackage {
     public static Builder builder(GetBasicAcceleratorsAcceleratorBasicBandwidthPackage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer bandwidth;
         private String bandwidthType;
         private String instanceId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBasicAcceleratorsAcceleratorBasicBandwidthPackage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bandwidth = defaults.bandwidth;
@@ -82,19 +69,27 @@ public final class GetBasicAcceleratorsAcceleratorBasicBandwidthPackage {
     	      this.instanceId = defaults.instanceId;
         }
 
+        @CustomType.Setter
         public Builder bandwidth(Integer bandwidth) {
             this.bandwidth = Objects.requireNonNull(bandwidth);
             return this;
         }
+        @CustomType.Setter
         public Builder bandwidthType(String bandwidthType) {
             this.bandwidthType = Objects.requireNonNull(bandwidthType);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
-        }        public GetBasicAcceleratorsAcceleratorBasicBandwidthPackage build() {
-            return new GetBasicAcceleratorsAcceleratorBasicBandwidthPackage(bandwidth, bandwidthType, instanceId);
+        }
+        public GetBasicAcceleratorsAcceleratorBasicBandwidthPackage build() {
+            final var o = new GetBasicAcceleratorsAcceleratorBasicBandwidthPackage();
+            o.bandwidth = bandwidth;
+            o.bandwidthType = bandwidthType;
+            o.instanceId = instanceId;
+            return o;
         }
     }
 }

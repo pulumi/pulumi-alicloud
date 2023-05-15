@@ -18,34 +18,21 @@ public final class GetZonesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of zone IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable Boolean multi;
-    private final @Nullable String outputFile;
+    private List<String> ids;
+    private @Nullable Boolean multi;
+    private @Nullable String outputFile;
     /**
      * @return A list of availability zones. Each element contains the following attributes:
      * 
      */
-    private final List<GetZonesZone> zones;
+    private List<GetZonesZone> zones;
 
-    @CustomType.Constructor
-    private GetZonesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("multi") @Nullable Boolean multi,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("zones") List<GetZonesZone> zones) {
-        this.id = id;
-        this.ids = ids;
-        this.multi = multi;
-        this.outputFile = outputFile;
-        this.zones = zones;
-    }
-
+    private GetZonesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -81,18 +68,14 @@ public final class GetZonesResult {
     public static Builder builder(GetZonesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
         private @Nullable Boolean multi;
         private @Nullable String outputFile;
         private List<GetZonesZone> zones;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -102,10 +85,12 @@ public final class GetZonesResult {
     	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -113,22 +98,32 @@ public final class GetZonesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder multi(@Nullable Boolean multi) {
             this.multi = multi;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder zones(List<GetZonesZone> zones) {
             this.zones = Objects.requireNonNull(zones);
             return this;
         }
         public Builder zones(GetZonesZone... zones) {
             return zones(List.of(zones));
-        }        public GetZonesResult build() {
-            return new GetZonesResult(id, ids, multi, outputFile, zones);
+        }
+        public GetZonesResult build() {
+            final var o = new GetZonesResult();
+            o.id = id;
+            o.ids = ids;
+            o.multi = multi;
+            o.outputFile = outputFile;
+            o.zones = zones;
+            return o;
         }
     }
 }

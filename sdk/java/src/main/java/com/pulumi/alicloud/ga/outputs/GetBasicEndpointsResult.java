@@ -17,68 +17,43 @@ public final class GetBasicEndpointsResult {
      * @return The ID of the Basic Endpoint Group.
      * 
      */
-    private final String endpointGroupId;
+    private String endpointGroupId;
     /**
      * @return The ID of the Basic Endpoint.
      * 
      */
-    private final @Nullable String endpointId;
+    private @Nullable String endpointId;
     /**
      * @return The type of the Basic Endpoint.
      * 
      */
-    private final @Nullable String endpointType;
+    private @Nullable String endpointType;
     /**
      * @return A list of Global Accelerator Basic Endpoints. Each element contains the following attributes:
      * 
      */
-    private final List<GetBasicEndpointsEndpoint> endpoints;
+    private List<GetBasicEndpointsEndpoint> endpoints;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String name;
-    private final @Nullable String nameRegex;
+    private String id;
+    private List<String> ids;
+    private @Nullable String name;
+    private @Nullable String nameRegex;
     /**
      * @return A list of Global Accelerator Basic Endpoint names.
      * 
      */
-    private final List<String> names;
-    private final @Nullable String outputFile;
+    private List<String> names;
+    private @Nullable String outputFile;
     /**
      * @return The status of the Basic Endpoint.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetBasicEndpointsResult(
-        @CustomType.Parameter("endpointGroupId") String endpointGroupId,
-        @CustomType.Parameter("endpointId") @Nullable String endpointId,
-        @CustomType.Parameter("endpointType") @Nullable String endpointType,
-        @CustomType.Parameter("endpoints") List<GetBasicEndpointsEndpoint> endpoints,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.endpointGroupId = endpointGroupId;
-        this.endpointId = endpointId;
-        this.endpointType = endpointType;
-        this.endpoints = endpoints;
-        this.id = id;
-        this.ids = ids;
-        this.name = name;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.status = status;
-    }
-
+    private GetBasicEndpointsResult() {}
     /**
      * @return The ID of the Basic Endpoint Group.
      * 
@@ -148,7 +123,7 @@ public final class GetBasicEndpointsResult {
     public static Builder builder(GetBasicEndpointsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String endpointGroupId;
         private @Nullable String endpointId;
@@ -161,11 +136,7 @@ public final class GetBasicEndpointsResult {
         private List<String> names;
         private @Nullable String outputFile;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBasicEndpointsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpointGroupId = defaults.endpointGroupId;
@@ -181,18 +152,22 @@ public final class GetBasicEndpointsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder endpointGroupId(String endpointGroupId) {
             this.endpointGroupId = Objects.requireNonNull(endpointGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder endpointId(@Nullable String endpointId) {
             this.endpointId = endpointId;
             return this;
         }
+        @CustomType.Setter
         public Builder endpointType(@Nullable String endpointType) {
             this.endpointType = endpointType;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoints(List<GetBasicEndpointsEndpoint> endpoints) {
             this.endpoints = Objects.requireNonNull(endpoints);
             return this;
@@ -200,10 +175,12 @@ public final class GetBasicEndpointsResult {
         public Builder endpoints(GetBasicEndpointsEndpoint... endpoints) {
             return endpoints(List.of(endpoints));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -211,14 +188,17 @@ public final class GetBasicEndpointsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -226,15 +206,30 @@ public final class GetBasicEndpointsResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetBasicEndpointsResult build() {
-            return new GetBasicEndpointsResult(endpointGroupId, endpointId, endpointType, endpoints, id, ids, name, nameRegex, names, outputFile, status);
+        }
+        public GetBasicEndpointsResult build() {
+            final var o = new GetBasicEndpointsResult();
+            o.endpointGroupId = endpointGroupId;
+            o.endpointId = endpointId;
+            o.endpointType = endpointType;
+            o.endpoints = endpoints;
+            o.id = id;
+            o.ids = ids;
+            o.name = name;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.status = status;
+            return o;
         }
     }
 }

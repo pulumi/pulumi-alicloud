@@ -15,13 +15,9 @@ public final class RestoreJobOtsDetail {
      * @return Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
      * 
      */
-    private final @Nullable Boolean overwriteExisting;
+    private @Nullable Boolean overwriteExisting;
 
-    @CustomType.Constructor
-    private RestoreJobOtsDetail(@CustomType.Parameter("overwriteExisting") @Nullable Boolean overwriteExisting) {
-        this.overwriteExisting = overwriteExisting;
-    }
-
+    private RestoreJobOtsDetail() {}
     /**
      * @return Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
      * 
@@ -37,24 +33,24 @@ public final class RestoreJobOtsDetail {
     public static Builder builder(RestoreJobOtsDetail defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean overwriteExisting;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RestoreJobOtsDetail defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.overwriteExisting = defaults.overwriteExisting;
         }
 
+        @CustomType.Setter
         public Builder overwriteExisting(@Nullable Boolean overwriteExisting) {
             this.overwriteExisting = overwriteExisting;
             return this;
-        }        public RestoreJobOtsDetail build() {
-            return new RestoreJobOtsDetail(overwriteExisting);
+        }
+        public RestoreJobOtsDetail build() {
+            final var o = new RestoreJobOtsDetail();
+            o.overwriteExisting = overwriteExisting;
+            return o;
         }
     }
 }

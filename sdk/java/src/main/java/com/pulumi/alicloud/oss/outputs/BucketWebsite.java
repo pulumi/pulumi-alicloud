@@ -15,21 +15,14 @@ public final class BucketWebsite {
      * @return An absolute path to the document to return in case of a 4XX error.
      * 
      */
-    private final @Nullable String errorDocument;
+    private @Nullable String errorDocument;
     /**
      * @return Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
      * 
      */
-    private final String indexDocument;
+    private String indexDocument;
 
-    @CustomType.Constructor
-    private BucketWebsite(
-        @CustomType.Parameter("errorDocument") @Nullable String errorDocument,
-        @CustomType.Parameter("indexDocument") String indexDocument) {
-        this.errorDocument = errorDocument;
-        this.indexDocument = indexDocument;
-    }
-
+    private BucketWebsite() {}
     /**
      * @return An absolute path to the document to return in case of a 4XX error.
      * 
@@ -52,30 +45,32 @@ public final class BucketWebsite {
     public static Builder builder(BucketWebsite defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String errorDocument;
         private String indexDocument;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(BucketWebsite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.errorDocument = defaults.errorDocument;
     	      this.indexDocument = defaults.indexDocument;
         }
 
+        @CustomType.Setter
         public Builder errorDocument(@Nullable String errorDocument) {
             this.errorDocument = errorDocument;
             return this;
         }
+        @CustomType.Setter
         public Builder indexDocument(String indexDocument) {
             this.indexDocument = Objects.requireNonNull(indexDocument);
             return this;
-        }        public BucketWebsite build() {
-            return new BucketWebsite(errorDocument, indexDocument);
+        }
+        public BucketWebsite build() {
+            final var o = new BucketWebsite();
+            o.errorDocument = errorDocument;
+            o.indexDocument = indexDocument;
+            return o;
         }
     }
 }

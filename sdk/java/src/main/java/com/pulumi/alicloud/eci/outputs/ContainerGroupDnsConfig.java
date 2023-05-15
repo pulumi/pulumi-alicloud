@@ -16,28 +16,19 @@ public final class ContainerGroupDnsConfig {
      * @return The list of DNS server IP addresses.
      * 
      */
-    private final @Nullable List<String> nameServers;
+    private @Nullable List<String> nameServers;
     /**
      * @return The structure of options.
      * 
      */
-    private final @Nullable List<ContainerGroupDnsConfigOption> options;
+    private @Nullable List<ContainerGroupDnsConfigOption> options;
     /**
      * @return The list of DNS lookup domains.
      * 
      */
-    private final @Nullable List<String> searches;
+    private @Nullable List<String> searches;
 
-    @CustomType.Constructor
-    private ContainerGroupDnsConfig(
-        @CustomType.Parameter("nameServers") @Nullable List<String> nameServers,
-        @CustomType.Parameter("options") @Nullable List<ContainerGroupDnsConfigOption> options,
-        @CustomType.Parameter("searches") @Nullable List<String> searches) {
-        this.nameServers = nameServers;
-        this.options = options;
-        this.searches = searches;
-    }
-
+    private ContainerGroupDnsConfig() {}
     /**
      * @return The list of DNS server IP addresses.
      * 
@@ -67,16 +58,12 @@ public final class ContainerGroupDnsConfig {
     public static Builder builder(ContainerGroupDnsConfig defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> nameServers;
         private @Nullable List<ContainerGroupDnsConfigOption> options;
         private @Nullable List<String> searches;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupDnsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nameServers = defaults.nameServers;
@@ -84,6 +71,7 @@ public final class ContainerGroupDnsConfig {
     	      this.searches = defaults.searches;
         }
 
+        @CustomType.Setter
         public Builder nameServers(@Nullable List<String> nameServers) {
             this.nameServers = nameServers;
             return this;
@@ -91,6 +79,7 @@ public final class ContainerGroupDnsConfig {
         public Builder nameServers(String... nameServers) {
             return nameServers(List.of(nameServers));
         }
+        @CustomType.Setter
         public Builder options(@Nullable List<ContainerGroupDnsConfigOption> options) {
             this.options = options;
             return this;
@@ -98,14 +87,20 @@ public final class ContainerGroupDnsConfig {
         public Builder options(ContainerGroupDnsConfigOption... options) {
             return options(List.of(options));
         }
+        @CustomType.Setter
         public Builder searches(@Nullable List<String> searches) {
             this.searches = searches;
             return this;
         }
         public Builder searches(String... searches) {
             return searches(List.of(searches));
-        }        public ContainerGroupDnsConfig build() {
-            return new ContainerGroupDnsConfig(nameServers, options, searches);
+        }
+        public ContainerGroupDnsConfig build() {
+            final var o = new ContainerGroupDnsConfig();
+            o.nameServers = nameServers;
+            o.options = options;
+            o.searches = searches;
+            return o;
         }
     }
 }

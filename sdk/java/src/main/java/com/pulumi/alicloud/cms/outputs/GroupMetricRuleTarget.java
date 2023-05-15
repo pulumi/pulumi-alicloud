@@ -15,37 +15,26 @@ public final class GroupMetricRuleTarget {
      * @return The Alibaba Cloud Resource Name (ARN) of the resource.
      * 
      */
-    private final @Nullable String arn;
+    private @Nullable String arn;
     /**
      * @return The ID of the resource for which alerts are triggered.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return The parameters of the alert callback. The parameters are in the JSON format.
      * 
      * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
-    private final @Nullable String jsonParams;
+    private @Nullable String jsonParams;
     /**
      * @return The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
      * 
      */
-    private final @Nullable String level;
+    private @Nullable String level;
 
-    @CustomType.Constructor
-    private GroupMetricRuleTarget(
-        @CustomType.Parameter("arn") @Nullable String arn,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("jsonParams") @Nullable String jsonParams,
-        @CustomType.Parameter("level") @Nullable String level) {
-        this.arn = arn;
-        this.id = id;
-        this.jsonParams = jsonParams;
-        this.level = level;
-    }
-
+    private GroupMetricRuleTarget() {}
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the resource.
      * 
@@ -84,17 +73,13 @@ public final class GroupMetricRuleTarget {
     public static Builder builder(GroupMetricRuleTarget defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String arn;
         private @Nullable String id;
         private @Nullable String jsonParams;
         private @Nullable String level;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GroupMetricRuleTarget defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arn = defaults.arn;
@@ -103,23 +88,33 @@ public final class GroupMetricRuleTarget {
     	      this.level = defaults.level;
         }
 
+        @CustomType.Setter
         public Builder arn(@Nullable String arn) {
             this.arn = arn;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder jsonParams(@Nullable String jsonParams) {
             this.jsonParams = jsonParams;
             return this;
         }
+        @CustomType.Setter
         public Builder level(@Nullable String level) {
             this.level = level;
             return this;
-        }        public GroupMetricRuleTarget build() {
-            return new GroupMetricRuleTarget(arn, id, jsonParams, level);
+        }
+        public GroupMetricRuleTarget build() {
+            final var o = new GroupMetricRuleTarget();
+            o.arn = arn;
+            o.id = id;
+            o.jsonParams = jsonParams;
+            o.level = level;
+            return o;
         }
     }
 }

@@ -15,79 +15,56 @@ public final class EtlEtlSink {
      * @return Delivery target logstore access key id.
      * 
      */
-    private final @Nullable String accessKeyId;
+    private @Nullable String accessKeyId;
     /**
      * @return Delivery target logstore access key secret.
      * 
      */
-    private final @Nullable String accessKeySecret;
+    private @Nullable String accessKeySecret;
     /**
      * @return Delivery target logstore region.
      * 
      */
-    private final String endpoint;
+    private String endpoint;
     /**
      * @return An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
      * 
      */
-    private final @Nullable String kmsEncryptedAccessKeyId;
+    private @Nullable String kmsEncryptedAccessKeyId;
     /**
      * @return An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
      * 
      */
-    private final @Nullable String kmsEncryptedAccessKeySecret;
+    private @Nullable String kmsEncryptedAccessKeySecret;
     /**
      * @return Delivery target logstore.
      * 
      */
-    private final String logstore;
+    private String logstore;
     /**
      * @return Delivery target name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The project where the target logstore is delivered.
      * 
      */
-    private final String project;
+    private String project;
     /**
      * @return Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
-    private final @Nullable String roleArn;
+    private @Nullable String roleArn;
     /**
      * @return ETL sinks type, the default value is AliyunLOG.
      * 
      * &gt; **Note:** `from_time` and `to_time` no modification allowed after successful creation.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private EtlEtlSink(
-        @CustomType.Parameter("accessKeyId") @Nullable String accessKeyId,
-        @CustomType.Parameter("accessKeySecret") @Nullable String accessKeySecret,
-        @CustomType.Parameter("endpoint") String endpoint,
-        @CustomType.Parameter("kmsEncryptedAccessKeyId") @Nullable String kmsEncryptedAccessKeyId,
-        @CustomType.Parameter("kmsEncryptedAccessKeySecret") @Nullable String kmsEncryptedAccessKeySecret,
-        @CustomType.Parameter("logstore") String logstore,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("project") String project,
-        @CustomType.Parameter("roleArn") @Nullable String roleArn,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.accessKeyId = accessKeyId;
-        this.accessKeySecret = accessKeySecret;
-        this.endpoint = endpoint;
-        this.kmsEncryptedAccessKeyId = kmsEncryptedAccessKeyId;
-        this.kmsEncryptedAccessKeySecret = kmsEncryptedAccessKeySecret;
-        this.logstore = logstore;
-        this.name = name;
-        this.project = project;
-        this.roleArn = roleArn;
-        this.type = type;
-    }
-
+    private EtlEtlSink() {}
     /**
      * @return Delivery target logstore access key id.
      * 
@@ -168,7 +145,7 @@ public final class EtlEtlSink {
     public static Builder builder(EtlEtlSink defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKeyId;
         private @Nullable String accessKeySecret;
@@ -180,11 +157,7 @@ public final class EtlEtlSink {
         private String project;
         private @Nullable String roleArn;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EtlEtlSink defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKeyId = defaults.accessKeyId;
@@ -199,47 +172,69 @@ public final class EtlEtlSink {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder accessKeyId(@Nullable String accessKeyId) {
             this.accessKeyId = accessKeyId;
             return this;
         }
+        @CustomType.Setter
         public Builder accessKeySecret(@Nullable String accessKeySecret) {
             this.accessKeySecret = accessKeySecret;
             return this;
         }
+        @CustomType.Setter
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsEncryptedAccessKeyId(@Nullable String kmsEncryptedAccessKeyId) {
             this.kmsEncryptedAccessKeyId = kmsEncryptedAccessKeyId;
             return this;
         }
+        @CustomType.Setter
         public Builder kmsEncryptedAccessKeySecret(@Nullable String kmsEncryptedAccessKeySecret) {
             this.kmsEncryptedAccessKeySecret = kmsEncryptedAccessKeySecret;
             return this;
         }
+        @CustomType.Setter
         public Builder logstore(String logstore) {
             this.logstore = Objects.requireNonNull(logstore);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
             return this;
         }
+        @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
             this.roleArn = roleArn;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public EtlEtlSink build() {
-            return new EtlEtlSink(accessKeyId, accessKeySecret, endpoint, kmsEncryptedAccessKeyId, kmsEncryptedAccessKeySecret, logstore, name, project, roleArn, type);
+        }
+        public EtlEtlSink build() {
+            final var o = new EtlEtlSink();
+            o.accessKeyId = accessKeyId;
+            o.accessKeySecret = accessKeySecret;
+            o.endpoint = endpoint;
+            o.kmsEncryptedAccessKeyId = kmsEncryptedAccessKeyId;
+            o.kmsEncryptedAccessKeySecret = kmsEncryptedAccessKeySecret;
+            o.logstore = logstore;
+            o.name = name;
+            o.project = project;
+            o.roleArn = roleArn;
+            o.type = type;
+            return o;
         }
     }
 }

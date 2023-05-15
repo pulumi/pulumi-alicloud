@@ -18,42 +18,25 @@ public final class GetLaunchOptionsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
+    private String id;
+    private List<String> ids;
     /**
      * @return A list of Launch Option Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetLaunchOptionsLaunchOption> launchOptions;
-    private final @Nullable String nameRegex;
+    private List<GetLaunchOptionsLaunchOption> launchOptions;
+    private @Nullable String nameRegex;
     /**
      * @deprecated
      * Field &#39;options&#39; has been deprecated from provider version 1.197.0.
      * 
      */
     @Deprecated /* Field 'options' has been deprecated from provider version 1.197.0. */
-    private final List<GetLaunchOptionsOption> options;
-    private final @Nullable String outputFile;
-    private final String productId;
+    private List<GetLaunchOptionsOption> options;
+    private @Nullable String outputFile;
+    private String productId;
 
-    @CustomType.Constructor
-    private GetLaunchOptionsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("launchOptions") List<GetLaunchOptionsLaunchOption> launchOptions,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("options") List<GetLaunchOptionsOption> options,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("productId") String productId) {
-        this.id = id;
-        this.ids = ids;
-        this.launchOptions = launchOptions;
-        this.nameRegex = nameRegex;
-        this.options = options;
-        this.outputFile = outputFile;
-        this.productId = productId;
-    }
-
+    private GetLaunchOptionsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -97,7 +80,7 @@ public final class GetLaunchOptionsResult {
     public static Builder builder(GetLaunchOptionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -106,11 +89,7 @@ public final class GetLaunchOptionsResult {
         private List<GetLaunchOptionsOption> options;
         private @Nullable String outputFile;
         private String productId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLaunchOptionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -122,10 +101,12 @@ public final class GetLaunchOptionsResult {
     	      this.productId = defaults.productId;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -133,6 +114,7 @@ public final class GetLaunchOptionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder launchOptions(List<GetLaunchOptionsLaunchOption> launchOptions) {
             this.launchOptions = Objects.requireNonNull(launchOptions);
             return this;
@@ -140,10 +122,12 @@ public final class GetLaunchOptionsResult {
         public Builder launchOptions(GetLaunchOptionsLaunchOption... launchOptions) {
             return launchOptions(List.of(launchOptions));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder options(List<GetLaunchOptionsOption> options) {
             this.options = Objects.requireNonNull(options);
             return this;
@@ -151,15 +135,26 @@ public final class GetLaunchOptionsResult {
         public Builder options(GetLaunchOptionsOption... options) {
             return options(List.of(options));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder productId(String productId) {
             this.productId = Objects.requireNonNull(productId);
             return this;
-        }        public GetLaunchOptionsResult build() {
-            return new GetLaunchOptionsResult(id, ids, launchOptions, nameRegex, options, outputFile, productId);
+        }
+        public GetLaunchOptionsResult build() {
+            final var o = new GetLaunchOptionsResult();
+            o.id = id;
+            o.ids = ids;
+            o.launchOptions = launchOptions;
+            o.nameRegex = nameRegex;
+            o.options = options;
+            o.outputFile = outputFile;
+            o.productId = productId;
+            return o;
         }
     }
 }

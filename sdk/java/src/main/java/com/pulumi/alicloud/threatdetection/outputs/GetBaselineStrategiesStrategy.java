@@ -14,22 +14,22 @@ public final class GetBaselineStrategiesStrategy {
      * @return The ID of the baseline check policy.
      * 
      */
-    private final String baselineStrategyId;
+    private String baselineStrategyId;
     /**
      * @return Policy name.
      * 
      */
-    private final String baselineStrategyName;
+    private String baselineStrategyName;
     /**
      * @return The type of policy. Value:-**common**: standard policy-**custom**: custom policy
      * 
      */
-    private final String customType;
+    private String customType;
     /**
      * @return The detection period of the policy.
      * 
      */
-    private final Integer cycleDays;
+    private Integer cycleDays;
     /**
      * @return The detection period of the policy. Value:
      * * **0**: 0:00~06:00
@@ -38,49 +38,26 @@ public final class GetBaselineStrategiesStrategy {
      * * **18**: 18:00~24:00
      * 
      */
-    private final Integer cycleStartTime;
+    private Integer cycleStartTime;
     /**
      * @return The baseline check policy execution end time.
      * 
      */
-    private final String endTime;
+    private String endTime;
     /**
      * @return The ID of the baseline check policy.
      * 
      */
-    private final String id;
-    private final String riskSubTypeName;
+    private String id;
+    private String riskSubTypeName;
     /**
      * @return The baseline check policy start time.
      * 
      */
-    private final String startTime;
-    private final String targetType;
+    private String startTime;
+    private String targetType;
 
-    @CustomType.Constructor
-    private GetBaselineStrategiesStrategy(
-        @CustomType.Parameter("baselineStrategyId") String baselineStrategyId,
-        @CustomType.Parameter("baselineStrategyName") String baselineStrategyName,
-        @CustomType.Parameter("customType") String customType,
-        @CustomType.Parameter("cycleDays") Integer cycleDays,
-        @CustomType.Parameter("cycleStartTime") Integer cycleStartTime,
-        @CustomType.Parameter("endTime") String endTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("riskSubTypeName") String riskSubTypeName,
-        @CustomType.Parameter("startTime") String startTime,
-        @CustomType.Parameter("targetType") String targetType) {
-        this.baselineStrategyId = baselineStrategyId;
-        this.baselineStrategyName = baselineStrategyName;
-        this.customType = customType;
-        this.cycleDays = cycleDays;
-        this.cycleStartTime = cycleStartTime;
-        this.endTime = endTime;
-        this.id = id;
-        this.riskSubTypeName = riskSubTypeName;
-        this.startTime = startTime;
-        this.targetType = targetType;
-    }
-
+    private GetBaselineStrategiesStrategy() {}
     /**
      * @return The ID of the baseline check policy.
      * 
@@ -155,7 +132,7 @@ public final class GetBaselineStrategiesStrategy {
     public static Builder builder(GetBaselineStrategiesStrategy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String baselineStrategyId;
         private String baselineStrategyName;
@@ -167,11 +144,7 @@ public final class GetBaselineStrategiesStrategy {
         private String riskSubTypeName;
         private String startTime;
         private String targetType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetBaselineStrategiesStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baselineStrategyId = defaults.baselineStrategyId;
@@ -186,47 +159,69 @@ public final class GetBaselineStrategiesStrategy {
     	      this.targetType = defaults.targetType;
         }
 
+        @CustomType.Setter
         public Builder baselineStrategyId(String baselineStrategyId) {
             this.baselineStrategyId = Objects.requireNonNull(baselineStrategyId);
             return this;
         }
+        @CustomType.Setter
         public Builder baselineStrategyName(String baselineStrategyName) {
             this.baselineStrategyName = Objects.requireNonNull(baselineStrategyName);
             return this;
         }
+        @CustomType.Setter
         public Builder customType(String customType) {
             this.customType = Objects.requireNonNull(customType);
             return this;
         }
+        @CustomType.Setter
         public Builder cycleDays(Integer cycleDays) {
             this.cycleDays = Objects.requireNonNull(cycleDays);
             return this;
         }
+        @CustomType.Setter
         public Builder cycleStartTime(Integer cycleStartTime) {
             this.cycleStartTime = Objects.requireNonNull(cycleStartTime);
             return this;
         }
+        @CustomType.Setter
         public Builder endTime(String endTime) {
             this.endTime = Objects.requireNonNull(endTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder riskSubTypeName(String riskSubTypeName) {
             this.riskSubTypeName = Objects.requireNonNull(riskSubTypeName);
             return this;
         }
+        @CustomType.Setter
         public Builder startTime(String startTime) {
             this.startTime = Objects.requireNonNull(startTime);
             return this;
         }
+        @CustomType.Setter
         public Builder targetType(String targetType) {
             this.targetType = Objects.requireNonNull(targetType);
             return this;
-        }        public GetBaselineStrategiesStrategy build() {
-            return new GetBaselineStrategiesStrategy(baselineStrategyId, baselineStrategyName, customType, cycleDays, cycleStartTime, endTime, id, riskSubTypeName, startTime, targetType);
+        }
+        public GetBaselineStrategiesStrategy build() {
+            final var o = new GetBaselineStrategiesStrategy();
+            o.baselineStrategyId = baselineStrategyId;
+            o.baselineStrategyName = baselineStrategyName;
+            o.customType = customType;
+            o.cycleDays = cycleDays;
+            o.cycleStartTime = cycleStartTime;
+            o.endTime = endTime;
+            o.id = id;
+            o.riskSubTypeName = riskSubTypeName;
+            o.startTime = startTime;
+            o.targetType = targetType;
+            return o;
         }
     }
 }

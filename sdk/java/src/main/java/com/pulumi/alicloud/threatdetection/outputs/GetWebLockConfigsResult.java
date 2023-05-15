@@ -18,49 +18,26 @@ public final class GetWebLockConfigsResult {
      * @return A list of Web Lock Config Entries. Each element contains the following attributes:
      * 
      */
-    private final List<GetWebLockConfigsConfig> configs;
+    private List<GetWebLockConfigsConfig> configs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of Web Lock Config IDs.
      * 
      */
-    private final List<String> ids;
-    private final @Nullable String lang;
-    private final @Nullable String outputFile;
-    private final @Nullable Integer pageNumber;
-    private final @Nullable Integer pageSize;
-    private final @Nullable String remark;
-    private final @Nullable String sourceIp;
-    private final @Nullable String status;
+    private List<String> ids;
+    private @Nullable String lang;
+    private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
+    private @Nullable String remark;
+    private @Nullable String sourceIp;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetWebLockConfigsResult(
-        @CustomType.Parameter("configs") List<GetWebLockConfigsConfig> configs,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("lang") @Nullable String lang,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("pageNumber") @Nullable Integer pageNumber,
-        @CustomType.Parameter("pageSize") @Nullable Integer pageSize,
-        @CustomType.Parameter("remark") @Nullable String remark,
-        @CustomType.Parameter("sourceIp") @Nullable String sourceIp,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.configs = configs;
-        this.id = id;
-        this.ids = ids;
-        this.lang = lang;
-        this.outputFile = outputFile;
-        this.pageNumber = pageNumber;
-        this.pageSize = pageSize;
-        this.remark = remark;
-        this.sourceIp = sourceIp;
-        this.status = status;
-    }
-
+    private GetWebLockConfigsResult() {}
     /**
      * @return A list of Web Lock Config Entries. Each element contains the following attributes:
      * 
@@ -111,7 +88,7 @@ public final class GetWebLockConfigsResult {
     public static Builder builder(GetWebLockConfigsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetWebLockConfigsConfig> configs;
         private String id;
@@ -123,11 +100,7 @@ public final class GetWebLockConfigsResult {
         private @Nullable String remark;
         private @Nullable String sourceIp;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetWebLockConfigsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configs = defaults.configs;
@@ -142,6 +115,7 @@ public final class GetWebLockConfigsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder configs(List<GetWebLockConfigsConfig> configs) {
             this.configs = Objects.requireNonNull(configs);
             return this;
@@ -149,10 +123,12 @@ public final class GetWebLockConfigsResult {
         public Builder configs(GetWebLockConfigsConfig... configs) {
             return configs(List.of(configs));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -160,35 +136,54 @@ public final class GetWebLockConfigsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
             this.lang = lang;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder pageNumber(@Nullable Integer pageNumber) {
             this.pageNumber = pageNumber;
             return this;
         }
+        @CustomType.Setter
         public Builder pageSize(@Nullable Integer pageSize) {
             this.pageSize = pageSize;
             return this;
         }
+        @CustomType.Setter
         public Builder remark(@Nullable String remark) {
             this.remark = remark;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceIp(@Nullable String sourceIp) {
             this.sourceIp = sourceIp;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetWebLockConfigsResult build() {
-            return new GetWebLockConfigsResult(configs, id, ids, lang, outputFile, pageNumber, pageSize, remark, sourceIp, status);
+        }
+        public GetWebLockConfigsResult build() {
+            final var o = new GetWebLockConfigsResult();
+            o.configs = configs;
+            o.id = id;
+            o.ids = ids;
+            o.lang = lang;
+            o.outputFile = outputFile;
+            o.pageNumber = pageNumber;
+            o.pageSize = pageSize;
+            o.remark = remark;
+            o.sourceIp = sourceIp;
+            o.status = status;
+            return o;
         }
     }
 }

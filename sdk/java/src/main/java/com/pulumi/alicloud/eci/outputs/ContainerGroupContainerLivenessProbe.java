@@ -19,63 +19,44 @@ public final class ContainerGroupContainerLivenessProbe {
      * @return Health check using command line method.
      * 
      */
-    private final @Nullable List<ContainerGroupContainerLivenessProbeExec> execs;
+    private @Nullable List<ContainerGroupContainerLivenessProbeExec> execs;
     /**
      * @return Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
      * 
      */
-    private final @Nullable Integer failureThreshold;
+    private @Nullable Integer failureThreshold;
     /**
      * @return Health check using HTTP request method.
      * 
      */
-    private final @Nullable List<ContainerGroupContainerLivenessProbeHttpGet> httpGets;
+    private @Nullable List<ContainerGroupContainerLivenessProbeHttpGet> httpGets;
     /**
      * @return Check the time to start execution, calculated from the completion of container startup.
      * 
      */
-    private final @Nullable Integer initialDelaySeconds;
+    private @Nullable Integer initialDelaySeconds;
     /**
      * @return Buffer time for the program to handle operations before closing.
      * 
      */
-    private final @Nullable Integer periodSeconds;
+    private @Nullable Integer periodSeconds;
     /**
      * @return The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
      * 
      */
-    private final @Nullable Integer successThreshold;
+    private @Nullable Integer successThreshold;
     /**
      * @return Health check using TCP socket method.
      * 
      */
-    private final @Nullable List<ContainerGroupContainerLivenessProbeTcpSocket> tcpSockets;
+    private @Nullable List<ContainerGroupContainerLivenessProbeTcpSocket> tcpSockets;
     /**
      * @return Check the timeout, the default is 1 second, the minimum is 1 second.
      * 
      */
-    private final @Nullable Integer timeoutSeconds;
+    private @Nullable Integer timeoutSeconds;
 
-    @CustomType.Constructor
-    private ContainerGroupContainerLivenessProbe(
-        @CustomType.Parameter("execs") @Nullable List<ContainerGroupContainerLivenessProbeExec> execs,
-        @CustomType.Parameter("failureThreshold") @Nullable Integer failureThreshold,
-        @CustomType.Parameter("httpGets") @Nullable List<ContainerGroupContainerLivenessProbeHttpGet> httpGets,
-        @CustomType.Parameter("initialDelaySeconds") @Nullable Integer initialDelaySeconds,
-        @CustomType.Parameter("periodSeconds") @Nullable Integer periodSeconds,
-        @CustomType.Parameter("successThreshold") @Nullable Integer successThreshold,
-        @CustomType.Parameter("tcpSockets") @Nullable List<ContainerGroupContainerLivenessProbeTcpSocket> tcpSockets,
-        @CustomType.Parameter("timeoutSeconds") @Nullable Integer timeoutSeconds) {
-        this.execs = execs;
-        this.failureThreshold = failureThreshold;
-        this.httpGets = httpGets;
-        this.initialDelaySeconds = initialDelaySeconds;
-        this.periodSeconds = periodSeconds;
-        this.successThreshold = successThreshold;
-        this.tcpSockets = tcpSockets;
-        this.timeoutSeconds = timeoutSeconds;
-    }
-
+    private ContainerGroupContainerLivenessProbe() {}
     /**
      * @return Health check using command line method.
      * 
@@ -140,7 +121,7 @@ public final class ContainerGroupContainerLivenessProbe {
     public static Builder builder(ContainerGroupContainerLivenessProbe defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ContainerGroupContainerLivenessProbeExec> execs;
         private @Nullable Integer failureThreshold;
@@ -150,11 +131,7 @@ public final class ContainerGroupContainerLivenessProbe {
         private @Nullable Integer successThreshold;
         private @Nullable List<ContainerGroupContainerLivenessProbeTcpSocket> tcpSockets;
         private @Nullable Integer timeoutSeconds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerGroupContainerLivenessProbe defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.execs = defaults.execs;
@@ -167,6 +144,7 @@ public final class ContainerGroupContainerLivenessProbe {
     	      this.timeoutSeconds = defaults.timeoutSeconds;
         }
 
+        @CustomType.Setter
         public Builder execs(@Nullable List<ContainerGroupContainerLivenessProbeExec> execs) {
             this.execs = execs;
             return this;
@@ -174,10 +152,12 @@ public final class ContainerGroupContainerLivenessProbe {
         public Builder execs(ContainerGroupContainerLivenessProbeExec... execs) {
             return execs(List.of(execs));
         }
+        @CustomType.Setter
         public Builder failureThreshold(@Nullable Integer failureThreshold) {
             this.failureThreshold = failureThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder httpGets(@Nullable List<ContainerGroupContainerLivenessProbeHttpGet> httpGets) {
             this.httpGets = httpGets;
             return this;
@@ -185,18 +165,22 @@ public final class ContainerGroupContainerLivenessProbe {
         public Builder httpGets(ContainerGroupContainerLivenessProbeHttpGet... httpGets) {
             return httpGets(List.of(httpGets));
         }
+        @CustomType.Setter
         public Builder initialDelaySeconds(@Nullable Integer initialDelaySeconds) {
             this.initialDelaySeconds = initialDelaySeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder periodSeconds(@Nullable Integer periodSeconds) {
             this.periodSeconds = periodSeconds;
             return this;
         }
+        @CustomType.Setter
         public Builder successThreshold(@Nullable Integer successThreshold) {
             this.successThreshold = successThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder tcpSockets(@Nullable List<ContainerGroupContainerLivenessProbeTcpSocket> tcpSockets) {
             this.tcpSockets = tcpSockets;
             return this;
@@ -204,11 +188,22 @@ public final class ContainerGroupContainerLivenessProbe {
         public Builder tcpSockets(ContainerGroupContainerLivenessProbeTcpSocket... tcpSockets) {
             return tcpSockets(List.of(tcpSockets));
         }
+        @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
             this.timeoutSeconds = timeoutSeconds;
             return this;
-        }        public ContainerGroupContainerLivenessProbe build() {
-            return new ContainerGroupContainerLivenessProbe(execs, failureThreshold, httpGets, initialDelaySeconds, periodSeconds, successThreshold, tcpSockets, timeoutSeconds);
+        }
+        public ContainerGroupContainerLivenessProbe build() {
+            final var o = new ContainerGroupContainerLivenessProbe();
+            o.execs = execs;
+            o.failureThreshold = failureThreshold;
+            o.httpGets = httpGets;
+            o.initialDelaySeconds = initialDelaySeconds;
+            o.periodSeconds = periodSeconds;
+            o.successThreshold = successThreshold;
+            o.tcpSockets = tcpSockets;
+            o.timeoutSeconds = timeoutSeconds;
+            return o;
         }
     }
 }

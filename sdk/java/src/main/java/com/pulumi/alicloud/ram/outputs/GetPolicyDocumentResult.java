@@ -17,30 +17,17 @@ public final class GetPolicyDocumentResult {
      * @return Standard policy document rendered based on the arguments above.
      * 
      */
-    private final String document;
+    private String document;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String outputFile;
-    private final @Nullable List<GetPolicyDocumentStatement> statements;
-    private final @Nullable String version;
+    private String id;
+    private @Nullable String outputFile;
+    private @Nullable List<GetPolicyDocumentStatement> statements;
+    private @Nullable String version;
 
-    @CustomType.Constructor
-    private GetPolicyDocumentResult(
-        @CustomType.Parameter("document") String document,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("statements") @Nullable List<GetPolicyDocumentStatement> statements,
-        @CustomType.Parameter("version") @Nullable String version) {
-        this.document = document;
-        this.id = id;
-        this.outputFile = outputFile;
-        this.statements = statements;
-        this.version = version;
-    }
-
+    private GetPolicyDocumentResult() {}
     /**
      * @return Standard policy document rendered based on the arguments above.
      * 
@@ -72,18 +59,14 @@ public final class GetPolicyDocumentResult {
     public static Builder builder(GetPolicyDocumentResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String document;
         private String id;
         private @Nullable String outputFile;
         private @Nullable List<GetPolicyDocumentStatement> statements;
         private @Nullable String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPolicyDocumentResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.document = defaults.document;
@@ -93,18 +76,22 @@ public final class GetPolicyDocumentResult {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder document(String document) {
             this.document = Objects.requireNonNull(document);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder statements(@Nullable List<GetPolicyDocumentStatement> statements) {
             this.statements = statements;
             return this;
@@ -112,11 +99,19 @@ public final class GetPolicyDocumentResult {
         public Builder statements(GetPolicyDocumentStatement... statements) {
             return statements(List.of(statements));
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
-        }        public GetPolicyDocumentResult build() {
-            return new GetPolicyDocumentResult(document, id, outputFile, statements, version);
+        }
+        public GetPolicyDocumentResult build() {
+            final var o = new GetPolicyDocumentResult();
+            o.document = document;
+            o.id = id;
+            o.outputFile = outputFile;
+            o.statements = statements;
+            o.version = version;
+            return o;
         }
     }
 }

@@ -12,110 +12,73 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVpcFirewallCensCenLocalVpc {
-    private final String attachmentId;
-    private final String attachmentName;
+    private String attachmentId;
+    private String attachmentName;
     /**
      * @return The list of network segments protected by the VPC firewall.
      * 
      */
-    private final List<String> defendCidrLists;
-    private final List<GetVpcFirewallCensCenLocalVpcEniList> eniLists;
-    private final String manualVswitchId;
+    private List<String> defendCidrLists;
+    private List<GetVpcFirewallCensCenLocalVpcEniList> eniLists;
+    private String manualVswitchId;
     /**
      * @return The ID of the VPC instance that created the VPC firewall.
      * 
      */
-    private final String networkInstanceId;
+    private String networkInstanceId;
     /**
      * @return The name of the network instance.
      * 
      */
-    private final String networkInstanceName;
+    private String networkInstanceName;
     /**
      * @return The type of the network instance. Value: **VPC * *.
      * 
      */
-    private final String networkInstanceType;
+    private String networkInstanceType;
     /**
      * @return The UID of the Alibaba Cloud account to which the VPC belongs.
      * 
      */
-    private final String ownerId;
+    private String ownerId;
     /**
      * @return The region ID of the VPC.
      * 
      */
-    private final String regionNo;
+    private String regionNo;
     /**
      * @return Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
      * 
      */
-    private final String routeMode;
+    private String routeMode;
     /**
      * @return Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
      * 
      */
-    private final String supportManualMode;
-    private final String transitRouterId;
+    private String supportManualMode;
+    private String transitRouterId;
     /**
      * @return The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
      * 
      */
-    private final String transitRouterType;
+    private String transitRouterType;
     /**
      * @return The VPC network segment list.
      * 
      */
-    private final List<GetVpcFirewallCensCenLocalVpcVpcCidrTableList> vpcCidrTableLists;
+    private List<GetVpcFirewallCensCenLocalVpcVpcCidrTableList> vpcCidrTableLists;
     /**
      * @return The ID of the VPC instance.
      * 
      */
-    private final String vpcId;
+    private String vpcId;
     /**
      * @return The instance name of the VPC.
      * 
      */
-    private final String vpcName;
+    private String vpcName;
 
-    @CustomType.Constructor
-    private GetVpcFirewallCensCenLocalVpc(
-        @CustomType.Parameter("attachmentId") String attachmentId,
-        @CustomType.Parameter("attachmentName") String attachmentName,
-        @CustomType.Parameter("defendCidrLists") List<String> defendCidrLists,
-        @CustomType.Parameter("eniLists") List<GetVpcFirewallCensCenLocalVpcEniList> eniLists,
-        @CustomType.Parameter("manualVswitchId") String manualVswitchId,
-        @CustomType.Parameter("networkInstanceId") String networkInstanceId,
-        @CustomType.Parameter("networkInstanceName") String networkInstanceName,
-        @CustomType.Parameter("networkInstanceType") String networkInstanceType,
-        @CustomType.Parameter("ownerId") String ownerId,
-        @CustomType.Parameter("regionNo") String regionNo,
-        @CustomType.Parameter("routeMode") String routeMode,
-        @CustomType.Parameter("supportManualMode") String supportManualMode,
-        @CustomType.Parameter("transitRouterId") String transitRouterId,
-        @CustomType.Parameter("transitRouterType") String transitRouterType,
-        @CustomType.Parameter("vpcCidrTableLists") List<GetVpcFirewallCensCenLocalVpcVpcCidrTableList> vpcCidrTableLists,
-        @CustomType.Parameter("vpcId") String vpcId,
-        @CustomType.Parameter("vpcName") String vpcName) {
-        this.attachmentId = attachmentId;
-        this.attachmentName = attachmentName;
-        this.defendCidrLists = defendCidrLists;
-        this.eniLists = eniLists;
-        this.manualVswitchId = manualVswitchId;
-        this.networkInstanceId = networkInstanceId;
-        this.networkInstanceName = networkInstanceName;
-        this.networkInstanceType = networkInstanceType;
-        this.ownerId = ownerId;
-        this.regionNo = regionNo;
-        this.routeMode = routeMode;
-        this.supportManualMode = supportManualMode;
-        this.transitRouterId = transitRouterId;
-        this.transitRouterType = transitRouterType;
-        this.vpcCidrTableLists = vpcCidrTableLists;
-        this.vpcId = vpcId;
-        this.vpcName = vpcName;
-    }
-
+    private GetVpcFirewallCensCenLocalVpc() {}
     public String attachmentId() {
         return this.attachmentId;
     }
@@ -223,7 +186,7 @@ public final class GetVpcFirewallCensCenLocalVpc {
     public static Builder builder(GetVpcFirewallCensCenLocalVpc defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attachmentId;
         private String attachmentName;
@@ -242,11 +205,7 @@ public final class GetVpcFirewallCensCenLocalVpc {
         private List<GetVpcFirewallCensCenLocalVpcVpcCidrTableList> vpcCidrTableLists;
         private String vpcId;
         private String vpcName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcFirewallCensCenLocalVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attachmentId = defaults.attachmentId;
@@ -268,14 +227,17 @@ public final class GetVpcFirewallCensCenLocalVpc {
     	      this.vpcName = defaults.vpcName;
         }
 
+        @CustomType.Setter
         public Builder attachmentId(String attachmentId) {
             this.attachmentId = Objects.requireNonNull(attachmentId);
             return this;
         }
+        @CustomType.Setter
         public Builder attachmentName(String attachmentName) {
             this.attachmentName = Objects.requireNonNull(attachmentName);
             return this;
         }
+        @CustomType.Setter
         public Builder defendCidrLists(List<String> defendCidrLists) {
             this.defendCidrLists = Objects.requireNonNull(defendCidrLists);
             return this;
@@ -283,6 +245,7 @@ public final class GetVpcFirewallCensCenLocalVpc {
         public Builder defendCidrLists(String... defendCidrLists) {
             return defendCidrLists(List.of(defendCidrLists));
         }
+        @CustomType.Setter
         public Builder eniLists(List<GetVpcFirewallCensCenLocalVpcEniList> eniLists) {
             this.eniLists = Objects.requireNonNull(eniLists);
             return this;
@@ -290,46 +253,57 @@ public final class GetVpcFirewallCensCenLocalVpc {
         public Builder eniLists(GetVpcFirewallCensCenLocalVpcEniList... eniLists) {
             return eniLists(List.of(eniLists));
         }
+        @CustomType.Setter
         public Builder manualVswitchId(String manualVswitchId) {
             this.manualVswitchId = Objects.requireNonNull(manualVswitchId);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInstanceId(String networkInstanceId) {
             this.networkInstanceId = Objects.requireNonNull(networkInstanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInstanceName(String networkInstanceName) {
             this.networkInstanceName = Objects.requireNonNull(networkInstanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder networkInstanceType(String networkInstanceType) {
             this.networkInstanceType = Objects.requireNonNull(networkInstanceType);
             return this;
         }
+        @CustomType.Setter
         public Builder ownerId(String ownerId) {
             this.ownerId = Objects.requireNonNull(ownerId);
             return this;
         }
+        @CustomType.Setter
         public Builder regionNo(String regionNo) {
             this.regionNo = Objects.requireNonNull(regionNo);
             return this;
         }
+        @CustomType.Setter
         public Builder routeMode(String routeMode) {
             this.routeMode = Objects.requireNonNull(routeMode);
             return this;
         }
+        @CustomType.Setter
         public Builder supportManualMode(String supportManualMode) {
             this.supportManualMode = Objects.requireNonNull(supportManualMode);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterId(String transitRouterId) {
             this.transitRouterId = Objects.requireNonNull(transitRouterId);
             return this;
         }
+        @CustomType.Setter
         public Builder transitRouterType(String transitRouterType) {
             this.transitRouterType = Objects.requireNonNull(transitRouterType);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcCidrTableLists(List<GetVpcFirewallCensCenLocalVpcVpcCidrTableList> vpcCidrTableLists) {
             this.vpcCidrTableLists = Objects.requireNonNull(vpcCidrTableLists);
             return this;
@@ -337,15 +311,36 @@ public final class GetVpcFirewallCensCenLocalVpc {
         public Builder vpcCidrTableLists(GetVpcFirewallCensCenLocalVpcVpcCidrTableList... vpcCidrTableLists) {
             return vpcCidrTableLists(List.of(vpcCidrTableLists));
         }
+        @CustomType.Setter
         public Builder vpcId(String vpcId) {
             this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
+        @CustomType.Setter
         public Builder vpcName(String vpcName) {
             this.vpcName = Objects.requireNonNull(vpcName);
             return this;
-        }        public GetVpcFirewallCensCenLocalVpc build() {
-            return new GetVpcFirewallCensCenLocalVpc(attachmentId, attachmentName, defendCidrLists, eniLists, manualVswitchId, networkInstanceId, networkInstanceName, networkInstanceType, ownerId, regionNo, routeMode, supportManualMode, transitRouterId, transitRouterType, vpcCidrTableLists, vpcId, vpcName);
+        }
+        public GetVpcFirewallCensCenLocalVpc build() {
+            final var o = new GetVpcFirewallCensCenLocalVpc();
+            o.attachmentId = attachmentId;
+            o.attachmentName = attachmentName;
+            o.defendCidrLists = defendCidrLists;
+            o.eniLists = eniLists;
+            o.manualVswitchId = manualVswitchId;
+            o.networkInstanceId = networkInstanceId;
+            o.networkInstanceName = networkInstanceName;
+            o.networkInstanceType = networkInstanceType;
+            o.ownerId = ownerId;
+            o.regionNo = regionNo;
+            o.routeMode = routeMode;
+            o.supportManualMode = supportManualMode;
+            o.transitRouterId = transitRouterId;
+            o.transitRouterType = transitRouterType;
+            o.vpcCidrTableLists = vpcCidrTableLists;
+            o.vpcId = vpcId;
+            o.vpcName = vpcName;
+            return o;
         }
     }
 }

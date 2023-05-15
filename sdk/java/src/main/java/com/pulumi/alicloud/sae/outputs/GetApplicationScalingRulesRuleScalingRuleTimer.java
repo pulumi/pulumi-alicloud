@@ -15,35 +15,24 @@ public final class GetApplicationScalingRulesRuleScalingRuleTimer {
      * @return The short-term start date of the timed elastic scaling strategy.
      * 
      */
-    private final String beginDate;
+    private String beginDate;
     /**
      * @return The short-term end date of the timed elastic scaling strategy.
      * 
      */
-    private final String endDate;
+    private String endDate;
     /**
      * @return The period in which a timed elastic scaling strategy is executed.
      * 
      */
-    private final String period;
+    private String period;
     /**
      * @return Trigger point in time within a single day.
      * 
      */
-    private final List<GetApplicationScalingRulesRuleScalingRuleTimerSchedule> schedules;
+    private List<GetApplicationScalingRulesRuleScalingRuleTimerSchedule> schedules;
 
-    @CustomType.Constructor
-    private GetApplicationScalingRulesRuleScalingRuleTimer(
-        @CustomType.Parameter("beginDate") String beginDate,
-        @CustomType.Parameter("endDate") String endDate,
-        @CustomType.Parameter("period") String period,
-        @CustomType.Parameter("schedules") List<GetApplicationScalingRulesRuleScalingRuleTimerSchedule> schedules) {
-        this.beginDate = beginDate;
-        this.endDate = endDate;
-        this.period = period;
-        this.schedules = schedules;
-    }
-
+    private GetApplicationScalingRulesRuleScalingRuleTimer() {}
     /**
      * @return The short-term start date of the timed elastic scaling strategy.
      * 
@@ -80,17 +69,13 @@ public final class GetApplicationScalingRulesRuleScalingRuleTimer {
     public static Builder builder(GetApplicationScalingRulesRuleScalingRuleTimer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String beginDate;
         private String endDate;
         private String period;
         private List<GetApplicationScalingRulesRuleScalingRuleTimerSchedule> schedules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationScalingRulesRuleScalingRuleTimer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.beginDate = defaults.beginDate;
@@ -99,26 +84,36 @@ public final class GetApplicationScalingRulesRuleScalingRuleTimer {
     	      this.schedules = defaults.schedules;
         }
 
+        @CustomType.Setter
         public Builder beginDate(String beginDate) {
             this.beginDate = Objects.requireNonNull(beginDate);
             return this;
         }
+        @CustomType.Setter
         public Builder endDate(String endDate) {
             this.endDate = Objects.requireNonNull(endDate);
             return this;
         }
+        @CustomType.Setter
         public Builder period(String period) {
             this.period = Objects.requireNonNull(period);
             return this;
         }
+        @CustomType.Setter
         public Builder schedules(List<GetApplicationScalingRulesRuleScalingRuleTimerSchedule> schedules) {
             this.schedules = Objects.requireNonNull(schedules);
             return this;
         }
         public Builder schedules(GetApplicationScalingRulesRuleScalingRuleTimerSchedule... schedules) {
             return schedules(List.of(schedules));
-        }        public GetApplicationScalingRulesRuleScalingRuleTimer build() {
-            return new GetApplicationScalingRulesRuleScalingRuleTimer(beginDate, endDate, period, schedules);
+        }
+        public GetApplicationScalingRulesRuleScalingRuleTimer build() {
+            final var o = new GetApplicationScalingRulesRuleScalingRuleTimer();
+            o.beginDate = beginDate;
+            o.endDate = endDate;
+            o.period = period;
+            o.schedules = schedules;
+            return o;
         }
     }
 }

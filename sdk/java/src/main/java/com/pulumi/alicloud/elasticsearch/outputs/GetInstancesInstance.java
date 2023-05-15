@@ -12,50 +12,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstance {
-    private final String createdAt;
-    private final Integer dataNodeAmount;
-    private final Integer dataNodeDiskSize;
-    private final String dataNodeDiskType;
-    private final String dataNodeSpec;
-    private final String description;
-    private final String id;
-    private final String instanceChargeType;
-    private final String status;
-    private final Map<String,Object> tags;
-    private final String updatedAt;
-    private final String version;
-    private final String vswitchId;
+    private String createdAt;
+    private Integer dataNodeAmount;
+    private Integer dataNodeDiskSize;
+    private String dataNodeDiskType;
+    private String dataNodeSpec;
+    private String description;
+    private String id;
+    private String instanceChargeType;
+    private String status;
+    private Map<String,Object> tags;
+    private String updatedAt;
+    private String version;
+    private String vswitchId;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("dataNodeAmount") Integer dataNodeAmount,
-        @CustomType.Parameter("dataNodeDiskSize") Integer dataNodeDiskSize,
-        @CustomType.Parameter("dataNodeDiskType") String dataNodeDiskType,
-        @CustomType.Parameter("dataNodeSpec") String dataNodeSpec,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("instanceChargeType") String instanceChargeType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("tags") Map<String,Object> tags,
-        @CustomType.Parameter("updatedAt") String updatedAt,
-        @CustomType.Parameter("version") String version,
-        @CustomType.Parameter("vswitchId") String vswitchId) {
-        this.createdAt = createdAt;
-        this.dataNodeAmount = dataNodeAmount;
-        this.dataNodeDiskSize = dataNodeDiskSize;
-        this.dataNodeDiskType = dataNodeDiskType;
-        this.dataNodeSpec = dataNodeSpec;
-        this.description = description;
-        this.id = id;
-        this.instanceChargeType = instanceChargeType;
-        this.status = status;
-        this.tags = tags;
-        this.updatedAt = updatedAt;
-        this.version = version;
-        this.vswitchId = vswitchId;
-    }
-
+    private GetInstancesInstance() {}
     public String createdAt() {
         return this.createdAt;
     }
@@ -103,7 +74,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createdAt;
         private Integer dataNodeAmount;
@@ -118,11 +89,7 @@ public final class GetInstancesInstance {
         private String updatedAt;
         private String version;
         private String vswitchId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
@@ -140,59 +107,87 @@ public final class GetInstancesInstance {
     	      this.vswitchId = defaults.vswitchId;
         }
 
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder dataNodeAmount(Integer dataNodeAmount) {
             this.dataNodeAmount = Objects.requireNonNull(dataNodeAmount);
             return this;
         }
+        @CustomType.Setter
         public Builder dataNodeDiskSize(Integer dataNodeDiskSize) {
             this.dataNodeDiskSize = Objects.requireNonNull(dataNodeDiskSize);
             return this;
         }
+        @CustomType.Setter
         public Builder dataNodeDiskType(String dataNodeDiskType) {
             this.dataNodeDiskType = Objects.requireNonNull(dataNodeDiskType);
             return this;
         }
+        @CustomType.Setter
         public Builder dataNodeSpec(String dataNodeSpec) {
             this.dataNodeSpec = Objects.requireNonNull(dataNodeSpec);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceChargeType(String instanceChargeType) {
             this.instanceChargeType = Objects.requireNonNull(instanceChargeType);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(Map<String,Object> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
         }
+        @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(createdAt, dataNodeAmount, dataNodeDiskSize, dataNodeDiskType, dataNodeSpec, description, id, instanceChargeType, status, tags, updatedAt, version, vswitchId);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.createdAt = createdAt;
+            o.dataNodeAmount = dataNodeAmount;
+            o.dataNodeDiskSize = dataNodeDiskSize;
+            o.dataNodeDiskType = dataNodeDiskType;
+            o.dataNodeSpec = dataNodeSpec;
+            o.description = description;
+            o.id = id;
+            o.instanceChargeType = instanceChargeType;
+            o.status = status;
+            o.tags = tags;
+            o.updatedAt = updatedAt;
+            o.version = version;
+            o.vswitchId = vswitchId;
+            return o;
         }
     }
 }

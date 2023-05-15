@@ -13,98 +13,69 @@ public final class GetInstancesInstance {
      * @return The billing status of the simple application server. Valid values: `Normal`, `Expired` and `Overdue`.
      * 
      */
-    private final String businessStatus;
+    private String businessStatus;
     /**
      * @return The time when the simple application server was created.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return The DDoS protection status. Valid values: `Normal`, `BlackHole`, and `Defense`.
      * 
      */
-    private final String ddosStatus;
+    private String ddosStatus;
     /**
      * @return The time when the simple application server expires.
      * 
      */
-    private final String expiredTime;
+    private String expiredTime;
     /**
      * @return The ID of the Instance.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The ID of the simple application server Image.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return The internal IP address of the simple application server.
      * 
      */
-    private final String innerIpAddress;
+    private String innerIpAddress;
     /**
      * @return The ID of the simple application server.
      * 
      */
-    private final String instanceId;
+    private String instanceId;
     /**
      * @return The name of the resource.
      * 
      */
-    private final String instanceName;
+    private String instanceName;
     /**
      * @return The billing method of the simple application server.
      * 
      */
-    private final String paymentType;
+    private String paymentType;
     /**
      * @return The ID of the simple application server plan.
      * 
      */
-    private final String planId;
+    private String planId;
     /**
      * @return The public IP address of the simple application server.
      * 
      */
-    private final String publicIpAddress;
+    private String publicIpAddress;
     /**
      * @return The status of the resource.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetInstancesInstance(
-        @CustomType.Parameter("businessStatus") String businessStatus,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("ddosStatus") String ddosStatus,
-        @CustomType.Parameter("expiredTime") String expiredTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("innerIpAddress") String innerIpAddress,
-        @CustomType.Parameter("instanceId") String instanceId,
-        @CustomType.Parameter("instanceName") String instanceName,
-        @CustomType.Parameter("paymentType") String paymentType,
-        @CustomType.Parameter("planId") String planId,
-        @CustomType.Parameter("publicIpAddress") String publicIpAddress,
-        @CustomType.Parameter("status") String status) {
-        this.businessStatus = businessStatus;
-        this.createTime = createTime;
-        this.ddosStatus = ddosStatus;
-        this.expiredTime = expiredTime;
-        this.id = id;
-        this.imageId = imageId;
-        this.innerIpAddress = innerIpAddress;
-        this.instanceId = instanceId;
-        this.instanceName = instanceName;
-        this.paymentType = paymentType;
-        this.planId = planId;
-        this.publicIpAddress = publicIpAddress;
-        this.status = status;
-    }
-
+    private GetInstancesInstance() {}
     /**
      * @return The billing status of the simple application server. Valid values: `Normal`, `Expired` and `Overdue`.
      * 
@@ -204,7 +175,7 @@ public final class GetInstancesInstance {
     public static Builder builder(GetInstancesInstance defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String businessStatus;
         private String createTime;
@@ -219,11 +190,7 @@ public final class GetInstancesInstance {
         private String planId;
         private String publicIpAddress;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.businessStatus = defaults.businessStatus;
@@ -241,59 +208,87 @@ public final class GetInstancesInstance {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder businessStatus(String businessStatus) {
             this.businessStatus = Objects.requireNonNull(businessStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder ddosStatus(String ddosStatus) {
             this.ddosStatus = Objects.requireNonNull(ddosStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder expiredTime(String expiredTime) {
             this.expiredTime = Objects.requireNonNull(expiredTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder innerIpAddress(String innerIpAddress) {
             this.innerIpAddress = Objects.requireNonNull(innerIpAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(String instanceId) {
             this.instanceId = Objects.requireNonNull(instanceId);
             return this;
         }
+        @CustomType.Setter
         public Builder instanceName(String instanceName) {
             this.instanceName = Objects.requireNonNull(instanceName);
             return this;
         }
+        @CustomType.Setter
         public Builder paymentType(String paymentType) {
             this.paymentType = Objects.requireNonNull(paymentType);
             return this;
         }
+        @CustomType.Setter
         public Builder planId(String planId) {
             this.planId = Objects.requireNonNull(planId);
             return this;
         }
+        @CustomType.Setter
         public Builder publicIpAddress(String publicIpAddress) {
             this.publicIpAddress = Objects.requireNonNull(publicIpAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetInstancesInstance build() {
-            return new GetInstancesInstance(businessStatus, createTime, ddosStatus, expiredTime, id, imageId, innerIpAddress, instanceId, instanceName, paymentType, planId, publicIpAddress, status);
+        }
+        public GetInstancesInstance build() {
+            final var o = new GetInstancesInstance();
+            o.businessStatus = businessStatus;
+            o.createTime = createTime;
+            o.ddosStatus = ddosStatus;
+            o.expiredTime = expiredTime;
+            o.id = id;
+            o.imageId = imageId;
+            o.innerIpAddress = innerIpAddress;
+            o.instanceId = instanceId;
+            o.instanceName = instanceName;
+            o.paymentType = paymentType;
+            o.planId = planId;
+            o.publicIpAddress = publicIpAddress;
+            o.status = status;
+            return o;
         }
     }
 }

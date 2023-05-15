@@ -16,28 +16,19 @@ public final class StoreIndexFullText {
      * @return Whether the case sensitive for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
      * 
      */
-    private final @Nullable Boolean caseSensitive;
+    private @Nullable Boolean caseSensitive;
     /**
      * @return Whether includes the chinese for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
      * 
      */
-    private final @Nullable Boolean includeChinese;
+    private @Nullable Boolean includeChinese;
     /**
      * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
      * 
      */
-    private final @Nullable String token;
+    private @Nullable String token;
 
-    @CustomType.Constructor
-    private StoreIndexFullText(
-        @CustomType.Parameter("caseSensitive") @Nullable Boolean caseSensitive,
-        @CustomType.Parameter("includeChinese") @Nullable Boolean includeChinese,
-        @CustomType.Parameter("token") @Nullable String token) {
-        this.caseSensitive = caseSensitive;
-        this.includeChinese = includeChinese;
-        this.token = token;
-    }
-
+    private StoreIndexFullText() {}
     /**
      * @return Whether the case sensitive for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
      * 
@@ -67,16 +58,12 @@ public final class StoreIndexFullText {
     public static Builder builder(StoreIndexFullText defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean caseSensitive;
         private @Nullable Boolean includeChinese;
         private @Nullable String token;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StoreIndexFullText defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caseSensitive = defaults.caseSensitive;
@@ -84,19 +71,27 @@ public final class StoreIndexFullText {
     	      this.token = defaults.token;
         }
 
+        @CustomType.Setter
         public Builder caseSensitive(@Nullable Boolean caseSensitive) {
             this.caseSensitive = caseSensitive;
             return this;
         }
+        @CustomType.Setter
         public Builder includeChinese(@Nullable Boolean includeChinese) {
             this.includeChinese = includeChinese;
             return this;
         }
+        @CustomType.Setter
         public Builder token(@Nullable String token) {
             this.token = token;
             return this;
-        }        public StoreIndexFullText build() {
-            return new StoreIndexFullText(caseSensitive, includeChinese, token);
+        }
+        public StoreIndexFullText build() {
+            final var o = new StoreIndexFullText();
+            o.caseSensitive = caseSensitive;
+            o.includeChinese = includeChinese;
+            o.token = token;
+            return o;
         }
     }
 }

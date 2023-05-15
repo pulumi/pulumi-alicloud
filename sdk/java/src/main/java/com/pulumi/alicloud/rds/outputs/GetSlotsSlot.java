@@ -13,56 +13,39 @@ public final class GetSlotsSlot {
      * @return The name of the database where Replication Slot is located.
      * 
      */
-    private final String database;
+    private String database;
     /**
      * @return The plugin used by Replication Slot.
      * 
      */
-    private final String plugin;
+    private String plugin;
     /**
      * @return The Replication Slot name.
      * 
      */
-    private final String slotName;
+    private String slotName;
     /**
      * @return The Replication Slot status.
      * 
      */
-    private final String slotStatus;
+    private String slotStatus;
     /**
      * @return The Replication Slot type.
      * 
      */
-    private final String slotType;
+    private String slotType;
     /**
      * @return Is the Replication Slot temporary.
      * 
      */
-    private final String temporary;
+    private String temporary;
     /**
      * @return The amount of logs accumulated by Replication Slot.
      * 
      */
-    private final String walDelay;
+    private String walDelay;
 
-    @CustomType.Constructor
-    private GetSlotsSlot(
-        @CustomType.Parameter("database") String database,
-        @CustomType.Parameter("plugin") String plugin,
-        @CustomType.Parameter("slotName") String slotName,
-        @CustomType.Parameter("slotStatus") String slotStatus,
-        @CustomType.Parameter("slotType") String slotType,
-        @CustomType.Parameter("temporary") String temporary,
-        @CustomType.Parameter("walDelay") String walDelay) {
-        this.database = database;
-        this.plugin = plugin;
-        this.slotName = slotName;
-        this.slotStatus = slotStatus;
-        this.slotType = slotType;
-        this.temporary = temporary;
-        this.walDelay = walDelay;
-    }
-
+    private GetSlotsSlot() {}
     /**
      * @return The name of the database where Replication Slot is located.
      * 
@@ -120,7 +103,7 @@ public final class GetSlotsSlot {
     public static Builder builder(GetSlotsSlot defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String database;
         private String plugin;
@@ -129,11 +112,7 @@ public final class GetSlotsSlot {
         private String slotType;
         private String temporary;
         private String walDelay;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSlotsSlot defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.database = defaults.database;
@@ -145,35 +124,51 @@ public final class GetSlotsSlot {
     	      this.walDelay = defaults.walDelay;
         }
 
+        @CustomType.Setter
         public Builder database(String database) {
             this.database = Objects.requireNonNull(database);
             return this;
         }
+        @CustomType.Setter
         public Builder plugin(String plugin) {
             this.plugin = Objects.requireNonNull(plugin);
             return this;
         }
+        @CustomType.Setter
         public Builder slotName(String slotName) {
             this.slotName = Objects.requireNonNull(slotName);
             return this;
         }
+        @CustomType.Setter
         public Builder slotStatus(String slotStatus) {
             this.slotStatus = Objects.requireNonNull(slotStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder slotType(String slotType) {
             this.slotType = Objects.requireNonNull(slotType);
             return this;
         }
+        @CustomType.Setter
         public Builder temporary(String temporary) {
             this.temporary = Objects.requireNonNull(temporary);
             return this;
         }
+        @CustomType.Setter
         public Builder walDelay(String walDelay) {
             this.walDelay = Objects.requireNonNull(walDelay);
             return this;
-        }        public GetSlotsSlot build() {
-            return new GetSlotsSlot(database, plugin, slotName, slotStatus, slotType, temporary, walDelay);
+        }
+        public GetSlotsSlot build() {
+            final var o = new GetSlotsSlot();
+            o.database = database;
+            o.plugin = plugin;
+            o.slotName = slotName;
+            o.slotStatus = slotStatus;
+            o.slotType = slotType;
+            o.temporary = temporary;
+            o.walDelay = walDelay;
+            return o;
         }
     }
 }

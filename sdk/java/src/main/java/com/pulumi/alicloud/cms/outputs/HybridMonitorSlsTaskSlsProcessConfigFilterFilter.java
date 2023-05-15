@@ -15,28 +15,19 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
      * @return The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
      * 
      */
-    private final @Nullable String operator;
+    private @Nullable String operator;
     /**
      * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
-    private final @Nullable String slsKeyName;
+    private @Nullable String slsKeyName;
     /**
      * @return The value of the key that is used to filter logs imported from Log Service.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private HybridMonitorSlsTaskSlsProcessConfigFilterFilter(
-        @CustomType.Parameter("operator") @Nullable String operator,
-        @CustomType.Parameter("slsKeyName") @Nullable String slsKeyName,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.operator = operator;
-        this.slsKeyName = slsKeyName;
-        this.value = value;
-    }
-
+    private HybridMonitorSlsTaskSlsProcessConfigFilterFilter() {}
     /**
      * @return The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
      * 
@@ -66,16 +57,12 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
     public static Builder builder(HybridMonitorSlsTaskSlsProcessConfigFilterFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String operator;
         private @Nullable String slsKeyName;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HybridMonitorSlsTaskSlsProcessConfigFilterFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.operator = defaults.operator;
@@ -83,19 +70,27 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder operator(@Nullable String operator) {
             this.operator = operator;
             return this;
         }
+        @CustomType.Setter
         public Builder slsKeyName(@Nullable String slsKeyName) {
             this.slsKeyName = slsKeyName;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public HybridMonitorSlsTaskSlsProcessConfigFilterFilter build() {
-            return new HybridMonitorSlsTaskSlsProcessConfigFilterFilter(operator, slsKeyName, value);
+        }
+        public HybridMonitorSlsTaskSlsProcessConfigFilterFilter build() {
+            final var o = new HybridMonitorSlsTaskSlsProcessConfigFilterFilter();
+            o.operator = operator;
+            o.slsKeyName = slsKeyName;
+            o.value = value;
+            return o;
         }
     }
 }

@@ -16,42 +16,29 @@ public final class ClusterBootstrapScriptNodeSelector {
      * @return The configuration effected which node group id of emr cluster.
      * 
      */
-    private final @Nullable String nodeGroupId;
+    private @Nullable String nodeGroupId;
     /**
      * @return The configuration effected which node group name of emr cluster.
      * 
      */
-    private final @Nullable String nodeGroupName;
+    private @Nullable String nodeGroupName;
     /**
      * @return The bootstrap scripts execution target node group types.
      * 
      */
-    private final @Nullable List<String> nodeGroupTypes;
+    private @Nullable List<String> nodeGroupTypes;
     /**
      * @return The bootstrap scripts execution target node names.
      * 
      */
-    private final @Nullable List<String> nodeNames;
+    private @Nullable List<String> nodeNames;
     /**
      * @return The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
      * 
      */
-    private final String nodeSelectType;
+    private String nodeSelectType;
 
-    @CustomType.Constructor
-    private ClusterBootstrapScriptNodeSelector(
-        @CustomType.Parameter("nodeGroupId") @Nullable String nodeGroupId,
-        @CustomType.Parameter("nodeGroupName") @Nullable String nodeGroupName,
-        @CustomType.Parameter("nodeGroupTypes") @Nullable List<String> nodeGroupTypes,
-        @CustomType.Parameter("nodeNames") @Nullable List<String> nodeNames,
-        @CustomType.Parameter("nodeSelectType") String nodeSelectType) {
-        this.nodeGroupId = nodeGroupId;
-        this.nodeGroupName = nodeGroupName;
-        this.nodeGroupTypes = nodeGroupTypes;
-        this.nodeNames = nodeNames;
-        this.nodeSelectType = nodeSelectType;
-    }
-
+    private ClusterBootstrapScriptNodeSelector() {}
     /**
      * @return The configuration effected which node group id of emr cluster.
      * 
@@ -95,18 +82,14 @@ public final class ClusterBootstrapScriptNodeSelector {
     public static Builder builder(ClusterBootstrapScriptNodeSelector defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String nodeGroupId;
         private @Nullable String nodeGroupName;
         private @Nullable List<String> nodeGroupTypes;
         private @Nullable List<String> nodeNames;
         private String nodeSelectType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ClusterBootstrapScriptNodeSelector defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.nodeGroupId = defaults.nodeGroupId;
@@ -116,14 +99,17 @@ public final class ClusterBootstrapScriptNodeSelector {
     	      this.nodeSelectType = defaults.nodeSelectType;
         }
 
+        @CustomType.Setter
         public Builder nodeGroupId(@Nullable String nodeGroupId) {
             this.nodeGroupId = nodeGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeGroupName(@Nullable String nodeGroupName) {
             this.nodeGroupName = nodeGroupName;
             return this;
         }
+        @CustomType.Setter
         public Builder nodeGroupTypes(@Nullable List<String> nodeGroupTypes) {
             this.nodeGroupTypes = nodeGroupTypes;
             return this;
@@ -131,6 +117,7 @@ public final class ClusterBootstrapScriptNodeSelector {
         public Builder nodeGroupTypes(String... nodeGroupTypes) {
             return nodeGroupTypes(List.of(nodeGroupTypes));
         }
+        @CustomType.Setter
         public Builder nodeNames(@Nullable List<String> nodeNames) {
             this.nodeNames = nodeNames;
             return this;
@@ -138,11 +125,19 @@ public final class ClusterBootstrapScriptNodeSelector {
         public Builder nodeNames(String... nodeNames) {
             return nodeNames(List.of(nodeNames));
         }
+        @CustomType.Setter
         public Builder nodeSelectType(String nodeSelectType) {
             this.nodeSelectType = Objects.requireNonNull(nodeSelectType);
             return this;
-        }        public ClusterBootstrapScriptNodeSelector build() {
-            return new ClusterBootstrapScriptNodeSelector(nodeGroupId, nodeGroupName, nodeGroupTypes, nodeNames, nodeSelectType);
+        }
+        public ClusterBootstrapScriptNodeSelector build() {
+            final var o = new ClusterBootstrapScriptNodeSelector();
+            o.nodeGroupId = nodeGroupId;
+            o.nodeGroupName = nodeGroupName;
+            o.nodeGroupTypes = nodeGroupTypes;
+            o.nodeNames = nodeNames;
+            o.nodeSelectType = nodeSelectType;
+            return o;
         }
     }
 }

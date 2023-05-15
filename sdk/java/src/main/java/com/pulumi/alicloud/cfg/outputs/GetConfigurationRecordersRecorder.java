@@ -15,49 +15,34 @@ public final class GetConfigurationRecordersRecorder {
      * @return The ID of the Alicloud account.
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return The ID of the Config Configuration Recorder. Value as the `account_id`.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Enterprise version configuration audit enabled status.
      * 
      */
-    private final String organizationEnableStatus;
+    private String organizationEnableStatus;
     /**
      * @return The ID of the Enterprise management account.
      * 
      */
-    private final Integer organizationMasterId;
+    private Integer organizationMasterId;
     /**
      * @return A list of resource types to be monitored.
      * 
      */
-    private final List<String> resourceTypes;
+    private List<String> resourceTypes;
     /**
      * @return Status of resource monitoring.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetConfigurationRecordersRecorder(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("organizationEnableStatus") String organizationEnableStatus,
-        @CustomType.Parameter("organizationMasterId") Integer organizationMasterId,
-        @CustomType.Parameter("resourceTypes") List<String> resourceTypes,
-        @CustomType.Parameter("status") String status) {
-        this.accountId = accountId;
-        this.id = id;
-        this.organizationEnableStatus = organizationEnableStatus;
-        this.organizationMasterId = organizationMasterId;
-        this.resourceTypes = resourceTypes;
-        this.status = status;
-    }
-
+    private GetConfigurationRecordersRecorder() {}
     /**
      * @return The ID of the Alicloud account.
      * 
@@ -108,7 +93,7 @@ public final class GetConfigurationRecordersRecorder {
     public static Builder builder(GetConfigurationRecordersRecorder defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String id;
@@ -116,11 +101,7 @@ public final class GetConfigurationRecordersRecorder {
         private Integer organizationMasterId;
         private List<String> resourceTypes;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetConfigurationRecordersRecorder defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -131,22 +112,27 @@ public final class GetConfigurationRecordersRecorder {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder organizationEnableStatus(String organizationEnableStatus) {
             this.organizationEnableStatus = Objects.requireNonNull(organizationEnableStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder organizationMasterId(Integer organizationMasterId) {
             this.organizationMasterId = Objects.requireNonNull(organizationMasterId);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceTypes(List<String> resourceTypes) {
             this.resourceTypes = Objects.requireNonNull(resourceTypes);
             return this;
@@ -154,11 +140,20 @@ public final class GetConfigurationRecordersRecorder {
         public Builder resourceTypes(String... resourceTypes) {
             return resourceTypes(List.of(resourceTypes));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetConfigurationRecordersRecorder build() {
-            return new GetConfigurationRecordersRecorder(accountId, id, organizationEnableStatus, organizationMasterId, resourceTypes, status);
+        }
+        public GetConfigurationRecordersRecorder build() {
+            final var o = new GetConfigurationRecordersRecorder();
+            o.accountId = accountId;
+            o.id = id;
+            o.organizationEnableStatus = organizationEnableStatus;
+            o.organizationMasterId = organizationMasterId;
+            o.resourceTypes = resourceTypes;
+            o.status = status;
+            return o;
         }
     }
 }

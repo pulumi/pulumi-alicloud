@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTablesTableDefinedColumn {
-    private final String name;
-    private final String type;
+    private String name;
+    private String type;
 
-    @CustomType.Constructor
-    private GetTablesTableDefinedColumn(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("type") String type) {
-        this.name = name;
-        this.type = type;
-    }
-
+    private GetTablesTableDefinedColumn() {}
     public String name() {
         return this.name;
     }
@@ -34,30 +27,32 @@ public final class GetTablesTableDefinedColumn {
     public static Builder builder(GetTablesTableDefinedColumn defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTablesTableDefinedColumn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetTablesTableDefinedColumn build() {
-            return new GetTablesTableDefinedColumn(name, type);
+        }
+        public GetTablesTableDefinedColumn build() {
+            final var o = new GetTablesTableDefinedColumn();
+            o.name = name;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
-    private final String address;
+    private String address;
 
-    @CustomType.Constructor
-    private GetLoadBalancersBalancerZoneMappingLoadBalancerAddress(@CustomType.Parameter("address") String address) {
-        this.address = address;
-    }
-
+    private GetLoadBalancersBalancerZoneMappingLoadBalancerAddress() {}
     public String address() {
         return this.address;
     }
@@ -27,24 +23,24 @@ public final class GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
     public static Builder builder(GetLoadBalancersBalancerZoneMappingLoadBalancerAddress defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLoadBalancersBalancerZoneMappingLoadBalancerAddress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
-        }        public GetLoadBalancersBalancerZoneMappingLoadBalancerAddress build() {
-            return new GetLoadBalancersBalancerZoneMappingLoadBalancerAddress(address);
+        }
+        public GetLoadBalancersBalancerZoneMappingLoadBalancerAddress build() {
+            final var o = new GetLoadBalancersBalancerZoneMappingLoadBalancerAddress();
+            o.address = address;
+            return o;
         }
     }
 }

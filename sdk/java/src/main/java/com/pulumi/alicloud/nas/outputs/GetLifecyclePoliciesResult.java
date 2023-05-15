@@ -13,36 +13,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLifecyclePoliciesResult {
-    private final String fileSystemId;
+    private String fileSystemId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String outputFile;
-    private final List<GetLifecyclePoliciesPolicy> policies;
+    private String id;
+    private List<String> ids;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String outputFile;
+    private List<GetLifecyclePoliciesPolicy> policies;
 
-    @CustomType.Constructor
-    private GetLifecyclePoliciesResult(
-        @CustomType.Parameter("fileSystemId") String fileSystemId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("policies") List<GetLifecyclePoliciesPolicy> policies) {
-        this.fileSystemId = fileSystemId;
-        this.id = id;
-        this.ids = ids;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.outputFile = outputFile;
-        this.policies = policies;
-    }
-
+    private GetLifecyclePoliciesResult() {}
     public String fileSystemId() {
         return this.fileSystemId;
     }
@@ -76,7 +59,7 @@ public final class GetLifecyclePoliciesResult {
     public static Builder builder(GetLifecyclePoliciesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String fileSystemId;
         private String id;
@@ -85,11 +68,7 @@ public final class GetLifecyclePoliciesResult {
         private List<String> names;
         private @Nullable String outputFile;
         private List<GetLifecyclePoliciesPolicy> policies;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLifecyclePoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fileSystemId = defaults.fileSystemId;
@@ -101,14 +80,17 @@ public final class GetLifecyclePoliciesResult {
     	      this.policies = defaults.policies;
         }
 
+        @CustomType.Setter
         public Builder fileSystemId(String fileSystemId) {
             this.fileSystemId = Objects.requireNonNull(fileSystemId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -116,10 +98,12 @@ public final class GetLifecyclePoliciesResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -127,18 +111,29 @@ public final class GetLifecyclePoliciesResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder policies(List<GetLifecyclePoliciesPolicy> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
         }
         public Builder policies(GetLifecyclePoliciesPolicy... policies) {
             return policies(List.of(policies));
-        }        public GetLifecyclePoliciesResult build() {
-            return new GetLifecyclePoliciesResult(fileSystemId, id, ids, nameRegex, names, outputFile, policies);
+        }
+        public GetLifecyclePoliciesResult build() {
+            final var o = new GetLifecyclePoliciesResult();
+            o.fileSystemId = fileSystemId;
+            o.id = id;
+            o.ids = ids;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.outputFile = outputFile;
+            o.policies = policies;
+            return o;
         }
     }
 }

@@ -14,68 +14,47 @@ public final class GetDhcpOptionsSetsSet {
      * @return The Number of VPCs bound by the DHCP option set.
      * 
      */
-    private final Integer associateVpcCount;
+    private Integer associateVpcCount;
     /**
      * @return The description of the DHCP options set. The description must be 2 to 256
      * characters in length and cannot start with `http://` or `https://`.
      * 
      */
-    private final String dhcpOptionsSetDescription;
-    private final String dhcpOptionsSetId;
+    private String dhcpOptionsSetDescription;
+    private String dhcpOptionsSetId;
     /**
      * @return The root domain, for example, example.com. After a DHCP options set is associated with a
      * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
      * ECS instances in the VPC network.
      * 
      */
-    private final String dhcpOptionsSetName;
+    private String dhcpOptionsSetName;
     /**
      * @return The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
      * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
      * instances in the VPC network.
      * 
      */
-    private final String domainName;
+    private String domainName;
     /**
      * @return The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP
      * addresses must be separated with commas (,).
      * 
      */
-    private final String domainNameServers;
-    private final String id;
+    private String domainNameServers;
+    private String id;
     /**
      * @return The ID of the account to which the DHCP options set belongs.
      * 
      */
-    private final String ownerId;
+    private String ownerId;
     /**
      * @return The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetDhcpOptionsSetsSet(
-        @CustomType.Parameter("associateVpcCount") Integer associateVpcCount,
-        @CustomType.Parameter("dhcpOptionsSetDescription") String dhcpOptionsSetDescription,
-        @CustomType.Parameter("dhcpOptionsSetId") String dhcpOptionsSetId,
-        @CustomType.Parameter("dhcpOptionsSetName") String dhcpOptionsSetName,
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("domainNameServers") String domainNameServers,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ownerId") String ownerId,
-        @CustomType.Parameter("status") String status) {
-        this.associateVpcCount = associateVpcCount;
-        this.dhcpOptionsSetDescription = dhcpOptionsSetDescription;
-        this.dhcpOptionsSetId = dhcpOptionsSetId;
-        this.dhcpOptionsSetName = dhcpOptionsSetName;
-        this.domainName = domainName;
-        this.domainNameServers = domainNameServers;
-        this.id = id;
-        this.ownerId = ownerId;
-        this.status = status;
-    }
-
+    private GetDhcpOptionsSetsSet() {}
     /**
      * @return The Number of VPCs bound by the DHCP option set.
      * 
@@ -145,7 +124,7 @@ public final class GetDhcpOptionsSetsSet {
     public static Builder builder(GetDhcpOptionsSetsSet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer associateVpcCount;
         private String dhcpOptionsSetDescription;
@@ -156,11 +135,7 @@ public final class GetDhcpOptionsSetsSet {
         private String id;
         private String ownerId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDhcpOptionsSetsSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.associateVpcCount = defaults.associateVpcCount;
@@ -174,43 +149,63 @@ public final class GetDhcpOptionsSetsSet {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder associateVpcCount(Integer associateVpcCount) {
             this.associateVpcCount = Objects.requireNonNull(associateVpcCount);
             return this;
         }
+        @CustomType.Setter
         public Builder dhcpOptionsSetDescription(String dhcpOptionsSetDescription) {
             this.dhcpOptionsSetDescription = Objects.requireNonNull(dhcpOptionsSetDescription);
             return this;
         }
+        @CustomType.Setter
         public Builder dhcpOptionsSetId(String dhcpOptionsSetId) {
             this.dhcpOptionsSetId = Objects.requireNonNull(dhcpOptionsSetId);
             return this;
         }
+        @CustomType.Setter
         public Builder dhcpOptionsSetName(String dhcpOptionsSetName) {
             this.dhcpOptionsSetName = Objects.requireNonNull(dhcpOptionsSetName);
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder domainNameServers(String domainNameServers) {
             this.domainNameServers = Objects.requireNonNull(domainNameServers);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ownerId(String ownerId) {
             this.ownerId = Objects.requireNonNull(ownerId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetDhcpOptionsSetsSet build() {
-            return new GetDhcpOptionsSetsSet(associateVpcCount, dhcpOptionsSetDescription, dhcpOptionsSetId, dhcpOptionsSetName, domainName, domainNameServers, id, ownerId, status);
+        }
+        public GetDhcpOptionsSetsSet build() {
+            final var o = new GetDhcpOptionsSetsSet();
+            o.associateVpcCount = associateVpcCount;
+            o.dhcpOptionsSetDescription = dhcpOptionsSetDescription;
+            o.dhcpOptionsSetId = dhcpOptionsSetId;
+            o.dhcpOptionsSetName = dhcpOptionsSetName;
+            o.domainName = domainName;
+            o.domainNameServers = domainNameServers;
+            o.id = id;
+            o.ownerId = ownerId;
+            o.status = status;
+            return o;
         }
     }
 }

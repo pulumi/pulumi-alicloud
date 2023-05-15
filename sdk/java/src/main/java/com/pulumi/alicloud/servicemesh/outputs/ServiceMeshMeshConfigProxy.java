@@ -15,35 +15,24 @@ public final class ServiceMeshMeshConfigProxy {
      * @return The limit cpu of the Sidecar injector Pods.
      * 
      */
-    private final @Nullable String limitCpu;
+    private @Nullable String limitCpu;
     /**
      * @return Sidecar injector Pods on the throttle.
      * 
      */
-    private final @Nullable String limitMemory;
+    private @Nullable String limitMemory;
     /**
      * @return The requested cpu the Sidecar injector Pods.
      * 
      */
-    private final @Nullable String requestCpu;
+    private @Nullable String requestCpu;
     /**
      * @return The requested memory the Sidecar injector Pods.
      * 
      */
-    private final @Nullable String requestMemory;
+    private @Nullable String requestMemory;
 
-    @CustomType.Constructor
-    private ServiceMeshMeshConfigProxy(
-        @CustomType.Parameter("limitCpu") @Nullable String limitCpu,
-        @CustomType.Parameter("limitMemory") @Nullable String limitMemory,
-        @CustomType.Parameter("requestCpu") @Nullable String requestCpu,
-        @CustomType.Parameter("requestMemory") @Nullable String requestMemory) {
-        this.limitCpu = limitCpu;
-        this.limitMemory = limitMemory;
-        this.requestCpu = requestCpu;
-        this.requestMemory = requestMemory;
-    }
-
+    private ServiceMeshMeshConfigProxy() {}
     /**
      * @return The limit cpu of the Sidecar injector Pods.
      * 
@@ -80,17 +69,13 @@ public final class ServiceMeshMeshConfigProxy {
     public static Builder builder(ServiceMeshMeshConfigProxy defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String limitCpu;
         private @Nullable String limitMemory;
         private @Nullable String requestCpu;
         private @Nullable String requestMemory;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceMeshMeshConfigProxy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.limitCpu = defaults.limitCpu;
@@ -99,23 +84,33 @@ public final class ServiceMeshMeshConfigProxy {
     	      this.requestMemory = defaults.requestMemory;
         }
 
+        @CustomType.Setter
         public Builder limitCpu(@Nullable String limitCpu) {
             this.limitCpu = limitCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder limitMemory(@Nullable String limitMemory) {
             this.limitMemory = limitMemory;
             return this;
         }
+        @CustomType.Setter
         public Builder requestCpu(@Nullable String requestCpu) {
             this.requestCpu = requestCpu;
             return this;
         }
+        @CustomType.Setter
         public Builder requestMemory(@Nullable String requestMemory) {
             this.requestMemory = requestMemory;
             return this;
-        }        public ServiceMeshMeshConfigProxy build() {
-            return new ServiceMeshMeshConfigProxy(limitCpu, limitMemory, requestCpu, requestMemory);
+        }
+        public ServiceMeshMeshConfigProxy build() {
+            final var o = new ServiceMeshMeshConfigProxy();
+            o.limitCpu = limitCpu;
+            o.limitMemory = limitMemory;
+            o.requestCpu = requestCpu;
+            o.requestMemory = requestMemory;
+            return o;
         }
     }
 }

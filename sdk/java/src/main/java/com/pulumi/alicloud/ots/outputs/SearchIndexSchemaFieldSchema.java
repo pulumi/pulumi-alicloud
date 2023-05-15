@@ -16,56 +16,39 @@ public final class SearchIndexSchemaFieldSchema {
      * @return Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
      * 
      */
-    private final @Nullable String analyzer;
+    private @Nullable String analyzer;
     /**
      * @return Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
      * 
      */
-    private final @Nullable Boolean enableSortAndAgg;
+    private @Nullable Boolean enableSortAndAgg;
     /**
      * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
      * 
      */
-    private final String fieldName;
+    private String fieldName;
     /**
      * @return Specifies the type of the field. Use FieldType.XXX to set the type.
      * 
      */
-    private final String fieldType;
+    private String fieldType;
     /**
      * @return Specifies whether to enable indexing for the column. Type: Boolean.
      * 
      */
-    private final @Nullable Boolean index;
+    private @Nullable Boolean index;
     /**
      * @return Specifies whether the value is an array. Type: Boolean.
      * 
      */
-    private final @Nullable Boolean isArray;
+    private @Nullable Boolean isArray;
     /**
      * @return Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
      * 
      */
-    private final @Nullable Boolean store;
+    private @Nullable Boolean store;
 
-    @CustomType.Constructor
-    private SearchIndexSchemaFieldSchema(
-        @CustomType.Parameter("analyzer") @Nullable String analyzer,
-        @CustomType.Parameter("enableSortAndAgg") @Nullable Boolean enableSortAndAgg,
-        @CustomType.Parameter("fieldName") String fieldName,
-        @CustomType.Parameter("fieldType") String fieldType,
-        @CustomType.Parameter("index") @Nullable Boolean index,
-        @CustomType.Parameter("isArray") @Nullable Boolean isArray,
-        @CustomType.Parameter("store") @Nullable Boolean store) {
-        this.analyzer = analyzer;
-        this.enableSortAndAgg = enableSortAndAgg;
-        this.fieldName = fieldName;
-        this.fieldType = fieldType;
-        this.index = index;
-        this.isArray = isArray;
-        this.store = store;
-    }
-
+    private SearchIndexSchemaFieldSchema() {}
     /**
      * @return Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
      * 
@@ -123,7 +106,7 @@ public final class SearchIndexSchemaFieldSchema {
     public static Builder builder(SearchIndexSchemaFieldSchema defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String analyzer;
         private @Nullable Boolean enableSortAndAgg;
@@ -132,11 +115,7 @@ public final class SearchIndexSchemaFieldSchema {
         private @Nullable Boolean index;
         private @Nullable Boolean isArray;
         private @Nullable Boolean store;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SearchIndexSchemaFieldSchema defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.analyzer = defaults.analyzer;
@@ -148,35 +127,51 @@ public final class SearchIndexSchemaFieldSchema {
     	      this.store = defaults.store;
         }
 
+        @CustomType.Setter
         public Builder analyzer(@Nullable String analyzer) {
             this.analyzer = analyzer;
             return this;
         }
+        @CustomType.Setter
         public Builder enableSortAndAgg(@Nullable Boolean enableSortAndAgg) {
             this.enableSortAndAgg = enableSortAndAgg;
             return this;
         }
+        @CustomType.Setter
         public Builder fieldName(String fieldName) {
             this.fieldName = Objects.requireNonNull(fieldName);
             return this;
         }
+        @CustomType.Setter
         public Builder fieldType(String fieldType) {
             this.fieldType = Objects.requireNonNull(fieldType);
             return this;
         }
+        @CustomType.Setter
         public Builder index(@Nullable Boolean index) {
             this.index = index;
             return this;
         }
+        @CustomType.Setter
         public Builder isArray(@Nullable Boolean isArray) {
             this.isArray = isArray;
             return this;
         }
+        @CustomType.Setter
         public Builder store(@Nullable Boolean store) {
             this.store = store;
             return this;
-        }        public SearchIndexSchemaFieldSchema build() {
-            return new SearchIndexSchemaFieldSchema(analyzer, enableSortAndAgg, fieldName, fieldType, index, isArray, store);
+        }
+        public SearchIndexSchemaFieldSchema build() {
+            final var o = new SearchIndexSchemaFieldSchema();
+            o.analyzer = analyzer;
+            o.enableSortAndAgg = enableSortAndAgg;
+            o.fieldName = fieldName;
+            o.fieldType = fieldType;
+            o.index = index;
+            o.isArray = isArray;
+            o.store = store;
+            return o;
         }
     }
 }

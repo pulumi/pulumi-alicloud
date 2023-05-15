@@ -16,60 +16,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClustersResult {
-    private final @Nullable String clusterName;
-    private final @Nullable List<String> clusterStates;
-    private final @Nullable List<String> clusterTypes;
-    private final List<GetClustersCluster> clusters;
+    private @Nullable String clusterName;
+    private @Nullable List<String> clusterStates;
+    private @Nullable List<String> clusterTypes;
+    private List<GetClustersCluster> clusters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable Integer maxResults;
-    private final @Nullable String nameRegex;
-    private final List<String> names;
-    private final @Nullable String nextToken;
-    private final @Nullable String outputFile;
-    private final @Nullable List<String> paymentTypes;
-    private final @Nullable String resourceGroupId;
-    private final @Nullable Map<String,Object> tags;
-    private final Integer totalCount;
+    private String id;
+    private List<String> ids;
+    private @Nullable Integer maxResults;
+    private @Nullable String nameRegex;
+    private List<String> names;
+    private @Nullable String nextToken;
+    private @Nullable String outputFile;
+    private @Nullable List<String> paymentTypes;
+    private @Nullable String resourceGroupId;
+    private @Nullable Map<String,Object> tags;
+    private Integer totalCount;
 
-    @CustomType.Constructor
-    private GetClustersResult(
-        @CustomType.Parameter("clusterName") @Nullable String clusterName,
-        @CustomType.Parameter("clusterStates") @Nullable List<String> clusterStates,
-        @CustomType.Parameter("clusterTypes") @Nullable List<String> clusterTypes,
-        @CustomType.Parameter("clusters") List<GetClustersCluster> clusters,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("maxResults") @Nullable Integer maxResults,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("nextToken") @Nullable String nextToken,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("paymentTypes") @Nullable List<String> paymentTypes,
-        @CustomType.Parameter("resourceGroupId") @Nullable String resourceGroupId,
-        @CustomType.Parameter("tags") @Nullable Map<String,Object> tags,
-        @CustomType.Parameter("totalCount") Integer totalCount) {
-        this.clusterName = clusterName;
-        this.clusterStates = clusterStates;
-        this.clusterTypes = clusterTypes;
-        this.clusters = clusters;
-        this.id = id;
-        this.ids = ids;
-        this.maxResults = maxResults;
-        this.nameRegex = nameRegex;
-        this.names = names;
-        this.nextToken = nextToken;
-        this.outputFile = outputFile;
-        this.paymentTypes = paymentTypes;
-        this.resourceGroupId = resourceGroupId;
-        this.tags = tags;
-        this.totalCount = totalCount;
-    }
-
+    private GetClustersResult() {}
     public Optional<String> clusterName() {
         return Optional.ofNullable(this.clusterName);
     }
@@ -127,7 +94,7 @@ public final class GetClustersResult {
     public static Builder builder(GetClustersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String clusterName;
         private @Nullable List<String> clusterStates;
@@ -144,11 +111,7 @@ public final class GetClustersResult {
         private @Nullable String resourceGroupId;
         private @Nullable Map<String,Object> tags;
         private Integer totalCount;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClustersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterName = defaults.clusterName;
@@ -168,10 +131,12 @@ public final class GetClustersResult {
     	      this.totalCount = defaults.totalCount;
         }
 
+        @CustomType.Setter
         public Builder clusterName(@Nullable String clusterName) {
             this.clusterName = clusterName;
             return this;
         }
+        @CustomType.Setter
         public Builder clusterStates(@Nullable List<String> clusterStates) {
             this.clusterStates = clusterStates;
             return this;
@@ -179,6 +144,7 @@ public final class GetClustersResult {
         public Builder clusterStates(String... clusterStates) {
             return clusterStates(List.of(clusterStates));
         }
+        @CustomType.Setter
         public Builder clusterTypes(@Nullable List<String> clusterTypes) {
             this.clusterTypes = clusterTypes;
             return this;
@@ -186,6 +152,7 @@ public final class GetClustersResult {
         public Builder clusterTypes(String... clusterTypes) {
             return clusterTypes(List.of(clusterTypes));
         }
+        @CustomType.Setter
         public Builder clusters(List<GetClustersCluster> clusters) {
             this.clusters = Objects.requireNonNull(clusters);
             return this;
@@ -193,10 +160,12 @@ public final class GetClustersResult {
         public Builder clusters(GetClustersCluster... clusters) {
             return clusters(List.of(clusters));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -204,14 +173,17 @@ public final class GetClustersResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder maxResults(@Nullable Integer maxResults) {
             this.maxResults = maxResults;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -219,14 +191,17 @@ public final class GetClustersResult {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder nextToken(@Nullable String nextToken) {
             this.nextToken = nextToken;
             return this;
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder paymentTypes(@Nullable List<String> paymentTypes) {
             this.paymentTypes = paymentTypes;
             return this;
@@ -234,19 +209,39 @@ public final class GetClustersResult {
         public Builder paymentTypes(String... paymentTypes) {
             return paymentTypes(List.of(paymentTypes));
         }
+        @CustomType.Setter
         public Builder resourceGroupId(@Nullable String resourceGroupId) {
             this.resourceGroupId = resourceGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable Map<String,Object> tags) {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
         public Builder totalCount(Integer totalCount) {
             this.totalCount = Objects.requireNonNull(totalCount);
             return this;
-        }        public GetClustersResult build() {
-            return new GetClustersResult(clusterName, clusterStates, clusterTypes, clusters, id, ids, maxResults, nameRegex, names, nextToken, outputFile, paymentTypes, resourceGroupId, tags, totalCount);
+        }
+        public GetClustersResult build() {
+            final var o = new GetClustersResult();
+            o.clusterName = clusterName;
+            o.clusterStates = clusterStates;
+            o.clusterTypes = clusterTypes;
+            o.clusters = clusters;
+            o.id = id;
+            o.ids = ids;
+            o.maxResults = maxResults;
+            o.nameRegex = nameRegex;
+            o.names = names;
+            o.nextToken = nextToken;
+            o.outputFile = outputFile;
+            o.paymentTypes = paymentTypes;
+            o.resourceGroupId = resourceGroupId;
+            o.tags = tags;
+            o.totalCount = totalCount;
+            return o;
         }
     }
 }

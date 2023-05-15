@@ -14,39 +14,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVpcEndpointConnectionsResult {
-    private final List<GetVpcEndpointConnectionsConnection> connections;
-    private final @Nullable String endpointId;
-    private final @Nullable Integer endpointOwnerId;
+    private List<GetVpcEndpointConnectionsConnection> connections;
+    private @Nullable String endpointId;
+    private @Nullable Integer endpointOwnerId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String outputFile;
-    private final String serviceId;
-    private final @Nullable String status;
+    private String id;
+    private List<String> ids;
+    private @Nullable String outputFile;
+    private String serviceId;
+    private @Nullable String status;
 
-    @CustomType.Constructor
-    private GetVpcEndpointConnectionsResult(
-        @CustomType.Parameter("connections") List<GetVpcEndpointConnectionsConnection> connections,
-        @CustomType.Parameter("endpointId") @Nullable String endpointId,
-        @CustomType.Parameter("endpointOwnerId") @Nullable Integer endpointOwnerId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("outputFile") @Nullable String outputFile,
-        @CustomType.Parameter("serviceId") String serviceId,
-        @CustomType.Parameter("status") @Nullable String status) {
-        this.connections = connections;
-        this.endpointId = endpointId;
-        this.endpointOwnerId = endpointOwnerId;
-        this.id = id;
-        this.ids = ids;
-        this.outputFile = outputFile;
-        this.serviceId = serviceId;
-        this.status = status;
-    }
-
+    private GetVpcEndpointConnectionsResult() {}
     public List<GetVpcEndpointConnectionsConnection> connections() {
         return this.connections;
     }
@@ -83,7 +64,7 @@ public final class GetVpcEndpointConnectionsResult {
     public static Builder builder(GetVpcEndpointConnectionsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetVpcEndpointConnectionsConnection> connections;
         private @Nullable String endpointId;
@@ -93,11 +74,7 @@ public final class GetVpcEndpointConnectionsResult {
         private @Nullable String outputFile;
         private String serviceId;
         private @Nullable String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVpcEndpointConnectionsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connections = defaults.connections;
@@ -110,6 +87,7 @@ public final class GetVpcEndpointConnectionsResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder connections(List<GetVpcEndpointConnectionsConnection> connections) {
             this.connections = Objects.requireNonNull(connections);
             return this;
@@ -117,18 +95,22 @@ public final class GetVpcEndpointConnectionsResult {
         public Builder connections(GetVpcEndpointConnectionsConnection... connections) {
             return connections(List.of(connections));
         }
+        @CustomType.Setter
         public Builder endpointId(@Nullable String endpointId) {
             this.endpointId = endpointId;
             return this;
         }
+        @CustomType.Setter
         public Builder endpointOwnerId(@Nullable Integer endpointOwnerId) {
             this.endpointOwnerId = endpointOwnerId;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -136,19 +118,32 @@ public final class GetVpcEndpointConnectionsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder outputFile(@Nullable String outputFile) {
             this.outputFile = outputFile;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceId(String serviceId) {
             this.serviceId = Objects.requireNonNull(serviceId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
-        }        public GetVpcEndpointConnectionsResult build() {
-            return new GetVpcEndpointConnectionsResult(connections, endpointId, endpointOwnerId, id, ids, outputFile, serviceId, status);
+        }
+        public GetVpcEndpointConnectionsResult build() {
+            final var o = new GetVpcEndpointConnectionsResult();
+            o.connections = connections;
+            o.endpointId = endpointId;
+            o.endpointOwnerId = endpointOwnerId;
+            o.id = id;
+            o.ids = ids;
+            o.outputFile = outputFile;
+            o.serviceId = serviceId;
+            o.status = status;
+            return o;
         }
     }
 }

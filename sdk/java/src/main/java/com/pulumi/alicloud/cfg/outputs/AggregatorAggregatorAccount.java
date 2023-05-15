@@ -13,28 +13,19 @@ public final class AggregatorAggregatorAccount {
      * @return Aggregator account Uid.
      * 
      */
-    private final String accountId;
+    private String accountId;
     /**
      * @return Aggregator account name.
      * 
      */
-    private final String accountName;
+    private String accountName;
     /**
      * @return Aggregator account source type. Valid values: `ResourceDirectory`.
      * 
      */
-    private final String accountType;
+    private String accountType;
 
-    @CustomType.Constructor
-    private AggregatorAggregatorAccount(
-        @CustomType.Parameter("accountId") String accountId,
-        @CustomType.Parameter("accountName") String accountName,
-        @CustomType.Parameter("accountType") String accountType) {
-        this.accountId = accountId;
-        this.accountName = accountName;
-        this.accountType = accountType;
-    }
-
+    private AggregatorAggregatorAccount() {}
     /**
      * @return Aggregator account Uid.
      * 
@@ -64,16 +55,12 @@ public final class AggregatorAggregatorAccount {
     public static Builder builder(AggregatorAggregatorAccount defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accountId;
         private String accountName;
         private String accountType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(AggregatorAggregatorAccount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -81,19 +68,27 @@ public final class AggregatorAggregatorAccount {
     	      this.accountType = defaults.accountType;
         }
 
+        @CustomType.Setter
         public Builder accountId(String accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder accountName(String accountName) {
             this.accountName = Objects.requireNonNull(accountName);
             return this;
         }
+        @CustomType.Setter
         public Builder accountType(String accountType) {
             this.accountType = Objects.requireNonNull(accountType);
             return this;
-        }        public AggregatorAggregatorAccount build() {
-            return new AggregatorAggregatorAccount(accountId, accountName, accountType);
+        }
+        public AggregatorAggregatorAccount build() {
+            final var o = new AggregatorAggregatorAccount();
+            o.accountId = accountId;
+            o.accountName = accountName;
+            o.accountType = accountType;
+            return o;
         }
     }
 }

@@ -15,17 +15,10 @@ public final class GetHoneypotProbesProbeHoneypotBindList {
      * @return List of listening ports. Available when `enable_details` is on.
      * 
      */
-    private final List<GetHoneypotProbesProbeHoneypotBindListBindPortList> bindPortLists;
-    private final String honeypotId;
+    private List<GetHoneypotProbesProbeHoneypotBindListBindPortList> bindPortLists;
+    private String honeypotId;
 
-    @CustomType.Constructor
-    private GetHoneypotProbesProbeHoneypotBindList(
-        @CustomType.Parameter("bindPortLists") List<GetHoneypotProbesProbeHoneypotBindListBindPortList> bindPortLists,
-        @CustomType.Parameter("honeypotId") String honeypotId) {
-        this.bindPortLists = bindPortLists;
-        this.honeypotId = honeypotId;
-    }
-
+    private GetHoneypotProbesProbeHoneypotBindList() {}
     /**
      * @return List of listening ports. Available when `enable_details` is on.
      * 
@@ -44,21 +37,18 @@ public final class GetHoneypotProbesProbeHoneypotBindList {
     public static Builder builder(GetHoneypotProbesProbeHoneypotBindList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetHoneypotProbesProbeHoneypotBindListBindPortList> bindPortLists;
         private String honeypotId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHoneypotProbesProbeHoneypotBindList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bindPortLists = defaults.bindPortLists;
     	      this.honeypotId = defaults.honeypotId;
         }
 
+        @CustomType.Setter
         public Builder bindPortLists(List<GetHoneypotProbesProbeHoneypotBindListBindPortList> bindPortLists) {
             this.bindPortLists = Objects.requireNonNull(bindPortLists);
             return this;
@@ -66,11 +56,16 @@ public final class GetHoneypotProbesProbeHoneypotBindList {
         public Builder bindPortLists(GetHoneypotProbesProbeHoneypotBindListBindPortList... bindPortLists) {
             return bindPortLists(List.of(bindPortLists));
         }
+        @CustomType.Setter
         public Builder honeypotId(String honeypotId) {
             this.honeypotId = Objects.requireNonNull(honeypotId);
             return this;
-        }        public GetHoneypotProbesProbeHoneypotBindList build() {
-            return new GetHoneypotProbesProbeHoneypotBindList(bindPortLists, honeypotId);
+        }
+        public GetHoneypotProbesProbeHoneypotBindList build() {
+            final var o = new GetHoneypotProbesProbeHoneypotBindList();
+            o.bindPortLists = bindPortLists;
+            o.honeypotId = honeypotId;
+            return o;
         }
     }
 }

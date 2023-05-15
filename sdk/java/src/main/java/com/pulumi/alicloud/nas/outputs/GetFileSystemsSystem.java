@@ -14,23 +14,23 @@ public final class GetFileSystemsSystem {
      * @return (Optional, Available in v1.140.0+) The capacity of the file system.
      * 
      */
-    private final Integer capacity;
+    private Integer capacity;
     /**
      * @return Time of creation.
      * 
      */
-    private final String createTime;
+    private String createTime;
     /**
      * @return Description of the FileSystem.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return (Optional, Available in v1.121.2+) Whether the file system is encrypted.
      * * Valid values:
      * 
      */
-    private final Integer encryptType;
+    private Integer encryptType;
     /**
      * @return The type of the file system.
      * Valid values:
@@ -38,22 +38,22 @@ public final class GetFileSystemsSystem {
      * `extreme`.
      * 
      */
-    private final String fileSystemType;
+    private String fileSystemType;
     /**
      * @return ID of the FileSystem.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return (Optional, Available in v1.140.0+) The id of the KMS key.
      * 
      */
-    private final String kmsKeyId;
+    private String kmsKeyId;
     /**
      * @return MeteredSize of the FileSystem.
      * 
      */
-    private final Integer meteredSize;
+    private Integer meteredSize;
     /**
      * @return The protocol type of the file system.
      * Valid values:
@@ -61,52 +61,25 @@ public final class GetFileSystemsSystem {
      * `SMB` (Available when the `file_system_type` is `standard`).
      * 
      */
-    private final String protocolType;
+    private String protocolType;
     /**
      * @return ID of the region where the FileSystem is located.
      * 
      */
-    private final String regionId;
+    private String regionId;
     /**
      * @return The storage type of the file system.
      * * Valid values:
      * 
      */
-    private final String storageType;
+    private String storageType;
     /**
      * @return (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
      * 
      */
-    private final String zoneId;
+    private String zoneId;
 
-    @CustomType.Constructor
-    private GetFileSystemsSystem(
-        @CustomType.Parameter("capacity") Integer capacity,
-        @CustomType.Parameter("createTime") String createTime,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("encryptType") Integer encryptType,
-        @CustomType.Parameter("fileSystemType") String fileSystemType,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("kmsKeyId") String kmsKeyId,
-        @CustomType.Parameter("meteredSize") Integer meteredSize,
-        @CustomType.Parameter("protocolType") String protocolType,
-        @CustomType.Parameter("regionId") String regionId,
-        @CustomType.Parameter("storageType") String storageType,
-        @CustomType.Parameter("zoneId") String zoneId) {
-        this.capacity = capacity;
-        this.createTime = createTime;
-        this.description = description;
-        this.encryptType = encryptType;
-        this.fileSystemType = fileSystemType;
-        this.id = id;
-        this.kmsKeyId = kmsKeyId;
-        this.meteredSize = meteredSize;
-        this.protocolType = protocolType;
-        this.regionId = regionId;
-        this.storageType = storageType;
-        this.zoneId = zoneId;
-    }
-
+    private GetFileSystemsSystem() {}
     /**
      * @return (Optional, Available in v1.140.0+) The capacity of the file system.
      * 
@@ -207,7 +180,7 @@ public final class GetFileSystemsSystem {
     public static Builder builder(GetFileSystemsSystem defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer capacity;
         private String createTime;
@@ -221,11 +194,7 @@ public final class GetFileSystemsSystem {
         private String regionId;
         private String storageType;
         private String zoneId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFileSystemsSystem defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.capacity = defaults.capacity;
@@ -242,55 +211,81 @@ public final class GetFileSystemsSystem {
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
         public Builder capacity(Integer capacity) {
             this.capacity = Objects.requireNonNull(capacity);
             return this;
         }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder encryptType(Integer encryptType) {
             this.encryptType = Objects.requireNonNull(encryptType);
             return this;
         }
+        @CustomType.Setter
         public Builder fileSystemType(String fileSystemType) {
             this.fileSystemType = Objects.requireNonNull(fileSystemType);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder kmsKeyId(String kmsKeyId) {
             this.kmsKeyId = Objects.requireNonNull(kmsKeyId);
             return this;
         }
+        @CustomType.Setter
         public Builder meteredSize(Integer meteredSize) {
             this.meteredSize = Objects.requireNonNull(meteredSize);
             return this;
         }
+        @CustomType.Setter
         public Builder protocolType(String protocolType) {
             this.protocolType = Objects.requireNonNull(protocolType);
             return this;
         }
+        @CustomType.Setter
         public Builder regionId(String regionId) {
             this.regionId = Objects.requireNonNull(regionId);
             return this;
         }
+        @CustomType.Setter
         public Builder storageType(String storageType) {
             this.storageType = Objects.requireNonNull(storageType);
             return this;
         }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             this.zoneId = Objects.requireNonNull(zoneId);
             return this;
-        }        public GetFileSystemsSystem build() {
-            return new GetFileSystemsSystem(capacity, createTime, description, encryptType, fileSystemType, id, kmsKeyId, meteredSize, protocolType, regionId, storageType, zoneId);
+        }
+        public GetFileSystemsSystem build() {
+            final var o = new GetFileSystemsSystem();
+            o.capacity = capacity;
+            o.createTime = createTime;
+            o.description = description;
+            o.encryptType = encryptType;
+            o.fileSystemType = fileSystemType;
+            o.id = id;
+            o.kmsKeyId = kmsKeyId;
+            o.meteredSize = meteredSize;
+            o.protocolType = protocolType;
+            o.regionId = regionId;
+            o.storageType = storageType;
+            o.zoneId = zoneId;
+            return o;
         }
     }
 }
