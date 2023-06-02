@@ -62,6 +62,7 @@ const (
 	cloudSsoMod            = "CloudSso"
 	cmsMod                 = "Cms"
 	cfgMod                 = "Cfg"
+	computeMod             = "Compute"
 	crMod                  = "CR"
 	csMod                  = "CS"
 	dasMod                 = "Das"
@@ -128,6 +129,7 @@ const (
 	quotasMod              = "Quotas"
 	ramMod                 = "Ram"
 	rdcMod                 = "Rdc"
+	redisMod               = "Redis"
 	resourceManagerMod     = "ResourceManager"
 	rocketMqMod            = "RocketMQ"
 	rosMod                 = "Ros"
@@ -183,6 +185,7 @@ var mappedMods = map[string]string{
 	"cloud_storage_gateway": cloudStorageGatewayMod,
 	"cloudauth":             cloudAuthMod,
 	"cms":                   cmsMod,
+	"compute":               computeMod,
 	"cr":                    crMod,
 	"cs":                    csMod,
 	"das":                   dasMod,
@@ -254,6 +257,7 @@ var mappedMods = map[string]string{
 	"ram":                   ramMod,
 	"rdc":                   rdcMod,
 	"rds":                   rdsMod,
+	"redis":                 redisMod,
 	"resource_manager":      resourceManagerMod,
 	"ros":                   rosMod,
 	"sae":                   saeMod,
