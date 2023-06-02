@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Traffic Mirror Filter resource.
+ * Provides a VPC Traffic Mirror Filter resource. Traffic mirror filter criteria.
  *
  * For information about VPC Traffic Mirror Filter and how to use it, see [What is Traffic Mirror Filter](https://www.alibabacloud.com/help/doc-detail/207513.htm).
  *
@@ -19,7 +21,39 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.vpc.TrafficMirrorFilter("example", {trafficMirrorFilterName: "example_value"});
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const default3iXhoa = new alicloud.resourcemanager.ResourceGroup("default3iXhoa", {
+ *     displayName: "testname03",
+ *     resourceGroupName: name,
+ * });
+ * const defaultdNz2qk = new alicloud.resourcemanager.ResourceGroup("defaultdNz2qk", {
+ *     displayName: "testname04",
+ *     resourceGroupName: `${name}1`,
+ * });
+ * const _default = new alicloud.vpc.TrafficMirrorFilter("default", {
+ *     trafficMirrorFilterDescription: "test",
+ *     trafficMirrorFilterName: name,
+ *     resourceGroupId: default3iXhoa.id,
+ *     egressRules: [{
+ *         priority: 1,
+ *         protocol: "TCP",
+ *         action: "accept",
+ *         destinationCidrBlock: "32.0.0.0/4",
+ *         destinationPortRange: "80/80",
+ *         sourceCidrBlock: "16.0.0.0/4",
+ *         sourcePortRange: "80/80",
+ *     }],
+ *     ingressRules: [{
+ *         priority: 1,
+ *         protocol: "TCP",
+ *         action: "accept",
+ *         destinationCidrBlock: "10.64.0.0/10",
+ *         destinationPortRange: "80/80",
+ *         sourceCidrBlock: "10.0.0.0/8",
+ *         sourcePortRange: "80/80",
+ *     }],
+ * });
  * ```
  *
  * ## Import
@@ -59,19 +93,37 @@ export class TrafficMirrorFilter extends pulumi.CustomResource {
     }
 
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+     * Information about the outbound rule. See the following `Block EgressRules`.
+     */
+    public readonly egressRules!: pulumi.Output<outputs.vpc.TrafficMirrorFilterEgressRule[]>;
+    /**
+     * Inward direction rule information. See the following `Block IngressRules`.
+     */
+    public readonly ingressRules!: pulumi.Output<outputs.vpc.TrafficMirrorFilterIngressRule[]>;
+    /**
+     * The ID of the resource group to which the VPC belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The tags of this resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The description of the TrafficMirrorFilter.
      */
     public readonly trafficMirrorFilterDescription!: pulumi.Output<string | undefined>;
     /**
-     * The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * The name of the TrafficMirrorFilter.
      */
     public readonly trafficMirrorFilterName!: pulumi.Output<string | undefined>;
 
@@ -89,12 +141,20 @@ export class TrafficMirrorFilter extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TrafficMirrorFilterState | undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["egressRules"] = state ? state.egressRules : undefined;
+            resourceInputs["ingressRules"] = state ? state.ingressRules : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["trafficMirrorFilterDescription"] = state ? state.trafficMirrorFilterDescription : undefined;
             resourceInputs["trafficMirrorFilterName"] = state ? state.trafficMirrorFilterName : undefined;
         } else {
             const args = argsOrState as TrafficMirrorFilterArgs | undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["egressRules"] = args ? args.egressRules : undefined;
+            resourceInputs["ingressRules"] = args ? args.ingressRules : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["trafficMirrorFilterDescription"] = args ? args.trafficMirrorFilterDescription : undefined;
             resourceInputs["trafficMirrorFilterName"] = args ? args.trafficMirrorFilterName : undefined;
             resourceInputs["status"] = undefined /*out*/;
@@ -109,19 +169,37 @@ export class TrafficMirrorFilter extends pulumi.CustomResource {
  */
 export interface TrafficMirrorFilterState {
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+     * Information about the outbound rule. See the following `Block EgressRules`.
+     */
+    egressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterEgressRule>[]>;
+    /**
+     * Inward direction rule information. See the following `Block IngressRules`.
+     */
+    ingressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterIngressRule>[]>;
+    /**
+     * The ID of the resource group to which the VPC belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
     /**
-     * The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The tags of this resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The description of the TrafficMirrorFilter.
      */
     trafficMirrorFilterDescription?: pulumi.Input<string>;
     /**
-     * The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * The name of the TrafficMirrorFilter.
      */
     trafficMirrorFilterName?: pulumi.Input<string>;
 }
@@ -131,15 +209,33 @@ export interface TrafficMirrorFilterState {
  */
 export interface TrafficMirrorFilterArgs {
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+     * Information about the outbound rule. See the following `Block EgressRules`.
+     */
+    egressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterEgressRule>[]>;
+    /**
+     * Inward direction rule information. See the following `Block IngressRules`.
+     */
+    ingressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterIngressRule>[]>;
+    /**
+     * The ID of the resource group to which the VPC belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The tags of this resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The description of the TrafficMirrorFilter.
      */
     trafficMirrorFilterDescription?: pulumi.Input<string>;
     /**
-     * The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * The name of the TrafficMirrorFilter.
      */
     trafficMirrorFilterName?: pulumi.Input<string>;
 }

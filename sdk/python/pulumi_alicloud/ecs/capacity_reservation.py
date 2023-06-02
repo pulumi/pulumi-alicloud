@@ -521,20 +521,21 @@ class CapacityReservation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g5")
+        default_zones = alicloud.get_zones(available_resource_creation="Instance",
+            available_instance_type=default_instance_types.ids[0])
         default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
         default_capacity_reservation = alicloud.ecs.CapacityReservation("defaultCapacityReservation",
-            description=var["name"],
+            description="terraform-example",
             platform="linux",
-            capacity_reservation_name=var["name"],
+            capacity_reservation_name="terraform-example",
             end_time_type="Unlimited",
             resource_group_id=default_resource_groups.ids[0],
             instance_amount=1,
-            instance_type="ecs.c5.2xlarge",
+            instance_type=default_instance_types.ids[0],
             match_criteria="Open",
             tags={
-                "Created": "tfTestAcc0",
-                "For": "Tftestacc 0",
+                "Created": "terraform-example",
             },
             zone_ids=[default_zones.zones[0].id])
         ```
@@ -583,20 +584,21 @@ class CapacityReservation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g5")
+        default_zones = alicloud.get_zones(available_resource_creation="Instance",
+            available_instance_type=default_instance_types.ids[0])
         default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
         default_capacity_reservation = alicloud.ecs.CapacityReservation("defaultCapacityReservation",
-            description=var["name"],
+            description="terraform-example",
             platform="linux",
-            capacity_reservation_name=var["name"],
+            capacity_reservation_name="terraform-example",
             end_time_type="Unlimited",
             resource_group_id=default_resource_groups.ids[0],
             instance_amount=1,
-            instance_type="ecs.c5.2xlarge",
+            instance_type=default_instance_types.ids[0],
             match_criteria="Open",
             tags={
-                "Created": "tfTestAcc0",
-                "For": "Tftestacc 0",
+                "Created": "terraform-example",
             },
             zone_ids=[default_zones.zones[0].id])
         ```

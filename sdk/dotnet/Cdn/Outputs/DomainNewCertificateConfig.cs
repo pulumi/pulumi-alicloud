@@ -14,33 +14,48 @@ namespace Pulumi.AliCloud.Cdn.Outputs
     public sealed class DomainNewCertificateConfig
     {
         /// <summary>
-        /// The SSL certificate name.
+        /// The ID of the certificate. It takes effect only when CertType = cas.
+        /// </summary>
+        public readonly string? CertId;
+        /// <summary>
+        /// Certificate name, only flyer names are supported.
         /// </summary>
         public readonly string? CertName;
         /// <summary>
-        /// The SSL certificate type, can be "upload", "cas" and "free".
+        /// The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+        /// </summary>
+        public readonly string? CertRegion;
+        /// <summary>
+        /// Certificate type. Value:
+        /// - **upload**: upload certificate.
+        /// - **cas**: Cloud Shield certificate.
+        /// - **free**: free certificate.
+        /// &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
         /// </summary>
         public readonly string? CertType;
-        /// <summary>
-        /// Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
-        /// </summary>
         public readonly string? ForceSet;
         /// <summary>
-        /// The SSL private key. This is required if `server_certificate_status` is `on`
+        /// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
         /// </summary>
         public readonly string? PrivateKey;
         /// <summary>
-        /// The SSL server certificate string. This is required if `server_certificate_status` is `on`
+        /// The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
         /// </summary>
         public readonly string? ServerCertificate;
         /// <summary>
-        /// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+        /// Whether the HTTPS certificate is enabled. Value:
+        /// - **on**(default): enabled.
+        /// - **off** : not enabled.
         /// </summary>
         public readonly string? ServerCertificateStatus;
 
         [OutputConstructor]
         private DomainNewCertificateConfig(
+            string? certId,
+
             string? certName,
+
+            string? certRegion,
 
             string? certType,
 
@@ -52,7 +67,9 @@ namespace Pulumi.AliCloud.Cdn.Outputs
 
             string? serverCertificateStatus)
         {
+            CertId = certId;
             CertName = certName;
+            CertRegion = certRegion;
             CertType = certType;
             ForceSet = forceSet;
             PrivateKey = privateKey;

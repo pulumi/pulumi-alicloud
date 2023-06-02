@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Cdn.Outputs
         /// <summary>
         /// The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
         /// </summary>
-        public readonly string Content;
+        public readonly string? Content;
         /// <summary>
         /// The port of source. Valid values are `443` and `80`. Default value is `80`.
         /// </summary>
@@ -28,21 +28,21 @@ namespace Pulumi.AliCloud.Cdn.Outputs
         /// <summary>
         /// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
         /// </summary>
-        public readonly string Type;
+        public readonly string? Type;
         /// <summary>
-        /// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+        /// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
         /// </summary>
         public readonly int? Weight;
 
         [OutputConstructor]
         private DomainNewSource(
-            string content,
+            string? content,
 
             int? port,
 
             int? priority,
 
-            string type,
+            string? type,
 
             int? weight)
         {

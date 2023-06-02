@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const slbRuleName = config.get("slbRuleName") || "forSlbRule";
+ * const slbRuleName = config.get("slbRuleName") || "terraform-example";
  * const ruleZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
@@ -77,12 +77,6 @@ import * as utilities from "../utilities";
  *     healthCheckConnectPort: 20,
  * });
  * const ruleServerGroup = new alicloud.slb.ServerGroup("ruleServerGroup", {loadBalancerId: ruleApplicationLoadBalancer.id});
- * const ruleServerGroupServerAttachment = new alicloud.slb.ServerGroupServerAttachment("ruleServerGroupServerAttachment", {
- *     serverGroupId: ruleServerGroup.id,
- *     serverId: ruleInstance.id,
- *     port: 80,
- *     weight: 100,
- * });
  * const ruleRule = new alicloud.slb.Rule("ruleRule", {
  *     loadBalancerId: ruleApplicationLoadBalancer.id,
  *     frontendPort: ruleListener.frontendPort,

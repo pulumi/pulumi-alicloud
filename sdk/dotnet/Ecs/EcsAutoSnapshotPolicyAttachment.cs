@@ -28,10 +28,54 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Ecs.EcsAutoSnapshotPolicyAttachment("example", new()
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         AutoSnapshotPolicyId = "s-ge465xxxx",
-    ///         DiskId = "d-gw835xxxx",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var exampleKey = new AliCloud.Kms.Key("exampleKey", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///         PendingWindowInDays = 7,
+    ///         Status = "Enabled",
+    ///     });
+    /// 
+    ///     var exampleAutoSnapshotPolicy = new AliCloud.Ecs.AutoSnapshotPolicy("exampleAutoSnapshotPolicy", new()
+    ///     {
+    ///         RepeatWeekdays = new[]
+    ///         {
+    ///             "1",
+    ///             "2",
+    ///             "3",
+    ///         },
+    ///         RetentionDays = -1,
+    ///         TimePoints = new[]
+    ///         {
+    ///             "1",
+    ///             "22",
+    ///             "23",
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleEcsDisk = new AliCloud.Ecs.EcsDisk("exampleEcsDisk", new()
+    ///     {
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         DiskName = "terraform-example",
+    ///         Description = "Hello ecs disk.",
+    ///         Category = "cloud_efficiency",
+    ///         Size = 30,
+    ///         Encrypted = true,
+    ///         KmsKeyId = exampleKey.Id,
+    ///         Tags = 
+    ///         {
+    ///             { "Name", "terraform-example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleEcsAutoSnapshotPolicyAttachment = new AliCloud.Ecs.EcsAutoSnapshotPolicyAttachment("exampleEcsAutoSnapshotPolicyAttachment", new()
+    ///     {
+    ///         AutoSnapshotPolicyId = exampleAutoSnapshotPolicy.Id,
+    ///         DiskId = exampleEcsDisk.Id,
     ///     });
     /// 
     /// });

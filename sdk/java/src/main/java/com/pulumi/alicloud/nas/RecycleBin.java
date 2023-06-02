@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.NasFunctions;
+ * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
  * import com.pulumi.alicloud.nas.FileSystemArgs;
  * import com.pulumi.alicloud.nas.RecycleBin;
@@ -47,11 +49,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var exampleZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *             .fileSystemType(&#34;standard&#34;)
+ *             .build());
+ * 
  *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
  *             .protocolType(&#34;NFS&#34;)
  *             .storageType(&#34;Performance&#34;)
- *             .description(var_.name())
+ *             .description(&#34;terraform-example&#34;)
  *             .encryptType(&#34;1&#34;)
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
  *             .build());
  * 
  *         var exampleRecycleBin = new RecycleBin(&#34;exampleRecycleBin&#34;, RecycleBinArgs.builder()        

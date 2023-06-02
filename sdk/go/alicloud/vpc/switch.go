@@ -11,7 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC switch resource.
+// Provides a VPC Vswitch resource. ## Module Support
+//
+// You can use to the existing vpc module  to create a VPC and several VSwitches one-click.
+//
+// For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
 //
 // ## Example Usage
 //
@@ -22,6 +26,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -29,17 +34,24 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("tf_test_foo"),
+//			fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
-//				VpcId:     vpc.ID(),
-//				CidrBlock: pulumi.String("172.16.0.0/21"),
-//				ZoneId:    pulumi.String("cn-beijing-b"),
+//			_, err = vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				VpcId:       fooNetwork.ID(),
+//				ZoneId:      *pulumi.String(fooZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -55,6 +67,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -62,8 +75,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("tf_test_foo"),
+//				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -79,8 +98,8 @@ import (
 //			_, err = vpc.NewSwitch(ctx, "island-nat", &vpc.SwitchArgs{
 //				VpcId:       cidrBlocks.VpcId,
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String("cn-beijing-b"),
-//				VswitchName: pulumi.String("example_value"),
+//				ZoneId:      *pulumi.String(foo.Zones[0].Id),
+//				VswitchName: pulumi.String("terraform-example"),
 //				Tags: pulumi.AnyMap{
 //					"BuiltBy":     pulumi.Any("example_value"),
 //					"cnm_version": pulumi.Any("example_value"),
@@ -104,6 +123,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -111,24 +131,30 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("tf_test_foo"),
+//			fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			example, err := vpc.NewIpv4CidrBlock(ctx, "example", &vpc.Ipv4CidrBlockArgs{
-//				VpcId:              pulumi.Any(alicloud_vpc.Default.Id),
+//			fooIpv4CidrBlock, err := vpc.NewIpv4CidrBlock(ctx, "fooIpv4CidrBlock", &vpc.Ipv4CidrBlockArgs{
+//				VpcId:              fooNetwork.ID(),
 //				SecondaryCidrBlock: pulumi.String("192.163.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
-//				VpcId:     example.VpcId,
+//			_, err = vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VpcId:     fooIpv4CidrBlock.VpcId,
 //				CidrBlock: pulumi.String("192.163.0.0/24"),
-//				ZoneId:    pulumi.String("cn-beijing-b"),
+//				ZoneId:    *pulumi.String(fooZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -138,50 +164,52 @@ import (
 //	}
 //
 // ```
-// ## Module Support
-//
-// You can use to the existing vpc module
-// to create a VPC and several VSwitches one-click.
 //
 // ## Import
 //
-// Vswitch can be imported using the id, e.g.
+// VPC Vswitch can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:vpc/switch:Switch example vsw-abc123456
+//	$ pulumi import alicloud:vpc/switch:Switch example <id>
 //
 // ```
 type Switch struct {
 	pulumi.CustomResourceState
 
-	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// The CIDR block for the switch.
+	// The IPv4 CIDR block of the VSwitch.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
-	// The switch description. Defaults to null.
+	// The creation time of the VSwitch.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of VSwitch.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+	// Whether the IPv6 function is enabled in the switch. Value:
+	// - **true**: enables IPv6.
+	// - **false** (default): IPv6 is not enabled.
 	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
-	// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlock pulumi.StringOutput `pulumi:"ipv6CidrBlock"`
-	// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask pulumi.IntPtrOutput `pulumi:"ipv6CidrBlockMask"`
-	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Available in 1.119.0+) The status of the switch.
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// The tags of VSwitch.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The VPC ID.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The name of the switch. Defaults to null.
+	// The name of the VSwitch.
 	VswitchName pulumi.StringOutput `pulumi:"vswitchName"`
-	// The AZ for the switch. **Note:** Required for a VPC switch.
+	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -220,64 +248,76 @@ func GetSwitch(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Switch resources.
 type switchState struct {
-	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The CIDR block for the switch.
+	// The IPv4 CIDR block of the VSwitch.
 	CidrBlock *string `pulumi:"cidrBlock"`
-	// The switch description. Defaults to null.
+	// The creation time of the VSwitch.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of VSwitch.
 	Description *string `pulumi:"description"`
-	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+	// Whether the IPv6 function is enabled in the switch. Value:
+	// - **true**: enables IPv6.
+	// - **false** (default): IPv6 is not enabled.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
-	// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
-	// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask *int `pulumi:"ipv6CidrBlockMask"`
-	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name *string `pulumi:"name"`
-	// (Available in 1.119.0+) The status of the switch.
+	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// The tags of VSwitch.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPC ID.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcId *string `pulumi:"vpcId"`
-	// The name of the switch. Defaults to null.
+	// The name of the VSwitch.
 	VswitchName *string `pulumi:"vswitchName"`
-	// The AZ for the switch. **Note:** Required for a VPC switch.
+	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type SwitchState struct {
-	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
-	// The CIDR block for the switch.
+	// The IPv4 CIDR block of the VSwitch.
 	CidrBlock pulumi.StringPtrInput
-	// The switch description. Defaults to null.
+	// The creation time of the VSwitch.
+	CreateTime pulumi.StringPtrInput
+	// The description of VSwitch.
 	Description pulumi.StringPtrInput
-	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+	// Whether the IPv6 function is enabled in the switch. Value:
+	// - **true**: enables IPv6.
+	// - **false** (default): IPv6 is not enabled.
 	EnableIpv6 pulumi.BoolPtrInput
-	// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlock pulumi.StringPtrInput
-	// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask pulumi.IntPtrInput
-	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringPtrInput
-	// (Available in 1.119.0+) The status of the switch.
+	// The status of the resource.
 	Status pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// The tags of VSwitch.
 	Tags pulumi.MapInput
 	// The VPC ID.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcId pulumi.StringPtrInput
-	// The name of the switch. Defaults to null.
+	// The name of the VSwitch.
 	VswitchName pulumi.StringPtrInput
-	// The AZ for the switch. **Note:** Required for a VPC switch.
+	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -286,57 +326,65 @@ func (SwitchState) ElementType() reflect.Type {
 }
 
 type switchArgs struct {
-	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The CIDR block for the switch.
+	// The IPv4 CIDR block of the VSwitch.
 	CidrBlock string `pulumi:"cidrBlock"`
-	// The switch description. Defaults to null.
+	// The description of VSwitch.
 	Description *string `pulumi:"description"`
-	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+	// Whether the IPv6 function is enabled in the switch. Value:
+	// - **true**: enables IPv6.
+	// - **false** (default): IPv6 is not enabled.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
-	// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask *int `pulumi:"ipv6CidrBlockMask"`
-	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name *string `pulumi:"name"`
-	// A mapping of tags to assign to the resource.
+	// The tags of VSwitch.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VPC ID.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcId string `pulumi:"vpcId"`
-	// The name of the switch. Defaults to null.
+	// The name of the VSwitch.
 	VswitchName *string `pulumi:"vswitchName"`
-	// The AZ for the switch. **Note:** Required for a VPC switch.
+	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Switch resource.
 type SwitchArgs struct {
-	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
-	// The CIDR block for the switch.
+	// The IPv4 CIDR block of the VSwitch.
 	CidrBlock pulumi.StringInput
-	// The switch description. Defaults to null.
+	// The description of VSwitch.
 	Description pulumi.StringPtrInput
-	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+	// Whether the IPv6 function is enabled in the switch. Value:
+	// - **true**: enables IPv6.
+	// - **false** (default): IPv6 is not enabled.
 	EnableIpv6 pulumi.BoolPtrInput
-	// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask pulumi.IntPtrInput
-	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// The tags of VSwitch.
 	Tags pulumi.MapInput
 	// The VPC ID.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcId pulumi.StringInput
-	// The name of the switch. Defaults to null.
+	// The name of the VSwitch.
 	VswitchName pulumi.StringPtrInput
-	// The AZ for the switch. **Note:** Required for a VPC switch.
+	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -427,66 +475,75 @@ func (o SwitchOutput) ToSwitchOutputWithContext(ctx context.Context) SwitchOutpu
 	return o
 }
 
-// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
+// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 //
 // Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 func (o SwitchOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// The CIDR block for the switch.
+// The IPv4 CIDR block of the VSwitch.
 func (o SwitchOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
-// The switch description. Defaults to null.
+// The creation time of the VSwitch.
+func (o SwitchOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of VSwitch.
 func (o SwitchOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+// Whether the IPv6 function is enabled in the switch. Value:
+// - **true**: enables IPv6.
+// - **false** (default): IPv6 is not enabled.
 func (o SwitchOutput) EnableIpv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
 }
 
-// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+// The IPv6 CIDR block of the VSwitch.
 func (o SwitchOutput) Ipv6CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Ipv6CidrBlock }).(pulumi.StringOutput)
 }
 
-// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+// The IPv6 CIDR block of the VSwitch.
 func (o SwitchOutput) Ipv6CidrBlockMask() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.IntPtrOutput { return v.Ipv6CidrBlockMask }).(pulumi.IntPtrOutput)
 }
 
-// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
+// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 func (o SwitchOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Available in 1.119.0+) The status of the switch.
+// The status of the resource.
 func (o SwitchOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// The tags of VSwitch.
 func (o SwitchOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Switch) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The VPC ID.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o SwitchOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The name of the switch. Defaults to null.
+// The name of the VSwitch.
 func (o SwitchOutput) VswitchName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.VswitchName }).(pulumi.StringOutput)
 }
 
-// The AZ for the switch. **Note:** Required for a VPC switch.
+// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
 func (o SwitchOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

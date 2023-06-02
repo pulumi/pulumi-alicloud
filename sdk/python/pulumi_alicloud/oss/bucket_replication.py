@@ -376,60 +376,81 @@ class BucketReplication(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_src = alicloud.oss.Bucket("bucketSrc", bucket=default.result.apply(lambda result: f"example-src-{result}"))
+        bucket_dest = alicloud.oss.Bucket("bucketDest", bucket=default.result.apply(lambda result: f"example-dest-{result}"))
+        role = alicloud.ram.Role("role",
+            document=\"\"\"		{
+        		  "Statement": [
+        			{
+        			  "Action": "sts:AssumeRole",
+        			  "Effect": "Allow",
+        			  "Principal": {
+        				"Service": [
+        				  "oss.aliyuncs.com"
+        				]
+        			  }
+        			}
+        		  ],
+        		  "Version": "1"
+        		}
+        \"\"\",
+            description="this is a test",
+            force=True)
+        policy = alicloud.ram.Policy("policy",
+            policy_name=default.result.apply(lambda result: f"example-policy-{result}"),
+            policy_document=\"\"\"		{
+        		  "Statement": [
+        			{
+        			  "Action": [
+        				"*"
+        			  ],
+        			  "Effect": "Allow",
+        			  "Resource": [
+        				"*"
+        			  ]
+        			}
+        		  ],
+        			"Version": "1"
+        		}
+        \"\"\",
+            description="this is a policy test",
+            force=True)
+        attach = alicloud.ram.RolePolicyAttachment("attach",
+            policy_name=policy.name,
+            policy_type=policy.type,
+            role_name=role.name)
+        key = alicloud.kms.Key("key",
+            description="Hello KMS",
+            pending_window_in_days=7,
+            status="Enabled")
         cross_region_replication = alicloud.oss.BucketReplication("cross-region-replication",
-            action="ALL",
-            bucket="bucket-in-hangzhou",
-            destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket="bucket-in-beijing",
-                location="oss-cn-beijing",
-            ))
-        same_region_replication = alicloud.oss.BucketReplication("same-region-replication",
-            action="ALL",
-            bucket="bucket-in-hangzhou",
-            destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket="bucket-in-hangzhou-1",
-                location="oss-cn-hangzhou",
-            ))
-        replication_with_prefix = alicloud.oss.BucketReplication("replication-with-prefix",
-            action="ALL",
-            bucket="bucket-1",
-            destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket="bucket-2",
-                location="oss-cn-hangzhou",
-            ),
-            historical_object_replication="disabled",
+            bucket=bucket_src.id,
+            action="PUT,DELETE",
+            historical_object_replication="enabled",
             prefix_set=alicloud.oss.BucketReplicationPrefixSetArgs(
                 prefixes=[
                     "prefix1/",
                     "prefix2/",
                 ],
-            ))
-        replication_with_specific_action = alicloud.oss.BucketReplication("replication-with-specific-action",
-            action="PUT",
-            bucket="bucket-1",
-            destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket="bucket-2",
-                location="oss-cn-hangzhou",
             ),
-            historical_object_replication="disabled")
-        replication_with_kms_encryption = alicloud.oss.BucketReplication("replication-with-kms-encryption",
-            action="ALL",
-            bucket="bucket-1",
             destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket="bucket-2",
-                location="oss-cn-hangzhou",
+                bucket=bucket_dest.id,
+                location=bucket_dest.location,
             ),
+            sync_role=role.name,
             encryption_configuration=alicloud.oss.BucketReplicationEncryptionConfigurationArgs(
-                replica_kms_key_id="<your kms key id>",
+                replica_kms_key_id=key.id,
             ),
-            historical_object_replication="disabled",
             source_selection_criteria=alicloud.oss.BucketReplicationSourceSelectionCriteriaArgs(
                 sse_kms_encrypted_objects=alicloud.oss.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs(
                     status="Enabled",
                 ),
-            ),
-            sync_role="<your ram role>")
+            ))
         ```
 
         ## Import
@@ -468,60 +489,81 @@ class BucketReplication(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_src = alicloud.oss.Bucket("bucketSrc", bucket=default.result.apply(lambda result: f"example-src-{result}"))
+        bucket_dest = alicloud.oss.Bucket("bucketDest", bucket=default.result.apply(lambda result: f"example-dest-{result}"))
+        role = alicloud.ram.Role("role",
+            document=\"\"\"		{
+        		  "Statement": [
+        			{
+        			  "Action": "sts:AssumeRole",
+        			  "Effect": "Allow",
+        			  "Principal": {
+        				"Service": [
+        				  "oss.aliyuncs.com"
+        				]
+        			  }
+        			}
+        		  ],
+        		  "Version": "1"
+        		}
+        \"\"\",
+            description="this is a test",
+            force=True)
+        policy = alicloud.ram.Policy("policy",
+            policy_name=default.result.apply(lambda result: f"example-policy-{result}"),
+            policy_document=\"\"\"		{
+        		  "Statement": [
+        			{
+        			  "Action": [
+        				"*"
+        			  ],
+        			  "Effect": "Allow",
+        			  "Resource": [
+        				"*"
+        			  ]
+        			}
+        		  ],
+        			"Version": "1"
+        		}
+        \"\"\",
+            description="this is a policy test",
+            force=True)
+        attach = alicloud.ram.RolePolicyAttachment("attach",
+            policy_name=policy.name,
+            policy_type=policy.type,
+            role_name=role.name)
+        key = alicloud.kms.Key("key",
+            description="Hello KMS",
+            pending_window_in_days=7,
+            status="Enabled")
         cross_region_replication = alicloud.oss.BucketReplication("cross-region-replication",
-            action="ALL",
-            bucket="bucket-in-hangzhou",
-            destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket="bucket-in-beijing",
-                location="oss-cn-beijing",
-            ))
-        same_region_replication = alicloud.oss.BucketReplication("same-region-replication",
-            action="ALL",
-            bucket="bucket-in-hangzhou",
-            destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket="bucket-in-hangzhou-1",
-                location="oss-cn-hangzhou",
-            ))
-        replication_with_prefix = alicloud.oss.BucketReplication("replication-with-prefix",
-            action="ALL",
-            bucket="bucket-1",
-            destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket="bucket-2",
-                location="oss-cn-hangzhou",
-            ),
-            historical_object_replication="disabled",
+            bucket=bucket_src.id,
+            action="PUT,DELETE",
+            historical_object_replication="enabled",
             prefix_set=alicloud.oss.BucketReplicationPrefixSetArgs(
                 prefixes=[
                     "prefix1/",
                     "prefix2/",
                 ],
-            ))
-        replication_with_specific_action = alicloud.oss.BucketReplication("replication-with-specific-action",
-            action="PUT",
-            bucket="bucket-1",
-            destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket="bucket-2",
-                location="oss-cn-hangzhou",
             ),
-            historical_object_replication="disabled")
-        replication_with_kms_encryption = alicloud.oss.BucketReplication("replication-with-kms-encryption",
-            action="ALL",
-            bucket="bucket-1",
             destination=alicloud.oss.BucketReplicationDestinationArgs(
-                bucket="bucket-2",
-                location="oss-cn-hangzhou",
+                bucket=bucket_dest.id,
+                location=bucket_dest.location,
             ),
+            sync_role=role.name,
             encryption_configuration=alicloud.oss.BucketReplicationEncryptionConfigurationArgs(
-                replica_kms_key_id="<your kms key id>",
+                replica_kms_key_id=key.id,
             ),
-            historical_object_replication="disabled",
             source_selection_criteria=alicloud.oss.BucketReplicationSourceSelectionCriteriaArgs(
                 sse_kms_encrypted_objects=alicloud.oss.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs(
                     status="Enabled",
                 ),
-            ),
-            sync_role="<your ram role>")
+            ))
         ```
 
         ## Import

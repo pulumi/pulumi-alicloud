@@ -11,53 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Quotas Quota Application resource.
-//
-// For information about Quotas Quota Application and how to use it, see [What is Quota Application](https://help.aliyun.com/document_detail/171289.html).
-//
-// > **NOTE:** Available in v1.117.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := quotas.NewQuotaApplication(ctx, "example", &quotas.QuotaApplicationArgs{
-//				DesireValue: pulumi.Float64(100),
-//				Dimensions: quotas.QuotaApplicationDimensionArray{
-//					&quotas.QuotaApplicationDimensionArgs{
-//						Key:   pulumi.String("regionId"),
-//						Value: pulumi.String("cn-hangzhou"),
-//					},
-//				},
-//				NoticeType:      pulumi.Int(0),
-//				ProductCode:     pulumi.String("ess"),
-//				QuotaActionCode: pulumi.String("q_db_instance"),
-//				Reason:          pulumi.String("For Terraform Test"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// Quotas Application Info can be imported using the id, e.g.
+// Quotas Quota Application can be imported using the id, e.g.
 //
 // ```sh
 //
@@ -69,25 +25,37 @@ type QuotaApplication struct {
 
 	// The approve value of the quota application.
 	ApproveValue pulumi.StringOutput `pulumi:"approveValue"`
-	// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
-	AuditMode pulumi.StringPtrOutput `pulumi:"auditMode"`
+	// Quota audit mode. Value:
+	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+	AuditMode pulumi.StringOutput `pulumi:"auditMode"`
 	// The audit reason.
 	AuditReason pulumi.StringOutput `pulumi:"auditReason"`
+	// Resource attribute field representing creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The desire value of the quota application.
 	DesireValue pulumi.Float64Output `pulumi:"desireValue"`
-	// The quota dimensions.
+	// QuotaDimensions. See the following `Block Dimensions`.
 	Dimensions QuotaApplicationDimensionArrayOutput `pulumi:"dimensions"`
 	// The effective time of the quota application.
-	EffectiveTime pulumi.StringOutput `pulumi:"effectiveTime"`
-	// The expire time of the quota application.
-	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
-	// The notice type. Valid values: `0`, `1`, `2`, `3`.
-	NoticeType pulumi.IntPtrOutput `pulumi:"noticeType"`
+	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
+	// The language of the quota alert notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage pulumi.StringPtrOutput `pulumi:"envLanguage"`
+	// The expired time of the quota application.
+	ExpireTime pulumi.StringPtrOutput `pulumi:"expireTime"`
+	// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+	NoticeType pulumi.IntOutput `pulumi:"noticeType"`
 	// The product code.
 	ProductCode pulumi.StringOutput `pulumi:"productCode"`
 	// The ID of quota action.
 	QuotaActionCode pulumi.StringOutput `pulumi:"quotaActionCode"`
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+	// The quota type.
+	// - CommonQuota (default): Generic quota.
+	// - FlowControl:API rate quota.
+	// - WhiteListLabel: Equity quota.
 	QuotaCategory pulumi.StringPtrOutput `pulumi:"quotaCategory"`
 	// The description of the quota application.
 	QuotaDescription pulumi.StringOutput `pulumi:"quotaDescription"`
@@ -97,7 +65,11 @@ type QuotaApplication struct {
 	QuotaUnit pulumi.StringOutput `pulumi:"quotaUnit"`
 	// The reason of the quota application.
 	Reason pulumi.StringOutput `pulumi:"reason"`
-	// The status of the quota application.
+	// Application Status:
+	// - Disagree: reject.
+	// - Agree: Approved.
+	// - Process: under review.
+	// - Cancel: Closed.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -144,25 +116,37 @@ func GetQuotaApplication(ctx *pulumi.Context,
 type quotaApplicationState struct {
 	// The approve value of the quota application.
 	ApproveValue *string `pulumi:"approveValue"`
-	// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+	// Quota audit mode. Value:
+	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
 	AuditMode *string `pulumi:"auditMode"`
 	// The audit reason.
 	AuditReason *string `pulumi:"auditReason"`
+	// Resource attribute field representing creation time.
+	CreateTime *string `pulumi:"createTime"`
 	// The desire value of the quota application.
 	DesireValue *float64 `pulumi:"desireValue"`
-	// The quota dimensions.
+	// QuotaDimensions. See the following `Block Dimensions`.
 	Dimensions []QuotaApplicationDimension `pulumi:"dimensions"`
 	// The effective time of the quota application.
 	EffectiveTime *string `pulumi:"effectiveTime"`
-	// The expire time of the quota application.
+	// The language of the quota alert notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage *string `pulumi:"envLanguage"`
+	// The expired time of the quota application.
 	ExpireTime *string `pulumi:"expireTime"`
-	// The notice type. Valid values: `0`, `1`, `2`, `3`.
+	// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
 	NoticeType *int `pulumi:"noticeType"`
 	// The product code.
 	ProductCode *string `pulumi:"productCode"`
 	// The ID of quota action.
 	QuotaActionCode *string `pulumi:"quotaActionCode"`
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+	// The quota type.
+	// - CommonQuota (default): Generic quota.
+	// - FlowControl:API rate quota.
+	// - WhiteListLabel: Equity quota.
 	QuotaCategory *string `pulumi:"quotaCategory"`
 	// The description of the quota application.
 	QuotaDescription *string `pulumi:"quotaDescription"`
@@ -172,32 +156,48 @@ type quotaApplicationState struct {
 	QuotaUnit *string `pulumi:"quotaUnit"`
 	// The reason of the quota application.
 	Reason *string `pulumi:"reason"`
-	// The status of the quota application.
+	// Application Status:
+	// - Disagree: reject.
+	// - Agree: Approved.
+	// - Process: under review.
+	// - Cancel: Closed.
 	Status *string `pulumi:"status"`
 }
 
 type QuotaApplicationState struct {
 	// The approve value of the quota application.
 	ApproveValue pulumi.StringPtrInput
-	// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+	// Quota audit mode. Value:
+	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
 	AuditMode pulumi.StringPtrInput
 	// The audit reason.
 	AuditReason pulumi.StringPtrInput
+	// Resource attribute field representing creation time.
+	CreateTime pulumi.StringPtrInput
 	// The desire value of the quota application.
 	DesireValue pulumi.Float64PtrInput
-	// The quota dimensions.
+	// QuotaDimensions. See the following `Block Dimensions`.
 	Dimensions QuotaApplicationDimensionArrayInput
 	// The effective time of the quota application.
 	EffectiveTime pulumi.StringPtrInput
-	// The expire time of the quota application.
+	// The language of the quota alert notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage pulumi.StringPtrInput
+	// The expired time of the quota application.
 	ExpireTime pulumi.StringPtrInput
-	// The notice type. Valid values: `0`, `1`, `2`, `3`.
+	// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
 	NoticeType pulumi.IntPtrInput
 	// The product code.
 	ProductCode pulumi.StringPtrInput
 	// The ID of quota action.
 	QuotaActionCode pulumi.StringPtrInput
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+	// The quota type.
+	// - CommonQuota (default): Generic quota.
+	// - FlowControl:API rate quota.
+	// - WhiteListLabel: Equity quota.
 	QuotaCategory pulumi.StringPtrInput
 	// The description of the quota application.
 	QuotaDescription pulumi.StringPtrInput
@@ -207,7 +207,11 @@ type QuotaApplicationState struct {
 	QuotaUnit pulumi.StringPtrInput
 	// The reason of the quota application.
 	Reason pulumi.StringPtrInput
-	// The status of the quota application.
+	// Application Status:
+	// - Disagree: reject.
+	// - Agree: Approved.
+	// - Process: under review.
+	// - Cancel: Closed.
 	Status pulumi.StringPtrInput
 }
 
@@ -216,19 +220,33 @@ func (QuotaApplicationState) ElementType() reflect.Type {
 }
 
 type quotaApplicationArgs struct {
-	// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+	// Quota audit mode. Value:
+	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
 	AuditMode *string `pulumi:"auditMode"`
 	// The desire value of the quota application.
 	DesireValue float64 `pulumi:"desireValue"`
-	// The quota dimensions.
+	// QuotaDimensions. See the following `Block Dimensions`.
 	Dimensions []QuotaApplicationDimension `pulumi:"dimensions"`
-	// The notice type. Valid values: `0`, `1`, `2`, `3`.
+	// The effective time of the quota application.
+	EffectiveTime *string `pulumi:"effectiveTime"`
+	// The language of the quota alert notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage *string `pulumi:"envLanguage"`
+	// The expired time of the quota application.
+	ExpireTime *string `pulumi:"expireTime"`
+	// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
 	NoticeType *int `pulumi:"noticeType"`
 	// The product code.
 	ProductCode string `pulumi:"productCode"`
 	// The ID of quota action.
 	QuotaActionCode string `pulumi:"quotaActionCode"`
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+	// The quota type.
+	// - CommonQuota (default): Generic quota.
+	// - FlowControl:API rate quota.
+	// - WhiteListLabel: Equity quota.
 	QuotaCategory *string `pulumi:"quotaCategory"`
 	// The reason of the quota application.
 	Reason string `pulumi:"reason"`
@@ -236,19 +254,33 @@ type quotaApplicationArgs struct {
 
 // The set of arguments for constructing a QuotaApplication resource.
 type QuotaApplicationArgs struct {
-	// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+	// Quota audit mode. Value:
+	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
 	AuditMode pulumi.StringPtrInput
 	// The desire value of the quota application.
 	DesireValue pulumi.Float64Input
-	// The quota dimensions.
+	// QuotaDimensions. See the following `Block Dimensions`.
 	Dimensions QuotaApplicationDimensionArrayInput
-	// The notice type. Valid values: `0`, `1`, `2`, `3`.
+	// The effective time of the quota application.
+	EffectiveTime pulumi.StringPtrInput
+	// The language of the quota alert notification. Value:
+	// - zh (default): Chinese.
+	// - en: English.
+	EnvLanguage pulumi.StringPtrInput
+	// The expired time of the quota application.
+	ExpireTime pulumi.StringPtrInput
+	// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
 	NoticeType pulumi.IntPtrInput
 	// The product code.
 	ProductCode pulumi.StringInput
 	// The ID of quota action.
 	QuotaActionCode pulumi.StringInput
-	// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+	// The quota type.
+	// - CommonQuota (default): Generic quota.
+	// - FlowControl:API rate quota.
+	// - WhiteListLabel: Equity quota.
 	QuotaCategory pulumi.StringPtrInput
 	// The reason of the quota application.
 	Reason pulumi.StringInput
@@ -346,9 +378,12 @@ func (o QuotaApplicationOutput) ApproveValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.ApproveValue }).(pulumi.StringOutput)
 }
 
-// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
-func (o QuotaApplicationOutput) AuditMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QuotaApplication) pulumi.StringPtrOutput { return v.AuditMode }).(pulumi.StringPtrOutput)
+// Quota audit mode. Value:
+// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+func (o QuotaApplicationOutput) AuditMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.AuditMode }).(pulumi.StringOutput)
 }
 
 // The audit reason.
@@ -356,29 +391,41 @@ func (o QuotaApplicationOutput) AuditReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.AuditReason }).(pulumi.StringOutput)
 }
 
+// Resource attribute field representing creation time.
+func (o QuotaApplicationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The desire value of the quota application.
 func (o QuotaApplicationOutput) DesireValue() pulumi.Float64Output {
 	return o.ApplyT(func(v *QuotaApplication) pulumi.Float64Output { return v.DesireValue }).(pulumi.Float64Output)
 }
 
-// The quota dimensions.
+// QuotaDimensions. See the following `Block Dimensions`.
 func (o QuotaApplicationOutput) Dimensions() QuotaApplicationDimensionArrayOutput {
 	return o.ApplyT(func(v *QuotaApplication) QuotaApplicationDimensionArrayOutput { return v.Dimensions }).(QuotaApplicationDimensionArrayOutput)
 }
 
 // The effective time of the quota application.
-func (o QuotaApplicationOutput) EffectiveTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.EffectiveTime }).(pulumi.StringOutput)
+func (o QuotaApplicationOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
 }
 
-// The expire time of the quota application.
-func (o QuotaApplicationOutput) ExpireTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+// The language of the quota alert notification. Value:
+// - zh (default): Chinese.
+// - en: English.
+func (o QuotaApplicationOutput) EnvLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringPtrOutput { return v.EnvLanguage }).(pulumi.StringPtrOutput)
 }
 
-// The notice type. Valid values: `0`, `1`, `2`, `3`.
-func (o QuotaApplicationOutput) NoticeType() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *QuotaApplication) pulumi.IntPtrOutput { return v.NoticeType }).(pulumi.IntPtrOutput)
+// The expired time of the quota application.
+func (o QuotaApplicationOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.StringPtrOutput { return v.ExpireTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+func (o QuotaApplicationOutput) NoticeType() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaApplication) pulumi.IntOutput { return v.NoticeType }).(pulumi.IntOutput)
 }
 
 // The product code.
@@ -391,7 +438,10 @@ func (o QuotaApplicationOutput) QuotaActionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.QuotaActionCode }).(pulumi.StringOutput)
 }
 
-// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+// The quota type.
+// - CommonQuota (default): Generic quota.
+// - FlowControl:API rate quota.
+// - WhiteListLabel: Equity quota.
 func (o QuotaApplicationOutput) QuotaCategory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QuotaApplication) pulumi.StringPtrOutput { return v.QuotaCategory }).(pulumi.StringPtrOutput)
 }
@@ -416,7 +466,11 @@ func (o QuotaApplicationOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.Reason }).(pulumi.StringOutput)
 }
 
-// The status of the quota application.
+// Application Status:
+// - Disagree: reject.
+// - Agree: Approved.
+// - Process: under review.
+// - Cancel: Closed.
 func (o QuotaApplicationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

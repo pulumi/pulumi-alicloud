@@ -19,6 +19,7 @@ class AcceleratorArgs:
                  accelerator_name: Optional[pulumi.Input[str]] = None,
                  auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
+                 bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None):
@@ -37,6 +38,7 @@ class AcceleratorArgs:
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[str] pricing_cycle: The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
         :param pulumi.Input[str] renewal_status: Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
@@ -49,6 +51,8 @@ class AcceleratorArgs:
             pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+        if bandwidth_billing_type is not None:
+            pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if pricing_cycle is not None:
@@ -125,6 +129,18 @@ class AcceleratorArgs:
         pulumi.set(self, "auto_use_coupon", value)
 
     @property
+    @pulumi.getter(name="bandwidthBillingType")
+    def bandwidth_billing_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        """
+        return pulumi.get(self, "bandwidth_billing_type")
+
+    @bandwidth_billing_type.setter
+    def bandwidth_billing_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth_billing_type", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -167,6 +183,7 @@ class _AcceleratorState:
                  accelerator_name: Optional[pulumi.Input[str]] = None,
                  auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
+                 bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
@@ -178,6 +195,7 @@ class _AcceleratorState:
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
@@ -199,6 +217,8 @@ class _AcceleratorState:
             pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
             pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+        if bandwidth_billing_type is not None:
+            pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if duration is not None:
@@ -247,6 +267,18 @@ class _AcceleratorState:
     @auto_use_coupon.setter
     def auto_use_coupon(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_use_coupon", value)
+
+    @property
+    @pulumi.getter(name="bandwidthBillingType")
+    def bandwidth_billing_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        """
+        return pulumi.get(self, "bandwidth_billing_type")
+
+    @bandwidth_billing_type.setter
+    def bandwidth_billing_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bandwidth_billing_type", value)
 
     @property
     @pulumi.getter
@@ -337,6 +369,7 @@ class Accelerator(pulumi.CustomResource):
                  accelerator_name: Optional[pulumi.Input[str]] = None,
                  auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
+                 bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
@@ -379,6 +412,7 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
@@ -448,6 +482,7 @@ class Accelerator(pulumi.CustomResource):
                  accelerator_name: Optional[pulumi.Input[str]] = None,
                  auto_renew_duration: Optional[pulumi.Input[int]] = None,
                  auto_use_coupon: Optional[pulumi.Input[bool]] = None,
+                 bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
@@ -465,6 +500,7 @@ class Accelerator(pulumi.CustomResource):
             __props__.__dict__["accelerator_name"] = accelerator_name
             __props__.__dict__["auto_renew_duration"] = auto_renew_duration
             __props__.__dict__["auto_use_coupon"] = auto_use_coupon
+            __props__.__dict__["bandwidth_billing_type"] = bandwidth_billing_type
             __props__.__dict__["description"] = description
             if duration is None and not opts.urn:
                 raise TypeError("Missing required property 'duration'")
@@ -488,6 +524,7 @@ class Accelerator(pulumi.CustomResource):
             accelerator_name: Optional[pulumi.Input[str]] = None,
             auto_renew_duration: Optional[pulumi.Input[int]] = None,
             auto_use_coupon: Optional[pulumi.Input[bool]] = None,
+            bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[int]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
@@ -504,6 +541,7 @@ class Accelerator(pulumi.CustomResource):
         :param pulumi.Input[str] accelerator_name: The Name of the GA instance.
         :param pulumi.Input[int] auto_renew_duration: Auto renewal period of an instance, in the unit of month. The value range is 1-12.
         :param pulumi.Input[bool] auto_use_coupon: Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+        :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
         :param pulumi.Input[str] description: Descriptive information of the global acceleration instance.
         :param pulumi.Input[int] duration: The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
@@ -526,6 +564,7 @@ class Accelerator(pulumi.CustomResource):
         __props__.__dict__["accelerator_name"] = accelerator_name
         __props__.__dict__["auto_renew_duration"] = auto_renew_duration
         __props__.__dict__["auto_use_coupon"] = auto_use_coupon
+        __props__.__dict__["bandwidth_billing_type"] = bandwidth_billing_type
         __props__.__dict__["description"] = description
         __props__.__dict__["duration"] = duration
         __props__.__dict__["pricing_cycle"] = pricing_cycle
@@ -557,6 +596,14 @@ class Accelerator(pulumi.CustomResource):
         Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
         """
         return pulumi.get(self, "auto_use_coupon")
+
+    @property
+    @pulumi.getter(name="bandwidthBillingType")
+    def bandwidth_billing_type(self) -> pulumi.Output[str]:
+        """
+        The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        """
+        return pulumi.get(self, "bandwidth_billing_type")
 
     @property
     @pulumi.getter

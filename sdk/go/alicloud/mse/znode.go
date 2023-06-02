@@ -26,7 +26,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -35,43 +35,50 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := mongodb.GetZones(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultCluster, err := mse.NewCluster(ctx, "defaultCluster", &mse.ClusterArgs{
-//				ClusterSpecification: pulumi.String("MSE_SC_1_2_200_c"),
-//				ClusterType:          pulumi.String("ZooKeeper"),
-//				ClusterVersion:       pulumi.String("ZooKeeper_3_5_5"),
-//				InstanceCount:        pulumi.Int(1),
-//				NetType:              pulumi.String("privatenet"),
-//				VswitchId:            *pulumi.String(defaultSwitches.Ids[0]),
-//				PubNetworkFlow:       pulumi.String("1"),
-//				AclEntryLists: pulumi.StringArray{
-//					pulumi.String("127.0.0.1/32"),
-//				},
-//				ClusterAliasName: pulumi.String("example_value"),
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = mse.NewZnode(ctx, "defaultZnode", &mse.ZnodeArgs{
-//				ClusterId: defaultCluster.ClusterId,
-//				Data:      pulumi.String("example_value"),
-//				Path:      pulumi.String("example_value"),
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleCluster, err := mse.NewCluster(ctx, "exampleCluster", &mse.ClusterArgs{
+//				ClusterSpecification: pulumi.String("MSE_SC_1_2_60_c"),
+//				ClusterType:          pulumi.String("ZooKeeper"),
+//				ClusterVersion:       pulumi.String("ZooKeeper_3_8_0"),
+//				InstanceCount:        pulumi.Int(1),
+//				NetType:              pulumi.String("privatenet"),
+//				PubNetworkFlow:       pulumi.String("1"),
+//				AclEntryLists: pulumi.StringArray{
+//					pulumi.String("127.0.0.1/32"),
+//				},
+//				ClusterAliasName: pulumi.String("terraform-example"),
+//				MseVersion:       pulumi.String("mse_dev"),
+//				VswitchId:        exampleSwitch.ID(),
+//				VpcId:            exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mse.NewZnode(ctx, "exampleZnode", &mse.ZnodeArgs{
+//				ClusterId: exampleCluster.ClusterId,
+//				Data:      pulumi.String("terraform-example"),
+//				Path:      pulumi.String("/example"),
 //			})
 //			if err != nil {
 //				return err

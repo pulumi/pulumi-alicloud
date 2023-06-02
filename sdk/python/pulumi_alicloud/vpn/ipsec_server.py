@@ -377,24 +377,28 @@ class IpsecServer(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        vswitch_id = default_switches.ids[0]
-        default_gateway = alicloud.vpn.Gateway("defaultGateway",
-            vpc_id=default_networks.ids[0],
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.16.0.0/21",
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
+        foo_gateway = alicloud.vpn.Gateway("fooGateway",
+            vpc_id=foo_network.id,
             bandwidth=10,
             enable_ssl=True,
-            enable_ipsec=True,
-            ssl_connections=5,
             instance_charge_type="PrePaid",
-            vswitch_id=vswitch_id)
-        example = alicloud.vpn.IpsecServer("example",
-            client_ip_pool="example_value",
-            ipsec_server_name="example_value",
-            local_subnet="example_value",
-            vpn_gateway_id=default_gateway.id)
+            description="terraform-example",
+            vswitch_id=foo_switch.id)
+        foo_ipsec_server = alicloud.vpn.IpsecServer("fooIpsecServer",
+            client_ip_pool="10.0.0.0/24",
+            ipsec_server_name="terraform-example",
+            local_subnet="192.168.0.0/24",
+            vpn_gateway_id=foo_gateway.id,
+            psk_enabled=True)
         ```
 
         ## Import
@@ -439,24 +443,28 @@ class IpsecServer(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        vswitch_id = default_switches.ids[0]
-        default_gateway = alicloud.vpn.Gateway("defaultGateway",
-            vpc_id=default_networks.ids[0],
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.16.0.0/21",
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
+        foo_gateway = alicloud.vpn.Gateway("fooGateway",
+            vpc_id=foo_network.id,
             bandwidth=10,
             enable_ssl=True,
-            enable_ipsec=True,
-            ssl_connections=5,
             instance_charge_type="PrePaid",
-            vswitch_id=vswitch_id)
-        example = alicloud.vpn.IpsecServer("example",
-            client_ip_pool="example_value",
-            ipsec_server_name="example_value",
-            local_subnet="example_value",
-            vpn_gateway_id=default_gateway.id)
+            description="terraform-example",
+            vswitch_id=foo_switch.id)
+        foo_ipsec_server = alicloud.vpn.IpsecServer("fooIpsecServer",
+            client_ip_pool="10.0.0.0/24",
+            ipsec_server_name="terraform-example",
+            local_subnet="192.168.0.0/24",
+            vpn_gateway_id=foo_gateway.id,
+            psk_enabled=True)
         ```
 
         ## Import

@@ -19,30 +19,45 @@ public final class NetworkAclResourceArgs extends com.pulumi.resources.ResourceA
      * The ID of the associated resource.
      * 
      */
-    @Import(name="resourceId")
-    private @Nullable Output<String> resourceId;
+    @Import(name="resourceId", required=true)
+    private Output<String> resourceId;
 
     /**
      * @return The ID of the associated resource.
      * 
      */
-    public Optional<Output<String>> resourceId() {
-        return Optional.ofNullable(this.resourceId);
+    public Output<String> resourceId() {
+        return this.resourceId;
     }
 
     /**
-     * The type of the associated resource. Valid values `VSwitch`.
+     * The type of the associated resource.
      * 
      */
-    @Import(name="resourceType")
-    private @Nullable Output<String> resourceType;
+    @Import(name="resourceType", required=true)
+    private Output<String> resourceType;
 
     /**
-     * @return The type of the associated resource. Valid values `VSwitch`.
+     * @return The type of the associated resource.
      * 
      */
-    public Optional<Output<String>> resourceType() {
-        return Optional.ofNullable(this.resourceType);
+    public Output<String> resourceType() {
+        return this.resourceType;
+    }
+
+    /**
+     * The state of the network ACL.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The state of the network ACL.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
     }
 
     private NetworkAclResourceArgs() {}
@@ -50,6 +65,7 @@ public final class NetworkAclResourceArgs extends com.pulumi.resources.ResourceA
     private NetworkAclResourceArgs(NetworkAclResourceArgs $) {
         this.resourceId = $.resourceId;
         this.resourceType = $.resourceType;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -76,7 +92,7 @@ public final class NetworkAclResourceArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder resourceId(@Nullable Output<String> resourceId) {
+        public Builder resourceId(Output<String> resourceId) {
             $.resourceId = resourceId;
             return this;
         }
@@ -92,18 +108,18 @@ public final class NetworkAclResourceArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceType The type of the associated resource. Valid values `VSwitch`.
+         * @param resourceType The type of the associated resource.
          * 
          * @return builder
          * 
          */
-        public Builder resourceType(@Nullable Output<String> resourceType) {
+        public Builder resourceType(Output<String> resourceType) {
             $.resourceType = resourceType;
             return this;
         }
 
         /**
-         * @param resourceType The type of the associated resource. Valid values `VSwitch`.
+         * @param resourceType The type of the associated resource.
          * 
          * @return builder
          * 
@@ -112,7 +128,30 @@ public final class NetworkAclResourceArgs extends com.pulumi.resources.ResourceA
             return resourceType(Output.of(resourceType));
         }
 
+        /**
+         * @param status The state of the network ACL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The state of the network ACL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
         public NetworkAclResourceArgs build() {
+            $.resourceId = Objects.requireNonNull($.resourceId, "expected parameter 'resourceId' to be non-null");
+            $.resourceType = Objects.requireNonNull($.resourceType, "expected parameter 'resourceType' to be non-null");
             return $;
         }
     }

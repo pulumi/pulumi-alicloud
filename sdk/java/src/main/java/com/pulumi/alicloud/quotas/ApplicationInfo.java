@@ -27,16 +27,22 @@ public class ApplicationInfo extends com.pulumi.resources.CustomResource {
         return this.approveValue;
     }
     @Export(name="auditMode", type=String.class, parameters={})
-    private Output</* @Nullable */ String> auditMode;
+    private Output<String> auditMode;
 
-    public Output<Optional<String>> auditMode() {
-        return Codegen.optional(this.auditMode);
+    public Output<String> auditMode() {
+        return this.auditMode;
     }
     @Export(name="auditReason", type=String.class, parameters={})
     private Output<String> auditReason;
 
     public Output<String> auditReason() {
         return this.auditReason;
+    }
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    public Output<String> createTime() {
+        return this.createTime;
     }
     @Export(name="desireValue", type=Double.class, parameters={})
     private Output<Double> desireValue;
@@ -51,22 +57,28 @@ public class ApplicationInfo extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dimensions);
     }
     @Export(name="effectiveTime", type=String.class, parameters={})
-    private Output<String> effectiveTime;
+    private Output</* @Nullable */ String> effectiveTime;
 
-    public Output<String> effectiveTime() {
-        return this.effectiveTime;
+    public Output<Optional<String>> effectiveTime() {
+        return Codegen.optional(this.effectiveTime);
+    }
+    @Export(name="envLanguage", type=String.class, parameters={})
+    private Output</* @Nullable */ String> envLanguage;
+
+    public Output<Optional<String>> envLanguage() {
+        return Codegen.optional(this.envLanguage);
     }
     @Export(name="expireTime", type=String.class, parameters={})
-    private Output<String> expireTime;
+    private Output</* @Nullable */ String> expireTime;
 
-    public Output<String> expireTime() {
-        return this.expireTime;
+    public Output<Optional<String>> expireTime() {
+        return Codegen.optional(this.expireTime);
     }
     @Export(name="noticeType", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> noticeType;
+    private Output<Integer> noticeType;
 
-    public Output<Optional<Integer>> noticeType() {
-        return Codegen.optional(this.noticeType);
+    public Output<Integer> noticeType() {
+        return this.noticeType;
     }
     @Export(name="productCode", type=String.class, parameters={})
     private Output<String> productCode;

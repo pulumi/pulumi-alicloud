@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     var @default = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         CidrBlock = "192.168.0.0/24",
-    ///         VpcName = @var.Name,
+    ///         VpcName = "terraform-example",
     ///     });
     /// 
     ///     var example = new AliCloud.Vpc.Ipv4CidrBlock("example", new()

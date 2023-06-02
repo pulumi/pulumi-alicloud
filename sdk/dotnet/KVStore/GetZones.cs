@@ -85,9 +85,7 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
-        /// * Local: an ApsaraDB for Redis instance with a local disk.
-        /// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
@@ -123,9 +121,7 @@ namespace Pulumi.AliCloud.KVStore
     {
         /// <summary>
         /// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
-        /// * Local: an ApsaraDB for Redis instance with a local disk.
-        /// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+        /// * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }

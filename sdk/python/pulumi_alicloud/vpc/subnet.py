@@ -148,6 +148,7 @@ class _SubnetState:
     def __init__(__self__, *,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
@@ -168,6 +169,8 @@ class _SubnetState:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_ipv6 is not None:
@@ -209,6 +212,15 @@ class _SubnetState:
     @cidr_block.setter
     def cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -390,6 +402,7 @@ class Subnet(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_name"] = vswitch_name
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["ipv6_cidr_block"] = None
             __props__.__dict__["status"] = None
         super(Subnet, __self__).__init__(
@@ -404,6 +417,7 @@ class Subnet(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             cidr_block: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_ipv6: Optional[pulumi.Input[bool]] = None,
             ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
@@ -428,6 +442,7 @@ class Subnet(pulumi.CustomResource):
 
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["cidr_block"] = cidr_block
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_ipv6"] = enable_ipv6
         __props__.__dict__["ipv6_cidr_block"] = ipv6_cidr_block
@@ -449,6 +464,11 @@ class Subnet(pulumi.CustomResource):
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Output[str]:
         return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter

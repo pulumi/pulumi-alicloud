@@ -19,13 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tftestacc";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultApplication = new alicloud.oos.Application("defaultApplication", {
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     applicationName: name,
- *     description: name,
+ *     applicationName: "terraform-example",
+ *     description: "terraform-example",
  *     tags: {
  *         Created: "TF",
  *     },

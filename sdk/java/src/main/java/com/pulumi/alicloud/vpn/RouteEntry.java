@@ -58,10 +58,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;10.1.0.0/21&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;10.1.0.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
@@ -70,7 +72,7 @@ import javax.annotation.Nullable;
  *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .bandwidth(10)
- *             .instanceChargeType(&#34;PayByTraffic&#34;)
+ *             .instanceChargeType(&#34;PrePaid&#34;)
  *             .enableSsl(false)
  *             .vswitchId(defaultSwitch.id())
  *             .build());

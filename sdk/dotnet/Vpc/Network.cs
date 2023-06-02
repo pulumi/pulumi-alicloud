@@ -10,6 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
+    /// Provides a Vpc Vpc resource. A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
+    /// 
+    /// &gt; **NOTE:** This resource will auto build a router and a route table while it uses `alicloud.vpc.Network` to build a vpc resource.
+    /// 
+    /// &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+    /// 
+    /// ## Module Support
+    /// 
+    /// You can use the existing vpc module
+    /// to create a VPC and several VSwitches one-click.
+    /// 
+    /// For information about Vpc Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -22,25 +35,26 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         CidrBlock = "172.16.0.0/12",
-    ///         VpcName = "tf_test_foo",
+    ///         Ipv6Isp = "BGP",
+    ///         Description = "test",
+    ///         CidrBlock = "10.0.0.0/8",
+    ///         VpcName = name,
+    ///         EnableIpv6 = true,
     ///     });
     /// 
     /// });
     /// ```
-    /// ## Module Support
-    /// 
-    /// You can use the existing vpc module
-    /// to create a VPC and several VSwitches one-click.
     /// 
     /// ## Import
     /// 
-    /// VPC can be imported using the id, e.g.
+    /// Vpc Vpc can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/network:Network example vpc-abc123456
+    ///  $ pulumi import alicloud:vpc/network:Network example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/network:Network")]
@@ -50,7 +64,19 @@ namespace Pulumi.AliCloud.Vpc
         /// The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
         /// </summary>
         [Output("cidrBlock")]
-        public Output<string?> CidrBlock { get; private set; } = null!;
+        public Output<string> CidrBlock { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of ClassicLink function.
+        /// </summary>
+        [Output("classicLinkEnabled")]
+        public Output<bool?> ClassicLinkEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the VPC.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// The VPC description. Defaults to null.
@@ -59,33 +85,52 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+        /// Whether to PreCheck this request only. Value:
+        /// - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-        /// 
-        /// &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+        /// Whether to enable the IPv6 network segment. Value:
+        /// - **false** (default): not enabled.
+        /// - **true**: on.
         /// </summary>
         [Output("enableIpv6")]
         public Output<bool?> EnableIpv6 { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+        /// The IPv6 CIDR block of the VPC.
         /// </summary>
         [Output("ipv6CidrBlock")]
         public Output<string> Ipv6CidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
+        /// The IPv6 CIDR block information of the VPC.
+        /// </summary>
+        [Output("ipv6CidrBlocks")]
+        public Output<ImmutableArray<Outputs.NetworkIpv6CidrBlock>> Ipv6CidrBlocks { get; private set; } = null!;
+
+        /// <summary>
+        /// The IPv6 address segment type of the VPC. Value:
+        /// - **BGP** (default): Alibaba Cloud BGP IPv6.
+        /// - **ChinaMobile**: China Mobile (single line).
+        /// - **ChinaUnicom**: China Unicom (single line).
+        /// - **ChinaTelecom**: China Telecom (single line).
+        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        /// </summary>
+        [Output("ipv6Isp")]
+        public Output<string?> Ipv6Isp { get; private set; } = null!;
+
+        /// <summary>
+        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of resource group which the VPC belongs.
+        /// The ID of the resource group to which the VPC belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -103,37 +148,39 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouterId { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated) It has been deprecated and replaced with `route_table_id`.
+        /// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         /// </summary>
         [Output("routerTableId")]
         public Output<string> RouterTableId { get; private set; } = null!;
 
         /// <summary>
-        /// Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+        /// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         /// </summary>
         [Output("secondaryCidrBlocks")]
         public Output<ImmutableArray<string>> SecondaryCidrBlocks { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the VPC.
+        /// The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of Vpc.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The user cidr blocks of the VPC.
+        /// A list of user CIDRs.
         /// </summary>
         [Output("userCidrs")]
         public Output<ImmutableArray<string>> UserCidrs { get; private set; } = null!;
 
         /// <summary>
         /// The name of the VPC. Defaults to null.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("vpcName")]
         public Output<string> VpcName { get; private set; } = null!;
@@ -191,44 +238,75 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
+        /// The status of ClassicLink function.
+        /// </summary>
+        [Input("classicLinkEnabled")]
+        public Input<bool>? ClassicLinkEnabled { get; set; }
+
+        /// <summary>
         /// The VPC description. Defaults to null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+        /// Whether to PreCheck this request only. Value:
+        /// - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-        /// 
-        /// &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+        /// Whether to enable the IPv6 network segment. Value:
+        /// - **false** (default): not enabled.
+        /// - **true**: on.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
+        /// The IPv6 address segment type of the VPC. Value:
+        /// - **BGP** (default): Alibaba Cloud BGP IPv6.
+        /// - **ChinaMobile**: China Mobile (single line).
+        /// - **ChinaUnicom**: China Unicom (single line).
+        /// - **ChinaTelecom**: China Telecom (single line).
+        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        /// </summary>
+        [Input("ipv6Isp")]
+        public Input<string>? Ipv6Isp { get; set; }
+
+        /// <summary>
+        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of resource group which the VPC belongs.
+        /// The ID of the resource group to which the VPC belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The route table ID of the router created by default on VPC creation.
+        /// </summary>
+        [Input("routeTableId")]
+        public Input<string>? RouteTableId { get; set; }
+
+        /// <summary>
+        /// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        /// </summary>
+        [Input("routerTableId")]
+        public Input<string>? RouterTableId { get; set; }
 
         [Input("secondaryCidrBlocks")]
         private InputList<string>? _secondaryCidrBlocks;
 
         /// <summary>
-        /// Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+        /// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         /// </summary>
-        [Obsolete(@"Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.")]
+        [Obsolete(@"Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.")]
         public InputList<string> SecondaryCidrBlocks
         {
             get => _secondaryCidrBlocks ?? (_secondaryCidrBlocks = new InputList<string>());
@@ -239,7 +317,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of Vpc.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -251,7 +329,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _userCidrs;
 
         /// <summary>
-        /// The user cidr blocks of the VPC.
+        /// A list of user CIDRs.
         /// </summary>
         public InputList<string> UserCidrs
         {
@@ -261,6 +339,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The name of the VPC. Defaults to null.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("vpcName")]
         public Input<string>? VpcName { get; set; }
@@ -280,39 +360,76 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
+        /// The status of ClassicLink function.
+        /// </summary>
+        [Input("classicLinkEnabled")]
+        public Input<bool>? ClassicLinkEnabled { get; set; }
+
+        /// <summary>
+        /// The creation time of the VPC.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// The VPC description. Defaults to null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+        /// Whether to PreCheck this request only. Value:
+        /// - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-        /// 
-        /// &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+        /// Whether to enable the IPv6 network segment. Value:
+        /// - **false** (default): not enabled.
+        /// - **true**: on.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
         /// <summary>
-        /// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+        /// The IPv6 CIDR block of the VPC.
         /// </summary>
         [Input("ipv6CidrBlock")]
         public Input<string>? Ipv6CidrBlock { get; set; }
 
+        [Input("ipv6CidrBlocks")]
+        private InputList<Inputs.NetworkIpv6CidrBlockGetArgs>? _ipv6CidrBlocks;
+
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
+        /// The IPv6 CIDR block information of the VPC.
+        /// </summary>
+        public InputList<Inputs.NetworkIpv6CidrBlockGetArgs> Ipv6CidrBlocks
+        {
+            get => _ipv6CidrBlocks ?? (_ipv6CidrBlocks = new InputList<Inputs.NetworkIpv6CidrBlockGetArgs>());
+            set => _ipv6CidrBlocks = value;
+        }
+
+        /// <summary>
+        /// The IPv6 address segment type of the VPC. Value:
+        /// - **BGP** (default): Alibaba Cloud BGP IPv6.
+        /// - **ChinaMobile**: China Mobile (single line).
+        /// - **ChinaUnicom**: China Unicom (single line).
+        /// - **ChinaTelecom**: China Telecom (single line).
+        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        /// </summary>
+        [Input("ipv6Isp")]
+        public Input<string>? Ipv6Isp { get; set; }
+
+        /// <summary>
+        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of resource group which the VPC belongs.
+        /// The ID of the resource group to which the VPC belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -330,7 +447,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? RouterId { get; set; }
 
         /// <summary>
-        /// (Deprecated) It has been deprecated and replaced with `route_table_id`.
+        /// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         /// </summary>
         [Input("routerTableId")]
         public Input<string>? RouterTableId { get; set; }
@@ -339,9 +456,9 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _secondaryCidrBlocks;
 
         /// <summary>
-        /// Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+        /// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         /// </summary>
-        [Obsolete(@"Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.")]
+        [Obsolete(@"Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.")]
         public InputList<string> SecondaryCidrBlocks
         {
             get => _secondaryCidrBlocks ?? (_secondaryCidrBlocks = new InputList<string>());
@@ -349,7 +466,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The status of the VPC.
+        /// The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -358,7 +475,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of Vpc.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -370,7 +487,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _userCidrs;
 
         /// <summary>
-        /// The user cidr blocks of the VPC.
+        /// A list of user CIDRs.
         /// </summary>
         public InputList<string> UserCidrs
         {
@@ -380,6 +497,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The name of the VPC. Defaults to null.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("vpcName")]
         public Input<string>? VpcName { get; set; }

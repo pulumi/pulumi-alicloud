@@ -30,11 +30,13 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
+    ///         VpcName = "terraform-example",
     ///         CidrBlock = "10.1.0.0/21",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
+    ///         VswitchName = "terraform-example",
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "10.1.0.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
@@ -44,7 +46,7 @@ namespace Pulumi.AliCloud.Vpn
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         Bandwidth = 10,
-    ///         InstanceChargeType = "PayByTraffic",
+    ///         InstanceChargeType = "PrePaid",
     ///         EnableSsl = false,
     ///         VswitchId = defaultSwitch.Id,
     ///     });

@@ -171,7 +171,7 @@ def get_registry_enterprise_sync_rules(ids: Optional[Sequence[str]] = None,
         repo_name="test-repo",
         target_instance_id="cri-yyy",
         name_regex="test-rule")
-    pulumi.export("output", [__item.id for __item in [my_sync_rules.rules]])
+    pulumi.export("output", [__item.id for __item in my_sync_rules.rules])
     ```
 
 
@@ -232,7 +232,7 @@ def get_registry_enterprise_sync_rules_output(ids: Optional[pulumi.Input[Optiona
         repo_name="test-repo",
         target_instance_id="cri-yyy",
         name_regex="test-rule")
-    pulumi.export("output", [__item.id for __item in [my_sync_rules.rules]])
+    pulumi.export("output", [__item.id for __item in my_sync_rules.rules])
     ```
 
 

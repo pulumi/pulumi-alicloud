@@ -134,6 +134,18 @@ namespace Pulumi.AliCloud.Nlb
         public Output<bool> CrossZoneEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        /// </summary>
+        [Output("deletionProtectionEnabled")]
+        public Output<bool> DeletionProtectionEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+        /// </summary>
+        [Output("deletionProtectionReason")]
+        public Output<string?> DeletionProtectionReason { get; private set; } = null!;
+
+        /// <summary>
         /// The domain name of the NLB instance.
         /// </summary>
         [Output("dnsName")]
@@ -162,6 +174,18 @@ namespace Pulumi.AliCloud.Nlb
         /// </summary>
         [Output("loadBalancerType")]
         public Output<string> LoadBalancerType { get; private set; } = null!;
+
+        /// <summary>
+        /// The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        /// </summary>
+        [Output("modificationProtectionReason")]
+        public Output<string?> ModificationProtectionReason { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        /// </summary>
+        [Output("modificationProtectionStatus")]
+        public Output<string> ModificationProtectionStatus { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group.
@@ -268,6 +292,18 @@ namespace Pulumi.AliCloud.Nlb
         public Input<bool>? CrossZoneEnabled { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("deletionProtectionEnabled")]
+        public Input<bool>? DeletionProtectionEnabled { get; set; }
+
+        /// <summary>
+        /// The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+        /// </summary>
+        [Input("deletionProtectionReason")]
+        public Input<string>? DeletionProtectionReason { get; set; }
+
+        /// <summary>
         /// The name of the NLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("loadBalancerName")]
@@ -278,6 +314,18 @@ namespace Pulumi.AliCloud.Nlb
         /// </summary>
         [Input("loadBalancerType")]
         public Input<string>? LoadBalancerType { get; set; }
+
+        /// <summary>
+        /// The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        /// </summary>
+        [Input("modificationProtectionReason")]
+        public Input<string>? ModificationProtectionReason { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        /// </summary>
+        [Input("modificationProtectionStatus")]
+        public Input<string>? ModificationProtectionStatus { get; set; }
 
         /// <summary>
         /// The ID of the resource group.
@@ -358,6 +406,18 @@ namespace Pulumi.AliCloud.Nlb
         public Input<bool>? CrossZoneEnabled { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("deletionProtectionEnabled")]
+        public Input<bool>? DeletionProtectionEnabled { get; set; }
+
+        /// <summary>
+        /// The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+        /// </summary>
+        [Input("deletionProtectionReason")]
+        public Input<string>? DeletionProtectionReason { get; set; }
+
+        /// <summary>
         /// The domain name of the NLB instance.
         /// </summary>
         [Input("dnsName")]
@@ -386,6 +446,18 @@ namespace Pulumi.AliCloud.Nlb
         /// </summary>
         [Input("loadBalancerType")]
         public Input<string>? LoadBalancerType { get; set; }
+
+        /// <summary>
+        /// The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        /// </summary>
+        [Input("modificationProtectionReason")]
+        public Input<string>? ModificationProtectionReason { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        /// </summary>
+        [Input("modificationProtectionStatus")]
+        public Input<string>? ModificationProtectionStatus { get; set; }
 
         /// <summary>
         /// The ID of the resource group.

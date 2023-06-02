@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Traffic Mirror Session resource.
+    /// Provides a VPC Traffic Mirror Session resource. Traffic mirroring session.
     /// 
     /// For information about VPC Traffic Mirror Session and how to use it, see [What is Traffic Mirror Session](https://www.alibabacloud.com/help/en/doc-detail/261364.htm).
     /// 
@@ -144,7 +144,9 @@ namespace Pulumi.AliCloud.Vpc
     public partial class TrafficMirrorSession : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request, value:
+        /// - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request and directly creates a mirror session after checking.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -156,16 +158,34 @@ namespace Pulumi.AliCloud.Vpc
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
+        /// Maximum Transmission Unit (MTU).
+        /// </summary>
+        [Output("packetLength")]
+        public Output<int> PacketLength { get; private set; } = null!;
+
+        /// <summary>
         /// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tags of this resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the filter.
@@ -186,7 +206,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> TrafficMirrorSessionName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+        /// The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
         /// </summary>
         [Output("trafficMirrorSourceIds")]
         public Output<ImmutableArray<string>> TrafficMirrorSourceIds { get; private set; } = null!;
@@ -198,7 +218,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> TrafficMirrorTargetId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+        /// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
         /// </summary>
         [Output("trafficMirrorTargetType")]
         public Output<string> TrafficMirrorTargetType { get; private set; } = null!;
@@ -256,7 +276,9 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class TrafficMirrorSessionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request, value:
+        /// - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request and directly creates a mirror session after checking.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -268,10 +290,34 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// Maximum Transmission Unit (MTU).
+        /// </summary>
+        [Input("packetLength")]
+        public Input<int>? PacketLength { get; set; }
+
+        /// <summary>
         /// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         /// </summary>
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of this resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The ID of the filter.
@@ -295,7 +341,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _trafficMirrorSourceIds;
 
         /// <summary>
-        /// The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+        /// The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
         /// </summary>
         public InputList<string> TrafficMirrorSourceIds
         {
@@ -310,7 +356,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> TrafficMirrorTargetId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+        /// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
         /// </summary>
         [Input("trafficMirrorTargetType", required: true)]
         public Input<string> TrafficMirrorTargetType { get; set; } = null!;
@@ -330,7 +376,9 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class TrafficMirrorSessionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request, value:
+        /// - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request and directly creates a mirror session after checking.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -342,16 +390,40 @@ namespace Pulumi.AliCloud.Vpc
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// Maximum Transmission Unit (MTU).
+        /// </summary>
+        [Input("packetLength")]
+        public Input<int>? PacketLength { get; set; }
+
+        /// <summary>
         /// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of this resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The ID of the filter.
@@ -375,7 +447,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _trafficMirrorSourceIds;
 
         /// <summary>
-        /// The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+        /// The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
         /// </summary>
         public InputList<string> TrafficMirrorSourceIds
         {
@@ -390,7 +462,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? TrafficMirrorTargetId { get; set; }
 
         /// <summary>
-        /// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+        /// The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
         /// </summary>
         [Input("trafficMirrorTargetType")]
         public Input<string>? TrafficMirrorTargetType { get; set; }

@@ -22,20 +22,19 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a RAM login profile.
     ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
-    ///         DisplayName = "user_display_name",
+    ///         DisplayName = "terraform_example",
     ///         Mobile = "86-18688888888",
     ///         Email = "hello.uuu@aaa.com",
-    ///         Comments = "yoyoyo",
+    ///         Comments = "terraform_example",
     ///         Force = true,
     ///     });
     /// 
     ///     var profile = new AliCloud.Ram.LoginProfile("profile", new()
     ///     {
     ///         UserName = user.Name,
-    ///         Password = "Yourpassword1234",
+    ///         Password = "Example_1234",
     ///     });
     /// 
     /// });

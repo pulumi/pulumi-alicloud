@@ -20,9 +20,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CDN Accelerated Domain resource. This resource is based on CDN&#39;s new version OpenAPI.
+ * Provides a CDN Domain resource. CDN domain name.
  * 
- * For information about Cdn Domain New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/91176.html).
+ * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
  * 
  * &gt; **NOTE:** Available in v1.34.0+.
  * 
@@ -51,16 +51,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var domain = new DomainNew(&#34;domain&#34;, DomainNewArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var default_ = new DomainNew(&#34;default&#34;, DomainNewArgs.builder()        
+ *             .scope(&#34;domestic&#34;)
+ *             .domainName(name)
  *             .cdnType(&#34;web&#34;)
- *             .domainName(&#34;terraform.test.com&#34;)
- *             .scope(&#34;overseas&#34;)
  *             .sources(DomainNewSourceArgs.builder()
- *                 .content(&#34;1.1.1.1&#34;)
- *                 .port(80)
- *                 .priority(20)
  *                 .type(&#34;ipaddr&#34;)
- *                 .weight(10)
+ *                 .content(&#34;1.1.1.1&#34;)
+ *                 .priority(20)
+ *                 .port(80)
+ *                 .weight(15)
  *                 .build())
  *             .build());
  * 
@@ -70,10 +72,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CDN domain can be imported using the id, e.g.
+ * CDN Domain can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:cdn/domainNew:DomainNew example xxxx.com
+ *  $ pulumi import alicloud:cdn/domainNew:DomainNew example &lt;id&gt;
  * ```
  * 
  */
@@ -94,28 +96,42 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
         return this.cdnType;
     }
     /**
-     * Certificate config of the accelerated domain. It&#39;s a list and consist of at most 1 item.
+     * Certificate configuration. See the following `Block CertificateConfig`.
      * 
      */
     @Export(name="certificateConfig", type=DomainNewCertificateConfig.class, parameters={})
     private Output<DomainNewCertificateConfig> certificateConfig;
 
     /**
-     * @return Certificate config of the accelerated domain. It&#39;s a list and consist of at most 1 item.
+     * @return Certificate configuration. See the following `Block CertificateConfig`.
      * 
      */
     public Output<DomainNewCertificateConfig> certificateConfig() {
         return this.certificateConfig;
     }
     /**
-     * (Available in v1.90.0+) The CNAME of the CDN domain.
+     * Health test URL.
+     * 
+     */
+    @Export(name="checkUrl", type=String.class, parameters={})
+    private Output</* @Nullable */ String> checkUrl;
+
+    /**
+     * @return Health test URL.
+     * 
+     */
+    public Output<Optional<String>> checkUrl() {
+        return Codegen.optional(this.checkUrl);
+    }
+    /**
+     * The CNAME domain name corresponding to the accelerated domain name.
      * 
      */
     @Export(name="cname", type=String.class, parameters={})
     private Output<String> cname;
 
     /**
-     * @return (Available in v1.90.0+) The CNAME of the CDN domain.
+     * @return The CNAME domain name corresponding to the accelerated domain name.
      * 
      */
     public Output<String> cname() {
@@ -136,56 +152,78 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
         return this.domainName;
     }
     /**
-     * Resource group ID.
+     * The ID of the resource group.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output<String> resourceGroupId;
 
     /**
-     * @return Resource group ID.
+     * @return The ID of the resource group.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users .
+     * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
+     * - **domestic**: Mainland China only.
+     * - **overseas**: Global (excluding Mainland China).
+     * - **global**: global.
+     *   The default value is **domestic**.
      * 
      */
     @Export(name="scope", type=String.class, parameters={})
     private Output<String> scope;
 
     /**
-     * @return Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users .
+     * @return Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
+     * - **domestic**: Mainland China only.
+     * - **overseas**: Global (excluding Mainland China).
+     * - **global**: global.
+     *   The default value is **domestic**.
      * 
      */
     public Output<String> scope() {
         return this.scope;
     }
     /**
-     * The source address list of the accelerated domain. Defaults to null. See Block Sources.
+     * The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
      * 
      */
     @Export(name="sources", type=List.class, parameters={DomainNewSource.class})
     private Output<List<DomainNewSource>> sources;
 
     /**
-     * @return The source address list of the accelerated domain. Defaults to null. See Block Sources.
+     * @return The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
      * 
      */
     public Output<List<DomainNewSource>> sources() {
         return this.sources;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The status of the resource.
+     * 
+     */
+    @Export(name="status", type=String.class, parameters={})
+    private Output<String> status;
+
+    /**
+     * @return The status of the resource.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * The tag of the resource.
      * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

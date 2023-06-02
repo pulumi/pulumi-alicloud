@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
  *             .commandContent(&#34;bHMK&#34;)
- *             .description(&#34;For Terraform Test&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .type(&#34;RunShellScript&#34;)
  *             .workingDir(&#34;/root&#34;)
  *             .build());

@@ -28,15 +28,13 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tftestacc";
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var defaultApplication = new AliCloud.Oos.Application("defaultApplication", new()
     ///     {
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
-    ///         ApplicationName = name,
-    ///         Description = name,
+    ///         ApplicationName = "terraform-example",
+    ///         Description = "terraform-example",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },

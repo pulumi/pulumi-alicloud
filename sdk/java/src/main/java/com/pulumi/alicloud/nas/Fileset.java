@@ -33,9 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.nas.NasFunctions;
  * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
  * import com.pulumi.alicloud.nas.FileSystemArgs;
  * import com.pulumi.alicloud.nas.Fileset;
@@ -53,34 +54,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *         final var exampleZones = NasFunctions.getZones(GetZonesArgs.builder()
  *             .fileSystemType(&#34;cpfs&#34;)
  *             .build());
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
  *             .build());
  * 
- *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
+ *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
  *             .protocolType(&#34;cpfs&#34;)
  *             .storageType(&#34;advance_200&#34;)
  *             .fileSystemType(&#34;cpfs&#34;)
  *             .capacity(3600)
- *             .description(&#34;tf-testacc&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .description(&#34;terraform-example&#34;)
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
+ *             .vpcId(exampleNetwork.id())
+ *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var defaultFileset = new Fileset(&#34;defaultFileset&#34;, FilesetArgs.builder()        
- *             .fileSystemId(defaultFileSystem.id())
+ *         var exampleFileset = new Fileset(&#34;exampleFileset&#34;, FilesetArgs.builder()        
+ *             .fileSystemId(exampleFileSystem.id())
+ *             .description(&#34;terraform-example&#34;)
  *             .fileSystemPath(&#34;/example_path/&#34;)
- *             .description(&#34;tf-testacc&#34;)
  *             .build());
  * 
  *     }

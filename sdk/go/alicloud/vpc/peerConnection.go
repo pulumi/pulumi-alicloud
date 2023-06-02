@@ -29,6 +29,7 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
@@ -38,18 +39,45 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, nil, nil)
+//			cfg := config.New(ctx, "")
+//			acceptingRegion := "cn-beijing"
+//			if param := cfg.Get("acceptingRegion"); param != "" {
+//				acceptingRegion = param
+//			}
+//			_, err = alicloud.NewProvider(ctx, "local", &alicloud.ProviderArgs{
+//				Region: pulumi.String("cn-hangzhou"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alicloud.NewProvider(ctx, "accepting", &alicloud.ProviderArgs{
+//				Region: pulumi.String(acceptingRegion),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			localVpc, err := vpc.NewNetwork(ctx, "localVpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			}, pulumi.Provider(alicloud.Local))
+//			if err != nil {
+//				return err
+//			}
+//			acceptingVpc, err := vpc.NewNetwork(ctx, "acceptingVpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			}, pulumi.Provider(alicloud.Accepting))
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewPeerConnection(ctx, "defaultPeerConnection", &vpc.PeerConnectionArgs{
-//				PeerConnectionName: pulumi.Any(_var.Name),
-//				VpcId:              *pulumi.String(defaultNetworks.Ids[0]),
+//				PeerConnectionName: pulumi.String("terraform-example"),
+//				VpcId:              localVpc.ID(),
 //				AcceptingAliUid:    *pulumi.String(defaultAccount.Id),
-//				AcceptingRegionId:  pulumi.String("cn-hangzhou"),
-//				AcceptingVpcId:     *pulumi.String(defaultNetworks.Ids[1]),
-//				Description:        pulumi.Any(_var.Name),
-//			})
+//				AcceptingRegionId:  pulumi.String(acceptingRegion),
+//				AcceptingVpcId:     acceptingVpc.ID(),
+//				Description:        pulumi.String("terraform-example"),
+//			}, pulumi.Provider(alicloud.Local))
 //			if err != nil {
 //				return err
 //			}

@@ -25,77 +25,120 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewEcsLaunchTemplate(ctx, "default", &ecs.EcsLaunchTemplateArgs{
-//				DataDisks: ecs.EcsLaunchTemplateDataDiskArray{
-//					&ecs.EcsLaunchTemplateDataDiskArgs{
-//						Category:           pulumi.String("cloud"),
-//						DeleteWithInstance: pulumi.Bool(true),
-//						Description:        pulumi.String("test1"),
-//						Encrypted:          pulumi.Bool(false),
-//						Name:               pulumi.String("disk1"),
-//						PerformanceLevel:   pulumi.String("PL0"),
-//						Size:               pulumi.Int(20),
-//					},
-//					&ecs.EcsLaunchTemplateDataDiskArgs{
-//						Category:           pulumi.String("cloud"),
-//						DeleteWithInstance: pulumi.Bool(true),
-//						Description:        pulumi.String("test2"),
-//						Encrypted:          pulumi.Bool(false),
-//						Name:               pulumi.String("disk2"),
-//						PerformanceLevel:   pulumi.String("PL0"),
-//						Size:               pulumi.Int(20),
-//					},
-//				},
-//				Description:             pulumi.String("Test For Terraform"),
-//				HostName:                pulumi.String("host_name"),
-//				ImageId:                 pulumi.String("m-bp1i3ucxxxxx"),
-//				InstanceChargeType:      pulumi.String("PrePaid"),
-//				InstanceName:            pulumi.String("instance_name"),
-//				InstanceType:            pulumi.String("instance_type"),
-//				InternetChargeType:      pulumi.String("PayByBandwidth"),
-//				InternetMaxBandwidthIn:  pulumi.Int(5),
-//				InternetMaxBandwidthOut: pulumi.Int(0),
-//				IoOptimized:             pulumi.String("optimized"),
-//				KeyPairName:             pulumi.String("key_pair_name"),
-//				LaunchTemplateName:      pulumi.String("tf_test_name"),
-//				NetworkInterfaces: &ecs.EcsLaunchTemplateNetworkInterfacesArgs{
-//					Description:     pulumi.String("hello1"),
-//					Name:            pulumi.String("eth0"),
-//					PrimaryIp:       pulumi.String("10.0.0.2"),
-//					SecurityGroupId: pulumi.String("sg-asdfnbgxxxxxxx"),
-//					VswitchId:       pulumi.String("vw-zkdfjaxxxxxx"),
-//				},
-//				NetworkType:                 pulumi.String("vpc"),
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsLaunchTemplate(ctx, "defaultEcsLaunchTemplate", &ecs.EcsLaunchTemplateArgs{
+//				LaunchTemplateName:          pulumi.String("terraform-example"),
+//				Description:                 pulumi.String("terraform-example"),
+//				ImageId:                     *pulumi.String(defaultImages.Images[0].Id),
+//				HostName:                    pulumi.String("terraform-example"),
+//				InstanceChargeType:          pulumi.String("PrePaid"),
+//				InstanceName:                pulumi.String("terraform-example"),
+//				InstanceType:                *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				InternetChargeType:          pulumi.String("PayByBandwidth"),
+//				InternetMaxBandwidthIn:      pulumi.Int(5),
+//				InternetMaxBandwidthOut:     pulumi.Int(5),
+//				IoOptimized:                 pulumi.String("optimized"),
+//				KeyPairName:                 pulumi.String("key_pair_name"),
 //				RamRoleName:                 pulumi.String("ram_role_name"),
-//				ResourceGroupId:             pulumi.String("rg-zkdfjaxxxxxx"),
+//				NetworkType:                 pulumi.String("vpc"),
 //				SecurityEnhancementStrategy: pulumi.String("Active"),
+//				SpotPriceLimit:              pulumi.Float64(5),
+//				SpotStrategy:                pulumi.String("SpotWithPriceLimit"),
 //				SecurityGroupIds: pulumi.StringArray{
-//					pulumi.String("sg-zkdfjaxxxxxx"),
+//					defaultSecurityGroup.ID(),
 //				},
-//				SpotPriceLimit: pulumi.Float64(5),
-//				SpotStrategy:   pulumi.String("SpotWithPriceLimit"),
 //				SystemDisk: &ecs.EcsLaunchTemplateSystemDiskArgs{
 //					Category:           pulumi.String("cloud_ssd"),
-//					DeleteWithInstance: pulumi.Bool(false),
 //					Description:        pulumi.String("Test For Terraform"),
-//					Name:               pulumi.String("tf_test_name"),
+//					Name:               pulumi.String("terraform-example"),
 //					Size:               pulumi.Int(40),
-//				},
-//				TemplateTags: pulumi.AnyMap{
-//					"Create": pulumi.Any("Terraform"),
-//					"For":    pulumi.Any("Test"),
+//					DeleteWithInstance: pulumi.Bool(false),
 //				},
 //				UserData:  pulumi.String("xxxxxxx"),
-//				VpcId:     pulumi.String("vpc-asdfnbgxxxxxxx"),
-//				VswitchId: pulumi.String("vw-zwxscaxxxxxx"),
-//				ZoneId:    pulumi.String("cn-hangzhou-i"),
+//				VswitchId: defaultSwitch.ID(),
+//				VpcId:     defaultNetwork.ID(),
+//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//				TemplateTags: pulumi.AnyMap{
+//					"Create": pulumi.Any("Terraform"),
+//					"For":    pulumi.Any("example"),
+//				},
+//				NetworkInterfaces: &ecs.EcsLaunchTemplateNetworkInterfacesArgs{
+//					Name:            pulumi.String("eth0"),
+//					Description:     pulumi.String("hello1"),
+//					PrimaryIp:       pulumi.String("10.0.0.2"),
+//					SecurityGroupId: defaultSecurityGroup.ID(),
+//					VswitchId:       defaultSwitch.ID(),
+//				},
+//				DataDisks: ecs.EcsLaunchTemplateDataDiskArray{
+//					&ecs.EcsLaunchTemplateDataDiskArgs{
+//						Name:               pulumi.String("disk1"),
+//						Description:        pulumi.String("description"),
+//						DeleteWithInstance: pulumi.Bool(true),
+//						Category:           pulumi.String("cloud"),
+//						Encrypted:          pulumi.Bool(false),
+//						PerformanceLevel:   pulumi.String("PL0"),
+//						Size:               pulumi.Int(20),
+//					},
+//					&ecs.EcsLaunchTemplateDataDiskArgs{
+//						Name:               pulumi.String("disk2"),
+//						Description:        pulumi.String("description2"),
+//						DeleteWithInstance: pulumi.Bool(true),
+//						Category:           pulumi.String("cloud"),
+//						Encrypted:          pulumi.Bool(false),
+//						PerformanceLevel:   pulumi.String("PL0"),
+//						Size:               pulumi.Int(20),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

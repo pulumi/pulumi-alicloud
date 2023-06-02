@@ -378,7 +378,7 @@ class StateConfiguration(pulumi.CustomResource):
         default_state_configuration = alicloud.oos.StateConfiguration("defaultStateConfiguration",
             template_name="ACS-ECS-InventoryDataCollection",
             configure_mode="ApplyOnly",
-            description=var["name"],
+            description="terraform-example",
             schedule_type="rate",
             schedule_expression="1 hour",
             resource_group_id=default_resource_groups.ids[0],
@@ -386,7 +386,7 @@ class StateConfiguration(pulumi.CustomResource):
             parameters="{\\"policy\\": {\\"ACS:Application\\": {\\"Collection\\": \\"Enabled\\"}}}",
             tags={
                 "Created": "TF",
-                "For": "Test",
+                "For": "example",
             })
         ```
 
@@ -436,7 +436,7 @@ class StateConfiguration(pulumi.CustomResource):
         default_state_configuration = alicloud.oos.StateConfiguration("defaultStateConfiguration",
             template_name="ACS-ECS-InventoryDataCollection",
             configure_mode="ApplyOnly",
-            description=var["name"],
+            description="terraform-example",
             schedule_type="rate",
             schedule_expression="1 hour",
             resource_group_id=default_resource_groups.ids[0],
@@ -444,7 +444,7 @@ class StateConfiguration(pulumi.CustomResource):
             parameters="{\\"policy\\": {\\"ACS:Application\\": {\\"Collection\\": \\"Enabled\\"}}}",
             tags={
                 "Created": "TF",
-                "For": "Test",
+                "For": "example",
             })
         ```
 

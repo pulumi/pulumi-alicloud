@@ -550,22 +550,28 @@ class EcsImagePipeline(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default_resource_groups = alicloud.resourcemanager.get_resource_groups(name_regex="default")
-        default_zones = alicloud.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
         default_instance_types = alicloud.ecs.get_instance_types(image_id=default_images.ids[0])
+        default_account = alicloud.get_account()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
         default_ecs_image_pipeline = alicloud.ecs.EcsImagePipeline("defaultEcsImagePipeline",
-            add_accounts=["example_value"],
+            add_accounts=[default_account.id],
             base_image=default_images.ids[0],
             base_image_type="IMAGE",
             build_content="RUN yum update -y",
             delete_instance_on_failure=False,
-            image_name="example_value",
-            description="example_value",
+            image_name="terraform-example",
+            description="terraform-example",
             instance_type=default_instance_types.ids[0],
             resource_group_id=default_resource_groups.groups[0].id,
             internet_max_bandwidth_out=20,
@@ -574,7 +580,7 @@ class EcsImagePipeline(pulumi.CustomResource):
                 "cn-qingdao",
                 "cn-zhangjiakou",
             ],
-            vswitch_id=default_switches.ids[0],
+            vswitch_id=default_switch.id,
             tags={
                 "Created": "TF",
                 "For": "Acceptance-test",
@@ -631,22 +637,28 @@ class EcsImagePipeline(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default_resource_groups = alicloud.resourcemanager.get_resource_groups(name_regex="default")
-        default_zones = alicloud.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
         default_instance_types = alicloud.ecs.get_instance_types(image_id=default_images.ids[0])
+        default_account = alicloud.get_account()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
         default_ecs_image_pipeline = alicloud.ecs.EcsImagePipeline("defaultEcsImagePipeline",
-            add_accounts=["example_value"],
+            add_accounts=[default_account.id],
             base_image=default_images.ids[0],
             base_image_type="IMAGE",
             build_content="RUN yum update -y",
             delete_instance_on_failure=False,
-            image_name="example_value",
-            description="example_value",
+            image_name="terraform-example",
+            description="terraform-example",
             instance_type=default_instance_types.ids[0],
             resource_group_id=default_resource_groups.groups[0].id,
             internet_max_bandwidth_out=20,
@@ -655,7 +667,7 @@ class EcsImagePipeline(pulumi.CustomResource):
                 "cn-qingdao",
                 "cn-zhangjiakou",
             ],
-            vswitch_id=default_switches.ids[0],
+            vswitch_id=default_switch.id,
             tags={
                 "Created": "TF",
                 "For": "Acceptance-test",

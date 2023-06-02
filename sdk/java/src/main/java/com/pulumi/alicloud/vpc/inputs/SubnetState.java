@@ -45,6 +45,13 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cidrBlock);
     }
 
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
     @Import(name="description")
     private @Nullable Output<String> description;
 
@@ -132,6 +139,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
     private SubnetState(SubnetState $) {
         this.availabilityZone = $.availabilityZone;
         this.cidrBlock = $.cidrBlock;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.enableIpv6 = $.enableIpv6;
         this.ipv6CidrBlock = $.ipv6CidrBlock;
@@ -194,6 +202,15 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
 
         public Builder cidrBlock(String cidrBlock) {
             return cidrBlock(Output.of(cidrBlock));
+        }
+
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         public Builder description(@Nullable Output<String> description) {

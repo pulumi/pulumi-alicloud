@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ddos.Inputs
         private InputList<int>? _proxyPorts;
 
         /// <summary>
-        /// the port number. This field is required and must be an integer.
+        /// the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
         /// </summary>
         public InputList<int> ProxyPorts
         {

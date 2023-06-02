@@ -33,6 +33,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available in v1.205.0+) The application version.
+     * 
+     */
+    @Import(name="appVersion")
+    private @Nullable Output<String> appVersion;
+
+    /**
+     * @return (Available in v1.205.0+) The application version.
+     * 
+     */
+    public Optional<Output<String>> appVersion() {
+        return Optional.ofNullable(this.appVersion);
+    }
+
+    /**
      * The alias of MSE Cluster.
      * 
      */
@@ -48,14 +63,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in v1.162.0+)  The id of Cluster.
+     * (Available in v1.162.0+) The id of Cluster.
      * 
      */
     @Import(name="clusterId")
     private @Nullable Output<String> clusterId;
 
     /**
-     * @return (Available in v1.162.0+)  The id of Cluster.
+     * @return (Available in v1.162.0+) The id of Cluster.
      * 
      */
     public Optional<Output<String>> clusterId() {
@@ -291,6 +306,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     private ClusterState(ClusterState $) {
         this.aclEntryLists = $.aclEntryLists;
+        this.appVersion = $.appVersion;
         this.clusterAliasName = $.clusterAliasName;
         this.clusterId = $.clusterId;
         this.clusterSpecification = $.clusterSpecification;
@@ -360,6 +376,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param appVersion (Available in v1.205.0+) The application version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appVersion(@Nullable Output<String> appVersion) {
+            $.appVersion = appVersion;
+            return this;
+        }
+
+        /**
+         * @param appVersion (Available in v1.205.0+) The application version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appVersion(String appVersion) {
+            return appVersion(Output.of(appVersion));
+        }
+
+        /**
          * @param clusterAliasName The alias of MSE Cluster.
          * 
          * @return builder
@@ -381,7 +418,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId (Available in v1.162.0+)  The id of Cluster.
+         * @param clusterId (Available in v1.162.0+) The id of Cluster.
          * 
          * @return builder
          * 
@@ -392,7 +429,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterId (Available in v1.162.0+)  The id of Cluster.
+         * @param clusterId (Available in v1.162.0+) The id of Cluster.
          * 
          * @return builder
          * 

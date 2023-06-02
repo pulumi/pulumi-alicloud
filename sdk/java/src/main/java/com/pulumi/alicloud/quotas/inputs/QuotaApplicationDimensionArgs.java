@@ -16,14 +16,14 @@ public final class QuotaApplicationDimensionArgs extends com.pulumi.resources.Re
     public static final QuotaApplicationDimensionArgs Empty = new QuotaApplicationDimensionArgs();
 
     /**
-     * The key of dimensions.
+     * Key.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The key of dimensions.
+     * @return Key.
      * 
      */
     public Optional<Output<String>> key() {
@@ -31,14 +31,14 @@ public final class QuotaApplicationDimensionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The value of dimensions.
+     * Value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of dimensions.
+     * @return Value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -71,7 +71,7 @@ public final class QuotaApplicationDimensionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param key The key of dimensions.
+         * @param key Key.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class QuotaApplicationDimensionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param key The key of dimensions.
+         * @param key Key.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class QuotaApplicationDimensionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param value The value of dimensions.
+         * @param value Value.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class QuotaApplicationDimensionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param value The value of dimensions.
+         * @param value Value.
          * 
          * @return builder
          * 

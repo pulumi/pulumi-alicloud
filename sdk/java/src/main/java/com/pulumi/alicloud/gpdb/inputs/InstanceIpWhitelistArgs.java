@@ -16,14 +16,16 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
     public static final InstanceIpWhitelistArgs Empty = new InstanceIpWhitelistArgs();
 
     /**
-     * The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+     * The value of this parameter is empty by default. The attribute of the whitelist group.
+     * If the value contains `hidden`, this white list item will not output.
      * 
      */
     @Import(name="ipGroupAttribute")
     private @Nullable Output<String> ipGroupAttribute;
 
     /**
-     * @return The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+     * @return The value of this parameter is empty by default. The attribute of the whitelist group.
+     * If the value contains `hidden`, this white list item will not output.
      * 
      */
     public Optional<Output<String>> ipGroupAttribute() {
@@ -49,15 +51,15 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
      * Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
      * 
      */
-    @Import(name="securityIpList", required=true)
-    private Output<String> securityIpList;
+    @Import(name="securityIpList")
+    private @Nullable Output<String> securityIpList;
 
     /**
      * @return Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
      * 
      */
-    public Output<String> securityIpList() {
-        return this.securityIpList;
+    public Optional<Output<String>> securityIpList() {
+        return Optional.ofNullable(this.securityIpList);
     }
 
     private InstanceIpWhitelistArgs() {}
@@ -87,7 +89,8 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ipGroupAttribute The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+         * @param ipGroupAttribute The value of this parameter is empty by default. The attribute of the whitelist group.
+         * If the value contains `hidden`, this white list item will not output.
          * 
          * @return builder
          * 
@@ -98,7 +101,8 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ipGroupAttribute The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+         * @param ipGroupAttribute The value of this parameter is empty by default. The attribute of the whitelist group.
+         * If the value contains `hidden`, this white list item will not output.
          * 
          * @return builder
          * 
@@ -134,7 +138,7 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder securityIpList(Output<String> securityIpList) {
+        public Builder securityIpList(@Nullable Output<String> securityIpList) {
             $.securityIpList = securityIpList;
             return this;
         }
@@ -150,7 +154,6 @@ public final class InstanceIpWhitelistArgs extends com.pulumi.resources.Resource
         }
 
         public InstanceIpWhitelistArgs build() {
-            $.securityIpList = Objects.requireNonNull($.securityIpList, "expected parameter 'securityIpList' to be non-null");
             return $;
         }
     }

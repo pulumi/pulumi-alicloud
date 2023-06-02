@@ -11,14 +11,16 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Ipv4 Gateway resource.
+ * Provides a Vpc Ipv4 Gateway resource.
  * 
- * For information about VPC Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
+ * For information about Vpc Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
  * 
  * &gt; **NOTE:** Available in v1.181.0+.
  * 
@@ -31,8 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourceGroup;
+ * import com.pulumi.alicloud.resourcemanager.ResourceGroupArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Ipv4Gateway;
  * import com.pulumi.alicloud.vpc.Ipv4GatewayArgs;
  * import java.util.List;
@@ -48,13 +52,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NoDeleting&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-example&#34;);
+ *         var defaultResourceGroup = new ResourceGroup(&#34;defaultResourceGroup&#34;, ResourceGroupArgs.builder()        
+ *             .displayName(&#34;tf-testAcc-rg665&#34;)
+ *             .resourceGroupName(name)
  *             .build());
  * 
- *         var example = new Ipv4Gateway(&#34;example&#34;, Ipv4GatewayArgs.builder()        
- *             .ipv4GatewayName(&#34;example_value&#34;)
- *             .vpcId(default_.ids()[0])
+ *         var modify = new ResourceGroup(&#34;modify&#34;, ResourceGroupArgs.builder()        
+ *             .displayName(&#34;tf-testAcc-rg298&#34;)
+ *             .resourceGroupName(String.format(&#34;%s1&#34;, name))
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(String.format(&#34;%s2&#34;, name))
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .build());
+ * 
+ *         var defaultIpv4Gateway = new Ipv4Gateway(&#34;defaultIpv4Gateway&#34;, Ipv4GatewayArgs.builder()        
+ *             .ipv4GatewayName(name)
+ *             .ipv4GatewayDescription(&#34;tf-testAcc-Ipv4Gateway&#34;)
+ *             .resourceGroupId(defaultResourceGroup.id())
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *     }
@@ -63,7 +82,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Ipv4 Gateway can be imported using the id, e.g.
+ * Vpc Ipv4 Gateway can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example &lt;id&gt;
@@ -73,60 +92,116 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/ipv4Gateway:Ipv4Gateway")
 public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
     /**
-     * The dry run.
+     * The creation time of the resource.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
      * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+     * Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
      * 
      */
     @Export(name="enabled", type=Boolean.class, parameters={})
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+     * @return Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+     * The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
      * 
      */
     @Export(name="ipv4GatewayDescription", type=String.class, parameters={})
     private Output</* @Nullable */ String> ipv4GatewayDescription;
 
     /**
-     * @return The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+     * @return The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
      * 
      */
     public Output<Optional<String>> ipv4GatewayDescription() {
         return Codegen.optional(this.ipv4GatewayDescription);
     }
     /**
-     * The name of the IPv4 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+     * Resource primary key field.
+     * 
+     */
+    @Export(name="ipv4GatewayId", type=String.class, parameters={})
+    private Output<String> ipv4GatewayId;
+
+    /**
+     * @return Resource primary key field.
+     * 
+     */
+    public Output<String> ipv4GatewayId() {
+        return this.ipv4GatewayId;
+    }
+    /**
+     * The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     @Export(name="ipv4GatewayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> ipv4GatewayName;
 
     /**
-     * @return The name of the IPv4 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+     * @return The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     public Output<Optional<String>> ipv4GatewayName() {
         return Codegen.optional(this.ipv4GatewayName);
+    }
+    /**
+     * ID of the route table associated with IPv4 Gateway.
+     * 
+     */
+    @Export(name="ipv4GatewayRouteTableId", type=String.class, parameters={})
+    private Output<String> ipv4GatewayRouteTableId;
+
+    /**
+     * @return ID of the route table associated with IPv4 Gateway.
+     * 
+     */
+    public Output<String> ipv4GatewayRouteTableId() {
+        return this.ipv4GatewayRouteTableId;
+    }
+    /**
+     * The ID of the resource group to which the instance belongs.
+     * 
+     */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which the instance belongs.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * The status of the resource.
@@ -141,6 +216,20 @@ public class Ipv4Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tags of the current resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tags of the current resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.

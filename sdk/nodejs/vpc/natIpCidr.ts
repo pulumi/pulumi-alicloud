@@ -23,28 +23,28 @@ import * as utilities from "../utilities";
  *     availableResourceCreation: "VSwitch",
  * });
  * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
- *     vpcName: "example_value",
+ *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/12",
  * });
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
- *     vpcId: alicloud_vpc["default"].id,
+ *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
  *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
- *     vswitchName: _var.name,
+ *     vswitchName: "terraform-example",
  * });
  * const exampleNatGateway = new alicloud.vpc.NatGateway("exampleNatGateway", {
- *     vpcId: alicloud_vpc["default"].id,
+ *     vpcId: exampleNetwork.id,
  *     internetChargeType: "PayByLcu",
- *     natGatewayName: "example_value",
- *     description: "example_value",
+ *     natGatewayName: "terraform-example",
+ *     description: "terraform-example",
  *     natType: "Enhanced",
  *     vswitchId: exampleSwitch.id,
  *     networkType: "intranet",
  * });
  * const exampleNatIpCidr = new alicloud.vpc.NatIpCidr("exampleNatIpCidr", {
  *     natGatewayId: exampleNatGateway.id,
- *     natIpCidrName: "example_value",
- *     natIpCidr: "example_value",
+ *     natIpCidrName: "terraform-example",
+ *     natIpCidr: "192.168.0.0/16",
  * });
  * ```
  *

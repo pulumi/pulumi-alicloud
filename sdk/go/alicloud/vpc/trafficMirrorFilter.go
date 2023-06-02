@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Traffic Mirror Filter resource.
+// Provides a VPC Traffic Mirror Filter resource. Traffic mirror filter criteria.
 //
 // For information about VPC Traffic Mirror Filter and how to use it, see [What is Traffic Mirror Filter](https://www.alibabacloud.com/help/doc-detail/207513.htm).
 //
@@ -25,15 +25,62 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.NewTrafficMirrorFilter(ctx, "example", &vpc.TrafficMirrorFilterArgs{
-//				TrafficMirrorFilterName: pulumi.String("example_value"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			default3iXhoa, err := resourcemanager.NewResourceGroup(ctx, "default3iXhoa", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("testname03"),
+//				ResourceGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewResourceGroup(ctx, "defaultdNz2qk", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("testname04"),
+//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v1", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewTrafficMirrorFilter(ctx, "default", &vpc.TrafficMirrorFilterArgs{
+//				TrafficMirrorFilterDescription: pulumi.String("test"),
+//				TrafficMirrorFilterName:        pulumi.String(name),
+//				ResourceGroupId:                default3iXhoa.ID(),
+//				EgressRules: vpc.TrafficMirrorFilterEgressRuleTypeArray{
+//					&vpc.TrafficMirrorFilterEgressRuleTypeArgs{
+//						Priority:             pulumi.Int(1),
+//						Protocol:             pulumi.String("TCP"),
+//						Action:               pulumi.String("accept"),
+//						DestinationCidrBlock: pulumi.String("32.0.0.0/4"),
+//						DestinationPortRange: pulumi.String("80/80"),
+//						SourceCidrBlock:      pulumi.String("16.0.0.0/4"),
+//						SourcePortRange:      pulumi.String("80/80"),
+//					},
+//				},
+//				IngressRules: vpc.TrafficMirrorFilterIngressRuleTypeArray{
+//					&vpc.TrafficMirrorFilterIngressRuleTypeArgs{
+//						Priority:             pulumi.Int(1),
+//						Protocol:             pulumi.String("TCP"),
+//						Action:               pulumi.String("accept"),
+//						DestinationCidrBlock: pulumi.String("10.64.0.0/10"),
+//						DestinationPortRange: pulumi.String("80/80"),
+//						SourceCidrBlock:      pulumi.String("10.0.0.0/8"),
+//						SourcePortRange:      pulumi.String("80/80"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -56,13 +103,23 @@ import (
 type TrafficMirrorFilter struct {
 	pulumi.CustomResourceState
 
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
+	// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+	// Information about the outbound rule. See the following `Block EgressRules`.
+	EgressRules TrafficMirrorFilterEgressRuleTypeArrayOutput `pulumi:"egressRules"`
+	// Inward direction rule information. See the following `Block IngressRules`.
+	IngressRules TrafficMirrorFilterIngressRuleTypeArrayOutput `pulumi:"ingressRules"`
+	// The ID of the resource group to which the VPC belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The tags of this resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The description of the TrafficMirrorFilter.
 	TrafficMirrorFilterDescription pulumi.StringPtrOutput `pulumi:"trafficMirrorFilterDescription"`
-	// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name of the TrafficMirrorFilter.
 	TrafficMirrorFilterName pulumi.StringPtrOutput `pulumi:"trafficMirrorFilterName"`
 }
 
@@ -95,24 +152,44 @@ func GetTrafficMirrorFilter(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TrafficMirrorFilter resources.
 type trafficMirrorFilterState struct {
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
+	// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
 	DryRun *bool `pulumi:"dryRun"`
-	// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+	// Information about the outbound rule. See the following `Block EgressRules`.
+	EgressRules []TrafficMirrorFilterEgressRuleType `pulumi:"egressRules"`
+	// Inward direction rule information. See the following `Block IngressRules`.
+	IngressRules []TrafficMirrorFilterIngressRuleType `pulumi:"ingressRules"`
+	// The ID of the resource group to which the VPC belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The tags of this resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The description of the TrafficMirrorFilter.
 	TrafficMirrorFilterDescription *string `pulumi:"trafficMirrorFilterDescription"`
-	// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name of the TrafficMirrorFilter.
 	TrafficMirrorFilterName *string `pulumi:"trafficMirrorFilterName"`
 }
 
 type TrafficMirrorFilterState struct {
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
+	// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
 	DryRun pulumi.BoolPtrInput
-	// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+	// Information about the outbound rule. See the following `Block EgressRules`.
+	EgressRules TrafficMirrorFilterEgressRuleTypeArrayInput
+	// Inward direction rule information. See the following `Block IngressRules`.
+	IngressRules TrafficMirrorFilterIngressRuleTypeArrayInput
+	// The ID of the resource group to which the VPC belongs.
+	ResourceGroupId pulumi.StringPtrInput
+	// The status of the resource.
 	Status pulumi.StringPtrInput
-	// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The tags of this resource.
+	Tags pulumi.MapInput
+	// The description of the TrafficMirrorFilter.
 	TrafficMirrorFilterDescription pulumi.StringPtrInput
-	// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name of the TrafficMirrorFilter.
 	TrafficMirrorFilterName pulumi.StringPtrInput
 }
 
@@ -121,21 +198,41 @@ func (TrafficMirrorFilterState) ElementType() reflect.Type {
 }
 
 type trafficMirrorFilterArgs struct {
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
+	// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
 	DryRun *bool `pulumi:"dryRun"`
-	// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+	// Information about the outbound rule. See the following `Block EgressRules`.
+	EgressRules []TrafficMirrorFilterEgressRuleType `pulumi:"egressRules"`
+	// Inward direction rule information. See the following `Block IngressRules`.
+	IngressRules []TrafficMirrorFilterIngressRuleType `pulumi:"ingressRules"`
+	// The ID of the resource group to which the VPC belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The tags of this resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The description of the TrafficMirrorFilter.
 	TrafficMirrorFilterDescription *string `pulumi:"trafficMirrorFilterDescription"`
-	// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name of the TrafficMirrorFilter.
 	TrafficMirrorFilterName *string `pulumi:"trafficMirrorFilterName"`
 }
 
 // The set of arguments for constructing a TrafficMirrorFilter resource.
 type TrafficMirrorFilterArgs struct {
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
+	// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
 	DryRun pulumi.BoolPtrInput
-	// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+	// Information about the outbound rule. See the following `Block EgressRules`.
+	EgressRules TrafficMirrorFilterEgressRuleTypeArrayInput
+	// Inward direction rule information. See the following `Block IngressRules`.
+	IngressRules TrafficMirrorFilterIngressRuleTypeArrayInput
+	// The ID of the resource group to which the VPC belongs.
+	ResourceGroupId pulumi.StringPtrInput
+	// The tags of this resource.
+	Tags pulumi.MapInput
+	// The description of the TrafficMirrorFilter.
 	TrafficMirrorFilterDescription pulumi.StringPtrInput
-	// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name of the TrafficMirrorFilter.
 	TrafficMirrorFilterName pulumi.StringPtrInput
 }
 
@@ -226,22 +323,44 @@ func (o TrafficMirrorFilterOutput) ToTrafficMirrorFilterOutputWithContext(ctx co
 	return o
 }
 
-// The dry run.
+// Whether to PreCheck only this request. Value:
+// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
 func (o TrafficMirrorFilterOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+// Information about the outbound rule. See the following `Block EgressRules`.
+func (o TrafficMirrorFilterOutput) EgressRules() TrafficMirrorFilterEgressRuleTypeArrayOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilter) TrafficMirrorFilterEgressRuleTypeArrayOutput { return v.EgressRules }).(TrafficMirrorFilterEgressRuleTypeArrayOutput)
+}
+
+// Inward direction rule information. See the following `Block IngressRules`.
+func (o TrafficMirrorFilterOutput) IngressRules() TrafficMirrorFilterIngressRuleTypeArrayOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilter) TrafficMirrorFilterIngressRuleTypeArrayOutput { return v.IngressRules }).(TrafficMirrorFilterIngressRuleTypeArrayOutput)
+}
+
+// The ID of the resource group to which the VPC belongs.
+func (o TrafficMirrorFilterOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the resource.
 func (o TrafficMirrorFilterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+// The tags of this resource.
+func (o TrafficMirrorFilterOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The description of the TrafficMirrorFilter.
 func (o TrafficMirrorFilterOutput) TrafficMirrorFilterDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.StringPtrOutput { return v.TrafficMirrorFilterDescription }).(pulumi.StringPtrOutput)
 }
 
-// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+// The name of the TrafficMirrorFilter.
 func (o TrafficMirrorFilterOutput) TrafficMirrorFilterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilter) pulumi.StringPtrOutput { return v.TrafficMirrorFilterName }).(pulumi.StringPtrOutput)
 }

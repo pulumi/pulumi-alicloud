@@ -39,6 +39,7 @@ public final class Endpoints {
     private @Nullable String cloudphone;
     private @Nullable String cloudsso;
     private @Nullable String cms;
+    private @Nullable String computenest;
     private @Nullable String config;
     private @Nullable String cr;
     private @Nullable String cs;
@@ -224,6 +225,9 @@ public final class Endpoints {
     }
     public Optional<String> cms() {
         return Optional.ofNullable(this.cms);
+    }
+    public Optional<String> computenest() {
+        return Optional.ofNullable(this.computenest);
     }
     public Optional<String> config() {
         return Optional.ofNullable(this.config);
@@ -563,6 +567,7 @@ public final class Endpoints {
         private @Nullable String cloudphone;
         private @Nullable String cloudsso;
         private @Nullable String cms;
+        private @Nullable String computenest;
         private @Nullable String config;
         private @Nullable String cr;
         private @Nullable String cs;
@@ -694,6 +699,7 @@ public final class Endpoints {
     	      this.cloudphone = defaults.cloudphone;
     	      this.cloudsso = defaults.cloudsso;
     	      this.cms = defaults.cms;
+    	      this.computenest = defaults.computenest;
     	      this.config = defaults.config;
     	      this.cr = defaults.cr;
     	      this.cs = defaults.cs;
@@ -934,6 +940,11 @@ public final class Endpoints {
         @CustomType.Setter
         public Builder cms(@Nullable String cms) {
             this.cms = cms;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder computenest(@Nullable String computenest) {
+            this.computenest = computenest;
             return this;
         }
         @CustomType.Setter
@@ -1466,6 +1477,7 @@ public final class Endpoints {
             o.cloudphone = cloudphone;
             o.cloudsso = cloudsso;
             o.cms = cms;
+            o.computenest = computenest;
             o.config = config;
             o.cr = cr;
             o.cs = cs;

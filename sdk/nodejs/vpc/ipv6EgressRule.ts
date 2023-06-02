@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Ipv6 Egress Rule resource.
+ * Provides a VPC Ipv6 Egress Rule resource. IPv6 address addition only active exit rule.
  *
  * For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
  *
@@ -19,12 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "example_value",
+ *     vpcName: name,
  *     enableIpv6: true,
  * });
  * const exampleIpv6Gateway = new alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway", {
- *     ipv6GatewayName: "example_value",
+ *     ipv6GatewayName: name,
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultInstances = alicloud.ecs.getInstances({
@@ -101,7 +103,7 @@ export class Ipv6EgressRule extends pulumi.CustomResource {
      */
     public readonly ipv6GatewayId!: pulumi.Output<string>;
     /**
-     * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -169,7 +171,7 @@ export interface Ipv6EgressRuleState {
      */
     ipv6GatewayId?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
 }

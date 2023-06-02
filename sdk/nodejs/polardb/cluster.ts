@@ -20,29 +20,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "polardbClusterconfig";
- * const creation = config.get("creation") || "PolarDB";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const defaultNodeClasses = alicloud.polardb.getNodeClasses({
+ *     dbType: "MySQL",
+ *     dbVersion: "8.0",
+ *     payType: "PostPaid",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
+ *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/16",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
+ *     zoneId: defaultNodeClasses.then(defaultNodeClasses => defaultNodeClasses.classes?.[0]?.zoneId),
+ *     vswitchName: "terraform-example",
  * });
  * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
  *     dbType: "MySQL",
- *     dbVersion: "5.6",
- *     dbNodeClass: "polar.mysql.x4.medium",
+ *     dbVersion: "8.0",
+ *     dbNodeClass: defaultNodeClasses.then(defaultNodeClasses => defaultNodeClasses.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
  *     payType: "PostPaid",
- *     description: name,
  *     vswitchId: defaultSwitch.id,
+ *     description: "terraform-example",
  *     dbClusterIpArrays: [
  *         {
  *             dbClusterIpArrayName: "default",
@@ -52,7 +51,7 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *         {
- *             dbClusterIpArrayName: "test_ips1",
+ *             dbClusterIpArrayName: "default2",
  *             securityIps: ["1.2.3.6"],
  *         },
  *     ],
@@ -141,7 +140,8 @@ export class Cluster extends pulumi.CustomResource {
     public readonly dbClusterIpArrays!: pulumi.Output<outputs.polardb.ClusterDbClusterIpArray[]>;
     /**
      * The dbNodeClass of cluster node.
-     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar. mysql. sl. small`.
+     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
      */
     public readonly dbNodeClass!: pulumi.Output<string>;
     /**
@@ -497,7 +497,8 @@ export interface ClusterState {
     dbClusterIpArrays?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterDbClusterIpArray>[]>;
     /**
      * The dbNodeClass of cluster node.
-     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar. mysql. sl. small`.
+     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
      */
     dbNodeClass?: pulumi.Input<string>;
     /**
@@ -718,7 +719,8 @@ export interface ClusterArgs {
     dbClusterIpArrays?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterDbClusterIpArray>[]>;
     /**
      * The dbNodeClass of cluster node.
-     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar. mysql. sl. small`.
+     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
      */
     dbNodeClass: pulumi.Input<string>;
     /**

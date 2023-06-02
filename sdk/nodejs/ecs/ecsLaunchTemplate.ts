@@ -21,68 +21,89 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ecs.EcsLaunchTemplate("default", {
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultEcsLaunchTemplate = new alicloud.ecs.EcsLaunchTemplate("defaultEcsLaunchTemplate", {
+ *     launchTemplateName: "terraform-example",
+ *     description: "terraform-example",
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     hostName: "terraform-example",
+ *     instanceChargeType: "PrePaid",
+ *     instanceName: "terraform-example",
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     internetChargeType: "PayByBandwidth",
+ *     internetMaxBandwidthIn: 5,
+ *     internetMaxBandwidthOut: 5,
+ *     ioOptimized: "optimized",
+ *     keyPairName: "key_pair_name",
+ *     ramRoleName: "ram_role_name",
+ *     networkType: "vpc",
+ *     securityEnhancementStrategy: "Active",
+ *     spotPriceLimit: 5,
+ *     spotStrategy: "SpotWithPriceLimit",
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ *     systemDisk: {
+ *         category: "cloud_ssd",
+ *         description: "Test For Terraform",
+ *         name: "terraform-example",
+ *         size: 40,
+ *         deleteWithInstance: false,
+ *     },
+ *     userData: "xxxxxxx",
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     templateTags: {
+ *         Create: "Terraform",
+ *         For: "example",
+ *     },
+ *     networkInterfaces: {
+ *         name: "eth0",
+ *         description: "hello1",
+ *         primaryIp: "10.0.0.2",
+ *         securityGroupId: defaultSecurityGroup.id,
+ *         vswitchId: defaultSwitch.id,
+ *     },
  *     dataDisks: [
  *         {
- *             category: "cloud",
- *             deleteWithInstance: true,
- *             description: "test1",
- *             encrypted: false,
  *             name: "disk1",
+ *             description: "description",
+ *             deleteWithInstance: true,
+ *             category: "cloud",
+ *             encrypted: false,
  *             performanceLevel: "PL0",
  *             size: 20,
  *         },
  *         {
- *             category: "cloud",
- *             deleteWithInstance: true,
- *             description: "test2",
- *             encrypted: false,
  *             name: "disk2",
+ *             description: "description2",
+ *             deleteWithInstance: true,
+ *             category: "cloud",
+ *             encrypted: false,
  *             performanceLevel: "PL0",
  *             size: 20,
  *         },
  *     ],
- *     description: "Test For Terraform",
- *     hostName: "host_name",
- *     imageId: "m-bp1i3ucxxxxx",
- *     instanceChargeType: "PrePaid",
- *     instanceName: "instance_name",
- *     instanceType: "instance_type",
- *     internetChargeType: "PayByBandwidth",
- *     internetMaxBandwidthIn: 5,
- *     internetMaxBandwidthOut: 0,
- *     ioOptimized: "optimized",
- *     keyPairName: "key_pair_name",
- *     launchTemplateName: "tf_test_name",
- *     networkInterfaces: {
- *         description: "hello1",
- *         name: "eth0",
- *         primaryIp: "10.0.0.2",
- *         securityGroupId: "sg-asdfnbgxxxxxxx",
- *         vswitchId: "vw-zkdfjaxxxxxx",
- *     },
- *     networkType: "vpc",
- *     ramRoleName: "ram_role_name",
- *     resourceGroupId: "rg-zkdfjaxxxxxx",
- *     securityEnhancementStrategy: "Active",
- *     securityGroupIds: ["sg-zkdfjaxxxxxx"],
- *     spotPriceLimit: 5,
- *     spotStrategy: "SpotWithPriceLimit",
- *     systemDisk: {
- *         category: "cloud_ssd",
- *         deleteWithInstance: false,
- *         description: "Test For Terraform",
- *         name: "tf_test_name",
- *         size: 40,
- *     },
- *     templateTags: {
- *         Create: "Terraform",
- *         For: "Test",
- *     },
- *     userData: "xxxxxxx",
- *     vpcId: "vpc-asdfnbgxxxxxxx",
- *     vswitchId: "vw-zwxscaxxxxxx",
- *     zoneId: "cn-hangzhou-i",
  * });
  * ```
  *

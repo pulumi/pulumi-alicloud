@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.polardb.PolardbFunctions;
+ * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -57,32 +57,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;polardbClusterconfig&#34;);
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;PolarDB&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var defaultNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+ *             .dbType(&#34;MySQL&#34;)
+ *             .dbVersion(&#34;8.0&#34;)
+ *             .payType(&#34;PostPaid&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(name)
+ *             .zoneId(defaultNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()))
+ *             .vswitchName(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
  *             .dbType(&#34;MySQL&#34;)
- *             .dbVersion(&#34;5.6&#34;)
- *             .dbNodeClass(&#34;polar.mysql.x4.medium&#34;)
+ *             .dbVersion(&#34;8.0&#34;)
+ *             .dbNodeClass(defaultNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass()))
  *             .payType(&#34;PostPaid&#34;)
- *             .description(name)
  *             .vswitchId(defaultSwitch.id())
+ *             .description(&#34;terraform-example&#34;)
  *             .dbClusterIpArrays(            
  *                 ClusterDbClusterIpArrayArgs.builder()
  *                     .dbClusterIpArrayName(&#34;default&#34;)
@@ -91,7 +90,7 @@ import javax.annotation.Nullable;
  *                         &#34;1.2.3.5&#34;)
  *                     .build(),
  *                 ClusterDbClusterIpArrayArgs.builder()
- *                     .dbClusterIpArrayName(&#34;test_ips1&#34;)
+ *                     .dbClusterIpArrayName(&#34;default2&#34;)
  *                     .securityIps(&#34;1.2.3.6&#34;)
  *                     .build())
  *             .build());
@@ -261,7 +260,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The db_node_class of cluster node.
-     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
      * 
      */
     @Export(name="dbNodeClass", type=String.class, parameters={})
@@ -269,7 +269,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The db_node_class of cluster node.
-     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
      * 
      */
     public Output<String> dbNodeClass() {

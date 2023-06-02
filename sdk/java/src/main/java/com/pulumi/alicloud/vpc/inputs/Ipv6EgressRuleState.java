@@ -91,14 +91,14 @@ public final class Ipv6EgressRuleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -240,7 +240,7 @@ public final class Ipv6EgressRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class Ipv6EgressRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 

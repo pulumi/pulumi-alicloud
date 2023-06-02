@@ -33,9 +33,33 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.NewGatewayRouteTableAttachment(ctx, "example", &vpc.GatewayRouteTableAttachmentArgs{
-//				Ipv4GatewayId: pulumi.String("example_value"),
-//				RouteTableId:  pulumi.String("example_value"),
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//				VpcName:   pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleRouteTable, err := vpc.NewRouteTable(ctx, "exampleRouteTable", &vpc.RouteTableArgs{
+//				VpcId:          exampleNetwork.ID(),
+//				RouteTableName: pulumi.String("terraform-example"),
+//				Description:    pulumi.String("terraform-example"),
+//				AssociateType:  pulumi.String("Gateway"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleIpv4Gateway, err := vpc.NewIpv4Gateway(ctx, "exampleIpv4Gateway", &vpc.Ipv4GatewayArgs{
+//				Ipv4GatewayName: pulumi.String("terraform-example"),
+//				VpcId:           exampleNetwork.ID(),
+//				Enabled:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewGatewayRouteTableAttachment(ctx, "exampleGatewayRouteTableAttachment", &vpc.GatewayRouteTableAttachmentArgs{
+//				Ipv4GatewayId: exampleIpv4Gateway.ID(),
+//				RouteTableId:  exampleRouteTable.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -58,6 +82,8 @@ import (
 type GatewayRouteTableAttachment struct {
 	pulumi.CustomResourceState
 
+	// The creation time of the resource.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Specifies whether to only precheck this request. Default value: `false`.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the IPv4 Gateway instance.
@@ -65,6 +91,12 @@ type GatewayRouteTableAttachment struct {
 	// The ID of the Gateway route table to be bound.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// The status of the IPv4 Gateway instance. Value:
+	// - **Creating**: The function is being created.
+	// - **Created**: Created and available.
+	// - **Modifying**: is being modified.
+	// - **Deleting**: Deleting.
+	// - **Deleted**: Deleted.
+	// - **Activating**: enabled.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -103,6 +135,8 @@ func GetGatewayRouteTableAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GatewayRouteTableAttachment resources.
 type gatewayRouteTableAttachmentState struct {
+	// The creation time of the resource.
+	CreateTime *string `pulumi:"createTime"`
 	// Specifies whether to only precheck this request. Default value: `false`.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the IPv4 Gateway instance.
@@ -110,10 +144,18 @@ type gatewayRouteTableAttachmentState struct {
 	// The ID of the Gateway route table to be bound.
 	RouteTableId *string `pulumi:"routeTableId"`
 	// The status of the IPv4 Gateway instance. Value:
+	// - **Creating**: The function is being created.
+	// - **Created**: Created and available.
+	// - **Modifying**: is being modified.
+	// - **Deleting**: Deleting.
+	// - **Deleted**: Deleted.
+	// - **Activating**: enabled.
 	Status *string `pulumi:"status"`
 }
 
 type GatewayRouteTableAttachmentState struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringPtrInput
 	// Specifies whether to only precheck this request. Default value: `false`.
 	DryRun pulumi.BoolPtrInput
 	// The ID of the IPv4 Gateway instance.
@@ -121,6 +163,12 @@ type GatewayRouteTableAttachmentState struct {
 	// The ID of the Gateway route table to be bound.
 	RouteTableId pulumi.StringPtrInput
 	// The status of the IPv4 Gateway instance. Value:
+	// - **Creating**: The function is being created.
+	// - **Created**: Created and available.
+	// - **Modifying**: is being modified.
+	// - **Deleting**: Deleting.
+	// - **Deleted**: Deleted.
+	// - **Activating**: enabled.
 	Status pulumi.StringPtrInput
 }
 
@@ -234,6 +282,11 @@ func (o GatewayRouteTableAttachmentOutput) ToGatewayRouteTableAttachmentOutputWi
 	return o
 }
 
+// The creation time of the resource.
+func (o GatewayRouteTableAttachmentOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *GatewayRouteTableAttachment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // Specifies whether to only precheck this request. Default value: `false`.
 func (o GatewayRouteTableAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayRouteTableAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
@@ -250,6 +303,12 @@ func (o GatewayRouteTableAttachmentOutput) RouteTableId() pulumi.StringOutput {
 }
 
 // The status of the IPv4 Gateway instance. Value:
+// - **Creating**: The function is being created.
+// - **Created**: Created and available.
+// - **Modifying**: is being modified.
+// - **Deleting**: Deleting.
+// - **Deleted**: Deleted.
+// - **Activating**: enabled.
 func (o GatewayRouteTableAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayRouteTableAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

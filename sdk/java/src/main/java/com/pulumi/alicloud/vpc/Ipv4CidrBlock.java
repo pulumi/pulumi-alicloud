@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
  *             .cidrBlock(&#34;192.168.0.0/24&#34;)
- *             .vpcName(var_.name())
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var example = new Ipv4CidrBlock(&#34;example&#34;, Ipv4CidrBlockArgs.builder()        

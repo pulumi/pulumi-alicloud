@@ -28,16 +28,87 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewImageSharePermission(ctx, "default", &ecs.ImageSharePermissionArgs{
-//				AccountId: pulumi.String("1234567890"),
-//				ImageId:   pulumi.String("m-bp1gxyh***"),
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				InstanceTypeFamily: pulumi.StringRef("ecs.sn1ne"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+//				AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+//				InstanceName:     pulumi.String("terraform-example"),
+//				SecurityGroups: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//				VswitchId:               defaultSwitch.ID(),
+//				InstanceType:            *pulumi.String(defaultInstanceTypes.Ids[0]),
+//				ImageId:                 *pulumi.String(defaultImages.Ids[0]),
+//				InternetMaxBandwidthOut: pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultImage, err := ecs.NewImage(ctx, "defaultImage", &ecs.ImageArgs{
+//				InstanceId:  defaultInstance.ID(),
+//				ImageName:   pulumi.String("terraform-example"),
+//				Description: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cfg := config.New(ctx, "")
+//			accountId := "123456789"
+//			if param := cfg.Get("accountId"); param != "" {
+//				accountId = param
+//			}
+//			_, err = ecs.NewImageSharePermission(ctx, "defaultImageSharePermission", &ecs.ImageSharePermissionArgs{
+//				ImageId:   defaultImage.ID(),
+//				AccountId: pulumi.String(accountId),
 //			})
 //			if err != nil {
 //				return err

@@ -662,15 +662,16 @@ class ReservedInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.ReservedInstance("default",
-            instance_type="ecs.g6.large",
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g6")
+        default_reserved_instance = alicloud.ecs.ReservedInstance("defaultReservedInstance",
+            instance_type=default_instance_types.instance_types[0].id,
             instance_amount=1,
-            period_unit="Year",
+            period_unit="Month",
             offering_type="All Upfront",
+            reserved_instance_name="terraform-example",
             description="ReservedInstance",
-            zone_id="cn-hangzhou-h",
-            scope="Zone",
-            period=1)
+            zone_id=default_instance_types.instance_types[0].availability_zones[0],
+            scope="Zone")
         ```
 
         ## Import
@@ -721,15 +722,16 @@ class ReservedInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.ReservedInstance("default",
-            instance_type="ecs.g6.large",
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g6")
+        default_reserved_instance = alicloud.ecs.ReservedInstance("defaultReservedInstance",
+            instance_type=default_instance_types.instance_types[0].id,
             instance_amount=1,
-            period_unit="Year",
+            period_unit="Month",
             offering_type="All Upfront",
+            reserved_instance_name="terraform-example",
             description="ReservedInstance",
-            zone_id="cn-hangzhou-h",
-            scope="Zone",
-            period=1)
+            zone_id=default_instance_types.instance_types[0].availability_zones[0],
+            scope="Zone")
         ```
 
         ## Import

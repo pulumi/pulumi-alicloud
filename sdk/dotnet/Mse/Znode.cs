@@ -28,40 +28,48 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
-    /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var defaultCluster = new AliCloud.Mse.Cluster("defaultCluster", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
     ///     {
-    ///         ClusterSpecification = "MSE_SC_1_2_200_c",
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var exampleCluster = new AliCloud.Mse.Cluster("exampleCluster", new()
+    ///     {
+    ///         ClusterSpecification = "MSE_SC_1_2_60_c",
     ///         ClusterType = "ZooKeeper",
-    ///         ClusterVersion = "ZooKeeper_3_5_5",
+    ///         ClusterVersion = "ZooKeeper_3_8_0",
     ///         InstanceCount = 1,
     ///         NetType = "privatenet",
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///         PubNetworkFlow = "1",
     ///         AclEntryLists = new[]
     ///         {
     ///             "127.0.0.1/32",
     ///         },
-    ///         ClusterAliasName = "example_value",
+    ///         ClusterAliasName = "terraform-example",
+    ///         MseVersion = "mse_dev",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var defaultZnode = new AliCloud.Mse.Znode("defaultZnode", new()
+    ///     var exampleZnode = new AliCloud.Mse.Znode("exampleZnode", new()
     ///     {
-    ///         ClusterId = defaultCluster.ClusterId,
-    ///         Data = "example_value",
-    ///         Path = "example_value",
+    ///         ClusterId = exampleCluster.ClusterId,
+    ///         Data = "terraform-example",
+    ///         Path = "/example",
     ///     });
     /// 
     /// });

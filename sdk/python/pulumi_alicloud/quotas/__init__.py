@@ -12,5 +12,6 @@ from .get_quota_applications import *
 from .get_quotas import *
 from .quota_alarm import *
 from .quota_application import *
+from .template_quota import *
 from ._inputs import *
 from . import outputs

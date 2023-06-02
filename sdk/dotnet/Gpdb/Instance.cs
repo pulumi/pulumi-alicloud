@@ -111,7 +111,8 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> InstanceSpec { get; private set; } = null!;
 
         /// <summary>
-        /// The ip whitelist.
+        /// The ip whitelist. See block `ip_whitelist`.
+        /// Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         /// </summary>
         [Output("ipWhitelists")]
         public Output<ImmutableArray<Outputs.InstanceIpWhitelist>> IpWhitelists { get; private set; } = null!;
@@ -361,7 +362,8 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.InstanceIpWhitelistArgs>? _ipWhitelists;
 
         /// <summary>
-        /// The ip whitelist.
+        /// The ip whitelist. See block `ip_whitelist`.
+        /// Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         /// </summary>
         public InputList<Inputs.InstanceIpWhitelistArgs> IpWhitelists
         {
@@ -583,7 +585,8 @@ namespace Pulumi.AliCloud.Gpdb
         private InputList<Inputs.InstanceIpWhitelistGetArgs>? _ipWhitelists;
 
         /// <summary>
-        /// The ip whitelist.
+        /// The ip whitelist. See block `ip_whitelist`.
+        /// Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         /// </summary>
         public InputList<Inputs.InstanceIpWhitelistGetArgs> IpWhitelists
         {

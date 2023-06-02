@@ -20,7 +20,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     public static final SwitchState Empty = new SwitchState();
 
     /**
-     * Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
@@ -31,7 +31,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> availabilityZone;
 
     /**
-     * @return Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+     * @return Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
@@ -43,14 +43,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The CIDR block for the switch.
+     * The IPv4 CIDR block of the VSwitch.
      * 
      */
     @Import(name="cidrBlock")
     private @Nullable Output<String> cidrBlock;
 
     /**
-     * @return The CIDR block for the switch.
+     * @return The IPv4 CIDR block of the VSwitch.
      * 
      */
     public Optional<Output<String>> cidrBlock() {
@@ -58,14 +58,29 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The switch description. Defaults to null.
+     * The creation time of the VSwitch.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the VSwitch.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The description of VSwitch.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The switch description. Defaults to null.
+     * @return The description of VSwitch.
      * 
      */
     public Optional<Output<String>> description() {
@@ -73,14 +88,18 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+     * Whether the IPv6 function is enabled in the switch. Value:
+     * - **true**: enables IPv6.
+     * - **false** (default): IPv6 is not enabled.
      * 
      */
     @Import(name="enableIpv6")
     private @Nullable Output<Boolean> enableIpv6;
 
     /**
-     * @return Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+     * @return Whether the IPv6 function is enabled in the switch. Value:
+     * - **true**: enables IPv6.
+     * - **false** (default): IPv6 is not enabled.
      * 
      */
     public Optional<Output<Boolean>> enableIpv6() {
@@ -88,14 +107,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+     * The IPv6 CIDR block of the VSwitch.
      * 
      */
     @Import(name="ipv6CidrBlock")
     private @Nullable Output<String> ipv6CidrBlock;
 
     /**
-     * @return (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+     * @return The IPv6 CIDR block of the VSwitch.
      * 
      */
     public Optional<Output<String>> ipv6CidrBlock() {
@@ -103,14 +122,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+     * The IPv6 CIDR block of the VSwitch.
      * 
      */
     @Import(name="ipv6CidrBlockMask")
     private @Nullable Output<Integer> ipv6CidrBlockMask;
 
     /**
-     * @return The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+     * @return The IPv6 CIDR block of the VSwitch.
      * 
      */
     public Optional<Output<Integer>> ipv6CidrBlockMask() {
@@ -118,7 +137,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -129,7 +148,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -141,14 +160,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in 1.119.0+) The status of the switch.
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available in 1.119.0+) The status of the switch.
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -156,14 +175,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tags of VSwitch.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tags of VSwitch.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -173,6 +192,8 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     /**
      * The VPC ID.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
@@ -180,20 +201,22 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The VPC ID.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     public Optional<Output<String>> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
 
     /**
-     * The name of the switch. Defaults to null.
+     * The name of the VSwitch.
      * 
      */
     @Import(name="vswitchName")
     private @Nullable Output<String> vswitchName;
 
     /**
-     * @return The name of the switch. Defaults to null.
+     * @return The name of the VSwitch.
      * 
      */
     public Optional<Output<String>> vswitchName() {
@@ -201,14 +224,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The AZ for the switch. **Note:** Required for a VPC switch.
+     * The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The AZ for the switch. **Note:** Required for a VPC switch.
+     * @return The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -220,6 +243,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     private SwitchState(SwitchState $) {
         this.availabilityZone = $.availabilityZone;
         this.cidrBlock = $.cidrBlock;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.enableIpv6 = $.enableIpv6;
         this.ipv6CidrBlock = $.ipv6CidrBlock;
@@ -251,7 +275,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+         * @param availabilityZone Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
          * 
          * @return builder
          * 
@@ -266,7 +290,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+         * @param availabilityZone Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
          * 
          * @return builder
          * 
@@ -280,7 +304,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidrBlock The CIDR block for the switch.
+         * @param cidrBlock The IPv4 CIDR block of the VSwitch.
          * 
          * @return builder
          * 
@@ -291,7 +315,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidrBlock The CIDR block for the switch.
+         * @param cidrBlock The IPv4 CIDR block of the VSwitch.
          * 
          * @return builder
          * 
@@ -301,7 +325,28 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The switch description. Defaults to null.
+         * @param createTime The creation time of the VSwitch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the VSwitch.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The description of VSwitch.
          * 
          * @return builder
          * 
@@ -312,7 +357,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The switch description. Defaults to null.
+         * @param description The description of VSwitch.
          * 
          * @return builder
          * 
@@ -322,7 +367,9 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableIpv6 Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+         * @param enableIpv6 Whether the IPv6 function is enabled in the switch. Value:
+         * - **true**: enables IPv6.
+         * - **false** (default): IPv6 is not enabled.
          * 
          * @return builder
          * 
@@ -333,7 +380,9 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableIpv6 Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+         * @param enableIpv6 Whether the IPv6 function is enabled in the switch. Value:
+         * - **true**: enables IPv6.
+         * - **false** (default): IPv6 is not enabled.
          * 
          * @return builder
          * 
@@ -343,7 +392,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6CidrBlock (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+         * @param ipv6CidrBlock The IPv6 CIDR block of the VSwitch.
          * 
          * @return builder
          * 
@@ -354,7 +403,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6CidrBlock (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+         * @param ipv6CidrBlock The IPv6 CIDR block of the VSwitch.
          * 
          * @return builder
          * 
@@ -364,7 +413,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6CidrBlockMask The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+         * @param ipv6CidrBlockMask The IPv6 CIDR block of the VSwitch.
          * 
          * @return builder
          * 
@@ -375,7 +424,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6CidrBlockMask The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+         * @param ipv6CidrBlockMask The IPv6 CIDR block of the VSwitch.
          * 
          * @return builder
          * 
@@ -385,7 +434,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
          * 
          * @return builder
          * 
@@ -400,7 +449,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
          * 
          * @return builder
          * 
@@ -414,7 +463,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in 1.119.0+) The status of the switch.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -425,7 +474,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in 1.119.0+) The status of the switch.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -435,7 +484,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tags of VSwitch.
          * 
          * @return builder
          * 
@@ -446,7 +495,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tags of VSwitch.
          * 
          * @return builder
          * 
@@ -457,6 +506,8 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vpcId The VPC ID.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -469,6 +520,8 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vpcId The VPC ID.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -477,7 +530,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchName The name of the switch. Defaults to null.
+         * @param vswitchName The name of the VSwitch.
          * 
          * @return builder
          * 
@@ -488,7 +541,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchName The name of the switch. Defaults to null.
+         * @param vswitchName The name of the VSwitch.
          * 
          * @return builder
          * 
@@ -498,7 +551,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The AZ for the switch. **Note:** Required for a VPC switch.
+         * @param zoneId The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
          * 
          * @return builder
          * 
@@ -509,7 +562,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The AZ for the switch. **Note:** Required for a VPC switch.
+         * @param zoneId The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
          * 
          * @return builder
          * 

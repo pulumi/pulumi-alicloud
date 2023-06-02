@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
 
         /// <summary>
-        /// Protocol type and port number information.
+        /// Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         /// </summary>
         [Output("proxyTypes")]
         public Output<ImmutableArray<Outputs.DomainResourceProxyType>> ProxyTypes { get; private set; } = null!;
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<ImmutableArray<string>> RealServers { get; private set; } = null!;
 
         /// <summary>
-        /// The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        /// The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
         /// </summary>
         [Output("rsType")]
         public Output<int> RsType { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.DomainResourceProxyTypeArgs>? _proxyTypes;
 
         /// <summary>
-        /// Protocol type and port number information.
+        /// Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         /// </summary>
         public InputList<Inputs.DomainResourceProxyTypeArgs> ProxyTypes
         {
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Ddos
         }
 
         /// <summary>
-        /// The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        /// The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
         /// </summary>
         [Input("rsType", required: true)]
         public Input<int> RsType { get; set; } = null!;
@@ -249,7 +249,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<Inputs.DomainResourceProxyTypeGetArgs>? _proxyTypes;
 
         /// <summary>
-        /// Protocol type and port number information.
+        /// Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         /// </summary>
         public InputList<Inputs.DomainResourceProxyTypeGetArgs> ProxyTypes
         {
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.Ddos
         }
 
         /// <summary>
-        /// The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        /// The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
         /// </summary>
         [Input("rsType")]
         public Input<int>? RsType { get; set; }

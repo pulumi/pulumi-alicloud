@@ -30,9 +30,9 @@ namespace Pulumi.AliCloud.Oos
     /// {
     ///     var example = new AliCloud.Oos.PatchBaseline("example", new()
     ///     {
-    ///         ApprovalRules = "example_value",
+    ///         ApprovalRules = "{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}",
     ///         OperationSystem = "Windows",
-    ///         PatchBaselineName = "my-PatchBaseline",
+    ///         PatchBaselineName = "terraform-example",
     ///     });
     /// 
     /// });

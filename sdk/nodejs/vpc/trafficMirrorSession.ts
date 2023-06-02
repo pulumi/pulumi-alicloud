@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Traffic Mirror Session resource.
+ * Provides a VPC Traffic Mirror Session resource. Traffic mirroring session.
  *
  * For information about VPC Traffic Mirror Session and how to use it, see [What is Traffic Mirror Session](https://www.alibabacloud.com/help/en/doc-detail/261364.htm).
  *
@@ -124,7 +124,9 @@ export class TrafficMirrorSession extends pulumi.CustomResource {
     }
 
     /**
-     * The dry run.
+     * Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -132,13 +134,25 @@ export class TrafficMirrorSession extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * Maximum Transmission Unit (MTU).
+     */
+    public readonly packetLength!: pulumi.Output<number>;
+    /**
      * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+     * The ID of the resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The tags of this resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The ID of the filter.
      */
@@ -152,7 +166,7 @@ export class TrafficMirrorSession extends pulumi.CustomResource {
      */
     public readonly trafficMirrorSessionName!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+     * The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
      */
     public readonly trafficMirrorSourceIds!: pulumi.Output<string[]>;
     /**
@@ -160,7 +174,7 @@ export class TrafficMirrorSession extends pulumi.CustomResource {
      */
     public readonly trafficMirrorTargetId!: pulumi.Output<string>;
     /**
-     * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+     * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
      */
     public readonly trafficMirrorTargetType!: pulumi.Output<string>;
     /**
@@ -183,8 +197,11 @@ export class TrafficMirrorSession extends pulumi.CustomResource {
             const state = argsOrState as TrafficMirrorSessionState | undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["packetLength"] = state ? state.packetLength : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["trafficMirrorFilterId"] = state ? state.trafficMirrorFilterId : undefined;
             resourceInputs["trafficMirrorSessionDescription"] = state ? state.trafficMirrorSessionDescription : undefined;
             resourceInputs["trafficMirrorSessionName"] = state ? state.trafficMirrorSessionName : undefined;
@@ -211,7 +228,10 @@ export class TrafficMirrorSession extends pulumi.CustomResource {
             }
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["packetLength"] = args ? args.packetLength : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["trafficMirrorFilterId"] = args ? args.trafficMirrorFilterId : undefined;
             resourceInputs["trafficMirrorSessionDescription"] = args ? args.trafficMirrorSessionDescription : undefined;
             resourceInputs["trafficMirrorSessionName"] = args ? args.trafficMirrorSessionName : undefined;
@@ -231,7 +251,9 @@ export class TrafficMirrorSession extends pulumi.CustomResource {
  */
 export interface TrafficMirrorSessionState {
     /**
-     * The dry run.
+     * Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -239,13 +261,25 @@ export interface TrafficMirrorSessionState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
+     * Maximum Transmission Unit (MTU).
+     */
+    packetLength?: pulumi.Input<number>;
+    /**
      * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      */
     priority?: pulumi.Input<number>;
     /**
-     * The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tags of this resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the filter.
      */
@@ -259,7 +293,7 @@ export interface TrafficMirrorSessionState {
      */
     trafficMirrorSessionName?: pulumi.Input<string>;
     /**
-     * The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+     * The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
      */
     trafficMirrorSourceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -267,7 +301,7 @@ export interface TrafficMirrorSessionState {
      */
     trafficMirrorTargetId?: pulumi.Input<string>;
     /**
-     * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+     * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
      */
     trafficMirrorTargetType?: pulumi.Input<string>;
     /**
@@ -281,7 +315,9 @@ export interface TrafficMirrorSessionState {
  */
 export interface TrafficMirrorSessionArgs {
     /**
-     * The dry run.
+     * Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -289,9 +325,21 @@ export interface TrafficMirrorSessionArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
+     * Maximum Transmission Unit (MTU).
+     */
+    packetLength?: pulumi.Input<number>;
+    /**
      * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      */
     priority: pulumi.Input<number>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The tags of this resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the filter.
      */
@@ -305,7 +353,7 @@ export interface TrafficMirrorSessionArgs {
      */
     trafficMirrorSessionName?: pulumi.Input<string>;
     /**
-     * The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+     * The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
      */
     trafficMirrorSourceIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -313,7 +361,7 @@ export interface TrafficMirrorSessionArgs {
      */
     trafficMirrorTargetId: pulumi.Input<string>;
     /**
-     * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+     * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
      */
     trafficMirrorTargetType: pulumi.Input<string>;
     /**

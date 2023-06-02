@@ -19,6 +19,21 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
     public static final QuotaAlarmState Empty = new QuotaAlarmState();
 
     /**
+     * The creation time of the resource.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * The Product Code.
      * 
      */
@@ -64,14 +79,14 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Quota Dimensions.
+     * The Quota Dimensions. See the following `Block QuotaDimensions`.
      * 
      */
     @Import(name="quotaDimensions")
     private @Nullable Output<List<QuotaAlarmQuotaDimensionArgs>> quotaDimensions;
 
     /**
-     * @return The Quota Dimensions.
+     * @return The Quota Dimensions. See the following `Block QuotaDimensions`.
      * 
      */
     public Optional<Output<List<QuotaAlarmQuotaDimensionArgs>>> quotaDimensions() {
@@ -109,6 +124,25 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Quota alarm type. Value:
+     * - used: Quota used alarm.
+     * - usable: alarm for the remaining available quota.
+     * 
+     */
+    @Import(name="thresholdType")
+    private @Nullable Output<String> thresholdType;
+
+    /**
+     * @return Quota alarm type. Value:
+     * - used: Quota used alarm.
+     * - usable: alarm for the remaining available quota.
+     * 
+     */
+    public Optional<Output<String>> thresholdType() {
+        return Optional.ofNullable(this.thresholdType);
+    }
+
+    /**
      * The WebHook of Quota Alarm.
      * 
      */
@@ -126,12 +160,14 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
     private QuotaAlarmState() {}
 
     private QuotaAlarmState(QuotaAlarmState $) {
+        this.createTime = $.createTime;
         this.productCode = $.productCode;
         this.quotaActionCode = $.quotaActionCode;
         this.quotaAlarmName = $.quotaAlarmName;
         this.quotaDimensions = $.quotaDimensions;
         this.threshold = $.threshold;
         this.thresholdPercent = $.thresholdPercent;
+        this.thresholdType = $.thresholdType;
         this.webHook = $.webHook;
     }
 
@@ -151,6 +187,27 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(QuotaAlarmState defaults) {
             $ = new QuotaAlarmState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -217,7 +274,7 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quotaDimensions The Quota Dimensions.
+         * @param quotaDimensions The Quota Dimensions. See the following `Block QuotaDimensions`.
          * 
          * @return builder
          * 
@@ -228,7 +285,7 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quotaDimensions The Quota Dimensions.
+         * @param quotaDimensions The Quota Dimensions. See the following `Block QuotaDimensions`.
          * 
          * @return builder
          * 
@@ -238,7 +295,7 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quotaDimensions The Quota Dimensions.
+         * @param quotaDimensions The Quota Dimensions. See the following `Block QuotaDimensions`.
          * 
          * @return builder
          * 
@@ -287,6 +344,31 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder thresholdPercent(Double thresholdPercent) {
             return thresholdPercent(Output.of(thresholdPercent));
+        }
+
+        /**
+         * @param thresholdType Quota alarm type. Value:
+         * - used: Quota used alarm.
+         * - usable: alarm for the remaining available quota.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thresholdType(@Nullable Output<String> thresholdType) {
+            $.thresholdType = thresholdType;
+            return this;
+        }
+
+        /**
+         * @param thresholdType Quota alarm type. Value:
+         * - used: Quota used alarm.
+         * - usable: alarm for the remaining available quota.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thresholdType(String thresholdType) {
+            return thresholdType(Output.of(thresholdType));
         }
 
         /**

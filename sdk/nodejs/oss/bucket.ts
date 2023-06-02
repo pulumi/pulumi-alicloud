@@ -18,10 +18,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const bucket_acl = new alicloud.oss.Bucket("bucket-acl", {
  *     acl: "private",
- *     bucket: "bucket-170309-acl",
+ *     bucket: pulumi.interpolate`example-value-${_default.result}`,
  * });
  * ```
  *
@@ -30,9 +35,14 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const bucket_website = new alicloud.oss.Bucket("bucket-website", {
- *     bucket: "bucket-170309-website",
+ *     bucket: pulumi.interpolate`example-value-${_default.result}`,
  *     website: {
  *         errorDocument: "error.html",
  *         indexDocument: "index.html",
@@ -45,13 +55,18 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const bucket_target = new alicloud.oss.Bucket("bucket-target", {
- *     bucket: "bucket-170309-acl",
+ *     bucket: pulumi.interpolate`example-value-${_default.result}`,
  *     acl: "public-read",
  * });
  * const bucket_logging = new alicloud.oss.Bucket("bucket-logging", {
- *     bucket: "bucket-170309-logging",
+ *     bucket: pulumi.interpolate`example-logging-${_default.result}`,
  *     logging: {
  *         targetBucket: bucket_target.id,
  *         targetPrefix: "log/",
@@ -64,10 +79,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const bucket_referer = new alicloud.oss.Bucket("bucket-referer", {
  *     acl: "private",
- *     bucket: "bucket-170309-referer",
+ *     bucket: pulumi.interpolate`example-value-${_default.result}`,
  *     refererConfig: {
  *         allowEmpty: false,
  *         referers: [
@@ -83,10 +103,75 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const bucket_lifecycle = new alicloud.oss.Bucket("bucket-lifecycle", {
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucket_lifecycle1 = new alicloud.oss.Bucket("bucket-lifecycle1", {
  *     acl: "public-read",
- *     bucket: "bucket-170309-lifecycle",
+ *     bucket: pulumi.interpolate`example-lifecycle1-${_default.result}`,
+ *     lifecycleRules: [
+ *         {
+ *             enabled: true,
+ *             expirations: [{
+ *                 days: 365,
+ *             }],
+ *             id: "rule-days",
+ *             prefix: "path1/",
+ *         },
+ *         {
+ *             enabled: true,
+ *             expirations: [{
+ *                 date: "2018-01-12",
+ *             }],
+ *             id: "rule-date",
+ *             prefix: "path2/",
+ *         },
+ *     ],
+ * });
+ * const bucket_lifecycle2 = new alicloud.oss.Bucket("bucket-lifecycle2", {
+ *     acl: "public-read",
+ *     bucket: pulumi.interpolate`example-lifecycle2-${_default.result}`,
+ *     lifecycleRules: [{
+ *         enabled: true,
+ *         id: "rule-days-transition",
+ *         prefix: "path3/",
+ *         transitions: [
+ *             {
+ *                 days: 3,
+ *                 storageClass: "IA",
+ *             },
+ *             {
+ *                 days: 30,
+ *                 storageClass: "Archive",
+ *             },
+ *         ],
+ *     }],
+ * });
+ * const bucket_lifecycle3 = new alicloud.oss.Bucket("bucket-lifecycle3", {
+ *     acl: "public-read",
+ *     bucket: pulumi.interpolate`example-lifecycle3-${_default.result}`,
+ *     lifecycleRules: [{
+ *         enabled: true,
+ *         id: "rule-days-transition",
+ *         prefix: "path3/",
+ *         transitions: [
+ *             {
+ *                 createdBeforeDate: "2022-11-11",
+ *                 storageClass: "IA",
+ *             },
+ *             {
+ *                 createdBeforeDate: "2021-11-11",
+ *                 storageClass: "Archive",
+ *             },
+ *         ],
+ *     }],
+ * });
+ * const bucket_lifecycle4 = new alicloud.oss.Bucket("bucket-lifecycle4", {
+ *     acl: "public-read",
+ *     bucket: pulumi.interpolate`example-lifecycle4-${_default.result}`,
  *     lifecycleRules: [{
  *         abortMultipartUploads: [{
  *             days: 128,
@@ -98,7 +183,7 @@ import * as utilities from "../utilities";
  * });
  * const bucket_versioning_lifecycle = new alicloud.oss.Bucket("bucket-versioning-lifecycle", {
  *     acl: "private",
- *     bucket: "bucket-170309-lifecycle",
+ *     bucket: pulumi.interpolate`example-lifecycle5-${_default.result}`,
  *     lifecycleRules: [{
  *         enabled: true,
  *         expirations: [{
@@ -131,10 +216,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const bucket_policy = new alicloud.oss.Bucket("bucket-policy", {
  *     acl: "private",
- *     bucket: "bucket-170309-policy",
+ *     bucket: pulumi.interpolate`example-policy-${_default.result}`,
  *     policy: `  {"Statement":
  *       [{"Action":
  *           ["oss:PutObject", "oss:GetObject", "oss:DeleteBucket"],
@@ -152,9 +242,14 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const bucket_storageclass = new alicloud.oss.Bucket("bucket-storageclass", {
- *     bucket: "bucket-170309-storageclass",
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {
+ *     bucket: pulumi.interpolate`example-${defaultRandomInteger.result}`,
  *     storageClass: "IA",
  * });
  * ```
@@ -164,13 +259,30 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const bucket_sserule = new alicloud.oss.Bucket("bucket-sserule", {
+ *     bucket: pulumi.interpolate`terraform-example-${_default.result}`,
  *     acl: "private",
- *     bucket: "bucket-170309-sserule",
  *     serverSideEncryptionRule: {
- *         kmsMasterKeyId: "your kms key id",
+ *         sseAlgorithm: "AES256",
+ *     },
+ * });
+ * const kms = new alicloud.kms.Key("kms", {
+ *     description: "terraform-example",
+ *     pendingWindowInDays: 7,
+ *     status: "Enabled",
+ * });
+ * const bucket_kms = new alicloud.oss.Bucket("bucket-kms", {
+ *     bucket: pulumi.interpolate`terraform-example-kms-${_default.result}`,
+ *     acl: "private",
+ *     serverSideEncryptionRule: {
  *         sseAlgorithm: "KMS",
+ *         kmsMasterKeyId: kms.id,
  *     },
  * });
  * ```
@@ -180,10 +292,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const bucket_tags = new alicloud.oss.Bucket("bucket-tags", {
  *     acl: "private",
- *     bucket: "bucket-170309-tags",
+ *     bucket: pulumi.interpolate`terraform-example-${_default.result}`,
  *     tags: {
  *         key1: "value1",
  *         key2: "value2",
@@ -196,10 +313,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const bucket_versioning = new alicloud.oss.Bucket("bucket-versioning", {
  *     acl: "private",
- *     bucket: "bucket-170309-versioning",
+ *     bucket: pulumi.interpolate`terraform-example-${_default.result}`,
  *     versioning: {
  *         status: "Enabled",
  *     },
@@ -211,9 +333,14 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const bucket_redundancytype = new alicloud.oss.Bucket("bucket-redundancytype", {
- *     bucket: "bucket_name",
+ *     bucket: pulumi.interpolate`terraform-example-${_default.result}`,
  *     redundancyType: "ZRS",
  * });
  * ```
@@ -223,9 +350,14 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const bucket_accelerate = new alicloud.oss.Bucket("bucket-accelerate", {
- *     bucket: "bucket_name",
+ *     bucket: pulumi.interpolate`terraform-example-${_default.result}`,
  *     transferAcceleration: {
  *         enabled: false,
  *     },

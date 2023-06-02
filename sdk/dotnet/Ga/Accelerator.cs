@@ -70,6 +70,12 @@ namespace Pulumi.AliCloud.Ga
         public Output<bool?> AutoUseCoupon { get; private set; } = null!;
 
         /// <summary>
+        /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        /// </summary>
+        [Output("bandwidthBillingType")]
+        public Output<string> BandwidthBillingType { get; private set; } = null!;
+
+        /// <summary>
         /// Descriptive information of the global acceleration instance.
         /// </summary>
         [Output("description")]
@@ -178,6 +184,12 @@ namespace Pulumi.AliCloud.Ga
         public Input<bool>? AutoUseCoupon { get; set; }
 
         /// <summary>
+        /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        /// </summary>
+        [Input("bandwidthBillingType")]
+        public Input<string>? BandwidthBillingType { get; set; }
+
+        /// <summary>
         /// Descriptive information of the global acceleration instance.
         /// </summary>
         [Input("description")]
@@ -240,6 +252,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("autoUseCoupon")]
         public Input<bool>? AutoUseCoupon { get; set; }
+
+        /// <summary>
+        /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        /// </summary>
+        [Input("bandwidthBillingType")]
+        public Input<string>? BandwidthBillingType { get; set; }
 
         /// <summary>
         /// Descriptive information of the global acceleration instance.

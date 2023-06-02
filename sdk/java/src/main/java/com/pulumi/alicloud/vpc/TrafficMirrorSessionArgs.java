@@ -7,8 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +21,18 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
     public static final TrafficMirrorSessionArgs Empty = new TrafficMirrorSessionArgs();
 
     /**
-     * The dry run.
+     * Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -49,6 +55,21 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Maximum Transmission Unit (MTU).
+     * 
+     */
+    @Import(name="packetLength")
+    private @Nullable Output<Integer> packetLength;
+
+    /**
+     * @return Maximum Transmission Unit (MTU).
+     * 
+     */
+    public Optional<Output<Integer>> packetLength() {
+        return Optional.ofNullable(this.packetLength);
+    }
+
+    /**
      * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      * 
      */
@@ -61,6 +82,36 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
      */
     public Output<Integer> priority() {
         return this.priority;
+    }
+
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The tags of this resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tags of this resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -109,14 +160,14 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+     * The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
      * 
      */
     @Import(name="trafficMirrorSourceIds", required=true)
     private Output<List<String>> trafficMirrorSourceIds;
 
     /**
-     * @return The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+     * @return The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
      * 
      */
     public Output<List<String>> trafficMirrorSourceIds() {
@@ -139,14 +190,14 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+     * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
      * 
      */
     @Import(name="trafficMirrorTargetType", required=true)
     private Output<String> trafficMirrorTargetType;
 
     /**
-     * @return The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+     * @return The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
      * 
      */
     public Output<String> trafficMirrorTargetType() {
@@ -173,7 +224,10 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
     private TrafficMirrorSessionArgs(TrafficMirrorSessionArgs $) {
         this.dryRun = $.dryRun;
         this.enabled = $.enabled;
+        this.packetLength = $.packetLength;
         this.priority = $.priority;
+        this.resourceGroupId = $.resourceGroupId;
+        this.tags = $.tags;
         this.trafficMirrorFilterId = $.trafficMirrorFilterId;
         this.trafficMirrorSessionDescription = $.trafficMirrorSessionDescription;
         this.trafficMirrorSessionName = $.trafficMirrorSessionName;
@@ -202,7 +256,9 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request, value:
+         * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
          * 
          * @return builder
          * 
@@ -213,7 +269,9 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request, value:
+         * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
          * 
          * @return builder
          * 
@@ -244,6 +302,27 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param packetLength Maximum Transmission Unit (MTU).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packetLength(@Nullable Output<Integer> packetLength) {
+            $.packetLength = packetLength;
+            return this;
+        }
+
+        /**
+         * @param packetLength Maximum Transmission Unit (MTU).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packetLength(Integer packetLength) {
+            return packetLength(Output.of(packetLength));
+        }
+
+        /**
          * @param priority The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
          * 
          * @return builder
@@ -262,6 +341,48 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
          */
         public Builder priority(Integer priority) {
             return priority(Output.of(priority));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param tags The tags of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**
@@ -328,7 +449,7 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficMirrorSourceIds The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+         * @param trafficMirrorSourceIds The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
          * 
          * @return builder
          * 
@@ -339,7 +460,7 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficMirrorSourceIds The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+         * @param trafficMirrorSourceIds The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
          * 
          * @return builder
          * 
@@ -349,7 +470,7 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficMirrorSourceIds The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+         * @param trafficMirrorSourceIds The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
          * 
          * @return builder
          * 
@@ -380,7 +501,7 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficMirrorTargetType The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+         * @param trafficMirrorTargetType The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
          * 
          * @return builder
          * 
@@ -391,7 +512,7 @@ public final class TrafficMirrorSessionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficMirrorTargetType The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+         * @param trafficMirrorTargetType The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
          * 
          * @return builder
          * 

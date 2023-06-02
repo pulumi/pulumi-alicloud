@@ -17,6 +17,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a VPC Route Table resource. Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
+ * 
+ * For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -43,15 +47,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
- *             .vpcName(&#34;vpc-example-name&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
  *             .build());
  * 
- *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
- *             .vpcId(fooNetwork.id())
- *             .routeTableName(&#34;route-table-example-name&#34;)
- *             .description(&#34;route-table-example-description&#34;)
+ *         var default_ = new RouteTable(&#34;default&#34;, RouteTableArgs.builder()        
+ *             .description(&#34;test-description&#34;)
+ *             .vpcId(defaultVpc.id())
+ *             .routeTableName(name)
+ *             .associateType(&#34;VSwitch&#34;)
  *             .build());
  * 
  *     }
@@ -60,45 +66,63 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * The route table can be imported using the id, e.g.
+ * VPC Route Table can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/routeTable:RouteTable foo vtb-abc123456
+ *  $ pulumi import alicloud:vpc/routeTable:RouteTable example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpc/routeTable:RouteTable")
 public class RouteTable extends com.pulumi.resources.CustomResource {
     /**
-     * The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * The type of cloud resource that is bound to the routing table. Value:
+     * - **VSwitch**: switch.
+     * - **Gateway**:IPv4 Gateway.
      * 
      */
     @Export(name="associateType", type=String.class, parameters={})
     private Output<String> associateType;
 
     /**
-     * @return The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * @return The type of cloud resource that is bound to the routing table. Value:
+     * - **VSwitch**: switch.
+     * - **Gateway**:IPv4 Gateway.
      * 
      */
     public Output<String> associateType() {
         return this.associateType;
     }
     /**
-     * The description of the route table instance.
+     * The creation time of the routing table.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the routing table.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Description of the routing table.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the route table instance.
+     * @return Description of the routing table.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
@@ -109,63 +133,81 @@ public class RouteTable extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name of the route table.
+     * Resource group ID.
+     * 
+     */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return Resource group ID.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The name of the routing table.
      * 
      */
     @Export(name="routeTableName", type=String.class, parameters={})
     private Output<String> routeTableName;
 
     /**
-     * @return The name of the route table.
+     * @return The name of the routing table.
      * 
      */
     public Output<String> routeTableName() {
         return this.routeTableName;
     }
     /**
-     * (Available in v1.119.1+) The status of the route table.
+     * Routing table state.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return (Available in v1.119.1+) The status of the route table.
+     * @return Routing table state.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag.
      * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The vpc_id of the route table, the field can&#39;t be changed.
+     * The ID of VPC.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output<String> vpcId;
 
     /**
-     * @return The vpc_id of the route table, the field can&#39;t be changed.
+     * @return The ID of VPC.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> vpcId() {

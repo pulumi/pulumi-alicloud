@@ -19,24 +19,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "Instance",
+ * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ *     instanceTypeFamily: "ecs.g5",
  * });
+ * const defaultZones = defaultInstanceTypes.then(defaultInstanceTypes => alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ *     availableInstanceType: defaultInstanceTypes.ids?.[0],
+ * }));
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
  * const defaultCapacityReservation = new alicloud.ecs.CapacityReservation("defaultCapacityReservation", {
- *     description: _var.name,
+ *     description: "terraform-example",
  *     platform: "linux",
- *     capacityReservationName: _var.name,
+ *     capacityReservationName: "terraform-example",
  *     endTimeType: "Unlimited",
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
  *     instanceAmount: 1,
- *     instanceType: "ecs.c5.2xlarge",
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.ids?.[0]),
  *     matchCriteria: "Open",
  *     tags: {
- *         Created: "tfTestAcc0",
- *         For: "Tftestacc 0",
+ *         Created: "terraform-example",
  *     },
  *     zoneIds: [defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id)],
  * });

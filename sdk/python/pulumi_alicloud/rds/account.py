@@ -35,7 +35,7 @@ class AccountArgs:
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
         :param pulumi.Input[str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] type: Privilege type of account.
+        :param pulumi.Input[str] type: Privilege type of account. The SQLServer engine does not support create high privilege accounts.
                - Normal: Common privilege.
                - Super: High privilege.
                
@@ -213,7 +213,7 @@ class AccountArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Privilege type of account.
+        Privilege type of account. The SQLServer engine does not support create high privilege accounts.
         - Normal: Common privilege.
         - Super: High privilege.
 
@@ -251,7 +251,7 @@ class _AccountState:
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
         :param pulumi.Input[str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] type: Privilege type of account.
+        :param pulumi.Input[str] type: Privilege type of account. The SQLServer engine does not support create high privilege accounts.
                - Normal: Common privilege.
                - Super: High privilege.
                
@@ -440,7 +440,7 @@ class _AccountState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Privilege type of account.
+        Privilege type of account. The SQLServer engine does not support create high privilege accounts.
         - Normal: Common privilege.
         - Super: High privilege.
 
@@ -527,7 +527,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
         :param pulumi.Input[str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] type: Privilege type of account.
+        :param pulumi.Input[str] type: Privilege type of account. The SQLServer engine does not support create high privilege accounts.
                - Normal: Common privilege.
                - Super: High privilege.
                
@@ -691,7 +691,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         :param pulumi.Input[str] name: Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
         :param pulumi.Input[str] password: Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] type: Privilege type of account.
+        :param pulumi.Input[str] type: Privilege type of account. The SQLServer engine does not support create high privilege accounts.
                - Normal: Common privilege.
                - Super: High privilege.
                
@@ -804,7 +804,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Privilege type of account.
+        Privilege type of account. The SQLServer engine does not support create high privilege accounts.
         - Normal: Common privilege.
         - Super: High privilege.
 

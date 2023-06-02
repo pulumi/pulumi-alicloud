@@ -17,43 +17,6 @@ import (
 //
 // > **NOTE:** Available in 1.83.0+ .
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/waf"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := waf.NewInstance(ctx, "default", &waf.InstanceArgs{
-//				BigScreen:           pulumi.String("0"),
-//				ExclusiveIpPackage:  pulumi.String("1"),
-//				ExtBandwidth:        pulumi.String("50"),
-//				ExtDomainPackage:    pulumi.String("1"),
-//				LogStorage:          pulumi.String("3"),
-//				LogTime:             pulumi.String("180"),
-//				PackageCode:         pulumi.String("version_3"),
-//				Period:              pulumi.Int(1),
-//				PrefessionalService: pulumi.String("false"),
-//				ResourceGroupId:     pulumi.String("rs-abc12345"),
-//				SubscriptionType:    pulumi.String("Subscription"),
-//				WafLog:              pulumi.String("false"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // WAF instance can be imported using the id, e.g.

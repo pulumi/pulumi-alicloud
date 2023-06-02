@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a VPC Route Table resource. Currently, customized route tables are available in most regions apart from China (Beijing), China (Hangzhou), and China (Shenzhen) regions.
+ *
+ * For information about VPC Route Table and how to use it, see [What is Route Table](https://www.alibabacloud.com/help/doc-detail/87057.htm).
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -13,23 +17,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
- *     cidrBlock: "172.16.0.0/12",
- *     vpcName: "vpc-example-name",
- * });
- * const fooRouteTable = new alicloud.vpc.RouteTable("fooRouteTable", {
- *     vpcId: fooNetwork.id,
- *     routeTableName: "route-table-example-name",
- *     description: "route-table-example-description",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {vpcName: name});
+ * const _default = new alicloud.vpc.RouteTable("default", {
+ *     description: "test-description",
+ *     vpcId: defaultVpc.id,
+ *     routeTableName: name,
+ *     associateType: "VSwitch",
  * });
  * ```
  *
  * ## Import
  *
- * The route table can be imported using the id, e.g.
+ * VPC Route Table can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:vpc/routeTable:RouteTable foo vtb-abc123456
+ *  $ pulumi import alicloud:vpc/routeTable:RouteTable example <id>
  * ```
  */
 export class RouteTable extends pulumi.CustomResource {
@@ -61,33 +65,45 @@ export class RouteTable extends pulumi.CustomResource {
     }
 
     /**
-     * The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * The type of cloud resource that is bound to the routing table. Value:
+     * - **VSwitch**: switch.
+     * - **Gateway**:IPv4 Gateway.
      */
     public readonly associateType!: pulumi.Output<string>;
     /**
-     * The description of the route table instance.
+     * The creation time of the routing table.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Description of the routing table.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
+     * Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name of the route table.
+     * Resource group ID.
+     */
+    public /*out*/ readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The name of the routing table.
      */
     public readonly routeTableName!: pulumi.Output<string>;
     /**
-     * (Available in v1.119.1+) The status of the route table.
+     * Routing table state.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The vpcId of the route table, the field can't be changed.
+     * The ID of VPC.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     public readonly vpcId!: pulumi.Output<string>;
 
@@ -105,8 +121,10 @@ export class RouteTable extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RouteTableState | undefined;
             resourceInputs["associateType"] = state ? state.associateType : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["routeTableName"] = state ? state.routeTableName : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -122,6 +140,8 @@ export class RouteTable extends pulumi.CustomResource {
             resourceInputs["routeTableName"] = args ? args.routeTableName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["resourceGroupId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -134,33 +154,45 @@ export class RouteTable extends pulumi.CustomResource {
  */
 export interface RouteTableState {
     /**
-     * The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * The type of cloud resource that is bound to the routing table. Value:
+     * - **VSwitch**: switch.
+     * - **Gateway**:IPv4 Gateway.
      */
     associateType?: pulumi.Input<string>;
     /**
-     * The description of the route table instance.
+     * The creation time of the routing table.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Description of the routing table.
      */
     description?: pulumi.Input<string>;
     /**
-     * Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
+     * Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the route table.
+     * Resource group ID.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The name of the routing table.
      */
     routeTableName?: pulumi.Input<string>;
     /**
-     * (Available in v1.119.1+) The status of the route table.
+     * Routing table state.
      */
     status?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The vpcId of the route table, the field can't be changed.
+     * The ID of VPC.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -170,29 +202,33 @@ export interface RouteTableState {
  */
 export interface RouteTableArgs {
     /**
-     * The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * The type of cloud resource that is bound to the routing table. Value:
+     * - **VSwitch**: switch.
+     * - **Gateway**:IPv4 Gateway.
      */
     associateType?: pulumi.Input<string>;
     /**
-     * The description of the route table instance.
+     * Description of the routing table.
      */
     description?: pulumi.Input<string>;
     /**
-     * Field `name` has been deprecated from provider version 1.119.1. New field `routeTableName` instead.
+     * Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the route table.
+     * The name of the routing table.
      */
     routeTableName?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The vpcId of the route table, the field can't be changed.
+     * The ID of VPC.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     vpcId: pulumi.Input<string>;
 }

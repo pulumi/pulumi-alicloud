@@ -22,19 +22,39 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var fooZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///     });
+    /// 
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         VpcId = fooNetwork.Id,
+    ///         ZoneId = fooZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
     ///     var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new()
     ///     {
-    ///         VpcId = "vpc-fake-id",
+    ///         VpcId = fooNetwork.Id,
     ///         Bandwidth = 10,
     ///         EnableSsl = true,
-    ///         InstanceChargeType = "PostPaid",
+    ///         InstanceChargeType = "PrePaid",
     ///         Description = "test_create_description",
+    ///         VswitchId = fooSwitch.Id,
     ///     });
     /// 
     ///     var fooCustomerGateway = new AliCloud.Vpn.CustomerGateway("fooCustomerGateway", new()
     ///     {
-    ///         IpAddress = "42.104.22.228",
-    ///         Description = "testAccVpnCgwDesc",
+    ///         IpAddress = "42.104.22.210",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var fooConnection = new AliCloud.Vpn.Connection("fooConnection", new()
@@ -56,7 +76,7 @@ namespace Pulumi.AliCloud.Vpn
     ///         {
     ///             IkeAuthAlg = "md5",
     ///             IkeEncAlg = "des",
-    ///             IkeVersion = "ikev1",
+    ///             IkeVersion = "ikev2",
     ///             IkeMode = "main",
     ///             IkeLifetime = 86400,
     ///             Psk = "tf-testvpn2",

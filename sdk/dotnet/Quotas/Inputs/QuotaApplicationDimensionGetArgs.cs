@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Quotas.Inputs
     public sealed class QuotaApplicationDimensionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key of dimensions.
+        /// Key.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The value of dimensions.
+        /// Value.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

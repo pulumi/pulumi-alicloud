@@ -183,7 +183,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Privilege type of account.
+     * Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.
      * - Super: High privilege.
      * 
@@ -198,7 +198,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return Privilege type of account.
+     * @return Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.
      * - Super: High privilege.
      * 
@@ -462,7 +462,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Privilege type of account.
+         * @param type Privilege type of account. The SQLServer engine does not support create high privilege accounts.
          * - Normal: Common privilege.
          * - Super: High privilege.
          * 
@@ -481,7 +481,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Privilege type of account.
+         * @param type Privilege type of account. The SQLServer engine does not support create high privilege accounts.
          * - Normal: Common privilege.
          * - Super: High privilege.
          * 

@@ -179,15 +179,11 @@ class Application(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tftestacc"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_application = alicloud.oos.Application("defaultApplication",
             resource_group_id=default_resource_groups.groups[0].id,
-            application_name=name,
-            description=name,
+            application_name="terraform-example",
+            description="terraform-example",
             tags={
                 "Created": "TF",
             })
@@ -229,15 +225,11 @@ class Application(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tftestacc"
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_application = alicloud.oos.Application("defaultApplication",
             resource_group_id=default_resource_groups.groups[0].id,
-            application_name=name,
-            description=name,
+            application_name="terraform-example",
+            description="terraform-example",
             tags={
                 "Created": "TF",
             })

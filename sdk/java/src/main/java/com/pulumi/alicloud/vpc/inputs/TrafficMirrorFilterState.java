@@ -3,10 +3,15 @@
 
 package com.pulumi.alicloud.vpc.inputs;
 
+import com.pulumi.alicloud.vpc.inputs.TrafficMirrorFilterEgressRuleArgs;
+import com.pulumi.alicloud.vpc.inputs.TrafficMirrorFilterIngressRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +22,18 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
     public static final TrafficMirrorFilterState Empty = new TrafficMirrorFilterState();
 
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -32,14 +41,59 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+     * Information about the outbound rule. See the following `Block EgressRules`.
+     * 
+     */
+    @Import(name="egressRules")
+    private @Nullable Output<List<TrafficMirrorFilterEgressRuleArgs>> egressRules;
+
+    /**
+     * @return Information about the outbound rule. See the following `Block EgressRules`.
+     * 
+     */
+    public Optional<Output<List<TrafficMirrorFilterEgressRuleArgs>>> egressRules() {
+        return Optional.ofNullable(this.egressRules);
+    }
+
+    /**
+     * Inward direction rule information. See the following `Block IngressRules`.
+     * 
+     */
+    @Import(name="ingressRules")
+    private @Nullable Output<List<TrafficMirrorFilterIngressRuleArgs>> ingressRules;
+
+    /**
+     * @return Inward direction rule information. See the following `Block IngressRules`.
+     * 
+     */
+    public Optional<Output<List<TrafficMirrorFilterIngressRuleArgs>>> ingressRules() {
+        return Optional.ofNullable(this.ingressRules);
+    }
+
+    /**
+     * The ID of the resource group to which the VPC belongs.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which the VPC belongs.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -47,14 +101,29 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The tags of this resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tags of this resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The description of the TrafficMirrorFilter.
      * 
      */
     @Import(name="trafficMirrorFilterDescription")
     private @Nullable Output<String> trafficMirrorFilterDescription;
 
     /**
-     * @return The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+     * @return The description of the TrafficMirrorFilter.
      * 
      */
     public Optional<Output<String>> trafficMirrorFilterDescription() {
@@ -62,14 +131,14 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * The name of the TrafficMirrorFilter.
      * 
      */
     @Import(name="trafficMirrorFilterName")
     private @Nullable Output<String> trafficMirrorFilterName;
 
     /**
-     * @return The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * @return The name of the TrafficMirrorFilter.
      * 
      */
     public Optional<Output<String>> trafficMirrorFilterName() {
@@ -80,7 +149,11 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
 
     private TrafficMirrorFilterState(TrafficMirrorFilterState $) {
         this.dryRun = $.dryRun;
+        this.egressRules = $.egressRules;
+        this.ingressRules = $.ingressRules;
+        this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
+        this.tags = $.tags;
         this.trafficMirrorFilterDescription = $.trafficMirrorFilterDescription;
         this.trafficMirrorFilterName = $.trafficMirrorFilterName;
     }
@@ -104,7 +177,9 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request. Value:
+         * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
          * 
          * @return builder
          * 
@@ -115,7 +190,9 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request. Value:
+         * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
          * 
          * @return builder
          * 
@@ -125,7 +202,90 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+         * @param egressRules Information about the outbound rule. See the following `Block EgressRules`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egressRules(@Nullable Output<List<TrafficMirrorFilterEgressRuleArgs>> egressRules) {
+            $.egressRules = egressRules;
+            return this;
+        }
+
+        /**
+         * @param egressRules Information about the outbound rule. See the following `Block EgressRules`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egressRules(List<TrafficMirrorFilterEgressRuleArgs> egressRules) {
+            return egressRules(Output.of(egressRules));
+        }
+
+        /**
+         * @param egressRules Information about the outbound rule. See the following `Block EgressRules`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder egressRules(TrafficMirrorFilterEgressRuleArgs... egressRules) {
+            return egressRules(List.of(egressRules));
+        }
+
+        /**
+         * @param ingressRules Inward direction rule information. See the following `Block IngressRules`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressRules(@Nullable Output<List<TrafficMirrorFilterIngressRuleArgs>> ingressRules) {
+            $.ingressRules = ingressRules;
+            return this;
+        }
+
+        /**
+         * @param ingressRules Inward direction rule information. See the following `Block IngressRules`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressRules(List<TrafficMirrorFilterIngressRuleArgs> ingressRules) {
+            return ingressRules(Output.of(ingressRules));
+        }
+
+        /**
+         * @param ingressRules Inward direction rule information. See the following `Block IngressRules`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingressRules(TrafficMirrorFilterIngressRuleArgs... ingressRules) {
+            return ingressRules(List.of(ingressRules));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which the VPC belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which the VPC belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -136,7 +296,7 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -146,7 +306,28 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficMirrorFilterDescription The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+         * @param tags The tags of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param trafficMirrorFilterDescription The description of the TrafficMirrorFilter.
          * 
          * @return builder
          * 
@@ -157,7 +338,7 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficMirrorFilterDescription The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+         * @param trafficMirrorFilterDescription The description of the TrafficMirrorFilter.
          * 
          * @return builder
          * 
@@ -167,7 +348,7 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficMirrorFilterName The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+         * @param trafficMirrorFilterName The name of the TrafficMirrorFilter.
          * 
          * @return builder
          * 
@@ -178,7 +359,7 @@ public final class TrafficMirrorFilterState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param trafficMirrorFilterName The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+         * @param trafficMirrorFilterName The name of the TrafficMirrorFilter.
          * 
          * @return builder
          * 

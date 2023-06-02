@@ -42,9 +42,12 @@ import (
 //			}
 //			_, err = nas.NewLifecyclePolicy(ctx, "exampleLifecyclePolicy", &nas.LifecyclePolicyArgs{
 //				FileSystemId:        exampleFileSystem.ID(),
-//				LifecyclePolicyName: pulumi.String("my-LifecyclePolicy"),
+//				LifecyclePolicyName: pulumi.String("terraform-example"),
 //				LifecycleRuleName:   pulumi.String("DEFAULT_ATIME_14"),
 //				StorageType:         pulumi.String("InfrequentAccess"),
+//				Paths: pulumi.StringArray{
+//					pulumi.String("/"),
+//				},
 //			})
 //			if err != nil {
 //				return err

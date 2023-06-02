@@ -40,27 +40,27 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("example_value"),
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-//				VpcId:       pulumi.Any(alicloud_vpc.Default.Id),
+//				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
 //				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
-//				VswitchName: pulumi.Any(_var.Name),
+//				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleNatGateway, err := vpc.NewNatGateway(ctx, "exampleNatGateway", &vpc.NatGatewayArgs{
-//				VpcId:              pulumi.Any(alicloud_vpc.Default.Id),
+//				VpcId:              exampleNetwork.ID(),
 //				InternetChargeType: pulumi.String("PayByLcu"),
-//				NatGatewayName:     pulumi.String("example_value"),
-//				Description:        pulumi.String("example_value"),
+//				NatGatewayName:     pulumi.String("terraform-example"),
+//				Description:        pulumi.String("terraform-example"),
 //				NatType:            pulumi.String("Enhanced"),
 //				VswitchId:          exampleSwitch.ID(),
 //				NetworkType:        pulumi.String("intranet"),
@@ -70,8 +70,8 @@ import (
 //			}
 //			_, err = vpc.NewNatIpCidr(ctx, "exampleNatIpCidr", &vpc.NatIpCidrArgs{
 //				NatGatewayId:  exampleNatGateway.ID(),
-//				NatIpCidrName: pulumi.String("example_value"),
-//				NatIpCidr:     pulumi.String("example_value"),
+//				NatIpCidrName: pulumi.String("terraform-example"),
+//				NatIpCidr:     pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err

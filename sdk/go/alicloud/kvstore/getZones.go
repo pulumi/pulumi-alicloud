@@ -55,9 +55,7 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
-	// * Local: an ApsaraDB for Redis instance with a local disk.
-	// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
 	Engine *string `pulumi:"engine"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -99,9 +97,7 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 // A collection of arguments for invoking getZones.
 type GetZonesOutputArgs struct {
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
-	// * Local: an ApsaraDB for Redis instance with a local disk.
-	// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+	// * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`

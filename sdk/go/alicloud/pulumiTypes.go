@@ -217,6 +217,7 @@ type ProviderEndpoint struct {
 	Cloudphone          *string `pulumi:"cloudphone"`
 	Cloudsso            *string `pulumi:"cloudsso"`
 	Cms                 *string `pulumi:"cms"`
+	Computenest         *string `pulumi:"computenest"`
 	Config              *string `pulumi:"config"`
 	Cr                  *string `pulumi:"cr"`
 	Cs                  *string `pulumi:"cs"`
@@ -359,6 +360,7 @@ type ProviderEndpointArgs struct {
 	Cloudphone          pulumi.StringPtrInput `pulumi:"cloudphone"`
 	Cloudsso            pulumi.StringPtrInput `pulumi:"cloudsso"`
 	Cms                 pulumi.StringPtrInput `pulumi:"cms"`
+	Computenest         pulumi.StringPtrInput `pulumi:"computenest"`
 	Config              pulumi.StringPtrInput `pulumi:"config"`
 	Cr                  pulumi.StringPtrInput `pulumi:"cr"`
 	Cs                  pulumi.StringPtrInput `pulumi:"cs"`
@@ -622,6 +624,10 @@ func (o ProviderEndpointOutput) Cloudsso() pulumi.StringPtrOutput {
 
 func (o ProviderEndpointOutput) Cms() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Cms }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderEndpointOutput) Computenest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderEndpoint) *string { return v.Computenest }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderEndpointOutput) Config() pulumi.StringPtrOutput {

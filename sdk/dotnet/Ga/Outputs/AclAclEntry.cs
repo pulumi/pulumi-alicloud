@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
     public sealed class AclAclEntry
     {
         /// <summary>
-        /// The IP entry that you want to add to the ACL.
+        /// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
         /// </summary>
         public readonly string? Entry;
         /// <summary>

@@ -28,6 +28,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.mse.Cluster;
  * import com.pulumi.alicloud.mse.ClusterArgs;
  * import java.util.List;
@@ -43,17 +49,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Cluster(&#34;example&#34;, ClusterArgs.builder()        
- *             .aclEntryLists(&#34;127.0.0.1/32&#34;)
- *             .clusterAliasName(&#34;tf-testAccMseCluster&#34;)
- *             .clusterSpecification(&#34;MSE_SC_1_2_200_c&#34;)
+ *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var exampleCluster = new Cluster(&#34;exampleCluster&#34;, ClusterArgs.builder()        
+ *             .clusterSpecification(&#34;MSE_SC_1_2_60_c&#34;)
  *             .clusterType(&#34;Nacos-Ans&#34;)
- *             .clusterVersion(&#34;NACOS_ANS_1_2_1&#34;)
+ *             .clusterVersion(&#34;NACOS_2_0_0&#34;)
  *             .instanceCount(1)
- *             .mseVersion(&#34;mse_dev&#34;)
  *             .netType(&#34;privatenet&#34;)
  *             .pubNetworkFlow(&#34;1&#34;)
- *             .vswitchId(&#34;vsw-123456&#34;)
+ *             .connectionType(&#34;slb&#34;)
+ *             .clusterAliasName(&#34;terraform-example&#34;)
+ *             .mseVersion(&#34;mse_dev&#34;)
+ *             .vswitchId(exampleSwitch.id())
+ *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
  *     }
@@ -86,6 +109,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aclEntryLists);
     }
     /**
+     * (Available in v1.205.0+) The application version.
+     * 
+     */
+    @Export(name="appVersion", type=String.class, parameters={})
+    private Output<String> appVersion;
+
+    /**
+     * @return (Available in v1.205.0+) The application version.
+     * 
+     */
+    public Output<String> appVersion() {
+        return this.appVersion;
+    }
+    /**
      * The alias of MSE Cluster.
      * 
      */
@@ -100,14 +137,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterAliasName);
     }
     /**
-     * (Available in v1.162.0+)  The id of Cluster.
+     * (Available in v1.162.0+) The id of Cluster.
      * 
      */
     @Export(name="clusterId", type=String.class, parameters={})
     private Output<String> clusterId;
 
     /**
-     * @return (Available in v1.162.0+)  The id of Cluster.
+     * @return (Available in v1.162.0+) The id of Cluster.
      * 
      */
     public Output<String> clusterId() {

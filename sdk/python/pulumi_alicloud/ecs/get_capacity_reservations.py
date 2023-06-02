@@ -203,7 +203,7 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[str]] 
     import pulumi_alicloud as alicloud
 
     default = alicloud.ecs.get_capacity_reservations(ids=[alicloud_ecs_capacity_reservation["default"]["id"]],
-        name_regex=alicloud_ecs_capacity_reservation["default"]["name"],
+        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         instance_type="ecs.c6.large",
         platform="linux")
     pulumi.export("alicloudEcsCapacityReservationExampleId", default.reservations[0].id)
@@ -274,7 +274,7 @@ def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.I
     import pulumi_alicloud as alicloud
 
     default = alicloud.ecs.get_capacity_reservations(ids=[alicloud_ecs_capacity_reservation["default"]["id"]],
-        name_regex=alicloud_ecs_capacity_reservation["default"]["name"],
+        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         instance_type="ecs.c6.large",
         platform="linux")
     pulumi.export("alicloudEcsCapacityReservationExampleId", default.reservations[0].id)

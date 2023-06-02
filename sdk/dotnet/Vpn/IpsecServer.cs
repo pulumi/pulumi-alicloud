@@ -28,41 +28,42 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var fooZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         VpcId = fooNetwork.Id,
+    ///         ZoneId = fooZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var vswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
-    /// 
-    ///     var defaultGateway = new AliCloud.Vpn.Gateway("defaultGateway", new()
+    ///     var fooGateway = new AliCloud.Vpn.Gateway("fooGateway", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = fooNetwork.Id,
     ///         Bandwidth = 10,
     ///         EnableSsl = true,
-    ///         EnableIpsec = true,
-    ///         SslConnections = 5,
     ///         InstanceChargeType = "PrePaid",
-    ///         VswitchId = vswitchId,
+    ///         Description = "terraform-example",
+    ///         VswitchId = fooSwitch.Id,
     ///     });
     /// 
-    ///     var example = new AliCloud.Vpn.IpsecServer("example", new()
+    ///     var fooIpsecServer = new AliCloud.Vpn.IpsecServer("fooIpsecServer", new()
     ///     {
-    ///         ClientIpPool = "example_value",
-    ///         IpsecServerName = "example_value",
-    ///         LocalSubnet = "example_value",
-    ///         VpnGatewayId = defaultGateway.Id,
+    ///         ClientIpPool = "10.0.0.0/24",
+    ///         IpsecServerName = "terraform-example",
+    ///         LocalSubnet = "192.168.0.0/24",
+    ///         VpnGatewayId = fooGateway.Id,
+    ///         PskEnabled = true,
     ///     });
     /// 
     /// });

@@ -17,8 +17,12 @@ import * as utilities from "../utilities";
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "10.1.0.0/21"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "10.1.0.0/21",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: "terraform-example",
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "10.1.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
@@ -26,7 +30,7 @@ import * as utilities from "../utilities";
  * const defaultGateway = new alicloud.vpn.Gateway("defaultGateway", {
  *     vpcId: defaultNetwork.id,
  *     bandwidth: 10,
- *     instanceChargeType: "PayByTraffic",
+ *     instanceChargeType: "PrePaid",
  *     enableSsl: false,
  *     vswitchId: defaultSwitch.id,
  * });

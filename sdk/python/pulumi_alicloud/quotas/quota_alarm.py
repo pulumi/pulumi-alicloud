@@ -22,15 +22,19 @@ class QuotaAlarmArgs:
                  quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_percent: Optional[pulumi.Input[float]] = None,
+                 threshold_type: Optional[pulumi.Input[str]] = None,
                  web_hook: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a QuotaAlarm resource.
         :param pulumi.Input[str] product_code: The Product Code.
         :param pulumi.Input[str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]] quota_dimensions: The Quota Dimensions.
+        :param pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]] quota_dimensions: The Quota Dimensions. See the following `Block QuotaDimensions`.
         :param pulumi.Input[float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
+        :param pulumi.Input[str] threshold_type: Quota alarm type. Value:
+               - used: Quota used alarm.
+               - usable: alarm for the remaining available quota.
         :param pulumi.Input[str] web_hook: The WebHook of Quota Alarm.
         """
         pulumi.set(__self__, "product_code", product_code)
@@ -42,6 +46,8 @@ class QuotaAlarmArgs:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_percent is not None:
             pulumi.set(__self__, "threshold_percent", threshold_percent)
+        if threshold_type is not None:
+            pulumi.set(__self__, "threshold_type", threshold_type)
         if web_hook is not None:
             pulumi.set(__self__, "web_hook", web_hook)
 
@@ -85,7 +91,7 @@ class QuotaAlarmArgs:
     @pulumi.getter(name="quotaDimensions")
     def quota_dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]]]:
         """
-        The Quota Dimensions.
+        The Quota Dimensions. See the following `Block QuotaDimensions`.
         """
         return pulumi.get(self, "quota_dimensions")
 
@@ -118,6 +124,20 @@ class QuotaAlarmArgs:
         pulumi.set(self, "threshold_percent", value)
 
     @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Quota alarm type. Value:
+        - used: Quota used alarm.
+        - usable: alarm for the remaining available quota.
+        """
+        return pulumi.get(self, "threshold_type")
+
+    @threshold_type.setter
+    def threshold_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "threshold_type", value)
+
+    @property
     @pulumi.getter(name="webHook")
     def web_hook(self) -> Optional[pulumi.Input[str]]:
         """
@@ -133,23 +153,31 @@ class QuotaAlarmArgs:
 @pulumi.input_type
 class _QuotaAlarmState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  product_code: Optional[pulumi.Input[str]] = None,
                  quota_action_code: Optional[pulumi.Input[str]] = None,
                  quota_alarm_name: Optional[pulumi.Input[str]] = None,
                  quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_percent: Optional[pulumi.Input[float]] = None,
+                 threshold_type: Optional[pulumi.Input[str]] = None,
                  web_hook: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering QuotaAlarm resources.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] product_code: The Product Code.
         :param pulumi.Input[str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]] quota_dimensions: The Quota Dimensions.
+        :param pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]] quota_dimensions: The Quota Dimensions. See the following `Block QuotaDimensions`.
         :param pulumi.Input[float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
+        :param pulumi.Input[str] threshold_type: Quota alarm type. Value:
+               - used: Quota used alarm.
+               - usable: alarm for the remaining available quota.
         :param pulumi.Input[str] web_hook: The WebHook of Quota Alarm.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if product_code is not None:
             pulumi.set(__self__, "product_code", product_code)
         if quota_action_code is not None:
@@ -162,8 +190,22 @@ class _QuotaAlarmState:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_percent is not None:
             pulumi.set(__self__, "threshold_percent", threshold_percent)
+        if threshold_type is not None:
+            pulumi.set(__self__, "threshold_type", threshold_type)
         if web_hook is not None:
             pulumi.set(__self__, "web_hook", web_hook)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="productCode")
@@ -205,7 +247,7 @@ class _QuotaAlarmState:
     @pulumi.getter(name="quotaDimensions")
     def quota_dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]]]:
         """
-        The Quota Dimensions.
+        The Quota Dimensions. See the following `Block QuotaDimensions`.
         """
         return pulumi.get(self, "quota_dimensions")
 
@@ -238,6 +280,20 @@ class _QuotaAlarmState:
         pulumi.set(self, "threshold_percent", value)
 
     @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Quota alarm type. Value:
+        - used: Quota used alarm.
+        - usable: alarm for the remaining available quota.
+        """
+        return pulumi.get(self, "threshold_type")
+
+    @threshold_type.setter
+    def threshold_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "threshold_type", value)
+
+    @property
     @pulumi.getter(name="webHook")
     def web_hook(self) -> Optional[pulumi.Input[str]]:
         """
@@ -261,12 +317,13 @@ class QuotaAlarm(pulumi.CustomResource):
                  quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_percent: Optional[pulumi.Input[float]] = None,
+                 threshold_type: Optional[pulumi.Input[str]] = None,
                  web_hook: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Quotas Quota Alarm resource.
 
-        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/184343.html).
+        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
 
         > **NOTE:** Available in v1.116.0+.
 
@@ -278,15 +335,20 @@ class QuotaAlarm(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.quotas.QuotaAlarm("example",
-            product_code="ecs",
-            quota_action_code="q_prepaid-instance-count-per-once-purchase",
-            quota_alarm_name="tf-testAcc",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.QuotaAlarm("default",
+            quota_action_code="q_desktop-count",
             quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
                 key="regionId",
                 value="cn-hangzhou",
             )],
-            threshold=100)
+            threshold_percent=80,
+            product_code="gws",
+            quota_alarm_name=name,
+            threshold_type="used")
         ```
 
         ## Import
@@ -302,9 +364,12 @@ class QuotaAlarm(pulumi.CustomResource):
         :param pulumi.Input[str] product_code: The Product Code.
         :param pulumi.Input[str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]] quota_dimensions: The Quota Dimensions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]] quota_dimensions: The Quota Dimensions. See the following `Block QuotaDimensions`.
         :param pulumi.Input[float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
+        :param pulumi.Input[str] threshold_type: Quota alarm type. Value:
+               - used: Quota used alarm.
+               - usable: alarm for the remaining available quota.
         :param pulumi.Input[str] web_hook: The WebHook of Quota Alarm.
         """
         ...
@@ -316,7 +381,7 @@ class QuotaAlarm(pulumi.CustomResource):
         """
         Provides a Quotas Quota Alarm resource.
 
-        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/184343.html).
+        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
 
         > **NOTE:** Available in v1.116.0+.
 
@@ -328,15 +393,20 @@ class QuotaAlarm(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.quotas.QuotaAlarm("example",
-            product_code="ecs",
-            quota_action_code="q_prepaid-instance-count-per-once-purchase",
-            quota_alarm_name="tf-testAcc",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.quotas.QuotaAlarm("default",
+            quota_action_code="q_desktop-count",
             quota_dimensions=[alicloud.quotas.QuotaAlarmQuotaDimensionArgs(
                 key="regionId",
                 value="cn-hangzhou",
             )],
-            threshold=100)
+            threshold_percent=80,
+            product_code="gws",
+            quota_alarm_name=name,
+            threshold_type="used")
         ```
 
         ## Import
@@ -368,6 +438,7 @@ class QuotaAlarm(pulumi.CustomResource):
                  quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_percent: Optional[pulumi.Input[float]] = None,
+                 threshold_type: Optional[pulumi.Input[str]] = None,
                  web_hook: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -390,7 +461,9 @@ class QuotaAlarm(pulumi.CustomResource):
             __props__.__dict__["quota_dimensions"] = quota_dimensions
             __props__.__dict__["threshold"] = threshold
             __props__.__dict__["threshold_percent"] = threshold_percent
+            __props__.__dict__["threshold_type"] = threshold_type
             __props__.__dict__["web_hook"] = web_hook
+            __props__.__dict__["create_time"] = None
         super(QuotaAlarm, __self__).__init__(
             'alicloud:quotas/quotaAlarm:QuotaAlarm',
             resource_name,
@@ -401,12 +474,14 @@ class QuotaAlarm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             product_code: Optional[pulumi.Input[str]] = None,
             quota_action_code: Optional[pulumi.Input[str]] = None,
             quota_alarm_name: Optional[pulumi.Input[str]] = None,
             quota_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]]] = None,
             threshold: Optional[pulumi.Input[float]] = None,
             threshold_percent: Optional[pulumi.Input[float]] = None,
+            threshold_type: Optional[pulumi.Input[str]] = None,
             web_hook: Optional[pulumi.Input[str]] = None) -> 'QuotaAlarm':
         """
         Get an existing QuotaAlarm resource's state with the given name, id, and optional extra
@@ -415,26 +490,40 @@ class QuotaAlarm(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] product_code: The Product Code.
         :param pulumi.Input[str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]] quota_dimensions: The Quota Dimensions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]] quota_dimensions: The Quota Dimensions. See the following `Block QuotaDimensions`.
         :param pulumi.Input[float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
+        :param pulumi.Input[str] threshold_type: Quota alarm type. Value:
+               - used: Quota used alarm.
+               - usable: alarm for the remaining available quota.
         :param pulumi.Input[str] web_hook: The WebHook of Quota Alarm.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _QuotaAlarmState.__new__(_QuotaAlarmState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["product_code"] = product_code
         __props__.__dict__["quota_action_code"] = quota_action_code
         __props__.__dict__["quota_alarm_name"] = quota_alarm_name
         __props__.__dict__["quota_dimensions"] = quota_dimensions
         __props__.__dict__["threshold"] = threshold
         __props__.__dict__["threshold_percent"] = threshold_percent
+        __props__.__dict__["threshold_type"] = threshold_type
         __props__.__dict__["web_hook"] = web_hook
         return QuotaAlarm(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="productCode")
@@ -464,7 +553,7 @@ class QuotaAlarm(pulumi.CustomResource):
     @pulumi.getter(name="quotaDimensions")
     def quota_dimensions(self) -> pulumi.Output[Optional[Sequence['outputs.QuotaAlarmQuotaDimension']]]:
         """
-        The Quota Dimensions.
+        The Quota Dimensions. See the following `Block QuotaDimensions`.
         """
         return pulumi.get(self, "quota_dimensions")
 
@@ -483,6 +572,16 @@ class QuotaAlarm(pulumi.CustomResource):
         The threshold percent of Quota Alarm.
         """
         return pulumi.get(self, "threshold_percent")
+
+    @property
+    @pulumi.getter(name="thresholdType")
+    def threshold_type(self) -> pulumi.Output[str]:
+        """
+        Quota alarm type. Value:
+        - used: Quota used alarm.
+        - usable: alarm for the remaining available quota.
+        """
+        return pulumi.get(self, "threshold_type")
 
     @property
     @pulumi.getter(name="webHook")

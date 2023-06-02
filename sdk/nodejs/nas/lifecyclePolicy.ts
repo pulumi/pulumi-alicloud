@@ -25,9 +25,10 @@ import * as utilities from "../utilities";
  * });
  * const exampleLifecyclePolicy = new alicloud.nas.LifecyclePolicy("exampleLifecyclePolicy", {
  *     fileSystemId: exampleFileSystem.id,
- *     lifecyclePolicyName: "my-LifecyclePolicy",
+ *     lifecyclePolicyName: "terraform-example",
  *     lifecycleRuleName: "DEFAULT_ATIME_14",
  *     storageType: "InfrequentAccess",
+ *     paths: ["/"],
  * });
  * ```
  *

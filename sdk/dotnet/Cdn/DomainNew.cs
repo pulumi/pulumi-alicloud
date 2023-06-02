@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn
 {
     /// <summary>
-    /// Provides a CDN Accelerated Domain resource. This resource is based on CDN's new version OpenAPI.
+    /// Provides a CDN Domain resource. CDN domain name.
     /// 
-    /// For information about Cdn Domain New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/91176.html).
+    /// For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
     /// 
     /// &gt; **NOTE:** Available in v1.34.0+.
     /// 
@@ -28,21 +28,22 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new Domain.
-    ///     var domain = new AliCloud.Cdn.DomainNew("domain", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Cdn.DomainNew("default", new()
     ///     {
+    ///         Scope = "domestic",
+    ///         DomainName = name,
     ///         CdnType = "web",
-    ///         DomainName = "terraform.test.com",
-    ///         Scope = "overseas",
     ///         Sources = new[]
     ///         {
     ///             new AliCloud.Cdn.Inputs.DomainNewSourceArgs
     ///             {
-    ///                 Content = "1.1.1.1",
-    ///                 Port = 80,
-    ///                 Priority = 20,
     ///                 Type = "ipaddr",
-    ///                 Weight = 10,
+    ///                 Content = "1.1.1.1",
+    ///                 Priority = 20,
+    ///                 Port = 80,
+    ///                 Weight = 15,
     ///             },
     ///         },
     ///     });
@@ -52,10 +53,10 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// ## Import
     /// 
-    /// CDN domain can be imported using the id, e.g.
+    /// CDN Domain can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:cdn/domainNew:DomainNew example xxxx.com
+    ///  $ pulumi import alicloud:cdn/domainNew:DomainNew example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cdn/domainNew:DomainNew")]
@@ -68,13 +69,19 @@ namespace Pulumi.AliCloud.Cdn
         public Output<string> CdnType { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+        /// Certificate configuration. See the following `Block CertificateConfig`.
         /// </summary>
         [Output("certificateConfig")]
         public Output<Outputs.DomainNewCertificateConfig> CertificateConfig { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.90.0+) The CNAME of the CDN domain.
+        /// Health test URL.
+        /// </summary>
+        [Output("checkUrl")]
+        public Output<string?> CheckUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The CNAME domain name corresponding to the accelerated domain name.
         /// </summary>
         [Output("cname")]
         public Output<string> Cname { get; private set; } = null!;
@@ -86,25 +93,35 @@ namespace Pulumi.AliCloud.Cdn
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// Resource group ID.
+        /// The ID of the resource group.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+        /// - **domestic**: Mainland China only.
+        /// - **overseas**: Global (excluding Mainland China).
+        /// - **global**: global.
+        /// The default value is **domestic**.
         /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
 
         /// <summary>
-        /// The source address list of the accelerated domain. Defaults to null. See Block Sources.
+        /// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
         /// </summary>
         [Output("sources")]
         public Output<ImmutableArray<Outputs.DomainNewSource>> Sources { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The status of the resource.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -162,10 +179,16 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string> CdnType { get; set; } = null!;
 
         /// <summary>
-        /// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+        /// Certificate configuration. See the following `Block CertificateConfig`.
         /// </summary>
         [Input("certificateConfig")]
         public Input<Inputs.DomainNewCertificateConfigArgs>? CertificateConfig { get; set; }
+
+        /// <summary>
+        /// Health test URL.
+        /// </summary>
+        [Input("checkUrl")]
+        public Input<string>? CheckUrl { get; set; }
 
         /// <summary>
         /// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
@@ -174,13 +197,17 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
-        /// Resource group ID.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+        /// - **domestic**: Mainland China only.
+        /// - **overseas**: Global (excluding Mainland China).
+        /// - **global**: global.
+        /// The default value is **domestic**.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -189,7 +216,7 @@ namespace Pulumi.AliCloud.Cdn
         private InputList<Inputs.DomainNewSourceArgs>? _sources;
 
         /// <summary>
-        /// The source address list of the accelerated domain. Defaults to null. See Block Sources.
+        /// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
         /// </summary>
         public InputList<Inputs.DomainNewSourceArgs> Sources
         {
@@ -201,7 +228,7 @@ namespace Pulumi.AliCloud.Cdn
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -224,13 +251,19 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? CdnType { get; set; }
 
         /// <summary>
-        /// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+        /// Certificate configuration. See the following `Block CertificateConfig`.
         /// </summary>
         [Input("certificateConfig")]
         public Input<Inputs.DomainNewCertificateConfigGetArgs>? CertificateConfig { get; set; }
 
         /// <summary>
-        /// (Available in v1.90.0+) The CNAME of the CDN domain.
+        /// Health test URL.
+        /// </summary>
+        [Input("checkUrl")]
+        public Input<string>? CheckUrl { get; set; }
+
+        /// <summary>
+        /// The CNAME domain name corresponding to the accelerated domain name.
         /// </summary>
         [Input("cname")]
         public Input<string>? Cname { get; set; }
@@ -242,13 +275,17 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// Resource group ID.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+        /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+        /// - **domestic**: Mainland China only.
+        /// - **overseas**: Global (excluding Mainland China).
+        /// - **global**: global.
+        /// The default value is **domestic**.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -257,7 +294,7 @@ namespace Pulumi.AliCloud.Cdn
         private InputList<Inputs.DomainNewSourceGetArgs>? _sources;
 
         /// <summary>
-        /// The source address list of the accelerated domain. Defaults to null. See Block Sources.
+        /// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
         /// </summary>
         public InputList<Inputs.DomainNewSourceGetArgs> Sources
         {
@@ -265,11 +302,17 @@ namespace Pulumi.AliCloud.Cdn
             set => _sources = value;
         }
 
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource.
         /// </summary>
         public InputMap<object> Tags
         {

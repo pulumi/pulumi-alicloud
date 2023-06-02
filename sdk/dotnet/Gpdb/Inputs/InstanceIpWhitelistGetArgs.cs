@@ -13,7 +13,8 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
     public sealed class InstanceIpWhitelistGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        /// The value of this parameter is empty by default. The attribute of the whitelist group. 
+        /// If the value contains `hidden`, this white list item will not output.
         /// </summary>
         [Input("ipGroupAttribute")]
         public Input<string>? IpGroupAttribute { get; set; }
@@ -27,8 +28,8 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
         /// <summary>
         /// Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         /// </summary>
-        [Input("securityIpList", required: true)]
-        public Input<string> SecurityIpList { get; set; } = null!;
+        [Input("securityIpList")]
+        public Input<string>? SecurityIpList { get; set; }
 
         public InstanceIpWhitelistGetArgs()
         {

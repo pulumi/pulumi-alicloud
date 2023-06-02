@@ -219,14 +219,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, &#34;https://&#34;, &#34;ack&#34; or &#34;ingress&#34;.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, &#34;https://&#34;, &#34;ack&#34; or &#34;ingress&#34;.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -576,7 +576,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, &#34;https://&#34;, &#34;ack&#34; or &#34;ingress&#34;.
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, &#34;https://&#34;, &#34;ack&#34; or &#34;ingress&#34;.
          * 
          * @return builder
          * 

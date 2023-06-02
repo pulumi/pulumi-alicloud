@@ -35,10 +35,17 @@ public final class GetTransitRouterRouteTableAssociationsResult {
      */
     private @Nullable String status;
     /**
+     * @return ID of the transit router attachment.
+     * 
+     */
+    private @Nullable String transitRouterAttachmentId;
+    private @Nullable String transitRouterAttachmentResourceId;
+    private @Nullable String transitRouterAttachmentResourceType;
+    /**
      * @return ID of the transit router route table.
      * 
      */
-    private String transitRouterRouteTableId;
+    private @Nullable String transitRouterRouteTableId;
 
     private GetTransitRouterRouteTableAssociationsResult() {}
     /**
@@ -73,11 +80,24 @@ public final class GetTransitRouterRouteTableAssociationsResult {
         return Optional.ofNullable(this.status);
     }
     /**
+     * @return ID of the transit router attachment.
+     * 
+     */
+    public Optional<String> transitRouterAttachmentId() {
+        return Optional.ofNullable(this.transitRouterAttachmentId);
+    }
+    public Optional<String> transitRouterAttachmentResourceId() {
+        return Optional.ofNullable(this.transitRouterAttachmentResourceId);
+    }
+    public Optional<String> transitRouterAttachmentResourceType() {
+        return Optional.ofNullable(this.transitRouterAttachmentResourceType);
+    }
+    /**
      * @return ID of the transit router route table.
      * 
      */
-    public String transitRouterRouteTableId() {
-        return this.transitRouterRouteTableId;
+    public Optional<String> transitRouterRouteTableId() {
+        return Optional.ofNullable(this.transitRouterRouteTableId);
     }
 
     public static Builder builder() {
@@ -94,7 +114,10 @@ public final class GetTransitRouterRouteTableAssociationsResult {
         private List<String> ids;
         private @Nullable String outputFile;
         private @Nullable String status;
-        private String transitRouterRouteTableId;
+        private @Nullable String transitRouterAttachmentId;
+        private @Nullable String transitRouterAttachmentResourceId;
+        private @Nullable String transitRouterAttachmentResourceType;
+        private @Nullable String transitRouterRouteTableId;
         public Builder() {}
         public Builder(GetTransitRouterRouteTableAssociationsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -103,6 +126,9 @@ public final class GetTransitRouterRouteTableAssociationsResult {
     	      this.ids = defaults.ids;
     	      this.outputFile = defaults.outputFile;
     	      this.status = defaults.status;
+    	      this.transitRouterAttachmentId = defaults.transitRouterAttachmentId;
+    	      this.transitRouterAttachmentResourceId = defaults.transitRouterAttachmentResourceId;
+    	      this.transitRouterAttachmentResourceType = defaults.transitRouterAttachmentResourceType;
     	      this.transitRouterRouteTableId = defaults.transitRouterRouteTableId;
         }
 
@@ -138,8 +164,23 @@ public final class GetTransitRouterRouteTableAssociationsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder transitRouterRouteTableId(String transitRouterRouteTableId) {
-            this.transitRouterRouteTableId = Objects.requireNonNull(transitRouterRouteTableId);
+        public Builder transitRouterAttachmentId(@Nullable String transitRouterAttachmentId) {
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder transitRouterAttachmentResourceId(@Nullable String transitRouterAttachmentResourceId) {
+            this.transitRouterAttachmentResourceId = transitRouterAttachmentResourceId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder transitRouterAttachmentResourceType(@Nullable String transitRouterAttachmentResourceType) {
+            this.transitRouterAttachmentResourceType = transitRouterAttachmentResourceType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder transitRouterRouteTableId(@Nullable String transitRouterRouteTableId) {
+            this.transitRouterRouteTableId = transitRouterRouteTableId;
             return this;
         }
         public GetTransitRouterRouteTableAssociationsResult build() {
@@ -149,6 +190,9 @@ public final class GetTransitRouterRouteTableAssociationsResult {
             o.ids = ids;
             o.outputFile = outputFile;
             o.status = status;
+            o.transitRouterAttachmentId = transitRouterAttachmentId;
+            o.transitRouterAttachmentResourceId = transitRouterAttachmentResourceId;
+            o.transitRouterAttachmentResourceType = transitRouterAttachmentResourceType;
             o.transitRouterRouteTableId = transitRouterRouteTableId;
             return o;
         }

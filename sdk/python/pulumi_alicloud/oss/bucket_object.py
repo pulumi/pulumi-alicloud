@@ -529,24 +529,35 @@ class BucketObject(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        object_source = alicloud.oss.BucketObject("object-source",
-            bucket="your_bucket_name",
-            key="new_object_key",
-            source="path/to/file")
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            acl="private")
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.bucket,
+            key="example_key",
+            source="./main.tf")
         ```
         ### Uploading a content to a bucket
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example = alicloud.oss.Bucket("example",
-            bucket="your_bucket_name",
-            acl="public-read")
-        object_content = alicloud.oss.BucketObject("object-content",
-            bucket=example.bucket,
-            key="new_object_key",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            acl="private")
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.bucket,
+            key="example_key",
             content="the content that you want to upload.")
         ```
 
@@ -584,24 +595,35 @@ class BucketObject(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        object_source = alicloud.oss.BucketObject("object-source",
-            bucket="your_bucket_name",
-            key="new_object_key",
-            source="path/to/file")
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            acl="private")
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.bucket,
+            key="example_key",
+            source="./main.tf")
         ```
         ### Uploading a content to a bucket
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example = alicloud.oss.Bucket("example",
-            bucket="your_bucket_name",
-            acl="public-read")
-        object_content = alicloud.oss.BucketObject("object-content",
-            bucket=example.bucket,
-            key="new_object_key",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            acl="private")
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.bucket,
+            key="example_key",
             content="the content that you want to upload.")
         ```
 

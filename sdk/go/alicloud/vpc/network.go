@@ -10,6 +10,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Vpc Vpc resource. A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
+//
+// > **NOTE:** This resource will auto build a router and a route table while it uses `vpc.Network` to build a vpc resource.
+//
+// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+//
+// ## Module Support
+//
+// You can use the existing vpc module
+// to create a VPC and several VSwitches one-click.
+//
+// For information about Vpc Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -21,14 +34,23 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//				VpcName:   pulumi.String("tf_test_foo"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				Ipv6Isp:     pulumi.String("BGP"),
+//				Description: pulumi.String("test"),
+//				CidrBlock:   pulumi.String("10.0.0.0/8"),
+//				VpcName:     pulumi.String(name),
+//				EnableIpv6:  pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -38,60 +60,73 @@ import (
 //	}
 //
 // ```
-// ## Module Support
-//
-// You can use the existing vpc module
-// to create a VPC and several VSwitches one-click.
 //
 // ## Import
 //
-// VPC can be imported using the id, e.g.
+// Vpc Vpc can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:vpc/network:Network example vpc-abc123456
+//	$ pulumi import alicloud:vpc/network:Network example <id>
 //
 // ```
 type Network struct {
 	pulumi.CustomResourceState
 
 	// The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
-	CidrBlock pulumi.StringPtrOutput `pulumi:"cidrBlock"`
+	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
+	// The status of ClassicLink function.
+	ClassicLinkEnabled pulumi.BoolPtrOutput `pulumi:"classicLinkEnabled"`
+	// The creation time of the VPC.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The VPC description. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-	//
-	// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+	// Whether to enable the IPv6 network segment. Value:
+	// - **false** (default): not enabled.
+	// - **true**: on.
 	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
-	// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+	// The IPv6 CIDR block of the VPC.
 	Ipv6CidrBlock pulumi.StringOutput `pulumi:"ipv6CidrBlock"`
-	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+	// The IPv6 CIDR block information of the VPC.
+	Ipv6CidrBlocks NetworkIpv6CidrBlockArrayOutput `pulumi:"ipv6CidrBlocks"`
+	// The IPv6 address segment type of the VPC. Value:
+	// - **BGP** (default): Alibaba Cloud BGP IPv6.
+	// - **ChinaMobile**: China Mobile (single line).
+	// - **ChinaUnicom**: China Unicom (single line).
+	// - **ChinaTelecom**: China Telecom (single line).
+	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	Ipv6Isp pulumi.StringPtrOutput `pulumi:"ipv6Isp"`
+	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of resource group which the VPC belongs.
+	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The route table ID of the router created by default on VPC creation.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// The ID of the router created by default on VPC creation.
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
-	// (Deprecated) It has been deprecated and replaced with `routeTableId`.
+	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
-	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
+	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	RouterTableId pulumi.StringOutput `pulumi:"routerTableId"`
-	// Field `secondaryCidrBlocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+	// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	//
-	// Deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+	// Deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
 	SecondaryCidrBlocks pulumi.StringArrayOutput `pulumi:"secondaryCidrBlocks"`
-	// The status of the VPC.
+	// The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// The tags of Vpc.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The user cidr blocks of the VPC.
+	// A list of user CIDRs.
 	UserCidrs pulumi.StringArrayOutput `pulumi:"userCidrs"`
 	// The name of the VPC. Defaults to null.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcName pulumi.StringOutput `pulumi:"vpcName"`
 }
 
@@ -126,82 +161,116 @@ func GetNetwork(ctx *pulumi.Context,
 type networkState struct {
 	// The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
 	CidrBlock *string `pulumi:"cidrBlock"`
+	// The status of ClassicLink function.
+	ClassicLinkEnabled *bool `pulumi:"classicLinkEnabled"`
+	// The creation time of the VPC.
+	CreateTime *string `pulumi:"createTime"`
 	// The VPC description. Defaults to null.
 	Description *string `pulumi:"description"`
-	// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
 	DryRun *bool `pulumi:"dryRun"`
-	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-	//
-	// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+	// Whether to enable the IPv6 network segment. Value:
+	// - **false** (default): not enabled.
+	// - **true**: on.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
-	// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+	// The IPv6 CIDR block of the VPC.
 	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
-	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+	// The IPv6 CIDR block information of the VPC.
+	Ipv6CidrBlocks []NetworkIpv6CidrBlock `pulumi:"ipv6CidrBlocks"`
+	// The IPv6 address segment type of the VPC. Value:
+	// - **BGP** (default): Alibaba Cloud BGP IPv6.
+	// - **ChinaMobile**: China Mobile (single line).
+	// - **ChinaUnicom**: China Unicom (single line).
+	// - **ChinaTelecom**: China Telecom (single line).
+	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	Ipv6Isp *string `pulumi:"ipv6Isp"`
+	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name *string `pulumi:"name"`
-	// The ID of resource group which the VPC belongs.
+	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The route table ID of the router created by default on VPC creation.
 	RouteTableId *string `pulumi:"routeTableId"`
 	// The ID of the router created by default on VPC creation.
 	RouterId *string `pulumi:"routerId"`
-	// (Deprecated) It has been deprecated and replaced with `routeTableId`.
+	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
-	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
+	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	RouterTableId *string `pulumi:"routerTableId"`
-	// Field `secondaryCidrBlocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+	// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	//
-	// Deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+	// Deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
 	SecondaryCidrBlocks []string `pulumi:"secondaryCidrBlocks"`
-	// The status of the VPC.
+	// The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// The tags of Vpc.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The user cidr blocks of the VPC.
+	// A list of user CIDRs.
 	UserCidrs []string `pulumi:"userCidrs"`
 	// The name of the VPC. Defaults to null.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcName *string `pulumi:"vpcName"`
 }
 
 type NetworkState struct {
 	// The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
 	CidrBlock pulumi.StringPtrInput
+	// The status of ClassicLink function.
+	ClassicLinkEnabled pulumi.BoolPtrInput
+	// The creation time of the VPC.
+	CreateTime pulumi.StringPtrInput
 	// The VPC description. Defaults to null.
 	Description pulumi.StringPtrInput
-	// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
 	DryRun pulumi.BoolPtrInput
-	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-	//
-	// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+	// Whether to enable the IPv6 network segment. Value:
+	// - **false** (default): not enabled.
+	// - **true**: on.
 	EnableIpv6 pulumi.BoolPtrInput
-	// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+	// The IPv6 CIDR block of the VPC.
 	Ipv6CidrBlock pulumi.StringPtrInput
-	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+	// The IPv6 CIDR block information of the VPC.
+	Ipv6CidrBlocks NetworkIpv6CidrBlockArrayInput
+	// The IPv6 address segment type of the VPC. Value:
+	// - **BGP** (default): Alibaba Cloud BGP IPv6.
+	// - **ChinaMobile**: China Mobile (single line).
+	// - **ChinaUnicom**: China Unicom (single line).
+	// - **ChinaTelecom**: China Telecom (single line).
+	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	Ipv6Isp pulumi.StringPtrInput
+	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name pulumi.StringPtrInput
-	// The ID of resource group which the VPC belongs.
+	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The route table ID of the router created by default on VPC creation.
 	RouteTableId pulumi.StringPtrInput
 	// The ID of the router created by default on VPC creation.
 	RouterId pulumi.StringPtrInput
-	// (Deprecated) It has been deprecated and replaced with `routeTableId`.
+	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
-	// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
+	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	RouterTableId pulumi.StringPtrInput
-	// Field `secondaryCidrBlocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+	// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 	//
-	// Deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+	// Deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
 	SecondaryCidrBlocks pulumi.StringArrayInput
-	// The status of the VPC.
+	// The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
 	Status pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// The tags of Vpc.
 	Tags pulumi.MapInput
-	// The user cidr blocks of the VPC.
+	// A list of user CIDRs.
 	UserCidrs pulumi.StringArrayInput
 	// The name of the VPC. Defaults to null.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcName pulumi.StringPtrInput
 }
 
@@ -212,29 +281,48 @@ func (NetworkState) ElementType() reflect.Type {
 type networkArgs struct {
 	// The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
 	CidrBlock *string `pulumi:"cidrBlock"`
+	// The status of ClassicLink function.
+	ClassicLinkEnabled *bool `pulumi:"classicLinkEnabled"`
 	// The VPC description. Defaults to null.
 	Description *string `pulumi:"description"`
-	// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
 	DryRun *bool `pulumi:"dryRun"`
-	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-	//
-	// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+	// Whether to enable the IPv6 network segment. Value:
+	// - **false** (default): not enabled.
+	// - **true**: on.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
-	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+	// The IPv6 address segment type of the VPC. Value:
+	// - **BGP** (default): Alibaba Cloud BGP IPv6.
+	// - **ChinaMobile**: China Mobile (single line).
+	// - **ChinaUnicom**: China Unicom (single line).
+	// - **ChinaTelecom**: China Telecom (single line).
+	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	Ipv6Isp *string `pulumi:"ipv6Isp"`
+	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name *string `pulumi:"name"`
-	// The ID of resource group which the VPC belongs.
+	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Field `secondaryCidrBlocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+	// The route table ID of the router created by default on VPC creation.
+	RouteTableId *string `pulumi:"routeTableId"`
+	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
-	// Deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+	RouterTableId *string `pulumi:"routerTableId"`
+	// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+	//
+	// Deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
 	SecondaryCidrBlocks []string `pulumi:"secondaryCidrBlocks"`
-	// A mapping of tags to assign to the resource.
+	// The tags of Vpc.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The user cidr blocks of the VPC.
+	// A list of user CIDRs.
 	UserCidrs []string `pulumi:"userCidrs"`
 	// The name of the VPC. Defaults to null.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcName *string `pulumi:"vpcName"`
 }
 
@@ -242,29 +330,48 @@ type networkArgs struct {
 type NetworkArgs struct {
 	// The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
 	CidrBlock pulumi.StringPtrInput
+	// The status of ClassicLink function.
+	ClassicLinkEnabled pulumi.BoolPtrInput
 	// The VPC description. Defaults to null.
 	Description pulumi.StringPtrInput
-	// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+	// Whether to PreCheck this request only. Value:
+	// - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
 	DryRun pulumi.BoolPtrInput
-	// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-	//
-	// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+	// Whether to enable the IPv6 network segment. Value:
+	// - **false** (default): not enabled.
+	// - **true**: on.
 	EnableIpv6 pulumi.BoolPtrInput
-	// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+	// The IPv6 address segment type of the VPC. Value:
+	// - **BGP** (default): Alibaba Cloud BGP IPv6.
+	// - **ChinaMobile**: China Mobile (single line).
+	// - **ChinaUnicom**: China Unicom (single line).
+	// - **ChinaTelecom**: China Telecom (single line).
+	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	Ipv6Isp pulumi.StringPtrInput
+	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name pulumi.StringPtrInput
-	// The ID of resource group which the VPC belongs.
+	// The ID of the resource group to which the VPC belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// Field `secondaryCidrBlocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+	// The route table ID of the router created by default on VPC creation.
+	RouteTableId pulumi.StringPtrInput
+	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
-	// Deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+	RouterTableId pulumi.StringPtrInput
+	// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+	//
+	// Deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
 	SecondaryCidrBlocks pulumi.StringArrayInput
-	// A mapping of tags to assign to the resource.
+	// The tags of Vpc.
 	Tags pulumi.MapInput
-	// The user cidr blocks of the VPC.
+	// A list of user CIDRs.
 	UserCidrs pulumi.StringArrayInput
 	// The name of the VPC. Defaults to null.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcName pulumi.StringPtrInput
 }
 
@@ -356,8 +463,18 @@ func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOu
 }
 
 // The CIDR block for the VPC. The `cidrBlock` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
-func (o NetworkOutput) CidrBlock() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.CidrBlock }).(pulumi.StringPtrOutput)
+func (o NetworkOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The status of ClassicLink function.
+func (o NetworkOutput) ClassicLinkEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.ClassicLinkEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The creation time of the VPC.
+func (o NetworkOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The VPC description. Defaults to null.
@@ -365,31 +482,48 @@ func (o NetworkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+// Whether to PreCheck this request only. Value:
+// - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+// - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
 func (o NetworkOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enableIpv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-//
-// > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+// Whether to enable the IPv6 network segment. Value:
+// - **false** (default): not enabled.
+// - **true**: on.
 func (o NetworkOutput) EnableIpv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
 }
 
-// (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+// The IPv6 CIDR block of the VPC.
 func (o NetworkOutput) Ipv6CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Ipv6CidrBlock }).(pulumi.StringOutput)
 }
 
-// Field `name` has been deprecated from provider version 1.119.0. New field `vpcName` instead.
+// The IPv6 CIDR block information of the VPC.
+func (o NetworkOutput) Ipv6CidrBlocks() NetworkIpv6CidrBlockArrayOutput {
+	return o.ApplyT(func(v *Network) NetworkIpv6CidrBlockArrayOutput { return v.Ipv6CidrBlocks }).(NetworkIpv6CidrBlockArrayOutput)
+}
+
+// The IPv6 address segment type of the VPC. Value:
+// - **BGP** (default): Alibaba Cloud BGP IPv6.
+// - **ChinaMobile**: China Mobile (single line).
+// - **ChinaUnicom**: China Unicom (single line).
+// - **ChinaTelecom**: China Telecom (single line).
+// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+func (o NetworkOutput) Ipv6Isp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Ipv6Isp }).(pulumi.StringPtrOutput)
+}
+
+// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of resource group which the VPC belongs.
+// The ID of the resource group to which the VPC belongs.
 func (o NetworkOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -404,36 +538,38 @@ func (o NetworkOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }
 
-// (Deprecated) It has been deprecated and replaced with `routeTableId`.
+// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 //
-// Deprecated: Attribute router_table_id has been deprecated and replaced with route_table_id.
+// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 func (o NetworkOutput) RouterTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RouterTableId }).(pulumi.StringOutput)
 }
 
-// Field `secondaryCidrBlocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+// Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
 //
-// Deprecated: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+// Deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
 func (o NetworkOutput) SecondaryCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.SecondaryCidrBlocks }).(pulumi.StringArrayOutput)
 }
 
-// The status of the VPC.
+// The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
 func (o NetworkOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// The tags of Vpc.
 func (o NetworkOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Network) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The user cidr blocks of the VPC.
+// A list of user CIDRs.
 func (o NetworkOutput) UserCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.UserCidrs }).(pulumi.StringArrayOutput)
 }
 
 // The name of the VPC. Defaults to null.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o NetworkOutput) VpcName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.VpcName }).(pulumi.StringOutput)
 }

@@ -31,8 +31,8 @@ namespace Pulumi.AliCloud.Oos
     ///     var defaultPatchBaseline = new AliCloud.Oos.PatchBaseline("defaultPatchBaseline", new()
     ///     {
     ///         OperationSystem = "Windows",
-    ///         PatchBaselineName = @var.Name,
-    ///         Description = @var.Name,
+    ///         PatchBaselineName = "terraform-example",
+    ///         Description = "terraform-example",
     ///         ApprovalRules = "{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}",
     ///     });
     /// 

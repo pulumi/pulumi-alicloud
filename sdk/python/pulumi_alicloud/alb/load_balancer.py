@@ -45,7 +45,7 @@ class LoadBalancerArgs:
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request. Valid values: `true` and `false`.
         :param pulumi.Input['LoadBalancerModificationProtectionConfigArgs'] modification_protection_config: Modify the Protection Configuration. See the following `Block modification_protection_config`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
         """
         pulumi.set(__self__, "address_type", address_type)
         pulumi.set(__self__, "load_balancer_billing_config", load_balancer_billing_config)
@@ -230,7 +230,7 @@ class LoadBalancerArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
         """
         return pulumi.get(self, "tags")
 
@@ -273,7 +273,7 @@ class _LoadBalancerState:
         :param pulumi.Input['LoadBalancerModificationProtectionConfigArgs'] modification_protection_config: Modify the Protection Configuration. See the following `Block modification_protection_config`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         """
@@ -470,7 +470,7 @@ class _LoadBalancerState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
         """
         return pulumi.get(self, "tags")
 
@@ -551,7 +551,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer_name: The name of the resource.
         :param pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']] modification_protection_config: Modify the Protection Configuration. See the following `Block modification_protection_config`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         """
@@ -688,7 +688,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']] modification_protection_config: Modify the Protection Configuration. See the following `Block modification_protection_config`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See the following `Block zone_mappings`.
         """
@@ -822,7 +822,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
         """
         return pulumi.get(self, "tags")
 

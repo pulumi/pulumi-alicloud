@@ -201,14 +201,14 @@ public class Store extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.hotTtl);
     }
     /**
-     * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+     * The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      * 
      */
     @Export(name="maxSplitShardCount", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> maxSplitShardCount;
 
     /**
-     * @return The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+     * @return The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      * 
      */
     public Output<Optional<Integer>> maxSplitShardCount() {

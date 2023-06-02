@@ -28,10 +28,31 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Vpc.GatewayRouteTableAttachment("example", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         Ipv4GatewayId = "example_value",
-    ///         RouteTableId = "example_value",
+    ///         CidrBlock = "172.16.0.0/12",
+    ///         VpcName = "terraform-example",
+    ///     });
+    /// 
+    ///     var exampleRouteTable = new AliCloud.Vpc.RouteTable("exampleRouteTable", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         RouteTableName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///         AssociateType = "Gateway",
+    ///     });
+    /// 
+    ///     var exampleIpv4Gateway = new AliCloud.Vpc.Ipv4Gateway("exampleIpv4Gateway", new()
+    ///     {
+    ///         Ipv4GatewayName = "terraform-example",
+    ///         VpcId = exampleNetwork.Id,
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     var exampleGatewayRouteTableAttachment = new AliCloud.Vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment", new()
+    ///     {
+    ///         Ipv4GatewayId = exampleIpv4Gateway.Id,
+    ///         RouteTableId = exampleRouteTable.Id,
     ///     });
     /// 
     /// });
@@ -48,6 +69,12 @@ namespace Pulumi.AliCloud.Vpc
     [AliCloudResourceType("alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment")]
     public partial class GatewayRouteTableAttachment : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The creation time of the resource.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// Specifies whether to only precheck this request. Default value: `false`.
         /// </summary>
@@ -68,6 +95,12 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The status of the IPv4 Gateway instance. Value:
+        /// - **Creating**: The function is being created.
+        /// - **Created**: Created and available.
+        /// - **Modifying**: is being modified.
+        /// - **Deleting**: Deleting.
+        /// - **Deleted**: Deleted.
+        /// - **Activating**: enabled.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -145,6 +178,12 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GatewayRouteTableAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The creation time of the resource.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// Specifies whether to only precheck this request. Default value: `false`.
         /// </summary>
         [Input("dryRun")]
@@ -164,6 +203,12 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The status of the IPv4 Gateway instance. Value:
+        /// - **Creating**: The function is being created.
+        /// - **Created**: Created and available.
+        /// - **Modifying**: is being modified.
+        /// - **Deleting**: Deleting.
+        /// - **Deleted**: Deleted.
+        /// - **Activating**: enabled.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -2331,6 +2331,8 @@ func (o LoadBalancerZoneMappingArrayOutput) Index(i pulumi.IntInput) LoadBalance
 }
 
 type RuleRuleAction struct {
+	// Request forwarding based on CORS. See the following `Block corsConfig`.
+	CorsConfig *RuleRuleActionCorsConfig `pulumi:"corsConfig"`
 	// The configuration of the fixed response. See the following `Block fixedResponseConfig`.
 	FixedResponseConfig *RuleRuleActionFixedResponseConfig `pulumi:"fixedResponseConfig"`
 	// The forward response action within ALB. See the following `Block forwardGroupConfig`.
@@ -2348,6 +2350,9 @@ type RuleRuleAction struct {
 	// The Traffic mirroring. See the following `Block trafficMirrorConfig`.
 	TrafficMirrorConfig *RuleRuleActionTrafficMirrorConfig `pulumi:"trafficMirrorConfig"`
 	// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+	// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+	// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
 	Type string `pulumi:"type"`
 }
 
@@ -2363,6 +2368,8 @@ type RuleRuleActionInput interface {
 }
 
 type RuleRuleActionArgs struct {
+	// Request forwarding based on CORS. See the following `Block corsConfig`.
+	CorsConfig RuleRuleActionCorsConfigPtrInput `pulumi:"corsConfig"`
 	// The configuration of the fixed response. See the following `Block fixedResponseConfig`.
 	FixedResponseConfig RuleRuleActionFixedResponseConfigPtrInput `pulumi:"fixedResponseConfig"`
 	// The forward response action within ALB. See the following `Block forwardGroupConfig`.
@@ -2380,6 +2387,9 @@ type RuleRuleActionArgs struct {
 	// The Traffic mirroring. See the following `Block trafficMirrorConfig`.
 	TrafficMirrorConfig RuleRuleActionTrafficMirrorConfigPtrInput `pulumi:"trafficMirrorConfig"`
 	// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+	// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+	// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2434,6 +2444,11 @@ func (o RuleRuleActionOutput) ToRuleRuleActionOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Request forwarding based on CORS. See the following `Block corsConfig`.
+func (o RuleRuleActionOutput) CorsConfig() RuleRuleActionCorsConfigPtrOutput {
+	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionCorsConfig { return v.CorsConfig }).(RuleRuleActionCorsConfigPtrOutput)
+}
+
 // The configuration of the fixed response. See the following `Block fixedResponseConfig`.
 func (o RuleRuleActionOutput) FixedResponseConfig() RuleRuleActionFixedResponseConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleAction) *RuleRuleActionFixedResponseConfig { return v.FixedResponseConfig }).(RuleRuleActionFixedResponseConfigPtrOutput)
@@ -2475,6 +2490,9 @@ func (o RuleRuleActionOutput) TrafficMirrorConfig() RuleRuleActionTrafficMirrorC
 }
 
 // The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
 func (o RuleRuleActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2497,6 +2515,238 @@ func (o RuleRuleActionArrayOutput) Index(i pulumi.IntInput) RuleRuleActionOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleRuleAction {
 		return vs[0].([]RuleRuleAction)[vs[1].(int)]
 	}).(RuleRuleActionOutput)
+}
+
+type RuleRuleActionCorsConfig struct {
+	// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+	AllowCredentials *string `pulumi:"allowCredentials"`
+	// The allowed headers for CORS requests.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// The allowed origins of CORS requests.
+	AllowOrigins []string `pulumi:"allowOrigins"`
+	// The headers that can be exposed.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+	MaxAge *int `pulumi:"maxAge"`
+}
+
+// RuleRuleActionCorsConfigInput is an input type that accepts RuleRuleActionCorsConfigArgs and RuleRuleActionCorsConfigOutput values.
+// You can construct a concrete instance of `RuleRuleActionCorsConfigInput` via:
+//
+//	RuleRuleActionCorsConfigArgs{...}
+type RuleRuleActionCorsConfigInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionCorsConfigOutput() RuleRuleActionCorsConfigOutput
+	ToRuleRuleActionCorsConfigOutputWithContext(context.Context) RuleRuleActionCorsConfigOutput
+}
+
+type RuleRuleActionCorsConfigArgs struct {
+	// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+	AllowCredentials pulumi.StringPtrInput `pulumi:"allowCredentials"`
+	// The allowed headers for CORS requests.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// The allowed origins of CORS requests.
+	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
+	// The headers that can be exposed.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+}
+
+func (RuleRuleActionCorsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionCorsConfig)(nil)).Elem()
+}
+
+func (i RuleRuleActionCorsConfigArgs) ToRuleRuleActionCorsConfigOutput() RuleRuleActionCorsConfigOutput {
+	return i.ToRuleRuleActionCorsConfigOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionCorsConfigArgs) ToRuleRuleActionCorsConfigOutputWithContext(ctx context.Context) RuleRuleActionCorsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionCorsConfigOutput)
+}
+
+func (i RuleRuleActionCorsConfigArgs) ToRuleRuleActionCorsConfigPtrOutput() RuleRuleActionCorsConfigPtrOutput {
+	return i.ToRuleRuleActionCorsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuleRuleActionCorsConfigArgs) ToRuleRuleActionCorsConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionCorsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionCorsConfigOutput).ToRuleRuleActionCorsConfigPtrOutputWithContext(ctx)
+}
+
+// RuleRuleActionCorsConfigPtrInput is an input type that accepts RuleRuleActionCorsConfigArgs, RuleRuleActionCorsConfigPtr and RuleRuleActionCorsConfigPtrOutput values.
+// You can construct a concrete instance of `RuleRuleActionCorsConfigPtrInput` via:
+//
+//	        RuleRuleActionCorsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleRuleActionCorsConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuleRuleActionCorsConfigPtrOutput() RuleRuleActionCorsConfigPtrOutput
+	ToRuleRuleActionCorsConfigPtrOutputWithContext(context.Context) RuleRuleActionCorsConfigPtrOutput
+}
+
+type ruleRuleActionCorsConfigPtrType RuleRuleActionCorsConfigArgs
+
+func RuleRuleActionCorsConfigPtr(v *RuleRuleActionCorsConfigArgs) RuleRuleActionCorsConfigPtrInput {
+	return (*ruleRuleActionCorsConfigPtrType)(v)
+}
+
+func (*ruleRuleActionCorsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionCorsConfig)(nil)).Elem()
+}
+
+func (i *ruleRuleActionCorsConfigPtrType) ToRuleRuleActionCorsConfigPtrOutput() RuleRuleActionCorsConfigPtrOutput {
+	return i.ToRuleRuleActionCorsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleRuleActionCorsConfigPtrType) ToRuleRuleActionCorsConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionCorsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleRuleActionCorsConfigPtrOutput)
+}
+
+type RuleRuleActionCorsConfigOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionCorsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleRuleActionCorsConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionCorsConfigOutput) ToRuleRuleActionCorsConfigOutput() RuleRuleActionCorsConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionCorsConfigOutput) ToRuleRuleActionCorsConfigOutputWithContext(ctx context.Context) RuleRuleActionCorsConfigOutput {
+	return o
+}
+
+func (o RuleRuleActionCorsConfigOutput) ToRuleRuleActionCorsConfigPtrOutput() RuleRuleActionCorsConfigPtrOutput {
+	return o.ToRuleRuleActionCorsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuleRuleActionCorsConfigOutput) ToRuleRuleActionCorsConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionCorsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleRuleActionCorsConfig) *RuleRuleActionCorsConfig {
+		return &v
+	}).(RuleRuleActionCorsConfigPtrOutput)
+}
+
+// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+func (o RuleRuleActionCorsConfigOutput) AllowCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionCorsConfig) *string { return v.AllowCredentials }).(pulumi.StringPtrOutput)
+}
+
+// The allowed headers for CORS requests.
+func (o RuleRuleActionCorsConfigOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+func (o RuleRuleActionCorsConfigOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+// The allowed origins of CORS requests.
+func (o RuleRuleActionCorsConfigOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
+}
+
+// The headers that can be exposed.
+func (o RuleRuleActionCorsConfigOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+func (o RuleRuleActionCorsConfigOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleRuleActionCorsConfig) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+type RuleRuleActionCorsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleRuleActionCorsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleRuleActionCorsConfig)(nil)).Elem()
+}
+
+func (o RuleRuleActionCorsConfigPtrOutput) ToRuleRuleActionCorsConfigPtrOutput() RuleRuleActionCorsConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionCorsConfigPtrOutput) ToRuleRuleActionCorsConfigPtrOutputWithContext(ctx context.Context) RuleRuleActionCorsConfigPtrOutput {
+	return o
+}
+
+func (o RuleRuleActionCorsConfigPtrOutput) Elem() RuleRuleActionCorsConfigOutput {
+	return o.ApplyT(func(v *RuleRuleActionCorsConfig) RuleRuleActionCorsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuleRuleActionCorsConfig
+		return ret
+	}).(RuleRuleActionCorsConfigOutput)
+}
+
+// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+func (o RuleRuleActionCorsConfigPtrOutput) AllowCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionCorsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.StringPtrOutput)
+}
+
+// The allowed headers for CORS requests.
+func (o RuleRuleActionCorsConfigPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+func (o RuleRuleActionCorsConfigPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// The allowed origins of CORS requests.
+func (o RuleRuleActionCorsConfigPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(pulumi.StringArrayOutput)
+}
+
+// The headers that can be exposed.
+func (o RuleRuleActionCorsConfigPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+func (o RuleRuleActionCorsConfigPtrOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleRuleActionCorsConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.IntPtrOutput)
 }
 
 type RuleRuleActionFixedResponseConfig struct {
@@ -4227,6 +4477,9 @@ type RuleRuleCondition struct {
 	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
 	SourceIpConfig *RuleRuleConditionSourceIpConfig `pulumi:"sourceIpConfig"`
 	// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+	// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+	// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
 	Type string `pulumi:"type"`
 }
 
@@ -4257,6 +4510,9 @@ type RuleRuleConditionArgs struct {
 	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block sourceIpConfig`.
 	SourceIpConfig RuleRuleConditionSourceIpConfigPtrInput `pulumi:"sourceIpConfig"`
 	// The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+	// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+	// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+	// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4347,6 +4603,9 @@ func (o RuleRuleConditionOutput) SourceIpConfig() RuleRuleConditionSourceIpConfi
 }
 
 // The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+// **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+// **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+// **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
 func (o RuleRuleConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleRuleCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -13110,6 +13369,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerZoneMappingArrayInput)(nil)).Elem(), LoadBalancerZoneMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionInput)(nil)).Elem(), RuleRuleActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionArrayInput)(nil)).Elem(), RuleRuleActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionCorsConfigInput)(nil)).Elem(), RuleRuleActionCorsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionCorsConfigPtrInput)(nil)).Elem(), RuleRuleActionCorsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionFixedResponseConfigInput)(nil)).Elem(), RuleRuleActionFixedResponseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionFixedResponseConfigPtrInput)(nil)).Elem(), RuleRuleActionFixedResponseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleRuleActionForwardGroupConfigInput)(nil)).Elem(), RuleRuleActionForwardGroupConfigArgs{})
@@ -13294,6 +13555,8 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerZoneMappingArrayOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionCorsConfigOutput{})
+	pulumi.RegisterOutputType(RuleRuleActionCorsConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionFixedResponseConfigOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionFixedResponseConfigPtrOutput{})
 	pulumi.RegisterOutputType(RuleRuleActionForwardGroupConfigOutput{})

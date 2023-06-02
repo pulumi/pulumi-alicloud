@@ -35,10 +35,22 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.ram.Policy;
+ * import com.pulumi.alicloud.ram.PolicyArgs;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+ * import com.pulumi.alicloud.kms.Key;
+ * import com.pulumi.alicloud.kms.KeyArgs;
  * import com.pulumi.alicloud.oss.BucketReplication;
  * import com.pulumi.alicloud.oss.BucketReplicationArgs;
- * import com.pulumi.alicloud.oss.inputs.BucketReplicationDestinationArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketReplicationPrefixSetArgs;
+ * import com.pulumi.alicloud.oss.inputs.BucketReplicationDestinationArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketReplicationEncryptionConfigurationArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketReplicationSourceSelectionCriteriaArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs;
@@ -55,66 +67,96 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var bucketSrc = new Bucket(&#34;bucketSrc&#34;, BucketArgs.builder()        
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-src-%s&#34;, result)))
+ *             .build());
+ * 
+ *         var bucketDest = new Bucket(&#34;bucketDest&#34;, BucketArgs.builder()        
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-dest-%s&#34;, result)))
+ *             .build());
+ * 
+ *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+ *             .document(&#34;&#34;&#34;
+ * 		{
+ * 		  &#34;Statement&#34;: [
+ * 			{
+ * 			  &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ * 			  &#34;Effect&#34;: &#34;Allow&#34;,
+ * 			  &#34;Principal&#34;: {
+ * 				&#34;Service&#34;: [
+ * 				  &#34;oss.aliyuncs.com&#34;
+ * 				]
+ * 			  }
+ * 			}
+ * 		  ],
+ * 		  &#34;Version&#34;: &#34;1&#34;
+ * 		}
+ *             &#34;&#34;&#34;)
+ *             .description(&#34;this is a test&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
+ *             .policyName(default_.result().applyValue(result -&gt; String.format(&#34;example-policy-%s&#34;, result)))
+ *             .policyDocument(&#34;&#34;&#34;
+ * 		{
+ * 		  &#34;Statement&#34;: [
+ * 			{
+ * 			  &#34;Action&#34;: [
+ * 				&#34;*&#34;
+ * 			  ],
+ * 			  &#34;Effect&#34;: &#34;Allow&#34;,
+ * 			  &#34;Resource&#34;: [
+ * 				&#34;*&#34;
+ * 			  ]
+ * 			}
+ * 		  ],
+ * 			&#34;Version&#34;: &#34;1&#34;
+ * 		}
+ *             &#34;&#34;&#34;)
+ *             .description(&#34;this is a policy test&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var attach = new RolePolicyAttachment(&#34;attach&#34;, RolePolicyAttachmentArgs.builder()        
+ *             .policyName(policy.name())
+ *             .policyType(policy.type())
+ *             .roleName(role.name())
+ *             .build());
+ * 
+ *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
+ *             .description(&#34;Hello KMS&#34;)
+ *             .pendingWindowInDays(&#34;7&#34;)
+ *             .status(&#34;Enabled&#34;)
+ *             .build());
+ * 
  *         var cross_region_replication = new BucketReplication(&#34;cross-region-replication&#34;, BucketReplicationArgs.builder()        
- *             .action(&#34;ALL&#34;)
- *             .bucket(&#34;bucket-in-hangzhou&#34;)
- *             .destination(BucketReplicationDestinationArgs.builder()
- *                 .bucket(&#34;bucket-in-beijing&#34;)
- *                 .location(&#34;oss-cn-beijing&#34;)
- *                 .build())
- *             .build());
- * 
- *         var same_region_replication = new BucketReplication(&#34;same-region-replication&#34;, BucketReplicationArgs.builder()        
- *             .action(&#34;ALL&#34;)
- *             .bucket(&#34;bucket-in-hangzhou&#34;)
- *             .destination(BucketReplicationDestinationArgs.builder()
- *                 .bucket(&#34;bucket-in-hangzhou-1&#34;)
- *                 .location(&#34;oss-cn-hangzhou&#34;)
- *                 .build())
- *             .build());
- * 
- *         var replication_with_prefix = new BucketReplication(&#34;replication-with-prefix&#34;, BucketReplicationArgs.builder()        
- *             .action(&#34;ALL&#34;)
- *             .bucket(&#34;bucket-1&#34;)
- *             .destination(BucketReplicationDestinationArgs.builder()
- *                 .bucket(&#34;bucket-2&#34;)
- *                 .location(&#34;oss-cn-hangzhou&#34;)
- *                 .build())
- *             .historicalObjectReplication(&#34;disabled&#34;)
+ *             .bucket(bucketSrc.id())
+ *             .action(&#34;PUT,DELETE&#34;)
+ *             .historicalObjectReplication(&#34;enabled&#34;)
  *             .prefixSet(BucketReplicationPrefixSetArgs.builder()
  *                 .prefixes(                
  *                     &#34;prefix1/&#34;,
  *                     &#34;prefix2/&#34;)
  *                 .build())
- *             .build());
- * 
- *         var replication_with_specific_action = new BucketReplication(&#34;replication-with-specific-action&#34;, BucketReplicationArgs.builder()        
- *             .action(&#34;PUT&#34;)
- *             .bucket(&#34;bucket-1&#34;)
  *             .destination(BucketReplicationDestinationArgs.builder()
- *                 .bucket(&#34;bucket-2&#34;)
- *                 .location(&#34;oss-cn-hangzhou&#34;)
+ *                 .bucket(bucketDest.id())
+ *                 .location(bucketDest.location())
  *                 .build())
- *             .historicalObjectReplication(&#34;disabled&#34;)
- *             .build());
- * 
- *         var replication_with_kms_encryption = new BucketReplication(&#34;replication-with-kms-encryption&#34;, BucketReplicationArgs.builder()        
- *             .action(&#34;ALL&#34;)
- *             .bucket(&#34;bucket-1&#34;)
- *             .destination(BucketReplicationDestinationArgs.builder()
- *                 .bucket(&#34;bucket-2&#34;)
- *                 .location(&#34;oss-cn-hangzhou&#34;)
- *                 .build())
+ *             .syncRole(role.name())
  *             .encryptionConfiguration(BucketReplicationEncryptionConfigurationArgs.builder()
- *                 .replicaKmsKeyId(&#34;&lt;your kms key id&gt;&#34;)
+ *                 .replicaKmsKeyId(key.id())
  *                 .build())
- *             .historicalObjectReplication(&#34;disabled&#34;)
  *             .sourceSelectionCriteria(BucketReplicationSourceSelectionCriteriaArgs.builder()
  *                 .sseKmsEncryptedObjects(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs.builder()
  *                     .status(&#34;Enabled&#34;)
  *                     .build())
  *                 .build())
- *             .syncRole(&#34;&lt;your ram role&gt;&#34;)
  *             .build());
  * 
  *     }

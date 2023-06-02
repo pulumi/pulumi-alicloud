@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Ga.Inputs
     public sealed class AclAclEntryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP entry that you want to add to the ACL.
+        /// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
         /// </summary>
         [Input("entry")]
         public Input<string>? Entry { get; set; }

@@ -42,17 +42,35 @@ namespace Pulumi.AliCloud.Vpc
     [AliCloudResourceType("alicloud:vpc/hAVip:HAVip")]
     public partial class HAVip : global::Pulumi.CustomResource
     {
+        [Output("associatedEipAddresses")]
+        public Output<ImmutableArray<string>> AssociatedEipAddresses { get; private set; } = null!;
+
+        [Output("associatedInstanceType")]
+        public Output<string> AssociatedInstanceType { get; private set; } = null!;
+
+        [Output("associatedInstances")]
+        public Output<ImmutableArray<string>> AssociatedInstances { get; private set; } = null!;
+
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// The description of the HaVip instance.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        [Output("haVipId")]
+        public Output<string> HaVipId { get; private set; } = null!;
+
+        [Output("haVipName")]
+        public Output<string> HaVipName { get; private set; } = null!;
+
         /// <summary>
         /// The name of the HaVip instance.
         /// </summary>
         [Output("havipName")]
-        public Output<string?> HavipName { get; private set; } = null!;
+        public Output<string> HavipName { get; private set; } = null!;
 
         /// <summary>
         /// The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
@@ -60,11 +78,23 @@ namespace Pulumi.AliCloud.Vpc
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
 
+        [Output("masterInstanceId")]
+        public Output<string> MasterInstanceId { get; private set; } = null!;
+
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
         /// <summary>
         /// (Available in v1.120.0+) The status of the HaVip instance.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        [Output("vpcId")]
+        public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
         /// The vswitch_id of the HaVip, the field can't be changed.
@@ -124,6 +154,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("haVipName")]
+        public Input<string>? HaVipName { get; set; }
+
         /// <summary>
         /// The name of the HaVip instance.
         /// </summary>
@@ -135,6 +168,17 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The vswitch_id of the HaVip, the field can't be changed.
@@ -150,11 +194,39 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class HAVipState : global::Pulumi.ResourceArgs
     {
+        [Input("associatedEipAddresses")]
+        private InputList<string>? _associatedEipAddresses;
+        public InputList<string> AssociatedEipAddresses
+        {
+            get => _associatedEipAddresses ?? (_associatedEipAddresses = new InputList<string>());
+            set => _associatedEipAddresses = value;
+        }
+
+        [Input("associatedInstanceType")]
+        public Input<string>? AssociatedInstanceType { get; set; }
+
+        [Input("associatedInstances")]
+        private InputList<string>? _associatedInstances;
+        public InputList<string> AssociatedInstances
+        {
+            get => _associatedInstances ?? (_associatedInstances = new InputList<string>());
+            set => _associatedInstances = value;
+        }
+
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         /// <summary>
         /// The description of the HaVip instance.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("haVipId")]
+        public Input<string>? HaVipId { get; set; }
+
+        [Input("haVipName")]
+        public Input<string>? HaVipName { get; set; }
 
         /// <summary>
         /// The name of the HaVip instance.
@@ -168,11 +240,28 @@ namespace Pulumi.AliCloud.Vpc
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        [Input("masterInstanceId")]
+        public Input<string>? MasterInstanceId { get; set; }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         /// <summary>
         /// (Available in v1.120.0+) The status of the HaVip instance.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The vswitch_id of the HaVip, the field can't be changed.

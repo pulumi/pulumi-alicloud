@@ -12,74 +12,104 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworkAclIngressAclEntry {
     /**
-     * @return The description of the network acl instance.
+     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String description;
     /**
-     * @return The entry name of ingress entries.
+     * @return Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     private @Nullable String networkAclEntryName;
     /**
-     * @return The policy of ingress entries. Valid values `accept` and `drop`.
+     * @return Authorization policy. Value:
+     * - accept: Allow.
+     * - drop: Refused.
+     * - accept: Allow.
+     * - drop: Refused.
      * 
      */
     private @Nullable String policy;
     /**
-     * @return The port of ingress entries.
+     * @return The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     private @Nullable String port;
     /**
-     * @return The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+     * @return The protocol type. Value:
+     * - icmp: Network Control Message Protocol.
+     * - gre: Generic Routing Encapsulation Protocol.
+     * - tcp: Transmission Control Protocol.
+     * - udp: User Datagram Protocol.
+     * - all: Supports all protocols.
+     * 
+     * - icmp: Network Control Message Protocol.
+     * - gre: Generic Routing Encapsulation Protocol.
+     * - tcp: Transmission Control Protocol.
+     * - udp: User Datagram Protocol.
+     * - all: Supports all protocols.
      * 
      */
     private @Nullable String protocol;
     /**
-     * @return The source cidr ip of ingress entries.
+     * @return Source address network segment.
      * 
      */
     private @Nullable String sourceCidrIp;
 
     private NetworkAclIngressAclEntry() {}
     /**
-     * @return The description of the network acl instance.
+     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The entry name of ingress entries.
+     * @return Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<String> networkAclEntryName() {
         return Optional.ofNullable(this.networkAclEntryName);
     }
     /**
-     * @return The policy of ingress entries. Valid values `accept` and `drop`.
+     * @return Authorization policy. Value:
+     * - accept: Allow.
+     * - drop: Refused.
+     * - accept: Allow.
+     * - drop: Refused.
      * 
      */
     public Optional<String> policy() {
         return Optional.ofNullable(this.policy);
     }
     /**
-     * @return The port of ingress entries.
+     * @return The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
      * 
      */
     public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+     * @return The protocol type. Value:
+     * - icmp: Network Control Message Protocol.
+     * - gre: Generic Routing Encapsulation Protocol.
+     * - tcp: Transmission Control Protocol.
+     * - udp: User Datagram Protocol.
+     * - all: Supports all protocols.
+     * 
+     * - icmp: Network Control Message Protocol.
+     * - gre: Generic Routing Encapsulation Protocol.
+     * - tcp: Transmission Control Protocol.
+     * - udp: User Datagram Protocol.
+     * - all: Supports all protocols.
      * 
      */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return The source cidr ip of ingress entries.
+     * @return Source address network segment.
      * 
      */
     public Optional<String> sourceCidrIp() {

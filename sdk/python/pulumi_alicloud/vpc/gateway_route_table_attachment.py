@@ -68,17 +68,27 @@ class GatewayRouteTableAttachmentArgs:
 @pulumi.input_type
 class _GatewayRouteTableAttachmentState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  ipv4_gateway_id: Optional[pulumi.Input[str]] = None,
                  route_table_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GatewayRouteTableAttachment resources.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
         :param pulumi.Input[str] ipv4_gateway_id: The ID of the IPv4 Gateway instance.
         :param pulumi.Input[str] route_table_id: The ID of the Gateway route table to be bound.
         :param pulumi.Input[str] status: The status of the IPv4 Gateway instance. Value:
+               - **Creating**: The function is being created.
+               - **Created**: Created and available.
+               - **Modifying**: is being modified.
+               - **Deleting**: Deleting.
+               - **Deleted**: Deleted.
+               - **Activating**: enabled.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if ipv4_gateway_id is not None:
@@ -87,6 +97,18 @@ class _GatewayRouteTableAttachmentState:
             pulumi.set(__self__, "route_table_id", route_table_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -129,6 +151,12 @@ class _GatewayRouteTableAttachmentState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The status of the IPv4 Gateway instance. Value:
+        - **Creating**: The function is being created.
+        - **Created**: Created and available.
+        - **Modifying**: is being modified.
+        - **Deleting**: Deleting.
+        - **Deleted**: Deleted.
+        - **Activating**: enabled.
         """
         return pulumi.get(self, "status")
 
@@ -161,9 +189,21 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.vpc.GatewayRouteTableAttachment("example",
-            ipv4_gateway_id="example_value",
-            route_table_id="example_value")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            cidr_block="172.16.0.0/12",
+            vpc_name="terraform-example")
+        example_route_table = alicloud.vpc.RouteTable("exampleRouteTable",
+            vpc_id=example_network.id,
+            route_table_name="terraform-example",
+            description="terraform-example",
+            associate_type="Gateway")
+        example_ipv4_gateway = alicloud.vpc.Ipv4Gateway("exampleIpv4Gateway",
+            ipv4_gateway_name="terraform-example",
+            vpc_id=example_network.id,
+            enabled=True)
+        example_gateway_route_table_attachment = alicloud.vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment",
+            ipv4_gateway_id=example_ipv4_gateway.id,
+            route_table_id=example_route_table.id)
         ```
 
         ## Import
@@ -201,9 +241,21 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.vpc.GatewayRouteTableAttachment("example",
-            ipv4_gateway_id="example_value",
-            route_table_id="example_value")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            cidr_block="172.16.0.0/12",
+            vpc_name="terraform-example")
+        example_route_table = alicloud.vpc.RouteTable("exampleRouteTable",
+            vpc_id=example_network.id,
+            route_table_name="terraform-example",
+            description="terraform-example",
+            associate_type="Gateway")
+        example_ipv4_gateway = alicloud.vpc.Ipv4Gateway("exampleIpv4Gateway",
+            ipv4_gateway_name="terraform-example",
+            vpc_id=example_network.id,
+            enabled=True)
+        example_gateway_route_table_attachment = alicloud.vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment",
+            ipv4_gateway_id=example_ipv4_gateway.id,
+            route_table_id=example_route_table.id)
         ```
 
         ## Import
@@ -248,6 +300,7 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
             if route_table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'route_table_id'")
             __props__.__dict__["route_table_id"] = route_table_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(GatewayRouteTableAttachment, __self__).__init__(
             'alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment',
@@ -259,6 +312,7 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             ipv4_gateway_id: Optional[pulumi.Input[str]] = None,
             route_table_id: Optional[pulumi.Input[str]] = None,
@@ -270,20 +324,36 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
         :param pulumi.Input[str] ipv4_gateway_id: The ID of the IPv4 Gateway instance.
         :param pulumi.Input[str] route_table_id: The ID of the Gateway route table to be bound.
         :param pulumi.Input[str] status: The status of the IPv4 Gateway instance. Value:
+               - **Creating**: The function is being created.
+               - **Created**: Created and available.
+               - **Modifying**: is being modified.
+               - **Deleting**: Deleting.
+               - **Deleted**: Deleted.
+               - **Activating**: enabled.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _GatewayRouteTableAttachmentState.__new__(_GatewayRouteTableAttachmentState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["ipv4_gateway_id"] = ipv4_gateway_id
         __props__.__dict__["route_table_id"] = route_table_id
         __props__.__dict__["status"] = status
         return GatewayRouteTableAttachment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="dryRun")
@@ -314,6 +384,12 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         The status of the IPv4 Gateway instance. Value:
+        - **Creating**: The function is being created.
+        - **Created**: Created and available.
+        - **Modifying**: is being modified.
+        - **Deleting**: Deleting.
+        - **Deleted**: Deleted.
+        - **Activating**: enabled.
         """
         return pulumi.get(self, "status")
 

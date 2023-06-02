@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceIpWhitelist {
     /**
-     * @return The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+     * @return The value of this parameter is empty by default. The attribute of the whitelist group.
+     * If the value contains `hidden`, this white list item will not output.
      * 
      */
     private @Nullable String ipGroupAttribute;
@@ -25,11 +26,12 @@ public final class InstanceIpWhitelist {
      * @return Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
      * 
      */
-    private String securityIpList;
+    private @Nullable String securityIpList;
 
     private InstanceIpWhitelist() {}
     /**
-     * @return The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+     * @return The value of this parameter is empty by default. The attribute of the whitelist group.
+     * If the value contains `hidden`, this white list item will not output.
      * 
      */
     public Optional<String> ipGroupAttribute() {
@@ -46,8 +48,8 @@ public final class InstanceIpWhitelist {
      * @return Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
      * 
      */
-    public String securityIpList() {
-        return this.securityIpList;
+    public Optional<String> securityIpList() {
+        return Optional.ofNullable(this.securityIpList);
     }
 
     public static Builder builder() {
@@ -61,7 +63,7 @@ public final class InstanceIpWhitelist {
     public static final class Builder {
         private @Nullable String ipGroupAttribute;
         private @Nullable String ipGroupName;
-        private String securityIpList;
+        private @Nullable String securityIpList;
         public Builder() {}
         public Builder(InstanceIpWhitelist defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,8 +83,8 @@ public final class InstanceIpWhitelist {
             return this;
         }
         @CustomType.Setter
-        public Builder securityIpList(String securityIpList) {
-            this.securityIpList = Objects.requireNonNull(securityIpList);
+        public Builder securityIpList(@Nullable String securityIpList) {
+            this.securityIpList = securityIpList;
             return this;
         }
         public InstanceIpWhitelist build() {

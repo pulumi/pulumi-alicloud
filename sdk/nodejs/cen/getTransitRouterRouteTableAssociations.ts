@@ -23,13 +23,17 @@ import * as utilities from "../utilities";
  * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.associations?.[0]?.resourceType);
  * ```
  */
-export function getTransitRouterRouteTableAssociations(args: GetTransitRouterRouteTableAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterRouteTableAssociationsResult> {
+export function getTransitRouterRouteTableAssociations(args?: GetTransitRouterRouteTableAssociationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterRouteTableAssociationsResult> {
+    args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", {
         "ids": args.ids,
         "outputFile": args.outputFile,
         "status": args.status,
+        "transitRouterAttachmentId": args.transitRouterAttachmentId,
+        "transitRouterAttachmentResourceId": args.transitRouterAttachmentResourceId,
+        "transitRouterAttachmentResourceType": args.transitRouterAttachmentResourceType,
         "transitRouterRouteTableId": args.transitRouterRouteTableId,
     }, opts);
 }
@@ -51,9 +55,21 @@ export interface GetTransitRouterRouteTableAssociationsArgs {
      */
     status?: string;
     /**
-     * ID of the route table of the VPC or VBR.
+     * The ID of the network instance connection.
      */
-    transitRouterRouteTableId: string;
+    transitRouterAttachmentId?: string;
+    /**
+     * The ID of the next hop.
+     */
+    transitRouterAttachmentResourceId?: string;
+    /**
+     * The type of next hop. Valid values:
+     */
+    transitRouterAttachmentResourceType?: string;
+    /**
+     * The ID of the route table of the Enterprise Edition transit router.
+     */
+    transitRouterRouteTableId?: string;
 }
 
 /**
@@ -78,9 +94,15 @@ export interface GetTransitRouterRouteTableAssociationsResult {
      */
     readonly status?: string;
     /**
+     * ID of the transit router attachment.
+     */
+    readonly transitRouterAttachmentId?: string;
+    readonly transitRouterAttachmentResourceId?: string;
+    readonly transitRouterAttachmentResourceType?: string;
+    /**
      * ID of the transit router route table.
      */
-    readonly transitRouterRouteTableId: string;
+    readonly transitRouterRouteTableId?: string;
 }
 /**
  * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
@@ -99,7 +121,7 @@ export interface GetTransitRouterRouteTableAssociationsResult {
  * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.associations?.[0]?.resourceType);
  * ```
  */
-export function getTransitRouterRouteTableAssociationsOutput(args: GetTransitRouterRouteTableAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteTableAssociationsResult> {
+export function getTransitRouterRouteTableAssociationsOutput(args?: GetTransitRouterRouteTableAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteTableAssociationsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterRouteTableAssociations(a, opts))
 }
 
@@ -120,7 +142,19 @@ export interface GetTransitRouterRouteTableAssociationsOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * ID of the route table of the VPC or VBR.
+     * The ID of the network instance connection.
      */
-    transitRouterRouteTableId: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string>;
+    /**
+     * The ID of the next hop.
+     */
+    transitRouterAttachmentResourceId?: pulumi.Input<string>;
+    /**
+     * The type of next hop. Valid values:
+     */
+    transitRouterAttachmentResourceType?: pulumi.Input<string>;
+    /**
+     * The ID of the route table of the Enterprise Edition transit router.
+     */
+    transitRouterRouteTableId?: pulumi.Input<string>;
 }

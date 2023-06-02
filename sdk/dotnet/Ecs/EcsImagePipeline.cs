@@ -33,17 +33,9 @@ namespace Pulumi.AliCloud.Ecs
     ///         NameRegex = "default",
     ///     });
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke();
-    /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
-    ///     });
-    /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
     ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
@@ -58,18 +50,34 @@ namespace Pulumi.AliCloud.Ecs
     ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
     ///     });
     /// 
+    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
     ///     var defaultEcsImagePipeline = new AliCloud.Ecs.EcsImagePipeline("defaultEcsImagePipeline", new()
     ///     {
     ///         AddAccounts = new[]
     ///         {
-    ///             "example_value",
+    ///             defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///         },
     ///         BaseImage = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
     ///         BaseImageType = "IMAGE",
     ///         BuildContent = "RUN yum update -y",
     ///         DeleteInstanceOnFailure = false,
-    ///         ImageName = "example_value",
-    ///         Description = "example_value",
+    ///         ImageName = "terraform-example",
+    ///         Description = "terraform-example",
     ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///         InternetMaxBandwidthOut = 20,
@@ -79,7 +87,7 @@ namespace Pulumi.AliCloud.Ecs
     ///             "cn-qingdao",
     ///             "cn-zhangjiakou",
     ///         },
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VswitchId = defaultSwitch.Id,
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },

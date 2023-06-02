@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.ReservedInstance;
  * import com.pulumi.alicloud.ecs.ReservedInstanceArgs;
  * import java.util.List;
@@ -46,15 +48,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ReservedInstance(&#34;default&#34;, ReservedInstanceArgs.builder()        
- *             .instanceType(&#34;ecs.g6.large&#34;)
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .instanceTypeFamily(&#34;ecs.g6&#34;)
+ *             .build());
+ * 
+ *         var defaultReservedInstance = new ReservedInstance(&#34;defaultReservedInstance&#34;, ReservedInstanceArgs.builder()        
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .instanceAmount(&#34;1&#34;)
- *             .periodUnit(&#34;Year&#34;)
+ *             .periodUnit(&#34;Month&#34;)
  *             .offeringType(&#34;All Upfront&#34;)
+ *             .reservedInstanceName(&#34;terraform-example&#34;)
  *             .description(&#34;ReservedInstance&#34;)
- *             .zoneId(&#34;cn-hangzhou-h&#34;)
+ *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].availabilityZones()[0]))
  *             .scope(&#34;Zone&#34;)
- *             .period(&#34;1&#34;)
  *             .build());
  * 
  *     }

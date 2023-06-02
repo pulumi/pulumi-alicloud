@@ -13,7 +13,7 @@ import (
 
 // Provides a Serverless App Engine (SAE) Namespace resource.
 //
-// For information about SAE Namespace and how to use it, see [What is Namespace](https://help.aliyun.com/document_detail/97792.html).
+// For information about SAE Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/sae/latest/createnamespace).
 //
 // > **NOTE:** Available in v1.129.0+.
 //
@@ -59,12 +59,16 @@ import (
 type Namespace struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+	EnableMicroRegistration pulumi.BoolOutput `pulumi:"enableMicroRegistration"`
 	// The Description of Namespace.
 	NamespaceDescription pulumi.StringPtrOutput `pulumi:"namespaceDescription"`
-	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+	// The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 	// The Name of Namespace.
 	NamespaceName pulumi.StringOutput `pulumi:"namespaceName"`
+	// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
+	NamespaceShortId pulumi.StringOutput `pulumi:"namespaceShortId"`
 }
 
 // NewNamespace registers a new resource with the given unique name, arguments, and options.
@@ -74,9 +78,6 @@ func NewNamespace(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.NamespaceId == nil {
-		return nil, errors.New("invalid value for required argument 'NamespaceId'")
-	}
 	if args.NamespaceName == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceName'")
 	}
@@ -102,21 +103,29 @@ func GetNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Namespace resources.
 type namespaceState struct {
+	// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+	EnableMicroRegistration *bool `pulumi:"enableMicroRegistration"`
 	// The Description of Namespace.
 	NamespaceDescription *string `pulumi:"namespaceDescription"`
-	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+	// The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
 	NamespaceId *string `pulumi:"namespaceId"`
 	// The Name of Namespace.
 	NamespaceName *string `pulumi:"namespaceName"`
+	// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
+	NamespaceShortId *string `pulumi:"namespaceShortId"`
 }
 
 type NamespaceState struct {
+	// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+	EnableMicroRegistration pulumi.BoolPtrInput
 	// The Description of Namespace.
 	NamespaceDescription pulumi.StringPtrInput
-	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+	// The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
 	NamespaceId pulumi.StringPtrInput
 	// The Name of Namespace.
 	NamespaceName pulumi.StringPtrInput
+	// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
+	NamespaceShortId pulumi.StringPtrInput
 }
 
 func (NamespaceState) ElementType() reflect.Type {
@@ -124,22 +133,30 @@ func (NamespaceState) ElementType() reflect.Type {
 }
 
 type namespaceArgs struct {
+	// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+	EnableMicroRegistration *bool `pulumi:"enableMicroRegistration"`
 	// The Description of Namespace.
 	NamespaceDescription *string `pulumi:"namespaceDescription"`
-	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
-	NamespaceId string `pulumi:"namespaceId"`
+	// The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
+	NamespaceId *string `pulumi:"namespaceId"`
 	// The Name of Namespace.
 	NamespaceName string `pulumi:"namespaceName"`
+	// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
+	NamespaceShortId *string `pulumi:"namespaceShortId"`
 }
 
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
+	// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+	EnableMicroRegistration pulumi.BoolPtrInput
 	// The Description of Namespace.
 	NamespaceDescription pulumi.StringPtrInput
-	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
-	NamespaceId pulumi.StringInput
+	// The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
+	NamespaceId pulumi.StringPtrInput
 	// The Name of Namespace.
 	NamespaceName pulumi.StringInput
+	// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
+	NamespaceShortId pulumi.StringPtrInput
 }
 
 func (NamespaceArgs) ElementType() reflect.Type {
@@ -229,12 +246,17 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 	return o
 }
 
+// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enableMicroRegistration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+func (o NamespaceOutput) EnableMicroRegistration() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.BoolOutput { return v.EnableMicroRegistration }).(pulumi.BoolOutput)
+}
+
 // The Description of Namespace.
 func (o NamespaceOutput) NamespaceDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.NamespaceDescription }).(pulumi.StringPtrOutput)
 }
 
-// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+// The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
 func (o NamespaceOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
 }
@@ -242,6 +264,11 @@ func (o NamespaceOutput) NamespaceId() pulumi.StringOutput {
 // The Name of Namespace.
 func (o NamespaceOutput) NamespaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespaceShortId` can be up to 20 characters in length and can contain only lowercase letters and digits.
+func (o NamespaceOutput) NamespaceShortId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.NamespaceShortId }).(pulumi.StringOutput)
 }
 
 type NamespaceArrayOutput struct{ *pulumi.OutputState }

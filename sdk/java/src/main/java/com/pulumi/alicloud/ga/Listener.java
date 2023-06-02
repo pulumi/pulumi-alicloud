@@ -231,7 +231,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.protocol);
     }
     /**
-     * The proxy protocol of the listener. Default value is `false`. Valid value:
+     * The proxy protocol of the listener. Default value is `false`. Valid values:
      * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
      * `false`: keep client source IP function is not turned on.
      * 
@@ -240,7 +240,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> proxyProtocol;
 
     /**
-     * @return The proxy protocol of the listener. Default value is `false`. Valid value:
+     * @return The proxy protocol of the listener. Default value is `false`. Valid values:
      * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
      * `false`: keep client source IP function is not turned on.
      * 

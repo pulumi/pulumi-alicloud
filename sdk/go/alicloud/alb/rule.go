@@ -31,6 +31,8 @@ import (
 type Rule struct {
 	pulumi.CustomResourceState
 
+	// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Specifies whether to precheck this request.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the listener to which the forwarding rule belongs.
@@ -91,6 +93,8 @@ func GetRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Rule resources.
 type ruleState struct {
+	// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+	Direction *string `pulumi:"direction"`
 	// Specifies whether to precheck this request.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the listener to which the forwarding rule belongs.
@@ -108,6 +112,8 @@ type ruleState struct {
 }
 
 type RuleState struct {
+	// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+	Direction pulumi.StringPtrInput
 	// Specifies whether to precheck this request.
 	DryRun pulumi.BoolPtrInput
 	// The ID of the listener to which the forwarding rule belongs.
@@ -129,6 +135,8 @@ func (RuleState) ElementType() reflect.Type {
 }
 
 type ruleArgs struct {
+	// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+	Direction *string `pulumi:"direction"`
 	// Specifies whether to precheck this request.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the listener to which the forwarding rule belongs.
@@ -145,6 +153,8 @@ type ruleArgs struct {
 
 // The set of arguments for constructing a Rule resource.
 type RuleArgs struct {
+	// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+	Direction pulumi.StringPtrInput
 	// Specifies whether to precheck this request.
 	DryRun pulumi.BoolPtrInput
 	// The ID of the listener to which the forwarding rule belongs.
@@ -244,6 +254,11 @@ func (o RuleOutput) ToRuleOutput() RuleOutput {
 
 func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return o
+}
+
+// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+func (o RuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }
 
 // Specifies whether to precheck this request.

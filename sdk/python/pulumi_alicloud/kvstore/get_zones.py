@@ -139,9 +139,7 @@ def get_zones(engine: Optional[str] = None,
 
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-           * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
-           * Local: an ApsaraDB for Redis instance with a local disk.
-           * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+           * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
     :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -192,9 +190,7 @@ def get_zones_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-           * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
-           * Local: an ApsaraDB for Redis instance with a local disk.
-           * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+           * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
     :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

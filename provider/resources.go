@@ -62,6 +62,7 @@ const (
 	cloudSsoMod            = "CloudSso"
 	cmsMod                 = "Cms"
 	cfgMod                 = "Cfg"
+	computeMod             = "Compute"
 	crMod                  = "CR"
 	csMod                  = "CS"
 	dasMod                 = "Das"
@@ -128,6 +129,7 @@ const (
 	quotasMod              = "Quotas"
 	ramMod                 = "Ram"
 	rdcMod                 = "Rdc"
+	redisMod               = "Redis"
 	resourceManagerMod     = "ResourceManager"
 	rocketMqMod            = "RocketMQ"
 	rosMod                 = "Ros"
@@ -183,6 +185,7 @@ var mappedMods = map[string]string{
 	"cloud_storage_gateway": cloudStorageGatewayMod,
 	"cloudauth":             cloudAuthMod,
 	"cms":                   cmsMod,
+	"compute":               computeMod,
 	"cr":                    crMod,
 	"cs":                    csMod,
 	"das":                   dasMod,
@@ -254,6 +257,7 @@ var mappedMods = map[string]string{
 	"ram":                   ramMod,
 	"rdc":                   rdcMod,
 	"rds":                   rdsMod,
+	"redis":                 redisMod,
 	"resource_manager":      resourceManagerMod,
 	"ros":                   rosMod,
 	"sae":                   saeMod,
@@ -1404,15 +1408,18 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "snat.html.markdown",
 				},
 			},
-			"alicloud_route_entry":                         {Tok: resource(vpcMod, "RouteEntry")},
-			"alicloud_route_table":                         {Tok: resource(vpcMod, "RouteTable")},
-			"alicloud_route_table_attachment":              {Tok: resource(vpcMod, "RouteTableAttachment")},
-			"alicloud_router_interface":                    {Tok: resource(vpcMod, "RouterInterface")},
-			"alicloud_router_interface_connection":         {Tok: resource(vpcMod, "RouterInterfaceConnection")},
-			"alicloud_nat_gateway":                         {Tok: resource(vpcMod, "NatGateway")},
-			"alicloud_forward_entry":                       {Tok: resource(vpcMod, "ForwardEntry")},
-			"alicloud_havip":                               {Tok: resource(vpcMod, "HAVip")},
-			"alicloud_havip_attachment":                    {Tok: resource(vpcMod, "HAVipAttachment")},
+			"alicloud_route_entry":                 {Tok: resource(vpcMod, "RouteEntry")},
+			"alicloud_route_table":                 {Tok: resource(vpcMod, "RouteTable")},
+			"alicloud_route_table_attachment":      {Tok: resource(vpcMod, "RouteTableAttachment")},
+			"alicloud_router_interface":            {Tok: resource(vpcMod, "RouterInterface")},
+			"alicloud_router_interface_connection": {Tok: resource(vpcMod, "RouterInterfaceConnection")},
+			"alicloud_nat_gateway":                 {Tok: resource(vpcMod, "NatGateway")},
+			"alicloud_forward_entry":               {Tok: resource(vpcMod, "ForwardEntry")},
+			"alicloud_havip":                       {Tok: resource(vpcMod, "HAVip")},
+			"alicloud_havip_attachment":            {Tok: resource(vpcMod, "HAVipAttachment")},
+			// There's an unfortunate namespace collision interfering with Typescript class name requirements.
+			// For context, see https://github.com/pulumi/pulumi-alicloud/issues/409.
+			"alicloud_vpc_ha_vip":                          {Tok: resource(vpcMod, "HaVipv2")},
 			"alicloud_common_bandwidth_package":            {Tok: resource(vpcMod, "CommonBandwithPackage")},
 			"alicloud_common_bandwidth_package_attachment": {Tok: resource(vpcMod, "CommonBandwithPackageAttachment")},
 			"alicloud_vpc_flow_log":                        {Tok: resource(vpcMod, "FlowLog")},

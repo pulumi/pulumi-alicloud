@@ -18,14 +18,18 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
     public static final RouteTableState Empty = new RouteTableState();
 
     /**
-     * The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * The type of cloud resource that is bound to the routing table. Value:
+     * - **VSwitch**: switch.
+     * - **Gateway**:IPv4 Gateway.
      * 
      */
     @Import(name="associateType")
     private @Nullable Output<String> associateType;
 
     /**
-     * @return The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * @return The type of cloud resource that is bound to the routing table. Value:
+     * - **VSwitch**: switch.
+     * - **Gateway**:IPv4 Gateway.
      * 
      */
     public Optional<Output<String>> associateType() {
@@ -33,14 +37,29 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the route table instance.
+     * The creation time of the routing table.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the routing table.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Description of the routing table.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the route table instance.
+     * @return Description of the routing table.
      * 
      */
     public Optional<Output<String>> description() {
@@ -48,7 +67,7 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
@@ -59,7 +78,7 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
@@ -71,14 +90,29 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the route table.
+     * Resource group ID.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return Resource group ID.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The name of the routing table.
      * 
      */
     @Import(name="routeTableName")
     private @Nullable Output<String> routeTableName;
 
     /**
-     * @return The name of the route table.
+     * @return The name of the routing table.
      * 
      */
     public Optional<Output<String>> routeTableName() {
@@ -86,14 +120,14 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in v1.119.1+) The status of the route table.
+     * Routing table state.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available in v1.119.1+) The status of the route table.
+     * @return Routing table state.
      * 
      */
     public Optional<Output<String>> status() {
@@ -101,14 +135,14 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -116,14 +150,18 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vpc_id of the route table, the field can&#39;t be changed.
+     * The ID of VPC.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The vpc_id of the route table, the field can&#39;t be changed.
+     * @return The ID of VPC.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -134,8 +172,10 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
 
     private RouteTableState(RouteTableState $) {
         this.associateType = $.associateType;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.name = $.name;
+        this.resourceGroupId = $.resourceGroupId;
         this.routeTableName = $.routeTableName;
         this.status = $.status;
         this.tags = $.tags;
@@ -161,7 +201,9 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associateType The type of routing table created. Valid values are `VSwitch` and `Gateway`
+         * @param associateType The type of cloud resource that is bound to the routing table. Value:
+         * - **VSwitch**: switch.
+         * - **Gateway**:IPv4 Gateway.
          * 
          * @return builder
          * 
@@ -172,7 +214,9 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associateType The type of routing table created. Valid values are `VSwitch` and `Gateway`
+         * @param associateType The type of cloud resource that is bound to the routing table. Value:
+         * - **VSwitch**: switch.
+         * - **Gateway**:IPv4 Gateway.
          * 
          * @return builder
          * 
@@ -182,7 +226,28 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the route table instance.
+         * @param createTime The creation time of the routing table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the routing table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description Description of the routing table.
          * 
          * @return builder
          * 
@@ -193,7 +258,7 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the route table instance.
+         * @param description Description of the routing table.
          * 
          * @return builder
          * 
@@ -203,7 +268,7 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
          * 
          * @return builder
          * 
@@ -218,7 +283,7 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
          * 
          * @return builder
          * 
@@ -232,7 +297,28 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeTableName The name of the route table.
+         * @param resourceGroupId Resource group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId Resource group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param routeTableName The name of the routing table.
          * 
          * @return builder
          * 
@@ -243,7 +329,7 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeTableName The name of the route table.
+         * @param routeTableName The name of the routing table.
          * 
          * @return builder
          * 
@@ -253,7 +339,7 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in v1.119.1+) The status of the route table.
+         * @param status Routing table state.
          * 
          * @return builder
          * 
@@ -264,7 +350,7 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in v1.119.1+) The status of the route table.
+         * @param status Routing table state.
          * 
          * @return builder
          * 
@@ -274,7 +360,7 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag.
          * 
          * @return builder
          * 
@@ -285,7 +371,7 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag.
          * 
          * @return builder
          * 
@@ -295,7 +381,9 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The vpc_id of the route table, the field can&#39;t be changed.
+         * @param vpcId The ID of VPC.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -306,7 +394,9 @@ public final class RouteTableState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The vpc_id of the route table, the field can&#39;t be changed.
+         * @param vpcId The ID of VPC.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

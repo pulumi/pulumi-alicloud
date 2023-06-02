@@ -35,7 +35,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			defaultCommand, err := ecs.NewCommand(ctx, "defaultCommand", &ecs.CommandArgs{
 //				CommandContent: pulumi.String("bHMK"),
-//				Description:    pulumi.String("For Terraform Test"),
+//				Description:    pulumi.String("terraform-example"),
 //				Type:           pulumi.String("RunShellScript"),
 //				WorkingDir:     pulumi.String("/root"),
 //			})

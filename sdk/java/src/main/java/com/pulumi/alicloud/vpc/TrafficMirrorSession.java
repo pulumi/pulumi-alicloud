@@ -12,13 +12,15 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Traffic Mirror Session resource.
+ * Provides a VPC Traffic Mirror Session resource. Traffic mirroring session.
  * 
  * For information about VPC Traffic Mirror Session and how to use it, see [What is Traffic Mirror Session](https://www.alibabacloud.com/help/en/doc-detail/261364.htm).
  * 
@@ -161,14 +163,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/trafficMirrorSession:TrafficMirrorSession")
 public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
     /**
-     * The dry run.
+     * Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
      * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -189,6 +195,20 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
+     * Maximum Transmission Unit (MTU).
+     * 
+     */
+    @Export(name="packetLength", type=Integer.class, parameters={})
+    private Output<Integer> packetLength;
+
+    /**
+     * @return Maximum Transmission Unit (MTU).
+     * 
+     */
+    public Output<Integer> packetLength() {
+        return this.packetLength;
+    }
+    /**
      * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      * 
      */
@@ -203,18 +223,46 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
         return this.priority;
     }
     /**
-     * The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The status of the resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tags of this resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tags of this resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The ID of the filter.
@@ -259,14 +307,14 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.trafficMirrorSessionName);
     }
     /**
-     * The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+     * The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
      * 
      */
     @Export(name="trafficMirrorSourceIds", type=List.class, parameters={String.class})
     private Output<List<String>> trafficMirrorSourceIds;
 
     /**
-     * @return The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source. **NOTE:** Only one mirror source can be added to a traffic mirror session.
+     * @return The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
      * 
      */
     public Output<List<String>> trafficMirrorSourceIds() {
@@ -287,14 +335,14 @@ public class TrafficMirrorSession extends com.pulumi.resources.CustomResource {
         return this.trafficMirrorTargetId;
     }
     /**
-     * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+     * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
      * 
      */
     @Export(name="trafficMirrorTargetType", type=String.class, parameters={})
     private Output<String> trafficMirrorTargetType;
 
     /**
-     * @return The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
+     * @return The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
      * 
      */
     public Output<String> trafficMirrorTargetType() {

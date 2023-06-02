@@ -352,7 +352,7 @@ class EcsInvocation(pulumi.CustomResource):
 
         default_command = alicloud.ecs.Command("defaultCommand",
             command_content="bHMK",
-            description="For Terraform Test",
+            description="terraform-example",
             type="RunShellScript",
             working_dir="/root")
         default_instances = alicloud.ecs.get_instances(status="Running")
@@ -409,7 +409,7 @@ class EcsInvocation(pulumi.CustomResource):
 
         default_command = alicloud.ecs.Command("defaultCommand",
             command_content="bHMK",
-            description="For Terraform Test",
+            description="terraform-example",
             type="RunShellScript",
             working_dir="/root")
         default_instances = alicloud.ecs.get_instances(status="Running")

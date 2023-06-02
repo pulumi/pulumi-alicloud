@@ -42,9 +42,7 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
 export interface GetZonesArgs {
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
-     * * Local: an ApsaraDB for Redis instance with a local disk.
-     * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+     * * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      */
     engine?: string;
     /**
@@ -111,9 +109,7 @@ export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOp
 export interface GetZonesOutputArgs {
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values:
-     * * Local: an ApsaraDB for Redis instance with a local disk.
-     * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+     * * productType - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      */
     engine?: pulumi.Input<string>;
     /**

@@ -39,10 +39,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["output"] = new[]
-        ///         {
-        ///             mySyncRules.Apply(getRegistryEnterpriseSyncRulesResult =&gt; getRegistryEnterpriseSyncRulesResult.Rules),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["output"] = mySyncRules.Apply(getRegistryEnterpriseSyncRulesResult =&gt; getRegistryEnterpriseSyncRulesResult.Rules).Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -80,10 +77,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["output"] = new[]
-        ///         {
-        ///             mySyncRules.Apply(getRegistryEnterpriseSyncRulesResult =&gt; getRegistryEnterpriseSyncRulesResult.Rules),
-        ///         }.Select(__item =&gt; __item?.Id).ToList(),
+        ///         ["output"] = mySyncRules.Apply(getRegistryEnterpriseSyncRulesResult =&gt; getRegistryEnterpriseSyncRulesResult.Rules).Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```

@@ -111,9 +111,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceSpec!: pulumi.Output<string | undefined>;
     /**
-     * The ip whitelist.
+     * The ip whitelist. See block `ipWhitelist`.
+     * Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
      */
-    public readonly ipWhitelists!: pulumi.Output<outputs.gpdb.InstanceIpWhitelist[] | undefined>;
+    public readonly ipWhitelists!: pulumi.Output<outputs.gpdb.InstanceIpWhitelist[]>;
     /**
      * The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
      */
@@ -151,7 +152,7 @@ export class Instance extends pulumi.CustomResource {
      *
      * @deprecated Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
      */
-    public readonly securityIpLists!: pulumi.Output<string[] | undefined>;
+    public readonly securityIpLists!: pulumi.Output<string[]>;
     /**
      * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
@@ -362,7 +363,8 @@ export interface InstanceState {
      */
     instanceSpec?: pulumi.Input<string>;
     /**
-     * The ip whitelist.
+     * The ip whitelist. See block `ipWhitelist`.
+     * Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
      */
     ipWhitelists?: pulumi.Input<pulumi.Input<inputs.gpdb.InstanceIpWhitelist>[]>;
     /**
@@ -511,7 +513,8 @@ export interface InstanceArgs {
      */
     instanceSpec?: pulumi.Input<string>;
     /**
-     * The ip whitelist.
+     * The ip whitelist. See block `ipWhitelist`.
+     * Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
      */
     ipWhitelists?: pulumi.Input<pulumi.Input<inputs.gpdb.InstanceIpWhitelist>[]>;
     /**

@@ -222,9 +222,9 @@ class Activation(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ecs.Activation("example",
-            description=var["name"],
+            description="terraform-example",
             instance_count=10,
-            instance_name=var["name"],
+            instance_name="terraform-example",
             ip_address_range="0.0.0.0/0",
             time_to_live_in_hours=4)
         ```
@@ -269,9 +269,9 @@ class Activation(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ecs.Activation("example",
-            description=var["name"],
+            description="terraform-example",
             instance_count=10,
-            instance_name=var["name"],
+            instance_name="terraform-example",
             ip_address_range="0.0.0.0/0",
             time_to_live_in_hours=4)
         ```

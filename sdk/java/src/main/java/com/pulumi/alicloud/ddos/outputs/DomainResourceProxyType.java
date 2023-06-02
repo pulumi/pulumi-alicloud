@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DomainResourceProxyType {
     /**
-     * @return the port number. This field is required and must be an integer.
+     * @return the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
      * 
      */
     private @Nullable List<Integer> proxyPorts;
@@ -26,7 +26,7 @@ public final class DomainResourceProxyType {
 
     private DomainResourceProxyType() {}
     /**
-     * @return the port number. This field is required and must be an integer.
+     * @return the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
      * 
      */
     public List<Integer> proxyPorts() {

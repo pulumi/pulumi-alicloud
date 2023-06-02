@@ -113,6 +113,20 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoUseCoupon);
     }
     /**
+     * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * 
+     */
+    @Export(name="bandwidthBillingType", type=String.class, parameters={})
+    private Output<String> bandwidthBillingType;
+
+    /**
+     * @return The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * 
+     */
+    public Output<String> bandwidthBillingType() {
+        return this.bandwidthBillingType;
+    }
+    /**
      * Descriptive information of the global acceleration instance.
      * 
      */

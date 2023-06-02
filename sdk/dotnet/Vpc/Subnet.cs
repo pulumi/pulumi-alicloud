@@ -19,6 +19,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
 
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
@@ -143,6 +146,9 @@ namespace Pulumi.AliCloud.Vpc
 
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
+
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }

@@ -18,7 +18,11 @@ __all__ = [
     'NetworkAclEntriesIngress',
     'NetworkAclIngressAclEntry',
     'NetworkAclResource',
+    'NetworkIpv6CidrBlock',
     'PrefixListEntry',
+    'PrefixListPrefixListAssociation',
+    'TrafficMirrorFilterEgressRule',
+    'TrafficMirrorFilterIngressRule',
     'GetBgpGroupsGroupResult',
     'GetBgpNetworksNetworkResult',
     'GetBgpPeersPeerResult',
@@ -191,12 +195,27 @@ class NetworkAclEgressAclEntry(dict):
                  port: Optional[str] = None,
                  protocol: Optional[str] = None):
         """
-        :param str description: The description of the network acl instance.
-        :param str destination_cidr_ip: The destination cidr ip of egress entries.
-        :param str network_acl_entry_name: The entry name of ingress entries.
-        :param str policy: The policy of ingress entries. Valid values `accept` and `drop`.
-        :param str port: The port of ingress entries.
-        :param str protocol: The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        :param str description: The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        :param str destination_cidr_ip: The network of the destination address.
+        :param str network_acl_entry_name: Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        :param str policy: Authorization policy. Value:
+               - accept: Allow.
+               - drop: Refused.
+               - accept: Allow.
+               - drop: Refused.
+        :param str port: The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        :param str protocol: The protocol type. Value:
+               - icmp: Network Control Message Protocol.
+               - gre: Generic Routing Encapsulation Protocol.
+               - tcp: Transmission Control Protocol.
+               - udp: User Datagram Protocol.
+               - all: Supports all protocols.
+               
+               - icmp: Network Control Message Protocol.
+               - gre: Generic Routing Encapsulation Protocol.
+               - tcp: Transmission Control Protocol.
+               - udp: User Datagram Protocol.
+               - all: Supports all protocols.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -215,7 +234,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the network acl instance.
+        The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
@@ -223,7 +242,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter(name="destinationCidrIp")
     def destination_cidr_ip(self) -> Optional[str]:
         """
-        The destination cidr ip of egress entries.
+        The network of the destination address.
         """
         return pulumi.get(self, "destination_cidr_ip")
 
@@ -231,7 +250,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter(name="networkAclEntryName")
     def network_acl_entry_name(self) -> Optional[str]:
         """
-        The entry name of ingress entries.
+        Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "network_acl_entry_name")
 
@@ -239,7 +258,11 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        The policy of ingress entries. Valid values `accept` and `drop`.
+        Authorization policy. Value:
+        - accept: Allow.
+        - drop: Refused.
+        - accept: Allow.
+        - drop: Refused.
         """
         return pulumi.get(self, "policy")
 
@@ -247,7 +270,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The port of ingress entries.
+        The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         """
         return pulumi.get(self, "port")
 
@@ -255,7 +278,18 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        The protocol type. Value:
+        - icmp: Network Control Message Protocol.
+        - gre: Generic Routing Encapsulation Protocol.
+        - tcp: Transmission Control Protocol.
+        - udp: User Datagram Protocol.
+        - all: Supports all protocols.
+
+        - icmp: Network Control Message Protocol.
+        - gre: Generic Routing Encapsulation Protocol.
+        - tcp: Transmission Control Protocol.
+        - udp: User Datagram Protocol.
+        - all: Supports all protocols.
         """
         return pulumi.get(self, "protocol")
 
@@ -509,12 +543,27 @@ class NetworkAclIngressAclEntry(dict):
                  protocol: Optional[str] = None,
                  source_cidr_ip: Optional[str] = None):
         """
-        :param str description: The description of the network acl instance.
-        :param str network_acl_entry_name: The entry name of ingress entries.
-        :param str policy: The policy of ingress entries. Valid values `accept` and `drop`.
-        :param str port: The port of ingress entries.
-        :param str protocol: The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
-        :param str source_cidr_ip: The source cidr ip of ingress entries.
+        :param str description: The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
+        :param str network_acl_entry_name: Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
+        :param str policy: Authorization policy. Value:
+               - accept: Allow.
+               - drop: Refused.
+               - accept: Allow.
+               - drop: Refused.
+        :param str port: The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        :param str protocol: The protocol type. Value:
+               - icmp: Network Control Message Protocol.
+               - gre: Generic Routing Encapsulation Protocol.
+               - tcp: Transmission Control Protocol.
+               - udp: User Datagram Protocol.
+               - all: Supports all protocols.
+               
+               - icmp: Network Control Message Protocol.
+               - gre: Generic Routing Encapsulation Protocol.
+               - tcp: Transmission Control Protocol.
+               - udp: User Datagram Protocol.
+               - all: Supports all protocols.
+        :param str source_cidr_ip: Source address network segment.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -533,7 +582,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the network acl instance.
+        The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
@@ -541,7 +590,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter(name="networkAclEntryName")
     def network_acl_entry_name(self) -> Optional[str]:
         """
-        The entry name of ingress entries.
+        Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "network_acl_entry_name")
 
@@ -549,7 +598,11 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        The policy of ingress entries. Valid values `accept` and `drop`.
+        Authorization policy. Value:
+        - accept: Allow.
+        - drop: Refused.
+        - accept: Allow.
+        - drop: Refused.
         """
         return pulumi.get(self, "policy")
 
@@ -557,7 +610,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The port of ingress entries.
+        The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         """
         return pulumi.get(self, "port")
 
@@ -565,7 +618,18 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        The protocol type. Value:
+        - icmp: Network Control Message Protocol.
+        - gre: Generic Routing Encapsulation Protocol.
+        - tcp: Transmission Control Protocol.
+        - udp: User Datagram Protocol.
+        - all: Supports all protocols.
+
+        - icmp: Network Control Message Protocol.
+        - gre: Generic Routing Encapsulation Protocol.
+        - tcp: Transmission Control Protocol.
+        - udp: User Datagram Protocol.
+        - all: Supports all protocols.
         """
         return pulumi.get(self, "protocol")
 
@@ -573,7 +637,7 @@ class NetworkAclIngressAclEntry(dict):
     @pulumi.getter(name="sourceCidrIp")
     def source_cidr_ip(self) -> Optional[str]:
         """
-        The source cidr ip of ingress entries.
+        Source address network segment.
         """
         return pulumi.get(self, "source_cidr_ip")
 
@@ -600,20 +664,22 @@ class NetworkAclResource(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 resource_id: Optional[str] = None,
-                 resource_type: Optional[str] = None):
+                 resource_id: str,
+                 resource_type: str,
+                 status: Optional[str] = None):
         """
         :param str resource_id: The ID of the associated resource.
-        :param str resource_type: The type of the associated resource. Valid values `VSwitch`.
+        :param str resource_type: The type of the associated resource.
+        :param str status: The state of the network ACL.
         """
-        if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
-        if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[str]:
+    def resource_id(self) -> str:
         """
         The ID of the associated resource.
         """
@@ -621,11 +687,79 @@ class NetworkAclResource(dict):
 
     @property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[str]:
+    def resource_type(self) -> str:
         """
-        The type of the associated resource. Valid values `VSwitch`.
+        The type of the associated resource.
         """
         return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        The state of the network ACL.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class NetworkIpv6CidrBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipv6CidrBlock":
+            suggest = "ipv6_cidr_block"
+        elif key == "ipv6Isp":
+            suggest = "ipv6_isp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkIpv6CidrBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkIpv6CidrBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkIpv6CidrBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ipv6_cidr_block: Optional[str] = None,
+                 ipv6_isp: Optional[str] = None):
+        """
+        :param str ipv6_cidr_block: The IPv6 CIDR block of the VPC.
+        :param str ipv6_isp: The IPv6 address segment type of the VPC. Value:
+               - **BGP** (default): Alibaba Cloud BGP IPv6.
+               - **ChinaMobile**: China Mobile (single line).
+               - **ChinaUnicom**: China Unicom (single line).
+               - **ChinaTelecom**: China Telecom (single line).
+               > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        """
+        if ipv6_cidr_block is not None:
+            pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
+        if ipv6_isp is not None:
+            pulumi.set(__self__, "ipv6_isp", ipv6_isp)
+
+    @property
+    @pulumi.getter(name="ipv6CidrBlock")
+    def ipv6_cidr_block(self) -> Optional[str]:
+        """
+        The IPv6 CIDR block of the VPC.
+        """
+        return pulumi.get(self, "ipv6_cidr_block")
+
+    @property
+    @pulumi.getter(name="ipv6Isp")
+    def ipv6_isp(self) -> Optional[str]:
+        """
+        The IPv6 address segment type of the VPC. Value:
+        - **BGP** (default): Alibaba Cloud BGP IPv6.
+        - **ChinaMobile**: China Mobile (single line).
+        - **ChinaUnicom**: China Unicom (single line).
+        - **ChinaTelecom**: China Telecom (single line).
+        > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        """
+        return pulumi.get(self, "ipv6_isp")
 
 
 @pulumi.output_type
@@ -657,6 +791,448 @@ class PrefixListEntry(dict):
         The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class PrefixListPrefixListAssociation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ownerId":
+            suggest = "owner_id"
+        elif key == "prefixListId":
+            suggest = "prefix_list_id"
+        elif key == "regionId":
+            suggest = "region_id"
+        elif key == "resourceId":
+            suggest = "resource_id"
+        elif key == "resourceType":
+            suggest = "resource_type"
+        elif key == "resourceUid":
+            suggest = "resource_uid"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrefixListPrefixListAssociation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrefixListPrefixListAssociation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrefixListPrefixListAssociation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 owner_id: Optional[str] = None,
+                 prefix_list_id: Optional[str] = None,
+                 reason: Optional[str] = None,
+                 region_id: Optional[str] = None,
+                 resource_id: Optional[str] = None,
+                 resource_type: Optional[str] = None,
+                 resource_uid: Optional[str] = None,
+                 status: Optional[str] = None):
+        """
+        :param str owner_id: The ID of the Alibaba Cloud account (primary account) to which the prefix list belongs.
+        :param str prefix_list_id: The ID of the query Prefix List.
+        :param str reason: Reason when the association fails.
+        :param str region_id: The region ID of the prefix list to be queried.
+        :param str resource_id: The ID of the associated resource.
+        :param str resource_type: The associated resource type. Value:-**vpcRouteTable**: The VPC route table.-**trRouteTable**: the routing table of the forwarding router.
+        :param str resource_uid: The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
+        :param str status: Resource attribute fields that represent the status of the resource.
+        """
+        if owner_id is not None:
+            pulumi.set(__self__, "owner_id", owner_id)
+        if prefix_list_id is not None:
+            pulumi.set(__self__, "prefix_list_id", prefix_list_id)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+        if resource_uid is not None:
+            pulumi.set(__self__, "resource_uid", resource_uid)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> Optional[str]:
+        """
+        The ID of the Alibaba Cloud account (primary account) to which the prefix list belongs.
+        """
+        return pulumi.get(self, "owner_id")
+
+    @property
+    @pulumi.getter(name="prefixListId")
+    def prefix_list_id(self) -> Optional[str]:
+        """
+        The ID of the query Prefix List.
+        """
+        return pulumi.get(self, "prefix_list_id")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        """
+        Reason when the association fails.
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[str]:
+        """
+        The region ID of the prefix list to be queried.
+        """
+        return pulumi.get(self, "region_id")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[str]:
+        """
+        The ID of the associated resource.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[str]:
+        """
+        The associated resource type. Value:-**vpcRouteTable**: The VPC route table.-**trRouteTable**: the routing table of the forwarding router.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter(name="resourceUid")
+    def resource_uid(self) -> Optional[str]:
+        """
+        The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
+        """
+        return pulumi.get(self, "resource_uid")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Resource attribute fields that represent the status of the resource.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class TrafficMirrorFilterEgressRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationCidrBlock":
+            suggest = "destination_cidr_block"
+        elif key == "destinationPortRange":
+            suggest = "destination_port_range"
+        elif key == "sourceCidrBlock":
+            suggest = "source_cidr_block"
+        elif key == "sourcePortRange":
+            suggest = "source_port_range"
+        elif key == "trafficMirrorFilterRuleStatus":
+            suggest = "traffic_mirror_filter_rule_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrafficMirrorFilterEgressRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrafficMirrorFilterEgressRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrafficMirrorFilterEgressRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: str,
+                 protocol: str,
+                 destination_cidr_block: Optional[str] = None,
+                 destination_port_range: Optional[str] = None,
+                 priority: Optional[int] = None,
+                 source_cidr_block: Optional[str] = None,
+                 source_port_range: Optional[str] = None,
+                 traffic_mirror_filter_rule_status: Optional[str] = None):
+        """
+        :param str action: Collection strategy for outbound rules. Value:
+               - accept: collects network traffic.
+               - drop: No network traffic is collected.
+               - accept: collects network traffic.
+               - drop: No network traffic is collected.
+        :param str protocol: The type of protocol used by the outbound network traffic to be mirrored. Value:
+               - ALL: ALL agreements.
+               - ICMP: Network Control Message Protocol.
+               - TCP: Transmission Control Protocol.
+               - UDP: User Datagram Protocol.
+               - ALL: ALL agreements.
+               - ICMP: Network Control Message Protocol.
+               - TCP: Transmission Control Protocol.
+               - UDP: User Datagram Protocol.
+        :param str destination_cidr_block: DestinationCidrBlock.
+        :param str destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        :param int priority: Priority.
+        :param str source_cidr_block: The source address of the outbound rule network traffic.
+        :param str source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+               
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "protocol", protocol)
+        if destination_cidr_block is not None:
+            pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+        if destination_port_range is not None:
+            pulumi.set(__self__, "destination_port_range", destination_port_range)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if source_cidr_block is not None:
+            pulumi.set(__self__, "source_cidr_block", source_cidr_block)
+        if source_port_range is not None:
+            pulumi.set(__self__, "source_port_range", source_port_range)
+        if traffic_mirror_filter_rule_status is not None:
+            pulumi.set(__self__, "traffic_mirror_filter_rule_status", traffic_mirror_filter_rule_status)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Collection strategy for outbound rules. Value:
+        - accept: collects network traffic.
+        - drop: No network traffic is collected.
+        - accept: collects network traffic.
+        - drop: No network traffic is collected.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The type of protocol used by the outbound network traffic to be mirrored. Value:
+        - ALL: ALL agreements.
+        - ICMP: Network Control Message Protocol.
+        - TCP: Transmission Control Protocol.
+        - UDP: User Datagram Protocol.
+        - ALL: ALL agreements.
+        - ICMP: Network Control Message Protocol.
+        - TCP: Transmission Control Protocol.
+        - UDP: User Datagram Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="destinationCidrBlock")
+    def destination_cidr_block(self) -> Optional[str]:
+        """
+        DestinationCidrBlock.
+        """
+        return pulumi.get(self, "destination_cidr_block")
+
+    @property
+    @pulumi.getter(name="destinationPortRange")
+    def destination_port_range(self) -> Optional[str]:
+        """
+        The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
+        return pulumi.get(self, "destination_port_range")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[int]:
+        """
+        Priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="sourceCidrBlock")
+    def source_cidr_block(self) -> Optional[str]:
+        """
+        The source address of the outbound rule network traffic.
+        """
+        return pulumi.get(self, "source_cidr_block")
+
+    @property
+    @pulumi.getter(name="sourcePortRange")
+    def source_port_range(self) -> Optional[str]:
+        """
+        The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
+        return pulumi.get(self, "source_port_range")
+
+    @property
+    @pulumi.getter(name="trafficMirrorFilterRuleStatus")
+    def traffic_mirror_filter_rule_status(self) -> Optional[str]:
+        return pulumi.get(self, "traffic_mirror_filter_rule_status")
+
+
+@pulumi.output_type
+class TrafficMirrorFilterIngressRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationCidrBlock":
+            suggest = "destination_cidr_block"
+        elif key == "destinationPortRange":
+            suggest = "destination_port_range"
+        elif key == "sourceCidrBlock":
+            suggest = "source_cidr_block"
+        elif key == "sourcePortRange":
+            suggest = "source_port_range"
+        elif key == "trafficMirrorFilterRuleStatus":
+            suggest = "traffic_mirror_filter_rule_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrafficMirrorFilterIngressRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrafficMirrorFilterIngressRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrafficMirrorFilterIngressRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: str,
+                 protocol: str,
+                 destination_cidr_block: Optional[str] = None,
+                 destination_port_range: Optional[str] = None,
+                 priority: Optional[int] = None,
+                 source_cidr_block: Optional[str] = None,
+                 source_port_range: Optional[str] = None,
+                 traffic_mirror_filter_rule_status: Optional[str] = None):
+        """
+        :param str action: Collection strategy for outbound rules. Value:
+               - accept: collects network traffic.
+               - drop: No network traffic is collected.
+               - accept: collects network traffic.
+               - drop: No network traffic is collected.
+        :param str protocol: The type of protocol used by the outbound network traffic to be mirrored. Value:
+               - ALL: ALL agreements.
+               - ICMP: Network Control Message Protocol.
+               - TCP: Transmission Control Protocol.
+               - UDP: User Datagram Protocol.
+               - ALL: ALL agreements.
+               - ICMP: Network Control Message Protocol.
+               - TCP: Transmission Control Protocol.
+               - UDP: User Datagram Protocol.
+        :param str destination_cidr_block: DestinationCidrBlock.
+        :param str destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        :param int priority: Priority.
+        :param str source_cidr_block: The source address of the outbound rule network traffic.
+        :param str source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+               
+               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "protocol", protocol)
+        if destination_cidr_block is not None:
+            pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+        if destination_port_range is not None:
+            pulumi.set(__self__, "destination_port_range", destination_port_range)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if source_cidr_block is not None:
+            pulumi.set(__self__, "source_cidr_block", source_cidr_block)
+        if source_port_range is not None:
+            pulumi.set(__self__, "source_port_range", source_port_range)
+        if traffic_mirror_filter_rule_status is not None:
+            pulumi.set(__self__, "traffic_mirror_filter_rule_status", traffic_mirror_filter_rule_status)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Collection strategy for outbound rules. Value:
+        - accept: collects network traffic.
+        - drop: No network traffic is collected.
+        - accept: collects network traffic.
+        - drop: No network traffic is collected.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        The type of protocol used by the outbound network traffic to be mirrored. Value:
+        - ALL: ALL agreements.
+        - ICMP: Network Control Message Protocol.
+        - TCP: Transmission Control Protocol.
+        - UDP: User Datagram Protocol.
+        - ALL: ALL agreements.
+        - ICMP: Network Control Message Protocol.
+        - TCP: Transmission Control Protocol.
+        - UDP: User Datagram Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="destinationCidrBlock")
+    def destination_cidr_block(self) -> Optional[str]:
+        """
+        DestinationCidrBlock.
+        """
+        return pulumi.get(self, "destination_cidr_block")
+
+    @property
+    @pulumi.getter(name="destinationPortRange")
+    def destination_port_range(self) -> Optional[str]:
+        """
+        The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
+        return pulumi.get(self, "destination_port_range")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[int]:
+        """
+        Priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="sourceCidrBlock")
+    def source_cidr_block(self) -> Optional[str]:
+        """
+        The source address of the outbound rule network traffic.
+        """
+        return pulumi.get(self, "source_cidr_block")
+
+    @property
+    @pulumi.getter(name="sourcePortRange")
+    def source_port_range(self) -> Optional[str]:
+        """
+        The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+
+        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+        """
+        return pulumi.get(self, "source_port_range")
+
+    @property
+    @pulumi.getter(name="trafficMirrorFilterRuleStatus")
+    def traffic_mirror_filter_rule_status(self) -> Optional[str]:
+        return pulumi.get(self, "traffic_mirror_filter_rule_status")
 
 
 @pulumi.output_type

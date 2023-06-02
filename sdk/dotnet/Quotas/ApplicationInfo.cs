@@ -16,10 +16,13 @@ namespace Pulumi.AliCloud.Quotas
         public Output<string> ApproveValue { get; private set; } = null!;
 
         [Output("auditMode")]
-        public Output<string?> AuditMode { get; private set; } = null!;
+        public Output<string> AuditMode { get; private set; } = null!;
 
         [Output("auditReason")]
         public Output<string> AuditReason { get; private set; } = null!;
+
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         [Output("desireValue")]
         public Output<double> DesireValue { get; private set; } = null!;
@@ -28,13 +31,16 @@ namespace Pulumi.AliCloud.Quotas
         public Output<ImmutableArray<Outputs.ApplicationInfoDimension>> Dimensions { get; private set; } = null!;
 
         [Output("effectiveTime")]
-        public Output<string> EffectiveTime { get; private set; } = null!;
+        public Output<string?> EffectiveTime { get; private set; } = null!;
+
+        [Output("envLanguage")]
+        public Output<string?> EnvLanguage { get; private set; } = null!;
 
         [Output("expireTime")]
-        public Output<string> ExpireTime { get; private set; } = null!;
+        public Output<string?> ExpireTime { get; private set; } = null!;
 
         [Output("noticeType")]
-        public Output<int?> NoticeType { get; private set; } = null!;
+        public Output<int> NoticeType { get; private set; } = null!;
 
         [Output("productCode")]
         public Output<string> ProductCode { get; private set; } = null!;
@@ -120,6 +126,15 @@ namespace Pulumi.AliCloud.Quotas
             set => _dimensions = value;
         }
 
+        [Input("effectiveTime")]
+        public Input<string>? EffectiveTime { get; set; }
+
+        [Input("envLanguage")]
+        public Input<string>? EnvLanguage { get; set; }
+
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
+
         [Input("noticeType")]
         public Input<int>? NoticeType { get; set; }
 
@@ -152,6 +167,9 @@ namespace Pulumi.AliCloud.Quotas
         [Input("auditReason")]
         public Input<string>? AuditReason { get; set; }
 
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         [Input("desireValue")]
         public Input<double>? DesireValue { get; set; }
 
@@ -165,6 +183,9 @@ namespace Pulumi.AliCloud.Quotas
 
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
+
+        [Input("envLanguage")]
+        public Input<string>? EnvLanguage { get; set; }
 
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }

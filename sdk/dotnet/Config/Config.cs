@@ -294,6 +294,7 @@ namespace Pulumi.AliCloud
                 public string? Cloudphone { get; set; } = null!;
                 public string? Cloudsso { get; set; } = null!;
                 public string? Cms { get; set; } = null!;
+                public string? Computenest { get; set; } = null!;
                 public string? Config { get; set; } = null!;
                 public string? Cr { get; set; } = null!;
                 public string? Cs { get; set; } = null!;

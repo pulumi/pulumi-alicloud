@@ -40,6 +40,27 @@ public final class ApplicationInfoArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.dimensions);
     }
 
+    @Import(name="effectiveTime")
+    private @Nullable Output<String> effectiveTime;
+
+    public Optional<Output<String>> effectiveTime() {
+        return Optional.ofNullable(this.effectiveTime);
+    }
+
+    @Import(name="envLanguage")
+    private @Nullable Output<String> envLanguage;
+
+    public Optional<Output<String>> envLanguage() {
+        return Optional.ofNullable(this.envLanguage);
+    }
+
+    @Import(name="expireTime")
+    private @Nullable Output<String> expireTime;
+
+    public Optional<Output<String>> expireTime() {
+        return Optional.ofNullable(this.expireTime);
+    }
+
     @Import(name="noticeType")
     private @Nullable Output<Integer> noticeType;
 
@@ -81,6 +102,9 @@ public final class ApplicationInfoArgs extends com.pulumi.resources.ResourceArgs
         this.auditMode = $.auditMode;
         this.desireValue = $.desireValue;
         this.dimensions = $.dimensions;
+        this.effectiveTime = $.effectiveTime;
+        this.envLanguage = $.envLanguage;
+        this.expireTime = $.expireTime;
         this.noticeType = $.noticeType;
         this.productCode = $.productCode;
         this.quotaActionCode = $.quotaActionCode;
@@ -135,6 +159,33 @@ public final class ApplicationInfoArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder dimensions(ApplicationInfoDimensionArgs... dimensions) {
             return dimensions(List.of(dimensions));
+        }
+
+        public Builder effectiveTime(@Nullable Output<String> effectiveTime) {
+            $.effectiveTime = effectiveTime;
+            return this;
+        }
+
+        public Builder effectiveTime(String effectiveTime) {
+            return effectiveTime(Output.of(effectiveTime));
+        }
+
+        public Builder envLanguage(@Nullable Output<String> envLanguage) {
+            $.envLanguage = envLanguage;
+            return this;
+        }
+
+        public Builder envLanguage(String envLanguage) {
+            return envLanguage(Output.of(envLanguage));
+        }
+
+        public Builder expireTime(@Nullable Output<String> expireTime) {
+            $.expireTime = expireTime;
+            return this;
+        }
+
+        public Builder expireTime(String expireTime) {
+            return expireTime(Output.of(expireTime));
         }
 
         public Builder noticeType(@Nullable Output<Integer> noticeType) {

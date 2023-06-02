@@ -240,6 +240,11 @@ export const getVpcFlowLogs: typeof import("./getVpcFlowLogs").getVpcFlowLogs = 
 export const getVpcFlowLogsOutput: typeof import("./getVpcFlowLogs").getVpcFlowLogsOutput = null as any;
 utilities.lazyLoad(exports, ["getVpcFlowLogs","getVpcFlowLogsOutput"], () => require("./getVpcFlowLogs"));
 
+export { HaVipv2Args, HaVipv2State } from "./haVipv2";
+export type HaVipv2 = import("./haVipv2").HaVipv2;
+export const HaVipv2: typeof import("./haVipv2").HaVipv2 = null as any;
+utilities.lazyLoad(exports, ["HaVipv2"], () => require("./haVipv2"));
+
 export { HAVipArgs, HAVipState } from "./havip";
 export type HAVip = import("./havip").HAVip;
 export const HAVip: typeof import("./havip").HAVip = null as any;
@@ -415,6 +420,11 @@ export type VpcNetworkAclAttachment = import("./vpcNetworkAclAttachment").VpcNet
 export const VpcNetworkAclAttachment: typeof import("./vpcNetworkAclAttachment").VpcNetworkAclAttachment = null as any;
 utilities.lazyLoad(exports, ["VpcNetworkAclAttachment"], () => require("./vpcNetworkAclAttachment"));
 
+export { VswitchCidrReservationArgs, VswitchCidrReservationState } from "./vswitchCidrReservation";
+export type VswitchCidrReservation = import("./vswitchCidrReservation").VswitchCidrReservation;
+export const VswitchCidrReservation: typeof import("./vswitchCidrReservation").VswitchCidrReservation = null as any;
+utilities.lazyLoad(exports, ["VswitchCidrReservation"], () => require("./vswitchCidrReservation"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -444,6 +454,8 @@ const _module = {
                 return new HAVip(name, <any>undefined, { urn })
             case "alicloud:vpc/hAVipAttachment:HAVipAttachment":
                 return new HAVipAttachment(name, <any>undefined, { urn })
+            case "alicloud:vpc/haVipv2:HaVipv2":
+                return new HaVipv2(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock":
                 return new Ipv4CidrBlock(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv4Gateway:Ipv4Gateway":
@@ -510,6 +522,8 @@ const _module = {
                 return new VbrHa(name, <any>undefined, { urn })
             case "alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment":
                 return new VpcNetworkAclAttachment(name, <any>undefined, { urn })
+            case "alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation":
+                return new VswitchCidrReservation(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -527,6 +541,7 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/forwardEntry", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/gatewayRouteTableAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVipAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/haVipv2", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4CidrBlock", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4Gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6EgressRule", _module)
@@ -560,3 +575,4 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorFilterIngres
 pulumi.runtime.registerResourceModule("alicloud", "vpc/trafficMirrorSession", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/vbrHa", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/vpcNetworkAclAttachment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/vswitchCidrReservation", _module)

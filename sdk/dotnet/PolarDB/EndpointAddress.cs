@@ -25,16 +25,16 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var creation = config.Get("creation") ?? "PolarDB";
-    ///     var name = config.Get("name") ?? "polardbconnectionbasic";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultNodeClasses = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         PayType = "PostPaid",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
+    ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -42,18 +42,18 @@ namespace Pulumi.AliCloud.PolarDB
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
+    ///         ZoneId = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId),
+    ///         VswitchName = "terraform-example",
     ///     });
     /// 
     ///     var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new()
     ///     {
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
+    ///         DbNodeClass = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass),
     ///         PayType = "PostPaid",
-    ///         DbNodeClass = "polar.mysql.x4.large",
     ///         VswitchId = defaultSwitch.Id,
-    ///         Description = name,
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var defaultEndpoints = AliCloud.PolarDB.GetEndpoints.Invoke(new()
@@ -61,11 +61,11 @@ namespace Pulumi.AliCloud.PolarDB
     ///         DbClusterId = defaultCluster.Id,
     ///     });
     /// 
-    ///     var endpoint = new AliCloud.PolarDB.EndpointAddress("endpoint", new()
+    ///     var defaultEndpointAddress = new AliCloud.PolarDB.EndpointAddress("defaultEndpointAddress", new()
     ///     {
     ///         DbClusterId = defaultCluster.Id,
     ///         DbEndpointId = defaultEndpoints.Apply(getEndpointsResult =&gt; getEndpointsResult.Endpoints[0]?.DbEndpointId),
-    ///         ConnectionPrefix = "testpolardbconn",
+    ///         ConnectionPrefix = "polardbexample",
     ///         NetType = "Public",
     ///     });
     /// 

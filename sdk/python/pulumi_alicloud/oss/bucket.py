@@ -653,10 +653,14 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_acl = alicloud.oss.Bucket("bucket-acl",
             acl="private",
-            bucket="bucket-170309-acl")
+            bucket=default.result.apply(lambda result: f"example-value-{result}"))
         ```
 
         Static Website
@@ -664,9 +668,13 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_website = alicloud.oss.Bucket("bucket-website",
-            bucket="bucket-170309-website",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
             website=alicloud.oss.BucketWebsiteArgs(
                 error_document="error.html",
                 index_document="index.html",
@@ -678,12 +686,16 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_target = alicloud.oss.Bucket("bucket-target",
-            bucket="bucket-170309-acl",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
             acl="public-read")
         bucket_logging = alicloud.oss.Bucket("bucket-logging",
-            bucket="bucket-170309-logging",
+            bucket=default.result.apply(lambda result: f"example-logging-{result}"),
             logging=alicloud.oss.BucketLoggingArgs(
                 target_bucket=bucket_target.id,
                 target_prefix="log/",
@@ -695,10 +707,14 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_referer = alicloud.oss.Bucket("bucket-referer",
             acl="private",
-            bucket="bucket-170309-referer",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
             referer_config=alicloud.oss.BucketRefererConfigArgs(
                 allow_empty=False,
                 referers=[
@@ -713,10 +729,71 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        bucket_lifecycle = alicloud.oss.Bucket("bucket-lifecycle",
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_lifecycle1 = alicloud.oss.Bucket("bucket-lifecycle1",
             acl="public-read",
-            bucket="bucket-170309-lifecycle",
+            bucket=default.result.apply(lambda result: f"example-lifecycle1-{result}"),
+            lifecycle_rules=[
+                alicloud.oss.BucketLifecycleRuleArgs(
+                    enabled=True,
+                    expirations=[alicloud.oss.BucketLifecycleRuleExpirationArgs(
+                        days=365,
+                    )],
+                    id="rule-days",
+                    prefix="path1/",
+                ),
+                alicloud.oss.BucketLifecycleRuleArgs(
+                    enabled=True,
+                    expirations=[alicloud.oss.BucketLifecycleRuleExpirationArgs(
+                        date="2018-01-12",
+                    )],
+                    id="rule-date",
+                    prefix="path2/",
+                ),
+            ])
+        bucket_lifecycle2 = alicloud.oss.Bucket("bucket-lifecycle2",
+            acl="public-read",
+            bucket=default.result.apply(lambda result: f"example-lifecycle2-{result}"),
+            lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
+                enabled=True,
+                id="rule-days-transition",
+                prefix="path3/",
+                transitions=[
+                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                        days=3,
+                        storage_class="IA",
+                    ),
+                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                        days=30,
+                        storage_class="Archive",
+                    ),
+                ],
+            )])
+        bucket_lifecycle3 = alicloud.oss.Bucket("bucket-lifecycle3",
+            acl="public-read",
+            bucket=default.result.apply(lambda result: f"example-lifecycle3-{result}"),
+            lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
+                enabled=True,
+                id="rule-days-transition",
+                prefix="path3/",
+                transitions=[
+                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                        created_before_date="2022-11-11",
+                        storage_class="IA",
+                    ),
+                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                        created_before_date="2021-11-11",
+                        storage_class="Archive",
+                    ),
+                ],
+            )])
+        bucket_lifecycle4 = alicloud.oss.Bucket("bucket-lifecycle4",
+            acl="public-read",
+            bucket=default.result.apply(lambda result: f"example-lifecycle4-{result}"),
             lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
                 abort_multipart_uploads=[alicloud.oss.BucketLifecycleRuleAbortMultipartUploadArgs(
                     days=128,
@@ -727,7 +804,7 @@ class Bucket(pulumi.CustomResource):
             )])
         bucket_versioning_lifecycle = alicloud.oss.Bucket("bucket-versioning-lifecycle",
             acl="private",
-            bucket="bucket-170309-lifecycle",
+            bucket=default.result.apply(lambda result: f"example-lifecycle5-{result}"),
             lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
                 enabled=True,
                 expirations=[alicloud.oss.BucketLifecycleRuleExpirationArgs(
@@ -759,10 +836,14 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_policy = alicloud.oss.Bucket("bucket-policy",
             acl="private",
-            bucket="bucket-170309-policy",
+            bucket=default.result.apply(lambda result: f"example-policy-{result}"),
             policy=\"\"\"  {"Statement":
               [{"Action":
                   ["oss:PutObject", "oss:GetObject", "oss:DeleteBucket"],
@@ -779,9 +860,13 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        bucket_storageclass = alicloud.oss.Bucket("bucket-storageclass",
-            bucket="bucket-170309-storageclass",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=default_random_integer.result.apply(lambda result: f"example-{result}"),
             storage_class="IA")
         ```
 
@@ -790,13 +875,27 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_sserule = alicloud.oss.Bucket("bucket-sserule",
+            bucket=default.result.apply(lambda result: f"terraform-example-{result}"),
             acl="private",
-            bucket="bucket-170309-sserule",
             server_side_encryption_rule=alicloud.oss.BucketServerSideEncryptionRuleArgs(
-                kms_master_key_id="your kms key id",
+                sse_algorithm="AES256",
+            ))
+        kms = alicloud.kms.Key("kms",
+            description="terraform-example",
+            pending_window_in_days=7,
+            status="Enabled")
+        bucket_kms = alicloud.oss.Bucket("bucket-kms",
+            bucket=default.result.apply(lambda result: f"terraform-example-kms-{result}"),
+            acl="private",
+            server_side_encryption_rule=alicloud.oss.BucketServerSideEncryptionRuleArgs(
                 sse_algorithm="KMS",
+                kms_master_key_id=kms.id,
             ))
         ```
 
@@ -805,10 +904,14 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_tags = alicloud.oss.Bucket("bucket-tags",
             acl="private",
-            bucket="bucket-170309-tags",
+            bucket=default.result.apply(lambda result: f"terraform-example-{result}"),
             tags={
                 "key1": "value1",
                 "key2": "value2",
@@ -820,10 +923,14 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_versioning = alicloud.oss.Bucket("bucket-versioning",
             acl="private",
-            bucket="bucket-170309-versioning",
+            bucket=default.result.apply(lambda result: f"terraform-example-{result}"),
             versioning=alicloud.oss.BucketVersioningArgs(
                 status="Enabled",
             ))
@@ -834,9 +941,13 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_redundancytype = alicloud.oss.Bucket("bucket-redundancytype",
-            bucket="bucket_name",
+            bucket=default.result.apply(lambda result: f"terraform-example-{result}"),
             redundancy_type="ZRS")
         ```
 
@@ -845,9 +956,13 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_accelerate = alicloud.oss.Bucket("bucket-accelerate",
-            bucket="bucket_name",
+            bucket=default.result.apply(lambda result: f"terraform-example-{result}"),
             transfer_acceleration=alicloud.oss.BucketTransferAccelerationArgs(
                 enabled=False,
             ))
@@ -897,10 +1012,14 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_acl = alicloud.oss.Bucket("bucket-acl",
             acl="private",
-            bucket="bucket-170309-acl")
+            bucket=default.result.apply(lambda result: f"example-value-{result}"))
         ```
 
         Static Website
@@ -908,9 +1027,13 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_website = alicloud.oss.Bucket("bucket-website",
-            bucket="bucket-170309-website",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
             website=alicloud.oss.BucketWebsiteArgs(
                 error_document="error.html",
                 index_document="index.html",
@@ -922,12 +1045,16 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_target = alicloud.oss.Bucket("bucket-target",
-            bucket="bucket-170309-acl",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
             acl="public-read")
         bucket_logging = alicloud.oss.Bucket("bucket-logging",
-            bucket="bucket-170309-logging",
+            bucket=default.result.apply(lambda result: f"example-logging-{result}"),
             logging=alicloud.oss.BucketLoggingArgs(
                 target_bucket=bucket_target.id,
                 target_prefix="log/",
@@ -939,10 +1066,14 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_referer = alicloud.oss.Bucket("bucket-referer",
             acl="private",
-            bucket="bucket-170309-referer",
+            bucket=default.result.apply(lambda result: f"example-value-{result}"),
             referer_config=alicloud.oss.BucketRefererConfigArgs(
                 allow_empty=False,
                 referers=[
@@ -957,10 +1088,71 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        bucket_lifecycle = alicloud.oss.Bucket("bucket-lifecycle",
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        bucket_lifecycle1 = alicloud.oss.Bucket("bucket-lifecycle1",
             acl="public-read",
-            bucket="bucket-170309-lifecycle",
+            bucket=default.result.apply(lambda result: f"example-lifecycle1-{result}"),
+            lifecycle_rules=[
+                alicloud.oss.BucketLifecycleRuleArgs(
+                    enabled=True,
+                    expirations=[alicloud.oss.BucketLifecycleRuleExpirationArgs(
+                        days=365,
+                    )],
+                    id="rule-days",
+                    prefix="path1/",
+                ),
+                alicloud.oss.BucketLifecycleRuleArgs(
+                    enabled=True,
+                    expirations=[alicloud.oss.BucketLifecycleRuleExpirationArgs(
+                        date="2018-01-12",
+                    )],
+                    id="rule-date",
+                    prefix="path2/",
+                ),
+            ])
+        bucket_lifecycle2 = alicloud.oss.Bucket("bucket-lifecycle2",
+            acl="public-read",
+            bucket=default.result.apply(lambda result: f"example-lifecycle2-{result}"),
+            lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
+                enabled=True,
+                id="rule-days-transition",
+                prefix="path3/",
+                transitions=[
+                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                        days=3,
+                        storage_class="IA",
+                    ),
+                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                        days=30,
+                        storage_class="Archive",
+                    ),
+                ],
+            )])
+        bucket_lifecycle3 = alicloud.oss.Bucket("bucket-lifecycle3",
+            acl="public-read",
+            bucket=default.result.apply(lambda result: f"example-lifecycle3-{result}"),
+            lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
+                enabled=True,
+                id="rule-days-transition",
+                prefix="path3/",
+                transitions=[
+                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                        created_before_date="2022-11-11",
+                        storage_class="IA",
+                    ),
+                    alicloud.oss.BucketLifecycleRuleTransitionArgs(
+                        created_before_date="2021-11-11",
+                        storage_class="Archive",
+                    ),
+                ],
+            )])
+        bucket_lifecycle4 = alicloud.oss.Bucket("bucket-lifecycle4",
+            acl="public-read",
+            bucket=default.result.apply(lambda result: f"example-lifecycle4-{result}"),
             lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
                 abort_multipart_uploads=[alicloud.oss.BucketLifecycleRuleAbortMultipartUploadArgs(
                     days=128,
@@ -971,7 +1163,7 @@ class Bucket(pulumi.CustomResource):
             )])
         bucket_versioning_lifecycle = alicloud.oss.Bucket("bucket-versioning-lifecycle",
             acl="private",
-            bucket="bucket-170309-lifecycle",
+            bucket=default.result.apply(lambda result: f"example-lifecycle5-{result}"),
             lifecycle_rules=[alicloud.oss.BucketLifecycleRuleArgs(
                 enabled=True,
                 expirations=[alicloud.oss.BucketLifecycleRuleExpirationArgs(
@@ -1003,10 +1195,14 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_policy = alicloud.oss.Bucket("bucket-policy",
             acl="private",
-            bucket="bucket-170309-policy",
+            bucket=default.result.apply(lambda result: f"example-policy-{result}"),
             policy=\"\"\"  {"Statement":
               [{"Action":
                   ["oss:PutObject", "oss:GetObject", "oss:DeleteBucket"],
@@ -1023,9 +1219,13 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        bucket_storageclass = alicloud.oss.Bucket("bucket-storageclass",
-            bucket="bucket-170309-storageclass",
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket",
+            bucket=default_random_integer.result.apply(lambda result: f"example-{result}"),
             storage_class="IA")
         ```
 
@@ -1034,13 +1234,27 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_sserule = alicloud.oss.Bucket("bucket-sserule",
+            bucket=default.result.apply(lambda result: f"terraform-example-{result}"),
             acl="private",
-            bucket="bucket-170309-sserule",
             server_side_encryption_rule=alicloud.oss.BucketServerSideEncryptionRuleArgs(
-                kms_master_key_id="your kms key id",
+                sse_algorithm="AES256",
+            ))
+        kms = alicloud.kms.Key("kms",
+            description="terraform-example",
+            pending_window_in_days=7,
+            status="Enabled")
+        bucket_kms = alicloud.oss.Bucket("bucket-kms",
+            bucket=default.result.apply(lambda result: f"terraform-example-kms-{result}"),
+            acl="private",
+            server_side_encryption_rule=alicloud.oss.BucketServerSideEncryptionRuleArgs(
                 sse_algorithm="KMS",
+                kms_master_key_id=kms.id,
             ))
         ```
 
@@ -1049,10 +1263,14 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_tags = alicloud.oss.Bucket("bucket-tags",
             acl="private",
-            bucket="bucket-170309-tags",
+            bucket=default.result.apply(lambda result: f"terraform-example-{result}"),
             tags={
                 "key1": "value1",
                 "key2": "value2",
@@ -1064,10 +1282,14 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_versioning = alicloud.oss.Bucket("bucket-versioning",
             acl="private",
-            bucket="bucket-170309-versioning",
+            bucket=default.result.apply(lambda result: f"terraform-example-{result}"),
             versioning=alicloud.oss.BucketVersioningArgs(
                 status="Enabled",
             ))
@@ -1078,9 +1300,13 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_redundancytype = alicloud.oss.Bucket("bucket-redundancytype",
-            bucket="bucket_name",
+            bucket=default.result.apply(lambda result: f"terraform-example-{result}"),
             redundancy_type="ZRS")
         ```
 
@@ -1089,9 +1315,13 @@ class Bucket(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         bucket_accelerate = alicloud.oss.Bucket("bucket-accelerate",
-            bucket="bucket_name",
+            bucket=default.result.apply(lambda result: f"terraform-example-{result}"),
             transfer_acceleration=alicloud.oss.BucketTransferAccelerationArgs(
                 enabled=False,
             ))

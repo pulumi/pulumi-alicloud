@@ -35,14 +35,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.rds.Instance;
  * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.RdsBackup;
+ * import com.pulumi.alicloud.rds.RdsBackupArgs;
  * import com.pulumi.alicloud.rds.RdsCloneDbInstance;
  * import com.pulumi.alicloud.rds.RdsCloneDbInstanceArgs;
  * import java.util.List;
@@ -58,14 +61,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testaccdbinstance&#34;);
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
- *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var exampleZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine(&#34;PostgreSQL&#34;)
+ *             .engineVersion(&#34;13.0&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .category(&#34;HighAvailability&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .build());
+ * 
+ *         final var exampleInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .engine(&#34;PostgreSQL&#34;)
+ *             .engineVersion(&#34;13.0&#34;)
+ *             .category(&#34;HighAvailability&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
  *             .build());
  * 
  *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
@@ -73,25 +87,30 @@ import javax.annotation.Nullable;
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.6&#34;)
- *             .instanceType(&#34;rds.mysql.s2.large&#34;)
- *             .instanceStorage(&#34;30&#34;)
+ *             .engine(&#34;PostgreSQL&#34;)
+ *             .engineVersion(&#34;13.0&#34;)
+ *             .instanceType(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .instanceChargeType(&#34;Postpaid&#34;)
- *             .instanceName(name)
+ *             .instanceName(&#34;terraform-example&#34;)
  *             .vswitchId(exampleSwitch.id())
  *             .monitoringPeriod(&#34;60&#34;)
  *             .build());
  * 
+ *         var exampleRdsBackup = new RdsBackup(&#34;exampleRdsBackup&#34;, RdsBackupArgs.builder()        
+ *             .dbInstanceId(exampleInstance.id())
+ *             .removeFromState(&#34;true&#34;)
+ *             .build());
+ * 
  *         var exampleRdsCloneDbInstance = new RdsCloneDbInstance(&#34;exampleRdsCloneDbInstance&#34;, RdsCloneDbInstanceArgs.builder()        
  *             .sourceDbInstanceId(exampleInstance.id())
- *             .dbInstanceStorageType(&#34;local_ssd&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .restoreTime(&#34;2021-11-24T11:25:00Z&#34;)
- *             .dbInstanceStorage(&#34;30&#34;)
+ *             .backupId(exampleRdsBackup.backupId())
  *             .build());
  * 
  *     }

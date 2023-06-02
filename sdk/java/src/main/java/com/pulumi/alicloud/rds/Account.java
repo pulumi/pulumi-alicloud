@@ -244,7 +244,7 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Privilege type of account.
+     * Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.
      * - Super: High privilege.
      * 
@@ -259,7 +259,7 @@ public class Account extends com.pulumi.resources.CustomResource {
     private Output<String> type;
 
     /**
-     * @return Privilege type of account.
+     * @return Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.
      * - Super: High privilege.
      * 

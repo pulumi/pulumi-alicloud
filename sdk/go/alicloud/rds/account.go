@@ -125,7 +125,7 @@ type Account struct {
 	Password            pulumi.StringOutput  `pulumi:"password"`
 	ResetPermissionFlag pulumi.BoolPtrOutput `pulumi:"resetPermissionFlag"`
 	Status              pulumi.StringOutput  `pulumi:"status"`
-	// Privilege type of account.
+	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
@@ -202,7 +202,7 @@ type accountState struct {
 	Password            *string `pulumi:"password"`
 	ResetPermissionFlag *bool   `pulumi:"resetPermissionFlag"`
 	Status              *string `pulumi:"status"`
-	// Privilege type of account.
+	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
@@ -240,7 +240,7 @@ type AccountState struct {
 	Password            pulumi.StringPtrInput
 	ResetPermissionFlag pulumi.BoolPtrInput
 	Status              pulumi.StringPtrInput
-	// Privilege type of account.
+	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
@@ -281,7 +281,7 @@ type accountArgs struct {
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password            *string `pulumi:"password"`
 	ResetPermissionFlag *bool   `pulumi:"resetPermissionFlag"`
-	// Privilege type of account.
+	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
@@ -319,7 +319,7 @@ type AccountArgs struct {
 	// Deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
 	Password            pulumi.StringPtrInput
 	ResetPermissionFlag pulumi.BoolPtrInput
-	// Privilege type of account.
+	// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 	// - Normal: Common privilege.
 	// - Super: High privilege.
 	//
@@ -482,7 +482,7 @@ func (o AccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Privilege type of account.
+// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
 // - Normal: Common privilege.
 // - Super: High privilege.
 //

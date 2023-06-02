@@ -28,38 +28,41 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "default-NODELETING",
-    ///     });
-    /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///     });
-    /// 
     ///     var defaultNodeClasses = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
     ///     {
-    ///         ZoneId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Vswitches[0]?.ZoneId),
-    ///         PayType = "PostPaid",
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
+    ///         PayType = "PostPaid",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId),
+    ///         VswitchName = "terraform-example",
     ///     });
     /// 
     ///     var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new()
     ///     {
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
-    ///         PayType = "PostPaid",
     ///         DbNodeClass = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass),
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         Description = "example_value",
+    ///         PayType = "PostPaid",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var defaultGlobalDatabaseNetwork = new AliCloud.PolarDB.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", new()
     ///     {
     ///         DbClusterId = defaultCluster.Id,
-    ///         Description = "example_value",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     /// });

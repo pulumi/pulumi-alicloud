@@ -115,7 +115,7 @@ type Listener struct {
 	//
 	// > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
-	// The proxy protocol of the listener. Default value is `false`. Valid value:
+	// The proxy protocol of the listener. Default value is `false`. Valid values:
 	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
 	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol pulumi.BoolPtrOutput `pulumi:"proxyProtocol"`
@@ -184,7 +184,7 @@ type listenerState struct {
 	//
 	// > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
 	Protocol *string `pulumi:"protocol"`
-	// The proxy protocol of the listener. Default value is `false`. Valid value:
+	// The proxy protocol of the listener. Default value is `false`. Valid values:
 	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
 	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
@@ -219,7 +219,7 @@ type ListenerState struct {
 	//
 	// > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
 	Protocol pulumi.StringPtrInput
-	// The proxy protocol of the listener. Default value is `false`. Valid value:
+	// The proxy protocol of the listener. Default value is `false`. Valid values:
 	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
 	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol pulumi.BoolPtrInput
@@ -258,7 +258,7 @@ type listenerArgs struct {
 	//
 	// > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
 	Protocol *string `pulumi:"protocol"`
-	// The proxy protocol of the listener. Default value is `false`. Valid value:
+	// The proxy protocol of the listener. Default value is `false`. Valid values:
 	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
 	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
@@ -292,7 +292,7 @@ type ListenerArgs struct {
 	//
 	// > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
 	Protocol pulumi.StringPtrInput
-	// The proxy protocol of the listener. Default value is `false`. Valid value:
+	// The proxy protocol of the listener. Default value is `false`. Valid values:
 	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
 	// `false`: keep client source IP function is not turned on.
 	ProxyProtocol pulumi.BoolPtrInput
@@ -435,7 +435,7 @@ func (o ListenerOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// The proxy protocol of the listener. Default value is `false`. Valid value:
+// The proxy protocol of the listener. Default value is `false`. Valid values:
 // `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
 // `false`: keep client source IP function is not turned on.
 func (o ListenerOutput) ProxyProtocol() pulumi.BoolPtrOutput {

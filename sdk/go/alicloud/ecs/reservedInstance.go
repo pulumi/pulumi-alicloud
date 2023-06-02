@@ -29,15 +29,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewReservedInstance(ctx, "default", &ecs.ReservedInstanceArgs{
-//				InstanceType:   pulumi.String("ecs.g6.large"),
-//				InstanceAmount: pulumi.Int(1),
-//				PeriodUnit:     pulumi.String("Year"),
-//				OfferingType:   pulumi.String("All Upfront"),
-//				Description:    pulumi.String("ReservedInstance"),
-//				ZoneId:         pulumi.String("cn-hangzhou-h"),
-//				Scope:          pulumi.String("Zone"),
-//				Period:         pulumi.Int(1),
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				InstanceTypeFamily: pulumi.StringRef("ecs.g6"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewReservedInstance(ctx, "defaultReservedInstance", &ecs.ReservedInstanceArgs{
+//				InstanceType:         *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				InstanceAmount:       pulumi.Int(1),
+//				PeriodUnit:           pulumi.String("Month"),
+//				OfferingType:         pulumi.String("All Upfront"),
+//				ReservedInstanceName: pulumi.String("terraform-example"),
+//				Description:          pulumi.String("ReservedInstance"),
+//				ZoneId:               *pulumi.String(defaultInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+//				Scope:                pulumi.String("Zone"),
 //			})
 //			if err != nil {
 //				return err

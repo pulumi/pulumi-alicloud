@@ -128,7 +128,7 @@ def get_inter_region_traffic_qos_queues(ids: Optional[Sequence[str]] = None,
     import pulumi_alicloud as alicloud
 
     default = alicloud.cen.get_inter_region_traffic_qos_queues(ids=[alicloud_cen_inter_region_traffic_qos_queue["default"]["id"]],
-        name_regex=alicloud_cen_inter_region_traffic_qos_queue["default"]["name"],
+        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         traffic_qos_policy_id="qos-xxxxxxx")
     pulumi.export("alicloudCenInterRegionTrafficQosQueueExampleId", default.queues[0].id)
     ```
@@ -175,7 +175,7 @@ def get_inter_region_traffic_qos_queues_output(ids: Optional[pulumi.Input[Option
     import pulumi_alicloud as alicloud
 
     default = alicloud.cen.get_inter_region_traffic_qos_queues(ids=[alicloud_cen_inter_region_traffic_qos_queue["default"]["id"]],
-        name_regex=alicloud_cen_inter_region_traffic_qos_queue["default"]["name"],
+        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
         traffic_qos_policy_id="qos-xxxxxxx")
     pulumi.export("alicloudCenInterRegionTrafficQosQueueExampleId", default.queues[0].id)
     ```

@@ -30,6 +30,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.vpn.Gateway;
  * import com.pulumi.alicloud.vpn.GatewayArgs;
  * import com.pulumi.alicloud.vpn.CustomerGateway;
@@ -51,17 +57,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var fooZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .build());
+ * 
+ *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .vpcId(fooNetwork.id())
+ *             .zoneId(fooZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
  *         var fooGateway = new Gateway(&#34;fooGateway&#34;, GatewayArgs.builder()        
- *             .vpcId(&#34;vpc-fake-id&#34;)
+ *             .vpcId(fooNetwork.id())
  *             .bandwidth(&#34;10&#34;)
  *             .enableSsl(true)
- *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .instanceChargeType(&#34;PrePaid&#34;)
  *             .description(&#34;test_create_description&#34;)
+ *             .vswitchId(fooSwitch.id())
  *             .build());
  * 
  *         var fooCustomerGateway = new CustomerGateway(&#34;fooCustomerGateway&#34;, CustomerGatewayArgs.builder()        
- *             .ipAddress(&#34;42.104.22.228&#34;)
- *             .description(&#34;testAccVpnCgwDesc&#34;)
+ *             .ipAddress(&#34;42.104.22.210&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var fooConnection = new Connection(&#34;fooConnection&#34;, ConnectionArgs.builder()        
@@ -77,7 +100,7 @@ import javax.annotation.Nullable;
  *             .ikeConfig(ConnectionIkeConfigArgs.builder()
  *                 .ikeAuthAlg(&#34;md5&#34;)
  *                 .ikeEncAlg(&#34;des&#34;)
- *                 .ikeVersion(&#34;ikev1&#34;)
+ *                 .ikeVersion(&#34;ikev2&#34;)
  *                 .ikeMode(&#34;main&#34;)
  *                 .ikeLifetime(86400)
  *                 .psk(&#34;tf-testvpn2&#34;)

@@ -63,6 +63,21 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * 
+     */
+    @Import(name="bandwidthBillingType")
+    private @Nullable Output<String> bandwidthBillingType;
+
+    /**
+     * @return The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> bandwidthBillingType() {
+        return Optional.ofNullable(this.bandwidthBillingType);
+    }
+
+    /**
      * Descriptive information of the global acceleration instance.
      * 
      */
@@ -174,6 +189,7 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
         this.acceleratorName = $.acceleratorName;
         this.autoRenewDuration = $.autoRenewDuration;
         this.autoUseCoupon = $.autoUseCoupon;
+        this.bandwidthBillingType = $.bandwidthBillingType;
         this.description = $.description;
         this.duration = $.duration;
         this.pricingCycle = $.pricingCycle;
@@ -261,6 +277,27 @@ public final class AcceleratorState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoUseCoupon(Boolean autoUseCoupon) {
             return autoUseCoupon(Output.of(autoUseCoupon));
+        }
+
+        /**
+         * @param bandwidthBillingType The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthBillingType(@Nullable Output<String> bandwidthBillingType) {
+            $.bandwidthBillingType = bandwidthBillingType;
+            return this;
+        }
+
+        /**
+         * @param bandwidthBillingType The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidthBillingType(String bandwidthBillingType) {
+            return bandwidthBillingType(Output.of(bandwidthBillingType));
         }
 
         /**

@@ -64,7 +64,8 @@ type Instance struct {
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrOutput `pulumi:"instanceSpec"`
-	// The ip whitelist.
+	// The ip whitelist. See block `ipWhitelist`.
+	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 	IpWhitelists InstanceIpWhitelistArrayOutput `pulumi:"ipWhitelists"`
 	// The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
 	MaintainEndTime pulumi.StringOutput `pulumi:"maintainEndTime"`
@@ -188,7 +189,8 @@ type instanceState struct {
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec *string `pulumi:"instanceSpec"`
-	// The ip whitelist.
+	// The ip whitelist. See block `ipWhitelist`.
+	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 	IpWhitelists []InstanceIpWhitelist `pulumi:"ipWhitelists"`
 	// The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
@@ -272,7 +274,8 @@ type InstanceState struct {
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrInput
-	// The ip whitelist.
+	// The ip whitelist. See block `ipWhitelist`.
+	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 	IpWhitelists InstanceIpWhitelistArrayInput
 	// The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
 	MaintainEndTime pulumi.StringPtrInput
@@ -358,7 +361,8 @@ type instanceArgs struct {
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec *string `pulumi:"instanceSpec"`
-	// The ip whitelist.
+	// The ip whitelist. See block `ipWhitelist`.
+	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 	IpWhitelists []InstanceIpWhitelist `pulumi:"ipWhitelists"`
 	// The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
 	MaintainEndTime *string `pulumi:"maintainEndTime"`
@@ -437,7 +441,8 @@ type InstanceArgs struct {
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
 	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrInput
-	// The ip whitelist.
+	// The ip whitelist. See block `ipWhitelist`.
+	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 	IpWhitelists InstanceIpWhitelistArrayInput
 	// The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
 	MaintainEndTime pulumi.StringPtrInput
@@ -642,7 +647,8 @@ func (o InstanceOutput) InstanceSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceSpec }).(pulumi.StringPtrOutput)
 }
 
-// The ip whitelist.
+// The ip whitelist. See block `ipWhitelist`.
+// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
 func (o InstanceOutput) IpWhitelists() InstanceIpWhitelistArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceIpWhitelistArrayOutput { return v.IpWhitelists }).(InstanceIpWhitelistArrayOutput)
 }

@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CDN Accelerated Domain resource. This resource is based on CDN's new version OpenAPI.
+ * Provides a CDN Domain resource. CDN domain name.
  *
- * For information about Cdn Domain New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/91176.html).
+ * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
  *
  * > **NOTE:** Available in v1.34.0+.
  *
@@ -21,27 +21,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a new Domain.
- * const domain = new alicloud.cdn.DomainNew("domain", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.cdn.DomainNew("default", {
+ *     scope: "domestic",
+ *     domainName: name,
  *     cdnType: "web",
- *     domainName: "terraform.test.com",
- *     scope: "overseas",
  *     sources: [{
- *         content: "1.1.1.1",
- *         port: 80,
- *         priority: 20,
  *         type: "ipaddr",
- *         weight: 10,
+ *         content: "1.1.1.1",
+ *         priority: 20,
+ *         port: 80,
+ *         weight: 15,
  *     }],
  * });
  * ```
  *
  * ## Import
  *
- * CDN domain can be imported using the id, e.g.
+ * CDN Domain can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:cdn/domainNew:DomainNew example xxxx.com
+ *  $ pulumi import alicloud:cdn/domainNew:DomainNew example <id>
  * ```
  */
 export class DomainNew extends pulumi.CustomResource {
@@ -77,11 +78,15 @@ export class DomainNew extends pulumi.CustomResource {
      */
     public readonly cdnType!: pulumi.Output<string>;
     /**
-     * Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+     * Certificate configuration. See the following `Block CertificateConfig`.
      */
     public readonly certificateConfig!: pulumi.Output<outputs.cdn.DomainNewCertificateConfig>;
     /**
-     * (Available in v1.90.0+) The CNAME of the CDN domain.
+     * Health test URL.
+     */
+    public readonly checkUrl!: pulumi.Output<string | undefined>;
+    /**
+     * The CNAME domain name corresponding to the accelerated domain name.
      */
     public /*out*/ readonly cname!: pulumi.Output<string>;
     /**
@@ -89,19 +94,27 @@ export class DomainNew extends pulumi.CustomResource {
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
-     * Resource group ID.
+     * The ID of the resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+     * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+     * - **domestic**: Mainland China only.
+     * - **overseas**: Global (excluding Mainland China).
+     * - **global**: global.
+     * The default value is **domestic**.
      */
     public readonly scope!: pulumi.Output<string>;
     /**
-     * The source address list of the accelerated domain. Defaults to null. See Block Sources.
+     * The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
      */
     public readonly sources!: pulumi.Output<outputs.cdn.DomainNewSource[]>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The status of the resource.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The tag of the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
@@ -120,11 +133,13 @@ export class DomainNew extends pulumi.CustomResource {
             const state = argsOrState as DomainNewState | undefined;
             resourceInputs["cdnType"] = state ? state.cdnType : undefined;
             resourceInputs["certificateConfig"] = state ? state.certificateConfig : undefined;
+            resourceInputs["checkUrl"] = state ? state.checkUrl : undefined;
             resourceInputs["cname"] = state ? state.cname : undefined;
             resourceInputs["domainName"] = state ? state.domainName : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["sources"] = state ? state.sources : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DomainNewArgs | undefined;
@@ -139,12 +154,14 @@ export class DomainNew extends pulumi.CustomResource {
             }
             resourceInputs["cdnType"] = args ? args.cdnType : undefined;
             resourceInputs["certificateConfig"] = args ? args.certificateConfig : undefined;
+            resourceInputs["checkUrl"] = args ? args.checkUrl : undefined;
             resourceInputs["domainName"] = args ? args.domainName : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["sources"] = args ? args.sources : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["cname"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DomainNew.__pulumiType, name, resourceInputs, opts);
@@ -160,11 +177,15 @@ export interface DomainNewState {
      */
     cdnType?: pulumi.Input<string>;
     /**
-     * Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+     * Certificate configuration. See the following `Block CertificateConfig`.
      */
     certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
     /**
-     * (Available in v1.90.0+) The CNAME of the CDN domain.
+     * Health test URL.
+     */
+    checkUrl?: pulumi.Input<string>;
+    /**
+     * The CNAME domain name corresponding to the accelerated domain name.
      */
     cname?: pulumi.Input<string>;
     /**
@@ -172,19 +193,27 @@ export interface DomainNewState {
      */
     domainName?: pulumi.Input<string>;
     /**
-     * Resource group ID.
+     * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+     * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+     * - **domestic**: Mainland China only.
+     * - **overseas**: Global (excluding Mainland China).
+     * - **global**: global.
+     * The default value is **domestic**.
      */
     scope?: pulumi.Input<string>;
     /**
-     * The source address list of the accelerated domain. Defaults to null. See Block Sources.
+     * The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
      */
     sources?: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The status of the resource.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }
@@ -198,27 +227,35 @@ export interface DomainNewArgs {
      */
     cdnType: pulumi.Input<string>;
     /**
-     * Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+     * Certificate configuration. See the following `Block CertificateConfig`.
      */
     certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
+    /**
+     * Health test URL.
+     */
+    checkUrl?: pulumi.Input<string>;
     /**
      * Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      */
     domainName: pulumi.Input<string>;
     /**
-     * Resource group ID.
+     * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+     * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+     * - **domestic**: Mainland China only.
+     * - **overseas**: Global (excluding Mainland China).
+     * - **global**: global.
+     * The default value is **domestic**.
      */
     scope?: pulumi.Input<string>;
     /**
-     * The source address list of the accelerated domain. Defaults to null. See Block Sources.
+     * The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
      */
     sources: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

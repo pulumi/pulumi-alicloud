@@ -785,18 +785,27 @@ func (o InstancePgHbaConfArrayOutput) Index(i pulumi.IntInput) InstancePgHbaConf
 }
 
 type InstanceServerlessConfig struct {
-	// Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
+	// Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
 	// - true: enables the feature.
 	// - false: disables the feature. This is the default value.
-	AutoPause bool `pulumi:"autoPause"`
-	// The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `minCapacity` parameter.
+	// > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+	AutoPause *bool `pulumi:"autoPause"`
+	// The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
+	// - MySQL: 1~8
+	// - SQLServer: 2~8
+	// - PostgreSQL: 1~12
 	MaxCapacity float64 `pulumi:"maxCapacity"`
-	// The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `maxCapacity` parameter.
+	// The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
+	// - MySQL: 0.5~8
+	// - SQLServer: 2~8 \(Supports integers only\).
+	// - PostgreSQL: 0.5~12
 	MinCapacity float64 `pulumi:"minCapacity"`
-	// Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
+	// Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
 	// - true: enables the feature.
 	// - false: disables the feature. This is the default value.
-	SwitchForce bool `pulumi:"switchForce"`
+	// > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+	// > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
+	SwitchForce *bool `pulumi:"switchForce"`
 }
 
 // InstanceServerlessConfigInput is an input type that accepts InstanceServerlessConfigArgs and InstanceServerlessConfigOutput values.
@@ -811,18 +820,27 @@ type InstanceServerlessConfigInput interface {
 }
 
 type InstanceServerlessConfigArgs struct {
-	// Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
+	// Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
 	// - true: enables the feature.
 	// - false: disables the feature. This is the default value.
-	AutoPause pulumi.BoolInput `pulumi:"autoPause"`
-	// The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `minCapacity` parameter.
+	// > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+	AutoPause pulumi.BoolPtrInput `pulumi:"autoPause"`
+	// The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
+	// - MySQL: 1~8
+	// - SQLServer: 2~8
+	// - PostgreSQL: 1~12
 	MaxCapacity pulumi.Float64Input `pulumi:"maxCapacity"`
-	// The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `maxCapacity` parameter.
+	// The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
+	// - MySQL: 0.5~8
+	// - SQLServer: 2~8 \(Supports integers only\).
+	// - PostgreSQL: 0.5~12
 	MinCapacity pulumi.Float64Input `pulumi:"minCapacity"`
-	// Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
+	// Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
 	// - true: enables the feature.
 	// - false: disables the feature. This is the default value.
-	SwitchForce pulumi.BoolInput `pulumi:"switchForce"`
+	// > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+	// > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
+	SwitchForce pulumi.BoolPtrInput `pulumi:"switchForce"`
 }
 
 func (InstanceServerlessConfigArgs) ElementType() reflect.Type {
@@ -876,28 +894,37 @@ func (o InstanceServerlessConfigOutput) ToInstanceServerlessConfigOutputWithCont
 	return o
 }
 
-// Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
+// Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
 // - true: enables the feature.
 // - false: disables the feature. This is the default value.
-func (o InstanceServerlessConfigOutput) AutoPause() pulumi.BoolOutput {
-	return o.ApplyT(func(v InstanceServerlessConfig) bool { return v.AutoPause }).(pulumi.BoolOutput)
+// > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+func (o InstanceServerlessConfigOutput) AutoPause() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceServerlessConfig) *bool { return v.AutoPause }).(pulumi.BoolPtrOutput)
 }
 
-// The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `minCapacity` parameter.
+// The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
+// - MySQL: 1~8
+// - SQLServer: 2~8
+// - PostgreSQL: 1~12
 func (o InstanceServerlessConfigOutput) MaxCapacity() pulumi.Float64Output {
 	return o.ApplyT(func(v InstanceServerlessConfig) float64 { return v.MaxCapacity }).(pulumi.Float64Output)
 }
 
-// The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `maxCapacity` parameter.
+// The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
+// - MySQL: 0.5~8
+// - SQLServer: 2~8 \(Supports integers only\).
+// - PostgreSQL: 0.5~12
 func (o InstanceServerlessConfigOutput) MinCapacity() pulumi.Float64Output {
 	return o.ApplyT(func(v InstanceServerlessConfig) float64 { return v.MinCapacity }).(pulumi.Float64Output)
 }
 
-// Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
+// Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
 // - true: enables the feature.
 // - false: disables the feature. This is the default value.
-func (o InstanceServerlessConfigOutput) SwitchForce() pulumi.BoolOutput {
-	return o.ApplyT(func(v InstanceServerlessConfig) bool { return v.SwitchForce }).(pulumi.BoolOutput)
+// > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+// > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
+func (o InstanceServerlessConfigOutput) SwitchForce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceServerlessConfig) *bool { return v.SwitchForce }).(pulumi.BoolPtrOutput)
 }
 
 type InstanceServerlessConfigArrayOutput struct{ *pulumi.OutputState }

@@ -129,22 +129,27 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-        default_node_classes = alicloud.polardb.get_node_classes(zone_id=default_switches.vswitches[0].zone_id,
-            pay_type="PostPaid",
-            db_type="MySQL",
-            db_version="8.0")
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
         default_cluster = alicloud.polardb.Cluster("defaultCluster",
             db_type="MySQL",
             db_version="8.0",
-            pay_type="PostPaid",
             db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
-            vswitch_id=default_switches.ids[0],
-            description="example_value")
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example")
         default_global_database_network = alicloud.polardb.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork",
             db_cluster_id=default_cluster.id,
-            description="example_value")
+            description="terraform-example")
         ```
 
         ## Import
@@ -181,22 +186,27 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-        default_node_classes = alicloud.polardb.get_node_classes(zone_id=default_switches.vswitches[0].zone_id,
-            pay_type="PostPaid",
-            db_type="MySQL",
-            db_version="8.0")
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
         default_cluster = alicloud.polardb.Cluster("defaultCluster",
             db_type="MySQL",
             db_version="8.0",
-            pay_type="PostPaid",
             db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
-            vswitch_id=default_switches.ids[0],
-            description="example_value")
+            pay_type="PostPaid",
+            vswitch_id=default_switch.id,
+            description="terraform-example")
         default_global_database_network = alicloud.polardb.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork",
             db_cluster_id=default_cluster.id,
-            description="example_value")
+            description="terraform-example")
         ```
 
         ## Import

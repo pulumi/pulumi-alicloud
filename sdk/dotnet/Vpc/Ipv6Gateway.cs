@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Ipv6 Gateway resource.
+    /// Provides a Vpc Ipv6 Gateway resource. Gateway Based on Internet Protocol Version 6.
     /// 
-    /// For information about VPC Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/doc-detail/102214.htm).
+    /// For information about Vpc Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv6gateway).
     /// 
     /// &gt; **NOTE:** Available in v1.142.0+.
     /// 
@@ -28,16 +28,32 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Vpc.Network("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testacc-example";
+    ///     var defaultVpc = new AliCloud.Vpc.Network("defaultVpc", new()
     ///     {
-    ///         VpcName = "example_value",
+    ///         Description = "tf-testacc",
     ///         EnableIpv6 = true,
     ///     });
     /// 
-    ///     var example = new AliCloud.Vpc.Ipv6Gateway("example", new()
+    ///     var defaultRg = new AliCloud.ResourceManager.ResourceGroup("defaultRg", new()
     ///     {
-    ///         Ipv6GatewayName = "example_value",
-    ///         VpcId = @default.Id,
+    ///         DisplayName = "tf-testacc-ipv6gateway503",
+    ///         ResourceGroupName = $"{name}1",
+    ///     });
+    /// 
+    ///     var changeRg = new AliCloud.ResourceManager.ResourceGroup("changeRg", new()
+    ///     {
+    ///         DisplayName = "tf-testacc-ipv6gateway311",
+    ///         ResourceGroupName = $"{name}2",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Vpc.Ipv6Gateway("default", new()
+    ///     {
+    ///         Description = "test",
+    ///         Ipv6GatewayName = name,
+    ///         VpcId = defaultVpc.Id,
+    ///         ResourceGroupId = defaultRg.Id,
     ///     });
     /// 
     /// });
@@ -45,7 +61,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Ipv6 Gateway can be imported using the id, e.g.
+    /// Vpc Ipv6 Gateway can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example &lt;id&gt;
@@ -55,28 +71,70 @@ namespace Pulumi.AliCloud.Vpc
     public partial class Ipv6Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+        /// The status of the IPv6 gateway.
+        /// </summary>
+        [Output("businessStatus")]
+        public Output<string> BusinessStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the resource.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        /// The expiration time of IPv6 gateway.
+        /// </summary>
+        [Output("expiredTime")]
+        public Output<string> ExpiredTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The charge type of IPv6 gateway.
+        /// </summary>
+        [Output("instanceChargeType")]
+        public Output<string> InstanceChargeType { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource primary key attribute field.
+        /// </summary>
+        [Output("ipv6GatewayId")]
+        public Output<string> Ipv6GatewayId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         /// </summary>
         [Output("ipv6GatewayName")]
         public Output<string?> Ipv6GatewayName { get; private set; } = null!;
 
         /// <summary>
-        /// The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+        /// The ID of the resource group to which the instance belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         /// </summary>
         [Output("spec")]
         public Output<string> Spec { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        /// The status of the resource. Valid values: Available, Pending and Deleting.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tags for the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
@@ -131,22 +189,40 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class Ipv6GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+        /// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        /// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         /// </summary>
         [Input("ipv6GatewayName")]
         public Input<string>? Ipv6GatewayName { get; set; }
 
         /// <summary>
-        /// The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+        /// The ID of the resource group to which the instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         /// </summary>
         [Input("spec")]
         public Input<string>? Spec { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags for the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
@@ -163,28 +239,76 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class Ipv6GatewayState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+        /// The status of the IPv6 gateway.
+        /// </summary>
+        [Input("businessStatus")]
+        public Input<string>? BusinessStatus { get; set; }
+
+        /// <summary>
+        /// The creation time of the resource.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        /// The expiration time of IPv6 gateway.
+        /// </summary>
+        [Input("expiredTime")]
+        public Input<string>? ExpiredTime { get; set; }
+
+        /// <summary>
+        /// The charge type of IPv6 gateway.
+        /// </summary>
+        [Input("instanceChargeType")]
+        public Input<string>? InstanceChargeType { get; set; }
+
+        /// <summary>
+        /// Resource primary key attribute field.
+        /// </summary>
+        [Input("ipv6GatewayId")]
+        public Input<string>? Ipv6GatewayId { get; set; }
+
+        /// <summary>
+        /// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         /// </summary>
         [Input("ipv6GatewayName")]
         public Input<string>? Ipv6GatewayName { get; set; }
 
         /// <summary>
-        /// The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+        /// The ID of the resource group to which the instance belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         /// </summary>
         [Input("spec")]
         public Input<string>? Spec { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        /// The status of the resource. Valid values: Available, Pending and Deleting.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags for the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.

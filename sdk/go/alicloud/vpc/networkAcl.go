@@ -11,41 +11,48 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a network acl resource to add network acls.
+// Provides a VPC Network Acl resource.
+// > **NOTE:** Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
 //
-// > **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
+// For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
+//
+// > **NOTE:** Available in v1.43.0+.
 //
 // ## Import
 //
-// The network acl can be imported using the id, e.g.
+// VPC Network Acl can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:vpc/networkAcl:NetworkAcl default nacl-abc123456
+//	$ pulumi import alicloud:vpc/networkAcl:NetworkAcl example <id>
 //
 // ```
 type NetworkAcl struct {
 	pulumi.CustomResourceState
 
-	// The description of the network acl instance.
+	// The creation time of the resource.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+	// Out direction rule information. See the following `Block EgressAclEntries`.
 	EgressAclEntries NetworkAclEgressAclEntryArrayOutput `pulumi:"egressAclEntries"`
-	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+	// Inward direction rule information. See the following `Block IngressAclEntries`.
 	IngressAclEntries NetworkAclIngressAclEntryArrayOutput `pulumi:"ingressAclEntries"`
-	// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
+	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the network acl.
+	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName pulumi.StringOutput `pulumi:"networkAclName"`
-	// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
-	//
-	// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
+	// The associated resource. See the following `Block Resources`.
 	Resources NetworkAclResourceArrayOutput `pulumi:"resources"`
-	// (Available in 1.122.0+) The status of the network acl.
+	// The state of the network ACL.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The vpcId of the network acl, the field can't be changed.
+	// The tags of this resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The ID of the associated VPC.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -81,48 +88,56 @@ func GetNetworkAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkAcl resources.
 type networkAclState struct {
-	// The description of the network acl instance.
+	// The creation time of the resource.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
-	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+	// Out direction rule information. See the following `Block EgressAclEntries`.
 	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
-	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+	// Inward direction rule information. See the following `Block IngressAclEntries`.
 	IngressAclEntries []NetworkAclIngressAclEntry `pulumi:"ingressAclEntries"`
-	// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
+	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	Name *string `pulumi:"name"`
-	// The name of the network acl.
+	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName *string `pulumi:"networkAclName"`
-	// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
-	//
-	// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
+	// The associated resource. See the following `Block Resources`.
 	Resources []NetworkAclResource `pulumi:"resources"`
-	// (Available in 1.122.0+) The status of the network acl.
+	// The state of the network ACL.
 	Status *string `pulumi:"status"`
-	// The vpcId of the network acl, the field can't be changed.
+	// The tags of this resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The ID of the associated VPC.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type NetworkAclState struct {
-	// The description of the network acl instance.
+	// The creation time of the resource.
+	CreateTime pulumi.StringPtrInput
+	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput
-	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+	// Out direction rule information. See the following `Block EgressAclEntries`.
 	EgressAclEntries NetworkAclEgressAclEntryArrayInput
-	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+	// Inward direction rule information. See the following `Block IngressAclEntries`.
 	IngressAclEntries NetworkAclIngressAclEntryArrayInput
-	// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
+	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	Name pulumi.StringPtrInput
-	// The name of the network acl.
+	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName pulumi.StringPtrInput
-	// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
-	//
-	// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
+	// The associated resource. See the following `Block Resources`.
 	Resources NetworkAclResourceArrayInput
-	// (Available in 1.122.0+) The status of the network acl.
+	// The state of the network ACL.
 	Status pulumi.StringPtrInput
-	// The vpcId of the network acl, the field can't be changed.
+	// The tags of this resource.
+	Tags pulumi.MapInput
+	// The ID of the associated VPC.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcId pulumi.StringPtrInput
 }
 
@@ -131,45 +146,49 @@ func (NetworkAclState) ElementType() reflect.Type {
 }
 
 type networkAclArgs struct {
-	// The description of the network acl instance.
+	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
-	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+	// Out direction rule information. See the following `Block EgressAclEntries`.
 	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
-	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+	// Inward direction rule information. See the following `Block IngressAclEntries`.
 	IngressAclEntries []NetworkAclIngressAclEntry `pulumi:"ingressAclEntries"`
-	// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
+	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	Name *string `pulumi:"name"`
-	// The name of the network acl.
+	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName *string `pulumi:"networkAclName"`
-	// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
-	//
-	// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
+	// The associated resource. See the following `Block Resources`.
 	Resources []NetworkAclResource `pulumi:"resources"`
-	// The vpcId of the network acl, the field can't be changed.
+	// The tags of this resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The ID of the associated VPC.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcId string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a NetworkAcl resource.
 type NetworkAclArgs struct {
-	// The description of the network acl instance.
+	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput
-	// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+	// Out direction rule information. See the following `Block EgressAclEntries`.
 	EgressAclEntries NetworkAclEgressAclEntryArrayInput
-	// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+	// Inward direction rule information. See the following `Block IngressAclEntries`.
 	IngressAclEntries NetworkAclIngressAclEntryArrayInput
-	// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
+	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	Name pulumi.StringPtrInput
-	// The name of the network acl.
+	// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclName pulumi.StringPtrInput
-	// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
-	//
-	// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
+	// The associated resource. See the following `Block Resources`.
 	Resources NetworkAclResourceArrayInput
-	// The vpcId of the network acl, the field can't be changed.
+	// The tags of this resource.
+	Tags pulumi.MapInput
+	// The ID of the associated VPC.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	VpcId pulumi.StringInput
 }
 
@@ -260,46 +279,56 @@ func (o NetworkAclOutput) ToNetworkAclOutputWithContext(ctx context.Context) Net
 	return o
 }
 
-// The description of the network acl instance.
+// The creation time of the resource.
+func (o NetworkAclOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 func (o NetworkAclOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egressAclEntries`.
+// Out direction rule information. See the following `Block EgressAclEntries`.
 func (o NetworkAclOutput) EgressAclEntries() NetworkAclEgressAclEntryArrayOutput {
 	return o.ApplyT(func(v *NetworkAcl) NetworkAclEgressAclEntryArrayOutput { return v.EgressAclEntries }).(NetworkAclEgressAclEntryArrayOutput)
 }
 
-// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingressAclEntries`.
+// Inward direction rule information. See the following `Block IngressAclEntries`.
 func (o NetworkAclOutput) IngressAclEntries() NetworkAclIngressAclEntryArrayOutput {
 	return o.ApplyT(func(v *NetworkAcl) NetworkAclIngressAclEntryArrayOutput { return v.IngressAclEntries }).(NetworkAclIngressAclEntryArrayOutput)
 }
 
-// Field `name` has been deprecated from provider version 1.122.0. New field `networkAclName` instead.
+// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 //
-// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead
+// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 func (o NetworkAclOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the network acl.
+// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 func (o NetworkAclOutput) NetworkAclName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.NetworkAclName }).(pulumi.StringOutput)
 }
 
-// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `vpc.VpcNetworkAclAttachment`."
-//
-// Deprecated: Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.
+// The associated resource. See the following `Block Resources`.
 func (o NetworkAclOutput) Resources() NetworkAclResourceArrayOutput {
 	return o.ApplyT(func(v *NetworkAcl) NetworkAclResourceArrayOutput { return v.Resources }).(NetworkAclResourceArrayOutput)
 }
 
-// (Available in 1.122.0+) The status of the network acl.
+// The state of the network ACL.
 func (o NetworkAclOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The vpcId of the network acl, the field can't be changed.
+// The tags of this resource.
+func (o NetworkAclOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *NetworkAcl) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The ID of the associated VPC.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o NetworkAclOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkAcl) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

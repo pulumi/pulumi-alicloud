@@ -17,9 +17,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
-     * * Local: an ApsaraDB for Redis instance with a local disk.
-     * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+     * * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      * 
      */
     @Import(name="engine")
@@ -27,9 +25,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-     * * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
-     * * Local: an ApsaraDB for Redis instance with a local disk.
-     * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+     * * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
      * 
      */
     public Optional<String> engine() {
@@ -118,9 +114,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param engine Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
-         * * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values:
-         * * Local: an ApsaraDB for Redis instance with a local disk.
-         * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+         * * product_type - (Optional, Available in v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
          * 
          * @return builder
          * 

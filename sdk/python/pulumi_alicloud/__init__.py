@@ -73,6 +73,8 @@ if typing.TYPE_CHECKING:
     cloudstoragegateway = __cloudstoragegateway
     import pulumi_alicloud.cms as __cms
     cms = __cms
+    import pulumi_alicloud.compute as __compute
+    compute = __compute
     import pulumi_alicloud.config as __config
     config = __config
     import pulumi_alicloud.cr as __cr
@@ -215,6 +217,8 @@ if typing.TYPE_CHECKING:
     rdc = __rdc
     import pulumi_alicloud.rds as __rds
     rds = __rds
+    import pulumi_alicloud.redis as __redis
+    redis = __redis
     import pulumi_alicloud.resourcemanager as __resourcemanager
     resourcemanager = __resourcemanager
     import pulumi_alicloud.rocketmq as __rocketmq
@@ -289,6 +293,7 @@ else:
     cloudsso = _utilities.lazy_import('pulumi_alicloud.cloudsso')
     cloudstoragegateway = _utilities.lazy_import('pulumi_alicloud.cloudstoragegateway')
     cms = _utilities.lazy_import('pulumi_alicloud.cms')
+    compute = _utilities.lazy_import('pulumi_alicloud.compute')
     config = _utilities.lazy_import('pulumi_alicloud.config')
     cr = _utilities.lazy_import('pulumi_alicloud.cr')
     cs = _utilities.lazy_import('pulumi_alicloud.cs')
@@ -360,6 +365,7 @@ else:
     ram = _utilities.lazy_import('pulumi_alicloud.ram')
     rdc = _utilities.lazy_import('pulumi_alicloud.rdc')
     rds = _utilities.lazy_import('pulumi_alicloud.rds')
+    redis = _utilities.lazy_import('pulumi_alicloud.redis')
     resourcemanager = _utilities.lazy_import('pulumi_alicloud.resourcemanager')
     rocketmq = _utilities.lazy_import('pulumi_alicloud.rocketmq')
     ros = _utilities.lazy_import('pulumi_alicloud.ros')
@@ -1778,6 +1784,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.cms",
   "classes": {
    "alicloud:cms/slsGroup:SlsGroup": "SlsGroup"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "compute/nestServiceInstance",
+  "fqn": "pulumi_alicloud.compute",
+  "classes": {
+   "alicloud:compute/nestServiceInstance:NestServiceInstance": "NestServiceInstance"
   }
  },
  {
@@ -4822,6 +4836,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "quotas/templateQuota",
+  "fqn": "pulumi_alicloud.quotas",
+  "classes": {
+   "alicloud:quotas/templateQuota:TemplateQuota": "TemplateQuota"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ram/accessKey",
   "fqn": "pulumi_alicloud.ram",
   "classes": {
@@ -5114,6 +5136,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.rds",
   "classes": {
    "alicloud:rds/readWriteSplittingConnection:ReadWriteSplittingConnection": "ReadWriteSplittingConnection"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "redis/tairInstance",
+  "fqn": "pulumi_alicloud.redis",
+  "classes": {
+   "alicloud:redis/tairInstance:TairInstance": "TairInstance"
   }
  },
  {
@@ -5950,6 +5980,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "vpc/haVipv2",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/haVipv2:HaVipv2": "HaVipv2"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "vpc/ipv4CidrBlock",
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
@@ -6210,6 +6248,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
    "alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment": "VpcNetworkAclAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/vswitchCidrReservation",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation": "VswitchCidrReservation"
   }
  },
  {

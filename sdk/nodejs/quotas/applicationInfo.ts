@@ -35,13 +35,15 @@ export class ApplicationInfo extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly approveValue!: pulumi.Output<string>;
-    public readonly auditMode!: pulumi.Output<string | undefined>;
+    public readonly auditMode!: pulumi.Output<string>;
     public /*out*/ readonly auditReason!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     public readonly desireValue!: pulumi.Output<number>;
     public readonly dimensions!: pulumi.Output<outputs.quotas.ApplicationInfoDimension[] | undefined>;
-    public /*out*/ readonly effectiveTime!: pulumi.Output<string>;
-    public /*out*/ readonly expireTime!: pulumi.Output<string>;
-    public readonly noticeType!: pulumi.Output<number | undefined>;
+    public readonly effectiveTime!: pulumi.Output<string | undefined>;
+    public readonly envLanguage!: pulumi.Output<string | undefined>;
+    public readonly expireTime!: pulumi.Output<string | undefined>;
+    public readonly noticeType!: pulumi.Output<number>;
     public readonly productCode!: pulumi.Output<string>;
     public readonly quotaActionCode!: pulumi.Output<string>;
     public readonly quotaCategory!: pulumi.Output<string | undefined>;
@@ -67,9 +69,11 @@ export class ApplicationInfo extends pulumi.CustomResource {
             resourceInputs["approveValue"] = state ? state.approveValue : undefined;
             resourceInputs["auditMode"] = state ? state.auditMode : undefined;
             resourceInputs["auditReason"] = state ? state.auditReason : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["desireValue"] = state ? state.desireValue : undefined;
             resourceInputs["dimensions"] = state ? state.dimensions : undefined;
             resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
+            resourceInputs["envLanguage"] = state ? state.envLanguage : undefined;
             resourceInputs["expireTime"] = state ? state.expireTime : undefined;
             resourceInputs["noticeType"] = state ? state.noticeType : undefined;
             resourceInputs["productCode"] = state ? state.productCode : undefined;
@@ -97,6 +101,9 @@ export class ApplicationInfo extends pulumi.CustomResource {
             resourceInputs["auditMode"] = args ? args.auditMode : undefined;
             resourceInputs["desireValue"] = args ? args.desireValue : undefined;
             resourceInputs["dimensions"] = args ? args.dimensions : undefined;
+            resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
+            resourceInputs["envLanguage"] = args ? args.envLanguage : undefined;
+            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
             resourceInputs["noticeType"] = args ? args.noticeType : undefined;
             resourceInputs["productCode"] = args ? args.productCode : undefined;
             resourceInputs["quotaActionCode"] = args ? args.quotaActionCode : undefined;
@@ -104,8 +111,7 @@ export class ApplicationInfo extends pulumi.CustomResource {
             resourceInputs["reason"] = args ? args.reason : undefined;
             resourceInputs["approveValue"] = undefined /*out*/;
             resourceInputs["auditReason"] = undefined /*out*/;
-            resourceInputs["effectiveTime"] = undefined /*out*/;
-            resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["quotaDescription"] = undefined /*out*/;
             resourceInputs["quotaName"] = undefined /*out*/;
             resourceInputs["quotaUnit"] = undefined /*out*/;
@@ -123,9 +129,11 @@ export interface ApplicationInfoState {
     approveValue?: pulumi.Input<string>;
     auditMode?: pulumi.Input<string>;
     auditReason?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     desireValue?: pulumi.Input<number>;
     dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.ApplicationInfoDimension>[]>;
     effectiveTime?: pulumi.Input<string>;
+    envLanguage?: pulumi.Input<string>;
     expireTime?: pulumi.Input<string>;
     noticeType?: pulumi.Input<number>;
     productCode?: pulumi.Input<string>;
@@ -145,6 +153,9 @@ export interface ApplicationInfoArgs {
     auditMode?: pulumi.Input<string>;
     desireValue: pulumi.Input<number>;
     dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.ApplicationInfoDimension>[]>;
+    effectiveTime?: pulumi.Input<string>;
+    envLanguage?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string>;
     noticeType?: pulumi.Input<number>;
     productCode: pulumi.Input<string>;
     quotaActionCode: pulumi.Input<string>;

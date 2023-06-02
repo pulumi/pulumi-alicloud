@@ -31,6 +31,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.RouteTable;
+ * import com.pulumi.alicloud.vpc.RouteTableArgs;
+ * import com.pulumi.alicloud.vpc.Ipv4Gateway;
+ * import com.pulumi.alicloud.vpc.Ipv4GatewayArgs;
  * import com.pulumi.alicloud.vpc.GatewayRouteTableAttachment;
  * import com.pulumi.alicloud.vpc.GatewayRouteTableAttachmentArgs;
  * import java.util.List;
@@ -46,9 +52,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new GatewayRouteTableAttachment(&#34;example&#34;, GatewayRouteTableAttachmentArgs.builder()        
- *             .ipv4GatewayId(&#34;example_value&#34;)
- *             .routeTableId(&#34;example_value&#34;)
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         var exampleRouteTable = new RouteTable(&#34;exampleRouteTable&#34;, RouteTableArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .routeTableName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .associateType(&#34;Gateway&#34;)
+ *             .build());
+ * 
+ *         var exampleIpv4Gateway = new Ipv4Gateway(&#34;exampleIpv4Gateway&#34;, Ipv4GatewayArgs.builder()        
+ *             .ipv4GatewayName(&#34;terraform-example&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .enabled(&#34;true&#34;)
+ *             .build());
+ * 
+ *         var exampleGatewayRouteTableAttachment = new GatewayRouteTableAttachment(&#34;exampleGatewayRouteTableAttachment&#34;, GatewayRouteTableAttachmentArgs.builder()        
+ *             .ipv4GatewayId(exampleIpv4Gateway.id())
+ *             .routeTableId(exampleRouteTable.id())
  *             .build());
  * 
  *     }
@@ -66,6 +90,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment")
 public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomResource {
+    /**
+     * The creation time of the resource.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * Specifies whether to only precheck this request. Default value: `false`.
      * 
@@ -110,6 +148,12 @@ public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomReso
     }
     /**
      * The status of the IPv4 Gateway instance. Value:
+     * - **Creating**: The function is being created.
+     * - **Created**: Created and available.
+     * - **Modifying**: is being modified.
+     * - **Deleting**: Deleting.
+     * - **Deleted**: Deleted.
+     * - **Activating**: enabled.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
@@ -117,6 +161,12 @@ public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomReso
 
     /**
      * @return The status of the IPv4 Gateway instance. Value:
+     * - **Creating**: The function is being created.
+     * - **Created**: Created and available.
+     * - **Modifying**: is being modified.
+     * - **Deleting**: Deleting.
+     * - **Deleted**: Deleted.
+     * - **Activating**: enabled.
      * 
      */
     public Output<String> status() {

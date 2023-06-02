@@ -35,10 +35,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.NasFunctions;
+ * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
  * import com.pulumi.alicloud.nas.FileSystemArgs;
  * import com.pulumi.alicloud.nas.AccessGroup;
  * import com.pulumi.alicloud.nas.AccessGroupArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.nas.MountTarget;
  * import com.pulumi.alicloud.nas.MountTargetArgs;
  * import java.util.List;
@@ -54,21 +60,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var exampleZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *             .fileSystemType(&#34;standard&#34;)
+ *             .build());
+ * 
  *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
  *             .protocolType(&#34;NFS&#34;)
  *             .storageType(&#34;Performance&#34;)
- *             .description(&#34;test file system&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .encryptType(&#34;1&#34;)
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
  *             .build());
  * 
  *         var exampleAccessGroup = new AccessGroup(&#34;exampleAccessGroup&#34;, AccessGroupArgs.builder()        
- *             .accessGroupName(&#34;test_name&#34;)
- *             .accessGroupType(&#34;Classic&#34;)
- *             .description(&#34;test access group&#34;)
+ *             .accessGroupName(&#34;terraform-example&#34;)
+ *             .accessGroupType(&#34;Vpc&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .fileSystemType(&#34;standard&#34;)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
  *             .build());
  * 
  *         var exampleMountTarget = new MountTarget(&#34;exampleMountTarget&#34;, MountTargetArgs.builder()        
  *             .fileSystemId(exampleFileSystem.id())
  *             .accessGroupName(exampleAccessGroup.accessGroupName())
+ *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
  *     }

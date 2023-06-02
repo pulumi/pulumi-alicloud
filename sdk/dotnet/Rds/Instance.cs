@@ -218,17 +218,25 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> EncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
         /// 
         /// &gt; **NOTE:**
         /// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
-        /// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        /// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+        /// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
+        /// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
+        /// - MariaDB: [ 10.3 ]
+        /// - Serverless
+        /// &gt; - MySQL: [ 5.7、8.0 ]
+        /// &gt; - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+        /// &gt; - PostgreSQL: [ 14.0 ]
+        /// &gt; - MariaDB does not support creating serverless instances.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -258,7 +266,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> HaConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
+        /// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string?> InstanceChargeType { get; private set; } = null!;
@@ -282,7 +290,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> InstanceStorage { get; private set; } = null!;
 
         /// <summary>
-        /// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// - To create a serverless instance, please pass the following values:
+        /// - MySQL basic: mysql.n2.serverless.1c
+        /// - MySQL high availability: mysql.n2.serverless.2c
+        /// - SQLServer high availability: mssql.mem2.serverless.s2
+        /// - PostgreSQL basic: pg.n2.serverless.1c
         /// 
         /// &gt; **NOTE:**
         /// - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
@@ -421,7 +434,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> ServerKey { get; private set; } = null!;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
         /// </summary>
         [Output("serverlessConfigs")]
         public Output<ImmutableArray<Outputs.InstanceServerlessConfig>> ServerlessConfigs { get; private set; } = null!;
@@ -836,17 +849,25 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
         /// 
         /// &gt; **NOTE:**
         /// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
-        /// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        /// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+        /// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
+        /// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
+        /// - MariaDB: [ 10.3 ]
+        /// - Serverless
+        /// &gt; - MySQL: [ 5.7、8.0 ]
+        /// &gt; - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+        /// &gt; - PostgreSQL: [ 14.0 ]
+        /// &gt; - MariaDB does not support creating serverless instances.
         /// </summary>
         [Input("engineVersion", required: true)]
         public Input<string> EngineVersion { get; set; } = null!;
@@ -876,7 +897,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? HaConfig { get; set; }
 
         /// <summary>
-        /// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
+        /// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -900,7 +921,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<int> InstanceStorage { get; set; } = null!;
 
         /// <summary>
-        /// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// - To create a serverless instance, please pass the following values:
+        /// - MySQL basic: mysql.n2.serverless.1c
+        /// - MySQL high availability: mysql.n2.serverless.2c
+        /// - SQLServer high availability: mssql.mem2.serverless.s2
+        /// - PostgreSQL basic: pg.n2.serverless.1c
         /// 
         /// &gt; **NOTE:**
         /// - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
@@ -1066,7 +1092,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceServerlessConfigArgs>? _serverlessConfigs;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
         /// </summary>
         public InputList<Inputs.InstanceServerlessConfigArgs> ServerlessConfigs
         {
@@ -1458,17 +1484,25 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? EncryptionKey { get; set; }
 
         /// <summary>
-        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+        /// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
         /// 
         /// &gt; **NOTE:**
         /// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
-        /// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+        /// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+        /// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
+        /// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
+        /// - MariaDB: [ 10.3 ]
+        /// - Serverless
+        /// &gt; - MySQL: [ 5.7、8.0 ]
+        /// &gt; - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+        /// &gt; - PostgreSQL: [ 14.0 ]
+        /// &gt; - MariaDB does not support creating serverless instances.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -1498,7 +1532,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? HaConfig { get; set; }
 
         /// <summary>
-        /// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
+        /// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -1522,7 +1556,12 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? InstanceStorage { get; set; }
 
         /// <summary>
-        /// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+        /// - To create a serverless instance, please pass the following values:
+        /// - MySQL basic: mysql.n2.serverless.1c
+        /// - MySQL high availability: mysql.n2.serverless.2c
+        /// - SQLServer high availability: mssql.mem2.serverless.s2
+        /// - PostgreSQL basic: pg.n2.serverless.1c
         /// 
         /// &gt; **NOTE:**
         /// - When `storage_auto_scale="Enable"`, do not perform `instance_storage` check. when `storage_auto_scale="Disable"`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
@@ -1688,7 +1727,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.InstanceServerlessConfigGetArgs>? _serverlessConfigs;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
         /// </summary>
         public InputList<Inputs.InstanceServerlessConfigGetArgs> ServerlessConfigs
         {

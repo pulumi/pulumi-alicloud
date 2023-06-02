@@ -112,7 +112,7 @@ export class Store extends pulumi.CustomResource {
      */
     public readonly hotTtl!: pulumi.Output<number | undefined>;
     /**
-     * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+     * The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      */
     public readonly maxSplitShardCount!: pulumi.Output<number | undefined>;
     /**
@@ -219,7 +219,7 @@ export interface StoreState {
      */
     hotTtl?: pulumi.Input<number>;
     /**
-     * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+     * The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      */
     maxSplitShardCount?: pulumi.Input<number>;
     /**
@@ -277,7 +277,7 @@ export interface StoreArgs {
      */
     hotTtl?: pulumi.Input<number>;
     /**
-     * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+     * The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      */
     maxSplitShardCount?: pulumi.Input<number>;
     /**

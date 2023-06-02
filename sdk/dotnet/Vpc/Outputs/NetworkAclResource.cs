@@ -16,20 +16,27 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// <summary>
         /// The ID of the associated resource.
         /// </summary>
-        public readonly string? ResourceId;
+        public readonly string ResourceId;
         /// <summary>
-        /// The type of the associated resource. Valid values `VSwitch`.
+        /// The type of the associated resource.
         /// </summary>
-        public readonly string? ResourceType;
+        public readonly string ResourceType;
+        /// <summary>
+        /// The state of the network ACL.
+        /// </summary>
+        public readonly string? Status;
 
         [OutputConstructor]
         private NetworkAclResource(
-            string? resourceId,
+            string resourceId,
 
-            string? resourceType)
+            string resourceType,
+
+            string? status)
         {
             ResourceId = resourceId;
             ResourceType = resourceType;
+            Status = status;
         }
     }
 }

@@ -44,7 +44,7 @@ class ListenerArgs:
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
                
                > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
-        :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
+        :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid values:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
         :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
@@ -176,7 +176,7 @@ class ListenerArgs:
     @pulumi.getter(name="proxyProtocol")
     def proxy_protocol(self) -> Optional[pulumi.Input[bool]]:
         """
-        The proxy protocol of the listener. Default value is `false`. Valid value:
+        The proxy protocol of the listener. Default value is `false`. Valid values:
         `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
         `false`: keep client source IP function is not turned on.
         """
@@ -231,7 +231,7 @@ class _ListenerState:
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
                
                > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
-        :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
+        :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid values:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
         :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
@@ -368,7 +368,7 @@ class _ListenerState:
     @pulumi.getter(name="proxyProtocol")
     def proxy_protocol(self) -> Optional[pulumi.Input[bool]]:
         """
-        The proxy protocol of the listener. Default value is `false`. Valid value:
+        The proxy protocol of the listener. Default value is `false`. Valid values:
         `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
         `false`: keep client source IP function is not turned on.
         """
@@ -483,7 +483,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
                
                > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
-        :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
+        :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid values:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
         :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
@@ -633,7 +633,7 @@ class Listener(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
                
                > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
-        :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid value:
+        :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value is `false`. Valid values:
                `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
                `false`: keep client source IP function is not turned on.
         :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
@@ -732,7 +732,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="proxyProtocol")
     def proxy_protocol(self) -> pulumi.Output[Optional[bool]]:
         """
-        The proxy protocol of the listener. Default value is `false`. Valid value:
+        The proxy protocol of the listener. Default value is `false`. Valid values:
         `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
         `false`: keep client source IP function is not turned on.
         """

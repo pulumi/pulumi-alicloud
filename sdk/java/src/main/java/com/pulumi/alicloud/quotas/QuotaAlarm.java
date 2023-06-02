@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Quotas Quota Alarm resource.
  * 
- * For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/184343.html).
+ * For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
  * 
  * &gt; **NOTE:** Available in v1.116.0+.
  * 
@@ -49,15 +49,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new QuotaAlarm(&#34;example&#34;, QuotaAlarmArgs.builder()        
- *             .productCode(&#34;ecs&#34;)
- *             .quotaActionCode(&#34;q_prepaid-instance-count-per-once-purchase&#34;)
- *             .quotaAlarmName(&#34;tf-testAcc&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var default_ = new QuotaAlarm(&#34;default&#34;, QuotaAlarmArgs.builder()        
+ *             .quotaActionCode(&#34;q_desktop-count&#34;)
  *             .quotaDimensions(QuotaAlarmQuotaDimensionArgs.builder()
  *                 .key(&#34;regionId&#34;)
  *                 .value(&#34;cn-hangzhou&#34;)
  *                 .build())
- *             .threshold(&#34;100&#34;)
+ *             .thresholdPercent(80)
+ *             .productCode(&#34;gws&#34;)
+ *             .quotaAlarmName(name)
+ *             .thresholdType(&#34;used&#34;)
  *             .build());
  * 
  *     }
@@ -75,6 +78,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:quotas/quotaAlarm:QuotaAlarm")
 public class QuotaAlarm extends com.pulumi.resources.CustomResource {
+    /**
+     * The creation time of the resource.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * The Product Code.
      * 
@@ -118,14 +135,14 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
         return this.quotaAlarmName;
     }
     /**
-     * The Quota Dimensions.
+     * The Quota Dimensions. See the following `Block QuotaDimensions`.
      * 
      */
     @Export(name="quotaDimensions", type=List.class, parameters={QuotaAlarmQuotaDimension.class})
     private Output</* @Nullable */ List<QuotaAlarmQuotaDimension>> quotaDimensions;
 
     /**
-     * @return The Quota Dimensions.
+     * @return The Quota Dimensions. See the following `Block QuotaDimensions`.
      * 
      */
     public Output<Optional<List<QuotaAlarmQuotaDimension>>> quotaDimensions() {
@@ -158,6 +175,24 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Double>> thresholdPercent() {
         return Codegen.optional(this.thresholdPercent);
+    }
+    /**
+     * Quota alarm type. Value:
+     * - used: Quota used alarm.
+     * - usable: alarm for the remaining available quota.
+     * 
+     */
+    @Export(name="thresholdType", type=String.class, parameters={})
+    private Output<String> thresholdType;
+
+    /**
+     * @return Quota alarm type. Value:
+     * - used: Quota used alarm.
+     * - usable: alarm for the remaining available quota.
+     * 
+     */
+    public Output<String> thresholdType() {
+        return this.thresholdType;
     }
     /**
      * The WebHook of Quota Alarm.

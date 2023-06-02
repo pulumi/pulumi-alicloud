@@ -19,29 +19,36 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.mongodb.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
- * }));
- * const defaultCluster = new alicloud.mse.Cluster("defaultCluster", {
- *     clusterSpecification: "MSE_SC_1_2_200_c",
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * });
+ * const exampleCluster = new alicloud.mse.Cluster("exampleCluster", {
+ *     clusterSpecification: "MSE_SC_1_2_60_c",
  *     clusterType: "ZooKeeper",
- *     clusterVersion: "ZooKeeper_3_5_5",
+ *     clusterVersion: "ZooKeeper_3_8_0",
  *     instanceCount: 1,
  *     netType: "privatenet",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
  *     pubNetworkFlow: "1",
  *     aclEntryLists: ["127.0.0.1/32"],
- *     clusterAliasName: "example_value",
+ *     clusterAliasName: "terraform-example",
+ *     mseVersion: "mse_dev",
+ *     vswitchId: exampleSwitch.id,
+ *     vpcId: exampleNetwork.id,
  * });
- * const defaultZnode = new alicloud.mse.Znode("defaultZnode", {
- *     clusterId: defaultCluster.clusterId,
- *     data: "example_value",
- *     path: "example_value",
+ * const exampleZnode = new alicloud.mse.Znode("exampleZnode", {
+ *     clusterId: exampleCluster.clusterId,
+ *     data: "terraform-example",
+ *     path: "/example",
  * });
  * ```
  *

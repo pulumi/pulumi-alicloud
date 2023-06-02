@@ -40,6 +40,13 @@ public final class ApplicationInfoState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.auditReason);
     }
 
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
     @Import(name="desireValue")
     private @Nullable Output<Double> desireValue;
 
@@ -59,6 +66,13 @@ public final class ApplicationInfoState extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<String>> effectiveTime() {
         return Optional.ofNullable(this.effectiveTime);
+    }
+
+    @Import(name="envLanguage")
+    private @Nullable Output<String> envLanguage;
+
+    public Optional<Output<String>> envLanguage() {
+        return Optional.ofNullable(this.envLanguage);
     }
 
     @Import(name="expireTime")
@@ -137,9 +151,11 @@ public final class ApplicationInfoState extends com.pulumi.resources.ResourceArg
         this.approveValue = $.approveValue;
         this.auditMode = $.auditMode;
         this.auditReason = $.auditReason;
+        this.createTime = $.createTime;
         this.desireValue = $.desireValue;
         this.dimensions = $.dimensions;
         this.effectiveTime = $.effectiveTime;
+        this.envLanguage = $.envLanguage;
         this.expireTime = $.expireTime;
         this.noticeType = $.noticeType;
         this.productCode = $.productCode;
@@ -197,6 +213,15 @@ public final class ApplicationInfoState extends com.pulumi.resources.ResourceArg
             return auditReason(Output.of(auditReason));
         }
 
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
         public Builder desireValue(@Nullable Output<Double> desireValue) {
             $.desireValue = desireValue;
             return this;
@@ -226,6 +251,15 @@ public final class ApplicationInfoState extends com.pulumi.resources.ResourceArg
 
         public Builder effectiveTime(String effectiveTime) {
             return effectiveTime(Output.of(effectiveTime));
+        }
+
+        public Builder envLanguage(@Nullable Output<String> envLanguage) {
+            $.envLanguage = envLanguage;
+            return this;
+        }
+
+        public Builder envLanguage(String envLanguage) {
+            return envLanguage(Output.of(envLanguage));
         }
 
         public Builder expireTime(@Nullable Output<String> expireTime) {

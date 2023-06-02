@@ -20,64 +20,86 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const bucketSrc = new alicloud.oss.Bucket("bucketSrc", {bucket: pulumi.interpolate`example-src-${_default.result}`});
+ * const bucketDest = new alicloud.oss.Bucket("bucketDest", {bucket: pulumi.interpolate`example-dest-${_default.result}`});
+ * const role = new alicloud.ram.Role("role", {
+ *     document: `		{
+ * 		  "Statement": [
+ * 			{
+ * 			  "Action": "sts:AssumeRole",
+ * 			  "Effect": "Allow",
+ * 			  "Principal": {
+ * 				"Service": [
+ * 				  "oss.aliyuncs.com"
+ * 				]
+ * 			  }
+ * 			}
+ * 		  ],
+ * 		  "Version": "1"
+ * 		}
+ * `,
+ *     description: "this is a test",
+ *     force: true,
+ * });
+ * const policy = new alicloud.ram.Policy("policy", {
+ *     policyName: pulumi.interpolate`example-policy-${_default.result}`,
+ *     policyDocument: `		{
+ * 		  "Statement": [
+ * 			{
+ * 			  "Action": [
+ * 				"*"
+ * 			  ],
+ * 			  "Effect": "Allow",
+ * 			  "Resource": [
+ * 				"*"
+ * 			  ]
+ * 			}
+ * 		  ],
+ * 			"Version": "1"
+ * 		}
+ * `,
+ *     description: "this is a policy test",
+ *     force: true,
+ * });
+ * const attach = new alicloud.ram.RolePolicyAttachment("attach", {
+ *     policyName: policy.name,
+ *     policyType: policy.type,
+ *     roleName: role.name,
+ * });
+ * const key = new alicloud.kms.Key("key", {
+ *     description: "Hello KMS",
+ *     pendingWindowInDays: 7,
+ *     status: "Enabled",
+ * });
  * const cross_region_replication = new alicloud.oss.BucketReplication("cross-region-replication", {
- *     action: "ALL",
- *     bucket: "bucket-in-hangzhou",
- *     destination: {
- *         bucket: "bucket-in-beijing",
- *         location: "oss-cn-beijing",
- *     },
- * });
- * const same_region_replication = new alicloud.oss.BucketReplication("same-region-replication", {
- *     action: "ALL",
- *     bucket: "bucket-in-hangzhou",
- *     destination: {
- *         bucket: "bucket-in-hangzhou-1",
- *         location: "oss-cn-hangzhou",
- *     },
- * });
- * const replication_with_prefix = new alicloud.oss.BucketReplication("replication-with-prefix", {
- *     action: "ALL",
- *     bucket: "bucket-1",
- *     destination: {
- *         bucket: "bucket-2",
- *         location: "oss-cn-hangzhou",
- *     },
- *     historicalObjectReplication: "disabled",
+ *     bucket: bucketSrc.id,
+ *     action: "PUT,DELETE",
+ *     historicalObjectReplication: "enabled",
  *     prefixSet: {
  *         prefixes: [
  *             "prefix1/",
  *             "prefix2/",
  *         ],
  *     },
- * });
- * const replication_with_specific_action = new alicloud.oss.BucketReplication("replication-with-specific-action", {
- *     action: "PUT",
- *     bucket: "bucket-1",
  *     destination: {
- *         bucket: "bucket-2",
- *         location: "oss-cn-hangzhou",
+ *         bucket: bucketDest.id,
+ *         location: bucketDest.location,
  *     },
- *     historicalObjectReplication: "disabled",
- * });
- * const replication_with_kms_encryption = new alicloud.oss.BucketReplication("replication-with-kms-encryption", {
- *     action: "ALL",
- *     bucket: "bucket-1",
- *     destination: {
- *         bucket: "bucket-2",
- *         location: "oss-cn-hangzhou",
- *     },
+ *     syncRole: role.name,
  *     encryptionConfiguration: {
- *         replicaKmsKeyId: "<your kms key id>",
+ *         replicaKmsKeyId: key.id,
  *     },
- *     historicalObjectReplication: "disabled",
  *     sourceSelectionCriteria: {
  *         sseKmsEncryptedObjects: {
  *             status: "Enabled",
  *         },
  *     },
- *     syncRole: "<your ram role>",
  * });
  * ```
  *

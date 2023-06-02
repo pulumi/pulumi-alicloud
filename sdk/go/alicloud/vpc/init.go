@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HAVip{}
 	case "alicloud:vpc/hAVipAttachment:HAVipAttachment":
 		r = &HAVipAttachment{}
+	case "alicloud:vpc/haVipv2:HaVipv2":
+		r = &HaVipv2{}
 	case "alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock":
 		r = &Ipv4CidrBlock{}
 	case "alicloud:vpc/ipv4Gateway:Ipv4Gateway":
@@ -111,6 +113,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VbrHa{}
 	case "alicloud:vpc/vpcNetworkAclAttachment:VpcNetworkAclAttachment":
 		r = &VpcNetworkAclAttachment{}
+	case "alicloud:vpc/vswitchCidrReservation:VswitchCidrReservation":
+		r = &VswitchCidrReservation{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -182,6 +186,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/hAVipAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/haVipv2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -347,6 +356,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/vpcNetworkAclAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/vswitchCidrReservation",
 		&module{version},
 	)
 }

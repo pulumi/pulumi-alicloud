@@ -15,16 +15,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const fooZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/21",
+ *     vpcId: fooNetwork.id,
+ *     zoneId: fooZones.then(fooZones => fooZones.zones?.[0]?.id),
+ * });
  * const fooGateway = new alicloud.vpn.Gateway("fooGateway", {
- *     vpcId: "vpc-fake-id",
+ *     vpcId: fooNetwork.id,
  *     bandwidth: 10,
  *     enableSsl: true,
- *     instanceChargeType: "PostPaid",
+ *     instanceChargeType: "PrePaid",
  *     description: "test_create_description",
+ *     vswitchId: fooSwitch.id,
  * });
  * const fooCustomerGateway = new alicloud.vpn.CustomerGateway("fooCustomerGateway", {
- *     ipAddress: "42.104.22.228",
- *     description: "testAccVpnCgwDesc",
+ *     ipAddress: "42.104.22.210",
+ *     description: "terraform-example",
  * });
  * const fooConnection = new alicloud.vpn.Connection("fooConnection", {
  *     vpnGatewayId: fooGateway.id,
@@ -41,7 +55,7 @@ import * as utilities from "../utilities";
  *     ikeConfig: {
  *         ikeAuthAlg: "md5",
  *         ikeEncAlg: "des",
- *         ikeVersion: "ikev1",
+ *         ikeVersion: "ikev2",
  *         ikeMode: "main",
  *         ikeLifetime: 86400,
  *         psk: "tf-testvpn2",

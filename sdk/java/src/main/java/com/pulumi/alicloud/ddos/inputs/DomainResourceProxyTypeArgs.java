@@ -18,14 +18,14 @@ public final class DomainResourceProxyTypeArgs extends com.pulumi.resources.Reso
     public static final DomainResourceProxyTypeArgs Empty = new DomainResourceProxyTypeArgs();
 
     /**
-     * the port number. This field is required and must be an integer.
+     * the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
      * 
      */
     @Import(name="proxyPorts")
     private @Nullable Output<List<Integer>> proxyPorts;
 
     /**
-     * @return the port number. This field is required and must be an integer.
+     * @return the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
      * 
      */
     public Optional<Output<List<Integer>>> proxyPorts() {
@@ -73,7 +73,7 @@ public final class DomainResourceProxyTypeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyPorts the port number. This field is required and must be an integer.
+         * @param proxyPorts the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class DomainResourceProxyTypeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyPorts the port number. This field is required and must be an integer.
+         * @param proxyPorts the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class DomainResourceProxyTypeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyPorts the port number. This field is required and must be an integer.
+         * @param proxyPorts the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
          * 
          * @return builder
          * 

@@ -36,14 +36,14 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Certificate config of the accelerated domain. It&#39;s a list and consist of at most 1 item.
+     * Certificate configuration. See the following `Block CertificateConfig`.
      * 
      */
     @Import(name="certificateConfig")
     private @Nullable Output<DomainNewCertificateConfigArgs> certificateConfig;
 
     /**
-     * @return Certificate config of the accelerated domain. It&#39;s a list and consist of at most 1 item.
+     * @return Certificate configuration. See the following `Block CertificateConfig`.
      * 
      */
     public Optional<Output<DomainNewCertificateConfigArgs>> certificateConfig() {
@@ -51,14 +51,29 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in v1.90.0+) The CNAME of the CDN domain.
+     * Health test URL.
+     * 
+     */
+    @Import(name="checkUrl")
+    private @Nullable Output<String> checkUrl;
+
+    /**
+     * @return Health test URL.
+     * 
+     */
+    public Optional<Output<String>> checkUrl() {
+        return Optional.ofNullable(this.checkUrl);
+    }
+
+    /**
+     * The CNAME domain name corresponding to the accelerated domain name.
      * 
      */
     @Import(name="cname")
     private @Nullable Output<String> cname;
 
     /**
-     * @return (Available in v1.90.0+) The CNAME of the CDN domain.
+     * @return The CNAME domain name corresponding to the accelerated domain name.
      * 
      */
     public Optional<Output<String>> cname() {
@@ -81,14 +96,14 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource group ID.
+     * The ID of the resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return Resource group ID.
+     * @return The ID of the resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -96,14 +111,22 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users .
+     * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
+     * - **domestic**: Mainland China only.
+     * - **overseas**: Global (excluding Mainland China).
+     * - **global**: global.
+     *   The default value is **domestic**.
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users .
+     * @return Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
+     * - **domestic**: Mainland China only.
+     * - **overseas**: Global (excluding Mainland China).
+     * - **global**: global.
+     *   The default value is **domestic**.
      * 
      */
     public Optional<Output<String>> scope() {
@@ -111,14 +134,14 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source address list of the accelerated domain. Defaults to null. See Block Sources.
+     * The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
      * 
      */
     @Import(name="sources")
     private @Nullable Output<List<DomainNewSourceArgs>> sources;
 
     /**
-     * @return The source address list of the accelerated domain. Defaults to null. See Block Sources.
+     * @return The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
      * 
      */
     public Optional<Output<List<DomainNewSourceArgs>>> sources() {
@@ -126,14 +149,29 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The status of the resource.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the resource.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tag of the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -145,11 +183,13 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
     private DomainNewState(DomainNewState $) {
         this.cdnType = $.cdnType;
         this.certificateConfig = $.certificateConfig;
+        this.checkUrl = $.checkUrl;
         this.cname = $.cname;
         this.domainName = $.domainName;
         this.resourceGroupId = $.resourceGroupId;
         this.scope = $.scope;
         this.sources = $.sources;
+        this.status = $.status;
         this.tags = $.tags;
     }
 
@@ -193,7 +233,7 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateConfig Certificate config of the accelerated domain. It&#39;s a list and consist of at most 1 item.
+         * @param certificateConfig Certificate configuration. See the following `Block CertificateConfig`.
          * 
          * @return builder
          * 
@@ -204,7 +244,7 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateConfig Certificate config of the accelerated domain. It&#39;s a list and consist of at most 1 item.
+         * @param certificateConfig Certificate configuration. See the following `Block CertificateConfig`.
          * 
          * @return builder
          * 
@@ -214,7 +254,28 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cname (Available in v1.90.0+) The CNAME of the CDN domain.
+         * @param checkUrl Health test URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkUrl(@Nullable Output<String> checkUrl) {
+            $.checkUrl = checkUrl;
+            return this;
+        }
+
+        /**
+         * @param checkUrl Health test URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder checkUrl(String checkUrl) {
+            return checkUrl(Output.of(checkUrl));
+        }
+
+        /**
+         * @param cname The CNAME domain name corresponding to the accelerated domain name.
          * 
          * @return builder
          * 
@@ -225,7 +286,7 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cname (Available in v1.90.0+) The CNAME of the CDN domain.
+         * @param cname The CNAME domain name corresponding to the accelerated domain name.
          * 
          * @return builder
          * 
@@ -256,7 +317,7 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId Resource group ID.
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -267,7 +328,7 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId Resource group ID.
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -277,7 +338,11 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scope Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users .
+         * @param scope Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
+         * - **domestic**: Mainland China only.
+         * - **overseas**: Global (excluding Mainland China).
+         * - **global**: global.
+         *   The default value is **domestic**.
          * 
          * @return builder
          * 
@@ -288,7 +353,11 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scope Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users .
+         * @param scope Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
+         * - **domestic**: Mainland China only.
+         * - **overseas**: Global (excluding Mainland China).
+         * - **global**: global.
+         *   The default value is **domestic**.
          * 
          * @return builder
          * 
@@ -298,7 +367,7 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The source address list of the accelerated domain. Defaults to null. See Block Sources.
+         * @param sources The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
          * 
          * @return builder
          * 
@@ -309,7 +378,7 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The source address list of the accelerated domain. Defaults to null. See Block Sources.
+         * @param sources The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
          * 
          * @return builder
          * 
@@ -319,7 +388,7 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sources The source address list of the accelerated domain. Defaults to null. See Block Sources.
+         * @param sources The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
          * 
          * @return builder
          * 
@@ -329,7 +398,28 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param status The status of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tag of the resource.
          * 
          * @return builder
          * 
@@ -340,7 +430,7 @@ public final class DomainNewState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource.
          * 
          * @return builder
          * 

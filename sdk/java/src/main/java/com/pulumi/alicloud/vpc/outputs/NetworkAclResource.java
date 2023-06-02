@@ -15,27 +15,39 @@ public final class NetworkAclResource {
      * @return The ID of the associated resource.
      * 
      */
-    private @Nullable String resourceId;
+    private String resourceId;
     /**
-     * @return The type of the associated resource. Valid values `VSwitch`.
+     * @return The type of the associated resource.
      * 
      */
-    private @Nullable String resourceType;
+    private String resourceType;
+    /**
+     * @return The state of the network ACL.
+     * 
+     */
+    private @Nullable String status;
 
     private NetworkAclResource() {}
     /**
      * @return The ID of the associated resource.
      * 
      */
-    public Optional<String> resourceId() {
-        return Optional.ofNullable(this.resourceId);
+    public String resourceId() {
+        return this.resourceId;
     }
     /**
-     * @return The type of the associated resource. Valid values `VSwitch`.
+     * @return The type of the associated resource.
      * 
      */
-    public Optional<String> resourceType() {
-        return Optional.ofNullable(this.resourceType);
+    public String resourceType() {
+        return this.resourceType;
+    }
+    /**
+     * @return The state of the network ACL.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
 
     public static Builder builder() {
@@ -47,29 +59,37 @@ public final class NetworkAclResource {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String resourceId;
-        private @Nullable String resourceType;
+        private String resourceId;
+        private String resourceType;
+        private @Nullable String status;
         public Builder() {}
         public Builder(NetworkAclResource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceId = defaults.resourceId;
     	      this.resourceType = defaults.resourceType;
+    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
-        public Builder resourceId(@Nullable String resourceId) {
-            this.resourceId = resourceId;
+        public Builder resourceId(String resourceId) {
+            this.resourceId = Objects.requireNonNull(resourceId);
             return this;
         }
         @CustomType.Setter
-        public Builder resourceType(@Nullable String resourceType) {
-            this.resourceType = resourceType;
+        public Builder resourceType(String resourceType) {
+            this.resourceType = Objects.requireNonNull(resourceType);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(@Nullable String status) {
+            this.status = status;
             return this;
         }
         public NetworkAclResource build() {
             final var o = new NetworkAclResource();
             o.resourceId = resourceId;
             o.resourceType = resourceType;
+            o.status = status;
             return o;
         }
     }

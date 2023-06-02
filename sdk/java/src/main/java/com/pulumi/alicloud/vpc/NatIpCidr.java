@@ -59,22 +59,22 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;example_value&#34;)
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
  *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(alicloud_vpc.default().id())
+ *             .vpcId(exampleNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/21&#34;)
  *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(var_.name())
+ *             .vswitchName(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleNatGateway = new NatGateway(&#34;exampleNatGateway&#34;, NatGatewayArgs.builder()        
- *             .vpcId(alicloud_vpc.default().id())
+ *             .vpcId(exampleNetwork.id())
  *             .internetChargeType(&#34;PayByLcu&#34;)
- *             .natGatewayName(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
+ *             .natGatewayName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .natType(&#34;Enhanced&#34;)
  *             .vswitchId(exampleSwitch.id())
  *             .networkType(&#34;intranet&#34;)
@@ -82,8 +82,8 @@ import javax.annotation.Nullable;
  * 
  *         var exampleNatIpCidr = new NatIpCidr(&#34;exampleNatIpCidr&#34;, NatIpCidrArgs.builder()        
  *             .natGatewayId(exampleNatGateway.id())
- *             .natIpCidrName(&#34;example_value&#34;)
- *             .natIpCidr(&#34;example_value&#34;)
+ *             .natIpCidrName(&#34;terraform-example&#34;)
+ *             .natIpCidr(&#34;192.168.0.0/16&#34;)
  *             .build());
  * 
  *     }

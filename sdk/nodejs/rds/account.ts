@@ -121,7 +121,7 @@ export class Account extends pulumi.CustomResource {
     public readonly resetPermissionFlag!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Privilege type of account.
+     * Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.
      * - Super: High privilege.
      *
@@ -226,7 +226,7 @@ export interface AccountState {
     resetPermissionFlag?: pulumi.Input<boolean>;
     status?: pulumi.Input<string>;
     /**
-     * Privilege type of account.
+     * Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.
      * - Super: High privilege.
      *
@@ -280,7 +280,7 @@ export interface AccountArgs {
     password?: pulumi.Input<string>;
     resetPermissionFlag?: pulumi.Input<boolean>;
     /**
-     * Privilege type of account.
+     * Privilege type of account. The SQLServer engine does not support create high privilege accounts.
      * - Normal: Common privilege.
      * - Super: High privilege.
      *

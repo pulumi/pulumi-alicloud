@@ -26,6 +26,7 @@ __all__ = [
     'LoadBalancerModificationProtectionConfigArgs',
     'LoadBalancerZoneMappingArgs',
     'RuleRuleActionArgs',
+    'RuleRuleActionCorsConfigArgs',
     'RuleRuleActionFixedResponseConfigArgs',
     'RuleRuleActionForwardGroupConfigArgs',
     'RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs',
@@ -795,6 +796,7 @@ class RuleRuleActionArgs:
     def __init__(__self__, *,
                  order: pulumi.Input[int],
                  type: pulumi.Input[str],
+                 cors_config: Optional[pulumi.Input['RuleRuleActionCorsConfigArgs']] = None,
                  fixed_response_config: Optional[pulumi.Input['RuleRuleActionFixedResponseConfigArgs']] = None,
                  forward_group_config: Optional[pulumi.Input['RuleRuleActionForwardGroupConfigArgs']] = None,
                  insert_header_config: Optional[pulumi.Input['RuleRuleActionInsertHeaderConfigArgs']] = None,
@@ -805,6 +807,10 @@ class RuleRuleActionArgs:
         """
         :param pulumi.Input[int] order: The order of the forwarding rule actions. Valid values: 1 to 50000. The actions are performed in ascending order. You cannot leave this parameter empty. Each value must be unique.
         :param pulumi.Input[str] type: The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+               **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+               **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+               **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
+        :param pulumi.Input['RuleRuleActionCorsConfigArgs'] cors_config: Request forwarding based on CORS. See the following `Block cors_config`.
         :param pulumi.Input['RuleRuleActionFixedResponseConfigArgs'] fixed_response_config: The configuration of the fixed response. See the following `Block fixed_response_config`.
         :param pulumi.Input['RuleRuleActionForwardGroupConfigArgs'] forward_group_config: The forward response action within ALB. See the following `Block forward_group_config`.
         :param pulumi.Input['RuleRuleActionInsertHeaderConfigArgs'] insert_header_config: The configuration of the inserted header field. See the following `Block insert_header_config`.
@@ -815,6 +821,8 @@ class RuleRuleActionArgs:
         """
         pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "type", type)
+        if cors_config is not None:
+            pulumi.set(__self__, "cors_config", cors_config)
         if fixed_response_config is not None:
             pulumi.set(__self__, "fixed_response_config", fixed_response_config)
         if forward_group_config is not None:
@@ -847,12 +855,27 @@ class RuleRuleActionArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+        **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+        **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="corsConfig")
+    def cors_config(self) -> Optional[pulumi.Input['RuleRuleActionCorsConfigArgs']]:
+        """
+        Request forwarding based on CORS. See the following `Block cors_config`.
+        """
+        return pulumi.get(self, "cors_config")
+
+    @cors_config.setter
+    def cors_config(self, value: Optional[pulumi.Input['RuleRuleActionCorsConfigArgs']]):
+        pulumi.set(self, "cors_config", value)
 
     @property
     @pulumi.getter(name="fixedResponseConfig")
@@ -937,6 +960,109 @@ class RuleRuleActionArgs:
     @traffic_mirror_config.setter
     def traffic_mirror_config(self, value: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs']]):
         pulumi.set(self, "traffic_mirror_config", value)
+
+
+@pulumi.input_type
+class RuleRuleActionCorsConfigArgs:
+    def __init__(__self__, *,
+                 allow_credentials: Optional[pulumi.Input[str]] = None,
+                 allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_age: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] allow_credentials: Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: The allowed headers for CORS requests.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: The allowed origins of CORS requests.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The headers that can be exposed.
+        :param pulumi.Input[int] max_age: The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @allow_credentials.setter
+    def allow_credentials(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allow_credentials", value)
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The allowed headers for CORS requests.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @allow_headers.setter
+    def allow_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_headers", value)
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @allow_methods.setter
+    def allow_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_methods", value)
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The allowed origins of CORS requests.
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @allow_origins.setter
+    def allow_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_origins", value)
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The headers that can be exposed.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @expose_headers.setter
+    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "expose_headers", value)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_age", value)
 
 
 @pulumi.input_type
@@ -1444,6 +1570,9 @@ class RuleRuleConditionArgs:
                  source_ip_config: Optional[pulumi.Input['RuleRuleConditionSourceIpConfigArgs']] = None):
         """
         :param pulumi.Input[str] type: The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+               **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+               **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+               **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
         :param pulumi.Input['RuleRuleConditionCookieConfigArgs'] cookie_config: The configuration of the cookie. See the following `Block cookie_config`.
         :param pulumi.Input['RuleRuleConditionHeaderConfigArgs'] header_config: The configuration of the header field. See the following `Block header_config`.
         :param pulumi.Input['RuleRuleConditionHostConfigArgs'] host_config: The configuration of the host field. See the following `Block host_config`.
@@ -1473,6 +1602,9 @@ class RuleRuleConditionArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+        **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+        **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+        **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
         """
         return pulumi.get(self, "type")
 

@@ -49,14 +49,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tftestacc&#34;);
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
- *             .applicationName(name)
- *             .description(name)
+ *             .applicationName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
  *             .build());
  * 

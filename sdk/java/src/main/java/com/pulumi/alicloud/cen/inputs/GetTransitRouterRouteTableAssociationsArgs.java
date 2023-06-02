@@ -62,18 +62,63 @@ public final class GetTransitRouterRouteTableAssociationsArgs extends com.pulumi
     }
 
     /**
-     * ID of the route table of the VPC or VBR.
+     * The ID of the network instance connection.
      * 
      */
-    @Import(name="transitRouterRouteTableId", required=true)
-    private Output<String> transitRouterRouteTableId;
+    @Import(name="transitRouterAttachmentId")
+    private @Nullable Output<String> transitRouterAttachmentId;
 
     /**
-     * @return ID of the route table of the VPC or VBR.
+     * @return The ID of the network instance connection.
      * 
      */
-    public Output<String> transitRouterRouteTableId() {
-        return this.transitRouterRouteTableId;
+    public Optional<Output<String>> transitRouterAttachmentId() {
+        return Optional.ofNullable(this.transitRouterAttachmentId);
+    }
+
+    /**
+     * The ID of the next hop.
+     * 
+     */
+    @Import(name="transitRouterAttachmentResourceId")
+    private @Nullable Output<String> transitRouterAttachmentResourceId;
+
+    /**
+     * @return The ID of the next hop.
+     * 
+     */
+    public Optional<Output<String>> transitRouterAttachmentResourceId() {
+        return Optional.ofNullable(this.transitRouterAttachmentResourceId);
+    }
+
+    /**
+     * The type of next hop. Valid values:
+     * 
+     */
+    @Import(name="transitRouterAttachmentResourceType")
+    private @Nullable Output<String> transitRouterAttachmentResourceType;
+
+    /**
+     * @return The type of next hop. Valid values:
+     * 
+     */
+    public Optional<Output<String>> transitRouterAttachmentResourceType() {
+        return Optional.ofNullable(this.transitRouterAttachmentResourceType);
+    }
+
+    /**
+     * The ID of the route table of the Enterprise Edition transit router.
+     * 
+     */
+    @Import(name="transitRouterRouteTableId")
+    private @Nullable Output<String> transitRouterRouteTableId;
+
+    /**
+     * @return The ID of the route table of the Enterprise Edition transit router.
+     * 
+     */
+    public Optional<Output<String>> transitRouterRouteTableId() {
+        return Optional.ofNullable(this.transitRouterRouteTableId);
     }
 
     private GetTransitRouterRouteTableAssociationsArgs() {}
@@ -82,6 +127,9 @@ public final class GetTransitRouterRouteTableAssociationsArgs extends com.pulumi
         this.ids = $.ids;
         this.outputFile = $.outputFile;
         this.status = $.status;
+        this.transitRouterAttachmentId = $.transitRouterAttachmentId;
+        this.transitRouterAttachmentResourceId = $.transitRouterAttachmentResourceId;
+        this.transitRouterAttachmentResourceType = $.transitRouterAttachmentResourceType;
         this.transitRouterRouteTableId = $.transitRouterRouteTableId;
     }
 
@@ -177,18 +225,81 @@ public final class GetTransitRouterRouteTableAssociationsArgs extends com.pulumi
         }
 
         /**
-         * @param transitRouterRouteTableId ID of the route table of the VPC or VBR.
+         * @param transitRouterAttachmentId The ID of the network instance connection.
          * 
          * @return builder
          * 
          */
-        public Builder transitRouterRouteTableId(Output<String> transitRouterRouteTableId) {
+        public Builder transitRouterAttachmentId(@Nullable Output<String> transitRouterAttachmentId) {
+            $.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+
+        /**
+         * @param transitRouterAttachmentId The ID of the network instance connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
+            return transitRouterAttachmentId(Output.of(transitRouterAttachmentId));
+        }
+
+        /**
+         * @param transitRouterAttachmentResourceId The ID of the next hop.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentResourceId(@Nullable Output<String> transitRouterAttachmentResourceId) {
+            $.transitRouterAttachmentResourceId = transitRouterAttachmentResourceId;
+            return this;
+        }
+
+        /**
+         * @param transitRouterAttachmentResourceId The ID of the next hop.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentResourceId(String transitRouterAttachmentResourceId) {
+            return transitRouterAttachmentResourceId(Output.of(transitRouterAttachmentResourceId));
+        }
+
+        /**
+         * @param transitRouterAttachmentResourceType The type of next hop. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentResourceType(@Nullable Output<String> transitRouterAttachmentResourceType) {
+            $.transitRouterAttachmentResourceType = transitRouterAttachmentResourceType;
+            return this;
+        }
+
+        /**
+         * @param transitRouterAttachmentResourceType The type of next hop. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentResourceType(String transitRouterAttachmentResourceType) {
+            return transitRouterAttachmentResourceType(Output.of(transitRouterAttachmentResourceType));
+        }
+
+        /**
+         * @param transitRouterRouteTableId The ID of the route table of the Enterprise Edition transit router.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterRouteTableId(@Nullable Output<String> transitRouterRouteTableId) {
             $.transitRouterRouteTableId = transitRouterRouteTableId;
             return this;
         }
 
         /**
-         * @param transitRouterRouteTableId ID of the route table of the VPC or VBR.
+         * @param transitRouterRouteTableId The ID of the route table of the Enterprise Edition transit router.
          * 
          * @return builder
          * 
@@ -198,7 +309,6 @@ public final class GetTransitRouterRouteTableAssociationsArgs extends com.pulumi
         }
 
         public GetTransitRouterRouteTableAssociationsArgs build() {
-            $.transitRouterRouteTableId = Objects.requireNonNull($.transitRouterRouteTableId, "expected parameter 'transitRouterRouteTableId' to be non-null");
             return $;
         }
     }

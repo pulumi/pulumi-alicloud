@@ -32,28 +32,98 @@ public final class ApplicationScalingRuleScalingRuleMetricMetricArgs extends com
     }
 
     /**
-     * Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+     * Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
      * - CPU: CPU usage.
      * - MEMORY: MEMORY usage.
-     * - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
-     * - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
-     * - SLB_RT: the average response time of public network SLB within 15 seconds.
+     * - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+     * - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+     * - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+     * - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+     * - SLB_RT: The average response time of public network SLB within 15 seconds.
+     * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+     * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+     *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
      * 
      */
     @Import(name="metricType")
     private @Nullable Output<String> metricType;
 
     /**
-     * @return Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+     * @return Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
      * - CPU: CPU usage.
      * - MEMORY: MEMORY usage.
-     * - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
-     * - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
-     * - SLB_RT: the average response time of public network SLB within 15 seconds.
+     * - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+     * - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+     * - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+     * - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+     * - SLB_RT: The average response time of public network SLB within 15 seconds.
+     * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+     * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+     *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
      * 
      */
     public Optional<Output<String>> metricType() {
         return Optional.ofNullable(this.metricType);
+    }
+
+    /**
+     * SLB ID.
+     * 
+     */
+    @Import(name="slbId")
+    private @Nullable Output<String> slbId;
+
+    /**
+     * @return SLB ID.
+     * 
+     */
+    public Optional<Output<String>> slbId() {
+        return Optional.ofNullable(this.slbId);
+    }
+
+    /**
+     * The log store of the Log Service.
+     * 
+     */
+    @Import(name="slbLogStore")
+    private @Nullable Output<String> slbLogStore;
+
+    /**
+     * @return The log store of the Log Service.
+     * 
+     */
+    public Optional<Output<String>> slbLogStore() {
+        return Optional.ofNullable(this.slbLogStore);
+    }
+
+    /**
+     * The project of the Log Service.
+     * 
+     */
+    @Import(name="slbProject")
+    private @Nullable Output<String> slbProject;
+
+    /**
+     * @return The project of the Log Service.
+     * 
+     */
+    public Optional<Output<String>> slbProject() {
+        return Optional.ofNullable(this.slbProject);
+    }
+
+    /**
+     * SLB listening port.
+     * 
+     */
+    @Import(name="vport")
+    private @Nullable Output<String> vport;
+
+    /**
+     * @return SLB listening port.
+     * 
+     */
+    public Optional<Output<String>> vport() {
+        return Optional.ofNullable(this.vport);
     }
 
     private ApplicationScalingRuleScalingRuleMetricMetricArgs() {}
@@ -61,6 +131,10 @@ public final class ApplicationScalingRuleScalingRuleMetricMetricArgs extends com
     private ApplicationScalingRuleScalingRuleMetricMetricArgs(ApplicationScalingRuleScalingRuleMetricMetricArgs $) {
         this.metricTargetAverageUtilization = $.metricTargetAverageUtilization;
         this.metricType = $.metricType;
+        this.slbId = $.slbId;
+        this.slbLogStore = $.slbLogStore;
+        this.slbProject = $.slbProject;
+        this.vport = $.vport;
     }
 
     public static Builder builder() {
@@ -103,12 +177,17 @@ public final class ApplicationScalingRuleScalingRuleMetricMetricArgs extends com
         }
 
         /**
-         * @param metricType Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+         * @param metricType Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
          * - CPU: CPU usage.
          * - MEMORY: MEMORY usage.
-         * - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
-         * - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
-         * - SLB_RT: the average response time of public network SLB within 15 seconds.
+         * - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+         * - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+         * - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+         * - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+         * - SLB_RT: The average response time of public network SLB within 15 seconds.
+         * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+         * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+         *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
          * 
          * @return builder
          * 
@@ -119,18 +198,107 @@ public final class ApplicationScalingRuleScalingRuleMetricMetricArgs extends com
         }
 
         /**
-         * @param metricType Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+         * @param metricType Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
          * - CPU: CPU usage.
          * - MEMORY: MEMORY usage.
-         * - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
-         * - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
-         * - SLB_RT: the average response time of public network SLB within 15 seconds.
+         * - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+         * - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+         * - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+         * - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+         * - SLB_RT: The average response time of public network SLB within 15 seconds.
+         * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+         * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+         *   **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
          * 
          * @return builder
          * 
          */
         public Builder metricType(String metricType) {
             return metricType(Output.of(metricType));
+        }
+
+        /**
+         * @param slbId SLB ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slbId(@Nullable Output<String> slbId) {
+            $.slbId = slbId;
+            return this;
+        }
+
+        /**
+         * @param slbId SLB ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slbId(String slbId) {
+            return slbId(Output.of(slbId));
+        }
+
+        /**
+         * @param slbLogStore The log store of the Log Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slbLogStore(@Nullable Output<String> slbLogStore) {
+            $.slbLogStore = slbLogStore;
+            return this;
+        }
+
+        /**
+         * @param slbLogStore The log store of the Log Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slbLogStore(String slbLogStore) {
+            return slbLogStore(Output.of(slbLogStore));
+        }
+
+        /**
+         * @param slbProject The project of the Log Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slbProject(@Nullable Output<String> slbProject) {
+            $.slbProject = slbProject;
+            return this;
+        }
+
+        /**
+         * @param slbProject The project of the Log Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slbProject(String slbProject) {
+            return slbProject(Output.of(slbProject));
+        }
+
+        /**
+         * @param vport SLB listening port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vport(@Nullable Output<String> vport) {
+            $.vport = vport;
+            return this;
+        }
+
+        /**
+         * @param vport SLB listening port.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vport(String vport) {
+            return vport(Output.of(vport));
         }
 
         public ApplicationScalingRuleScalingRuleMetricMetricArgs build() {

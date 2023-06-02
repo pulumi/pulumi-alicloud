@@ -121,7 +121,7 @@ type Store struct {
 	EncryptConf StoreEncryptConfPtrOutput `pulumi:"encryptConf"`
 	// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
 	HotTtl pulumi.IntPtrOutput `pulumi:"hotTtl"`
-	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrOutput `pulumi:"maxSplitShardCount"`
 	// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
 	Mode pulumi.StringOutput `pulumi:"mode"`
@@ -181,7 +181,7 @@ type storeState struct {
 	EncryptConf *StoreEncryptConf `pulumi:"encryptConf"`
 	// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
 	HotTtl *int `pulumi:"hotTtl"`
-	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount *int `pulumi:"maxSplitShardCount"`
 	// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
 	Mode *string `pulumi:"mode"`
@@ -210,7 +210,7 @@ type StoreState struct {
 	EncryptConf StoreEncryptConfPtrInput
 	// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
 	HotTtl pulumi.IntPtrInput
-	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrInput
 	// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
 	Mode pulumi.StringPtrInput
@@ -243,7 +243,7 @@ type storeArgs struct {
 	EncryptConf *StoreEncryptConf `pulumi:"encryptConf"`
 	// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
 	HotTtl *int `pulumi:"hotTtl"`
-	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount *int `pulumi:"maxSplitShardCount"`
 	// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
 	Mode *string `pulumi:"mode"`
@@ -271,7 +271,7 @@ type StoreArgs struct {
 	EncryptConf StoreEncryptConfPtrInput
 	// The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
 	HotTtl pulumi.IntPtrInput
-	// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+	// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 	MaxSplitShardCount pulumi.IntPtrInput
 	// The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
 	Mode pulumi.StringPtrInput
@@ -399,7 +399,7 @@ func (o StoreOutput) HotTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Store) pulumi.IntPtrOutput { return v.HotTtl }).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
 func (o StoreOutput) MaxSplitShardCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Store) pulumi.IntPtrOutput { return v.MaxSplitShardCount }).(pulumi.IntPtrOutput)
 }

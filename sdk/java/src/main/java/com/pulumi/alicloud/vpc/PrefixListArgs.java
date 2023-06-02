@@ -7,8 +7,10 @@ import com.pulumi.alicloud.vpc.inputs.PrefixListEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +21,14 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
     public static final PrefixListArgs Empty = new PrefixListArgs();
 
     /**
-     * The CIDR address block list of the prefix list. See the following `Block entrys`.
+     * The CIDR address block list of the prefix list.See the following `Block Entrys`.
      * 
      */
     @Import(name="entrys")
     private @Nullable Output<List<PrefixListEntryArgs>> entrys;
 
     /**
-     * @return The CIDR address block list of the prefix list. See the following `Block entrys`.
+     * @return The CIDR address block list of the prefix list.See the following `Block Entrys`.
      * 
      */
     public Optional<Output<List<PrefixListEntryArgs>>> entrys() {
@@ -34,14 +36,14 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+     * The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
      * 
      */
     @Import(name="ipVersion")
     private @Nullable Output<String> ipVersion;
 
     /**
-     * @return The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+     * @return The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
      * 
      */
     public Optional<Output<String>> ipVersion() {
@@ -64,14 +66,14 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="prefixListDescription")
     private @Nullable Output<String> prefixListDescription;
 
     /**
-     * @return The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * @return The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> prefixListDescription() {
@@ -79,18 +81,48 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="prefixListName")
     private @Nullable Output<String> prefixListName;
 
     /**
-     * @return The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * @return The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> prefixListName() {
         return Optional.ofNullable(this.prefixListName);
+    }
+
+    /**
+     * The ID of the resource group to which the PrefixList belongs.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which the PrefixList belongs.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The tags of PrefixList.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tags of PrefixList.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private PrefixListArgs() {}
@@ -101,6 +133,8 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         this.maxEntries = $.maxEntries;
         this.prefixListDescription = $.prefixListDescription;
         this.prefixListName = $.prefixListName;
+        this.resourceGroupId = $.resourceGroupId;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -122,7 +156,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entrys The CIDR address block list of the prefix list. See the following `Block entrys`.
+         * @param entrys The CIDR address block list of the prefix list.See the following `Block Entrys`.
          * 
          * @return builder
          * 
@@ -133,7 +167,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entrys The CIDR address block list of the prefix list. See the following `Block entrys`.
+         * @param entrys The CIDR address block list of the prefix list.See the following `Block Entrys`.
          * 
          * @return builder
          * 
@@ -143,7 +177,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entrys The CIDR address block list of the prefix list. See the following `Block entrys`.
+         * @param entrys The CIDR address block list of the prefix list.See the following `Block Entrys`.
          * 
          * @return builder
          * 
@@ -153,7 +187,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipVersion The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+         * @param ipVersion The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
          * 
          * @return builder
          * 
@@ -164,7 +198,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipVersion The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+         * @param ipVersion The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
          * 
          * @return builder
          * 
@@ -195,7 +229,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prefixListDescription The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * @param prefixListDescription The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -206,7 +240,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prefixListDescription The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * @param prefixListDescription The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -216,7 +250,7 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prefixListName The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+         * @param prefixListName The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -227,13 +261,55 @@ public final class PrefixListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param prefixListName The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+         * @param prefixListName The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
          */
         public Builder prefixListName(String prefixListName) {
             return prefixListName(Output.of(prefixListName));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which the PrefixList belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which the PrefixList belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param tags The tags of PrefixList.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags of PrefixList.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public PrefixListArgs build() {

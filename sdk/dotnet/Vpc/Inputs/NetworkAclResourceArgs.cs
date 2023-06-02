@@ -15,14 +15,20 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         /// <summary>
         /// The ID of the associated resource.
         /// </summary>
-        [Input("resourceId")]
-        public Input<string>? ResourceId { get; set; }
+        [Input("resourceId", required: true)]
+        public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the associated resource. Valid values `VSwitch`.
+        /// The type of the associated resource.
         /// </summary>
-        [Input("resourceType")]
-        public Input<string>? ResourceType { get; set; }
+        [Input("resourceType", required: true)]
+        public Input<string> ResourceType { get; set; } = null!;
+
+        /// <summary>
+        /// The state of the network ACL.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public NetworkAclResourceArgs()
         {

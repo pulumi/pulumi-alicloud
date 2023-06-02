@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
@@ -54,8 +56,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .instanceTypeFamily(&#34;ecs.g5&#34;)
+ *             .build());
+ * 
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .availableInstanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
  *             .build());
  * 
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
@@ -63,18 +70,15 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultCapacityReservation = new CapacityReservation(&#34;defaultCapacityReservation&#34;, CapacityReservationArgs.builder()        
- *             .description(var_.name())
+ *             .description(&#34;terraform-example&#34;)
  *             .platform(&#34;linux&#34;)
- *             .capacityReservationName(var_.name())
+ *             .capacityReservationName(&#34;terraform-example&#34;)
  *             .endTimeType(&#34;Unlimited&#34;)
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
  *             .instanceAmount(1)
- *             .instanceType(&#34;ecs.c5.2xlarge&#34;)
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
  *             .matchCriteria(&#34;Open&#34;)
- *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;tfTestAcc0&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Tftestacc 0&#34;)
- *             ))
+ *             .tags(Map.of(&#34;Created&#34;, &#34;terraform-example&#34;))
  *             .zoneIds(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 

@@ -211,6 +211,13 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.cms);
     }
 
+    @Import(name="computenest")
+    private @Nullable Output<String> computenest;
+
+    public Optional<Output<String>> computenest() {
+        return Optional.ofNullable(this.computenest);
+    }
+
     @Import(name="config")
     private @Nullable Output<String> config;
 
@@ -942,6 +949,7 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
         this.cloudphone = $.cloudphone;
         this.cloudsso = $.cloudsso;
         this.cms = $.cms;
+        this.computenest = $.computenest;
         this.config = $.config;
         this.cr = $.cr;
         this.cs = $.cs;
@@ -1312,6 +1320,15 @@ public final class ProviderEndpointArgs extends com.pulumi.resources.ResourceArg
 
         public Builder cms(String cms) {
             return cms(Output.of(cms));
+        }
+
+        public Builder computenest(@Nullable Output<String> computenest) {
+            $.computenest = computenest;
+            return this;
+        }
+
+        public Builder computenest(String computenest) {
+            return computenest(Output.of(computenest));
         }
 
         public Builder config(@Nullable Output<String> config) {

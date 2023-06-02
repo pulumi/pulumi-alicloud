@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Global Accelerator (GA) Acl entry attachment resource.
  *
- * For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/addentriestoacl).
+ * For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-addentriestoacl).
  *
  * > **NOTE:** Available in v1.190.0+.
  *
@@ -71,7 +71,7 @@ export class AclEntryAttachment extends pulumi.CustomResource {
      */
     public readonly aclId!: pulumi.Output<string>;
     /**
-     * The IP address or CIDR block that you want to add to the network ACL.
+     * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
      */
     public readonly entry!: pulumi.Output<string>;
     /**
@@ -127,7 +127,7 @@ export interface AclEntryAttachmentState {
      */
     aclId?: pulumi.Input<string>;
     /**
-     * The IP address or CIDR block that you want to add to the network ACL.
+     * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
      */
     entry?: pulumi.Input<string>;
     /**
@@ -149,7 +149,7 @@ export interface AclEntryAttachmentArgs {
      */
     aclId: pulumi.Input<string>;
     /**
-     * The IP address or CIDR block that you want to add to the network ACL.
+     * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
      */
     entry: pulumi.Input<string>;
     /**

@@ -20,83 +20,93 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			creation := "Rds"
-//			if param := cfg.Get("creation"); param != "" {
-//				creation = param
-//			}
-//			name := "dbInstancevpc"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			exampleZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//				Category:              pulumi.StringRef("Basic"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//			exampleInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(exampleZones.Zones[0].Id),
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				Category:              pulumi.StringRef("Basic"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
-//				Engine:             pulumi.String("MySQL"),
-//				EngineVersion:      pulumi.String("5.6"),
-//				InstanceType:       pulumi.String("rds.mysql.t1.small"),
-//				InstanceStorage:    pulumi.Int(20),
-//				InstanceChargeType: pulumi.String("Postpaid"),
-//				InstanceName:       pulumi.String(name),
-//				VswitchId:          defaultSwitch.ID(),
-//				SecurityIps: pulumi.StringArray{
-//					pulumi.String("10.168.1.12"),
-//					pulumi.String("100.69.7.112"),
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
+//				Engine:                pulumi.String("MySQL"),
+//				EngineVersion:         pulumi.String("8.0"),
+//				InstanceType:          *pulumi.String(exampleInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       *pulumi.String(exampleInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceChargeType:    pulumi.String("Postpaid"),
+//				InstanceName:          pulumi.String("terraform-example"),
+//				VswitchId:             exampleSwitch.ID(),
+//				MonitoringPeriod:      pulumi.Int(60),
+//				DbInstanceStorageType: pulumi.String("cloud_essd"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					exampleSecurityGroup.ID(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultReadOnlyInstance, err := rds.NewReadOnlyInstance(ctx, "defaultReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
-//				MasterDbInstanceId: defaultInstance.ID(),
-//				ZoneId:             defaultInstance.ZoneId,
-//				EngineVersion:      defaultInstance.EngineVersion,
-//				InstanceType:       defaultInstance.InstanceType,
-//				InstanceStorage:    pulumi.Int(30),
-//				InstanceName:       pulumi.String(fmt.Sprintf("%vro", name)),
-//				VswitchId:          defaultSwitch.ID(),
+//			exampleReadOnlyInstance, err := rds.NewReadOnlyInstance(ctx, "exampleReadOnlyInstance", &rds.ReadOnlyInstanceArgs{
+//				ZoneId:             exampleInstance.ZoneId,
+//				MasterDbInstanceId: exampleInstance.ID(),
+//				EngineVersion:      exampleInstance.EngineVersion,
+//				InstanceStorage:    exampleInstance.InstanceStorage,
+//				InstanceType:       *pulumi.String(exampleInstanceClasses.InstanceClasses[1].InstanceClass),
+//				InstanceName:       pulumi.String("terraform-example-readonly"),
+//				VswitchId:          exampleSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rds.NewReadWriteSplittingConnection(ctx, "defaultReadWriteSplittingConnection", &rds.ReadWriteSplittingConnectionArgs{
-//				InstanceId:       defaultInstance.ID(),
-//				ConnectionPrefix: pulumi.String("t-con-123"),
+//			_, err = rds.NewReadWriteSplittingConnection(ctx, "exampleReadWriteSplittingConnection", &rds.ReadWriteSplittingConnectionArgs{
+//				InstanceId:       exampleInstance.ID(),
+//				ConnectionPrefix: pulumi.String("example-con-123"),
 //				DistributionType: pulumi.String("Standard"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				defaultReadOnlyInstance,
+//				exampleReadOnlyInstance,
 //			}))
 //			if err != nil {
 //				return err

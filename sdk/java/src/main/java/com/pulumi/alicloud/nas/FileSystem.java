@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.NasFunctions;
+ * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
  * import com.pulumi.alicloud.nas.FileSystemArgs;
  * import java.util.List;
@@ -50,44 +52,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new FileSystem(&#34;foo&#34;, FileSystemArgs.builder()        
- *             .description(&#34;tf-testAccNasConfig&#34;)
- *             .encryptType(&#34;1&#34;)
- *             .protocolType(&#34;NFS&#34;)
- *             .storageType(&#34;Performance&#34;)
+ *         final var example = NasFunctions.getZones(GetZonesArgs.builder()
+ *             .fileSystemType(&#34;standard&#34;)
  *             .build());
  * 
- *     }
- * }
- * ```
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.nas.FileSystem;
- * import com.pulumi.alicloud.nas.FileSystemArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
  *         var foo = new FileSystem(&#34;foo&#34;, FileSystemArgs.builder()        
- *             .capacity(&#34;100&#34;)
- *             .description(&#34;tf-testAccNasConfig&#34;)
- *             .fileSystemType(&#34;extreme&#34;)
  *             .protocolType(&#34;NFS&#34;)
- *             .storageType(&#34;standard&#34;)
- *             .zoneId(&#34;cn-hangzhou-f&#34;)
+ *             .storageType(&#34;Performance&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .encryptType(&#34;1&#34;)
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
  *             .build());
  * 
  *     }
@@ -101,9 +75,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.nas.NasFunctions;
  * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
  * import com.pulumi.alicloud.nas.FileSystemArgs;
  * import java.util.List;
@@ -119,28 +90,74 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultZones = NasFunctions.getZones(GetZonesArgs.builder()
- *             .fileSystemType(&#34;cpfs&#34;)
- *             .build());
- * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
- *             .build());
- * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *         final var example = NasFunctions.getZones(GetZonesArgs.builder()
+ *             .fileSystemType(&#34;extreme&#34;)
  *             .build());
  * 
  *         var foo = new FileSystem(&#34;foo&#34;, FileSystemArgs.builder()        
+ *             .fileSystemType(&#34;extreme&#34;)
+ *             .protocolType(&#34;NFS&#34;)
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .storageType(&#34;standard&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .capacity(&#34;100&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.NasFunctions;
+ * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var exampleZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *             .fileSystemType(&#34;cpfs&#34;)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
+ *             .build());
+ * 
+ *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
  *             .protocolType(&#34;cpfs&#34;)
  *             .storageType(&#34;advance_200&#34;)
  *             .fileSystemType(&#34;cpfs&#34;)
  *             .capacity(3600)
- *             .description(&#34;tf-testacc&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .description(&#34;terraform-example&#34;)
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
+ *             .vpcId(exampleNetwork.id())
+ *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
  *     }

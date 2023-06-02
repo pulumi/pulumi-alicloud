@@ -81,6 +81,7 @@ class Endpoints(dict):
                  cloudphone: Optional[str] = None,
                  cloudsso: Optional[str] = None,
                  cms: Optional[str] = None,
+                 computenest: Optional[str] = None,
                  config: Optional[str] = None,
                  cr: Optional[str] = None,
                  cs: Optional[str] = None,
@@ -237,6 +238,8 @@ class Endpoints(dict):
             pulumi.set(__self__, "cloudsso", cloudsso)
         if cms is not None:
             pulumi.set(__self__, "cms", cms)
+        if computenest is not None:
+            pulumi.set(__self__, "computenest", computenest)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if cr is not None:
@@ -577,6 +580,11 @@ class Endpoints(dict):
     @pulumi.getter
     def cms(self) -> Optional[str]:
         return pulumi.get(self, "cms")
+
+    @property
+    @pulumi.getter
+    def computenest(self) -> Optional[str]:
+        return pulumi.get(self, "computenest")
 
     @property
     @pulumi.getter

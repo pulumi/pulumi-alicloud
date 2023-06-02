@@ -35,43 +35,45 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			vswitchId := defaultSwitches.Ids[0]
-//			defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
-//				VpcId:              *pulumi.String(defaultNetworks.Ids[0]),
-//				Bandwidth:          pulumi.Int(10),
-//				EnableSsl:          pulumi.Bool(true),
-//				EnableIpsec:        pulumi.Bool(true),
-//				SslConnections:     pulumi.Int(5),
-//				InstanceChargeType: pulumi.String("PrePaid"),
-//				VswitchId:          *pulumi.String(vswitchId),
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpn.NewIpsecServer(ctx, "example", &vpn.IpsecServerArgs{
-//				ClientIpPool:    pulumi.String("example_value"),
-//				IpsecServerName: pulumi.String("example_value"),
-//				LocalSubnet:     pulumi.String("example_value"),
-//				VpnGatewayId:    defaultGateway.ID(),
+//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				VpcId:       fooNetwork.ID(),
+//				ZoneId:      *pulumi.String(fooZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooGateway, err := vpn.NewGateway(ctx, "fooGateway", &vpn.GatewayArgs{
+//				VpcId:              fooNetwork.ID(),
+//				Bandwidth:          pulumi.Int(10),
+//				EnableSsl:          pulumi.Bool(true),
+//				InstanceChargeType: pulumi.String("PrePaid"),
+//				Description:        pulumi.String("terraform-example"),
+//				VswitchId:          fooSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpn.NewIpsecServer(ctx, "fooIpsecServer", &vpn.IpsecServerArgs{
+//				ClientIpPool:    pulumi.String("10.0.0.0/24"),
+//				IpsecServerName: pulumi.String("terraform-example"),
+//				LocalSubnet:     pulumi.String("192.168.0.0/24"),
+//				VpnGatewayId:    fooGateway.ID(),
+//				PskEnabled:      pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

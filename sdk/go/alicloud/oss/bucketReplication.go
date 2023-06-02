@@ -26,82 +26,99 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucketReplication(ctx, "cross-region-replication", &oss.BucketReplicationArgs{
-//				Action: pulumi.String("ALL"),
-//				Bucket: pulumi.String("bucket-in-hangzhou"),
-//				Destination: &oss.BucketReplicationDestinationArgs{
-//					Bucket:   pulumi.String("bucket-in-beijing"),
-//					Location: pulumi.String("oss-cn-beijing"),
-//				},
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oss.NewBucketReplication(ctx, "same-region-replication", &oss.BucketReplicationArgs{
-//				Action: pulumi.String("ALL"),
-//				Bucket: pulumi.String("bucket-in-hangzhou"),
-//				Destination: &oss.BucketReplicationDestinationArgs{
-//					Bucket:   pulumi.String("bucket-in-hangzhou-1"),
-//					Location: pulumi.String("oss-cn-hangzhou"),
-//				},
+//			bucketSrc, err := oss.NewBucket(ctx, "bucketSrc", &oss.BucketArgs{
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-src-%v", result), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oss.NewBucketReplication(ctx, "replication-with-prefix", &oss.BucketReplicationArgs{
-//				Action: pulumi.String("ALL"),
-//				Bucket: pulumi.String("bucket-1"),
-//				Destination: &oss.BucketReplicationDestinationArgs{
-//					Bucket:   pulumi.String("bucket-2"),
-//					Location: pulumi.String("oss-cn-hangzhou"),
-//				},
-//				HistoricalObjectReplication: pulumi.String("disabled"),
+//			bucketDest, err := oss.NewBucket(ctx, "bucketDest", &oss.BucketArgs{
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-dest-%v", result), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
+//				Document:    pulumi.String("		{\n		  \"Statement\": [\n			{\n			  \"Action\": \"sts:AssumeRole\",\n			  \"Effect\": \"Allow\",\n			  \"Principal\": {\n				\"Service\": [\n				  \"oss.aliyuncs.com\"\n				]\n			  }\n			}\n		  ],\n		  \"Version\": \"1\"\n		}\n"),
+//				Description: pulumi.String("this is a test"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//				PolicyName: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-policy-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				PolicyDocument: pulumi.String("		{\n		  \"Statement\": [\n			{\n			  \"Action\": [\n				\"*\"\n			  ],\n			  \"Effect\": \"Allow\",\n			  \"Resource\": [\n				\"*\"\n			  ]\n			}\n		  ],\n			\"Version\": \"1\"\n		}\n"),
+//				Description:    pulumi.String("this is a policy test"),
+//				Force:          pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewRolePolicyAttachment(ctx, "attach", &ram.RolePolicyAttachmentArgs{
+//				PolicyName: policy.Name,
+//				PolicyType: policy.Type,
+//				RoleName:   role.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			key, err := kms.NewKey(ctx, "key", &kms.KeyArgs{
+//				Description:         pulumi.String("Hello KMS"),
+//				PendingWindowInDays: pulumi.Int(7),
+//				Status:              pulumi.String("Enabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucketReplication(ctx, "cross-region-replication", &oss.BucketReplicationArgs{
+//				Bucket:                      bucketSrc.ID(),
+//				Action:                      pulumi.String("PUT,DELETE"),
+//				HistoricalObjectReplication: pulumi.String("enabled"),
 //				PrefixSet: &oss.BucketReplicationPrefixSetArgs{
 //					Prefixes: pulumi.StringArray{
 //						pulumi.String("prefix1/"),
 //						pulumi.String("prefix2/"),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = oss.NewBucketReplication(ctx, "replication-with-specific-action", &oss.BucketReplicationArgs{
-//				Action: pulumi.String("PUT"),
-//				Bucket: pulumi.String("bucket-1"),
 //				Destination: &oss.BucketReplicationDestinationArgs{
-//					Bucket:   pulumi.String("bucket-2"),
-//					Location: pulumi.String("oss-cn-hangzhou"),
+//					Bucket:   bucketDest.ID(),
+//					Location: bucketDest.Location,
 //				},
-//				HistoricalObjectReplication: pulumi.String("disabled"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = oss.NewBucketReplication(ctx, "replication-with-kms-encryption", &oss.BucketReplicationArgs{
-//				Action: pulumi.String("ALL"),
-//				Bucket: pulumi.String("bucket-1"),
-//				Destination: &oss.BucketReplicationDestinationArgs{
-//					Bucket:   pulumi.String("bucket-2"),
-//					Location: pulumi.String("oss-cn-hangzhou"),
-//				},
+//				SyncRole: role.Name,
 //				EncryptionConfiguration: &oss.BucketReplicationEncryptionConfigurationArgs{
-//					ReplicaKmsKeyId: pulumi.String("<your kms key id>"),
+//					ReplicaKmsKeyId: key.ID(),
 //				},
-//				HistoricalObjectReplication: pulumi.String("disabled"),
 //				SourceSelectionCriteria: &oss.BucketReplicationSourceSelectionCriteriaArgs{
 //					SseKmsEncryptedObjects: &oss.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs{
 //						Status: pulumi.String("Enabled"),
 //					},
 //				},
-//				SyncRole: pulumi.String("<your ram role>"),
 //			})
 //			if err != nil {
 //				return err

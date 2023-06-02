@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Cen
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetTransitRouterRouteTableAssociationsResult> InvokeAsync(GetTransitRouterRouteTableAssociationsArgs args, InvokeOptions? options = null)
+        public static Task<GetTransitRouterRouteTableAssociationsResult> InvokeAsync(GetTransitRouterRouteTableAssociationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsArgs(), options.WithDefaults());
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Cen
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetTransitRouterRouteTableAssociationsResult> Invoke(GetTransitRouterRouteTableAssociationsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetTransitRouterRouteTableAssociationsResult> Invoke(GetTransitRouterRouteTableAssociationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsInvokeArgs(), options.WithDefaults());
     }
 
@@ -108,10 +108,28 @@ namespace Pulumi.AliCloud.Cen
         public string? Status { get; set; }
 
         /// <summary>
-        /// ID of the route table of the VPC or VBR.
+        /// The ID of the network instance connection.
         /// </summary>
-        [Input("transitRouterRouteTableId", required: true)]
-        public string TransitRouterRouteTableId { get; set; } = null!;
+        [Input("transitRouterAttachmentId")]
+        public string? TransitRouterAttachmentId { get; set; }
+
+        /// <summary>
+        /// The ID of the next hop.
+        /// </summary>
+        [Input("transitRouterAttachmentResourceId")]
+        public string? TransitRouterAttachmentResourceId { get; set; }
+
+        /// <summary>
+        /// The type of next hop. Valid values:
+        /// </summary>
+        [Input("transitRouterAttachmentResourceType")]
+        public string? TransitRouterAttachmentResourceType { get; set; }
+
+        /// <summary>
+        /// The ID of the route table of the Enterprise Edition transit router.
+        /// </summary>
+        [Input("transitRouterRouteTableId")]
+        public string? TransitRouterRouteTableId { get; set; }
 
         public GetTransitRouterRouteTableAssociationsArgs()
         {
@@ -146,10 +164,28 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// ID of the route table of the VPC or VBR.
+        /// The ID of the network instance connection.
         /// </summary>
-        [Input("transitRouterRouteTableId", required: true)]
-        public Input<string> TransitRouterRouteTableId { get; set; } = null!;
+        [Input("transitRouterAttachmentId")]
+        public Input<string>? TransitRouterAttachmentId { get; set; }
+
+        /// <summary>
+        /// The ID of the next hop.
+        /// </summary>
+        [Input("transitRouterAttachmentResourceId")]
+        public Input<string>? TransitRouterAttachmentResourceId { get; set; }
+
+        /// <summary>
+        /// The type of next hop. Valid values:
+        /// </summary>
+        [Input("transitRouterAttachmentResourceType")]
+        public Input<string>? TransitRouterAttachmentResourceType { get; set; }
+
+        /// <summary>
+        /// The ID of the route table of the Enterprise Edition transit router.
+        /// </summary>
+        [Input("transitRouterRouteTableId")]
+        public Input<string>? TransitRouterRouteTableId { get; set; }
 
         public GetTransitRouterRouteTableAssociationsInvokeArgs()
         {
@@ -179,9 +215,15 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         public readonly string? Status;
         /// <summary>
+        /// ID of the transit router attachment.
+        /// </summary>
+        public readonly string? TransitRouterAttachmentId;
+        public readonly string? TransitRouterAttachmentResourceId;
+        public readonly string? TransitRouterAttachmentResourceType;
+        /// <summary>
         /// ID of the transit router route table.
         /// </summary>
-        public readonly string TransitRouterRouteTableId;
+        public readonly string? TransitRouterRouteTableId;
 
         [OutputConstructor]
         private GetTransitRouterRouteTableAssociationsResult(
@@ -195,13 +237,22 @@ namespace Pulumi.AliCloud.Cen
 
             string? status,
 
-            string transitRouterRouteTableId)
+            string? transitRouterAttachmentId,
+
+            string? transitRouterAttachmentResourceId,
+
+            string? transitRouterAttachmentResourceType,
+
+            string? transitRouterRouteTableId)
         {
             Associations = associations;
             Id = id;
             Ids = ids;
             OutputFile = outputFile;
             Status = status;
+            TransitRouterAttachmentId = transitRouterAttachmentId;
+            TransitRouterAttachmentResourceId = transitRouterAttachmentResourceId;
+            TransitRouterAttachmentResourceType = transitRouterAttachmentResourceType;
             TransitRouterRouteTableId = transitRouterRouteTableId;
         }
     }

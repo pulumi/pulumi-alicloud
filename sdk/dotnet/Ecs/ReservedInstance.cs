@@ -24,16 +24,21 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Ecs.ReservedInstance("default", new()
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         InstanceType = "ecs.g6.large",
+    ///         InstanceTypeFamily = "ecs.g6",
+    ///     });
+    /// 
+    ///     var defaultReservedInstance = new AliCloud.Ecs.ReservedInstance("defaultReservedInstance", new()
+    ///     {
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         InstanceAmount = 1,
-    ///         PeriodUnit = "Year",
+    ///         PeriodUnit = "Month",
     ///         OfferingType = "All Upfront",
+    ///         ReservedInstanceName = "terraform-example",
     ///         Description = "ReservedInstance",
-    ///         ZoneId = "cn-hangzhou-h",
+    ///         ZoneId = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
     ///         Scope = "Zone",
-    ///         Period = 1,
     ///     });
     /// 
     /// });

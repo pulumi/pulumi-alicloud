@@ -41,7 +41,7 @@ import (
 //			_, err = oos.NewStateConfiguration(ctx, "defaultStateConfiguration", &oos.StateConfigurationArgs{
 //				TemplateName:       pulumi.String("ACS-ECS-InventoryDataCollection"),
 //				ConfigureMode:      pulumi.String("ApplyOnly"),
-//				Description:        pulumi.Any(_var.Name),
+//				Description:        pulumi.String("terraform-example"),
 //				ScheduleType:       pulumi.String("rate"),
 //				ScheduleExpression: pulumi.String("1 hour"),
 //				ResourceGroupId:    *pulumi.String(defaultResourceGroups.Ids[0]),
@@ -49,7 +49,7 @@ import (
 //				Parameters:         pulumi.String("{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("Test"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {

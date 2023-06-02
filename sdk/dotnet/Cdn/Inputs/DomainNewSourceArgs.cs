@@ -15,8 +15,8 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         /// <summary>
         /// The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
         /// </summary>
-        [Input("content", required: true)]
-        public Input<string> Content { get; set; } = null!;
+        [Input("content")]
+        public Input<string>? Content { get; set; }
 
         /// <summary>
         /// The port of source. Valid values are `443` and `80`. Default value is `80`.
@@ -33,11 +33,11 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         /// <summary>
         /// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+        /// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }

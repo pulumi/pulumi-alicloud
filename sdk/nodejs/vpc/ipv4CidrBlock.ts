@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const _default = new alicloud.vpc.Network("default", {
  *     cidrBlock: "192.168.0.0/24",
- *     vpcName: _var.name,
+ *     vpcName: "terraform-example",
  * });
  * const example = new alicloud.vpc.Ipv4CidrBlock("example", {
  *     vpcId: _default.id,

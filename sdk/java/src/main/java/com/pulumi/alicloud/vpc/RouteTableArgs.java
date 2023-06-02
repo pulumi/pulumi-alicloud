@@ -18,14 +18,18 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
     public static final RouteTableArgs Empty = new RouteTableArgs();
 
     /**
-     * The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * The type of cloud resource that is bound to the routing table. Value:
+     * - **VSwitch**: switch.
+     * - **Gateway**:IPv4 Gateway.
      * 
      */
     @Import(name="associateType")
     private @Nullable Output<String> associateType;
 
     /**
-     * @return The type of routing table created. Valid values are `VSwitch` and `Gateway`
+     * @return The type of cloud resource that is bound to the routing table. Value:
+     * - **VSwitch**: switch.
+     * - **Gateway**:IPv4 Gateway.
      * 
      */
     public Optional<Output<String>> associateType() {
@@ -33,14 +37,14 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the route table instance.
+     * Description of the routing table.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the route table instance.
+     * @return Description of the routing table.
      * 
      */
     public Optional<Output<String>> description() {
@@ -48,7 +52,7 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
@@ -59,7 +63,7 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
@@ -71,14 +75,14 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the route table.
+     * The name of the routing table.
      * 
      */
     @Import(name="routeTableName")
     private @Nullable Output<String> routeTableName;
 
     /**
-     * @return The name of the route table.
+     * @return The name of the routing table.
      * 
      */
     public Optional<Output<String>> routeTableName() {
@@ -86,14 +90,14 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -101,14 +105,18 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vpc_id of the route table, the field can&#39;t be changed.
+     * The ID of VPC.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The vpc_id of the route table, the field can&#39;t be changed.
+     * @return The ID of VPC.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> vpcId() {
@@ -145,7 +153,9 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associateType The type of routing table created. Valid values are `VSwitch` and `Gateway`
+         * @param associateType The type of cloud resource that is bound to the routing table. Value:
+         * - **VSwitch**: switch.
+         * - **Gateway**:IPv4 Gateway.
          * 
          * @return builder
          * 
@@ -156,7 +166,9 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param associateType The type of routing table created. Valid values are `VSwitch` and `Gateway`
+         * @param associateType The type of cloud resource that is bound to the routing table. Value:
+         * - **VSwitch**: switch.
+         * - **Gateway**:IPv4 Gateway.
          * 
          * @return builder
          * 
@@ -166,7 +178,7 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the route table instance.
+         * @param description Description of the routing table.
          * 
          * @return builder
          * 
@@ -177,7 +189,7 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the route table instance.
+         * @param description Description of the routing table.
          * 
          * @return builder
          * 
@@ -187,7 +199,7 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
          * 
          * @return builder
          * 
@@ -202,7 +214,7 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.119.1. New field `route_table_name` instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.1. New field &#39;route_table_name&#39; instead.
          * 
          * @return builder
          * 
@@ -216,7 +228,7 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeTableName The name of the route table.
+         * @param routeTableName The name of the routing table.
          * 
          * @return builder
          * 
@@ -227,7 +239,7 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeTableName The name of the route table.
+         * @param routeTableName The name of the routing table.
          * 
          * @return builder
          * 
@@ -237,7 +249,7 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag.
          * 
          * @return builder
          * 
@@ -248,7 +260,7 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag.
          * 
          * @return builder
          * 
@@ -258,7 +270,9 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The vpc_id of the route table, the field can&#39;t be changed.
+         * @param vpcId The ID of VPC.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -269,7 +283,9 @@ public final class RouteTableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The vpc_id of the route table, the field can&#39;t be changed.
+         * @param vpcId The ID of VPC.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

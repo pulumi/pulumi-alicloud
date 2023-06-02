@@ -26,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.polardb.PolardbFunctions;
+ * import com.pulumi.alicloud.polardb.inputs.GetNodeClassesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -49,35 +49,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;polardbClusterconfig&#34;);
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;PolarDB&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var defaultNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+ *             .dbType(&#34;MySQL&#34;)
+ *             .dbVersion(&#34;8.0&#34;)
+ *             .payType(&#34;PostPaid&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()))
+ *             .vswitchName(&#34;terraform-example&#34;)
  *             .build());
  * 
- *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
  *             .dbType(&#34;MySQL&#34;)
  *             .dbVersion(&#34;8.0&#34;)
+ *             .dbNodeClass(defaultNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass()))
  *             .payType(&#34;PostPaid&#34;)
- *             .dbNodeClass(&#34;polar.mysql.x4.large&#34;)
  *             .vswitchId(defaultSwitch.id())
- *             .description(&#34;testDB&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var defaultDatabase = new Database(&#34;defaultDatabase&#34;, DatabaseArgs.builder()        
- *             .dbClusterId(cluster.id())
- *             .dbName(&#34;tftestdatabase&#34;)
+ *             .dbClusterId(defaultCluster.id())
+ *             .dbName(&#34;terraform-example&#34;)
  *             .build());
  * 
  *     }

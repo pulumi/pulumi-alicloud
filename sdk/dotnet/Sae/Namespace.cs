@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Sae
     /// <summary>
     /// Provides a Serverless App Engine (SAE) Namespace resource.
     /// 
-    /// For information about SAE Namespace and how to use it, see [What is Namespace](https://help.aliyun.com/document_detail/97792.html).
+    /// For information about SAE Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/sae/latest/createnamespace).
     /// 
     /// &gt; **NOTE:** Available in v1.129.0+.
     /// 
@@ -50,13 +50,19 @@ namespace Pulumi.AliCloud.Sae
     public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+        /// </summary>
+        [Output("enableMicroRegistration")]
+        public Output<bool> EnableMicroRegistration { get; private set; } = null!;
+
+        /// <summary>
         /// The Description of Namespace.
         /// </summary>
         [Output("namespaceDescription")]
         public Output<string?> NamespaceDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+        /// The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
         /// </summary>
         [Output("namespaceId")]
         public Output<string> NamespaceId { get; private set; } = null!;
@@ -66,6 +72,12 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Output("namespaceName")]
         public Output<string> NamespaceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+        /// </summary>
+        [Output("namespaceShortId")]
+        public Output<string> NamespaceShortId { get; private set; } = null!;
 
 
         /// <summary>
@@ -114,22 +126,34 @@ namespace Pulumi.AliCloud.Sae
     public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+        /// </summary>
+        [Input("enableMicroRegistration")]
+        public Input<bool>? EnableMicroRegistration { get; set; }
+
+        /// <summary>
         /// The Description of Namespace.
         /// </summary>
         [Input("namespaceDescription")]
         public Input<string>? NamespaceDescription { get; set; }
 
         /// <summary>
-        /// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+        /// The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
         /// </summary>
-        [Input("namespaceId", required: true)]
-        public Input<string> NamespaceId { get; set; } = null!;
+        [Input("namespaceId")]
+        public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
         /// The Name of Namespace.
         /// </summary>
         [Input("namespaceName", required: true)]
         public Input<string> NamespaceName { get; set; } = null!;
+
+        /// <summary>
+        /// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+        /// </summary>
+        [Input("namespaceShortId")]
+        public Input<string>? NamespaceShortId { get; set; }
 
         public NamespaceArgs()
         {
@@ -140,13 +164,19 @@ namespace Pulumi.AliCloud.Sae
     public sealed class NamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+        /// </summary>
+        [Input("enableMicroRegistration")]
+        public Input<bool>? EnableMicroRegistration { get; set; }
+
+        /// <summary>
         /// The Description of Namespace.
         /// </summary>
         [Input("namespaceDescription")]
         public Input<string>? NamespaceDescription { get; set; }
 
         /// <summary>
-        /// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+        /// The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
@@ -156,6 +186,12 @@ namespace Pulumi.AliCloud.Sae
         /// </summary>
         [Input("namespaceName")]
         public Input<string>? NamespaceName { get; set; }
+
+        /// <summary>
+        /// The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+        /// </summary>
+        [Input("namespaceShortId")]
+        public Input<string>? NamespaceShortId { get; set; }
 
         public NamespaceState()
         {

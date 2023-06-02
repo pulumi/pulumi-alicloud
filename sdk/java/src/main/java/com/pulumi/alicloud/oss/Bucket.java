@@ -40,6 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import java.util.List;
@@ -55,9 +57,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var bucket_acl = new Bucket(&#34;bucket-acl&#34;, BucketArgs.builder()        
  *             .acl(&#34;private&#34;)
- *             .bucket(&#34;bucket-170309-acl&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
  *             .build());
  * 
  *     }
@@ -71,6 +78,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketWebsiteArgs;
@@ -87,8 +96,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var bucket_website = new Bucket(&#34;bucket-website&#34;, BucketArgs.builder()        
- *             .bucket(&#34;bucket-170309-website&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
  *             .website(BucketWebsiteArgs.builder()
  *                 .errorDocument(&#34;error.html&#34;)
  *                 .indexDocument(&#34;index.html&#34;)
@@ -106,6 +120,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketLoggingArgs;
@@ -122,13 +138,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var bucket_target = new Bucket(&#34;bucket-target&#34;, BucketArgs.builder()        
- *             .bucket(&#34;bucket-170309-acl&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
  *             .acl(&#34;public-read&#34;)
  *             .build());
  * 
  *         var bucket_logging = new Bucket(&#34;bucket-logging&#34;, BucketArgs.builder()        
- *             .bucket(&#34;bucket-170309-logging&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-logging-%s&#34;, result)))
  *             .logging(BucketLoggingArgs.builder()
  *                 .targetBucket(bucket_target.id())
  *                 .targetPrefix(&#34;log/&#34;)
@@ -146,6 +167,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketRefererConfigArgs;
@@ -162,9 +185,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var bucket_referer = new Bucket(&#34;bucket-referer&#34;, BucketArgs.builder()        
  *             .acl(&#34;private&#34;)
- *             .bucket(&#34;bucket-170309-referer&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
  *             .refererConfig(BucketRefererConfigArgs.builder()
  *                 .allowEmpty(false)
  *                 .referers(                
@@ -184,6 +212,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketLifecycleRuleArgs;
@@ -201,9 +231,74 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket_lifecycle = new Bucket(&#34;bucket-lifecycle&#34;, BucketArgs.builder()        
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var bucket_lifecycle1 = new Bucket(&#34;bucket-lifecycle1&#34;, BucketArgs.builder()        
  *             .acl(&#34;public-read&#34;)
- *             .bucket(&#34;bucket-170309-lifecycle&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-lifecycle1-%s&#34;, result)))
+ *             .lifecycleRules(            
+ *                 BucketLifecycleRuleArgs.builder()
+ *                     .enabled(true)
+ *                     .expirations(BucketLifecycleRuleExpirationArgs.builder()
+ *                         .days(365)
+ *                         .build())
+ *                     .id(&#34;rule-days&#34;)
+ *                     .prefix(&#34;path1/&#34;)
+ *                     .build(),
+ *                 BucketLifecycleRuleArgs.builder()
+ *                     .enabled(true)
+ *                     .expirations(BucketLifecycleRuleExpirationArgs.builder()
+ *                         .date(&#34;2018-01-12&#34;)
+ *                         .build())
+ *                     .id(&#34;rule-date&#34;)
+ *                     .prefix(&#34;path2/&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *         var bucket_lifecycle2 = new Bucket(&#34;bucket-lifecycle2&#34;, BucketArgs.builder()        
+ *             .acl(&#34;public-read&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-lifecycle2-%s&#34;, result)))
+ *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
+ *                 .enabled(true)
+ *                 .id(&#34;rule-days-transition&#34;)
+ *                 .prefix(&#34;path3/&#34;)
+ *                 .transitions(                
+ *                     BucketLifecycleRuleTransitionArgs.builder()
+ *                         .days(&#34;3&#34;)
+ *                         .storageClass(&#34;IA&#34;)
+ *                         .build(),
+ *                     BucketLifecycleRuleTransitionArgs.builder()
+ *                         .days(&#34;30&#34;)
+ *                         .storageClass(&#34;Archive&#34;)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var bucket_lifecycle3 = new Bucket(&#34;bucket-lifecycle3&#34;, BucketArgs.builder()        
+ *             .acl(&#34;public-read&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-lifecycle3-%s&#34;, result)))
+ *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
+ *                 .enabled(true)
+ *                 .id(&#34;rule-days-transition&#34;)
+ *                 .prefix(&#34;path3/&#34;)
+ *                 .transitions(                
+ *                     BucketLifecycleRuleTransitionArgs.builder()
+ *                         .createdBeforeDate(&#34;2022-11-11&#34;)
+ *                         .storageClass(&#34;IA&#34;)
+ *                         .build(),
+ *                     BucketLifecycleRuleTransitionArgs.builder()
+ *                         .createdBeforeDate(&#34;2021-11-11&#34;)
+ *                         .storageClass(&#34;Archive&#34;)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var bucket_lifecycle4 = new Bucket(&#34;bucket-lifecycle4&#34;, BucketArgs.builder()        
+ *             .acl(&#34;public-read&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-lifecycle4-%s&#34;, result)))
  *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
  *                 .abortMultipartUploads(BucketLifecycleRuleAbortMultipartUploadArgs.builder()
  *                     .days(128)
@@ -216,7 +311,7 @@ import javax.annotation.Nullable;
  * 
  *         var bucket_versioning_lifecycle = new Bucket(&#34;bucket-versioning-lifecycle&#34;, BucketArgs.builder()        
  *             .acl(&#34;private&#34;)
- *             .bucket(&#34;bucket-170309-lifecycle&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-lifecycle5-%s&#34;, result)))
  *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
  *                 .enabled(true)
  *                 .expirations(BucketLifecycleRuleExpirationArgs.builder()
@@ -253,6 +348,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import java.util.List;
@@ -268,9 +365,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var bucket_policy = new Bucket(&#34;bucket-policy&#34;, BucketArgs.builder()        
  *             .acl(&#34;private&#34;)
- *             .bucket(&#34;bucket-170309-policy&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-policy-%s&#34;, result)))
  *             .policy(&#34;&#34;&#34;
  *   {&#34;Statement&#34;:
  *       [{&#34;Action&#34;:
@@ -294,6 +396,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import java.util.List;
@@ -309,8 +413,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bucket_storageclass = new Bucket(&#34;bucket-storageclass&#34;, BucketArgs.builder()        
- *             .bucket(&#34;bucket-170309-storageclass&#34;)
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example-%s&#34;, result)))
  *             .storageClass(&#34;IA&#34;)
  *             .build());
  * 
@@ -325,9 +434,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketServerSideEncryptionRuleArgs;
+ * import com.pulumi.alicloud.kms.Key;
+ * import com.pulumi.alicloud.kms.KeyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -341,12 +454,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var bucket_sserule = new Bucket(&#34;bucket-sserule&#34;, BucketArgs.builder()        
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .acl(&#34;private&#34;)
- *             .bucket(&#34;bucket-170309-sserule&#34;)
  *             .serverSideEncryptionRule(BucketServerSideEncryptionRuleArgs.builder()
- *                 .kmsMasterKeyId(&#34;your kms key id&#34;)
+ *                 .sseAlgorithm(&#34;AES256&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var kms = new Key(&#34;kms&#34;, KeyArgs.builder()        
+ *             .description(&#34;terraform-example&#34;)
+ *             .pendingWindowInDays(&#34;7&#34;)
+ *             .status(&#34;Enabled&#34;)
+ *             .build());
+ * 
+ *         var bucket_kms = new Bucket(&#34;bucket-kms&#34;, BucketArgs.builder()        
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;terraform-example-kms-%s&#34;, result)))
+ *             .acl(&#34;private&#34;)
+ *             .serverSideEncryptionRule(BucketServerSideEncryptionRuleArgs.builder()
  *                 .sseAlgorithm(&#34;KMS&#34;)
+ *                 .kmsMasterKeyId(kms.id())
  *                 .build())
  *             .build());
  * 
@@ -361,6 +493,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import java.util.List;
@@ -376,9 +510,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var bucket_tags = new Bucket(&#34;bucket-tags&#34;, BucketArgs.builder()        
  *             .acl(&#34;private&#34;)
- *             .bucket(&#34;bucket-170309-tags&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
  *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
@@ -396,6 +535,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketVersioningArgs;
@@ -412,9 +553,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var bucket_versioning = new Bucket(&#34;bucket-versioning&#34;, BucketArgs.builder()        
  *             .acl(&#34;private&#34;)
- *             .bucket(&#34;bucket-170309-versioning&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .versioning(BucketVersioningArgs.builder()
  *                 .status(&#34;Enabled&#34;)
  *                 .build())
@@ -431,6 +577,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import java.util.List;
@@ -446,8 +594,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var bucket_redundancytype = new Bucket(&#34;bucket-redundancytype&#34;, BucketArgs.builder()        
- *             .bucket(&#34;bucket_name&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .redundancyType(&#34;ZRS&#34;)
  *             .build());
  * 
@@ -462,6 +615,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketTransferAccelerationArgs;
@@ -478,8 +633,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var bucket_accelerate = new Bucket(&#34;bucket-accelerate&#34;, BucketArgs.builder()        
- *             .bucket(&#34;bucket_name&#34;)
+ *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .transferAcceleration(BucketTransferAccelerationArgs.builder()
  *                 .enabled(false)
  *                 .build())

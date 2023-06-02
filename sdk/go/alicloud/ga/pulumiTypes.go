@@ -11,7 +11,7 @@ import (
 )
 
 type AclAclEntry struct {
-	// The IP entry that you want to add to the ACL.
+	// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
 	Entry *string `pulumi:"entry"`
 	// The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
 	EntryDescription *string `pulumi:"entryDescription"`
@@ -29,7 +29,7 @@ type AclAclEntryInput interface {
 }
 
 type AclAclEntryArgs struct {
-	// The IP entry that you want to add to the ACL.
+	// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
 	Entry pulumi.StringPtrInput `pulumi:"entry"`
 	// The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
 	EntryDescription pulumi.StringPtrInput `pulumi:"entryDescription"`
@@ -86,7 +86,7 @@ func (o AclAclEntryOutput) ToAclAclEntryOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// The IP entry that you want to add to the ACL.
+// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
 func (o AclAclEntryOutput) Entry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclAclEntry) *string { return v.Entry }).(pulumi.StringPtrOutput)
 }

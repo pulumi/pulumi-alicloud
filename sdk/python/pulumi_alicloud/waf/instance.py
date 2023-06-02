@@ -598,27 +598,6 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.83.0+ .
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.waf.Instance("default",
-            big_screen="0",
-            exclusive_ip_package="1",
-            ext_bandwidth="50",
-            ext_domain_package="1",
-            log_storage="3",
-            log_time="180",
-            package_code="version_3",
-            period=1,
-            prefessional_service="false",
-            resource_group_id="rs-abc12345",
-            subscription_type="Subscription",
-            waf_log="false")
-        ```
-
         ## Import
 
         WAF instance can be imported using the id, e.g.
@@ -664,27 +643,6 @@ class Instance(pulumi.CustomResource):
         For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 
         > **NOTE:** Available in 1.83.0+ .
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default = alicloud.waf.Instance("default",
-            big_screen="0",
-            exclusive_ip_package="1",
-            ext_bandwidth="50",
-            ext_domain_package="1",
-            log_storage="3",
-            log_time="180",
-            package_code="version_3",
-            period=1,
-            prefessional_service="false",
-            resource_group_id="rs-abc12345",
-            subscription_type="Subscription",
-            waf_log="false")
-        ```
 
         ## Import
 

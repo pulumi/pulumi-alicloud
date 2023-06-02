@@ -5,7 +5,10 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Object;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +17,34 @@ import javax.annotation.Nullable;
 public final class HAVipState extends com.pulumi.resources.ResourceArgs {
 
     public static final HAVipState Empty = new HAVipState();
+
+    @Import(name="associatedEipAddresses")
+    private @Nullable Output<List<String>> associatedEipAddresses;
+
+    public Optional<Output<List<String>>> associatedEipAddresses() {
+        return Optional.ofNullable(this.associatedEipAddresses);
+    }
+
+    @Import(name="associatedInstanceType")
+    private @Nullable Output<String> associatedInstanceType;
+
+    public Optional<Output<String>> associatedInstanceType() {
+        return Optional.ofNullable(this.associatedInstanceType);
+    }
+
+    @Import(name="associatedInstances")
+    private @Nullable Output<List<String>> associatedInstances;
+
+    public Optional<Output<List<String>>> associatedInstances() {
+        return Optional.ofNullable(this.associatedInstances);
+    }
+
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
 
     /**
      * The description of the HaVip instance.
@@ -30,17 +61,39 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="haVipId")
+    private @Nullable Output<String> haVipId;
+
+    public Optional<Output<String>> haVipId() {
+        return Optional.ofNullable(this.haVipId);
+    }
+
+    @Import(name="haVipName")
+    private @Nullable Output<String> haVipName;
+
+    public Optional<Output<String>> haVipName() {
+        return Optional.ofNullable(this.haVipName);
+    }
+
     /**
      * The name of the HaVip instance.
      * 
+     * @deprecated
+     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
     @Import(name="havipName")
     private @Nullable Output<String> havipName;
 
     /**
      * @return The name of the HaVip instance.
      * 
+     * @deprecated
+     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
     public Optional<Output<String>> havipName() {
         return Optional.ofNullable(this.havipName);
     }
@@ -60,6 +113,20 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ipAddress);
     }
 
+    @Import(name="masterInstanceId")
+    private @Nullable Output<String> masterInstanceId;
+
+    public Optional<Output<String>> masterInstanceId() {
+        return Optional.ofNullable(this.masterInstanceId);
+    }
+
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
     /**
      * (Available in v1.120.0+) The status of the HaVip instance.
      * 
@@ -73,6 +140,20 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
+
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
     }
 
     /**
@@ -93,10 +174,20 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
     private HAVipState() {}
 
     private HAVipState(HAVipState $) {
+        this.associatedEipAddresses = $.associatedEipAddresses;
+        this.associatedInstanceType = $.associatedInstanceType;
+        this.associatedInstances = $.associatedInstances;
+        this.createTime = $.createTime;
         this.description = $.description;
+        this.haVipId = $.haVipId;
+        this.haVipName = $.haVipName;
         this.havipName = $.havipName;
         this.ipAddress = $.ipAddress;
+        this.masterInstanceId = $.masterInstanceId;
+        this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
+        this.tags = $.tags;
+        this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
     }
 
@@ -116,6 +207,50 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(HAVipState defaults) {
             $ = new HAVipState(Objects.requireNonNull(defaults));
+        }
+
+        public Builder associatedEipAddresses(@Nullable Output<List<String>> associatedEipAddresses) {
+            $.associatedEipAddresses = associatedEipAddresses;
+            return this;
+        }
+
+        public Builder associatedEipAddresses(List<String> associatedEipAddresses) {
+            return associatedEipAddresses(Output.of(associatedEipAddresses));
+        }
+
+        public Builder associatedEipAddresses(String... associatedEipAddresses) {
+            return associatedEipAddresses(List.of(associatedEipAddresses));
+        }
+
+        public Builder associatedInstanceType(@Nullable Output<String> associatedInstanceType) {
+            $.associatedInstanceType = associatedInstanceType;
+            return this;
+        }
+
+        public Builder associatedInstanceType(String associatedInstanceType) {
+            return associatedInstanceType(Output.of(associatedInstanceType));
+        }
+
+        public Builder associatedInstances(@Nullable Output<List<String>> associatedInstances) {
+            $.associatedInstances = associatedInstances;
+            return this;
+        }
+
+        public Builder associatedInstances(List<String> associatedInstances) {
+            return associatedInstances(Output.of(associatedInstances));
+        }
+
+        public Builder associatedInstances(String... associatedInstances) {
+            return associatedInstances(List.of(associatedInstances));
+        }
+
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -139,12 +274,34 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        public Builder haVipId(@Nullable Output<String> haVipId) {
+            $.haVipId = haVipId;
+            return this;
+        }
+
+        public Builder haVipId(String haVipId) {
+            return haVipId(Output.of(haVipId));
+        }
+
+        public Builder haVipName(@Nullable Output<String> haVipName) {
+            $.haVipName = haVipName;
+            return this;
+        }
+
+        public Builder haVipName(String haVipName) {
+            return haVipName(Output.of(haVipName));
+        }
+
         /**
          * @param havipName The name of the HaVip instance.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
         public Builder havipName(@Nullable Output<String> havipName) {
             $.havipName = havipName;
             return this;
@@ -155,7 +312,11 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
         public Builder havipName(String havipName) {
             return havipName(Output.of(havipName));
         }
@@ -181,6 +342,24 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
             return ipAddress(Output.of(ipAddress));
         }
 
+        public Builder masterInstanceId(@Nullable Output<String> masterInstanceId) {
+            $.masterInstanceId = masterInstanceId;
+            return this;
+        }
+
+        public Builder masterInstanceId(String masterInstanceId) {
+            return masterInstanceId(Output.of(masterInstanceId));
+        }
+
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
         /**
          * @param status (Available in v1.120.0+) The status of the HaVip instance.
          * 
@@ -200,6 +379,24 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        public Builder vpcId(@Nullable Output<String> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        public Builder vpcId(String vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         /**

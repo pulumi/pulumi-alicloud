@@ -34,36 +34,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := nas.NewAccessGroup(ctx, "foo", &nas.AccessGroupArgs{
-//				Description: pulumi.String("test_AccessG"),
-//				Type:        pulumi.String("Classic"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// # Example after v1.92.0
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := nas.NewAccessGroup(ctx, "foo", &nas.AccessGroupArgs{
-//				AccessGroupName: pulumi.String("CreateAccessGroup"),
+//				AccessGroupName: pulumi.String("terraform-example"),
 //				AccessGroupType: pulumi.String("Vpc"),
-//				Description:     pulumi.String("test_AccessG"),
+//				Description:     pulumi.String("terraform-example"),
 //				FileSystemType:  pulumi.String("extreme"),
 //			})
 //			if err != nil {

@@ -30,16 +30,47 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var defaultAccount = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke();
+    ///     var config = new Config();
+    ///     var acceptingRegion = config.Get("acceptingRegion") ?? "cn-beijing";
+    ///     var local = new AliCloud.Provider("local", new()
+    ///     {
+    ///         Region = "cn-hangzhou",
+    ///     });
+    /// 
+    ///     var accepting = new AliCloud.Provider("accepting", new()
+    ///     {
+    ///         Region = acceptingRegion,
+    ///     });
+    /// 
+    ///     var localVpc = new AliCloud.Vpc.Network("localVpc", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Local,
+    ///     });
+    /// 
+    ///     var acceptingVpc = new AliCloud.Vpc.Network("acceptingVpc", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Accepting,
+    ///     });
     /// 
     ///     var defaultPeerConnection = new AliCloud.Vpc.PeerConnection("defaultPeerConnection", new()
     ///     {
-    ///         PeerConnectionName = @var.Name,
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         PeerConnectionName = "terraform-example",
+    ///         VpcId = localVpc.Id,
     ///         AcceptingAliUid = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
-    ///         AcceptingRegionId = "cn-hangzhou",
-    ///         AcceptingVpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[1]),
-    ///         Description = @var.Name,
+    ///         AcceptingRegionId = acceptingRegion,
+    ///         AcceptingVpcId = acceptingVpc.Id,
+    ///         Description = "terraform-example",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Local,
     ///     });
     /// 
     /// });

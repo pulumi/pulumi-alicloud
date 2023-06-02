@@ -126,7 +126,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
     /**
-     * The proxy protocol of the listener. Default value is `false`. Valid value:
+     * The proxy protocol of the listener. Default value is `false`. Valid values:
      * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
      * `false`: keep client source IP function is not turned on.
      */
@@ -234,7 +234,7 @@ export interface ListenerState {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The proxy protocol of the listener. Default value is `false`. Valid value:
+     * The proxy protocol of the listener. Default value is `false`. Valid values:
      * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
      * `false`: keep client source IP function is not turned on.
      */
@@ -294,7 +294,7 @@ export interface ListenerArgs {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The proxy protocol of the listener. Default value is `false`. Valid value:
+     * The proxy protocol of the listener. Default value is `false`. Valid values:
      * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
      * `false`: keep client source IP function is not turned on.
      */

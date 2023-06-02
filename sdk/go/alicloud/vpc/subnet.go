@@ -18,6 +18,7 @@ type Subnet struct {
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone  pulumi.StringOutput    `pulumi:"availabilityZone"`
 	CidrBlock         pulumi.StringOutput    `pulumi:"cidrBlock"`
+	CreateTime        pulumi.StringOutput    `pulumi:"createTime"`
 	Description       pulumi.StringPtrOutput `pulumi:"description"`
 	EnableIpv6        pulumi.BoolPtrOutput   `pulumi:"enableIpv6"`
 	Ipv6CidrBlock     pulumi.StringOutput    `pulumi:"ipv6CidrBlock"`
@@ -69,6 +70,7 @@ type subnetState struct {
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone  *string `pulumi:"availabilityZone"`
 	CidrBlock         *string `pulumi:"cidrBlock"`
+	CreateTime        *string `pulumi:"createTime"`
 	Description       *string `pulumi:"description"`
 	EnableIpv6        *bool   `pulumi:"enableIpv6"`
 	Ipv6CidrBlock     *string `pulumi:"ipv6CidrBlock"`
@@ -86,6 +88,7 @@ type SubnetState struct {
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone  pulumi.StringPtrInput
 	CidrBlock         pulumi.StringPtrInput
+	CreateTime        pulumi.StringPtrInput
 	Description       pulumi.StringPtrInput
 	EnableIpv6        pulumi.BoolPtrInput
 	Ipv6CidrBlock     pulumi.StringPtrInput
@@ -228,6 +231,10 @@ func (o SubnetOutput) AvailabilityZone() pulumi.StringOutput {
 
 func (o SubnetOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o SubnetOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 func (o SubnetOutput) Description() pulumi.StringPtrOutput {

@@ -33,10 +33,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.Provider;
+ * import com.pulumi.alicloud.ProviderArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.PeerConnection;
  * import com.pulumi.alicloud.vpc.PeerConnectionArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,18 +53,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
  *         final var defaultAccount = AlicloudFunctions.getAccount();
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks();
+ *         final var acceptingRegion = config.get(&#34;acceptingRegion&#34;).orElse(&#34;cn-beijing&#34;);
+ *         var local = new Provider(&#34;local&#34;, ProviderArgs.builder()        
+ *             .region(&#34;cn-hangzhou&#34;)
+ *             .build());
+ * 
+ *         var accepting = new Provider(&#34;accepting&#34;, ProviderArgs.builder()        
+ *             .region(acceptingRegion)
+ *             .build());
+ * 
+ *         var localVpc = new Network(&#34;localVpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.local())
+ *                 .build());
+ * 
+ *         var acceptingVpc = new Network(&#34;acceptingVpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.accepting())
+ *                 .build());
  * 
  *         var defaultPeerConnection = new PeerConnection(&#34;defaultPeerConnection&#34;, PeerConnectionArgs.builder()        
- *             .peerConnectionName(var_.name())
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .peerConnectionName(&#34;terraform-example&#34;)
+ *             .vpcId(localVpc.id())
  *             .acceptingAliUid(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
- *             .acceptingRegionId(&#34;cn-hangzhou&#34;)
- *             .acceptingVpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[1]))
- *             .description(var_.name())
- *             .build());
+ *             .acceptingRegionId(acceptingRegion)
+ *             .acceptingVpcId(acceptingVpc.id())
+ *             .description(&#34;terraform-example&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.local())
+ *                 .build());
  * 
  *     }
  * }

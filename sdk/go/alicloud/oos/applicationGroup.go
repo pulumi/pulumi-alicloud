@@ -40,8 +40,8 @@ import (
 //			}
 //			defaultApplication, err := oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
 //				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
-//				ApplicationName: pulumi.String("example_value"),
-//				Description:     pulumi.String("example_value"),
+//				ApplicationName: pulumi.String("terraform-example"),
+//				Description:     pulumi.String("terraform-example"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
 //				},
@@ -50,11 +50,11 @@ import (
 //				return err
 //			}
 //			_, err = oos.NewApplicationGroup(ctx, "defaultApplicationGroup", &oos.ApplicationGroupArgs{
-//				ApplicationGroupName: pulumi.Any(_var.Name),
+//				ApplicationGroupName: pulumi.String("terraform-example"),
 //				ApplicationName:      defaultApplication.ID(),
-//				DeployRegionId:       pulumi.String("example_value"),
-//				Description:          pulumi.String("example_value"),
-//				ImportTagKey:         pulumi.String("example_value"),
+//				DeployRegionId:       pulumi.String("cn-beijing"),
+//				Description:          pulumi.String("terraform-example"),
+//				ImportTagKey:         pulumi.String("example_key"),
 //				ImportTagValue:       pulumi.String("example_value"),
 //			})
 //			if err != nil {

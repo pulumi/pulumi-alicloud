@@ -44,6 +44,12 @@ public class Subnet extends com.pulumi.resources.CustomResource {
     public Output<String> cidrBlock() {
         return this.cidrBlock;
     }
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 

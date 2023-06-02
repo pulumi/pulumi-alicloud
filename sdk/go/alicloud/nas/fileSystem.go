@@ -35,11 +35,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
-//				Description:  pulumi.String("tf-testAccNasConfig"),
-//				EncryptType:  pulumi.Int(1),
+//			example, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//				FileSystemType: pulumi.StringRef("standard"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
 //				ProtocolType: pulumi.String("NFS"),
 //				StorageType:  pulumi.String("Performance"),
+//				Description:  pulumi.String("terraform-example"),
+//				EncryptType:  pulumi.Int(1),
+//				ZoneId:       *pulumi.String(example.Zones[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
@@ -62,13 +69,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
-//				Capacity:       pulumi.Int(100),
-//				Description:    pulumi.String("tf-testAccNasConfig"),
+//			example, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//				FileSystemType: pulumi.StringRef("extreme"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
 //				FileSystemType: pulumi.String("extreme"),
 //				ProtocolType:   pulumi.String("NFS"),
+//				ZoneId:         *pulumi.String(example.Zones[0].ZoneId),
 //				StorageType:    pulumi.String("standard"),
-//				ZoneId:         pulumi.String("cn-hangzhou-f"),
+//				Description:    pulumi.String("terraform-example"),
+//				Capacity:       pulumi.Int(100),
 //			})
 //			if err != nil {
 //				return err
@@ -92,34 +105,37 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//			exampleZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
 //				FileSystemType: pulumi.StringRef("cpfs"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].ZoneId),
-//			}, nil)
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[1].ZoneId),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = nas.NewFileSystem(ctx, "foo", &nas.FileSystemArgs{
+//			_, err = nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
 //				ProtocolType:   pulumi.String("cpfs"),
 //				StorageType:    pulumi.String("advance_200"),
 //				FileSystemType: pulumi.String("cpfs"),
 //				Capacity:       pulumi.Int(3600),
-//				Description:    pulumi.String("tf-testacc"),
-//				ZoneId:         *pulumi.String(defaultZones.Zones[0].ZoneId),
-//				VpcId:          *pulumi.String(defaultNetworks.Ids[0]),
-//				VswitchId:      *pulumi.String(defaultSwitches.Ids[0]),
+//				Description:    pulumi.String("terraform-example"),
+//				ZoneId:         *pulumi.String(exampleZones.Zones[1].ZoneId),
+//				VpcId:          exampleNetwork.ID(),
+//				VswitchId:      exampleSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err

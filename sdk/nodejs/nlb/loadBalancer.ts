@@ -123,6 +123,14 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly crossZoneEnabled!: pulumi.Output<boolean>;
     /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     */
+    public readonly deletionProtectionEnabled!: pulumi.Output<boolean>;
+    /**
+     * The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+     */
+    public readonly deletionProtectionReason!: pulumi.Output<string | undefined>;
+    /**
      * The domain name of the NLB instance.
      */
     public /*out*/ readonly dnsName!: pulumi.Output<string>;
@@ -142,6 +150,14 @@ export class LoadBalancer extends pulumi.CustomResource {
      * The type of the instance. Set the value to `Network`, which specifies an NLB instance.
      */
     public readonly loadBalancerType!: pulumi.Output<string>;
+    /**
+     * The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+     */
+    public readonly modificationProtectionReason!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     */
+    public readonly modificationProtectionStatus!: pulumi.Output<string>;
     /**
      * The ID of the resource group.
      */
@@ -181,11 +197,15 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["bandwidthPackageId"] = state ? state.bandwidthPackageId : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["crossZoneEnabled"] = state ? state.crossZoneEnabled : undefined;
+            resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
+            resourceInputs["deletionProtectionReason"] = state ? state.deletionProtectionReason : undefined;
             resourceInputs["dnsName"] = state ? state.dnsName : undefined;
             resourceInputs["ipv6AddressType"] = state ? state.ipv6AddressType : undefined;
             resourceInputs["loadBalancerBusinessStatus"] = state ? state.loadBalancerBusinessStatus : undefined;
             resourceInputs["loadBalancerName"] = state ? state.loadBalancerName : undefined;
             resourceInputs["loadBalancerType"] = state ? state.loadBalancerType : undefined;
+            resourceInputs["modificationProtectionReason"] = state ? state.modificationProtectionReason : undefined;
+            resourceInputs["modificationProtectionStatus"] = state ? state.modificationProtectionStatus : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -206,8 +226,12 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["addressType"] = args ? args.addressType : undefined;
             resourceInputs["bandwidthPackageId"] = args ? args.bandwidthPackageId : undefined;
             resourceInputs["crossZoneEnabled"] = args ? args.crossZoneEnabled : undefined;
+            resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
+            resourceInputs["deletionProtectionReason"] = args ? args.deletionProtectionReason : undefined;
             resourceInputs["loadBalancerName"] = args ? args.loadBalancerName : undefined;
             resourceInputs["loadBalancerType"] = args ? args.loadBalancerType : undefined;
+            resourceInputs["modificationProtectionReason"] = args ? args.modificationProtectionReason : undefined;
+            resourceInputs["modificationProtectionStatus"] = args ? args.modificationProtectionStatus : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
@@ -252,6 +276,14 @@ export interface LoadBalancerState {
      */
     crossZoneEnabled?: pulumi.Input<boolean>;
     /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     */
+    deletionProtectionEnabled?: pulumi.Input<boolean>;
+    /**
+     * The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+     */
+    deletionProtectionReason?: pulumi.Input<string>;
+    /**
      * The domain name of the NLB instance.
      */
     dnsName?: pulumi.Input<string>;
@@ -271,6 +303,14 @@ export interface LoadBalancerState {
      * The type of the instance. Set the value to `Network`, which specifies an NLB instance.
      */
     loadBalancerType?: pulumi.Input<string>;
+    /**
+     * The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+     */
+    modificationProtectionReason?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     */
+    modificationProtectionStatus?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */
@@ -318,6 +358,14 @@ export interface LoadBalancerArgs {
      */
     crossZoneEnabled?: pulumi.Input<boolean>;
     /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     */
+    deletionProtectionEnabled?: pulumi.Input<boolean>;
+    /**
+     * The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+     */
+    deletionProtectionReason?: pulumi.Input<string>;
+    /**
      * The name of the NLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      */
     loadBalancerName?: pulumi.Input<string>;
@@ -325,6 +373,14 @@ export interface LoadBalancerArgs {
      * The type of the instance. Set the value to `Network`, which specifies an NLB instance.
      */
     loadBalancerType?: pulumi.Input<string>;
+    /**
+     * The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+     */
+    modificationProtectionReason?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     */
+    modificationProtectionStatus?: pulumi.Input<string>;
     /**
      * The ID of the resource group.
      */

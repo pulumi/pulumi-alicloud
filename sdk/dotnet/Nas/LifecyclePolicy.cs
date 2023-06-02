@@ -37,9 +37,13 @@ namespace Pulumi.AliCloud.Nas
     ///     var exampleLifecyclePolicy = new AliCloud.Nas.LifecyclePolicy("exampleLifecyclePolicy", new()
     ///     {
     ///         FileSystemId = exampleFileSystem.Id,
-    ///         LifecyclePolicyName = "my-LifecyclePolicy",
+    ///         LifecyclePolicyName = "terraform-example",
     ///         LifecycleRuleName = "DEFAULT_ATIME_14",
     ///         StorageType = "InfrequentAccess",
+    ///         Paths = new[]
+    ///         {
+    ///             "/",
+    ///         },
     ///     });
     /// 
     /// });

@@ -174,29 +174,27 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "polardbClusterconfig"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "PolarDB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        cluster = alicloud.polardb.Cluster("cluster",
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("defaultCluster",
             db_type="MySQL",
             db_version="8.0",
+            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
             pay_type="PostPaid",
-            db_node_class="polar.mysql.x4.large",
             vswitch_id=default_switch.id,
-            description="testDB")
+            description="terraform-example")
         default_database = alicloud.polardb.Database("defaultDatabase",
-            db_cluster_id=cluster.id,
-            db_name="tftestdatabase")
+            db_cluster_id=default_cluster.id,
+            db_name="terraform-example")
         ```
 
         ## Import
@@ -231,29 +229,27 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "polardbClusterconfig"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "PolarDB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        cluster = alicloud.polardb.Cluster("cluster",
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
+        default_cluster = alicloud.polardb.Cluster("defaultCluster",
             db_type="MySQL",
             db_version="8.0",
+            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
             pay_type="PostPaid",
-            db_node_class="polar.mysql.x4.large",
             vswitch_id=default_switch.id,
-            description="testDB")
+            description="terraform-example")
         default_database = alicloud.polardb.Database("defaultDatabase",
-            db_cluster_id=cluster.id,
-            db_name="tftestdatabase")
+            db_cluster_id=default_cluster.id,
+            db_name="terraform-example")
         ```
 
         ## Import

@@ -86,7 +86,7 @@ export class DomainResource extends pulumi.CustomResource {
      */
     public readonly instanceIds!: pulumi.Output<string[]>;
     /**
-     * Protocol type and port number information.
+     * Protocol type and port number information. See the following `Block proxyTypes`. **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
      */
     public readonly proxyTypes!: pulumi.Output<outputs.ddos.DomainResourceProxyType[]>;
     /**
@@ -94,7 +94,7 @@ export class DomainResource extends pulumi.CustomResource {
      */
     public readonly realServers!: pulumi.Output<string[]>;
     /**
-     * The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+     * The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rsType` can be modified.
      */
     public readonly rsType!: pulumi.Output<number>;
 
@@ -166,7 +166,7 @@ export interface DomainResourceState {
      */
     instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Protocol type and port number information.
+     * Protocol type and port number information. See the following `Block proxyTypes`. **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
      */
     proxyTypes?: pulumi.Input<pulumi.Input<inputs.ddos.DomainResourceProxyType>[]>;
     /**
@@ -174,7 +174,7 @@ export interface DomainResourceState {
      */
     realServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+     * The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rsType` can be modified.
      */
     rsType?: pulumi.Input<number>;
 }
@@ -199,7 +199,7 @@ export interface DomainResourceArgs {
      */
     instanceIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Protocol type and port number information.
+     * Protocol type and port number information. See the following `Block proxyTypes`. **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
      */
     proxyTypes: pulumi.Input<pulumi.Input<inputs.ddos.DomainResourceProxyType>[]>;
     /**
@@ -207,7 +207,7 @@ export interface DomainResourceArgs {
      */
     realServers: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+     * The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rsType` can be modified.
      */
     rsType: pulumi.Input<number>;
 }

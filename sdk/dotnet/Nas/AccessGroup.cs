@@ -31,28 +31,9 @@ namespace Pulumi.AliCloud.Nas
     /// {
     ///     var foo = new AliCloud.Nas.AccessGroup("foo", new()
     ///     {
-    ///         Description = "test_AccessG",
-    ///         Type = "Classic",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Example after v1.92.0
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new AliCloud.Nas.AccessGroup("foo", new()
-    ///     {
-    ///         AccessGroupName = "CreateAccessGroup",
+    ///         AccessGroupName = "terraform-example",
     ///         AccessGroupType = "Vpc",
-    ///         Description = "test_AccessG",
+    ///         Description = "terraform-example",
     ///         FileSystemType = "extreme",
     ///     });
     /// 

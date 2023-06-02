@@ -5,7 +5,9 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +18,44 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
     public static final Ipv6GatewayState Empty = new Ipv6GatewayState();
 
     /**
-     * The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+     * The status of the IPv6 gateway.
+     * 
+     */
+    @Import(name="businessStatus")
+    private @Nullable Output<String> businessStatus;
+
+    /**
+     * @return The status of the IPv6 gateway.
+     * 
+     */
+    public Optional<Output<String>> businessStatus() {
+        return Optional.ofNullable(this.businessStatus);
+    }
+
+    /**
+     * The creation time of the resource.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+     * @return The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +63,59 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * The expiration time of IPv6 gateway.
+     * 
+     */
+    @Import(name="expiredTime")
+    private @Nullable Output<String> expiredTime;
+
+    /**
+     * @return The expiration time of IPv6 gateway.
+     * 
+     */
+    public Optional<Output<String>> expiredTime() {
+        return Optional.ofNullable(this.expiredTime);
+    }
+
+    /**
+     * The charge type of IPv6 gateway.
+     * 
+     */
+    @Import(name="instanceChargeType")
+    private @Nullable Output<String> instanceChargeType;
+
+    /**
+     * @return The charge type of IPv6 gateway.
+     * 
+     */
+    public Optional<Output<String>> instanceChargeType() {
+        return Optional.ofNullable(this.instanceChargeType);
+    }
+
+    /**
+     * Resource primary key attribute field.
+     * 
+     */
+    @Import(name="ipv6GatewayId")
+    private @Nullable Output<String> ipv6GatewayId;
+
+    /**
+     * @return Resource primary key attribute field.
+     * 
+     */
+    public Optional<Output<String>> ipv6GatewayId() {
+        return Optional.ofNullable(this.ipv6GatewayId);
+    }
+
+    /**
+     * The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      * 
      */
     @Import(name="ipv6GatewayName")
     private @Nullable Output<String> ipv6GatewayName;
 
     /**
-     * @return The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * @return The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      * 
      */
     public Optional<Output<String>> ipv6GatewayName() {
@@ -46,33 +123,71 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+     * The ID of the resource group to which the instance belongs.
      * 
      */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which the instance belongs.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+     * 
+     * @deprecated
+     * Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+     * 
+     */
+    @Deprecated /* Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used. */
     @Import(name="spec")
     private @Nullable Output<String> spec;
 
     /**
-     * @return The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+     * @return IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+     * 
+     * @deprecated
+     * Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      * 
      */
+    @Deprecated /* Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used. */
     public Optional<Output<String>> spec() {
         return Optional.ofNullable(this.spec);
     }
 
     /**
-     * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * The status of the resource. Valid values: Available, Pending and Deleting.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * @return The status of the resource. Valid values: Available, Pending and Deleting.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tags for the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tags for the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -93,10 +208,17 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
     private Ipv6GatewayState() {}
 
     private Ipv6GatewayState(Ipv6GatewayState $) {
+        this.businessStatus = $.businessStatus;
+        this.createTime = $.createTime;
         this.description = $.description;
+        this.expiredTime = $.expiredTime;
+        this.instanceChargeType = $.instanceChargeType;
+        this.ipv6GatewayId = $.ipv6GatewayId;
         this.ipv6GatewayName = $.ipv6GatewayName;
+        this.resourceGroupId = $.resourceGroupId;
         this.spec = $.spec;
         this.status = $.status;
+        this.tags = $.tags;
         this.vpcId = $.vpcId;
     }
 
@@ -119,7 +241,49 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+         * @param businessStatus The status of the IPv6 gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder businessStatus(@Nullable Output<String> businessStatus) {
+            $.businessStatus = businessStatus;
+            return this;
+        }
+
+        /**
+         * @param businessStatus The status of the IPv6 gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder businessStatus(String businessStatus) {
+            return businessStatus(Output.of(businessStatus));
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -130,7 +294,7 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+         * @param description The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -140,7 +304,70 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6GatewayName The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+         * @param expiredTime The expiration time of IPv6 gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiredTime(@Nullable Output<String> expiredTime) {
+            $.expiredTime = expiredTime;
+            return this;
+        }
+
+        /**
+         * @param expiredTime The expiration time of IPv6 gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiredTime(String expiredTime) {
+            return expiredTime(Output.of(expiredTime));
+        }
+
+        /**
+         * @param instanceChargeType The charge type of IPv6 gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
+            $.instanceChargeType = instanceChargeType;
+            return this;
+        }
+
+        /**
+         * @param instanceChargeType The charge type of IPv6 gateway.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceChargeType(String instanceChargeType) {
+            return instanceChargeType(Output.of(instanceChargeType));
+        }
+
+        /**
+         * @param ipv6GatewayId Resource primary key attribute field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6GatewayId(@Nullable Output<String> ipv6GatewayId) {
+            $.ipv6GatewayId = ipv6GatewayId;
+            return this;
+        }
+
+        /**
+         * @param ipv6GatewayId Resource primary key attribute field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6GatewayId(String ipv6GatewayId) {
+            return ipv6GatewayId(Output.of(ipv6GatewayId));
+        }
+
+        /**
+         * @param ipv6GatewayName The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -151,7 +378,7 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6GatewayName The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+         * @param ipv6GatewayName The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
          * 
          * @return builder
          * 
@@ -161,28 +388,57 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+         * @param resourceGroupId The ID of the resource group to which the instance belongs.
          * 
          * @return builder
          * 
          */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group to which the instance belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param spec IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+         * 
+         */
+        @Deprecated /* Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used. */
         public Builder spec(@Nullable Output<String> spec) {
             $.spec = spec;
             return this;
         }
 
         /**
-         * @param spec The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+         * @param spec IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+         * 
          */
+        @Deprecated /* Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used. */
         public Builder spec(String spec) {
             return spec(Output.of(spec));
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+         * @param status The status of the resource. Valid values: Available, Pending and Deleting.
          * 
          * @return builder
          * 
@@ -193,13 +449,34 @@ public final class Ipv6GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+         * @param status The status of the resource. Valid values: Available, Pending and Deleting.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tags for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags for the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

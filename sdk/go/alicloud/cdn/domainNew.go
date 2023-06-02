@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CDN Accelerated Domain resource. This resource is based on CDN's new version OpenAPI.
+// Provides a CDN Domain resource. CDN domain name.
 //
-// For information about Cdn Domain New and how to use it, see [Add a domain](https://www.alibabacloud.com/help/doc-detail/91176.html).
+// For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
 //
 // > **NOTE:** Available in v1.34.0+.
 //
@@ -28,22 +28,28 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cdn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cdn.NewDomainNew(ctx, "domain", &cdn.DomainNewArgs{
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cdn.NewDomainNew(ctx, "default", &cdn.DomainNewArgs{
+//				Scope:      pulumi.String("domestic"),
+//				DomainName: pulumi.String(name),
 //				CdnType:    pulumi.String("web"),
-//				DomainName: pulumi.String("terraform.test.com"),
-//				Scope:      pulumi.String("overseas"),
 //				Sources: cdn.DomainNewSourceArray{
 //					&cdn.DomainNewSourceArgs{
-//						Content:  pulumi.String("1.1.1.1"),
-//						Port:     pulumi.Int(80),
-//						Priority: pulumi.Int(20),
 //						Type:     pulumi.String("ipaddr"),
-//						Weight:   pulumi.Int(10),
+//						Content:  pulumi.String("1.1.1.1"),
+//						Priority: pulumi.Int(20),
+//						Port:     pulumi.Int(80),
+//						Weight:   pulumi.Int(15),
 //					},
 //				},
 //			})
@@ -58,11 +64,11 @@ import (
 //
 // ## Import
 //
-// CDN domain can be imported using the id, e.g.
+// CDN Domain can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:cdn/domainNew:DomainNew example xxxx.com
+//	$ pulumi import alicloud:cdn/domainNew:DomainNew example <id>
 //
 // ```
 type DomainNew struct {
@@ -70,19 +76,27 @@ type DomainNew struct {
 
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
 	CdnType pulumi.StringOutput `pulumi:"cdnType"`
-	// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+	// Certificate configuration. See the following `Block CertificateConfig`.
 	CertificateConfig DomainNewCertificateConfigOutput `pulumi:"certificateConfig"`
-	// (Available in v1.90.0+) The CNAME of the CDN domain.
+	// Health test URL.
+	CheckUrl pulumi.StringPtrOutput `pulumi:"checkUrl"`
+	// The CNAME domain name corresponding to the accelerated domain name.
 	Cname pulumi.StringOutput `pulumi:"cname"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// Resource group ID.
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+	// - **domestic**: Mainland China only.
+	// - **overseas**: Global (excluding Mainland China).
+	// - **global**: global.
+	//   The default value is **domestic**.
 	Scope pulumi.StringOutput `pulumi:"scope"`
-	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
+	// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
 	Sources DomainNewSourceArrayOutput `pulumi:"sources"`
-	// A mapping of tags to assign to the resource.
+	// The status of the resource.
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The tag of the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
@@ -126,38 +140,54 @@ func GetDomainNew(ctx *pulumi.Context,
 type domainNewState struct {
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
 	CdnType *string `pulumi:"cdnType"`
-	// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+	// Certificate configuration. See the following `Block CertificateConfig`.
 	CertificateConfig *DomainNewCertificateConfig `pulumi:"certificateConfig"`
-	// (Available in v1.90.0+) The CNAME of the CDN domain.
+	// Health test URL.
+	CheckUrl *string `pulumi:"checkUrl"`
+	// The CNAME domain name corresponding to the accelerated domain name.
 	Cname *string `pulumi:"cname"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName *string `pulumi:"domainName"`
-	// Resource group ID.
+	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+	// - **domestic**: Mainland China only.
+	// - **overseas**: Global (excluding Mainland China).
+	// - **global**: global.
+	//   The default value is **domestic**.
 	Scope *string `pulumi:"scope"`
-	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
+	// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
 	Sources []DomainNewSource `pulumi:"sources"`
-	// A mapping of tags to assign to the resource.
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// The tag of the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type DomainNewState struct {
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
 	CdnType pulumi.StringPtrInput
-	// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+	// Certificate configuration. See the following `Block CertificateConfig`.
 	CertificateConfig DomainNewCertificateConfigPtrInput
-	// (Available in v1.90.0+) The CNAME of the CDN domain.
+	// Health test URL.
+	CheckUrl pulumi.StringPtrInput
+	// The CNAME domain name corresponding to the accelerated domain name.
 	Cname pulumi.StringPtrInput
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringPtrInput
-	// Resource group ID.
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+	// - **domestic**: Mainland China only.
+	// - **overseas**: Global (excluding Mainland China).
+	// - **global**: global.
+	//   The default value is **domestic**.
 	Scope pulumi.StringPtrInput
-	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
+	// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
 	Sources DomainNewSourceArrayInput
-	// A mapping of tags to assign to the resource.
+	// The status of the resource.
+	Status pulumi.StringPtrInput
+	// The tag of the resource.
 	Tags pulumi.MapInput
 }
 
@@ -168,17 +198,23 @@ func (DomainNewState) ElementType() reflect.Type {
 type domainNewArgs struct {
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
 	CdnType string `pulumi:"cdnType"`
-	// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+	// Certificate configuration. See the following `Block CertificateConfig`.
 	CertificateConfig *DomainNewCertificateConfig `pulumi:"certificateConfig"`
+	// Health test URL.
+	CheckUrl *string `pulumi:"checkUrl"`
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName string `pulumi:"domainName"`
-	// Resource group ID.
+	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+	// - **domestic**: Mainland China only.
+	// - **overseas**: Global (excluding Mainland China).
+	// - **global**: global.
+	//   The default value is **domestic**.
 	Scope *string `pulumi:"scope"`
-	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
+	// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
 	Sources []DomainNewSource `pulumi:"sources"`
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -186,17 +222,23 @@ type domainNewArgs struct {
 type DomainNewArgs struct {
 	// Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
 	CdnType pulumi.StringInput
-	// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+	// Certificate configuration. See the following `Block CertificateConfig`.
 	CertificateConfig DomainNewCertificateConfigPtrInput
+	// Health test URL.
+	CheckUrl pulumi.StringPtrInput
 	// Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
 	DomainName pulumi.StringInput
-	// Resource group ID.
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+	// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+	// - **domestic**: Mainland China only.
+	// - **overseas**: Global (excluding Mainland China).
+	// - **global**: global.
+	//   The default value is **domestic**.
 	Scope pulumi.StringPtrInput
-	// The source address list of the accelerated domain. Defaults to null. See Block Sources.
+	// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
 	Sources DomainNewSourceArrayInput
-	// A mapping of tags to assign to the resource.
+	// The tag of the resource.
 	Tags pulumi.MapInput
 }
 
@@ -292,12 +334,17 @@ func (o DomainNewOutput) CdnType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainNew) pulumi.StringOutput { return v.CdnType }).(pulumi.StringOutput)
 }
 
-// Certificate config of the accelerated domain. It's a list and consist of at most 1 item.
+// Certificate configuration. See the following `Block CertificateConfig`.
 func (o DomainNewOutput) CertificateConfig() DomainNewCertificateConfigOutput {
 	return o.ApplyT(func(v *DomainNew) DomainNewCertificateConfigOutput { return v.CertificateConfig }).(DomainNewCertificateConfigOutput)
 }
 
-// (Available in v1.90.0+) The CNAME of the CDN domain.
+// Health test URL.
+func (o DomainNewOutput) CheckUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainNew) pulumi.StringPtrOutput { return v.CheckUrl }).(pulumi.StringPtrOutput)
+}
+
+// The CNAME domain name corresponding to the accelerated domain name.
 func (o DomainNewOutput) Cname() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainNew) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
 }
@@ -307,22 +354,31 @@ func (o DomainNewOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainNew) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// Resource group ID.
+// The ID of the resource group.
 func (o DomainNewOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainNew) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users .
+// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
+//   - **domestic**: Mainland China only.
+//   - **overseas**: Global (excluding Mainland China).
+//   - **global**: global.
+//     The default value is **domestic**.
 func (o DomainNewOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainNew) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
 }
 
-// The source address list of the accelerated domain. Defaults to null. See Block Sources.
+// The source address list of the accelerated domain. Defaults to null. See the following `Block Sources`.
 func (o DomainNewOutput) Sources() DomainNewSourceArrayOutput {
 	return o.ApplyT(func(v *DomainNew) DomainNewSourceArrayOutput { return v.Sources }).(DomainNewSourceArrayOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// The status of the resource.
+func (o DomainNewOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainNew) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
 func (o DomainNewOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *DomainNew) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

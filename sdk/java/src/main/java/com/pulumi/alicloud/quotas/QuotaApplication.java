@@ -19,56 +19,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Quotas Quota Application resource.
- * 
- * For information about Quotas Quota Application and how to use it, see [What is Quota Application](https://help.aliyun.com/document_detail/171289.html).
- * 
- * &gt; **NOTE:** Available in v1.117.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.quotas.QuotaApplication;
- * import com.pulumi.alicloud.quotas.QuotaApplicationArgs;
- * import com.pulumi.alicloud.quotas.inputs.QuotaApplicationDimensionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new QuotaApplication(&#34;example&#34;, QuotaApplicationArgs.builder()        
- *             .desireValue(&#34;100&#34;)
- *             .dimensions(QuotaApplicationDimensionArgs.builder()
- *                 .key(&#34;regionId&#34;)
- *                 .value(&#34;cn-hangzhou&#34;)
- *                 .build())
- *             .noticeType(&#34;0&#34;)
- *             .productCode(&#34;ess&#34;)
- *             .quotaActionCode(&#34;q_db_instance&#34;)
- *             .reason(&#34;For Terraform Test&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
- * Quotas Application Info can be imported using the id, e.g.
+ * Quotas Quota Application can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example &lt;id&gt;
@@ -92,18 +45,24 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
         return this.approveValue;
     }
     /**
-     * The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+     * Quota audit mode. Value:
+     * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+     * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+     * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      * 
      */
     @Export(name="auditMode", type=String.class, parameters={})
-    private Output</* @Nullable */ String> auditMode;
+    private Output<String> auditMode;
 
     /**
-     * @return The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+     * @return Quota audit mode. Value:
+     * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+     * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+     * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      * 
      */
-    public Output<Optional<String>> auditMode() {
-        return Codegen.optional(this.auditMode);
+    public Output<String> auditMode() {
+        return this.auditMode;
     }
     /**
      * The audit reason.
@@ -120,6 +79,20 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
         return this.auditReason;
     }
     /**
+     * Resource attribute field representing creation time.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return Resource attribute field representing creation time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
      * The desire value of the quota application.
      * 
      */
@@ -134,14 +107,14 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
         return this.desireValue;
     }
     /**
-     * The quota dimensions.
+     * QuotaDimensions. See the following `Block Dimensions`.
      * 
      */
     @Export(name="dimensions", type=List.class, parameters={QuotaApplicationDimension.class})
     private Output</* @Nullable */ List<QuotaApplicationDimension>> dimensions;
 
     /**
-     * @return The quota dimensions.
+     * @return QuotaDimensions. See the following `Block Dimensions`.
      * 
      */
     public Output<Optional<List<QuotaApplicationDimension>>> dimensions() {
@@ -152,42 +125,60 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="effectiveTime", type=String.class, parameters={})
-    private Output<String> effectiveTime;
+    private Output</* @Nullable */ String> effectiveTime;
 
     /**
      * @return The effective time of the quota application.
      * 
      */
-    public Output<String> effectiveTime() {
-        return this.effectiveTime;
+    public Output<Optional<String>> effectiveTime() {
+        return Codegen.optional(this.effectiveTime);
     }
     /**
-     * The expire time of the quota application.
+     * The language of the quota alert notification. Value:
+     * - zh (default): Chinese.
+     * - en: English.
+     * 
+     */
+    @Export(name="envLanguage", type=String.class, parameters={})
+    private Output</* @Nullable */ String> envLanguage;
+
+    /**
+     * @return The language of the quota alert notification. Value:
+     * - zh (default): Chinese.
+     * - en: English.
+     * 
+     */
+    public Output<Optional<String>> envLanguage() {
+        return Codegen.optional(this.envLanguage);
+    }
+    /**
+     * The expired time of the quota application.
      * 
      */
     @Export(name="expireTime", type=String.class, parameters={})
-    private Output<String> expireTime;
+    private Output</* @Nullable */ String> expireTime;
 
     /**
-     * @return The expire time of the quota application.
+     * @return The expired time of the quota application.
      * 
      */
-    public Output<String> expireTime() {
-        return this.expireTime;
+    public Output<Optional<String>> expireTime() {
+        return Codegen.optional(this.expireTime);
     }
     /**
-     * The notice type. Valid values: `0`, `1`, `2`, `3`.
+     * Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
      * 
      */
     @Export(name="noticeType", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> noticeType;
+    private Output<Integer> noticeType;
 
     /**
-     * @return The notice type. Valid values: `0`, `1`, `2`, `3`.
+     * @return Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
      * 
      */
-    public Output<Optional<Integer>> noticeType() {
-        return Codegen.optional(this.noticeType);
+    public Output<Integer> noticeType() {
+        return this.noticeType;
     }
     /**
      * The product code.
@@ -218,14 +209,20 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
         return this.quotaActionCode;
     }
     /**
-     * The quota category. Valid values: `CommonQuota`, `FlowControl`.
+     * The quota type.
+     * - CommonQuota (default): Generic quota.
+     * - FlowControl:API rate quota.
+     * - WhiteListLabel: Equity quota.
      * 
      */
     @Export(name="quotaCategory", type=String.class, parameters={})
     private Output</* @Nullable */ String> quotaCategory;
 
     /**
-     * @return The quota category. Valid values: `CommonQuota`, `FlowControl`.
+     * @return The quota type.
+     * - CommonQuota (default): Generic quota.
+     * - FlowControl:API rate quota.
+     * - WhiteListLabel: Equity quota.
      * 
      */
     public Output<Optional<String>> quotaCategory() {
@@ -288,14 +285,22 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
         return this.reason;
     }
     /**
-     * The status of the quota application.
+     * Application Status:
+     * - Disagree: reject.
+     * - Agree: Approved.
+     * - Process: under review.
+     * - Cancel: Closed.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the quota application.
+     * @return Application Status:
+     * - Disagree: reject.
+     * - Agree: Approved.
+     * - Process: under review.
+     * - Cancel: Closed.
      * 
      */
     public Output<String> status() {

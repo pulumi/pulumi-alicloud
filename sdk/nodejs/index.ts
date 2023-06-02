@@ -95,6 +95,7 @@ import * as cloudfirewall from "./cloudfirewall";
 import * as cloudsso from "./cloudsso";
 import * as cloudstoragegateway from "./cloudstoragegateway";
 import * as cms from "./cms";
+import * as compute from "./compute";
 import * as config from "./config";
 import * as cr from "./cr";
 import * as cs from "./cs";
@@ -166,6 +167,7 @@ import * as quotas from "./quotas";
 import * as ram from "./ram";
 import * as rdc from "./rdc";
 import * as rds from "./rds";
+import * as redis from "./redis";
 import * as resourcemanager from "./resourcemanager";
 import * as rocketmq from "./rocketmq";
 import * as ros from "./ros";
@@ -218,6 +220,7 @@ export {
     cloudsso,
     cloudstoragegateway,
     cms,
+    compute,
     config,
     cr,
     cs,
@@ -289,6 +292,7 @@ export {
     ram,
     rdc,
     rds,
+    redis,
     resourcemanager,
     rocketmq,
     ros,

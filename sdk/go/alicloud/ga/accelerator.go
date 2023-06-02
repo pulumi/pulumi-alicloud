@@ -67,6 +67,8 @@ type Accelerator struct {
 	AutoRenewDuration pulumi.IntPtrOutput `pulumi:"autoRenewDuration"`
 	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
+	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	BandwidthBillingType pulumi.StringOutput `pulumi:"bandwidthBillingType"`
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
@@ -130,6 +132,8 @@ type acceleratorState struct {
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
+	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
 	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
@@ -159,6 +163,8 @@ type AcceleratorState struct {
 	AutoRenewDuration pulumi.IntPtrInput
 	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon pulumi.BoolPtrInput
+	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	BandwidthBillingType pulumi.StringPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput
 	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
@@ -192,6 +198,8 @@ type acceleratorArgs struct {
 	AutoRenewDuration *int `pulumi:"autoRenewDuration"`
 	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
+	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// Descriptive information of the global acceleration instance.
 	Description *string `pulumi:"description"`
 	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
@@ -220,6 +228,8 @@ type AcceleratorArgs struct {
 	AutoRenewDuration pulumi.IntPtrInput
 	// Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 	AutoUseCoupon pulumi.BoolPtrInput
+	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	BandwidthBillingType pulumi.StringPtrInput
 	// Descriptive information of the global acceleration instance.
 	Description pulumi.StringPtrInput
 	// The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
@@ -340,6 +350,11 @@ func (o AcceleratorOutput) AutoRenewDuration() pulumi.IntPtrOutput {
 // Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
 func (o AcceleratorOutput) AutoUseCoupon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.BoolPtrOutput { return v.AutoUseCoupon }).(pulumi.BoolPtrOutput)
+}
+
+// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+func (o AcceleratorOutput) BandwidthBillingType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.BandwidthBillingType }).(pulumi.StringOutput)
 }
 
 // Descriptive information of the global acceleration instance.

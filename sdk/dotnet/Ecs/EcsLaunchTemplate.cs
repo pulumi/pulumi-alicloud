@@ -28,78 +28,113 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Ecs.EcsLaunchTemplate("default", new()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultEcsLaunchTemplate = new AliCloud.Ecs.EcsLaunchTemplate("defaultEcsLaunchTemplate", new()
+    ///     {
+    ///         LaunchTemplateName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         HostName = "terraform-example",
+    ///         InstanceChargeType = "PrePaid",
+    ///         InstanceName = "terraform-example",
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         InternetMaxBandwidthIn = 5,
+    ///         InternetMaxBandwidthOut = 5,
+    ///         IoOptimized = "optimized",
+    ///         KeyPairName = "key_pair_name",
+    ///         RamRoleName = "ram_role_name",
+    ///         NetworkType = "vpc",
+    ///         SecurityEnhancementStrategy = "Active",
+    ///         SpotPriceLimit = 5,
+    ///         SpotStrategy = "SpotWithPriceLimit",
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///         SystemDisk = new AliCloud.Ecs.Inputs.EcsLaunchTemplateSystemDiskArgs
+    ///         {
+    ///             Category = "cloud_ssd",
+    ///             Description = "Test For Terraform",
+    ///             Name = "terraform-example",
+    ///             Size = 40,
+    ///             DeleteWithInstance = false,
+    ///         },
+    ///         UserData = "xxxxxxx",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         TemplateTags = 
+    ///         {
+    ///             { "Create", "Terraform" },
+    ///             { "For", "example" },
+    ///         },
+    ///         NetworkInterfaces = new AliCloud.Ecs.Inputs.EcsLaunchTemplateNetworkInterfacesArgs
+    ///         {
+    ///             Name = "eth0",
+    ///             Description = "hello1",
+    ///             PrimaryIp = "10.0.0.2",
+    ///             SecurityGroupId = defaultSecurityGroup.Id,
+    ///             VswitchId = defaultSwitch.Id,
+    ///         },
     ///         DataDisks = new[]
     ///         {
     ///             new AliCloud.Ecs.Inputs.EcsLaunchTemplateDataDiskArgs
     ///             {
-    ///                 Category = "cloud",
-    ///                 DeleteWithInstance = true,
-    ///                 Description = "test1",
-    ///                 Encrypted = false,
     ///                 Name = "disk1",
+    ///                 Description = "description",
+    ///                 DeleteWithInstance = true,
+    ///                 Category = "cloud",
+    ///                 Encrypted = false,
     ///                 PerformanceLevel = "PL0",
     ///                 Size = 20,
     ///             },
     ///             new AliCloud.Ecs.Inputs.EcsLaunchTemplateDataDiskArgs
     ///             {
-    ///                 Category = "cloud",
-    ///                 DeleteWithInstance = true,
-    ///                 Description = "test2",
-    ///                 Encrypted = false,
     ///                 Name = "disk2",
+    ///                 Description = "description2",
+    ///                 DeleteWithInstance = true,
+    ///                 Category = "cloud",
+    ///                 Encrypted = false,
     ///                 PerformanceLevel = "PL0",
     ///                 Size = 20,
     ///             },
     ///         },
-    ///         Description = "Test For Terraform",
-    ///         HostName = "host_name",
-    ///         ImageId = "m-bp1i3ucxxxxx",
-    ///         InstanceChargeType = "PrePaid",
-    ///         InstanceName = "instance_name",
-    ///         InstanceType = "instance_type",
-    ///         InternetChargeType = "PayByBandwidth",
-    ///         InternetMaxBandwidthIn = 5,
-    ///         InternetMaxBandwidthOut = 0,
-    ///         IoOptimized = "optimized",
-    ///         KeyPairName = "key_pair_name",
-    ///         LaunchTemplateName = "tf_test_name",
-    ///         NetworkInterfaces = new AliCloud.Ecs.Inputs.EcsLaunchTemplateNetworkInterfacesArgs
-    ///         {
-    ///             Description = "hello1",
-    ///             Name = "eth0",
-    ///             PrimaryIp = "10.0.0.2",
-    ///             SecurityGroupId = "sg-asdfnbgxxxxxxx",
-    ///             VswitchId = "vw-zkdfjaxxxxxx",
-    ///         },
-    ///         NetworkType = "vpc",
-    ///         RamRoleName = "ram_role_name",
-    ///         ResourceGroupId = "rg-zkdfjaxxxxxx",
-    ///         SecurityEnhancementStrategy = "Active",
-    ///         SecurityGroupIds = new[]
-    ///         {
-    ///             "sg-zkdfjaxxxxxx",
-    ///         },
-    ///         SpotPriceLimit = 5,
-    ///         SpotStrategy = "SpotWithPriceLimit",
-    ///         SystemDisk = new AliCloud.Ecs.Inputs.EcsLaunchTemplateSystemDiskArgs
-    ///         {
-    ///             Category = "cloud_ssd",
-    ///             DeleteWithInstance = false,
-    ///             Description = "Test For Terraform",
-    ///             Name = "tf_test_name",
-    ///             Size = 40,
-    ///         },
-    ///         TemplateTags = 
-    ///         {
-    ///             { "Create", "Terraform" },
-    ///             { "For", "Test" },
-    ///         },
-    ///         UserData = "xxxxxxx",
-    ///         VpcId = "vpc-asdfnbgxxxxxxx",
-    ///         VswitchId = "vw-zwxscaxxxxxx",
-    ///         ZoneId = "cn-hangzhou-i",
     ///     });
     /// 
     /// });

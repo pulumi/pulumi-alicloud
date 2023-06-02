@@ -16,35 +16,6 @@ namespace Pulumi.AliCloud.Waf
     /// 
     /// &gt; **NOTE:** Available in 1.83.0+ .
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Waf.Instance("default", new()
-    ///     {
-    ///         BigScreen = "0",
-    ///         ExclusiveIpPackage = "1",
-    ///         ExtBandwidth = "50",
-    ///         ExtDomainPackage = "1",
-    ///         LogStorage = "3",
-    ///         LogTime = "180",
-    ///         PackageCode = "version_3",
-    ///         Period = 1,
-    ///         PrefessionalService = "false",
-    ///         ResourceGroupId = "rs-abc12345",
-    ///         SubscriptionType = "Subscription",
-    ///         WafLog = "false",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// WAF instance can be imported using the id, e.g.

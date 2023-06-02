@@ -217,9 +217,9 @@ func (o QuotaAlarmQuotaDimensionArrayOutput) Index(i pulumi.IntInput) QuotaAlarm
 }
 
 type QuotaApplicationDimension struct {
-	// The key of dimensions.
+	// Key.
 	Key *string `pulumi:"key"`
-	// The value of dimensions.
+	// Value.
 	Value *string `pulumi:"value"`
 }
 
@@ -235,9 +235,9 @@ type QuotaApplicationDimensionInput interface {
 }
 
 type QuotaApplicationDimensionArgs struct {
-	// The key of dimensions.
+	// Key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of dimensions.
+	// Value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -292,12 +292,12 @@ func (o QuotaApplicationDimensionOutput) ToQuotaApplicationDimensionOutputWithCo
 	return o
 }
 
-// The key of dimensions.
+// Key.
 func (o QuotaApplicationDimensionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QuotaApplicationDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of dimensions.
+// Value.
 func (o QuotaApplicationDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QuotaApplicationDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -320,6 +320,112 @@ func (o QuotaApplicationDimensionArrayOutput) Index(i pulumi.IntInput) QuotaAppl
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QuotaApplicationDimension {
 		return vs[0].([]QuotaApplicationDimension)[vs[1].(int)]
 	}).(QuotaApplicationDimensionOutput)
+}
+
+type TemplateQuotaDimension struct {
+	// The Key of quota_dimensions.
+	Key *string `pulumi:"key"`
+	// The Value of quota_dimensions.
+	Value *string `pulumi:"value"`
+}
+
+// TemplateQuotaDimensionInput is an input type that accepts TemplateQuotaDimensionArgs and TemplateQuotaDimensionOutput values.
+// You can construct a concrete instance of `TemplateQuotaDimensionInput` via:
+//
+//	TemplateQuotaDimensionArgs{...}
+type TemplateQuotaDimensionInput interface {
+	pulumi.Input
+
+	ToTemplateQuotaDimensionOutput() TemplateQuotaDimensionOutput
+	ToTemplateQuotaDimensionOutputWithContext(context.Context) TemplateQuotaDimensionOutput
+}
+
+type TemplateQuotaDimensionArgs struct {
+	// The Key of quota_dimensions.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The Value of quota_dimensions.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (TemplateQuotaDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateQuotaDimension)(nil)).Elem()
+}
+
+func (i TemplateQuotaDimensionArgs) ToTemplateQuotaDimensionOutput() TemplateQuotaDimensionOutput {
+	return i.ToTemplateQuotaDimensionOutputWithContext(context.Background())
+}
+
+func (i TemplateQuotaDimensionArgs) ToTemplateQuotaDimensionOutputWithContext(ctx context.Context) TemplateQuotaDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateQuotaDimensionOutput)
+}
+
+// TemplateQuotaDimensionArrayInput is an input type that accepts TemplateQuotaDimensionArray and TemplateQuotaDimensionArrayOutput values.
+// You can construct a concrete instance of `TemplateQuotaDimensionArrayInput` via:
+//
+//	TemplateQuotaDimensionArray{ TemplateQuotaDimensionArgs{...} }
+type TemplateQuotaDimensionArrayInput interface {
+	pulumi.Input
+
+	ToTemplateQuotaDimensionArrayOutput() TemplateQuotaDimensionArrayOutput
+	ToTemplateQuotaDimensionArrayOutputWithContext(context.Context) TemplateQuotaDimensionArrayOutput
+}
+
+type TemplateQuotaDimensionArray []TemplateQuotaDimensionInput
+
+func (TemplateQuotaDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateQuotaDimension)(nil)).Elem()
+}
+
+func (i TemplateQuotaDimensionArray) ToTemplateQuotaDimensionArrayOutput() TemplateQuotaDimensionArrayOutput {
+	return i.ToTemplateQuotaDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i TemplateQuotaDimensionArray) ToTemplateQuotaDimensionArrayOutputWithContext(ctx context.Context) TemplateQuotaDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateQuotaDimensionArrayOutput)
+}
+
+type TemplateQuotaDimensionOutput struct{ *pulumi.OutputState }
+
+func (TemplateQuotaDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateQuotaDimension)(nil)).Elem()
+}
+
+func (o TemplateQuotaDimensionOutput) ToTemplateQuotaDimensionOutput() TemplateQuotaDimensionOutput {
+	return o
+}
+
+func (o TemplateQuotaDimensionOutput) ToTemplateQuotaDimensionOutputWithContext(ctx context.Context) TemplateQuotaDimensionOutput {
+	return o
+}
+
+// The Key of quota_dimensions.
+func (o TemplateQuotaDimensionOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateQuotaDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The Value of quota_dimensions.
+func (o TemplateQuotaDimensionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateQuotaDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type TemplateQuotaDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (TemplateQuotaDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TemplateQuotaDimension)(nil)).Elem()
+}
+
+func (o TemplateQuotaDimensionArrayOutput) ToTemplateQuotaDimensionArrayOutput() TemplateQuotaDimensionArrayOutput {
+	return o
+}
+
+func (o TemplateQuotaDimensionArrayOutput) ToTemplateQuotaDimensionArrayOutputWithContext(ctx context.Context) TemplateQuotaDimensionArrayOutput {
+	return o
+}
+
+func (o TemplateQuotaDimensionArrayOutput) Index(i pulumi.IntInput) TemplateQuotaDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TemplateQuotaDimension {
+		return vs[0].([]TemplateQuotaDimension)[vs[1].(int)]
+	}).(TemplateQuotaDimensionOutput)
 }
 
 type GetApplicationInfosApplication struct {
@@ -1851,6 +1957,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaAlarmQuotaDimensionArrayInput)(nil)).Elem(), QuotaAlarmQuotaDimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaApplicationDimensionInput)(nil)).Elem(), QuotaApplicationDimensionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaApplicationDimensionArrayInput)(nil)).Elem(), QuotaApplicationDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateQuotaDimensionInput)(nil)).Elem(), TemplateQuotaDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateQuotaDimensionArrayInput)(nil)).Elem(), TemplateQuotaDimensionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationInfosApplicationInput)(nil)).Elem(), GetApplicationInfosApplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationInfosApplicationArrayInput)(nil)).Elem(), GetApplicationInfosApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationInfosApplicationDimensionInput)(nil)).Elem(), GetApplicationInfosApplicationDimensionArgs{})
@@ -1879,6 +1987,8 @@ func init() {
 	pulumi.RegisterOutputType(QuotaAlarmQuotaDimensionArrayOutput{})
 	pulumi.RegisterOutputType(QuotaApplicationDimensionOutput{})
 	pulumi.RegisterOutputType(QuotaApplicationDimensionArrayOutput{})
+	pulumi.RegisterOutputType(TemplateQuotaDimensionOutput{})
+	pulumi.RegisterOutputType(TemplateQuotaDimensionArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosApplicationOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosApplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationInfosApplicationDimensionOutput{})

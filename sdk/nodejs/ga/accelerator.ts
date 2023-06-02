@@ -77,6 +77,10 @@ export class Accelerator extends pulumi.CustomResource {
      */
     public readonly autoUseCoupon!: pulumi.Output<boolean | undefined>;
     /**
+     * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     */
+    public readonly bandwidthBillingType!: pulumi.Output<string>;
+    /**
      * Descriptive information of the global acceleration instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -125,6 +129,7 @@ export class Accelerator extends pulumi.CustomResource {
             resourceInputs["acceleratorName"] = state ? state.acceleratorName : undefined;
             resourceInputs["autoRenewDuration"] = state ? state.autoRenewDuration : undefined;
             resourceInputs["autoUseCoupon"] = state ? state.autoUseCoupon : undefined;
+            resourceInputs["bandwidthBillingType"] = state ? state.bandwidthBillingType : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["duration"] = state ? state.duration : undefined;
             resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
@@ -142,6 +147,7 @@ export class Accelerator extends pulumi.CustomResource {
             resourceInputs["acceleratorName"] = args ? args.acceleratorName : undefined;
             resourceInputs["autoRenewDuration"] = args ? args.autoRenewDuration : undefined;
             resourceInputs["autoUseCoupon"] = args ? args.autoUseCoupon : undefined;
+            resourceInputs["bandwidthBillingType"] = args ? args.bandwidthBillingType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["duration"] = args ? args.duration : undefined;
             resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
@@ -170,6 +176,10 @@ export interface AcceleratorState {
      * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
      */
     autoUseCoupon?: pulumi.Input<boolean>;
+    /**
+     * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     */
+    bandwidthBillingType?: pulumi.Input<string>;
     /**
      * Descriptive information of the global acceleration instance.
      */
@@ -220,6 +230,10 @@ export interface AcceleratorArgs {
      * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
      */
     autoUseCoupon?: pulumi.Input<boolean>;
+    /**
+     * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     */
+    bandwidthBillingType?: pulumi.Input<string>;
     /**
      * Descriptive information of the global acceleration instance.
      */

@@ -29,25 +29,19 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tftestacc"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
 //			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oos.NewApplication(ctx, "defaultApplication", &oos.ApplicationArgs{
 //				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
-//				ApplicationName: pulumi.String(name),
-//				Description:     pulumi.String(name),
+//				ApplicationName: pulumi.String("terraform-example"),
+//				Description:     pulumi.String("terraform-example"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
 //				},

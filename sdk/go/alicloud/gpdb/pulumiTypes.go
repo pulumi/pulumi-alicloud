@@ -797,12 +797,13 @@ func (o DbInstancePlanPlanConfigScaleOutPtrOutput) SegmentNodeNum() pulumi.Strin
 }
 
 type InstanceIpWhitelist struct {
-	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+	// The value of this parameter is empty by default. The attribute of the whitelist group.
+	// If the value contains `hidden`, this white list item will not output.
 	IpGroupAttribute *string `pulumi:"ipGroupAttribute"`
 	// IP whitelist group name
 	IpGroupName *string `pulumi:"ipGroupName"`
 	// Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
-	SecurityIpList string `pulumi:"securityIpList"`
+	SecurityIpList *string `pulumi:"securityIpList"`
 }
 
 // InstanceIpWhitelistInput is an input type that accepts InstanceIpWhitelistArgs and InstanceIpWhitelistOutput values.
@@ -817,12 +818,13 @@ type InstanceIpWhitelistInput interface {
 }
 
 type InstanceIpWhitelistArgs struct {
-	// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+	// The value of this parameter is empty by default. The attribute of the whitelist group.
+	// If the value contains `hidden`, this white list item will not output.
 	IpGroupAttribute pulumi.StringPtrInput `pulumi:"ipGroupAttribute"`
 	// IP whitelist group name
 	IpGroupName pulumi.StringPtrInput `pulumi:"ipGroupName"`
 	// Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
-	SecurityIpList pulumi.StringInput `pulumi:"securityIpList"`
+	SecurityIpList pulumi.StringPtrInput `pulumi:"securityIpList"`
 }
 
 func (InstanceIpWhitelistArgs) ElementType() reflect.Type {
@@ -876,7 +878,8 @@ func (o InstanceIpWhitelistOutput) ToInstanceIpWhitelistOutputWithContext(ctx co
 	return o
 }
 
-// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+// The value of this parameter is empty by default. The attribute of the whitelist group.
+// If the value contains `hidden`, this white list item will not output.
 func (o InstanceIpWhitelistOutput) IpGroupAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIpWhitelist) *string { return v.IpGroupAttribute }).(pulumi.StringPtrOutput)
 }
@@ -887,8 +890,8 @@ func (o InstanceIpWhitelistOutput) IpGroupName() pulumi.StringPtrOutput {
 }
 
 // Field `securityIpList` has been deprecated from provider version 1.187.0. New field `ipWhitelist` instead.
-func (o InstanceIpWhitelistOutput) SecurityIpList() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceIpWhitelist) string { return v.SecurityIpList }).(pulumi.StringOutput)
+func (o InstanceIpWhitelistOutput) SecurityIpList() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIpWhitelist) *string { return v.SecurityIpList }).(pulumi.StringPtrOutput)
 }
 
 type InstanceIpWhitelistArrayOutput struct{ *pulumi.OutputState }

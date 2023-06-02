@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const group = new alicloud.ecs.SecurityGroup("group", {description: "New security group"});
+ * const _default = new alicloud.ecs.SecurityGroup("default", {description: "New security group"});
  * ```
  * Basic usage for vpc
  *
@@ -27,7 +27,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const vpc = new alicloud.vpc.Network("vpc", {cidrBlock: "10.1.0.0/21"});
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "10.1.0.0/21",
+ * });
  * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
  * ```
  * ## Module Support

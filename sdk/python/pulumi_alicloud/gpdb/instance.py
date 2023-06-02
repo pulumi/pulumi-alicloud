@@ -67,7 +67,8 @@ class InstanceArgs:
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See block `ip_whitelist`.
+               Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
@@ -320,7 +321,8 @@ class InstanceArgs:
     @pulumi.getter(name="ipWhitelists")
     def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]]]:
         """
-        The ip whitelist.
+        The ip whitelist. See block `ip_whitelist`.
+        Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         """
         return pulumi.get(self, "ip_whitelists")
 
@@ -581,7 +583,8 @@ class _InstanceState:
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]] ip_whitelists: The ip whitelist. See block `ip_whitelist`.
+               Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
@@ -847,7 +850,8 @@ class _InstanceState:
     @pulumi.getter(name="ipWhitelists")
     def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpWhitelistArgs']]]]:
         """
-        The ip whitelist.
+        The ip whitelist. See block `ip_whitelist`.
+        Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         """
         return pulumi.get(self, "ip_whitelists")
 
@@ -1157,7 +1161,8 @@ class Instance(pulumi.CustomResource):
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist. See block `ip_whitelist`.
+               Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
@@ -1372,7 +1377,8 @@ class Instance(pulumi.CustomResource):
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
                * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
                > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceIpWhitelistArgs']]]] ip_whitelists: The ip whitelist. See block `ip_whitelist`.
+               Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         :param pulumi.Input[str] maintain_end_time: The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[int] master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
@@ -1547,9 +1553,10 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipWhitelists")
-    def ip_whitelists(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceIpWhitelist']]]:
+    def ip_whitelists(self) -> pulumi.Output[Sequence['outputs.InstanceIpWhitelist']]:
         """
-        The ip whitelist.
+        The ip whitelist. See block `ip_whitelist`.
+        Default to creating a whitelist group with the group name "default" and security_ip_list "127.0.0.1".
         """
         return pulumi.get(self, "ip_whitelists")
 
@@ -1619,7 +1626,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityIpLists")
-    def security_ip_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def security_ip_lists(self) -> pulumi.Output[Sequence[str]]:
         """
         Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """

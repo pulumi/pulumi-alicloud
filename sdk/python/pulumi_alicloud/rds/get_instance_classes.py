@@ -219,7 +219,7 @@ def get_instance_classes(category: Optional[str] = None,
     ```
 
 
-    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
     :param str commodity_code: The commodity code of the instance. Valid values:
            * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
            * **rds**: The instance is a subscription primary instance. This value is available on the China site (aliyun.com).
@@ -316,7 +316,7 @@ def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] 
     ```
 
 
-    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
+    :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
     :param str commodity_code: The commodity code of the instance. Valid values:
            * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
            * **rds**: The instance is a subscription primary instance. This value is available on the China site (aliyun.com).

@@ -84,7 +84,7 @@ class AclAclEntry(dict):
                  entry: Optional[str] = None,
                  entry_description: Optional[str] = None):
         """
-        :param str entry: The IP entry that you want to add to the ACL.
+        :param str entry: The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
         :param str entry_description: The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         """
         if entry is not None:
@@ -96,7 +96,7 @@ class AclAclEntry(dict):
     @pulumi.getter
     def entry(self) -> Optional[str]:
         """
-        The IP entry that you want to add to the ACL.
+        The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
         """
         return pulumi.get(self, "entry")
 

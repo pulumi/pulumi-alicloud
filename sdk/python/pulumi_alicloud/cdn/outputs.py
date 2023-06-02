@@ -296,8 +296,12 @@ class DomainNewCertificateConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "certName":
+        if key == "certId":
+            suggest = "cert_id"
+        elif key == "certName":
             suggest = "cert_name"
+        elif key == "certRegion":
+            suggest = "cert_region"
         elif key == "certType":
             suggest = "cert_type"
         elif key == "forceSet":
@@ -321,22 +325,35 @@ class DomainNewCertificateConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cert_id: Optional[str] = None,
                  cert_name: Optional[str] = None,
+                 cert_region: Optional[str] = None,
                  cert_type: Optional[str] = None,
                  force_set: Optional[str] = None,
                  private_key: Optional[str] = None,
                  server_certificate: Optional[str] = None,
                  server_certificate_status: Optional[str] = None):
         """
-        :param str cert_name: The SSL certificate name.
-        :param str cert_type: The SSL certificate type, can be "upload", "cas" and "free".
-        :param str force_set: Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
-        :param str private_key: The SSL private key. This is required if `server_certificate_status` is `on`
-        :param str server_certificate: The SSL server certificate string. This is required if `server_certificate_status` is `on`
-        :param str server_certificate_status: This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+        :param str cert_id: The ID of the certificate. It takes effect only when CertType = cas.
+        :param str cert_name: Certificate name, only flyer names are supported.
+        :param str cert_region: The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+        :param str cert_type: Certificate type. Value:
+               - **upload**: upload certificate.
+               - **cas**: Cloud Shield certificate.
+               - **free**: free certificate.
+               > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+        :param str private_key: The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
+        :param str server_certificate: The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
+        :param str server_certificate_status: Whether the HTTPS certificate is enabled. Value:
+               - **on**(default): enabled.
+               - **off** : not enabled.
         """
+        if cert_id is not None:
+            pulumi.set(__self__, "cert_id", cert_id)
         if cert_name is not None:
             pulumi.set(__self__, "cert_name", cert_name)
+        if cert_region is not None:
+            pulumi.set(__self__, "cert_region", cert_region)
         if cert_type is not None:
             pulumi.set(__self__, "cert_type", cert_type)
         if force_set is not None:
@@ -349,34 +366,51 @@ class DomainNewCertificateConfig(dict):
             pulumi.set(__self__, "server_certificate_status", server_certificate_status)
 
     @property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> Optional[str]:
+        """
+        The ID of the certificate. It takes effect only when CertType = cas.
+        """
+        return pulumi.get(self, "cert_id")
+
+    @property
     @pulumi.getter(name="certName")
     def cert_name(self) -> Optional[str]:
         """
-        The SSL certificate name.
+        Certificate name, only flyer names are supported.
         """
         return pulumi.get(self, "cert_name")
+
+    @property
+    @pulumi.getter(name="certRegion")
+    def cert_region(self) -> Optional[str]:
+        """
+        The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+        """
+        return pulumi.get(self, "cert_region")
 
     @property
     @pulumi.getter(name="certType")
     def cert_type(self) -> Optional[str]:
         """
-        The SSL certificate type, can be "upload", "cas" and "free".
+        Certificate type. Value:
+        - **upload**: upload certificate.
+        - **cas**: Cloud Shield certificate.
+        - **free**: free certificate.
+        > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
         """
         return pulumi.get(self, "cert_type")
 
     @property
     @pulumi.getter(name="forceSet")
     def force_set(self) -> Optional[str]:
-        """
-        Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
-        """
         return pulumi.get(self, "force_set")
 
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[str]:
         """
-        The SSL private key. This is required if `server_certificate_status` is `on`
+        The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
         """
         return pulumi.get(self, "private_key")
 
@@ -384,7 +418,7 @@ class DomainNewCertificateConfig(dict):
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> Optional[str]:
         """
-        The SSL server certificate string. This is required if `server_certificate_status` is `on`
+        The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
         """
         return pulumi.get(self, "server_certificate")
 
@@ -392,7 +426,9 @@ class DomainNewCertificateConfig(dict):
     @pulumi.getter(name="serverCertificateStatus")
     def server_certificate_status(self) -> Optional[str]:
         """
-        This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+        Whether the HTTPS certificate is enabled. Value:
+        - **on**(default): enabled.
+        - **off** : not enabled.
         """
         return pulumi.get(self, "server_certificate_status")
 
@@ -400,42 +436,36 @@ class DomainNewCertificateConfig(dict):
 @pulumi.output_type
 class DomainNewSource(dict):
     def __init__(__self__, *,
-                 content: str,
-                 type: str,
+                 content: Optional[str] = None,
                  port: Optional[int] = None,
                  priority: Optional[int] = None,
+                 type: Optional[str] = None,
                  weight: Optional[int] = None):
         """
         :param str content: The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
-        :param str type: The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
         :param int port: The port of source. Valid values are `443` and `80`. Default value is `80`.
         :param int priority: Priority of the source. Valid values are `0` and `100`. Default value is `20`.
-        :param int weight: Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+        :param str type: The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
+        :param int weight: Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
         """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "type", type)
+        if content is not None:
+            pulumi.set(__self__, "content", content)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
-    def content(self) -> str:
+    def content(self) -> Optional[str]:
         """
         The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
         """
         return pulumi.get(self, "content")
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
-        """
-        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
@@ -455,9 +485,17 @@ class DomainNewSource(dict):
 
     @property
     @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
     def weight(self) -> Optional[int]:
         """
-        Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+        Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
         """
         return pulumi.get(self, "weight")
 

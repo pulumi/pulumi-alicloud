@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Prefix List resource.
+    /// Provides a Vpc Prefix List resource. This resource is used to create a prefix list.
     /// 
-    /// For information about VPC Prefix List and how to use it, see [What is Prefix List](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/creatvpcprefixlist).
+    /// For information about Vpc Prefix List and how to use it, see [What is Prefix List](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/creatvpcprefixlist).
     /// 
     /// &gt; **NOTE:** Available in v1.182.0+.
     /// 
@@ -28,20 +28,35 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-testacc-example";
+    ///     var defaultRg = new AliCloud.ResourceManager.ResourceGroup("defaultRg", new()
+    ///     {
+    ///         DisplayName = "tf-testacc-chenyi",
+    ///         ResourceGroupName = name,
+    ///     });
+    /// 
+    ///     var changeRg = new AliCloud.ResourceManager.ResourceGroup("changeRg", new()
+    ///     {
+    ///         DisplayName = "tf-testacc-chenyi-change",
+    ///         ResourceGroupName = $"{name}1",
+    ///     });
+    /// 
     ///     var @default = new AliCloud.Vpc.PrefixList("default", new()
     ///     {
+    ///         MaxEntries = 50,
+    ///         ResourceGroupId = defaultRg.Id,
+    ///         PrefixListDescription = "test",
+    ///         IpVersion = "IPV4",
+    ///         PrefixListName = name,
     ///         Entrys = new[]
     ///         {
     ///             new AliCloud.Vpc.Inputs.PrefixListEntryArgs
     ///             {
     ///                 Cidr = "192.168.0.0/16",
-    ///                 Description = "description",
+    ///                 Description = "test",
     ///             },
     ///         },
-    ///         IpVersion = "IPV4",
-    ///         MaxEntries = 50,
-    ///         PrefixListName = @var.Name,
-    ///         PrefixListDescription = "description",
     ///     });
     /// 
     /// });
@@ -49,7 +64,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Prefix List can be imported using the id, e.g.
+    /// Vpc Prefix List can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:vpc/prefixList:PrefixList example &lt;id&gt;
@@ -59,13 +74,19 @@ namespace Pulumi.AliCloud.Vpc
     public partial class PrefixList : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The CIDR address block list of the prefix list. See the following `Block entrys`.
+        /// The time when the prefix list was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The CIDR address block list of the prefix list.See the following `Block Entrys`.
         /// </summary>
         [Output("entrys")]
         public Output<ImmutableArray<Outputs.PrefixListEntry>> Entrys { get; private set; } = null!;
 
         /// <summary>
-        /// The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+        /// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         /// </summary>
         [Output("ipVersion")]
         public Output<string> IpVersion { get; private set; } = null!;
@@ -77,22 +98,52 @@ namespace Pulumi.AliCloud.Vpc
         public Output<int> MaxEntries { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// The association list information of the prefix list.
+        /// </summary>
+        [Output("prefixListAssociations")]
+        public Output<ImmutableArray<Outputs.PrefixListPrefixListAssociation>> PrefixListAssociations { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         /// </summary>
         [Output("prefixListDescription")]
         public Output<string?> PrefixListDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        /// The ID of the query Prefix List.
+        /// </summary>
+        [Output("prefixListId")]
+        public Output<string> PrefixListId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
         /// </summary>
         [Output("prefixListName")]
         public Output<string?> PrefixListName { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.196.0+) The status of the Prefix List.
+        /// The ID of the resource group to which the PrefixList belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
+        /// </summary>
+        [Output("shareType")]
+        public Output<string> ShareType { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource attribute fields that represent the status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tags of PrefixList.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -144,7 +195,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.PrefixListEntryArgs>? _entrys;
 
         /// <summary>
-        /// The CIDR address block list of the prefix list. See the following `Block entrys`.
+        /// The CIDR address block list of the prefix list.See the following `Block Entrys`.
         /// </summary>
         public InputList<Inputs.PrefixListEntryArgs> Entrys
         {
@@ -153,7 +204,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+        /// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -165,16 +216,34 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? MaxEntries { get; set; }
 
         /// <summary>
-        /// The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("prefixListDescription")]
         public Input<string>? PrefixListDescription { get; set; }
 
         /// <summary>
-        /// The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        /// The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
         /// </summary>
         [Input("prefixListName")]
         public Input<string>? PrefixListName { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group to which the PrefixList belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of PrefixList.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public PrefixListArgs()
         {
@@ -184,11 +253,17 @@ namespace Pulumi.AliCloud.Vpc
 
     public sealed class PrefixListState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The time when the prefix list was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         [Input("entrys")]
         private InputList<Inputs.PrefixListEntryGetArgs>? _entrys;
 
         /// <summary>
-        /// The CIDR address block list of the prefix list. See the following `Block entrys`.
+        /// The CIDR address block list of the prefix list.See the following `Block Entrys`.
         /// </summary>
         public InputList<Inputs.PrefixListEntryGetArgs> Entrys
         {
@@ -197,7 +272,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+        /// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -208,23 +283,65 @@ namespace Pulumi.AliCloud.Vpc
         [Input("maxEntries")]
         public Input<int>? MaxEntries { get; set; }
 
+        [Input("prefixListAssociations")]
+        private InputList<Inputs.PrefixListPrefixListAssociationGetArgs>? _prefixListAssociations;
+
         /// <summary>
-        /// The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// The association list information of the prefix list.
+        /// </summary>
+        public InputList<Inputs.PrefixListPrefixListAssociationGetArgs> PrefixListAssociations
+        {
+            get => _prefixListAssociations ?? (_prefixListAssociations = new InputList<Inputs.PrefixListPrefixListAssociationGetArgs>());
+            set => _prefixListAssociations = value;
+        }
+
+        /// <summary>
+        /// The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         /// </summary>
         [Input("prefixListDescription")]
         public Input<string>? PrefixListDescription { get; set; }
 
         /// <summary>
-        /// The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        /// The ID of the query Prefix List.
+        /// </summary>
+        [Input("prefixListId")]
+        public Input<string>? PrefixListId { get; set; }
+
+        /// <summary>
+        /// The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
         /// </summary>
         [Input("prefixListName")]
         public Input<string>? PrefixListName { get; set; }
 
         /// <summary>
-        /// (Available in v1.196.0+) The status of the Prefix List.
+        /// The ID of the resource group to which the PrefixList belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
+        /// </summary>
+        [Input("shareType")]
+        public Input<string>? ShareType { get; set; }
+
+        /// <summary>
+        /// Resource attribute fields that represent the status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of PrefixList.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public PrefixListState()
         {

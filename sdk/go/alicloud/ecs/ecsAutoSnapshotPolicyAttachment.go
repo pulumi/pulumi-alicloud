@@ -26,16 +26,63 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewEcsAutoSnapshotPolicyAttachment(ctx, "example", &ecs.EcsAutoSnapshotPolicyAttachmentArgs{
-//				AutoSnapshotPolicyId: pulumi.String("s-ge465xxxx"),
-//				DiskId:               pulumi.String("d-gw835xxxx"),
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleKey, err := kms.NewKey(ctx, "exampleKey", &kms.KeyArgs{
+//				Description:         pulumi.String("terraform-example"),
+//				PendingWindowInDays: pulumi.Int(7),
+//				Status:              pulumi.String("Enabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAutoSnapshotPolicy, err := ecs.NewAutoSnapshotPolicy(ctx, "exampleAutoSnapshotPolicy", &ecs.AutoSnapshotPolicyArgs{
+//				RepeatWeekdays: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("2"),
+//					pulumi.String("3"),
+//				},
+//				RetentionDays: -1,
+//				TimePoints: pulumi.StringArray{
+//					pulumi.String("1"),
+//					pulumi.String("22"),
+//					pulumi.String("23"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleEcsDisk, err := ecs.NewEcsDisk(ctx, "exampleEcsDisk", &ecs.EcsDiskArgs{
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				DiskName:    pulumi.String("terraform-example"),
+//				Description: pulumi.String("Hello ecs disk."),
+//				Category:    pulumi.String("cloud_efficiency"),
+//				Size:        pulumi.Int(30),
+//				Encrypted:   pulumi.Bool(true),
+//				KmsKeyId:    exampleKey.ID(),
+//				Tags: pulumi.AnyMap{
+//					"Name": pulumi.Any("terraform-example"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsAutoSnapshotPolicyAttachment(ctx, "exampleEcsAutoSnapshotPolicyAttachment", &ecs.EcsAutoSnapshotPolicyAttachmentArgs{
+//				AutoSnapshotPolicyId: exampleAutoSnapshotPolicy.ID(),
+//				DiskId:               exampleEcsDisk.ID(),
 //			})
 //			if err != nil {
 //				return err

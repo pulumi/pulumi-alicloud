@@ -245,14 +245,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ip whitelist.
+     * The ip whitelist. See block `ip_whitelist`.
+     * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
      * 
      */
     @Import(name="ipWhitelists")
     private @Nullable Output<List<InstanceIpWhitelistArgs>> ipWhitelists;
 
     /**
-     * @return The ip whitelist.
+     * @return The ip whitelist. See block `ip_whitelist`.
+     * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
      * 
      */
     public Optional<Output<List<InstanceIpWhitelistArgs>>> ipWhitelists() {
@@ -916,7 +918,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhitelists The ip whitelist.
+         * @param ipWhitelists The ip whitelist. See block `ip_whitelist`.
+         * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
          * 
          * @return builder
          * 
@@ -927,7 +930,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhitelists The ip whitelist.
+         * @param ipWhitelists The ip whitelist. See block `ip_whitelist`.
+         * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
          * 
          * @return builder
          * 
@@ -937,7 +941,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipWhitelists The ip whitelist.
+         * @param ipWhitelists The ip whitelist. See block `ip_whitelist`.
+         * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
          * 
          * @return builder
          * 

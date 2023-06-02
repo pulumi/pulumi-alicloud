@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC switch resource.
+    /// Provides a VPC Vswitch resource. ## Module Support
+    /// 
+    /// You can use to the existing vpc module  to create a VPC and several VSwitches one-click.
+    /// 
+    /// For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
     /// 
     /// ## Example Usage
     /// 
@@ -24,17 +28,23 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     var fooZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         VpcName = "tf_test_foo",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var vsw = new AliCloud.Vpc.Switch("vsw", new()
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
     ///     {
-    ///         VpcId = vpc.Id,
+    ///         VswitchName = "terraform-example",
     ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = "cn-beijing-b",
+    ///         VpcId = fooNetwork.Id,
+    ///         ZoneId = fooZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     /// });
@@ -48,9 +58,14 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var foo = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
     ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
     ///     {
-    ///         VpcName = "tf_test_foo",
+    ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
@@ -64,8 +79,8 @@ namespace Pulumi.AliCloud.Vpc
     ///     {
     ///         VpcId = cidrBlocks.VpcId,
     ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = "cn-beijing-b",
-    ///         VswitchName = "example_value",
+    ///         ZoneId = foo.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = "terraform-example",
     ///         Tags = 
     ///         {
     ///             { "BuiltBy", "example_value" },
@@ -88,111 +103,122 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     var fooZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         VpcName = "tf_test_foo",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var example = new AliCloud.Vpc.Ipv4CidrBlock("example", new()
+    ///     var fooIpv4CidrBlock = new AliCloud.Vpc.Ipv4CidrBlock("fooIpv4CidrBlock", new()
     ///     {
-    ///         VpcId = alicloud_vpc.Default.Id,
+    ///         VpcId = fooNetwork.Id,
     ///         SecondaryCidrBlock = "192.163.0.0/16",
     ///     });
     /// 
-    ///     var vsw = new AliCloud.Vpc.Switch("vsw", new()
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
     ///     {
-    ///         VpcId = example.VpcId,
+    ///         VpcId = fooIpv4CidrBlock.VpcId,
     ///         CidrBlock = "192.163.0.0/24",
-    ///         ZoneId = "cn-beijing-b",
+    ///         ZoneId = fooZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     /// });
     /// ```
-    /// ## Module Support
-    /// 
-    /// You can use to the existing vpc module
-    /// to create a VPC and several VSwitches one-click.
     /// 
     /// ## Import
     /// 
-    /// Vswitch can be imported using the id, e.g.
+    /// VPC Vswitch can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/switch:Switch example vsw-abc123456
+    ///  $ pulumi import alicloud:vpc/switch:Switch example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/switch:Switch")]
     public partial class Switch : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+        /// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// The CIDR block for the switch.
+        /// The IPv4 CIDR block of the VSwitch.
         /// </summary>
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// The switch description. Defaults to null.
+        /// The creation time of the VSwitch.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of VSwitch.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        /// Whether the IPv6 function is enabled in the switch. Value:
+        /// - **true**: enables IPv6.
+        /// - **false** (default): IPv6 is not enabled.
         /// </summary>
         [Output("enableIpv6")]
         public Output<bool?> EnableIpv6 { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+        /// The IPv6 CIDR block of the VSwitch.
         /// </summary>
         [Output("ipv6CidrBlock")]
         public Output<string> Ipv6CidrBlock { get; private set; } = null!;
 
         /// <summary>
-        /// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        /// The IPv6 CIDR block of the VSwitch.
         /// </summary>
         [Output("ipv6CidrBlockMask")]
         public Output<int?> Ipv6CidrBlockMask { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.119.0+) The status of the switch.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of VSwitch.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The VPC ID.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the switch. Defaults to null.
+        /// The name of the VSwitch.
         /// </summary>
         [Output("vswitchName")]
         public Output<string> VswitchName { get; private set; } = null!;
 
         /// <summary>
-        /// The AZ for the switch. **Note:** Required for a VPC switch.
+        /// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -244,37 +270,39 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class SwitchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+        /// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// The CIDR block for the switch.
+        /// The IPv4 CIDR block of the VSwitch.
         /// </summary>
         [Input("cidrBlock", required: true)]
         public Input<string> CidrBlock { get; set; } = null!;
 
         /// <summary>
-        /// The switch description. Defaults to null.
+        /// The description of VSwitch.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        /// Whether the IPv6 function is enabled in the switch. Value:
+        /// - **true**: enables IPv6.
+        /// - **false** (default): IPv6 is not enabled.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
         /// <summary>
-        /// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        /// The IPv6 CIDR block of the VSwitch.
         /// </summary>
         [Input("ipv6CidrBlockMask")]
         public Input<int>? Ipv6CidrBlockMask { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -283,7 +311,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of VSwitch.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -293,18 +321,20 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The VPC ID.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the switch. Defaults to null.
+        /// The name of the VSwitch.
         /// </summary>
         [Input("vswitchName")]
         public Input<string>? VswitchName { get; set; }
 
         /// <summary>
-        /// The AZ for the switch. **Note:** Required for a VPC switch.
+        /// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -318,49 +348,57 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class SwitchState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+        /// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// The CIDR block for the switch.
+        /// The IPv4 CIDR block of the VSwitch.
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
-        /// The switch description. Defaults to null.
+        /// The creation time of the VSwitch.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of VSwitch.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        /// Whether the IPv6 function is enabled in the switch. Value:
+        /// - **true**: enables IPv6.
+        /// - **false** (default): IPv6 is not enabled.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
 
         /// <summary>
-        /// (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+        /// The IPv6 CIDR block of the VSwitch.
         /// </summary>
         [Input("ipv6CidrBlock")]
         public Input<string>? Ipv6CidrBlock { get; set; }
 
         /// <summary>
-        /// The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        /// The IPv6 CIDR block of the VSwitch.
         /// </summary>
         [Input("ipv6CidrBlockMask")]
         public Input<int>? Ipv6CidrBlockMask { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Available in 1.119.0+) The status of the switch.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -369,7 +407,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of VSwitch.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -379,18 +417,20 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The VPC ID.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The name of the switch. Defaults to null.
+        /// The name of the VSwitch.
         /// </summary>
         [Input("vswitchName")]
         public Input<string>? VswitchName { get; set; }
 
         /// <summary>
-        /// The AZ for the switch. **Note:** Required for a VPC switch.
+        /// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

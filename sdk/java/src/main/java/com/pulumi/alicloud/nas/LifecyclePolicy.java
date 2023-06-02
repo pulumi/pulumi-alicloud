@@ -54,9 +54,10 @@ import javax.annotation.Nullable;
  * 
  *         var exampleLifecyclePolicy = new LifecyclePolicy(&#34;exampleLifecyclePolicy&#34;, LifecyclePolicyArgs.builder()        
  *             .fileSystemId(exampleFileSystem.id())
- *             .lifecyclePolicyName(&#34;my-LifecyclePolicy&#34;)
+ *             .lifecyclePolicyName(&#34;terraform-example&#34;)
  *             .lifecycleRuleName(&#34;DEFAULT_ATIME_14&#34;)
  *             .storageType(&#34;InfrequentAccess&#34;)
+ *             .paths(&#34;/&#34;)
  *             .build());
  * 
  *     }

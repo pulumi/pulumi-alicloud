@@ -223,14 +223,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, &#34;https://&#34;, &#34;ack&#34; or &#34;ingress&#34;.
      * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, &#34;https://&#34;, &#34;ack&#34; or &#34;ingress&#34;.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

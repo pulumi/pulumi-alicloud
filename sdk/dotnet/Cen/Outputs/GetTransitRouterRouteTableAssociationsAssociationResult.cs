@@ -27,9 +27,13 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// ID of the cen transit router attachment.
+        /// The ID of the network instance connection.
         /// </summary>
         public readonly string TransitRouterAttachmentId;
+        /// <summary>
+        /// The ID of the route table of the Enterprise Edition transit router.
+        /// </summary>
+        public readonly string TransitRouterRouteTableId;
 
         [OutputConstructor]
         private GetTransitRouterRouteTableAssociationsAssociationResult(
@@ -41,13 +45,16 @@ namespace Pulumi.AliCloud.Cen.Outputs
 
             string status,
 
-            string transitRouterAttachmentId)
+            string transitRouterAttachmentId,
+
+            string transitRouterRouteTableId)
         {
             Id = id;
             ResourceId = resourceId;
             ResourceType = resourceType;
             Status = status;
             TransitRouterAttachmentId = transitRouterAttachmentId;
+            TransitRouterRouteTableId = transitRouterRouteTableId;
         }
     }
 }

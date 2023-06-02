@@ -20,14 +20,27 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var object_source = new AliCloud.Oss.BucketObject("object-source", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
-    ///         Bucket = "your_bucket_name",
-    ///         Key = "new_object_key",
-    ///         Source = "path/to/file",
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     {
+    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         Acl = "private",
+    ///     });
+    /// 
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     {
+    ///         Bucket = defaultBucket.BucketName,
+    ///         Key = "example_key",
+    ///         Source = "./main.tf",
     ///     });
     /// 
     /// });
@@ -39,19 +52,26 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Oss.Bucket("example", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
-    ///         BucketName = "your_bucket_name",
-    ///         Acl = "public-read",
+    ///         Max = 99999,
+    ///         Min = 10000,
     ///     });
     /// 
-    ///     var object_content = new AliCloud.Oss.BucketObject("object-content", new()
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
     ///     {
-    ///         Bucket = example.BucketName,
-    ///         Key = "new_object_key",
+    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         Acl = "private",
+    ///     });
+    /// 
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     {
+    ///         Bucket = defaultBucket.BucketName,
+    ///         Key = "example_key",
     ///         Content = "the content that you want to upload.",
     ///     });
     /// 

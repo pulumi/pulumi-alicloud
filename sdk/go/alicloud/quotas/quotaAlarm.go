@@ -13,7 +13,7 @@ import (
 
 // Provides a Quotas Quota Alarm resource.
 //
-// For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/184343.html).
+// For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
 //
 // > **NOTE:** Available in v1.116.0+.
 //
@@ -28,22 +28,29 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/quotas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := quotas.NewQuotaAlarm(ctx, "example", &quotas.QuotaAlarmArgs{
-//				ProductCode:     pulumi.String("ecs"),
-//				QuotaActionCode: pulumi.String("q_prepaid-instance-count-per-once-purchase"),
-//				QuotaAlarmName:  pulumi.String("tf-testAcc"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := quotas.NewQuotaAlarm(ctx, "default", &quotas.QuotaAlarmArgs{
+//				QuotaActionCode: pulumi.String("q_desktop-count"),
 //				QuotaDimensions: quotas.QuotaAlarmQuotaDimensionArray{
 //					&quotas.QuotaAlarmQuotaDimensionArgs{
 //						Key:   pulumi.String("regionId"),
 //						Value: pulumi.String("cn-hangzhou"),
 //					},
 //				},
-//				Threshold: pulumi.Float64(100),
+//				ThresholdPercent: pulumi.Float64(80),
+//				ProductCode:      pulumi.String("gws"),
+//				QuotaAlarmName:   pulumi.String(name),
+//				ThresholdType:    pulumi.String("used"),
 //			})
 //			if err != nil {
 //				return err
@@ -66,18 +73,24 @@ import (
 type QuotaAlarm struct {
 	pulumi.CustomResourceState
 
+	// The creation time of the resource.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The Product Code.
 	ProductCode pulumi.StringOutput `pulumi:"productCode"`
 	// The Quota Action Code.
 	QuotaActionCode pulumi.StringOutput `pulumi:"quotaActionCode"`
 	// The name of Quota Alarm.
 	QuotaAlarmName pulumi.StringOutput `pulumi:"quotaAlarmName"`
-	// The Quota Dimensions.
+	// The Quota Dimensions. See the following `Block QuotaDimensions`.
 	QuotaDimensions QuotaAlarmQuotaDimensionArrayOutput `pulumi:"quotaDimensions"`
 	// The threshold of Quota Alarm.
 	Threshold pulumi.Float64PtrOutput `pulumi:"threshold"`
 	// The threshold percent of Quota Alarm.
 	ThresholdPercent pulumi.Float64PtrOutput `pulumi:"thresholdPercent"`
+	// Quota alarm type. Value:
+	// - used: Quota used alarm.
+	// - usable: alarm for the remaining available quota.
+	ThresholdType pulumi.StringOutput `pulumi:"thresholdType"`
 	// The WebHook of Quota Alarm.
 	WebHook pulumi.StringPtrOutput `pulumi:"webHook"`
 }
@@ -120,35 +133,47 @@ func GetQuotaAlarm(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering QuotaAlarm resources.
 type quotaAlarmState struct {
+	// The creation time of the resource.
+	CreateTime *string `pulumi:"createTime"`
 	// The Product Code.
 	ProductCode *string `pulumi:"productCode"`
 	// The Quota Action Code.
 	QuotaActionCode *string `pulumi:"quotaActionCode"`
 	// The name of Quota Alarm.
 	QuotaAlarmName *string `pulumi:"quotaAlarmName"`
-	// The Quota Dimensions.
+	// The Quota Dimensions. See the following `Block QuotaDimensions`.
 	QuotaDimensions []QuotaAlarmQuotaDimension `pulumi:"quotaDimensions"`
 	// The threshold of Quota Alarm.
 	Threshold *float64 `pulumi:"threshold"`
 	// The threshold percent of Quota Alarm.
 	ThresholdPercent *float64 `pulumi:"thresholdPercent"`
+	// Quota alarm type. Value:
+	// - used: Quota used alarm.
+	// - usable: alarm for the remaining available quota.
+	ThresholdType *string `pulumi:"thresholdType"`
 	// The WebHook of Quota Alarm.
 	WebHook *string `pulumi:"webHook"`
 }
 
 type QuotaAlarmState struct {
+	// The creation time of the resource.
+	CreateTime pulumi.StringPtrInput
 	// The Product Code.
 	ProductCode pulumi.StringPtrInput
 	// The Quota Action Code.
 	QuotaActionCode pulumi.StringPtrInput
 	// The name of Quota Alarm.
 	QuotaAlarmName pulumi.StringPtrInput
-	// The Quota Dimensions.
+	// The Quota Dimensions. See the following `Block QuotaDimensions`.
 	QuotaDimensions QuotaAlarmQuotaDimensionArrayInput
 	// The threshold of Quota Alarm.
 	Threshold pulumi.Float64PtrInput
 	// The threshold percent of Quota Alarm.
 	ThresholdPercent pulumi.Float64PtrInput
+	// Quota alarm type. Value:
+	// - used: Quota used alarm.
+	// - usable: alarm for the remaining available quota.
+	ThresholdType pulumi.StringPtrInput
 	// The WebHook of Quota Alarm.
 	WebHook pulumi.StringPtrInput
 }
@@ -164,12 +189,16 @@ type quotaAlarmArgs struct {
 	QuotaActionCode string `pulumi:"quotaActionCode"`
 	// The name of Quota Alarm.
 	QuotaAlarmName string `pulumi:"quotaAlarmName"`
-	// The Quota Dimensions.
+	// The Quota Dimensions. See the following `Block QuotaDimensions`.
 	QuotaDimensions []QuotaAlarmQuotaDimension `pulumi:"quotaDimensions"`
 	// The threshold of Quota Alarm.
 	Threshold *float64 `pulumi:"threshold"`
 	// The threshold percent of Quota Alarm.
 	ThresholdPercent *float64 `pulumi:"thresholdPercent"`
+	// Quota alarm type. Value:
+	// - used: Quota used alarm.
+	// - usable: alarm for the remaining available quota.
+	ThresholdType *string `pulumi:"thresholdType"`
 	// The WebHook of Quota Alarm.
 	WebHook *string `pulumi:"webHook"`
 }
@@ -182,12 +211,16 @@ type QuotaAlarmArgs struct {
 	QuotaActionCode pulumi.StringInput
 	// The name of Quota Alarm.
 	QuotaAlarmName pulumi.StringInput
-	// The Quota Dimensions.
+	// The Quota Dimensions. See the following `Block QuotaDimensions`.
 	QuotaDimensions QuotaAlarmQuotaDimensionArrayInput
 	// The threshold of Quota Alarm.
 	Threshold pulumi.Float64PtrInput
 	// The threshold percent of Quota Alarm.
 	ThresholdPercent pulumi.Float64PtrInput
+	// Quota alarm type. Value:
+	// - used: Quota used alarm.
+	// - usable: alarm for the remaining available quota.
+	ThresholdType pulumi.StringPtrInput
 	// The WebHook of Quota Alarm.
 	WebHook pulumi.StringPtrInput
 }
@@ -279,6 +312,11 @@ func (o QuotaAlarmOutput) ToQuotaAlarmOutputWithContext(ctx context.Context) Quo
 	return o
 }
 
+// The creation time of the resource.
+func (o QuotaAlarmOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaAlarm) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The Product Code.
 func (o QuotaAlarmOutput) ProductCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *QuotaAlarm) pulumi.StringOutput { return v.ProductCode }).(pulumi.StringOutput)
@@ -294,7 +332,7 @@ func (o QuotaAlarmOutput) QuotaAlarmName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QuotaAlarm) pulumi.StringOutput { return v.QuotaAlarmName }).(pulumi.StringOutput)
 }
 
-// The Quota Dimensions.
+// The Quota Dimensions. See the following `Block QuotaDimensions`.
 func (o QuotaAlarmOutput) QuotaDimensions() QuotaAlarmQuotaDimensionArrayOutput {
 	return o.ApplyT(func(v *QuotaAlarm) QuotaAlarmQuotaDimensionArrayOutput { return v.QuotaDimensions }).(QuotaAlarmQuotaDimensionArrayOutput)
 }
@@ -307,6 +345,13 @@ func (o QuotaAlarmOutput) Threshold() pulumi.Float64PtrOutput {
 // The threshold percent of Quota Alarm.
 func (o QuotaAlarmOutput) ThresholdPercent() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *QuotaAlarm) pulumi.Float64PtrOutput { return v.ThresholdPercent }).(pulumi.Float64PtrOutput)
+}
+
+// Quota alarm type. Value:
+// - used: Quota used alarm.
+// - usable: alarm for the remaining available quota.
+func (o QuotaAlarmOutput) ThresholdType() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaAlarm) pulumi.StringOutput { return v.ThresholdType }).(pulumi.StringOutput)
 }
 
 // The WebHook of Quota Alarm.

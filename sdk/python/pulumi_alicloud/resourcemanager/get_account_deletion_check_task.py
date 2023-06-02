@@ -122,7 +122,7 @@ def get_account_deletion_check_task(account_id: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     task = alicloud.resourcemanager.get_account_deletion_check_task(account_id="your_account_id")
-    pulumi.export("abandonAbleChecksIds", [__item.check_id for __item in [task.abandon_able_checks]])
+    pulumi.export("abandonAbleChecksIds", [__item.check_id for __item in task.abandon_able_checks])
     ```
 
 
@@ -163,7 +163,7 @@ def get_account_deletion_check_task_output(account_id: Optional[pulumi.Input[str
     import pulumi_alicloud as alicloud
 
     task = alicloud.resourcemanager.get_account_deletion_check_task(account_id="your_account_id")
-    pulumi.export("abandonAbleChecksIds", [__item.check_id for __item in [task.abandon_able_checks]])
+    pulumi.export("abandonAbleChecksIds", [__item.check_id for __item in task.abandon_able_checks])
     ```
 
 

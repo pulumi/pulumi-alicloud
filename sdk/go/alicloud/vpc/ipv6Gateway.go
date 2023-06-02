@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Ipv6 Gateway resource.
+// Provides a Vpc Ipv6 Gateway resource. Gateway Based on Internet Protocol Version 6.
 //
-// For information about VPC Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/doc-detail/102214.htm).
+// For information about Vpc Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv6gateway).
 //
 // > **NOTE:** Available in v1.142.0+.
 //
@@ -26,23 +26,48 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:    pulumi.String("example_value"),
-//				EnableIpv6: pulumi.Bool(true),
+//			cfg := config.New(ctx, "")
+//			name := "tf-testacc-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
+//				Description: pulumi.String("tf-testacc"),
+//				EnableIpv6:  pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewIpv6Gateway(ctx, "example", &vpc.Ipv6GatewayArgs{
-//				Ipv6GatewayName: pulumi.String("example_value"),
-//				VpcId:           _default.ID(),
+//			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("tf-testacc-ipv6gateway503"),
+//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v1", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewResourceGroup(ctx, "changeRg", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("tf-testacc-ipv6gateway311"),
+//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v2", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
+//				Description:     pulumi.String("test"),
+//				Ipv6GatewayName: pulumi.String(name),
+//				VpcId:           defaultVpc.ID(),
+//				ResourceGroupId: defaultRg.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -55,7 +80,7 @@ import (
 //
 // ## Import
 //
-// VPC Ipv6 Gateway can be imported using the id, e.g.
+// Vpc Ipv6 Gateway can be imported using the id, e.g.
 //
 // ```sh
 //
@@ -65,14 +90,30 @@ import (
 type Ipv6Gateway struct {
 	pulumi.CustomResourceState
 
-	// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+	// The status of the IPv6 gateway.
+	BusinessStatus pulumi.StringOutput `pulumi:"businessStatus"`
+	// The creation time of the resource.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The expiration time of IPv6 gateway.
+	ExpiredTime pulumi.StringOutput `pulumi:"expiredTime"`
+	// The charge type of IPv6 gateway.
+	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
+	// Resource primary key attribute field.
+	Ipv6GatewayId pulumi.StringOutput `pulumi:"ipv6GatewayId"`
+	// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
 	Ipv6GatewayName pulumi.StringPtrOutput `pulumi:"ipv6GatewayName"`
-	// The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+	//
+	// Deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
 	Spec pulumi.StringOutput `pulumi:"spec"`
-	// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+	// The status of the resource. Valid values: Available, Pending and Deleting.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tags for the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
@@ -109,27 +150,59 @@ func GetIpv6Gateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ipv6Gateway resources.
 type ipv6GatewayState struct {
-	// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+	// The status of the IPv6 gateway.
+	BusinessStatus *string `pulumi:"businessStatus"`
+	// The creation time of the resource.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
-	// The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The expiration time of IPv6 gateway.
+	ExpiredTime *string `pulumi:"expiredTime"`
+	// The charge type of IPv6 gateway.
+	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// Resource primary key attribute field.
+	Ipv6GatewayId *string `pulumi:"ipv6GatewayId"`
+	// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
 	Ipv6GatewayName *string `pulumi:"ipv6GatewayName"`
-	// The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+	//
+	// Deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
 	Spec *string `pulumi:"spec"`
-	// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+	// The status of the resource. Valid values: Available, Pending and Deleting.
 	Status *string `pulumi:"status"`
+	// The tags for the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type Ipv6GatewayState struct {
-	// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+	// The status of the IPv6 gateway.
+	BusinessStatus pulumi.StringPtrInput
+	// The creation time of the resource.
+	CreateTime pulumi.StringPtrInput
+	// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
-	// The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The expiration time of IPv6 gateway.
+	ExpiredTime pulumi.StringPtrInput
+	// The charge type of IPv6 gateway.
+	InstanceChargeType pulumi.StringPtrInput
+	// Resource primary key attribute field.
+	Ipv6GatewayId pulumi.StringPtrInput
+	// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
 	Ipv6GatewayName pulumi.StringPtrInput
-	// The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId pulumi.StringPtrInput
+	// IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+	//
+	// Deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
 	Spec pulumi.StringPtrInput
-	// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+	// The status of the resource. Valid values: Available, Pending and Deleting.
 	Status pulumi.StringPtrInput
+	// The tags for the resource.
+	Tags pulumi.MapInput
 	// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
 	VpcId pulumi.StringPtrInput
 }
@@ -139,24 +212,36 @@ func (Ipv6GatewayState) ElementType() reflect.Type {
 }
 
 type ipv6GatewayArgs struct {
-	// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+	// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
-	// The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
 	Ipv6GatewayName *string `pulumi:"ipv6GatewayName"`
-	// The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+	//
+	// Deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
 	Spec *string `pulumi:"spec"`
+	// The tags for the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
 	VpcId string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Ipv6Gateway resource.
 type Ipv6GatewayArgs struct {
-	// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+	// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
-	// The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+	// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
 	Ipv6GatewayName pulumi.StringPtrInput
-	// The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+	// The ID of the resource group to which the instance belongs.
+	ResourceGroupId pulumi.StringPtrInput
+	// IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+	//
+	// Deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
 	Spec pulumi.StringPtrInput
+	// The tags for the resource.
+	Tags pulumi.MapInput
 	// The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
 	VpcId pulumi.StringInput
 }
@@ -248,24 +333,61 @@ func (o Ipv6GatewayOutput) ToIpv6GatewayOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+// The status of the IPv6 gateway.
+func (o Ipv6GatewayOutput) BusinessStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.BusinessStatus }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource.
+func (o Ipv6GatewayOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
 func (o Ipv6GatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+// The expiration time of IPv6 gateway.
+func (o Ipv6GatewayOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.ExpiredTime }).(pulumi.StringOutput)
+}
+
+// The charge type of IPv6 gateway.
+func (o Ipv6GatewayOutput) InstanceChargeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
+}
+
+// Resource primary key attribute field.
+func (o Ipv6GatewayOutput) Ipv6GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.Ipv6GatewayId }).(pulumi.StringOutput)
+}
+
+// The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
 func (o Ipv6GatewayOutput) Ipv6GatewayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringPtrOutput { return v.Ipv6GatewayName }).(pulumi.StringPtrOutput)
 }
 
-// The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+// The ID of the resource group to which the instance belongs.
+func (o Ipv6GatewayOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+//
+// Deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
 func (o Ipv6GatewayOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+// The status of the resource. Valid values: Available, Pending and Deleting.
 func (o Ipv6GatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6Gateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags for the resource.
+func (o Ipv6GatewayOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Ipv6Gateway) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 // The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.

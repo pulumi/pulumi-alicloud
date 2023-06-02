@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Ipv6 Egress Rule resource.
+// Provides a VPC Ipv6 Egress Rule resource. IPv6 address addition only active exit rule.
 //
 // For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
 //
@@ -29,20 +29,26 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:    pulumi.String("example_value"),
+//				VpcName:    pulumi.String(name),
 //				EnableIpv6: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleIpv6Gateway, err := vpc.NewIpv6Gateway(ctx, "exampleIpv6Gateway", &vpc.Ipv6GatewayArgs{
-//				Ipv6GatewayName: pulumi.String("example_value"),
+//				Ipv6GatewayName: pulumi.String(name),
 //				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {
@@ -100,7 +106,7 @@ type Ipv6EgressRule struct {
 	Ipv6EgressRuleName pulumi.StringPtrOutput `pulumi:"ipv6EgressRuleName"`
 	// The ID of the IPv6 gateway.
 	Ipv6GatewayId pulumi.StringOutput `pulumi:"ipv6GatewayId"`
-	// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -149,7 +155,7 @@ type ipv6EgressRuleState struct {
 	Ipv6EgressRuleName *string `pulumi:"ipv6EgressRuleName"`
 	// The ID of the IPv6 gateway.
 	Ipv6GatewayId *string `pulumi:"ipv6GatewayId"`
-	// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+	// The status of the resource.
 	Status *string `pulumi:"status"`
 }
 
@@ -164,7 +170,7 @@ type Ipv6EgressRuleState struct {
 	Ipv6EgressRuleName pulumi.StringPtrInput
 	// The ID of the IPv6 gateway.
 	Ipv6GatewayId pulumi.StringPtrInput
-	// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+	// The status of the resource.
 	Status pulumi.StringPtrInput
 }
 
@@ -311,7 +317,7 @@ func (o Ipv6EgressRuleOutput) Ipv6GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6EgressRule) pulumi.StringOutput { return v.Ipv6GatewayId }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+// The status of the resource.
 func (o Ipv6EgressRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6EgressRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

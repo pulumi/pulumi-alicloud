@@ -21,21 +21,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const foo = new alicloud.nas.AccessGroup("foo", {
- *     description: "test_AccessG",
- *     type: "Classic",
- * });
- * ```
- *
- * Example after v1.92.0
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const foo = new alicloud.nas.AccessGroup("foo", {
- *     accessGroupName: "CreateAccessGroup",
+ *     accessGroupName: "terraform-example",
  *     accessGroupType: "Vpc",
- *     description: "test_AccessG",
+ *     description: "terraform-example",
  *     fileSystemType: "extreme",
  * });
  * ```
