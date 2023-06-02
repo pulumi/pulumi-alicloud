@@ -5861,7 +5861,7 @@
                 "current": "alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment"
             },
             "alicloud_vpc_ha_vip": {
-                "current": "alicloud:vpc/haVip:HaVip",
+                "current": "alicloud:vpc/haVipv2:HaVipv2",
                 "fields": {
                     "associated_eip_addresses": {
                         "maxItemsOne": false
@@ -8872,7 +8872,7 @@
             "alicloud:vpc/gatewayRouteTableAttachment:GatewayRouteTableAttachment": "alicloud_vpc_gateway_route_table_attachment",
             "alicloud:vpc/hAVip:HAVip": "alicloud_havip",
             "alicloud:vpc/hAVipAttachment:HAVipAttachment": "alicloud_havip_attachment",
-            "alicloud:vpc/haVip:HaVip": "alicloud_vpc_ha_vip",
+            "alicloud:vpc/haVipv2:HaVipv2": "alicloud_vpc_ha_vip",
             "alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock": "alicloud_vpc_ipv4_cidr_block",
             "alicloud:vpc/ipv4Gateway:Ipv4Gateway": "alicloud_vpc_ipv4_gateway",
             "alicloud:vpc/ipv6EgressRule:Ipv6EgressRule": "alicloud_vpc_ipv6_egress_rule",
@@ -30475,7 +30475,7 @@
                 "instanceId": "instance_id",
                 "instanceType": "instance_type"
             },
-            "alicloud:vpc/haVip:HaVip": {
+            "alicloud:vpc/haVipv2:HaVipv2": {
                 "associatedEipAddresses": "associated_eip_addresses",
                 "associatedInstanceType": "associated_instance_type",
                 "associatedInstances": "associated_instances",
