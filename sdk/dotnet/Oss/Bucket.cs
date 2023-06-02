@@ -23,13 +23,20 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var bucket_acl = new AliCloud.Oss.Bucket("bucket-acl", new()
     ///     {
     ///         Acl = "private",
-    ///         BucketName = "bucket-170309-acl",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
     ///     });
     /// 
     /// });
@@ -42,12 +49,19 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var bucket_website = new AliCloud.Oss.Bucket("bucket-website", new()
     ///     {
-    ///         BucketName = "bucket-170309-website",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
     ///         Website = new AliCloud.Oss.Inputs.BucketWebsiteArgs
     ///         {
     ///             ErrorDocument = "error.html",
@@ -65,18 +79,25 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var bucket_target = new AliCloud.Oss.Bucket("bucket-target", new()
     ///     {
-    ///         BucketName = "bucket-170309-acl",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
     ///         Acl = "public-read",
     ///     });
     /// 
     ///     var bucket_logging = new AliCloud.Oss.Bucket("bucket-logging", new()
     ///     {
-    ///         BucketName = "bucket-170309-logging",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-logging-{result}"),
     ///         Logging = new AliCloud.Oss.Inputs.BucketLoggingArgs
     ///         {
     ///             TargetBucket = bucket_target.Id,
@@ -94,13 +115,20 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var bucket_referer = new AliCloud.Oss.Bucket("bucket-referer", new()
     ///     {
     ///         Acl = "private",
-    ///         BucketName = "bucket-170309-referer",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
     ///         RefererConfig = new AliCloud.Oss.Inputs.BucketRefererConfigArgs
     ///         {
     ///             AllowEmpty = false,
@@ -122,13 +150,111 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bucket_lifecycle = new AliCloud.Oss.Bucket("bucket-lifecycle", new()
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var bucket_lifecycle1 = new AliCloud.Oss.Bucket("bucket-lifecycle1", new()
     ///     {
     ///         Acl = "public-read",
-    ///         BucketName = "bucket-170309-lifecycle",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-lifecycle1-{result}"),
+    ///         LifecycleRules = new[]
+    ///         {
+    ///             new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Expirations = new[]
+    ///                 {
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleExpirationArgs
+    ///                     {
+    ///                         Days = 365,
+    ///                     },
+    ///                 },
+    ///                 Id = "rule-days",
+    ///                 Prefix = "path1/",
+    ///             },
+    ///             new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Expirations = new[]
+    ///                 {
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleExpirationArgs
+    ///                     {
+    ///                         Date = "2018-01-12",
+    ///                     },
+    ///                 },
+    ///                 Id = "rule-date",
+    ///                 Prefix = "path2/",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var bucket_lifecycle2 = new AliCloud.Oss.Bucket("bucket-lifecycle2", new()
+    ///     {
+    ///         Acl = "public-read",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-lifecycle2-{result}"),
+    ///         LifecycleRules = new[]
+    ///         {
+    ///             new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Id = "rule-days-transition",
+    ///                 Prefix = "path3/",
+    ///                 Transitions = new[]
+    ///                 {
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs
+    ///                     {
+    ///                         Days = 3,
+    ///                         StorageClass = "IA",
+    ///                     },
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs
+    ///                     {
+    ///                         Days = 30,
+    ///                         StorageClass = "Archive",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var bucket_lifecycle3 = new AliCloud.Oss.Bucket("bucket-lifecycle3", new()
+    ///     {
+    ///         Acl = "public-read",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-lifecycle3-{result}"),
+    ///         LifecycleRules = new[]
+    ///         {
+    ///             new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Id = "rule-days-transition",
+    ///                 Prefix = "path3/",
+    ///                 Transitions = new[]
+    ///                 {
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs
+    ///                     {
+    ///                         CreatedBeforeDate = "2022-11-11",
+    ///                         StorageClass = "IA",
+    ///                     },
+    ///                     new AliCloud.Oss.Inputs.BucketLifecycleRuleTransitionArgs
+    ///                     {
+    ///                         CreatedBeforeDate = "2021-11-11",
+    ///                         StorageClass = "Archive",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var bucket_lifecycle4 = new AliCloud.Oss.Bucket("bucket-lifecycle4", new()
+    ///     {
+    ///         Acl = "public-read",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-lifecycle4-{result}"),
     ///         LifecycleRules = new[]
     ///         {
     ///             new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
@@ -150,7 +276,7 @@ namespace Pulumi.AliCloud.Oss
     ///     var bucket_versioning_lifecycle = new AliCloud.Oss.Bucket("bucket-versioning-lifecycle", new()
     ///     {
     ///         Acl = "private",
-    ///         BucketName = "bucket-170309-lifecycle",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-lifecycle5-{result}"),
     ///         LifecycleRules = new[]
     ///         {
     ///             new AliCloud.Oss.Inputs.BucketLifecycleRuleArgs
@@ -203,13 +329,20 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var bucket_policy = new AliCloud.Oss.Bucket("bucket-policy", new()
     ///     {
     ///         Acl = "private",
-    ///         BucketName = "bucket-170309-policy",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-policy-{result}"),
     ///         Policy = @"  {""Statement"":
     ///       [{""Action"":
     ///           [""oss:PutObject"", ""oss:GetObject"", ""oss:DeleteBucket""],
@@ -231,12 +364,19 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bucket_storageclass = new AliCloud.Oss.Bucket("bucket-storageclass", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
-    ///         BucketName = "bucket-170309-storageclass",
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     {
+    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"example-{result}"),
     ///         StorageClass = "IA",
     ///     });
     /// 
@@ -250,17 +390,41 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var bucket_sserule = new AliCloud.Oss.Bucket("bucket-sserule", new()
     ///     {
+    ///         BucketName = @default.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///         Acl = "private",
-    ///         BucketName = "bucket-170309-sserule",
     ///         ServerSideEncryptionRule = new AliCloud.Oss.Inputs.BucketServerSideEncryptionRuleArgs
     ///         {
-    ///             KmsMasterKeyId = "your kms key id",
+    ///             SseAlgorithm = "AES256",
+    ///         },
+    ///     });
+    /// 
+    ///     var kms = new AliCloud.Kms.Key("kms", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///         PendingWindowInDays = 7,
+    ///         Status = "Enabled",
+    ///     });
+    /// 
+    ///     var bucket_kms = new AliCloud.Oss.Bucket("bucket-kms", new()
+    ///     {
+    ///         BucketName = @default.Result.Apply(result =&gt; $"terraform-example-kms-{result}"),
+    ///         Acl = "private",
+    ///         ServerSideEncryptionRule = new AliCloud.Oss.Inputs.BucketServerSideEncryptionRuleArgs
+    ///         {
     ///             SseAlgorithm = "KMS",
+    ///             KmsMasterKeyId = kms.Id,
     ///         },
     ///     });
     /// 
@@ -274,13 +438,20 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var bucket_tags = new AliCloud.Oss.Bucket("bucket-tags", new()
     ///     {
     ///         Acl = "private",
-    ///         BucketName = "bucket-170309-tags",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///         Tags = 
     ///         {
     ///             { "key1", "value1" },
@@ -298,13 +469,20 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var bucket_versioning = new AliCloud.Oss.Bucket("bucket-versioning", new()
     ///     {
     ///         Acl = "private",
-    ///         BucketName = "bucket-170309-versioning",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///         Versioning = new AliCloud.Oss.Inputs.BucketVersioningArgs
     ///         {
     ///             Status = "Enabled",
@@ -321,12 +499,19 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var bucket_redundancytype = new AliCloud.Oss.Bucket("bucket-redundancytype", new()
     ///     {
-    ///         BucketName = "bucket_name",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///         RedundancyType = "ZRS",
     ///     });
     /// 
@@ -340,12 +525,19 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var bucket_accelerate = new AliCloud.Oss.Bucket("bucket-accelerate", new()
     ///     {
-    ///         BucketName = "bucket_name",
+    ///         BucketName = @default.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///         TransferAcceleration = new AliCloud.Oss.Inputs.BucketTransferAccelerationArgs
     ///         {
     ///             Enabled = false,

@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.vpc.inputs;
 
+import com.pulumi.alicloud.vpc.inputs.NetworkIpv6CidrBlockArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -35,6 +36,36 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The status of ClassicLink function.
+     * 
+     */
+    @Import(name="classicLinkEnabled")
+    private @Nullable Output<Boolean> classicLinkEnabled;
+
+    /**
+     * @return The status of ClassicLink function.
+     * 
+     */
+    public Optional<Output<Boolean>> classicLinkEnabled() {
+        return Optional.ofNullable(this.classicLinkEnabled);
+    }
+
+    /**
+     * The creation time of the VPC.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the VPC.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * The VPC description. Defaults to null.
      * 
      */
@@ -50,14 +81,18 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+     * Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+     * @return Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -65,18 +100,18 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-     * 
-     * &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+     * Whether to enable the IPv6 network segment. Value:
+     * - **false** (default): not enabled.
+     * - **true**: on.
      * 
      */
     @Import(name="enableIpv6")
     private @Nullable Output<Boolean> enableIpv6;
 
     /**
-     * @return Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-     * 
-     * &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+     * @return Whether to enable the IPv6 network segment. Value:
+     * - **false** (default): not enabled.
+     * - **true**: on.
      * 
      */
     public Optional<Output<Boolean>> enableIpv6() {
@@ -84,14 +119,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+     * The IPv6 CIDR block of the VPC.
      * 
      */
     @Import(name="ipv6CidrBlock")
     private @Nullable Output<String> ipv6CidrBlock;
 
     /**
-     * @return (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+     * @return The IPv6 CIDR block of the VPC.
      * 
      */
     public Optional<Output<String>> ipv6CidrBlock() {
@@ -99,7 +134,47 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
+     * The IPv6 CIDR block information of the VPC.
+     * 
+     */
+    @Import(name="ipv6CidrBlocks")
+    private @Nullable Output<List<NetworkIpv6CidrBlockArgs>> ipv6CidrBlocks;
+
+    /**
+     * @return The IPv6 CIDR block information of the VPC.
+     * 
+     */
+    public Optional<Output<List<NetworkIpv6CidrBlockArgs>>> ipv6CidrBlocks() {
+        return Optional.ofNullable(this.ipv6CidrBlocks);
+    }
+
+    /**
+     * The IPv6 address segment type of the VPC. Value:
+     * - **BGP** (default): Alibaba Cloud BGP IPv6.
+     * - **ChinaMobile**: China Mobile (single line).
+     * - **ChinaUnicom**: China Unicom (single line).
+     * - **ChinaTelecom**: China Telecom (single line).
+     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     * 
+     */
+    @Import(name="ipv6Isp")
+    private @Nullable Output<String> ipv6Isp;
+
+    /**
+     * @return The IPv6 address segment type of the VPC. Value:
+     * - **BGP** (default): Alibaba Cloud BGP IPv6.
+     * - **ChinaMobile**: China Mobile (single line).
+     * - **ChinaUnicom**: China Unicom (single line).
+     * - **ChinaTelecom**: China Telecom (single line).
+     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     * 
+     */
+    public Optional<Output<String>> ipv6Isp() {
+        return Optional.ofNullable(this.ipv6Isp);
+    }
+
+    /**
+     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
@@ -110,7 +185,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
@@ -122,14 +197,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of resource group which the VPC belongs.
+     * The ID of the resource group to which the VPC belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of resource group which the VPC belongs.
+     * @return The ID of the resource group to which the VPC belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -167,60 +242,60 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Deprecated) It has been deprecated and replaced with `route_table_id`.
+     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      * @deprecated
-     * Attribute router_table_id has been deprecated and replaced with route_table_id.
+     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      */
-    @Deprecated /* Attribute router_table_id has been deprecated and replaced with route_table_id. */
+    @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
     @Import(name="routerTableId")
     private @Nullable Output<String> routerTableId;
 
     /**
-     * @return (Deprecated) It has been deprecated and replaced with `route_table_id`.
+     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      * @deprecated
-     * Attribute router_table_id has been deprecated and replaced with route_table_id.
+     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      */
-    @Deprecated /* Attribute router_table_id has been deprecated and replaced with route_table_id. */
+    @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
     public Optional<Output<String>> routerTableId() {
         return Optional.ofNullable(this.routerTableId);
     }
 
     /**
-     * Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      * @deprecated
-     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+     * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
      * 
      */
-    @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
+    @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
     @Import(name="secondaryCidrBlocks")
     private @Nullable Output<List<String>> secondaryCidrBlocks;
 
     /**
-     * @return Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * @return Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      * @deprecated
-     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+     * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
      * 
      */
-    @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
+    @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
     public Optional<Output<List<String>>> secondaryCidrBlocks() {
         return Optional.ofNullable(this.secondaryCidrBlocks);
     }
 
     /**
-     * The status of the VPC.
+     * The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the VPC.
+     * @return The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
      * 
      */
     public Optional<Output<String>> status() {
@@ -228,14 +303,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tags of Vpc.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tags of Vpc.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -243,14 +318,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user cidr blocks of the VPC.
+     * A list of user CIDRs.
      * 
      */
     @Import(name="userCidrs")
     private @Nullable Output<List<String>> userCidrs;
 
     /**
-     * @return The user cidr blocks of the VPC.
+     * @return A list of user CIDRs.
      * 
      */
     public Optional<Output<List<String>>> userCidrs() {
@@ -260,12 +335,16 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the VPC. Defaults to null.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Import(name="vpcName")
     private @Nullable Output<String> vpcName;
 
     /**
      * @return The name of the VPC. Defaults to null.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> vpcName() {
@@ -276,10 +355,14 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     private NetworkState(NetworkState $) {
         this.cidrBlock = $.cidrBlock;
+        this.classicLinkEnabled = $.classicLinkEnabled;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.dryRun = $.dryRun;
         this.enableIpv6 = $.enableIpv6;
         this.ipv6CidrBlock = $.ipv6CidrBlock;
+        this.ipv6CidrBlocks = $.ipv6CidrBlocks;
+        this.ipv6Isp = $.ipv6Isp;
         this.name = $.name;
         this.resourceGroupId = $.resourceGroupId;
         this.routeTableId = $.routeTableId;
@@ -332,6 +415,48 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param classicLinkEnabled The status of ClassicLink function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder classicLinkEnabled(@Nullable Output<Boolean> classicLinkEnabled) {
+            $.classicLinkEnabled = classicLinkEnabled;
+            return this;
+        }
+
+        /**
+         * @param classicLinkEnabled The status of ClassicLink function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder classicLinkEnabled(Boolean classicLinkEnabled) {
+            return classicLinkEnabled(Output.of(classicLinkEnabled));
+        }
+
+        /**
+         * @param createTime The creation time of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
          * @param description The VPC description. Defaults to null.
          * 
          * @return builder
@@ -353,7 +478,9 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+         * @param dryRun Whether to PreCheck this request only. Value:
+         * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
          * 
          * @return builder
          * 
@@ -364,7 +491,9 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+         * @param dryRun Whether to PreCheck this request only. Value:
+         * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
          * 
          * @return builder
          * 
@@ -374,9 +503,9 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableIpv6 Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-         * 
-         * &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+         * @param enableIpv6 Whether to enable the IPv6 network segment. Value:
+         * - **false** (default): not enabled.
+         * - **true**: on.
          * 
          * @return builder
          * 
@@ -387,9 +516,9 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableIpv6 Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-         * 
-         * &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+         * @param enableIpv6 Whether to enable the IPv6 network segment. Value:
+         * - **false** (default): not enabled.
+         * - **true**: on.
          * 
          * @return builder
          * 
@@ -399,7 +528,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6CidrBlock (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+         * @param ipv6CidrBlock The IPv6 CIDR block of the VPC.
          * 
          * @return builder
          * 
@@ -410,7 +539,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6CidrBlock (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+         * @param ipv6CidrBlock The IPv6 CIDR block of the VPC.
          * 
          * @return builder
          * 
@@ -420,7 +549,69 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
+         * @param ipv6CidrBlocks The IPv6 CIDR block information of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6CidrBlocks(@Nullable Output<List<NetworkIpv6CidrBlockArgs>> ipv6CidrBlocks) {
+            $.ipv6CidrBlocks = ipv6CidrBlocks;
+            return this;
+        }
+
+        /**
+         * @param ipv6CidrBlocks The IPv6 CIDR block information of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6CidrBlocks(List<NetworkIpv6CidrBlockArgs> ipv6CidrBlocks) {
+            return ipv6CidrBlocks(Output.of(ipv6CidrBlocks));
+        }
+
+        /**
+         * @param ipv6CidrBlocks The IPv6 CIDR block information of the VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6CidrBlocks(NetworkIpv6CidrBlockArgs... ipv6CidrBlocks) {
+            return ipv6CidrBlocks(List.of(ipv6CidrBlocks));
+        }
+
+        /**
+         * @param ipv6Isp The IPv6 address segment type of the VPC. Value:
+         * - **BGP** (default): Alibaba Cloud BGP IPv6.
+         * - **ChinaMobile**: China Mobile (single line).
+         * - **ChinaUnicom**: China Unicom (single line).
+         * - **ChinaTelecom**: China Telecom (single line).
+         * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Isp(@Nullable Output<String> ipv6Isp) {
+            $.ipv6Isp = ipv6Isp;
+            return this;
+        }
+
+        /**
+         * @param ipv6Isp The IPv6 address segment type of the VPC. Value:
+         * - **BGP** (default): Alibaba Cloud BGP IPv6.
+         * - **ChinaMobile**: China Mobile (single line).
+         * - **ChinaUnicom**: China Unicom (single line).
+         * - **ChinaTelecom**: China Telecom (single line).
+         * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Isp(String ipv6Isp) {
+            return ipv6Isp(Output.of(ipv6Isp));
+        }
+
+        /**
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
          * 
          * @return builder
          * 
@@ -435,7 +626,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
          * 
          * @return builder
          * 
@@ -449,7 +640,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of resource group which the VPC belongs.
+         * @param resourceGroupId The ID of the resource group to which the VPC belongs.
          * 
          * @return builder
          * 
@@ -460,7 +651,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of resource group which the VPC belongs.
+         * @param resourceGroupId The ID of the resource group to which the VPC belongs.
          * 
          * @return builder
          * 
@@ -512,79 +703,79 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerTableId (Deprecated) It has been deprecated and replaced with `route_table_id`.
+         * @param routerTableId Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Attribute router_table_id has been deprecated and replaced with route_table_id.
+         * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
          * 
          */
-        @Deprecated /* Attribute router_table_id has been deprecated and replaced with route_table_id. */
+        @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
         public Builder routerTableId(@Nullable Output<String> routerTableId) {
             $.routerTableId = routerTableId;
             return this;
         }
 
         /**
-         * @param routerTableId (Deprecated) It has been deprecated and replaced with `route_table_id`.
+         * @param routerTableId Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Attribute router_table_id has been deprecated and replaced with route_table_id.
+         * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
          * 
          */
-        @Deprecated /* Attribute router_table_id has been deprecated and replaced with route_table_id. */
+        @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
         public Builder routerTableId(String routerTableId) {
             return routerTableId(Output.of(routerTableId));
         }
 
         /**
-         * @param secondaryCidrBlocks Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+         * @param secondaryCidrBlocks Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+         * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
          * 
          */
-        @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
+        @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
         public Builder secondaryCidrBlocks(@Nullable Output<List<String>> secondaryCidrBlocks) {
             $.secondaryCidrBlocks = secondaryCidrBlocks;
             return this;
         }
 
         /**
-         * @param secondaryCidrBlocks Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+         * @param secondaryCidrBlocks Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+         * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
          * 
          */
-        @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
+        @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
         public Builder secondaryCidrBlocks(List<String> secondaryCidrBlocks) {
             return secondaryCidrBlocks(Output.of(secondaryCidrBlocks));
         }
 
         /**
-         * @param secondaryCidrBlocks Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+         * @param secondaryCidrBlocks Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+         * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
          * 
          */
-        @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
+        @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
         public Builder secondaryCidrBlocks(String... secondaryCidrBlocks) {
             return secondaryCidrBlocks(List.of(secondaryCidrBlocks));
         }
 
         /**
-         * @param status The status of the VPC.
+         * @param status The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
          * 
          * @return builder
          * 
@@ -595,7 +786,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the VPC.
+         * @param status The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
          * 
          * @return builder
          * 
@@ -605,7 +796,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tags of Vpc.
          * 
          * @return builder
          * 
@@ -616,7 +807,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tags of Vpc.
          * 
          * @return builder
          * 
@@ -626,7 +817,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs The user cidr blocks of the VPC.
+         * @param userCidrs A list of user CIDRs.
          * 
          * @return builder
          * 
@@ -637,7 +828,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs The user cidr blocks of the VPC.
+         * @param userCidrs A list of user CIDRs.
          * 
          * @return builder
          * 
@@ -647,7 +838,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userCidrs The user cidr blocks of the VPC.
+         * @param userCidrs A list of user CIDRs.
          * 
          * @return builder
          * 
@@ -659,6 +850,8 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vpcName The name of the VPC. Defaults to null.
          * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
          * @return builder
          * 
          */
@@ -669,6 +862,8 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param vpcName The name of the VPC. Defaults to null.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

@@ -10,47 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Quotas
 {
     /// <summary>
-    /// Provides a Quotas Quota Application resource.
-    /// 
-    /// For information about Quotas Quota Application and how to use it, see [What is Quota Application](https://help.aliyun.com/document_detail/171289.html).
-    /// 
-    /// &gt; **NOTE:** Available in v1.117.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Quotas.QuotaApplication("example", new()
-    ///     {
-    ///         DesireValue = 100,
-    ///         Dimensions = new[]
-    ///         {
-    ///             new AliCloud.Quotas.Inputs.QuotaApplicationDimensionArgs
-    ///             {
-    ///                 Key = "regionId",
-    ///                 Value = "cn-hangzhou",
-    ///             },
-    ///         },
-    ///         NoticeType = 0,
-    ///         ProductCode = "ess",
-    ///         QuotaActionCode = "q_db_instance",
-    ///         Reason = "For Terraform Test",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Quotas Application Info can be imported using the id, e.g.
+    /// Quotas Quota Application can be imported using the id, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example &lt;id&gt;
@@ -66,10 +28,13 @@ namespace Pulumi.AliCloud.Quotas
         public Output<string> ApproveValue { get; private set; } = null!;
 
         /// <summary>
-        /// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+        /// Quota audit mode. Value:
+        /// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+        /// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+        /// &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         /// </summary>
         [Output("auditMode")]
-        public Output<string?> AuditMode { get; private set; } = null!;
+        public Output<string> AuditMode { get; private set; } = null!;
 
         /// <summary>
         /// The audit reason.
@@ -78,13 +43,19 @@ namespace Pulumi.AliCloud.Quotas
         public Output<string> AuditReason { get; private set; } = null!;
 
         /// <summary>
+        /// Resource attribute field representing creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The desire value of the quota application.
         /// </summary>
         [Output("desireValue")]
         public Output<double> DesireValue { get; private set; } = null!;
 
         /// <summary>
-        /// The quota dimensions.
+        /// QuotaDimensions. See the following `Block Dimensions`.
         /// </summary>
         [Output("dimensions")]
         public Output<ImmutableArray<Outputs.QuotaApplicationDimension>> Dimensions { get; private set; } = null!;
@@ -93,19 +64,27 @@ namespace Pulumi.AliCloud.Quotas
         /// The effective time of the quota application.
         /// </summary>
         [Output("effectiveTime")]
-        public Output<string> EffectiveTime { get; private set; } = null!;
+        public Output<string?> EffectiveTime { get; private set; } = null!;
 
         /// <summary>
-        /// The expire time of the quota application.
+        /// The language of the quota alert notification. Value:
+        /// - zh (default): Chinese.
+        /// - en: English.
+        /// </summary>
+        [Output("envLanguage")]
+        public Output<string?> EnvLanguage { get; private set; } = null!;
+
+        /// <summary>
+        /// The expired time of the quota application.
         /// </summary>
         [Output("expireTime")]
-        public Output<string> ExpireTime { get; private set; } = null!;
+        public Output<string?> ExpireTime { get; private set; } = null!;
 
         /// <summary>
-        /// The notice type. Valid values: `0`, `1`, `2`, `3`.
+        /// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
         /// </summary>
         [Output("noticeType")]
-        public Output<int?> NoticeType { get; private set; } = null!;
+        public Output<int> NoticeType { get; private set; } = null!;
 
         /// <summary>
         /// The product code.
@@ -120,7 +99,10 @@ namespace Pulumi.AliCloud.Quotas
         public Output<string> QuotaActionCode { get; private set; } = null!;
 
         /// <summary>
-        /// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        /// The quota type.
+        /// - CommonQuota (default): Generic quota.
+        /// - FlowControl:API rate quota.
+        /// - WhiteListLabel: Equity quota.
         /// </summary>
         [Output("quotaCategory")]
         public Output<string?> QuotaCategory { get; private set; } = null!;
@@ -150,7 +132,11 @@ namespace Pulumi.AliCloud.Quotas
         public Output<string> Reason { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the quota application.
+        /// Application Status:
+        /// - Disagree: reject.
+        /// - Agree: Approved.
+        /// - Process: under review.
+        /// - Cancel: Closed.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -202,7 +188,10 @@ namespace Pulumi.AliCloud.Quotas
     public sealed class QuotaApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+        /// Quota audit mode. Value:
+        /// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+        /// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+        /// &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         /// </summary>
         [Input("auditMode")]
         public Input<string>? AuditMode { get; set; }
@@ -217,7 +206,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.QuotaApplicationDimensionArgs>? _dimensions;
 
         /// <summary>
-        /// The quota dimensions.
+        /// QuotaDimensions. See the following `Block Dimensions`.
         /// </summary>
         public InputList<Inputs.QuotaApplicationDimensionArgs> Dimensions
         {
@@ -226,7 +215,27 @@ namespace Pulumi.AliCloud.Quotas
         }
 
         /// <summary>
-        /// The notice type. Valid values: `0`, `1`, `2`, `3`.
+        /// The effective time of the quota application.
+        /// </summary>
+        [Input("effectiveTime")]
+        public Input<string>? EffectiveTime { get; set; }
+
+        /// <summary>
+        /// The language of the quota alert notification. Value:
+        /// - zh (default): Chinese.
+        /// - en: English.
+        /// </summary>
+        [Input("envLanguage")]
+        public Input<string>? EnvLanguage { get; set; }
+
+        /// <summary>
+        /// The expired time of the quota application.
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
         /// </summary>
         [Input("noticeType")]
         public Input<int>? NoticeType { get; set; }
@@ -244,7 +253,10 @@ namespace Pulumi.AliCloud.Quotas
         public Input<string> QuotaActionCode { get; set; } = null!;
 
         /// <summary>
-        /// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        /// The quota type.
+        /// - CommonQuota (default): Generic quota.
+        /// - FlowControl:API rate quota.
+        /// - WhiteListLabel: Equity quota.
         /// </summary>
         [Input("quotaCategory")]
         public Input<string>? QuotaCategory { get; set; }
@@ -270,7 +282,10 @@ namespace Pulumi.AliCloud.Quotas
         public Input<string>? ApproveValue { get; set; }
 
         /// <summary>
-        /// The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+        /// Quota audit mode. Value:
+        /// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+        /// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+        /// &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         /// </summary>
         [Input("auditMode")]
         public Input<string>? AuditMode { get; set; }
@@ -282,6 +297,12 @@ namespace Pulumi.AliCloud.Quotas
         public Input<string>? AuditReason { get; set; }
 
         /// <summary>
+        /// Resource attribute field representing creation time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// The desire value of the quota application.
         /// </summary>
         [Input("desireValue")]
@@ -291,7 +312,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.QuotaApplicationDimensionGetArgs>? _dimensions;
 
         /// <summary>
-        /// The quota dimensions.
+        /// QuotaDimensions. See the following `Block Dimensions`.
         /// </summary>
         public InputList<Inputs.QuotaApplicationDimensionGetArgs> Dimensions
         {
@@ -306,13 +327,21 @@ namespace Pulumi.AliCloud.Quotas
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
-        /// The expire time of the quota application.
+        /// The language of the quota alert notification. Value:
+        /// - zh (default): Chinese.
+        /// - en: English.
+        /// </summary>
+        [Input("envLanguage")]
+        public Input<string>? EnvLanguage { get; set; }
+
+        /// <summary>
+        /// The expired time of the quota application.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
 
         /// <summary>
-        /// The notice type. Valid values: `0`, `1`, `2`, `3`.
+        /// Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
         /// </summary>
         [Input("noticeType")]
         public Input<int>? NoticeType { get; set; }
@@ -330,7 +359,10 @@ namespace Pulumi.AliCloud.Quotas
         public Input<string>? QuotaActionCode { get; set; }
 
         /// <summary>
-        /// The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        /// The quota type.
+        /// - CommonQuota (default): Generic quota.
+        /// - FlowControl:API rate quota.
+        /// - WhiteListLabel: Equity quota.
         /// </summary>
         [Input("quotaCategory")]
         public Input<string>? QuotaCategory { get; set; }
@@ -360,7 +392,11 @@ namespace Pulumi.AliCloud.Quotas
         public Input<string>? Reason { get; set; }
 
         /// <summary>
-        /// The status of the quota application.
+        /// Application Status:
+        /// - Disagree: reject.
+        /// - Agree: Approved.
+        /// - Process: under review.
+        /// - Cancel: Closed.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

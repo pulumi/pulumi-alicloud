@@ -33,8 +33,8 @@ namespace Pulumi.AliCloud.Oos
     ///     var defaultApplication = new AliCloud.Oos.Application("defaultApplication", new()
     ///     {
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
-    ///         ApplicationName = "example_value",
-    ///         Description = "example_value",
+    ///         ApplicationName = "terraform-example",
+    ///         Description = "terraform-example",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
@@ -43,11 +43,11 @@ namespace Pulumi.AliCloud.Oos
     /// 
     ///     var defaultApplicationGroup = new AliCloud.Oos.ApplicationGroup("defaultApplicationGroup", new()
     ///     {
-    ///         ApplicationGroupName = @var.Name,
+    ///         ApplicationGroupName = "terraform-example",
     ///         ApplicationName = defaultApplication.Id,
-    ///         DeployRegionId = "example_value",
-    ///         Description = "example_value",
-    ///         ImportTagKey = "example_value",
+    ///         DeployRegionId = "cn-beijing",
+    ///         Description = "terraform-example",
+    ///         ImportTagKey = "example_key",
     ///         ImportTagValue = "example_value",
     ///     });
     /// 

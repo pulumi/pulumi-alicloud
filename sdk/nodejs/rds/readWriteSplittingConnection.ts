@@ -13,50 +13,59 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const creation = config.get("creation") || "Rds";
- * const name = config.get("name") || "dbInstancevpc";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const exampleZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
+ * const exampleInstanceClasses = exampleZones.then(exampleZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: exampleZones.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "PostPaid",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     vswitchName: "terraform-example",
  * });
- * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
  *     engine: "MySQL",
- *     engineVersion: "5.6",
- *     instanceType: "rds.mysql.t1.small",
- *     instanceStorage: 20,
+ *     engineVersion: "8.0",
+ *     instanceType: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
  *     instanceChargeType: "Postpaid",
- *     instanceName: name,
- *     vswitchId: defaultSwitch.id,
- *     securityIps: [
- *         "10.168.1.12",
- *         "100.69.7.112",
- *     ],
+ *     instanceName: "terraform-example",
+ *     vswitchId: exampleSwitch.id,
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     securityGroupIds: [exampleSecurityGroup.id],
  * });
- * const defaultReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("defaultReadOnlyInstance", {
- *     masterDbInstanceId: defaultInstance.id,
- *     zoneId: defaultInstance.zoneId,
- *     engineVersion: defaultInstance.engineVersion,
- *     instanceType: defaultInstance.instanceType,
- *     instanceStorage: 30,
- *     instanceName: `${name}ro`,
- *     vswitchId: defaultSwitch.id,
+ * const exampleReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance", {
+ *     zoneId: exampleInstance.zoneId,
+ *     masterDbInstanceId: exampleInstance.id,
+ *     engineVersion: exampleInstance.engineVersion,
+ *     instanceStorage: exampleInstance.instanceStorage,
+ *     instanceType: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[1]?.instanceClass),
+ *     instanceName: "terraform-example-readonly",
+ *     vswitchId: exampleSwitch.id,
  * });
- * const defaultReadWriteSplittingConnection = new alicloud.rds.ReadWriteSplittingConnection("defaultReadWriteSplittingConnection", {
- *     instanceId: defaultInstance.id,
- *     connectionPrefix: "t-con-123",
+ * const exampleReadWriteSplittingConnection = new alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection", {
+ *     instanceId: exampleInstance.id,
+ *     connectionPrefix: "example-con-123",
  *     distributionType: "Standard",
  * }, {
- *     dependsOn: [defaultReadOnlyInstance],
+ *     dependsOn: [exampleReadOnlyInstance],
  * });
  * ```
  *

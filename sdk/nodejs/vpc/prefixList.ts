@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Prefix List resource.
+ * Provides a Vpc Prefix List resource. This resource is used to create a prefix list.
  *
- * For information about VPC Prefix List and how to use it, see [What is Prefix List](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/creatvpcprefixlist).
+ * For information about Vpc Prefix List and how to use it, see [What is Prefix List](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/creatvpcprefixlist).
  *
  * > **NOTE:** Available in v1.182.0+.
  *
@@ -21,21 +21,32 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-testacc-example";
+ * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
+ *     displayName: "tf-testacc-chenyi",
+ *     resourceGroupName: name,
+ * });
+ * const changeRg = new alicloud.resourcemanager.ResourceGroup("changeRg", {
+ *     displayName: "tf-testacc-chenyi-change",
+ *     resourceGroupName: `${name}1`,
+ * });
  * const _default = new alicloud.vpc.PrefixList("default", {
+ *     maxEntries: 50,
+ *     resourceGroupId: defaultRg.id,
+ *     prefixListDescription: "test",
+ *     ipVersion: "IPV4",
+ *     prefixListName: name,
  *     entrys: [{
  *         cidr: "192.168.0.0/16",
- *         description: "description",
+ *         description: "test",
  *     }],
- *     ipVersion: "IPV4",
- *     maxEntries: 50,
- *     prefixListName: _var.name,
- *     prefixListDescription: "description",
  * });
  * ```
  *
  * ## Import
  *
- * VPC Prefix List can be imported using the id, e.g.
+ * Vpc Prefix List can be imported using the id, e.g.
  *
  * ```sh
  *  $ pulumi import alicloud:vpc/prefixList:PrefixList example <id>
@@ -70,11 +81,15 @@ export class PrefixList extends pulumi.CustomResource {
     }
 
     /**
-     * The CIDR address block list of the prefix list. See the following `Block entrys`.
+     * The time when the prefix list was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The CIDR address block list of the prefix list.See the following `Block Entrys`.
      */
     public readonly entrys!: pulumi.Output<outputs.vpc.PrefixListEntry[] | undefined>;
     /**
-     * The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+     * The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
      */
     public readonly ipVersion!: pulumi.Output<string>;
     /**
@@ -82,17 +97,37 @@ export class PrefixList extends pulumi.CustomResource {
      */
     public readonly maxEntries!: pulumi.Output<number>;
     /**
-     * The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * The association list information of the prefix list.
+     */
+    public /*out*/ readonly prefixListAssociations!: pulumi.Output<outputs.vpc.PrefixListPrefixListAssociation[]>;
+    /**
+     * The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      */
     public readonly prefixListDescription!: pulumi.Output<string | undefined>;
     /**
-     * The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * The ID of the query Prefix List.
+     */
+    public /*out*/ readonly prefixListId!: pulumi.Output<string>;
+    /**
+     * The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
     public readonly prefixListName!: pulumi.Output<string | undefined>;
     /**
-     * (Available in v1.196.0+) The status of the Prefix List.
+     * The ID of the resource group to which the PrefixList belongs.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
+     */
+    public /*out*/ readonly shareType!: pulumi.Output<string>;
+    /**
+     * Resource attribute fields that represent the status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The tags of PrefixList.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a PrefixList resource with the given unique name, arguments, and options.
@@ -107,12 +142,18 @@ export class PrefixList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrefixListState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["entrys"] = state ? state.entrys : undefined;
             resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
             resourceInputs["maxEntries"] = state ? state.maxEntries : undefined;
+            resourceInputs["prefixListAssociations"] = state ? state.prefixListAssociations : undefined;
             resourceInputs["prefixListDescription"] = state ? state.prefixListDescription : undefined;
+            resourceInputs["prefixListId"] = state ? state.prefixListId : undefined;
             resourceInputs["prefixListName"] = state ? state.prefixListName : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["shareType"] = state ? state.shareType : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as PrefixListArgs | undefined;
             resourceInputs["entrys"] = args ? args.entrys : undefined;
@@ -120,6 +161,12 @@ export class PrefixList extends pulumi.CustomResource {
             resourceInputs["maxEntries"] = args ? args.maxEntries : undefined;
             resourceInputs["prefixListDescription"] = args ? args.prefixListDescription : undefined;
             resourceInputs["prefixListName"] = args ? args.prefixListName : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["prefixListAssociations"] = undefined /*out*/;
+            resourceInputs["prefixListId"] = undefined /*out*/;
+            resourceInputs["shareType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -132,11 +179,15 @@ export class PrefixList extends pulumi.CustomResource {
  */
 export interface PrefixListState {
     /**
-     * The CIDR address block list of the prefix list. See the following `Block entrys`.
+     * The time when the prefix list was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The CIDR address block list of the prefix list.See the following `Block Entrys`.
      */
     entrys?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListEntry>[]>;
     /**
-     * The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+     * The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
      */
     ipVersion?: pulumi.Input<string>;
     /**
@@ -144,17 +195,37 @@ export interface PrefixListState {
      */
     maxEntries?: pulumi.Input<number>;
     /**
-     * The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * The association list information of the prefix list.
+     */
+    prefixListAssociations?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListPrefixListAssociation>[]>;
+    /**
+     * The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      */
     prefixListDescription?: pulumi.Input<string>;
     /**
-     * The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * The ID of the query Prefix List.
+     */
+    prefixListId?: pulumi.Input<string>;
+    /**
+     * The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
     prefixListName?: pulumi.Input<string>;
     /**
-     * (Available in v1.196.0+) The status of the Prefix List.
+     * The ID of the resource group to which the PrefixList belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
+     */
+    shareType?: pulumi.Input<string>;
+    /**
+     * Resource attribute fields that represent the status of the resource.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tags of PrefixList.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -162,11 +233,11 @@ export interface PrefixListState {
  */
 export interface PrefixListArgs {
     /**
-     * The CIDR address block list of the prefix list. See the following `Block entrys`.
+     * The CIDR address block list of the prefix list.See the following `Block Entrys`.
      */
     entrys?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListEntry>[]>;
     /**
-     * The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+     * The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
      */
     ipVersion?: pulumi.Input<string>;
     /**
@@ -174,11 +245,19 @@ export interface PrefixListArgs {
      */
     maxEntries?: pulumi.Input<number>;
     /**
-     * The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      */
     prefixListDescription?: pulumi.Input<string>;
     /**
-     * The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
     prefixListName?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group to which the PrefixList belongs.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The tags of PrefixList.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

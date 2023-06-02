@@ -22,14 +22,9 @@ import * as utilities from "../utilities";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
  *     nameRegex: "default",
  * });
- * const defaultZones = alicloud.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
- * }));
  * const defaultImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     mostRecent: true,
@@ -38,14 +33,25 @@ import * as utilities from "../utilities";
  * const defaultInstanceTypes = defaultImages.then(defaultImages => alicloud.ecs.getInstanceTypes({
  *     imageId: defaultImages.ids?.[0],
  * }));
+ * const defaultAccount = alicloud.getAccount({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
  * const defaultEcsImagePipeline = new alicloud.ecs.EcsImagePipeline("defaultEcsImagePipeline", {
- *     addAccounts: ["example_value"],
+ *     addAccounts: [defaultAccount.then(defaultAccount => defaultAccount.id)],
  *     baseImage: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
  *     baseImageType: "IMAGE",
  *     buildContent: "RUN yum update -y",
  *     deleteInstanceOnFailure: false,
- *     imageName: "example_value",
- *     description: "example_value",
+ *     imageName: "terraform-example",
+ *     description: "terraform-example",
  *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.ids?.[0]),
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     internetMaxBandwidthOut: 20,
@@ -54,7 +60,7 @@ import * as utilities from "../utilities";
  *         "cn-qingdao",
  *         "cn-zhangjiakou",
  *     ],
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultSwitch.id,
  *     tags: {
  *         Created: "TF",
  *         For: "Acceptance-test",

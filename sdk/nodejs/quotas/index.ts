@@ -40,6 +40,11 @@ export type QuotaApplication = import("./quotaApplication").QuotaApplication;
 export const QuotaApplication: typeof import("./quotaApplication").QuotaApplication = null as any;
 utilities.lazyLoad(exports, ["QuotaApplication"], () => require("./quotaApplication"));
 
+export { TemplateQuotaArgs, TemplateQuotaState } from "./templateQuota";
+export type TemplateQuota = import("./templateQuota").TemplateQuota;
+export const TemplateQuota: typeof import("./templateQuota").TemplateQuota = null as any;
+utilities.lazyLoad(exports, ["TemplateQuota"], () => require("./templateQuota"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -51,6 +56,8 @@ const _module = {
                 return new QuotaAlarm(name, <any>undefined, { urn })
             case "alicloud:quotas/quotaApplication:QuotaApplication":
                 return new QuotaApplication(name, <any>undefined, { urn })
+            case "alicloud:quotas/templateQuota:TemplateQuota":
+                return new TemplateQuota(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -59,3 +66,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "quotas/applicationInfo", _module)
 pulumi.runtime.registerResourceModule("alicloud", "quotas/quotaAlarm", _module)
 pulumi.runtime.registerResourceModule("alicloud", "quotas/quotaApplication", _module)
+pulumi.runtime.registerResourceModule("alicloud", "quotas/templateQuota", _module)

@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         var defaultStateConfiguration = new StateConfiguration(&#34;defaultStateConfiguration&#34;, StateConfigurationArgs.builder()        
  *             .templateName(&#34;ACS-ECS-InventoryDataCollection&#34;)
  *             .configureMode(&#34;ApplyOnly&#34;)
- *             .description(var_.name())
+ *             .description(&#34;terraform-example&#34;)
  *             .scheduleType(&#34;rate&#34;)
  *             .scheduleExpression(&#34;1 hour&#34;)
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .parameters(&#34;{\&#34;policy\&#34;: {\&#34;ACS:Application\&#34;: {\&#34;Collection\&#34;: \&#34;Enabled\&#34;}}}&#34;)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Test&#34;)
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
  *             ))
  *             .build());
  * 

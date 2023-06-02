@@ -28,9 +28,15 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         InstanceTypeFamily = "ecs.g5",
+    ///     });
+    /// 
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
+    ///         AvailableInstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
     ///     });
     /// 
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
@@ -40,18 +46,17 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var defaultCapacityReservation = new AliCloud.Ecs.CapacityReservation("defaultCapacityReservation", new()
     ///     {
-    ///         Description = @var.Name,
+    ///         Description = "terraform-example",
     ///         Platform = "linux",
-    ///         CapacityReservationName = @var.Name,
+    ///         CapacityReservationName = "terraform-example",
     ///         EndTimeType = "Unlimited",
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///         InstanceAmount = 1,
-    ///         InstanceType = "ecs.c5.2xlarge",
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
     ///         MatchCriteria = "Open",
     ///         Tags = 
     ///         {
-    ///             { "Created", "tfTestAcc0" },
-    ///             { "For", "Tftestacc 0" },
+    ///             { "Created", "terraform-example" },
     ///         },
     ///         ZoneIds = new[]
     ///         {

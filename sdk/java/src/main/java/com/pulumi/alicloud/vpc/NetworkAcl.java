@@ -13,142 +13,175 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a network acl resource to add network acls.
+ * Provides a VPC Network Acl resource.
+ * &gt; **NOTE:** Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
  * 
- * &gt; **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
+ * For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
+ * 
+ * &gt; **NOTE:** Available in v1.43.0+.
  * 
  * ## Import
  * 
- * The network acl can be imported using the id, e.g.
+ * VPC Network Acl can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/networkAcl:NetworkAcl default nacl-abc123456
+ *  $ pulumi import alicloud:vpc/networkAcl:NetworkAcl example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpc/networkAcl:NetworkAcl")
 public class NetworkAcl extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the network acl instance.
+     * The creation time of the resource.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the network acl instance.
+     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+     * Out direction rule information. See the following `Block EgressAclEntries`.
      * 
      */
     @Export(name="egressAclEntries", type=List.class, parameters={NetworkAclEgressAclEntry.class})
     private Output<List<NetworkAclEgressAclEntry>> egressAclEntries;
 
     /**
-     * @return List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+     * @return Out direction rule information. See the following `Block EgressAclEntries`.
      * 
      */
     public Output<List<NetworkAclEgressAclEntry>> egressAclEntries() {
         return this.egressAclEntries;
     }
     /**
-     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+     * Inward direction rule information. See the following `Block IngressAclEntries`.
      * 
      */
     @Export(name="ingressAclEntries", type=List.class, parameters={NetworkAclIngressAclEntry.class})
     private Output<List<NetworkAclIngressAclEntry>> ingressAclEntries;
 
     /**
-     * @return List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+     * @return Inward direction rule information. See the following `Block IngressAclEntries`.
      * 
      */
     public Output<List<NetworkAclIngressAclEntry>> ingressAclEntries() {
         return this.ingressAclEntries;
     }
     /**
-     * Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead
+     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead. */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name of the network acl.
+     * The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     @Export(name="networkAclName", type=String.class, parameters={})
     private Output<String> networkAclName;
 
     /**
-     * @return The name of the network acl.
+     * @return The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Output<String> networkAclName() {
         return this.networkAclName;
     }
     /**
-     * The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
-     * 
-     * @deprecated
-     * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
+     * The associated resource. See the following `Block Resources`.
      * 
      */
-    @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
     @Export(name="resources", type=List.class, parameters={NetworkAclResource.class})
     private Output<List<NetworkAclResource>> resources;
 
     /**
-     * @return The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
+     * @return The associated resource. See the following `Block Resources`.
      * 
      */
     public Output<List<NetworkAclResource>> resources() {
         return this.resources;
     }
     /**
-     * (Available in 1.122.0+) The status of the network acl.
+     * The state of the network ACL.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return (Available in 1.122.0+) The status of the network acl.
+     * @return The state of the network ACL.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The vpc_id of the network acl, the field can&#39;t be changed.
+     * The tags of this resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tags of this resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The ID of the associated VPC.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output<String> vpcId;
 
     /**
-     * @return The vpc_id of the network acl, the field can&#39;t be changed.
+     * @return The ID of the associated VPC.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> vpcId() {

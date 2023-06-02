@@ -5,7 +5,10 @@ package com.pulumi.alicloud.vpc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Object;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +17,51 @@ import javax.annotation.Nullable;
 public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
 
     public static final FlowLogState Empty = new FlowLogState();
+
+    /**
+     * Data aggregation interval.
+     * 
+     */
+    @Import(name="aggregationInterval")
+    private @Nullable Output<String> aggregationInterval;
+
+    /**
+     * @return Data aggregation interval.
+     * 
+     */
+    public Optional<Output<String>> aggregationInterval() {
+        return Optional.ofNullable(this.aggregationInterval);
+    }
+
+    /**
+     * Business status.
+     * 
+     */
+    @Import(name="businessStatus")
+    private @Nullable Output<String> businessStatus;
+
+    /**
+     * @return Business status.
+     * 
+     */
+    public Optional<Output<String>> businessStatus() {
+        return Optional.ofNullable(this.businessStatus);
+    }
+
+    /**
+     * Creation time.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Creation time.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
 
     /**
      * The Description of the VPC Flow Log.
@@ -28,6 +76,21 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The flow log ID.
+     * 
+     */
+    @Import(name="flowLogId")
+    private @Nullable Output<String> flowLogId;
+
+    /**
+     * @return The flow log ID.
+     * 
+     */
+    public Optional<Output<String>> flowLogId() {
+        return Optional.ofNullable(this.flowLogId);
     }
 
     /**
@@ -76,6 +139,21 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
      * The ID of the resource.
      * 
      */
@@ -91,14 +169,14 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
+     * The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
+     * @return The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -106,14 +184,14 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
+     * The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
+     * @return The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
      * 
      */
     public Optional<Output<String>> status() {
@@ -121,14 +199,44 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
+     * The tag of the current instance resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the current instance resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+     * 
+     */
+    @Import(name="trafficPaths")
+    private @Nullable Output<List<String>> trafficPaths;
+
+    /**
+     * @return The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+     * 
+     */
+    public Optional<Output<List<String>>> trafficPaths() {
+        return Optional.ofNullable(this.trafficPaths);
+    }
+
+    /**
+     * The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
      * 
      */
     @Import(name="trafficType")
     private @Nullable Output<String> trafficType;
 
     /**
-     * @return The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
+     * @return The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
      * 
      */
     public Optional<Output<String>> trafficType() {
@@ -138,13 +246,20 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
     private FlowLogState() {}
 
     private FlowLogState(FlowLogState $) {
+        this.aggregationInterval = $.aggregationInterval;
+        this.businessStatus = $.businessStatus;
+        this.createTime = $.createTime;
         this.description = $.description;
+        this.flowLogId = $.flowLogId;
         this.flowLogName = $.flowLogName;
         this.logStoreName = $.logStoreName;
         this.projectName = $.projectName;
+        this.resourceGroupId = $.resourceGroupId;
         this.resourceId = $.resourceId;
         this.resourceType = $.resourceType;
         this.status = $.status;
+        this.tags = $.tags;
+        this.trafficPaths = $.trafficPaths;
         this.trafficType = $.trafficType;
     }
 
@@ -167,6 +282,69 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param aggregationInterval Data aggregation interval.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregationInterval(@Nullable Output<String> aggregationInterval) {
+            $.aggregationInterval = aggregationInterval;
+            return this;
+        }
+
+        /**
+         * @param aggregationInterval Data aggregation interval.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregationInterval(String aggregationInterval) {
+            return aggregationInterval(Output.of(aggregationInterval));
+        }
+
+        /**
+         * @param businessStatus Business status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder businessStatus(@Nullable Output<String> businessStatus) {
+            $.businessStatus = businessStatus;
+            return this;
+        }
+
+        /**
+         * @param businessStatus Business status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder businessStatus(String businessStatus) {
+            return businessStatus(Output.of(businessStatus));
+        }
+
+        /**
+         * @param createTime Creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
          * @param description The Description of the VPC Flow Log.
          * 
          * @return builder
@@ -185,6 +363,27 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param flowLogId The flow log ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flowLogId(@Nullable Output<String> flowLogId) {
+            $.flowLogId = flowLogId;
+            return this;
+        }
+
+        /**
+         * @param flowLogId The flow log ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flowLogId(String flowLogId) {
+            return flowLogId(Output.of(flowLogId));
         }
 
         /**
@@ -251,6 +450,27 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
          * @param resourceId The ID of the resource.
          * 
          * @return builder
@@ -272,7 +492,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceType The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
+         * @param resourceType The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
          * 
          * @return builder
          * 
@@ -283,7 +503,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceType The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
+         * @param resourceType The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
          * 
          * @return builder
          * 
@@ -293,7 +513,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
+         * @param status The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
          * 
          * @return builder
          * 
@@ -304,7 +524,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
+         * @param status The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
          * 
          * @return builder
          * 
@@ -314,7 +534,59 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficType The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
+         * @param tags The tag of the current instance resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the current instance resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param trafficPaths The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficPaths(@Nullable Output<List<String>> trafficPaths) {
+            $.trafficPaths = trafficPaths;
+            return this;
+        }
+
+        /**
+         * @param trafficPaths The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficPaths(List<String> trafficPaths) {
+            return trafficPaths(Output.of(trafficPaths));
+        }
+
+        /**
+         * @param trafficPaths The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficPaths(String... trafficPaths) {
+            return trafficPaths(List.of(trafficPaths));
+        }
+
+        /**
+         * @param trafficType The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
          * 
          * @return builder
          * 
@@ -325,7 +597,7 @@ public final class FlowLogState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficType The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
+         * @param trafficType The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
          * 
          * @return builder
          * 

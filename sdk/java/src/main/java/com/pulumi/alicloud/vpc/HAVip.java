@@ -10,7 +10,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Object;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -59,6 +62,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:vpc/hAVip:HAVip")
 public class HAVip extends com.pulumi.resources.CustomResource {
+    @Export(name="associatedEipAddresses", type=List.class, parameters={String.class})
+    private Output<List<String>> associatedEipAddresses;
+
+    public Output<List<String>> associatedEipAddresses() {
+        return this.associatedEipAddresses;
+    }
+    @Export(name="associatedInstanceType", type=String.class, parameters={})
+    private Output<String> associatedInstanceType;
+
+    public Output<String> associatedInstanceType() {
+        return this.associatedInstanceType;
+    }
+    @Export(name="associatedInstances", type=List.class, parameters={String.class})
+    private Output<List<String>> associatedInstances;
+
+    public Output<List<String>> associatedInstances() {
+        return this.associatedInstances;
+    }
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * The description of the HaVip instance.
      * 
@@ -73,19 +100,35 @@ public class HAVip extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    @Export(name="haVipId", type=String.class, parameters={})
+    private Output<String> haVipId;
+
+    public Output<String> haVipId() {
+        return this.haVipId;
+    }
+    @Export(name="haVipName", type=String.class, parameters={})
+    private Output<String> haVipName;
+
+    public Output<String> haVipName() {
+        return this.haVipName;
+    }
     /**
      * The name of the HaVip instance.
      * 
+     * @deprecated
+     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
     @Export(name="havipName", type=String.class, parameters={})
-    private Output</* @Nullable */ String> havipName;
+    private Output<String> havipName;
 
     /**
      * @return The name of the HaVip instance.
      * 
      */
-    public Output<Optional<String>> havipName() {
-        return Codegen.optional(this.havipName);
+    public Output<String> havipName() {
+        return this.havipName;
     }
     /**
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
@@ -101,6 +144,18 @@ public class HAVip extends com.pulumi.resources.CustomResource {
     public Output<String> ipAddress() {
         return this.ipAddress;
     }
+    @Export(name="masterInstanceId", type=String.class, parameters={})
+    private Output<String> masterInstanceId;
+
+    public Output<String> masterInstanceId() {
+        return this.masterInstanceId;
+    }
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
     /**
      * (Available in v1.120.0+) The status of the HaVip instance.
      * 
@@ -114,6 +169,18 @@ public class HAVip extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    @Export(name="vpcId", type=String.class, parameters={})
+    private Output<String> vpcId;
+
+    public Output<String> vpcId() {
+        return this.vpcId;
     }
     /**
      * The vswitch_id of the HaVip, the field can&#39;t be changed.

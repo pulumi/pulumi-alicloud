@@ -16,6 +16,75 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// &gt; **NOTE:** Available in v1.151.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     {
+    ///         NameRegex = "^preserved-NODELETING",
+    ///     });
+    /// 
+    ///     var exampleVirtualBorderRouter = new List&lt;AliCloud.ExpressConnect.VirtualBorderRouter&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleVirtualBorderRouter.Add(new AliCloud.ExpressConnect.VirtualBorderRouter($"exampleVirtualBorderRouter-{range.Value}", new()
+    ///         {
+    ///             LocalGatewayIp = "10.0.0.1",
+    ///             PeerGatewayIp = "10.0.0.2",
+    ///             PeeringSubnetMask = "255.255.255.252",
+    ///             PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections)[range.Value].Id,
+    ///             VirtualBorderRouterName = @var.Name,
+    ///             VlanId = 100,
+    ///             MinRxInterval = 1000,
+    ///             MinTxInterval = 1000,
+    ///             DetectMultiplier = 10,
+    ///         }));
+    ///     }
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = "example_value",
+    ///         Description = "example_value",
+    ///     });
+    /// 
+    ///     var exampleInstanceAttachment = new List&lt;AliCloud.Cen.InstanceAttachment&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         exampleInstanceAttachment.Add(new AliCloud.Cen.InstanceAttachment($"exampleInstanceAttachment-{range.Value}", new()
+    ///         {
+    ///             InstanceId = exampleInstance.Id,
+    ///             ChildInstanceId = exampleVirtualBorderRouter[range.Value].Id,
+    ///             ChildInstanceType = "VBR",
+    ///             ChildInstanceRegionId = "cn-hangzhou",
+    ///         }));
+    ///     }
+    ///     var exampleVbrHa = new AliCloud.Vpc.VbrHa("exampleVbrHa", new()
+    ///     {
+    ///         VbrId = exampleInstanceAttachment[0].Id,
+    ///         PeerVbrId = exampleInstanceAttachment[1].Id,
+    ///         VbrHaName = "example_value",
+    ///         Description = "example_value",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             "alicloud_cen_instance_attachment.example",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// VPC Vbr Ha can be imported using the id, e.g.

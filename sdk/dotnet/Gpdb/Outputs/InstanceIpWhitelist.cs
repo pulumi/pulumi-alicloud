@@ -14,7 +14,8 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
     public sealed class InstanceIpWhitelist
     {
         /// <summary>
-        /// The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        /// The value of this parameter is empty by default. The attribute of the whitelist group. 
+        /// If the value contains `hidden`, this white list item will not output.
         /// </summary>
         public readonly string? IpGroupAttribute;
         /// <summary>
@@ -24,7 +25,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// <summary>
         /// Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         /// </summary>
-        public readonly string SecurityIpList;
+        public readonly string? SecurityIpList;
 
         [OutputConstructor]
         private InstanceIpWhitelist(
@@ -32,7 +33,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
 
             string? ipGroupName,
 
-            string securityIpList)
+            string? securityIpList)
         {
             IpGroupAttribute = ipGroupAttribute;
             IpGroupName = ipGroupName;

@@ -12,74 +12,102 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DomainNewCertificateConfig {
     /**
-     * @return The SSL certificate name.
+     * @return The ID of the certificate. It takes effect only when CertType = cas.
+     * 
+     */
+    private @Nullable String certId;
+    /**
+     * @return Certificate name, only flyer names are supported.
      * 
      */
     private @Nullable String certName;
     /**
-     * @return The SSL certificate type, can be &#34;upload&#34;, &#34;cas&#34; and &#34;free&#34;.
+     * @return The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+     * 
+     */
+    private @Nullable String certRegion;
+    /**
+     * @return Certificate type. Value:
+     * - **upload**: upload certificate.
+     * - **cas**: Cloud Shield certificate.
+     * - **free**: free certificate.
+     * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
      * 
      */
     private @Nullable String certType;
-    /**
-     * @return Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
-     * 
-     */
     private @Nullable String forceSet;
     /**
-     * @return The SSL private key. This is required if `server_certificate_status` is `on`
+     * @return The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
      * 
      */
     private @Nullable String privateKey;
     /**
-     * @return The SSL server certificate string. This is required if `server_certificate_status` is `on`
+     * @return The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
      * 
      */
     private @Nullable String serverCertificate;
     /**
-     * @return This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+     * @return Whether the HTTPS certificate is enabled. Value:
+     * - **on**(default): enabled.
+     * - **off** : not enabled.
      * 
      */
     private @Nullable String serverCertificateStatus;
 
     private DomainNewCertificateConfig() {}
     /**
-     * @return The SSL certificate name.
+     * @return The ID of the certificate. It takes effect only when CertType = cas.
+     * 
+     */
+    public Optional<String> certId() {
+        return Optional.ofNullable(this.certId);
+    }
+    /**
+     * @return Certificate name, only flyer names are supported.
      * 
      */
     public Optional<String> certName() {
         return Optional.ofNullable(this.certName);
     }
     /**
-     * @return The SSL certificate type, can be &#34;upload&#34;, &#34;cas&#34; and &#34;free&#34;.
+     * @return The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+     * 
+     */
+    public Optional<String> certRegion() {
+        return Optional.ofNullable(this.certRegion);
+    }
+    /**
+     * @return Certificate type. Value:
+     * - **upload**: upload certificate.
+     * - **cas**: Cloud Shield certificate.
+     * - **free**: free certificate.
+     * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
      * 
      */
     public Optional<String> certType() {
         return Optional.ofNullable(this.certType);
     }
-    /**
-     * @return Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
-     * 
-     */
     public Optional<String> forceSet() {
         return Optional.ofNullable(this.forceSet);
     }
     /**
-     * @return The SSL private key. This is required if `server_certificate_status` is `on`
+     * @return The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
      * 
      */
     public Optional<String> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
     /**
-     * @return The SSL server certificate string. This is required if `server_certificate_status` is `on`
+     * @return The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
      * 
      */
     public Optional<String> serverCertificate() {
         return Optional.ofNullable(this.serverCertificate);
     }
     /**
-     * @return This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+     * @return Whether the HTTPS certificate is enabled. Value:
+     * - **on**(default): enabled.
+     * - **off** : not enabled.
      * 
      */
     public Optional<String> serverCertificateStatus() {
@@ -95,7 +123,9 @@ public final class DomainNewCertificateConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String certId;
         private @Nullable String certName;
+        private @Nullable String certRegion;
         private @Nullable String certType;
         private @Nullable String forceSet;
         private @Nullable String privateKey;
@@ -104,7 +134,9 @@ public final class DomainNewCertificateConfig {
         public Builder() {}
         public Builder(DomainNewCertificateConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.certId = defaults.certId;
     	      this.certName = defaults.certName;
+    	      this.certRegion = defaults.certRegion;
     	      this.certType = defaults.certType;
     	      this.forceSet = defaults.forceSet;
     	      this.privateKey = defaults.privateKey;
@@ -113,8 +145,18 @@ public final class DomainNewCertificateConfig {
         }
 
         @CustomType.Setter
+        public Builder certId(@Nullable String certId) {
+            this.certId = certId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder certName(@Nullable String certName) {
             this.certName = certName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder certRegion(@Nullable String certRegion) {
+            this.certRegion = certRegion;
             return this;
         }
         @CustomType.Setter
@@ -144,7 +186,9 @@ public final class DomainNewCertificateConfig {
         }
         public DomainNewCertificateConfig build() {
             final var o = new DomainNewCertificateConfig();
+            o.certId = certId;
             o.certName = certName;
+            o.certRegion = certRegion;
             o.certType = certType;
             o.forceSet = forceSet;
             o.privateKey = privateKey;

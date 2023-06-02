@@ -41,6 +41,7 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     public readonly cidrBlock!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly ipv6CidrBlock!: pulumi.Output<string>;
@@ -73,6 +74,7 @@ export class Subnet extends pulumi.CustomResource {
             const state = argsOrState as SubnetState | undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["cidrBlock"] = state ? state.cidrBlock : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
             resourceInputs["ipv6CidrBlock"] = state ? state.ipv6CidrBlock : undefined;
@@ -101,6 +103,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchName"] = args ? args.vswitchName : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ipv6CidrBlock"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -118,6 +121,7 @@ export interface SubnetState {
      */
     availabilityZone?: pulumi.Input<string>;
     cidrBlock?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     enableIpv6?: pulumi.Input<boolean>;
     ipv6CidrBlock?: pulumi.Input<string>;

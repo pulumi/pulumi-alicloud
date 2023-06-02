@@ -20,7 +20,7 @@ class DomainResourceProxyTypeArgs:
                  proxy_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  proxy_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] proxy_ports: the port number. This field is required and must be an integer.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] proxy_ports: the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
         :param pulumi.Input[str] proxy_type: the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
         """
         if proxy_ports is not None:
@@ -32,7 +32,7 @@ class DomainResourceProxyTypeArgs:
     @pulumi.getter(name="proxyPorts")
     def proxy_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        the port number. This field is required and must be an integer.
+        the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
         """
         return pulumi.get(self, "proxy_ports")
 

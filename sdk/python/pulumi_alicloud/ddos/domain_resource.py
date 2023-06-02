@@ -29,9 +29,9 @@ class DomainResourceArgs:
                **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
                So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]] proxy_types: Protocol type and port number information.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]] proxy_types: Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
-        :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
         :param pulumi.Input[str] https_ext: The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
         """
         pulumi.set(__self__, "domain", domain)
@@ -73,7 +73,7 @@ class DomainResourceArgs:
     @pulumi.getter(name="proxyTypes")
     def proxy_types(self) -> pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]:
         """
-        Protocol type and port number information.
+        Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         """
         return pulumi.get(self, "proxy_types")
 
@@ -97,7 +97,7 @@ class DomainResourceArgs:
     @pulumi.getter(name="rsType")
     def rs_type(self) -> pulumi.Input[int]:
         """
-        The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
         """
         return pulumi.get(self, "rs_type")
 
@@ -135,9 +135,9 @@ class _DomainResourceState:
                **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
                So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]] proxy_types: Protocol type and port number information.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]] proxy_types: Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
-        :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -195,7 +195,7 @@ class _DomainResourceState:
     @pulumi.getter(name="proxyTypes")
     def proxy_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]]:
         """
-        Protocol type and port number information.
+        Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         """
         return pulumi.get(self, "proxy_types")
 
@@ -219,7 +219,7 @@ class _DomainResourceState:
     @pulumi.getter(name="rsType")
     def rs_type(self) -> Optional[pulumi.Input[int]]:
         """
-        The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
         """
         return pulumi.get(self, "rs_type")
 
@@ -283,9 +283,9 @@ class DomainResource(pulumi.CustomResource):
                **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
                So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]] proxy_types: Protocol type and port number information.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]] proxy_types: Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
-        :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
         """
         ...
     @overload
@@ -403,9 +403,9 @@ class DomainResource(pulumi.CustomResource):
                **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite.
                So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`,
                and you can use tolist to convert it to a list.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]] proxy_types: Protocol type and port number information.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainResourceProxyTypeArgs']]]] proxy_types: Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] real_servers: the IP address. This field is required and must be a string array.
-        :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        :param pulumi.Input[int] rs_type: The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -450,7 +450,7 @@ class DomainResource(pulumi.CustomResource):
     @pulumi.getter(name="proxyTypes")
     def proxy_types(self) -> pulumi.Output[Sequence['outputs.DomainResourceProxyType']]:
         """
-        Protocol type and port number information.
+        Protocol type and port number information. See the following `Block proxy_types`. **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         """
         return pulumi.get(self, "proxy_types")
 
@@ -466,7 +466,7 @@ class DomainResource(pulumi.CustomResource):
     @pulumi.getter(name="rsType")
     def rs_type(self) -> pulumi.Output[int]:
         """
-        The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        The address type of the origin server. Valid values: `0`: IP address. `1`: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. **NOTE:** From version 1.206.0, `rs_type` can be modified.
         """
         return pulumi.get(self, "rs_type")
 

@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Ecs
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testaccecsset";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
@@ -54,33 +54,36 @@ namespace Pulumi.AliCloud.Ecs
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = name,
+    ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     ///     var beijingK = new AliCloud.Ecs.EcsInstanceSet("beijingK", new()
     ///     {
-    ///         Amount = 100,
+    ///         Amount = 10,
     ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         InstanceName = name,
     ///         InstanceChargeType = "PostPaid",
     ///         SystemDiskPerformanceLevel = "PL0",
-    ///         SystemDiskCategory = "cloud_essd",
+    ///         SystemDiskCategory = "cloud_efficiency",
     ///         SystemDiskSize = 200,
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VswitchId = defaultSwitch.Id,
     ///         SecurityGroupIds = new[]
     ///         {
     ///             defaultSecurityGroup,

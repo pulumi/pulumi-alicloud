@@ -63,7 +63,8 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
-               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+               From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) `DBVersion`.
         :param pulumi.Input[str] allow_shut_down: Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
@@ -223,7 +224,8 @@ class ClusterArgs:
     def db_node_class(self) -> pulumi.Input[str]:
         """
         The db_node_class of cluster node.
-        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         """
         return pulumi.get(self, "db_node_class")
 
@@ -841,7 +843,8 @@ class _ClusterState:
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
-               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+               From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -1131,7 +1134,8 @@ class _ClusterState:
     def db_node_class(self) -> Optional[pulumi.Input[str]]:
         """
         The db_node_class of cluster node.
-        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         """
         return pulumi.get(self, "db_node_class")
 
@@ -1682,29 +1686,24 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "polardbClusterconfig"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "PolarDB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
         default_cluster = alicloud.polardb.Cluster("defaultCluster",
             db_type="MySQL",
-            db_version="5.6",
-            db_node_class="polar.mysql.x4.medium",
+            db_version="8.0",
+            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
             pay_type="PostPaid",
-            description=name,
             vswitch_id=default_switch.id,
+            description="terraform-example",
             db_cluster_ip_arrays=[
                 alicloud.polardb.ClusterDbClusterIpArrayArgs(
                     db_cluster_ip_array_name="default",
@@ -1714,7 +1713,7 @@ class Cluster(pulumi.CustomResource):
                     ],
                 ),
                 alicloud.polardb.ClusterDbClusterIpArrayArgs(
-                    db_cluster_ip_array_name="test_ips1",
+                    db_cluster_ip_array_name="default2",
                     security_ips=["1.2.3.6"],
                 ),
             ])
@@ -1743,7 +1742,8 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
-               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+               From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -1820,29 +1820,24 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "polardbClusterconfig"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "PolarDB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
+        default_node_classes = alicloud.polardb.get_node_classes(db_type="MySQL",
+            db_version="8.0",
+            pay_type="PostPaid")
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
+            vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
+            zone_id=default_node_classes.classes[0].zone_id,
+            vswitch_name="terraform-example")
         default_cluster = alicloud.polardb.Cluster("defaultCluster",
             db_type="MySQL",
-            db_version="5.6",
-            db_node_class="polar.mysql.x4.medium",
+            db_version="8.0",
+            db_node_class=default_node_classes.classes[0].supported_engines[0].available_resources[0].db_node_class,
             pay_type="PostPaid",
-            description=name,
             vswitch_id=default_switch.id,
+            description="terraform-example",
             db_cluster_ip_arrays=[
                 alicloud.polardb.ClusterDbClusterIpArrayArgs(
                     db_cluster_ip_array_name="default",
@@ -1852,7 +1847,7 @@ class Cluster(pulumi.CustomResource):
                     ],
                 ),
                 alicloud.polardb.ClusterDbClusterIpArrayArgs(
-                    db_cluster_ip_array_name="test_ips1",
+                    db_cluster_ip_array_name="default2",
                     security_ips=["1.2.3.6"],
                 ),
             ])
@@ -2070,7 +2065,8 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterDbClusterIpArrayArgs']]]] db_cluster_ip_arrays: db_cluster_ip_array defines how users can send requests to your API.
         :param pulumi.Input[str] db_node_class: The db_node_class of cluster node.
-               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+               > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+               From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
@@ -2276,7 +2272,8 @@ class Cluster(pulumi.CustomResource):
     def db_node_class(self) -> pulumi.Output[str]:
         """
         The db_node_class of cluster node.
-        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+        > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         """
         return pulumi.get(self, "db_node_class")
 

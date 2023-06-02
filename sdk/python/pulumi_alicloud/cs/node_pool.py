@@ -2150,7 +2150,7 @@ class NodePool(pulumi.CustomResource):
             desired_size=1,
             spot_strategy="SpotWithPriceLimit",
             spot_price_limits=[alicloud.cs.NodePoolSpotPriceLimitArgs(
-                instance_type=data["alicloud_instance_types"]["default"]["instance_types"][0]["id"],
+                instance_type=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 price_limit="0.70",
             )])
         ```
@@ -2174,7 +2174,7 @@ class NodePool(pulumi.CustomResource):
             ),
             spot_strategy="SpotWithPriceLimit",
             spot_price_limits=[alicloud.cs.NodePoolSpotPriceLimitArgs(
-                instance_type=data["alicloud_instance_types"]["default"]["instance_types"][0]["id"],
+                instance_type=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 price_limit="0.70",
             )])
         ```
@@ -2515,7 +2515,7 @@ class NodePool(pulumi.CustomResource):
             desired_size=1,
             spot_strategy="SpotWithPriceLimit",
             spot_price_limits=[alicloud.cs.NodePoolSpotPriceLimitArgs(
-                instance_type=data["alicloud_instance_types"]["default"]["instance_types"][0]["id"],
+                instance_type=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 price_limit="0.70",
             )])
         ```
@@ -2539,7 +2539,7 @@ class NodePool(pulumi.CustomResource):
             ),
             spot_strategy="SpotWithPriceLimit",
             spot_price_limits=[alicloud.cs.NodePoolSpotPriceLimitArgs(
-                instance_type=data["alicloud_instance_types"]["default"]["instance_types"][0]["id"],
+                instance_type=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 price_limit="0.70",
             )])
         ```

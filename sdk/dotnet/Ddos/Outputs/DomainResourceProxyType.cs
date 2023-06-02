@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ddos.Outputs
     public sealed class DomainResourceProxyType
     {
         /// <summary>
-        /// the port number. This field is required and must be an integer.
+        /// the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
         /// </summary>
         public readonly ImmutableArray<int> ProxyPorts;
         /// <summary>

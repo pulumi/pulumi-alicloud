@@ -19,9 +19,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.vpc.GatewayRouteTableAttachment("example", {
- *     ipv4GatewayId: "example_value",
- *     routeTableId: "example_value",
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     vpcName: "terraform-example",
+ * });
+ * const exampleRouteTable = new alicloud.vpc.RouteTable("exampleRouteTable", {
+ *     vpcId: exampleNetwork.id,
+ *     routeTableName: "terraform-example",
+ *     description: "terraform-example",
+ *     associateType: "Gateway",
+ * });
+ * const exampleIpv4Gateway = new alicloud.vpc.Ipv4Gateway("exampleIpv4Gateway", {
+ *     ipv4GatewayName: "terraform-example",
+ *     vpcId: exampleNetwork.id,
+ *     enabled: true,
+ * });
+ * const exampleGatewayRouteTableAttachment = new alicloud.vpc.GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment", {
+ *     ipv4GatewayId: exampleIpv4Gateway.id,
+ *     routeTableId: exampleRouteTable.id,
  * });
  * ```
  *
@@ -62,6 +77,10 @@ export class GatewayRouteTableAttachment extends pulumi.CustomResource {
     }
 
     /**
+     * The creation time of the resource.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * Specifies whether to only precheck this request. Default value: `false`.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
@@ -75,6 +94,12 @@ export class GatewayRouteTableAttachment extends pulumi.CustomResource {
     public readonly routeTableId!: pulumi.Output<string>;
     /**
      * The status of the IPv4 Gateway instance. Value:
+     * - **Creating**: The function is being created.
+     * - **Created**: Created and available.
+     * - **Modifying**: is being modified.
+     * - **Deleting**: Deleting.
+     * - **Deleted**: Deleted.
+     * - **Activating**: enabled.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -91,6 +116,7 @@ export class GatewayRouteTableAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayRouteTableAttachmentState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["ipv4GatewayId"] = state ? state.ipv4GatewayId : undefined;
             resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
@@ -106,6 +132,7 @@ export class GatewayRouteTableAttachment extends pulumi.CustomResource {
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["ipv4GatewayId"] = args ? args.ipv4GatewayId : undefined;
             resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -117,6 +144,10 @@ export class GatewayRouteTableAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GatewayRouteTableAttachment resources.
  */
 export interface GatewayRouteTableAttachmentState {
+    /**
+     * The creation time of the resource.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * Specifies whether to only precheck this request. Default value: `false`.
      */
@@ -131,6 +162,12 @@ export interface GatewayRouteTableAttachmentState {
     routeTableId?: pulumi.Input<string>;
     /**
      * The status of the IPv4 Gateway instance. Value:
+     * - **Creating**: The function is being created.
+     * - **Created**: Created and available.
+     * - **Modifying**: is being modified.
+     * - **Deleting**: Deleting.
+     * - **Deleted**: Deleted.
+     * - **Activating**: enabled.
      */
     status?: pulumi.Input<string>;
 }

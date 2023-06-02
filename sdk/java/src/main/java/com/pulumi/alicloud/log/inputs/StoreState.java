@@ -96,14 +96,14 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+     * The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      * 
      */
     @Import(name="maxSplitShardCount")
     private @Nullable Output<Integer> maxSplitShardCount;
 
     /**
-     * @return The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+     * @return The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      * 
      */
     public Optional<Output<Integer>> maxSplitShardCount() {
@@ -357,7 +357,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxSplitShardCount The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+         * @param maxSplitShardCount The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxSplitShardCount The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+         * @param maxSplitShardCount The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
          * 
          * @return builder
          * 

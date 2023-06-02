@@ -21,6 +21,7 @@ class RuleArgs:
                  rule_actions: pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]],
                  rule_conditions: pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]],
                  rule_name: pulumi.Input[str],
+                 direction: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Rule resource.
@@ -29,6 +30,7 @@ class RuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionArgs']]] rule_actions: The actions of the forwarding rules. See the following `Block rule_actions`.
         :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]] rule_conditions: The conditions of the forwarding rule. See the following `Block rule_conditions`.
         :param pulumi.Input[str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         """
         pulumi.set(__self__, "listener_id", listener_id)
@@ -36,6 +38,8 @@ class RuleArgs:
         pulumi.set(__self__, "rule_actions", rule_actions)
         pulumi.set(__self__, "rule_conditions", rule_conditions)
         pulumi.set(__self__, "rule_name", rule_name)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
 
@@ -100,6 +104,18 @@ class RuleArgs:
         pulumi.set(self, "rule_name", value)
 
     @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
+
+    @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -115,6 +131,7 @@ class RuleArgs:
 @pulumi.input_type
 class _RuleState:
     def __init__(__self__, *,
+                 direction: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -124,6 +141,7 @@ class _RuleState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
+        :param pulumi.Input[str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
@@ -132,6 +150,8 @@ class _RuleState:
         :param pulumi.Input[str] rule_name: The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] status: The status of the resource.
         """
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if listener_id is not None:
@@ -146,6 +166,18 @@ class _RuleState:
             pulumi.set(__self__, "rule_name", rule_name)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -237,6 +269,7 @@ class Rule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -263,6 +296,7 @@ class Rule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
@@ -308,6 +342,7 @@ class Rule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  listener_id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -323,6 +358,7 @@ class Rule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RuleArgs.__new__(RuleArgs)
 
+            __props__.__dict__["direction"] = direction
             __props__.__dict__["dry_run"] = dry_run
             if listener_id is None and not opts.urn:
                 raise TypeError("Missing required property 'listener_id'")
@@ -350,6 +386,7 @@ class Rule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            direction: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             listener_id: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
@@ -364,6 +401,7 @@ class Rule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] direction: The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request.
         :param pulumi.Input[str] listener_id: The ID of the listener to which the forwarding rule belongs.
         :param pulumi.Input[int] priority: The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
@@ -376,6 +414,7 @@ class Rule(pulumi.CustomResource):
 
         __props__ = _RuleState.__new__(_RuleState)
 
+        __props__.__dict__["direction"] = direction
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["listener_id"] = listener_id
         __props__.__dict__["priority"] = priority
@@ -384,6 +423,14 @@ class Rule(pulumi.CustomResource):
         __props__.__dict__["rule_name"] = rule_name
         __props__.__dict__["status"] = status
         return Rule(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> pulumi.Output[str]:
+        """
+        The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter(name="dryRun")

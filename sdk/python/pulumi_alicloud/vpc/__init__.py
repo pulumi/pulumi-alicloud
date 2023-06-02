@@ -54,6 +54,7 @@ from .get_traffic_mirror_sessions import *
 from .get_vpc_flow_logs import *
 from .ha_vip import *
 from .ha_vip_attachment import *
+from .ha_vipv2 import *
 from .ipv4_cidr_block import *
 from .ipv4_gateway import *
 from .ipv6_egress_rule import *
@@ -87,5 +88,6 @@ from .traffic_mirror_filter_ingress_rule import *
 from .traffic_mirror_session import *
 from .vbr_ha import *
 from .vpc_network_acl_attachment import *
+from .vswitch_cidr_reservation import *
 from ._inputs import *
 from . import outputs

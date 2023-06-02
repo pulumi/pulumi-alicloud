@@ -248,20 +248,9 @@ class AccessGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         foo = alicloud.nas.AccessGroup("foo",
-            description="test_AccessG",
-            type="Classic")
-        ```
-
-        Example after v1.92.0
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo = alicloud.nas.AccessGroup("foo",
-            access_group_name="CreateAccessGroup",
+            access_group_name="terraform-example",
             access_group_type="Vpc",
-            description="test_AccessG",
+            description="terraform-example",
             file_system_type="extreme")
         ```
 
@@ -305,20 +294,9 @@ class AccessGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         foo = alicloud.nas.AccessGroup("foo",
-            description="test_AccessG",
-            type="Classic")
-        ```
-
-        Example after v1.92.0
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        foo = alicloud.nas.AccessGroup("foo",
-            access_group_name="CreateAccessGroup",
+            access_group_name="terraform-example",
             access_group_type="Vpc",
-            description="test_AccessG",
+            description="terraform-example",
             file_system_type="extreme")
         ```
 

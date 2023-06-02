@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.alb.outputs;
 
+import com.pulumi.alicloud.alb.outputs.RuleRuleActionCorsConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionFixedResponseConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionForwardGroupConfig;
 import com.pulumi.alicloud.alb.outputs.RuleRuleActionInsertHeaderConfig;
@@ -19,6 +20,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleAction {
+    /**
+     * @return Request forwarding based on CORS. See the following `Block cors_config`.
+     * 
+     */
+    private @Nullable RuleRuleActionCorsConfig corsConfig;
     /**
      * @return The configuration of the fixed response. See the following `Block fixed_response_config`.
      * 
@@ -61,11 +67,21 @@ public final class RuleRuleAction {
     private @Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig;
     /**
      * @return The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+     * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+     * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+     * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
      * 
      */
     private String type;
 
     private RuleRuleAction() {}
+    /**
+     * @return Request forwarding based on CORS. See the following `Block cors_config`.
+     * 
+     */
+    public Optional<RuleRuleActionCorsConfig> corsConfig() {
+        return Optional.ofNullable(this.corsConfig);
+    }
     /**
      * @return The configuration of the fixed response. See the following `Block fixed_response_config`.
      * 
@@ -124,6 +140,9 @@ public final class RuleRuleAction {
     }
     /**
      * @return The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+     * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+     * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+     * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
      * 
      */
     public String type() {
@@ -139,6 +158,7 @@ public final class RuleRuleAction {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable RuleRuleActionCorsConfig corsConfig;
         private @Nullable RuleRuleActionFixedResponseConfig fixedResponseConfig;
         private @Nullable RuleRuleActionForwardGroupConfig forwardGroupConfig;
         private @Nullable RuleRuleActionInsertHeaderConfig insertHeaderConfig;
@@ -151,6 +171,7 @@ public final class RuleRuleAction {
         public Builder() {}
         public Builder(RuleRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.corsConfig = defaults.corsConfig;
     	      this.fixedResponseConfig = defaults.fixedResponseConfig;
     	      this.forwardGroupConfig = defaults.forwardGroupConfig;
     	      this.insertHeaderConfig = defaults.insertHeaderConfig;
@@ -162,6 +183,11 @@ public final class RuleRuleAction {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder corsConfig(@Nullable RuleRuleActionCorsConfig corsConfig) {
+            this.corsConfig = corsConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder fixedResponseConfig(@Nullable RuleRuleActionFixedResponseConfig fixedResponseConfig) {
             this.fixedResponseConfig = fixedResponseConfig;
@@ -209,6 +235,7 @@ public final class RuleRuleAction {
         }
         public RuleRuleAction build() {
             final var o = new RuleRuleAction();
+            o.corsConfig = corsConfig;
             o.fixedResponseConfig = fixedResponseConfig;
             o.forwardGroupConfig = forwardGroupConfig;
             o.insertHeaderConfig = insertHeaderConfig;

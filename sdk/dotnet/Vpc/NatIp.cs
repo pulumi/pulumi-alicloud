@@ -35,24 +35,24 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         VpcName = "example_value",
+    ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
     ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
     ///     {
-    ///         VpcId = alicloud_vpc.Default.Id,
+    ///         VpcId = exampleNetwork.Id,
     ///         CidrBlock = "172.16.0.0/21",
     ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = "example_value",
+    ///         VswitchName = "terraform-example",
     ///     });
     /// 
     ///     var exampleNatGateway = new AliCloud.Vpc.NatGateway("exampleNatGateway", new()
     ///     {
     ///         VpcId = exampleNetwork.Id,
     ///         InternetChargeType = "PayByLcu",
-    ///         NatGatewayName = "example_value",
-    ///         Description = "example_value",
+    ///         NatGatewayName = "terraform-example",
+    ///         Description = "terraform-example",
     ///         NatType = "Enhanced",
     ///         VswitchId = exampleSwitch.Id,
     ///         NetworkType = "intranet",
@@ -62,8 +62,8 @@ namespace Pulumi.AliCloud.Vpc
     ///     {
     ///         NatIpCidrBlock = "192.168.0.0/16",
     ///         NatGatewayId = exampleNatGateway.Id,
-    ///         NatIpCidrDescription = "example_value",
-    ///         NatIpCidrName = "example_value",
+    ///         NatIpCidrDescription = "terraform-example",
+    ///         NatIpCidrName = "terraform-example",
     ///     });
     /// 
     ///     var exampleNatIp = new AliCloud.Vpc.NatIp("exampleNatIp", new()

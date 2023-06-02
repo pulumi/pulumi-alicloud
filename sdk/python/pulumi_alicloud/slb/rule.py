@@ -795,7 +795,7 @@ class Rule(pulumi.CustomResource):
         config = pulumi.Config()
         slb_rule_name = config.get("slbRuleName")
         if slb_rule_name is None:
-            slb_rule_name = "forSlbRule"
+            slb_rule_name = "terraform-example"
         rule_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         rule_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule_zones.zones[0].id,
@@ -836,11 +836,6 @@ class Rule(pulumi.CustomResource):
             bandwidth=5,
             health_check_connect_port=20)
         rule_server_group = alicloud.slb.ServerGroup("ruleServerGroup", load_balancer_id=rule_application_load_balancer.id)
-        rule_server_group_server_attachment = alicloud.slb.ServerGroupServerAttachment("ruleServerGroupServerAttachment",
-            server_group_id=rule_server_group.id,
-            server_id=rule_instance.id,
-            port=80,
-            weight=100)
         rule_rule = alicloud.slb.Rule("ruleRule",
             load_balancer_id=rule_application_load_balancer.id,
             frontend_port=rule_listener.frontend_port,
@@ -930,7 +925,7 @@ class Rule(pulumi.CustomResource):
         config = pulumi.Config()
         slb_rule_name = config.get("slbRuleName")
         if slb_rule_name is None:
-            slb_rule_name = "forSlbRule"
+            slb_rule_name = "terraform-example"
         rule_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         rule_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule_zones.zones[0].id,
@@ -971,11 +966,6 @@ class Rule(pulumi.CustomResource):
             bandwidth=5,
             health_check_connect_port=20)
         rule_server_group = alicloud.slb.ServerGroup("ruleServerGroup", load_balancer_id=rule_application_load_balancer.id)
-        rule_server_group_server_attachment = alicloud.slb.ServerGroupServerAttachment("ruleServerGroupServerAttachment",
-            server_group_id=rule_server_group.id,
-            server_id=rule_instance.id,
-            port=80,
-            weight=100)
         rule_rule = alicloud.slb.Rule("ruleRule",
             load_balancer_id=rule_application_load_balancer.id,
             frontend_port=rule_listener.frontend_port,

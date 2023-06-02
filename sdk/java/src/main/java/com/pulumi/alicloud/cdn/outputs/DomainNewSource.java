@@ -16,7 +16,7 @@ public final class DomainNewSource {
      * @return The address of source. Valid values can be ip or doaminName. Each item&#39;s `content` can not be repeated.
      * 
      */
-    private String content;
+    private @Nullable String content;
     /**
      * @return The port of source. Valid values are `443` and `80`. Default value is `80`.
      * 
@@ -31,9 +31,9 @@ public final class DomainNewSource {
      * @return The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
      * 
      */
-    private String type;
+    private @Nullable String type;
     /**
-     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
      * 
      */
     private @Nullable Integer weight;
@@ -43,8 +43,8 @@ public final class DomainNewSource {
      * @return The address of source. Valid values can be ip or doaminName. Each item&#39;s `content` can not be repeated.
      * 
      */
-    public String content() {
-        return this.content;
+    public Optional<String> content() {
+        return Optional.ofNullable(this.content);
     }
     /**
      * @return The port of source. Valid values are `443` and `80`. Default value is `80`.
@@ -64,11 +64,11 @@ public final class DomainNewSource {
      * @return The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
     /**
-     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
      * 
      */
     public Optional<Integer> weight() {
@@ -84,10 +84,10 @@ public final class DomainNewSource {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String content;
+        private @Nullable String content;
         private @Nullable Integer port;
         private @Nullable Integer priority;
-        private String type;
+        private @Nullable String type;
         private @Nullable Integer weight;
         public Builder() {}
         public Builder(DomainNewSource defaults) {
@@ -100,8 +100,8 @@ public final class DomainNewSource {
         }
 
         @CustomType.Setter
-        public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+        public Builder content(@Nullable String content) {
+            this.content = content;
             return this;
         }
         @CustomType.Setter
@@ -115,8 +115,8 @@ public final class DomainNewSource {
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+        public Builder type(@Nullable String type) {
+            this.type = type;
             return this;
         }
         @CustomType.Setter

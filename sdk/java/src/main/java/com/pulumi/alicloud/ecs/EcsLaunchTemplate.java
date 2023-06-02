@@ -39,11 +39,22 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.EcsLaunchTemplate;
  * import com.pulumi.alicloud.ecs.EcsLaunchTemplateArgs;
- * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
- * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
  * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateSystemDiskArgs;
+ * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -57,67 +68,96 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EcsLaunchTemplate(&#34;default&#34;, EcsLaunchTemplateArgs.builder()        
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate(&#34;defaultEcsLaunchTemplate&#34;, EcsLaunchTemplateArgs.builder()        
+ *             .launchTemplateName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .hostName(&#34;terraform-example&#34;)
+ *             .instanceChargeType(&#34;PrePaid&#34;)
+ *             .instanceName(&#34;terraform-example&#34;)
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .internetMaxBandwidthIn(&#34;5&#34;)
+ *             .internetMaxBandwidthOut(&#34;5&#34;)
+ *             .ioOptimized(&#34;optimized&#34;)
+ *             .keyPairName(&#34;key_pair_name&#34;)
+ *             .ramRoleName(&#34;ram_role_name&#34;)
+ *             .networkType(&#34;vpc&#34;)
+ *             .securityEnhancementStrategy(&#34;Active&#34;)
+ *             .spotPriceLimit(&#34;5&#34;)
+ *             .spotStrategy(&#34;SpotWithPriceLimit&#34;)
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
+ *                 .category(&#34;cloud_ssd&#34;)
+ *                 .description(&#34;Test For Terraform&#34;)
+ *                 .name(&#34;terraform-example&#34;)
+ *                 .size(&#34;40&#34;)
+ *                 .deleteWithInstance(&#34;false&#34;)
+ *                 .build())
+ *             .userData(&#34;xxxxxxx&#34;)
+ *             .vswitchId(defaultSwitch.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .templateTags(Map.ofEntries(
+ *                 Map.entry(&#34;Create&#34;, &#34;Terraform&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
+ *             .networkInterfaces(EcsLaunchTemplateNetworkInterfacesArgs.builder()
+ *                 .name(&#34;eth0&#34;)
+ *                 .description(&#34;hello1&#34;)
+ *                 .primaryIp(&#34;10.0.0.2&#34;)
+ *                 .securityGroupId(defaultSecurityGroup.id())
+ *                 .vswitchId(defaultSwitch.id())
+ *                 .build())
  *             .dataDisks(            
  *                 EcsLaunchTemplateDataDiskArgs.builder()
- *                     .category(&#34;cloud&#34;)
- *                     .deleteWithInstance(&#34;true&#34;)
- *                     .description(&#34;test1&#34;)
- *                     .encrypted(&#34;false&#34;)
  *                     .name(&#34;disk1&#34;)
+ *                     .description(&#34;description&#34;)
+ *                     .deleteWithInstance(&#34;true&#34;)
+ *                     .category(&#34;cloud&#34;)
+ *                     .encrypted(&#34;false&#34;)
  *                     .performanceLevel(&#34;PL0&#34;)
  *                     .size(&#34;20&#34;)
  *                     .build(),
  *                 EcsLaunchTemplateDataDiskArgs.builder()
- *                     .category(&#34;cloud&#34;)
- *                     .deleteWithInstance(&#34;true&#34;)
- *                     .description(&#34;test2&#34;)
- *                     .encrypted(&#34;false&#34;)
  *                     .name(&#34;disk2&#34;)
+ *                     .description(&#34;description2&#34;)
+ *                     .deleteWithInstance(&#34;true&#34;)
+ *                     .category(&#34;cloud&#34;)
+ *                     .encrypted(&#34;false&#34;)
  *                     .performanceLevel(&#34;PL0&#34;)
  *                     .size(&#34;20&#34;)
  *                     .build())
- *             .description(&#34;Test For Terraform&#34;)
- *             .hostName(&#34;host_name&#34;)
- *             .imageId(&#34;m-bp1i3ucxxxxx&#34;)
- *             .instanceChargeType(&#34;PrePaid&#34;)
- *             .instanceName(&#34;instance_name&#34;)
- *             .instanceType(&#34;instance_type&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
- *             .internetMaxBandwidthIn(&#34;5&#34;)
- *             .internetMaxBandwidthOut(&#34;0&#34;)
- *             .ioOptimized(&#34;optimized&#34;)
- *             .keyPairName(&#34;key_pair_name&#34;)
- *             .launchTemplateName(&#34;tf_test_name&#34;)
- *             .networkInterfaces(EcsLaunchTemplateNetworkInterfacesArgs.builder()
- *                 .description(&#34;hello1&#34;)
- *                 .name(&#34;eth0&#34;)
- *                 .primaryIp(&#34;10.0.0.2&#34;)
- *                 .securityGroupId(&#34;sg-asdfnbgxxxxxxx&#34;)
- *                 .vswitchId(&#34;vw-zkdfjaxxxxxx&#34;)
- *                 .build())
- *             .networkType(&#34;vpc&#34;)
- *             .ramRoleName(&#34;ram_role_name&#34;)
- *             .resourceGroupId(&#34;rg-zkdfjaxxxxxx&#34;)
- *             .securityEnhancementStrategy(&#34;Active&#34;)
- *             .securityGroupIds(&#34;sg-zkdfjaxxxxxx&#34;)
- *             .spotPriceLimit(&#34;5&#34;)
- *             .spotStrategy(&#34;SpotWithPriceLimit&#34;)
- *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
- *                 .category(&#34;cloud_ssd&#34;)
- *                 .deleteWithInstance(&#34;false&#34;)
- *                 .description(&#34;Test For Terraform&#34;)
- *                 .name(&#34;tf_test_name&#34;)
- *                 .size(&#34;40&#34;)
- *                 .build())
- *             .templateTags(Map.ofEntries(
- *                 Map.entry(&#34;Create&#34;, &#34;Terraform&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Test&#34;)
- *             ))
- *             .userData(&#34;xxxxxxx&#34;)
- *             .vpcId(&#34;vpc-asdfnbgxxxxxxx&#34;)
- *             .vswitchId(&#34;vw-zwxscaxxxxxx&#34;)
- *             .zoneId(&#34;cn-hangzhou-i&#34;)
  *             .build());
  * 
  *     }

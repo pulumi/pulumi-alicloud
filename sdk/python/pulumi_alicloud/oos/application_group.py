@@ -250,17 +250,17 @@ class ApplicationGroup(pulumi.CustomResource):
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_application = alicloud.oos.Application("defaultApplication",
             resource_group_id=default_resource_groups.groups[0].id,
-            application_name="example_value",
-            description="example_value",
+            application_name="terraform-example",
+            description="terraform-example",
             tags={
                 "Created": "TF",
             })
         default_application_group = alicloud.oos.ApplicationGroup("defaultApplicationGroup",
-            application_group_name=var["name"],
+            application_group_name="terraform-example",
             application_name=default_application.id,
-            deploy_region_id="example_value",
-            description="example_value",
-            import_tag_key="example_value",
+            deploy_region_id="cn-beijing",
+            description="terraform-example",
+            import_tag_key="example_key",
             import_tag_value="example_value")
         ```
 
@@ -306,17 +306,17 @@ class ApplicationGroup(pulumi.CustomResource):
         default_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_application = alicloud.oos.Application("defaultApplication",
             resource_group_id=default_resource_groups.groups[0].id,
-            application_name="example_value",
-            description="example_value",
+            application_name="terraform-example",
+            description="terraform-example",
             tags={
                 "Created": "TF",
             })
         default_application_group = alicloud.oos.ApplicationGroup("defaultApplicationGroup",
-            application_group_name=var["name"],
+            application_group_name="terraform-example",
             application_name=default_application.id,
-            deploy_region_id="example_value",
-            description="example_value",
-            import_tag_key="example_value",
+            deploy_region_id="cn-beijing",
+            description="terraform-example",
+            import_tag_key="example_key",
             import_tag_value="example_value")
         ```
 

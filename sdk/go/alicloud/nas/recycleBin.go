@@ -33,11 +33,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//				FileSystemType: pulumi.StringRef("standard"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
 //				ProtocolType: pulumi.String("NFS"),
 //				StorageType:  pulumi.String("Performance"),
-//				Description:  pulumi.Any(_var.Name),
+//				Description:  pulumi.String("terraform-example"),
 //				EncryptType:  pulumi.Int(1),
+//				ZoneId:       *pulumi.String(exampleZones.Zones[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err

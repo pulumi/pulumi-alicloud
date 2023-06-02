@@ -96,7 +96,7 @@ def get_backend_servers(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    sample_ds = alicloud.slb.get_backend_servers(load_balancer_id=alicloud_slb_load_balancer["sample_slb"]["id"])
+    sample_ds = alicloud.slb.get_backend_servers(load_balancer_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     pulumi.export("firstSlbBackendServerId", sample_ds.backend_servers[0].id)
     ```
 
@@ -136,7 +136,7 @@ def get_backend_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    sample_ds = alicloud.slb.get_backend_servers(load_balancer_id=alicloud_slb_load_balancer["sample_slb"]["id"])
+    sample_ds = alicloud.slb.get_backend_servers(load_balancer_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     pulumi.export("firstSlbBackendServerId", sample_ds.backend_servers[0].id)
     ```
 

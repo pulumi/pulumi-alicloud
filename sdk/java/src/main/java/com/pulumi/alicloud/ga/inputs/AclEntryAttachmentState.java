@@ -31,14 +31,14 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The IP address or CIDR block that you want to add to the network ACL.
+     * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
      * 
      */
     @Import(name="entry")
     private @Nullable Output<String> entry;
 
     /**
-     * @return The IP address or CIDR block that you want to add to the network ACL.
+     * @return The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
      * 
      */
     public Optional<Output<String>> entry() {
@@ -124,7 +124,7 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param entry The IP address or CIDR block that you want to add to the network ACL.
+         * @param entry The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class AclEntryAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param entry The IP address or CIDR block that you want to add to the network ACL.
+         * @param entry The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
          * 
          * @return builder
          * 

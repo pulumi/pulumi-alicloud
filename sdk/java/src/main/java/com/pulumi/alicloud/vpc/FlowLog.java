@@ -10,18 +10,19 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Object;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Flow Log resource.
+ * Provides a Vpc Flow Log resource. While it uses alicloud.vpc.FlowLog to build a vpc flow log resource, it will be active by default.
  * 
- * For information about VPC Flow log and how to use it, see [Flow log overview](https://www.alibabacloud.com/help/doc-detail/127150.htm).
+ * For information about Vpc Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/flow-logs-overview).
  * 
- * &gt; **NOTE:** Available in v1.117.0+
- * 
- * &gt; **NOTE:** While it uses `alicloud.vpc.FlowLog` to build a vpc flow log resource, it will be active by default.
+ * &gt; **NOTE:** Available in v1.117.0+.
  * 
  * ## Example Usage
  * 
@@ -32,11 +33,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourceGroup;
+ * import com.pulumi.alicloud.resourcemanager.ResourceGroupArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
  * import com.pulumi.alicloud.vpc.FlowLog;
  * import com.pulumi.alicloud.vpc.FlowLogArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,24 +56,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terratest_vpc_flow_log&#34;);
- *         final var logStoreName = config.get(&#34;logStoreName&#34;).orElse(&#34;vpc-flow-log-for-vpc&#34;);
- *         final var projectName = config.get(&#34;projectName&#34;).orElse(&#34;vpc-flow-log-for-vpc&#34;);
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-example&#34;);
+ *         var defaultRg = new ResourceGroup(&#34;defaultRg&#34;, ResourceGroupArgs.builder()        
+ *             .resourceGroupName(name)
+ *             .displayName(&#34;tf-testAcc-rg78&#34;)
+ *             .build());
+ * 
+ *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(String.format(&#34;%s1&#34;, name))
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .build());
+ * 
+ *         var modifyRG = new ResourceGroup(&#34;modifyRG&#34;, ResourceGroupArgs.builder()        
+ *             .displayName(&#34;tf-testAcc-rg405&#34;)
+ *             .resourceGroupName(String.format(&#34;%s2&#34;, name))
+ *             .build());
+ * 
+ *         var defaultProject = new Project(&#34;defaultProject&#34;);
+ * 
+ *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *             .project(defaultProject.name())
  *             .build());
  * 
  *         var defaultFlowLog = new FlowLog(&#34;defaultFlowLog&#34;, FlowLogArgs.builder()        
- *             .resourceId(defaultNetwork.id())
- *             .resourceType(&#34;VPC&#34;)
- *             .trafficType(&#34;All&#34;)
- *             .logStoreName(logStoreName)
- *             .projectName(projectName)
  *             .flowLogName(name)
- *             .status(&#34;Active&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(&#34;alicloud_vpc.default&#34;)
- *                 .build());
+ *             .logStoreName(defaultStore.name())
+ *             .description(&#34;tf-testAcc-flowlog&#34;)
+ *             .trafficPaths(&#34;all&#34;)
+ *             .projectName(defaultProject.name())
+ *             .resourceType(&#34;VPC&#34;)
+ *             .resourceGroupId(defaultRg.id())
+ *             .resourceId(defaultVpc.id())
+ *             .aggregationInterval(&#34;1&#34;)
+ *             .trafficType(&#34;All&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -76,15 +97,57 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Flow Log can be imported using the id, e.g.
+ * Vpc Flow Log can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/flowLog:FlowLog example fl-abc123456
+ *  $ pulumi import alicloud:vpc/flowLog:FlowLog example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpc/flowLog:FlowLog")
 public class FlowLog extends com.pulumi.resources.CustomResource {
+    /**
+     * Data aggregation interval.
+     * 
+     */
+    @Export(name="aggregationInterval", type=String.class, parameters={})
+    private Output<String> aggregationInterval;
+
+    /**
+     * @return Data aggregation interval.
+     * 
+     */
+    public Output<String> aggregationInterval() {
+        return this.aggregationInterval;
+    }
+    /**
+     * Business status.
+     * 
+     */
+    @Export(name="businessStatus", type=String.class, parameters={})
+    private Output<String> businessStatus;
+
+    /**
+     * @return Business status.
+     * 
+     */
+    public Output<String> businessStatus() {
+        return this.businessStatus;
+    }
+    /**
+     * Creation time.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return Creation time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * The Description of the VPC Flow Log.
      * 
@@ -98,6 +161,20 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The flow log ID.
+     * 
+     */
+    @Export(name="flowLogId", type=String.class, parameters={})
+    private Output<String> flowLogId;
+
+    /**
+     * @return The flow log ID.
+     * 
+     */
+    public Output<String> flowLogId() {
+        return this.flowLogId;
     }
     /**
      * The Name of the VPC Flow Log.
@@ -142,6 +219,20 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
         return this.projectName;
     }
     /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
      * The ID of the resource.
      * 
      */
@@ -156,42 +247,70 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
         return this.resourceId;
     }
     /**
-     * The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
+     * The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
      * 
      */
     @Export(name="resourceType", type=String.class, parameters={})
     private Output<String> resourceType;
 
     /**
-     * @return The type of the resource to capture traffic. Valid values `NetworkInterface`, `VPC`, and `VSwitch`.
+     * @return The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
      * 
      */
     public Output<String> resourceType() {
         return this.resourceType;
     }
     /**
-     * The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
+     * The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the VPC Flow Log. Valid values `Active` and `Inactive`.
+     * @return The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
+     * The tag of the current instance resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the current instance resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+     * 
+     */
+    @Export(name="trafficPaths", type=List.class, parameters={String.class})
+    private Output<List<String>> trafficPaths;
+
+    /**
+     * @return The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
+     * 
+     */
+    public Output<List<String>> trafficPaths() {
+        return this.trafficPaths;
+    }
+    /**
+     * The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
      * 
      */
     @Export(name="trafficType", type=String.class, parameters={})
     private Output<String> trafficType;
 
     /**
-     * @return The type of traffic collected. Valid values `All`, `Drop` and `Allow`.
+     * @return The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
      * 
      */
     public Output<String> trafficType() {

@@ -47,9 +47,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Activation(&#34;example&#34;, ActivationArgs.builder()        
- *             .description(var_.name())
+ *             .description(&#34;terraform-example&#34;)
  *             .instanceCount(10)
- *             .instanceName(var_.name())
+ *             .instanceName(&#34;terraform-example&#34;)
  *             .ipAddressRange(&#34;0.0.0.0/0&#34;)
  *             .timeToLiveInHours(4)
  *             .build());

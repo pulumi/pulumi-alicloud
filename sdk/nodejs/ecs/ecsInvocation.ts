@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const defaultCommand = new alicloud.ecs.Command("defaultCommand", {
  *     commandContent: "bHMK",
- *     description: "For Terraform Test",
+ *     description: "terraform-example",
  *     type: "RunShellScript",
  *     workingDir: "/root",
  * });

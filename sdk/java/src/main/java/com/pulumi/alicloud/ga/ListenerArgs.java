@@ -156,7 +156,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The proxy protocol of the listener. Default value is `false`. Valid value:
+     * The proxy protocol of the listener. Default value is `false`. Valid values:
      * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
      * `false`: keep client source IP function is not turned on.
      * 
@@ -165,7 +165,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> proxyProtocol;
 
     /**
-     * @return The proxy protocol of the listener. Default value is `false`. Valid value:
+     * @return The proxy protocol of the listener. Default value is `false`. Valid values:
      * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
      * `false`: keep client source IP function is not turned on.
      * 
@@ -431,7 +431,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyProtocol The proxy protocol of the listener. Default value is `false`. Valid value:
+         * @param proxyProtocol The proxy protocol of the listener. Default value is `false`. Valid values:
          * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
          * `false`: keep client source IP function is not turned on.
          * 
@@ -444,7 +444,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyProtocol The proxy protocol of the listener. Default value is `false`. Valid value:
+         * @param proxyProtocol The proxy protocol of the listener. Default value is `false`. Valid values:
          * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
          * `false`: keep client source IP function is not turned on.
          * 

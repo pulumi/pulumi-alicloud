@@ -400,27 +400,6 @@ class Gateway(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.157.0+.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        example = alicloud.mse.Gateway("example",
-            gateway_name="example_value",
-            replica=2,
-            spec="MSE_GTW_2_4_200_c",
-            vswitch_id=default_switches.ids[0],
-            backup_vswitch_id=default_switches.ids[1],
-            vpc_id=default_networks.ids[0])
-        ```
-
         ## Import
 
         Microservice Engine (MSE) Gateway can be imported using the id, e.g.
@@ -454,27 +433,6 @@ class Gateway(pulumi.CustomResource):
         For information about Microservice Engine (MSE) Gateway and how to use it, see [What is Gateway](https://help.aliyun.com/document_detail/347638.html).
 
         > **NOTE:** Available in v1.157.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        example = alicloud.mse.Gateway("example",
-            gateway_name="example_value",
-            replica=2,
-            spec="MSE_GTW_2_4_200_c",
-            vswitch_id=default_switches.ids[0],
-            backup_vswitch_id=default_switches.ids[1],
-            vpc_id=default_networks.ids[0])
-        ```
 
         ## Import
 

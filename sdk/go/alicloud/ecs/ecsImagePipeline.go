@@ -42,19 +42,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -73,16 +62,36 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = ecs.NewEcsImagePipeline(ctx, "defaultEcsImagePipeline", &ecs.EcsImagePipelineArgs{
 //				AddAccounts: pulumi.StringArray{
-//					pulumi.String("example_value"),
+//					*pulumi.String(defaultAccount.Id),
 //				},
 //				BaseImage:               *pulumi.String(defaultImages.Ids[0]),
 //				BaseImageType:           pulumi.String("IMAGE"),
 //				BuildContent:            pulumi.String("RUN yum update -y"),
 //				DeleteInstanceOnFailure: pulumi.Bool(false),
-//				ImageName:               pulumi.String("example_value"),
-//				Description:             pulumi.String("example_value"),
+//				ImageName:               pulumi.String("terraform-example"),
+//				Description:             pulumi.String("terraform-example"),
 //				InstanceType:            *pulumi.String(defaultInstanceTypes.Ids[0]),
 //				ResourceGroupId:         *pulumi.String(defaultResourceGroups.Groups[0].Id),
 //				InternetMaxBandwidthOut: pulumi.Int(20),
@@ -91,7 +100,7 @@ import (
 //					pulumi.String("cn-qingdao"),
 //					pulumi.String("cn-zhangjiakou"),
 //				},
-//				VswitchId: *pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId: defaultSwitch.ID(),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("Acceptance-test"),

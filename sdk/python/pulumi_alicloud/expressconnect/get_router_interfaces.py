@@ -156,7 +156,7 @@ def get_router_interfaces(filters: Optional[Sequence[pulumi.InputType['GetRouter
     import pulumi_alicloud as alicloud
 
     default = alicloud.expressconnect.get_router_interfaces(ids=[alicloud_router_interface["default"]["id"]],
-        name_regex=alicloud_router_interface["default"]["name"])
+        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     pulumi.export("alicloudRouterInterfaceExampleId", default.interfaces[0].id)
     ```
 
@@ -211,7 +211,7 @@ def get_router_interfaces_output(filters: Optional[pulumi.Input[Optional[Sequenc
     import pulumi_alicloud as alicloud
 
     default = alicloud.expressconnect.get_router_interfaces(ids=[alicloud_router_interface["default"]["id"]],
-        name_regex=alicloud_router_interface["default"]["name"])
+        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     pulumi.export("alicloudRouterInterfaceExampleId", default.interfaces[0].id)
     ```
 

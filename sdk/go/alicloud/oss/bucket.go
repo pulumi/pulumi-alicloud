@@ -23,16 +23,28 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-acl", &oss.BucketArgs{
-//				Acl:    pulumi.String("private"),
-//				Bucket: pulumi.String("bucket-170309-acl"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-acl", &oss.BucketArgs{
+//				Acl: pulumi.String("private"),
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-value-%v", result), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -50,15 +62,27 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-website", &oss.BucketArgs{
-//				Bucket: pulumi.String("bucket-170309-website"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-website", &oss.BucketArgs{
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-value-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				Website: &oss.BucketWebsiteArgs{
 //					ErrorDocument: pulumi.String("error.html"),
 //					IndexDocument: pulumi.String("index.html"),
@@ -80,22 +104,36 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-target", &oss.BucketArgs{
-//				Bucket: pulumi.String("bucket-170309-acl"),
-//				Acl:    pulumi.String("public-read"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-target", &oss.BucketArgs{
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-value-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				Acl: pulumi.String("public-read"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-logging", &oss.BucketArgs{
-//				Bucket: pulumi.String("bucket-170309-logging"),
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-logging-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				Logging: &oss.BucketLoggingArgs{
 //					TargetBucket: bucket_target.ID(),
 //					TargetPrefix: pulumi.String("log/"),
@@ -117,16 +155,28 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-referer", &oss.BucketArgs{
-//				Acl:    pulumi.String("private"),
-//				Bucket: pulumi.String("bucket-170309-referer"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-referer", &oss.BucketArgs{
+//				Acl: pulumi.String("private"),
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-value-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				RefererConfig: &oss.BucketRefererConfigArgs{
 //					AllowEmpty: pulumi.Bool(false),
 //					Referers: pulumi.StringArray{
@@ -151,16 +201,111 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-lifecycle", &oss.BucketArgs{
-//				Acl:    pulumi.String("public-read"),
-//				Bucket: pulumi.String("bucket-170309-lifecycle"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-lifecycle1", &oss.BucketArgs{
+//				Acl: pulumi.String("public-read"),
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-lifecycle1-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				LifecycleRules: oss.BucketLifecycleRuleArray{
+//					&oss.BucketLifecycleRuleArgs{
+//						Enabled: pulumi.Bool(true),
+//						Expirations: oss.BucketLifecycleRuleExpirationArray{
+//							&oss.BucketLifecycleRuleExpirationArgs{
+//								Days: pulumi.Int(365),
+//							},
+//						},
+//						Id:     pulumi.String("rule-days"),
+//						Prefix: pulumi.String("path1/"),
+//					},
+//					&oss.BucketLifecycleRuleArgs{
+//						Enabled: pulumi.Bool(true),
+//						Expirations: oss.BucketLifecycleRuleExpirationArray{
+//							&oss.BucketLifecycleRuleExpirationArgs{
+//								Date: pulumi.String("2018-01-12"),
+//							},
+//						},
+//						Id:     pulumi.String("rule-date"),
+//						Prefix: pulumi.String("path2/"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-lifecycle2", &oss.BucketArgs{
+//				Acl: pulumi.String("public-read"),
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-lifecycle2-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				LifecycleRules: oss.BucketLifecycleRuleArray{
+//					&oss.BucketLifecycleRuleArgs{
+//						Enabled: pulumi.Bool(true),
+//						Id:      pulumi.String("rule-days-transition"),
+//						Prefix:  pulumi.String("path3/"),
+//						Transitions: oss.BucketLifecycleRuleTransitionArray{
+//							&oss.BucketLifecycleRuleTransitionArgs{
+//								Days:         pulumi.Int(3),
+//								StorageClass: pulumi.String("IA"),
+//							},
+//							&oss.BucketLifecycleRuleTransitionArgs{
+//								Days:         pulumi.Int(30),
+//								StorageClass: pulumi.String("Archive"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-lifecycle3", &oss.BucketArgs{
+//				Acl: pulumi.String("public-read"),
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-lifecycle3-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				LifecycleRules: oss.BucketLifecycleRuleArray{
+//					&oss.BucketLifecycleRuleArgs{
+//						Enabled: pulumi.Bool(true),
+//						Id:      pulumi.String("rule-days-transition"),
+//						Prefix:  pulumi.String("path3/"),
+//						Transitions: oss.BucketLifecycleRuleTransitionArray{
+//							&oss.BucketLifecycleRuleTransitionArgs{
+//								CreatedBeforeDate: pulumi.String("2022-11-11"),
+//								StorageClass:      pulumi.String("IA"),
+//							},
+//							&oss.BucketLifecycleRuleTransitionArgs{
+//								CreatedBeforeDate: pulumi.String("2021-11-11"),
+//								StorageClass:      pulumi.String("Archive"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-lifecycle4", &oss.BucketArgs{
+//				Acl: pulumi.String("public-read"),
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-lifecycle4-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				LifecycleRules: oss.BucketLifecycleRuleArray{
 //					&oss.BucketLifecycleRuleArgs{
 //						AbortMultipartUploads: oss.BucketLifecycleRuleAbortMultipartUploadArray{
@@ -178,8 +323,10 @@ import (
 //				return err
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-versioning-lifecycle", &oss.BucketArgs{
-//				Acl:    pulumi.String("private"),
-//				Bucket: pulumi.String("bucket-170309-lifecycle"),
+//				Acl: pulumi.String("private"),
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-lifecycle5-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				LifecycleRules: oss.BucketLifecycleRuleArray{
 //					&oss.BucketLifecycleRuleArgs{
 //						Enabled: pulumi.Bool(true),
@@ -227,16 +374,28 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-policy", &oss.BucketArgs{
-//				Acl:    pulumi.String("private"),
-//				Bucket: pulumi.String("bucket-170309-policy"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-policy", &oss.BucketArgs{
+//				Acl: pulumi.String("private"),
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-policy-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				Policy: pulumi.String("  {\"Statement\":\n      [{\"Action\":\n          [\"oss:PutObject\", \"oss:GetObject\", \"oss:DeleteBucket\"],\n        \"Effect\":\"Allow\",\n        \"Resource\":\n            [\"acs:oss:*:*:*\"]}],\n   \"Version\":\"1\"}\n  \n"),
 //			})
 //			if err != nil {
@@ -255,15 +414,27 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-storageclass", &oss.BucketArgs{
-//				Bucket:       pulumi.String("bucket-170309-storageclass"),
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				StorageClass: pulumi.String("IA"),
 //			})
 //			if err != nil {
@@ -282,19 +453,52 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-sserule", &oss.BucketArgs{
-//				Acl:    pulumi.String("private"),
-//				Bucket: pulumi.String("bucket-170309-sserule"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-sserule", &oss.BucketArgs{
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				Acl: pulumi.String("private"),
 //				ServerSideEncryptionRule: &oss.BucketServerSideEncryptionRuleArgs{
-//					KmsMasterKeyId: pulumi.String("your kms key id"),
+//					SseAlgorithm: pulumi.String("AES256"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			kms, err := kms.NewKey(ctx, "kms", &kms.KeyArgs{
+//				Description:         pulumi.String("terraform-example"),
+//				PendingWindowInDays: pulumi.Int(7),
+//				Status:              pulumi.String("Enabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-kms", &oss.BucketArgs{
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-kms-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				Acl: pulumi.String("private"),
+//				ServerSideEncryptionRule: &oss.BucketServerSideEncryptionRuleArgs{
 //					SseAlgorithm:   pulumi.String("KMS"),
+//					KmsMasterKeyId: kms.ID(),
 //				},
 //			})
 //			if err != nil {
@@ -313,16 +517,28 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-tags", &oss.BucketArgs{
-//				Acl:    pulumi.String("private"),
-//				Bucket: pulumi.String("bucket-170309-tags"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-tags", &oss.BucketArgs{
+//				Acl: pulumi.String("private"),
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				Tags: pulumi.AnyMap{
 //					"key1": pulumi.Any("value1"),
 //					"key2": pulumi.Any("value2"),
@@ -344,16 +560,28 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-versioning", &oss.BucketArgs{
-//				Acl:    pulumi.String("private"),
-//				Bucket: pulumi.String("bucket-170309-versioning"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-versioning", &oss.BucketArgs{
+//				Acl: pulumi.String("private"),
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				Versioning: &oss.BucketVersioningArgs{
 //					Status: pulumi.String("Enabled"),
 //				},
@@ -374,15 +602,27 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-redundancytype", &oss.BucketArgs{
-//				Bucket:         pulumi.String("bucket_name"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-redundancytype", &oss.BucketArgs{
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				RedundancyType: pulumi.String("ZRS"),
 //			})
 //			if err != nil {
@@ -401,15 +641,27 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := oss.NewBucket(ctx, "bucket-accelerate", &oss.BucketArgs{
-//				Bucket: pulumi.String("bucket_name"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oss.NewBucket(ctx, "bucket-accelerate", &oss.BucketArgs{
+//				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				TransferAcceleration: &oss.BucketTransferAccelerationArgs{
 //					Enabled: pulumi.Bool(false),
 //				},

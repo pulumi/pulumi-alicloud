@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Serverless App Engine (SAE) Namespace resource.
  * 
- * For information about SAE Namespace and how to use it, see [What is Namespace](https://help.aliyun.com/document_detail/97792.html).
+ * For information about SAE Namespace and how to use it, see [What is Namespace](https://www.alibabacloud.com/help/en/sae/latest/createnamespace).
  * 
  * &gt; **NOTE:** Available in v1.129.0+.
  * 
@@ -67,6 +68,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:sae/namespace:Namespace")
 public class Namespace extends com.pulumi.resources.CustomResource {
     /**
+     * Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+     * 
+     */
+    @Export(name="enableMicroRegistration", type=Boolean.class, parameters={})
+    private Output<Boolean> enableMicroRegistration;
+
+    /**
+     * @return Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
+     * 
+     */
+    public Output<Boolean> enableMicroRegistration() {
+        return this.enableMicroRegistration;
+    }
+    /**
      * The Description of Namespace.
      * 
      */
@@ -81,14 +96,14 @@ public class Namespace extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.namespaceDescription);
     }
     /**
-     * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+     * The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
      * 
      */
     @Export(name="namespaceId", type=String.class, parameters={})
     private Output<String> namespaceId;
 
     /**
-     * @return The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+     * @return The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
      * 
      */
     public Output<String> namespaceId() {
@@ -107,6 +122,20 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      */
     public Output<String> namespaceName() {
         return this.namespaceName;
+    }
+    /**
+     * The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+     * 
+     */
+    @Export(name="namespaceShortId", type=String.class, parameters={})
+    private Output<String> namespaceShortId;
+
+    /**
+     * @return The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
+     * 
+     */
+    public Output<String> namespaceShortId() {
+        return this.namespaceShortId;
     }
 
     /**

@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Privilege type of account.
+        /// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
         /// - Normal: Common privilege.
         /// - Super: High privilege.
         /// 
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<bool>? ResetPermissionFlag { get; set; }
 
         /// <summary>
-        /// Privilege type of account.
+        /// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
         /// - Normal: Common privilege.
         /// - Super: High privilege.
         /// 
@@ -376,7 +376,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Privilege type of account.
+        /// Privilege type of account. The SQLServer engine does not support create high privilege accounts.
         /// - Normal: Common privilege.
         /// - Super: High privilege.
         /// 

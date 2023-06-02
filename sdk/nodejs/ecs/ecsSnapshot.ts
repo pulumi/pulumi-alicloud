@@ -19,15 +19,59 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ecs.EcsSnapshot("default", {
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const exampleInstanceTypes = exampleZones.then(exampleZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: exampleZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {
+ *     description: "New security group",
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleEcsDisk = new alicloud.ecs.EcsDisk("exampleEcsDisk", {
+ *     diskName: "terraform-example",
+ *     zoneId: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
+ *     category: "cloud_efficiency",
+ *     size: 20,
+ * });
+ * const exampleImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
+ * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
+ *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     instanceName: "terraform-example",
+ *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
+ *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [exampleSecurityGroup.id],
+ *     vswitchId: exampleSwitch.id,
+ * });
+ * const exampleEcsDiskAttachment = new alicloud.ecs.EcsDiskAttachment("exampleEcsDiskAttachment", {
+ *     diskId: exampleEcsDisk.id,
+ *     instanceId: exampleInstance.id,
+ * });
+ * const exampleEcsSnapshot = new alicloud.ecs.EcsSnapshot("exampleEcsSnapshot", {
  *     category: "standard",
- *     description: "Test For Terraform",
- *     diskId: "d-gw8csgxxxxxxxxx",
+ *     description: "terraform-example",
+ *     diskId: exampleEcsDisk.id,
  *     retentionDays: 20,
- *     snapshotName: "tf-test",
+ *     snapshotName: "terraform-example",
  *     tags: {
  *         Created: "TF",
- *         For: "Acceptance-test",
+ *         For: "example",
  *     },
  * });
  * ```

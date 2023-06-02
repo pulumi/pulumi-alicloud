@@ -15,7 +15,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Ipv6 Egress Rule resource.
+ * Provides a VPC Ipv6 Egress Rule resource. IPv6 address addition only active exit rule.
  * 
  * For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
  * 
@@ -53,13 +53,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;example_value&#34;)
+ *             .vpcName(name)
  *             .enableIpv6(&#34;true&#34;)
  *             .build());
  * 
  *         var exampleIpv6Gateway = new Ipv6Gateway(&#34;exampleIpv6Gateway&#34;, Ipv6GatewayArgs.builder()        
- *             .ipv6GatewayName(&#34;example_value&#34;)
+ *             .ipv6GatewayName(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
@@ -167,14 +169,14 @@ public class Ipv6EgressRule extends com.pulumi.resources.CustomResource {
         return this.ipv6GatewayId;
     }
     /**
-     * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * The status of the resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {

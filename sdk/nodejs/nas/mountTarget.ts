@@ -24,19 +24,36 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const exampleZones = alicloud.nas.getZones({
+ *     fileSystemType: "standard",
+ * });
  * const exampleFileSystem = new alicloud.nas.FileSystem("exampleFileSystem", {
  *     protocolType: "NFS",
  *     storageType: "Performance",
- *     description: "test file system",
+ *     description: "terraform-example",
+ *     encryptType: 1,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.zoneId),
  * });
  * const exampleAccessGroup = new alicloud.nas.AccessGroup("exampleAccessGroup", {
- *     accessGroupName: "test_name",
- *     accessGroupType: "Classic",
- *     description: "test access group",
+ *     accessGroupName: "terraform-example",
+ *     accessGroupType: "Vpc",
+ *     description: "terraform-example",
+ *     fileSystemType: "standard",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.zoneId),
  * });
  * const exampleMountTarget = new alicloud.nas.MountTarget("exampleMountTarget", {
  *     fileSystemId: exampleFileSystem.id,
  *     accessGroupName: exampleAccessGroup.accessGroupName,
+ *     vswitchId: exampleSwitch.id,
  * });
  * ```
  *

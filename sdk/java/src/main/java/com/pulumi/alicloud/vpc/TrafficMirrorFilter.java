@@ -6,17 +6,22 @@ package com.pulumi.alicloud.vpc;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.vpc.TrafficMirrorFilterArgs;
 import com.pulumi.alicloud.vpc.inputs.TrafficMirrorFilterState;
+import com.pulumi.alicloud.vpc.outputs.TrafficMirrorFilterEgressRule;
+import com.pulumi.alicloud.vpc.outputs.TrafficMirrorFilterIngressRule;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Object;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Traffic Mirror Filter resource.
+ * Provides a VPC Traffic Mirror Filter resource. Traffic mirror filter criteria.
  * 
  * For information about VPC Traffic Mirror Filter and how to use it, see [What is Traffic Mirror Filter](https://www.alibabacloud.com/help/doc-detail/207513.htm).
  * 
@@ -31,8 +36,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourceGroup;
+ * import com.pulumi.alicloud.resourcemanager.ResourceGroupArgs;
  * import com.pulumi.alicloud.vpc.TrafficMirrorFilter;
  * import com.pulumi.alicloud.vpc.TrafficMirrorFilterArgs;
+ * import com.pulumi.alicloud.vpc.inputs.TrafficMirrorFilterEgressRuleArgs;
+ * import com.pulumi.alicloud.vpc.inputs.TrafficMirrorFilterIngressRuleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,8 +55,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TrafficMirrorFilter(&#34;example&#34;, TrafficMirrorFilterArgs.builder()        
- *             .trafficMirrorFilterName(&#34;example_value&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var default3iXhoa = new ResourceGroup(&#34;default3iXhoa&#34;, ResourceGroupArgs.builder()        
+ *             .displayName(&#34;testname03&#34;)
+ *             .resourceGroupName(name)
+ *             .build());
+ * 
+ *         var defaultdNz2qk = new ResourceGroup(&#34;defaultdNz2qk&#34;, ResourceGroupArgs.builder()        
+ *             .displayName(&#34;testname04&#34;)
+ *             .resourceGroupName(String.format(&#34;%s1&#34;, name))
+ *             .build());
+ * 
+ *         var default_ = new TrafficMirrorFilter(&#34;default&#34;, TrafficMirrorFilterArgs.builder()        
+ *             .trafficMirrorFilterDescription(&#34;test&#34;)
+ *             .trafficMirrorFilterName(name)
+ *             .resourceGroupId(default3iXhoa.id())
+ *             .egressRules(TrafficMirrorFilterEgressRuleArgs.builder()
+ *                 .priority(1)
+ *                 .protocol(&#34;TCP&#34;)
+ *                 .action(&#34;accept&#34;)
+ *                 .destinationCidrBlock(&#34;32.0.0.0/4&#34;)
+ *                 .destinationPortRange(&#34;80/80&#34;)
+ *                 .sourceCidrBlock(&#34;16.0.0.0/4&#34;)
+ *                 .sourcePortRange(&#34;80/80&#34;)
+ *                 .build())
+ *             .ingressRules(TrafficMirrorFilterIngressRuleArgs.builder()
+ *                 .priority(1)
+ *                 .protocol(&#34;TCP&#34;)
+ *                 .action(&#34;accept&#34;)
+ *                 .destinationCidrBlock(&#34;10.64.0.0/10&#34;)
+ *                 .destinationPortRange(&#34;80/80&#34;)
+ *                 .sourceCidrBlock(&#34;10.0.0.0/8&#34;)
+ *                 .sourcePortRange(&#34;80/80&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -66,56 +107,116 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/trafficMirrorFilter:TrafficMirrorFilter")
 public class TrafficMirrorFilter extends com.pulumi.resources.CustomResource {
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
      * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+     * Information about the outbound rule. See the following `Block EgressRules`.
+     * 
+     */
+    @Export(name="egressRules", type=List.class, parameters={TrafficMirrorFilterEgressRule.class})
+    private Output<List<TrafficMirrorFilterEgressRule>> egressRules;
+
+    /**
+     * @return Information about the outbound rule. See the following `Block EgressRules`.
+     * 
+     */
+    public Output<List<TrafficMirrorFilterEgressRule>> egressRules() {
+        return this.egressRules;
+    }
+    /**
+     * Inward direction rule information. See the following `Block IngressRules`.
+     * 
+     */
+    @Export(name="ingressRules", type=List.class, parameters={TrafficMirrorFilterIngressRule.class})
+    private Output<List<TrafficMirrorFilterIngressRule>> ingressRules;
+
+    /**
+     * @return Inward direction rule information. See the following `Block IngressRules`.
+     * 
+     */
+    public Output<List<TrafficMirrorFilterIngressRule>> ingressRules() {
+        return this.ingressRules;
+    }
+    /**
+     * The ID of the resource group to which the VPC belongs.
+     * 
+     */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which the VPC belongs.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The status of the resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The tags of this resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tags of this resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The description of the TrafficMirrorFilter.
      * 
      */
     @Export(name="trafficMirrorFilterDescription", type=String.class, parameters={})
     private Output</* @Nullable */ String> trafficMirrorFilterDescription;
 
     /**
-     * @return The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+     * @return The description of the TrafficMirrorFilter.
      * 
      */
     public Output<Optional<String>> trafficMirrorFilterDescription() {
         return Codegen.optional(this.trafficMirrorFilterDescription);
     }
     /**
-     * The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * The name of the TrafficMirrorFilter.
      * 
      */
     @Export(name="trafficMirrorFilterName", type=String.class, parameters={})
     private Output</* @Nullable */ String> trafficMirrorFilterName;
 
     /**
-     * @return The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * @return The name of the TrafficMirrorFilter.
      * 
      */
     public Output<Optional<String>> trafficMirrorFilterName() {

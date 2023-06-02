@@ -117,20 +117,41 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
 class ApplicationScalingRuleScalingRuleMetricMetricArgs:
     def __init__(__self__, *,
                  metric_target_average_utilization: Optional[pulumi.Input[int]] = None,
-                 metric_type: Optional[pulumi.Input[str]] = None):
+                 metric_type: Optional[pulumi.Input[str]] = None,
+                 slb_id: Optional[pulumi.Input[str]] = None,
+                 slb_log_store: Optional[pulumi.Input[str]] = None,
+                 slb_project: Optional[pulumi.Input[str]] = None,
+                 vport: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] metric_target_average_utilization: According to different `metric_type`, set the target value of the corresponding monitoring index.
-        :param pulumi.Input[str] metric_type: Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+        :param pulumi.Input[str] metric_type: Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
                - CPU: CPU usage.
                - MEMORY: MEMORY usage.
-               - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
-               - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
-               - SLB_RT: the average response time of public network SLB within 15 seconds.
+               - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+               - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+               - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+               - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+               - SLB_RT: The average response time of public network SLB within 15 seconds.
+               - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+               - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+               **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+        :param pulumi.Input[str] slb_id: SLB ID.
+        :param pulumi.Input[str] slb_log_store: The log store of the Log Service.
+        :param pulumi.Input[str] slb_project: The project of the Log Service.
+        :param pulumi.Input[str] vport: SLB listening port.
         """
         if metric_target_average_utilization is not None:
             pulumi.set(__self__, "metric_target_average_utilization", metric_target_average_utilization)
         if metric_type is not None:
             pulumi.set(__self__, "metric_type", metric_type)
+        if slb_id is not None:
+            pulumi.set(__self__, "slb_id", slb_id)
+        if slb_log_store is not None:
+            pulumi.set(__self__, "slb_log_store", slb_log_store)
+        if slb_project is not None:
+            pulumi.set(__self__, "slb_project", slb_project)
+        if vport is not None:
+            pulumi.set(__self__, "vport", vport)
 
     @property
     @pulumi.getter(name="metricTargetAverageUtilization")
@@ -148,18 +169,71 @@ class ApplicationScalingRuleScalingRuleMetricMetricArgs:
     @pulumi.getter(name="metricType")
     def metric_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+        Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
         - CPU: CPU usage.
         - MEMORY: MEMORY usage.
-        - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
-        - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
-        - SLB_RT: the average response time of public network SLB within 15 seconds.
+        - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+        - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+        - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+        - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+        - SLB_RT: The average response time of public network SLB within 15 seconds.
+        - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+        - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+        **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
         """
         return pulumi.get(self, "metric_type")
 
     @metric_type.setter
     def metric_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metric_type", value)
+
+    @property
+    @pulumi.getter(name="slbId")
+    def slb_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        SLB ID.
+        """
+        return pulumi.get(self, "slb_id")
+
+    @slb_id.setter
+    def slb_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "slb_id", value)
+
+    @property
+    @pulumi.getter(name="slbLogStore")
+    def slb_log_store(self) -> Optional[pulumi.Input[str]]:
+        """
+        The log store of the Log Service.
+        """
+        return pulumi.get(self, "slb_log_store")
+
+    @slb_log_store.setter
+    def slb_log_store(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "slb_log_store", value)
+
+    @property
+    @pulumi.getter(name="slbProject")
+    def slb_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project of the Log Service.
+        """
+        return pulumi.get(self, "slb_project")
+
+    @slb_project.setter
+    def slb_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "slb_project", value)
+
+    @property
+    @pulumi.getter
+    def vport(self) -> Optional[pulumi.Input[str]]:
+        """
+        SLB listening port.
+        """
+        return pulumi.get(self, "vport")
+
+    @vport.setter
+    def vport(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vport", value)
 
 
 @pulumi.input_type

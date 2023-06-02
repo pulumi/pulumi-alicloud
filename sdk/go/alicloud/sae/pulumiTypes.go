@@ -232,13 +232,26 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ScaleUpRules() Applica
 type ApplicationScalingRuleScalingRuleMetricMetric struct {
 	// According to different `metricType`, set the target value of the corresponding monitoring index.
 	MetricTargetAverageUtilization *int `pulumi:"metricTargetAverageUtilization"`
-	// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+	// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
 	// - CPU: CPU usage.
 	// - MEMORY: MEMORY usage.
-	// - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
-	// - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
-	// - SLB_RT: the average response time of public network SLB within 15 seconds.
+	// - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+	// - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+	// - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+	// - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+	// - SLB_RT: The average response time of public network SLB within 15 seconds.
+	// - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+	// - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+	//   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
 	MetricType *string `pulumi:"metricType"`
+	// SLB ID.
+	SlbId *string `pulumi:"slbId"`
+	// The log store of the Log Service.
+	SlbLogStore *string `pulumi:"slbLogStore"`
+	// The project of the Log Service.
+	SlbProject *string `pulumi:"slbProject"`
+	// SLB listening port.
+	Vport *string `pulumi:"vport"`
 }
 
 // ApplicationScalingRuleScalingRuleMetricMetricInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricMetricArgs and ApplicationScalingRuleScalingRuleMetricMetricOutput values.
@@ -255,13 +268,26 @@ type ApplicationScalingRuleScalingRuleMetricMetricInput interface {
 type ApplicationScalingRuleScalingRuleMetricMetricArgs struct {
 	// According to different `metricType`, set the target value of the corresponding monitoring index.
 	MetricTargetAverageUtilization pulumi.IntPtrInput `pulumi:"metricTargetAverageUtilization"`
-	// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+	// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
 	// - CPU: CPU usage.
 	// - MEMORY: MEMORY usage.
-	// - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
-	// - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
-	// - SLB_RT: the average response time of public network SLB within 15 seconds.
+	// - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+	// - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+	// - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+	// - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+	// - SLB_RT: The average response time of public network SLB within 15 seconds.
+	// - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+	// - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+	//   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
 	MetricType pulumi.StringPtrInput `pulumi:"metricType"`
+	// SLB ID.
+	SlbId pulumi.StringPtrInput `pulumi:"slbId"`
+	// The log store of the Log Service.
+	SlbLogStore pulumi.StringPtrInput `pulumi:"slbLogStore"`
+	// The project of the Log Service.
+	SlbProject pulumi.StringPtrInput `pulumi:"slbProject"`
+	// SLB listening port.
+	Vport pulumi.StringPtrInput `pulumi:"vport"`
 }
 
 func (ApplicationScalingRuleScalingRuleMetricMetricArgs) ElementType() reflect.Type {
@@ -320,14 +346,39 @@ func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) MetricTargetAverage
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *int { return v.MetricTargetAverageUtilization }).(pulumi.IntPtrOutput)
 }
 
-// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
-// - CPU: CPU usage.
-// - MEMORY: MEMORY usage.
-// - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
-// - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
-// - SLB_RT: the average response time of public network SLB within 15 seconds.
+// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
+//   - CPU: CPU usage.
+//   - MEMORY: MEMORY usage.
+//   - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+//   - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+//   - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+//   - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+//   - SLB_RT: The average response time of public network SLB within 15 seconds.
+//   - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+//   - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+//     **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
 func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) MetricType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *string { return v.MetricType }).(pulumi.StringPtrOutput)
+}
+
+// SLB ID.
+func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) SlbId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *string { return v.SlbId }).(pulumi.StringPtrOutput)
+}
+
+// The log store of the Log Service.
+func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) SlbLogStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *string { return v.SlbLogStore }).(pulumi.StringPtrOutput)
+}
+
+// The project of the Log Service.
+func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) SlbProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *string { return v.SlbProject }).(pulumi.StringPtrOutput)
+}
+
+// SLB listening port.
+func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) Vport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *string { return v.Vport }).(pulumi.StringPtrOutput)
 }
 
 type ApplicationScalingRuleScalingRuleMetricMetricArrayOutput struct{ *pulumi.OutputState }

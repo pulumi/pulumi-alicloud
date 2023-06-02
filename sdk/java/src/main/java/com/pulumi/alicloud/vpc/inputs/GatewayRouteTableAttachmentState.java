@@ -17,6 +17,21 @@ public final class GatewayRouteTableAttachmentState extends com.pulumi.resources
     public static final GatewayRouteTableAttachmentState Empty = new GatewayRouteTableAttachmentState();
 
     /**
+     * The creation time of the resource.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * Specifies whether to only precheck this request. Default value: `false`.
      * 
      */
@@ -63,6 +78,12 @@ public final class GatewayRouteTableAttachmentState extends com.pulumi.resources
 
     /**
      * The status of the IPv4 Gateway instance. Value:
+     * - **Creating**: The function is being created.
+     * - **Created**: Created and available.
+     * - **Modifying**: is being modified.
+     * - **Deleting**: Deleting.
+     * - **Deleted**: Deleted.
+     * - **Activating**: enabled.
      * 
      */
     @Import(name="status")
@@ -70,6 +91,12 @@ public final class GatewayRouteTableAttachmentState extends com.pulumi.resources
 
     /**
      * @return The status of the IPv4 Gateway instance. Value:
+     * - **Creating**: The function is being created.
+     * - **Created**: Created and available.
+     * - **Modifying**: is being modified.
+     * - **Deleting**: Deleting.
+     * - **Deleted**: Deleted.
+     * - **Activating**: enabled.
      * 
      */
     public Optional<Output<String>> status() {
@@ -79,6 +106,7 @@ public final class GatewayRouteTableAttachmentState extends com.pulumi.resources
     private GatewayRouteTableAttachmentState() {}
 
     private GatewayRouteTableAttachmentState(GatewayRouteTableAttachmentState $) {
+        this.createTime = $.createTime;
         this.dryRun = $.dryRun;
         this.ipv4GatewayId = $.ipv4GatewayId;
         this.routeTableId = $.routeTableId;
@@ -101,6 +129,27 @@ public final class GatewayRouteTableAttachmentState extends com.pulumi.resources
 
         public Builder(GatewayRouteTableAttachmentState defaults) {
             $ = new GatewayRouteTableAttachmentState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -168,6 +217,12 @@ public final class GatewayRouteTableAttachmentState extends com.pulumi.resources
 
         /**
          * @param status The status of the IPv4 Gateway instance. Value:
+         * - **Creating**: The function is being created.
+         * - **Created**: Created and available.
+         * - **Modifying**: is being modified.
+         * - **Deleting**: Deleting.
+         * - **Deleted**: Deleted.
+         * - **Activating**: enabled.
          * 
          * @return builder
          * 
@@ -179,6 +234,12 @@ public final class GatewayRouteTableAttachmentState extends com.pulumi.resources
 
         /**
          * @param status The status of the IPv4 Gateway instance. Value:
+         * - **Creating**: The function is being created.
+         * - **Created**: Created and available.
+         * - **Modifying**: is being modified.
+         * - **Deleting**: Deleting.
+         * - **Deleted**: Deleted.
+         * - **Activating**: enabled.
          * 
          * @return builder
          * 

@@ -21,31 +21,33 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.getZones({
+ * const fooZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/12",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
- * }));
- * const vswitchId = defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]);
- * const defaultGateway = new alicloud.vpn.Gateway("defaultGateway", {
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/21",
+ *     vpcId: fooNetwork.id,
+ *     zoneId: fooZones.then(fooZones => fooZones.zones?.[0]?.id),
+ * });
+ * const fooGateway = new alicloud.vpn.Gateway("fooGateway", {
+ *     vpcId: fooNetwork.id,
  *     bandwidth: 10,
  *     enableSsl: true,
- *     enableIpsec: true,
- *     sslConnections: 5,
  *     instanceChargeType: "PrePaid",
- *     vswitchId: vswitchId,
+ *     description: "terraform-example",
+ *     vswitchId: fooSwitch.id,
  * });
- * const example = new alicloud.vpn.IpsecServer("example", {
- *     clientIpPool: "example_value",
- *     ipsecServerName: "example_value",
- *     localSubnet: "example_value",
- *     vpnGatewayId: defaultGateway.id,
+ * const fooIpsecServer = new alicloud.vpn.IpsecServer("fooIpsecServer", {
+ *     clientIpPool: "10.0.0.0/24",
+ *     ipsecServerName: "terraform-example",
+ *     localSubnet: "192.168.0.0/24",
+ *     vpnGatewayId: fooGateway.id,
+ *     pskEnabled: true,
  * });
  * ```
  *

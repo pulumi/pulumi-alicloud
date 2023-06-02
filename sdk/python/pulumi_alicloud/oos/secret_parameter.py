@@ -302,6 +302,32 @@ class SecretParameter(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.147.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        example_key = alicloud.kms.Key("exampleKey",
+            description="terraform-example",
+            status="Enabled",
+            pending_window_in_days=7)
+        example_secret_parameter = alicloud.oos.SecretParameter("exampleSecretParameter",
+            secret_parameter_name="terraform-example",
+            value="terraform-example",
+            type="Secret",
+            key_id=example_key.id,
+            description="terraform-example",
+            tags={
+                "Created": "TF",
+                "For": "OosSecretParameter",
+            },
+            resource_group_id=example_resource_groups.groups[0].id)
+        ```
+
         ## Import
 
         OOS Secret Parameter can be imported using the id, e.g.
@@ -333,6 +359,32 @@ class SecretParameter(pulumi.CustomResource):
         For information about OOS Secret Parameter and how to use it, see [What is Secret Parameter](https://www.alibabacloud.com/help/en/doc-detail/183418.html).
 
         > **NOTE:** Available in v1.147.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        example_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        example_key = alicloud.kms.Key("exampleKey",
+            description="terraform-example",
+            status="Enabled",
+            pending_window_in_days=7)
+        example_secret_parameter = alicloud.oos.SecretParameter("exampleSecretParameter",
+            secret_parameter_name="terraform-example",
+            value="terraform-example",
+            type="Secret",
+            key_id=example_key.id,
+            description="terraform-example",
+            tags={
+                "Created": "TF",
+                "For": "OosSecretParameter",
+            },
+            resource_group_id=example_resource_groups.groups[0].id)
+        ```
 
         ## Import
 

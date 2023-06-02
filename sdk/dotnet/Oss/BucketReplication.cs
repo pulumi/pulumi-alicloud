@@ -25,41 +25,88 @@ namespace Pulumi.AliCloud.Oss
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var bucketSrc = new AliCloud.Oss.Bucket("bucketSrc", new()
+    ///     {
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-src-{result}"),
+    ///     });
+    /// 
+    ///     var bucketDest = new AliCloud.Oss.Bucket("bucketDest", new()
+    ///     {
+    ///         BucketName = @default.Result.Apply(result =&gt; $"example-dest-{result}"),
+    ///     });
+    /// 
+    ///     var role = new AliCloud.Ram.Role("role", new()
+    ///     {
+    ///         Document = @"		{
+    /// 		  ""Statement"": [
+    /// 			{
+    /// 			  ""Action"": ""sts:AssumeRole"",
+    /// 			  ""Effect"": ""Allow"",
+    /// 			  ""Principal"": {
+    /// 				""Service"": [
+    /// 				  ""oss.aliyuncs.com""
+    /// 				]
+    /// 			  }
+    /// 			}
+    /// 		  ],
+    /// 		  ""Version"": ""1""
+    /// 		}
+    /// ",
+    ///         Description = "this is a test",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var policy = new AliCloud.Ram.Policy("policy", new()
+    ///     {
+    ///         PolicyName = @default.Result.Apply(result =&gt; $"example-policy-{result}"),
+    ///         PolicyDocument = @"		{
+    /// 		  ""Statement"": [
+    /// 			{
+    /// 			  ""Action"": [
+    /// 				""*""
+    /// 			  ],
+    /// 			  ""Effect"": ""Allow"",
+    /// 			  ""Resource"": [
+    /// 				""*""
+    /// 			  ]
+    /// 			}
+    /// 		  ],
+    /// 			""Version"": ""1""
+    /// 		}
+    /// ",
+    ///         Description = "this is a policy test",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var attach = new AliCloud.Ram.RolePolicyAttachment("attach", new()
+    ///     {
+    ///         PolicyName = policy.Name,
+    ///         PolicyType = policy.Type,
+    ///         RoleName = role.Name,
+    ///     });
+    /// 
+    ///     var key = new AliCloud.Kms.Key("key", new()
+    ///     {
+    ///         Description = "Hello KMS",
+    ///         PendingWindowInDays = 7,
+    ///         Status = "Enabled",
+    ///     });
+    /// 
     ///     var cross_region_replication = new AliCloud.Oss.BucketReplication("cross-region-replication", new()
     ///     {
-    ///         Action = "ALL",
-    ///         Bucket = "bucket-in-hangzhou",
-    ///         Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
-    ///         {
-    ///             Bucket = "bucket-in-beijing",
-    ///             Location = "oss-cn-beijing",
-    ///         },
-    ///     });
-    /// 
-    ///     var same_region_replication = new AliCloud.Oss.BucketReplication("same-region-replication", new()
-    ///     {
-    ///         Action = "ALL",
-    ///         Bucket = "bucket-in-hangzhou",
-    ///         Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
-    ///         {
-    ///             Bucket = "bucket-in-hangzhou-1",
-    ///             Location = "oss-cn-hangzhou",
-    ///         },
-    ///     });
-    /// 
-    ///     var replication_with_prefix = new AliCloud.Oss.BucketReplication("replication-with-prefix", new()
-    ///     {
-    ///         Action = "ALL",
-    ///         Bucket = "bucket-1",
-    ///         Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
-    ///         {
-    ///             Bucket = "bucket-2",
-    ///             Location = "oss-cn-hangzhou",
-    ///         },
-    ///         HistoricalObjectReplication = "disabled",
+    ///         Bucket = bucketSrc.Id,
+    ///         Action = "PUT,DELETE",
+    ///         HistoricalObjectReplication = "enabled",
     ///         PrefixSet = new AliCloud.Oss.Inputs.BucketReplicationPrefixSetArgs
     ///         {
     ///             Prefixes = new[]
@@ -68,34 +115,16 @@ namespace Pulumi.AliCloud.Oss
     ///                 "prefix2/",
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     var replication_with_specific_action = new AliCloud.Oss.BucketReplication("replication-with-specific-action", new()
-    ///     {
-    ///         Action = "PUT",
-    ///         Bucket = "bucket-1",
     ///         Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
     ///         {
-    ///             Bucket = "bucket-2",
-    ///             Location = "oss-cn-hangzhou",
+    ///             Bucket = bucketDest.Id,
+    ///             Location = bucketDest.Location,
     ///         },
-    ///         HistoricalObjectReplication = "disabled",
-    ///     });
-    /// 
-    ///     var replication_with_kms_encryption = new AliCloud.Oss.BucketReplication("replication-with-kms-encryption", new()
-    ///     {
-    ///         Action = "ALL",
-    ///         Bucket = "bucket-1",
-    ///         Destination = new AliCloud.Oss.Inputs.BucketReplicationDestinationArgs
-    ///         {
-    ///             Bucket = "bucket-2",
-    ///             Location = "oss-cn-hangzhou",
-    ///         },
+    ///         SyncRole = role.Name,
     ///         EncryptionConfiguration = new AliCloud.Oss.Inputs.BucketReplicationEncryptionConfigurationArgs
     ///         {
-    ///             ReplicaKmsKeyId = "&lt;your kms key id&gt;",
+    ///             ReplicaKmsKeyId = key.Id,
     ///         },
-    ///         HistoricalObjectReplication = "disabled",
     ///         SourceSelectionCriteria = new AliCloud.Oss.Inputs.BucketReplicationSourceSelectionCriteriaArgs
     ///         {
     ///             SseKmsEncryptedObjects = new AliCloud.Oss.Inputs.BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs
@@ -103,7 +132,6 @@ namespace Pulumi.AliCloud.Oss
     ///                 Status = "Enabled",
     ///             },
     ///         },
-    ///         SyncRole = "&lt;your ram role&gt;",
     ///     });
     /// 
     /// });

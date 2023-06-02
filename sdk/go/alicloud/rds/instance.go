@@ -123,13 +123,21 @@ type Instance struct {
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	//
 	// > **NOTE:**
 	// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
-	// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
+	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
+	// - MariaDB: [ 10.3 ]
+	// - Serverless
+	// > - MySQL: [ 5.7、8.0 ]
+	// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+	// > - PostgreSQL: [ 14.0 ]
+	// > - MariaDB does not support creating serverless instances.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrOutput `pulumi:"forceRestart"`
@@ -143,7 +151,7 @@ type Instance struct {
 	//
 	// > **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
 	HaConfig pulumi.StringOutput `pulumi:"haConfig"`
-	// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
+	// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
 	InstanceChargeType pulumi.StringPtrOutput `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
@@ -155,7 +163,12 @@ type Instance struct {
 	//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage pulumi.IntOutput `pulumi:"instanceStorage"`
-	// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// - To create a serverless instance, please pass the following values:
+	// - MySQL basic: mysql.n2.serverless.1c
+	// - MySQL high availability: mysql.n2.serverless.2c
+	// - SQLServer high availability: mssql.mem2.serverless.s2
+	// - PostgreSQL basic: pg.n2.serverless.1c
 	//
 	// > **NOTE:**
 	// - When `storage_auto_scale="Enable"`, do not perform `instanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
@@ -216,7 +229,7 @@ type Instance struct {
 	ServerCert pulumi.StringOutput `pulumi:"serverCert"`
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey pulumi.StringOutput `pulumi:"serverKey"`
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
 	ServerlessConfigs InstanceServerlessConfigArrayOutput `pulumi:"serverlessConfigs"`
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue pulumi.IntPtrOutput `pulumi:"sqlCollectorConfigValue"`
@@ -452,13 +465,21 @@ type instanceState struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	//
 	// > **NOTE:**
 	// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
-	// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
 	Engine *string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
+	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
+	// - MariaDB: [ 10.3 ]
+	// - Serverless
+	// > - MySQL: [ 5.7、8.0 ]
+	// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+	// > - PostgreSQL: [ 14.0 ]
+	// > - MariaDB does not support creating serverless instances.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart *bool `pulumi:"forceRestart"`
@@ -472,7 +493,7 @@ type instanceState struct {
 	//
 	// > **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
 	HaConfig *string `pulumi:"haConfig"`
-	// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
+	// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName *string `pulumi:"instanceName"`
@@ -484,7 +505,12 @@ type instanceState struct {
 	//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage *int `pulumi:"instanceStorage"`
-	// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// - To create a serverless instance, please pass the following values:
+	// - MySQL basic: mysql.n2.serverless.1c
+	// - MySQL high availability: mysql.n2.serverless.2c
+	// - SQLServer high availability: mssql.mem2.serverless.s2
+	// - PostgreSQL basic: pg.n2.serverless.1c
 	//
 	// > **NOTE:**
 	// - When `storage_auto_scale="Enable"`, do not perform `instanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
@@ -545,7 +571,7 @@ type instanceState struct {
 	ServerCert *string `pulumi:"serverCert"`
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey *string `pulumi:"serverKey"`
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
 	ServerlessConfigs []InstanceServerlessConfig `pulumi:"serverlessConfigs"`
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue *int `pulumi:"sqlCollectorConfigValue"`
@@ -741,13 +767,21 @@ type InstanceState struct {
 	EffectiveTime pulumi.StringPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	//
 	// > **NOTE:**
 	// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
-	// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
 	Engine pulumi.StringPtrInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
+	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
+	// - MariaDB: [ 10.3 ]
+	// - Serverless
+	// > - MySQL: [ 5.7、8.0 ]
+	// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+	// > - PostgreSQL: [ 14.0 ]
+	// > - MariaDB does not support creating serverless instances.
 	EngineVersion pulumi.StringPtrInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrInput
@@ -761,7 +795,7 @@ type InstanceState struct {
 	//
 	// > **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
 	HaConfig pulumi.StringPtrInput
-	// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
+	// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
 	InstanceChargeType pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName pulumi.StringPtrInput
@@ -773,7 +807,12 @@ type InstanceState struct {
 	//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage pulumi.IntPtrInput
-	// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// - To create a serverless instance, please pass the following values:
+	// - MySQL basic: mysql.n2.serverless.1c
+	// - MySQL high availability: mysql.n2.serverless.2c
+	// - SQLServer high availability: mssql.mem2.serverless.s2
+	// - PostgreSQL basic: pg.n2.serverless.1c
 	//
 	// > **NOTE:**
 	// - When `storage_auto_scale="Enable"`, do not perform `instanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
@@ -834,7 +873,7 @@ type InstanceState struct {
 	ServerCert pulumi.StringPtrInput
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey pulumi.StringPtrInput
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
 	ServerlessConfigs InstanceServerlessConfigArrayInput
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue pulumi.IntPtrInput
@@ -1028,13 +1067,21 @@ type instanceArgs struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey *string `pulumi:"encryptionKey"`
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	//
 	// > **NOTE:**
 	// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
-	// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
 	Engine string `pulumi:"engine"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
+	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
+	// - MariaDB: [ 10.3 ]
+	// - Serverless
+	// > - MySQL: [ 5.7、8.0 ]
+	// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+	// > - PostgreSQL: [ 14.0 ]
+	// > - MariaDB does not support creating serverless instances.
 	EngineVersion string `pulumi:"engineVersion"`
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart *bool `pulumi:"forceRestart"`
@@ -1048,7 +1095,7 @@ type instanceArgs struct {
 	//
 	// > **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
 	HaConfig *string `pulumi:"haConfig"`
-	// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
+	// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName *string `pulumi:"instanceName"`
@@ -1060,7 +1107,12 @@ type instanceArgs struct {
 	//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage int `pulumi:"instanceStorage"`
-	// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// - To create a serverless instance, please pass the following values:
+	// - MySQL basic: mysql.n2.serverless.1c
+	// - MySQL high availability: mysql.n2.serverless.2c
+	// - SQLServer high availability: mssql.mem2.serverless.s2
+	// - PostgreSQL basic: pg.n2.serverless.1c
 	//
 	// > **NOTE:**
 	// - When `storage_auto_scale="Enable"`, do not perform `instanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
@@ -1121,7 +1173,7 @@ type instanceArgs struct {
 	ServerCert *string `pulumi:"serverCert"`
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey *string `pulumi:"serverKey"`
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
 	ServerlessConfigs []InstanceServerlessConfig `pulumi:"serverlessConfigs"`
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue *int `pulumi:"sqlCollectorConfigValue"`
@@ -1308,13 +1360,21 @@ type InstanceArgs struct {
 	EffectiveTime pulumi.StringPtrInput
 	// The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
 	EncryptionKey pulumi.StringPtrInput
-	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+	// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 	//
 	// > **NOTE:**
 	// - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
-	// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
 	Engine pulumi.StringInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+	// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+	// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
+	// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
+	// - MariaDB: [ 10.3 ]
+	// - Serverless
+	// > - MySQL: [ 5.7、8.0 ]
+	// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+	// > - PostgreSQL: [ 14.0 ]
+	// > - MariaDB does not support creating serverless instances.
 	EngineVersion pulumi.StringInput
 	// Set it to true to make some parameter efficient when modifying them. Default to false.
 	ForceRestart pulumi.BoolPtrInput
@@ -1328,7 +1388,7 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
 	HaConfig pulumi.StringPtrInput
-	// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
+	// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
 	InstanceChargeType pulumi.StringPtrInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	InstanceName pulumi.StringPtrInput
@@ -1340,7 +1400,12 @@ type InstanceArgs struct {
 	//   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
 	//   Note: There is extra 5 GB storage for SQL Server Instance and it is not in specified `instanceStorage`.
 	InstanceStorage pulumi.IntInput
-	// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+	// - To create a serverless instance, please pass the following values:
+	// - MySQL basic: mysql.n2.serverless.1c
+	// - MySQL high availability: mysql.n2.serverless.2c
+	// - SQLServer high availability: mssql.mem2.serverless.s2
+	// - PostgreSQL basic: pg.n2.serverless.1c
 	//
 	// > **NOTE:**
 	// - When `storage_auto_scale="Enable"`, do not perform `instanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
@@ -1401,7 +1466,7 @@ type InstanceArgs struct {
 	ServerCert pulumi.StringPtrInput
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey pulumi.StringPtrInput
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
 	ServerlessConfigs InstanceServerlessConfigArrayInput
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue pulumi.IntPtrInput
@@ -1751,16 +1816,24 @@ func (o InstanceOutput) EncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
 
-// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB. Create a serverless instance, you must set this parameter to MySQL.
+// Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
 //
 // > **NOTE:**
 // - Available in 1.191.0+. When the 'EngineVersion' changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
-// - Available in 1.200.0+. Create a serverless instance, you must set this parameter to 8.0.
 func (o InstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
 
 // Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
+// - MySQL: [ 5.5、5.6、5.7、8.0 ]
+// - SQLServer: [ 2008r2、08r2_ent_ha、2012、2012_ent_ha、2012_std_ha、2012_web、2014_std_ha、2016_ent_ha、2016_std_ha、2016_web、2017_std_ha、2017_ent、2019_std_ha、2019_ent ]
+// - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
+// - MariaDB: [ 10.3 ]
+// - Serverless
+// > - MySQL: [ 5.7、8.0 ]
+// > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+// > - PostgreSQL: [ 14.0 ]
+// > - MariaDB does not support creating serverless instances.
 func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }
@@ -1786,7 +1859,7 @@ func (o InstanceOutput) HaConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HaConfig }).(pulumi.StringOutput)
 }
 
-// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. `Serverless` This value is supported only for instances that run MySQL. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
+// Valid values are `Prepaid`, `Postpaid`, `Serverless`, Default to `Postpaid`. Currently, the resource only supports PostPaid to PrePaid. For more information, see [Overview](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/what-is-serverless?spm=a2c63.p38356.0.0.772a28cfTAGqIv).
 func (o InstanceOutput) InstanceChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
 }
@@ -1807,7 +1880,12 @@ func (o InstanceOutput) InstanceStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.InstanceStorage }).(pulumi.IntOutput)
 }
 
-// DB Instance type. Create a serverless instance, you must set this parameter to mysql.n2.serverless.1c. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+// DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+// - To create a serverless instance, please pass the following values:
+// - MySQL basic: mysql.n2.serverless.1c
+// - MySQL high availability: mysql.n2.serverless.2c
+// - SQLServer high availability: mssql.mem2.serverless.s2
+// - PostgreSQL basic: pg.n2.serverless.1c
 //
 // > **NOTE:**
 // - When `storage_auto_scale="Enable"`, do not perform `instanceStorage` check. when `storage_auto_scale="Disable"`, if the instance itself `instanceStorage`has changed. You need to manually revise the `instanceStorage` in the template value.
@@ -1928,7 +2006,7 @@ func (o InstanceOutput) ServerKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServerKey }).(pulumi.StringOutput)
 }
 
-// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
 func (o InstanceOutput) ServerlessConfigs() InstanceServerlessConfigArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceServerlessConfigArrayOutput { return v.ServerlessConfigs }).(InstanceServerlessConfigArrayOutput)
 }

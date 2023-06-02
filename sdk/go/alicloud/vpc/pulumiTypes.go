@@ -223,17 +223,32 @@ func (o NetworkAclAttachmentResourceArrayOutput) Index(i pulumi.IntInput) Networ
 }
 
 type NetworkAclEgressAclEntry struct {
-	// The description of the network acl instance.
+	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
-	// The destination cidr ip of egress entries.
+	// The network of the destination address.
 	DestinationCidrIp *string `pulumi:"destinationCidrIp"`
-	// The entry name of ingress entries.
+	// Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName *string `pulumi:"networkAclEntryName"`
-	// The policy of ingress entries. Valid values `accept` and `drop`.
+	// Authorization policy. Value:
+	// - accept: Allow.
+	// - drop: Refused.
+	// - accept: Allow.
+	// - drop: Refused.
 	Policy *string `pulumi:"policy"`
-	// The port of ingress entries.
+	// The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 	Port *string `pulumi:"port"`
-	// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	// The protocol type. Value:
+	// - icmp: Network Control Message Protocol.
+	// - gre: Generic Routing Encapsulation Protocol.
+	// - tcp: Transmission Control Protocol.
+	// - udp: User Datagram Protocol.
+	// - all: Supports all protocols.
+	//
+	// - icmp: Network Control Message Protocol.
+	// - gre: Generic Routing Encapsulation Protocol.
+	// - tcp: Transmission Control Protocol.
+	// - udp: User Datagram Protocol.
+	// - all: Supports all protocols.
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -249,17 +264,32 @@ type NetworkAclEgressAclEntryInput interface {
 }
 
 type NetworkAclEgressAclEntryArgs struct {
-	// The description of the network acl instance.
+	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The destination cidr ip of egress entries.
+	// The network of the destination address.
 	DestinationCidrIp pulumi.StringPtrInput `pulumi:"destinationCidrIp"`
-	// The entry name of ingress entries.
+	// Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName pulumi.StringPtrInput `pulumi:"networkAclEntryName"`
-	// The policy of ingress entries. Valid values `accept` and `drop`.
+	// Authorization policy. Value:
+	// - accept: Allow.
+	// - drop: Refused.
+	// - accept: Allow.
+	// - drop: Refused.
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The port of ingress entries.
+	// The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	// The protocol type. Value:
+	// - icmp: Network Control Message Protocol.
+	// - gre: Generic Routing Encapsulation Protocol.
+	// - tcp: Transmission Control Protocol.
+	// - udp: User Datagram Protocol.
+	// - all: Supports all protocols.
+	//
+	// - icmp: Network Control Message Protocol.
+	// - gre: Generic Routing Encapsulation Protocol.
+	// - tcp: Transmission Control Protocol.
+	// - udp: User Datagram Protocol.
+	// - all: Supports all protocols.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -314,32 +344,47 @@ func (o NetworkAclEgressAclEntryOutput) ToNetworkAclEgressAclEntryOutputWithCont
 	return o
 }
 
-// The description of the network acl instance.
+// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 func (o NetworkAclEgressAclEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The destination cidr ip of egress entries.
+// The network of the destination address.
 func (o NetworkAclEgressAclEntryOutput) DestinationCidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.DestinationCidrIp }).(pulumi.StringPtrOutput)
 }
 
-// The entry name of ingress entries.
+// Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 func (o NetworkAclEgressAclEntryOutput) NetworkAclEntryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.NetworkAclEntryName }).(pulumi.StringPtrOutput)
 }
 
-// The policy of ingress entries. Valid values `accept` and `drop`.
+// Authorization policy. Value:
+// - accept: Allow.
+// - drop: Refused.
+// - accept: Allow.
+// - drop: Refused.
 func (o NetworkAclEgressAclEntryOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The port of ingress entries.
+// The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 func (o NetworkAclEgressAclEntryOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+// The protocol type. Value:
+// - icmp: Network Control Message Protocol.
+// - gre: Generic Routing Encapsulation Protocol.
+// - tcp: Transmission Control Protocol.
+// - udp: User Datagram Protocol.
+// - all: Supports all protocols.
+//
+// - icmp: Network Control Message Protocol.
+// - gre: Generic Routing Encapsulation Protocol.
+// - tcp: Transmission Control Protocol.
+// - udp: User Datagram Protocol.
+// - all: Supports all protocols.
 func (o NetworkAclEgressAclEntryOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -667,17 +712,32 @@ func (o NetworkAclEntriesIngressArrayOutput) Index(i pulumi.IntInput) NetworkAcl
 }
 
 type NetworkAclIngressAclEntry struct {
-	// The description of the network acl instance.
+	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description *string `pulumi:"description"`
-	// The entry name of ingress entries.
+	// Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName *string `pulumi:"networkAclEntryName"`
-	// The policy of ingress entries. Valid values `accept` and `drop`.
+	// Authorization policy. Value:
+	// - accept: Allow.
+	// - drop: Refused.
+	// - accept: Allow.
+	// - drop: Refused.
 	Policy *string `pulumi:"policy"`
-	// The port of ingress entries.
+	// The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 	Port *string `pulumi:"port"`
-	// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	// The protocol type. Value:
+	// - icmp: Network Control Message Protocol.
+	// - gre: Generic Routing Encapsulation Protocol.
+	// - tcp: Transmission Control Protocol.
+	// - udp: User Datagram Protocol.
+	// - all: Supports all protocols.
+	//
+	// - icmp: Network Control Message Protocol.
+	// - gre: Generic Routing Encapsulation Protocol.
+	// - tcp: Transmission Control Protocol.
+	// - udp: User Datagram Protocol.
+	// - all: Supports all protocols.
 	Protocol *string `pulumi:"protocol"`
-	// The source cidr ip of ingress entries.
+	// Source address network segment.
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
 }
 
@@ -693,17 +753,32 @@ type NetworkAclIngressAclEntryInput interface {
 }
 
 type NetworkAclIngressAclEntryArgs struct {
-	// The description of the network acl instance.
+	// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The entry name of ingress entries.
+	// Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 	NetworkAclEntryName pulumi.StringPtrInput `pulumi:"networkAclEntryName"`
-	// The policy of ingress entries. Valid values `accept` and `drop`.
+	// Authorization policy. Value:
+	// - accept: Allow.
+	// - drop: Refused.
+	// - accept: Allow.
+	// - drop: Refused.
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The port of ingress entries.
+	// The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+	// The protocol type. Value:
+	// - icmp: Network Control Message Protocol.
+	// - gre: Generic Routing Encapsulation Protocol.
+	// - tcp: Transmission Control Protocol.
+	// - udp: User Datagram Protocol.
+	// - all: Supports all protocols.
+	//
+	// - icmp: Network Control Message Protocol.
+	// - gre: Generic Routing Encapsulation Protocol.
+	// - tcp: Transmission Control Protocol.
+	// - udp: User Datagram Protocol.
+	// - all: Supports all protocols.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// The source cidr ip of ingress entries.
+	// Source address network segment.
 	SourceCidrIp pulumi.StringPtrInput `pulumi:"sourceCidrIp"`
 }
 
@@ -758,32 +833,47 @@ func (o NetworkAclIngressAclEntryOutput) ToNetworkAclIngressAclEntryOutputWithCo
 	return o
 }
 
-// The description of the network acl instance.
+// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
 func (o NetworkAclIngressAclEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The entry name of ingress entries.
+// Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
 func (o NetworkAclIngressAclEntryOutput) NetworkAclEntryName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.NetworkAclEntryName }).(pulumi.StringPtrOutput)
 }
 
-// The policy of ingress entries. Valid values `accept` and `drop`.
+// Authorization policy. Value:
+// - accept: Allow.
+// - drop: Refused.
+// - accept: Allow.
+// - drop: Refused.
 func (o NetworkAclIngressAclEntryOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The port of ingress entries.
+// The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 func (o NetworkAclIngressAclEntryOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+// The protocol type. Value:
+// - icmp: Network Control Message Protocol.
+// - gre: Generic Routing Encapsulation Protocol.
+// - tcp: Transmission Control Protocol.
+// - udp: User Datagram Protocol.
+// - all: Supports all protocols.
+//
+// - icmp: Network Control Message Protocol.
+// - gre: Generic Routing Encapsulation Protocol.
+// - tcp: Transmission Control Protocol.
+// - udp: User Datagram Protocol.
+// - all: Supports all protocols.
 func (o NetworkAclIngressAclEntryOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// The source cidr ip of ingress entries.
+// Source address network segment.
 func (o NetworkAclIngressAclEntryOutput) SourceCidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclIngressAclEntry) *string { return v.SourceCidrIp }).(pulumi.StringPtrOutput)
 }
@@ -810,9 +900,11 @@ func (o NetworkAclIngressAclEntryArrayOutput) Index(i pulumi.IntInput) NetworkAc
 
 type NetworkAclResource struct {
 	// The ID of the associated resource.
-	ResourceId *string `pulumi:"resourceId"`
-	// The type of the associated resource. Valid values `VSwitch`.
-	ResourceType *string `pulumi:"resourceType"`
+	ResourceId string `pulumi:"resourceId"`
+	// The type of the associated resource.
+	ResourceType string `pulumi:"resourceType"`
+	// The state of the network ACL.
+	Status *string `pulumi:"status"`
 }
 
 // NetworkAclResourceInput is an input type that accepts NetworkAclResourceArgs and NetworkAclResourceOutput values.
@@ -828,9 +920,11 @@ type NetworkAclResourceInput interface {
 
 type NetworkAclResourceArgs struct {
 	// The ID of the associated resource.
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// The type of the associated resource. Valid values `VSwitch`.
-	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The type of the associated resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// The state of the network ACL.
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (NetworkAclResourceArgs) ElementType() reflect.Type {
@@ -885,13 +979,18 @@ func (o NetworkAclResourceOutput) ToNetworkAclResourceOutputWithContext(ctx cont
 }
 
 // The ID of the associated resource.
-func (o NetworkAclResourceOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkAclResource) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+func (o NetworkAclResourceOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAclResource) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// The type of the associated resource. Valid values `VSwitch`.
-func (o NetworkAclResourceOutput) ResourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkAclResource) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+// The type of the associated resource.
+func (o NetworkAclResourceOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAclResource) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The state of the network ACL.
+func (o NetworkAclResourceOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAclResource) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 type NetworkAclResourceArrayOutput struct{ *pulumi.OutputState }
@@ -912,6 +1011,127 @@ func (o NetworkAclResourceArrayOutput) Index(i pulumi.IntInput) NetworkAclResour
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAclResource {
 		return vs[0].([]NetworkAclResource)[vs[1].(int)]
 	}).(NetworkAclResourceOutput)
+}
+
+type NetworkIpv6CidrBlock struct {
+	// The IPv6 CIDR block of the VPC.
+	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
+	// The IPv6 address segment type of the VPC. Value:
+	// - **BGP** (default): Alibaba Cloud BGP IPv6.
+	// - **ChinaMobile**: China Mobile (single line).
+	// - **ChinaUnicom**: China Unicom (single line).
+	// - **ChinaTelecom**: China Telecom (single line).
+	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	Ipv6Isp *string `pulumi:"ipv6Isp"`
+}
+
+// NetworkIpv6CidrBlockInput is an input type that accepts NetworkIpv6CidrBlockArgs and NetworkIpv6CidrBlockOutput values.
+// You can construct a concrete instance of `NetworkIpv6CidrBlockInput` via:
+//
+//	NetworkIpv6CidrBlockArgs{...}
+type NetworkIpv6CidrBlockInput interface {
+	pulumi.Input
+
+	ToNetworkIpv6CidrBlockOutput() NetworkIpv6CidrBlockOutput
+	ToNetworkIpv6CidrBlockOutputWithContext(context.Context) NetworkIpv6CidrBlockOutput
+}
+
+type NetworkIpv6CidrBlockArgs struct {
+	// The IPv6 CIDR block of the VPC.
+	Ipv6CidrBlock pulumi.StringPtrInput `pulumi:"ipv6CidrBlock"`
+	// The IPv6 address segment type of the VPC. Value:
+	// - **BGP** (default): Alibaba Cloud BGP IPv6.
+	// - **ChinaMobile**: China Mobile (single line).
+	// - **ChinaUnicom**: China Unicom (single line).
+	// - **ChinaTelecom**: China Telecom (single line).
+	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	Ipv6Isp pulumi.StringPtrInput `pulumi:"ipv6Isp"`
+}
+
+func (NetworkIpv6CidrBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkIpv6CidrBlock)(nil)).Elem()
+}
+
+func (i NetworkIpv6CidrBlockArgs) ToNetworkIpv6CidrBlockOutput() NetworkIpv6CidrBlockOutput {
+	return i.ToNetworkIpv6CidrBlockOutputWithContext(context.Background())
+}
+
+func (i NetworkIpv6CidrBlockArgs) ToNetworkIpv6CidrBlockOutputWithContext(ctx context.Context) NetworkIpv6CidrBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkIpv6CidrBlockOutput)
+}
+
+// NetworkIpv6CidrBlockArrayInput is an input type that accepts NetworkIpv6CidrBlockArray and NetworkIpv6CidrBlockArrayOutput values.
+// You can construct a concrete instance of `NetworkIpv6CidrBlockArrayInput` via:
+//
+//	NetworkIpv6CidrBlockArray{ NetworkIpv6CidrBlockArgs{...} }
+type NetworkIpv6CidrBlockArrayInput interface {
+	pulumi.Input
+
+	ToNetworkIpv6CidrBlockArrayOutput() NetworkIpv6CidrBlockArrayOutput
+	ToNetworkIpv6CidrBlockArrayOutputWithContext(context.Context) NetworkIpv6CidrBlockArrayOutput
+}
+
+type NetworkIpv6CidrBlockArray []NetworkIpv6CidrBlockInput
+
+func (NetworkIpv6CidrBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkIpv6CidrBlock)(nil)).Elem()
+}
+
+func (i NetworkIpv6CidrBlockArray) ToNetworkIpv6CidrBlockArrayOutput() NetworkIpv6CidrBlockArrayOutput {
+	return i.ToNetworkIpv6CidrBlockArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkIpv6CidrBlockArray) ToNetworkIpv6CidrBlockArrayOutputWithContext(ctx context.Context) NetworkIpv6CidrBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkIpv6CidrBlockArrayOutput)
+}
+
+type NetworkIpv6CidrBlockOutput struct{ *pulumi.OutputState }
+
+func (NetworkIpv6CidrBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkIpv6CidrBlock)(nil)).Elem()
+}
+
+func (o NetworkIpv6CidrBlockOutput) ToNetworkIpv6CidrBlockOutput() NetworkIpv6CidrBlockOutput {
+	return o
+}
+
+func (o NetworkIpv6CidrBlockOutput) ToNetworkIpv6CidrBlockOutputWithContext(ctx context.Context) NetworkIpv6CidrBlockOutput {
+	return o
+}
+
+// The IPv6 CIDR block of the VPC.
+func (o NetworkIpv6CidrBlockOutput) Ipv6CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkIpv6CidrBlock) *string { return v.Ipv6CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 address segment type of the VPC. Value:
+// - **BGP** (default): Alibaba Cloud BGP IPv6.
+// - **ChinaMobile**: China Mobile (single line).
+// - **ChinaUnicom**: China Unicom (single line).
+// - **ChinaTelecom**: China Telecom (single line).
+// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+func (o NetworkIpv6CidrBlockOutput) Ipv6Isp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkIpv6CidrBlock) *string { return v.Ipv6Isp }).(pulumi.StringPtrOutput)
+}
+
+type NetworkIpv6CidrBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkIpv6CidrBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkIpv6CidrBlock)(nil)).Elem()
+}
+
+func (o NetworkIpv6CidrBlockArrayOutput) ToNetworkIpv6CidrBlockArrayOutput() NetworkIpv6CidrBlockArrayOutput {
+	return o
+}
+
+func (o NetworkIpv6CidrBlockArrayOutput) ToNetworkIpv6CidrBlockArrayOutputWithContext(ctx context.Context) NetworkIpv6CidrBlockArrayOutput {
+	return o
+}
+
+func (o NetworkIpv6CidrBlockArrayOutput) Index(i pulumi.IntInput) NetworkIpv6CidrBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkIpv6CidrBlock {
+		return vs[0].([]NetworkIpv6CidrBlock)[vs[1].(int)]
+	}).(NetworkIpv6CidrBlockOutput)
 }
 
 type PrefixListEntry struct {
@@ -1018,6 +1238,582 @@ func (o PrefixListEntryArrayOutput) Index(i pulumi.IntInput) PrefixListEntryOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrefixListEntry {
 		return vs[0].([]PrefixListEntry)[vs[1].(int)]
 	}).(PrefixListEntryOutput)
+}
+
+type PrefixListPrefixListAssociation struct {
+	// The ID of the Alibaba Cloud account (primary account) to which the prefix list belongs.
+	OwnerId *string `pulumi:"ownerId"`
+	// The ID of the query Prefix List.
+	PrefixListId *string `pulumi:"prefixListId"`
+	// Reason when the association fails.
+	Reason *string `pulumi:"reason"`
+	// The region ID of the prefix list to be queried.
+	RegionId *string `pulumi:"regionId"`
+	// The ID of the associated resource.
+	ResourceId *string `pulumi:"resourceId"`
+	// The associated resource type. Value:-**vpcRouteTable**: The VPC route table.-**trRouteTable**: the routing table of the forwarding router.
+	ResourceType *string `pulumi:"resourceType"`
+	// The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
+	ResourceUid *string `pulumi:"resourceUid"`
+	// Resource attribute fields that represent the status of the resource.
+	Status *string `pulumi:"status"`
+}
+
+// PrefixListPrefixListAssociationInput is an input type that accepts PrefixListPrefixListAssociationArgs and PrefixListPrefixListAssociationOutput values.
+// You can construct a concrete instance of `PrefixListPrefixListAssociationInput` via:
+//
+//	PrefixListPrefixListAssociationArgs{...}
+type PrefixListPrefixListAssociationInput interface {
+	pulumi.Input
+
+	ToPrefixListPrefixListAssociationOutput() PrefixListPrefixListAssociationOutput
+	ToPrefixListPrefixListAssociationOutputWithContext(context.Context) PrefixListPrefixListAssociationOutput
+}
+
+type PrefixListPrefixListAssociationArgs struct {
+	// The ID of the Alibaba Cloud account (primary account) to which the prefix list belongs.
+	OwnerId pulumi.StringPtrInput `pulumi:"ownerId"`
+	// The ID of the query Prefix List.
+	PrefixListId pulumi.StringPtrInput `pulumi:"prefixListId"`
+	// Reason when the association fails.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// The region ID of the prefix list to be queried.
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// The ID of the associated resource.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// The associated resource type. Value:-**vpcRouteTable**: The VPC route table.-**trRouteTable**: the routing table of the forwarding router.
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+	// The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
+	ResourceUid pulumi.StringPtrInput `pulumi:"resourceUid"`
+	// Resource attribute fields that represent the status of the resource.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (PrefixListPrefixListAssociationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrefixListPrefixListAssociation)(nil)).Elem()
+}
+
+func (i PrefixListPrefixListAssociationArgs) ToPrefixListPrefixListAssociationOutput() PrefixListPrefixListAssociationOutput {
+	return i.ToPrefixListPrefixListAssociationOutputWithContext(context.Background())
+}
+
+func (i PrefixListPrefixListAssociationArgs) ToPrefixListPrefixListAssociationOutputWithContext(ctx context.Context) PrefixListPrefixListAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrefixListPrefixListAssociationOutput)
+}
+
+// PrefixListPrefixListAssociationArrayInput is an input type that accepts PrefixListPrefixListAssociationArray and PrefixListPrefixListAssociationArrayOutput values.
+// You can construct a concrete instance of `PrefixListPrefixListAssociationArrayInput` via:
+//
+//	PrefixListPrefixListAssociationArray{ PrefixListPrefixListAssociationArgs{...} }
+type PrefixListPrefixListAssociationArrayInput interface {
+	pulumi.Input
+
+	ToPrefixListPrefixListAssociationArrayOutput() PrefixListPrefixListAssociationArrayOutput
+	ToPrefixListPrefixListAssociationArrayOutputWithContext(context.Context) PrefixListPrefixListAssociationArrayOutput
+}
+
+type PrefixListPrefixListAssociationArray []PrefixListPrefixListAssociationInput
+
+func (PrefixListPrefixListAssociationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrefixListPrefixListAssociation)(nil)).Elem()
+}
+
+func (i PrefixListPrefixListAssociationArray) ToPrefixListPrefixListAssociationArrayOutput() PrefixListPrefixListAssociationArrayOutput {
+	return i.ToPrefixListPrefixListAssociationArrayOutputWithContext(context.Background())
+}
+
+func (i PrefixListPrefixListAssociationArray) ToPrefixListPrefixListAssociationArrayOutputWithContext(ctx context.Context) PrefixListPrefixListAssociationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrefixListPrefixListAssociationArrayOutput)
+}
+
+type PrefixListPrefixListAssociationOutput struct{ *pulumi.OutputState }
+
+func (PrefixListPrefixListAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrefixListPrefixListAssociation)(nil)).Elem()
+}
+
+func (o PrefixListPrefixListAssociationOutput) ToPrefixListPrefixListAssociationOutput() PrefixListPrefixListAssociationOutput {
+	return o
+}
+
+func (o PrefixListPrefixListAssociationOutput) ToPrefixListPrefixListAssociationOutputWithContext(ctx context.Context) PrefixListPrefixListAssociationOutput {
+	return o
+}
+
+// The ID of the Alibaba Cloud account (primary account) to which the prefix list belongs.
+func (o PrefixListPrefixListAssociationOutput) OwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrefixListPrefixListAssociation) *string { return v.OwnerId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the query Prefix List.
+func (o PrefixListPrefixListAssociationOutput) PrefixListId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrefixListPrefixListAssociation) *string { return v.PrefixListId }).(pulumi.StringPtrOutput)
+}
+
+// Reason when the association fails.
+func (o PrefixListPrefixListAssociationOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrefixListPrefixListAssociation) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// The region ID of the prefix list to be queried.
+func (o PrefixListPrefixListAssociationOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrefixListPrefixListAssociation) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the associated resource.
+func (o PrefixListPrefixListAssociationOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrefixListPrefixListAssociation) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The associated resource type. Value:-**vpcRouteTable**: The VPC route table.-**trRouteTable**: the routing table of the forwarding router.
+func (o PrefixListPrefixListAssociationOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrefixListPrefixListAssociation) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
+func (o PrefixListPrefixListAssociationOutput) ResourceUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrefixListPrefixListAssociation) *string { return v.ResourceUid }).(pulumi.StringPtrOutput)
+}
+
+// Resource attribute fields that represent the status of the resource.
+func (o PrefixListPrefixListAssociationOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrefixListPrefixListAssociation) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type PrefixListPrefixListAssociationArrayOutput struct{ *pulumi.OutputState }
+
+func (PrefixListPrefixListAssociationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrefixListPrefixListAssociation)(nil)).Elem()
+}
+
+func (o PrefixListPrefixListAssociationArrayOutput) ToPrefixListPrefixListAssociationArrayOutput() PrefixListPrefixListAssociationArrayOutput {
+	return o
+}
+
+func (o PrefixListPrefixListAssociationArrayOutput) ToPrefixListPrefixListAssociationArrayOutputWithContext(ctx context.Context) PrefixListPrefixListAssociationArrayOutput {
+	return o
+}
+
+func (o PrefixListPrefixListAssociationArrayOutput) Index(i pulumi.IntInput) PrefixListPrefixListAssociationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrefixListPrefixListAssociation {
+		return vs[0].([]PrefixListPrefixListAssociation)[vs[1].(int)]
+	}).(PrefixListPrefixListAssociationOutput)
+}
+
+type TrafficMirrorFilterEgressRuleType struct {
+	// Collection strategy for outbound rules. Value:
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	Action string `pulumi:"action"`
+	// DestinationCidrBlock.
+	DestinationCidrBlock *string `pulumi:"destinationCidrBlock"`
+	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	// **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	DestinationPortRange *string `pulumi:"destinationPortRange"`
+	// Priority.
+	Priority *int `pulumi:"priority"`
+	// The type of protocol used by the outbound network traffic to be mirrored. Value:
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	Protocol string `pulumi:"protocol"`
+	// The source address of the outbound rule network traffic.
+	SourceCidrBlock *string `pulumi:"sourceCidrBlock"`
+	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	SourcePortRange               *string `pulumi:"sourcePortRange"`
+	TrafficMirrorFilterRuleStatus *string `pulumi:"trafficMirrorFilterRuleStatus"`
+}
+
+// TrafficMirrorFilterEgressRuleTypeInput is an input type that accepts TrafficMirrorFilterEgressRuleTypeArgs and TrafficMirrorFilterEgressRuleTypeOutput values.
+// You can construct a concrete instance of `TrafficMirrorFilterEgressRuleTypeInput` via:
+//
+//	TrafficMirrorFilterEgressRuleTypeArgs{...}
+type TrafficMirrorFilterEgressRuleTypeInput interface {
+	pulumi.Input
+
+	ToTrafficMirrorFilterEgressRuleTypeOutput() TrafficMirrorFilterEgressRuleTypeOutput
+	ToTrafficMirrorFilterEgressRuleTypeOutputWithContext(context.Context) TrafficMirrorFilterEgressRuleTypeOutput
+}
+
+type TrafficMirrorFilterEgressRuleTypeArgs struct {
+	// Collection strategy for outbound rules. Value:
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	Action pulumi.StringInput `pulumi:"action"`
+	// DestinationCidrBlock.
+	DestinationCidrBlock pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
+	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	// **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	DestinationPortRange pulumi.StringPtrInput `pulumi:"destinationPortRange"`
+	// Priority.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// The type of protocol used by the outbound network traffic to be mirrored. Value:
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The source address of the outbound rule network traffic.
+	SourceCidrBlock pulumi.StringPtrInput `pulumi:"sourceCidrBlock"`
+	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	SourcePortRange               pulumi.StringPtrInput `pulumi:"sourcePortRange"`
+	TrafficMirrorFilterRuleStatus pulumi.StringPtrInput `pulumi:"trafficMirrorFilterRuleStatus"`
+}
+
+func (TrafficMirrorFilterEgressRuleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficMirrorFilterEgressRuleType)(nil)).Elem()
+}
+
+func (i TrafficMirrorFilterEgressRuleTypeArgs) ToTrafficMirrorFilterEgressRuleTypeOutput() TrafficMirrorFilterEgressRuleTypeOutput {
+	return i.ToTrafficMirrorFilterEgressRuleTypeOutputWithContext(context.Background())
+}
+
+func (i TrafficMirrorFilterEgressRuleTypeArgs) ToTrafficMirrorFilterEgressRuleTypeOutputWithContext(ctx context.Context) TrafficMirrorFilterEgressRuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterEgressRuleTypeOutput)
+}
+
+// TrafficMirrorFilterEgressRuleTypeArrayInput is an input type that accepts TrafficMirrorFilterEgressRuleTypeArray and TrafficMirrorFilterEgressRuleTypeArrayOutput values.
+// You can construct a concrete instance of `TrafficMirrorFilterEgressRuleTypeArrayInput` via:
+//
+//	TrafficMirrorFilterEgressRuleTypeArray{ TrafficMirrorFilterEgressRuleTypeArgs{...} }
+type TrafficMirrorFilterEgressRuleTypeArrayInput interface {
+	pulumi.Input
+
+	ToTrafficMirrorFilterEgressRuleTypeArrayOutput() TrafficMirrorFilterEgressRuleTypeArrayOutput
+	ToTrafficMirrorFilterEgressRuleTypeArrayOutputWithContext(context.Context) TrafficMirrorFilterEgressRuleTypeArrayOutput
+}
+
+type TrafficMirrorFilterEgressRuleTypeArray []TrafficMirrorFilterEgressRuleTypeInput
+
+func (TrafficMirrorFilterEgressRuleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrafficMirrorFilterEgressRuleType)(nil)).Elem()
+}
+
+func (i TrafficMirrorFilterEgressRuleTypeArray) ToTrafficMirrorFilterEgressRuleTypeArrayOutput() TrafficMirrorFilterEgressRuleTypeArrayOutput {
+	return i.ToTrafficMirrorFilterEgressRuleTypeArrayOutputWithContext(context.Background())
+}
+
+func (i TrafficMirrorFilterEgressRuleTypeArray) ToTrafficMirrorFilterEgressRuleTypeArrayOutputWithContext(ctx context.Context) TrafficMirrorFilterEgressRuleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterEgressRuleTypeArrayOutput)
+}
+
+type TrafficMirrorFilterEgressRuleTypeOutput struct{ *pulumi.OutputState }
+
+func (TrafficMirrorFilterEgressRuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficMirrorFilterEgressRuleType)(nil)).Elem()
+}
+
+func (o TrafficMirrorFilterEgressRuleTypeOutput) ToTrafficMirrorFilterEgressRuleTypeOutput() TrafficMirrorFilterEgressRuleTypeOutput {
+	return o
+}
+
+func (o TrafficMirrorFilterEgressRuleTypeOutput) ToTrafficMirrorFilterEgressRuleTypeOutputWithContext(ctx context.Context) TrafficMirrorFilterEgressRuleTypeOutput {
+	return o
+}
+
+// Collection strategy for outbound rules. Value:
+// - accept: collects network traffic.
+// - drop: No network traffic is collected.
+// - accept: collects network traffic.
+// - drop: No network traffic is collected.
+func (o TrafficMirrorFilterEgressRuleTypeOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// DestinationCidrBlock.
+func (o TrafficMirrorFilterEgressRuleTypeOutput) DestinationCidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.DestinationCidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+// **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+func (o TrafficMirrorFilterEgressRuleTypeOutput) DestinationPortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
+}
+
+// Priority.
+func (o TrafficMirrorFilterEgressRuleTypeOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// The type of protocol used by the outbound network traffic to be mirrored. Value:
+// - ALL: ALL agreements.
+// - ICMP: Network Control Message Protocol.
+// - TCP: Transmission Control Protocol.
+// - UDP: User Datagram Protocol.
+// - ALL: ALL agreements.
+// - ICMP: Network Control Message Protocol.
+// - TCP: Transmission Control Protocol.
+// - UDP: User Datagram Protocol.
+func (o TrafficMirrorFilterEgressRuleTypeOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The source address of the outbound rule network traffic.
+func (o TrafficMirrorFilterEgressRuleTypeOutput) SourceCidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.SourceCidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+//
+// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+func (o TrafficMirrorFilterEgressRuleTypeOutput) SourcePortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
+}
+
+func (o TrafficMirrorFilterEgressRuleTypeOutput) TrafficMirrorFilterRuleStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.TrafficMirrorFilterRuleStatus }).(pulumi.StringPtrOutput)
+}
+
+type TrafficMirrorFilterEgressRuleTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (TrafficMirrorFilterEgressRuleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrafficMirrorFilterEgressRuleType)(nil)).Elem()
+}
+
+func (o TrafficMirrorFilterEgressRuleTypeArrayOutput) ToTrafficMirrorFilterEgressRuleTypeArrayOutput() TrafficMirrorFilterEgressRuleTypeArrayOutput {
+	return o
+}
+
+func (o TrafficMirrorFilterEgressRuleTypeArrayOutput) ToTrafficMirrorFilterEgressRuleTypeArrayOutputWithContext(ctx context.Context) TrafficMirrorFilterEgressRuleTypeArrayOutput {
+	return o
+}
+
+func (o TrafficMirrorFilterEgressRuleTypeArrayOutput) Index(i pulumi.IntInput) TrafficMirrorFilterEgressRuleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrafficMirrorFilterEgressRuleType {
+		return vs[0].([]TrafficMirrorFilterEgressRuleType)[vs[1].(int)]
+	}).(TrafficMirrorFilterEgressRuleTypeOutput)
+}
+
+type TrafficMirrorFilterIngressRuleType struct {
+	// Collection strategy for outbound rules. Value:
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	Action string `pulumi:"action"`
+	// DestinationCidrBlock.
+	DestinationCidrBlock *string `pulumi:"destinationCidrBlock"`
+	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	// **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	DestinationPortRange *string `pulumi:"destinationPortRange"`
+	// Priority.
+	Priority *int `pulumi:"priority"`
+	// The type of protocol used by the outbound network traffic to be mirrored. Value:
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	Protocol string `pulumi:"protocol"`
+	// The source address of the outbound rule network traffic.
+	SourceCidrBlock *string `pulumi:"sourceCidrBlock"`
+	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	SourcePortRange               *string `pulumi:"sourcePortRange"`
+	TrafficMirrorFilterRuleStatus *string `pulumi:"trafficMirrorFilterRuleStatus"`
+}
+
+// TrafficMirrorFilterIngressRuleTypeInput is an input type that accepts TrafficMirrorFilterIngressRuleTypeArgs and TrafficMirrorFilterIngressRuleTypeOutput values.
+// You can construct a concrete instance of `TrafficMirrorFilterIngressRuleTypeInput` via:
+//
+//	TrafficMirrorFilterIngressRuleTypeArgs{...}
+type TrafficMirrorFilterIngressRuleTypeInput interface {
+	pulumi.Input
+
+	ToTrafficMirrorFilterIngressRuleTypeOutput() TrafficMirrorFilterIngressRuleTypeOutput
+	ToTrafficMirrorFilterIngressRuleTypeOutputWithContext(context.Context) TrafficMirrorFilterIngressRuleTypeOutput
+}
+
+type TrafficMirrorFilterIngressRuleTypeArgs struct {
+	// Collection strategy for outbound rules. Value:
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	// - accept: collects network traffic.
+	// - drop: No network traffic is collected.
+	Action pulumi.StringInput `pulumi:"action"`
+	// DestinationCidrBlock.
+	DestinationCidrBlock pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
+	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	// **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	DestinationPortRange pulumi.StringPtrInput `pulumi:"destinationPortRange"`
+	// Priority.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// The type of protocol used by the outbound network traffic to be mirrored. Value:
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	// - ALL: ALL agreements.
+	// - ICMP: Network Control Message Protocol.
+	// - TCP: Transmission Control Protocol.
+	// - UDP: User Datagram Protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// The source address of the outbound rule network traffic.
+	SourceCidrBlock pulumi.StringPtrInput `pulumi:"sourceCidrBlock"`
+	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	//
+	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	SourcePortRange               pulumi.StringPtrInput `pulumi:"sourcePortRange"`
+	TrafficMirrorFilterRuleStatus pulumi.StringPtrInput `pulumi:"trafficMirrorFilterRuleStatus"`
+}
+
+func (TrafficMirrorFilterIngressRuleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficMirrorFilterIngressRuleType)(nil)).Elem()
+}
+
+func (i TrafficMirrorFilterIngressRuleTypeArgs) ToTrafficMirrorFilterIngressRuleTypeOutput() TrafficMirrorFilterIngressRuleTypeOutput {
+	return i.ToTrafficMirrorFilterIngressRuleTypeOutputWithContext(context.Background())
+}
+
+func (i TrafficMirrorFilterIngressRuleTypeArgs) ToTrafficMirrorFilterIngressRuleTypeOutputWithContext(ctx context.Context) TrafficMirrorFilterIngressRuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterIngressRuleTypeOutput)
+}
+
+// TrafficMirrorFilterIngressRuleTypeArrayInput is an input type that accepts TrafficMirrorFilterIngressRuleTypeArray and TrafficMirrorFilterIngressRuleTypeArrayOutput values.
+// You can construct a concrete instance of `TrafficMirrorFilterIngressRuleTypeArrayInput` via:
+//
+//	TrafficMirrorFilterIngressRuleTypeArray{ TrafficMirrorFilterIngressRuleTypeArgs{...} }
+type TrafficMirrorFilterIngressRuleTypeArrayInput interface {
+	pulumi.Input
+
+	ToTrafficMirrorFilterIngressRuleTypeArrayOutput() TrafficMirrorFilterIngressRuleTypeArrayOutput
+	ToTrafficMirrorFilterIngressRuleTypeArrayOutputWithContext(context.Context) TrafficMirrorFilterIngressRuleTypeArrayOutput
+}
+
+type TrafficMirrorFilterIngressRuleTypeArray []TrafficMirrorFilterIngressRuleTypeInput
+
+func (TrafficMirrorFilterIngressRuleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrafficMirrorFilterIngressRuleType)(nil)).Elem()
+}
+
+func (i TrafficMirrorFilterIngressRuleTypeArray) ToTrafficMirrorFilterIngressRuleTypeArrayOutput() TrafficMirrorFilterIngressRuleTypeArrayOutput {
+	return i.ToTrafficMirrorFilterIngressRuleTypeArrayOutputWithContext(context.Background())
+}
+
+func (i TrafficMirrorFilterIngressRuleTypeArray) ToTrafficMirrorFilterIngressRuleTypeArrayOutputWithContext(ctx context.Context) TrafficMirrorFilterIngressRuleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrafficMirrorFilterIngressRuleTypeArrayOutput)
+}
+
+type TrafficMirrorFilterIngressRuleTypeOutput struct{ *pulumi.OutputState }
+
+func (TrafficMirrorFilterIngressRuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrafficMirrorFilterIngressRuleType)(nil)).Elem()
+}
+
+func (o TrafficMirrorFilterIngressRuleTypeOutput) ToTrafficMirrorFilterIngressRuleTypeOutput() TrafficMirrorFilterIngressRuleTypeOutput {
+	return o
+}
+
+func (o TrafficMirrorFilterIngressRuleTypeOutput) ToTrafficMirrorFilterIngressRuleTypeOutputWithContext(ctx context.Context) TrafficMirrorFilterIngressRuleTypeOutput {
+	return o
+}
+
+// Collection strategy for outbound rules. Value:
+// - accept: collects network traffic.
+// - drop: No network traffic is collected.
+// - accept: collects network traffic.
+// - drop: No network traffic is collected.
+func (o TrafficMirrorFilterIngressRuleTypeOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// DestinationCidrBlock.
+func (o TrafficMirrorFilterIngressRuleTypeOutput) DestinationCidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.DestinationCidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+// **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+func (o TrafficMirrorFilterIngressRuleTypeOutput) DestinationPortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
+}
+
+// Priority.
+func (o TrafficMirrorFilterIngressRuleTypeOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// The type of protocol used by the outbound network traffic to be mirrored. Value:
+// - ALL: ALL agreements.
+// - ICMP: Network Control Message Protocol.
+// - TCP: Transmission Control Protocol.
+// - UDP: User Datagram Protocol.
+// - ALL: ALL agreements.
+// - ICMP: Network Control Message Protocol.
+// - TCP: Transmission Control Protocol.
+// - UDP: User Datagram Protocol.
+func (o TrafficMirrorFilterIngressRuleTypeOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The source address of the outbound rule network traffic.
+func (o TrafficMirrorFilterIngressRuleTypeOutput) SourceCidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.SourceCidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+//
+// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+func (o TrafficMirrorFilterIngressRuleTypeOutput) SourcePortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
+}
+
+func (o TrafficMirrorFilterIngressRuleTypeOutput) TrafficMirrorFilterRuleStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.TrafficMirrorFilterRuleStatus }).(pulumi.StringPtrOutput)
+}
+
+type TrafficMirrorFilterIngressRuleTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (TrafficMirrorFilterIngressRuleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TrafficMirrorFilterIngressRuleType)(nil)).Elem()
+}
+
+func (o TrafficMirrorFilterIngressRuleTypeArrayOutput) ToTrafficMirrorFilterIngressRuleTypeArrayOutput() TrafficMirrorFilterIngressRuleTypeArrayOutput {
+	return o
+}
+
+func (o TrafficMirrorFilterIngressRuleTypeArrayOutput) ToTrafficMirrorFilterIngressRuleTypeArrayOutputWithContext(ctx context.Context) TrafficMirrorFilterIngressRuleTypeArrayOutput {
+	return o
+}
+
+func (o TrafficMirrorFilterIngressRuleTypeArrayOutput) Index(i pulumi.IntInput) TrafficMirrorFilterIngressRuleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TrafficMirrorFilterIngressRuleType {
+		return vs[0].([]TrafficMirrorFilterIngressRuleType)[vs[1].(int)]
+	}).(TrafficMirrorFilterIngressRuleTypeOutput)
 }
 
 type GetBgpGroupsGroup struct {
@@ -8711,8 +9507,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclIngressAclEntryArrayInput)(nil)).Elem(), NetworkAclIngressAclEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclResourceInput)(nil)).Elem(), NetworkAclResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclResourceArrayInput)(nil)).Elem(), NetworkAclResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkIpv6CidrBlockInput)(nil)).Elem(), NetworkIpv6CidrBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkIpv6CidrBlockArrayInput)(nil)).Elem(), NetworkIpv6CidrBlockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrefixListEntryInput)(nil)).Elem(), PrefixListEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrefixListEntryArrayInput)(nil)).Elem(), PrefixListEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrefixListPrefixListAssociationInput)(nil)).Elem(), PrefixListPrefixListAssociationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrefixListPrefixListAssociationArrayInput)(nil)).Elem(), PrefixListPrefixListAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterEgressRuleTypeInput)(nil)).Elem(), TrafficMirrorFilterEgressRuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterEgressRuleTypeArrayInput)(nil)).Elem(), TrafficMirrorFilterEgressRuleTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterIngressRuleTypeInput)(nil)).Elem(), TrafficMirrorFilterIngressRuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrafficMirrorFilterIngressRuleTypeArrayInput)(nil)).Elem(), TrafficMirrorFilterIngressRuleTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpGroupsGroupInput)(nil)).Elem(), GetBgpGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpGroupsGroupArrayInput)(nil)).Elem(), GetBgpGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBgpNetworksNetworkInput)(nil)).Elem(), GetBgpNetworksNetworkArgs{})
@@ -8813,8 +9617,16 @@ func init() {
 	pulumi.RegisterOutputType(NetworkAclIngressAclEntryArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclResourceOutput{})
 	pulumi.RegisterOutputType(NetworkAclResourceArrayOutput{})
+	pulumi.RegisterOutputType(NetworkIpv6CidrBlockOutput{})
+	pulumi.RegisterOutputType(NetworkIpv6CidrBlockArrayOutput{})
 	pulumi.RegisterOutputType(PrefixListEntryOutput{})
 	pulumi.RegisterOutputType(PrefixListEntryArrayOutput{})
+	pulumi.RegisterOutputType(PrefixListPrefixListAssociationOutput{})
+	pulumi.RegisterOutputType(PrefixListPrefixListAssociationArrayOutput{})
+	pulumi.RegisterOutputType(TrafficMirrorFilterEgressRuleTypeOutput{})
+	pulumi.RegisterOutputType(TrafficMirrorFilterEgressRuleTypeArrayOutput{})
+	pulumi.RegisterOutputType(TrafficMirrorFilterIngressRuleTypeOutput{})
+	pulumi.RegisterOutputType(TrafficMirrorFilterIngressRuleTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetBgpGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetBgpGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetBgpNetworksNetworkOutput{})

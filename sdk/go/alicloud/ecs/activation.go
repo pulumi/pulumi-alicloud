@@ -33,9 +33,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewActivation(ctx, "example", &ecs.ActivationArgs{
-//				Description:       pulumi.Any(_var.Name),
+//				Description:       pulumi.String("terraform-example"),
 //				InstanceCount:     pulumi.Int(10),
-//				InstanceName:      pulumi.Any(_var.Name),
+//				InstanceName:      pulumi.String("terraform-example"),
 //				IpAddressRange:    pulumi.String("0.0.0.0/0"),
 //				TimeToLiveInHours: pulumi.Int(4),
 //			})

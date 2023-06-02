@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AclAclEntry {
     /**
-     * @return The IP entry that you want to add to the ACL.
+     * @return The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
      * 
      */
     private @Nullable String entry;
@@ -24,7 +24,7 @@ public final class AclAclEntry {
 
     private AclAclEntry() {}
     /**
-     * @return The IP entry that you want to add to the ACL.
+     * @return The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
      * 
      */
     public Optional<String> entry() {

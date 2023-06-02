@@ -10,9 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Prefix List resource.
+// Provides a Vpc Prefix List resource. This resource is used to create a prefix list.
 //
-// For information about VPC Prefix List and how to use it, see [What is Prefix List](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/creatvpcprefixlist).
+// For information about Vpc Prefix List and how to use it, see [What is Prefix List](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/creatvpcprefixlist).
 //
 // > **NOTE:** Available in v1.182.0+.
 //
@@ -25,24 +25,48 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.NewPrefixList(ctx, "default", &vpc.PrefixListArgs{
+//			cfg := config.New(ctx, "")
+//			name := "tf-testacc-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultRg, err := resourcemanager.NewResourceGroup(ctx, "defaultRg", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("tf-testacc-chenyi"),
+//				ResourceGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = resourcemanager.NewResourceGroup(ctx, "changeRg", &resourcemanager.ResourceGroupArgs{
+//				DisplayName:       pulumi.String("tf-testacc-chenyi-change"),
+//				ResourceGroupName: pulumi.String(fmt.Sprintf("%v1", name)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewPrefixList(ctx, "default", &vpc.PrefixListArgs{
+//				MaxEntries:            pulumi.Int(50),
+//				ResourceGroupId:       defaultRg.ID(),
+//				PrefixListDescription: pulumi.String("test"),
+//				IpVersion:             pulumi.String("IPV4"),
+//				PrefixListName:        pulumi.String(name),
 //				Entrys: vpc.PrefixListEntryArray{
 //					&vpc.PrefixListEntryArgs{
 //						Cidr:        pulumi.String("192.168.0.0/16"),
-//						Description: pulumi.String("description"),
+//						Description: pulumi.String("test"),
 //					},
 //				},
-//				IpVersion:             pulumi.String("IPV4"),
-//				MaxEntries:            pulumi.Int(50),
-//				PrefixListName:        pulumi.Any(_var.Name),
-//				PrefixListDescription: pulumi.String("description"),
 //			})
 //			if err != nil {
 //				return err
@@ -55,7 +79,7 @@ import (
 //
 // ## Import
 //
-// VPC Prefix List can be imported using the id, e.g.
+// Vpc Prefix List can be imported using the id, e.g.
 //
 // ```sh
 //
@@ -65,18 +89,30 @@ import (
 type PrefixList struct {
 	pulumi.CustomResourceState
 
-	// The CIDR address block list of the prefix list. See the following `Block entrys`.
+	// The time when the prefix list was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The CIDR address block list of the prefix list.See the following `Block Entrys`.
 	Entrys PrefixListEntryArrayOutput `pulumi:"entrys"`
-	// The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+	// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
 	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
 	// The maximum number of entries for CIDR address blocks in the prefix list.
 	MaxEntries pulumi.IntOutput `pulumi:"maxEntries"`
-	// The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The association list information of the prefix list.
+	PrefixListAssociations PrefixListPrefixListAssociationArrayOutput `pulumi:"prefixListAssociations"`
+	// The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	PrefixListDescription pulumi.StringPtrOutput `pulumi:"prefixListDescription"`
-	// The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The ID of the query Prefix List.
+	PrefixListId pulumi.StringOutput `pulumi:"prefixListId"`
+	// The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	PrefixListName pulumi.StringPtrOutput `pulumi:"prefixListName"`
-	// (Available in v1.196.0+) The status of the Prefix List.
+	// The ID of the resource group to which the PrefixList belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
+	ShareType pulumi.StringOutput `pulumi:"shareType"`
+	// Resource attribute fields that represent the status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The tags of PrefixList.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
 // NewPrefixList registers a new resource with the given unique name, arguments, and options.
@@ -108,33 +144,57 @@ func GetPrefixList(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PrefixList resources.
 type prefixListState struct {
-	// The CIDR address block list of the prefix list. See the following `Block entrys`.
+	// The time when the prefix list was created.
+	CreateTime *string `pulumi:"createTime"`
+	// The CIDR address block list of the prefix list.See the following `Block Entrys`.
 	Entrys []PrefixListEntry `pulumi:"entrys"`
-	// The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+	// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
 	IpVersion *string `pulumi:"ipVersion"`
 	// The maximum number of entries for CIDR address blocks in the prefix list.
 	MaxEntries *int `pulumi:"maxEntries"`
-	// The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The association list information of the prefix list.
+	PrefixListAssociations []PrefixListPrefixListAssociation `pulumi:"prefixListAssociations"`
+	// The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	PrefixListDescription *string `pulumi:"prefixListDescription"`
-	// The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The ID of the query Prefix List.
+	PrefixListId *string `pulumi:"prefixListId"`
+	// The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	PrefixListName *string `pulumi:"prefixListName"`
-	// (Available in v1.196.0+) The status of the Prefix List.
+	// The ID of the resource group to which the PrefixList belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
+	ShareType *string `pulumi:"shareType"`
+	// Resource attribute fields that represent the status of the resource.
 	Status *string `pulumi:"status"`
+	// The tags of PrefixList.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 type PrefixListState struct {
-	// The CIDR address block list of the prefix list. See the following `Block entrys`.
+	// The time when the prefix list was created.
+	CreateTime pulumi.StringPtrInput
+	// The CIDR address block list of the prefix list.See the following `Block Entrys`.
 	Entrys PrefixListEntryArrayInput
-	// The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+	// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
 	IpVersion pulumi.StringPtrInput
 	// The maximum number of entries for CIDR address blocks in the prefix list.
 	MaxEntries pulumi.IntPtrInput
-	// The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The association list information of the prefix list.
+	PrefixListAssociations PrefixListPrefixListAssociationArrayInput
+	// The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	PrefixListDescription pulumi.StringPtrInput
-	// The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The ID of the query Prefix List.
+	PrefixListId pulumi.StringPtrInput
+	// The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	PrefixListName pulumi.StringPtrInput
-	// (Available in v1.196.0+) The status of the Prefix List.
+	// The ID of the resource group to which the PrefixList belongs.
+	ResourceGroupId pulumi.StringPtrInput
+	// The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
+	ShareType pulumi.StringPtrInput
+	// Resource attribute fields that represent the status of the resource.
 	Status pulumi.StringPtrInput
+	// The tags of PrefixList.
+	Tags pulumi.MapInput
 }
 
 func (PrefixListState) ElementType() reflect.Type {
@@ -142,30 +202,38 @@ func (PrefixListState) ElementType() reflect.Type {
 }
 
 type prefixListArgs struct {
-	// The CIDR address block list of the prefix list. See the following `Block entrys`.
+	// The CIDR address block list of the prefix list.See the following `Block Entrys`.
 	Entrys []PrefixListEntry `pulumi:"entrys"`
-	// The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+	// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
 	IpVersion *string `pulumi:"ipVersion"`
 	// The maximum number of entries for CIDR address blocks in the prefix list.
 	MaxEntries *int `pulumi:"maxEntries"`
-	// The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	PrefixListDescription *string `pulumi:"prefixListDescription"`
-	// The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	PrefixListName *string `pulumi:"prefixListName"`
+	// The ID of the resource group to which the PrefixList belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The tags of PrefixList.
+	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a PrefixList resource.
 type PrefixListArgs struct {
-	// The CIDR address block list of the prefix list. See the following `Block entrys`.
+	// The CIDR address block list of the prefix list.See the following `Block Entrys`.
 	Entrys PrefixListEntryArrayInput
-	// The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+	// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
 	IpVersion pulumi.StringPtrInput
 	// The maximum number of entries for CIDR address blocks in the prefix list.
 	MaxEntries pulumi.IntPtrInput
-	// The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	PrefixListDescription pulumi.StringPtrInput
-	// The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
 	PrefixListName pulumi.StringPtrInput
+	// The ID of the resource group to which the PrefixList belongs.
+	ResourceGroupId pulumi.StringPtrInput
+	// The tags of PrefixList.
+	Tags pulumi.MapInput
 }
 
 func (PrefixListArgs) ElementType() reflect.Type {
@@ -255,12 +323,17 @@ func (o PrefixListOutput) ToPrefixListOutputWithContext(ctx context.Context) Pre
 	return o
 }
 
-// The CIDR address block list of the prefix list. See the following `Block entrys`.
+// The time when the prefix list was created.
+func (o PrefixListOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrefixList) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The CIDR address block list of the prefix list.See the following `Block Entrys`.
 func (o PrefixListOutput) Entrys() PrefixListEntryArrayOutput {
 	return o.ApplyT(func(v *PrefixList) PrefixListEntryArrayOutput { return v.Entrys }).(PrefixListEntryArrayOutput)
 }
 
-// The IP version of the prefix list. Valid values: `IPV4`, `IPV6`.
+// The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
 func (o PrefixListOutput) IpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrefixList) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
 }
@@ -270,19 +343,44 @@ func (o PrefixListOutput) MaxEntries() pulumi.IntOutput {
 	return o.ApplyT(func(v *PrefixList) pulumi.IntOutput { return v.MaxEntries }).(pulumi.IntOutput)
 }
 
-// The description of the prefix list. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+// The association list information of the prefix list.
+func (o PrefixListOutput) PrefixListAssociations() PrefixListPrefixListAssociationArrayOutput {
+	return o.ApplyT(func(v *PrefixList) PrefixListPrefixListAssociationArrayOutput { return v.PrefixListAssociations }).(PrefixListPrefixListAssociationArrayOutput)
+}
+
+// The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 func (o PrefixListOutput) PrefixListDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrefixList) pulumi.StringPtrOutput { return v.PrefixListDescription }).(pulumi.StringPtrOutput)
 }
 
-// The name of the prefix list. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+// The ID of the query Prefix List.
+func (o PrefixListOutput) PrefixListId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrefixList) pulumi.StringOutput { return v.PrefixListId }).(pulumi.StringOutput)
+}
+
+// The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
 func (o PrefixListOutput) PrefixListName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrefixList) pulumi.StringPtrOutput { return v.PrefixListName }).(pulumi.StringPtrOutput)
 }
 
-// (Available in v1.196.0+) The status of the Prefix List.
+// The ID of the resource group to which the PrefixList belongs.
+func (o PrefixListOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrefixList) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
+func (o PrefixListOutput) ShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrefixList) pulumi.StringOutput { return v.ShareType }).(pulumi.StringOutput)
+}
+
+// Resource attribute fields that represent the status of the resource.
 func (o PrefixListOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrefixList) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags of PrefixList.
+func (o PrefixListOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *PrefixList) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
 type PrefixListArrayOutput struct{ *pulumi.OutputState }

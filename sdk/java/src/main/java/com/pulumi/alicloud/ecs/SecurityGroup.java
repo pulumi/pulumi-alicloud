@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *         var default_ = new SecurityGroup(&#34;default&#34;, SecurityGroupArgs.builder()        
  *             .description(&#34;New security group&#34;)
  *             .build());
  * 
@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;10.1.0.0/21&#34;)
  *             .build());
  * 

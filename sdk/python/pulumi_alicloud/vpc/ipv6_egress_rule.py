@@ -113,7 +113,7 @@ class _Ipv6EgressRuleState:
         :param pulumi.Input[str] instance_type: The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
         :param pulumi.Input[str] ipv6_egress_rule_name: The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        :param pulumi.Input[str] status: The status of the resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -192,7 +192,7 @@ class _Ipv6EgressRuleState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -213,7 +213,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
                  ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a VPC Ipv6 Egress Rule resource.
+        Provides a VPC Ipv6 Egress Rule resource. IPv6 address addition only active exit rule.
 
         For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
 
@@ -227,11 +227,15 @@ class Ipv6EgressRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="example_value",
+            vpc_name=name,
             enable_ipv6=True)
         example_ipv6_gateway = alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway",
-            ipv6_gateway_name="example_value",
+            ipv6_gateway_name=name,
             vpc_id=default_network.id)
         default_instances = alicloud.ecs.get_instances(name_regex="ecs_with_ipv6_address",
             status="Running")
@@ -268,7 +272,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
                  args: Ipv6EgressRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Ipv6 Egress Rule resource.
+        Provides a VPC Ipv6 Egress Rule resource. IPv6 address addition only active exit rule.
 
         For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
 
@@ -282,11 +286,15 @@ class Ipv6EgressRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name="example_value",
+            vpc_name=name,
             enable_ipv6=True)
         example_ipv6_gateway = alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway",
-            ipv6_gateway_name="example_value",
+            ipv6_gateway_name=name,
             vpc_id=default_network.id)
         default_instances = alicloud.ecs.get_instances(name_regex="ecs_with_ipv6_address",
             status="Running")
@@ -375,7 +383,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
         :param pulumi.Input[str] instance_type: The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
         :param pulumi.Input[str] ipv6_egress_rule_name: The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        :param pulumi.Input[str] status: The status of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -433,7 +441,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 

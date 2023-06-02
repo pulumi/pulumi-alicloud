@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Quotas Quota Alarm resource.
  *
- * For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/184343.html).
+ * For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
  *
  * > **NOTE:** Available in v1.116.0+.
  *
@@ -21,15 +21,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.quotas.QuotaAlarm("example", {
- *     productCode: "ecs",
- *     quotaActionCode: "q_prepaid-instance-count-per-once-purchase",
- *     quotaAlarmName: "tf-testAcc",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.quotas.QuotaAlarm("default", {
+ *     quotaActionCode: "q_desktop-count",
  *     quotaDimensions: [{
  *         key: "regionId",
  *         value: "cn-hangzhou",
  *     }],
- *     threshold: 100,
+ *     thresholdPercent: 80,
+ *     productCode: "gws",
+ *     quotaAlarmName: name,
+ *     thresholdType: "used",
  * });
  * ```
  *
@@ -70,6 +73,10 @@ export class QuotaAlarm extends pulumi.CustomResource {
     }
 
     /**
+     * The creation time of the resource.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * The Product Code.
      */
     public readonly productCode!: pulumi.Output<string>;
@@ -82,7 +89,7 @@ export class QuotaAlarm extends pulumi.CustomResource {
      */
     public readonly quotaAlarmName!: pulumi.Output<string>;
     /**
-     * The Quota Dimensions.
+     * The Quota Dimensions. See the following `Block QuotaDimensions`.
      */
     public readonly quotaDimensions!: pulumi.Output<outputs.quotas.QuotaAlarmQuotaDimension[] | undefined>;
     /**
@@ -93,6 +100,12 @@ export class QuotaAlarm extends pulumi.CustomResource {
      * The threshold percent of Quota Alarm.
      */
     public readonly thresholdPercent!: pulumi.Output<number | undefined>;
+    /**
+     * Quota alarm type. Value:
+     * - used: Quota used alarm.
+     * - usable: alarm for the remaining available quota.
+     */
+    public readonly thresholdType!: pulumi.Output<string>;
     /**
      * The WebHook of Quota Alarm.
      */
@@ -111,12 +124,14 @@ export class QuotaAlarm extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaAlarmState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["productCode"] = state ? state.productCode : undefined;
             resourceInputs["quotaActionCode"] = state ? state.quotaActionCode : undefined;
             resourceInputs["quotaAlarmName"] = state ? state.quotaAlarmName : undefined;
             resourceInputs["quotaDimensions"] = state ? state.quotaDimensions : undefined;
             resourceInputs["threshold"] = state ? state.threshold : undefined;
             resourceInputs["thresholdPercent"] = state ? state.thresholdPercent : undefined;
+            resourceInputs["thresholdType"] = state ? state.thresholdType : undefined;
             resourceInputs["webHook"] = state ? state.webHook : undefined;
         } else {
             const args = argsOrState as QuotaAlarmArgs | undefined;
@@ -135,7 +150,9 @@ export class QuotaAlarm extends pulumi.CustomResource {
             resourceInputs["quotaDimensions"] = args ? args.quotaDimensions : undefined;
             resourceInputs["threshold"] = args ? args.threshold : undefined;
             resourceInputs["thresholdPercent"] = args ? args.thresholdPercent : undefined;
+            resourceInputs["thresholdType"] = args ? args.thresholdType : undefined;
             resourceInputs["webHook"] = args ? args.webHook : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(QuotaAlarm.__pulumiType, name, resourceInputs, opts);
@@ -146,6 +163,10 @@ export class QuotaAlarm extends pulumi.CustomResource {
  * Input properties used for looking up and filtering QuotaAlarm resources.
  */
 export interface QuotaAlarmState {
+    /**
+     * The creation time of the resource.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * The Product Code.
      */
@@ -159,7 +180,7 @@ export interface QuotaAlarmState {
      */
     quotaAlarmName?: pulumi.Input<string>;
     /**
-     * The Quota Dimensions.
+     * The Quota Dimensions. See the following `Block QuotaDimensions`.
      */
     quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[]>;
     /**
@@ -170,6 +191,12 @@ export interface QuotaAlarmState {
      * The threshold percent of Quota Alarm.
      */
     thresholdPercent?: pulumi.Input<number>;
+    /**
+     * Quota alarm type. Value:
+     * - used: Quota used alarm.
+     * - usable: alarm for the remaining available quota.
+     */
+    thresholdType?: pulumi.Input<string>;
     /**
      * The WebHook of Quota Alarm.
      */
@@ -193,7 +220,7 @@ export interface QuotaAlarmArgs {
      */
     quotaAlarmName: pulumi.Input<string>;
     /**
-     * The Quota Dimensions.
+     * The Quota Dimensions. See the following `Block QuotaDimensions`.
      */
     quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[]>;
     /**
@@ -204,6 +231,12 @@ export interface QuotaAlarmArgs {
      * The threshold percent of Quota Alarm.
      */
     thresholdPercent?: pulumi.Input<number>;
+    /**
+     * Quota alarm type. Value:
+     * - used: Quota used alarm.
+     * - usable: alarm for the remaining available quota.
+     */
+    thresholdType?: pulumi.Input<string>;
     /**
      * The WebHook of Quota Alarm.
      */

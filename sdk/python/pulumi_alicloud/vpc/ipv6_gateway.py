@@ -17,21 +17,32 @@ class Ipv6GatewayArgs:
                  vpc_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  ipv6_gateway_name: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input[str]] = None):
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Ipv6Gateway resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
-        :param pulumi.Input[str] description: The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] spec: The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+        :param pulumi.Input[str] description: The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        :param pulumi.Input[str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[str] spec: IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags for the resource.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ipv6_gateway_name is not None:
             pulumi.set(__self__, "ipv6_gateway_name", ipv6_gateway_name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if spec is not None:
+            warnings.warn("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""", DeprecationWarning)
+            pulumi.log.warn("""spec is deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -49,7 +60,7 @@ class Ipv6GatewayArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+        The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
@@ -61,7 +72,7 @@ class Ipv6GatewayArgs:
     @pulumi.getter(name="ipv6GatewayName")
     def ipv6_gateway_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         """
         return pulumi.get(self, "ipv6_gateway_name")
 
@@ -70,10 +81,22 @@ class Ipv6GatewayArgs:
         pulumi.set(self, "ipv6_gateway_name", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+        IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         """
         return pulumi.get(self, "spec")
 
@@ -81,39 +104,106 @@ class Ipv6GatewayArgs:
     def spec(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tags for the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _Ipv6GatewayState:
     def __init__(__self__, *,
+                 business_status: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expired_time: Optional[pulumi.Input[str]] = None,
+                 instance_charge_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
                  ipv6_gateway_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Ipv6Gateway resources.
-        :param pulumi.Input[str] description: The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] spec: The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        :param pulumi.Input[str] business_status: The status of the IPv6 gateway.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] description: The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        :param pulumi.Input[str] expired_time: The expiration time of IPv6 gateway.
+        :param pulumi.Input[str] instance_charge_type: The charge type of IPv6 gateway.
+        :param pulumi.Input[str] ipv6_gateway_id: Resource primary key attribute field.
+        :param pulumi.Input[str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[str] spec: IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: Available, Pending and Deleting.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags for the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
         """
+        if business_status is not None:
+            pulumi.set(__self__, "business_status", business_status)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expired_time is not None:
+            pulumi.set(__self__, "expired_time", expired_time)
+        if instance_charge_type is not None:
+            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if ipv6_gateway_id is not None:
+            pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
         if ipv6_gateway_name is not None:
             pulumi.set(__self__, "ipv6_gateway_name", ipv6_gateway_name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if spec is not None:
+            warnings.warn("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""", DeprecationWarning)
+            pulumi.log.warn("""spec is deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="businessStatus")
+    def business_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the IPv6 gateway.
+        """
+        return pulumi.get(self, "business_status")
+
+    @business_status.setter
+    def business_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "business_status", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+        The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
@@ -122,10 +212,46 @@ class _Ipv6GatewayState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expiration time of IPv6 gateway.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @expired_time.setter
+    def expired_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expired_time", value)
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The charge type of IPv6 gateway.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @instance_charge_type.setter
+    def instance_charge_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_charge_type", value)
+
+    @property
+    @pulumi.getter(name="ipv6GatewayId")
+    def ipv6_gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource primary key attribute field.
+        """
+        return pulumi.get(self, "ipv6_gateway_id")
+
+    @ipv6_gateway_id.setter
+    def ipv6_gateway_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_gateway_id", value)
+
+    @property
     @pulumi.getter(name="ipv6GatewayName")
     def ipv6_gateway_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         """
         return pulumi.get(self, "ipv6_gateway_name")
 
@@ -134,10 +260,22 @@ class _Ipv6GatewayState:
         pulumi.set(self, "ipv6_gateway_name", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+        IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         """
         return pulumi.get(self, "spec")
 
@@ -149,13 +287,25 @@ class _Ipv6GatewayState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        The status of the resource. Valid values: Available, Pending and Deleting.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tags for the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -177,13 +327,15 @@ class Ipv6Gateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ipv6_gateway_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a VPC Ipv6 Gateway resource.
+        Provides a Vpc Ipv6 Gateway resource. Gateway Based on Internet Protocol Version 6.
 
-        For information about VPC Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/doc-detail/102214.htm).
+        For information about Vpc Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv6gateway).
 
         > **NOTE:** Available in v1.142.0+.
 
@@ -195,17 +347,29 @@ class Ipv6Gateway(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.vpc.Network("default",
-            vpc_name="example_value",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_vpc = alicloud.vpc.Network("defaultVpc",
+            description="tf-testacc",
             enable_ipv6=True)
-        example = alicloud.vpc.Ipv6Gateway("example",
-            ipv6_gateway_name="example_value",
-            vpc_id=default.id)
+        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
+            display_name="tf-testacc-ipv6gateway503",
+            resource_group_name=f"{name}1")
+        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
+            display_name="tf-testacc-ipv6gateway311",
+            resource_group_name=f"{name}2")
+        default = alicloud.vpc.Ipv6Gateway("default",
+            description="test",
+            ipv6_gateway_name=name,
+            vpc_id=default_vpc.id,
+            resource_group_id=default_rg.id)
         ```
 
         ## Import
 
-        VPC Ipv6 Gateway can be imported using the id, e.g.
+        Vpc Ipv6 Gateway can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
@@ -213,9 +377,11 @@ class Ipv6Gateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] spec: The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+        :param pulumi.Input[str] description: The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        :param pulumi.Input[str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[str] spec: IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags for the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
         """
         ...
@@ -225,9 +391,9 @@ class Ipv6Gateway(pulumi.CustomResource):
                  args: Ipv6GatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Ipv6 Gateway resource.
+        Provides a Vpc Ipv6 Gateway resource. Gateway Based on Internet Protocol Version 6.
 
-        For information about VPC Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/doc-detail/102214.htm).
+        For information about Vpc Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv6gateway).
 
         > **NOTE:** Available in v1.142.0+.
 
@@ -239,17 +405,29 @@ class Ipv6Gateway(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.vpc.Network("default",
-            vpc_name="example_value",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_vpc = alicloud.vpc.Network("defaultVpc",
+            description="tf-testacc",
             enable_ipv6=True)
-        example = alicloud.vpc.Ipv6Gateway("example",
-            ipv6_gateway_name="example_value",
-            vpc_id=default.id)
+        default_rg = alicloud.resourcemanager.ResourceGroup("defaultRg",
+            display_name="tf-testacc-ipv6gateway503",
+            resource_group_name=f"{name}1")
+        change_rg = alicloud.resourcemanager.ResourceGroup("changeRg",
+            display_name="tf-testacc-ipv6gateway311",
+            resource_group_name=f"{name}2")
+        default = alicloud.vpc.Ipv6Gateway("default",
+            description="test",
+            ipv6_gateway_name=name,
+            vpc_id=default_vpc.id,
+            resource_group_id=default_rg.id)
         ```
 
         ## Import
 
-        VPC Ipv6 Gateway can be imported using the id, e.g.
+        Vpc Ipv6 Gateway can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example <id>
@@ -272,7 +450,9 @@ class Ipv6Gateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ipv6_gateway_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -285,10 +465,20 @@ class Ipv6Gateway(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["ipv6_gateway_name"] = ipv6_gateway_name
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            if spec is not None and not opts.urn:
+                warnings.warn("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""", DeprecationWarning)
+                pulumi.log.warn("""spec is deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
             __props__.__dict__["spec"] = spec
+            __props__.__dict__["tags"] = tags
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["business_status"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["expired_time"] = None
+            __props__.__dict__["instance_charge_type"] = None
+            __props__.__dict__["ipv6_gateway_id"] = None
             __props__.__dict__["status"] = None
         super(Ipv6Gateway, __self__).__init__(
             'alicloud:vpc/ipv6Gateway:Ipv6Gateway',
@@ -300,10 +490,17 @@ class Ipv6Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            business_status: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            expired_time: Optional[pulumi.Input[str]] = None,
+            instance_charge_type: Optional[pulumi.Input[str]] = None,
+            ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
             ipv6_gateway_name: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'Ipv6Gateway':
         """
         Get an existing Ipv6Gateway resource's state with the given name, id, and optional extra
@@ -312,44 +509,106 @@ class Ipv6Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] spec: The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        :param pulumi.Input[str] business_status: The status of the IPv6 gateway.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] description: The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
+        :param pulumi.Input[str] expired_time: The expiration time of IPv6 gateway.
+        :param pulumi.Input[str] instance_charge_type: The charge type of IPv6 gateway.
+        :param pulumi.Input[str] ipv6_gateway_id: Resource primary key attribute field.
+        :param pulumi.Input[str] ipv6_gateway_name: The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[str] spec: IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+        :param pulumi.Input[str] status: The status of the resource. Valid values: Available, Pending and Deleting.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags for the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _Ipv6GatewayState.__new__(_Ipv6GatewayState)
 
+        __props__.__dict__["business_status"] = business_status
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["expired_time"] = expired_time
+        __props__.__dict__["instance_charge_type"] = instance_charge_type
+        __props__.__dict__["ipv6_gateway_id"] = ipv6_gateway_id
         __props__.__dict__["ipv6_gateway_name"] = ipv6_gateway_name
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
         return Ipv6Gateway(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="businessStatus")
+    def business_status(self) -> pulumi.Output[str]:
+        """
+        The status of the IPv6 gateway.
+        """
+        return pulumi.get(self, "business_status")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+        The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> pulumi.Output[str]:
+        """
+        The expiration time of IPv6 gateway.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @property
+    @pulumi.getter(name="instanceChargeType")
+    def instance_charge_type(self) -> pulumi.Output[str]:
+        """
+        The charge type of IPv6 gateway.
+        """
+        return pulumi.get(self, "instance_charge_type")
+
+    @property
+    @pulumi.getter(name="ipv6GatewayId")
+    def ipv6_gateway_id(self) -> pulumi.Output[str]:
+        """
+        Resource primary key attribute field.
+        """
+        return pulumi.get(self, "ipv6_gateway_id")
 
     @property
     @pulumi.getter(name="ipv6GatewayName")
     def ipv6_gateway_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
         """
         return pulumi.get(self, "ipv6_gateway_name")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
     def spec(self) -> pulumi.Output[str]:
         """
-        The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+        IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         """
         return pulumi.get(self, "spec")
 
@@ -357,9 +616,17 @@ class Ipv6Gateway(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        The status of the resource. Valid values: Available, Pending and Deleting.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The tags for the resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")

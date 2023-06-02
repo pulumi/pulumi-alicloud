@@ -13,7 +13,7 @@ import (
 
 // Provides a Global Accelerator (GA) Acl entry attachment resource.
 //
-// For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/addentriestoacl).
+// For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-addentriestoacl).
 //
 // > **NOTE:** Available in v1.190.0+.
 //
@@ -68,7 +68,7 @@ type AclEntryAttachment struct {
 
 	// The ID of the global acceleration instance.
 	AclId pulumi.StringOutput `pulumi:"aclId"`
-	// The IP address or CIDR block that you want to add to the network ACL.
+	// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
 	Entry pulumi.StringOutput `pulumi:"entry"`
 	// The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
 	EntryDescription pulumi.StringPtrOutput `pulumi:"entryDescription"`
@@ -113,7 +113,7 @@ func GetAclEntryAttachment(ctx *pulumi.Context,
 type aclEntryAttachmentState struct {
 	// The ID of the global acceleration instance.
 	AclId *string `pulumi:"aclId"`
-	// The IP address or CIDR block that you want to add to the network ACL.
+	// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
 	Entry *string `pulumi:"entry"`
 	// The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
 	EntryDescription *string `pulumi:"entryDescription"`
@@ -124,7 +124,7 @@ type aclEntryAttachmentState struct {
 type AclEntryAttachmentState struct {
 	// The ID of the global acceleration instance.
 	AclId pulumi.StringPtrInput
-	// The IP address or CIDR block that you want to add to the network ACL.
+	// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
 	Entry pulumi.StringPtrInput
 	// The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
 	EntryDescription pulumi.StringPtrInput
@@ -139,7 +139,7 @@ func (AclEntryAttachmentState) ElementType() reflect.Type {
 type aclEntryAttachmentArgs struct {
 	// The ID of the global acceleration instance.
 	AclId string `pulumi:"aclId"`
-	// The IP address or CIDR block that you want to add to the network ACL.
+	// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
 	Entry string `pulumi:"entry"`
 	// The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
 	EntryDescription *string `pulumi:"entryDescription"`
@@ -149,7 +149,7 @@ type aclEntryAttachmentArgs struct {
 type AclEntryAttachmentArgs struct {
 	// The ID of the global acceleration instance.
 	AclId pulumi.StringInput
-	// The IP address or CIDR block that you want to add to the network ACL.
+	// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
 	Entry pulumi.StringInput
 	// The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
 	EntryDescription pulumi.StringPtrInput
@@ -247,7 +247,7 @@ func (o AclEntryAttachmentOutput) AclId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclEntryAttachment) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
 }
 
-// The IP address or CIDR block that you want to add to the network ACL.
+// The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
 func (o AclEntryAttachmentOutput) Entry() pulumi.StringOutput {
 	return o.ApplyT(func(v *AclEntryAttachment) pulumi.StringOutput { return v.Entry }).(pulumi.StringOutput)
 }

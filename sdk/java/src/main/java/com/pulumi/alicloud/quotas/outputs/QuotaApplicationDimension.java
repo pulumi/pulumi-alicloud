@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class QuotaApplicationDimension {
     /**
-     * @return The key of dimensions.
+     * @return Key.
      * 
      */
     private @Nullable String key;
     /**
-     * @return The value of dimensions.
+     * @return Value.
      * 
      */
     private @Nullable String value;
 
     private QuotaApplicationDimension() {}
     /**
-     * @return The key of dimensions.
+     * @return Key.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The value of dimensions.
+     * @return Value.
      * 
      */
     public Optional<String> value() {

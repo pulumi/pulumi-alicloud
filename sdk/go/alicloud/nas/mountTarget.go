@@ -32,24 +32,50 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//				FileSystemType: pulumi.StringRef("standard"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
 //				ProtocolType: pulumi.String("NFS"),
 //				StorageType:  pulumi.String("Performance"),
-//				Description:  pulumi.String("test file system"),
+//				Description:  pulumi.String("terraform-example"),
+//				EncryptType:  pulumi.Int(1),
+//				ZoneId:       *pulumi.String(exampleZones.Zones[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleAccessGroup, err := nas.NewAccessGroup(ctx, "exampleAccessGroup", &nas.AccessGroupArgs{
-//				AccessGroupName: pulumi.String("test_name"),
-//				AccessGroupType: pulumi.String("Classic"),
-//				Description:     pulumi.String("test access group"),
+//				AccessGroupName: pulumi.String("terraform-example"),
+//				AccessGroupType: pulumi.String("Vpc"),
+//				Description:     pulumi.String("terraform-example"),
+//				FileSystemType:  pulumi.String("standard"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
@@ -57,6 +83,7 @@ import (
 //			_, err = nas.NewMountTarget(ctx, "exampleMountTarget", &nas.MountTargetArgs{
 //				FileSystemId:    exampleFileSystem.ID(),
 //				AccessGroupName: exampleAccessGroup.AccessGroupName,
+//				VswitchId:       exampleSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err

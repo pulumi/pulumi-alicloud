@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const task = alicloud.resourcemanager.getAccountDeletionCheckTask({
  *     accountId: "your_account_id",
  * });
- * export const abandonAbleChecksIds = [task.then(task => task.abandonAbleChecks)].map(__item => __item?.checkId);
+ * export const abandonAbleChecksIds = task.then(task => task.abandonAbleChecks.map(__item => __item.checkId));
  * ```
  */
 export function getAccountDeletionCheckTask(args: GetAccountDeletionCheckTaskArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountDeletionCheckTaskResult> {
@@ -93,7 +93,7 @@ export interface GetAccountDeletionCheckTaskResult {
  * const task = alicloud.resourcemanager.getAccountDeletionCheckTask({
  *     accountId: "your_account_id",
  * });
- * export const abandonAbleChecksIds = [task.then(task => task.abandonAbleChecks)].map(__item => __item?.checkId);
+ * export const abandonAbleChecksIds = task.then(task => task.abandonAbleChecks.map(__item => __item.checkId));
  * ```
  */
 export function getAccountDeletionCheckTaskOutput(args: GetAccountDeletionCheckTaskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountDeletionCheckTaskResult> {

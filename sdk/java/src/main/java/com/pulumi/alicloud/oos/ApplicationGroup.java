@@ -53,17 +53,17 @@ import javax.annotation.Nullable;
  * 
  *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
- *             .applicationName(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
+ *             .applicationName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
  *             .build());
  * 
  *         var defaultApplicationGroup = new ApplicationGroup(&#34;defaultApplicationGroup&#34;, ApplicationGroupArgs.builder()        
- *             .applicationGroupName(var_.name())
+ *             .applicationGroupName(&#34;terraform-example&#34;)
  *             .applicationName(defaultApplication.id())
- *             .deployRegionId(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
- *             .importTagKey(&#34;example_value&#34;)
+ *             .deployRegionId(&#34;cn-beijing&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .importTagKey(&#34;example_key&#34;)
  *             .importTagValue(&#34;example_value&#34;)
  *             .build());
  * 

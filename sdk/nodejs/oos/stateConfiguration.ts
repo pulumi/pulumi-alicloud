@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const defaultStateConfiguration = new alicloud.oos.StateConfiguration("defaultStateConfiguration", {
  *     templateName: "ACS-ECS-InventoryDataCollection",
  *     configureMode: "ApplyOnly",
- *     description: _var.name,
+ *     description: "terraform-example",
  *     scheduleType: "rate",
  *     scheduleExpression: "1 hour",
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     parameters: "{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}",
  *     tags: {
  *         Created: "TF",
- *         For: "Test",
+ *         For: "example",
  *     },
  * });
  * ```

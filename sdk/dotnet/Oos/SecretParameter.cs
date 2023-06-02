@@ -16,6 +16,45 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// &gt; **NOTE:** Available in v1.147.0+.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var exampleKey = new AliCloud.Kms.Key("exampleKey", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///         Status = "Enabled",
+    ///         PendingWindowInDays = 7,
+    ///     });
+    /// 
+    ///     var exampleSecretParameter = new AliCloud.Oos.SecretParameter("exampleSecretParameter", new()
+    ///     {
+    ///         SecretParameterName = "terraform-example",
+    ///         Value = "terraform-example",
+    ///         Type = "Secret",
+    ///         KeyId = exampleKey.Id,
+    ///         Description = "terraform-example",
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "OosSecretParameter" },
+    ///         },
+    ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// OOS Secret Parameter can be imported using the id, e.g.

@@ -146,10 +146,40 @@ class ImageExport(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.ecs.ImageExport("default",
-            image_id="m-bp1gxy***",
-            oss_bucket="ecsimageexportconfig",
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name="terraform-example",
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id,
+            instance_type=default_instance_types.ids[0],
+            image_id=default_images.ids[0],
+            internet_max_bandwidth_out=10)
+        default_image = alicloud.ecs.Image("defaultImage",
+            instance_id=default_instance.id,
+            image_name="terraform-example",
+            description="terraform-example")
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"example-value-{result}"))
+        default_image_export = alicloud.ecs.ImageExport("defaultImageExport",
+            image_id=default_image.id,
+            oss_bucket=default_bucket.id,
             oss_prefix="ecsExport")
         ```
         ## Attributes Reference0
@@ -186,10 +216,40 @@ class ImageExport(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.ecs.ImageExport("default",
-            image_id="m-bp1gxy***",
-            oss_bucket="ecsimageexportconfig",
+        default_zones = alicloud.get_zones(available_resource_creation="Instance")
+        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("defaultInstance",
+            availability_zone=default_zones.zones[0].id,
+            instance_name="terraform-example",
+            security_groups=[default_security_group.id],
+            vswitch_id=default_switch.id,
+            instance_type=default_instance_types.ids[0],
+            image_id=default_images.ids[0],
+            internet_max_bandwidth_out=10)
+        default_image = alicloud.ecs.Image("defaultImage",
+            instance_id=default_instance.id,
+            image_name="terraform-example",
+            description="terraform-example")
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"example-value-{result}"))
+        default_image_export = alicloud.ecs.ImageExport("defaultImageExport",
+            image_id=default_image.id,
+            oss_bucket=default_bucket.id,
             oss_prefix="ecsExport")
         ```
         ## Attributes Reference0

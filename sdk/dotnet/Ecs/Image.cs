@@ -30,14 +30,65 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Ecs.Image("default", new()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
+    ///         AvailableResourceCreation = "Instance",
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         InstanceTypeFamily = "ecs.sn1ne",
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceName = "terraform-example",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             defaultSecurityGroup.Id,
+    ///         },
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
+    ///         InternetMaxBandwidthOut = 10,
+    ///     });
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultImage = new AliCloud.Ecs.Image("defaultImage", new()
+    ///     {
+    ///         InstanceId = defaultInstance.Id,
+    ///         ImageName = "terraform-example",
+    ///         Description = "terraform-example",
     ///         Architecture = "x86_64",
-    ///         Description = "test-image",
-    ///         ImageName = "test-image",
-    ///         InstanceId = "i-bp1g6zv0ce8oghu7k***",
     ///         Platform = "CentOS",
-    ///         ResourceGroupId = "rg-bp67acfmxazb4ph***",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///         Tags = 
     ///         {
     ///             { "FinanceDept", "FinanceDeptJoshua" },

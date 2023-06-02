@@ -35,8 +35,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				InstanceTypeFamily: pulumi.StringRef("ecs.g5"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("Instance"),
+//				AvailableInstanceType:     pulumi.StringRef(defaultInstanceTypes.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,17 +55,16 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewCapacityReservation(ctx, "defaultCapacityReservation", &ecs.CapacityReservationArgs{
-//				Description:             pulumi.Any(_var.Name),
+//				Description:             pulumi.String("terraform-example"),
 //				Platform:                pulumi.String("linux"),
-//				CapacityReservationName: pulumi.Any(_var.Name),
+//				CapacityReservationName: pulumi.String("terraform-example"),
 //				EndTimeType:             pulumi.String("Unlimited"),
 //				ResourceGroupId:         *pulumi.String(defaultResourceGroups.Ids[0]),
 //				InstanceAmount:          pulumi.Int(1),
-//				InstanceType:            pulumi.String("ecs.c5.2xlarge"),
+//				InstanceType:            *pulumi.String(defaultInstanceTypes.Ids[0]),
 //				MatchCriteria:           pulumi.String("Open"),
 //				Tags: pulumi.AnyMap{
-//					"Created": pulumi.Any("tfTestAcc0"),
-//					"For":     pulumi.Any("Tftestacc 0"),
+//					"Created": pulumi.Any("terraform-example"),
 //				},
 //				ZoneIds: pulumi.StringArray{
 //					*pulumi.String(defaultZones.Zones[0].Id),

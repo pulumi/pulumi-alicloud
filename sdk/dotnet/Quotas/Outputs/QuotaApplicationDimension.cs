@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Quotas.Outputs
     public sealed class QuotaApplicationDimension
     {
         /// <summary>
-        /// The key of dimensions.
+        /// Key.
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// The value of dimensions.
+        /// Value.
         /// </summary>
         public readonly string? Value;
 

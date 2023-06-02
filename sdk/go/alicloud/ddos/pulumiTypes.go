@@ -11,7 +11,7 @@ import (
 )
 
 type DomainResourceProxyType struct {
-	// the port number. This field is required and must be an integer.
+	// the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxyPorts` can be modified.
 	ProxyPorts []int `pulumi:"proxyPorts"`
 	// the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
 	ProxyType *string `pulumi:"proxyType"`
@@ -29,7 +29,7 @@ type DomainResourceProxyTypeInput interface {
 }
 
 type DomainResourceProxyTypeArgs struct {
-	// the port number. This field is required and must be an integer.
+	// the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxyPorts` can be modified.
 	ProxyPorts pulumi.IntArrayInput `pulumi:"proxyPorts"`
 	// the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
 	ProxyType pulumi.StringPtrInput `pulumi:"proxyType"`
@@ -86,7 +86,7 @@ func (o DomainResourceProxyTypeOutput) ToDomainResourceProxyTypeOutputWithContex
 	return o
 }
 
-// the port number. This field is required and must be an integer.
+// the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxyPorts` can be modified.
 func (o DomainResourceProxyTypeOutput) ProxyPorts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v DomainResourceProxyType) []int { return v.ProxyPorts }).(pulumi.IntArrayOutput)
 }

@@ -28,11 +28,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
-    ///     {
-    ///         NameRegex = "default",
-    ///     });
-    /// 
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
@@ -42,86 +37,77 @@ namespace Pulumi.AliCloud.Ecs
     ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         CpuCoreCount = 2,
-    ///         MemorySize = 4,
     ///         SystemDiskCategory = "cloud_essd",
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "default-NODELETING",
-    ///     });
-    /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
-    ///     {
-    ///         Description = "New security group",
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///     });
-    /// 
-    ///     var defaultDisk = new List&lt;AliCloud.Ecs.Disk&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
-    ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         defaultDisk.Add(new AliCloud.Ecs.Disk($"defaultDisk-{range.Value}", new()
-    ///         {
-    ///             DiskName = @var.Name,
-    ///             ZoneId = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
-    ///             Category = "cloud_essd",
-    ///             Size = 20,
-    ///         }));
-    ///     }
     ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         Owners = "system",
     ///     });
     /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
     ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
     ///     {
     ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         InstanceName = @var.Name,
-    ///         HostName = "tf-testAcc",
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InstanceName = "terraform-example",
     ///         SecurityGroups = new[]
     ///         {
     ///             defaultSecurityGroup.Id,
     ///         },
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InternetMaxBandwidthOut = 10,
     ///     });
     /// 
-    ///     var defaultDiskAttachment = new List&lt;AliCloud.Ecs.DiskAttachment&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("defaultEcsDisk", new()
     ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         defaultDiskAttachment.Add(new AliCloud.Ecs.DiskAttachment($"defaultDiskAttachment-{range.Value}", new()
-    ///         {
-    ///             DiskId = defaultDisk.Select(__item =&gt; __item.Id).ToList()[range.Value],
-    ///             InstanceId = defaultInstance.Id,
-    ///         }));
-    ///     }
-    ///     var example = new AliCloud.Ecs.EcsSnapshotGroup("example", new()
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         DiskName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///         Category = "cloud_essd",
+    ///         Size = 30,
+    ///     });
+    /// 
+    ///     var defaultDiskAttachment = new AliCloud.Ecs.DiskAttachment("defaultDiskAttachment", new()
     ///     {
-    ///         Description = "example_value",
+    ///         DiskId = defaultEcsDisk.Id,
+    ///         InstanceId = defaultInstance.Id,
+    ///     });
+    /// 
+    ///     var defaultEcsSnapshotGroup = new AliCloud.Ecs.EcsSnapshotGroup("defaultEcsSnapshotGroup", new()
+    ///     {
+    ///         Description = "terraform-example",
     ///         DiskIds = new[]
     ///         {
-    ///             defaultDiskAttachment[0].DiskId,
-    ///             defaultDiskAttachment[1].DiskId,
+    ///             defaultEcsDisk.Id,
     ///         },
-    ///         SnapshotGroupName = "example_value",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
-    ///         InstanceId = defaultDiskAttachment[0].InstanceId,
+    ///         SnapshotGroupName = "terraform-example",
+    ///         InstanceId = defaultInstance.Id,
     ///         InstantAccess = true,
     ///         InstantAccessRetentionDays = 1,
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
-    ///             { "For", "Acceptance-test" },
+    ///             { "For", "Acceptance" },
     ///         },
     ///     });
     /// 

@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := cen.GetTransitRouterRouteTableAssociations(ctx, &cen.GetTransitRouterRouteTableAssociationsArgs{
-//				TransitRouterRouteTableId: "rtb-id1",
+//				TransitRouterRouteTableId: pulumi.StringRef("rtb-id1"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -57,8 +57,14 @@ type GetTransitRouterRouteTableAssociationsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the route table, including `Active`, `Associating`, `Dissociating`.
 	Status *string `pulumi:"status"`
-	// ID of the route table of the VPC or VBR.
-	TransitRouterRouteTableId string `pulumi:"transitRouterRouteTableId"`
+	// The ID of the network instance connection.
+	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
+	// The ID of the next hop.
+	TransitRouterAttachmentResourceId *string `pulumi:"transitRouterAttachmentResourceId"`
+	// The type of next hop. Valid values:
+	TransitRouterAttachmentResourceType *string `pulumi:"transitRouterAttachmentResourceType"`
+	// The ID of the route table of the Enterprise Edition transit router.
+	TransitRouterRouteTableId *string `pulumi:"transitRouterRouteTableId"`
 }
 
 // A collection of values returned by getTransitRouterRouteTableAssociations.
@@ -72,8 +78,12 @@ type GetTransitRouterRouteTableAssociationsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// The status of the route table.
 	Status *string `pulumi:"status"`
+	// ID of the transit router attachment.
+	TransitRouterAttachmentId           *string `pulumi:"transitRouterAttachmentId"`
+	TransitRouterAttachmentResourceId   *string `pulumi:"transitRouterAttachmentResourceId"`
+	TransitRouterAttachmentResourceType *string `pulumi:"transitRouterAttachmentResourceType"`
 	// ID of the transit router route table.
-	TransitRouterRouteTableId string `pulumi:"transitRouterRouteTableId"`
+	TransitRouterRouteTableId *string `pulumi:"transitRouterRouteTableId"`
 }
 
 func GetTransitRouterRouteTableAssociationsOutput(ctx *pulumi.Context, args GetTransitRouterRouteTableAssociationsOutputArgs, opts ...pulumi.InvokeOption) GetTransitRouterRouteTableAssociationsResultOutput {
@@ -97,8 +107,14 @@ type GetTransitRouterRouteTableAssociationsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the route table, including `Active`, `Associating`, `Dissociating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// ID of the route table of the VPC or VBR.
-	TransitRouterRouteTableId pulumi.StringInput `pulumi:"transitRouterRouteTableId"`
+	// The ID of the network instance connection.
+	TransitRouterAttachmentId pulumi.StringPtrInput `pulumi:"transitRouterAttachmentId"`
+	// The ID of the next hop.
+	TransitRouterAttachmentResourceId pulumi.StringPtrInput `pulumi:"transitRouterAttachmentResourceId"`
+	// The type of next hop. Valid values:
+	TransitRouterAttachmentResourceType pulumi.StringPtrInput `pulumi:"transitRouterAttachmentResourceType"`
+	// The ID of the route table of the Enterprise Edition transit router.
+	TransitRouterRouteTableId pulumi.StringPtrInput `pulumi:"transitRouterRouteTableId"`
 }
 
 func (GetTransitRouterRouteTableAssociationsOutputArgs) ElementType() reflect.Type {
@@ -146,9 +162,26 @@ func (o GetTransitRouterRouteTableAssociationsResultOutput) Status() pulumi.Stri
 	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// ID of the transit router attachment.
+func (o GetTransitRouterRouteTableAssociationsResultOutput) TransitRouterAttachmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsResult) *string { return v.TransitRouterAttachmentId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetTransitRouterRouteTableAssociationsResultOutput) TransitRouterAttachmentResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsResult) *string {
+		return v.TransitRouterAttachmentResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetTransitRouterRouteTableAssociationsResultOutput) TransitRouterAttachmentResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsResult) *string {
+		return v.TransitRouterAttachmentResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the transit router route table.
-func (o GetTransitRouterRouteTableAssociationsResultOutput) TransitRouterRouteTableId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsResult) string { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
+func (o GetTransitRouterRouteTableAssociationsResultOutput) TransitRouterRouteTableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsResult) *string { return v.TransitRouterRouteTableId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

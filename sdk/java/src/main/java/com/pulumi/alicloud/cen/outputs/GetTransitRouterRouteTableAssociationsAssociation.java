@@ -26,10 +26,15 @@ public final class GetTransitRouterRouteTableAssociationsAssociation {
      */
     private String status;
     /**
-     * @return ID of the cen transit router attachment.
+     * @return The ID of the network instance connection.
      * 
      */
     private String transitRouterAttachmentId;
+    /**
+     * @return The ID of the route table of the Enterprise Edition transit router.
+     * 
+     */
+    private String transitRouterRouteTableId;
 
     private GetTransitRouterRouteTableAssociationsAssociation() {}
     public String id() {
@@ -57,11 +62,18 @@ public final class GetTransitRouterRouteTableAssociationsAssociation {
         return this.status;
     }
     /**
-     * @return ID of the cen transit router attachment.
+     * @return The ID of the network instance connection.
      * 
      */
     public String transitRouterAttachmentId() {
         return this.transitRouterAttachmentId;
+    }
+    /**
+     * @return The ID of the route table of the Enterprise Edition transit router.
+     * 
+     */
+    public String transitRouterRouteTableId() {
+        return this.transitRouterRouteTableId;
     }
 
     public static Builder builder() {
@@ -78,6 +90,7 @@ public final class GetTransitRouterRouteTableAssociationsAssociation {
         private String resourceType;
         private String status;
         private String transitRouterAttachmentId;
+        private String transitRouterRouteTableId;
         public Builder() {}
         public Builder(GetTransitRouterRouteTableAssociationsAssociation defaults) {
     	      Objects.requireNonNull(defaults);
@@ -86,6 +99,7 @@ public final class GetTransitRouterRouteTableAssociationsAssociation {
     	      this.resourceType = defaults.resourceType;
     	      this.status = defaults.status;
     	      this.transitRouterAttachmentId = defaults.transitRouterAttachmentId;
+    	      this.transitRouterRouteTableId = defaults.transitRouterRouteTableId;
         }
 
         @CustomType.Setter
@@ -113,6 +127,11 @@ public final class GetTransitRouterRouteTableAssociationsAssociation {
             this.transitRouterAttachmentId = Objects.requireNonNull(transitRouterAttachmentId);
             return this;
         }
+        @CustomType.Setter
+        public Builder transitRouterRouteTableId(String transitRouterRouteTableId) {
+            this.transitRouterRouteTableId = Objects.requireNonNull(transitRouterRouteTableId);
+            return this;
+        }
         public GetTransitRouterRouteTableAssociationsAssociation build() {
             final var o = new GetTransitRouterRouteTableAssociationsAssociation();
             o.id = id;
@@ -120,6 +139,7 @@ public final class GetTransitRouterRouteTableAssociationsAssociation {
             o.resourceType = resourceType;
             o.status = status;
             o.transitRouterAttachmentId = transitRouterAttachmentId;
+            o.transitRouterRouteTableId = transitRouterRouteTableId;
             return o;
         }
     }

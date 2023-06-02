@@ -280,37 +280,28 @@ class DbInstancePlanPlanConfigScaleOutArgs:
 @pulumi.input_type
 class InstanceIpWhitelistArgs:
     def __init__(__self__, *,
-                 security_ip_list: pulumi.Input[str],
                  ip_group_attribute: Optional[pulumi.Input[str]] = None,
-                 ip_group_name: Optional[pulumi.Input[str]] = None):
+                 ip_group_name: Optional[pulumi.Input[str]] = None,
+                 security_ip_list: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] security_ip_list: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
-        :param pulumi.Input[str] ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        :param pulumi.Input[str] ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. 
+               If the value contains `hidden`, this white list item will not output.
         :param pulumi.Input[str] ip_group_name: IP whitelist group name
+        :param pulumi.Input[str] security_ip_list: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """
-        pulumi.set(__self__, "security_ip_list", security_ip_list)
         if ip_group_attribute is not None:
             pulumi.set(__self__, "ip_group_attribute", ip_group_attribute)
         if ip_group_name is not None:
             pulumi.set(__self__, "ip_group_name", ip_group_name)
-
-    @property
-    @pulumi.getter(name="securityIpList")
-    def security_ip_list(self) -> pulumi.Input[str]:
-        """
-        Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
-        """
-        return pulumi.get(self, "security_ip_list")
-
-    @security_ip_list.setter
-    def security_ip_list(self, value: pulumi.Input[str]):
-        pulumi.set(self, "security_ip_list", value)
+        if security_ip_list is not None:
+            pulumi.set(__self__, "security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="ipGroupAttribute")
     def ip_group_attribute(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        The value of this parameter is empty by default. The attribute of the whitelist group. 
+        If the value contains `hidden`, this white list item will not output.
         """
         return pulumi.get(self, "ip_group_attribute")
 
@@ -329,5 +320,17 @@ class InstanceIpWhitelistArgs:
     @ip_group_name.setter
     def ip_group_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_group_name", value)
+
+    @property
+    @pulumi.getter(name="securityIpList")
+    def security_ip_list(self) -> Optional[pulumi.Input[str]]:
+        """
+        Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        """
+        return pulumi.get(self, "security_ip_list")
+
+    @security_ip_list.setter
+    def security_ip_list(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_ip_list", value)
 
 

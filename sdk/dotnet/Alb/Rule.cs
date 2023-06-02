@@ -30,6 +30,12 @@ namespace Pulumi.AliCloud.Alb
     public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        /// </summary>
+        [Output("direction")]
+        public Output<string> Direction { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to precheck this request.
         /// </summary>
         [Output("dryRun")]
@@ -118,6 +124,12 @@ namespace Pulumi.AliCloud.Alb
     public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
+        /// <summary>
         /// Specifies whether to precheck this request.
         /// </summary>
         [Input("dryRun")]
@@ -173,6 +185,12 @@ namespace Pulumi.AliCloud.Alb
 
     public sealed class RuleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
         /// <summary>
         /// Specifies whether to precheck this request.
         /// </summary>

@@ -200,6 +200,34 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.crossZoneEnabled;
     }
     /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     * 
+     */
+    @Export(name="deletionProtectionEnabled", type=Boolean.class, parameters={})
+    private Output<Boolean> deletionProtectionEnabled;
+
+    /**
+     * @return Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     * 
+     */
+    public Output<Boolean> deletionProtectionEnabled() {
+        return this.deletionProtectionEnabled;
+    }
+    /**
+     * The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+     * 
+     */
+    @Export(name="deletionProtectionReason", type=String.class, parameters={})
+    private Output</* @Nullable */ String> deletionProtectionReason;
+
+    /**
+     * @return The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+     * 
+     */
+    public Output<Optional<String>> deletionProtectionReason() {
+        return Codegen.optional(this.deletionProtectionReason);
+    }
+    /**
      * The domain name of the NLB instance.
      * 
      */
@@ -268,6 +296,34 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> loadBalancerType() {
         return this.loadBalancerType;
+    }
+    /**
+     * The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+     * 
+     */
+    @Export(name="modificationProtectionReason", type=String.class, parameters={})
+    private Output</* @Nullable */ String> modificationProtectionReason;
+
+    /**
+     * @return The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+     * 
+     */
+    public Output<Optional<String>> modificationProtectionReason() {
+        return Codegen.optional(this.modificationProtectionReason);
+    }
+    /**
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * 
+     */
+    @Export(name="modificationProtectionStatus", type=String.class, parameters={})
+    private Output<String> modificationProtectionStatus;
+
+    /**
+     * @return Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * 
+     */
+    public Output<String> modificationProtectionStatus() {
+        return this.modificationProtectionStatus;
     }
     /**
      * The ID of the resource group.

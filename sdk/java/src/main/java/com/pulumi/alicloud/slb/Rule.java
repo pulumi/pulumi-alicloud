@@ -56,8 +56,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.slb.ListenerArgs;
  * import com.pulumi.alicloud.slb.ServerGroup;
  * import com.pulumi.alicloud.slb.ServerGroupArgs;
- * import com.pulumi.alicloud.slb.ServerGroupServerAttachment;
- * import com.pulumi.alicloud.slb.ServerGroupServerAttachmentArgs;
  * import com.pulumi.alicloud.slb.Rule;
  * import com.pulumi.alicloud.slb.RuleArgs;
  * import java.util.List;
@@ -74,7 +72,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var slbRuleName = config.get(&#34;slbRuleName&#34;).orElse(&#34;forSlbRule&#34;);
+ *         final var slbRuleName = config.get(&#34;slbRuleName&#34;).orElse(&#34;terraform-example&#34;);
  *         final var ruleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
@@ -138,13 +136,6 @@ import javax.annotation.Nullable;
  * 
  *         var ruleServerGroup = new ServerGroup(&#34;ruleServerGroup&#34;, ServerGroupArgs.builder()        
  *             .loadBalancerId(ruleApplicationLoadBalancer.id())
- *             .build());
- * 
- *         var ruleServerGroupServerAttachment = new ServerGroupServerAttachment(&#34;ruleServerGroupServerAttachment&#34;, ServerGroupServerAttachmentArgs.builder()        
- *             .serverGroupId(ruleServerGroup.id())
- *             .serverId(ruleInstance.id())
- *             .port(80)
- *             .weight(100)
  *             .build());
  * 
  *         var ruleRule = new Rule(&#34;ruleRule&#34;, RuleArgs.builder()        

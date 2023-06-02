@@ -26,16 +26,20 @@ class SwitchArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Switch resource.
-        :param pulumi.Input[str] cidr_block: The CIDR block for the switch.
+        :param pulumi.Input[str] cidr_block: The IPv4 CIDR block of the VSwitch.
         :param pulumi.Input[str] vpc_id: The VPC ID.
-        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
-        :param pulumi.Input[str] description: The switch description. Defaults to null.
-        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
-        :param pulumi.Input[int] ipv6_cidr_block_mask: The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vswitch_name: The name of the switch. Defaults to null.
-        :param pulumi.Input[str] zone_id: The AZ for the switch. **Note:** Required for a VPC switch.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] availability_zone: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+        :param pulumi.Input[str] description: The description of VSwitch.
+        :param pulumi.Input[bool] enable_ipv6: Whether the IPv6 function is enabled in the switch. Value:
+               - **true**: enables IPv6.
+               - **false** (default): IPv6 is not enabled.
+        :param pulumi.Input[int] ipv6_cidr_block_mask: The IPv6 CIDR block of the VSwitch.
+        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VSwitch.
+        :param pulumi.Input[str] vswitch_name: The name of the VSwitch.
+        :param pulumi.Input[str] zone_id: The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
         pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -66,7 +70,7 @@ class SwitchArgs:
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Input[str]:
         """
-        The CIDR block for the switch.
+        The IPv4 CIDR block of the VSwitch.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -79,6 +83,8 @@ class SwitchArgs:
     def vpc_id(self) -> pulumi.Input[str]:
         """
         The VPC ID.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "vpc_id")
 
@@ -90,7 +96,7 @@ class SwitchArgs:
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+        Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -102,7 +108,7 @@ class SwitchArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The switch description. Defaults to null.
+        The description of VSwitch.
         """
         return pulumi.get(self, "description")
 
@@ -114,7 +120,9 @@ class SwitchArgs:
     @pulumi.getter(name="enableIpv6")
     def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        Whether the IPv6 function is enabled in the switch. Value:
+        - **true**: enables IPv6.
+        - **false** (default): IPv6 is not enabled.
         """
         return pulumi.get(self, "enable_ipv6")
 
@@ -126,7 +134,7 @@ class SwitchArgs:
     @pulumi.getter(name="ipv6CidrBlockMask")
     def ipv6_cidr_block_mask(self) -> Optional[pulumi.Input[int]]:
         """
-        The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        The IPv6 CIDR block of the VSwitch.
         """
         return pulumi.get(self, "ipv6_cidr_block_mask")
 
@@ -138,7 +146,7 @@ class SwitchArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+        Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -150,7 +158,7 @@ class SwitchArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tags of VSwitch.
         """
         return pulumi.get(self, "tags")
 
@@ -162,7 +170,7 @@ class SwitchArgs:
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the switch. Defaults to null.
+        The name of the VSwitch.
         """
         return pulumi.get(self, "vswitch_name")
 
@@ -174,7 +182,7 @@ class SwitchArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The AZ for the switch. **Note:** Required for a VPC switch.
+        The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
         return pulumi.get(self, "zone_id")
 
@@ -188,6 +196,7 @@ class _SwitchState:
     def __init__(__self__, *,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
@@ -200,18 +209,23 @@ class _SwitchState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Switch resources.
-        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
-        :param pulumi.Input[str] cidr_block: The CIDR block for the switch.
-        :param pulumi.Input[str] description: The switch description. Defaults to null.
-        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
-        :param pulumi.Input[str] ipv6_cidr_block: (Available in 1.201.1+) The IPv6 CIDR block for the switch.
-        :param pulumi.Input[int] ipv6_cidr_block_mask: The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
-        :param pulumi.Input[str] status: (Available in 1.119.0+) The status of the switch.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] availability_zone: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+        :param pulumi.Input[str] cidr_block: The IPv4 CIDR block of the VSwitch.
+        :param pulumi.Input[str] create_time: The creation time of the VSwitch.
+        :param pulumi.Input[str] description: The description of VSwitch.
+        :param pulumi.Input[bool] enable_ipv6: Whether the IPv6 function is enabled in the switch. Value:
+               - **true**: enables IPv6.
+               - **false** (default): IPv6 is not enabled.
+        :param pulumi.Input[str] ipv6_cidr_block: The IPv6 CIDR block of the VSwitch.
+        :param pulumi.Input[int] ipv6_cidr_block_mask: The IPv6 CIDR block of the VSwitch.
+        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VSwitch.
         :param pulumi.Input[str] vpc_id: The VPC ID.
-        :param pulumi.Input[str] vswitch_name: The name of the switch. Defaults to null.
-        :param pulumi.Input[str] zone_id: The AZ for the switch. **Note:** Required for a VPC switch.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] vswitch_name: The name of the VSwitch.
+        :param pulumi.Input[str] zone_id: The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
         if availability_zone is not None:
             warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
@@ -220,6 +234,8 @@ class _SwitchState:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_ipv6 is not None:
@@ -248,7 +264,7 @@ class _SwitchState:
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+        Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -260,7 +276,7 @@ class _SwitchState:
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
-        The CIDR block for the switch.
+        The IPv4 CIDR block of the VSwitch.
         """
         return pulumi.get(self, "cidr_block")
 
@@ -269,10 +285,22 @@ class _SwitchState:
         pulumi.set(self, "cidr_block", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the VSwitch.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The switch description. Defaults to null.
+        The description of VSwitch.
         """
         return pulumi.get(self, "description")
 
@@ -284,7 +312,9 @@ class _SwitchState:
     @pulumi.getter(name="enableIpv6")
     def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        Whether the IPv6 function is enabled in the switch. Value:
+        - **true**: enables IPv6.
+        - **false** (default): IPv6 is not enabled.
         """
         return pulumi.get(self, "enable_ipv6")
 
@@ -296,7 +326,7 @@ class _SwitchState:
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+        The IPv6 CIDR block of the VSwitch.
         """
         return pulumi.get(self, "ipv6_cidr_block")
 
@@ -308,7 +338,7 @@ class _SwitchState:
     @pulumi.getter(name="ipv6CidrBlockMask")
     def ipv6_cidr_block_mask(self) -> Optional[pulumi.Input[int]]:
         """
-        The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        The IPv6 CIDR block of the VSwitch.
         """
         return pulumi.get(self, "ipv6_cidr_block_mask")
 
@@ -320,7 +350,7 @@ class _SwitchState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+        Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -332,7 +362,7 @@ class _SwitchState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.119.0+) The status of the switch.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -344,7 +374,7 @@ class _SwitchState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tags of VSwitch.
         """
         return pulumi.get(self, "tags")
 
@@ -357,6 +387,8 @@ class _SwitchState:
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
         The VPC ID.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "vpc_id")
 
@@ -368,7 +400,7 @@ class _SwitchState:
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the switch. Defaults to null.
+        The name of the VSwitch.
         """
         return pulumi.get(self, "vswitch_name")
 
@@ -380,7 +412,7 @@ class _SwitchState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The AZ for the switch. **Note:** Required for a VPC switch.
+        The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
         return pulumi.get(self, "zone_id")
 
@@ -406,7 +438,11 @@ class Switch(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a VPC switch resource.
+        Provides a VPC Vswitch resource. ## Module Support
+
+        You can use to the existing vpc module  to create a VPC and several VSwitches one-click.
+
+        For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
 
         ## Example Usage
 
@@ -416,21 +452,24 @@ class Switch(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_test_foo",
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        vsw = alicloud.vpc.Switch("vsw",
-            vpc_id=vpc.id,
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
             cidr_block="172.16.0.0/21",
-            zone_id="cn-beijing-b")
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
         ```
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
+        foo = alicloud.get_zones(available_resource_creation="VSwitch")
         vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_test_foo",
+            vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
         cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidrBlocks",
             vpc_id=vpc.id,
@@ -438,8 +477,8 @@ class Switch(pulumi.CustomResource):
         island_nat = alicloud.vpc.Switch("island-nat",
             vpc_id=cidr_blocks.vpc_id,
             cidr_block="172.16.0.0/21",
-            zone_id="cn-beijing-b",
-            vswitch_name="example_value",
+            zone_id=foo.zones[0].id,
+            vswitch_name="terraform-example",
             tags={
                 "BuiltBy": "example_value",
                 "cnm_version": "example_value",
@@ -454,42 +493,43 @@ class Switch(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_test_foo",
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        example = alicloud.vpc.Ipv4CidrBlock("example",
-            vpc_id=alicloud_vpc["default"]["id"],
+        foo_ipv4_cidr_block = alicloud.vpc.Ipv4CidrBlock("fooIpv4CidrBlock",
+            vpc_id=foo_network.id,
             secondary_cidr_block="192.163.0.0/16")
-        vsw = alicloud.vpc.Switch("vsw",
-            vpc_id=example.vpc_id,
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vpc_id=foo_ipv4_cidr_block.vpc_id,
             cidr_block="192.163.0.0/24",
-            zone_id="cn-beijing-b")
+            zone_id=foo_zones.zones[0].id)
         ```
-        ## Module Support
-
-        You can use to the existing vpc module
-        to create a VPC and several VSwitches one-click.
 
         ## Import
 
-        Vswitch can be imported using the id, e.g.
+        VPC Vswitch can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/switch:Switch example vsw-abc123456
+         $ pulumi import alicloud:vpc/switch:Switch example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
-        :param pulumi.Input[str] cidr_block: The CIDR block for the switch.
-        :param pulumi.Input[str] description: The switch description. Defaults to null.
-        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
-        :param pulumi.Input[int] ipv6_cidr_block_mask: The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] availability_zone: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+        :param pulumi.Input[str] cidr_block: The IPv4 CIDR block of the VSwitch.
+        :param pulumi.Input[str] description: The description of VSwitch.
+        :param pulumi.Input[bool] enable_ipv6: Whether the IPv6 function is enabled in the switch. Value:
+               - **true**: enables IPv6.
+               - **false** (default): IPv6 is not enabled.
+        :param pulumi.Input[int] ipv6_cidr_block_mask: The IPv6 CIDR block of the VSwitch.
+        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VSwitch.
         :param pulumi.Input[str] vpc_id: The VPC ID.
-        :param pulumi.Input[str] vswitch_name: The name of the switch. Defaults to null.
-        :param pulumi.Input[str] zone_id: The AZ for the switch. **Note:** Required for a VPC switch.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] vswitch_name: The name of the VSwitch.
+        :param pulumi.Input[str] zone_id: The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
         ...
     @overload
@@ -498,7 +538,11 @@ class Switch(pulumi.CustomResource):
                  args: SwitchArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC switch resource.
+        Provides a VPC Vswitch resource. ## Module Support
+
+        You can use to the existing vpc module  to create a VPC and several VSwitches one-click.
+
+        For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
 
         ## Example Usage
 
@@ -508,21 +552,24 @@ class Switch(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_test_foo",
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        vsw = alicloud.vpc.Switch("vsw",
-            vpc_id=vpc.id,
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
             cidr_block="172.16.0.0/21",
-            zone_id="cn-beijing-b")
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
         ```
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
+        foo = alicloud.get_zones(available_resource_creation="VSwitch")
         vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_test_foo",
+            vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
         cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidrBlocks",
             vpc_id=vpc.id,
@@ -530,8 +577,8 @@ class Switch(pulumi.CustomResource):
         island_nat = alicloud.vpc.Switch("island-nat",
             vpc_id=cidr_blocks.vpc_id,
             cidr_block="172.16.0.0/21",
-            zone_id="cn-beijing-b",
-            vswitch_name="example_value",
+            zone_id=foo.zones[0].id,
+            vswitch_name="terraform-example",
             tags={
                 "BuiltBy": "example_value",
                 "cnm_version": "example_value",
@@ -546,28 +593,25 @@ class Switch(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name="tf_test_foo",
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        example = alicloud.vpc.Ipv4CidrBlock("example",
-            vpc_id=alicloud_vpc["default"]["id"],
+        foo_ipv4_cidr_block = alicloud.vpc.Ipv4CidrBlock("fooIpv4CidrBlock",
+            vpc_id=foo_network.id,
             secondary_cidr_block="192.163.0.0/16")
-        vsw = alicloud.vpc.Switch("vsw",
-            vpc_id=example.vpc_id,
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vpc_id=foo_ipv4_cidr_block.vpc_id,
             cidr_block="192.163.0.0/24",
-            zone_id="cn-beijing-b")
+            zone_id=foo_zones.zones[0].id)
         ```
-        ## Module Support
-
-        You can use to the existing vpc module
-        to create a VPC and several VSwitches one-click.
 
         ## Import
 
-        Vswitch can be imported using the id, e.g.
+        VPC Vswitch can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:vpc/switch:Switch example vsw-abc123456
+         $ pulumi import alicloud:vpc/switch:Switch example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -624,6 +668,7 @@ class Switch(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_name"] = vswitch_name
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["ipv6_cidr_block"] = None
             __props__.__dict__["status"] = None
         super(Switch, __self__).__init__(
@@ -638,6 +683,7 @@ class Switch(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             cidr_block: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_ipv6: Optional[pulumi.Input[bool]] = None,
             ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
@@ -655,18 +701,23 @@ class Switch(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
-        :param pulumi.Input[str] cidr_block: The CIDR block for the switch.
-        :param pulumi.Input[str] description: The switch description. Defaults to null.
-        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
-        :param pulumi.Input[str] ipv6_cidr_block: (Available in 1.201.1+) The IPv6 CIDR block for the switch.
-        :param pulumi.Input[int] ipv6_cidr_block_mask: The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
-        :param pulumi.Input[str] status: (Available in 1.119.0+) The status of the switch.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[str] availability_zone: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+        :param pulumi.Input[str] cidr_block: The IPv4 CIDR block of the VSwitch.
+        :param pulumi.Input[str] create_time: The creation time of the VSwitch.
+        :param pulumi.Input[str] description: The description of VSwitch.
+        :param pulumi.Input[bool] enable_ipv6: Whether the IPv6 function is enabled in the switch. Value:
+               - **true**: enables IPv6.
+               - **false** (default): IPv6 is not enabled.
+        :param pulumi.Input[str] ipv6_cidr_block: The IPv6 CIDR block of the VSwitch.
+        :param pulumi.Input[int] ipv6_cidr_block_mask: The IPv6 CIDR block of the VSwitch.
+        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of VSwitch.
         :param pulumi.Input[str] vpc_id: The VPC ID.
-        :param pulumi.Input[str] vswitch_name: The name of the switch. Defaults to null.
-        :param pulumi.Input[str] zone_id: The AZ for the switch. **Note:** Required for a VPC switch.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] vswitch_name: The name of the VSwitch.
+        :param pulumi.Input[str] zone_id: The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -674,6 +725,7 @@ class Switch(pulumi.CustomResource):
 
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["cidr_block"] = cidr_block
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_ipv6"] = enable_ipv6
         __props__.__dict__["ipv6_cidr_block"] = ipv6_cidr_block
@@ -690,7 +742,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[str]:
         """
-        Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+        Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         """
         return pulumi.get(self, "availability_zone")
 
@@ -698,15 +750,23 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="cidrBlock")
     def cidr_block(self) -> pulumi.Output[str]:
         """
-        The CIDR block for the switch.
+        The IPv4 CIDR block of the VSwitch.
         """
         return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the VSwitch.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The switch description. Defaults to null.
+        The description of VSwitch.
         """
         return pulumi.get(self, "description")
 
@@ -714,7 +774,9 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="enableIpv6")
     def enable_ipv6(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+        Whether the IPv6 function is enabled in the switch. Value:
+        - **true**: enables IPv6.
+        - **false** (default): IPv6 is not enabled.
         """
         return pulumi.get(self, "enable_ipv6")
 
@@ -722,7 +784,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="ipv6CidrBlock")
     def ipv6_cidr_block(self) -> pulumi.Output[str]:
         """
-        (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+        The IPv6 CIDR block of the VSwitch.
         """
         return pulumi.get(self, "ipv6_cidr_block")
 
@@ -730,7 +792,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="ipv6CidrBlockMask")
     def ipv6_cidr_block_mask(self) -> pulumi.Output[Optional[int]]:
         """
-        The last 8 bits of the switch's IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+        The IPv6 CIDR block of the VSwitch.
         """
         return pulumi.get(self, "ipv6_cidr_block_mask")
 
@@ -738,7 +800,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+        Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -746,7 +808,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        (Available in 1.119.0+) The status of the switch.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -754,7 +816,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tags of VSwitch.
         """
         return pulumi.get(self, "tags")
 
@@ -763,6 +825,8 @@ class Switch(pulumi.CustomResource):
     def vpc_id(self) -> pulumi.Output[str]:
         """
         The VPC ID.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "vpc_id")
 
@@ -770,7 +834,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="vswitchName")
     def vswitch_name(self) -> pulumi.Output[str]:
         """
-        The name of the switch. Defaults to null.
+        The name of the VSwitch.
         """
         return pulumi.get(self, "vswitch_name")
 
@@ -778,7 +842,7 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The AZ for the switch. **Note:** Required for a VPC switch.
+        The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
         """
         return pulumi.get(self, "zone_id")
 

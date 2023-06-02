@@ -20,14 +20,20 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
     public static final QuotaApplicationArgs Empty = new QuotaApplicationArgs();
 
     /**
-     * The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+     * Quota audit mode. Value:
+     * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+     * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+     * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      * 
      */
     @Import(name="auditMode")
     private @Nullable Output<String> auditMode;
 
     /**
-     * @return The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+     * @return Quota audit mode. Value:
+     * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+     * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+     * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      * 
      */
     public Optional<Output<String>> auditMode() {
@@ -50,14 +56,14 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The quota dimensions.
+     * QuotaDimensions. See the following `Block Dimensions`.
      * 
      */
     @Import(name="dimensions")
     private @Nullable Output<List<QuotaApplicationDimensionArgs>> dimensions;
 
     /**
-     * @return The quota dimensions.
+     * @return QuotaDimensions. See the following `Block Dimensions`.
      * 
      */
     public Optional<Output<List<QuotaApplicationDimensionArgs>>> dimensions() {
@@ -65,14 +71,63 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The notice type. Valid values: `0`, `1`, `2`, `3`.
+     * The effective time of the quota application.
+     * 
+     */
+    @Import(name="effectiveTime")
+    private @Nullable Output<String> effectiveTime;
+
+    /**
+     * @return The effective time of the quota application.
+     * 
+     */
+    public Optional<Output<String>> effectiveTime() {
+        return Optional.ofNullable(this.effectiveTime);
+    }
+
+    /**
+     * The language of the quota alert notification. Value:
+     * - zh (default): Chinese.
+     * - en: English.
+     * 
+     */
+    @Import(name="envLanguage")
+    private @Nullable Output<String> envLanguage;
+
+    /**
+     * @return The language of the quota alert notification. Value:
+     * - zh (default): Chinese.
+     * - en: English.
+     * 
+     */
+    public Optional<Output<String>> envLanguage() {
+        return Optional.ofNullable(this.envLanguage);
+    }
+
+    /**
+     * The expired time of the quota application.
+     * 
+     */
+    @Import(name="expireTime")
+    private @Nullable Output<String> expireTime;
+
+    /**
+     * @return The expired time of the quota application.
+     * 
+     */
+    public Optional<Output<String>> expireTime() {
+        return Optional.ofNullable(this.expireTime);
+    }
+
+    /**
+     * Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
      * 
      */
     @Import(name="noticeType")
     private @Nullable Output<Integer> noticeType;
 
     /**
-     * @return The notice type. Valid values: `0`, `1`, `2`, `3`.
+     * @return Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
      * 
      */
     public Optional<Output<Integer>> noticeType() {
@@ -110,14 +165,20 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The quota category. Valid values: `CommonQuota`, `FlowControl`.
+     * The quota type.
+     * - CommonQuota (default): Generic quota.
+     * - FlowControl:API rate quota.
+     * - WhiteListLabel: Equity quota.
      * 
      */
     @Import(name="quotaCategory")
     private @Nullable Output<String> quotaCategory;
 
     /**
-     * @return The quota category. Valid values: `CommonQuota`, `FlowControl`.
+     * @return The quota type.
+     * - CommonQuota (default): Generic quota.
+     * - FlowControl:API rate quota.
+     * - WhiteListLabel: Equity quota.
      * 
      */
     public Optional<Output<String>> quotaCategory() {
@@ -145,6 +206,9 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         this.auditMode = $.auditMode;
         this.desireValue = $.desireValue;
         this.dimensions = $.dimensions;
+        this.effectiveTime = $.effectiveTime;
+        this.envLanguage = $.envLanguage;
+        this.expireTime = $.expireTime;
         this.noticeType = $.noticeType;
         this.productCode = $.productCode;
         this.quotaActionCode = $.quotaActionCode;
@@ -171,7 +235,10 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param auditMode The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+         * @param auditMode Quota audit mode. Value:
+         * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+         * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+         * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
          * 
          * @return builder
          * 
@@ -182,7 +249,10 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param auditMode The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+         * @param auditMode Quota audit mode. Value:
+         * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+         * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+         * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
          * 
          * @return builder
          * 
@@ -213,7 +283,7 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dimensions The quota dimensions.
+         * @param dimensions QuotaDimensions. See the following `Block Dimensions`.
          * 
          * @return builder
          * 
@@ -224,7 +294,7 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dimensions The quota dimensions.
+         * @param dimensions QuotaDimensions. See the following `Block Dimensions`.
          * 
          * @return builder
          * 
@@ -234,7 +304,7 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dimensions The quota dimensions.
+         * @param dimensions QuotaDimensions. See the following `Block Dimensions`.
          * 
          * @return builder
          * 
@@ -244,7 +314,74 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param noticeType The notice type. Valid values: `0`, `1`, `2`, `3`.
+         * @param effectiveTime The effective time of the quota application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTime(@Nullable Output<String> effectiveTime) {
+            $.effectiveTime = effectiveTime;
+            return this;
+        }
+
+        /**
+         * @param effectiveTime The effective time of the quota application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveTime(String effectiveTime) {
+            return effectiveTime(Output.of(effectiveTime));
+        }
+
+        /**
+         * @param envLanguage The language of the quota alert notification. Value:
+         * - zh (default): Chinese.
+         * - en: English.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder envLanguage(@Nullable Output<String> envLanguage) {
+            $.envLanguage = envLanguage;
+            return this;
+        }
+
+        /**
+         * @param envLanguage The language of the quota alert notification. Value:
+         * - zh (default): Chinese.
+         * - en: English.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder envLanguage(String envLanguage) {
+            return envLanguage(Output.of(envLanguage));
+        }
+
+        /**
+         * @param expireTime The expired time of the quota application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(@Nullable Output<String> expireTime) {
+            $.expireTime = expireTime;
+            return this;
+        }
+
+        /**
+         * @param expireTime The expired time of the quota application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(String expireTime) {
+            return expireTime(Output.of(expireTime));
+        }
+
+        /**
+         * @param noticeType Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
          * 
          * @return builder
          * 
@@ -255,7 +392,7 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param noticeType The notice type. Valid values: `0`, `1`, `2`, `3`.
+         * @param noticeType Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
          * 
          * @return builder
          * 
@@ -307,7 +444,10 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param quotaCategory The quota category. Valid values: `CommonQuota`, `FlowControl`.
+         * @param quotaCategory The quota type.
+         * - CommonQuota (default): Generic quota.
+         * - FlowControl:API rate quota.
+         * - WhiteListLabel: Equity quota.
          * 
          * @return builder
          * 
@@ -318,7 +458,10 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param quotaCategory The quota category. Valid values: `CommonQuota`, `FlowControl`.
+         * @param quotaCategory The quota type.
+         * - CommonQuota (default): Generic quota.
+         * - FlowControl:API rate quota.
+         * - WhiteListLabel: Equity quota.
          * 
          * @return builder
          * 

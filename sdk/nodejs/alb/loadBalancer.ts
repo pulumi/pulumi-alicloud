@@ -102,7 +102,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -242,7 +242,7 @@ export interface LoadBalancerState {
      */
     status?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -304,7 +304,7 @@ export interface LoadBalancerArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

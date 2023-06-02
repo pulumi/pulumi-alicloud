@@ -32,6 +32,25 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.ecs.Image;
+ * import com.pulumi.alicloud.ecs.ImageArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.ecs.ImageExport;
  * import com.pulumi.alicloud.ecs.ImageExportArgs;
  * import java.util.List;
@@ -47,9 +66,63 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ImageExport(&#34;default&#34;, ImageExportArgs.builder()        
- *             .imageId(&#34;m-bp1gxy***&#34;)
- *             .ossBucket(&#34;ecsimageexportconfig&#34;)
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceName(&#34;terraform-example&#34;)
+ *             .securityGroups(defaultSecurityGroup.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
+ *             .internetMaxBandwidthOut(10)
+ *             .build());
+ * 
+ *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .imageName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .build());
+ * 
+ *         var defaultImageExport = new ImageExport(&#34;defaultImageExport&#34;, ImageExportArgs.builder()        
+ *             .imageId(defaultImage.id())
+ *             .ossBucket(defaultBucket.id())
  *             .ossPrefix(&#34;ecsExport&#34;)
  *             .build());
  * 

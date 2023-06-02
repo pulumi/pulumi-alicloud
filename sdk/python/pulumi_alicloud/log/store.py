@@ -36,7 +36,7 @@ class StoreArgs:
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
         :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
-        :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+        :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[int] retention_period: The data retention time (in days). Valid values: [1-3650]. Default to `30`. Log store data will be stored permanently when the value is `3650`.
@@ -143,7 +143,7 @@ class StoreArgs:
     @pulumi.getter(name="maxSplitShardCount")
     def max_split_shard_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+        The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         """
         return pulumi.get(self, "max_split_shard_count")
 
@@ -235,7 +235,7 @@ class _StoreState:
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
         :param pulumi.Input['StoreEncryptConfArgs'] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
-        :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+        :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
@@ -335,7 +335,7 @@ class _StoreState:
     @pulumi.getter(name="maxSplitShardCount")
     def max_split_shard_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+        The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         """
         return pulumi.get(self, "max_split_shard_count")
 
@@ -508,7 +508,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
         :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
-        :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+        :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
@@ -663,7 +663,7 @@ class Store(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_web_tracking: Determines whether to enable Web Tracking. Default `false`.
         :param pulumi.Input[pulumi.InputType['StoreEncryptConfArgs']] encrypt_conf: Encrypted storage of data, providing data static protection capability, `encrypt_conf` can be updated since 1.188.0+ (only `enable` change is supported when updating logstore)
         :param pulumi.Input[int] hot_ttl: The ttl of hot storage. Default to `30`, at least `30`, hot storage ttl must be less than ttl.
-        :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+        :param pulumi.Input[int] max_split_shard_count: The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         :param pulumi.Input[str] mode: The mode of storage. Default to `standard`, must be `standard` or `query`, `mode` is only valid when creating, can't be changed after created.
         :param pulumi.Input[str] name: The log store, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
@@ -735,7 +735,7 @@ class Store(pulumi.CustomResource):
     @pulumi.getter(name="maxSplitShardCount")
     def max_split_shard_count(self) -> pulumi.Output[Optional[int]]:
         """
-        The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+        The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         """
         return pulumi.get(self, "max_split_shard_count")
 

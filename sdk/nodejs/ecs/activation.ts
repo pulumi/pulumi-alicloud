@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.ecs.Activation("example", {
- *     description: _var.name,
+ *     description: "terraform-example",
  *     instanceCount: 10,
- *     instanceName: _var.name,
+ *     instanceName: "terraform-example",
  *     ipAddressRange: "0.0.0.0/0",
  *     timeToLiveInHours: 4,
  * });

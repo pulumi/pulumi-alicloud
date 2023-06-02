@@ -35,7 +35,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
-//				VpcName:   pulumi.Any(_var.Name),
+//				VpcName:   pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err

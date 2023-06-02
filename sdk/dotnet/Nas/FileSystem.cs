@@ -30,12 +30,18 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var example = AliCloud.Nas.GetZones.Invoke(new()
+    ///     {
+    ///         FileSystemType = "standard",
+    ///     });
+    /// 
     ///     var foo = new AliCloud.Nas.FileSystem("foo", new()
     ///     {
-    ///         Description = "tf-testAccNasConfig",
-    ///         EncryptType = 1,
     ///         ProtocolType = "NFS",
     ///         StorageType = "Performance",
+    ///         Description = "terraform-example",
+    ///         EncryptType = 1,
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
     ///     });
     /// 
     /// });
@@ -49,14 +55,19 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var example = AliCloud.Nas.GetZones.Invoke(new()
+    ///     {
+    ///         FileSystemType = "extreme",
+    ///     });
+    /// 
     ///     var foo = new AliCloud.Nas.FileSystem("foo", new()
     ///     {
-    ///         Capacity = 100,
-    ///         Description = "tf-testAccNasConfig",
     ///         FileSystemType = "extreme",
     ///         ProtocolType = "NFS",
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
     ///         StorageType = "standard",
-    ///         ZoneId = "cn-hangzhou-f",
+    ///         Description = "terraform-example",
+    ///         Capacity = 100,
     ///     });
     /// 
     /// });
@@ -70,32 +81,35 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultZones = AliCloud.Nas.GetZones.Invoke(new()
+    ///     var exampleZones = AliCloud.Nas.GetZones.Invoke(new()
     ///     {
     ///         FileSystemType = "cpfs",
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
     ///     });
     /// 
-    ///     var foo = new AliCloud.Nas.FileSystem("foo", new()
+    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
     ///     {
     ///         ProtocolType = "cpfs",
     ///         StorageType = "advance_200",
     ///         FileSystemType = "cpfs",
     ///         Capacity = 3600,
-    ///         Description = "tf-testacc",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         Description = "terraform-example",
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
+    ///         VpcId = exampleNetwork.Id,
+    ///         VswitchId = exampleSwitch.Id,
     ///     });
     /// 
     /// });

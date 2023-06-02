@@ -177,22 +177,31 @@ class EngineNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-        default_cluster = alicloud.mse.Cluster("defaultCluster",
-            cluster_specification="MSE_SC_1_2_200_c",
+        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("exampleCluster",
+            cluster_specification="MSE_SC_1_2_60_c",
             cluster_type="Nacos-Ans",
-            cluster_version="NACOS_ANS_1_2_1",
+            cluster_version="NACOS_2_0_0",
             instance_count=1,
             net_type="privatenet",
-            vswitch_id=default_switches.ids[0],
             pub_network_flow="1",
-            acl_entry_lists=["127.0.0.1/32"],
-            cluster_alias_name="example_value")
-        example = alicloud.mse.EngineNamespace("example",
-            cluster_id=default_cluster.cluster_id,
-            namespace_show_name="example_value",
-            namespace_id="example_value")
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_dev",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
+        example_engine_namespace = alicloud.mse.EngineNamespace("exampleEngineNamespace",
+            cluster_id=example_cluster.cluster_id,
+            namespace_show_name="terraform-example",
+            namespace_id="terraform-example")
         ```
 
         ## Import
@@ -231,22 +240,31 @@ class EngineNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-        default_cluster = alicloud.mse.Cluster("defaultCluster",
-            cluster_specification="MSE_SC_1_2_200_c",
+        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("exampleCluster",
+            cluster_specification="MSE_SC_1_2_60_c",
             cluster_type="Nacos-Ans",
-            cluster_version="NACOS_ANS_1_2_1",
+            cluster_version="NACOS_2_0_0",
             instance_count=1,
             net_type="privatenet",
-            vswitch_id=default_switches.ids[0],
             pub_network_flow="1",
-            acl_entry_lists=["127.0.0.1/32"],
-            cluster_alias_name="example_value")
-        example = alicloud.mse.EngineNamespace("example",
-            cluster_id=default_cluster.cluster_id,
-            namespace_show_name="example_value",
-            namespace_id="example_value")
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_dev",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
+        example_engine_namespace = alicloud.mse.EngineNamespace("exampleEngineNamespace",
+            cluster_id=example_cluster.cluster_id,
+            namespace_show_name="terraform-example",
+            namespace_id="terraform-example")
         ```
 
         ## Import

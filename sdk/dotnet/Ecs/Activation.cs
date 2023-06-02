@@ -30,9 +30,9 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var example = new AliCloud.Ecs.Activation("example", new()
     ///     {
-    ///         Description = @var.Name,
+    ///         Description = "terraform-example",
     ///         InstanceCount = 10,
-    ///         InstanceName = @var.Name,
+    ///         InstanceName = "terraform-example",
     ///         IpAddressRange = "0.0.0.0/0",
     ///         TimeToLiveInHours = 4,
     ///     });

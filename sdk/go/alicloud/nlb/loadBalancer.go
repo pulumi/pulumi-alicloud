@@ -124,6 +124,10 @@ type LoadBalancer struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Specifies whether to enable cross-zone load balancing for the NLB instance.
 	CrossZoneEnabled pulumi.BoolOutput `pulumi:"crossZoneEnabled"`
+	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	DeletionProtectionEnabled pulumi.BoolOutput `pulumi:"deletionProtectionEnabled"`
+	// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+	DeletionProtectionReason pulumi.StringPtrOutput `pulumi:"deletionProtectionReason"`
 	// The domain name of the NLB instance.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// The type of IPv6 address used by the NLB instance.
@@ -134,6 +138,10 @@ type LoadBalancer struct {
 	LoadBalancerName pulumi.StringOutput `pulumi:"loadBalancerName"`
 	// The type of the instance. Set the value to `Network`, which specifies an NLB instance.
 	LoadBalancerType pulumi.StringOutput `pulumi:"loadBalancerType"`
+	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+	ModificationProtectionReason pulumi.StringPtrOutput `pulumi:"modificationProtectionReason"`
+	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+	ModificationProtectionStatus pulumi.StringOutput `pulumi:"modificationProtectionStatus"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The status of the NLB instance.
@@ -198,6 +206,10 @@ type loadBalancerState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Specifies whether to enable cross-zone load balancing for the NLB instance.
 	CrossZoneEnabled *bool `pulumi:"crossZoneEnabled"`
+	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
+	// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// The domain name of the NLB instance.
 	DnsName *string `pulumi:"dnsName"`
 	// The type of IPv6 address used by the NLB instance.
@@ -208,6 +220,10 @@ type loadBalancerState struct {
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
 	// The type of the instance. Set the value to `Network`, which specifies an NLB instance.
 	LoadBalancerType *string `pulumi:"loadBalancerType"`
+	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+	ModificationProtectionReason *string `pulumi:"modificationProtectionReason"`
+	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+	ModificationProtectionStatus *string `pulumi:"modificationProtectionStatus"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the NLB instance.
@@ -235,6 +251,10 @@ type LoadBalancerState struct {
 	CreateTime pulumi.StringPtrInput
 	// Specifies whether to enable cross-zone load balancing for the NLB instance.
 	CrossZoneEnabled pulumi.BoolPtrInput
+	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	DeletionProtectionEnabled pulumi.BoolPtrInput
+	// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+	DeletionProtectionReason pulumi.StringPtrInput
 	// The domain name of the NLB instance.
 	DnsName pulumi.StringPtrInput
 	// The type of IPv6 address used by the NLB instance.
@@ -245,6 +265,10 @@ type LoadBalancerState struct {
 	LoadBalancerName pulumi.StringPtrInput
 	// The type of the instance. Set the value to `Network`, which specifies an NLB instance.
 	LoadBalancerType pulumi.StringPtrInput
+	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+	ModificationProtectionReason pulumi.StringPtrInput
+	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+	ModificationProtectionStatus pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// The status of the NLB instance.
@@ -274,10 +298,18 @@ type loadBalancerArgs struct {
 	BandwidthPackageId *string `pulumi:"bandwidthPackageId"`
 	// Specifies whether to enable cross-zone load balancing for the NLB instance.
 	CrossZoneEnabled *bool `pulumi:"crossZoneEnabled"`
+	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
+	// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// The name of the NLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
 	// The type of the instance. Set the value to `Network`, which specifies an NLB instance.
 	LoadBalancerType *string `pulumi:"loadBalancerType"`
+	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+	ModificationProtectionReason *string `pulumi:"modificationProtectionReason"`
+	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+	ModificationProtectionStatus *string `pulumi:"modificationProtectionStatus"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
@@ -302,10 +334,18 @@ type LoadBalancerArgs struct {
 	BandwidthPackageId pulumi.StringPtrInput
 	// Specifies whether to enable cross-zone load balancing for the NLB instance.
 	CrossZoneEnabled pulumi.BoolPtrInput
+	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+	DeletionProtectionEnabled pulumi.BoolPtrInput
+	// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+	DeletionProtectionReason pulumi.StringPtrInput
 	// The name of the NLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	LoadBalancerName pulumi.StringPtrInput
 	// The type of the instance. Set the value to `Network`, which specifies an NLB instance.
 	LoadBalancerType pulumi.StringPtrInput
+	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+	ModificationProtectionReason pulumi.StringPtrInput
+	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+	ModificationProtectionStatus pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
@@ -432,6 +472,16 @@ func (o LoadBalancerOutput) CrossZoneEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolOutput { return v.CrossZoneEnabled }).(pulumi.BoolOutput)
 }
 
+// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+func (o LoadBalancerOutput) DeletionProtectionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolOutput { return v.DeletionProtectionEnabled }).(pulumi.BoolOutput)
+}
+
+// The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
+func (o LoadBalancerOutput) DeletionProtectionReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.DeletionProtectionReason }).(pulumi.StringPtrOutput)
+}
+
 // The domain name of the NLB instance.
 func (o LoadBalancerOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
@@ -455,6 +505,16 @@ func (o LoadBalancerOutput) LoadBalancerName() pulumi.StringOutput {
 // The type of the instance. Set the value to `Network`, which specifies an NLB instance.
 func (o LoadBalancerOutput) LoadBalancerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerType }).(pulumi.StringOutput)
+}
+
+// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
+func (o LoadBalancerOutput) ModificationProtectionReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.ModificationProtectionReason }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+func (o LoadBalancerOutput) ModificationProtectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ModificationProtectionStatus }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group.

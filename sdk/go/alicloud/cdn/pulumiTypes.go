@@ -682,17 +682,26 @@ func (o DomainHttpHeaderConfigArrayOutput) Index(i pulumi.IntInput) DomainHttpHe
 }
 
 type DomainNewCertificateConfig struct {
-	// The SSL certificate name.
+	// The ID of the certificate. It takes effect only when CertType = cas.
+	CertId *string `pulumi:"certId"`
+	// Certificate name, only flyer names are supported.
 	CertName *string `pulumi:"certName"`
-	// The SSL certificate type, can be "upload", "cas" and "free".
+	// The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+	CertRegion *string `pulumi:"certRegion"`
+	// Certificate type. Value:
+	// - **upload**: upload certificate.
+	// - **cas**: Cloud Shield certificate.
+	// - **free**: free certificate.
+	// > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
 	CertType *string `pulumi:"certType"`
-	// Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
 	ForceSet *string `pulumi:"forceSet"`
-	// The SSL private key. This is required if `serverCertificateStatus` is `on`
+	// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
 	PrivateKey *string `pulumi:"privateKey"`
-	// The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
+	// The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
 	ServerCertificate *string `pulumi:"serverCertificate"`
-	// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+	// Whether the HTTPS certificate is enabled. Value:
+	// - **on**(default): enabled.
+	// - **off** : not enabled.
 	ServerCertificateStatus *string `pulumi:"serverCertificateStatus"`
 }
 
@@ -708,17 +717,26 @@ type DomainNewCertificateConfigInput interface {
 }
 
 type DomainNewCertificateConfigArgs struct {
-	// The SSL certificate name.
+	// The ID of the certificate. It takes effect only when CertType = cas.
+	CertId pulumi.StringPtrInput `pulumi:"certId"`
+	// Certificate name, only flyer names are supported.
 	CertName pulumi.StringPtrInput `pulumi:"certName"`
-	// The SSL certificate type, can be "upload", "cas" and "free".
+	// The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+	CertRegion pulumi.StringPtrInput `pulumi:"certRegion"`
+	// Certificate type. Value:
+	// - **upload**: upload certificate.
+	// - **cas**: Cloud Shield certificate.
+	// - **free**: free certificate.
+	// > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
 	CertType pulumi.StringPtrInput `pulumi:"certType"`
-	// Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
 	ForceSet pulumi.StringPtrInput `pulumi:"forceSet"`
-	// The SSL private key. This is required if `serverCertificateStatus` is `on`
+	// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
-	// The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
+	// The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
 	ServerCertificate pulumi.StringPtrInput `pulumi:"serverCertificate"`
-	// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+	// Whether the HTTPS certificate is enabled. Value:
+	// - **on**(default): enabled.
+	// - **off** : not enabled.
 	ServerCertificateStatus pulumi.StringPtrInput `pulumi:"serverCertificateStatus"`
 }
 
@@ -799,32 +817,47 @@ func (o DomainNewCertificateConfigOutput) ToDomainNewCertificateConfigPtrOutputW
 	}).(DomainNewCertificateConfigPtrOutput)
 }
 
-// The SSL certificate name.
+// The ID of the certificate. It takes effect only when CertType = cas.
+func (o DomainNewCertificateConfigOutput) CertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.CertId }).(pulumi.StringPtrOutput)
+}
+
+// Certificate name, only flyer names are supported.
 func (o DomainNewCertificateConfigOutput) CertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.CertName }).(pulumi.StringPtrOutput)
 }
 
-// The SSL certificate type, can be "upload", "cas" and "free".
+// The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+func (o DomainNewCertificateConfigOutput) CertRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.CertRegion }).(pulumi.StringPtrOutput)
+}
+
+// Certificate type. Value:
+// - **upload**: upload certificate.
+// - **cas**: Cloud Shield certificate.
+// - **free**: free certificate.
+// > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
 func (o DomainNewCertificateConfigOutput) CertType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.CertType }).(pulumi.StringPtrOutput)
 }
 
-// Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
 func (o DomainNewCertificateConfigOutput) ForceSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.ForceSet }).(pulumi.StringPtrOutput)
 }
 
-// The SSL private key. This is required if `serverCertificateStatus` is `on`
+// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
 func (o DomainNewCertificateConfigOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
+// The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
 func (o DomainNewCertificateConfigOutput) ServerCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.ServerCertificate }).(pulumi.StringPtrOutput)
 }
 
-// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+// Whether the HTTPS certificate is enabled. Value:
+// - **on**(default): enabled.
+// - **off** : not enabled.
 func (o DomainNewCertificateConfigOutput) ServerCertificateStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.ServerCertificateStatus }).(pulumi.StringPtrOutput)
 }
@@ -853,7 +886,17 @@ func (o DomainNewCertificateConfigPtrOutput) Elem() DomainNewCertificateConfigOu
 	}).(DomainNewCertificateConfigOutput)
 }
 
-// The SSL certificate name.
+// The ID of the certificate. It takes effect only when CertType = cas.
+func (o DomainNewCertificateConfigPtrOutput) CertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate name, only flyer names are supported.
 func (o DomainNewCertificateConfigPtrOutput) CertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
 		if v == nil {
@@ -863,7 +906,21 @@ func (o DomainNewCertificateConfigPtrOutput) CertName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SSL certificate type, can be "upload", "cas" and "free".
+// The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+func (o DomainNewCertificateConfigPtrOutput) CertRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate type. Value:
+// - **upload**: upload certificate.
+// - **cas**: Cloud Shield certificate.
+// - **free**: free certificate.
+// > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
 func (o DomainNewCertificateConfigPtrOutput) CertType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
 		if v == nil {
@@ -873,7 +930,6 @@ func (o DomainNewCertificateConfigPtrOutput) CertType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
 func (o DomainNewCertificateConfigPtrOutput) ForceSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
 		if v == nil {
@@ -883,7 +939,7 @@ func (o DomainNewCertificateConfigPtrOutput) ForceSet() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SSL private key. This is required if `serverCertificateStatus` is `on`
+// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
 func (o DomainNewCertificateConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
 		if v == nil {
@@ -893,7 +949,7 @@ func (o DomainNewCertificateConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
+// The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
 func (o DomainNewCertificateConfigPtrOutput) ServerCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
 		if v == nil {
@@ -903,7 +959,9 @@ func (o DomainNewCertificateConfigPtrOutput) ServerCertificate() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+// Whether the HTTPS certificate is enabled. Value:
+// - **on**(default): enabled.
+// - **off** : not enabled.
 func (o DomainNewCertificateConfigPtrOutput) ServerCertificateStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
 		if v == nil {
@@ -915,14 +973,14 @@ func (o DomainNewCertificateConfigPtrOutput) ServerCertificateStatus() pulumi.St
 
 type DomainNewSource struct {
 	// The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
-	Content string `pulumi:"content"`
+	Content *string `pulumi:"content"`
 	// The port of source. Valid values are `443` and `80`. Default value is `80`.
 	Port *int `pulumi:"port"`
 	// Priority of the source. Valid values are `0` and `100`. Default value is `20`.
 	Priority *int `pulumi:"priority"`
 	// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
-	Type string `pulumi:"type"`
-	// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+	Type *string `pulumi:"type"`
+	// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
 	Weight *int `pulumi:"weight"`
 }
 
@@ -939,14 +997,14 @@ type DomainNewSourceInput interface {
 
 type DomainNewSourceArgs struct {
 	// The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
-	Content pulumi.StringInput `pulumi:"content"`
+	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The port of source. Valid values are `443` and `80`. Default value is `80`.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Priority of the source. Valid values are `0` and `100`. Default value is `20`.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -1002,8 +1060,8 @@ func (o DomainNewSourceOutput) ToDomainNewSourceOutputWithContext(ctx context.Co
 }
 
 // The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
-func (o DomainNewSourceOutput) Content() pulumi.StringOutput {
-	return o.ApplyT(func(v DomainNewSource) string { return v.Content }).(pulumi.StringOutput)
+func (o DomainNewSourceOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainNewSource) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
 // The port of source. Valid values are `443` and `80`. Default value is `80`.
@@ -1017,11 +1075,11 @@ func (o DomainNewSourceOutput) Priority() pulumi.IntPtrOutput {
 }
 
 // The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
-func (o DomainNewSourceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v DomainNewSource) string { return v.Type }).(pulumi.StringOutput)
+func (o DomainNewSourceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainNewSource) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
 func (o DomainNewSourceOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainNewSource) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }

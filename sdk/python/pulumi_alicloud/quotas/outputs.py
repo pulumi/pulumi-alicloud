@@ -14,6 +14,7 @@ __all__ = [
     'ApplicationInfoDimension',
     'QuotaAlarmQuotaDimension',
     'QuotaApplicationDimension',
+    'TemplateQuotaDimension',
     'GetApplicationInfosApplicationResult',
     'GetApplicationInfosApplicationDimensionResult',
     'GetApplicationInfosDimensionResult',
@@ -85,8 +86,8 @@ class QuotaApplicationDimension(dict):
                  key: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str key: The key of dimensions.
-        :param str value: The value of dimensions.
+        :param str key: Key.
+        :param str value: Value.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -97,7 +98,7 @@ class QuotaApplicationDimension(dict):
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The key of dimensions.
+        Key.
         """
         return pulumi.get(self, "key")
 
@@ -105,7 +106,38 @@ class QuotaApplicationDimension(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of dimensions.
+        Value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class TemplateQuotaDimension(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str key: The Key of quota_dimensions.
+        :param str value: The Value of quota_dimensions.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The Key of quota_dimensions.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The Value of quota_dimensions.
         """
         return pulumi.get(self, "value")
 

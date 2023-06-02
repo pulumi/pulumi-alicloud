@@ -34,9 +34,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := oos.NewPatchBaseline(ctx, "example", &oos.PatchBaselineArgs{
-//				ApprovalRules:     pulumi.String("example_value"),
+//				ApprovalRules:     pulumi.String("{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}"),
 //				OperationSystem:   pulumi.String("Windows"),
-//				PatchBaselineName: pulumi.String("my-PatchBaseline"),
+//				PatchBaselineName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err

@@ -44,16 +44,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .displayName(&#34;user_display_name&#34;)
+ *             .displayName(&#34;terraform_example&#34;)
  *             .mobile(&#34;86-18688888888&#34;)
  *             .email(&#34;hello.uuu@aaa.com&#34;)
- *             .comments(&#34;yoyoyo&#34;)
+ *             .comments(&#34;terraform_example&#34;)
  *             .force(true)
  *             .build());
  * 
  *         var profile = new LoginProfile(&#34;profile&#34;, LoginProfileArgs.builder()        
  *             .userName(user.name())
- *             .password(&#34;Yourpassword1234&#34;)
+ *             .password(&#34;Example_1234&#34;)
  *             .build());
  * 
  *     }

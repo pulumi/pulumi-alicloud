@@ -52,6 +52,10 @@ export class Rule extends pulumi.CustomResource {
     }
 
     /**
+     * The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     */
+    public readonly direction!: pulumi.Output<string>;
+    /**
      * Specifies whether to precheck this request.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
@@ -93,6 +97,7 @@ export class Rule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["listenerId"] = state ? state.listenerId : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
@@ -117,6 +122,7 @@ export class Rule extends pulumi.CustomResource {
             if ((!args || args.ruleName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleName'");
             }
+            resourceInputs["direction"] = args ? args.direction : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["listenerId"] = args ? args.listenerId : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
@@ -134,6 +140,10 @@ export class Rule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Rule resources.
  */
 export interface RuleState {
+    /**
+     * The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     */
+    direction?: pulumi.Input<string>;
     /**
      * Specifies whether to precheck this request.
      */
@@ -168,6 +178,10 @@ export interface RuleState {
  * The set of arguments for constructing a Rule resource.
  */
 export interface RuleArgs {
+    /**
+     * The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     */
+    direction?: pulumi.Input<string>;
     /**
      * Specifies whether to precheck this request.
      */

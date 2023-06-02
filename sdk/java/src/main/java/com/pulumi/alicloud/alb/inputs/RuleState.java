@@ -21,6 +21,21 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     public static final RuleState Empty = new RuleState();
 
     /**
+     * The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     * 
+     */
+    @Import(name="direction")
+    private @Nullable Output<String> direction;
+
+    /**
+     * @return The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    /**
      * Specifies whether to precheck this request.
      * 
      */
@@ -128,6 +143,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     private RuleState() {}
 
     private RuleState(RuleState $) {
+        this.direction = $.direction;
         this.dryRun = $.dryRun;
         this.listenerId = $.listenerId;
         this.priority = $.priority;
@@ -153,6 +169,27 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RuleState defaults) {
             $ = new RuleState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param direction The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(@Nullable Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        /**
+         * @param direction The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
         }
 
         /**

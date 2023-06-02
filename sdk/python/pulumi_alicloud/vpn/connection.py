@@ -452,15 +452,25 @@ class Connection(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.16.0.0/21",
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
         foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id="vpc-fake-id",
+            vpc_id=foo_network.id,
             bandwidth=10,
             enable_ssl=True,
-            instance_charge_type="PostPaid",
-            description="test_create_description")
+            instance_charge_type="PrePaid",
+            description="test_create_description",
+            vswitch_id=foo_switch.id)
         foo_customer_gateway = alicloud.vpn.CustomerGateway("fooCustomerGateway",
-            ip_address="42.104.22.228",
-            description="testAccVpnCgwDesc")
+            ip_address="42.104.22.210",
+            description="terraform-example")
         foo_connection = alicloud.vpn.Connection("fooConnection",
             vpn_gateway_id=foo_gateway.id,
             customer_gateway_id=foo_customer_gateway.id,
@@ -476,7 +486,7 @@ class Connection(pulumi.CustomResource):
             ike_config=alicloud.vpn.ConnectionIkeConfigArgs(
                 ike_auth_alg="md5",
                 ike_enc_alg="des",
-                ike_version="ikev1",
+                ike_version="ikev2",
                 ike_mode="main",
                 ike_lifetime=86400,
                 psk="tf-testvpn2",
@@ -530,15 +540,25 @@ class Connection(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("fooNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.16.0.0/12")
+        foo_switch = alicloud.vpc.Switch("fooSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.16.0.0/21",
+            vpc_id=foo_network.id,
+            zone_id=foo_zones.zones[0].id)
         foo_gateway = alicloud.vpn.Gateway("fooGateway",
-            vpc_id="vpc-fake-id",
+            vpc_id=foo_network.id,
             bandwidth=10,
             enable_ssl=True,
-            instance_charge_type="PostPaid",
-            description="test_create_description")
+            instance_charge_type="PrePaid",
+            description="test_create_description",
+            vswitch_id=foo_switch.id)
         foo_customer_gateway = alicloud.vpn.CustomerGateway("fooCustomerGateway",
-            ip_address="42.104.22.228",
-            description="testAccVpnCgwDesc")
+            ip_address="42.104.22.210",
+            description="terraform-example")
         foo_connection = alicloud.vpn.Connection("fooConnection",
             vpn_gateway_id=foo_gateway.id,
             customer_gateway_id=foo_customer_gateway.id,
@@ -554,7 +574,7 @@ class Connection(pulumi.CustomResource):
             ike_config=alicloud.vpn.ConnectionIkeConfigArgs(
                 ike_auth_alg="md5",
                 ike_enc_alg="des",
-                ike_version="ikev1",
+                ike_version="ikev2",
                 ike_mode="main",
                 ike_lifetime=86400,
                 psk="tf-testvpn2",

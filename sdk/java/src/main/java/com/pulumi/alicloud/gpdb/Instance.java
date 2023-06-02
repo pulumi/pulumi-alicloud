@@ -240,18 +240,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceSpec);
     }
     /**
-     * The ip whitelist.
+     * The ip whitelist. See block `ip_whitelist`.
+     * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
      * 
      */
     @Export(name="ipWhitelists", type=List.class, parameters={InstanceIpWhitelist.class})
-    private Output</* @Nullable */ List<InstanceIpWhitelist>> ipWhitelists;
+    private Output<List<InstanceIpWhitelist>> ipWhitelists;
 
     /**
-     * @return The ip whitelist.
+     * @return The ip whitelist. See block `ip_whitelist`.
+     * Default to creating a whitelist group with the group name &#34;default&#34; and security_ip_list &#34;127.0.0.1&#34;.
      * 
      */
-    public Output<Optional<List<InstanceIpWhitelist>>> ipWhitelists() {
-        return Codegen.optional(this.ipWhitelists);
+    public Output<List<InstanceIpWhitelist>> ipWhitelists() {
+        return this.ipWhitelists;
     }
     /**
      * The end time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 03:00Z. start time should be later than end time.
@@ -374,14 +376,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead. */
     @Export(name="securityIpLists", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> securityIpLists;
+    private Output<List<String>> securityIpLists;
 
     /**
      * @return Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
      * 
      */
-    public Output<Optional<List<String>>> securityIpLists() {
-        return Codegen.optional(this.securityIpLists);
+    public Output<List<String>> securityIpLists() {
+        return this.securityIpLists;
     }
     /**
      * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.

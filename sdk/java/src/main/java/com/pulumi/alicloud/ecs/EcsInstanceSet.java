@@ -47,9 +47,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.EcsInstanceSet;
@@ -68,7 +69,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testaccecsset&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
@@ -86,29 +87,32 @@ import javax.annotation.Nullable;
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var beijingK = new EcsInstanceSet(&#34;beijingK&#34;, EcsInstanceSetArgs.builder()        
- *             .amount(100)
+ *             .amount(10)
  *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
  *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .instanceName(name)
  *             .instanceChargeType(&#34;PostPaid&#34;)
  *             .systemDiskPerformanceLevel(&#34;PL0&#34;)
- *             .systemDiskCategory(&#34;cloud_essd&#34;)
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
  *             .systemDiskSize(200)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vswitchId(defaultSwitch.id())
  *             .securityGroupIds(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());

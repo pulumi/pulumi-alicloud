@@ -15,13 +15,15 @@ type ApplicationInfo struct {
 	pulumi.CustomResourceState
 
 	ApproveValue     pulumi.StringOutput                 `pulumi:"approveValue"`
-	AuditMode        pulumi.StringPtrOutput              `pulumi:"auditMode"`
+	AuditMode        pulumi.StringOutput                 `pulumi:"auditMode"`
 	AuditReason      pulumi.StringOutput                 `pulumi:"auditReason"`
+	CreateTime       pulumi.StringOutput                 `pulumi:"createTime"`
 	DesireValue      pulumi.Float64Output                `pulumi:"desireValue"`
 	Dimensions       ApplicationInfoDimensionArrayOutput `pulumi:"dimensions"`
-	EffectiveTime    pulumi.StringOutput                 `pulumi:"effectiveTime"`
-	ExpireTime       pulumi.StringOutput                 `pulumi:"expireTime"`
-	NoticeType       pulumi.IntPtrOutput                 `pulumi:"noticeType"`
+	EffectiveTime    pulumi.StringPtrOutput              `pulumi:"effectiveTime"`
+	EnvLanguage      pulumi.StringPtrOutput              `pulumi:"envLanguage"`
+	ExpireTime       pulumi.StringPtrOutput              `pulumi:"expireTime"`
+	NoticeType       pulumi.IntOutput                    `pulumi:"noticeType"`
 	ProductCode      pulumi.StringOutput                 `pulumi:"productCode"`
 	QuotaActionCode  pulumi.StringOutput                 `pulumi:"quotaActionCode"`
 	QuotaCategory    pulumi.StringPtrOutput              `pulumi:"quotaCategory"`
@@ -76,9 +78,11 @@ type applicationInfoState struct {
 	ApproveValue     *string                    `pulumi:"approveValue"`
 	AuditMode        *string                    `pulumi:"auditMode"`
 	AuditReason      *string                    `pulumi:"auditReason"`
+	CreateTime       *string                    `pulumi:"createTime"`
 	DesireValue      *float64                   `pulumi:"desireValue"`
 	Dimensions       []ApplicationInfoDimension `pulumi:"dimensions"`
 	EffectiveTime    *string                    `pulumi:"effectiveTime"`
+	EnvLanguage      *string                    `pulumi:"envLanguage"`
 	ExpireTime       *string                    `pulumi:"expireTime"`
 	NoticeType       *int                       `pulumi:"noticeType"`
 	ProductCode      *string                    `pulumi:"productCode"`
@@ -95,9 +99,11 @@ type ApplicationInfoState struct {
 	ApproveValue     pulumi.StringPtrInput
 	AuditMode        pulumi.StringPtrInput
 	AuditReason      pulumi.StringPtrInput
+	CreateTime       pulumi.StringPtrInput
 	DesireValue      pulumi.Float64PtrInput
 	Dimensions       ApplicationInfoDimensionArrayInput
 	EffectiveTime    pulumi.StringPtrInput
+	EnvLanguage      pulumi.StringPtrInput
 	ExpireTime       pulumi.StringPtrInput
 	NoticeType       pulumi.IntPtrInput
 	ProductCode      pulumi.StringPtrInput
@@ -118,6 +124,9 @@ type applicationInfoArgs struct {
 	AuditMode       *string                    `pulumi:"auditMode"`
 	DesireValue     float64                    `pulumi:"desireValue"`
 	Dimensions      []ApplicationInfoDimension `pulumi:"dimensions"`
+	EffectiveTime   *string                    `pulumi:"effectiveTime"`
+	EnvLanguage     *string                    `pulumi:"envLanguage"`
+	ExpireTime      *string                    `pulumi:"expireTime"`
 	NoticeType      *int                       `pulumi:"noticeType"`
 	ProductCode     string                     `pulumi:"productCode"`
 	QuotaActionCode string                     `pulumi:"quotaActionCode"`
@@ -130,6 +139,9 @@ type ApplicationInfoArgs struct {
 	AuditMode       pulumi.StringPtrInput
 	DesireValue     pulumi.Float64Input
 	Dimensions      ApplicationInfoDimensionArrayInput
+	EffectiveTime   pulumi.StringPtrInput
+	EnvLanguage     pulumi.StringPtrInput
+	ExpireTime      pulumi.StringPtrInput
 	NoticeType      pulumi.IntPtrInput
 	ProductCode     pulumi.StringInput
 	QuotaActionCode pulumi.StringInput
@@ -228,12 +240,16 @@ func (o ApplicationInfoOutput) ApproveValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.ApproveValue }).(pulumi.StringOutput)
 }
 
-func (o ApplicationInfoOutput) AuditMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringPtrOutput { return v.AuditMode }).(pulumi.StringPtrOutput)
+func (o ApplicationInfoOutput) AuditMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.AuditMode }).(pulumi.StringOutput)
 }
 
 func (o ApplicationInfoOutput) AuditReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.AuditReason }).(pulumi.StringOutput)
+}
+
+func (o ApplicationInfoOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 func (o ApplicationInfoOutput) DesireValue() pulumi.Float64Output {
@@ -244,16 +260,20 @@ func (o ApplicationInfoOutput) Dimensions() ApplicationInfoDimensionArrayOutput 
 	return o.ApplyT(func(v *ApplicationInfo) ApplicationInfoDimensionArrayOutput { return v.Dimensions }).(ApplicationInfoDimensionArrayOutput)
 }
 
-func (o ApplicationInfoOutput) EffectiveTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.EffectiveTime }).(pulumi.StringOutput)
+func (o ApplicationInfoOutput) EffectiveTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
 }
 
-func (o ApplicationInfoOutput) ExpireTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+func (o ApplicationInfoOutput) EnvLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringPtrOutput { return v.EnvLanguage }).(pulumi.StringPtrOutput)
 }
 
-func (o ApplicationInfoOutput) NoticeType() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ApplicationInfo) pulumi.IntPtrOutput { return v.NoticeType }).(pulumi.IntPtrOutput)
+func (o ApplicationInfoOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.StringPtrOutput { return v.ExpireTime }).(pulumi.StringPtrOutput)
+}
+
+func (o ApplicationInfoOutput) NoticeType() pulumi.IntOutput {
+	return o.ApplyT(func(v *ApplicationInfo) pulumi.IntOutput { return v.NoticeType }).(pulumi.IntOutput)
 }
 
 func (o ApplicationInfoOutput) ProductCode() pulumi.StringOutput {

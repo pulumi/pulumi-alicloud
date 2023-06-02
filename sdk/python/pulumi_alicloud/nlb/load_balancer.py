@@ -22,8 +22,12 @@ class LoadBalancerArgs:
                  address_ip_version: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cross_zone_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  load_balancer_type: Optional[pulumi.Input[str]] = None,
+                 modification_protection_reason: Optional[pulumi.Input[str]] = None,
+                 modification_protection_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
@@ -38,8 +42,12 @@ class LoadBalancerArgs:
                - DualStack: dual stack
         :param pulumi.Input[str] bandwidth_package_id: The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
         :param pulumi.Input[bool] cross_zone_enabled: Specifies whether to enable cross-zone load balancing for the NLB instance.
+        :param pulumi.Input[bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        :param pulumi.Input[str] deletion_protection_reason: The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
         :param pulumi.Input[str] load_balancer_name: The name of the NLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] load_balancer_type: The type of the instance. Set the value to `Network`, which specifies an NLB instance.
+        :param pulumi.Input[str] modification_protection_reason: The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -52,10 +60,18 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
         if cross_zone_enabled is not None:
             pulumi.set(__self__, "cross_zone_enabled", cross_zone_enabled)
+        if deletion_protection_enabled is not None:
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
+        if deletion_protection_reason is not None:
+            pulumi.set(__self__, "deletion_protection_reason", deletion_protection_reason)
         if load_balancer_name is not None:
             pulumi.set(__self__, "load_balancer_name", load_balancer_name)
         if load_balancer_type is not None:
             pulumi.set(__self__, "load_balancer_type", load_balancer_type)
+        if modification_protection_reason is not None:
+            pulumi.set(__self__, "modification_protection_reason", modification_protection_reason)
+        if modification_protection_status is not None:
+            pulumi.set(__self__, "modification_protection_status", modification_protection_status)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
@@ -138,6 +154,30 @@ class LoadBalancerArgs:
         pulumi.set(self, "cross_zone_enabled", value)
 
     @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @deletion_protection_enabled.setter
+    def deletion_protection_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection_enabled", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionReason")
+    def deletion_protection_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+        """
+        return pulumi.get(self, "deletion_protection_reason")
+
+    @deletion_protection_reason.setter
+    def deletion_protection_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_protection_reason", value)
+
+    @property
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -160,6 +200,30 @@ class LoadBalancerArgs:
     @load_balancer_type.setter
     def load_balancer_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "load_balancer_type", value)
+
+    @property
+    @pulumi.getter(name="modificationProtectionReason")
+    def modification_protection_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        """
+        return pulumi.get(self, "modification_protection_reason")
+
+    @modification_protection_reason.setter
+    def modification_protection_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modification_protection_reason", value)
+
+    @property
+    @pulumi.getter(name="modificationProtectionStatus")
+    def modification_protection_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        """
+        return pulumi.get(self, "modification_protection_status")
+
+    @modification_protection_status.setter
+    def modification_protection_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modification_protection_status", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -194,11 +258,15 @@ class _LoadBalancerState:
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  cross_zone_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  ipv6_address_type: Optional[pulumi.Input[str]] = None,
                  load_balancer_business_status: Optional[pulumi.Input[str]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  load_balancer_type: Optional[pulumi.Input[str]] = None,
+                 modification_protection_reason: Optional[pulumi.Input[str]] = None,
+                 modification_protection_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -215,11 +283,15 @@ class _LoadBalancerState:
         :param pulumi.Input[str] bandwidth_package_id: The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
         :param pulumi.Input[str] create_time: The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
         :param pulumi.Input[bool] cross_zone_enabled: Specifies whether to enable cross-zone load balancing for the NLB instance.
+        :param pulumi.Input[bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        :param pulumi.Input[str] deletion_protection_reason: The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
         :param pulumi.Input[str] dns_name: The domain name of the NLB instance.
         :param pulumi.Input[str] ipv6_address_type: The type of IPv6 address used by the NLB instance.
         :param pulumi.Input[str] load_balancer_business_status: The business status of the NLB instance.
         :param pulumi.Input[str] load_balancer_name: The name of the NLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] load_balancer_type: The type of the instance. Set the value to `Network`, which specifies an NLB instance.
+        :param pulumi.Input[str] modification_protection_reason: The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the NLB instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -236,6 +308,10 @@ class _LoadBalancerState:
             pulumi.set(__self__, "create_time", create_time)
         if cross_zone_enabled is not None:
             pulumi.set(__self__, "cross_zone_enabled", cross_zone_enabled)
+        if deletion_protection_enabled is not None:
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
+        if deletion_protection_reason is not None:
+            pulumi.set(__self__, "deletion_protection_reason", deletion_protection_reason)
         if dns_name is not None:
             pulumi.set(__self__, "dns_name", dns_name)
         if ipv6_address_type is not None:
@@ -246,6 +322,10 @@ class _LoadBalancerState:
             pulumi.set(__self__, "load_balancer_name", load_balancer_name)
         if load_balancer_type is not None:
             pulumi.set(__self__, "load_balancer_type", load_balancer_type)
+        if modification_protection_reason is not None:
+            pulumi.set(__self__, "modification_protection_reason", modification_protection_reason)
+        if modification_protection_status is not None:
+            pulumi.set(__self__, "modification_protection_status", modification_protection_status)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
@@ -322,6 +402,30 @@ class _LoadBalancerState:
         pulumi.set(self, "cross_zone_enabled", value)
 
     @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @deletion_protection_enabled.setter
+    def deletion_protection_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection_enabled", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionReason")
+    def deletion_protection_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+        """
+        return pulumi.get(self, "deletion_protection_reason")
+
+    @deletion_protection_reason.setter
+    def deletion_protection_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_protection_reason", value)
+
+    @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -380,6 +484,30 @@ class _LoadBalancerState:
     @load_balancer_type.setter
     def load_balancer_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "load_balancer_type", value)
+
+    @property
+    @pulumi.getter(name="modificationProtectionReason")
+    def modification_protection_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        """
+        return pulumi.get(self, "modification_protection_reason")
+
+    @modification_protection_reason.setter
+    def modification_protection_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modification_protection_reason", value)
+
+    @property
+    @pulumi.getter(name="modificationProtectionStatus")
+    def modification_protection_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        """
+        return pulumi.get(self, "modification_protection_status")
+
+    @modification_protection_status.setter
+    def modification_protection_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modification_protection_status", value)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -451,8 +579,12 @@ class LoadBalancer(pulumi.CustomResource):
                  address_type: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cross_zone_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  load_balancer_type: Optional[pulumi.Input[str]] = None,
+                 modification_protection_reason: Optional[pulumi.Input[str]] = None,
+                 modification_protection_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -525,8 +657,12 @@ class LoadBalancer(pulumi.CustomResource):
                - Intranet: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
         :param pulumi.Input[str] bandwidth_package_id: The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
         :param pulumi.Input[bool] cross_zone_enabled: Specifies whether to enable cross-zone load balancing for the NLB instance.
+        :param pulumi.Input[bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        :param pulumi.Input[str] deletion_protection_reason: The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
         :param pulumi.Input[str] load_balancer_name: The name of the NLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] load_balancer_type: The type of the instance. Set the value to `Network`, which specifies an NLB instance.
+        :param pulumi.Input[str] modification_protection_reason: The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC where the NLB instance is deployed.
@@ -614,8 +750,12 @@ class LoadBalancer(pulumi.CustomResource):
                  address_type: Optional[pulumi.Input[str]] = None,
                  bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cross_zone_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  load_balancer_name: Optional[pulumi.Input[str]] = None,
                  load_balancer_type: Optional[pulumi.Input[str]] = None,
+                 modification_protection_reason: Optional[pulumi.Input[str]] = None,
+                 modification_protection_status: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -635,8 +775,12 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["address_type"] = address_type
             __props__.__dict__["bandwidth_package_id"] = bandwidth_package_id
             __props__.__dict__["cross_zone_enabled"] = cross_zone_enabled
+            __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
+            __props__.__dict__["deletion_protection_reason"] = deletion_protection_reason
             __props__.__dict__["load_balancer_name"] = load_balancer_name
             __props__.__dict__["load_balancer_type"] = load_balancer_type
+            __props__.__dict__["modification_protection_reason"] = modification_protection_reason
+            __props__.__dict__["modification_protection_status"] = modification_protection_status
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
             if vpc_id is None and not opts.urn:
@@ -665,11 +809,15 @@ class LoadBalancer(pulumi.CustomResource):
             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             cross_zone_enabled: Optional[pulumi.Input[bool]] = None,
+            deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+            deletion_protection_reason: Optional[pulumi.Input[str]] = None,
             dns_name: Optional[pulumi.Input[str]] = None,
             ipv6_address_type: Optional[pulumi.Input[str]] = None,
             load_balancer_business_status: Optional[pulumi.Input[str]] = None,
             load_balancer_name: Optional[pulumi.Input[str]] = None,
             load_balancer_type: Optional[pulumi.Input[str]] = None,
+            modification_protection_reason: Optional[pulumi.Input[str]] = None,
+            modification_protection_status: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -691,11 +839,15 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] bandwidth_package_id: The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
         :param pulumi.Input[str] create_time: The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
         :param pulumi.Input[bool] cross_zone_enabled: Specifies whether to enable cross-zone load balancing for the NLB instance.
+        :param pulumi.Input[bool] deletion_protection_enabled: Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        :param pulumi.Input[str] deletion_protection_reason: The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
         :param pulumi.Input[str] dns_name: The domain name of the NLB instance.
         :param pulumi.Input[str] ipv6_address_type: The type of IPv6 address used by the NLB instance.
         :param pulumi.Input[str] load_balancer_business_status: The business status of the NLB instance.
         :param pulumi.Input[str] load_balancer_name: The name of the NLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[str] load_balancer_type: The type of the instance. Set the value to `Network`, which specifies an NLB instance.
+        :param pulumi.Input[str] modification_protection_reason: The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the NLB instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -711,11 +863,15 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["bandwidth_package_id"] = bandwidth_package_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["cross_zone_enabled"] = cross_zone_enabled
+        __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
+        __props__.__dict__["deletion_protection_reason"] = deletion_protection_reason
         __props__.__dict__["dns_name"] = dns_name
         __props__.__dict__["ipv6_address_type"] = ipv6_address_type
         __props__.__dict__["load_balancer_business_status"] = load_balancer_business_status
         __props__.__dict__["load_balancer_name"] = load_balancer_name
         __props__.__dict__["load_balancer_type"] = load_balancer_type
+        __props__.__dict__["modification_protection_reason"] = modification_protection_reason
+        __props__.__dict__["modification_protection_status"] = modification_protection_status
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -768,6 +924,22 @@ class LoadBalancer(pulumi.CustomResource):
         return pulumi.get(self, "cross_zone_enabled")
 
     @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @property
+    @pulumi.getter(name="deletionProtectionReason")
+    def deletion_protection_reason(self) -> pulumi.Output[Optional[str]]:
+        """
+        The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+        """
+        return pulumi.get(self, "deletion_protection_reason")
+
+    @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> pulumi.Output[str]:
         """
@@ -806,6 +978,22 @@ class LoadBalancer(pulumi.CustomResource):
         The type of the instance. Set the value to `Network`, which specifies an NLB instance.
         """
         return pulumi.get(self, "load_balancer_type")
+
+    @property
+    @pulumi.getter(name="modificationProtectionReason")
+    def modification_protection_reason(self) -> pulumi.Output[Optional[str]]:
+        """
+        The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+        """
+        return pulumi.get(self, "modification_protection_reason")
+
+    @property
+    @pulumi.getter(name="modificationProtectionStatus")
+    def modification_protection_status(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+        """
+        return pulumi.get(self, "modification_protection_status")
 
     @property
     @pulumi.getter(name="resourceGroupId")

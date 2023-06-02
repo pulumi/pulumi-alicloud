@@ -22,6 +22,9 @@ class ApplicationInfoArgs:
                  reason: pulumi.Input[str],
                  audit_mode: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
+                 env_language: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  notice_type: Optional[pulumi.Input[int]] = None,
                  quota_category: Optional[pulumi.Input[str]] = None):
         """
@@ -35,6 +38,12 @@ class ApplicationInfoArgs:
             pulumi.set(__self__, "audit_mode", audit_mode)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
+        if env_language is not None:
+            pulumi.set(__self__, "env_language", env_language)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if notice_type is not None:
             pulumi.set(__self__, "notice_type", notice_type)
         if quota_category is not None:
@@ -95,6 +104,33 @@ class ApplicationInfoArgs:
         pulumi.set(self, "dimensions", value)
 
     @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_time", value)
+
+    @property
+    @pulumi.getter(name="envLanguage")
+    def env_language(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "env_language")
+
+    @env_language.setter
+    def env_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "env_language", value)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expire_time", value)
+
+    @property
     @pulumi.getter(name="noticeType")
     def notice_type(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "notice_type")
@@ -119,9 +155,11 @@ class _ApplicationInfoState:
                  approve_value: Optional[pulumi.Input[str]] = None,
                  audit_mode: Optional[pulumi.Input[str]] = None,
                  audit_reason: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  desire_value: Optional[pulumi.Input[float]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
+                 env_language: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  notice_type: Optional[pulumi.Input[int]] = None,
                  product_code: Optional[pulumi.Input[str]] = None,
@@ -141,12 +179,16 @@ class _ApplicationInfoState:
             pulumi.set(__self__, "audit_mode", audit_mode)
         if audit_reason is not None:
             pulumi.set(__self__, "audit_reason", audit_reason)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if desire_value is not None:
             pulumi.set(__self__, "desire_value", desire_value)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
+        if env_language is not None:
+            pulumi.set(__self__, "env_language", env_language)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if notice_type is not None:
@@ -196,6 +238,15 @@ class _ApplicationInfoState:
         pulumi.set(self, "audit_reason", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="desireValue")
     def desire_value(self) -> Optional[pulumi.Input[float]]:
         return pulumi.get(self, "desire_value")
@@ -221,6 +272,15 @@ class _ApplicationInfoState:
     @effective_time.setter
     def effective_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "effective_time", value)
+
+    @property
+    @pulumi.getter(name="envLanguage")
+    def env_language(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "env_language")
+
+    @env_language.setter
+    def env_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "env_language", value)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -321,6 +381,9 @@ class ApplicationInfo(pulumi.CustomResource):
                  audit_mode: Optional[pulumi.Input[str]] = None,
                  desire_value: Optional[pulumi.Input[float]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInfoDimensionArgs']]]]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
+                 env_language: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  notice_type: Optional[pulumi.Input[int]] = None,
                  product_code: Optional[pulumi.Input[str]] = None,
                  quota_action_code: Optional[pulumi.Input[str]] = None,
@@ -358,6 +421,9 @@ class ApplicationInfo(pulumi.CustomResource):
                  audit_mode: Optional[pulumi.Input[str]] = None,
                  desire_value: Optional[pulumi.Input[float]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInfoDimensionArgs']]]]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
+                 env_language: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  notice_type: Optional[pulumi.Input[int]] = None,
                  product_code: Optional[pulumi.Input[str]] = None,
                  quota_action_code: Optional[pulumi.Input[str]] = None,
@@ -377,6 +443,9 @@ class ApplicationInfo(pulumi.CustomResource):
                 raise TypeError("Missing required property 'desire_value'")
             __props__.__dict__["desire_value"] = desire_value
             __props__.__dict__["dimensions"] = dimensions
+            __props__.__dict__["effective_time"] = effective_time
+            __props__.__dict__["env_language"] = env_language
+            __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["notice_type"] = notice_type
             if product_code is None and not opts.urn:
                 raise TypeError("Missing required property 'product_code'")
@@ -390,8 +459,7 @@ class ApplicationInfo(pulumi.CustomResource):
             __props__.__dict__["reason"] = reason
             __props__.__dict__["approve_value"] = None
             __props__.__dict__["audit_reason"] = None
-            __props__.__dict__["effective_time"] = None
-            __props__.__dict__["expire_time"] = None
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["quota_description"] = None
             __props__.__dict__["quota_name"] = None
             __props__.__dict__["quota_unit"] = None
@@ -409,9 +477,11 @@ class ApplicationInfo(pulumi.CustomResource):
             approve_value: Optional[pulumi.Input[str]] = None,
             audit_mode: Optional[pulumi.Input[str]] = None,
             audit_reason: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             desire_value: Optional[pulumi.Input[float]] = None,
             dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationInfoDimensionArgs']]]]] = None,
             effective_time: Optional[pulumi.Input[str]] = None,
+            env_language: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
             notice_type: Optional[pulumi.Input[int]] = None,
             product_code: Optional[pulumi.Input[str]] = None,
@@ -437,9 +507,11 @@ class ApplicationInfo(pulumi.CustomResource):
         __props__.__dict__["approve_value"] = approve_value
         __props__.__dict__["audit_mode"] = audit_mode
         __props__.__dict__["audit_reason"] = audit_reason
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["desire_value"] = desire_value
         __props__.__dict__["dimensions"] = dimensions
         __props__.__dict__["effective_time"] = effective_time
+        __props__.__dict__["env_language"] = env_language
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["notice_type"] = notice_type
         __props__.__dict__["product_code"] = product_code
@@ -459,13 +531,18 @@ class ApplicationInfo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="auditMode")
-    def audit_mode(self) -> pulumi.Output[Optional[str]]:
+    def audit_mode(self) -> pulumi.Output[str]:
         return pulumi.get(self, "audit_mode")
 
     @property
     @pulumi.getter(name="auditReason")
     def audit_reason(self) -> pulumi.Output[str]:
         return pulumi.get(self, "audit_reason")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="desireValue")
@@ -479,17 +556,22 @@ class ApplicationInfo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> pulumi.Output[str]:
+    def effective_time(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "effective_time")
 
     @property
+    @pulumi.getter(name="envLanguage")
+    def env_language(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "env_language")
+
+    @property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> pulumi.Output[str]:
+    def expire_time(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter(name="noticeType")
-    def notice_type(self) -> pulumi.Output[Optional[int]]:
+    def notice_type(self) -> pulumi.Output[int]:
         return pulumi.get(self, "notice_type")
 
     @property

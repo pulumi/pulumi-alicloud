@@ -17,15 +17,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ecs.ReservedInstance("default", {
- *     instanceType: "ecs.g6.large",
+ * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ *     instanceTypeFamily: "ecs.g6",
+ * });
+ * const defaultReservedInstance = new alicloud.ecs.ReservedInstance("defaultReservedInstance", {
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
  *     instanceAmount: 1,
- *     periodUnit: "Year",
+ *     periodUnit: "Month",
  *     offeringType: "All Upfront",
+ *     reservedInstanceName: "terraform-example",
  *     description: "ReservedInstance",
- *     zoneId: "cn-hangzhou-h",
+ *     zoneId: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
  *     scope: "Zone",
- *     period: 1,
  * });
  * ```
  *

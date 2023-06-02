@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     var @default = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
     ///         Description = "New security group",
     ///     });
@@ -47,6 +47,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
     ///     {
+    ///         VpcName = "terraform-example",
     ///         CidrBlock = "10.1.0.0/21",
     ///     });
     /// 

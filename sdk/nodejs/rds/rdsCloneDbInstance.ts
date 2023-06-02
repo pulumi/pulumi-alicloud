@@ -20,34 +20,50 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testaccdbinstance";
- * const creation = config.get("creation") || "Rds";
- * const exampleZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const exampleZones = alicloud.rds.getZones({
+ *     engine: "PostgreSQL",
+ *     engineVersion: "13.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "cloud_essd",
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const exampleInstanceClasses = exampleZones.then(exampleZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: exampleZones.zones?.[0]?.id,
+ *     engine: "PostgreSQL",
+ *     engineVersion: "13.0",
+ *     category: "HighAvailability",
+ *     dbInstanceStorageType: "cloud_essd",
+ *     instanceChargeType: "PostPaid",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
  * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
  *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     vswitchName: "terraform-example",
  * });
  * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
- *     engine: "MySQL",
- *     engineVersion: "5.6",
- *     instanceType: "rds.mysql.s2.large",
- *     instanceStorage: 30,
+ *     engine: "PostgreSQL",
+ *     engineVersion: "13.0",
+ *     instanceType: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
  *     instanceChargeType: "Postpaid",
- *     instanceName: name,
+ *     instanceName: "terraform-example",
  *     vswitchId: exampleSwitch.id,
  *     monitoringPeriod: 60,
  * });
+ * const exampleRdsBackup = new alicloud.rds.RdsBackup("exampleRdsBackup", {
+ *     dbInstanceId: exampleInstance.id,
+ *     removeFromState: true,
+ * });
  * const exampleRdsCloneDbInstance = new alicloud.rds.RdsCloneDbInstance("exampleRdsCloneDbInstance", {
  *     sourceDbInstanceId: exampleInstance.id,
- *     dbInstanceStorageType: "local_ssd",
+ *     dbInstanceStorageType: "cloud_essd",
  *     paymentType: "PayAsYouGo",
- *     restoreTime: "2021-11-24T11:25:00Z",
- *     dbInstanceStorage: 30,
+ *     backupId: exampleRdsBackup.backupId,
  * });
  * ```
  *

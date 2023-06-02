@@ -151,7 +151,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The db_node_class of cluster node.
-     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
      * 
      */
     @Import(name="dbNodeClass", required=true)
@@ -159,7 +160,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The db_node_class of cluster node.
-     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+     * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
      * 
      */
     public Output<String> dbNodeClass() {
@@ -986,7 +988,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbNodeClass The db_node_class of cluster node.
-         * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+         * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
+         * From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
          * 
          * @return builder
          * 
@@ -998,7 +1001,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dbNodeClass The db_node_class of cluster node.
-         * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+         * &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can&#39;t change each other, but the general specification and exclusive specification of cluster version can be changed.
+         * From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
          * 
          * @return builder
          * 

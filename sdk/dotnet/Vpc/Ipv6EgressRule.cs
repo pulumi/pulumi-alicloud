@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Ipv6 Egress Rule resource.
+    /// Provides a VPC Ipv6 Egress Rule resource. IPv6 address addition only active exit rule.
     /// 
     /// For information about VPC Ipv6 Egress Rule and how to use it, see [What is Ipv6 Egress Rule](https://www.alibabacloud.com/help/doc-detail/102200.htm).
     /// 
@@ -28,15 +28,17 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcName = "example_value",
+    ///         VpcName = name,
     ///         EnableIpv6 = true,
     ///     });
     /// 
     ///     var exampleIpv6Gateway = new AliCloud.Vpc.Ipv6Gateway("exampleIpv6Gateway", new()
     ///     {
-    ///         Ipv6GatewayName = "example_value",
+    ///         Ipv6GatewayName = name,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
@@ -106,7 +108,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Ipv6GatewayId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -226,7 +228,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Ipv6GatewayId { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

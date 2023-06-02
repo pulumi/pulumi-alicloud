@@ -129,6 +129,9 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+     * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+     * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+     * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
      * 
      */
     @Import(name="type", required=true)
@@ -136,6 +139,9 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+     * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+     * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+     * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
      * 
      */
     public Output<String> type() {
@@ -322,6 +328,9 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+         * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+         * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
          * 
          * @return builder
          * 
@@ -333,6 +342,9 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+         * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+         * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
          * 
          * @return builder
          * 

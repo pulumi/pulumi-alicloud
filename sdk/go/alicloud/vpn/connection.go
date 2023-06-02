@@ -20,6 +20,8 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -27,19 +29,42 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			fooZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.16.0.0/21"),
+//				VpcId:       fooNetwork.ID(),
+//				ZoneId:      *pulumi.String(fooZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			fooGateway, err := vpn.NewGateway(ctx, "fooGateway", &vpn.GatewayArgs{
-//				VpcId:              pulumi.String("vpc-fake-id"),
+//				VpcId:              fooNetwork.ID(),
 //				Bandwidth:          pulumi.Int(10),
 //				EnableSsl:          pulumi.Bool(true),
-//				InstanceChargeType: pulumi.String("PostPaid"),
+//				InstanceChargeType: pulumi.String("PrePaid"),
 //				Description:        pulumi.String("test_create_description"),
+//				VswitchId:          fooSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			fooCustomerGateway, err := vpn.NewCustomerGateway(ctx, "fooCustomerGateway", &vpn.CustomerGatewayArgs{
-//				IpAddress:   pulumi.String("42.104.22.228"),
-//				Description: pulumi.String("testAccVpnCgwDesc"),
+//				IpAddress:   pulumi.String("42.104.22.210"),
+//				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,7 +84,7 @@ import (
 //				IkeConfig: &vpn.ConnectionIkeConfigArgs{
 //					IkeAuthAlg:  pulumi.String("md5"),
 //					IkeEncAlg:   pulumi.String("des"),
-//					IkeVersion:  pulumi.String("ikev1"),
+//					IkeVersion:  pulumi.String("ikev2"),
 //					IkeMode:     pulumi.String("main"),
 //					IkeLifetime: pulumi.Int(86400),
 //					Psk:         pulumi.String("tf-testvpn2"),

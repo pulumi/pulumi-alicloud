@@ -55,22 +55,34 @@ export class HAVip extends pulumi.CustomResource {
         return obj['__pulumiType'] === HAVip.__pulumiType;
     }
 
+    public /*out*/ readonly associatedEipAddresses!: pulumi.Output<string[]>;
+    public /*out*/ readonly associatedInstanceType!: pulumi.Output<string>;
+    public /*out*/ readonly associatedInstances!: pulumi.Output<string[]>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The description of the HaVip instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly haVipId!: pulumi.Output<string>;
+    public readonly haVipName!: pulumi.Output<string>;
     /**
      * The name of the HaVip instance.
+     *
+     * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */
-    public readonly havipName!: pulumi.Output<string | undefined>;
+    public readonly havipName!: pulumi.Output<string>;
     /**
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */
     public readonly ipAddress!: pulumi.Output<string>;
+    public /*out*/ readonly masterInstanceId!: pulumi.Output<string>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * (Available in v1.120.0+) The status of the HaVip instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public /*out*/ readonly vpcId!: pulumi.Output<string>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.
      */
@@ -89,10 +101,20 @@ export class HAVip extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HAVipState | undefined;
+            resourceInputs["associatedEipAddresses"] = state ? state.associatedEipAddresses : undefined;
+            resourceInputs["associatedInstanceType"] = state ? state.associatedInstanceType : undefined;
+            resourceInputs["associatedInstances"] = state ? state.associatedInstances : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["haVipId"] = state ? state.haVipId : undefined;
+            resourceInputs["haVipName"] = state ? state.haVipName : undefined;
             resourceInputs["havipName"] = state ? state.havipName : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["masterInstanceId"] = state ? state.masterInstanceId : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
         } else {
             const args = argsOrState as HAVipArgs | undefined;
@@ -100,10 +122,20 @@ export class HAVip extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["haVipName"] = args ? args.haVipName : undefined;
             resourceInputs["havipName"] = args ? args.havipName : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["associatedEipAddresses"] = undefined /*out*/;
+            resourceInputs["associatedInstanceType"] = undefined /*out*/;
+            resourceInputs["associatedInstances"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["haVipId"] = undefined /*out*/;
+            resourceInputs["masterInstanceId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["vpcId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HAVip.__pulumiType, name, resourceInputs, opts);
@@ -114,22 +146,34 @@ export class HAVip extends pulumi.CustomResource {
  * Input properties used for looking up and filtering HAVip resources.
  */
 export interface HAVipState {
+    associatedEipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedInstanceType?: pulumi.Input<string>;
+    associatedInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    createTime?: pulumi.Input<string>;
     /**
      * The description of the HaVip instance.
      */
     description?: pulumi.Input<string>;
+    haVipId?: pulumi.Input<string>;
+    haVipName?: pulumi.Input<string>;
     /**
      * The name of the HaVip instance.
+     *
+     * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */
     havipName?: pulumi.Input<string>;
     /**
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */
     ipAddress?: pulumi.Input<string>;
+    masterInstanceId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * (Available in v1.120.0+) The status of the HaVip instance.
      */
     status?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.
      */
@@ -144,14 +188,19 @@ export interface HAVipArgs {
      * The description of the HaVip instance.
      */
     description?: pulumi.Input<string>;
+    haVipName?: pulumi.Input<string>;
     /**
      * The name of the HaVip instance.
+     *
+     * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */
     havipName?: pulumi.Input<string>;
     /**
      * The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
      */
     ipAddress?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The vswitchId of the HaVip, the field can't be changed.
      */

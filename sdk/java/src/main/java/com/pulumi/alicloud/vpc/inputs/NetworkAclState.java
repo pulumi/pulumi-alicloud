@@ -8,8 +8,10 @@ import com.pulumi.alicloud.vpc.inputs.NetworkAclIngressAclEntryArgs;
 import com.pulumi.alicloud.vpc.inputs.NetworkAclResourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,14 +22,29 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     public static final NetworkAclState Empty = new NetworkAclState();
 
     /**
-     * The description of the network acl instance.
+     * The creation time of the resource.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the network acl instance.
+     * @return The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> description() {
@@ -35,14 +52,14 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+     * Out direction rule information. See the following `Block EgressAclEntries`.
      * 
      */
     @Import(name="egressAclEntries")
     private @Nullable Output<List<NetworkAclEgressAclEntryArgs>> egressAclEntries;
 
     /**
-     * @return List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+     * @return Out direction rule information. See the following `Block EgressAclEntries`.
      * 
      */
     public Optional<Output<List<NetworkAclEgressAclEntryArgs>>> egressAclEntries() {
@@ -50,14 +67,14 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+     * Inward direction rule information. See the following `Block IngressAclEntries`.
      * 
      */
     @Import(name="ingressAclEntries")
     private @Nullable Output<List<NetworkAclIngressAclEntryArgs>> ingressAclEntries;
 
     /**
-     * @return List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+     * @return Inward direction rule information. See the following `Block IngressAclEntries`.
      * 
      */
     public Optional<Output<List<NetworkAclIngressAclEntryArgs>>> ingressAclEntries() {
@@ -65,37 +82,37 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead
+     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead
+     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead */
+    @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The name of the network acl.
+     * The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     @Import(name="networkAclName")
     private @Nullable Output<String> networkAclName;
 
     /**
-     * @return The name of the network acl.
+     * @return The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> networkAclName() {
@@ -103,37 +120,29 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
-     * 
-     * @deprecated
-     * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
+     * The associated resource. See the following `Block Resources`.
      * 
      */
-    @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
     @Import(name="resources")
     private @Nullable Output<List<NetworkAclResourceArgs>> resources;
 
     /**
-     * @return The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
-     * 
-     * @deprecated
-     * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
+     * @return The associated resource. See the following `Block Resources`.
      * 
      */
-    @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
     public Optional<Output<List<NetworkAclResourceArgs>>> resources() {
         return Optional.ofNullable(this.resources);
     }
 
     /**
-     * (Available in 1.122.0+) The status of the network acl.
+     * The state of the network ACL.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available in 1.122.0+) The status of the network acl.
+     * @return The state of the network ACL.
      * 
      */
     public Optional<Output<String>> status() {
@@ -141,14 +150,33 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vpc_id of the network acl, the field can&#39;t be changed.
+     * The tags of this resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tags of this resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The ID of the associated VPC.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The vpc_id of the network acl, the field can&#39;t be changed.
+     * @return The ID of the associated VPC.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -158,6 +186,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
     private NetworkAclState() {}
 
     private NetworkAclState(NetworkAclState $) {
+        this.createTime = $.createTime;
         this.description = $.description;
         this.egressAclEntries = $.egressAclEntries;
         this.ingressAclEntries = $.ingressAclEntries;
@@ -165,6 +194,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         this.networkAclName = $.networkAclName;
         this.resources = $.resources;
         this.status = $.status;
+        this.tags = $.tags;
         this.vpcId = $.vpcId;
     }
 
@@ -187,7 +217,28 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the network acl instance.
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -198,7 +249,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the network acl instance.
+         * @param description The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -208,7 +259,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressAclEntries List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+         * @param egressAclEntries Out direction rule information. See the following `Block EgressAclEntries`.
          * 
          * @return builder
          * 
@@ -219,7 +270,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressAclEntries List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+         * @param egressAclEntries Out direction rule information. See the following `Block EgressAclEntries`.
          * 
          * @return builder
          * 
@@ -229,7 +280,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param egressAclEntries List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+         * @param egressAclEntries Out direction rule information. See the following `Block EgressAclEntries`.
          * 
          * @return builder
          * 
@@ -239,7 +290,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressAclEntries List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+         * @param ingressAclEntries Inward direction rule information. See the following `Block IngressAclEntries`.
          * 
          * @return builder
          * 
@@ -250,7 +301,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressAclEntries List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+         * @param ingressAclEntries Inward direction rule information. See the following `Block IngressAclEntries`.
          * 
          * @return builder
          * 
@@ -260,7 +311,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ingressAclEntries List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+         * @param ingressAclEntries Inward direction rule information. See the following `Block IngressAclEntries`.
          * 
          * @return builder
          * 
@@ -270,36 +321,36 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead
+         * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
+         * @param name Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead
+         * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead */
+        @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param networkAclName The name of the network acl.
+         * @param networkAclName The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -310,7 +361,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkAclName The name of the network acl.
+         * @param networkAclName The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -320,50 +371,38 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resources The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
+         * @param resources The associated resource. See the following `Block Resources`.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
-         * 
          */
-        @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
         public Builder resources(@Nullable Output<List<NetworkAclResourceArgs>> resources) {
             $.resources = resources;
             return this;
         }
 
         /**
-         * @param resources The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
+         * @param resources The associated resource. See the following `Block Resources`.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
-         * 
          */
-        @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
         public Builder resources(List<NetworkAclResourceArgs> resources) {
             return resources(Output.of(resources));
         }
 
         /**
-         * @param resources The associated resources. See the following `Block resources`. **NOTE:** &#34;Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`.&#34;
+         * @param resources The associated resource. See the following `Block Resources`.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;resources&#39; has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_network_acl_attachment&#39;.
-         * 
          */
-        @Deprecated /* Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'. */
         public Builder resources(NetworkAclResourceArgs... resources) {
             return resources(List.of(resources));
         }
 
         /**
-         * @param status (Available in 1.122.0+) The status of the network acl.
+         * @param status The state of the network ACL.
          * 
          * @return builder
          * 
@@ -374,7 +413,7 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status (Available in 1.122.0+) The status of the network acl.
+         * @param status The state of the network ACL.
          * 
          * @return builder
          * 
@@ -384,7 +423,30 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The vpc_id of the network acl, the field can&#39;t be changed.
+         * @param tags The tags of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags of this resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param vpcId The ID of the associated VPC.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -395,7 +457,9 @@ public final class NetworkAclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The vpc_id of the network acl, the field can&#39;t be changed.
+         * @param vpcId The ID of the associated VPC.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

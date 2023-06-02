@@ -2321,6 +2321,10 @@ export namespace alb {
 
     export interface RuleRuleAction {
         /**
+         * Request forwarding based on CORS. See the following `Block corsConfig`.
+         */
+        corsConfig?: outputs.alb.RuleRuleActionCorsConfig;
+        /**
          * The configuration of the fixed response. See the following `Block fixedResponseConfig`.
          */
         fixedResponseConfig?: outputs.alb.RuleRuleActionFixedResponseConfig;
@@ -2354,8 +2358,38 @@ export namespace alb {
         trafficMirrorConfig?: outputs.alb.RuleRuleActionTrafficMirrorConfig;
         /**
          * The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+         * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+         * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
          */
         type: string;
+    }
+
+    export interface RuleRuleActionCorsConfig {
+        /**
+         * Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
+         */
+        allowCredentials?: string;
+        /**
+         * The allowed headers for CORS requests.
+         */
+        allowHeaders?: string[];
+        /**
+         * The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
+         */
+        allowMethods?: string[];
+        /**
+         * The allowed origins of CORS requests.
+         */
+        allowOrigins?: string[];
+        /**
+         * The headers that can be exposed.
+         */
+        exposeHeaders?: string[];
+        /**
+         * The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
+         */
+        maxAge?: number;
     }
 
     export interface RuleRuleActionFixedResponseConfig {
@@ -2526,6 +2560,9 @@ export namespace alb {
         sourceIpConfig?: outputs.alb.RuleRuleConditionSourceIpConfig;
         /**
          * The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+         * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
+         * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
+         * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
          */
         type: string;
     }
@@ -5059,27 +5096,38 @@ export namespace cdn {
 
     export interface DomainNewCertificateConfig {
         /**
-         * The SSL certificate name.
+         * The ID of the certificate. It takes effect only when CertType = cas.
          */
-        certName?: string;
+        certId: string;
         /**
-         * The SSL certificate type, can be "upload", "cas" and "free".
+         * Certificate name, only flyer names are supported.
          */
-        certType?: string;
+        certName: string;
         /**
-         * Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
+         * The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
          */
+        certRegion: string;
+        /**
+         * Certificate type. Value:
+         * - **upload**: upload certificate.
+         * - **cas**: Cloud Shield certificate.
+         * - **free**: free certificate.
+         * > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+         */
+        certType: string;
         forceSet?: string;
         /**
-         * The SSL private key. This is required if `serverCertificateStatus` is `on`
+         * The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
          */
         privateKey?: string;
         /**
-         * The SSL server certificate string. This is required if `serverCertificateStatus` is `on`
+         * The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
          */
-        serverCertificate?: string;
+        serverCertificate: string;
         /**
-         * This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+         * Whether the HTTPS certificate is enabled. Value:
+         * - **on**(default): enabled.
+         * - **off** : not enabled.
          */
         serverCertificateStatus?: string;
     }
@@ -5088,7 +5136,7 @@ export namespace cdn {
         /**
          * The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
          */
-        content: string;
+        content?: string;
         /**
          * The port of source. Valid values are `443` and `80`. Default value is `80`.
          */
@@ -5100,9 +5148,9 @@ export namespace cdn {
         /**
          * The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
          */
-        type: string;
+        type?: string;
         /**
-         * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+         * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
          */
         weight?: number;
     }
@@ -6154,9 +6202,13 @@ export namespace cen {
          */
         status: string;
         /**
-         * ID of the cen transit router attachment.
+         * The ID of the network instance connection.
          */
         transitRouterAttachmentId: string;
+        /**
+         * The ID of the route table of the Enterprise Edition transit router.
+         */
+        transitRouterRouteTableId: string;
     }
 
     export interface GetTransitRouterRouteTablePropagationsPropagation {
@@ -10622,6 +10674,171 @@ export namespace cms {
 
 }
 
+export namespace compute {
+    export interface GetNestServiceInstancesFilter {
+        /**
+         * The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+         */
+        name?: string;
+        /**
+         * Set of values that are accepted for the given field.
+         */
+        values?: string[];
+    }
+
+    export interface GetNestServiceInstancesServiceInstance {
+        /**
+         * Whether the service instance has the O&M function.
+         */
+        enableInstanceOps: boolean;
+        /**
+         * The ID of the Service Instance.
+         */
+        id: string;
+        /**
+         * The ID of the imported service instance.
+         */
+        operatedServiceInstanceId: string;
+        /**
+         * The end time of O&M.
+         */
+        operationEndTime: string;
+        /**
+         * The start time of O&M.
+         */
+        operationStartTime: string;
+        /**
+         * The parameters entered by the deployment service instance.
+         */
+        parameters: string;
+        /**
+         * The list of imported resources.
+         */
+        resources: string;
+        /**
+         * The ID of the Service Instance.
+         */
+        serviceInstanceId: string;
+        /**
+         * The name of the Service Instance.
+         */
+        serviceInstanceName: string;
+        /**
+         * Service details.
+         */
+        services: outputs.compute.GetNestServiceInstancesServiceInstanceService[];
+        /**
+         * The source of the Service Instance.
+         */
+        source: string;
+        /**
+         * The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
+         */
+        status: string;
+        /**
+         * A mapping of tags to assign to the resource.
+         */
+        tags: {[key: string]: any};
+        /**
+         * The name of the template.
+         */
+        templateName: string;
+    }
+
+    export interface GetNestServiceInstancesServiceInstanceService {
+        /**
+         * The type of the deployment.
+         */
+        deployType: string;
+        /**
+         * The time of publish.
+         */
+        publishTime: string;
+        /**
+         * The id of the service.
+         */
+        serviceId: string;
+        /**
+         * Service information.
+         */
+        serviceInfos: outputs.compute.GetNestServiceInstancesServiceInstanceServiceServiceInfo[];
+        /**
+         * The type of the service.
+         */
+        serviceType: string;
+        /**
+         * The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
+         */
+        status: string;
+        /**
+         * The name of the supplier.
+         */
+        supplierName: string;
+        /**
+         * The url of the supplier.
+         */
+        supplierUrl: string;
+        /**
+         * The version of the service.
+         */
+        version: string;
+        /**
+         * The version name of the service.
+         */
+        versionName: string;
+    }
+
+    export interface GetNestServiceInstancesServiceInstanceServiceServiceInfo {
+        /**
+         * The image of the service.
+         */
+        image: string;
+        /**
+         * The locale of the service.
+         */
+        locale: string;
+        /**
+         * The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+         */
+        name: string;
+        /**
+         * The short description of the service.
+         */
+        shortDescription: string;
+    }
+
+    export interface NestServiceInstanceCommodity {
+        /**
+         * Length of purchase.
+         */
+        payPeriod?: number;
+        /**
+         * Duration unit. Valid values: `Year`, `Month`, `Day`.
+         */
+        payPeriodUnit?: string;
+    }
+
+    export interface NestServiceInstanceOperationMetadata {
+        /**
+         * The ID of the imported service instance.
+         */
+        operatedServiceInstanceId?: string;
+        /**
+         * The end time of O&M.
+         */
+        operationEndTime?: string;
+        /**
+         * The start time of O&M.
+         */
+        operationStartTime?: string;
+        /**
+         * The list of imported resources.
+         */
+        resources: string;
+    }
+
+}
+
 export namespace config {
     export interface AssumeRole {
         policy?: string;
@@ -10659,6 +10876,7 @@ export namespace config {
         cloudphone?: string;
         cloudsso?: string;
         cms?: string;
+        computenest?: string;
         config?: string;
         cr?: string;
         cs?: string;
@@ -14134,7 +14352,7 @@ export namespace dcdn {
 export namespace ddos {
     export interface DomainResourceProxyType {
         /**
-         * the port number. This field is required and must be an integer.
+         * the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxyPorts` can be modified.
          */
         proxyPorts?: number[];
         /**
@@ -26656,7 +26874,7 @@ export namespace fnf {
 export namespace ga {
     export interface AclAclEntry {
         /**
-         * The IP entry that you want to add to the ACL.
+         * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
          */
         entry: string;
         /**
@@ -28076,7 +28294,8 @@ export namespace gpdb {
 
     export interface InstanceIpWhitelist {
         /**
-         * The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+         * The value of this parameter is empty by default. The attribute of the whitelist group. 
+         * If the value contains `hidden`, this white list item will not output.
          */
         ipGroupAttribute: string;
         /**
@@ -36385,11 +36604,22 @@ export namespace quotas {
 
     export interface QuotaApplicationDimension {
         /**
-         * The key of dimensions.
+         * Key.
          */
         key?: string;
         /**
-         * The value of dimensions.
+         * Value.
+         */
+        value?: string;
+    }
+
+    export interface TemplateQuotaDimension {
+        /**
+         * The Key of quota_dimensions.
+         */
+        key?: string;
+        /**
+         * The Value of quota_dimensions.
          */
         value?: string;
     }
@@ -37485,25 +37715,34 @@ export namespace rds {
 
     export interface InstanceServerlessConfig {
         /**
-         * Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
+         * Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
          * - true: enables the feature.
          * - false: disables the feature. This is the default value.
+         * > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
          */
-        autoPause: boolean;
+        autoPause?: boolean;
         /**
-         * The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `minCapacity` parameter.
+         * The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
+         * - MySQL: 1~8
+         * - SQLServer: 2~8
+         * - PostgreSQL: 1~12
          */
         maxCapacity: number;
         /**
-         * The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `maxCapacity` parameter.
+         * The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
+         * - MySQL: 0.5~8
+         * - SQLServer: 2~8 \(Supports integers only\).
+         * - PostgreSQL: 0.5~12
          */
         minCapacity: number;
         /**
-         * Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
+         * Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
          * - true: enables the feature.
          * - false: disables the feature. This is the default value.
+         * > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+         * > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
          */
-        switchForce: boolean;
+        switchForce?: boolean;
     }
 
     export interface RdsCloneDbInstanceParameter {
@@ -38834,14 +39073,35 @@ export namespace sae {
          */
         metricTargetAverageUtilization?: number;
         /**
-         * Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `SLB_QPS` and `SLB_RT`. The values are described as follows:
+         * Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
          * - CPU: CPU usage.
          * - MEMORY: MEMORY usage.
-         * - tcpActiveConn: the average number of TCP active connections for a single instance in 30 seconds.
-         * - SLB_QPS: the average public network SLB QPS of a single instance within 15 seconds.
-         * - SLB_RT: the average response time of public network SLB within 15 seconds.
+         * - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
+         * - QPS: The average QPS of a single instance within 1 minute of JAVA application.
+         * - RT: The average response time of all service interfaces within 1 minute of JAVA application.
+         * - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
+         * - SLB_RT: The average response time of public network SLB within 15 seconds.
+         * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
+         * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
+         * **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
          */
         metricType?: string;
+        /**
+         * SLB ID.
+         */
+        slbId?: string;
+        /**
+         * The log store of the Log Service.
+         */
+        slbLogStore?: string;
+        /**
+         * The project of the Log Service.
+         */
+        slbProject?: string;
+        /**
+         * SLB listening port.
+         */
+        vport?: string;
     }
 
     export interface ApplicationScalingRuleScalingRuleMetricScaleDownRules {
@@ -45162,27 +45422,42 @@ export namespace vpc {
 
     export interface NetworkAclEgressAclEntry {
         /**
-         * The description of the network acl instance.
+         * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: string;
         /**
-         * The destination cidr ip of egress entries.
+         * The network of the destination address.
          */
         destinationCidrIp?: string;
         /**
-         * The entry name of ingress entries.
+         * Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: string;
         /**
-         * The policy of ingress entries. Valid values `accept` and `drop`.
+         * Authorization policy. Value:
+         * - accept: Allow.
+         * - drop: Refused.
+         * - accept: Allow.
+         * - drop: Refused.
          */
         policy?: string;
         /**
-         * The port of ingress entries.
+         * The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: string;
         /**
-         * The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+         * The protocol type. Value:
+         * - icmp: Network Control Message Protocol.
+         * - gre: Generic Routing Encapsulation Protocol.
+         * - tcp: Transmission Control Protocol.
+         * - udp: User Datagram Protocol.
+         * - all: Supports all protocols.
+         *
+         * - icmp: Network Control Message Protocol.
+         * - gre: Generic Routing Encapsulation Protocol.
+         * - tcp: Transmission Control Protocol.
+         * - udp: User Datagram Protocol.
+         * - all: Supports all protocols.
          */
         protocol?: string;
     }
@@ -45251,27 +45526,42 @@ export namespace vpc {
 
     export interface NetworkAclIngressAclEntry {
         /**
-         * The description of the network acl instance.
+         * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
          */
         description?: string;
         /**
-         * The entry name of ingress entries.
+         * Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
          */
         networkAclEntryName?: string;
         /**
-         * The policy of ingress entries. Valid values `accept` and `drop`.
+         * Authorization policy. Value:
+         * - accept: Allow.
+         * - drop: Refused.
+         * - accept: Allow.
+         * - drop: Refused.
          */
         policy?: string;
         /**
-         * The port of ingress entries.
+         * The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: string;
         /**
-         * The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+         * The protocol type. Value:
+         * - icmp: Network Control Message Protocol.
+         * - gre: Generic Routing Encapsulation Protocol.
+         * - tcp: Transmission Control Protocol.
+         * - udp: User Datagram Protocol.
+         * - all: Supports all protocols.
+         *
+         * - icmp: Network Control Message Protocol.
+         * - gre: Generic Routing Encapsulation Protocol.
+         * - tcp: Transmission Control Protocol.
+         * - udp: User Datagram Protocol.
+         * - all: Supports all protocols.
          */
         protocol?: string;
         /**
-         * The source cidr ip of ingress entries.
+         * Source address network segment.
          */
         sourceCidrIp?: string;
     }
@@ -45282,9 +45572,29 @@ export namespace vpc {
          */
         resourceId: string;
         /**
-         * The type of the associated resource. Valid values `VSwitch`.
+         * The type of the associated resource.
          */
         resourceType: string;
+        /**
+         * The state of the network ACL.
+         */
+        status: string;
+    }
+
+    export interface NetworkIpv6CidrBlock {
+        /**
+         * The IPv6 CIDR block of the VPC.
+         */
+        ipv6CidrBlock: string;
+        /**
+         * The IPv6 address segment type of the VPC. Value:
+         * - **BGP** (default): Alibaba Cloud BGP IPv6.
+         * - **ChinaMobile**: China Mobile (single line).
+         * - **ChinaUnicom**: China Unicom (single line).
+         * - **ChinaTelecom**: China Telecom (single line).
+         * > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         */
+        ipv6Isp: string;
     }
 
     export interface PrefixListEntry {
@@ -45296,6 +45606,139 @@ export namespace vpc {
          * The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
          */
         description?: string;
+    }
+
+    export interface PrefixListPrefixListAssociation {
+        /**
+         * The ID of the Alibaba Cloud account (primary account) to which the prefix list belongs.
+         */
+        ownerId: string;
+        /**
+         * The ID of the query Prefix List.
+         */
+        prefixListId: string;
+        /**
+         * Reason when the association fails.
+         */
+        reason: string;
+        /**
+         * The region ID of the prefix list to be queried.
+         */
+        regionId: string;
+        /**
+         * The ID of the associated resource.
+         */
+        resourceId: string;
+        /**
+         * The associated resource type. Value:-**vpcRouteTable**: The VPC route table.-**trRouteTable**: the routing table of the forwarding router.
+         */
+        resourceType: string;
+        /**
+         * The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
+         */
+        resourceUid: string;
+        /**
+         * Resource attribute fields that represent the status of the resource.
+         */
+        status: string;
+    }
+
+    export interface TrafficMirrorFilterEgressRule {
+        /**
+         * Collection strategy for outbound rules. Value:
+         * - accept: collects network traffic.
+         * - drop: No network traffic is collected.
+         * - accept: collects network traffic.
+         * - drop: No network traffic is collected.
+         */
+        action: string;
+        /**
+         * DestinationCidrBlock.
+         */
+        destinationCidrBlock?: string;
+        /**
+         * The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         */
+        destinationPortRange?: string;
+        /**
+         * Priority.
+         */
+        priority?: number;
+        /**
+         * The type of protocol used by the outbound network traffic to be mirrored. Value:
+         * - ALL: ALL agreements.
+         * - ICMP: Network Control Message Protocol.
+         * - TCP: Transmission Control Protocol.
+         * - UDP: User Datagram Protocol.
+         * - ALL: ALL agreements.
+         * - ICMP: Network Control Message Protocol.
+         * - TCP: Transmission Control Protocol.
+         * - UDP: User Datagram Protocol.
+         */
+        protocol: string;
+        /**
+         * The source address of the outbound rule network traffic.
+         */
+        sourceCidrBlock?: string;
+        /**
+         * The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         *
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         */
+        sourcePortRange?: string;
+        trafficMirrorFilterRuleStatus: string;
+    }
+
+    export interface TrafficMirrorFilterIngressRule {
+        /**
+         * Collection strategy for outbound rules. Value:
+         * - accept: collects network traffic.
+         * - drop: No network traffic is collected.
+         * - accept: collects network traffic.
+         * - drop: No network traffic is collected.
+         */
+        action: string;
+        /**
+         * DestinationCidrBlock.
+         */
+        destinationCidrBlock?: string;
+        /**
+         * The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         */
+        destinationPortRange?: string;
+        /**
+         * Priority.
+         */
+        priority?: number;
+        /**
+         * The type of protocol used by the outbound network traffic to be mirrored. Value:
+         * - ALL: ALL agreements.
+         * - ICMP: Network Control Message Protocol.
+         * - TCP: Transmission Control Protocol.
+         * - UDP: User Datagram Protocol.
+         * - ALL: ALL agreements.
+         * - ICMP: Network Control Message Protocol.
+         * - TCP: Transmission Control Protocol.
+         * - UDP: User Datagram Protocol.
+         */
+        protocol: string;
+        /**
+         * The source address of the outbound rule network traffic.
+         */
+        sourceCidrBlock?: string;
+        /**
+         * The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         *
+         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+         */
+        sourcePortRange?: string;
+        trafficMirrorFilterRuleStatus: string;
     }
 
 }

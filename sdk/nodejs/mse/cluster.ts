@@ -15,17 +15,31 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.mse.Cluster("example", {
- *     aclEntryLists: ["127.0.0.1/32"],
- *     clusterAliasName: "tf-testAccMseCluster",
- *     clusterSpecification: "MSE_SC_1_2_200_c",
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * });
+ * const exampleCluster = new alicloud.mse.Cluster("exampleCluster", {
+ *     clusterSpecification: "MSE_SC_1_2_60_c",
  *     clusterType: "Nacos-Ans",
- *     clusterVersion: "NACOS_ANS_1_2_1",
+ *     clusterVersion: "NACOS_2_0_0",
  *     instanceCount: 1,
- *     mseVersion: "mse_dev",
  *     netType: "privatenet",
  *     pubNetworkFlow: "1",
- *     vswitchId: "vsw-123456",
+ *     connectionType: "slb",
+ *     clusterAliasName: "terraform-example",
+ *     mseVersion: "mse_dev",
+ *     vswitchId: exampleSwitch.id,
+ *     vpcId: exampleNetwork.id,
  * });
  * ```
  *
@@ -70,11 +84,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly aclEntryLists!: pulumi.Output<string[] | undefined>;
     /**
+     * (Available in v1.205.0+) The application version.
+     */
+    public /*out*/ readonly appVersion!: pulumi.Output<string>;
+    /**
      * The alias of MSE Cluster.
      */
     public readonly clusterAliasName!: pulumi.Output<string | undefined>;
     /**
-     * (Available in v1.162.0+)  The id of Cluster.
+     * (Available in v1.162.0+) The id of Cluster.
      */
     public /*out*/ readonly clusterId!: pulumi.Output<string>;
     /**
@@ -152,6 +170,7 @@ export class Cluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["aclEntryLists"] = state ? state.aclEntryLists : undefined;
+            resourceInputs["appVersion"] = state ? state.appVersion : undefined;
             resourceInputs["clusterAliasName"] = state ? state.clusterAliasName : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["clusterSpecification"] = state ? state.clusterSpecification : undefined;
@@ -205,6 +224,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["requestPars"] = args ? args.requestPars : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
+            resourceInputs["appVersion"] = undefined /*out*/;
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -222,11 +242,15 @@ export interface ClusterState {
      */
     aclEntryLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * (Available in v1.205.0+) The application version.
+     */
+    appVersion?: pulumi.Input<string>;
+    /**
      * The alias of MSE Cluster.
      */
     clusterAliasName?: pulumi.Input<string>;
     /**
-     * (Available in v1.162.0+)  The id of Cluster.
+     * (Available in v1.162.0+) The id of Cluster.
      */
     clusterId?: pulumi.Input<string>;
     /**

@@ -41,10 +41,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["abandonAbleChecksIds"] = new[]
-        ///         {
-        ///             task.Apply(getAccountDeletionCheckTaskResult =&gt; getAccountDeletionCheckTaskResult.AbandonAbleChecks),
-        ///         }.Select(__item =&gt; __item?.CheckId).ToList(),
+        ///         ["abandonAbleChecksIds"] = task.Apply(getAccountDeletionCheckTaskResult =&gt; getAccountDeletionCheckTaskResult.AbandonAbleChecks).Select(__item =&gt; __item.CheckId).ToList(),
         ///     };
         /// });
         /// ```
@@ -84,10 +81,7 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["abandonAbleChecksIds"] = new[]
-        ///         {
-        ///             task.Apply(getAccountDeletionCheckTaskResult =&gt; getAccountDeletionCheckTaskResult.AbandonAbleChecks),
-        ///         }.Select(__item =&gt; __item?.CheckId).ToList(),
+        ///         ["abandonAbleChecksIds"] = task.Apply(getAccountDeletionCheckTaskResult =&gt; getAccountDeletionCheckTaskResult.AbandonAbleChecks).Select(__item =&gt; __item.CheckId).ToList(),
         ///     };
         /// });
         /// ```

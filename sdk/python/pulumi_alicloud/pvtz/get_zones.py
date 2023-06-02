@@ -185,7 +185,7 @@ def get_zones(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    pvtz_zones_ds = alicloud.pvtz.get_zones(keyword=alicloud_pvtz_zone["basic"]["zone_name"])
+    pvtz_zones_ds = alicloud.pvtz.get_zones(keyword=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     pulumi.export("firstZoneId", pvtz_zones_ds.zones[0].id)
     ```
 
@@ -253,7 +253,7 @@ def get_zones_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
-    pvtz_zones_ds = alicloud.pvtz.get_zones(keyword=alicloud_pvtz_zone["basic"]["zone_name"])
+    pvtz_zones_ds = alicloud.pvtz.get_zones(keyword=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     pulumi.export("firstZoneId", pvtz_zones_ds.zones[0].id)
     ```
 

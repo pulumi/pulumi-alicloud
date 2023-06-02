@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     targetInstanceId: "cri-yyy",
  *     nameRegex: "test-rule",
  * });
- * export const output = [mySyncRules.then(mySyncRules => mySyncRules.rules)].map(__item => __item?.id);
+ * export const output = mySyncRules.then(mySyncRules => mySyncRules.rules.map(__item => __item.id));
  * ```
  */
 export function getRegistryEnterpriseSyncRules(args: GetRegistryEnterpriseSyncRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseSyncRulesResult> {
@@ -132,7 +132,7 @@ export interface GetRegistryEnterpriseSyncRulesResult {
  *     targetInstanceId: "cri-yyy",
  *     nameRegex: "test-rule",
  * });
- * export const output = [mySyncRules.then(mySyncRules => mySyncRules.rules)].map(__item => __item?.id);
+ * export const output = mySyncRules.then(mySyncRules => mySyncRules.rules.map(__item => __item.id));
  * ```
  */
 export function getRegistryEnterpriseSyncRulesOutput(args: GetRegistryEnterpriseSyncRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseSyncRulesResult> {

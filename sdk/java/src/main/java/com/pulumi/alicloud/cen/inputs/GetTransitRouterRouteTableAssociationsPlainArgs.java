@@ -61,18 +61,63 @@ public final class GetTransitRouterRouteTableAssociationsPlainArgs extends com.p
     }
 
     /**
-     * ID of the route table of the VPC or VBR.
+     * The ID of the network instance connection.
      * 
      */
-    @Import(name="transitRouterRouteTableId", required=true)
-    private String transitRouterRouteTableId;
+    @Import(name="transitRouterAttachmentId")
+    private @Nullable String transitRouterAttachmentId;
 
     /**
-     * @return ID of the route table of the VPC or VBR.
+     * @return The ID of the network instance connection.
      * 
      */
-    public String transitRouterRouteTableId() {
-        return this.transitRouterRouteTableId;
+    public Optional<String> transitRouterAttachmentId() {
+        return Optional.ofNullable(this.transitRouterAttachmentId);
+    }
+
+    /**
+     * The ID of the next hop.
+     * 
+     */
+    @Import(name="transitRouterAttachmentResourceId")
+    private @Nullable String transitRouterAttachmentResourceId;
+
+    /**
+     * @return The ID of the next hop.
+     * 
+     */
+    public Optional<String> transitRouterAttachmentResourceId() {
+        return Optional.ofNullable(this.transitRouterAttachmentResourceId);
+    }
+
+    /**
+     * The type of next hop. Valid values:
+     * 
+     */
+    @Import(name="transitRouterAttachmentResourceType")
+    private @Nullable String transitRouterAttachmentResourceType;
+
+    /**
+     * @return The type of next hop. Valid values:
+     * 
+     */
+    public Optional<String> transitRouterAttachmentResourceType() {
+        return Optional.ofNullable(this.transitRouterAttachmentResourceType);
+    }
+
+    /**
+     * The ID of the route table of the Enterprise Edition transit router.
+     * 
+     */
+    @Import(name="transitRouterRouteTableId")
+    private @Nullable String transitRouterRouteTableId;
+
+    /**
+     * @return The ID of the route table of the Enterprise Edition transit router.
+     * 
+     */
+    public Optional<String> transitRouterRouteTableId() {
+        return Optional.ofNullable(this.transitRouterRouteTableId);
     }
 
     private GetTransitRouterRouteTableAssociationsPlainArgs() {}
@@ -81,6 +126,9 @@ public final class GetTransitRouterRouteTableAssociationsPlainArgs extends com.p
         this.ids = $.ids;
         this.outputFile = $.outputFile;
         this.status = $.status;
+        this.transitRouterAttachmentId = $.transitRouterAttachmentId;
+        this.transitRouterAttachmentResourceId = $.transitRouterAttachmentResourceId;
+        this.transitRouterAttachmentResourceType = $.transitRouterAttachmentResourceType;
         this.transitRouterRouteTableId = $.transitRouterRouteTableId;
     }
 
@@ -146,18 +194,50 @@ public final class GetTransitRouterRouteTableAssociationsPlainArgs extends com.p
         }
 
         /**
-         * @param transitRouterRouteTableId ID of the route table of the VPC or VBR.
+         * @param transitRouterAttachmentId The ID of the network instance connection.
          * 
          * @return builder
          * 
          */
-        public Builder transitRouterRouteTableId(String transitRouterRouteTableId) {
+        public Builder transitRouterAttachmentId(@Nullable String transitRouterAttachmentId) {
+            $.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+
+        /**
+         * @param transitRouterAttachmentResourceId The ID of the next hop.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentResourceId(@Nullable String transitRouterAttachmentResourceId) {
+            $.transitRouterAttachmentResourceId = transitRouterAttachmentResourceId;
+            return this;
+        }
+
+        /**
+         * @param transitRouterAttachmentResourceType The type of next hop. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentResourceType(@Nullable String transitRouterAttachmentResourceType) {
+            $.transitRouterAttachmentResourceType = transitRouterAttachmentResourceType;
+            return this;
+        }
+
+        /**
+         * @param transitRouterRouteTableId The ID of the route table of the Enterprise Edition transit router.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterRouteTableId(@Nullable String transitRouterRouteTableId) {
             $.transitRouterRouteTableId = transitRouterRouteTableId;
             return this;
         }
 
         public GetTransitRouterRouteTableAssociationsPlainArgs build() {
-            $.transitRouterRouteTableId = Objects.requireNonNull($.transitRouterRouteTableId, "expected parameter 'transitRouterRouteTableId' to be non-null");
             return $;
         }
     }

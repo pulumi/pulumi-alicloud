@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Slb
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var slbRuleName = config.Get("slbRuleName") ?? "forSlbRule";
+    ///     var slbRuleName = config.Get("slbRuleName") ?? "terraform-example";
     ///     var ruleZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
@@ -111,14 +111,6 @@ namespace Pulumi.AliCloud.Slb
     ///     var ruleServerGroup = new AliCloud.Slb.ServerGroup("ruleServerGroup", new()
     ///     {
     ///         LoadBalancerId = ruleApplicationLoadBalancer.Id,
-    ///     });
-    /// 
-    ///     var ruleServerGroupServerAttachment = new AliCloud.Slb.ServerGroupServerAttachment("ruleServerGroupServerAttachment", new()
-    ///     {
-    ///         ServerGroupId = ruleServerGroup.Id,
-    ///         ServerId = ruleInstance.Id,
-    ///         Port = 80,
-    ///         Weight = 100,
     ///     });
     /// 
     ///     var ruleRule = new AliCloud.Slb.Rule("ruleRule", new()

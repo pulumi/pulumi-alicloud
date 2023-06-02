@@ -24,33 +24,24 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/polardb"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			creation := "PolarDB"
-//			if param := cfg.Get("creation"); param != "" {
-//				creation = param
-//			}
-//			name := "polardbconnectionbasic"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef(creation),
+//			defaultNodeClasses, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+//				DbType:    pulumi.StringRef("MySQL"),
+//				DbVersion: pulumi.StringRef("8.0"),
+//				PayType:   "PostPaid",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
+//				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -59,8 +50,8 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
+//				ZoneId:      *pulumi.String(defaultNodeClasses.Classes[0].ZoneId),
+//				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -68,15 +59,15 @@ import (
 //			defaultCluster, err := polardb.NewCluster(ctx, "defaultCluster", &polardb.ClusterArgs{
 //				DbType:      pulumi.String("MySQL"),
 //				DbVersion:   pulumi.String("8.0"),
+//				DbNodeClass: *pulumi.String(defaultNodeClasses.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
 //				PayType:     pulumi.String("PostPaid"),
-//				DbNodeClass: pulumi.String("polar.mysql.x4.large"),
 //				VswitchId:   defaultSwitch.ID(),
-//				Description: pulumi.String(name),
+//				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = polardb.NewEndpoint(ctx, "endpoint", &polardb.EndpointArgs{
+//			_, err = polardb.NewEndpoint(ctx, "defaultEndpoint", &polardb.EndpointArgs{
 //				DbClusterId:  defaultCluster.ID(),
 //				EndpointType: pulumi.String("Custom"),
 //			})

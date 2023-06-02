@@ -6,6 +6,7 @@ package com.pulumi.alicloud.vpc;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.vpc.NetworkArgs;
 import com.pulumi.alicloud.vpc.inputs.NetworkState;
+import com.pulumi.alicloud.vpc.outputs.NetworkIpv6CidrBlock;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -19,6 +20,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Vpc Vpc resource. A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
+ * 
+ * &gt; **NOTE:** This resource will auto build a router and a route table while it uses `alicloud.vpc.Network` to build a vpc resource.
+ * 
+ * &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+ * 
+ * ## Module Support
+ * 
+ * You can use the existing vpc module
+ * to create a VPC and several VSwitches one-click.
+ * 
+ * For information about Vpc Vpc and how to use it, see [What is Vpc](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/what-is-a-vpc).
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -43,25 +57,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
- *             .vpcName(&#34;tf_test_foo&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .ipv6Isp(&#34;BGP&#34;)
+ *             .description(&#34;test&#34;)
+ *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .vpcName(name)
+ *             .enableIpv6(true)
  *             .build());
  * 
  *     }
  * }
  * ```
- * ## Module Support
- * 
- * You can use the existing vpc module
- * to create a VPC and several VSwitches one-click.
  * 
  * ## Import
  * 
- * VPC can be imported using the id, e.g.
+ * Vpc Vpc can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/network:Network example vpc-abc123456
+ *  $ pulumi import alicloud:vpc/network:Network example &lt;id&gt;
  * ```
  * 
  */
@@ -72,14 +87,42 @@ public class Network extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="cidrBlock", type=String.class, parameters={})
-    private Output</* @Nullable */ String> cidrBlock;
+    private Output<String> cidrBlock;
 
     /**
      * @return The CIDR block for the VPC. The `cidr_block` is Optional and default value is `172.16.0.0/12` after v1.119.0+.
      * 
      */
-    public Output<Optional<String>> cidrBlock() {
-        return Codegen.optional(this.cidrBlock);
+    public Output<String> cidrBlock() {
+        return this.cidrBlock;
+    }
+    /**
+     * The status of ClassicLink function.
+     * 
+     */
+    @Export(name="classicLinkEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> classicLinkEnabled;
+
+    /**
+     * @return The status of ClassicLink function.
+     * 
+     */
+    public Output<Optional<Boolean>> classicLinkEnabled() {
+        return Codegen.optional(this.classicLinkEnabled);
+    }
+    /**
+     * The creation time of the VPC.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the VPC.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * The VPC description. Defaults to null.
@@ -96,53 +139,95 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+     * Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
      * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Specifies whether to pre-check this request only. Valid values: `true` and `false`.
+     * @return Whether to PreCheck this request only. Value:
+     * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-     * 
-     * &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+     * Whether to enable the IPv6 network segment. Value:
+     * - **false** (default): not enabled.
+     * - **true**: on.
      * 
      */
     @Export(name="enableIpv6", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableIpv6;
 
     /**
-     * @return Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks. If the `enable_ipv6` is `true`, the system will automatically create a free version of an IPv6 gateway for your private network and assign an IPv6 network segment assigned as /56.
-     * 
-     * &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+     * @return Whether to enable the IPv6 network segment. Value:
+     * - **false** (default): not enabled.
+     * - **true**: on.
      * 
      */
     public Output<Optional<Boolean>> enableIpv6() {
         return Codegen.optional(this.enableIpv6);
     }
     /**
-     * (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+     * The IPv6 CIDR block of the VPC.
      * 
      */
     @Export(name="ipv6CidrBlock", type=String.class, parameters={})
     private Output<String> ipv6CidrBlock;
 
     /**
-     * @return (Available in v1.119.0+) ) The ipv6 cidr block of VPC.
+     * @return The IPv6 CIDR block of the VPC.
      * 
      */
     public Output<String> ipv6CidrBlock() {
         return this.ipv6CidrBlock;
     }
     /**
-     * Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
+     * The IPv6 CIDR block information of the VPC.
+     * 
+     */
+    @Export(name="ipv6CidrBlocks", type=List.class, parameters={NetworkIpv6CidrBlock.class})
+    private Output<List<NetworkIpv6CidrBlock>> ipv6CidrBlocks;
+
+    /**
+     * @return The IPv6 CIDR block information of the VPC.
+     * 
+     */
+    public Output<List<NetworkIpv6CidrBlock>> ipv6CidrBlocks() {
+        return this.ipv6CidrBlocks;
+    }
+    /**
+     * The IPv6 address segment type of the VPC. Value:
+     * - **BGP** (default): Alibaba Cloud BGP IPv6.
+     * - **ChinaMobile**: China Mobile (single line).
+     * - **ChinaUnicom**: China Unicom (single line).
+     * - **ChinaTelecom**: China Telecom (single line).
+     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     * 
+     */
+    @Export(name="ipv6Isp", type=String.class, parameters={})
+    private Output</* @Nullable */ String> ipv6Isp;
+
+    /**
+     * @return The IPv6 address segment type of the VPC. Value:
+     * - **BGP** (default): Alibaba Cloud BGP IPv6.
+     * - **ChinaMobile**: China Mobile (single line).
+     * - **ChinaUnicom**: China Unicom (single line).
+     * - **ChinaTelecom**: China Telecom (single line).
+     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     * 
+     */
+    public Output<Optional<String>> ipv6Isp() {
+        return Codegen.optional(this.ipv6Isp);
+    }
+    /**
+     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
@@ -153,21 +238,21 @@ public class Network extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.119.0. New field `vpc_name` instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The ID of resource group which the VPC belongs.
+     * The ID of the resource group to which the VPC belongs.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of resource group which the VPC belongs.
+     * @return The ID of the resource group to which the VPC belongs.
      * 
      */
     public Output<String> resourceGroupId() {
@@ -202,85 +287,87 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.routerId;
     }
     /**
-     * (Deprecated) It has been deprecated and replaced with `route_table_id`.
+     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      * @deprecated
-     * Attribute router_table_id has been deprecated and replaced with route_table_id.
+     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      */
-    @Deprecated /* Attribute router_table_id has been deprecated and replaced with route_table_id. */
+    @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
     @Export(name="routerTableId", type=String.class, parameters={})
     private Output<String> routerTableId;
 
     /**
-     * @return (Deprecated) It has been deprecated and replaced with `route_table_id`.
+     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      */
     public Output<String> routerTableId() {
         return this.routerTableId;
     }
     /**
-     * Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      * @deprecated
-     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
+     * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.
      * 
      */
-    @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
+    @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time. */
     @Export(name="secondaryCidrBlocks", type=List.class, parameters={String.class})
     private Output<List<String>> secondaryCidrBlocks;
 
     /**
-     * @return Field `secondary_cidr_blocks` has been deprecated from provider version 1.185.0, and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * @return Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
     public Output<List<String>> secondaryCidrBlocks() {
         return this.secondaryCidrBlocks;
     }
     /**
-     * The status of the VPC.
+     * The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the VPC.
+     * @return The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tags of Vpc.
      * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tags of Vpc.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The user cidr blocks of the VPC.
+     * A list of user CIDRs.
      * 
      */
     @Export(name="userCidrs", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> userCidrs;
+    private Output<List<String>> userCidrs;
 
     /**
-     * @return The user cidr blocks of the VPC.
+     * @return A list of user CIDRs.
      * 
      */
-    public Output<Optional<List<String>>> userCidrs() {
-        return Codegen.optional(this.userCidrs);
+    public Output<List<String>> userCidrs() {
+        return this.userCidrs;
     }
     /**
      * The name of the VPC. Defaults to null.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="vpcName", type=String.class, parameters={})
@@ -288,6 +375,8 @@ public class Network extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the VPC. Defaults to null.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<String> vpcName() {

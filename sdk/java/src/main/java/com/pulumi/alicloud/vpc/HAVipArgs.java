@@ -5,7 +5,9 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,17 +32,32 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="haVipName")
+    private @Nullable Output<String> haVipName;
+
+    public Optional<Output<String>> haVipName() {
+        return Optional.ofNullable(this.haVipName);
+    }
+
     /**
      * The name of the HaVip instance.
      * 
+     * @deprecated
+     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
     @Import(name="havipName")
     private @Nullable Output<String> havipName;
 
     /**
      * @return The name of the HaVip instance.
      * 
+     * @deprecated
+     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * 
      */
+    @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
     public Optional<Output<String>> havipName() {
         return Optional.ofNullable(this.havipName);
     }
@@ -58,6 +75,20 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
+    }
+
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -79,8 +110,11 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
 
     private HAVipArgs(HAVipArgs $) {
         this.description = $.description;
+        this.haVipName = $.haVipName;
         this.havipName = $.havipName;
         this.ipAddress = $.ipAddress;
+        this.resourceGroupId = $.resourceGroupId;
+        this.tags = $.tags;
         this.vswitchId = $.vswitchId;
     }
 
@@ -123,12 +157,25 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        public Builder haVipName(@Nullable Output<String> haVipName) {
+            $.haVipName = haVipName;
+            return this;
+        }
+
+        public Builder haVipName(String haVipName) {
+            return haVipName(Output.of(haVipName));
+        }
+
         /**
          * @param havipName The name of the HaVip instance.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
         public Builder havipName(@Nullable Output<String> havipName) {
             $.havipName = havipName;
             return this;
@@ -139,7 +186,11 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead. */
         public Builder havipName(String havipName) {
             return havipName(Output.of(havipName));
         }
@@ -163,6 +214,24 @@ public final class HAVipArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
+        }
+
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

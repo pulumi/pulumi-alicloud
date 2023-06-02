@@ -19,72 +19,58 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
- *     nameRegex: "default",
- * });
  * const defaultZones = alicloud.getZones({
  *     availableResourceCreation: "Instance",
  *     availableDiskCategory: "cloud_essd",
  * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: defaultZones.zones?.[0]?.id,
- *     cpuCoreCount: 2,
- *     memorySize: 4,
  *     systemDiskCategory: "cloud_essd",
  * }));
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
- * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {
- *     description: "New security group",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- * });
- * const defaultDisk: alicloud.ecs.Disk[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultDisk.push(new alicloud.ecs.Disk(`defaultDisk-${range.value}`, {
- *         diskName: _var.name,
- *         zoneId: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
- *         category: "cloud_essd",
- *         size: 20,
- *     }));
- * }
  * const defaultImages = alicloud.ecs.getImages({
  *     owners: "system",
  * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
  * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
  *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     instanceName: _var.name,
- *     hostName: "tf-testAcc",
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     instanceName: "terraform-example",
  *     securityGroups: [defaultSecurityGroup.id],
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultSwitch.id,
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     internetMaxBandwidthOut: 10,
  * });
- * const defaultDiskAttachment: alicloud.ecs.DiskAttachment[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     defaultDiskAttachment.push(new alicloud.ecs.DiskAttachment(`defaultDiskAttachment-${range.value}`, {
- *         diskId: defaultDisk.map(__item => __item.id)[range.value],
- *         instanceId: defaultInstance.id,
- *     }));
- * }
- * const example = new alicloud.ecs.EcsSnapshotGroup("example", {
- *     description: "example_value",
- *     diskIds: [
- *         defaultDiskAttachment[0].diskId,
- *         defaultDiskAttachment[1].diskId,
- *     ],
- *     snapshotGroupName: "example_value",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     instanceId: defaultDiskAttachment[0].instanceId,
+ * const defaultEcsDisk = new alicloud.ecs.EcsDisk("defaultEcsDisk", {
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     diskName: "terraform-example",
+ *     description: "terraform-example",
+ *     category: "cloud_essd",
+ *     size: 30,
+ * });
+ * const defaultDiskAttachment = new alicloud.ecs.DiskAttachment("defaultDiskAttachment", {
+ *     diskId: defaultEcsDisk.id,
+ *     instanceId: defaultInstance.id,
+ * });
+ * const defaultEcsSnapshotGroup = new alicloud.ecs.EcsSnapshotGroup("defaultEcsSnapshotGroup", {
+ *     description: "terraform-example",
+ *     diskIds: [defaultEcsDisk.id],
+ *     snapshotGroupName: "terraform-example",
+ *     instanceId: defaultInstance.id,
  *     instantAccess: true,
  *     instantAccessRetentionDays: 1,
  *     tags: {
  *         Created: "TF",
- *         For: "Acceptance-test",
+ *         For: "Acceptance",
  *     },
  * });
  * ```

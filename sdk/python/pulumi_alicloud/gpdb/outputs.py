@@ -336,12 +336,12 @@ class InstanceIpWhitelist(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "securityIpList":
-            suggest = "security_ip_list"
-        elif key == "ipGroupAttribute":
+        if key == "ipGroupAttribute":
             suggest = "ip_group_attribute"
         elif key == "ipGroupName":
             suggest = "ip_group_name"
+        elif key == "securityIpList":
+            suggest = "security_ip_list"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceIpWhitelist. Access the value via the '{suggest}' property getter instead.")
@@ -355,33 +355,28 @@ class InstanceIpWhitelist(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 security_ip_list: str,
                  ip_group_attribute: Optional[str] = None,
-                 ip_group_name: Optional[str] = None):
+                 ip_group_name: Optional[str] = None,
+                 security_ip_list: Optional[str] = None):
         """
-        :param str security_ip_list: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
-        :param str ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        :param str ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. 
+               If the value contains `hidden`, this white list item will not output.
         :param str ip_group_name: IP whitelist group name
+        :param str security_ip_list: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """
-        pulumi.set(__self__, "security_ip_list", security_ip_list)
         if ip_group_attribute is not None:
             pulumi.set(__self__, "ip_group_attribute", ip_group_attribute)
         if ip_group_name is not None:
             pulumi.set(__self__, "ip_group_name", ip_group_name)
-
-    @property
-    @pulumi.getter(name="securityIpList")
-    def security_ip_list(self) -> str:
-        """
-        Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
-        """
-        return pulumi.get(self, "security_ip_list")
+        if security_ip_list is not None:
+            pulumi.set(__self__, "security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="ipGroupAttribute")
     def ip_group_attribute(self) -> Optional[str]:
         """
-        The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
+        The value of this parameter is empty by default. The attribute of the whitelist group. 
+        If the value contains `hidden`, this white list item will not output.
         """
         return pulumi.get(self, "ip_group_attribute")
 
@@ -392,6 +387,14 @@ class InstanceIpWhitelist(dict):
         IP whitelist group name
         """
         return pulumi.get(self, "ip_group_name")
+
+    @property
+    @pulumi.getter(name="securityIpList")
+    def security_ip_list(self) -> Optional[str]:
+        """
+        Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        """
+        return pulumi.get(self, "security_ip_list")
 
 
 @pulumi.output_type

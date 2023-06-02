@@ -22,6 +22,9 @@ class QuotaApplicationArgs:
                  reason: pulumi.Input[str],
                  audit_mode: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
+                 env_language: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  notice_type: Optional[pulumi.Input[int]] = None,
                  quota_category: Optional[pulumi.Input[str]] = None):
         """
@@ -30,10 +33,21 @@ class QuotaApplicationArgs:
         :param pulumi.Input[str] product_code: The product code.
         :param pulumi.Input[str] quota_action_code: The ID of quota action.
         :param pulumi.Input[str] reason: The reason of the quota application.
-        :param pulumi.Input[str] audit_mode: The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
-        :param pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]] dimensions: The quota dimensions.
-        :param pulumi.Input[int] notice_type: The notice type. Valid values: `0`, `1`, `2`, `3`.
-        :param pulumi.Input[str] quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
+               - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+               - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+        :param pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]] dimensions: QuotaDimensions. See the following `Block Dimensions`.
+        :param pulumi.Input[str] effective_time: The effective time of the quota application.
+        :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
+               - zh (default): Chinese.
+               - en: English.
+        :param pulumi.Input[str] expire_time: The expired time of the quota application.
+        :param pulumi.Input[int] notice_type: Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
+        :param pulumi.Input[str] quota_category: The quota type.
+               - CommonQuota (default): Generic quota.
+               - FlowControl:API rate quota.
+               - WhiteListLabel: Equity quota.
         """
         pulumi.set(__self__, "desire_value", desire_value)
         pulumi.set(__self__, "product_code", product_code)
@@ -43,6 +57,12 @@ class QuotaApplicationArgs:
             pulumi.set(__self__, "audit_mode", audit_mode)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
+        if effective_time is not None:
+            pulumi.set(__self__, "effective_time", effective_time)
+        if env_language is not None:
+            pulumi.set(__self__, "env_language", env_language)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if notice_type is not None:
             pulumi.set(__self__, "notice_type", notice_type)
         if quota_category is not None:
@@ -100,7 +120,10 @@ class QuotaApplicationArgs:
     @pulumi.getter(name="auditMode")
     def audit_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+        Quota audit mode. Value:
+        - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+        - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+        > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         """
         return pulumi.get(self, "audit_mode")
 
@@ -112,7 +135,7 @@ class QuotaApplicationArgs:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]]]:
         """
-        The quota dimensions.
+        QuotaDimensions. See the following `Block Dimensions`.
         """
         return pulumi.get(self, "dimensions")
 
@@ -121,10 +144,48 @@ class QuotaApplicationArgs:
         pulumi.set(self, "dimensions", value)
 
     @property
+    @pulumi.getter(name="effectiveTime")
+    def effective_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The effective time of the quota application.
+        """
+        return pulumi.get(self, "effective_time")
+
+    @effective_time.setter
+    def effective_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective_time", value)
+
+    @property
+    @pulumi.getter(name="envLanguage")
+    def env_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language of the quota alert notification. Value:
+        - zh (default): Chinese.
+        - en: English.
+        """
+        return pulumi.get(self, "env_language")
+
+    @env_language.setter
+    def env_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "env_language", value)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expired time of the quota application.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expire_time", value)
+
+    @property
     @pulumi.getter(name="noticeType")
     def notice_type(self) -> Optional[pulumi.Input[int]]:
         """
-        The notice type. Valid values: `0`, `1`, `2`, `3`.
+        Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
         """
         return pulumi.get(self, "notice_type")
 
@@ -136,7 +197,10 @@ class QuotaApplicationArgs:
     @pulumi.getter(name="quotaCategory")
     def quota_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        The quota type.
+        - CommonQuota (default): Generic quota.
+        - FlowControl:API rate quota.
+        - WhiteListLabel: Equity quota.
         """
         return pulumi.get(self, "quota_category")
 
@@ -151,9 +215,11 @@ class _QuotaApplicationState:
                  approve_value: Optional[pulumi.Input[str]] = None,
                  audit_mode: Optional[pulumi.Input[str]] = None,
                  audit_reason: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  desire_value: Optional[pulumi.Input[float]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
+                 env_language: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  notice_type: Optional[pulumi.Input[int]] = None,
                  product_code: Optional[pulumi.Input[str]] = None,
@@ -167,21 +233,35 @@ class _QuotaApplicationState:
         """
         Input properties used for looking up and filtering QuotaApplication resources.
         :param pulumi.Input[str] approve_value: The approve value of the quota application.
-        :param pulumi.Input[str] audit_mode: The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+        :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
+               - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+               - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         :param pulumi.Input[str] audit_reason: The audit reason.
+        :param pulumi.Input[str] create_time: Resource attribute field representing creation time.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
-        :param pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]] dimensions: The quota dimensions.
+        :param pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]] dimensions: QuotaDimensions. See the following `Block Dimensions`.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
-        :param pulumi.Input[str] expire_time: The expire time of the quota application.
-        :param pulumi.Input[int] notice_type: The notice type. Valid values: `0`, `1`, `2`, `3`.
+        :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
+               - zh (default): Chinese.
+               - en: English.
+        :param pulumi.Input[str] expire_time: The expired time of the quota application.
+        :param pulumi.Input[int] notice_type: Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
         :param pulumi.Input[str] product_code: The product code.
         :param pulumi.Input[str] quota_action_code: The ID of quota action.
-        :param pulumi.Input[str] quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        :param pulumi.Input[str] quota_category: The quota type.
+               - CommonQuota (default): Generic quota.
+               - FlowControl:API rate quota.
+               - WhiteListLabel: Equity quota.
         :param pulumi.Input[str] quota_description: The description of the quota application.
         :param pulumi.Input[str] quota_name: The name of the quota application.
         :param pulumi.Input[str] quota_unit: The unit of the quota application.
         :param pulumi.Input[str] reason: The reason of the quota application.
-        :param pulumi.Input[str] status: The status of the quota application.
+        :param pulumi.Input[str] status: Application Status:
+               - Disagree: reject.
+               - Agree: Approved.
+               - Process: under review.
+               - Cancel: Closed.
         """
         if approve_value is not None:
             pulumi.set(__self__, "approve_value", approve_value)
@@ -189,12 +269,16 @@ class _QuotaApplicationState:
             pulumi.set(__self__, "audit_mode", audit_mode)
         if audit_reason is not None:
             pulumi.set(__self__, "audit_reason", audit_reason)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if desire_value is not None:
             pulumi.set(__self__, "desire_value", desire_value)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
+        if env_language is not None:
+            pulumi.set(__self__, "env_language", env_language)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if notice_type is not None:
@@ -232,7 +316,10 @@ class _QuotaApplicationState:
     @pulumi.getter(name="auditMode")
     def audit_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+        Quota audit mode. Value:
+        - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+        - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+        > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         """
         return pulumi.get(self, "audit_mode")
 
@@ -253,6 +340,18 @@ class _QuotaApplicationState:
         pulumi.set(self, "audit_reason", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource attribute field representing creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="desireValue")
     def desire_value(self) -> Optional[pulumi.Input[float]]:
         """
@@ -268,7 +367,7 @@ class _QuotaApplicationState:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]]]:
         """
-        The quota dimensions.
+        QuotaDimensions. See the following `Block Dimensions`.
         """
         return pulumi.get(self, "dimensions")
 
@@ -289,10 +388,24 @@ class _QuotaApplicationState:
         pulumi.set(self, "effective_time", value)
 
     @property
+    @pulumi.getter(name="envLanguage")
+    def env_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language of the quota alert notification. Value:
+        - zh (default): Chinese.
+        - en: English.
+        """
+        return pulumi.get(self, "env_language")
+
+    @env_language.setter
+    def env_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "env_language", value)
+
+    @property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The expire time of the quota application.
+        The expired time of the quota application.
         """
         return pulumi.get(self, "expire_time")
 
@@ -304,7 +417,7 @@ class _QuotaApplicationState:
     @pulumi.getter(name="noticeType")
     def notice_type(self) -> Optional[pulumi.Input[int]]:
         """
-        The notice type. Valid values: `0`, `1`, `2`, `3`.
+        Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
         """
         return pulumi.get(self, "notice_type")
 
@@ -340,7 +453,10 @@ class _QuotaApplicationState:
     @pulumi.getter(name="quotaCategory")
     def quota_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        The quota type.
+        - CommonQuota (default): Generic quota.
+        - FlowControl:API rate quota.
+        - WhiteListLabel: Equity quota.
         """
         return pulumi.get(self, "quota_category")
 
@@ -400,7 +516,11 @@ class _QuotaApplicationState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the quota application.
+        Application Status:
+        - Disagree: reject.
+        - Agree: Approved.
+        - Process: under review.
+        - Cancel: Closed.
         """
         return pulumi.get(self, "status")
 
@@ -417,6 +537,9 @@ class QuotaApplication(pulumi.CustomResource):
                  audit_mode: Optional[pulumi.Input[str]] = None,
                  desire_value: Optional[pulumi.Input[float]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
+                 env_language: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  notice_type: Optional[pulumi.Input[int]] = None,
                  product_code: Optional[pulumi.Input[str]] = None,
                  quota_action_code: Optional[pulumi.Input[str]] = None,
@@ -424,35 +547,9 @@ class QuotaApplication(pulumi.CustomResource):
                  reason: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Quotas Quota Application resource.
-
-        For information about Quotas Quota Application and how to use it, see [What is Quota Application](https://help.aliyun.com/document_detail/171289.html).
-
-        > **NOTE:** Available in v1.117.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.quotas.QuotaApplication("example",
-            desire_value=100,
-            dimensions=[alicloud.quotas.QuotaApplicationDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            )],
-            notice_type=0,
-            product_code="ess",
-            quota_action_code="q_db_instance",
-            reason="For Terraform Test")
-        ```
-
         ## Import
 
-        Quotas Application Info can be imported using the id, e.g.
+        Quotas Quota Application can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
@@ -460,13 +557,24 @@ class QuotaApplication(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] audit_mode: The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+        :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
+               - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+               - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]] dimensions: The quota dimensions.
-        :param pulumi.Input[int] notice_type: The notice type. Valid values: `0`, `1`, `2`, `3`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]] dimensions: QuotaDimensions. See the following `Block Dimensions`.
+        :param pulumi.Input[str] effective_time: The effective time of the quota application.
+        :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
+               - zh (default): Chinese.
+               - en: English.
+        :param pulumi.Input[str] expire_time: The expired time of the quota application.
+        :param pulumi.Input[int] notice_type: Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
         :param pulumi.Input[str] product_code: The product code.
         :param pulumi.Input[str] quota_action_code: The ID of quota action.
-        :param pulumi.Input[str] quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        :param pulumi.Input[str] quota_category: The quota type.
+               - CommonQuota (default): Generic quota.
+               - FlowControl:API rate quota.
+               - WhiteListLabel: Equity quota.
         :param pulumi.Input[str] reason: The reason of the quota application.
         """
         ...
@@ -476,35 +584,9 @@ class QuotaApplication(pulumi.CustomResource):
                  args: QuotaApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Quotas Quota Application resource.
-
-        For information about Quotas Quota Application and how to use it, see [What is Quota Application](https://help.aliyun.com/document_detail/171289.html).
-
-        > **NOTE:** Available in v1.117.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.quotas.QuotaApplication("example",
-            desire_value=100,
-            dimensions=[alicloud.quotas.QuotaApplicationDimensionArgs(
-                key="regionId",
-                value="cn-hangzhou",
-            )],
-            notice_type=0,
-            product_code="ess",
-            quota_action_code="q_db_instance",
-            reason="For Terraform Test")
-        ```
-
         ## Import
 
-        Quotas Application Info can be imported using the id, e.g.
+        Quotas Quota Application can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:quotas/quotaApplication:QuotaApplication example <id>
@@ -528,6 +610,9 @@ class QuotaApplication(pulumi.CustomResource):
                  audit_mode: Optional[pulumi.Input[str]] = None,
                  desire_value: Optional[pulumi.Input[float]] = None,
                  dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]]] = None,
+                 effective_time: Optional[pulumi.Input[str]] = None,
+                 env_language: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  notice_type: Optional[pulumi.Input[int]] = None,
                  product_code: Optional[pulumi.Input[str]] = None,
                  quota_action_code: Optional[pulumi.Input[str]] = None,
@@ -547,6 +632,9 @@ class QuotaApplication(pulumi.CustomResource):
                 raise TypeError("Missing required property 'desire_value'")
             __props__.__dict__["desire_value"] = desire_value
             __props__.__dict__["dimensions"] = dimensions
+            __props__.__dict__["effective_time"] = effective_time
+            __props__.__dict__["env_language"] = env_language
+            __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["notice_type"] = notice_type
             if product_code is None and not opts.urn:
                 raise TypeError("Missing required property 'product_code'")
@@ -560,8 +648,7 @@ class QuotaApplication(pulumi.CustomResource):
             __props__.__dict__["reason"] = reason
             __props__.__dict__["approve_value"] = None
             __props__.__dict__["audit_reason"] = None
-            __props__.__dict__["effective_time"] = None
-            __props__.__dict__["expire_time"] = None
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["quota_description"] = None
             __props__.__dict__["quota_name"] = None
             __props__.__dict__["quota_unit"] = None
@@ -579,9 +666,11 @@ class QuotaApplication(pulumi.CustomResource):
             approve_value: Optional[pulumi.Input[str]] = None,
             audit_mode: Optional[pulumi.Input[str]] = None,
             audit_reason: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             desire_value: Optional[pulumi.Input[float]] = None,
             dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]]] = None,
             effective_time: Optional[pulumi.Input[str]] = None,
+            env_language: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
             notice_type: Optional[pulumi.Input[int]] = None,
             product_code: Optional[pulumi.Input[str]] = None,
@@ -600,21 +689,35 @@ class QuotaApplication(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] approve_value: The approve value of the quota application.
-        :param pulumi.Input[str] audit_mode: The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+        :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
+               - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+               - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         :param pulumi.Input[str] audit_reason: The audit reason.
+        :param pulumi.Input[str] create_time: Resource attribute field representing creation time.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]] dimensions: The quota dimensions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]] dimensions: QuotaDimensions. See the following `Block Dimensions`.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
-        :param pulumi.Input[str] expire_time: The expire time of the quota application.
-        :param pulumi.Input[int] notice_type: The notice type. Valid values: `0`, `1`, `2`, `3`.
+        :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
+               - zh (default): Chinese.
+               - en: English.
+        :param pulumi.Input[str] expire_time: The expired time of the quota application.
+        :param pulumi.Input[int] notice_type: Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
         :param pulumi.Input[str] product_code: The product code.
         :param pulumi.Input[str] quota_action_code: The ID of quota action.
-        :param pulumi.Input[str] quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        :param pulumi.Input[str] quota_category: The quota type.
+               - CommonQuota (default): Generic quota.
+               - FlowControl:API rate quota.
+               - WhiteListLabel: Equity quota.
         :param pulumi.Input[str] quota_description: The description of the quota application.
         :param pulumi.Input[str] quota_name: The name of the quota application.
         :param pulumi.Input[str] quota_unit: The unit of the quota application.
         :param pulumi.Input[str] reason: The reason of the quota application.
-        :param pulumi.Input[str] status: The status of the quota application.
+        :param pulumi.Input[str] status: Application Status:
+               - Disagree: reject.
+               - Agree: Approved.
+               - Process: under review.
+               - Cancel: Closed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -623,9 +726,11 @@ class QuotaApplication(pulumi.CustomResource):
         __props__.__dict__["approve_value"] = approve_value
         __props__.__dict__["audit_mode"] = audit_mode
         __props__.__dict__["audit_reason"] = audit_reason
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["desire_value"] = desire_value
         __props__.__dict__["dimensions"] = dimensions
         __props__.__dict__["effective_time"] = effective_time
+        __props__.__dict__["env_language"] = env_language
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["notice_type"] = notice_type
         __props__.__dict__["product_code"] = product_code
@@ -648,9 +753,12 @@ class QuotaApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="auditMode")
-    def audit_mode(self) -> pulumi.Output[Optional[str]]:
+    def audit_mode(self) -> pulumi.Output[str]:
         """
-        The audit mode. Valid values: `Async`, `Sync`. Default to: `Async`.
+        Quota audit mode. Value:
+        - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+        - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+        > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         """
         return pulumi.get(self, "audit_mode")
 
@@ -661,6 +769,14 @@ class QuotaApplication(pulumi.CustomResource):
         The audit reason.
         """
         return pulumi.get(self, "audit_reason")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Resource attribute field representing creation time.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="desireValue")
@@ -674,31 +790,41 @@ class QuotaApplication(pulumi.CustomResource):
     @pulumi.getter
     def dimensions(self) -> pulumi.Output[Optional[Sequence['outputs.QuotaApplicationDimension']]]:
         """
-        The quota dimensions.
+        QuotaDimensions. See the following `Block Dimensions`.
         """
         return pulumi.get(self, "dimensions")
 
     @property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> pulumi.Output[str]:
+    def effective_time(self) -> pulumi.Output[Optional[str]]:
         """
         The effective time of the quota application.
         """
         return pulumi.get(self, "effective_time")
 
     @property
-    @pulumi.getter(name="expireTime")
-    def expire_time(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="envLanguage")
+    def env_language(self) -> pulumi.Output[Optional[str]]:
         """
-        The expire time of the quota application.
+        The language of the quota alert notification. Value:
+        - zh (default): Chinese.
+        - en: English.
+        """
+        return pulumi.get(self, "env_language")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[Optional[str]]:
+        """
+        The expired time of the quota application.
         """
         return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter(name="noticeType")
-    def notice_type(self) -> pulumi.Output[Optional[int]]:
+    def notice_type(self) -> pulumi.Output[int]:
         """
-        The notice type. Valid values: `0`, `1`, `2`, `3`.
+        Specifies whether to send a notification about the application result. Valid values:0: sends a notification about the application result.3: A notification about the application result is sent.
         """
         return pulumi.get(self, "notice_type")
 
@@ -722,7 +848,10 @@ class QuotaApplication(pulumi.CustomResource):
     @pulumi.getter(name="quotaCategory")
     def quota_category(self) -> pulumi.Output[Optional[str]]:
         """
-        The quota category. Valid values: `CommonQuota`, `FlowControl`.
+        The quota type.
+        - CommonQuota (default): Generic quota.
+        - FlowControl:API rate quota.
+        - WhiteListLabel: Equity quota.
         """
         return pulumi.get(self, "quota_category")
 
@@ -762,7 +891,11 @@ class QuotaApplication(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the quota application.
+        Application Status:
+        - Disagree: reject.
+        - Agree: Approved.
+        - Process: under review.
+        - Cancel: Closed.
         """
         return pulumi.get(self, "status")
 

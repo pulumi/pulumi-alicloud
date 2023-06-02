@@ -13,20 +13,33 @@ namespace Pulumi.AliCloud.Cdn.Inputs
     public sealed class DomainNewCertificateConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The SSL certificate name.
+        /// The ID of the certificate. It takes effect only when CertType = cas.
+        /// </summary>
+        [Input("certId")]
+        public Input<string>? CertId { get; set; }
+
+        /// <summary>
+        /// Certificate name, only flyer names are supported.
         /// </summary>
         [Input("certName")]
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// The SSL certificate type, can be "upload", "cas" and "free".
+        /// The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+        /// </summary>
+        [Input("certRegion")]
+        public Input<string>? CertRegion { get; set; }
+
+        /// <summary>
+        /// Certificate type. Value:
+        /// - **upload**: upload certificate.
+        /// - **cas**: Cloud Shield certificate.
+        /// - **free**: free certificate.
+        /// &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
         /// </summary>
         [Input("certType")]
         public Input<string>? CertType { get; set; }
 
-        /// <summary>
-        /// Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
-        /// </summary>
         [Input("forceSet")]
         public Input<string>? ForceSet { get; set; }
 
@@ -34,7 +47,7 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// The SSL private key. This is required if `server_certificate_status` is `on`
+        /// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -46,24 +59,16 @@ namespace Pulumi.AliCloud.Cdn.Inputs
             }
         }
 
-        [Input("serverCertificate")]
-        private Input<string>? _serverCertificate;
-
         /// <summary>
-        /// The SSL server certificate string. This is required if `server_certificate_status` is `on`
+        /// The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
         /// </summary>
-        public Input<string>? ServerCertificate
-        {
-            get => _serverCertificate;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _serverCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("serverCertificate")]
+        public Input<string>? ServerCertificate { get; set; }
 
         /// <summary>
-        /// This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+        /// Whether the HTTPS certificate is enabled. Value:
+        /// - **on**(default): enabled.
+        /// - **off** : not enabled.
         /// </summary>
         [Input("serverCertificateStatus")]
         public Input<string>? ServerCertificateStatus { get; set; }

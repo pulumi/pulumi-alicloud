@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Traffic Mirror Filter resource.
+    /// Provides a VPC Traffic Mirror Filter resource. Traffic mirror filter criteria.
     /// 
     /// For information about VPC Traffic Mirror Filter and how to use it, see [What is Traffic Mirror Filter](https://www.alibabacloud.com/help/doc-detail/207513.htm).
     /// 
@@ -28,9 +28,51 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Vpc.TrafficMirrorFilter("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var default3iXhoa = new AliCloud.ResourceManager.ResourceGroup("default3iXhoa", new()
     ///     {
-    ///         TrafficMirrorFilterName = "example_value",
+    ///         DisplayName = "testname03",
+    ///         ResourceGroupName = name,
+    ///     });
+    /// 
+    ///     var defaultdNz2qk = new AliCloud.ResourceManager.ResourceGroup("defaultdNz2qk", new()
+    ///     {
+    ///         DisplayName = "testname04",
+    ///         ResourceGroupName = $"{name}1",
+    ///     });
+    /// 
+    ///     var @default = new AliCloud.Vpc.TrafficMirrorFilter("default", new()
+    ///     {
+    ///         TrafficMirrorFilterDescription = "test",
+    ///         TrafficMirrorFilterName = name,
+    ///         ResourceGroupId = default3iXhoa.Id,
+    ///         EgressRules = new[]
+    ///         {
+    ///             new AliCloud.Vpc.Inputs.TrafficMirrorFilterEgressRuleArgs
+    ///             {
+    ///                 Priority = 1,
+    ///                 Protocol = "TCP",
+    ///                 Action = "accept",
+    ///                 DestinationCidrBlock = "32.0.0.0/4",
+    ///                 DestinationPortRange = "80/80",
+    ///                 SourceCidrBlock = "16.0.0.0/4",
+    ///                 SourcePortRange = "80/80",
+    ///             },
+    ///         },
+    ///         IngressRules = new[]
+    ///         {
+    ///             new AliCloud.Vpc.Inputs.TrafficMirrorFilterIngressRuleArgs
+    ///             {
+    ///                 Priority = 1,
+    ///                 Protocol = "TCP",
+    ///                 Action = "accept",
+    ///                 DestinationCidrBlock = "10.64.0.0/10",
+    ///                 DestinationPortRange = "80/80",
+    ///                 SourceCidrBlock = "10.0.0.0/8",
+    ///                 SourcePortRange = "80/80",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -48,25 +90,51 @@ namespace Pulumi.AliCloud.Vpc
     public partial class TrafficMirrorFilter : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value:
+        /// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+        /// Information about the outbound rule. See the following `Block EgressRules`.
+        /// </summary>
+        [Output("egressRules")]
+        public Output<ImmutableArray<Outputs.TrafficMirrorFilterEgressRule>> EgressRules { get; private set; } = null!;
+
+        /// <summary>
+        /// Inward direction rule information. See the following `Block IngressRules`.
+        /// </summary>
+        [Output("ingressRules")]
+        public Output<ImmutableArray<Outputs.TrafficMirrorFilterIngressRule>> IngressRules { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group to which the VPC belongs.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// The tags of this resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the TrafficMirrorFilter.
         /// </summary>
         [Output("trafficMirrorFilterDescription")]
         public Output<string?> TrafficMirrorFilterDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// The name of the TrafficMirrorFilter.
         /// </summary>
         [Output("trafficMirrorFilterName")]
         public Output<string?> TrafficMirrorFilterName { get; private set; } = null!;
@@ -118,19 +186,63 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class TrafficMirrorFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value:
+        /// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        [Input("egressRules")]
+        private InputList<Inputs.TrafficMirrorFilterEgressRuleArgs>? _egressRules;
+
         /// <summary>
-        /// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// Information about the outbound rule. See the following `Block EgressRules`.
+        /// </summary>
+        public InputList<Inputs.TrafficMirrorFilterEgressRuleArgs> EgressRules
+        {
+            get => _egressRules ?? (_egressRules = new InputList<Inputs.TrafficMirrorFilterEgressRuleArgs>());
+            set => _egressRules = value;
+        }
+
+        [Input("ingressRules")]
+        private InputList<Inputs.TrafficMirrorFilterIngressRuleArgs>? _ingressRules;
+
+        /// <summary>
+        /// Inward direction rule information. See the following `Block IngressRules`.
+        /// </summary>
+        public InputList<Inputs.TrafficMirrorFilterIngressRuleArgs> IngressRules
+        {
+            get => _ingressRules ?? (_ingressRules = new InputList<Inputs.TrafficMirrorFilterIngressRuleArgs>());
+            set => _ingressRules = value;
+        }
+
+        /// <summary>
+        /// The ID of the resource group to which the VPC belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tags of this resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The description of the TrafficMirrorFilter.
         /// </summary>
         [Input("trafficMirrorFilterDescription")]
         public Input<string>? TrafficMirrorFilterDescription { get; set; }
 
         /// <summary>
-        /// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// The name of the TrafficMirrorFilter.
         /// </summary>
         [Input("trafficMirrorFilterName")]
         public Input<string>? TrafficMirrorFilterName { get; set; }
@@ -144,25 +256,69 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class TrafficMirrorFilterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Whether to PreCheck only this request. Value:
+        /// - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
+        [Input("egressRules")]
+        private InputList<Inputs.TrafficMirrorFilterEgressRuleGetArgs>? _egressRules;
+
         /// <summary>
-        /// The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
+        /// Information about the outbound rule. See the following `Block EgressRules`.
+        /// </summary>
+        public InputList<Inputs.TrafficMirrorFilterEgressRuleGetArgs> EgressRules
+        {
+            get => _egressRules ?? (_egressRules = new InputList<Inputs.TrafficMirrorFilterEgressRuleGetArgs>());
+            set => _egressRules = value;
+        }
+
+        [Input("ingressRules")]
+        private InputList<Inputs.TrafficMirrorFilterIngressRuleGetArgs>? _ingressRules;
+
+        /// <summary>
+        /// Inward direction rule information. See the following `Block IngressRules`.
+        /// </summary>
+        public InputList<Inputs.TrafficMirrorFilterIngressRuleGetArgs> IngressRules
+        {
+            get => _ingressRules ?? (_ingressRules = new InputList<Inputs.TrafficMirrorFilterIngressRuleGetArgs>());
+            set => _ingressRules = value;
+        }
+
+        /// <summary>
+        /// The ID of the resource group to which the VPC belongs.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
         /// <summary>
-        /// The description of the filter. The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// The tags of this resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The description of the TrafficMirrorFilter.
         /// </summary>
         [Input("trafficMirrorFilterDescription")]
         public Input<string>? TrafficMirrorFilterDescription { get; set; }
 
         /// <summary>
-        /// The name of the filter. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        /// The name of the TrafficMirrorFilter.
         /// </summary>
         [Input("trafficMirrorFilterName")]
         public Input<string>? TrafficMirrorFilterName { get; set; }

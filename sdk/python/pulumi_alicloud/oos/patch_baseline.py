@@ -178,9 +178,9 @@ class PatchBaseline(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.oos.PatchBaseline("example",
-            approval_rules="example_value",
+            approval_rules="{\\"PatchRules\\":[{\\"PatchFilterGroup\\":[{\\"Key\\":\\"PatchSet\\",\\"Values\\":[\\"OS\\"]},{\\"Key\\":\\"ProductFamily\\",\\"Values\\":[\\"Windows\\"]},{\\"Key\\":\\"Product\\",\\"Values\\":[\\"Windows 10\\",\\"Windows 7\\"]},{\\"Key\\":\\"Classification\\",\\"Values\\":[\\"Security Updates\\",\\"Updates\\",\\"Update Rollups\\",\\"Critical Updates\\"]},{\\"Key\\":\\"Severity\\",\\"Values\\":[\\"Critical\\",\\"Important\\",\\"Moderate\\"]}],\\"ApproveAfterDays\\":7,\\"EnableNonSecurity\\":true,\\"ComplianceLevel\\":\\"Medium\\"}]}",
             operation_system="Windows",
-            patch_baseline_name="my-PatchBaseline")
+            patch_baseline_name="terraform-example")
         ```
 
         ## Import
@@ -220,9 +220,9 @@ class PatchBaseline(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.oos.PatchBaseline("example",
-            approval_rules="example_value",
+            approval_rules="{\\"PatchRules\\":[{\\"PatchFilterGroup\\":[{\\"Key\\":\\"PatchSet\\",\\"Values\\":[\\"OS\\"]},{\\"Key\\":\\"ProductFamily\\",\\"Values\\":[\\"Windows\\"]},{\\"Key\\":\\"Product\\",\\"Values\\":[\\"Windows 10\\",\\"Windows 7\\"]},{\\"Key\\":\\"Classification\\",\\"Values\\":[\\"Security Updates\\",\\"Updates\\",\\"Update Rollups\\",\\"Critical Updates\\"]},{\\"Key\\":\\"Severity\\",\\"Values\\":[\\"Critical\\",\\"Important\\",\\"Moderate\\"]}],\\"ApproveAfterDays\\":7,\\"EnableNonSecurity\\":true,\\"ComplianceLevel\\":\\"Medium\\"}]}",
             operation_system="Windows",
-            patch_baseline_name="my-PatchBaseline")
+            patch_baseline_name="terraform-example")
         ```
 
         ## Import

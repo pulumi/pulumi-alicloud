@@ -27,12 +27,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.rds.Instance;
  * import com.pulumi.alicloud.rds.InstanceArgs;
  * import com.pulumi.alicloud.rds.ReadOnlyInstance;
@@ -53,54 +56,68 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;dbInstancevpc&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var exampleZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .category(&#34;Basic&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
+ *         final var exampleInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .category(&#34;Basic&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(defaultNetwork.id())
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(name)
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(&#34;terraform-example&#34;)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
  *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.6&#34;)
- *             .instanceType(&#34;rds.mysql.t1.small&#34;)
- *             .instanceStorage(&#34;20&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .instanceType(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .instanceChargeType(&#34;Postpaid&#34;)
- *             .instanceName(name)
- *             .vswitchId(defaultSwitch.id())
- *             .securityIps(            
- *                 &#34;10.168.1.12&#34;,
- *                 &#34;100.69.7.112&#34;)
+ *             .instanceName(&#34;terraform-example&#34;)
+ *             .vswitchId(exampleSwitch.id())
+ *             .monitoringPeriod(&#34;60&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .securityGroupIds(exampleSecurityGroup.id())
  *             .build());
  * 
- *         var defaultReadOnlyInstance = new ReadOnlyInstance(&#34;defaultReadOnlyInstance&#34;, ReadOnlyInstanceArgs.builder()        
- *             .masterDbInstanceId(defaultInstance.id())
- *             .zoneId(defaultInstance.zoneId())
- *             .engineVersion(defaultInstance.engineVersion())
- *             .instanceType(defaultInstance.instanceType())
- *             .instanceStorage(&#34;30&#34;)
- *             .instanceName(String.format(&#34;%sro&#34;, name))
- *             .vswitchId(defaultSwitch.id())
+ *         var exampleReadOnlyInstance = new ReadOnlyInstance(&#34;exampleReadOnlyInstance&#34;, ReadOnlyInstanceArgs.builder()        
+ *             .zoneId(exampleInstance.zoneId())
+ *             .masterDbInstanceId(exampleInstance.id())
+ *             .engineVersion(exampleInstance.engineVersion())
+ *             .instanceStorage(exampleInstance.instanceStorage())
+ *             .instanceType(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[1].instanceClass()))
+ *             .instanceName(&#34;terraform-example-readonly&#34;)
+ *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var defaultReadWriteSplittingConnection = new ReadWriteSplittingConnection(&#34;defaultReadWriteSplittingConnection&#34;, ReadWriteSplittingConnectionArgs.builder()        
- *             .instanceId(defaultInstance.id())
- *             .connectionPrefix(&#34;t-con-123&#34;)
+ *         var exampleReadWriteSplittingConnection = new ReadWriteSplittingConnection(&#34;exampleReadWriteSplittingConnection&#34;, ReadWriteSplittingConnectionArgs.builder()        
+ *             .instanceId(exampleInstance.id())
+ *             .connectionPrefix(&#34;example-con-123&#34;)
  *             .distributionType(&#34;Standard&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(defaultReadOnlyInstance)
+ *                 .dependsOn(exampleReadOnlyInstance)
  *                 .build());
  * 
  *     }

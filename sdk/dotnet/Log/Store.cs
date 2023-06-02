@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Log
         public Output<int?> HotTtl { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+        /// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         /// </summary>
         [Output("maxSplitShardCount")]
         public Output<int?> MaxSplitShardCount { get; private set; } = null!;
@@ -248,7 +248,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? HotTtl { get; set; }
 
         /// <summary>
-        /// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+        /// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         /// </summary>
         [Input("maxSplitShardCount")]
         public Input<int>? MaxSplitShardCount { get; set; }
@@ -328,7 +328,7 @@ namespace Pulumi.AliCloud.Log
         public Input<int>? HotTtl { get; set; }
 
         /// <summary>
-        /// The maximum number of shards for automatic split, which is in the range of 1 to 64. You must specify this parameter when autoSplit is true.
+        /// The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         /// </summary>
         [Input("maxSplitShardCount")]
         public Input<int>? MaxSplitShardCount { get; set; }

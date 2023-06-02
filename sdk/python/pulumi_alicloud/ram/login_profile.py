@@ -172,16 +172,15 @@ class LoginProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a RAM login profile.
         user = alicloud.ram.User("user",
-            display_name="user_display_name",
+            display_name="terraform_example",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
-            comments="yoyoyo",
+            comments="terraform_example",
             force=True)
         profile = alicloud.ram.LoginProfile("profile",
             user_name=user.name,
-            password="Yourpassword1234")
+            password="Example_1234")
         ```
 
         ## Import
@@ -214,16 +213,15 @@ class LoginProfile(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a RAM login profile.
         user = alicloud.ram.User("user",
-            display_name="user_display_name",
+            display_name="terraform_example",
             mobile="86-18688888888",
             email="hello.uuu@aaa.com",
-            comments="yoyoyo",
+            comments="terraform_example",
             force=True)
         profile = alicloud.ram.LoginProfile("profile",
             user_name=user.name,
-            password="Yourpassword1234")
+            password="Example_1234")
         ```
 
         ## Import

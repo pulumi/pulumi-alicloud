@@ -22,18 +22,18 @@ import * as utilities from "../utilities";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const defaultApplication = new alicloud.oos.Application("defaultApplication", {
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     applicationName: "example_value",
- *     description: "example_value",
+ *     applicationName: "terraform-example",
+ *     description: "terraform-example",
  *     tags: {
  *         Created: "TF",
  *     },
  * });
  * const defaultApplicationGroup = new alicloud.oos.ApplicationGroup("defaultApplicationGroup", {
- *     applicationGroupName: _var.name,
+ *     applicationGroupName: "terraform-example",
  *     applicationName: defaultApplication.id,
- *     deployRegionId: "example_value",
- *     description: "example_value",
- *     importTagKey: "example_value",
+ *     deployRegionId: "cn-beijing",
+ *     description: "terraform-example",
+ *     importTagKey: "example_key",
  *     importTagValue: "example_value",
  * });
  * ```

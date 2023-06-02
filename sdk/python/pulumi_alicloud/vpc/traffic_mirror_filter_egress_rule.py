@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['TrafficMirrorFilterEgressRuleArgs', 'TrafficMirrorFilterEgressRule']
+__all__ = ['TrafficMirrorFilterEgressRuleInitArgs', 'TrafficMirrorFilterEgressRule']
 
 @pulumi.input_type
-class TrafficMirrorFilterEgressRuleArgs:
+class TrafficMirrorFilterEgressRuleInitArgs:
     def __init__(__self__, *,
                  destination_cidr_block: pulumi.Input[str],
                  priority: pulumi.Input[int],
@@ -407,7 +407,7 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TrafficMirrorFilterEgressRuleArgs,
+                 args: TrafficMirrorFilterEgressRuleInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a VPC Traffic Mirror Filter Egress Rule resource.
@@ -445,12 +445,12 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TrafficMirrorFilterEgressRuleArgs args: The arguments to use to populate this resource's properties.
+        :param TrafficMirrorFilterEgressRuleInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TrafficMirrorFilterEgressRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TrafficMirrorFilterEgressRuleInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -475,7 +475,7 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TrafficMirrorFilterEgressRuleArgs.__new__(TrafficMirrorFilterEgressRuleArgs)
+            __props__ = TrafficMirrorFilterEgressRuleInitArgs.__new__(TrafficMirrorFilterEgressRuleInitArgs)
 
             if destination_cidr_block is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_cidr_block'")

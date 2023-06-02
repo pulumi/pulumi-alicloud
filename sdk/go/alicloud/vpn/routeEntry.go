@@ -37,15 +37,17 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("10.1.0.0/21"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
-//				CidrBlock: pulumi.String("10.1.0.0/24"),
-//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String("terraform-example"),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("10.1.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -53,7 +55,7 @@ import (
 //			defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
 //				VpcId:              defaultNetwork.ID(),
 //				Bandwidth:          pulumi.Int(10),
-//				InstanceChargeType: pulumi.String("PayByTraffic"),
+//				InstanceChargeType: pulumi.String("PrePaid"),
 //				EnableSsl:          pulumi.Bool(false),
 //				VswitchId:          defaultSwitch.ID(),
 //			})

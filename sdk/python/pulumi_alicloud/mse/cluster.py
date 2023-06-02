@@ -273,6 +273,7 @@ class ClusterArgs:
 class _ClusterState:
     def __init__(__self__, *,
                  acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 app_version: Optional[pulumi.Input[str]] = None,
                  cluster_alias_name: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_specification: Optional[pulumi.Input[str]] = None,
@@ -293,8 +294,9 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
+        :param pulumi.Input[str] app_version: (Available in v1.205.0+) The application version.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
-        :param pulumi.Input[str] cluster_id: (Available in v1.162.0+)  The id of Cluster.
+        :param pulumi.Input[str] cluster_id: (Available in v1.162.0+) The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
@@ -313,6 +315,8 @@ class _ClusterState:
         """
         if acl_entry_lists is not None:
             pulumi.set(__self__, "acl_entry_lists", acl_entry_lists)
+        if app_version is not None:
+            pulumi.set(__self__, "app_version", app_version)
         if cluster_alias_name is not None:
             pulumi.set(__self__, "cluster_alias_name", cluster_alias_name)
         if cluster_id is not None:
@@ -361,6 +365,18 @@ class _ClusterState:
         pulumi.set(self, "acl_entry_lists", value)
 
     @property
+    @pulumi.getter(name="appVersion")
+    def app_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available in v1.205.0+) The application version.
+        """
+        return pulumi.get(self, "app_version")
+
+    @app_version.setter
+    def app_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_version", value)
+
+    @property
     @pulumi.getter(name="clusterAliasName")
     def cluster_alias_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -376,7 +392,7 @@ class _ClusterState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in v1.162.0+)  The id of Cluster.
+        (Available in v1.162.0+) The id of Cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -598,17 +614,27 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.mse.Cluster("example",
-            acl_entry_lists=["127.0.0.1/32"],
-            cluster_alias_name="tf-testAccMseCluster",
-            cluster_specification="MSE_SC_1_2_200_c",
+        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("exampleCluster",
+            cluster_specification="MSE_SC_1_2_60_c",
             cluster_type="Nacos-Ans",
-            cluster_version="NACOS_ANS_1_2_1",
+            cluster_version="NACOS_2_0_0",
             instance_count=1,
-            mse_version="mse_dev",
             net_type="privatenet",
             pub_network_flow="1",
-            vswitch_id="vsw-123456")
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_dev",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
         ```
 
         ## Import
@@ -655,17 +681,27 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.mse.Cluster("example",
-            acl_entry_lists=["127.0.0.1/32"],
-            cluster_alias_name="tf-testAccMseCluster",
-            cluster_specification="MSE_SC_1_2_200_c",
+        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_cluster = alicloud.mse.Cluster("exampleCluster",
+            cluster_specification="MSE_SC_1_2_60_c",
             cluster_type="Nacos-Ans",
-            cluster_version="NACOS_ANS_1_2_1",
+            cluster_version="NACOS_2_0_0",
             instance_count=1,
-            mse_version="mse_dev",
             net_type="privatenet",
             pub_network_flow="1",
-            vswitch_id="vsw-123456")
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_dev",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
         ```
 
         ## Import
@@ -744,6 +780,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["request_pars"] = request_pars
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
+            __props__.__dict__["app_version"] = None
             __props__.__dict__["cluster_id"] = None
             __props__.__dict__["status"] = None
         super(Cluster, __self__).__init__(
@@ -757,6 +794,7 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            app_version: Optional[pulumi.Input[str]] = None,
             cluster_alias_name: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             cluster_specification: Optional[pulumi.Input[str]] = None,
@@ -782,8 +820,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
+        :param pulumi.Input[str] app_version: (Available in v1.205.0+) The application version.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
-        :param pulumi.Input[str] cluster_id: (Available in v1.162.0+)  The id of Cluster.
+        :param pulumi.Input[str] cluster_id: (Available in v1.162.0+) The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
@@ -805,6 +844,7 @@ class Cluster(pulumi.CustomResource):
         __props__ = _ClusterState.__new__(_ClusterState)
 
         __props__.__dict__["acl_entry_lists"] = acl_entry_lists
+        __props__.__dict__["app_version"] = app_version
         __props__.__dict__["cluster_alias_name"] = cluster_alias_name
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["cluster_specification"] = cluster_specification
@@ -833,6 +873,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "acl_entry_lists")
 
     @property
+    @pulumi.getter(name="appVersion")
+    def app_version(self) -> pulumi.Output[str]:
+        """
+        (Available in v1.205.0+) The application version.
+        """
+        return pulumi.get(self, "app_version")
+
+    @property
     @pulumi.getter(name="clusterAliasName")
     def cluster_alias_name(self) -> pulumi.Output[Optional[str]]:
         """
@@ -844,7 +892,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        (Available in v1.162.0+)  The id of Cluster.
+        (Available in v1.162.0+) The id of Cluster.
         """
         return pulumi.get(self, "cluster_id")
 

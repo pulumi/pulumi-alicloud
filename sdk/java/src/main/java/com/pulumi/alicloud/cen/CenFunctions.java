@@ -4562,6 +4562,86 @@ public final class CenFunctions {
      * ```
      * 
      */
+    public static Output<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociations() {
+        return getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+     * 
+     * &gt; **NOTE:** Available in 1.126.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
+     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociationsPlain() {
+        return getTransitRouterRouteTableAssociationsPlain(GetTransitRouterRouteTableAssociationsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides CEN Transit Router Route Table Associations available to the user.[What is Cen Transit Router Route Table Associations](https://help.aliyun.com/document_detail/261243.html)
+     * 
+     * &gt; **NOTE:** Available in 1.126.0+
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.cen.CenFunctions;
+     * import com.pulumi.alicloud.cen.inputs.GetTransitRouterRouteTableAssociationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
+     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetTransitRouterRouteTableAssociationsResult> getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs args) {
         return getTransitRouterRouteTableAssociations(args, InvokeOptions.Empty);
     }

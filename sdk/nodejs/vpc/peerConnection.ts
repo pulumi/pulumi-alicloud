@@ -20,14 +20,31 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const defaultAccount = alicloud.getAccount({});
- * const defaultNetworks = alicloud.vpc.getNetworks({});
+ * const config = new pulumi.Config();
+ * const acceptingRegion = config.get("acceptingRegion") || "cn-beijing";
+ * const local = new alicloud.Provider("local", {region: "cn-hangzhou"});
+ * const accepting = new alicloud.Provider("accepting", {region: acceptingRegion});
+ * const localVpc = new alicloud.vpc.Network("localVpc", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * }, {
+ *     provider: alicloud.local,
+ * });
+ * const acceptingVpc = new alicloud.vpc.Network("acceptingVpc", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * }, {
+ *     provider: alicloud.accepting,
+ * });
  * const defaultPeerConnection = new alicloud.vpc.PeerConnection("defaultPeerConnection", {
- *     peerConnectionName: _var.name,
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     peerConnectionName: "terraform-example",
+ *     vpcId: localVpc.id,
  *     acceptingAliUid: defaultAccount.then(defaultAccount => defaultAccount.id),
- *     acceptingRegionId: "cn-hangzhou",
- *     acceptingVpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[1]),
- *     description: _var.name,
+ *     acceptingRegionId: acceptingRegion,
+ *     acceptingVpcId: acceptingVpc.id,
+ *     description: "terraform-example",
+ * }, {
+ *     provider: alicloud.local,
  * });
  * ```
  *

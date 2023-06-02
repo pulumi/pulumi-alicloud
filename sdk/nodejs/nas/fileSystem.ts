@@ -21,11 +21,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const example = alicloud.nas.getZones({
+ *     fileSystemType: "standard",
+ * });
  * const foo = new alicloud.nas.FileSystem("foo", {
- *     description: "tf-testAccNasConfig",
- *     encryptType: 1,
  *     protocolType: "NFS",
  *     storageType: "Performance",
+ *     description: "terraform-example",
+ *     encryptType: 1,
+ *     zoneId: example.then(example => example.zones?.[0]?.zoneId),
  * });
  * ```
  *
@@ -33,13 +37,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const example = alicloud.nas.getZones({
+ *     fileSystemType: "extreme",
+ * });
  * const foo = new alicloud.nas.FileSystem("foo", {
- *     capacity: 100,
- *     description: "tf-testAccNasConfig",
  *     fileSystemType: "extreme",
  *     protocolType: "NFS",
+ *     zoneId: example.then(example => example.zones?.[0]?.zoneId),
  *     storageType: "standard",
- *     zoneId: "cn-hangzhou-f",
+ *     description: "terraform-example",
+ *     capacity: 100,
  * });
  * ```
  *
@@ -47,25 +54,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.nas.getZones({
+ * const exampleZones = alicloud.nas.getZones({
  *     fileSystemType: "cpfs",
  * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.zoneId,
- * }));
- * const foo = new alicloud.nas.FileSystem("foo", {
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[1]?.zoneId),
+ * });
+ * const exampleFileSystem = new alicloud.nas.FileSystem("exampleFileSystem", {
  *     protocolType: "cpfs",
  *     storageType: "advance_200",
  *     fileSystemType: "cpfs",
  *     capacity: 3600,
- *     description: "tf-testacc",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     description: "terraform-example",
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[1]?.zoneId),
+ *     vpcId: exampleNetwork.id,
+ *     vswitchId: exampleSwitch.id,
  * });
  * ```
  *

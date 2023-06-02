@@ -21,14 +21,63 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ecs.ImageCopy("default", {
- *     description: "test-image",
- *     imageName: "test-image",
- *     sourceImageId: "m-bp1gxyhdswlsn18tu***",
+ * const sh = new alicloud.Provider("sh", {region: "cn-shanghai"});
+ * const hz = new alicloud.Provider("hz", {region: "cn-hangzhou"});
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const defaultInstanceTypes = alicloud.ecs.getInstanceTypes({
+ *     instanceTypeFamily: "ecs.sn1ne",
+ * });
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id}, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     instanceName: "terraform-example",
+ *     securityGroups: [defaultSecurityGroup.id],
+ *     vswitchId: defaultSwitch.id,
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.ids?.[0]),
+ *     imageId: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
+ *     internetMaxBandwidthOut: 10,
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultImage = new alicloud.ecs.Image("defaultImage", {
+ *     instanceId: defaultInstance.id,
+ *     imageName: "terraform-example",
+ *     description: "terraform-example",
+ * }, {
+ *     provider: alicloud.hz,
+ * });
+ * const defaultImageCopy = new alicloud.ecs.ImageCopy("defaultImageCopy", {
+ *     sourceImageId: defaultImage.id,
  *     sourceRegionId: "cn-hangzhou",
+ *     imageName: "terraform-example",
+ *     description: "terraform-example",
  *     tags: {
  *         FinanceDept: "FinanceDeptJoshua",
  *     },
+ * }, {
+ *     provider: alicloud.sh,
  * });
  * ```
  * ## Attributes Reference0

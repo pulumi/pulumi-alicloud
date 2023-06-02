@@ -18,14 +18,18 @@ class Ipv4GatewayArgs:
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
-                 ipv4_gateway_name: Optional[pulumi.Input[str]] = None):
+                 ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Ipv4Gateway resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[bool] enabled: Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
-        :param pulumi.Input[str] ipv4_gateway_description: The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] ipv4_gateway_name: The name of the IPv4 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
+        :param pulumi.Input[bool] enabled: Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+        :param pulumi.Input[str] ipv4_gateway_description: The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[str] ipv4_gateway_name: The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if dry_run is not None:
@@ -36,6 +40,10 @@ class Ipv4GatewayArgs:
             pulumi.set(__self__, "ipv4_gateway_description", ipv4_gateway_description)
         if ipv4_gateway_name is not None:
             pulumi.set(__self__, "ipv4_gateway_name", ipv4_gateway_name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -53,7 +61,7 @@ class Ipv4GatewayArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
         """
         return pulumi.get(self, "dry_run")
 
@@ -65,7 +73,7 @@ class Ipv4GatewayArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+        Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
         """
         return pulumi.get(self, "enabled")
 
@@ -77,7 +85,7 @@ class Ipv4GatewayArgs:
     @pulumi.getter(name="ipv4GatewayDescription")
     def ipv4_gateway_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
         """
         return pulumi.get(self, "ipv4_gateway_description")
 
@@ -89,7 +97,7 @@ class Ipv4GatewayArgs:
     @pulumi.getter(name="ipv4GatewayName")
     def ipv4_gateway_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the IPv4 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "ipv4_gateway_name")
 
@@ -97,43 +105,99 @@ class Ipv4GatewayArgs:
     def ipv4_gateway_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipv4_gateway_name", value)
 
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tags of the current resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _Ipv4GatewayState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
+                 ipv4_gateway_id: Optional[pulumi.Input[str]] = None,
                  ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
+                 ipv4_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Ipv4Gateway resources.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[bool] enabled: Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
-        :param pulumi.Input[str] ipv4_gateway_description: The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] ipv4_gateway_name: The name of the IPv4 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
+        :param pulumi.Input[bool] enabled: Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+        :param pulumi.Input[str] ipv4_gateway_description: The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[str] ipv4_gateway_id: Resource primary key field.
+        :param pulumi.Input[str] ipv4_gateway_name: The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[str] ipv4_gateway_route_table_id: ID of the route table associated with IPv4 Gateway.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if ipv4_gateway_description is not None:
             pulumi.set(__self__, "ipv4_gateway_description", ipv4_gateway_description)
+        if ipv4_gateway_id is not None:
+            pulumi.set(__self__, "ipv4_gateway_id", ipv4_gateway_id)
         if ipv4_gateway_name is not None:
             pulumi.set(__self__, "ipv4_gateway_name", ipv4_gateway_name)
+        if ipv4_gateway_route_table_id is not None:
+            pulumi.set(__self__, "ipv4_gateway_route_table_id", ipv4_gateway_route_table_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
         """
         return pulumi.get(self, "dry_run")
 
@@ -145,7 +209,7 @@ class _Ipv4GatewayState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+        Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
         """
         return pulumi.get(self, "enabled")
 
@@ -157,7 +221,7 @@ class _Ipv4GatewayState:
     @pulumi.getter(name="ipv4GatewayDescription")
     def ipv4_gateway_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
         """
         return pulumi.get(self, "ipv4_gateway_description")
 
@@ -166,16 +230,52 @@ class _Ipv4GatewayState:
         pulumi.set(self, "ipv4_gateway_description", value)
 
     @property
+    @pulumi.getter(name="ipv4GatewayId")
+    def ipv4_gateway_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource primary key field.
+        """
+        return pulumi.get(self, "ipv4_gateway_id")
+
+    @ipv4_gateway_id.setter
+    def ipv4_gateway_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_gateway_id", value)
+
+    @property
     @pulumi.getter(name="ipv4GatewayName")
     def ipv4_gateway_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the IPv4 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "ipv4_gateway_name")
 
     @ipv4_gateway_name.setter
     def ipv4_gateway_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipv4_gateway_name", value)
+
+    @property
+    @pulumi.getter(name="ipv4GatewayRouteTableId")
+    def ipv4_gateway_route_table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the route table associated with IPv4 Gateway.
+        """
+        return pulumi.get(self, "ipv4_gateway_route_table_id")
+
+    @ipv4_gateway_route_table_id.setter
+    def ipv4_gateway_route_table_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_gateway_route_table_id", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter
@@ -188,6 +288,18 @@ class _Ipv4GatewayState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The tags of the current resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -211,12 +323,14 @@ class Ipv4Gateway(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
                  ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a VPC Ipv4 Gateway resource.
+        Provides a Vpc Ipv4 Gateway resource.
 
-        For information about VPC Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
+        For information about Vpc Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
 
         > **NOTE:** Available in v1.181.0+.
 
@@ -228,15 +342,29 @@ class Ipv4Gateway(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.vpc.get_networks(name_regex="default-NoDeleting")
-        example = alicloud.vpc.Ipv4Gateway("example",
-            ipv4_gateway_name="example_value",
-            vpc_id=default.ids[0])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_resource_group = alicloud.resourcemanager.ResourceGroup("defaultResourceGroup",
+            display_name="tf-testAcc-rg665",
+            resource_group_name=name)
+        modify = alicloud.resourcemanager.ResourceGroup("modify",
+            display_name="tf-testAcc-rg298",
+            resource_group_name=f"{name}1")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=f"{name}2",
+            cidr_block="10.0.0.0/8")
+        default_ipv4_gateway = alicloud.vpc.Ipv4Gateway("defaultIpv4Gateway",
+            ipv4_gateway_name=name,
+            ipv4_gateway_description="tf-testAcc-Ipv4Gateway",
+            resource_group_id=default_resource_group.id,
+            vpc_id=default_network.id)
         ```
 
         ## Import
 
-        VPC Ipv4 Gateway can be imported using the id, e.g.
+        Vpc Ipv4 Gateway can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
@@ -244,10 +372,12 @@ class Ipv4Gateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[bool] enabled: Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
-        :param pulumi.Input[str] ipv4_gateway_description: The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] ipv4_gateway_name: The name of the IPv4 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
+        :param pulumi.Input[bool] enabled: Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+        :param pulumi.Input[str] ipv4_gateway_description: The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[str] ipv4_gateway_name: The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
         """
         ...
@@ -257,9 +387,9 @@ class Ipv4Gateway(pulumi.CustomResource):
                  args: Ipv4GatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Ipv4 Gateway resource.
+        Provides a Vpc Ipv4 Gateway resource.
 
-        For information about VPC Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
+        For information about Vpc Ipv4 Gateway and how to use it, see [What is Ipv4 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv4gateway).
 
         > **NOTE:** Available in v1.181.0+.
 
@@ -271,15 +401,29 @@ class Ipv4Gateway(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.vpc.get_networks(name_regex="default-NoDeleting")
-        example = alicloud.vpc.Ipv4Gateway("example",
-            ipv4_gateway_name="example_value",
-            vpc_id=default.ids[0])
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-testacc-example"
+        default_resource_group = alicloud.resourcemanager.ResourceGroup("defaultResourceGroup",
+            display_name="tf-testAcc-rg665",
+            resource_group_name=name)
+        modify = alicloud.resourcemanager.ResourceGroup("modify",
+            display_name="tf-testAcc-rg298",
+            resource_group_name=f"{name}1")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=f"{name}2",
+            cidr_block="10.0.0.0/8")
+        default_ipv4_gateway = alicloud.vpc.Ipv4Gateway("defaultIpv4Gateway",
+            ipv4_gateway_name=name,
+            ipv4_gateway_description="tf-testAcc-Ipv4Gateway",
+            resource_group_id=default_resource_group.id,
+            vpc_id=default_network.id)
         ```
 
         ## Import
 
-        VPC Ipv4 Gateway can be imported using the id, e.g.
+        Vpc Ipv4 Gateway can be imported using the id, e.g.
 
         ```sh
          $ pulumi import alicloud:vpc/ipv4Gateway:Ipv4Gateway example <id>
@@ -304,6 +448,8 @@ class Ipv4Gateway(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
                  ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -318,9 +464,14 @@ class Ipv4Gateway(pulumi.CustomResource):
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["ipv4_gateway_description"] = ipv4_gateway_description
             __props__.__dict__["ipv4_gateway_name"] = ipv4_gateway_name
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["tags"] = tags
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["ipv4_gateway_id"] = None
+            __props__.__dict__["ipv4_gateway_route_table_id"] = None
             __props__.__dict__["status"] = None
         super(Ipv4Gateway, __self__).__init__(
             'alicloud:vpc/ipv4Gateway:Ipv4Gateway',
@@ -332,11 +483,16 @@ class Ipv4Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
+            ipv4_gateway_id: Optional[pulumi.Input[str]] = None,
             ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
+            ipv4_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None) -> 'Ipv4Gateway':
         """
         Get an existing Ipv4Gateway resource's state with the given name, id, and optional extra
@@ -345,30 +501,48 @@ class Ipv4Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[bool] enabled: Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
-        :param pulumi.Input[str] ipv4_gateway_description: The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] ipv4_gateway_name: The name of the IPv4 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
+        :param pulumi.Input[bool] enabled: Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
+        :param pulumi.Input[str] ipv4_gateway_description: The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+        :param pulumi.Input[str] ipv4_gateway_id: Resource primary key field.
+        :param pulumi.Input[str] ipv4_gateway_name: The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[str] ipv4_gateway_route_table_id: ID of the route table associated with IPv4 Gateway.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _Ipv4GatewayState.__new__(_Ipv4GatewayState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["ipv4_gateway_description"] = ipv4_gateway_description
+        __props__.__dict__["ipv4_gateway_id"] = ipv4_gateway_id
         __props__.__dict__["ipv4_gateway_name"] = ipv4_gateway_name
+        __props__.__dict__["ipv4_gateway_route_table_id"] = ipv4_gateway_route_table_id
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
         return Ipv4Gateway(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        The dry run.
+        Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
         """
         return pulumi.get(self, "dry_run")
 
@@ -376,7 +550,7 @@ class Ipv4Gateway(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
+        Whether the IPv4 gateway is active or not. Valid values are **true** and **false**.
         """
         return pulumi.get(self, "enabled")
 
@@ -384,17 +558,41 @@ class Ipv4Gateway(pulumi.CustomResource):
     @pulumi.getter(name="ipv4GatewayDescription")
     def ipv4_gateway_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the IPv4 gateway. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
         """
         return pulumi.get(self, "ipv4_gateway_description")
+
+    @property
+    @pulumi.getter(name="ipv4GatewayId")
+    def ipv4_gateway_id(self) -> pulumi.Output[str]:
+        """
+        Resource primary key field.
+        """
+        return pulumi.get(self, "ipv4_gateway_id")
 
     @property
     @pulumi.getter(name="ipv4GatewayName")
     def ipv4_gateway_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the IPv4 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "ipv4_gateway_name")
+
+    @property
+    @pulumi.getter(name="ipv4GatewayRouteTableId")
+    def ipv4_gateway_route_table_id(self) -> pulumi.Output[str]:
+        """
+        ID of the route table associated with IPv4 Gateway.
+        """
+        return pulumi.get(self, "ipv4_gateway_route_table_id")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group to which the instance belongs.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
@@ -403,6 +601,14 @@ class Ipv4Gateway(pulumi.CustomResource):
         The status of the resource.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The tags of the current resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")

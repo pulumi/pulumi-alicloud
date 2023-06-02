@@ -233,17 +233,30 @@ class MountTarget(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        example_zones = alicloud.nas.get_zones(file_system_type="standard")
         example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
             protocol_type="NFS",
             storage_type="Performance",
-            description="test file system")
+            description="terraform-example",
+            encrypt_type=1,
+            zone_id=example_zones.zones[0].zone_id)
         example_access_group = alicloud.nas.AccessGroup("exampleAccessGroup",
-            access_group_name="test_name",
-            access_group_type="Classic",
-            description="test access group")
+            access_group_name="terraform-example",
+            access_group_type="Vpc",
+            description="terraform-example",
+            file_system_type="standard")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].zone_id)
         example_mount_target = alicloud.nas.MountTarget("exampleMountTarget",
             file_system_id=example_file_system.id,
-            access_group_name=example_access_group.access_group_name)
+            access_group_name=example_access_group.access_group_name,
+            vswitch_id=example_switch.id)
         ```
 
         ## Import
@@ -290,17 +303,30 @@ class MountTarget(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        example_zones = alicloud.nas.get_zones(file_system_type="standard")
         example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
             protocol_type="NFS",
             storage_type="Performance",
-            description="test file system")
+            description="terraform-example",
+            encrypt_type=1,
+            zone_id=example_zones.zones[0].zone_id)
         example_access_group = alicloud.nas.AccessGroup("exampleAccessGroup",
-            access_group_name="test_name",
-            access_group_type="Classic",
-            description="test access group")
+            access_group_name="terraform-example",
+            access_group_type="Vpc",
+            description="terraform-example",
+            file_system_type="standard")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].zone_id)
         example_mount_target = alicloud.nas.MountTarget("exampleMountTarget",
             file_system_id=example_file_system.id,
-            access_group_name=example_access_group.access_group_name)
+            access_group_name=example_access_group.access_group_name,
+            vswitch_id=example_switch.id)
         ```
 
         ## Import

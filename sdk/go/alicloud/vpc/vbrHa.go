@@ -17,6 +17,89 @@ import (
 //
 // > **NOTE:** Available in v1.151.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			examplePhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var exampleVirtualBorderRouter []*expressconnect.VirtualBorderRouter
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := expressconnect.NewVirtualBorderRouter(ctx, fmt.Sprintf("exampleVirtualBorderRouter-%v", key0), &expressconnect.VirtualBorderRouterArgs{
+//					LocalGatewayIp:          pulumi.String("10.0.0.1"),
+//					PeerGatewayIp:           pulumi.String("10.0.0.2"),
+//					PeeringSubnetMask:       pulumi.String("255.255.255.252"),
+//					PhysicalConnectionId:    examplePhysicalConnections.Connections[val0].Id,
+//					VirtualBorderRouterName: pulumi.Any(_var.Name),
+//					VlanId:                  pulumi.Int(100),
+//					MinRxInterval:           pulumi.Int(1000),
+//					MinTxInterval:           pulumi.Int(1000),
+//					DetectMultiplier:        pulumi.Int(10),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleVirtualBorderRouter = append(exampleVirtualBorderRouter, __res)
+//			}
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("example_value"),
+//				Description:     pulumi.String("example_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var exampleInstanceAttachment []*cen.InstanceAttachment
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := cen.NewInstanceAttachment(ctx, fmt.Sprintf("exampleInstanceAttachment-%v", key0), &cen.InstanceAttachmentArgs{
+//					InstanceId:            exampleInstance.ID(),
+//					ChildInstanceId:       exampleVirtualBorderRouter[val0].ID(),
+//					ChildInstanceType:     pulumi.String("VBR"),
+//					ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				exampleInstanceAttachment = append(exampleInstanceAttachment, __res)
+//			}
+//			_, err = vpc.NewVbrHa(ctx, "exampleVbrHa", &vpc.VbrHaArgs{
+//				VbrId:       exampleInstanceAttachment[0].ID(),
+//				PeerVbrId:   exampleInstanceAttachment[1].ID(),
+//				VbrHaName:   pulumi.String("example_value"),
+//				Description: pulumi.String("example_value"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				pulumi.Resource("alicloud_cen_instance_attachment.example"),
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // VPC Vbr Ha can be imported using the id, e.g.

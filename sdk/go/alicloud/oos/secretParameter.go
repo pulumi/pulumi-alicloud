@@ -17,6 +17,57 @@ import (
 //
 // > **NOTE:** Available in v1.147.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleKey, err := kms.NewKey(ctx, "exampleKey", &kms.KeyArgs{
+//				Description:         pulumi.String("terraform-example"),
+//				Status:              pulumi.String("Enabled"),
+//				PendingWindowInDays: pulumi.Int(7),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oos.NewSecretParameter(ctx, "exampleSecretParameter", &oos.SecretParameterArgs{
+//				SecretParameterName: pulumi.String("terraform-example"),
+//				Value:               pulumi.String("terraform-example"),
+//				Type:                pulumi.String("Secret"),
+//				KeyId:               exampleKey.ID(),
+//				Description:         pulumi.String("terraform-example"),
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("OosSecretParameter"),
+//				},
+//				ResourceGroupId: *pulumi.String(exampleResourceGroups.Groups[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // OOS Secret Parameter can be imported using the id, e.g.

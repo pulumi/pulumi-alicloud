@@ -13,34 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.157.0+.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
- * }));
- * const example = new alicloud.mse.Gateway("example", {
- *     gatewayName: "example_value",
- *     replica: 2,
- *     spec: "MSE_GTW_2_4_200_c",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     backupVswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[1]),
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- * });
- * ```
- *
  * ## Import
  *
  * Microservice Engine (MSE) Gateway can be imported using the id, e.g.

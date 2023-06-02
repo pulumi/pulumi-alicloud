@@ -16,14 +16,14 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
     public static final AclAclEntryArgs Empty = new AclAclEntryArgs();
 
     /**
-     * The IP entry that you want to add to the ACL.
+     * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
      * 
      */
     @Import(name="entry")
     private @Nullable Output<String> entry;
 
     /**
-     * @return The IP entry that you want to add to the ACL.
+     * @return The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
      * 
      */
     public Optional<Output<String>> entry() {
@@ -71,7 +71,7 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entry The IP entry that you want to add to the ACL.
+         * @param entry The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entry The IP entry that you want to add to the ACL.
+         * @param entry The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
          * 
          * @return builder
          * 

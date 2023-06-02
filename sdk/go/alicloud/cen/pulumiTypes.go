@@ -4566,8 +4566,10 @@ type GetTransitRouterRouteTableAssociationsAssociation struct {
 	ResourceType string `pulumi:"resourceType"`
 	// The status of the route table, including `Active`, `Associating`, `Dissociating`.
 	Status string `pulumi:"status"`
-	// ID of the cen transit router attachment.
+	// The ID of the network instance connection.
 	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
+	// The ID of the route table of the Enterprise Edition transit router.
+	TransitRouterRouteTableId string `pulumi:"transitRouterRouteTableId"`
 }
 
 // GetTransitRouterRouteTableAssociationsAssociationInput is an input type that accepts GetTransitRouterRouteTableAssociationsAssociationArgs and GetTransitRouterRouteTableAssociationsAssociationOutput values.
@@ -4589,8 +4591,10 @@ type GetTransitRouterRouteTableAssociationsAssociationArgs struct {
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 	// The status of the route table, including `Active`, `Associating`, `Dissociating`.
 	Status pulumi.StringInput `pulumi:"status"`
-	// ID of the cen transit router attachment.
+	// The ID of the network instance connection.
 	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`
+	// The ID of the route table of the Enterprise Edition transit router.
+	TransitRouterRouteTableId pulumi.StringInput `pulumi:"transitRouterRouteTableId"`
 }
 
 func (GetTransitRouterRouteTableAssociationsAssociationArgs) ElementType() reflect.Type {
@@ -4663,9 +4667,14 @@ func (o GetTransitRouterRouteTableAssociationsAssociationOutput) Status() pulumi
 	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsAssociation) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// ID of the cen transit router attachment.
+// The ID of the network instance connection.
 func (o GetTransitRouterRouteTableAssociationsAssociationOutput) TransitRouterAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsAssociation) string { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+// The ID of the route table of the Enterprise Edition transit router.
+func (o GetTransitRouterRouteTableAssociationsAssociationOutput) TransitRouterRouteTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTransitRouterRouteTableAssociationsAssociation) string { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
 }
 
 type GetTransitRouterRouteTableAssociationsAssociationArrayOutput struct{ *pulumi.OutputState }

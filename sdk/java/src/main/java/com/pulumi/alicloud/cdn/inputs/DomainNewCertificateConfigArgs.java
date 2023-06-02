@@ -16,14 +16,29 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
     public static final DomainNewCertificateConfigArgs Empty = new DomainNewCertificateConfigArgs();
 
     /**
-     * The SSL certificate name.
+     * The ID of the certificate. It takes effect only when CertType = cas.
+     * 
+     */
+    @Import(name="certId")
+    private @Nullable Output<String> certId;
+
+    /**
+     * @return The ID of the certificate. It takes effect only when CertType = cas.
+     * 
+     */
+    public Optional<Output<String>> certId() {
+        return Optional.ofNullable(this.certId);
+    }
+
+    /**
+     * Certificate name, only flyer names are supported.
      * 
      */
     @Import(name="certName")
     private @Nullable Output<String> certName;
 
     /**
-     * @return The SSL certificate name.
+     * @return Certificate name, only flyer names are supported.
      * 
      */
     public Optional<Output<String>> certName() {
@@ -31,44 +46,59 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The SSL certificate type, can be &#34;upload&#34;, &#34;cas&#34; and &#34;free&#34;.
+     * The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+     * 
+     */
+    @Import(name="certRegion")
+    private @Nullable Output<String> certRegion;
+
+    /**
+     * @return The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+     * 
+     */
+    public Optional<Output<String>> certRegion() {
+        return Optional.ofNullable(this.certRegion);
+    }
+
+    /**
+     * Certificate type. Value:
+     * - **upload**: upload certificate.
+     * - **cas**: Cloud Shield certificate.
+     * - **free**: free certificate.
+     * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
      * 
      */
     @Import(name="certType")
     private @Nullable Output<String> certType;
 
     /**
-     * @return The SSL certificate type, can be &#34;upload&#34;, &#34;cas&#34; and &#34;free&#34;.
+     * @return Certificate type. Value:
+     * - **upload**: upload certificate.
+     * - **cas**: Cloud Shield certificate.
+     * - **free**: free certificate.
+     * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
      * 
      */
     public Optional<Output<String>> certType() {
         return Optional.ofNullable(this.certType);
     }
 
-    /**
-     * Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
-     * 
-     */
     @Import(name="forceSet")
     private @Nullable Output<String> forceSet;
 
-    /**
-     * @return Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
-     * 
-     */
     public Optional<Output<String>> forceSet() {
         return Optional.ofNullable(this.forceSet);
     }
 
     /**
-     * The SSL private key. This is required if `server_certificate_status` is `on`
+     * The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return The SSL private key. This is required if `server_certificate_status` is `on`
+     * @return The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -76,14 +106,14 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The SSL server certificate string. This is required if `server_certificate_status` is `on`
+     * The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
      * 
      */
     @Import(name="serverCertificate")
     private @Nullable Output<String> serverCertificate;
 
     /**
-     * @return The SSL server certificate string. This is required if `server_certificate_status` is `on`
+     * @return The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
      * 
      */
     public Optional<Output<String>> serverCertificate() {
@@ -91,14 +121,18 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+     * Whether the HTTPS certificate is enabled. Value:
+     * - **on**(default): enabled.
+     * - **off** : not enabled.
      * 
      */
     @Import(name="serverCertificateStatus")
     private @Nullable Output<String> serverCertificateStatus;
 
     /**
-     * @return This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+     * @return Whether the HTTPS certificate is enabled. Value:
+     * - **on**(default): enabled.
+     * - **off** : not enabled.
      * 
      */
     public Optional<Output<String>> serverCertificateStatus() {
@@ -108,7 +142,9 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
     private DomainNewCertificateConfigArgs() {}
 
     private DomainNewCertificateConfigArgs(DomainNewCertificateConfigArgs $) {
+        this.certId = $.certId;
         this.certName = $.certName;
+        this.certRegion = $.certRegion;
         this.certType = $.certType;
         this.forceSet = $.forceSet;
         this.privateKey = $.privateKey;
@@ -135,7 +171,28 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param certName The SSL certificate name.
+         * @param certId The ID of the certificate. It takes effect only when CertType = cas.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certId(@Nullable Output<String> certId) {
+            $.certId = certId;
+            return this;
+        }
+
+        /**
+         * @param certId The ID of the certificate. It takes effect only when CertType = cas.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certId(String certId) {
+            return certId(Output.of(certId));
+        }
+
+        /**
+         * @param certName Certificate name, only flyer names are supported.
          * 
          * @return builder
          * 
@@ -146,7 +203,7 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param certName The SSL certificate name.
+         * @param certName Certificate name, only flyer names are supported.
          * 
          * @return builder
          * 
@@ -156,7 +213,32 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param certType The SSL certificate type, can be &#34;upload&#34;, &#34;cas&#34; and &#34;free&#34;.
+         * @param certRegion The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certRegion(@Nullable Output<String> certRegion) {
+            $.certRegion = certRegion;
+            return this;
+        }
+
+        /**
+         * @param certRegion The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certRegion(String certRegion) {
+            return certRegion(Output.of(certRegion));
+        }
+
+        /**
+         * @param certType Certificate type. Value:
+         * - **upload**: upload certificate.
+         * - **cas**: Cloud Shield certificate.
+         * - **free**: free certificate.
+         * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
          * 
          * @return builder
          * 
@@ -167,7 +249,11 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param certType The SSL certificate type, can be &#34;upload&#34;, &#34;cas&#34; and &#34;free&#34;.
+         * @param certType Certificate type. Value:
+         * - **upload**: upload certificate.
+         * - **cas**: Cloud Shield certificate.
+         * - **free**: free certificate.
+         * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
          * 
          * @return builder
          * 
@@ -176,29 +262,17 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
             return certType(Output.of(certType));
         }
 
-        /**
-         * @param forceSet Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceSet(@Nullable Output<String> forceSet) {
             $.forceSet = forceSet;
             return this;
         }
 
-        /**
-         * @param forceSet Set `1` to ignore the repeated verification for certificate name, and cover the information of the origin certificate (with the same name). Set `0` to work the verification.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceSet(String forceSet) {
             return forceSet(Output.of(forceSet));
         }
 
         /**
-         * @param privateKey The SSL private key. This is required if `server_certificate_status` is `on`
+         * @param privateKey The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
          * 
          * @return builder
          * 
@@ -209,7 +283,7 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param privateKey The SSL private key. This is required if `server_certificate_status` is `on`
+         * @param privateKey The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
          * 
          * @return builder
          * 
@@ -219,7 +293,7 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serverCertificate The SSL server certificate string. This is required if `server_certificate_status` is `on`
+         * @param serverCertificate The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
          * 
          * @return builder
          * 
@@ -230,7 +304,7 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serverCertificate The SSL server certificate string. This is required if `server_certificate_status` is `on`
+         * @param serverCertificate The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
          * 
          * @return builder
          * 
@@ -240,7 +314,9 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serverCertificateStatus This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+         * @param serverCertificateStatus Whether the HTTPS certificate is enabled. Value:
+         * - **on**(default): enabled.
+         * - **off** : not enabled.
          * 
          * @return builder
          * 
@@ -251,7 +327,9 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serverCertificateStatus This parameter indicates whether or not enable https. Valid values are `on` and `off`. Default value is `on`.
+         * @param serverCertificateStatus Whether the HTTPS certificate is enabled. Value:
+         * - **on**(default): enabled.
+         * - **off** : not enabled.
          * 
          * @return builder
          * 

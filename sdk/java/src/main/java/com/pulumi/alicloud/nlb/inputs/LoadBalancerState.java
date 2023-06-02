@@ -104,6 +104,36 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     * 
+     */
+    @Import(name="deletionProtectionEnabled")
+    private @Nullable Output<Boolean> deletionProtectionEnabled;
+
+    /**
+     * @return Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtectionEnabled() {
+        return Optional.ofNullable(this.deletionProtectionEnabled);
+    }
+
+    /**
+     * The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+     * 
+     */
+    @Import(name="deletionProtectionReason")
+    private @Nullable Output<String> deletionProtectionReason;
+
+    /**
+     * @return The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+     * 
+     */
+    public Optional<Output<String>> deletionProtectionReason() {
+        return Optional.ofNullable(this.deletionProtectionReason);
+    }
+
+    /**
      * The domain name of the NLB instance.
      * 
      */
@@ -176,6 +206,36 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> loadBalancerType() {
         return Optional.ofNullable(this.loadBalancerType);
+    }
+
+    /**
+     * The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+     * 
+     */
+    @Import(name="modificationProtectionReason")
+    private @Nullable Output<String> modificationProtectionReason;
+
+    /**
+     * @return The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+     * 
+     */
+    public Optional<Output<String>> modificationProtectionReason() {
+        return Optional.ofNullable(this.modificationProtectionReason);
+    }
+
+    /**
+     * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * 
+     */
+    @Import(name="modificationProtectionStatus")
+    private @Nullable Output<String> modificationProtectionStatus;
+
+    /**
+     * @return Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> modificationProtectionStatus() {
+        return Optional.ofNullable(this.modificationProtectionStatus);
     }
 
     /**
@@ -261,11 +321,15 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.bandwidthPackageId = $.bandwidthPackageId;
         this.createTime = $.createTime;
         this.crossZoneEnabled = $.crossZoneEnabled;
+        this.deletionProtectionEnabled = $.deletionProtectionEnabled;
+        this.deletionProtectionReason = $.deletionProtectionReason;
         this.dnsName = $.dnsName;
         this.ipv6AddressType = $.ipv6AddressType;
         this.loadBalancerBusinessStatus = $.loadBalancerBusinessStatus;
         this.loadBalancerName = $.loadBalancerName;
         this.loadBalancerType = $.loadBalancerType;
+        this.modificationProtectionReason = $.modificationProtectionReason;
+        this.modificationProtectionStatus = $.modificationProtectionStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
         this.tags = $.tags;
@@ -405,6 +469,48 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param deletionProtectionEnabled Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionEnabled(@Nullable Output<Boolean> deletionProtectionEnabled) {
+            $.deletionProtectionEnabled = deletionProtectionEnabled;
+            return this;
+        }
+
+        /**
+         * @param deletionProtectionEnabled Specifies whether to enable deletion protection. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
+            return deletionProtectionEnabled(Output.of(deletionProtectionEnabled));
+        }
+
+        /**
+         * @param deletionProtectionReason The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionReason(@Nullable Output<String> deletionProtectionReason) {
+            $.deletionProtectionReason = deletionProtectionReason;
+            return this;
+        }
+
+        /**
+         * @param deletionProtectionReason The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionReason(String deletionProtectionReason) {
+            return deletionProtectionReason(Output.of(deletionProtectionReason));
+        }
+
+        /**
          * @param dnsName The domain name of the NLB instance.
          * 
          * @return builder
@@ -507,6 +613,48 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder loadBalancerType(String loadBalancerType) {
             return loadBalancerType(Output.of(loadBalancerType));
+        }
+
+        /**
+         * @param modificationProtectionReason The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modificationProtectionReason(@Nullable Output<String> modificationProtectionReason) {
+            $.modificationProtectionReason = modificationProtectionReason;
+            return this;
+        }
+
+        /**
+         * @param modificationProtectionReason The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modificationProtectionReason(String modificationProtectionReason) {
+            return modificationProtectionReason(Output.of(modificationProtectionReason));
+        }
+
+        /**
+         * @param modificationProtectionStatus Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modificationProtectionStatus(@Nullable Output<String> modificationProtectionStatus) {
+            $.modificationProtectionStatus = modificationProtectionStatus;
+            return this;
+        }
+
+        /**
+         * @param modificationProtectionStatus Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modificationProtectionStatus(String modificationProtectionStatus) {
+            return modificationProtectionStatus(Output.of(modificationProtectionStatus));
         }
 
         /**

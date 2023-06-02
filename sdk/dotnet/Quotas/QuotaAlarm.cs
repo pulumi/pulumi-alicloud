@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Quotas
     /// <summary>
     /// Provides a Quotas Quota Alarm resource.
     /// 
-    /// For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/184343.html).
+    /// For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
     /// 
     /// &gt; **NOTE:** Available in v1.116.0+.
     /// 
@@ -28,11 +28,11 @@ namespace Pulumi.AliCloud.Quotas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Quotas.QuotaAlarm("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Quotas.QuotaAlarm("default", new()
     ///     {
-    ///         ProductCode = "ecs",
-    ///         QuotaActionCode = "q_prepaid-instance-count-per-once-purchase",
-    ///         QuotaAlarmName = "tf-testAcc",
+    ///         QuotaActionCode = "q_desktop-count",
     ///         QuotaDimensions = new[]
     ///         {
     ///             new AliCloud.Quotas.Inputs.QuotaAlarmQuotaDimensionArgs
@@ -41,7 +41,10 @@ namespace Pulumi.AliCloud.Quotas
     ///                 Value = "cn-hangzhou",
     ///             },
     ///         },
-    ///         Threshold = 100,
+    ///         ThresholdPercent = 80,
+    ///         ProductCode = "gws",
+    ///         QuotaAlarmName = name,
+    ///         ThresholdType = "used",
     ///     });
     /// 
     /// });
@@ -58,6 +61,12 @@ namespace Pulumi.AliCloud.Quotas
     [AliCloudResourceType("alicloud:quotas/quotaAlarm:QuotaAlarm")]
     public partial class QuotaAlarm : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The creation time of the resource.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// The Product Code.
         /// </summary>
@@ -77,7 +86,7 @@ namespace Pulumi.AliCloud.Quotas
         public Output<string> QuotaAlarmName { get; private set; } = null!;
 
         /// <summary>
-        /// The Quota Dimensions.
+        /// The Quota Dimensions. See the following `Block QuotaDimensions`.
         /// </summary>
         [Output("quotaDimensions")]
         public Output<ImmutableArray<Outputs.QuotaAlarmQuotaDimension>> QuotaDimensions { get; private set; } = null!;
@@ -93,6 +102,14 @@ namespace Pulumi.AliCloud.Quotas
         /// </summary>
         [Output("thresholdPercent")]
         public Output<double?> ThresholdPercent { get; private set; } = null!;
+
+        /// <summary>
+        /// Quota alarm type. Value:
+        /// - used: Quota used alarm.
+        /// - usable: alarm for the remaining available quota.
+        /// </summary>
+        [Output("thresholdType")]
+        public Output<string> ThresholdType { get; private set; } = null!;
 
         /// <summary>
         /// The WebHook of Quota Alarm.
@@ -168,7 +185,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.QuotaAlarmQuotaDimensionArgs>? _quotaDimensions;
 
         /// <summary>
-        /// The Quota Dimensions.
+        /// The Quota Dimensions. See the following `Block QuotaDimensions`.
         /// </summary>
         public InputList<Inputs.QuotaAlarmQuotaDimensionArgs> QuotaDimensions
         {
@@ -189,6 +206,14 @@ namespace Pulumi.AliCloud.Quotas
         public Input<double>? ThresholdPercent { get; set; }
 
         /// <summary>
+        /// Quota alarm type. Value:
+        /// - used: Quota used alarm.
+        /// - usable: alarm for the remaining available quota.
+        /// </summary>
+        [Input("thresholdType")]
+        public Input<string>? ThresholdType { get; set; }
+
+        /// <summary>
         /// The WebHook of Quota Alarm.
         /// </summary>
         [Input("webHook")]
@@ -202,6 +227,12 @@ namespace Pulumi.AliCloud.Quotas
 
     public sealed class QuotaAlarmState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The creation time of the resource.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         /// <summary>
         /// The Product Code.
         /// </summary>
@@ -224,7 +255,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.QuotaAlarmQuotaDimensionGetArgs>? _quotaDimensions;
 
         /// <summary>
-        /// The Quota Dimensions.
+        /// The Quota Dimensions. See the following `Block QuotaDimensions`.
         /// </summary>
         public InputList<Inputs.QuotaAlarmQuotaDimensionGetArgs> QuotaDimensions
         {
@@ -243,6 +274,14 @@ namespace Pulumi.AliCloud.Quotas
         /// </summary>
         [Input("thresholdPercent")]
         public Input<double>? ThresholdPercent { get; set; }
+
+        /// <summary>
+        /// Quota alarm type. Value:
+        /// - used: Quota used alarm.
+        /// - usable: alarm for the remaining available quota.
+        /// </summary>
+        [Input("thresholdType")]
+        public Input<string>? ThresholdType { get; set; }
 
         /// <summary>
         /// The WebHook of Quota Alarm.

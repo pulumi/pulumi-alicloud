@@ -27,17 +27,16 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "polardbClusterconfig";
-    ///     var creation = config.Get("creation") ?? "PolarDB";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultNodeClasses = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         DbType = "MySQL",
+    ///         DbVersion = "8.0",
+    ///         PayType = "PostPaid",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcName = name,
+    ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -45,18 +44,18 @@ namespace Pulumi.AliCloud.PolarDB
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
+    ///         ZoneId = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId),
+    ///         VswitchName = "terraform-example",
     ///     });
     /// 
     ///     var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new()
     ///     {
     ///         DbType = "MySQL",
-    ///         DbVersion = "5.6",
-    ///         DbNodeClass = "polar.mysql.x4.medium",
+    ///         DbVersion = "8.0",
+    ///         DbNodeClass = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.SupportedEngines[0]?.AvailableResources[0]?.DbNodeClass),
     ///         PayType = "PostPaid",
-    ///         Description = name,
     ///         VswitchId = defaultSwitch.Id,
+    ///         Description = "terraform-example",
     ///         DbClusterIpArrays = new[]
     ///         {
     ///             new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
@@ -70,7 +69,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///             },
     ///             new AliCloud.PolarDB.Inputs.ClusterDbClusterIpArrayArgs
     ///             {
-    ///                 DbClusterIpArrayName = "test_ips1",
+    ///                 DbClusterIpArrayName = "default2",
     ///                 SecurityIps = new[]
     ///                 {
     ///                     "1.2.3.6",
@@ -159,7 +158,8 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         /// </summary>
         [Output("dbNodeClass")]
         public Output<string> DbNodeClass { get; private set; } = null!;
@@ -520,7 +520,8 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         /// </summary>
         [Input("dbNodeClass", required: true)]
         public Input<string> DbNodeClass { get; set; } = null!;
@@ -859,7 +860,8 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar. mysql. sl. small`.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         /// </summary>
         [Input("dbNodeClass")]
         public Input<string>? DbNodeClass { get; set; }

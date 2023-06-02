@@ -34,8 +34,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetCrossRegionsArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -57,14 +59,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testaccdbinstance&#34;);
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
- *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var exampleZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine(&#34;PostgreSQL&#34;)
+ *             .engineVersion(&#34;13.0&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .category(&#34;HighAvailability&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
  *             .build());
  * 
+ *         final var exampleInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .engine(&#34;PostgreSQL&#34;)
+ *             .engineVersion(&#34;13.0&#34;)
+ *             .category(&#34;HighAvailability&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .build());
+ * 
+ *         final var exampleCrossRegions = RdsFunctions.getCrossRegions();
+ * 
  *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
@@ -72,29 +87,32 @@ import javax.annotation.Nullable;
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
  *             .engine(&#34;PostgreSQL&#34;)
- *             .engineVersion(&#34;12.0&#34;)
- *             .instanceType(&#34;pg.n2.small.2c&#34;)
- *             .instanceStorage(&#34;20&#34;)
+ *             .engineVersion(&#34;13.0&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .instanceType(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .instanceChargeType(&#34;Postpaid&#34;)
- *             .instanceName(name)
+ *             .instanceName(&#34;terraform-example&#34;)
  *             .vswitchId(exampleSwitch.id())
+ *             .monitoringPeriod(&#34;60&#34;)
  *             .build());
  * 
  *         var exampleRdsUpgradeDbInstance = new RdsUpgradeDbInstance(&#34;exampleRdsUpgradeDbInstance&#34;, RdsUpgradeDbInstanceArgs.builder()        
  *             .sourceDbInstanceId(exampleInstance.id())
- *             .targetMajorVersion(&#34;13.0&#34;)
- *             .dbInstanceClass(&#34;pg.n2.small.2c&#34;)
- *             .dbInstanceStorage(&#34;20&#34;)
+ *             .targetMajorVersion(&#34;14.0&#34;)
+ *             .dbInstanceClass(exampleInstance.instanceType())
+ *             .dbInstanceStorage(exampleInstance.instanceStorage())
+ *             .dbInstanceStorageType(exampleInstance.dbInstanceStorageType())
  *             .instanceNetworkType(&#34;VPC&#34;)
- *             .dbInstanceStorageType(&#34;cloud_ssd&#34;)
  *             .collectStatMode(&#34;After&#34;)
  *             .switchOver(&#34;false&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .dbInstanceDescription(name)
+ *             .dbInstanceDescription(&#34;terraform-example&#34;)
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 

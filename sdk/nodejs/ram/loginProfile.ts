@@ -13,17 +13,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a RAM login profile.
  * const user = new alicloud.ram.User("user", {
- *     displayName: "user_display_name",
+ *     displayName: "terraform_example",
  *     mobile: "86-18688888888",
  *     email: "hello.uuu@aaa.com",
- *     comments: "yoyoyo",
+ *     comments: "terraform_example",
  *     force: true,
  * });
  * const profile = new alicloud.ram.LoginProfile("profile", {
  *     userName: user.name,
- *     password: "Yourpassword1234",
+ *     password: "Example_1234",
  * });
  * ```
  *

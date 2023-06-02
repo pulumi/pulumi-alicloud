@@ -1595,68 +1595,81 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.EcsLaunchTemplate("default",
-            data_disks=[
-                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
-                    category="cloud",
-                    delete_with_instance=True,
-                    description="test1",
-                    encrypted=False,
-                    name="disk1",
-                    performance_level="PL0",
-                    size=20,
-                ),
-                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
-                    category="cloud",
-                    delete_with_instance=True,
-                    description="test2",
-                    encrypted=False,
-                    name="disk2",
-                    performance_level="PL0",
-                    size=20,
-                ),
-            ],
-            description="Test For Terraform",
-            host_name="host_name",
-            image_id="m-bp1i3ucxxxxx",
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_ecs_launch_template = alicloud.ecs.EcsLaunchTemplate("defaultEcsLaunchTemplate",
+            launch_template_name="terraform-example",
+            description="terraform-example",
+            image_id=default_images.images[0].id,
+            host_name="terraform-example",
             instance_charge_type="PrePaid",
-            instance_name="instance_name",
-            instance_type="instance_type",
+            instance_name="terraform-example",
+            instance_type=default_instance_types.instance_types[0].id,
             internet_charge_type="PayByBandwidth",
             internet_max_bandwidth_in=5,
-            internet_max_bandwidth_out=0,
+            internet_max_bandwidth_out=5,
             io_optimized="optimized",
             key_pair_name="key_pair_name",
-            launch_template_name="tf_test_name",
-            network_interfaces=alicloud.ecs.EcsLaunchTemplateNetworkInterfacesArgs(
-                description="hello1",
-                name="eth0",
-                primary_ip="10.0.0.2",
-                security_group_id="sg-asdfnbgxxxxxxx",
-                vswitch_id="vw-zkdfjaxxxxxx",
-            ),
-            network_type="vpc",
             ram_role_name="ram_role_name",
-            resource_group_id="rg-zkdfjaxxxxxx",
+            network_type="vpc",
             security_enhancement_strategy="Active",
-            security_group_ids=["sg-zkdfjaxxxxxx"],
             spot_price_limit=5,
             spot_strategy="SpotWithPriceLimit",
+            security_group_ids=[default_security_group.id],
             system_disk=alicloud.ecs.EcsLaunchTemplateSystemDiskArgs(
                 category="cloud_ssd",
-                delete_with_instance=False,
                 description="Test For Terraform",
-                name="tf_test_name",
+                name="terraform-example",
                 size=40,
+                delete_with_instance=False,
             ),
+            user_data="xxxxxxx",
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id,
             template_tags={
                 "Create": "Terraform",
-                "For": "Test",
+                "For": "example",
             },
-            user_data="xxxxxxx",
-            vpc_id="vpc-asdfnbgxxxxxxx",
-            vswitch_id="vw-zwxscaxxxxxx",
-            zone_id="cn-hangzhou-i")
+            network_interfaces=alicloud.ecs.EcsLaunchTemplateNetworkInterfacesArgs(
+                name="eth0",
+                description="hello1",
+                primary_ip="10.0.0.2",
+                security_group_id=default_security_group.id,
+                vswitch_id=default_switch.id,
+            ),
+            data_disks=[
+                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
+                    name="disk1",
+                    description="description",
+                    delete_with_instance=True,
+                    category="cloud",
+                    encrypted=False,
+                    performance_level="PL0",
+                    size=20,
+                ),
+                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
+                    name="disk2",
+                    description="description2",
+                    delete_with_instance=True,
+                    category="cloud",
+                    encrypted=False,
+                    performance_level="PL0",
+                    size=20,
+                ),
+            ])
         ```
 
         ## Import
@@ -1742,68 +1755,81 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.EcsLaunchTemplate("default",
-            data_disks=[
-                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
-                    category="cloud",
-                    delete_with_instance=True,
-                    description="test1",
-                    encrypted=False,
-                    name="disk1",
-                    performance_level="PL0",
-                    size=20,
-                ),
-                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
-                    category="cloud",
-                    delete_with_instance=True,
-                    description="test2",
-                    encrypted=False,
-                    name="disk2",
-                    performance_level="PL0",
-                    size=20,
-                ),
-            ],
-            description="Test For Terraform",
-            host_name="host_name",
-            image_id="m-bp1i3ucxxxxx",
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_ecs_launch_template = alicloud.ecs.EcsLaunchTemplate("defaultEcsLaunchTemplate",
+            launch_template_name="terraform-example",
+            description="terraform-example",
+            image_id=default_images.images[0].id,
+            host_name="terraform-example",
             instance_charge_type="PrePaid",
-            instance_name="instance_name",
-            instance_type="instance_type",
+            instance_name="terraform-example",
+            instance_type=default_instance_types.instance_types[0].id,
             internet_charge_type="PayByBandwidth",
             internet_max_bandwidth_in=5,
-            internet_max_bandwidth_out=0,
+            internet_max_bandwidth_out=5,
             io_optimized="optimized",
             key_pair_name="key_pair_name",
-            launch_template_name="tf_test_name",
-            network_interfaces=alicloud.ecs.EcsLaunchTemplateNetworkInterfacesArgs(
-                description="hello1",
-                name="eth0",
-                primary_ip="10.0.0.2",
-                security_group_id="sg-asdfnbgxxxxxxx",
-                vswitch_id="vw-zkdfjaxxxxxx",
-            ),
-            network_type="vpc",
             ram_role_name="ram_role_name",
-            resource_group_id="rg-zkdfjaxxxxxx",
+            network_type="vpc",
             security_enhancement_strategy="Active",
-            security_group_ids=["sg-zkdfjaxxxxxx"],
             spot_price_limit=5,
             spot_strategy="SpotWithPriceLimit",
+            security_group_ids=[default_security_group.id],
             system_disk=alicloud.ecs.EcsLaunchTemplateSystemDiskArgs(
                 category="cloud_ssd",
-                delete_with_instance=False,
                 description="Test For Terraform",
-                name="tf_test_name",
+                name="terraform-example",
                 size=40,
+                delete_with_instance=False,
             ),
+            user_data="xxxxxxx",
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id,
             template_tags={
                 "Create": "Terraform",
-                "For": "Test",
+                "For": "example",
             },
-            user_data="xxxxxxx",
-            vpc_id="vpc-asdfnbgxxxxxxx",
-            vswitch_id="vw-zwxscaxxxxxx",
-            zone_id="cn-hangzhou-i")
+            network_interfaces=alicloud.ecs.EcsLaunchTemplateNetworkInterfacesArgs(
+                name="eth0",
+                description="hello1",
+                primary_ip="10.0.0.2",
+                security_group_id=default_security_group.id,
+                vswitch_id=default_switch.id,
+            ),
+            data_disks=[
+                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
+                    name="disk1",
+                    description="description",
+                    delete_with_instance=True,
+                    category="cloud",
+                    encrypted=False,
+                    performance_level="PL0",
+                    size=20,
+                ),
+                alicloud.ecs.EcsLaunchTemplateDataDiskArgs(
+                    name="disk2",
+                    description="description2",
+                    delete_with_instance=True,
+                    category="cloud",
+                    encrypted=False,
+                    performance_level="PL0",
+                    size=20,
+                ),
+            ])
         ```
 
         ## Import

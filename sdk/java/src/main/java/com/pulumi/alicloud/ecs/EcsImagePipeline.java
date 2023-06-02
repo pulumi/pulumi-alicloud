@@ -39,12 +39,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.EcsImagePipeline;
  * import com.pulumi.alicloud.ecs.EcsImagePipelineArgs;
  * import java.util.List;
@@ -64,15 +65,8 @@ import javax.annotation.Nullable;
  *             .nameRegex(&#34;default&#34;)
  *             .build());
  * 
- *         final var defaultZones = AlicloudFunctions.getZones();
- * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
- *             .build());
- * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
  *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
@@ -85,14 +79,28 @@ import javax.annotation.Nullable;
  *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
  *             .build());
  * 
+ *         final var defaultAccount = AlicloudFunctions.getAccount();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
  *         var defaultEcsImagePipeline = new EcsImagePipeline(&#34;defaultEcsImagePipeline&#34;, EcsImagePipelineArgs.builder()        
- *             .addAccounts(&#34;example_value&#34;)
+ *             .addAccounts(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
  *             .baseImage(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
  *             .baseImageType(&#34;IMAGE&#34;)
  *             .buildContent(&#34;RUN yum update -y&#34;)
  *             .deleteInstanceOnFailure(false)
- *             .imageName(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
+ *             .imageName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .internetMaxBandwidthOut(20)
@@ -100,7 +108,7 @@ import javax.annotation.Nullable;
  *             .toRegionIds(            
  *                 &#34;cn-qingdao&#34;,
  *                 &#34;cn-zhangjiakou&#34;)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vswitchId(defaultSwitch.id())
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
  *                 Map.entry(&#34;For&#34;, &#34;Acceptance-test&#34;)

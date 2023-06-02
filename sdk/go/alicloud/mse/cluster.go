@@ -22,26 +22,49 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := mse.NewCluster(ctx, "example", &mse.ClusterArgs{
-//				AclEntryLists: pulumi.StringArray{
-//					pulumi.String("127.0.0.1/32"),
-//				},
-//				ClusterAliasName:     pulumi.String("tf-testAccMseCluster"),
-//				ClusterSpecification: pulumi.String("MSE_SC_1_2_200_c"),
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mse.NewCluster(ctx, "exampleCluster", &mse.ClusterArgs{
+//				ClusterSpecification: pulumi.String("MSE_SC_1_2_60_c"),
 //				ClusterType:          pulumi.String("Nacos-Ans"),
-//				ClusterVersion:       pulumi.String("NACOS_ANS_1_2_1"),
+//				ClusterVersion:       pulumi.String("NACOS_2_0_0"),
 //				InstanceCount:        pulumi.Int(1),
-//				MseVersion:           pulumi.String("mse_dev"),
 //				NetType:              pulumi.String("privatenet"),
 //				PubNetworkFlow:       pulumi.String("1"),
-//				VswitchId:            pulumi.String("vsw-123456"),
+//				ConnectionType:       pulumi.String("slb"),
+//				ClusterAliasName:     pulumi.String("terraform-example"),
+//				MseVersion:           pulumi.String("mse_dev"),
+//				VswitchId:            exampleSwitch.ID(),
+//				VpcId:                exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -66,9 +89,11 @@ type Cluster struct {
 
 	// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
 	AclEntryLists pulumi.StringArrayOutput `pulumi:"aclEntryLists"`
+	// (Available in v1.205.0+) The application version.
+	AppVersion pulumi.StringOutput `pulumi:"appVersion"`
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrOutput `pulumi:"clusterAliasName"`
-	// (Available in v1.162.0+)  The id of Cluster.
+	// (Available in v1.162.0+) The id of Cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
 	ClusterSpecification pulumi.StringOutput `pulumi:"clusterSpecification"`
@@ -151,9 +176,11 @@ func GetCluster(ctx *pulumi.Context,
 type clusterState struct {
 	// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
 	AclEntryLists []string `pulumi:"aclEntryLists"`
+	// (Available in v1.205.0+) The application version.
+	AppVersion *string `pulumi:"appVersion"`
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
-	// (Available in v1.162.0+)  The id of Cluster.
+	// (Available in v1.162.0+) The id of Cluster.
 	ClusterId *string `pulumi:"clusterId"`
 	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
 	ClusterSpecification *string `pulumi:"clusterSpecification"`
@@ -190,9 +217,11 @@ type clusterState struct {
 type ClusterState struct {
 	// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
 	AclEntryLists pulumi.StringArrayInput
+	// (Available in v1.205.0+) The application version.
+	AppVersion pulumi.StringPtrInput
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
-	// (Available in v1.162.0+)  The id of Cluster.
+	// (Available in v1.162.0+) The id of Cluster.
 	ClusterId pulumi.StringPtrInput
 	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
 	ClusterSpecification pulumi.StringPtrInput
@@ -393,12 +422,17 @@ func (o ClusterOutput) AclEntryLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.AclEntryLists }).(pulumi.StringArrayOutput)
 }
 
+// (Available in v1.205.0+) The application version.
+func (o ClusterOutput) AppVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AppVersion }).(pulumi.StringOutput)
+}
+
 // The alias of MSE Cluster.
 func (o ClusterOutput) ClusterAliasName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterAliasName }).(pulumi.StringPtrOutput)
 }
 
-// (Available in v1.162.0+)  The id of Cluster.
+// (Available in v1.162.0+) The id of Cluster.
 func (o ClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }

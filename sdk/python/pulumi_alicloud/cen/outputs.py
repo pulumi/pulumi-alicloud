@@ -2812,18 +2812,21 @@ class GetTransitRouterRouteTableAssociationsAssociationResult(dict):
                  resource_id: str,
                  resource_type: str,
                  status: str,
-                 transit_router_attachment_id: str):
+                 transit_router_attachment_id: str,
+                 transit_router_route_table_id: str):
         """
         :param str resource_id: ID of the transit router route table association.
         :param str resource_type: Type of the resource.
         :param str status: The status of the route table, including `Active`, `Associating`, `Dissociating`.
-        :param str transit_router_attachment_id: ID of the cen transit router attachment.
+        :param str transit_router_attachment_id: The ID of the network instance connection.
+        :param str transit_router_route_table_id: The ID of the route table of the Enterprise Edition transit router.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
 
     @property
     @pulumi.getter
@@ -2858,9 +2861,17 @@ class GetTransitRouterRouteTableAssociationsAssociationResult(dict):
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> str:
         """
-        ID of the cen transit router attachment.
+        The ID of the network instance connection.
         """
         return pulumi.get(self, "transit_router_attachment_id")
+
+    @property
+    @pulumi.getter(name="transitRouterRouteTableId")
+    def transit_router_route_table_id(self) -> str:
+        """
+        The ID of the route table of the Enterprise Edition transit router.
+        """
+        return pulumi.get(self, "transit_router_route_table_id")
 
 
 @pulumi.output_type

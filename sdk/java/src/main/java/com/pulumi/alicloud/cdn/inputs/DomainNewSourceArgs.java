@@ -20,15 +20,15 @@ public final class DomainNewSourceArgs extends com.pulumi.resources.ResourceArgs
      * The address of source. Valid values can be ip or doaminName. Each item&#39;s `content` can not be repeated.
      * 
      */
-    @Import(name="content", required=true)
-    private Output<String> content;
+    @Import(name="content")
+    private @Nullable Output<String> content;
 
     /**
      * @return The address of source. Valid values can be ip or doaminName. Each item&#39;s `content` can not be repeated.
      * 
      */
-    public Output<String> content() {
-        return this.content;
+    public Optional<Output<String>> content() {
+        return Optional.ofNullable(this.content);
     }
 
     /**
@@ -65,26 +65,26 @@ public final class DomainNewSourceArgs extends com.pulumi.resources.ResourceArgs
      * The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
      * @return The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     /**
-     * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+     * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
     /**
-     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -125,7 +125,7 @@ public final class DomainNewSourceArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder content(Output<String> content) {
+        public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
@@ -188,7 +188,7 @@ public final class DomainNewSourceArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
@@ -204,7 +204,7 @@ public final class DomainNewSourceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param weight Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+         * @param weight Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class DomainNewSourceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param weight Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
+         * @param weight Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
          * 
          * @return builder
          * 
@@ -225,8 +225,6 @@ public final class DomainNewSourceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public DomainNewSourceArgs build() {
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }
     }

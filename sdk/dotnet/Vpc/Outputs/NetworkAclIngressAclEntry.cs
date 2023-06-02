@@ -14,27 +14,42 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class NetworkAclIngressAclEntry
     {
         /// <summary>
-        /// The description of the network acl instance.
+        /// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The entry name of ingress entries.
+        /// Name of the outbound rule entry.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         public readonly string? NetworkAclEntryName;
         /// <summary>
-        /// The policy of ingress entries. Valid values `accept` and `drop`.
+        /// Authorization policy. Value:
+        /// - accept: Allow.
+        /// - drop: Refused.
+        /// - accept: Allow.
+        /// - drop: Refused.
         /// </summary>
         public readonly string? Policy;
         /// <summary>
-        /// The port of ingress entries.
+        /// The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         /// </summary>
         public readonly string? Port;
         /// <summary>
-        /// The protocol of ingress entries. Valid values `icmp`,`gre`,`tcp`,`udp`, and `all`.
+        /// The protocol type. Value:
+        /// - icmp: Network Control Message Protocol.
+        /// - gre: Generic Routing Encapsulation Protocol.
+        /// - tcp: Transmission Control Protocol.
+        /// - udp: User Datagram Protocol.
+        /// - all: Supports all protocols.
+        /// 
+        /// - icmp: Network Control Message Protocol.
+        /// - gre: Generic Routing Encapsulation Protocol.
+        /// - tcp: Transmission Control Protocol.
+        /// - udp: User Datagram Protocol.
+        /// - all: Supports all protocols.
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
-        /// The source cidr ip of ingress entries.
+        /// Source address network segment.
         /// </summary>
         public readonly string? SourceCidrIp;
 

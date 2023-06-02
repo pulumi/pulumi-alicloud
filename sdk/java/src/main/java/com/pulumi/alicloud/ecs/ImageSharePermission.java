@@ -31,6 +31,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.ecs.Image;
+ * import com.pulumi.alicloud.ecs.ImageArgs;
  * import com.pulumi.alicloud.ecs.ImageSharePermission;
  * import com.pulumi.alicloud.ecs.ImageSharePermissionArgs;
  * import java.util.List;
@@ -46,9 +61,56 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ImageSharePermission(&#34;default&#34;, ImageSharePermissionArgs.builder()        
- *             .accountId(&#34;1234567890&#34;)
- *             .imageId(&#34;m-bp1gxyh***&#34;)
+ *         final var config = ctx.config();
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceName(&#34;terraform-example&#34;)
+ *             .securityGroups(defaultSecurityGroup.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
+ *             .internetMaxBandwidthOut(10)
+ *             .build());
+ * 
+ *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
+ *             .instanceId(defaultInstance.id())
+ *             .imageName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         final var accountId = config.get(&#34;accountId&#34;).orElse(&#34;123456789&#34;);
+ *         var defaultImageSharePermission = new ImageSharePermission(&#34;defaultImageSharePermission&#34;, ImageSharePermissionArgs.builder()        
+ *             .imageId(defaultImage.id())
+ *             .accountId(accountId)
  *             .build());
  * 
  *     }

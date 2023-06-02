@@ -874,16 +874,16 @@ class Etl(pulumi.CustomResource):
                     access_key_id="example2_access_key_id",
                     access_key_secret="example2_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=alicloud_log_project["example"]["name"],
-                    logstore=alicloud_log_store["example2"]["name"],
+                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 ),
                 alicloud.log.EtlEtlSinkArgs(
                     name="target_name2",
                     access_key_id="example3_access_key_id",
                     access_key_secret="example3_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=alicloud_log_project["example"]["name"],
-                    logstore=alicloud_log_store["example3"]["name"],
+                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 ),
             ])
         ```
@@ -908,16 +908,16 @@ class Etl(pulumi.CustomResource):
                     access_key_id="example2_access_key_id",
                     access_key_secret="example2_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=alicloud_log_project["example"]["name"],
-                    logstore=alicloud_log_store["example2"]["name"],
+                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 ),
                 alicloud.log.EtlEtlSinkArgs(
                     name="target_name2",
                     access_key_id="example3_access_key_id",
                     access_key_secret="example3_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=alicloud_log_project["example"]["name"],
-                    logstore=alicloud_log_store["example3"]["name"],
+                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 ),
             ])
         ```
@@ -1048,16 +1048,16 @@ class Etl(pulumi.CustomResource):
                     access_key_id="example2_access_key_id",
                     access_key_secret="example2_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=alicloud_log_project["example"]["name"],
-                    logstore=alicloud_log_store["example2"]["name"],
+                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 ),
                 alicloud.log.EtlEtlSinkArgs(
                     name="target_name2",
                     access_key_id="example3_access_key_id",
                     access_key_secret="example3_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=alicloud_log_project["example"]["name"],
-                    logstore=alicloud_log_store["example3"]["name"],
+                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 ),
             ])
         ```
@@ -1082,16 +1082,16 @@ class Etl(pulumi.CustomResource):
                     access_key_id="example2_access_key_id",
                     access_key_secret="example2_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=alicloud_log_project["example"]["name"],
-                    logstore=alicloud_log_store["example2"]["name"],
+                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 ),
                 alicloud.log.EtlEtlSinkArgs(
                     name="target_name2",
                     access_key_id="example3_access_key_id",
                     access_key_secret="example3_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=alicloud_log_project["example"]["name"],
-                    logstore=alicloud_log_store["example3"]["name"],
+                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 ),
             ])
         ```

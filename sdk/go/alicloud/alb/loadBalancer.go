@@ -55,7 +55,7 @@ type LoadBalancer struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -136,7 +136,7 @@ type loadBalancerState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
+	// A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId *string `pulumi:"vpcId"`
@@ -171,7 +171,7 @@ type LoadBalancerState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
 	Status pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
 	Tags pulumi.MapInput
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringPtrInput
@@ -206,7 +206,7 @@ type loadBalancerArgs struct {
 	ModificationProtectionConfig *LoadBalancerModificationProtectionConfig `pulumi:"modificationProtectionConfig"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// A mapping of tags to assign to the resource.
+	// A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId string `pulumi:"vpcId"`
@@ -238,7 +238,7 @@ type LoadBalancerArgs struct {
 	ModificationProtectionConfig LoadBalancerModificationProtectionConfigPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// A mapping of tags to assign to the resource.
+	// A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
 	Tags pulumi.MapInput
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringInput
@@ -400,7 +400,7 @@ func (o LoadBalancerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// A mapping of tags to assign to the resource. **NOTE:** The Key of `tags` cannot begin with "aliyun", "acs:", "http://", "https://", "ack" or "ingress".
 func (o LoadBalancerOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

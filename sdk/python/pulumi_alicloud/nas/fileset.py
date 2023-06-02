@@ -210,23 +210,28 @@ class Fileset(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.nas.get_zones(file_system_type="cpfs")
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].zone_id)
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[1].zone_id)
+        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
             protocol_type="cpfs",
             storage_type="advance_200",
             file_system_type="cpfs",
             capacity=3600,
-            description="tf-testacc",
-            zone_id=default_zones.zones[0].zone_id,
-            vpc_id=default_networks.ids[0],
-            vswitch_id=default_switches.ids[0])
-        default_fileset = alicloud.nas.Fileset("defaultFileset",
-            file_system_id=default_file_system.id,
-            file_system_path="/example_path/",
-            description="tf-testacc")
+            description="terraform-example",
+            zone_id=example_zones.zones[1].zone_id,
+            vpc_id=example_network.id,
+            vswitch_id=example_switch.id)
+        example_fileset = alicloud.nas.Fileset("exampleFileset",
+            file_system_id=example_file_system.id,
+            description="terraform-example",
+            file_system_path="/example_path/")
         ```
 
         ## Import
@@ -265,23 +270,28 @@ class Fileset(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.nas.get_zones(file_system_type="cpfs")
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].zone_id)
-        default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
+        example_zones = alicloud.nas.get_zones(file_system_type="cpfs")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[1].zone_id)
+        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
             protocol_type="cpfs",
             storage_type="advance_200",
             file_system_type="cpfs",
             capacity=3600,
-            description="tf-testacc",
-            zone_id=default_zones.zones[0].zone_id,
-            vpc_id=default_networks.ids[0],
-            vswitch_id=default_switches.ids[0])
-        default_fileset = alicloud.nas.Fileset("defaultFileset",
-            file_system_id=default_file_system.id,
-            file_system_path="/example_path/",
-            description="tf-testacc")
+            description="terraform-example",
+            zone_id=example_zones.zones[1].zone_id,
+            vpc_id=example_network.id,
+            vswitch_id=example_switch.id)
+        example_fileset = alicloud.nas.Fileset("exampleFileset",
+            file_system_id=example_file_system.id,
+            description="terraform-example",
+            file_system_path="/example_path/")
         ```
 
         ## Import

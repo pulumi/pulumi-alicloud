@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+//			_, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Description: pulumi.String("New security group"),
 //			})
 //			if err != nil {
@@ -59,6 +59,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("10.1.0.0/21"),
 //			})
 //			if err != nil {

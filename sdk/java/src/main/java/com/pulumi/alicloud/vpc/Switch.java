@@ -19,7 +19,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC switch resource.
+ * Provides a VPC Vswitch resource. ## Module Support
+ * 
+ * You can use to the existing vpc module  to create a VPC and several VSwitches one-click.
+ * 
+ * For information about VPC Vswitch and how to use it, see [What is Vswitch](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/work-with-vswitches).
  * 
  * ## Example Usage
  * 
@@ -30,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -47,15 +53,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;tf_test_foo&#34;)
+ *         final var fooZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
- *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
- *             .vpcId(vpc.id())
+ *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(&#34;cn-beijing-b&#34;)
+ *             .vpcId(fooNetwork.id())
+ *             .zoneId(fooZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *     }
@@ -67,6 +78,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Ipv4CidrBlock;
@@ -86,8 +99,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var foo = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
  *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;tf_test_foo&#34;)
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
@@ -99,8 +116,8 @@ import javax.annotation.Nullable;
  *         var island_nat = new Switch(&#34;island-nat&#34;, SwitchArgs.builder()        
  *             .vpcId(cidrBlocks.vpcId())
  *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(&#34;cn-beijing-b&#34;)
- *             .vswitchName(&#34;example_value&#34;)
+ *             .zoneId(foo.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(&#34;terraform-example&#34;)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;BuiltBy&#34;, &#34;example_value&#34;),
  *                 Map.entry(&#34;cnm_version&#34;, &#34;example_value&#34;),
@@ -120,6 +137,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Ipv4CidrBlock;
@@ -139,43 +158,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;tf_test_foo&#34;)
+ *         final var fooZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
- *         var example = new Ipv4CidrBlock(&#34;example&#34;, Ipv4CidrBlockArgs.builder()        
- *             .vpcId(alicloud_vpc.default().id())
+ *         var fooIpv4CidrBlock = new Ipv4CidrBlock(&#34;fooIpv4CidrBlock&#34;, Ipv4CidrBlockArgs.builder()        
+ *             .vpcId(fooNetwork.id())
  *             .secondaryCidrBlock(&#34;192.163.0.0/16&#34;)
  *             .build());
  * 
- *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
- *             .vpcId(example.vpcId())
+ *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(fooIpv4CidrBlock.vpcId())
  *             .cidrBlock(&#34;192.163.0.0/24&#34;)
- *             .zoneId(&#34;cn-beijing-b&#34;)
+ *             .zoneId(fooZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *     }
  * }
  * ```
- * ## Module Support
- * 
- * You can use to the existing vpc module
- * to create a VPC and several VSwitches one-click.
  * 
  * ## Import
  * 
- * Vswitch can be imported using the id, e.g.
+ * VPC Vswitch can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/switch:Switch example vsw-abc123456
+ *  $ pulumi import alicloud:vpc/switch:Switch example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpc/switch:Switch")
 public class Switch extends com.pulumi.resources.CustomResource {
     /**
-     * Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
@@ -186,84 +205,102 @@ public class Switch extends com.pulumi.resources.CustomResource {
     private Output<String> availabilityZone;
 
     /**
-     * @return Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
+     * @return Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
      * 
      */
     public Output<String> availabilityZone() {
         return this.availabilityZone;
     }
     /**
-     * The CIDR block for the switch.
+     * The IPv4 CIDR block of the VSwitch.
      * 
      */
     @Export(name="cidrBlock", type=String.class, parameters={})
     private Output<String> cidrBlock;
 
     /**
-     * @return The CIDR block for the switch.
+     * @return The IPv4 CIDR block of the VSwitch.
      * 
      */
     public Output<String> cidrBlock() {
         return this.cidrBlock;
     }
     /**
-     * The switch description. Defaults to null.
+     * The creation time of the VSwitch.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the VSwitch.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of VSwitch.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The switch description. Defaults to null.
+     * @return The description of VSwitch.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+     * Whether the IPv6 function is enabled in the switch. Value:
+     * - **true**: enables IPv6.
+     * - **false** (default): IPv6 is not enabled.
      * 
      */
     @Export(name="enableIpv6", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableIpv6;
 
     /**
-     * @return Specifies whether to enable the IPv6 CIDR block. Valid values: `false` (Default): disables IPv6 CIDR blocks. `true`: enables IPv6 CIDR blocks.
+     * @return Whether the IPv6 function is enabled in the switch. Value:
+     * - **true**: enables IPv6.
+     * - **false** (default): IPv6 is not enabled.
      * 
      */
     public Output<Optional<Boolean>> enableIpv6() {
         return Codegen.optional(this.enableIpv6);
     }
     /**
-     * (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+     * The IPv6 CIDR block of the VSwitch.
      * 
      */
     @Export(name="ipv6CidrBlock", type=String.class, parameters={})
     private Output<String> ipv6CidrBlock;
 
     /**
-     * @return (Available in 1.201.1+) The IPv6 CIDR block for the switch.
+     * @return The IPv6 CIDR block of the VSwitch.
      * 
      */
     public Output<String> ipv6CidrBlock() {
         return this.ipv6CidrBlock;
     }
     /**
-     * The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+     * The IPv6 CIDR block of the VSwitch.
      * 
      */
     @Export(name="ipv6CidrBlockMask", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> ipv6CidrBlockMask;
 
     /**
-     * @return The last 8 bits of the switch&#39;s IPv6 segment, taking values: 0~255. This parameter is only supported to be configured when the VPC to which the switch belongs is IPv6 enabled.
+     * @return The IPv6 CIDR block of the VSwitch.
      * 
      */
     public Output<Optional<Integer>> ipv6CidrBlockMask() {
         return Codegen.optional(this.ipv6CidrBlockMask);
     }
     /**
-     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -274,35 +311,35 @@ public class Switch extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
+     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * (Available in 1.119.0+) The status of the switch.
+     * The status of the resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return (Available in 1.119.0+) The status of the switch.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tags of VSwitch.
      * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tags of VSwitch.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
@@ -311,6 +348,8 @@ public class Switch extends com.pulumi.resources.CustomResource {
     /**
      * The VPC ID.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output<String> vpcId;
@@ -318,33 +357,35 @@ public class Switch extends com.pulumi.resources.CustomResource {
     /**
      * @return The VPC ID.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     public Output<String> vpcId() {
         return this.vpcId;
     }
     /**
-     * The name of the switch. Defaults to null.
+     * The name of the VSwitch.
      * 
      */
     @Export(name="vswitchName", type=String.class, parameters={})
     private Output<String> vswitchName;
 
     /**
-     * @return The name of the switch. Defaults to null.
+     * @return The name of the VSwitch.
      * 
      */
     public Output<String> vswitchName() {
         return this.vswitchName;
     }
     /**
-     * The AZ for the switch. **Note:** Required for a VPC switch.
+     * The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
      * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
-     * @return The AZ for the switch. **Note:** Required for a VPC switch.
+     * @return The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
      * 
      */
     public Output<String> zoneId() {

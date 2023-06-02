@@ -24,21 +24,38 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Mse.Cluster("example", new()
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         AclEntryLists = new[]
-    ///         {
-    ///             "127.0.0.1/32",
-    ///         },
-    ///         ClusterAliasName = "tf-testAccMseCluster",
-    ///         ClusterSpecification = "MSE_SC_1_2_200_c",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var exampleCluster = new AliCloud.Mse.Cluster("exampleCluster", new()
+    ///     {
+    ///         ClusterSpecification = "MSE_SC_1_2_60_c",
     ///         ClusterType = "Nacos-Ans",
-    ///         ClusterVersion = "NACOS_ANS_1_2_1",
+    ///         ClusterVersion = "NACOS_2_0_0",
     ///         InstanceCount = 1,
-    ///         MseVersion = "mse_dev",
     ///         NetType = "privatenet",
     ///         PubNetworkFlow = "1",
-    ///         VswitchId = "vsw-123456",
+    ///         ConnectionType = "slb",
+    ///         ClusterAliasName = "terraform-example",
+    ///         MseVersion = "mse_dev",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
     /// });
@@ -62,13 +79,19 @@ namespace Pulumi.AliCloud.Mse
         public Output<ImmutableArray<string>> AclEntryLists { get; private set; } = null!;
 
         /// <summary>
+        /// (Available in v1.205.0+) The application version.
+        /// </summary>
+        [Output("appVersion")]
+        public Output<string> AppVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The alias of MSE Cluster.
         /// </summary>
         [Output("clusterAliasName")]
         public Output<string?> ClusterAliasName { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.162.0+)  The id of Cluster.
+        /// (Available in v1.162.0+) The id of Cluster.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
@@ -332,13 +355,19 @@ namespace Pulumi.AliCloud.Mse
         }
 
         /// <summary>
+        /// (Available in v1.205.0+) The application version.
+        /// </summary>
+        [Input("appVersion")]
+        public Input<string>? AppVersion { get; set; }
+
+        /// <summary>
         /// The alias of MSE Cluster.
         /// </summary>
         [Input("clusterAliasName")]
         public Input<string>? ClusterAliasName { get; set; }
 
         /// <summary>
-        /// (Available in v1.162.0+)  The id of Cluster.
+        /// (Available in v1.162.0+) The id of Cluster.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }

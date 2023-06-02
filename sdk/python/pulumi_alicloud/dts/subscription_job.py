@@ -1369,7 +1369,7 @@ class SubscriptionJob(pulumi.CustomResource):
             privilege="ReadWrite",
             db_names=[__item.name for __item in db])
         default1_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default1_switches = alicloud.vpc.get_switches(vpc_id=data["alicloud_vpcs"]["default"]["ids"])
+        default1_switches = alicloud.vpc.get_switches(vpc_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
         default_subscription_job = alicloud.dts.SubscriptionJob("defaultSubscriptionJob",
             dts_job_name=name,
             payment_type="PayAsYouGo",
@@ -1496,7 +1496,7 @@ class SubscriptionJob(pulumi.CustomResource):
             privilege="ReadWrite",
             db_names=[__item.name for __item in db])
         default1_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default1_switches = alicloud.vpc.get_switches(vpc_id=data["alicloud_vpcs"]["default"]["ids"])
+        default1_switches = alicloud.vpc.get_switches(vpc_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
         default_subscription_job = alicloud.dts.SubscriptionJob("defaultSubscriptionJob",
             dts_job_name=name,
             payment_type="PayAsYouGo",

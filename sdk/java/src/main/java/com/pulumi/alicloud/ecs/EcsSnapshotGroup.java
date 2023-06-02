@@ -35,27 +35,25 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.alicloud.ecs.Disk;
- * import com.pulumi.alicloud.ecs.DiskArgs;
- * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.ecs.EcsDisk;
+ * import com.pulumi.alicloud.ecs.EcsDiskArgs;
  * import com.pulumi.alicloud.ecs.DiskAttachment;
  * import com.pulumi.alicloud.ecs.DiskAttachmentArgs;
  * import com.pulumi.alicloud.ecs.EcsSnapshotGroup;
  * import com.pulumi.alicloud.ecs.EcsSnapshotGroupArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -69,10 +67,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .nameRegex(&#34;default&#34;)
- *             .build());
- * 
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;Instance&#34;)
  *             .availableDiskCategory(&#34;cloud_essd&#34;)
@@ -80,70 +74,62 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .cpuCoreCount(2)
- *             .memorySize(4)
  *             .systemDiskCategory(&#34;cloud_essd&#34;)
  *             .build());
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
- *             .build());
- * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build());
- * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .description(&#34;New security group&#34;)
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .build());
- * 
- *         for (var i = 0; i &lt; 2; i++) {
- *             new Disk(&#34;defaultDisk-&#34; + i, DiskArgs.builder()            
- *                 .diskName(var_.name())
- *                 .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].availabilityZones()[0]))
- *                 .category(&#34;cloud_essd&#34;)
- *                 .size(&#34;20&#34;)
- *                 .build());
- * 
- *         
- * }
  *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .instanceName(var_.name())
- *             .hostName(&#34;tf-testAcc&#34;)
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .securityGroups(defaultSecurityGroup.id())
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build());
  * 
- *         for (var i = 0; i &lt; 2; i++) {
- *             new DiskAttachment(&#34;defaultDiskAttachment-&#34; + i, DiskAttachmentArgs.builder()            
- *                 .diskId(defaultDisk.stream().map(element -&gt; element.id()).collect(toList())[range.value()])
- *                 .instanceId(defaultInstance.id())
- *                 .build());
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
  * 
- *         
- * }
- *         var example = new EcsSnapshotGroup(&#34;example&#34;, EcsSnapshotGroupArgs.builder()        
- *             .description(&#34;example_value&#34;)
- *             .diskIds(            
- *                 defaultDiskAttachment[0].diskId(),
- *                 defaultDiskAttachment[1].diskId())
- *             .snapshotGroupName(&#34;example_value&#34;)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
- *             .instanceId(defaultDiskAttachment[0].instanceId())
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceName(&#34;terraform-example&#34;)
+ *             .securityGroups(defaultSecurityGroup.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .internetMaxBandwidthOut(10)
+ *             .build());
+ * 
+ *         var defaultEcsDisk = new EcsDisk(&#34;defaultEcsDisk&#34;, EcsDiskArgs.builder()        
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .diskName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .category(&#34;cloud_essd&#34;)
+ *             .size(&#34;30&#34;)
+ *             .build());
+ * 
+ *         var defaultDiskAttachment = new DiskAttachment(&#34;defaultDiskAttachment&#34;, DiskAttachmentArgs.builder()        
+ *             .diskId(defaultEcsDisk.id())
+ *             .instanceId(defaultInstance.id())
+ *             .build());
+ * 
+ *         var defaultEcsSnapshotGroup = new EcsSnapshotGroup(&#34;defaultEcsSnapshotGroup&#34;, EcsSnapshotGroupArgs.builder()        
+ *             .description(&#34;terraform-example&#34;)
+ *             .diskIds(defaultEcsDisk.id())
+ *             .snapshotGroupName(&#34;terraform-example&#34;)
+ *             .instanceId(defaultInstance.id())
  *             .instantAccess(true)
  *             .instantAccessRetentionDays(1)
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Acceptance-test&#34;)
+ *                 Map.entry(&#34;For&#34;, &#34;Acceptance&#34;)
  *             ))
  *             .build());
  * 

@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Oos
     ///     {
     ///         TemplateName = "ACS-ECS-InventoryDataCollection",
     ///         ConfigureMode = "ApplyOnly",
-    ///         Description = @var.Name,
+    ///         Description = "terraform-example",
     ///         ScheduleType = "rate",
     ///         ScheduleExpression = "1 hour",
     ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Oos
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
-    ///             { "For", "Test" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 

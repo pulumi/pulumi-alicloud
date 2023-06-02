@@ -10,65 +10,82 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a network acl resource to add network acls.
+    /// Provides a VPC Network Acl resource.
+    /// &gt; **NOTE:** Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
     /// 
-    /// &gt; **NOTE:** Available in 1.43.0+. Currently, the resource are only available in Hongkong(cn-hongkong), India(ap-south-1), and Indonesia(ap-southeast-1) regions.
+    /// For information about VPC Network Acl and how to use it, see [What is Network Acl](https://www.alibabacloud.com/help/en/ens/latest/createnetworkacl).
+    /// 
+    /// &gt; **NOTE:** Available in v1.43.0+.
     /// 
     /// ## Import
     /// 
-    /// The network acl can be imported using the id, e.g.
+    /// VPC Network Acl can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:vpc/networkAcl:NetworkAcl default nacl-abc123456
+    ///  $ pulumi import alicloud:vpc/networkAcl:NetworkAcl example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/networkAcl:NetworkAcl")]
     public partial class NetworkAcl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the network acl instance.
+        /// The creation time of the resource.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+        /// Out direction rule information. See the following `Block EgressAclEntries`.
         /// </summary>
         [Output("egressAclEntries")]
         public Output<ImmutableArray<Outputs.NetworkAclEgressAclEntry>> EgressAclEntries { get; private set; } = null!;
 
         /// <summary>
-        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+        /// Inward direction rule information. See the following `Block IngressAclEntries`.
         /// </summary>
         [Output("ingressAclEntries")]
         public Output<ImmutableArray<Outputs.NetworkAclIngressAclEntry>> IngressAclEntries { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
+        /// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the network acl.
+        /// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Output("networkAclName")]
         public Output<string> NetworkAclName { get; private set; } = null!;
 
         /// <summary>
-        /// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`."
+        /// The associated resource. See the following `Block Resources`.
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<Outputs.NetworkAclResource>> Resources { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.122.0+) The status of the network acl.
+        /// The state of the network ACL.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The vpc_id of the network acl, the field can't be changed.
+        /// The tags of this resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the associated VPC.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -120,7 +137,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NetworkAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the network acl instance.
+        /// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -129,7 +146,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclEgressAclEntryArgs>? _egressAclEntries;
 
         /// <summary>
-        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+        /// Out direction rule information. See the following `Block EgressAclEntries`.
         /// </summary>
         public InputList<Inputs.NetworkAclEgressAclEntryArgs> EgressAclEntries
         {
@@ -141,7 +158,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclIngressAclEntryArgs>? _ingressAclEntries;
 
         /// <summary>
-        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+        /// Inward direction rule information. See the following `Block IngressAclEntries`.
         /// </summary>
         public InputList<Inputs.NetworkAclIngressAclEntryArgs> IngressAclEntries
         {
@@ -150,13 +167,13 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
+        /// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the network acl.
+        /// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("networkAclName")]
         public Input<string>? NetworkAclName { get; set; }
@@ -165,17 +182,30 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclResourceArgs>? _resources;
 
         /// <summary>
-        /// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`."
+        /// The associated resource. See the following `Block Resources`.
         /// </summary>
-        [Obsolete(@"Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.")]
         public InputList<Inputs.NetworkAclResourceArgs> Resources
         {
             get => _resources ?? (_resources = new InputList<Inputs.NetworkAclResourceArgs>());
             set => _resources = value;
         }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
         /// <summary>
-        /// The vpc_id of the network acl, the field can't be changed.
+        /// The tags of this resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The ID of the associated VPC.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -189,7 +219,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class NetworkAclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the network acl instance.
+        /// The creation time of the resource.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -198,7 +234,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclEgressAclEntryGetArgs>? _egressAclEntries;
 
         /// <summary>
-        /// List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block `egress_acl_entries`.
+        /// Out direction rule information. See the following `Block EgressAclEntries`.
         /// </summary>
         public InputList<Inputs.NetworkAclEgressAclEntryGetArgs> EgressAclEntries
         {
@@ -210,7 +246,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclIngressAclEntryGetArgs>? _ingressAclEntries;
 
         /// <summary>
-        /// List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block `ingress_acl_entries`.
+        /// Inward direction rule information. See the following `Block IngressAclEntries`.
         /// </summary>
         public InputList<Inputs.NetworkAclIngressAclEntryGetArgs> IngressAclEntries
         {
@@ -219,13 +255,13 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.122.0. New field `network_acl_name` instead.
+        /// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the network acl.
+        /// The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("networkAclName")]
         public Input<string>? NetworkAclName { get; set; }
@@ -234,9 +270,8 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.NetworkAclResourceGetArgs>? _resources;
 
         /// <summary>
-        /// The associated resources. See the following `Block resources`. **NOTE:** "Field `resources` has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource `alicloud.vpc.VpcNetworkAclAttachment`."
+        /// The associated resource. See the following `Block Resources`.
         /// </summary>
-        [Obsolete(@"Field 'resources' has been deprecated from provider version 1.193.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_network_acl_attachment'.")]
         public InputList<Inputs.NetworkAclResourceGetArgs> Resources
         {
             get => _resources ?? (_resources = new InputList<Inputs.NetworkAclResourceGetArgs>());
@@ -244,13 +279,27 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// (Available in 1.122.0+) The status of the network acl.
+        /// The state of the network ACL.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
         /// <summary>
-        /// The vpc_id of the network acl, the field can't be changed.
+        /// The tags of this resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The ID of the associated VPC.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

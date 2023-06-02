@@ -33,24 +33,47 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleZones = AliCloud.Nas.GetZones.Invoke(new()
+    ///     {
+    ///         FileSystemType = "standard",
+    ///     });
+    /// 
     ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
     ///     {
     ///         ProtocolType = "NFS",
     ///         StorageType = "Performance",
-    ///         Description = "test file system",
+    ///         Description = "terraform-example",
+    ///         EncryptType = 1,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
     ///     });
     /// 
     ///     var exampleAccessGroup = new AliCloud.Nas.AccessGroup("exampleAccessGroup", new()
     ///     {
-    ///         AccessGroupName = "test_name",
-    ///         AccessGroupType = "Classic",
-    ///         Description = "test access group",
+    ///         AccessGroupName = "terraform-example",
+    ///         AccessGroupType = "Vpc",
+    ///         Description = "terraform-example",
+    ///         FileSystemType = "standard",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
     ///     });
     /// 
     ///     var exampleMountTarget = new AliCloud.Nas.MountTarget("exampleMountTarget", new()
     ///     {
     ///         FileSystemId = exampleFileSystem.Id,
     ///         AccessGroupName = exampleAccessGroup.AccessGroupName,
+    ///         VswitchId = exampleSwitch.Id,
     ///     });
     /// 
     /// });

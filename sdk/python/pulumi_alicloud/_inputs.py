@@ -97,6 +97,7 @@ class ProviderEndpointArgs:
                  cloudphone: Optional[pulumi.Input[str]] = None,
                  cloudsso: Optional[pulumi.Input[str]] = None,
                  cms: Optional[pulumi.Input[str]] = None,
+                 computenest: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  cr: Optional[pulumi.Input[str]] = None,
                  cs: Optional[pulumi.Input[str]] = None,
@@ -253,6 +254,8 @@ class ProviderEndpointArgs:
             pulumi.set(__self__, "cloudsso", cloudsso)
         if cms is not None:
             pulumi.set(__self__, "cms", cms)
+        if computenest is not None:
+            pulumi.set(__self__, "computenest", computenest)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if cr is not None:
@@ -705,6 +708,15 @@ class ProviderEndpointArgs:
     @cms.setter
     def cms(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cms", value)
+
+    @property
+    @pulumi.getter
+    def computenest(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "computenest")
+
+    @computenest.setter
+    def computenest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "computenest", value)
 
     @property
     @pulumi.getter

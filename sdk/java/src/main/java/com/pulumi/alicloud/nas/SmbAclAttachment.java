@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.NasFunctions;
+ * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
  * import com.pulumi.alicloud.nas.FileSystemArgs;
  * import com.pulumi.alicloud.nas.SmbAclAttachment;
@@ -47,17 +49,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var exampleZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *             .fileSystemType(&#34;standard&#34;)
+ *             .build());
+ * 
  *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
  *             .protocolType(&#34;SMB&#34;)
- *             .storageType(&#34;Performance&#34;)
+ *             .storageType(&#34;Capacity&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .encryptType(&#34;0&#34;)
  *             .fileSystemType(&#34;standard&#34;)
- *             .zoneId(&#34;cn-hangzhou-g&#34;)
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
  *             .build());
  * 
  *         var exampleSmbAclAttachment = new SmbAclAttachment(&#34;exampleSmbAclAttachment&#34;, SmbAclAttachmentArgs.builder()        
  *             .fileSystemId(exampleFileSystem.id())
- *             .keytab(&#34;BQIAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAQAIqIx6v7p11oUAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAwAIqIx6v7p11oUAAABPAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAFwAQnQZWB3RAPHU7PMIJyBWePAAAAF8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQASACAGJ7F0s+bcBjf6jD5HlvlRLmPSOW+qDZe0Qk0lQcf8WwAAAE8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQARABDdFmanrSIatnDDhxxxxx&#34;)
- *             .keytabMd5(&#34;E3CCF7E2416DF04FA958AA4513*****&#34;)
+ *             .keytab(&#34;BQIAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAQAIqIx6v7p11oUAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAwAIqIx6v7p11oUAAABPAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAFwAQnQZWB3RAPHU7PMIJyBWePAAAAF8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQASACAGJ7F0s+bcBjf6jD5HlvlRLmPSOW+qDZe0Qk0lQcf8WwAAAE8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQARABDdFmanrSIatnDDhoOXYadj&#34;)
+ *             .keytabMd5(&#34;E3CCF7E2416DF04FA958AA4513EA29E8&#34;)
  *             .build());
  * 
  *     }

@@ -13,11 +13,20 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const object_source = new alicloud.oss.BucketObject("object-source", {
- *     bucket: "your_bucket_name",
- *     key: "new_object_key",
- *     source: "path/to/file",
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {
+ *     bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     acl: "private",
+ * });
+ * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
+ *     bucket: defaultBucket.bucket,
+ *     key: "example_key",
+ *     source: "./main.tf",
  * });
  * ```
  * ### Uploading a content to a bucket
@@ -25,14 +34,19 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const example = new alicloud.oss.Bucket("example", {
- *     bucket: "your_bucket_name",
- *     acl: "public-read",
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
  * });
- * const object_content = new alicloud.oss.BucketObject("object-content", {
- *     bucket: example.bucket,
- *     key: "new_object_key",
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {
+ *     bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     acl: "private",
+ * });
+ * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
+ *     bucket: defaultBucket.bucket,
+ *     key: "example_key",
  *     content: "the content that you want to upload.",
  * });
  * ```

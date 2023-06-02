@@ -40,6 +40,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:alb/rule:Rule")
 public class Rule extends com.pulumi.resources.CustomResource {
     /**
+     * The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     * 
+     */
+    @Export(name="direction", type=String.class, parameters={})
+    private Output<String> direction;
+
+    /**
+     * @return The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     * 
+     */
+    public Output<String> direction() {
+        return this.direction;
+    }
+    /**
      * Specifies whether to precheck this request.
      * 
      */

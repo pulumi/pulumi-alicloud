@@ -10,14 +10,16 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Ipv6 Gateway resource.
+ * Provides a Vpc Ipv6 Gateway resource. Gateway Based on Internet Protocol Version 6.
  * 
- * For information about VPC Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/doc-detail/102214.htm).
+ * For information about Vpc Ipv6 Gateway and how to use it, see [What is Ipv6 Gateway](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createipv6gateway).
  * 
  * &gt; **NOTE:** Available in v1.142.0+.
  * 
@@ -32,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourceGroup;
+ * import com.pulumi.alicloud.resourcemanager.ResourceGroupArgs;
  * import com.pulumi.alicloud.vpc.Ipv6Gateway;
  * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
  * import java.util.List;
@@ -47,14 +51,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;example_value&#34;)
- *             .enableIpv6(&#34;true&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-example&#34;);
+ *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
+ *             .description(&#34;tf-testacc&#34;)
+ *             .enableIpv6(true)
  *             .build());
  * 
- *         var example = new Ipv6Gateway(&#34;example&#34;, Ipv6GatewayArgs.builder()        
- *             .ipv6GatewayName(&#34;example_value&#34;)
- *             .vpcId(default_.id())
+ *         var defaultRg = new ResourceGroup(&#34;defaultRg&#34;, ResourceGroupArgs.builder()        
+ *             .displayName(&#34;tf-testacc-ipv6gateway503&#34;)
+ *             .resourceGroupName(String.format(&#34;%s1&#34;, name))
+ *             .build());
+ * 
+ *         var changeRg = new ResourceGroup(&#34;changeRg&#34;, ResourceGroupArgs.builder()        
+ *             .displayName(&#34;tf-testacc-ipv6gateway311&#34;)
+ *             .resourceGroupName(String.format(&#34;%s2&#34;, name))
+ *             .build());
+ * 
+ *         var default_ = new Ipv6Gateway(&#34;default&#34;, Ipv6GatewayArgs.builder()        
+ *             .description(&#34;test&#34;)
+ *             .ipv6GatewayName(name)
+ *             .vpcId(defaultVpc.id())
+ *             .resourceGroupId(defaultRg.id())
  *             .build());
  * 
  *     }
@@ -63,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Ipv6 Gateway can be imported using the id, e.g.
+ * Vpc Ipv6 Gateway can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:vpc/ipv6Gateway:Ipv6Gateway example &lt;id&gt;
@@ -73,60 +91,162 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/ipv6Gateway:Ipv6Gateway")
 public class Ipv6Gateway extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+     * The status of the IPv6 gateway.
+     * 
+     */
+    @Export(name="businessStatus", type=String.class, parameters={})
+    private Output<String> businessStatus;
+
+    /**
+     * @return The status of the IPv6 gateway.
+     * 
+     */
+    public Output<String> businessStatus() {
+        return this.businessStatus;
+    }
+    /**
+     * The creation time of the resource.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the IPv6 gateway. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
+     * @return The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * The expiration time of IPv6 gateway.
+     * 
+     */
+    @Export(name="expiredTime", type=String.class, parameters={})
+    private Output<String> expiredTime;
+
+    /**
+     * @return The expiration time of IPv6 gateway.
+     * 
+     */
+    public Output<String> expiredTime() {
+        return this.expiredTime;
+    }
+    /**
+     * The charge type of IPv6 gateway.
+     * 
+     */
+    @Export(name="instanceChargeType", type=String.class, parameters={})
+    private Output<String> instanceChargeType;
+
+    /**
+     * @return The charge type of IPv6 gateway.
+     * 
+     */
+    public Output<String> instanceChargeType() {
+        return this.instanceChargeType;
+    }
+    /**
+     * Resource primary key attribute field.
+     * 
+     */
+    @Export(name="ipv6GatewayId", type=String.class, parameters={})
+    private Output<String> ipv6GatewayId;
+
+    /**
+     * @return Resource primary key attribute field.
+     * 
+     */
+    public Output<String> ipv6GatewayId() {
+        return this.ipv6GatewayId;
+    }
+    /**
+     * The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      * 
      */
     @Export(name="ipv6GatewayName", type=String.class, parameters={})
     private Output</* @Nullable */ String> ipv6GatewayName;
 
     /**
-     * @return The name of the IPv6 gateway. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+     * @return The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      * 
      */
     public Output<Optional<String>> ipv6GatewayName() {
         return Codegen.optional(this.ipv6GatewayName);
     }
     /**
-     * The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+     * The ID of the resource group to which the instance belongs.
      * 
      */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group to which the instance belongs.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+     * 
+     * @deprecated
+     * Field &#39;Spec&#39; has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
+     * 
+     */
+    @Deprecated /* Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used. */
     @Export(name="spec", type=String.class, parameters={})
     private Output<String> spec;
 
     /**
-     * @return The edition of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
+     * @return IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      * 
      */
     public Output<String> spec() {
         return this.spec;
     }
     /**
-     * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * The status of the resource. Valid values: Available, Pending and Deleting.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * @return The status of the resource. Valid values: Available, Pending and Deleting.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The tags for the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tags for the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
