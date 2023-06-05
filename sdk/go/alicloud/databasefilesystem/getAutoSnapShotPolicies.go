@@ -13,6 +13,32 @@ import (
 // This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
 //
 // > **NOTE:** Available in 1.202.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasefilesystem"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := databasefilesystem.GetAutoSnapShotPolicies(ctx, &databasefilesystem.GetAutoSnapShotPoliciesArgs{
+// Ids: interface{}{
+// alicloud_dbfs_auto_snap_shot_policy.Default.Id,
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudDbfsAutoSnapShotPolicyExampleId", _default.AutoSnapShotPolicies[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetAutoSnapShotPolicies(ctx *pulumi.Context, args *GetAutoSnapShotPoliciesArgs, opts ...pulumi.InvokeOption) (*GetAutoSnapShotPoliciesResult, error) {
 	var rv GetAutoSnapShotPoliciesResult
 	err := ctx.Invoke("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", args, &rv, opts...)

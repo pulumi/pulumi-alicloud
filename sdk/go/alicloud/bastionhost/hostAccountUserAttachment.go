@@ -15,6 +15,75 @@ import (
 //
 // > **NOTE:** Available in v1.135.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+// "fmt"
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// defaultHost, err := bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
+// InstanceId: pulumi.String("bastionhost-cn-tl32bh0no30"),
+// HostName: pulumi.Any(_var.Name),
+// ActiveAddressType: pulumi.String("Private"),
+// HostPrivateAddress: pulumi.String("172.16.0.10"),
+// OsType: pulumi.String("Linux"),
+// Source: pulumi.String("Local"),
+// })
+// if err != nil {
+// return err
+// }
+// var defaultHostAccount []*bastionhost.HostAccount
+//
+//	for index := 0; index < 3; index++ {
+//	    key0 := index
+//	    val0 := index
+//
+// __res, err := bastionhost.NewHostAccount(ctx, fmt.Sprintf("defaultHostAccount-%v", key0), &bastionhost.HostAccountArgs{
+// InstanceId: defaultHost.InstanceId,
+// HostAccountName: pulumi.String(fmt.Sprintf("example_value-%v", val0)),
+// HostId: defaultHost.HostId,
+// ProtocolName: pulumi.String("SSH"),
+// Password: pulumi.String("YourPassword12345"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultHostAccount = append(defaultHostAccount, __res)
+// }
+// defaultUser, err := bastionhost.NewUser(ctx, "defaultUser", &bastionhost.UserArgs{
+// InstanceId: defaultHost.InstanceId,
+// MobileCountryCode: pulumi.String("CN"),
+// Mobile: pulumi.String("13312345678"),
+// Password: pulumi.String("YourPassword-123"),
+// Source: pulumi.String("Local"),
+// UserName: pulumi.String("my-local-user"),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = bastionhost.NewHostAccountUserAttachment(ctx, "defaultHostAccountUserAttachment", &bastionhost.HostAccountUserAttachmentArgs{
+// InstanceId: defaultHost.InstanceId,
+// UserId: defaultUser.UserId,
+// HostId: defaultHost.HostId,
+// HostAccountIds: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-alicloud:bastionhost-hostAccountUserAttachment:HostAccountUserAttachment.pp:31,20-54),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // ## Import
 //
 // Bastion Host Host Account can be imported using the id, e.g.

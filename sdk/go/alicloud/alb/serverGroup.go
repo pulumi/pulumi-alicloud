@@ -17,6 +17,144 @@ import (
 //
 // > **NOTE:** Available in v1.131.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "example_value";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+// CpuCoreCount: pulumi.IntRef(1),
+// MemorySize: pulumi.Float64Ref(2),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
+// MostRecent: pulumi.BoolRef(true),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("172.16.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("172.16.0.0/16"),
+// ZoneId: *pulumi.String(defaultZones.Zones[0].Id),
+// VswitchName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+// ImageId: *pulumi.String(defaultImages.Images[0].Id),
+// InstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// InstanceName: pulumi.String(name),
+// SecurityGroups: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-alicloud:alb-serverGroup:ServerGroup.pp:34,30-58),
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// VswitchId: defaultSwitch.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// _, err = alb.NewServerGroup(ctx, "defaultServerGroup", &alb.ServerGroupArgs{
+// Protocol: pulumi.String("HTTP"),
+// VpcId: defaultNetwork.ID(),
+// ServerGroupName: pulumi.String(name),
+// ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+// HealthCheckConfig: &alb.ServerGroupHealthCheckConfigArgs{
+// HealthCheckConnectPort: pulumi.Int(46325),
+// HealthCheckEnabled: pulumi.Bool(true),
+// HealthCheckHost: pulumi.String("tf-testAcc.com"),
+// HealthCheckCodes: pulumi.StringArray{
+// pulumi.String("http_2xx"),
+// pulumi.String("http_3xx"),
+// pulumi.String("http_4xx"),
+// },
+// HealthCheckHttpVersion: pulumi.String("HTTP1.1"),
+// HealthCheckInterval: pulumi.Int(2),
+// HealthCheckMethod: pulumi.String("HEAD"),
+// HealthCheckPath: pulumi.String("/tf-testAcc"),
+// HealthCheckProtocol: pulumi.String("HTTP"),
+// HealthCheckTimeout: pulumi.Int(5),
+// HealthyThreshold: pulumi.Int(3),
+// UnhealthyThreshold: pulumi.Int(3),
+// },
+// StickySessionConfig: &alb.ServerGroupStickySessionConfigArgs{
+// StickySessionEnabled: pulumi.Bool(true),
+// Cookie: pulumi.String("tf-testAcc"),
+// StickySessionType: pulumi.String("Server"),
+// },
+// Tags: pulumi.AnyMap{
+// "Created": pulumi.Any("TF"),
+// },
+// Servers: alb.ServerGroupServerArray{
+// &alb.ServerGroupServerArgs{
+// Description: pulumi.String(name),
+// Port: pulumi.Int(80),
+// ServerId: defaultInstance.ID(),
+// ServerIp: defaultInstance.PrivateIp,
+// ServerType: pulumi.String("Ecs"),
+// Weight: pulumi.Int(10),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // ## Import
 //
 // ALB Server Group can be imported using the id, e.g.

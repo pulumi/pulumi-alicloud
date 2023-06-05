@@ -13,6 +13,45 @@ import (
 // This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.132.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+// NameRegex: pulumi.StringRef("ecs_instance_name"),
+// Status: pulumi.StringRef("Running"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ids, err := hbr.GetEcsBackupClients(ctx, &hbr.GetEcsBackupClientsArgs{
+// Ids: interface{}{
+// alicloud_hbr_ecs_backup_client.Default.Id,
+// },
+// InstanceIds: interface{}{
+// alicloud_hbr_ecs_backup_client.Default.Instance_id,
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("hbrEcsBackupClientId1", ids.Clients[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetEcsBackupClients(ctx *pulumi.Context, args *GetEcsBackupClientsArgs, opts ...pulumi.InvokeOption) (*GetEcsBackupClientsResult, error) {
 	var rv GetEcsBackupClientsResult
 	err := ctx.Invoke("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args, &rv, opts...)

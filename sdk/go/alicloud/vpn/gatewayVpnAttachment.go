@@ -17,6 +17,87 @@ import (
 //
 // > **NOTE:** Available in v1.181.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpn"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "defaultCustomerGateway", &vpn.CustomerGatewayArgs{
+// IpAddress: pulumi.String("42.104.22.210"),
+// Asn: pulumi.String("45014"),
+// Description: pulumi.String("testAccVpnConnectionDesc"),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = vpn.NewGatewayVpnAttachment(ctx, "defaultGatewayVpnAttachment", &vpn.GatewayVpnAttachmentArgs{
+// CustomerGatewayId: defaultCustomerGateway.ID(),
+// NetworkType: pulumi.String("public"),
+// LocalSubnet: pulumi.String("0.0.0.0/0"),
+// RemoteSubnet: pulumi.String("0.0.0.0/0"),
+// EffectImmediately: pulumi.Bool(false),
+// IkeConfig: &vpn.GatewayVpnAttachmentIkeConfigArgs{
+// IkeAuthAlg: pulumi.String("md5"),
+// IkeEncAlg: pulumi.String("des"),
+// IkeVersion: pulumi.String("ikev2"),
+// IkeMode: pulumi.String("main"),
+// IkeLifetime: pulumi.Int(86400),
+// Psk: pulumi.String("tf-testvpn2"),
+// IkePfs: pulumi.String("group1"),
+// RemoteId: pulumi.String("testbob2"),
+// LocalId: pulumi.String("testalice2"),
+// },
+// IpsecConfig: &vpn.GatewayVpnAttachmentIpsecConfigArgs{
+// IpsecPfs: pulumi.String("group5"),
+// IpsecEncAlg: pulumi.String("des"),
+// IpsecAuthAlg: pulumi.String("md5"),
+// IpsecLifetime: pulumi.Int(86400),
+// },
+// BgpConfig: &vpn.GatewayVpnAttachmentBgpConfigArgs{
+// Enable: pulumi.Bool(true),
+// LocalAsn: pulumi.Int(45014),
+// TunnelCidr: pulumi.String("169.254.11.0/30"),
+// LocalBgpIp: pulumi.String("169.254.11.1"),
+// },
+// HealthCheckConfig: &vpn.GatewayVpnAttachmentHealthCheckConfigArgs{
+// Enable: pulumi.Bool(true),
+// Sip: pulumi.String("192.168.1.1"),
+// Dip: pulumi.String("10.0.0.1"),
+// Interval: pulumi.Int(10),
+// Retry: pulumi.Int(10),
+// Policy: pulumi.String("revoke_route"),
+// },
+// EnableDpd: pulumi.Bool(true),
+// EnableNatTraversal: pulumi.Bool(true),
+// VpnAttachmentName: pulumi.Any(_var.Name),
+// })
+// if err != nil {
+// return err
+// }
+// vpnAttachments, err := vpn.GetGatewayVpnAttachments(ctx, &vpn.GetGatewayVpnAttachmentsArgs{
+// Ids: interface{}{
+// alicloud_vpn_gateway_vpn_attachment.Vpn_attachment1.Id,
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("localId", vpnAttachments.Attachments[0].IkeConfigs[0].LocalId)
+// ctx.Export("internetIp", vpnAttachments.Attachments[0].InternetIp)
+// return nil
+// })
+// }
+// ```
+//
 // ## Import
 //
 // VPN Gateway Vpn Attachment can be imported using the id, e.g.

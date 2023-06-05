@@ -13,6 +13,32 @@ import (
 // This data source provides Ecs Elasticity Assurance available to the user.
 //
 // > **NOTE:** Available in 1.196.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := ecs.GetElasticityAssurances(ctx, &ecs.GetElasticityAssurancesArgs{
+// Ids: interface{}{
+// alicloud_ecs_elasticity_assurance.Default.Id,
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudEcsElasticityAssuranceExampleId", _default.Assurances[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetElasticityAssurances(ctx *pulumi.Context, args *GetElasticityAssurancesArgs, opts ...pulumi.InvokeOption) (*GetElasticityAssurancesResult, error) {
 	var rv GetElasticityAssurancesResult
 	err := ctx.Invoke("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", args, &rv, opts...)

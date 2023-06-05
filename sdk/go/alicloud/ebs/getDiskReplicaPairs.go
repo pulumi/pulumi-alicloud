@@ -13,6 +13,32 @@ import (
 // This data source provides Ebs Disk Replica Pair available to the user.
 //
 // > **NOTE:** Available in 1.196.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ebs"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := ebs.GetDiskReplicaPairs(ctx, &ebs.GetDiskReplicaPairsArgs{
+// Ids: interface{}{
+// alicloud_ebs_disk_replica_pair.Default.Id,
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudEbsDiskReplicaPairExampleId", _default.Pairs[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetDiskReplicaPairs(ctx *pulumi.Context, args *GetDiskReplicaPairsArgs, opts ...pulumi.InvokeOption) (*GetDiskReplicaPairsResult, error) {
 	var rv GetDiskReplicaPairsResult
 	err := ctx.Invoke("alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs", args, &rv, opts...)

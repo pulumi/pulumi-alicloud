@@ -13,6 +13,93 @@ import (
 // This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.138.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// defaultEcsBackupPlans, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
+// NameRegex: pulumi.StringRef("plan-name"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultBackupJobs, err := hbr.GetBackupJobs(ctx, &hbr.GetBackupJobsArgs{
+// SourceType: "ECS_FILE",
+// Filters: []hbr.GetBackupJobsFilter{
+// {
+// Key: pulumi.StringRef("VaultId"),
+// Operator: pulumi.StringRef("IN"),
+// Values: interface{}{
+// defaultEcsBackupPlans.Plans[0].VaultId,
+// },
+// },
+// {
+// Key: pulumi.StringRef("InstanceId"),
+// Operator: pulumi.StringRef("IN"),
+// Values: interface{}{
+// defaultEcsBackupPlans.Plans[0].InstanceId,
+// },
+// },
+// {
+// Key: pulumi.StringRef("CompleteTime"),
+// Operator: pulumi.StringRef("BETWEEN"),
+// Values: []string{
+// "2021-08-23T14:17:15CST",
+// "2021-08-24T14:17:15CST",
+// },
+// },
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// example, err := hbr.GetBackupJobs(ctx, &hbr.GetBackupJobsArgs{
+// SourceType: "ECS_FILE",
+// Status: pulumi.StringRef("COMPLETE"),
+// Filters: []hbr.GetBackupJobsFilter{
+// {
+// Key: pulumi.StringRef("VaultId"),
+// Operator: pulumi.StringRef("IN"),
+// Values: interface{}{
+// defaultEcsBackupPlans.Plans[0].VaultId,
+// },
+// },
+// {
+// Key: pulumi.StringRef("InstanceId"),
+// Operator: pulumi.StringRef("IN"),
+// Values: interface{}{
+// defaultEcsBackupPlans.Plans[0].InstanceId,
+// },
+// },
+// {
+// Key: pulumi.StringRef("CompleteTime"),
+// Operator: pulumi.StringRef("LESS_THAN"),
+// Values: []string{
+// "2021-10-20T20:20:20CST",
+// },
+// },
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudHbrBackupJobsDefault1", defaultBackupJobs.Jobs[0].Id)
+// ctx.Export("alicloudHbrBackupJobsExample1", example.Jobs[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetBackupJobs(ctx *pulumi.Context, args *GetBackupJobsArgs, opts ...pulumi.InvokeOption) (*GetBackupJobsResult, error) {
 	var rv GetBackupJobsResult
 	err := ctx.Invoke("alicloud:hbr/getBackupJobs:getBackupJobs", args, &rv, opts...)
