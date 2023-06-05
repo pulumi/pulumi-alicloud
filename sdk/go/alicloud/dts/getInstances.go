@@ -13,6 +13,33 @@ import (
 // This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)
 //
 // > **NOTE:** Available in 1.198.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := dts.GetInstances(ctx, &dts.GetInstancesArgs{
+// Ids: interface{}{
+// alicloud_dts_instance.Default.Id,
+// },
+// ResourceGroupId: pulumi.StringRef("example_value"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudDtsInstanceExampleId", _default.Instances[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	var rv GetInstancesResult
 	err := ctx.Invoke("alicloud:dts/getInstances:getInstances", args, &rv, opts...)

@@ -27,6 +27,94 @@ import (
 //
 // > **NOTE:**  There is unsupported 'deletion_protection' attribute when the instance is spot
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "auto_provisioning_group";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("172.16.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+// Description: pulumi.String("foo"),
+// VpcId: vpc.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// key, err := kms.NewKey(ctx, "key", &kms.KeyArgs{
+// Description: pulumi.String("Hello KMS"),
+// PendingWindowInDays: pulumi.Int(7),
+// Status: pulumi.String("Enabled"),
+// })
+// if err != nil {
+// return err
+// }
+// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+// VpcId: vpc.ID(),
+// CidrBlock: pulumi.String("172.16.0.0/24"),
+// ZoneId: *pulumi.String(_default.Zones[0].Id),
+// VswitchName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
+// AvailabilityZone: *pulumi.String(_default.Zones[0].Id),
+// SecurityGroups: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-alicloud:ecs-instance:Instance.pp:31,21-34),
+// InstanceType: pulumi.String("ecs.n4.large"),
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// SystemDiskName: pulumi.String("test_foo_system_disk_name"),
+// SystemDiskDescription: pulumi.String("test_foo_system_disk_description"),
+// ImageId: pulumi.String("ubuntu_18_04_64_20G_alibase_20190624.vhd"),
+// InstanceName: pulumi.String("test_foo"),
+// VswitchId: vswitch.ID(),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// DataDisks: ecs.InstanceDataDiskArray{
+// &ecs.InstanceDataDiskArgs{
+// Name: pulumi.String("disk2"),
+// Size: pulumi.Int(20),
+// Category: pulumi.String("cloud_efficiency"),
+// Description: pulumi.String("disk2"),
+// Encrypted: pulumi.Bool(true),
+// KmsKeyId: key.ID(),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 // ## Module Support
 //
 // You can use the existing ecs-instance module

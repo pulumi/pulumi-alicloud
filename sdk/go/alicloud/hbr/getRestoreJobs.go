@@ -13,6 +13,43 @@ import (
 // This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.133.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// defaultEcsBackupPlans, err := hbr.GetEcsBackupPlans(ctx, &hbr.GetEcsBackupPlansArgs{
+// NameRegex: pulumi.StringRef("plan-name"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// _, err = hbr.GetRestoreJobs(ctx, &hbr.GetRestoreJobsArgs{
+// RestoreType: "ECS_FILE",
+// VaultIds: interface{}{
+// defaultEcsBackupPlans.Plans[0].VaultId,
+// },
+// TargetInstanceIds: interface{}{
+// defaultEcsBackupPlans.Plans[0].InstanceId,
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 func GetRestoreJobs(ctx *pulumi.Context, args *GetRestoreJobsArgs, opts ...pulumi.InvokeOption) (*GetRestoreJobsResult, error) {
 	var rv GetRestoreJobsResult
 	err := ctx.Invoke("alicloud:hbr/getRestoreJobs:getRestoreJobs", args, &rv, opts...)

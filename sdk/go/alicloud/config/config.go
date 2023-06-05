@@ -50,7 +50,11 @@ func GetEcsRoleName(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALICLOUD_ECS_ROLE_NAME").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "ALICLOUD_ECS_ROLE_NAME"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetEndpoints(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:endpoints")
@@ -87,7 +91,11 @@ func GetProfile(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALICLOUD_PROFILE").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "ALICLOUD_PROFILE"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetProtocol(ctx *pulumi.Context) string {
 	return config.Get(ctx, "alicloud:protocol")
@@ -99,7 +107,11 @@ func GetRegion(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALICLOUD_REGION").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "ALICLOUD_REGION"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud

@@ -13,6 +13,33 @@ import (
 // This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
 //
 // > **NOTE:** Available in 1.199.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/expressconnect"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := expressconnect.GetRouterInterfaces(ctx, &expressconnect.GetRouterInterfacesArgs{
+// Ids: interface{}{
+// alicloud_router_interface.Default.Id,
+// },
+// NameRegex: pulumi.StringRef(alicloud_router_interface.Default.Name),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudRouterInterfaceExampleId", _default.Interfaces[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetRouterInterfaces(ctx *pulumi.Context, args *GetRouterInterfacesArgs, opts ...pulumi.InvokeOption) (*GetRouterInterfacesResult, error) {
 	var rv GetRouterInterfacesResult
 	err := ctx.Invoke("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", args, &rv, opts...)

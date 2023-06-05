@@ -15,6 +15,39 @@ import (
 // > **NOTE:** Available in 1.60.0+
 //
 // > **NOTE:** Only the following regions support create Cloud Connect Network. [`cn-shanghai`, `cn-shanghai-finance-1`, `cn-hongkong`, `ap-southeast-1`, `ap-southeast-2`, `ap-southeast-3`, `ap-southeast-5`, `ap-northeast-1`, `eu-central-1`]
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rocketmq"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/sag"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := sag.GetAcls(ctx, &sag.GetAclsArgs{
+// Ids: interface{}{
+// alicloud_sag_acls.Default.Id,
+// },
+// NameRegex: pulumi.StringRef("^tf-testAcc.*"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// _, err = rocketmq.NewAcl(ctx, "defaultAcl", nil)
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 func GetAcls(ctx *pulumi.Context, args *GetAclsArgs, opts ...pulumi.InvokeOption) (*GetAclsResult, error) {
 	var rv GetAclsResult
 	err := ctx.Invoke("alicloud:sag/getAcls:getAcls", args, &rv, opts...)

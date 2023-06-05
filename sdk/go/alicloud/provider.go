@@ -65,13 +65,19 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.EcsRoleName == nil {
-		args.EcsRoleName = pulumi.StringPtr(getEnvOrDefault("", nil, "ALICLOUD_ECS_ROLE_NAME").(string))
+		if d := getEnvOrDefault(nil, nil, "ALICLOUD_ECS_ROLE_NAME"); d != nil {
+			args.EcsRoleName = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.Profile == nil {
-		args.Profile = pulumi.StringPtr(getEnvOrDefault("", nil, "ALICLOUD_PROFILE").(string))
+		if d := getEnvOrDefault(nil, nil, "ALICLOUD_PROFILE"); d != nil {
+			args.Profile = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.Region == nil {
-		args.Region = pulumi.StringPtr(getEnvOrDefault("", nil, "ALICLOUD_REGION").(string))
+		if d := getEnvOrDefault(nil, nil, "ALICLOUD_REGION"); d != nil {
+			args.Region = pulumi.StringPtr(d.(string))
+		}
 	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:alicloud", name, args, &resource, opts...)

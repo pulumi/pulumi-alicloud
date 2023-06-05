@@ -15,6 +15,208 @@ import (
 // > **DEPRECATED:**  This datasource has been deprecated from version `1.204.0`. Please use new datasource emrv2_clusters.
 //
 // > **NOTE:** Available in v1.146.0+.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/emr"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf-testAccClusters";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+// Status: pulumi.StringRef("OK"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultMainVersions, err := emr.GetMainVersions(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// defaultInstanceTypes, err := emr.GetInstanceTypes(ctx, &emr.GetInstanceTypesArgs{
+// DestinationResource: "InstanceType",
+// ClusterType: defaultMainVersions.MainVersions[0].ClusterTypes[0],
+// SupportLocalStorage: pulumi.BoolRef(false),
+// InstanceChargeType: "PostPaid",
+// SupportNodeTypes: []string{
+// "MASTER",
+// "CORE",
+// "TASK",
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// dataDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+// DestinationResource: "DataDisk",
+// ClusterType: defaultMainVersions.MainVersions[0].ClusterTypes[0],
+// InstanceChargeType: "PostPaid",
+// InstanceType: defaultInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultInstanceTypes.Types[0].ZoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// systemDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+// DestinationResource: "SystemDisk",
+// ClusterType: defaultMainVersions.MainVersions[0].ClusterTypes[0],
+// InstanceChargeType: "PostPaid",
+// InstanceType: defaultInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultInstanceTypes.Types[0].ZoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// NameRegex: pulumi.StringRef("default-NODELETING"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+// VpcId: *pulumi.String(defaultNetworks.Ids[0]),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+// VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+// ZoneId: pulumi.StringRef(defaultInstanceTypes.Types[0].ZoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+// Document: pulumi.String("    {\n        \"Statement\": [\n        {\n            \"Action\": \"sts:AssumeRole\",\n            \"Effect\": \"Allow\",\n            \"Principal\": {\n            \"Service\": [\n                \"emr.aliyuncs.com\",\n                \"ecs.aliyuncs.com\"\n            ]\n            }\n        }\n        ],\n        \"Version\": \"1\"\n    }\n"),
+// Description: pulumi.String("this is a role test."),
+// Force: pulumi.Bool(true),
+// })
+// if err != nil {
+// return err
+// }
+// defaultCluster, err := emr.NewCluster(ctx, "defaultCluster", &emr.ClusterArgs{
+// EmrVer: *pulumi.String(defaultMainVersions.MainVersions[0].EmrVersion),
+// ClusterType: *pulumi.String(defaultMainVersions.MainVersions[0].ClusterTypes[0]),
+// HostGroups: emr.ClusterHostGroupArray{
+// var tmp0 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp0 = *pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp0 = pulumi.String("160")
+// }
+// var tmp1 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp1 = *pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp1 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("master_group"),
+// HostGroupType: pulumi.String("MASTER"),
+// NodeCount: pulumi.String("2"),
+// InstanceType: *pulumi.String(defaultInstanceTypes.Types[0].Id),
+// DiskType: *pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp0),
+// DiskCount: pulumi.String("1"),
+// SysDiskType: *pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp1),
+// },
+// var tmp2 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp2 = *pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp2 = pulumi.String("160")
+// }
+// var tmp3 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp3 = *pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp3 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("core_group"),
+// HostGroupType: pulumi.String("CORE"),
+// NodeCount: pulumi.String("3"),
+// InstanceType: *pulumi.String(defaultInstanceTypes.Types[0].Id),
+// DiskType: *pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp2),
+// DiskCount: pulumi.String("4"),
+// SysDiskType: *pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp3),
+// },
+// var tmp4 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp4 = *pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp4 = pulumi.String("160")
+// }
+// var tmp5 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp5 = *pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp5 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("task_group"),
+// HostGroupType: pulumi.String("TASK"),
+// NodeCount: pulumi.String("2"),
+// InstanceType: *pulumi.String(defaultInstanceTypes.Types[0].Id),
+// DiskType: *pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp4),
+// DiskCount: pulumi.String("4"),
+// SysDiskType: *pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp5),
+// },
+// },
+// HighAvailabilityEnable: pulumi.Bool(true),
+// ZoneId: *pulumi.String(defaultInstanceTypes.Types[0].ZoneId),
+// SecurityGroupId: defaultSecurityGroup.ID(),
+// IsOpenPublicIp: pulumi.Bool(true),
+// ChargeType: pulumi.String("PostPaid"),
+// VswitchId: *pulumi.String(defaultSwitches.Ids[0]),
+// UserDefinedEmrEcsRole: defaultRole.Name,
+// SshEnable: pulumi.Bool(true),
+// MasterPwd: pulumi.String("ABCtest1234!"),
+// Tags: pulumi.AnyMap{
+// "Created": pulumi.Any("TF"),
+// "For": pulumi.Any("acceptance test"),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// ids, err := emr.GetClusters(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("emrClusterId1", ids.Clusters[0].Id)
+// nameRegex := emr.GetClustersOutput(ctx, emr.GetClustersOutputArgs{
+// NameRegex: defaultCluster.Name,
+// }, nil);
+// ctx.Export("emrClusterId2", nameRegex.ApplyT(func(nameRegex emr.GetClustersResult) (*string, error) {
+// return &nameRegex.Clusters[0].Id, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
+// ```
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	var rv GetClustersResult
 	err := ctx.Invoke("alicloud:emr/getClusters:getClusters", args, &rv, opts...)

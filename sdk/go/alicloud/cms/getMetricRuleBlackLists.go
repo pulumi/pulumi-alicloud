@@ -13,6 +13,34 @@ import (
 // This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
 //
 // > **NOTE:** Available in 1.194.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _, err := cms.GetMetricRuleBlackLists(ctx, &cms.GetMetricRuleBlackListsArgs{
+// Ids: interface{}{
+// alicloud_cms_metric_rule_black_lists.Default.Id,
+// },
+// Category: pulumi.StringRef("ecs"),
+// Namespace: pulumi.StringRef("acs_ecs_dashboard"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudCmsRuleBlackListExampleId", data.Alicloud_cms_metric_rule_black_lists.Lists[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetMetricRuleBlackLists(ctx *pulumi.Context, args *GetMetricRuleBlackListsArgs, opts ...pulumi.InvokeOption) (*GetMetricRuleBlackListsResult, error) {
 	var rv GetMetricRuleBlackListsResult
 	err := ctx.Invoke("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", args, &rv, opts...)

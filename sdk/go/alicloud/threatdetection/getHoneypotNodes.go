@@ -13,6 +13,32 @@ import (
 // This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode)
 //
 // > **NOTE:** Available in 1.195.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := threatdetection.GetHoneypotNodes(ctx, &threatdetection.GetHoneypotNodesArgs{
+// Ids: interface{}{
+// alicloud_threat_detection_honeypot_node.Default.Id,
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudThreatDetectionHoneypotNodeExampleId", _default.Nodes[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetHoneypotNodes(ctx *pulumi.Context, args *GetHoneypotNodesArgs, opts ...pulumi.InvokeOption) (*GetHoneypotNodesResult, error) {
 	var rv GetHoneypotNodesResult
 	err := ctx.Invoke("alicloud:threatdetection/getHoneypotNodes:getHoneypotNodes", args, &rv, opts...)

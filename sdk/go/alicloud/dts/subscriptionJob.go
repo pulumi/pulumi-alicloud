@@ -17,6 +17,134 @@ import (
 //
 // > **NOTE:** Available in v1.138.0+.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "dtsSubscriptionJob";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// creation := "Rds";
+// if param := cfg.Get("creation"); param != ""{
+// creation = param
+// }
+// defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableResourceCreation: pulumi.StringRef(creation),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("172.16.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("172.16.0.0/24"),
+// ZoneId: *pulumi.String(defaultZones.Zones[0].Id),
+// VswitchName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
+// Engine: pulumi.String("MySQL"),
+// EngineVersion: pulumi.String("5.6"),
+// InstanceType: pulumi.String("rds.mysql.s1.small"),
+// InstanceStorage: pulumi.Int(10),
+// VswitchId: defaultSwitch.ID(),
+// InstanceName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// var db []*rds.Database
+//
+//	for index := 0; index < 2; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := rds.NewDatabase(ctx, fmt.Sprintf("db-%v", key0), &rds.DatabaseArgs{
+// InstanceId: instance.ID(),
+// Description: pulumi.String("from terraform"),
+// })
+// if err != nil {
+// return err
+// }
+// db = append(db, __res)
+// }
+// account, err := rds.NewAccount(ctx, "account", &rds.AccountArgs{
+// InstanceId: instance.ID(),
+// Password: pulumi.String("Test12345"),
+// Description: pulumi.String("from terraform"),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = rds.NewAccountPrivilege(ctx, "privilege", &rds.AccountPrivilegeArgs{
+// InstanceId: instance.ID(),
+// AccountName: account.Name,
+// Privilege: pulumi.String("ReadWrite"),
+// DbNames: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-alicloud:dts-subscriptionJob:SubscriptionJob.pp:44,17-26),
+// })
+// if err != nil {
+// return err
+// }
+// default1Networks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// NameRegex: pulumi.StringRef("default-NODELETING"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// default1Switches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+// VpcId: pulumi.StringRef(data.Alicloud_vpcs.Default.Ids[0]),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// _, err = dts.NewSubscriptionJob(ctx, "defaultSubscriptionJob", &dts.SubscriptionJobArgs{
+// DtsJobName: pulumi.String(name),
+// PaymentType: pulumi.String("PayAsYouGo"),
+// SourceEndpointEngineName: pulumi.String("MySQL"),
+// SourceEndpointRegion: pulumi.String("cn-hangzhou"),
+// SourceEndpointInstanceType: pulumi.String("RDS"),
+// SourceEndpointInstanceId: instance.ID(),
+// SourceEndpointDatabaseName: pulumi.String("tfaccountpri_0"),
+// SourceEndpointUserName: pulumi.String("tftestprivilege"),
+// SourceEndpointPassword: pulumi.String("Test12345"),
+// DbList: pulumi.String("        {\"dtstestdata\": {\"name\": \"tfaccountpri_0\", \"all\": true}}\n"),
+// SubscriptionInstanceNetworkType: pulumi.String("vpc"),
+// SubscriptionInstanceVpcId: *pulumi.String(default1Networks.Ids[0]),
+// SubscriptionInstanceVswitchId: *pulumi.String(default1Switches.Ids[0]),
+// Status: pulumi.String("Normal"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+//
 // ## Import
 //
 // DTS Subscription Job can be imported using the id, e.g.

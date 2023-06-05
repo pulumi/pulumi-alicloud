@@ -13,6 +13,34 @@ import (
 // This data source provides Cen Inter Region Traffic Qos Queue available to the user.
 //
 // > **NOTE:** Available in 1.195.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := cen.GetInterRegionTrafficQosQueues(ctx, &cen.GetInterRegionTrafficQosQueuesArgs{
+// Ids: interface{}{
+// alicloud_cen_inter_region_traffic_qos_queue.Default.Id,
+// },
+// NameRegex: pulumi.StringRef(alicloud_cen_inter_region_traffic_qos_queue.Default.Name),
+// TrafficQosPolicyId: "qos-xxxxxxx",
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudCenInterRegionTrafficQosQueueExampleId", _default.Queues[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetInterRegionTrafficQosQueues(ctx *pulumi.Context, args *GetInterRegionTrafficQosQueuesArgs, opts ...pulumi.InvokeOption) (*GetInterRegionTrafficQosQueuesResult, error) {
 	var rv GetInterRegionTrafficQosQueuesResult
 	err := ctx.Invoke("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", args, &rv, opts...)

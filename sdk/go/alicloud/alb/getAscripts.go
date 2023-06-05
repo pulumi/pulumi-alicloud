@@ -13,6 +13,35 @@ import (
 // This data source provides Alb Ascript available to the user.
 //
 // > **NOTE:** Available in 1.195.0+
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := alb.GetAscripts(ctx, &alb.GetAscriptsArgs{
+// Ids: interface{}{
+// alicloud_alb_ascript.Default.Id,
+// },
+// NameRegex: pulumi.StringRef(alicloud_alb_ascript.Default.Name),
+// AscriptName: pulumi.StringRef("test"),
+// ListenerId: pulumi.StringRef(_var.ListenerId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("alicloudAlbAscriptExampleId", _default.Ascripts[0].Id)
+// return nil
+// })
+// }
+// ```
 func GetAscripts(ctx *pulumi.Context, args *GetAscriptsArgs, opts ...pulumi.InvokeOption) (*GetAscriptsResult, error) {
 	var rv GetAscriptsResult
 	err := ctx.Invoke("alicloud:alb/getAscripts:getAscripts", args, &rv, opts...)
