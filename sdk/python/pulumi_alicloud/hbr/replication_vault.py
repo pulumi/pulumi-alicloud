@@ -227,24 +227,20 @@ class ReplicationVault(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccReplicationVault"
-        region_source = config.get("regionSource")
-        if region_source is None:
-            region_source = "you Replication value source region"
-        source = alicloud.Provider("source", region=region_source)
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name,
-        opts=pulumi.ResourceOptions(provider=alicloud["source"]))
+        source_region = config.get("sourceRegion")
+        if source_region is None:
+            source_region = "cn-hangzhou"
+        source = alicloud.Provider("source", region=source_region)
         default_replication_vault_regions = alicloud.hbr.get_replication_vault_regions()
-        region_replication = default_replication_vault_regions.regions[0].replication_region_id
-        replication = alicloud.Provider("replication", region=region_replication)
+        replication = alicloud.Provider("replication", region=default_replication_vault_regions.regions[0].replication_region_id)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example",
+        opts=pulumi.ResourceOptions(provider=alicloud["source"]))
         default_replication_vault = alicloud.hbr.ReplicationVault("defaultReplicationVault",
-            replication_source_region_id=region_replication,
+            replication_source_region_id=source_region,
             replication_source_vault_id=default_vault.id,
-            vault_name=name,
+            vault_name="terraform-example",
             vault_storage_class="STANDARD",
-            description=name,
+            description="terraform-example",
             opts=pulumi.ResourceOptions(provider=alicloud["replication"]))
         ```
 
@@ -286,24 +282,20 @@ class ReplicationVault(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccReplicationVault"
-        region_source = config.get("regionSource")
-        if region_source is None:
-            region_source = "you Replication value source region"
-        source = alicloud.Provider("source", region=region_source)
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name,
-        opts=pulumi.ResourceOptions(provider=alicloud["source"]))
+        source_region = config.get("sourceRegion")
+        if source_region is None:
+            source_region = "cn-hangzhou"
+        source = alicloud.Provider("source", region=source_region)
         default_replication_vault_regions = alicloud.hbr.get_replication_vault_regions()
-        region_replication = default_replication_vault_regions.regions[0].replication_region_id
-        replication = alicloud.Provider("replication", region=region_replication)
+        replication = alicloud.Provider("replication", region=default_replication_vault_regions.regions[0].replication_region_id)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example",
+        opts=pulumi.ResourceOptions(provider=alicloud["source"]))
         default_replication_vault = alicloud.hbr.ReplicationVault("defaultReplicationVault",
-            replication_source_region_id=region_replication,
+            replication_source_region_id=source_region,
             replication_source_vault_id=default_vault.id,
-            vault_name=name,
+            vault_name="terraform-example",
             vault_storage_class="STANDARD",
-            description=name,
+            description="terraform-example",
             opts=pulumi.ResourceOptions(provider=alicloud["replication"]))
         ```
 

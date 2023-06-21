@@ -15,7 +15,7 @@ import (
 //
 // For information about Global Accelerator (GA) Custom Routing Endpoint Group and how to use it, see [What is Custom Routing Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointgroups).
 //
-// > **NOTE:** Available in v1.197.0+.
+// > **NOTE:** Available since v1.197.0.
 //
 // ## Example Usage
 //
@@ -28,14 +28,22 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccelerators, err := ga.GetAccelerators(ctx, &ga.GetAcceleratorsArgs{
-//				Status: pulumi.StringRef("active"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
+//				Duration:      pulumi.Int(1),
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Spec:          pulumi.String("1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -51,7 +59,7 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      *pulumi.String(defaultAccelerators.Accelerators[0].Id),
+//				AcceleratorId:      defaultAccelerator.ID(),
 //				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
@@ -73,9 +81,9 @@ import (
 //			_, err = ga.NewCustomRoutingEndpointGroup(ctx, "defaultCustomRoutingEndpointGroup", &ga.CustomRoutingEndpointGroupArgs{
 //				AcceleratorId:                  defaultListener.AcceleratorId,
 //				ListenerId:                     defaultListener.ID(),
-//				EndpointGroupRegion:            pulumi.String("cn-hangzhou"),
-//				CustomRoutingEndpointGroupName: pulumi.String("example_value"),
-//				Description:                    pulumi.String("example_value"),
+//				EndpointGroupRegion:            pulumi.String(region),
+//				CustomRoutingEndpointGroupName: pulumi.String("terraform-example"),
+//				Description:                    pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err

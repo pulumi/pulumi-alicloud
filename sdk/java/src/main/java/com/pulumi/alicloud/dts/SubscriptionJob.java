@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a DTS Subscription Job resource.
  * 
- * For information about DTS Subscription Job and how to use it, see [What is Subscription Job](https://help.aliyun.com/document_detail/254791.html).
+ * For information about DTS Subscription Job and how to use it, see [What is Subscription Job](https://www.alibabacloud.com/help/en/data-transmission-service/latest/configuresubscription).
  * 
- * &gt; **NOTE:** Available in v1.138.0+.
+ * &gt; **NOTE:** Available since v1.138.0.
  * 
  * ## Example Usage
  * 
@@ -35,25 +35,26 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.rds.RdsFunctions;
+ * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.rds.inputs.GetInstanceClassesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.rds.Instance;
  * import com.pulumi.alicloud.rds.InstanceArgs;
+ * import com.pulumi.alicloud.rds.RdsAccount;
+ * import com.pulumi.alicloud.rds.RdsAccountArgs;
  * import com.pulumi.alicloud.rds.Database;
  * import com.pulumi.alicloud.rds.DatabaseArgs;
- * import com.pulumi.alicloud.rds.Account;
- * import com.pulumi.alicloud.rds.AccountArgs;
  * import com.pulumi.alicloud.rds.AccountPrivilege;
  * import com.pulumi.alicloud.rds.AccountPrivilegeArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.dts.SubscriptionJob;
  * import com.pulumi.alicloud.dts.SubscriptionJobArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -68,78 +69,92 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;dtsSubscriptionJob&#34;);
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var exampleRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         final var exampleZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .category(&#34;Basic&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .build());
+ * 
+ *         final var exampleInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .engine(&#34;MySQL&#34;)
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .category(&#34;Basic&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(defaultNetwork.id())
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
  *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.6&#34;)
- *             .instanceType(&#34;rds.mysql.s1.small&#34;)
- *             .instanceStorage(&#34;10&#34;)
- *             .vswitchId(defaultSwitch.id())
+ *             .engineVersion(&#34;8.0&#34;)
+ *             .instanceType(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceChargeType(&#34;Postpaid&#34;)
  *             .instanceName(name)
+ *             .vswitchId(exampleSwitch.id())
+ *             .monitoringPeriod(&#34;60&#34;)
+ *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .securityGroupIds(exampleSecurityGroup.id())
  *             .build());
  * 
- *         for (var i = 0; i &lt; 2; i++) {
- *             new Database(&#34;db-&#34; + i, DatabaseArgs.builder()            
- *                 .instanceId(instance.id())
- *                 .description(&#34;from terraform&#34;)
- *                 .build());
- * 
- *         
- * }
- *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
- *             .instanceId(instance.id())
- *             .password(&#34;Test12345&#34;)
- *             .description(&#34;from terraform&#34;)
+ *         var exampleRdsAccount = new RdsAccount(&#34;exampleRdsAccount&#34;, RdsAccountArgs.builder()        
+ *             .dbInstanceId(exampleInstance.id())
+ *             .accountName(&#34;example_name&#34;)
+ *             .accountPassword(&#34;example_password&#34;)
  *             .build());
  * 
- *         var privilege = new AccountPrivilege(&#34;privilege&#34;, AccountPrivilegeArgs.builder()        
- *             .instanceId(instance.id())
- *             .accountName(account.name())
+ *         var exampleDatabase = new Database(&#34;exampleDatabase&#34;, DatabaseArgs.builder()        
+ *             .instanceId(exampleInstance.id())
+ *             .build());
+ * 
+ *         var exampleAccountPrivilege = new AccountPrivilege(&#34;exampleAccountPrivilege&#34;, AccountPrivilegeArgs.builder()        
+ *             .instanceId(exampleInstance.id())
+ *             .accountName(exampleRdsAccount.name())
  *             .privilege(&#34;ReadWrite&#34;)
- *             .dbNames(db.stream().map(element -&gt; element.name()).collect(toList()))
+ *             .dbNames(exampleDatabase.name())
  *             .build());
  * 
- *         final var default1Networks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
- *             .build());
- * 
- *         final var default1Switches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(data.alicloud_vpcs().default().ids()[0])
- *             .build());
- * 
- *         var defaultSubscriptionJob = new SubscriptionJob(&#34;defaultSubscriptionJob&#34;, SubscriptionJobArgs.builder()        
+ *         var exampleSubscriptionJob = new SubscriptionJob(&#34;exampleSubscriptionJob&#34;, SubscriptionJobArgs.builder()        
  *             .dtsJobName(name)
  *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .sourceEndpointEngineName(&#34;MySQL&#34;)
- *             .sourceEndpointRegion(&#34;cn-hangzhou&#34;)
+ *             .sourceEndpointRegion(exampleRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .sourceEndpointInstanceType(&#34;RDS&#34;)
- *             .sourceEndpointInstanceId(instance.id())
- *             .sourceEndpointDatabaseName(&#34;tfaccountpri_0&#34;)
- *             .sourceEndpointUserName(&#34;tftestprivilege&#34;)
- *             .sourceEndpointPassword(&#34;Test12345&#34;)
- *             .dbList(&#34;&#34;&#34;
- *         {&#34;dtstestdata&#34;: {&#34;name&#34;: &#34;tfaccountpri_0&#34;, &#34;all&#34;: true}}
- *             &#34;&#34;&#34;)
+ *             .sourceEndpointInstanceId(exampleInstance.id())
+ *             .sourceEndpointDatabaseName(exampleDatabase.name())
+ *             .sourceEndpointUserName(exampleRdsAccount.accountName())
+ *             .sourceEndpointPassword(exampleRdsAccount.accountPassword())
+ *             .dbList(Output.tuple(exampleDatabase.name(), exampleDatabase.name()).applyValue(values -&gt; {
+ *                 var exampleDatabaseName = values.t1;
+ *                 var exampleDatabaseName1 = values.t2;
+ *                 return String.format(&#34;{{\&#34;%s\&#34;:{{\&#34;name\&#34;:\&#34;%s\&#34;,\&#34;all\&#34;:true}}}}&#34;, exampleDatabaseName,exampleDatabaseName1);
+ *             }))
  *             .subscriptionInstanceNetworkType(&#34;vpc&#34;)
- *             .subscriptionInstanceVpcId(default1Networks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .subscriptionInstanceVswitchId(default1Switches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .subscriptionInstanceVpcId(exampleNetwork.id())
+ *             .subscriptionInstanceVswitchId(exampleSwitch.id())
  *             .status(&#34;Normal&#34;)
  *             .build());
  * 

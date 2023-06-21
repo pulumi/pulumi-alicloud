@@ -151,9 +151,9 @@ def get_ascripts(ascript_name: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     default = alicloud.alb.get_ascripts(ids=[alicloud_alb_ascript["default"]["id"]],
-        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        name_regex=alicloud_alb_ascript["default"]["name"],
         ascript_name="test",
-        listener_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        listener_id=var["listenerId"])
     pulumi.export("alicloudAlbAscriptExampleId", default.ascripts[0].id)
     ```
 
@@ -206,9 +206,9 @@ def get_ascripts_output(ascript_name: Optional[pulumi.Input[Optional[str]]] = No
     import pulumi_alicloud as alicloud
 
     default = alicloud.alb.get_ascripts(ids=[alicloud_alb_ascript["default"]["id"]],
-        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        name_regex=alicloud_alb_ascript["default"]["name"],
         ascript_name="test",
-        listener_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        listener_id=var["listenerId"])
     pulumi.export("alicloudAlbAscriptExampleId", default.ascripts[0].id)
     ```
 

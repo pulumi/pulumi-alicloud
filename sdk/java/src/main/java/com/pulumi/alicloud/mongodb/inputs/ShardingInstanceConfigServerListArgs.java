@@ -62,14 +62,14 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
     }
 
     /**
-     * Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * The node class of the Config Server node.
      * 
      */
     @Import(name="nodeClass")
     private @Nullable Output<String> nodeClass;
 
     /**
-     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return The node class of the Config Server node.
      * 
      */
     public Optional<Output<String>> nodeClass() {
@@ -107,16 +107,14 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
     }
 
     /**
-     * - Custom storage space; value range: [10, 1,000]
-     * - 10-GB increments. Unit: GB.
+     * The node storage of the Config Server node.
      * 
      */
     @Import(name="nodeStorage")
     private @Nullable Output<Integer> nodeStorage;
 
     /**
-     * @return - Custom storage space; value range: [10, 1,000]
-     * - 10-GB increments. Unit: GB.
+     * @return The node storage of the Config Server node.
      * 
      */
     public Optional<Output<Integer>> nodeStorage() {
@@ -233,7 +231,7 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeClass Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * @param nodeClass The node class of the Config Server node.
          * 
          * @return builder
          * 
@@ -244,7 +242,7 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeClass Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * @param nodeClass The node class of the Config Server node.
          * 
          * @return builder
          * 
@@ -296,8 +294,7 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeStorage - Custom storage space; value range: [10, 1,000]
-         * - 10-GB increments. Unit: GB.
+         * @param nodeStorage The node storage of the Config Server node.
          * 
          * @return builder
          * 
@@ -308,8 +305,7 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeStorage - Custom storage space; value range: [10, 1,000]
-         * - 10-GB increments. Unit: GB.
+         * @param nodeStorage The node storage of the Config Server node.
          * 
          * @return builder
          * 

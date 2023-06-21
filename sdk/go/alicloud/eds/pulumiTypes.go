@@ -117,9 +117,9 @@ func (o CustomPropertyPropertyValueArrayOutput) Index(i pulumi.IntInput) CustomP
 }
 
 type EcdPolicyGroupAuthorizeAccessPolicyRule struct {
-	// The cidrip of security rules.
+	// The cidrip of authorize access rule.
 	CidrIp *string `pulumi:"cidrIp"`
-	// The description of security rules.
+	// The description of authorize access rule.
 	Description *string `pulumi:"description"`
 }
 
@@ -135,9 +135,9 @@ type EcdPolicyGroupAuthorizeAccessPolicyRuleInput interface {
 }
 
 type EcdPolicyGroupAuthorizeAccessPolicyRuleArgs struct {
-	// The cidrip of security rules.
+	// The cidrip of authorize access rule.
 	CidrIp pulumi.StringPtrInput `pulumi:"cidrIp"`
-	// The description of security rules.
+	// The description of authorize access rule.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 }
 
@@ -192,12 +192,12 @@ func (o EcdPolicyGroupAuthorizeAccessPolicyRuleOutput) ToEcdPolicyGroupAuthorize
 	return o
 }
 
-// The cidrip of security rules.
+// The cidrip of authorize access rule.
 func (o EcdPolicyGroupAuthorizeAccessPolicyRuleOutput) CidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcdPolicyGroupAuthorizeAccessPolicyRule) *string { return v.CidrIp }).(pulumi.StringPtrOutput)
 }
 
-// The description of security rules.
+// The description of authorize access rule.
 func (o EcdPolicyGroupAuthorizeAccessPolicyRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcdPolicyGroupAuthorizeAccessPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

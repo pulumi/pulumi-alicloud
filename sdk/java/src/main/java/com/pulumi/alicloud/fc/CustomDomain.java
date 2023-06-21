@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 
 /**
  * Provides an Alicloud Function Compute custom domain resource.
- *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/90759.htm).
+ *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createcustomdomain).
  * 
- * &gt; **NOTE:** Available in 1.98.0+
+ * &gt; **NOTE:** Available since v1.98.0.
  * 
  * ## Example Usage
  * 
@@ -32,8 +32,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
  * import com.pulumi.alicloud.fc.Service;
  * import com.pulumi.alicloud.fc.ServiceArgs;
+ * import com.pulumi.alicloud.fc.inputs.ServiceLogConfigArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketObject;
@@ -57,32 +67,76 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testaccalicloudfcservice&#34;);
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultProject = new Project(&#34;defaultProject&#34;);
+ * 
+ *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *             .project(defaultProject.name())
+ *             .build());
+ * 
+ *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *             .document(&#34;&#34;&#34;
+ *   {
+ *       &#34;Statement&#34;: [
+ *         {
+ *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *           &#34;Effect&#34;: &#34;Allow&#34;,
+ *           &#34;Principal&#34;: {
+ *             &#34;Service&#34;: [
+ *               &#34;fc.aliyuncs.com&#34;
+ *             ]
+ *           }
+ *         }
+ *       ],
+ *       &#34;Version&#34;: &#34;1&#34;
+ *   }
+ *             &#34;&#34;&#34;)
+ *             .description(&#34;this is a example&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *             .roleName(defaultRole.name())
+ *             .policyName(&#34;AliyunLogFullAccess&#34;)
+ *             .policyType(&#34;System&#34;)
+ *             .build());
+ * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .description(String.format(&#34;%s-description&#34;, name))
+ *             .description(&#34;example-value&#34;)
+ *             .role(defaultRole.arn())
+ *             .logConfig(ServiceLogConfigArgs.builder()
+ *                 .project(defaultProject.name())
+ *                 .logstore(defaultStore.name())
+ *                 .enableInstanceMetrics(true)
+ *                 .enableRequestMetrics(true)
+ *                 .build())
  *             .build());
  * 
  *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(name)
+ *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .build());
  * 
  *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.id())
- *             .key(&#34;fc/hello.zip&#34;)
+ *             .key(&#34;index.py&#34;)
  *             .content(&#34;&#34;&#34;
- * 		# -*- coding: utf-8 -*-
- * 	def handler(event, context):
- * 		print &#34;hello world&#34;
- * 		return &#39;hello world&#39;
- *             &#34;&#34;&#34;)
+ * import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info(&#39;hello world&#39;) 
+ * return &#39;hello world&#39;            &#34;&#34;&#34;)
  *             .build());
  * 
  *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
  *             .service(defaultService.name())
+ *             .description(&#34;example&#34;)
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize(512)
+ *             .memorySize(&#34;512&#34;)
  *             .runtime(&#34;python2.7&#34;)
  *             .handler(&#34;hello.handler&#34;)
  *             .build());
@@ -94,15 +148,19 @@ import javax.annotation.Nullable;
  *                 .path(&#34;/login/*&#34;)
  *                 .serviceName(defaultService.name())
  *                 .functionName(defaultFunction.name())
- *                 .qualifier(&#34;v1&#34;)
+ *                 .qualifier(&#34;?query&#34;)
  *                 .methods(                
  *                     &#34;GET&#34;,
  *                     &#34;POST&#34;)
  *                 .build())
  *             .certConfig(CustomDomainCertConfigArgs.builder()
- *                 .certName(&#34;your certificate name&#34;)
- *                 .privateKey(&#34;your private key&#34;)
- *                 .certificate(&#34;your certificate data&#34;)
+ *                 .certName(&#34;example&#34;)
+ *                 .certificate(&#34;&#34;&#34;
+ * -----BEGIN CERTIFICATE-----
+ * MIICWD****-----END CERTIFICATE-----                &#34;&#34;&#34;)
+ *                 .privateKey(&#34;&#34;&#34;
+ * -----BEGIN RSA PRIVATE KEY-----
+ * MIICX****n-----END RSA PRIVATE KEY-----                &#34;&#34;&#34;)
  *                 .build())
  *             .build());
  * 
@@ -150,18 +208,14 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
         return this.apiVersion;
     }
     /**
-     * The configuration of HTTPS certificate.
-     * 
-     * **route_config** includes the following arguments:
+     * The configuration of HTTPS certificate.See `cert_config` below.
      * 
      */
     @Export(name="certConfig", type=CustomDomainCertConfig.class, parameters={})
     private Output</* @Nullable */ CustomDomainCertConfig> certConfig;
 
     /**
-     * @return The configuration of HTTPS certificate.
-     * 
-     * **route_config** includes the following arguments:
+     * @return The configuration of HTTPS certificate.See `cert_config` below.
      * 
      */
     public Output<Optional<CustomDomainCertConfig>> certConfig() {
@@ -224,14 +278,14 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
         return this.protocol;
     }
     /**
-     * The configuration of domain route, mapping the path and Function Compute function.
+     * The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
      * 
      */
     @Export(name="routeConfigs", type=List.class, parameters={CustomDomainRouteConfig.class})
     private Output</* @Nullable */ List<CustomDomainRouteConfig>> routeConfigs;
 
     /**
-     * @return The configuration of domain route, mapping the path and Function Compute function.
+     * @return The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
      * 
      */
     public Output<Optional<List<CustomDomainRouteConfig>>> routeConfigs() {

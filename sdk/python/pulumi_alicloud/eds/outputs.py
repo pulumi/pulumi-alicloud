@@ -116,8 +116,8 @@ class EcdPolicyGroupAuthorizeAccessPolicyRule(dict):
                  cidr_ip: Optional[str] = None,
                  description: Optional[str] = None):
         """
-        :param str cidr_ip: The cidrip of security rules.
-        :param str description: The description of security rules.
+        :param str cidr_ip: The cidrip of authorize access rule.
+        :param str description: The description of authorize access rule.
         """
         if cidr_ip is not None:
             pulumi.set(__self__, "cidr_ip", cidr_ip)
@@ -128,7 +128,7 @@ class EcdPolicyGroupAuthorizeAccessPolicyRule(dict):
     @pulumi.getter(name="cidrIp")
     def cidr_ip(self) -> Optional[str]:
         """
-        The cidrip of security rules.
+        The cidrip of authorize access rule.
         """
         return pulumi.get(self, "cidr_ip")
 
@@ -136,7 +136,7 @@ class EcdPolicyGroupAuthorizeAccessPolicyRule(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of security rules.
+        The description of authorize access rule.
         """
         return pulumi.get(self, "description")
 

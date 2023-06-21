@@ -31,9 +31,17 @@ public final class ScalingConfigurationSpotPriceLimitArgs extends com.pulumi.res
         return Optional.ofNullable(this.instanceType);
     }
 
+    /**
+     * Price limit hourly of instance type, 2 decimals is allowed at most.
+     * 
+     */
     @Import(name="priceLimit")
     private @Nullable Output<Double> priceLimit;
 
+    /**
+     * @return Price limit hourly of instance type, 2 decimals is allowed at most.
+     * 
+     */
     public Optional<Output<Double>> priceLimit() {
         return Optional.ofNullable(this.priceLimit);
     }
@@ -84,11 +92,23 @@ public final class ScalingConfigurationSpotPriceLimitArgs extends com.pulumi.res
             return instanceType(Output.of(instanceType));
         }
 
+        /**
+         * @param priceLimit Price limit hourly of instance type, 2 decimals is allowed at most.
+         * 
+         * @return builder
+         * 
+         */
         public Builder priceLimit(@Nullable Output<Double> priceLimit) {
             $.priceLimit = priceLimit;
             return this;
         }
 
+        /**
+         * @param priceLimit Price limit hourly of instance type, 2 decimals is allowed at most.
+         * 
+         * @return builder
+         * 
+         */
         public Builder priceLimit(Double priceLimit) {
             return priceLimit(Output.of(priceLimit));
         }

@@ -15,7 +15,7 @@ import (
 //
 // For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createadconnectorofficesite).
 //
-// > **NOTE:** Available in v1.176.0+.
+// > **NOTE:** Available since v1.176.0.
 //
 // ## Example Usage
 //
@@ -29,20 +29,26 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.Any(_var.Name),
+//				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eds.NewAdConnectorOfficeSite(ctx, "defaultAdConnectorOfficeSite", &eds.AdConnectorOfficeSiteArgs{
-//				AdConnectorOfficeSiteName: pulumi.Any(_var.Name),
+//				AdConnectorOfficeSiteName: pulumi.String(name),
 //				Bandwidth:                 pulumi.Int(100),
 //				CenId:                     defaultInstance.ID(),
 //				CidrBlock:                 pulumi.String("10.0.0.0/12"),
@@ -50,16 +56,16 @@ import (
 //				DnsAddresses: pulumi.StringArray{
 //					pulumi.String("127.0.0.2"),
 //				},
-//				DomainName:           pulumi.String("example1234.com"),
-//				DomainPassword:       pulumi.String("YourPassword1234"),
-//				DomainUserName:       pulumi.String("Administrator"),
-//				EnableAdminAccess:    pulumi.Bool(true),
-//				EnableInternetAccess: pulumi.Bool(true),
+//				DomainName:           pulumi.String("corp.example.com"),
+//				DomainPassword:       pulumi.String("Example1234"),
+//				DomainUserName:       pulumi.String("sAMAccountName"),
+//				EnableAdminAccess:    pulumi.Bool(false),
+//				EnableInternetAccess: pulumi.Bool(false),
 //				MfaEnabled:           pulumi.Bool(false),
 //				SubDomainDnsAddresses: pulumi.StringArray{
 //					pulumi.String("127.0.0.3"),
 //				},
-//				SubDomainName: pulumi.String("child.example1234.com"),
+//				SubDomainName: pulumi.String("child.example.com"),
 //			})
 //			if err != nil {
 //				return err

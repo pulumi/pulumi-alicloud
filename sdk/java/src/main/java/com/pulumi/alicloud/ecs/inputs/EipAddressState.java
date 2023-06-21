@@ -21,14 +21,14 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     public static final EipAddressState Empty = new EipAddressState();
 
     /**
-     * The activity id.
+     * Special activity ID. This parameter is not required.
      * 
      */
     @Import(name="activityId")
     private @Nullable Output<String> activityId;
 
     /**
-     * @return The activity id.
+     * @return Special activity ID. This parameter is not required.
      * 
      */
     public Optional<Output<String>> activityId() {
@@ -81,14 +81,33 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
+     * The time when the EIP was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The time when the EIP was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Whether the delete protection function is turned on.
+     * - **true**: enabled.
+     * - **false**: not enabled.
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether enable the deletion protection or not. Default value: `false`.
+     * @return Whether the delete protection function is turned on.
+     * - **true**: enabled.
+     * - **false**: not enabled.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -111,14 +130,18 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+     * Whether the second-level monitoring is enabled for the EIP.
+     * - **OFF**: not enabled.
+     * - **ON**: enabled.
      * 
      */
     @Import(name="highDefinitionMonitorLogStatus")
     private @Nullable Output<String> highDefinitionMonitorLogStatus;
 
     /**
-     * @return The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+     * @return Whether the second-level monitoring is enabled for the EIP.
+     * - **OFF**: not enabled.
+     * - **ON**: enabled.
      * 
      */
     public Optional<Output<String>> highDefinitionMonitorLogStatus() {
@@ -126,39 +149,41 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+     * . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+     * @return . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
 
     /**
-     * The metering method of the EIP.
-     * Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to &#34;PayByBandwidth&#34; when `payment_type` is &#34;Subscription&#34;.
+     * Renewal Payment type.
+     * - **PayByBandwidth**: billed by fixed bandwidth.
+     * - **PayByTraffic**: Billing by traffic.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return The metering method of the EIP.
-     * Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to &#34;PayByBandwidth&#34; when `payment_type` is &#34;Subscription&#34;.
+     * @return Renewal Payment type.
+     * - **PayByBandwidth**: billed by fixed bandwidth.
+     * - **PayByTraffic**: Billing by traffic.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -166,14 +191,14 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The address of the EIP.
+     * The IP address of the EIP.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The address of the EIP.
+     * @return The IP address of the EIP.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -226,24 +251,24 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;address_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;address_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -264,14 +289,14 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * @return The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -279,14 +304,14 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * @return When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -294,14 +319,29 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+     * Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * 
+     */
+    @Import(name="pricingCycle")
+    private @Nullable Output<String> pricingCycle;
+
+    /**
+     * @return Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * 
+     */
+    public Optional<Output<String>> pricingCycle() {
+        return Optional.ofNullable(this.pricingCycle);
+    }
+
+    /**
+     * The ID of the IP address pool to which the EIP belongs.
      * 
      */
     @Import(name="publicIpAddressPoolId")
     private @Nullable Output<String> publicIpAddressPoolId;
 
     /**
-     * @return The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+     * @return The ID of the IP address pool to which the EIP belongs.
      * 
      */
     public Optional<Output<String>> publicIpAddressPoolId() {
@@ -324,14 +364,18 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+     * Security protection level.
+     * - When the return is empty, the basic DDoS protection is specified.
+     * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
      * 
      */
     @Import(name="securityProtectionTypes")
     private @Nullable Output<List<String>> securityProtectionTypes;
 
     /**
-     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+     * @return Security protection level.
+     * - When the return is empty, the basic DDoS protection is specified.
+     * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
      * 
      */
     public Optional<Output<List<String>>> securityProtectionTypes() {
@@ -339,14 +383,14 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
+     * The status of the EIP.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
+     * @return The status of the EIP.
      * 
      */
     public Optional<Output<String>> status() {
@@ -354,18 +398,37 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Import(name="zone")
+    private @Nullable Output<String> zone;
+
+    /**
+     * @return The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Optional<Output<String>> zone() {
+        return Optional.ofNullable(this.zone);
     }
 
     private EipAddressState() {}
@@ -375,6 +438,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         this.addressName = $.addressName;
         this.autoPay = $.autoPay;
         this.bandwidth = $.bandwidth;
+        this.createTime = $.createTime;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.highDefinitionMonitorLogStatus = $.highDefinitionMonitorLogStatus;
@@ -388,11 +452,13 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         this.netmode = $.netmode;
         this.paymentType = $.paymentType;
         this.period = $.period;
+        this.pricingCycle = $.pricingCycle;
         this.publicIpAddressPoolId = $.publicIpAddressPoolId;
         this.resourceGroupId = $.resourceGroupId;
         this.securityProtectionTypes = $.securityProtectionTypes;
         this.status = $.status;
         this.tags = $.tags;
+        this.zone = $.zone;
     }
 
     public static Builder builder() {
@@ -414,7 +480,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param activityId The activity id.
+         * @param activityId Special activity ID. This parameter is not required.
          * 
          * @return builder
          * 
@@ -425,7 +491,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param activityId The activity id.
+         * @param activityId Special activity ID. This parameter is not required.
          * 
          * @return builder
          * 
@@ -498,7 +564,30 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether enable the deletion protection or not. Default value: `false`.
+         * @param createTime The time when the EIP was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The time when the EIP was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param deletionProtection Whether the delete protection function is turned on.
+         * - **true**: enabled.
+         * - **false**: not enabled.
          * 
          * @return builder
          * 
@@ -509,7 +598,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtection Whether enable the deletion protection or not. Default value: `false`.
+         * @param deletionProtection Whether the delete protection function is turned on.
+         * - **true**: enabled.
+         * - **false**: not enabled.
          * 
          * @return builder
          * 
@@ -540,7 +631,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param highDefinitionMonitorLogStatus The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+         * @param highDefinitionMonitorLogStatus Whether the second-level monitoring is enabled for the EIP.
+         * - **OFF**: not enabled.
+         * - **ON**: enabled.
          * 
          * @return builder
          * 
@@ -551,7 +644,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param highDefinitionMonitorLogStatus The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+         * @param highDefinitionMonitorLogStatus Whether the second-level monitoring is enabled for the EIP.
+         * - **OFF**: not enabled.
+         * - **ON**: enabled.
          * 
          * @return builder
          * 
@@ -561,37 +656,38 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+         * @param instanceChargeType . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
         }
 
         /**
-         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+         * @param instanceChargeType . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
 
         /**
-         * @param internetChargeType The metering method of the EIP.
-         * Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to &#34;PayByBandwidth&#34; when `payment_type` is &#34;Subscription&#34;.
+         * @param internetChargeType Renewal Payment type.
+         * - **PayByBandwidth**: billed by fixed bandwidth.
+         * - **PayByTraffic**: Billing by traffic.
          * 
          * @return builder
          * 
@@ -602,8 +698,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType The metering method of the EIP.
-         * Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to &#34;PayByBandwidth&#34; when `payment_type` is &#34;Subscription&#34;.
+         * @param internetChargeType Renewal Payment type.
+         * - **PayByBandwidth**: billed by fixed bandwidth.
+         * - **PayByTraffic**: Billing by traffic.
          * 
          * @return builder
          * 
@@ -613,7 +710,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The address of the EIP.
+         * @param ipAddress The IP address of the EIP.
          * 
          * @return builder
          * 
@@ -624,7 +721,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The address of the EIP.
+         * @param ipAddress The IP address of the EIP.
          * 
          * @return builder
          * 
@@ -697,30 +794,30 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;address_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;address_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -747,7 +844,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+         * @param paymentType The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -758,7 +855,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+         * @param paymentType The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -768,7 +865,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+         * @param period When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
          * 
          * @return builder
          * 
@@ -779,7 +876,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+         * @param period When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
          * 
          * @return builder
          * 
@@ -789,7 +886,28 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicIpAddressPoolId The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+         * @param pricingCycle Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pricingCycle(@Nullable Output<String> pricingCycle) {
+            $.pricingCycle = pricingCycle;
+            return this;
+        }
+
+        /**
+         * @param pricingCycle Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pricingCycle(String pricingCycle) {
+            return pricingCycle(Output.of(pricingCycle));
+        }
+
+        /**
+         * @param publicIpAddressPoolId The ID of the IP address pool to which the EIP belongs.
          * 
          * @return builder
          * 
@@ -800,7 +918,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicIpAddressPoolId The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+         * @param publicIpAddressPoolId The ID of the IP address pool to which the EIP belongs.
          * 
          * @return builder
          * 
@@ -831,7 +949,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+         * @param securityProtectionTypes Security protection level.
+         * - When the return is empty, the basic DDoS protection is specified.
+         * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
          * 
          * @return builder
          * 
@@ -842,7 +962,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+         * @param securityProtectionTypes Security protection level.
+         * - When the return is empty, the basic DDoS protection is specified.
+         * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
          * 
          * @return builder
          * 
@@ -852,7 +974,9 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+         * @param securityProtectionTypes Security protection level.
+         * - When the return is empty, the basic DDoS protection is specified.
+         * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
          * 
          * @return builder
          * 
@@ -862,7 +986,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
+         * @param status The status of the EIP.
          * 
          * @return builder
          * 
@@ -873,7 +997,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
+         * @param status The status of the EIP.
          * 
          * @return builder
          * 
@@ -883,7 +1007,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource.
          * 
          * @return builder
          * 
@@ -894,13 +1018,38 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tag of the resource.
          * 
          * @return builder
          * 
          */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
+        }
+
+        /**
+         * @param zone The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(@Nullable Output<String> zone) {
+            $.zone = zone;
+            return this;
+        }
+
+        /**
+         * @param zone The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(String zone) {
+            return zone(Output.of(zone));
         }
 
         public EipAddressState build() {

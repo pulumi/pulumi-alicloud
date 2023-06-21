@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Global Accelerator (GA) Custom Routing Endpoint Group and how to use it, see [What is Custom Routing Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointgroups).
  *
- * > **NOTE:** Available in v1.197.0+.
+ * > **NOTE:** Available since v1.197.0.
  *
  * ## Example Usage
  *
@@ -19,8 +19,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAccelerators = alicloud.ga.getAccelerators({
- *     status: "active",
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ *     duration: 1,
+ *     autoUseCoupon: true,
+ *     spec: "1",
  * });
  * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
  *     bandwidth: 100,
@@ -31,7 +35,7 @@ import * as utilities from "../utilities";
  *     ratio: 30,
  * });
  * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     acceleratorId: defaultAccelerators.then(defaultAccelerators => defaultAccelerators.accelerators?.[0]?.id),
+ *     acceleratorId: defaultAccelerator.id,
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
  * const defaultListener = new alicloud.ga.Listener("defaultListener", {
@@ -45,9 +49,9 @@ import * as utilities from "../utilities";
  * const defaultCustomRoutingEndpointGroup = new alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", {
  *     acceleratorId: defaultListener.acceleratorId,
  *     listenerId: defaultListener.id,
- *     endpointGroupRegion: "cn-hangzhou",
- *     customRoutingEndpointGroupName: "example_value",
- *     description: "example_value",
+ *     endpointGroupRegion: region,
+ *     customRoutingEndpointGroupName: "terraform-example",
+ *     description: "terraform-example",
  * });
  * ```
  *

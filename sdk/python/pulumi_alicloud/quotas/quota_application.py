@@ -37,7 +37,7 @@ class QuotaApplicationArgs:
                - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
                - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
                > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
-        :param pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]] dimensions: QuotaDimensions. See the following `Block Dimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh (default): Chinese.
@@ -135,7 +135,7 @@ class QuotaApplicationArgs:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]]]:
         """
-        QuotaDimensions. See the following `Block Dimensions`.
+        QuotaDimensions. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
@@ -240,7 +240,7 @@ class _QuotaApplicationState:
         :param pulumi.Input[str] audit_reason: The audit reason.
         :param pulumi.Input[str] create_time: Resource attribute field representing creation time.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
-        :param pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]] dimensions: QuotaDimensions. See the following `Block Dimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh (default): Chinese.
@@ -367,7 +367,7 @@ class _QuotaApplicationState:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]]]:
         """
-        QuotaDimensions. See the following `Block Dimensions`.
+        QuotaDimensions. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
@@ -562,7 +562,7 @@ class QuotaApplication(pulumi.CustomResource):
                - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
                > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]] dimensions: QuotaDimensions. See the following `Block Dimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh (default): Chinese.
@@ -696,7 +696,7 @@ class QuotaApplication(pulumi.CustomResource):
         :param pulumi.Input[str] audit_reason: The audit reason.
         :param pulumi.Input[str] create_time: Resource attribute field representing creation time.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]] dimensions: QuotaDimensions. See the following `Block Dimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh (default): Chinese.
@@ -790,7 +790,7 @@ class QuotaApplication(pulumi.CustomResource):
     @pulumi.getter
     def dimensions(self) -> pulumi.Output[Optional[Sequence['outputs.QuotaApplicationDimension']]]:
         """
-        QuotaDimensions. See the following `Block Dimensions`.
+        QuotaDimensions. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 

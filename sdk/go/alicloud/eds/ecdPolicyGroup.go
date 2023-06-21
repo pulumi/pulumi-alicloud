@@ -12,9 +12,9 @@ import (
 
 // Provides a Elastic Desktop Service (ECD) Policy Group resource.
 //
-// For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+// For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createpolicygroup).
 //
-// > **NOTE:** Available in v1.130.0+.
+// > **NOTE:** Available since v1.130.0.
 //
 // ## Example Usage
 //
@@ -36,13 +36,13 @@ import (
 //				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
 //					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
 //						CidrIp:      pulumi.String("1.2.3.45/24"),
-//						Description: pulumi.String("my-description1"),
+//						Description: pulumi.String("terraform-example"),
 //					},
 //				},
 //				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
 //					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
 //						CidrIp:      pulumi.String("1.2.3.4/24"),
-//						Description: pulumi.String("my-description"),
+//						Description: pulumi.String("terraform-example"),
 //						IpProtocol:  pulumi.String("TCP"),
 //						Policy:      pulumi.String("accept"),
 //						PortRange:   pulumi.String("80/80"),
@@ -52,7 +52,7 @@ import (
 //				},
 //				Clipboard:       pulumi.String("read"),
 //				LocalDrive:      pulumi.String("read"),
-//				PolicyGroupName: pulumi.String("my-policy-group"),
+//				PolicyGroupName: pulumi.String("terraform-example"),
 //				UsbRedirect:     pulumi.String("off"),
 //				Watermark:       pulumi.String("off"),
 //			})
@@ -77,9 +77,9 @@ import (
 type EcdPolicyGroup struct {
 	pulumi.CustomResourceState
 
-	// The rule of authorize access rule.
+	// The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
 	AuthorizeAccessPolicyRules EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput `pulumi:"authorizeAccessPolicyRules"`
-	// The policy rule.
+	// The policy rule. See `authorizeSecurityPolicyRules` below.
 	AuthorizeSecurityPolicyRules EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput `pulumi:"authorizeSecurityPolicyRules"`
 	// Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect pulumi.StringOutput `pulumi:"cameraRedirect"`
@@ -95,11 +95,11 @@ type EcdPolicyGroup struct {
 	LocalDrive pulumi.StringOutput `pulumi:"localDrive"`
 	// The name of policy group.
 	PolicyGroupName pulumi.StringPtrOutput `pulumi:"policyGroupName"`
-	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 	Recording pulumi.StringOutput `pulumi:"recording"`
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime pulumi.StringPtrOutput `pulumi:"recordingEndTime"`
-	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
 	RecordingExpires pulumi.IntOutput `pulumi:"recordingExpires"`
 	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps pulumi.IntOutput `pulumi:"recordingFps"`
@@ -148,9 +148,9 @@ func GetEcdPolicyGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcdPolicyGroup resources.
 type ecdPolicyGroupState struct {
-	// The rule of authorize access rule.
+	// The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
 	AuthorizeAccessPolicyRules []EcdPolicyGroupAuthorizeAccessPolicyRule `pulumi:"authorizeAccessPolicyRules"`
-	// The policy rule.
+	// The policy rule. See `authorizeSecurityPolicyRules` below.
 	AuthorizeSecurityPolicyRules []EcdPolicyGroupAuthorizeSecurityPolicyRule `pulumi:"authorizeSecurityPolicyRules"`
 	// Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect *string `pulumi:"cameraRedirect"`
@@ -166,11 +166,11 @@ type ecdPolicyGroupState struct {
 	LocalDrive *string `pulumi:"localDrive"`
 	// The name of policy group.
 	PolicyGroupName *string `pulumi:"policyGroupName"`
-	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 	Recording *string `pulumi:"recording"`
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime *string `pulumi:"recordingEndTime"`
-	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
 	RecordingExpires *int `pulumi:"recordingExpires"`
 	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps *int `pulumi:"recordingFps"`
@@ -191,9 +191,9 @@ type ecdPolicyGroupState struct {
 }
 
 type EcdPolicyGroupState struct {
-	// The rule of authorize access rule.
+	// The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
 	AuthorizeAccessPolicyRules EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput
-	// The policy rule.
+	// The policy rule. See `authorizeSecurityPolicyRules` below.
 	AuthorizeSecurityPolicyRules EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput
 	// Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect pulumi.StringPtrInput
@@ -209,11 +209,11 @@ type EcdPolicyGroupState struct {
 	LocalDrive pulumi.StringPtrInput
 	// The name of policy group.
 	PolicyGroupName pulumi.StringPtrInput
-	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 	Recording pulumi.StringPtrInput
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime pulumi.StringPtrInput
-	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
 	RecordingExpires pulumi.IntPtrInput
 	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps pulumi.IntPtrInput
@@ -238,9 +238,9 @@ func (EcdPolicyGroupState) ElementType() reflect.Type {
 }
 
 type ecdPolicyGroupArgs struct {
-	// The rule of authorize access rule.
+	// The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
 	AuthorizeAccessPolicyRules []EcdPolicyGroupAuthorizeAccessPolicyRule `pulumi:"authorizeAccessPolicyRules"`
-	// The policy rule.
+	// The policy rule. See `authorizeSecurityPolicyRules` below.
 	AuthorizeSecurityPolicyRules []EcdPolicyGroupAuthorizeSecurityPolicyRule `pulumi:"authorizeSecurityPolicyRules"`
 	// Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect *string `pulumi:"cameraRedirect"`
@@ -256,11 +256,11 @@ type ecdPolicyGroupArgs struct {
 	LocalDrive *string `pulumi:"localDrive"`
 	// The name of policy group.
 	PolicyGroupName *string `pulumi:"policyGroupName"`
-	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 	Recording *string `pulumi:"recording"`
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime *string `pulumi:"recordingEndTime"`
-	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
 	RecordingExpires *int `pulumi:"recordingExpires"`
 	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps *int `pulumi:"recordingFps"`
@@ -280,9 +280,9 @@ type ecdPolicyGroupArgs struct {
 
 // The set of arguments for constructing a EcdPolicyGroup resource.
 type EcdPolicyGroupArgs struct {
-	// The rule of authorize access rule.
+	// The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
 	AuthorizeAccessPolicyRules EcdPolicyGroupAuthorizeAccessPolicyRuleArrayInput
-	// The policy rule.
+	// The policy rule. See `authorizeSecurityPolicyRules` below.
 	AuthorizeSecurityPolicyRules EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayInput
 	// Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect pulumi.StringPtrInput
@@ -298,11 +298,11 @@ type EcdPolicyGroupArgs struct {
 	LocalDrive pulumi.StringPtrInput
 	// The name of policy group.
 	PolicyGroupName pulumi.StringPtrInput
-	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 	Recording pulumi.StringPtrInput
 	// The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
 	RecordingEndTime pulumi.StringPtrInput
-	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+	// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
 	RecordingExpires pulumi.IntPtrInput
 	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps pulumi.IntPtrInput
@@ -407,14 +407,14 @@ func (o EcdPolicyGroupOutput) ToEcdPolicyGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The rule of authorize access rule.
+// The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
 func (o EcdPolicyGroupOutput) AuthorizeAccessPolicyRules() EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput {
 		return v.AuthorizeAccessPolicyRules
 	}).(EcdPolicyGroupAuthorizeAccessPolicyRuleArrayOutput)
 }
 
-// The policy rule.
+// The policy rule. See `authorizeSecurityPolicyRules` below.
 func (o EcdPolicyGroupOutput) AuthorizeSecurityPolicyRules() EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) EcdPolicyGroupAuthorizeSecurityPolicyRuleArrayOutput {
 		return v.AuthorizeSecurityPolicyRules
@@ -456,7 +456,7 @@ func (o EcdPolicyGroupOutput) PolicyGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringPtrOutput { return v.PolicyGroupName }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
 func (o EcdPolicyGroupOutput) Recording() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringOutput { return v.Recording }).(pulumi.StringOutput)
 }
@@ -466,7 +466,7 @@ func (o EcdPolicyGroupOutput) RecordingEndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.StringPtrOutput { return v.RecordingEndTime }).(pulumi.StringPtrOutput)
 }
 
-// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
 func (o EcdPolicyGroupOutput) RecordingExpires() pulumi.IntOutput {
 	return o.ApplyT(func(v *EcdPolicyGroup) pulumi.IntOutput { return v.RecordingExpires }).(pulumi.IntOutput)
 }

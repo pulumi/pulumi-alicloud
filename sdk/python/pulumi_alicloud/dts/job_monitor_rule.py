@@ -201,20 +201,7 @@ class JobMonitorRule(pulumi.CustomResource):
 
         For information about DTS Job Monitor Rule and how to use it, see [What is Job Monitor Rule](https://www.aliyun.com/product/dts).
 
-        > **NOTE:** Available in v1.134.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.dts.JobMonitorRule("example",
-            dts_job_id="example_value",
-            type="delay")
-        ```
+        > **NOTE:** Available since v1.134.0.
 
         ## Import
 
@@ -243,20 +230,7 @@ class JobMonitorRule(pulumi.CustomResource):
 
         For information about DTS Job Monitor Rule and how to use it, see [What is Job Monitor Rule](https://www.aliyun.com/product/dts).
 
-        > **NOTE:** Available in v1.134.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.dts.JobMonitorRule("example",
-            dts_job_id="example_value",
-            type="delay")
-        ```
+        > **NOTE:** Available since v1.134.0.
 
         ## Import
 

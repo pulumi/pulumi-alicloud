@@ -23,7 +23,7 @@ class CustomRoutingEndpointTrafficPolicyArgs:
         The set of arguments for constructing a CustomRoutingEndpointTrafficPolicy resource.
         :param pulumi.Input[str] address: The IP address of the destination to which traffic is allowed.
         :param pulumi.Input[str] endpoint_id: The ID of the Custom Routing Endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]] port_ranges: Port rangeSee the following. See the following `Block port_ranges`.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]] port_ranges: Port rangeSee the following. See `port_ranges` below.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "endpoint_id", endpoint_id)
@@ -58,7 +58,7 @@ class CustomRoutingEndpointTrafficPolicyArgs:
     @pulumi.getter(name="portRanges")
     def port_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]]:
         """
-        Port rangeSee the following. See the following `Block port_ranges`.
+        Port rangeSee the following. See `port_ranges` below.
         """
         return pulumi.get(self, "port_ranges")
 
@@ -86,7 +86,7 @@ class _CustomRoutingEndpointTrafficPolicyState:
         :param pulumi.Input[str] endpoint_group_id: The ID of the endpoint group.
         :param pulumi.Input[str] endpoint_id: The ID of the Custom Routing Endpoint.
         :param pulumi.Input[str] listener_id: The ID of the listener.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]] port_ranges: Port rangeSee the following. See the following `Block port_ranges`.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]] port_ranges: Port rangeSee the following. See `port_ranges` below.
         :param pulumi.Input[str] status: The status of the Custom Routing Endpoint Traffic Policy.
         """
         if accelerator_id is not None:
@@ -182,7 +182,7 @@ class _CustomRoutingEndpointTrafficPolicyState:
     @pulumi.getter(name="portRanges")
     def port_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]]:
         """
-        Port rangeSee the following. See the following `Block port_ranges`.
+        Port rangeSee the following. See `port_ranges` below.
         """
         return pulumi.get(self, "port_ranges")
 
@@ -217,7 +217,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Custom Routing Endpoint Traffic Policy and how to use it, see [What is Custom Routing Endpoint Traffic Policy](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointtrafficpolicies).
 
-        > **NOTE:** Available in v1.197.0+.
+        > **NOTE:** Available since v1.197.0.
 
         ## Example Usage
 
@@ -227,12 +227,62 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ga.CustomRoutingEndpointTrafficPolicy("default",
-            address="192.168.192.2",
-            endpoint_id="your_custom_routing_endpoint_id",
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            listener_type="CustomRouting",
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=10000,
+                to_port=16000,
+            )])
+        default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup",
+            accelerator_id=default_listener.accelerator_id,
+            listener_id=default_listener.id,
+            endpoint_group_region=region,
+            custom_routing_endpoint_group_name="terraform-example",
+            description="terraform-example")
+        default_custom_routing_endpoint = alicloud.ga.CustomRoutingEndpoint("defaultCustomRoutingEndpoint",
+            endpoint_group_id=default_custom_routing_endpoint_group.id,
+            endpoint=default_switch.id,
+            type="PrivateSubNet",
+            traffic_to_endpoint_policy="AllowCustom")
+        default_custom_routing_endpoint_group_destination = alicloud.ga.CustomRoutingEndpointGroupDestination("defaultCustomRoutingEndpointGroupDestination",
+            endpoint_group_id=default_custom_routing_endpoint_group.id,
+            protocols=["TCP"],
+            from_port=1,
+            to_port=10)
+        default_custom_routing_endpoint_traffic_policy = alicloud.ga.CustomRoutingEndpointTrafficPolicy("defaultCustomRoutingEndpointTrafficPolicy",
+            endpoint_id=default_custom_routing_endpoint.custom_routing_endpoint_id,
+            address="172.17.3.0",
             port_ranges=[alicloud.ga.CustomRoutingEndpointTrafficPolicyPortRangeArgs(
-                from_port=10001,
-                to_port=10002,
+                from_port=1,
+                to_port=10,
             )])
         ```
 
@@ -248,7 +298,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The IP address of the destination to which traffic is allowed.
         :param pulumi.Input[str] endpoint_id: The ID of the Custom Routing Endpoint.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]] port_ranges: Port rangeSee the following. See the following `Block port_ranges`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]] port_ranges: Port rangeSee the following. See `port_ranges` below.
         """
         ...
     @overload
@@ -261,7 +311,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Custom Routing Endpoint Traffic Policy and how to use it, see [What is Custom Routing Endpoint Traffic Policy](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointtrafficpolicies).
 
-        > **NOTE:** Available in v1.197.0+.
+        > **NOTE:** Available since v1.197.0.
 
         ## Example Usage
 
@@ -271,12 +321,62 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ga.CustomRoutingEndpointTrafficPolicy("default",
-            address="192.168.192.2",
-            endpoint_id="your_custom_routing_endpoint_id",
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            listener_type="CustomRouting",
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=10000,
+                to_port=16000,
+            )])
+        default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup",
+            accelerator_id=default_listener.accelerator_id,
+            listener_id=default_listener.id,
+            endpoint_group_region=region,
+            custom_routing_endpoint_group_name="terraform-example",
+            description="terraform-example")
+        default_custom_routing_endpoint = alicloud.ga.CustomRoutingEndpoint("defaultCustomRoutingEndpoint",
+            endpoint_group_id=default_custom_routing_endpoint_group.id,
+            endpoint=default_switch.id,
+            type="PrivateSubNet",
+            traffic_to_endpoint_policy="AllowCustom")
+        default_custom_routing_endpoint_group_destination = alicloud.ga.CustomRoutingEndpointGroupDestination("defaultCustomRoutingEndpointGroupDestination",
+            endpoint_group_id=default_custom_routing_endpoint_group.id,
+            protocols=["TCP"],
+            from_port=1,
+            to_port=10)
+        default_custom_routing_endpoint_traffic_policy = alicloud.ga.CustomRoutingEndpointTrafficPolicy("defaultCustomRoutingEndpointTrafficPolicy",
+            endpoint_id=default_custom_routing_endpoint.custom_routing_endpoint_id,
+            address="172.17.3.0",
             port_ranges=[alicloud.ga.CustomRoutingEndpointTrafficPolicyPortRangeArgs(
-                from_port=10001,
-                to_port=10002,
+                from_port=1,
+                to_port=10,
             )])
         ```
 
@@ -358,7 +458,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint_group_id: The ID of the endpoint group.
         :param pulumi.Input[str] endpoint_id: The ID of the Custom Routing Endpoint.
         :param pulumi.Input[str] listener_id: The ID of the listener.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]] port_ranges: Port rangeSee the following. See the following `Block port_ranges`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRoutingEndpointTrafficPolicyPortRangeArgs']]]] port_ranges: Port rangeSee the following. See `port_ranges` below.
         :param pulumi.Input[str] status: The status of the Custom Routing Endpoint Traffic Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -427,7 +527,7 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
     @pulumi.getter(name="portRanges")
     def port_ranges(self) -> pulumi.Output[Optional[Sequence['outputs.CustomRoutingEndpointTrafficPolicyPortRange']]]:
         """
-        Port rangeSee the following. See the following `Block port_ranges`.
+        Port rangeSee the following. See `port_ranges` below.
         """
         return pulumi.get(self, "port_ranges")
 

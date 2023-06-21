@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// For information about MongoDB Sharding Network Private Address and how to use it, see [What is Sharding Network Private Address](https://www.alibabacloud.com/help/en/doc-detail/141403.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.157.0+.
+    /// &gt; **NOTE:** Available since v1.157.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,25 +29,46 @@ namespace Pulumi.AliCloud.MongoDB
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var index = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones).Length.Apply(length =&gt; length - 1);
+    /// 
+    ///     var zoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id;
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = name,
+    ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = zoneId,
     ///     });
     /// 
     ///     var defaultShardingInstance = new AliCloud.MongoDB.ShardingInstance("defaultShardingInstance", new()
     ///     {
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         ZoneId = zoneId,
+    ///         VswitchId = defaultSwitch.Id,
     ///         EngineVersion = "4.2",
+    ///         ShardLists = new[]
+    ///         {
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
+    ///             {
+    ///                 NodeClass = "dds.shard.mid",
+    ///                 NodeStorage = 10,
+    ///             },
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
+    ///             {
+    ///                 NodeClass = "dds.shard.standard",
+    ///                 NodeStorage = 20,
+    ///                 ReadonlyReplicas = 1,
+    ///             },
+    ///         },
     ///         MongoLists = new[]
     ///         {
     ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
@@ -59,28 +80,15 @@ namespace Pulumi.AliCloud.MongoDB
     ///                 NodeClass = "dds.mongos.mid",
     ///             },
     ///         },
-    ///         ShardLists = new[]
-    ///         {
-    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
-    ///             {
-    ///                 NodeClass = "dds.shard.mid",
-    ///                 NodeStorage = 10,
-    ///             },
-    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
-    ///             {
-    ///                 NodeClass = "dds.shard.mid",
-    ///                 NodeStorage = 10,
-    ///             },
-    ///         },
     ///     });
     /// 
-    ///     var example = new AliCloud.MongoDB.ShardingNetworkPrivateAddress("example", new()
+    ///     var defaultShardingNetworkPrivateAddress = new AliCloud.MongoDB.ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress", new()
     ///     {
     ///         DbInstanceId = defaultShardingInstance.Id,
     ///         NodeId = defaultShardingInstance.ShardLists.Apply(shardLists =&gt; shardLists[0].NodeId),
     ///         ZoneId = defaultShardingInstance.ZoneId,
-    ///         AccountName = "example_value",
-    ///         AccountPassword = "YourPassword+12345",
+    ///         AccountName = "example",
+    ///         AccountPassword = "Example_123",
     ///     });
     /// 
     /// });

@@ -25,24 +25,29 @@ namespace Pulumi.AliCloud.Hbr
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-test112358";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
     ///     {
-    ///         VaultName = name,
+    ///         VaultName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///     });
     /// 
     ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
     ///     {
-    ///         BucketName = name,
+    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///     });
     /// 
     ///     var defaultOssBackupPlan = new AliCloud.Hbr.OssBackupPlan("defaultOssBackupPlan", new()
     ///     {
-    ///         OssBackupPlanName = name,
+    ///         OssBackupPlanName = "terraform-example",
     ///         Prefix = "/",
     ///         Bucket = defaultBucket.BucketName,
     ///         VaultId = defaultVault.Id,

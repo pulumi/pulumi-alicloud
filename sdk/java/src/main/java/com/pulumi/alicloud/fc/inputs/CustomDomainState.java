@@ -49,18 +49,14 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of HTTPS certificate.
-     * 
-     * **route_config** includes the following arguments:
+     * The configuration of HTTPS certificate.See `cert_config` below.
      * 
      */
     @Import(name="certConfig")
     private @Nullable Output<CustomDomainCertConfigArgs> certConfig;
 
     /**
-     * @return The configuration of HTTPS certificate.
-     * 
-     * **route_config** includes the following arguments:
+     * @return The configuration of HTTPS certificate.See `cert_config` below.
      * 
      */
     public Optional<Output<CustomDomainCertConfigArgs>> certConfig() {
@@ -128,14 +124,14 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of domain route, mapping the path and Function Compute function.
+     * The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
      * 
      */
     @Import(name="routeConfigs")
     private @Nullable Output<List<CustomDomainRouteConfigArgs>> routeConfigs;
 
     /**
-     * @return The configuration of domain route, mapping the path and Function Compute function.
+     * @return The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
      * 
      */
     public Optional<Output<List<CustomDomainRouteConfigArgs>>> routeConfigs() {
@@ -216,9 +212,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certConfig The configuration of HTTPS certificate.
-         * 
-         * **route_config** includes the following arguments:
+         * @param certConfig The configuration of HTTPS certificate.See `cert_config` below.
          * 
          * @return builder
          * 
@@ -229,9 +223,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certConfig The configuration of HTTPS certificate.
-         * 
-         * **route_config** includes the following arguments:
+         * @param certConfig The configuration of HTTPS certificate.See `cert_config` below.
          * 
          * @return builder
          * 
@@ -325,7 +317,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeConfigs The configuration of domain route, mapping the path and Function Compute function.
+         * @param routeConfigs The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
          * 
          * @return builder
          * 
@@ -336,7 +328,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeConfigs The configuration of domain route, mapping the path and Function Compute function.
+         * @param routeConfigs The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
          * 
          * @return builder
          * 
@@ -346,7 +338,7 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeConfigs The configuration of domain route, mapping the path and Function Compute function.
+         * @param routeConfigs The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
          * 
          * @return builder
          * 

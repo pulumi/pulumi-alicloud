@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Global Accelerator (GA) Accelerator Spare Ip Attachment resource.
  *
- * For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://help.aliyun.com/document_detail/262120.html).
+ * For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createspareips).
  *
- * > **NOTE:** Available in v1.167.0+.
+ * > **NOTE:** Available since v1.167.0.
  *
  * ## Example Usage
  *
@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
  *     duration: 1,
  *     spec: "1",
- *     acceleratorName: _var.name,
+ *     acceleratorName: "terraform-example",
  *     autoUseCoupon: true,
- *     description: _var.name,
+ *     description: "terraform-example",
  * });
  * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
  *     bandwidth: 100,
@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     paymentType: "PayAsYouGo",
  *     billingType: "PayBy95",
  *     ratio: 30,
- *     bandwidthPackageName: _var.name,
+ *     bandwidthPackageName: "terraform-example",
  *     autoPay: true,
  *     autoUseCoupon: true,
  * });

@@ -14,7 +14,35 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Ga Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain).
     /// 
-    /// &gt; **NOTE:** Available in v1.197.0+.
+    /// &gt; **NOTE:** Available since v1.197.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     {
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "1",
+    ///     });
+    /// 
+    ///     var defaultDomain = new AliCloud.Ga.Domain("defaultDomain", new()
+    ///     {
+    ///         AcceleratedDomain = "changes.com.cn",
+    ///         AcceleratorId = defaultAccelerator.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

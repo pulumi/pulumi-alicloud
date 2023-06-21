@@ -8,9 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Alicloud Function Compute custom domain resource.
- *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/90759.htm).
+ *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createcustomdomain).
  *
- * > **NOTE:** Available in 1.98.0+
+ * > **NOTE:** Available since v1.98.0.
  *
  * ## Example Usage
  *
@@ -19,22 +19,62 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testaccalicloudfcservice";
- * const defaultService = new alicloud.fc.Service("defaultService", {description: `${name}-description`});
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: name});
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultProject = new alicloud.log.Project("defaultProject", {});
+ * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
+ * const defaultRole = new alicloud.ram.Role("defaultRole", {
+ *     document: `  {
+ *       "Statement": [
+ *         {
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "fc.aliyuncs.com"
+ *             ]
+ *           }
+ *         }
+ *       ],
+ *       "Version": "1"
+ *   }
+ * `,
+ *     description: "this is a example",
+ *     force: true,
+ * });
+ * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment", {
+ *     roleName: defaultRole.name,
+ *     policyName: "AliyunLogFullAccess",
+ *     policyType: "System",
+ * });
+ * const defaultService = new alicloud.fc.Service("defaultService", {
+ *     description: "example-value",
+ *     role: defaultRole.arn,
+ *     logConfig: {
+ *         project: defaultProject.name,
+ *         logstore: defaultStore.name,
+ *         enableInstanceMetrics: true,
+ *         enableRequestMetrics: true,
+ *     },
+ * });
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
+ * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
  * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
  *     bucket: defaultBucket.id,
- *     key: "fc/hello.zip",
- *     content: `		# -*- coding: utf-8 -*-
- * 	def handler(event, context):
- * 		print "hello world"
- * 		return 'hello world'
- * `,
+ *     key: "index.py",
+ *     content: `import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info('hello world') 
+ * return 'hello world'`,
  * });
  * const defaultFunction = new alicloud.fc.Function("defaultFunction", {
  *     service: defaultService.name,
+ *     description: "example",
  *     ossBucket: defaultBucket.id,
  *     ossKey: defaultBucketObject.key,
  *     memorySize: 512,
@@ -48,16 +88,18 @@ import * as utilities from "../utilities";
  *         path: "/login/*",
  *         serviceName: defaultService.name,
  *         functionName: defaultFunction.name,
- *         qualifier: "v1",
+ *         qualifier: "?query",
  *         methods: [
  *             "GET",
  *             "POST",
  *         ],
  *     }],
  *     certConfig: {
- *         certName: "your certificate name",
- *         privateKey: "your private key",
- *         certificate: "your certificate data",
+ *         certName: "example",
+ *         certificate: `-----BEGIN CERTIFICATE-----
+ * MIICWD****-----END CERTIFICATE-----`,
+ *         privateKey: `-----BEGIN RSA PRIVATE KEY-----
+ * MIICX****n-----END RSA PRIVATE KEY-----`,
  *     },
  * });
  * ```
@@ -107,10 +149,7 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     public /*out*/ readonly apiVersion!: pulumi.Output<string>;
     /**
-     * The configuration of HTTPS certificate.
-     *
-     *
-     * **route_config** includes the following arguments:
+     * The configuration of HTTPS certificate.See `certConfig` below.
      */
     public readonly certConfig!: pulumi.Output<outputs.fc.CustomDomainCertConfig | undefined>;
     /**
@@ -130,7 +169,7 @@ export class CustomDomain extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
-     * The configuration of domain route, mapping the path and Function Compute function.
+     * The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
      */
     public readonly routeConfigs!: pulumi.Output<outputs.fc.CustomDomainRouteConfig[] | undefined>;
 
@@ -190,10 +229,7 @@ export interface CustomDomainState {
      */
     apiVersion?: pulumi.Input<string>;
     /**
-     * The configuration of HTTPS certificate.
-     *
-     *
-     * **route_config** includes the following arguments:
+     * The configuration of HTTPS certificate.See `certConfig` below.
      */
     certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig>;
     /**
@@ -213,7 +249,7 @@ export interface CustomDomainState {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The configuration of domain route, mapping the path and Function Compute function.
+     * The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
      */
     routeConfigs?: pulumi.Input<pulumi.Input<inputs.fc.CustomDomainRouteConfig>[]>;
 }
@@ -223,10 +259,7 @@ export interface CustomDomainState {
  */
 export interface CustomDomainArgs {
     /**
-     * The configuration of HTTPS certificate.
-     *
-     *
-     * **route_config** includes the following arguments:
+     * The configuration of HTTPS certificate.See `certConfig` below.
      */
     certConfig?: pulumi.Input<inputs.fc.CustomDomainCertConfig>;
     /**
@@ -238,7 +271,7 @@ export interface CustomDomainArgs {
      */
     protocol: pulumi.Input<string>;
     /**
-     * The configuration of domain route, mapping the path and Function Compute function.
+     * The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
      */
     routeConfigs?: pulumi.Input<pulumi.Input<inputs.fc.CustomDomainRouteConfig>[]>;
 }

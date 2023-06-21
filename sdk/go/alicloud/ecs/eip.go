@@ -69,7 +69,8 @@ type Eip struct {
 	AddressName pulumi.StringOutput  `pulumi:"addressName"`
 	AutoPay     pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
-	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
+	Bandwidth  pulumi.StringOutput `pulumi:"bandwidth"`
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -79,7 +80,7 @@ type Eip struct {
 	HighDefinitionMonitorLogStatus pulumi.StringOutput    `pulumi:"highDefinitionMonitorLogStatus"`
 	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
@@ -91,14 +92,15 @@ type Eip struct {
 	LogStore   pulumi.StringPtrOutput `pulumi:"logStore"`
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
-	Name    pulumi.StringOutput    `pulumi:"name"`
-	Netmode pulumi.StringPtrOutput `pulumi:"netmode"`
+	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
+	Name    pulumi.StringOutput `pulumi:"name"`
+	Netmode pulumi.StringOutput `pulumi:"netmode"`
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period                pulumi.IntPtrOutput    `pulumi:"period"`
+	PricingCycle          pulumi.StringPtrOutput `pulumi:"pricingCycle"`
 	PublicIpAddressPoolId pulumi.StringPtrOutput `pulumi:"publicIpAddressPoolId"`
 	// The Id of resource group which the eip belongs.
 	ResourceGroupId         pulumi.StringOutput      `pulumi:"resourceGroupId"`
@@ -106,7 +108,8 @@ type Eip struct {
 	// The EIP current status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapOutput `pulumi:"tags"`
+	Tags pulumi.MapOutput    `pulumi:"tags"`
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewEip registers a new resource with the given unique name, arguments, and options.
@@ -143,7 +146,8 @@ type eipState struct {
 	AddressName *string `pulumi:"addressName"`
 	AutoPay     *bool   `pulumi:"autoPay"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
-	Bandwidth *string `pulumi:"bandwidth"`
+	Bandwidth  *string `pulumi:"bandwidth"`
+	CreateTime *string `pulumi:"createTime"`
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -153,7 +157,7 @@ type eipState struct {
 	HighDefinitionMonitorLogStatus *string `pulumi:"highDefinitionMonitorLogStatus"`
 	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType *string `pulumi:"internetChargeType"`
@@ -165,7 +169,7 @@ type eipState struct {
 	LogStore   *string `pulumi:"logStore"`
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name    *string `pulumi:"name"`
 	Netmode *string `pulumi:"netmode"`
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -173,6 +177,7 @@ type eipState struct {
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period                *int    `pulumi:"period"`
+	PricingCycle          *string `pulumi:"pricingCycle"`
 	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The Id of resource group which the eip belongs.
 	ResourceGroupId         *string  `pulumi:"resourceGroupId"`
@@ -181,6 +186,7 @@ type eipState struct {
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+	Zone *string                `pulumi:"zone"`
 }
 
 type EipState struct {
@@ -189,7 +195,8 @@ type EipState struct {
 	AddressName pulumi.StringPtrInput
 	AutoPay     pulumi.BoolPtrInput
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
-	Bandwidth pulumi.StringPtrInput
+	Bandwidth  pulumi.StringPtrInput
+	CreateTime pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. Default value: `false`.
 	// - true: Enable deletion protection.
 	// - false: Disable deletion protection.
@@ -199,7 +206,7 @@ type EipState struct {
 	HighDefinitionMonitorLogStatus pulumi.StringPtrInput
 	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType pulumi.StringPtrInput
@@ -211,7 +218,7 @@ type EipState struct {
 	LogStore   pulumi.StringPtrInput
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name    pulumi.StringPtrInput
 	Netmode pulumi.StringPtrInput
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -219,6 +226,7 @@ type EipState struct {
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period                pulumi.IntPtrInput
+	PricingCycle          pulumi.StringPtrInput
 	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The Id of resource group which the eip belongs.
 	ResourceGroupId         pulumi.StringPtrInput
@@ -227,6 +235,7 @@ type EipState struct {
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
+	Zone pulumi.StringPtrInput
 }
 
 func (EipState) ElementType() reflect.Type {
@@ -249,7 +258,7 @@ type eipArgs struct {
 	HighDefinitionMonitorLogStatus *string `pulumi:"highDefinitionMonitorLogStatus"`
 	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType *string `pulumi:"internetChargeType"`
@@ -259,7 +268,7 @@ type eipArgs struct {
 	LogStore   *string `pulumi:"logStore"`
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name    *string `pulumi:"name"`
 	Netmode *string `pulumi:"netmode"`
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -267,12 +276,14 @@ type eipArgs struct {
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period                *int    `pulumi:"period"`
+	PricingCycle          *string `pulumi:"pricingCycle"`
 	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The Id of resource group which the eip belongs.
 	ResourceGroupId         *string  `pulumi:"resourceGroupId"`
 	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
+	Zone *string                `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Eip resource.
@@ -292,7 +303,7 @@ type EipArgs struct {
 	HighDefinitionMonitorLogStatus pulumi.StringPtrInput
 	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
-	// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instanceChargeType` is PrePaid.
 	InternetChargeType pulumi.StringPtrInput
@@ -302,7 +313,7 @@ type EipArgs struct {
 	LogStore   pulumi.StringPtrInput
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name    pulumi.StringPtrInput
 	Netmode pulumi.StringPtrInput
 	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -310,12 +321,14 @@ type EipArgs struct {
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
 	// **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period                pulumi.IntPtrInput
+	PricingCycle          pulumi.StringPtrInput
 	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The Id of resource group which the eip belongs.
 	ResourceGroupId         pulumi.StringPtrInput
 	SecurityProtectionTypes pulumi.StringArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
+	Zone pulumi.StringPtrInput
 }
 
 func (EipArgs) ElementType() reflect.Type {
@@ -423,6 +436,10 @@ func (o EipOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
+func (o EipOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // Whether enable the deletion protection or not. Default value: `false`.
 // - true: Enable deletion protection.
 // - false: Disable deletion protection.
@@ -441,7 +458,7 @@ func (o EipOutput) HighDefinitionMonitorLogStatus() pulumi.StringOutput {
 
 // (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 //
-// Deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 func (o EipOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
@@ -471,13 +488,13 @@ func (o EipOutput) LogStore() pulumi.StringPtrOutput {
 
 // It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 //
-// Deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
+// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 func (o EipOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o EipOutput) Netmode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.Netmode }).(pulumi.StringPtrOutput)
+func (o EipOutput) Netmode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Netmode }).(pulumi.StringOutput)
 }
 
 // The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -489,6 +506,10 @@ func (o EipOutput) PaymentType() pulumi.StringOutput {
 // **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o EipOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+func (o EipOutput) PricingCycle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
 }
 
 func (o EipOutput) PublicIpAddressPoolId() pulumi.StringPtrOutput {
@@ -512,6 +533,10 @@ func (o EipOutput) Status() pulumi.StringOutput {
 // A mapping of tags to assign to the resource.
 func (o EipOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Eip) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+func (o EipOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
 type EipArrayOutput struct{ *pulumi.OutputState }

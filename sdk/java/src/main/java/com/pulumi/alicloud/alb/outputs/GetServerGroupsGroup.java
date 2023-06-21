@@ -51,7 +51,7 @@ public final class GetServerGroupsGroup {
      */
     private List<GetServerGroupsGroupServer> servers;
     /**
-     * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * @return The status of the resource.
      * 
      */
     private String status;
@@ -60,6 +60,10 @@ public final class GetServerGroupsGroup {
      * 
      */
     private List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs;
+    /**
+     * @return A map of tags assigned to the group.
+     * 
+     */
     private Map<String,Object> tags;
     /**
      * @return The ID of the VPC that you want to access.
@@ -118,7 +122,7 @@ public final class GetServerGroupsGroup {
         return this.servers;
     }
     /**
-     * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * @return The status of the resource.
      * 
      */
     public String status() {
@@ -131,6 +135,10 @@ public final class GetServerGroupsGroup {
     public List<GetServerGroupsGroupStickySessionConfig> stickySessionConfigs() {
         return this.stickySessionConfigs;
     }
+    /**
+     * @return A map of tags assigned to the group.
+     * 
+     */
     public Map<String,Object> tags() {
         return this.tags;
     }

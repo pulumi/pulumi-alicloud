@@ -515,12 +515,15 @@ func (o EndpointGroupPortOverridesPtrOutput) ListenerPort() pulumi.IntPtrOutput 
 }
 
 type ForwardingRuleRuleAction struct {
-	// Forwarding configuration.
-	ForwardGroupConfig ForwardingRuleRuleActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
+	// Forwarding configuration. See `forwardGroupConfig` below.
+	// > **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
+	ForwardGroupConfig *ForwardingRuleRuleActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
 	// Forwarding priority.
 	Order int `pulumi:"order"`
-	// Forward action type. Default: forwardgroup.
+	// Forward action type.
 	RuleActionType string `pulumi:"ruleActionType"`
+	// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+	RuleActionValue *string `pulumi:"ruleActionValue"`
 }
 
 // ForwardingRuleRuleActionInput is an input type that accepts ForwardingRuleRuleActionArgs and ForwardingRuleRuleActionOutput values.
@@ -535,12 +538,15 @@ type ForwardingRuleRuleActionInput interface {
 }
 
 type ForwardingRuleRuleActionArgs struct {
-	// Forwarding configuration.
-	ForwardGroupConfig ForwardingRuleRuleActionForwardGroupConfigInput `pulumi:"forwardGroupConfig"`
+	// Forwarding configuration. See `forwardGroupConfig` below.
+	// > **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
+	ForwardGroupConfig ForwardingRuleRuleActionForwardGroupConfigPtrInput `pulumi:"forwardGroupConfig"`
 	// Forwarding priority.
 	Order pulumi.IntInput `pulumi:"order"`
-	// Forward action type. Default: forwardgroup.
+	// Forward action type.
 	RuleActionType pulumi.StringInput `pulumi:"ruleActionType"`
+	// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+	RuleActionValue pulumi.StringPtrInput `pulumi:"ruleActionValue"`
 }
 
 func (ForwardingRuleRuleActionArgs) ElementType() reflect.Type {
@@ -594,11 +600,12 @@ func (o ForwardingRuleRuleActionOutput) ToForwardingRuleRuleActionOutputWithCont
 	return o
 }
 
-// Forwarding configuration.
-func (o ForwardingRuleRuleActionOutput) ForwardGroupConfig() ForwardingRuleRuleActionForwardGroupConfigOutput {
-	return o.ApplyT(func(v ForwardingRuleRuleAction) ForwardingRuleRuleActionForwardGroupConfig {
+// Forwarding configuration. See `forwardGroupConfig` below.
+// > **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
+func (o ForwardingRuleRuleActionOutput) ForwardGroupConfig() ForwardingRuleRuleActionForwardGroupConfigPtrOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleAction) *ForwardingRuleRuleActionForwardGroupConfig {
 		return v.ForwardGroupConfig
-	}).(ForwardingRuleRuleActionForwardGroupConfigOutput)
+	}).(ForwardingRuleRuleActionForwardGroupConfigPtrOutput)
 }
 
 // Forwarding priority.
@@ -606,9 +613,14 @@ func (o ForwardingRuleRuleActionOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleAction) int { return v.Order }).(pulumi.IntOutput)
 }
 
-// Forward action type. Default: forwardgroup.
+// Forward action type.
 func (o ForwardingRuleRuleActionOutput) RuleActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleAction) string { return v.RuleActionType }).(pulumi.StringOutput)
+}
+
+// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+func (o ForwardingRuleRuleActionOutput) RuleActionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleAction) *string { return v.RuleActionValue }).(pulumi.StringPtrOutput)
 }
 
 type ForwardingRuleRuleActionArrayOutput struct{ *pulumi.OutputState }
@@ -632,7 +644,7 @@ func (o ForwardingRuleRuleActionArrayOutput) Index(i pulumi.IntInput) Forwarding
 }
 
 type ForwardingRuleRuleActionForwardGroupConfig struct {
-	// Terminal node group configuration.
+	// The information about the endpoint group. See `serverGroupTuples` below.
 	ServerGroupTuples []ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -648,7 +660,7 @@ type ForwardingRuleRuleActionForwardGroupConfigInput interface {
 }
 
 type ForwardingRuleRuleActionForwardGroupConfigArgs struct {
-	// Terminal node group configuration.
+	// The information about the endpoint group. See `serverGroupTuples` below.
 	ServerGroupTuples ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -662,6 +674,47 @@ func (i ForwardingRuleRuleActionForwardGroupConfigArgs) ToForwardingRuleRuleActi
 
 func (i ForwardingRuleRuleActionForwardGroupConfigArgs) ToForwardingRuleRuleActionForwardGroupConfigOutputWithContext(ctx context.Context) ForwardingRuleRuleActionForwardGroupConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleActionForwardGroupConfigOutput)
+}
+
+func (i ForwardingRuleRuleActionForwardGroupConfigArgs) ToForwardingRuleRuleActionForwardGroupConfigPtrOutput() ForwardingRuleRuleActionForwardGroupConfigPtrOutput {
+	return i.ToForwardingRuleRuleActionForwardGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleRuleActionForwardGroupConfigArgs) ToForwardingRuleRuleActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) ForwardingRuleRuleActionForwardGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleActionForwardGroupConfigOutput).ToForwardingRuleRuleActionForwardGroupConfigPtrOutputWithContext(ctx)
+}
+
+// ForwardingRuleRuleActionForwardGroupConfigPtrInput is an input type that accepts ForwardingRuleRuleActionForwardGroupConfigArgs, ForwardingRuleRuleActionForwardGroupConfigPtr and ForwardingRuleRuleActionForwardGroupConfigPtrOutput values.
+// You can construct a concrete instance of `ForwardingRuleRuleActionForwardGroupConfigPtrInput` via:
+//
+//	        ForwardingRuleRuleActionForwardGroupConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ForwardingRuleRuleActionForwardGroupConfigPtrInput interface {
+	pulumi.Input
+
+	ToForwardingRuleRuleActionForwardGroupConfigPtrOutput() ForwardingRuleRuleActionForwardGroupConfigPtrOutput
+	ToForwardingRuleRuleActionForwardGroupConfigPtrOutputWithContext(context.Context) ForwardingRuleRuleActionForwardGroupConfigPtrOutput
+}
+
+type forwardingRuleRuleActionForwardGroupConfigPtrType ForwardingRuleRuleActionForwardGroupConfigArgs
+
+func ForwardingRuleRuleActionForwardGroupConfigPtr(v *ForwardingRuleRuleActionForwardGroupConfigArgs) ForwardingRuleRuleActionForwardGroupConfigPtrInput {
+	return (*forwardingRuleRuleActionForwardGroupConfigPtrType)(v)
+}
+
+func (*forwardingRuleRuleActionForwardGroupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForwardingRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (i *forwardingRuleRuleActionForwardGroupConfigPtrType) ToForwardingRuleRuleActionForwardGroupConfigPtrOutput() ForwardingRuleRuleActionForwardGroupConfigPtrOutput {
+	return i.ToForwardingRuleRuleActionForwardGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *forwardingRuleRuleActionForwardGroupConfigPtrType) ToForwardingRuleRuleActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) ForwardingRuleRuleActionForwardGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleRuleActionForwardGroupConfigPtrOutput)
 }
 
 type ForwardingRuleRuleActionForwardGroupConfigOutput struct{ *pulumi.OutputState }
@@ -678,15 +731,59 @@ func (o ForwardingRuleRuleActionForwardGroupConfigOutput) ToForwardingRuleRuleAc
 	return o
 }
 
-// Terminal node group configuration.
+func (o ForwardingRuleRuleActionForwardGroupConfigOutput) ToForwardingRuleRuleActionForwardGroupConfigPtrOutput() ForwardingRuleRuleActionForwardGroupConfigPtrOutput {
+	return o.ToForwardingRuleRuleActionForwardGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ForwardingRuleRuleActionForwardGroupConfigOutput) ToForwardingRuleRuleActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) ForwardingRuleRuleActionForwardGroupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForwardingRuleRuleActionForwardGroupConfig) *ForwardingRuleRuleActionForwardGroupConfig {
+		return &v
+	}).(ForwardingRuleRuleActionForwardGroupConfigPtrOutput)
+}
+
+// The information about the endpoint group. See `serverGroupTuples` below.
 func (o ForwardingRuleRuleActionForwardGroupConfigOutput) ServerGroupTuples() ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleActionForwardGroupConfig) []ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
 	}).(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
 }
 
+type ForwardingRuleRuleActionForwardGroupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleRuleActionForwardGroupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForwardingRuleRuleActionForwardGroupConfig)(nil)).Elem()
+}
+
+func (o ForwardingRuleRuleActionForwardGroupConfigPtrOutput) ToForwardingRuleRuleActionForwardGroupConfigPtrOutput() ForwardingRuleRuleActionForwardGroupConfigPtrOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleActionForwardGroupConfigPtrOutput) ToForwardingRuleRuleActionForwardGroupConfigPtrOutputWithContext(ctx context.Context) ForwardingRuleRuleActionForwardGroupConfigPtrOutput {
+	return o
+}
+
+func (o ForwardingRuleRuleActionForwardGroupConfigPtrOutput) Elem() ForwardingRuleRuleActionForwardGroupConfigOutput {
+	return o.ApplyT(func(v *ForwardingRuleRuleActionForwardGroupConfig) ForwardingRuleRuleActionForwardGroupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ForwardingRuleRuleActionForwardGroupConfig
+		return ret
+	}).(ForwardingRuleRuleActionForwardGroupConfigOutput)
+}
+
+// The information about the endpoint group. See `serverGroupTuples` below.
+func (o ForwardingRuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples() ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
+	return o.ApplyT(func(v *ForwardingRuleRuleActionForwardGroupConfig) []ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
+		if v == nil {
+			return nil
+		}
+		return v.ServerGroupTuples
+	}).(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput)
+}
+
 type ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple struct {
-	// Terminal node group ID.
+	// The ID of the endpoint group.
 	EndpointGroupId string `pulumi:"endpointGroupId"`
 }
 
@@ -702,7 +799,7 @@ type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
 }
 
 type ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
-	// Terminal node group ID.
+	// The ID of the endpoint group.
 	EndpointGroupId pulumi.StringInput `pulumi:"endpointGroupId"`
 }
 
@@ -757,7 +854,7 @@ func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToForw
 	return o
 }
 
-// Terminal node group ID.
+// The ID of the endpoint group.
 func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput) EndpointGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple) string { return v.EndpointGroupId }).(pulumi.StringOutput)
 }
@@ -783,11 +880,11 @@ func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) I
 }
 
 type ForwardingRuleRuleCondition struct {
-	// Domain name configuration information.
+	// The configuration of the domain name. See `hostConfig` below.
 	HostConfigs []ForwardingRuleRuleConditionHostConfig `pulumi:"hostConfigs"`
-	// Path configuration information.
+	// The configuration of the path. See `pathConfig` below.
 	PathConfig *ForwardingRuleRuleConditionPathConfig `pulumi:"pathConfig"`
-	// Forwarding condition type. Valid value: `Host`, `Path`.
+	// The type of the forwarding conditions. Valid values: `Host`, `Path`.
 	RuleConditionType string `pulumi:"ruleConditionType"`
 }
 
@@ -803,11 +900,11 @@ type ForwardingRuleRuleConditionInput interface {
 }
 
 type ForwardingRuleRuleConditionArgs struct {
-	// Domain name configuration information.
+	// The configuration of the domain name. See `hostConfig` below.
 	HostConfigs ForwardingRuleRuleConditionHostConfigArrayInput `pulumi:"hostConfigs"`
-	// Path configuration information.
+	// The configuration of the path. See `pathConfig` below.
 	PathConfig ForwardingRuleRuleConditionPathConfigPtrInput `pulumi:"pathConfig"`
-	// Forwarding condition type. Valid value: `Host`, `Path`.
+	// The type of the forwarding conditions. Valid values: `Host`, `Path`.
 	RuleConditionType pulumi.StringInput `pulumi:"ruleConditionType"`
 }
 
@@ -862,17 +959,17 @@ func (o ForwardingRuleRuleConditionOutput) ToForwardingRuleRuleConditionOutputWi
 	return o
 }
 
-// Domain name configuration information.
+// The configuration of the domain name. See `hostConfig` below.
 func (o ForwardingRuleRuleConditionOutput) HostConfigs() ForwardingRuleRuleConditionHostConfigArrayOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleCondition) []ForwardingRuleRuleConditionHostConfig { return v.HostConfigs }).(ForwardingRuleRuleConditionHostConfigArrayOutput)
 }
 
-// Path configuration information.
+// The configuration of the path. See `pathConfig` below.
 func (o ForwardingRuleRuleConditionOutput) PathConfig() ForwardingRuleRuleConditionPathConfigPtrOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleCondition) *ForwardingRuleRuleConditionPathConfig { return v.PathConfig }).(ForwardingRuleRuleConditionPathConfigPtrOutput)
 }
 
-// Forwarding condition type. Valid value: `Host`, `Path`.
+// The type of the forwarding conditions. Valid values: `Host`, `Path`.
 func (o ForwardingRuleRuleConditionOutput) RuleConditionType() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleCondition) string { return v.RuleConditionType }).(pulumi.StringOutput)
 }
@@ -1226,6 +1323,219 @@ func (o ListenerCertificateArrayOutput) Index(i pulumi.IntInput) ListenerCertifi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListenerCertificate {
 		return vs[0].([]ListenerCertificate)[vs[1].(int)]
 	}).(ListenerCertificateOutput)
+}
+
+type ListenerForwardedForConfig struct {
+	// Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
+	ForwardedForGaApEnabled *bool `pulumi:"forwardedForGaApEnabled"`
+	// Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
+	ForwardedForGaIdEnabled *bool `pulumi:"forwardedForGaIdEnabled"`
+	// Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
+	ForwardedForPortEnabled *bool `pulumi:"forwardedForPortEnabled"`
+	// Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
+	ForwardedForProtoEnabled *bool `pulumi:"forwardedForProtoEnabled"`
+	// Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
+	RealIpEnabled *bool `pulumi:"realIpEnabled"`
+}
+
+// ListenerForwardedForConfigInput is an input type that accepts ListenerForwardedForConfigArgs and ListenerForwardedForConfigOutput values.
+// You can construct a concrete instance of `ListenerForwardedForConfigInput` via:
+//
+//	ListenerForwardedForConfigArgs{...}
+type ListenerForwardedForConfigInput interface {
+	pulumi.Input
+
+	ToListenerForwardedForConfigOutput() ListenerForwardedForConfigOutput
+	ToListenerForwardedForConfigOutputWithContext(context.Context) ListenerForwardedForConfigOutput
+}
+
+type ListenerForwardedForConfigArgs struct {
+	// Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
+	ForwardedForGaApEnabled pulumi.BoolPtrInput `pulumi:"forwardedForGaApEnabled"`
+	// Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
+	ForwardedForGaIdEnabled pulumi.BoolPtrInput `pulumi:"forwardedForGaIdEnabled"`
+	// Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
+	ForwardedForPortEnabled pulumi.BoolPtrInput `pulumi:"forwardedForPortEnabled"`
+	// Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
+	ForwardedForProtoEnabled pulumi.BoolPtrInput `pulumi:"forwardedForProtoEnabled"`
+	// Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
+	RealIpEnabled pulumi.BoolPtrInput `pulumi:"realIpEnabled"`
+}
+
+func (ListenerForwardedForConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerForwardedForConfig)(nil)).Elem()
+}
+
+func (i ListenerForwardedForConfigArgs) ToListenerForwardedForConfigOutput() ListenerForwardedForConfigOutput {
+	return i.ToListenerForwardedForConfigOutputWithContext(context.Background())
+}
+
+func (i ListenerForwardedForConfigArgs) ToListenerForwardedForConfigOutputWithContext(ctx context.Context) ListenerForwardedForConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerForwardedForConfigOutput)
+}
+
+func (i ListenerForwardedForConfigArgs) ToListenerForwardedForConfigPtrOutput() ListenerForwardedForConfigPtrOutput {
+	return i.ToListenerForwardedForConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListenerForwardedForConfigArgs) ToListenerForwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerForwardedForConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerForwardedForConfigOutput).ToListenerForwardedForConfigPtrOutputWithContext(ctx)
+}
+
+// ListenerForwardedForConfigPtrInput is an input type that accepts ListenerForwardedForConfigArgs, ListenerForwardedForConfigPtr and ListenerForwardedForConfigPtrOutput values.
+// You can construct a concrete instance of `ListenerForwardedForConfigPtrInput` via:
+//
+//	        ListenerForwardedForConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListenerForwardedForConfigPtrInput interface {
+	pulumi.Input
+
+	ToListenerForwardedForConfigPtrOutput() ListenerForwardedForConfigPtrOutput
+	ToListenerForwardedForConfigPtrOutputWithContext(context.Context) ListenerForwardedForConfigPtrOutput
+}
+
+type listenerForwardedForConfigPtrType ListenerForwardedForConfigArgs
+
+func ListenerForwardedForConfigPtr(v *ListenerForwardedForConfigArgs) ListenerForwardedForConfigPtrInput {
+	return (*listenerForwardedForConfigPtrType)(v)
+}
+
+func (*listenerForwardedForConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerForwardedForConfig)(nil)).Elem()
+}
+
+func (i *listenerForwardedForConfigPtrType) ToListenerForwardedForConfigPtrOutput() ListenerForwardedForConfigPtrOutput {
+	return i.ToListenerForwardedForConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listenerForwardedForConfigPtrType) ToListenerForwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerForwardedForConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListenerForwardedForConfigPtrOutput)
+}
+
+type ListenerForwardedForConfigOutput struct{ *pulumi.OutputState }
+
+func (ListenerForwardedForConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListenerForwardedForConfig)(nil)).Elem()
+}
+
+func (o ListenerForwardedForConfigOutput) ToListenerForwardedForConfigOutput() ListenerForwardedForConfigOutput {
+	return o
+}
+
+func (o ListenerForwardedForConfigOutput) ToListenerForwardedForConfigOutputWithContext(ctx context.Context) ListenerForwardedForConfigOutput {
+	return o
+}
+
+func (o ListenerForwardedForConfigOutput) ToListenerForwardedForConfigPtrOutput() ListenerForwardedForConfigPtrOutput {
+	return o.ToListenerForwardedForConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListenerForwardedForConfigOutput) ToListenerForwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerForwardedForConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListenerForwardedForConfig) *ListenerForwardedForConfig {
+		return &v
+	}).(ListenerForwardedForConfigPtrOutput)
+}
+
+// Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
+func (o ListenerForwardedForConfigOutput) ForwardedForGaApEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerForwardedForConfig) *bool { return v.ForwardedForGaApEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
+func (o ListenerForwardedForConfigOutput) ForwardedForGaIdEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerForwardedForConfig) *bool { return v.ForwardedForGaIdEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
+func (o ListenerForwardedForConfigOutput) ForwardedForPortEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerForwardedForConfig) *bool { return v.ForwardedForPortEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
+func (o ListenerForwardedForConfigOutput) ForwardedForProtoEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerForwardedForConfig) *bool { return v.ForwardedForProtoEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
+func (o ListenerForwardedForConfigOutput) RealIpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListenerForwardedForConfig) *bool { return v.RealIpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type ListenerForwardedForConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListenerForwardedForConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListenerForwardedForConfig)(nil)).Elem()
+}
+
+func (o ListenerForwardedForConfigPtrOutput) ToListenerForwardedForConfigPtrOutput() ListenerForwardedForConfigPtrOutput {
+	return o
+}
+
+func (o ListenerForwardedForConfigPtrOutput) ToListenerForwardedForConfigPtrOutputWithContext(ctx context.Context) ListenerForwardedForConfigPtrOutput {
+	return o
+}
+
+func (o ListenerForwardedForConfigPtrOutput) Elem() ListenerForwardedForConfigOutput {
+	return o.ApplyT(func(v *ListenerForwardedForConfig) ListenerForwardedForConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListenerForwardedForConfig
+		return ret
+	}).(ListenerForwardedForConfigOutput)
+}
+
+// Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
+func (o ListenerForwardedForConfigPtrOutput) ForwardedForGaApEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardedForGaApEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
+func (o ListenerForwardedForConfigPtrOutput) ForwardedForGaIdEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardedForGaIdEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
+func (o ListenerForwardedForConfigPtrOutput) ForwardedForPortEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardedForPortEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
+func (o ListenerForwardedForConfigPtrOutput) ForwardedForProtoEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardedForProtoEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
+func (o ListenerForwardedForConfigPtrOutput) RealIpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListenerForwardedForConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RealIpEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ListenerPortRange struct {
@@ -6456,6 +6766,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleActionInput)(nil)).Elem(), ForwardingRuleRuleActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleActionArrayInput)(nil)).Elem(), ForwardingRuleRuleActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleActionForwardGroupConfigInput)(nil)).Elem(), ForwardingRuleRuleActionForwardGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleActionForwardGroupConfigPtrInput)(nil)).Elem(), ForwardingRuleRuleActionForwardGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleInput)(nil)).Elem(), ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayInput)(nil)).Elem(), ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleConditionInput)(nil)).Elem(), ForwardingRuleRuleConditionArgs{})
@@ -6466,6 +6777,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleRuleConditionPathConfigPtrInput)(nil)).Elem(), ForwardingRuleRuleConditionPathConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificateInput)(nil)).Elem(), ListenerCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerCertificateArrayInput)(nil)).Elem(), ListenerCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerForwardedForConfigInput)(nil)).Elem(), ListenerForwardedForConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListenerForwardedForConfigPtrInput)(nil)).Elem(), ListenerForwardedForConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerPortRangeInput)(nil)).Elem(), ListenerPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListenerPortRangeArrayInput)(nil)).Elem(), ListenerPortRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAcceleratorSpareIpAttachmentsAttachmentInput)(nil)).Elem(), GetAcceleratorSpareIpAttachmentsAttachmentArgs{})
@@ -6551,6 +6864,7 @@ func init() {
 	pulumi.RegisterOutputType(ForwardingRuleRuleActionOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleRuleActionArrayOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleRuleActionForwardGroupConfigOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleRuleActionForwardGroupConfigPtrOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleRuleConditionOutput{})
@@ -6561,6 +6875,8 @@ func init() {
 	pulumi.RegisterOutputType(ForwardingRuleRuleConditionPathConfigPtrOutput{})
 	pulumi.RegisterOutputType(ListenerCertificateOutput{})
 	pulumi.RegisterOutputType(ListenerCertificateArrayOutput{})
+	pulumi.RegisterOutputType(ListenerForwardedForConfigOutput{})
+	pulumi.RegisterOutputType(ListenerForwardedForConfigPtrOutput{})
 	pulumi.RegisterOutputType(ListenerPortRangeOutput{})
 	pulumi.RegisterOutputType(ListenerPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetAcceleratorSpareIpAttachmentsAttachmentOutput{})

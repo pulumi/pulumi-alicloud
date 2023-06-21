@@ -17,7 +17,7 @@ public final class ServiceNasConfig {
      */
     private Integer groupId;
     /**
-     * @return Config the NAS mount points, including following attributes:
+     * @return Config the NAS mount points.See `mount_points` below.
      * 
      */
     private List<ServiceNasConfigMountPoint> mountPoints;
@@ -36,7 +36,7 @@ public final class ServiceNasConfig {
         return this.groupId;
     }
     /**
-     * @return Config the NAS mount points, including following attributes:
+     * @return Config the NAS mount points.See `mount_points` below.
      * 
      */
     public List<ServiceNasConfigMountPoint> mountPoints() {

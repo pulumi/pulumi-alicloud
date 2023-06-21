@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dts
     /// 
     /// For information about DTS Consumer Channel and how to use it, see [What is Consumer Channel](https://www.alibabacloud.com/help/en/doc-detail/264593.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.146.0+.
+    /// &gt; **NOTE:** Available since v1.146.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,85 +29,119 @@ namespace Pulumi.AliCloud.Dts
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tftestdts";
-    ///     var creation = config.Get("creation") ?? "Rds";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var exampleRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         AvailableResourceCreation = creation,
+    ///         Current = true,
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "default-NODELETING",
-    ///     });
-    /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var instance = new AliCloud.Rds.Instance("instance", new()
+    ///     var exampleZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "MySQL",
-    ///         EngineVersion = "5.6",
-    ///         InstanceType = "rds.mysql.s1.small",
-    ///         InstanceStorage = 10,
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     {
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceChargeType = "PostPaid",
+    ///         Category = "Basic",
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
+    ///     {
+    ///         Engine = "MySQL",
+    ///         EngineVersion = "8.0",
+    ///         InstanceType = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = exampleInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceChargeType = "Postpaid",
     ///         InstanceName = name,
-    ///     });
-    /// 
-    ///     var db = new List&lt;AliCloud.Rds.Database&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
-    ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         db.Add(new AliCloud.Rds.Database($"db-{range.Value}", new()
+    ///         VswitchId = exampleSwitch.Id,
+    ///         MonitoringPeriod = 60,
+    ///         DbInstanceStorageType = "cloud_essd",
+    ///         SecurityGroupIds = new[]
     ///         {
-    ///             InstanceId = instance.Id,
-    ///             Description = "from terraform",
-    ///         }));
-    ///     }
-    ///     var account = new AliCloud.Rds.Account("account", new()
-    ///     {
-    ///         DbInstanceId = instance.Id,
-    ///         AccountName = "tftestprivilege",
-    ///         AccountPassword = "Test12345",
-    ///         AccountDescription = "from terraform",
+    ///             exampleSecurityGroup.Id,
+    ///         },
     ///     });
     /// 
-    ///     var privilege = new AliCloud.Rds.AccountPrivilege("privilege", new()
+    ///     var exampleRdsAccount = new AliCloud.Rds.RdsAccount("exampleRdsAccount", new()
     ///     {
-    ///         InstanceId = instance.Id,
-    ///         AccountName = account.Name,
+    ///         DbInstanceId = exampleInstance.Id,
+    ///         AccountName = "example_name",
+    ///         AccountPassword = "example_1234",
+    ///     });
+    /// 
+    ///     var exampleDatabase = new AliCloud.Rds.Database("exampleDatabase", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
+    ///     });
+    /// 
+    ///     var exampleAccountPrivilege = new AliCloud.Rds.AccountPrivilege("exampleAccountPrivilege", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
+    ///         AccountName = exampleRdsAccount.Name,
     ///         Privilege = "ReadWrite",
-    ///         DbNames = db.Select(__item =&gt; __item.Name).ToList(),
+    ///         DbNames = new[]
+    ///         {
+    ///             exampleDatabase.Name,
+    ///         },
     ///     });
     /// 
-    ///     var defaultSubscriptionJob = new AliCloud.Dts.SubscriptionJob("defaultSubscriptionJob", new()
+    ///     var exampleSubscriptionJob = new AliCloud.Dts.SubscriptionJob("exampleSubscriptionJob", new()
     ///     {
     ///         DtsJobName = name,
     ///         PaymentType = "PayAsYouGo",
     ///         SourceEndpointEngineName = "MySQL",
-    ///         SourceEndpointRegion = "cn-hangzhou",
+    ///         SourceEndpointRegion = exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
     ///         SourceEndpointInstanceType = "RDS",
-    ///         SourceEndpointInstanceId = instance.Id,
-    ///         SourceEndpointDatabaseName = "tfaccountpri_0",
-    ///         SourceEndpointUserName = "tftestprivilege",
-    ///         SourceEndpointPassword = "Test12345",
+    ///         SourceEndpointInstanceId = exampleInstance.Id,
+    ///         SourceEndpointDatabaseName = exampleDatabase.Name,
+    ///         SourceEndpointUserName = exampleRdsAccount.AccountName,
+    ///         SourceEndpointPassword = exampleRdsAccount.AccountPassword,
+    ///         DbList = Output.Tuple(exampleDatabase.Name, exampleDatabase.Name).Apply(values =&gt;
+    ///         {
+    ///             var exampleDatabaseName = values.Item1;
+    ///             var exampleDatabaseName1 = values.Item2;
+    ///             return $"{{\"{exampleDatabaseName}\":{{\"name\":\"{exampleDatabaseName1}\",\"all\":true}}}}";
+    ///         }),
     ///         SubscriptionInstanceNetworkType = "vpc",
-    ///         DbList = @"        {""dtstestdata"": {""name"": ""tfaccountpri_0"", ""all"": true}}
-    /// ",
-    ///         SubscriptionInstanceVpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         SubscriptionInstanceVswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         SubscriptionInstanceVpcId = exampleNetwork.Id,
+    ///         SubscriptionInstanceVswitchId = exampleSwitch.Id,
     ///         Status = "Normal",
     ///     });
     /// 
-    ///     var defaultConsumerChannel = new AliCloud.Dts.ConsumerChannel("defaultConsumerChannel", new()
+    ///     var exampleConsumerChannel = new AliCloud.Dts.ConsumerChannel("exampleConsumerChannel", new()
     ///     {
-    ///         DtsInstanceId = defaultSubscriptionJob.DtsInstanceId,
+    ///         DtsInstanceId = exampleSubscriptionJob.DtsInstanceId,
     ///         ConsumerGroupName = name,
-    ///         ConsumerGroupUserName = name,
-    ///         ConsumerGroupPassword = "tftestAcc123",
+    ///         ConsumerGroupUserName = "example",
+    ///         ConsumerGroupPassword = "example1234",
     ///     });
     /// 
     /// });

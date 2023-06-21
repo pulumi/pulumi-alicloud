@@ -124,23 +124,31 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * @return The status of the resource.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * A map of tags assigned to the group.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
+    /**
+     * @return A map of tags assigned to the group.
+     * 
+     */
     public Optional<Map<String,Object>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -291,7 +299,7 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -301,6 +309,12 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param tags A map of tags assigned to the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Map<String,Object> tags) {
             $.tags = tags;
             return this;

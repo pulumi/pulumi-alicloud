@@ -44,7 +44,7 @@ class ScalingRuleArgs:
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
-        :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
@@ -187,7 +187,7 @@ class ScalingRuleArgs:
     @pulumi.getter(name="stepAdjustments")
     def step_adjustments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]:
         """
-        Steps for StepScalingRule. See Block stepAdjustment below for details.
+        Steps for StepScalingRule. See `step_adjustment` below.
         """
         return pulumi.get(self, "step_adjustments")
 
@@ -233,6 +233,7 @@ class _ScalingRuleState:
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
+        :param pulumi.Input[str] ari: The unique identifier of the scaling rule.
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
@@ -240,7 +241,7 @@ class _ScalingRuleState:
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
-        :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
         if adjustment_type is not None:
@@ -301,6 +302,9 @@ class _ScalingRuleState:
     @property
     @pulumi.getter
     def ari(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the scaling rule.
+        """
         return pulumi.get(self, "ari")
 
     @ari.setter
@@ -395,7 +399,7 @@ class _ScalingRuleState:
     @pulumi.getter(name="stepAdjustments")
     def step_adjustments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]:
         """
-        Steps for StepScalingRule. See Block stepAdjustment below for details.
+        Steps for StepScalingRule. See `step_adjustment` below.
         """
         return pulumi.get(self, "step_adjustments")
 
@@ -436,6 +440,10 @@ class ScalingRule(pulumi.CustomResource):
         """
         Provides a ESS scaling rule resource.
 
+        For information about ess scaling rule, see [CreateScalingRule](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalingrule).
+
+        > **NOTE:** Available since v1.39.0.
+
         ## Example Usage
 
         ```python
@@ -445,7 +453,7 @@ class ScalingRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "essscalingruleconfig"
+            name = "terraform-example"
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -494,14 +502,6 @@ class ScalingRule(pulumi.CustomResource):
 
         You can use to the existing autoscaling-rule module
         to create different type rules, alarm task and scheduled task one-click.
-
-        ## Block stepAdjustment
-
-        The stepAdjustment mapping supports the following:
-
-        * `metric_interval_lower_bound` - (Optional) The lower bound of step.
-        * `metric_interval_upper_bound` - (Optional) The upper bound of step.
-        * `scaling_adjustment` - (Optional) The adjust value of step.
 
         ## Import
 
@@ -528,7 +528,7 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
         ...
@@ -540,6 +540,10 @@ class ScalingRule(pulumi.CustomResource):
         """
         Provides a ESS scaling rule resource.
 
+        For information about ess scaling rule, see [CreateScalingRule](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalingrule).
+
+        > **NOTE:** Available since v1.39.0.
+
         ## Example Usage
 
         ```python
@@ -549,7 +553,7 @@ class ScalingRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "essscalingruleconfig"
+            name = "terraform-example"
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -598,14 +602,6 @@ class ScalingRule(pulumi.CustomResource):
 
         You can use to the existing autoscaling-rule module
         to create different type rules, alarm task and scheduled task one-click.
-
-        ## Block stepAdjustment
-
-        The stepAdjustment mapping supports the following:
-
-        * `metric_interval_lower_bound` - (Optional) The lower bound of step.
-        * `metric_interval_upper_bound` - (Optional) The upper bound of step.
-        * `scaling_adjustment` - (Optional) The adjust value of step.
 
         ## Import
 
@@ -701,6 +697,7 @@ class ScalingRule(pulumi.CustomResource):
                - QuantityChangeInCapacity：(0, 500] U (-500, 0]
                - PercentChangeInCapacity：[0, 10000] U [-100, 0]
                - TotalCapacity：[0, 1000]
+        :param pulumi.Input[str] ari: The unique identifier of the scaling rule.
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
@@ -708,7 +705,7 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]] step_adjustments: Steps for StepScalingRule. See Block stepAdjustment below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -754,6 +751,9 @@ class ScalingRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def ari(self) -> pulumi.Output[str]:
+        """
+        The unique identifier of the scaling rule.
+        """
         return pulumi.get(self, "ari")
 
     @property
@@ -816,7 +816,7 @@ class ScalingRule(pulumi.CustomResource):
     @pulumi.getter(name="stepAdjustments")
     def step_adjustments(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingRuleStepAdjustment']]]:
         """
-        Steps for StepScalingRule. See Block stepAdjustment below for details.
+        Steps for StepScalingRule. See `step_adjustment` below.
         """
         return pulumi.get(self, "step_adjustments")
 

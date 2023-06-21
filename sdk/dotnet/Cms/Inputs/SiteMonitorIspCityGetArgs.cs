@@ -12,9 +12,15 @@ namespace Pulumi.AliCloud.Cms.Inputs
 
     public sealed class SiteMonitorIspCityGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the city.
+        /// </summary>
         [Input("city", required: true)]
         public Input<string> City { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the carrier.
+        /// </summary>
         [Input("isp", required: true)]
         public Input<string> Isp { get; set; } = null!;
 

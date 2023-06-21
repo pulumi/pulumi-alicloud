@@ -9,7 +9,33 @@ import * as utilities from "../utilities";
  *
  * For information about Dts Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance).
  *
- * > **NOTE:** Available in v1.198.0+.
+ * > **NOTE:** Available since v1.198.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultInstance = new alicloud.dts.Instance("defaultInstance", {
+ *     type: "sync",
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     paymentType: "Subscription",
+ *     instanceClass: "large",
+ *     sourceEndpointEngineName: "MySQL",
+ *     sourceRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     destinationEndpointEngineName: "MySQL",
+ *     destinationRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ * });
+ * ```
  *
  * ## Import
  *

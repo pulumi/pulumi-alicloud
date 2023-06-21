@@ -13,9 +13,9 @@ import (
 
 // Provides a Global Accelerator (GA) Accelerator Spare Ip Attachment resource.
 //
-// For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://help.aliyun.com/document_detail/262120.html).
+// For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createspareips).
 //
-// > **NOTE:** Available in v1.167.0+.
+// > **NOTE:** Available since v1.167.0.
 //
 // ## Example Usage
 //
@@ -36,9 +36,9 @@ import (
 //			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
 //				Duration:        pulumi.Int(1),
 //				Spec:            pulumi.String("1"),
-//				AcceleratorName: pulumi.Any(_var.Name),
+//				AcceleratorName: pulumi.String("terraform-example"),
 //				AutoUseCoupon:   pulumi.Bool(true),
-//				Description:     pulumi.Any(_var.Name),
+//				Description:     pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -50,7 +50,7 @@ import (
 //				PaymentType:          pulumi.String("PayAsYouGo"),
 //				BillingType:          pulumi.String("PayBy95"),
 //				Ratio:                pulumi.Int(30),
-//				BandwidthPackageName: pulumi.Any(_var.Name),
+//				BandwidthPackageName: pulumi.String("terraform-example"),
 //				AutoPay:              pulumi.Bool(true),
 //				AutoUseCoupon:        pulumi.Bool(true),
 //			})

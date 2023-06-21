@@ -169,6 +169,41 @@ class StoreIndex(pulumi.CustomResource):
         Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
         You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_store_index = alicloud.log.StoreIndex("exampleStoreIndex",
+            project=example_project.name,
+            logstore=example_store.name,
+            full_text=alicloud.log.StoreIndexFullTextArgs(
+                case_sensitive=True,
+                token=\"\"\" #$^*
+        	\"\"\",
+            ),
+            field_searches=[alicloud.log.StoreIndexFieldSearchArgs(
+                name="terraform-example",
+                enable_analytics=True,
+                type="text",
+                token=\"\"\" #$^*
+        	\"\"\",
+            )])
+        ```
         ## Module Support
 
         You can use the existing sls module
@@ -199,6 +234,41 @@ class StoreIndex(pulumi.CustomResource):
         Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
         You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
+            shard_count=3,
+            auto_split=True,
+            max_split_shard_count=60,
+            append_meta=True)
+        example_store_index = alicloud.log.StoreIndex("exampleStoreIndex",
+            project=example_project.name,
+            logstore=example_store.name,
+            full_text=alicloud.log.StoreIndexFullTextArgs(
+                case_sensitive=True,
+                token=\"\"\" #$^*
+        	\"\"\",
+            ),
+            field_searches=[alicloud.log.StoreIndexFieldSearchArgs(
+                name="terraform-example",
+                enable_analytics=True,
+                type="text",
+                token=\"\"\" #$^*
+        	\"\"\",
+            )])
+        ```
         ## Module Support
 
         You can use the existing sls module

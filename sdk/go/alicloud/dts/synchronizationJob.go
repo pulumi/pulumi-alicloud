@@ -15,67 +15,8 @@ import (
 //
 // For information about DTS Synchronization Job and how to use it, see [What is Synchronization Job](https://www.alibabacloud.com/product/data-transmission-service).
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultSynchronizationInstance, err := dts.NewSynchronizationInstance(ctx, "defaultSynchronizationInstance", &dts.SynchronizationInstanceArgs{
-//				PaymentType:                   pulumi.String("PayAsYouGo"),
-//				SourceEndpointEngineName:      pulumi.String("PolarDB"),
-//				SourceEndpointRegion:          pulumi.String("cn-hangzhou"),
-//				DestinationEndpointEngineName: pulumi.String("ADB30"),
-//				DestinationEndpointRegion:     pulumi.String("cn-hangzhou"),
-//				InstanceClass:                 pulumi.String("small"),
-//				SyncArchitecture:              pulumi.String("oneway"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dts.NewSynchronizationJob(ctx, "defaultSynchronizationJob", &dts.SynchronizationJobArgs{
-//				DtsInstanceId:                   defaultSynchronizationInstance.ID(),
-//				DtsJobName:                      pulumi.String("tf-testAccCase1"),
-//				SourceEndpointInstanceType:      pulumi.String("PolarDB"),
-//				SourceEndpointInstanceId:        pulumi.String("pc-xxxxxxxx"),
-//				SourceEndpointEngineName:        pulumi.String("PolarDB"),
-//				SourceEndpointRegion:            pulumi.String("cn-hangzhou"),
-//				SourceEndpointDatabaseName:      pulumi.String("tf-testacc"),
-//				SourceEndpointUserName:          pulumi.String("root"),
-//				SourceEndpointPassword:          pulumi.String("password"),
-//				DestinationEndpointInstanceType: pulumi.String("ads"),
-//				DestinationEndpointInstanceId:   pulumi.String("am-xxxxxxxx"),
-//				DestinationEndpointEngineName:   pulumi.String("ADB30"),
-//				DestinationEndpointRegion:       pulumi.String("cn-hangzhou"),
-//				DestinationEndpointDatabaseName: pulumi.String("tf-testacc"),
-//				DestinationEndpointUserName:     pulumi.String("root"),
-//				DestinationEndpointPassword:     pulumi.String("password"),
-//				DbList:                          pulumi.String("{\"tf-testacc\":{\"name\":\"tf-test\",\"all\":true,\"state\":\"normal\"}}"),
-//				StructureInitialization:         pulumi.Bool(true),
-//				DataInitialization:              pulumi.Bool(true),
-//				DataSynchronization:             pulumi.Bool(true),
-//				Status:                          pulumi.String("Synchronizing"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Notice
 //
 // 1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;

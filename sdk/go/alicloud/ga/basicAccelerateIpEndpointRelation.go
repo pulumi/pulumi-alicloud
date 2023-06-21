@@ -13,9 +13,9 @@ import (
 
 // Provides a Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation resource.
 //
-// For information about Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation and how to use it, see [What is Basic Accelerate Ip Endpoint Relation](https://help.aliyun.com/document_detail/466842.html).
+// For information about Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation and how to use it, see [What is Basic Accelerate Ip Endpoint Relation](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicaccelerateipendpointrelation).
 //
-// > **NOTE:** Available in v1.194.0+.
+// > **NOTE:** Available since v1.194.0.
 //
 // ## Example Usage
 //
@@ -31,67 +31,84 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			region := "cn-shenzhen"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			endpointRegion := "cn-hangzhou"
+//			if param := cfg.Get("endpointRegion"); param != "" {
+//				endpointRegion = param
+//			}
 //			_, err := alicloud.NewProvider(ctx, "sz", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-shenzhen"),
+//				Region: pulumi.String(region),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-hangzhou"),
+//				Region: pulumi.String(endpointRegion),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("your_vpc_name"),
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			}, pulumi.Provider(alicloud.Sz))
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			}, pulumi.Provider(alicloud.Sz))
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: *pulumi.String(defaultNetworks.Ids[0]),
-//			}, pulumi.Provider("alicloud.sz"))
+//				VpcId: defaultNetwork.ID(),
+//			}, pulumi.Provider(alicloud.Sz))
 //			if err != nil {
 //				return err
 //			}
 //			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "defaultEcsNetworkInterface", &ecs.EcsNetworkInterfaceArgs{
-//				VswitchId: *pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId: defaultSwitch.ID(),
 //				SecurityGroupIds: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
-//			}, pulumi.Provider("alicloud.sz"))
+//			}, pulumi.Provider(alicloud.Sz))
 //			if err != nil {
 //				return err
 //			}
 //			defaultBasicAccelerator, err := ga.NewBasicAccelerator(ctx, "defaultBasicAccelerator", &ga.BasicAcceleratorArgs{
 //				Duration:             pulumi.Int(1),
-//				PricingCycle:         pulumi.String("Month"),
-//				BasicAcceleratorName: pulumi.Any(_var.Name),
-//				Description:          pulumi.Any(_var.Name),
+//				BasicAcceleratorName: pulumi.String("terraform-example"),
+//				Description:          pulumi.String("terraform-example"),
 //				BandwidthBillingType: pulumi.String("CDT"),
-//				AutoPay:              pulumi.Bool(true),
 //				AutoUseCoupon:        pulumi.String("true"),
-//				AutoRenew:            pulumi.Bool(false),
-//				AutoRenewDuration:    pulumi.Int(1),
+//				AutoPay:              pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultBasicIpSet, err := ga.NewBasicIpSet(ctx, "defaultBasicIpSet", &ga.BasicIpSetArgs{
 //				AcceleratorId:      defaultBasicAccelerator.ID(),
-//				AccelerateRegionId: pulumi.String("cn-hangzhou"),
+//				AccelerateRegionId: pulumi.String(endpointRegion),
 //				IspType:            pulumi.String("BGP"),
 //				Bandwidth:          pulumi.Int(5),
 //			})
@@ -99,15 +116,17 @@ import (
 //				return err
 //			}
 //			defaultBasicAccelerateIp, err := ga.NewBasicAccelerateIp(ctx, "defaultBasicAccelerateIp", &ga.BasicAccelerateIpArgs{
-//				AcceleratorId: defaultBasicIpSet.AcceleratorId,
+//				AcceleratorId: defaultBasicAccelerator.ID(),
 //				IpSetId:       defaultBasicIpSet.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultBasicEndpointGroup, err := ga.NewBasicEndpointGroup(ctx, "defaultBasicEndpointGroup", &ga.BasicEndpointGroupArgs{
-//				AcceleratorId:       defaultBasicAccelerator.ID(),
-//				EndpointGroupRegion: pulumi.String("cn-shenzhen"),
+//				AcceleratorId:          defaultBasicAccelerator.ID(),
+//				EndpointGroupRegion:    pulumi.String(region),
+//				BasicEndpointGroupName: pulumi.String("terraform-example"),
+//				Description:            pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -119,8 +138,8 @@ import (
 //				EndpointAddress:        defaultEcsNetworkInterface.ID(),
 //				EndpointSubAddressType: pulumi.String("primary"),
 //				EndpointSubAddress:     pulumi.String("192.168.0.1"),
-//				BasicEndpointName:      pulumi.Any(_var.Name),
-//			})
+//				BasicEndpointName:      pulumi.String("terraform-example"),
+//			}, pulumi.Provider(alicloud.Hz))
 //			if err != nil {
 //				return err
 //			}

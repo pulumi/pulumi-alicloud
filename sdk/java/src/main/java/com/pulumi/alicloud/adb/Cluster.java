@@ -231,11 +231,23 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> description() {
         return this.description;
     }
+    @Export(name="diskPerformanceLevel", type=String.class, parameters={})
+    private Output<String> diskPerformanceLevel;
+
+    public Output<String> diskPerformanceLevel() {
+        return this.diskPerformanceLevel;
+    }
     @Export(name="elasticIoResource", type=Integer.class, parameters={})
     private Output<Integer> elasticIoResource;
 
     public Output<Integer> elasticIoResource() {
         return this.elasticIoResource;
+    }
+    @Export(name="elasticIoResourceSize", type=String.class, parameters={})
+    private Output<String> elasticIoResourceSize;
+
+    public Output<String> elasticIoResourceSize() {
+        return this.elasticIoResourceSize;
     }
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)

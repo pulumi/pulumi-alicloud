@@ -13,9 +13,9 @@ import (
 
 // Provides a Quotas Template Quota resource.
 //
-// For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://help.aliyun.com/document_detail/450615.html).
+// For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createtemplatequotaitem).
 //
-// > **NOTE:** Available in v1.206.0+.
+// > **NOTE:** Available since v1.206.0.
 //
 // ## Example Usage
 //
@@ -76,7 +76,7 @@ type TemplateQuota struct {
 
 	// Quota application value.
 	DesireValue pulumi.Float64Output `pulumi:"desireValue"`
-	// The Quota Dimensions. See the following `Block Dimensions`.
+	// The Quota Dimensions. See `dimensions` below.
 	Dimensions TemplateQuotaDimensionArrayOutput `pulumi:"dimensions"`
 	// The UTC time when the quota takes effect.
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
@@ -141,7 +141,7 @@ func GetTemplateQuota(ctx *pulumi.Context,
 type templateQuotaState struct {
 	// Quota application value.
 	DesireValue *float64 `pulumi:"desireValue"`
-	// The Quota Dimensions. See the following `Block Dimensions`.
+	// The Quota Dimensions. See `dimensions` below.
 	Dimensions []TemplateQuotaDimension `pulumi:"dimensions"`
 	// The UTC time when the quota takes effect.
 	EffectiveTime *string `pulumi:"effectiveTime"`
@@ -169,7 +169,7 @@ type templateQuotaState struct {
 type TemplateQuotaState struct {
 	// Quota application value.
 	DesireValue pulumi.Float64PtrInput
-	// The Quota Dimensions. See the following `Block Dimensions`.
+	// The Quota Dimensions. See `dimensions` below.
 	Dimensions TemplateQuotaDimensionArrayInput
 	// The UTC time when the quota takes effect.
 	EffectiveTime pulumi.StringPtrInput
@@ -201,7 +201,7 @@ func (TemplateQuotaState) ElementType() reflect.Type {
 type templateQuotaArgs struct {
 	// Quota application value.
 	DesireValue float64 `pulumi:"desireValue"`
-	// The Quota Dimensions. See the following `Block Dimensions`.
+	// The Quota Dimensions. See `dimensions` below.
 	Dimensions []TemplateQuotaDimension `pulumi:"dimensions"`
 	// The UTC time when the quota takes effect.
 	EffectiveTime *string `pulumi:"effectiveTime"`
@@ -230,7 +230,7 @@ type templateQuotaArgs struct {
 type TemplateQuotaArgs struct {
 	// Quota application value.
 	DesireValue pulumi.Float64Input
-	// The Quota Dimensions. See the following `Block Dimensions`.
+	// The Quota Dimensions. See `dimensions` below.
 	Dimensions TemplateQuotaDimensionArrayInput
 	// The UTC time when the quota takes effect.
 	EffectiveTime pulumi.StringPtrInput
@@ -347,7 +347,7 @@ func (o TemplateQuotaOutput) DesireValue() pulumi.Float64Output {
 	return o.ApplyT(func(v *TemplateQuota) pulumi.Float64Output { return v.DesireValue }).(pulumi.Float64Output)
 }
 
-// The Quota Dimensions. See the following `Block Dimensions`.
+// The Quota Dimensions. See `dimensions` below.
 func (o TemplateQuotaOutput) Dimensions() TemplateQuotaDimensionArrayOutput {
 	return o.ApplyT(func(v *TemplateQuota) TemplateQuotaDimensionArrayOutput { return v.Dimensions }).(TemplateQuotaDimensionArrayOutput)
 }

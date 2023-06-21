@@ -21,13 +21,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleVault = new alicloud.hbr.Vault("exampleVault", {vaultName: _var.name});
  * const exampleResourceGroups = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
+ * const exampleVault = new alicloud.hbr.Vault("exampleVault", {vaultName: "terraform-example"});
  * const exampleHanaInstance = new alicloud.hbr.HanaInstance("exampleHanaInstance", {
  *     alertSetting: "INHERITED",
- *     hanaName: _var.name,
+ *     hanaName: "terraform-example",
  *     host: "1.1.1.1",
  *     instanceNumber: 1,
  *     password: "YouPassword123",

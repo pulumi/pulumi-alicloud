@@ -11,79 +11,58 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.NewCommonBandwithPackage(ctx, "foo", &vpc.CommonBandwithPackageArgs{
-//				Bandwidth:            pulumi.String("1000"),
-//				BandwidthPackageName: pulumi.String("test-common-bandwidth-package"),
-//				Description:          pulumi.String("test-common-bandwidth-package"),
-//				InternetChargeType:   pulumi.String("PayByBandwidth"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// The common bandwidth package can be imported using the id, e.g.
+// CBWP Common Bandwidth Package can be imported using the id, e.g.
 //
 // ```sh
 //
-//	$ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage foo cbwp-abc123456
+//	$ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example <id>
 //
 // ```
 type CommonBandwithPackage struct {
 	pulumi.CustomResourceState
 
-	// The bandwidth of the common bandwidth package. Unit: Mbps.
+	// The peak bandwidth of the shared bandwidth. Unit: Mbps.
+	// Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
-	// The name of the common bandwidth package.
+	// The name of the Internet Shared Bandwidth instance.
 	BandwidthPackageName pulumi.StringOutput `pulumi:"bandwidthPackageName"`
-	// Whether enable the deletion protection or not. Default value: `false`.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
-	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
-	// The description of the common bandwidth package instance.
+	// The create time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether enable the deletion protection or not. Default value: false.
+	// - **true**: Enable deletion protection.
+	// - **false**: Disable deletion protection.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// The description of the shared bandwidth.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+	// - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+	// - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
 	Force pulumi.StringPtrOutput `pulumi:"force"`
-	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn't support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
-	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-	// **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
-	Isp pulumi.StringPtrOutput `pulumi:"isp"`
-	// Field `name` has been deprecated from provider version 1.120.0. New field `bandwidthPackageName` instead.
+	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+	Isp pulumi.StringOutput `pulumi:"isp"`
+	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to `100`. Valid values: [10-100].
-	Ratio pulumi.IntPtrOutput `pulumi:"ratio"`
+	// The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
+	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to 100. Valid values: [10-100].
+	Ratio pulumi.IntOutput `pulumi:"ratio"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
 	SecurityProtectionTypes pulumi.StringArrayOutput `pulumi:"securityProtectionTypes"`
-	// (Available in 1.120.0+) The status of bandwidth package.
+	// The status of the Internet Shared Bandwidth instance. Default value: **Available**.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The zone of bandwidth package.
+	// The tag of the resource.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// The available area of the shared bandwidth.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Zone pulumi.StringPtrOutput `pulumi:"zone"`
 }
 
@@ -119,70 +98,90 @@ func GetCommonBandwithPackage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CommonBandwithPackage resources.
 type commonBandwithPackageState struct {
-	// The bandwidth of the common bandwidth package. Unit: Mbps.
+	// The peak bandwidth of the shared bandwidth. Unit: Mbps.
+	// Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
 	Bandwidth *string `pulumi:"bandwidth"`
-	// The name of the common bandwidth package.
+	// The name of the Internet Shared Bandwidth instance.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
-	// Whether enable the deletion protection or not. Default value: `false`.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
+	// The create time.
+	CreateTime *string `pulumi:"createTime"`
+	// Whether enable the deletion protection or not. Default value: false.
+	// - **true**: Enable deletion protection.
+	// - **false**: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The description of the common bandwidth package instance.
+	// The description of the shared bandwidth.
 	Description *string `pulumi:"description"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+	// - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+	// - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
 	Force *string `pulumi:"force"`
-	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn't support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-	// **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
+	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
 	Isp *string `pulumi:"isp"`
-	// Field `name` has been deprecated from provider version 1.120.0. New field `bandwidthPackageName` instead.
+	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name *string `pulumi:"name"`
-	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to `100`. Valid values: [10-100].
+	// The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType *string `pulumi:"paymentType"`
+	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to 100. Valid values: [10-100].
 	Ratio *int `pulumi:"ratio"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
 	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
-	// (Available in 1.120.0+) The status of bandwidth package.
+	// The status of the Internet Shared Bandwidth instance. Default value: **Available**.
 	Status *string `pulumi:"status"`
-	// The zone of bandwidth package.
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The available area of the shared bandwidth.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Zone *string `pulumi:"zone"`
 }
 
 type CommonBandwithPackageState struct {
-	// The bandwidth of the common bandwidth package. Unit: Mbps.
+	// The peak bandwidth of the shared bandwidth. Unit: Mbps.
+	// Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
 	Bandwidth pulumi.StringPtrInput
-	// The name of the common bandwidth package.
+	// The name of the Internet Shared Bandwidth instance.
 	BandwidthPackageName pulumi.StringPtrInput
-	// Whether enable the deletion protection or not. Default value: `false`.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
+	// The create time.
+	CreateTime pulumi.StringPtrInput
+	// Whether enable the deletion protection or not. Default value: false.
+	// - **true**: Enable deletion protection.
+	// - **false**: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
-	// The description of the common bandwidth package instance.
+	// The description of the shared bandwidth.
 	Description pulumi.StringPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+	// - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+	// - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
 	Force pulumi.StringPtrInput
-	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn't support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
 	InternetChargeType pulumi.StringPtrInput
-	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-	// **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
+	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
 	Isp pulumi.StringPtrInput
-	// Field `name` has been deprecated from provider version 1.120.0. New field `bandwidthPackageName` instead.
+	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name pulumi.StringPtrInput
-	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to `100`. Valid values: [10-100].
+	// The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
+	PaymentType pulumi.StringPtrInput
+	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to 100. Valid values: [10-100].
 	Ratio pulumi.IntPtrInput
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
 	SecurityProtectionTypes pulumi.StringArrayInput
-	// (Available in 1.120.0+) The status of bandwidth package.
+	// The status of the Internet Shared Bandwidth instance. Default value: **Available**.
 	Status pulumi.StringPtrInput
-	// The zone of bandwidth package.
+	// The tag of the resource.
+	Tags pulumi.MapInput
+	// The available area of the shared bandwidth.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Zone pulumi.StringPtrInput
 }
 
@@ -191,67 +190,79 @@ func (CommonBandwithPackageState) ElementType() reflect.Type {
 }
 
 type commonBandwithPackageArgs struct {
-	// The bandwidth of the common bandwidth package. Unit: Mbps.
+	// The peak bandwidth of the shared bandwidth. Unit: Mbps.
+	// Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
 	Bandwidth string `pulumi:"bandwidth"`
-	// The name of the common bandwidth package.
+	// The name of the Internet Shared Bandwidth instance.
 	BandwidthPackageName *string `pulumi:"bandwidthPackageName"`
-	// Whether enable the deletion protection or not. Default value: `false`.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
+	// Whether enable the deletion protection or not. Default value: false.
+	// - **true**: Enable deletion protection.
+	// - **false**: Disable deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The description of the common bandwidth package instance.
+	// The description of the shared bandwidth.
 	Description *string `pulumi:"description"`
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+	// - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+	// - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
 	Force *string `pulumi:"force"`
-	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn't support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-	// **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
+	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
 	Isp *string `pulumi:"isp"`
-	// Field `name` has been deprecated from provider version 1.120.0. New field `bandwidthPackageName` instead.
+	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name *string `pulumi:"name"`
-	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to `100`. Valid values: [10-100].
+	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to 100. Valid values: [10-100].
 	Ratio *int `pulumi:"ratio"`
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
 	SecurityProtectionTypes []string `pulumi:"securityProtectionTypes"`
-	// The zone of bandwidth package.
+	// The tag of the resource.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// The available area of the shared bandwidth.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a CommonBandwithPackage resource.
 type CommonBandwithPackageArgs struct {
-	// The bandwidth of the common bandwidth package. Unit: Mbps.
+	// The peak bandwidth of the shared bandwidth. Unit: Mbps.
+	// Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
 	Bandwidth pulumi.StringInput
-	// The name of the common bandwidth package.
+	// The name of the Internet Shared Bandwidth instance.
 	BandwidthPackageName pulumi.StringPtrInput
-	// Whether enable the deletion protection or not. Default value: `false`.
-	// - true: Enable deletion protection.
-	// - false: Disable deletion protection.
+	// Whether enable the deletion protection or not. Default value: false.
+	// - **true**: Enable deletion protection.
+	// - **false**: Disable deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
-	// The description of the common bandwidth package instance.
+	// The description of the shared bandwidth.
 	Description pulumi.StringPtrInput
-	// This parameter is used for resource destroy. Default value is `false`.
+	// Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+	// - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+	// - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
 	Force pulumi.StringPtrInput
-	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+	// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn't support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
 	InternetChargeType pulumi.StringPtrInput
-	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-	// **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
+	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
 	Isp pulumi.StringPtrInput
-	// Field `name` has been deprecated from provider version 1.120.0. New field `bandwidthPackageName` instead.
+	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name pulumi.StringPtrInput
-	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to `100`. Valid values: [10-100].
+	// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to 100. Valid values: [10-100].
 	Ratio pulumi.IntPtrInput
 	// The Id of resource group which the common bandwidth package belongs.
 	ResourceGroupId pulumi.StringPtrInput
-	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+	// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
 	SecurityProtectionTypes pulumi.StringArrayInput
-	// The zone of bandwidth package.
+	// The tag of the resource.
+	Tags pulumi.MapInput
+	// The available area of the shared bandwidth.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Zone pulumi.StringPtrInput
 }
 
@@ -342,54 +353,66 @@ func (o CommonBandwithPackageOutput) ToCommonBandwithPackageOutputWithContext(ct
 	return o
 }
 
-// The bandwidth of the common bandwidth package. Unit: Mbps.
+// The peak bandwidth of the shared bandwidth. Unit: Mbps.
+// Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
 func (o CommonBandwithPackageOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
-// The name of the common bandwidth package.
+// The name of the Internet Shared Bandwidth instance.
 func (o CommonBandwithPackageOutput) BandwidthPackageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.BandwidthPackageName }).(pulumi.StringOutput)
 }
 
-// Whether enable the deletion protection or not. Default value: `false`.
-// - true: Enable deletion protection.
-// - false: Disable deletion protection.
-func (o CommonBandwithPackageOutput) DeletionProtection() pulumi.BoolOutput {
-	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
+// The create time.
+func (o CommonBandwithPackageOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the common bandwidth package instance.
+// Whether enable the deletion protection or not. Default value: false.
+// - **true**: Enable deletion protection.
+// - **false**: Disable deletion protection.
+func (o CommonBandwithPackageOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The description of the shared bandwidth.
 func (o CommonBandwithPackageOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// This parameter is used for resource destroy. Default value is `false`.
+// Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+// - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+// - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
 func (o CommonBandwithPackageOutput) Force() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.Force }).(pulumi.StringPtrOutput)
 }
 
-// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn't supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+// The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn't support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
 func (o CommonBandwithPackageOutput) InternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.InternetChargeType }).(pulumi.StringPtrOutput)
 }
 
-// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-// **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
-func (o CommonBandwithPackageOutput) Isp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.Isp }).(pulumi.StringPtrOutput)
+// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
+func (o CommonBandwithPackageOutput) Isp() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.Isp }).(pulumi.StringOutput)
 }
 
-// Field `name` has been deprecated from provider version 1.120.0. New field `bandwidthPackageName` instead.
+// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 //
-// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 func (o CommonBandwithPackageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to `100`. Valid values: [10-100].
-func (o CommonBandwithPackageOutput) Ratio() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.IntPtrOutput { return v.Ratio }).(pulumi.IntPtrOutput)
+// The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
+func (o CommonBandwithPackageOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
+}
+
+// Ratio of the common bandwidth package. It is valid when `internetChargeType` is `PayBy95`. Default to 100. Valid values: [10-100].
+func (o CommonBandwithPackageOutput) Ratio() pulumi.IntOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.IntOutput { return v.Ratio }).(pulumi.IntOutput)
 }
 
 // The Id of resource group which the common bandwidth package belongs.
@@ -397,17 +420,24 @@ func (o CommonBandwithPackageOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
+// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internetChargeType` is `PayBy95`.
 func (o CommonBandwithPackageOutput) SecurityProtectionTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringArrayOutput { return v.SecurityProtectionTypes }).(pulumi.StringArrayOutput)
 }
 
-// (Available in 1.120.0+) The status of bandwidth package.
+// The status of the Internet Shared Bandwidth instance. Default value: **Available**.
 func (o CommonBandwithPackageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The zone of bandwidth package.
+// The tag of the resource.
+func (o CommonBandwithPackageOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// The available area of the shared bandwidth.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o CommonBandwithPackageOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringPtrOutput { return v.Zone }).(pulumi.StringPtrOutput)
 }

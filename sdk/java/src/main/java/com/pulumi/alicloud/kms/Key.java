@@ -12,14 +12,16 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * A kms key can help user to protect data security in the transmission process. For information about Alikms Key and how to use it, see [What is Resource Alikms Key](https://www.alibabacloud.com/help/doc-detail/28947.htm).
  * 
- * &gt; **NOTE:** Available in v1.85.0+.
+ * &gt; **NOTE:** Available since v1.85.0.
  * 
  * ## Example Usage
  * 
@@ -60,7 +62,7 @@ import javax.annotation.Nullable;
  * Alikms key can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:kms/key:Key example abc123456
+ *  $ pulumi import alicloud:kms/key:Key example &lt;id&gt;
  * ```
  * 
  */
@@ -81,24 +83,18 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.arn;
     }
     /**
-     * Specifies whether to enable automatic key rotation. Valid values:
-     * - Enabled
-     * - Disabled (default value)
-     *   **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
      * 
      */
     @Export(name="automaticRotation", type=String.class, parameters={})
-    private Output</* @Nullable */ String> automaticRotation;
+    private Output<String> automaticRotation;
 
     /**
-     * @return Specifies whether to enable automatic key rotation. Valid values:
-     * - Enabled
-     * - Disabled (default value)
-     *   **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * @return Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
      * 
      */
-    public Output<Optional<String>> automaticRotation() {
-        return Codegen.optional(this.automaticRotation);
+    public Output<String> automaticRotation() {
+        return this.automaticRotation;
     }
     /**
      * The date and time when the CMK was created. The time is displayed in UTC.
@@ -189,7 +185,7 @@ public class Key extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dkmsInstanceId);
     }
     /**
-     * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+     * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
      * @deprecated
      * Field &#39;is_enabled&#39; has been deprecated from provider version 1.85.0. New field &#39;key_state&#39; instead.
@@ -200,25 +196,25 @@ public class Key extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> isEnabled;
 
     /**
-     * @return Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+     * @return Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
      */
     public Output<Optional<Boolean>> isEnabled() {
         return Codegen.optional(this.isEnabled);
     }
     /**
-     * The type of the CMK. Valid values:
-     * &#34;Aliyun_AES_256&#34;, &#34;Aliyun_AES_128&#34;, &#34;Aliyun_AES_192&#34;, &#34;Aliyun_SM4&#34;, &#34;RSA_2048&#34;, &#34;RSA_3072&#34;, &#34;EC_P256&#34;, &#34;EC_P256K&#34;, &#34;EC_SM2&#34;.
-     * Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+     * The type of the CMK. Default value: `Aliyun_AES_256`. Valid values:
+     * `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+     * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
      * 
      */
     @Export(name="keySpec", type=String.class, parameters={})
     private Output<String> keySpec;
 
     /**
-     * @return The type of the CMK. Valid values:
-     * &#34;Aliyun_AES_256&#34;, &#34;Aliyun_AES_128&#34;, &#34;Aliyun_AES_192&#34;, &#34;Aliyun_SM4&#34;, &#34;RSA_2048&#34;, &#34;RSA_3072&#34;, &#34;EC_P256&#34;, &#34;EC_P256K&#34;, &#34;EC_SM2&#34;.
-     * Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+     * @return The type of the CMK. Default value: `Aliyun_AES_256`. Valid values:
+     * `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+     * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
      * 
      */
     public Output<String> keySpec() {
@@ -243,22 +239,22 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.keyState;
     }
     /**
-     * The usage of the CMK. Valid values:
-     * - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-     * - SIGN/VERIFY: generates or verifies a digital signature.
+     * The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      * 
      */
     @Export(name="keyUsage", type=String.class, parameters={})
-    private Output</* @Nullable */ String> keyUsage;
+    private Output<String> keyUsage;
 
     /**
-     * @return The usage of the CMK. Valid values:
-     * - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-     * - SIGN/VERIFY: generates or verifies a digital signature.
+     * @return The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      * 
      */
-    public Output<Optional<String>> keyUsage() {
-        return Codegen.optional(this.keyUsage);
+    public Output<String> keyUsage() {
+        return this.keyUsage;
     }
     /**
      * The date and time the last rotation was performed. The time is displayed in UTC.
@@ -303,24 +299,14 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.nextRotationDate;
     }
     /**
-     * The source of key material. Valid values:
-     * - Aliyun_KMS (default value)
-     * - EXTERNAL
-     *   **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-     *   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-     *   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+     * The source of key material. Default value: `Aliyun_KMS`. Valid values:
      * 
      */
     @Export(name="origin", type=String.class, parameters={})
     private Output<String> origin;
 
     /**
-     * @return The source of key material. Valid values:
-     * - Aliyun_KMS (default value)
-     * - EXTERNAL
-     *   **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-     *   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-     *   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+     * @return The source of key material. Default value: `Aliyun_KMS`. Valid values:
      * 
      */
     public Output<String> origin() {
@@ -361,24 +347,14 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.primaryKeyVersion;
     }
     /**
-     * The protection level of the CMK. Valid values:
-     * - SOFTWARE (default value)
-     * - HSM
-     *   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-     *   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-     *   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+     * The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
      * 
      */
     @Export(name="protectionLevel", type=String.class, parameters={})
     private Output</* @Nullable */ String> protectionLevel;
 
     /**
-     * @return The protection level of the CMK. Valid values:
-     * - SOFTWARE (default value)
-     * - HSM
-     *   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-     *   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-     *   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+     * @return The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
      * 
      */
     public Output<Optional<String>> protectionLevel() {
@@ -411,24 +387,32 @@ public class Key extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rotationInterval);
     }
     /**
-     * The status of CMK. Valid Values:
-     * - Disabled
-     * - Enabled (default value)
-     * - PendingDeletion
+     * The status of CMK. Default value: `Enabled`. Valid Values:
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of CMK. Valid Values:
-     * - Disabled
-     * - Enabled (default value)
-     * - PendingDeletion
+     * @return The status of CMK. Default value: `Enabled`. Valid Values:
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

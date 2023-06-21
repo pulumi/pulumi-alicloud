@@ -29,37 +29,34 @@ namespace Pulumi.AliCloud.Hbr
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAccReplicationVault";
-    ///     var regionSource = config.Get("regionSource") ?? "you Replication value source region";
+    ///     var sourceRegion = config.Get("sourceRegion") ?? "cn-hangzhou";
     ///     var source = new AliCloud.Provider("source", new()
     ///     {
-    ///         Region = regionSource,
+    ///         Region = sourceRegion,
+    ///     });
+    /// 
+    ///     var defaultReplicationVaultRegions = AliCloud.Hbr.GetReplicationVaultRegions.Invoke();
+    /// 
+    ///     var replication = new AliCloud.Provider("replication", new()
+    ///     {
+    ///         Region = defaultReplicationVaultRegions.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId),
     ///     });
     /// 
     ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
     ///     {
-    ///         VaultName = name,
+    ///         VaultName = "terraform-example",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = alicloud.Source,
     ///     });
     /// 
-    ///     var defaultReplicationVaultRegions = AliCloud.Hbr.GetReplicationVaultRegions.Invoke();
-    /// 
-    ///     var regionReplication = defaultReplicationVaultRegions.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId);
-    /// 
-    ///     var replication = new AliCloud.Provider("replication", new()
-    ///     {
-    ///         Region = regionReplication,
-    ///     });
-    /// 
     ///     var defaultReplicationVault = new AliCloud.Hbr.ReplicationVault("defaultReplicationVault", new()
     ///     {
-    ///         ReplicationSourceRegionId = regionReplication,
+    ///         ReplicationSourceRegionId = sourceRegion,
     ///         ReplicationSourceVaultId = defaultVault.Id,
-    ///         VaultName = name,
+    ///         VaultName = "terraform-example",
     ///         VaultStorageClass = "STANDARD",
-    ///         Description = name,
+    ///         Description = "terraform-example",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = alicloud.Replication,

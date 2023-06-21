@@ -21,7 +21,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
     /**
      * ConfigFileVolumeConfigFileToPaths.
-     * See Block_config_file_volume_config_file_to_path below for details.
+     * See `config_file_volume_config_file_to_paths` below for details.
      * 
      */
     @Import(name="configFileVolumeConfigFileToPaths")
@@ -29,7 +29,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
     /**
      * @return ConfigFileVolumeConfigFileToPaths.
-     * See Block_config_file_volume_config_file_to_path below for details.
+     * See `config_file_volume_config_file_to_paths` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs>>> configFileVolumeConfigFileToPaths() {
@@ -51,9 +51,17 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
         return Optional.ofNullable(this.diskVolumeDiskId);
     }
 
+    /**
+     * The disk size of DiskVolume.
+     * 
+     */
     @Import(name="diskVolumeDiskSize")
     private @Nullable Output<Integer> diskVolumeDiskSize;
 
+    /**
+     * @return The disk size of DiskVolume.
+     * 
+     */
     public Optional<Output<Integer>> diskVolumeDiskSize() {
         return Optional.ofNullable(this.diskVolumeDiskSize);
     }
@@ -238,7 +246,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
         /**
          * @param configFileVolumeConfigFileToPaths ConfigFileVolumeConfigFileToPaths.
-         * See Block_config_file_volume_config_file_to_path below for details.
+         * See `config_file_volume_config_file_to_paths` below for details.
          * 
          * @return builder
          * 
@@ -250,7 +258,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
         /**
          * @param configFileVolumeConfigFileToPaths ConfigFileVolumeConfigFileToPaths.
-         * See Block_config_file_volume_config_file_to_path below for details.
+         * See `config_file_volume_config_file_to_paths` below for details.
          * 
          * @return builder
          * 
@@ -261,7 +269,7 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
         /**
          * @param configFileVolumeConfigFileToPaths ConfigFileVolumeConfigFileToPaths.
-         * See Block_config_file_volume_config_file_to_path below for details.
+         * See `config_file_volume_config_file_to_paths` below for details.
          * 
          * @return builder
          * 
@@ -291,11 +299,23 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
             return diskVolumeDiskId(Output.of(diskVolumeDiskId));
         }
 
+        /**
+         * @param diskVolumeDiskSize The disk size of DiskVolume.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskVolumeDiskSize(@Nullable Output<Integer> diskVolumeDiskSize) {
             $.diskVolumeDiskSize = diskVolumeDiskSize;
             return this;
         }
 
+        /**
+         * @param diskVolumeDiskSize The disk size of DiskVolume.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskVolumeDiskSize(Integer diskVolumeDiskSize) {
             return diskVolumeDiskSize(Output.of(diskVolumeDiskSize));
         }

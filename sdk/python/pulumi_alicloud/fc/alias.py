@@ -27,9 +27,7 @@ class AliasArgs:
         :param pulumi.Input[str] service_name: The Function Compute service name.
         :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         :param pulumi.Input[str] description: Description of the alias.
-        :param pulumi.Input['AliasRoutingConfigArgs'] routing_config: The Function Compute alias' route configuration settings. Fields documented below.
-               
-               **routing_config** includes the following arguments:
+        :param pulumi.Input['AliasRoutingConfigArgs'] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
         """
         pulumi.set(__self__, "alias_name", alias_name)
         pulumi.set(__self__, "service_name", service_name)
@@ -91,9 +89,7 @@ class AliasArgs:
     @pulumi.getter(name="routingConfig")
     def routing_config(self) -> Optional[pulumi.Input['AliasRoutingConfigArgs']]:
         """
-        The Function Compute alias' route configuration settings. Fields documented below.
-
-        **routing_config** includes the following arguments:
+        The Function Compute alias' route configuration settings. See `routing_config` below.
         """
         return pulumi.get(self, "routing_config")
 
@@ -114,9 +110,7 @@ class _AliasState:
         Input properties used for looking up and filtering Alias resources.
         :param pulumi.Input[str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[str] description: Description of the alias.
-        :param pulumi.Input['AliasRoutingConfigArgs'] routing_config: The Function Compute alias' route configuration settings. Fields documented below.
-               
-               **routing_config** includes the following arguments:
+        :param pulumi.Input['AliasRoutingConfigArgs'] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
         :param pulumi.Input[str] service_name: The Function Compute service name.
         :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         """
@@ -159,9 +153,7 @@ class _AliasState:
     @pulumi.getter(name="routingConfig")
     def routing_config(self) -> Optional[pulumi.Input['AliasRoutingConfigArgs']]:
         """
-        The Function Compute alias' route configuration settings. Fields documented below.
-
-        **routing_config** includes the following arguments:
+        The Function Compute alias' route configuration settings. See `routing_config` below.
         """
         return pulumi.get(self, "routing_config")
 
@@ -207,9 +199,9 @@ class Alias(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/171635.htm).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createalias).
 
-        > **NOTE:** Available in 1.104.0+
+        > **NOTE:** Available since v1.104.0.
 
         ## Example Usage
 
@@ -218,16 +210,18 @@ class Alias(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            publish=True)
         example = alicloud.fc.Alias("example",
-            alias_name="my_alias",
-            description="a sample description",
-            routing_config=alicloud.fc.AliasRoutingConfigArgs(
-                additional_version_weights={
-                    "2": 0.5,
-                },
-            ),
-            service_name="my_service_name",
+            alias_name="example-value",
+            description="example-value",
+            service_name=default_service.name,
             service_version="1")
         ```
 
@@ -243,9 +237,7 @@ class Alias(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[str] description: Description of the alias.
-        :param pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']] routing_config: The Function Compute alias' route configuration settings. Fields documented below.
-               
-               **routing_config** includes the following arguments:
+        :param pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
         :param pulumi.Input[str] service_name: The Function Compute service name.
         :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         """
@@ -257,9 +249,9 @@ class Alias(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/171635.htm).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createalias).
 
-        > **NOTE:** Available in 1.104.0+
+        > **NOTE:** Available since v1.104.0.
 
         ## Example Usage
 
@@ -268,16 +260,18 @@ class Alias(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            publish=True)
         example = alicloud.fc.Alias("example",
-            alias_name="my_alias",
-            description="a sample description",
-            routing_config=alicloud.fc.AliasRoutingConfigArgs(
-                additional_version_weights={
-                    "2": 0.5,
-                },
-            ),
-            service_name="my_service_name",
+            alias_name="example-value",
+            description="example-value",
+            service_name=default_service.name,
             service_version="1")
         ```
 
@@ -353,9 +347,7 @@ class Alias(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias_name: Name for the alias you are creating.
         :param pulumi.Input[str] description: Description of the alias.
-        :param pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']] routing_config: The Function Compute alias' route configuration settings. Fields documented below.
-               
-               **routing_config** includes the following arguments:
+        :param pulumi.Input[pulumi.InputType['AliasRoutingConfigArgs']] routing_config: The Function Compute alias' route configuration settings. See `routing_config` below.
         :param pulumi.Input[str] service_name: The Function Compute service name.
         :param pulumi.Input[str] service_version: The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
         """
@@ -390,9 +382,7 @@ class Alias(pulumi.CustomResource):
     @pulumi.getter(name="routingConfig")
     def routing_config(self) -> pulumi.Output[Optional['outputs.AliasRoutingConfig']]:
         """
-        The Function Compute alias' route configuration settings. Fields documented below.
-
-        **routing_config** includes the following arguments:
+        The Function Compute alias' route configuration settings. See `routing_config` below.
         """
         return pulumi.get(self, "routing_config")
 

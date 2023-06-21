@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECD Custom Property resource.
  *
- * For information about ECD Custom Property and how to use it, see [What is Custom Property](https://help.aliyun.com/document_detail/436381.html).
+ * For information about ECD Custom Property and how to use it, see [What is Custom Property](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createproperty-desktop).
  *
- * > **NOTE:** Available in v1.176.0+.
+ * > **NOTE:** Available since v1.176.0.
  *
  * > **NOTE:** Up to 10 different attributes can be created under an alibaba cloud account. Up to 50 different attribute values can be added under an attribute.
  *
@@ -72,7 +72,7 @@ export class CustomProperty extends pulumi.CustomResource {
      */
     public readonly propertyKey!: pulumi.Output<string>;
     /**
-     * Custom attribute sets the value of. See the following `Block propertyValues`.
+     * Custom attribute sets the value of. See `propertyValues` below.
      */
     public readonly propertyValues!: pulumi.Output<outputs.eds.CustomPropertyPropertyValue[] | undefined>;
 
@@ -113,7 +113,7 @@ export interface CustomPropertyState {
      */
     propertyKey?: pulumi.Input<string>;
     /**
-     * Custom attribute sets the value of. See the following `Block propertyValues`.
+     * Custom attribute sets the value of. See `propertyValues` below.
      */
     propertyValues?: pulumi.Input<pulumi.Input<inputs.eds.CustomPropertyPropertyValue>[]>;
 }
@@ -127,7 +127,7 @@ export interface CustomPropertyArgs {
      */
     propertyKey: pulumi.Input<string>;
     /**
-     * Custom attribute sets the value of. See the following `Block propertyValues`.
+     * Custom attribute sets the value of. See `propertyValues` below.
      */
     propertyValues?: pulumi.Input<pulumi.Input<inputs.eds.CustomPropertyPropertyValue>[]>;
 }

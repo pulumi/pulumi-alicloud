@@ -31,6 +31,21 @@ public final class PublicIpAddressPoolCidrBlockState extends com.pulumi.resource
     }
 
     /**
+     * The creation time of the resource.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * The ID of the VPC Public IP address pool.
      * 
      */
@@ -64,6 +79,7 @@ public final class PublicIpAddressPoolCidrBlockState extends com.pulumi.resource
 
     private PublicIpAddressPoolCidrBlockState(PublicIpAddressPoolCidrBlockState $) {
         this.cidrBlock = $.cidrBlock;
+        this.createTime = $.createTime;
         this.publicIpAddressPoolId = $.publicIpAddressPoolId;
         this.status = $.status;
     }
@@ -105,6 +121,27 @@ public final class PublicIpAddressPoolCidrBlockState extends com.pulumi.resource
          */
         public Builder cidrBlock(String cidrBlock) {
             return cidrBlock(Output.of(cidrBlock));
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**

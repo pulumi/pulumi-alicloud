@@ -9,7 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a ESS eci scaling configuration resource.
  *
- * > **NOTE:** Resource `alicloud.ess.AlbServerGroupAttachment` is available in 1.164.0+.
+ * For information about ess eci scaling configuration, see [CreateEciScalingConfiguration](https://www.alibabacloud.com/help/en/auto-scaling/latest/create-eci-scaling-configuration).
+ *
+ * > **NOTE:** Available since v1.164.0.
  *
  * ## Example Usage
  *
@@ -20,12 +22,19 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "essscalingconfiguration";
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: data.alicloud_zones["default"].zones[0].id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
@@ -92,9 +101,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
     }
 
     /**
-     * Information about the Container Registry Enterprise Edition instance. The details see
-     * Block `acrRegistryInfo`.See Block acrRegistryInfo below for
-     * details.
+     * Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
      */
     public readonly acrRegistryInfos!: pulumi.Output<outputs.ess.EciScalingConfigurationAcrRegistryInfo[] | undefined>;
     /**
@@ -111,7 +118,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly containerGroupName!: pulumi.Output<string | undefined>;
     /**
-     * The list of containers.See Block container below for details.
+     * The list of containers. See `containers` below for details.
      */
     public readonly containers!: pulumi.Output<outputs.ess.EciScalingConfigurationContainer[] | undefined>;
     /**
@@ -145,7 +152,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
-     * HostAliases.See Block hostAlias below for details.
+     * HostAliases. See `hostAliases` below.
      */
     public readonly hostAliases!: pulumi.Output<outputs.ess.EciScalingConfigurationHostAlias[] | undefined>;
     /**
@@ -153,8 +160,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly hostName!: pulumi.Output<string | undefined>;
     /**
-     * The image registry credential. The details see
-     * Block `imageRegistryCredential`.See Block imageRegistryCredential below for
+     * The image registry credential.   See `imageRegistryCredentials` below for
      * details.
      */
     public readonly imageRegistryCredentials!: pulumi.Output<outputs.ess.EciScalingConfigurationImageRegistryCredential[] | undefined>;
@@ -163,8 +169,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly ingressBandwidth!: pulumi.Output<number | undefined>;
     /**
-     * The list of initContainers.See Block initContainer below for
-     * details.
+     * The list of initContainers. See `initContainers` below for details.
      */
     public readonly initContainers!: pulumi.Output<outputs.ess.EciScalingConfigurationInitContainer[] | undefined>;
     /**
@@ -217,7 +222,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The list of volumes.See Block volume below for details.
+     * The list of volumes. See `volumes` below for details.
      */
     public readonly volumes!: pulumi.Output<outputs.ess.EciScalingConfigurationVolume[] | undefined>;
 
@@ -306,9 +311,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
  */
 export interface EciScalingConfigurationState {
     /**
-     * Information about the Container Registry Enterprise Edition instance. The details see
-     * Block `acrRegistryInfo`.See Block acrRegistryInfo below for
-     * details.
+     * Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
      */
     acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationAcrRegistryInfo>[]>;
     /**
@@ -325,7 +328,7 @@ export interface EciScalingConfigurationState {
      */
     containerGroupName?: pulumi.Input<string>;
     /**
-     * The list of containers.See Block container below for details.
+     * The list of containers. See `containers` below for details.
      */
     containers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainer>[]>;
     /**
@@ -359,7 +362,7 @@ export interface EciScalingConfigurationState {
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
-     * HostAliases.See Block hostAlias below for details.
+     * HostAliases. See `hostAliases` below.
      */
     hostAliases?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationHostAlias>[]>;
     /**
@@ -367,8 +370,7 @@ export interface EciScalingConfigurationState {
      */
     hostName?: pulumi.Input<string>;
     /**
-     * The image registry credential. The details see
-     * Block `imageRegistryCredential`.See Block imageRegistryCredential below for
+     * The image registry credential.   See `imageRegistryCredentials` below for
      * details.
      */
     imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationImageRegistryCredential>[]>;
@@ -377,8 +379,7 @@ export interface EciScalingConfigurationState {
      */
     ingressBandwidth?: pulumi.Input<number>;
     /**
-     * The list of initContainers.See Block initContainer below for
-     * details.
+     * The list of initContainers. See `initContainers` below for details.
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
     /**
@@ -431,7 +432,7 @@ export interface EciScalingConfigurationState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The list of volumes.See Block volume below for details.
+     * The list of volumes. See `volumes` below for details.
      */
     volumes?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationVolume>[]>;
 }
@@ -441,9 +442,7 @@ export interface EciScalingConfigurationState {
  */
 export interface EciScalingConfigurationArgs {
     /**
-     * Information about the Container Registry Enterprise Edition instance. The details see
-     * Block `acrRegistryInfo`.See Block acrRegistryInfo below for
-     * details.
+     * Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
      */
     acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationAcrRegistryInfo>[]>;
     /**
@@ -460,7 +459,7 @@ export interface EciScalingConfigurationArgs {
      */
     containerGroupName?: pulumi.Input<string>;
     /**
-     * The list of containers.See Block container below for details.
+     * The list of containers. See `containers` below for details.
      */
     containers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainer>[]>;
     /**
@@ -494,7 +493,7 @@ export interface EciScalingConfigurationArgs {
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
-     * HostAliases.See Block hostAlias below for details.
+     * HostAliases. See `hostAliases` below.
      */
     hostAliases?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationHostAlias>[]>;
     /**
@@ -502,8 +501,7 @@ export interface EciScalingConfigurationArgs {
      */
     hostName?: pulumi.Input<string>;
     /**
-     * The image registry credential. The details see
-     * Block `imageRegistryCredential`.See Block imageRegistryCredential below for
+     * The image registry credential.   See `imageRegistryCredentials` below for
      * details.
      */
     imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationImageRegistryCredential>[]>;
@@ -512,8 +510,7 @@ export interface EciScalingConfigurationArgs {
      */
     ingressBandwidth?: pulumi.Input<number>;
     /**
-     * The list of initContainers.See Block initContainer below for
-     * details.
+     * The list of initContainers. See `initContainers` below for details.
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
     /**
@@ -566,7 +563,7 @@ export interface EciScalingConfigurationArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The list of volumes.See Block volume below for details.
+     * The list of volumes. See `volumes` below for details.
      */
     volumes?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationVolume>[]>;
 }

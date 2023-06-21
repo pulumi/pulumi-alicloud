@@ -12,17 +12,20 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Dhcp Options Set resource.
+ * Provides a VPC Dhcp Options Set resource. DHCP option set.
  * 
- * For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
+ * For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/dhcp-options-sets-overview).
  * 
- * &gt; **NOTE:** Available in v1.134.0+.
+ * &gt; **NOTE:** Available since v1.134.0.
  * 
  * ## Example Usage
  * 
@@ -48,10 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var domain = config.get(&#34;domain&#34;).orElse(&#34;terraform-example.com&#34;);
  *         var example = new DhcpOptionsSet(&#34;example&#34;, DhcpOptionsSetArgs.builder()        
- *             .dhcpOptionsSetDescription(&#34;example_value&#34;)
- *             .dhcpOptionsSetName(&#34;example_value&#34;)
- *             .domainName(&#34;example.com&#34;)
+ *             .dhcpOptionsSetName(name)
+ *             .dhcpOptionsSetDescription(name)
+ *             .domainName(domain)
  *             .domainNameServers(&#34;100.100.2.136&#34;)
  *             .build());
  * 
@@ -71,46 +77,46 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/dhcpOptionsSet:DhcpOptionsSet")
 public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
     /**
-     * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc.
+     * Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
      * 
      * @deprecated
-     * Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc.
+     * Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.207.0. Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc.
      * 
      */
-    @Deprecated /* Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. */
+    @Deprecated /* Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. */
     @Export(name="associateVpcs", type=List.class, parameters={DhcpOptionsSetAssociateVpc.class})
-    private Output</* @Nullable */ List<DhcpOptionsSetAssociateVpc>> associateVpcs;
+    private Output<List<DhcpOptionsSetAssociateVpc>> associateVpcs;
 
     /**
-     * @return AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc.
+     * @return Field &#39;associate_vpcs&#39; has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_dhcp_options_set_attachment&#39; to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
      * 
      */
-    public Output<Optional<List<DhcpOptionsSetAssociateVpc>>> associateVpcs() {
-        return Codegen.optional(this.associateVpcs);
+    public Output<List<DhcpOptionsSetAssociateVpc>> associateVpcs() {
+        return this.associateVpcs;
     }
     /**
-     * The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
      * 
      */
     @Export(name="dhcpOptionsSetDescription", type=String.class, parameters={})
     private Output</* @Nullable */ String> dhcpOptionsSetDescription;
 
     /**
-     * @return The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * @return The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
      * 
      */
     public Output<Optional<String>> dhcpOptionsSetDescription() {
         return Codegen.optional(this.dhcpOptionsSetDescription);
     }
     /**
-     * The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+     * The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      * 
      */
     @Export(name="dhcpOptionsSetName", type=String.class, parameters={})
     private Output</* @Nullable */ String> dhcpOptionsSetName;
 
     /**
-     * @return The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+     * @return The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      * 
      */
     public Output<Optional<String>> dhcpOptionsSetName() {
@@ -131,60 +137,120 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.domainName);
     }
     /**
-     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
      * 
      */
     @Export(name="domainNameServers", type=String.class, parameters={})
     private Output</* @Nullable */ String> domainNameServers;
 
     /**
-     * @return The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+     * @return The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
      * 
      */
     public Output<Optional<String>> domainNameServers() {
         return Codegen.optional(this.domainNameServers);
     }
     /**
-     * Specifies whether to precheck this request only. Valid values: `true` or `false`.
+     * Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Specifies whether to precheck this request only. Valid values: `true` or `false`.
+     * @return Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
+     * The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * 
+     */
+    @Export(name="ipv6LeaseTime", type=String.class, parameters={})
+    private Output<String> ipv6LeaseTime;
+
+    /**
+     * @return The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * 
+     */
+    public Output<String> ipv6LeaseTime() {
+        return this.ipv6LeaseTime;
+    }
+    /**
+     * The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * 
+     */
+    @Export(name="leaseTime", type=String.class, parameters={})
+    private Output<String> leaseTime;
+
+    /**
+     * @return The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     * 
+     */
+    public Output<String> leaseTime() {
+        return this.leaseTime;
+    }
+    /**
      * The ID of the account to which the DHCP options set belongs.
      * 
      */
-    @Export(name="ownerId", type=String.class, parameters={})
-    private Output<String> ownerId;
+    @Export(name="ownerId", type=Integer.class, parameters={})
+    private Output<Integer> ownerId;
 
     /**
      * @return The ID of the account to which the DHCP options set belongs.
      * 
      */
-    public Output<String> ownerId() {
+    public Output<Integer> ownerId() {
         return this.ownerId;
     }
     /**
-     * The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The status of the resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * Tags of the current resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return Tags of the current resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

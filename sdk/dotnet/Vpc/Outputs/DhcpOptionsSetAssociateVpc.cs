@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class DhcpOptionsSetAssociateVpc
     {
         /// <summary>
-        /// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+        /// The status of the VPC associated with the DHCP option set.
         /// </summary>
         public readonly string? AssociateStatus;
         /// <summary>
         /// The ID of the VPC network that is associated with the DHCP options set.
         /// </summary>
-        public readonly string? VpcId;
+        public readonly string VpcId;
 
         [OutputConstructor]
         private DhcpOptionsSetAssociateVpc(
             string? associateStatus,
 
-            string? vpcId)
+            string vpcId)
         {
             AssociateStatus = associateStatus;
             VpcId = vpcId;

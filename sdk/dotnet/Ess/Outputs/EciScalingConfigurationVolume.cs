@@ -15,13 +15,16 @@ namespace Pulumi.AliCloud.Ess.Outputs
     {
         /// <summary>
         /// ConfigFileVolumeConfigFileToPaths.
-        /// See Block_config_file_volume_config_file_to_path below for details.
+        /// See `config_file_volume_config_file_to_paths` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath> ConfigFileVolumeConfigFileToPaths;
         /// <summary>
         /// The ID of DiskVolume.
         /// </summary>
         public readonly string? DiskVolumeDiskId;
+        /// <summary>
+        /// The disk size of DiskVolume.
+        /// </summary>
         public readonly int? DiskVolumeDiskSize;
         /// <summary>
         /// The system type of DiskVolume.

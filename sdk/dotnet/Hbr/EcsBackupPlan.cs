@@ -28,24 +28,67 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "valut-name";
-    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         VaultName = name,
+    ///         AvailableResourceCreation = "Instance",
     ///     });
     /// 
-    ///     var defaultInstances = AliCloud.Ecs.GetInstances.Invoke(new()
+    ///     var exampleInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         NameRegex = "no-deleteing-hbr-ecs-backup-plan",
-    ///         Status = "Running",
+    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
     ///     });
     /// 
-    ///     var example = new AliCloud.Hbr.EcsBackupPlan("example", new()
+    ///     var exampleImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         EcsBackupPlanName = "example_value",
-    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
-    ///         VaultId = defaultVault.Id,
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Ecs.Instance("exampleInstance", new()
+    ///     {
+    ///         ImageId = exampleImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             exampleSecurityGroup.Id,
+    ///         },
+    ///         InstanceName = "terraform-example",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         VswitchId = exampleSwitch.Id,
+    ///     });
+    /// 
+    ///     var exampleVault = new AliCloud.Hbr.Vault("exampleVault", new()
+    ///     {
+    ///         VaultName = "terraform-example",
+    ///     });
+    /// 
+    ///     var exampleEcsBackupPlan = new AliCloud.Hbr.EcsBackupPlan("exampleEcsBackupPlan", new()
+    ///     {
+    ///         EcsBackupPlanName = "terraform-example",
+    ///         InstanceId = exampleInstance.Id,
+    ///         VaultId = exampleVault.Id,
     ///         Retention = "1",
     ///         Schedule = "I|1602673264|PT2H",
     ///         BackupType = "COMPLETE",

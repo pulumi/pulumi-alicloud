@@ -15,7 +15,7 @@ import (
 //
 // For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/doc-detail/153259.htm).
 //
-// > **NOTE:** Available in v1.113.0+.
+// > **NOTE:** Available since v1.113.0.
 //
 // > **NOTE:** Listeners that use different protocols support different types of endpoint groups:
 // * For a TCP or UDP listener, you can create only one default endpoint group.
@@ -37,12 +37,18 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
 //				Duration:      pulumi.Int(1),
 //				AutoUseCoupon: pulumi.Bool(true),
 //				Spec:          pulumi.String("1"),
@@ -50,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			deBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "deBandwidthPackage", &ga.BandwidthPackageArgs{
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
 //				Bandwidth:     pulumi.Int(100),
 //				Type:          pulumi.String("Basic"),
 //				BandwidthType: pulumi.String("Basic"),
@@ -61,45 +67,57 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			deBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "deBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      exampleAccelerator.ID(),
-//				BandwidthPackageId: deBandwidthPackage.ID(),
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      defaultAccelerator.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleListener, err := ga.NewListener(ctx, "exampleListener", &ga.ListenerArgs{
-//				AcceleratorId: exampleAccelerator.ID(),
+//			defaultListener, err := ga.NewListener(ctx, "defaultListener", &ga.ListenerArgs{
+//				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
 //				PortRanges: ga.ListenerPortRangeArray{
 //					&ga.ListenerPortRangeArgs{
 //						FromPort: pulumi.Int(60),
 //						ToPort:   pulumi.Int(70),
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				deBandwidthPackageAttachment,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			exampleEipAddress, err := ecs.NewEipAddress(ctx, "exampleEipAddress", &ecs.EipAddressArgs{
-//				Bandwidth:          pulumi.String("10"),
-//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//				ClientAffinity: pulumi.String("SOURCE_IP"),
+//				Protocol:       pulumi.String("UDP"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewEndpointGroup(ctx, "exampleEndpointGroup", &ga.EndpointGroupArgs{
-//				AcceleratorId: exampleAccelerator.ID(),
+//			var defaultEipAddress []*ecs.EipAddress
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				_ := index
+//				__res, err := ecs.NewEipAddress(ctx, fmt.Sprintf("defaultEipAddress-%v", key0), &ecs.EipAddressArgs{
+//					Bandwidth:          pulumi.String("10"),
+//					InternetChargeType: pulumi.String("PayByBandwidth"),
+//					AddressName:        pulumi.String("terraform-example"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultEipAddress = append(defaultEipAddress, __res)
+//			}
+//			_, err = ga.NewEndpointGroup(ctx, "defaultEndpointGroup", &ga.EndpointGroupArgs{
+//				AcceleratorId: defaultAccelerator.ID(),
 //				EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
 //					&ga.EndpointGroupEndpointConfigurationArgs{
-//						Endpoint: exampleEipAddress.IpAddress,
+//						Endpoint: defaultEipAddress[0].IpAddress,
+//						Type:     pulumi.String("PublicIp"),
+//						Weight:   pulumi.Int(20),
+//					},
+//					&ga.EndpointGroupEndpointConfigurationArgs{
+//						Endpoint: defaultEipAddress[1].IpAddress,
 //						Type:     pulumi.String("PublicIp"),
 //						Weight:   pulumi.Int(20),
 //					},
 //				},
-//				EndpointGroupRegion: pulumi.String("cn-hangzhou"),
-//				ListenerId:          exampleListener.ID(),
+//				EndpointGroupRegion: pulumi.String(region),
+//				ListenerId:          defaultListener.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -126,7 +144,7 @@ type EndpointGroup struct {
 	AcceleratorId pulumi.StringOutput `pulumi:"acceleratorId"`
 	// The description of the endpoint group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
+	// The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
 	EndpointConfigurations EndpointGroupEndpointConfigurationArrayOutput `pulumi:"endpointConfigurations"`
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringOutput `pulumi:"endpointGroupRegion"`
@@ -150,7 +168,7 @@ type EndpointGroup struct {
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
 	// The name of the endpoint group.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+	// Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
 	//
 	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides EndpointGroupPortOverridesPtrOutput `pulumi:"portOverrides"`
@@ -207,7 +225,7 @@ type endpointGroupState struct {
 	AcceleratorId *string `pulumi:"acceleratorId"`
 	// The description of the endpoint group.
 	Description *string `pulumi:"description"`
-	// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
+	// The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
 	EndpointConfigurations []EndpointGroupEndpointConfiguration `pulumi:"endpointConfigurations"`
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion *string `pulumi:"endpointGroupRegion"`
@@ -231,7 +249,7 @@ type endpointGroupState struct {
 	ListenerId *string `pulumi:"listenerId"`
 	// The name of the endpoint group.
 	Name *string `pulumi:"name"`
-	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+	// Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
 	//
 	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides *EndpointGroupPortOverrides `pulumi:"portOverrides"`
@@ -248,7 +266,7 @@ type EndpointGroupState struct {
 	AcceleratorId pulumi.StringPtrInput
 	// The description of the endpoint group.
 	Description pulumi.StringPtrInput
-	// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
+	// The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
 	EndpointConfigurations EndpointGroupEndpointConfigurationArrayInput
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringPtrInput
@@ -272,7 +290,7 @@ type EndpointGroupState struct {
 	ListenerId pulumi.StringPtrInput
 	// The name of the endpoint group.
 	Name pulumi.StringPtrInput
-	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+	// Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
 	//
 	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides EndpointGroupPortOverridesPtrInput
@@ -293,7 +311,7 @@ type endpointGroupArgs struct {
 	AcceleratorId string `pulumi:"acceleratorId"`
 	// The description of the endpoint group.
 	Description *string `pulumi:"description"`
-	// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
+	// The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
 	EndpointConfigurations []EndpointGroupEndpointConfiguration `pulumi:"endpointConfigurations"`
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion string `pulumi:"endpointGroupRegion"`
@@ -317,7 +335,7 @@ type endpointGroupArgs struct {
 	ListenerId string `pulumi:"listenerId"`
 	// The name of the endpoint group.
 	Name *string `pulumi:"name"`
-	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+	// Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
 	//
 	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides *EndpointGroupPortOverrides `pulumi:"portOverrides"`
@@ -333,7 +351,7 @@ type EndpointGroupArgs struct {
 	AcceleratorId pulumi.StringInput
 	// The description of the endpoint group.
 	Description pulumi.StringPtrInput
-	// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
+	// The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
 	EndpointConfigurations EndpointGroupEndpointConfigurationArrayInput
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringInput
@@ -357,7 +375,7 @@ type EndpointGroupArgs struct {
 	ListenerId pulumi.StringInput
 	// The name of the endpoint group.
 	Name pulumi.StringPtrInput
-	// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+	// Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
 	//
 	// > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 	PortOverrides EndpointGroupPortOverridesPtrInput
@@ -464,7 +482,7 @@ func (o EndpointGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
+// The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
 func (o EndpointGroupOutput) EndpointConfigurations() EndpointGroupEndpointConfigurationArrayOutput {
 	return o.ApplyT(func(v *EndpointGroup) EndpointGroupEndpointConfigurationArrayOutput { return v.EndpointConfigurations }).(EndpointGroupEndpointConfigurationArrayOutput)
 }
@@ -518,7 +536,7 @@ func (o EndpointGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+// Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
 //
 // > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
 func (o EndpointGroupOutput) PortOverrides() EndpointGroupPortOverridesPtrOutput {

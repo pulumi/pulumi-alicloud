@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Global Accelerator (GA) Custom Routing Endpoint Group Destination and how to use it, see [What is Custom Routing Endpoint Group Destination](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointgroupdestinations).
     /// 
-    /// &gt; **NOTE:** Available in v1.197.0+.
+    /// &gt; **NOTE:** Available since v1.197.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,15 +28,62 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Ga.CustomRoutingEndpointGroupDestination("default", new()
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
     ///     {
-    ///         EndpointGroupId = "your_custom_routing_endpoint_group_id",
-    ///         FromPort = 1,
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "1",
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 100,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         PaymentType = "PayAsYouGo",
+    ///         BillingType = "PayBy95",
+    ///         Ratio = 30,
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     {
+    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var defaultListener = new AliCloud.Ga.Listener("defaultListener", new()
+    ///     {
+    ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
+    ///         ListenerType = "CustomRouting",
+    ///         PortRanges = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
+    ///             {
+    ///                 FromPort = 10000,
+    ///                 ToPort = 16000,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultCustomRoutingEndpointGroup = new AliCloud.Ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", new()
+    ///     {
+    ///         AcceleratorId = defaultListener.AcceleratorId,
+    ///         ListenerId = defaultListener.Id,
+    ///         EndpointGroupRegion = region,
+    ///         CustomRoutingEndpointGroupName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultCustomRoutingEndpointGroupDestination = new AliCloud.Ga.CustomRoutingEndpointGroupDestination("defaultCustomRoutingEndpointGroupDestination", new()
+    ///     {
+    ///         EndpointGroupId = defaultCustomRoutingEndpointGroup.Id,
     ///         Protocols = new[]
     ///         {
     ///             "TCP",
-    ///             "UDP",
     ///         },
+    ///         FromPort = 1,
     ///         ToPort = 2,
     ///     });
     /// 

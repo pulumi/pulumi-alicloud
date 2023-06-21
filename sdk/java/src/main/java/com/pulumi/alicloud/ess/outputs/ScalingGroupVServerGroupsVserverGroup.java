@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class ScalingGroupVServerGroupsVserverGroup {
+    /**
+     * @return Loadbalancer server ID of VServer Group.
+     * 
+     */
     private String loadbalancerId;
+    /**
+     * @return A list of VServer Group attributes. See `vserver_attributes` below.
+     * 
+     */
     private List<ScalingGroupVServerGroupsVserverGroupVserverAttribute> vserverAttributes;
 
     private ScalingGroupVServerGroupsVserverGroup() {}
+    /**
+     * @return Loadbalancer server ID of VServer Group.
+     * 
+     */
     public String loadbalancerId() {
         return this.loadbalancerId;
     }
+    /**
+     * @return A list of VServer Group attributes. See `vserver_attributes` below.
+     * 
+     */
     public List<ScalingGroupVServerGroupsVserverGroupVserverAttribute> vserverAttributes() {
         return this.vserverAttributes;
     }

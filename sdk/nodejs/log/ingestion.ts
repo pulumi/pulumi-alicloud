@@ -17,11 +17,17 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const exampleProject = new alicloud.log.Project("exampleProject", {
- *     description: "created by terraform",
+ *     description: "terraform-example",
  *     tags: {
- *         test: "test",
+ *         Created: "TF",
+ *         For: "example",
  *     },
  * });
  * const exampleStore = new alicloud.log.Store("exampleStore", {
@@ -35,9 +41,9 @@ import * as utilities from "../utilities";
  * const exampleIngestion = new alicloud.log.Ingestion("exampleIngestion", {
  *     project: exampleProject.name,
  *     logstore: exampleStore.name,
- *     ingestionName: "ingestion_name",
- *     displayName: "display_name",
- *     description: "oss2sls",
+ *     ingestionName: "terraform-example",
+ *     displayName: "terraform-example",
+ *     description: "terraform-example",
  *     interval: "30m",
  *     runImmediately: true,
  *     timeZone: "+0800",

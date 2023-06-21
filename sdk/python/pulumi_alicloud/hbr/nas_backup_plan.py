@@ -484,28 +484,20 @@ class NasBackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccHBRNas"
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example2")
         default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
             protocol_type="NFS",
             storage_type="Performance",
-            description=name,
+            description="terraform-example",
             encrypt_type=1)
-        default_file_systems = default_file_system.description.apply(lambda description: alicloud.nas.get_file_systems_output(protocol_type="NFS",
-            description_regex=description))
         default_nas_backup_plan = alicloud.hbr.NasBackupPlan("defaultNasBackupPlan",
-            nas_backup_plan_name=name,
+            nas_backup_plan_name="terraform-example",
             file_system_id=default_file_system.id,
             schedule="I|1602673264|PT2H",
             backup_type="COMPLETE",
             vault_id=default_vault.id,
-            create_time=default_file_systems.systems[0].create_time,
             retention="2",
-            paths=["/"],
-            opts=pulumi.ResourceOptions(depends_on=["alicloud_nas_file_system.default"]))
+            paths=["/"])
         ```
 
         ## Import
@@ -555,28 +547,20 @@ class NasBackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccHBRNas"
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name="terraform-example2")
         default_file_system = alicloud.nas.FileSystem("defaultFileSystem",
             protocol_type="NFS",
             storage_type="Performance",
-            description=name,
+            description="terraform-example",
             encrypt_type=1)
-        default_file_systems = default_file_system.description.apply(lambda description: alicloud.nas.get_file_systems_output(protocol_type="NFS",
-            description_regex=description))
         default_nas_backup_plan = alicloud.hbr.NasBackupPlan("defaultNasBackupPlan",
-            nas_backup_plan_name=name,
+            nas_backup_plan_name="terraform-example",
             file_system_id=default_file_system.id,
             schedule="I|1602673264|PT2H",
             backup_type="COMPLETE",
             vault_id=default_vault.id,
-            create_time=default_file_systems.systems[0].create_time,
             retention="2",
-            paths=["/"],
-            opts=pulumi.ResourceOptions(depends_on=["alicloud_nas_file_system.default"]))
+            paths=["/"])
         ```
 
         ## Import

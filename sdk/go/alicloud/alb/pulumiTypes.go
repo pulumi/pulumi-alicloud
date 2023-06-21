@@ -12457,11 +12457,12 @@ type GetServerGroupsGroup struct {
 	ServerGroupName string `pulumi:"serverGroupName"`
 	// The backend server.
 	Servers []GetServerGroupsGroupServer `pulumi:"servers"`
-	// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+	// The status of the resource.
 	Status string `pulumi:"status"`
 	// The configuration of the sticky session.
 	StickySessionConfigs []GetServerGroupsGroupStickySessionConfig `pulumi:"stickySessionConfigs"`
-	Tags                 map[string]interface{}                    `pulumi:"tags"`
+	// A map of tags assigned to the group.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId string `pulumi:"vpcId"`
 }
@@ -12492,11 +12493,12 @@ type GetServerGroupsGroupArgs struct {
 	ServerGroupName pulumi.StringInput `pulumi:"serverGroupName"`
 	// The backend server.
 	Servers GetServerGroupsGroupServerArrayInput `pulumi:"servers"`
-	// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+	// The status of the resource.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The configuration of the sticky session.
 	StickySessionConfigs GetServerGroupsGroupStickySessionConfigArrayInput `pulumi:"stickySessionConfigs"`
-	Tags                 pulumi.MapInput                                   `pulumi:"tags"`
+	// A map of tags assigned to the group.
+	Tags pulumi.MapInput `pulumi:"tags"`
 	// The ID of the VPC that you want to access.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
@@ -12587,7 +12589,7 @@ func (o GetServerGroupsGroupOutput) Servers() GetServerGroupsGroupServerArrayOut
 	return o.ApplyT(func(v GetServerGroupsGroup) []GetServerGroupsGroupServer { return v.Servers }).(GetServerGroupsGroupServerArrayOutput)
 }
 
-// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+// The status of the resource.
 func (o GetServerGroupsGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -12597,6 +12599,7 @@ func (o GetServerGroupsGroupOutput) StickySessionConfigs() GetServerGroupsGroupS
 	return o.ApplyT(func(v GetServerGroupsGroup) []GetServerGroupsGroupStickySessionConfig { return v.StickySessionConfigs }).(GetServerGroupsGroupStickySessionConfigArrayOutput)
 }
 
+// A map of tags assigned to the group.
 func (o GetServerGroupsGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetServerGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
@@ -12833,7 +12836,7 @@ type GetServerGroupsGroupServer struct {
 	ServerIp string `pulumi:"serverIp"`
 	// The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
 	ServerType string `pulumi:"serverType"`
-	// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+	// The status of the resource.
 	Status string `pulumi:"status"`
 	// The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
 	Weight int `pulumi:"weight"`
@@ -12861,7 +12864,7 @@ type GetServerGroupsGroupServerArgs struct {
 	ServerIp pulumi.StringInput `pulumi:"serverIp"`
 	// The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
 	ServerType pulumi.StringInput `pulumi:"serverType"`
-	// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+	// The status of the resource.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
 	Weight pulumi.IntInput `pulumi:"weight"`
@@ -12943,7 +12946,7 @@ func (o GetServerGroupsGroupServerOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupServer) string { return v.ServerType }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+// The status of the resource.
 func (o GetServerGroupsGroupServerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerGroupsGroupServer) string { return v.Status }).(pulumi.StringOutput)
 }

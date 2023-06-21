@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
     /// You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
     /// 
-    /// &gt; **NOTE:**  Available in 1.37.0+
+    /// &gt; **NOTE:** Available since v1.37.0.
     /// 
     /// &gt; **NOTE:**  The following regions don't support create Classic network MongoDB instance.
     /// [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -32,26 +32,31 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "MongoDB",
-    ///     });
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
+    /// 
+    ///     var index = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones).Length.Apply(length =&gt; length - 1);
+    /// 
+    ///     var zoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id;
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         CidrBlock = "172.16.0.0/16",
+    ///         VpcName = name,
+    ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "172.17.3.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = zoneId,
     ///     });
     /// 
-    ///     var example = new AliCloud.MongoDB.Instance("example", new()
+    ///     var defaultInstance = new AliCloud.MongoDB.Instance("defaultInstance", new()
     ///     {
-    ///         EngineVersion = "3.4",
+    ///         EngineVersion = "4.2",
     ///         DbInstanceClass = "dds.mongo.mid",
     ///         DbInstanceStorage = 10,
     ///         VswitchId = defaultSwitch.Id,
@@ -59,6 +64,11 @@ namespace Pulumi.AliCloud.MongoDB
     ///         {
     ///             "10.168.1.12",
     ///             "100.69.7.112",
+    ///         },
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 
@@ -177,13 +187,13 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
-        /// Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         /// </summary>
         [Output("orderType")]
         public Output<string?> OrderType { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        /// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
@@ -207,7 +217,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> ReplicaSetName { get; private set; } = null!;
 
         /// <summary>
-        /// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+        /// Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
         /// </summary>
         [Output("replicaSets")]
         public Output<ImmutableArray<Outputs.InstanceReplicaSet>> ReplicaSets { get; private set; } = null!;
@@ -473,7 +483,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
-        /// Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -482,7 +492,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.InstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        /// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         /// </summary>
         public InputList<Inputs.InstanceParameterArgs> Parameters
         {
@@ -721,7 +731,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
-        /// Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        /// **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -730,7 +740,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.InstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        /// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         /// </summary>
         public InputList<Inputs.InstanceParameterGetArgs> Parameters
         {
@@ -760,7 +770,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.InstanceReplicaSetGetArgs>? _replicaSets;
 
         /// <summary>
-        /// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+        /// Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
         /// </summary>
         public InputList<Inputs.InstanceReplicaSetGetArgs> ReplicaSets
         {

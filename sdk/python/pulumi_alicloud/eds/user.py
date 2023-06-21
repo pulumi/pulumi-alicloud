@@ -199,9 +199,9 @@ class User(pulumi.CustomResource):
         """
         Provides a Elastic Desktop Service (ECD) User resource.
 
-        For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+        For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createusers-desktop).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 
@@ -211,9 +211,11 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.eds.User("example",
-            email="your_email",
-            end_user_id="example_value")
+        default = alicloud.eds.User("default",
+            email="tf.example@abc.com",
+            end_user_id="terraform_example123",
+            password="Example_123",
+            phone="18888888888")
         ```
 
         ## Import
@@ -241,9 +243,9 @@ class User(pulumi.CustomResource):
         """
         Provides a Elastic Desktop Service (ECD) User resource.
 
-        For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+        For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createusers-desktop).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 
@@ -253,9 +255,11 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.eds.User("example",
-            email="your_email",
-            end_user_id="example_value")
+        default = alicloud.eds.User("default",
+            email="tf.example@abc.com",
+            end_user_id="terraform_example123",
+            password="Example_123",
+            phone="18888888888")
         ```
 
         ## Import

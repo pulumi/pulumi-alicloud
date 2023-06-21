@@ -12,193 +12,192 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.CommonBandwithPackage;
- * import com.pulumi.alicloud.vpc.CommonBandwithPackageArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foo = new CommonBandwithPackage(&#34;foo&#34;, CommonBandwithPackageArgs.builder()        
- *             .bandwidth(&#34;1000&#34;)
- *             .bandwidthPackageName(&#34;test-common-bandwidth-package&#34;)
- *             .description(&#34;test-common-bandwidth-package&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
- * The common bandwidth package can be imported using the id, e.g.
+ * CBWP Common Bandwidth Package can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage foo cbwp-abc123456
+ *  $ pulumi import alicloud:vpc/commonBandwithPackage:CommonBandwithPackage example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpc/commonBandwithPackage:CommonBandwithPackage")
 public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
     /**
-     * The bandwidth of the common bandwidth package. Unit: Mbps.
+     * The peak bandwidth of the shared bandwidth. Unit: Mbps.
+     * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
      * 
      */
     @Export(name="bandwidth", type=String.class, parameters={})
     private Output<String> bandwidth;
 
     /**
-     * @return The bandwidth of the common bandwidth package. Unit: Mbps.
+     * @return The peak bandwidth of the shared bandwidth. Unit: Mbps.
+     * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
      * 
      */
     public Output<String> bandwidth() {
         return this.bandwidth;
     }
     /**
-     * The name of the common bandwidth package.
+     * The name of the Internet Shared Bandwidth instance.
      * 
      */
     @Export(name="bandwidthPackageName", type=String.class, parameters={})
     private Output<String> bandwidthPackageName;
 
     /**
-     * @return The name of the common bandwidth package.
+     * @return The name of the Internet Shared Bandwidth instance.
      * 
      */
     public Output<String> bandwidthPackageName() {
         return this.bandwidthPackageName;
     }
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
+     * The create time.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The create time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Whether enable the deletion protection or not. Default value: false.
+     * - **true**: Enable deletion protection.
+     * - **false**: Disable deletion protection.
      * 
      */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
-    private Output<Boolean> deletionProtection;
+    private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
-     * @return Whether enable the deletion protection or not. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
+     * @return Whether enable the deletion protection or not. Default value: false.
+     * - **true**: Enable deletion protection.
+     * - **false**: Disable deletion protection.
      * 
      */
-    public Output<Boolean> deletionProtection() {
-        return this.deletionProtection;
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
-     * The description of the common bandwidth package instance.
+     * The description of the shared bandwidth.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the common bandwidth package instance.
+     * @return The description of the shared bandwidth.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+     * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+     * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
      * 
      */
     @Export(name="force", type=String.class, parameters={})
     private Output</* @Nullable */ String> force;
 
     /**
-     * @return This parameter is used for resource destroy. Default value is `false`.
+     * @return Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+     * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+     * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
      * 
      */
     public Output<Optional<String>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn&#39;t supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
      * 
      */
     @Export(name="internetChargeType", type=String.class, parameters={})
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
-     * @return The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn&#39;t supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+     * @return The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
      * 
      */
     public Output<Optional<String>> internetChargeType() {
         return Codegen.optional(this.internetChargeType);
     }
     /**
-     * The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-     * **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
+     * The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
      * 
      */
     @Export(name="isp", type=String.class, parameters={})
-    private Output</* @Nullable */ String> isp;
+    private Output<String> isp;
 
     /**
-     * @return The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-     * **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
+     * @return The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
      * 
      */
-    public Output<Optional<String>> isp() {
-        return Codegen.optional(this.isp);
+    public Output<String> isp() {
+        return this.isp;
     }
     /**
-     * Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead. */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
+     * The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    @Export(name="paymentType", type=String.class, parameters={})
+    private Output<String> paymentType;
+
+    /**
+     * @return The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    public Output<String> paymentType() {
+        return this.paymentType;
+    }
+    /**
+     * Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
      * 
      */
     @Export(name="ratio", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> ratio;
+    private Output<Integer> ratio;
 
     /**
-     * @return Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
+     * @return Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
      * 
      */
-    public Output<Optional<Integer>> ratio() {
-        return Codegen.optional(this.ratio);
+    public Output<Integer> ratio() {
+        return this.ratio;
     }
     /**
      * The Id of resource group which the common bandwidth package belongs.
@@ -215,42 +214,60 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
      * 
      */
     @Export(name="securityProtectionTypes", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> securityProtectionTypes;
 
     /**
-     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
      * 
      */
     public Output<Optional<List<String>>> securityProtectionTypes() {
         return Codegen.optional(this.securityProtectionTypes);
     }
     /**
-     * (Available in 1.120.0+) The status of bandwidth package.
+     * The status of the Internet Shared Bandwidth instance. Default value: **Available**.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return (Available in 1.120.0+) The status of bandwidth package.
+     * @return The status of the Internet Shared Bandwidth instance. Default value: **Available**.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The zone of bandwidth package.
+     * The tag of the resource.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * The available area of the shared bandwidth.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Export(name="zone", type=String.class, parameters={})
     private Output</* @Nullable */ String> zone;
 
     /**
-     * @return The zone of bandwidth package.
+     * @return The available area of the shared bandwidth.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<Optional<String>> zone() {

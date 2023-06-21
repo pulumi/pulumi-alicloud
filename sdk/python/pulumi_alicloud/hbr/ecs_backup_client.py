@@ -410,12 +410,33 @@ class EcsBackupClient(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.get_instances(name_regex="ecs_instance_name",
-            status="Running")
-        example = alicloud.hbr.EcsBackupClient("example",
-            instance_id=default.instances[0].id,
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            availability_zone=example_zones.zones[0].id,
+            security_groups=[example_security_group.id],
+            instance_name="terraform-example",
+            internet_charge_type="PayByBandwidth",
+            vswitch_id=example_switch.id)
+        example_ecs_backup_client = alicloud.hbr.EcsBackupClient("exampleEcsBackupClient",
+            instance_id=example_instance.id,
             use_https=False,
-            data_network_type="PUBLIC",
+            data_network_type="VPC",
             max_cpu_core="2",
             max_worker="4",
             data_proxy_setting="USE_CONTROL_PROXY",
@@ -477,12 +498,33 @@ class EcsBackupClient(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.get_instances(name_regex="ecs_instance_name",
-            status="Running")
-        example = alicloud.hbr.EcsBackupClient("example",
-            instance_id=default.instances[0].id,
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            availability_zone=example_zones.zones[0].id,
+            security_groups=[example_security_group.id],
+            instance_name="terraform-example",
+            internet_charge_type="PayByBandwidth",
+            vswitch_id=example_switch.id)
+        example_ecs_backup_client = alicloud.hbr.EcsBackupClient("exampleEcsBackupClient",
+            instance_id=example_instance.id,
             use_https=False,
-            data_network_type="PUBLIC",
+            data_network_type="VPC",
             max_cpu_core="2",
             max_worker="4",
             data_proxy_setting="USE_CONTROL_PROXY",

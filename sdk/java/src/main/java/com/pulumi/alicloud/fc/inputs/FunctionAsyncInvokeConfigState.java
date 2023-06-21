@@ -34,14 +34,14 @@ public final class FunctionAsyncInvokeConfigState extends com.pulumi.resources.R
     }
 
     /**
-     * Configuration block with destination configuration. See below for details.
+     * Configuration block with destination configuration. See `destination_config` below.
      * 
      */
     @Import(name="destinationConfig")
     private @Nullable Output<FunctionAsyncInvokeConfigDestinationConfigArgs> destinationConfig;
 
     /**
-     * @return Configuration block with destination configuration. See below for details.
+     * @return Configuration block with destination configuration. See `destination_config` below.
      * 
      */
     public Optional<Output<FunctionAsyncInvokeConfigDestinationConfigArgs>> destinationConfig() {
@@ -207,7 +207,7 @@ public final class FunctionAsyncInvokeConfigState extends com.pulumi.resources.R
         }
 
         /**
-         * @param destinationConfig Configuration block with destination configuration. See below for details.
+         * @param destinationConfig Configuration block with destination configuration. See `destination_config` below.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class FunctionAsyncInvokeConfigState extends com.pulumi.resources.R
         }
 
         /**
-         * @param destinationConfig Configuration block with destination configuration. See below for details.
+         * @param destinationConfig Configuration block with destination configuration. See `destination_config` below.
          * 
          * @return builder
          * 

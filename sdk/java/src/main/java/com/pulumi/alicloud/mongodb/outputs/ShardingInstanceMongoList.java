@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ShardingInstanceMongoList {
     /**
-     * @return The connection address of the Config Server node.
+     * @return Mongo node connection string.
      * 
      */
     private @Nullable String connectString;
@@ -23,19 +23,19 @@ public final class ShardingInstanceMongoList {
      */
     private String nodeClass;
     /**
-     * @return The ID of the Config Server node.
+     * @return The ID of the mongo-node.
      * 
      */
     private @Nullable String nodeId;
     /**
-     * @return The connection port of the Config Server node.
+     * @return Mongo node port.
      * 
      */
     private @Nullable Integer port;
 
     private ShardingInstanceMongoList() {}
     /**
-     * @return The connection address of the Config Server node.
+     * @return Mongo node connection string.
      * 
      */
     public Optional<String> connectString() {
@@ -49,14 +49,14 @@ public final class ShardingInstanceMongoList {
         return this.nodeClass;
     }
     /**
-     * @return The ID of the Config Server node.
+     * @return The ID of the mongo-node.
      * 
      */
     public Optional<String> nodeId() {
         return Optional.ofNullable(this.nodeId);
     }
     /**
-     * @return The connection port of the Config Server node.
+     * @return Mongo node port.
      * 
      */
     public Optional<Integer> port() {

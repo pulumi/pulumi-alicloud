@@ -442,9 +442,9 @@ class AdConnectorDirectory(pulumi.CustomResource):
         """
         Provides a ECD Ad Connector Directory resource.
 
-        For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://help.aliyun.com/document_detail/436791.html).
+        For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createadconnectordirectory).
 
-        > **NOTE:** Available in v1.174.0+.
+        > **NOTE:** Available since v1.174.0.
 
         ## Example Usage
 
@@ -454,23 +454,32 @@ class AdConnectorDirectory(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_zones = alicloud.eds.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.ids[0],
+            vswitch_name=name)
         default_ad_connector_directory = alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory",
-            directory_name=var["name"],
+            directory_name=name,
             desktop_access_type="INTERNET",
             dns_addresses=["127.0.0.2"],
             domain_name="corp.example.com",
-            domain_password="YourPassword1234",
+            domain_password="Example1234",
             domain_user_name="sAMAccountName",
             enable_admin_access=False,
             mfa_enabled=False,
             specification=1,
             sub_domain_dns_addresses=["127.0.0.3"],
             sub_domain_name="child.example.com",
-            vswitch_ids=[default_switches.ids[0]])
+            vswitch_ids=[default_switch.id])
         ```
 
         ## Import
@@ -505,9 +514,9 @@ class AdConnectorDirectory(pulumi.CustomResource):
         """
         Provides a ECD Ad Connector Directory resource.
 
-        For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://help.aliyun.com/document_detail/436791.html).
+        For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createadconnectordirectory).
 
-        > **NOTE:** Available in v1.174.0+.
+        > **NOTE:** Available since v1.174.0.
 
         ## Example Usage
 
@@ -517,23 +526,32 @@ class AdConnectorDirectory(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_zones = alicloud.eds.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.ids[0],
+            vswitch_name=name)
         default_ad_connector_directory = alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory",
-            directory_name=var["name"],
+            directory_name=name,
             desktop_access_type="INTERNET",
             dns_addresses=["127.0.0.2"],
             domain_name="corp.example.com",
-            domain_password="YourPassword1234",
+            domain_password="Example1234",
             domain_user_name="sAMAccountName",
             enable_admin_access=False,
             mfa_enabled=False,
             specification=1,
             sub_domain_dns_addresses=["127.0.0.3"],
             sub_domain_name="child.example.com",
-            vswitch_ids=[default_switches.ids[0]])
+            vswitch_ids=[default_switch.id])
         ```
 
         ## Import

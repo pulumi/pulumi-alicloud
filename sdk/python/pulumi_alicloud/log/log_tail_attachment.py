@@ -145,28 +145,23 @@ class LogTailAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        test_project = alicloud.log.Project("testProject", description="create by terraform")
-        test_store = alicloud.log.Store("testStore",
-            project=test_project.name,
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        test_machine_group = alicloud.log.MachineGroup("testMachineGroup",
-            project=test_project.name,
-            topic="terraform",
-            identify_lists=[
-                "10.0.0.1",
-                "10.0.0.3",
-                "10.0.0.2",
-            ])
-        test_log_tail_config = alicloud.log.LogTailConfig("testLogTailConfig",
-            project=test_project.name,
-            logstore=test_store.name,
+        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
+            project=example_project.name,
+            logstore=example_store.name,
             input_type="file",
-            log_sample="test",
             output_type="LogService",
             input_detail=\"\"\"  	{
         		"logPath": "/logPath",
@@ -178,12 +173,19 @@ class LogTailAttachment(pulumi.CustomResource):
         		"fileEncoding": "gbk",
         		"maxDepth": 10
         	}
-        	
         \"\"\")
-        test_log_tail_attachment = alicloud.log.LogTailAttachment("testLogTailAttachment",
-            project=test_project.name,
-            logtail_config_name=test_log_tail_config.name,
-            machine_group_name=test_machine_group.name)
+        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
+            project=example_project.name,
+            identify_type="ip",
+            topic="terraform",
+            identify_lists=[
+                "10.0.0.1",
+                "10.0.0.2",
+            ])
+        example_log_tail_attachment = alicloud.log.LogTailAttachment("exampleLogTailAttachment",
+            project=example_project.name,
+            logtail_config_name=example_log_tail_config.name,
+            machine_group_name=example_machine_group.name)
         ```
 
         ## Import
@@ -222,28 +224,23 @@ class LogTailAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        test_project = alicloud.log.Project("testProject", description="create by terraform")
-        test_store = alicloud.log.Store("testStore",
-            project=test_project.name,
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
+        example_store = alicloud.log.Store("exampleStore",
+            project=example_project.name,
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        test_machine_group = alicloud.log.MachineGroup("testMachineGroup",
-            project=test_project.name,
-            topic="terraform",
-            identify_lists=[
-                "10.0.0.1",
-                "10.0.0.3",
-                "10.0.0.2",
-            ])
-        test_log_tail_config = alicloud.log.LogTailConfig("testLogTailConfig",
-            project=test_project.name,
-            logstore=test_store.name,
+        example_log_tail_config = alicloud.log.LogTailConfig("exampleLogTailConfig",
+            project=example_project.name,
+            logstore=example_store.name,
             input_type="file",
-            log_sample="test",
             output_type="LogService",
             input_detail=\"\"\"  	{
         		"logPath": "/logPath",
@@ -255,12 +252,19 @@ class LogTailAttachment(pulumi.CustomResource):
         		"fileEncoding": "gbk",
         		"maxDepth": 10
         	}
-        	
         \"\"\")
-        test_log_tail_attachment = alicloud.log.LogTailAttachment("testLogTailAttachment",
-            project=test_project.name,
-            logtail_config_name=test_log_tail_config.name,
-            machine_group_name=test_machine_group.name)
+        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
+            project=example_project.name,
+            identify_type="ip",
+            topic="terraform",
+            identify_lists=[
+                "10.0.0.1",
+                "10.0.0.2",
+            ])
+        example_log_tail_attachment = alicloud.log.LogTailAttachment("exampleLogTailAttachment",
+            project=example_project.name,
+            logtail_config_name=example_log_tail_config.name,
+            machine_group_name=example_machine_group.name)
         ```
 
         ## Import

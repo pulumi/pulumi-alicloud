@@ -26,12 +26,19 @@ namespace Pulumi.AliCloud.Log
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         Description = "create by terraform",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
@@ -47,10 +54,10 @@ namespace Pulumi.AliCloud.Log
     ///     var exampleAlert = new AliCloud.Log.Alert("exampleAlert", new()
     ///     {
     ///         ProjectName = exampleProject.Name,
-    ///         AlertName = "tf-test-alert",
-    ///         AlertDisplayname = "tf-test-alert-displayname",
+    ///         AlertName = "example-alert",
+    ///         AlertDisplayname = "example-alert",
     ///         Condition = "count&gt; 100",
-    ///         Dashboard = "tf-test-dashboard",
+    ///         Dashboard = "example-dashboard",
     ///         Schedule = new AliCloud.Log.Inputs.AlertScheduleArgs
     ///         {
     ///             Type = "FixedRate",
@@ -64,7 +71,7 @@ namespace Pulumi.AliCloud.Log
     ///         {
     ///             new AliCloud.Log.Inputs.AlertQueryListArgs
     ///             {
-    ///                 Logstore = "tf-test-logstore",
+    ///                 Logstore = exampleStore.Name,
     ///                 ChartTitle = "chart_title",
     ///                 Start = "-60s",
     ///                 End = "20s",
@@ -89,7 +96,7 @@ namespace Pulumi.AliCloud.Log
     ///                 EmailLists = new[]
     ///                 {
     ///                     "aliyun@alibaba-inc.com",
-    ///                     "tf-test@123.com",
+    ///                     "tf-example@123.com",
     ///                 },
     ///                 Content = "alert content",
     ///             },
@@ -112,12 +119,19 @@ namespace Pulumi.AliCloud.Log
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         Description = "create by terraform",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
@@ -135,14 +149,14 @@ namespace Pulumi.AliCloud.Log
     ///         Version = "2.0",
     ///         Type = "default",
     ///         ProjectName = exampleProject.Name,
-    ///         AlertName = "tf-test-alert-2",
-    ///         AlertDisplayname = "tf-test-alert-displayname-2",
-    ///         Dashboard = "tf-test-dashboard",
+    ///         AlertName = "example-alert",
+    ///         AlertDisplayname = "example-alert",
     ///         MuteUntil = 1632486684,
     ///         NoDataFire = false,
     ///         NoDataSeverity = 8,
     ///         SendResolved = true,
     ///         AutoAnnotation = true,
+    ///         Dashboard = "example-dashboard",
     ///         Schedule = new AliCloud.Log.Inputs.AlertScheduleArgs
     ///         {
     ///             Type = "FixedRate",
@@ -156,7 +170,7 @@ namespace Pulumi.AliCloud.Log
     ///         {
     ///             new AliCloud.Log.Inputs.AlertQueryListArgs
     ///             {
-    ///                 Store = "tf-test-logstore",
+    ///                 Store = exampleStore.Name,
     ///                 StoreType = "log",
     ///                 Project = exampleProject.Name,
     ///                 Region = "cn-heyuan",
@@ -168,7 +182,7 @@ namespace Pulumi.AliCloud.Log
     ///             },
     ///             new AliCloud.Log.Inputs.AlertQueryListArgs
     ///             {
-    ///                 Store = "tf-test-logstore",
+    ///                 Store = exampleStore.Name,
     ///                 StoreType = "log",
     ///                 Project = exampleProject.Name,
     ///                 Region = "cn-heyuan",
@@ -269,12 +283,19 @@ namespace Pulumi.AliCloud.Log
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         Description = "create by terraform",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
@@ -292,8 +313,8 @@ namespace Pulumi.AliCloud.Log
     ///         Version = "2.0",
     ///         Type = "tpl",
     ///         ProjectName = exampleProject.Name,
-    ///         AlertName = "tf-test-alert-3",
-    ///         AlertDisplayname = "tf-test-alert-displayname-3",
+    ///         AlertName = "example-alert",
+    ///         AlertDisplayname = "example-alert",
     ///         MuteUntil = 1632486684,
     ///         Schedule = new AliCloud.Log.Inputs.AlertScheduleArgs
     ///         {
@@ -320,7 +341,7 @@ namespace Pulumi.AliCloud.Log
     ///                 { "default.logstore", "k8s-event" },
     ///                 { "default.repeatInterval", "4h" },
     ///                 { "trigger_threshold", "1" },
-    ///                 { "default.clusterId", "test-cluster-id" },
+    ///                 { "default.clusterId", "example-cluster-id" },
     ///             },
     ///         },
     ///     });

@@ -125,6 +125,9 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// The lock mode of the cluster.
         /// </summary>
         public readonly string Mode;
+        /// <summary>
+        /// The db cluster network type.
+        /// </summary>
         public readonly string NetworkType;
         /// <summary>
         /// The payment type of the resource.
@@ -138,6 +141,9 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
         /// </summary>
         public readonly string RdsInstanceId;
+        /// <summary>
+        /// The region ID  of the resource.
+        /// </summary>
         public readonly string RegionId;
         /// <summary>
         /// The status of renewal.
@@ -160,7 +166,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// </summary>
         public readonly string StorageResource;
         /// <summary>
-        /// The tag of the resource.
+        /// A map of tags assigned to the cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;
         /// <summary>

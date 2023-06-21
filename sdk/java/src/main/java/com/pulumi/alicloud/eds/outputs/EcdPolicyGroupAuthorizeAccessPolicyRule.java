@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EcdPolicyGroupAuthorizeAccessPolicyRule {
     /**
-     * @return The cidrip of security rules.
+     * @return The cidrip of authorize access rule.
      * 
      */
     private @Nullable String cidrIp;
     /**
-     * @return The description of security rules.
+     * @return The description of authorize access rule.
      * 
      */
     private @Nullable String description;
 
     private EcdPolicyGroupAuthorizeAccessPolicyRule() {}
     /**
-     * @return The cidrip of security rules.
+     * @return The cidrip of authorize access rule.
      * 
      */
     public Optional<String> cidrIp() {
         return Optional.ofNullable(this.cidrIp);
     }
     /**
-     * @return The description of security rules.
+     * @return The description of authorize access rule.
      * 
      */
     public Optional<String> description() {

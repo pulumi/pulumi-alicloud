@@ -11,92 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a AnalyticDB for MySQL (ADB) DBCluster resource.
-//
-// For information about AnalyticDB for MySQL (ADB) DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/doc-detail/190519.htm).
-//
-// > **NOTE:** Available in v1.121.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "adbClusterconfig"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			creation := "ADB"
-//			if param := cfg.Get("creation"); param != "" {
-//				creation = param
-//			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef(creation),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("172.16.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = adb.NewDBCluster(ctx, "this", &adb.DBClusterArgs{
-//				DbClusterCategory: pulumi.String("Cluster"),
-//				DbNodeClass:       pulumi.String("C8"),
-//				DbNodeCount:       pulumi.Int(4),
-//				DbNodeStorage:     pulumi.Int(400),
-//				Mode:              pulumi.String("reserver"),
-//				DbClusterVersion:  pulumi.String("3.0"),
-//				PaymentType:       pulumi.String("PayAsYouGo"),
-//				VswitchId:         defaultSwitch.ID(),
-//				Description:       pulumi.String("Test new adb again."),
-//				MaintainTime:      pulumi.String("23:00Z-00:00Z"),
-//				Tags: pulumi.AnyMap{
-//					"Created": pulumi.Any("TF-update"),
-//					"For":     pulumi.Any("acceptance-test-update"),
-//				},
-//				ResourceGroupId: pulumi.String("rg-aek2s7ylxx6****"),
-//				SecurityIps: pulumi.StringArray{
-//					pulumi.String("10.168.1.12"),
-//					pulumi.String("10.168.1.11"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
@@ -109,7 +23,7 @@ import (
 type DBCluster struct {
 	pulumi.CustomResourceState
 
-	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 	AutoRenewPeriod pulumi.IntOutput `pulumi:"autoRenewPeriod"`
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
 	ComputeResource pulumi.StringPtrOutput `pulumi:"computeResource"`
@@ -121,7 +35,7 @@ type DBCluster struct {
 	//
 	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrOutput `pulumi:"dbClusterClass"`
-	// The db cluster version. Value options: `3.0`, Default to `3.0`.
+	// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
 	DbClusterVersion pulumi.StringPtrOutput `pulumi:"dbClusterVersion"`
 	// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
 	DbNodeClass pulumi.StringOutput `pulumi:"dbNodeClass"`
@@ -131,8 +45,12 @@ type DBCluster struct {
 	DbNodeStorage pulumi.IntOutput `pulumi:"dbNodeStorage"`
 	// The description of DBCluster.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+	DiskPerformanceLevel pulumi.StringOutput `pulumi:"diskPerformanceLevel"`
 	// The elastic io resource.
 	ElasticIoResource pulumi.IntOutput `pulumi:"elasticIoResource"`
+	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+	ElasticIoResourceSize pulumi.StringOutput `pulumi:"elasticIoResourceSize"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -143,12 +61,12 @@ type DBCluster struct {
 	//
 	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType pulumi.StringOutput `pulumi:"payType"`
-	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+	// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	// (Available since v1.196.0) The connection port of the ADB cluster.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
@@ -207,7 +125,7 @@ func GetDBCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DBCluster resources.
 type dbclusterState struct {
-	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
 	ComputeResource *string `pulumi:"computeResource"`
@@ -219,7 +137,7 @@ type dbclusterState struct {
 	//
 	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass *string `pulumi:"dbClusterClass"`
-	// The db cluster version. Value options: `3.0`, Default to `3.0`.
+	// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
 	// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
 	DbNodeClass *string `pulumi:"dbNodeClass"`
@@ -229,8 +147,12 @@ type dbclusterState struct {
 	DbNodeStorage *int `pulumi:"dbNodeStorage"`
 	// The description of DBCluster.
 	Description *string `pulumi:"description"`
+	// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+	DiskPerformanceLevel *string `pulumi:"diskPerformanceLevel"`
 	// The elastic io resource.
 	ElasticIoResource *int `pulumi:"elasticIoResource"`
+	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime *string `pulumi:"maintainTime"`
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -241,12 +163,12 @@ type dbclusterState struct {
 	//
 	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType *string `pulumi:"payType"`
-	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+	// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
 	Period *int `pulumi:"period"`
-	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	// (Available since v1.196.0) The connection port of the ADB cluster.
 	Port *string `pulumi:"port"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
@@ -271,7 +193,7 @@ type dbclusterState struct {
 }
 
 type DBClusterState struct {
-	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
 	ComputeResource pulumi.StringPtrInput
@@ -283,7 +205,7 @@ type DBClusterState struct {
 	//
 	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrInput
-	// The db cluster version. Value options: `3.0`, Default to `3.0`.
+	// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
 	DbClusterVersion pulumi.StringPtrInput
 	// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
 	DbNodeClass pulumi.StringPtrInput
@@ -293,8 +215,12 @@ type DBClusterState struct {
 	DbNodeStorage pulumi.IntPtrInput
 	// The description of DBCluster.
 	Description pulumi.StringPtrInput
+	// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+	DiskPerformanceLevel pulumi.StringPtrInput
 	// The elastic io resource.
 	ElasticIoResource pulumi.IntPtrInput
+	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+	ElasticIoResourceSize pulumi.StringPtrInput
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime pulumi.StringPtrInput
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -305,12 +231,12 @@ type DBClusterState struct {
 	//
 	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType pulumi.StringPtrInput
-	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+	// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
 	Period pulumi.IntPtrInput
-	// (Available in 1.196.0+) The connection port of the ADB cluster.
+	// (Available since v1.196.0) The connection port of the ADB cluster.
 	Port pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
 	RenewalStatus pulumi.StringPtrInput
@@ -339,7 +265,7 @@ func (DBClusterState) ElementType() reflect.Type {
 }
 
 type dbclusterArgs struct {
-	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
 	ComputeResource *string `pulumi:"computeResource"`
@@ -349,7 +275,7 @@ type dbclusterArgs struct {
 	//
 	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass *string `pulumi:"dbClusterClass"`
-	// The db cluster version. Value options: `3.0`, Default to `3.0`.
+	// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
 	// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
 	DbNodeClass *string `pulumi:"dbNodeClass"`
@@ -359,8 +285,12 @@ type dbclusterArgs struct {
 	DbNodeStorage *int `pulumi:"dbNodeStorage"`
 	// The description of DBCluster.
 	Description *string `pulumi:"description"`
+	// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+	DiskPerformanceLevel *string `pulumi:"diskPerformanceLevel"`
 	// The elastic io resource.
 	ElasticIoResource *int `pulumi:"elasticIoResource"`
+	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime *string `pulumi:"maintainTime"`
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -371,7 +301,7 @@ type dbclusterArgs struct {
 	//
 	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType *string `pulumi:"payType"`
-	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+	// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
@@ -398,7 +328,7 @@ type dbclusterArgs struct {
 
 // The set of arguments for constructing a DBCluster resource.
 type DBClusterArgs struct {
-	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 	AutoRenewPeriod pulumi.IntPtrInput
 	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
 	ComputeResource pulumi.StringPtrInput
@@ -408,7 +338,7 @@ type DBClusterArgs struct {
 	//
 	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrInput
-	// The db cluster version. Value options: `3.0`, Default to `3.0`.
+	// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
 	DbClusterVersion pulumi.StringPtrInput
 	// The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
 	DbNodeClass pulumi.StringPtrInput
@@ -418,8 +348,12 @@ type DBClusterArgs struct {
 	DbNodeStorage pulumi.IntPtrInput
 	// The description of DBCluster.
 	Description pulumi.StringPtrInput
+	// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+	DiskPerformanceLevel pulumi.StringPtrInput
 	// The elastic io resource.
 	ElasticIoResource pulumi.IntPtrInput
+	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+	ElasticIoResourceSize pulumi.StringPtrInput
 	// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
 	MaintainTime pulumi.StringPtrInput
 	// The mode of the cluster. Valid values: `reserver`, `flexible`.
@@ -430,7 +364,7 @@ type DBClusterArgs struct {
 	//
 	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType pulumi.StringPtrInput
-	// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+	// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
@@ -542,7 +476,7 @@ func (o DBClusterOutput) ToDBClusterOutputWithContext(ctx context.Context) DBClu
 	return o
 }
 
-// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 func (o DBClusterOutput) AutoRenewPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.IntOutput { return v.AutoRenewPeriod }).(pulumi.IntOutput)
 }
@@ -569,7 +503,7 @@ func (o DBClusterOutput) DbClusterClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.DbClusterClass }).(pulumi.StringPtrOutput)
 }
 
-// The db cluster version. Value options: `3.0`, Default to `3.0`.
+// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
 func (o DBClusterOutput) DbClusterVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.DbClusterVersion }).(pulumi.StringPtrOutput)
 }
@@ -594,9 +528,19 @@ func (o DBClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+func (o DBClusterOutput) DiskPerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.DiskPerformanceLevel }).(pulumi.StringOutput)
+}
+
 // The elastic io resource.
 func (o DBClusterOutput) ElasticIoResource() pulumi.IntOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.IntOutput { return v.ElasticIoResource }).(pulumi.IntOutput)
+}
+
+// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+func (o DBClusterOutput) ElasticIoResourceSize() pulumi.StringOutput {
+	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.ElasticIoResourceSize }).(pulumi.StringOutput)
 }
 
 // The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -621,7 +565,7 @@ func (o DBClusterOutput) PayType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.PayType }).(pulumi.StringOutput)
 }
 
-// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
 func (o DBClusterOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
@@ -632,7 +576,7 @@ func (o DBClusterOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// (Available in 1.196.0+) The connection port of the ADB cluster.
+// (Available since v1.196.0) The connection port of the ADB cluster.
 func (o DBClusterOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }

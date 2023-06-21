@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
 /**
  * Provides a ESS alarm task resource.
  * 
+ * For information about ess alarm, see [CreateAlarm](https://www.alibabacloud.com/help/en/auto-scaling/latest/createalarm).
+ * 
+ * &gt; **NOTE:** Available since v1.15.0.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -32,12 +36,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRule;
+ * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
  * import com.pulumi.alicloud.ess.ScalingGroup;
  * import com.pulumi.alicloud.ess.ScalingGroupArgs;
  * import com.pulumi.alicloud.ess.ScalingRule;
@@ -57,64 +65,84 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var ecsImage = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .mostRecent(true)
- *             .nameRegex(&#34;^centos_6\\w{1,5}[64].*&#34;)
- *             .build());
- * 
  *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .cpuCoreCount(1)
- *             .memorySize(2)
+ *             .cpuCoreCount(2)
+ *             .memorySize(4)
  *             .build());
  * 
- *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
- *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;tf-testAccEssAlarm_basic_foo&#34;)
- *             .vpcId(fooNetwork.id())
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
  *             .build());
  * 
- *         var bar = new Switch(&#34;bar&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;tf-testAccEssAlarm_basic_bar&#34;)
- *             .vpcId(fooNetwork.id())
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroupRule = new SecurityGroupRule(&#34;defaultSecurityGroupRule&#34;, SecurityGroupRuleArgs.builder()        
+ *             .type(&#34;ingress&#34;)
+ *             .ipProtocol(&#34;tcp&#34;)
+ *             .nicType(&#34;intranet&#34;)
+ *             .policy(&#34;accept&#34;)
+ *             .portRange(&#34;22/22&#34;)
+ *             .priority(1)
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .cidrIp(&#34;172.16.0.0/24&#34;)
+ *             .build());
+ * 
+ *         var default2 = new Switch(&#34;default2&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.1.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(String.format(&#34;%s-bar&#34;, name))
  *             .build());
  * 
- *         var fooScalingGroup = new ScalingGroup(&#34;fooScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
  *             .minSize(1)
  *             .maxSize(1)
- *             .scalingGroupName(&#34;tf-testAccEssAlarm_basic&#34;)
+ *             .scalingGroupName(name)
+ *             .defaultCooldown(20)
+ *             .vswitchIds(            
+ *                 defaultSwitch.id(),
+ *                 default2.id())
  *             .removalPolicies(            
  *                 &#34;OldestInstance&#34;,
  *                 &#34;NewestInstance&#34;)
- *             .vswitchIds(            
- *                 fooSwitch.id(),
- *                 bar.id())
  *             .build());
  * 
- *         var fooScalingRule = new ScalingRule(&#34;fooScalingRule&#34;, ScalingRuleArgs.builder()        
- *             .scalingRuleName(&#34;tf-testAccEssAlarm_basic&#34;)
- *             .scalingGroupId(fooScalingGroup.id())
+ *         var defaultScalingRule = new ScalingRule(&#34;defaultScalingRule&#34;, ScalingRuleArgs.builder()        
+ *             .scalingRuleName(name)
+ *             .scalingGroupId(defaultScalingGroup.id())
  *             .adjustmentType(&#34;TotalCapacity&#34;)
  *             .adjustmentValue(2)
  *             .cooldown(60)
  *             .build());
  * 
- *         var fooAlarm = new Alarm(&#34;fooAlarm&#34;, AlarmArgs.builder()        
- *             .description(&#34;Acc alarm test&#34;)
- *             .alarmActions(fooScalingRule.ari())
- *             .scalingGroupId(fooScalingGroup.id())
+ *         var defaultAlarm = new Alarm(&#34;defaultAlarm&#34;, AlarmArgs.builder()        
+ *             .description(name)
+ *             .alarmActions(defaultScalingRule.ari())
+ *             .scalingGroupId(defaultScalingGroup.id())
  *             .metricType(&#34;system&#34;)
  *             .metricName(&#34;CpuUtilization&#34;)
  *             .period(300)
@@ -131,31 +159,6 @@ import javax.annotation.Nullable;
  * 
  * You can use to the existing autoscaling-rule module
  * to create alarm task, different type rules and scheduled task one-click.
- * 
- * ## Block metricNames_and_dimensions
- * 
- * Supported metric names and dimensions :
- * 
- * | MetricName         | Dimensions                   |
- * | ------------------ | ---------------------------- |
- * | CpuUtilization     | user_id,scaling_group        |
- * | ClassicInternetRx  | user_id,scaling_group        |
- * | ClassicInternetTx  | user_id,scaling_group        |
- * | VpcInternetRx      | user_id,scaling_group        |
- * | VpcInternetTx      | user_id,scaling_group        |
- * | IntranetRx         | user_id,scaling_group        |
- * | IntranetTx         | user_id,scaling_group        |
- * | LoadAverage        | user_id,scaling_group        |
- * | MemoryUtilization  | user_id,scaling_group        |
- * | SystemDiskReadBps  | user_id,scaling_group        |
- * | SystemDiskWriteBps | user_id,scaling_group        |
- * | SystemDiskReadOps  | user_id,scaling_group        |
- * | SystemDiskWriteOps | user_id,scaling_group        |
- * | PackagesNetIn      | user_id,scaling_group,device |
- * | PackagesNetOut     | user_id,scaling_group,device |
- * | TcpConnection      | user_id,scaling_group,state  |
- * 
- * &gt; **NOTE:** Dimension `user_id` and `scaling_group` is automatically filled, which means you only need to care about dimension `device` and `state` when needed.
  * 
  * ## Import
  * 
@@ -225,14 +228,14 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The dimension map for the alarm&#39;s associated metric (documented below). For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users.
+     * The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
      * 
      */
     @Export(name="dimensions", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> dimensions;
 
     /**
-     * @return The dimension map for the alarm&#39;s associated metric (documented below). For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users.
+     * @return The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
      * 
      */
     public Output<Map<String,Object>> dimensions() {
@@ -337,14 +340,20 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return this.scalingGroupId;
     }
     /**
-     * The state of specified alarm.
+     * The status of the event-triggered task. Valid values:
+     * - ALARM: The alert condition is met and an alert is triggered.
+     * - OK: The alert condition is not met.
+     * - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
      * 
      */
     @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
-     * @return The state of specified alarm.
+     * @return The status of the event-triggered task. Valid values:
+     * - ALARM: The alert condition is met and an alert is triggered.
+     * - OK: The alert condition is not met.
+     * - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
      * 
      */
     public Output<String> state() {

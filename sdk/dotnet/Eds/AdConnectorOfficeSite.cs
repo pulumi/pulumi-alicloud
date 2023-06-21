@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createadconnectorofficesite).
     /// 
-    /// &gt; **NOTE:** Available in v1.176.0+.
+    /// &gt; **NOTE:** Available since v1.176.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,15 +28,17 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
     ///     {
-    ///         CenInstanceName = @var.Name,
+    ///         CenInstanceName = name,
     ///         ProtectionLevel = "REDUCED",
     ///     });
     /// 
     ///     var defaultAdConnectorOfficeSite = new AliCloud.Eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite", new()
     ///     {
-    ///         AdConnectorOfficeSiteName = @var.Name,
+    ///         AdConnectorOfficeSiteName = name,
     ///         Bandwidth = 100,
     ///         CenId = defaultInstance.Id,
     ///         CidrBlock = "10.0.0.0/12",
@@ -45,17 +47,17 @@ namespace Pulumi.AliCloud.Eds
     ///         {
     ///             "127.0.0.2",
     ///         },
-    ///         DomainName = "example1234.com",
-    ///         DomainPassword = "YourPassword1234",
-    ///         DomainUserName = "Administrator",
-    ///         EnableAdminAccess = true,
-    ///         EnableInternetAccess = true,
+    ///         DomainName = "corp.example.com",
+    ///         DomainPassword = "Example1234",
+    ///         DomainUserName = "sAMAccountName",
+    ///         EnableAdminAccess = false,
+    ///         EnableInternetAccess = false,
     ///         MfaEnabled = false,
     ///         SubDomainDnsAddresses = new[]
     ///         {
     ///             "127.0.0.3",
     ///         },
-    ///         SubDomainName = "child.example1234.com",
+    ///         SubDomainName = "child.example.com",
     ///     });
     /// 
     /// });

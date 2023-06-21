@@ -81,10 +81,14 @@ import (
 // if err != nil {
 // return err
 // }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
 // defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
 // ImageId: *pulumi.String(defaultImages.Images[0].Id),
 // InstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-// SecurityGroups: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-alicloud:compute-nestServiceInstance:NestServiceInstance.pp:28,30-58),
+// SecurityGroups: splat0,
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
 // AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),

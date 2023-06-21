@@ -26,16 +26,25 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-//				Description: pulumi.String("created by terraform"),
+//				Description: pulumi.String("terraform-example"),
 //				Tags: pulumi.AnyMap{
-//					"test": pulumi.Any("test"),
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
@@ -55,9 +64,9 @@ import (
 //			_, err = log.NewOssExport(ctx, "exampleOssExport", &log.OssExportArgs{
 //				ProjectName:    exampleProject.Name,
 //				LogstoreName:   exampleStore.Name,
-//				ExportName:     pulumi.String("oss_export_name"),
-//				DisplayName:    pulumi.String("oss_export_display_name"),
-//				Bucket:         pulumi.String("test_bucket"),
+//				ExportName:     pulumi.String("terraform-example"),
+//				DisplayName:    pulumi.String("terraform-example"),
+//				Bucket:         pulumi.String("example-bucket"),
 //				Prefix:         pulumi.String("root"),
 //				Suffix:         pulumi.String(""),
 //				BufferInterval: pulumi.Int(300),
@@ -68,6 +77,7 @@ import (
 //				JsonEnableTag:  pulumi.Bool(true),
 //				RoleArn:        pulumi.String("role_arn_for_oss_write"),
 //				LogReadRoleArn: pulumi.String("role_arn_for_sls_read"),
+//				TimeZone:       pulumi.String("+0800"),
 //			})
 //			if err != nil {
 //				return err

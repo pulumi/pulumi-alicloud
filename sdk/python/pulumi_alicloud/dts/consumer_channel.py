@@ -182,7 +182,7 @@ class ConsumerChannel(pulumi.CustomResource):
 
         For information about DTS Consumer Channel and how to use it, see [What is Consumer Channel](https://www.alibabacloud.com/help/en/doc-detail/264593.htm).
 
-        > **NOTE:** Available in v1.146.0+.
+        > **NOTE:** Available since v1.146.0.
 
         ## Example Usage
 
@@ -195,56 +195,69 @@ class ConsumerChannel(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tftestdts"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        instance = alicloud.rds.Instance("instance",
+            name = "terraform-example"
+        example_regions = alicloud.get_regions(current=True)
+        example_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
             engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s1.small",
-            instance_storage=10,
-            vswitch_id=default_switches.ids[0],
-            instance_name=name)
-        db = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            db.append(alicloud.rds.Database(f"db-{range['value']}",
-                instance_id=instance.id,
-                description="from terraform"))
-        account = alicloud.rds.Account("account",
-            db_instance_id=instance.id,
-            account_name="tftestprivilege",
-            account_password="Test12345",
-            account_description="from terraform")
-        privilege = alicloud.rds.AccountPrivilege("privilege",
-            instance_id=instance.id,
-            account_name=account.name,
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_zones.zones[0].id,
+            vswitch_name=name)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("exampleInstance",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=example_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=example_switch.id,
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[example_security_group.id])
+        example_rds_account = alicloud.rds.RdsAccount("exampleRdsAccount",
+            db_instance_id=example_instance.id,
+            account_name="example_name",
+            account_password="example_1234")
+        example_database = alicloud.rds.Database("exampleDatabase", instance_id=example_instance.id)
+        example_account_privilege = alicloud.rds.AccountPrivilege("exampleAccountPrivilege",
+            instance_id=example_instance.id,
+            account_name=example_rds_account.name,
             privilege="ReadWrite",
-            db_names=[__item.name for __item in db])
-        default_subscription_job = alicloud.dts.SubscriptionJob("defaultSubscriptionJob",
+            db_names=[example_database.name])
+        example_subscription_job = alicloud.dts.SubscriptionJob("exampleSubscriptionJob",
             dts_job_name=name,
             payment_type="PayAsYouGo",
             source_endpoint_engine_name="MySQL",
-            source_endpoint_region="cn-hangzhou",
+            source_endpoint_region=example_regions.regions[0].id,
             source_endpoint_instance_type="RDS",
-            source_endpoint_instance_id=instance.id,
-            source_endpoint_database_name="tfaccountpri_0",
-            source_endpoint_user_name="tftestprivilege",
-            source_endpoint_password="Test12345",
+            source_endpoint_instance_id=example_instance.id,
+            source_endpoint_database_name=example_database.name,
+            source_endpoint_user_name=example_rds_account.account_name,
+            source_endpoint_password=example_rds_account.account_password,
+            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: f"{{\\"{example_database_name}\\":{{\\"name\\":\\"{example_database_name1}\\",\\"all\\":true}}}}"),
             subscription_instance_network_type="vpc",
-            db_list="        {\\"dtstestdata\\": {\\"name\\": \\"tfaccountpri_0\\", \\"all\\": true}}\\n",
-            subscription_instance_vpc_id=default_networks.ids[0],
-            subscription_instance_vswitch_id=default_switches.ids[0],
+            subscription_instance_vpc_id=example_network.id,
+            subscription_instance_vswitch_id=example_switch.id,
             status="Normal")
-        default_consumer_channel = alicloud.dts.ConsumerChannel("defaultConsumerChannel",
-            dts_instance_id=default_subscription_job.dts_instance_id,
+        example_consumer_channel = alicloud.dts.ConsumerChannel("exampleConsumerChannel",
+            dts_instance_id=example_subscription_job.dts_instance_id,
             consumer_group_name=name,
-            consumer_group_user_name=name,
-            consumer_group_password="tftestAcc123")
+            consumer_group_user_name="example",
+            consumer_group_password="example1234")
         ```
 
         ## Import
@@ -273,7 +286,7 @@ class ConsumerChannel(pulumi.CustomResource):
 
         For information about DTS Consumer Channel and how to use it, see [What is Consumer Channel](https://www.alibabacloud.com/help/en/doc-detail/264593.htm).
 
-        > **NOTE:** Available in v1.146.0+.
+        > **NOTE:** Available since v1.146.0.
 
         ## Example Usage
 
@@ -286,56 +299,69 @@ class ConsumerChannel(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tftestdts"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "Rds"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        instance = alicloud.rds.Instance("instance",
+            name = "terraform-example"
+        example_regions = alicloud.get_regions(current=True)
+        example_zones = alicloud.rds.get_zones(engine="MySQL",
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.zones[0].id,
             engine="MySQL",
-            engine_version="5.6",
-            instance_type="rds.mysql.s1.small",
-            instance_storage=10,
-            vswitch_id=default_switches.ids[0],
-            instance_name=name)
-        db = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            db.append(alicloud.rds.Database(f"db-{range['value']}",
-                instance_id=instance.id,
-                description="from terraform"))
-        account = alicloud.rds.Account("account",
-            db_instance_id=instance.id,
-            account_name="tftestprivilege",
-            account_password="Test12345",
-            account_description="from terraform")
-        privilege = alicloud.rds.AccountPrivilege("privilege",
-            instance_id=instance.id,
-            account_name=account.name,
+            engine_version="8.0",
+            instance_charge_type="PostPaid",
+            category="Basic",
+            db_instance_storage_type="cloud_essd")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vpc_id=example_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=example_zones.zones[0].id,
+            vswitch_name=name)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("exampleInstance",
+            engine="MySQL",
+            engine_version="8.0",
+            instance_type=example_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
+            instance_charge_type="Postpaid",
+            instance_name=name,
+            vswitch_id=example_switch.id,
+            monitoring_period=60,
+            db_instance_storage_type="cloud_essd",
+            security_group_ids=[example_security_group.id])
+        example_rds_account = alicloud.rds.RdsAccount("exampleRdsAccount",
+            db_instance_id=example_instance.id,
+            account_name="example_name",
+            account_password="example_1234")
+        example_database = alicloud.rds.Database("exampleDatabase", instance_id=example_instance.id)
+        example_account_privilege = alicloud.rds.AccountPrivilege("exampleAccountPrivilege",
+            instance_id=example_instance.id,
+            account_name=example_rds_account.name,
             privilege="ReadWrite",
-            db_names=[__item.name for __item in db])
-        default_subscription_job = alicloud.dts.SubscriptionJob("defaultSubscriptionJob",
+            db_names=[example_database.name])
+        example_subscription_job = alicloud.dts.SubscriptionJob("exampleSubscriptionJob",
             dts_job_name=name,
             payment_type="PayAsYouGo",
             source_endpoint_engine_name="MySQL",
-            source_endpoint_region="cn-hangzhou",
+            source_endpoint_region=example_regions.regions[0].id,
             source_endpoint_instance_type="RDS",
-            source_endpoint_instance_id=instance.id,
-            source_endpoint_database_name="tfaccountpri_0",
-            source_endpoint_user_name="tftestprivilege",
-            source_endpoint_password="Test12345",
+            source_endpoint_instance_id=example_instance.id,
+            source_endpoint_database_name=example_database.name,
+            source_endpoint_user_name=example_rds_account.account_name,
+            source_endpoint_password=example_rds_account.account_password,
+            db_list=pulumi.Output.all(example_database.name, example_database.name).apply(lambda exampleDatabaseName, exampleDatabaseName1: f"{{\\"{example_database_name}\\":{{\\"name\\":\\"{example_database_name1}\\",\\"all\\":true}}}}"),
             subscription_instance_network_type="vpc",
-            db_list="        {\\"dtstestdata\\": {\\"name\\": \\"tfaccountpri_0\\", \\"all\\": true}}\\n",
-            subscription_instance_vpc_id=default_networks.ids[0],
-            subscription_instance_vswitch_id=default_switches.ids[0],
+            subscription_instance_vpc_id=example_network.id,
+            subscription_instance_vswitch_id=example_switch.id,
             status="Normal")
-        default_consumer_channel = alicloud.dts.ConsumerChannel("defaultConsumerChannel",
-            dts_instance_id=default_subscription_job.dts_instance_id,
+        example_consumer_channel = alicloud.dts.ConsumerChannel("exampleConsumerChannel",
+            dts_instance_id=example_subscription_job.dts_instance_id,
             consumer_group_name=name,
-            consumer_group_user_name=name,
-            consumer_group_password="tftestAcc123")
+            consumer_group_user_name="example",
+            consumer_group_password="example1234")
         ```
 
         ## Import

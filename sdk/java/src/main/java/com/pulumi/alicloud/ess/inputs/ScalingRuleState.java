@@ -62,9 +62,17 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.adjustmentValue);
     }
 
+    /**
+     * The unique identifier of the scaling rule.
+     * 
+     */
     @Import(name="ari")
     private @Nullable Output<String> ari;
 
+    /**
+     * @return The unique identifier of the scaling rule.
+     * 
+     */
     public Optional<Output<String>> ari() {
         return Optional.ofNullable(this.ari);
     }
@@ -175,14 +183,14 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Steps for StepScalingRule. See Block stepAdjustment below for details.
+     * Steps for StepScalingRule. See `step_adjustment` below.
      * 
      */
     @Import(name="stepAdjustments")
     private @Nullable Output<List<ScalingRuleStepAdjustmentArgs>> stepAdjustments;
 
     /**
-     * @return Steps for StepScalingRule. See Block stepAdjustment below for details.
+     * @return Steps for StepScalingRule. See `step_adjustment` below.
      * 
      */
     public Optional<Output<List<ScalingRuleStepAdjustmentArgs>>> stepAdjustments() {
@@ -293,11 +301,23 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
             return adjustmentValue(Output.of(adjustmentValue));
         }
 
+        /**
+         * @param ari The unique identifier of the scaling rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ari(@Nullable Output<String> ari) {
             $.ari = ari;
             return this;
         }
 
+        /**
+         * @param ari The unique identifier of the scaling rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ari(String ari) {
             return ari(Output.of(ari));
         }
@@ -450,7 +470,7 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stepAdjustments Steps for StepScalingRule. See Block stepAdjustment below for details.
+         * @param stepAdjustments Steps for StepScalingRule. See `step_adjustment` below.
          * 
          * @return builder
          * 
@@ -461,7 +481,7 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stepAdjustments Steps for StepScalingRule. See Block stepAdjustment below for details.
+         * @param stepAdjustments Steps for StepScalingRule. See `step_adjustment` below.
          * 
          * @return builder
          * 
@@ -471,7 +491,7 @@ public final class ScalingRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stepAdjustments Steps for StepScalingRule. See Block stepAdjustment below for details.
+         * @param stepAdjustments Steps for StepScalingRule. See `step_adjustment` below.
          * 
          * @return builder
          * 

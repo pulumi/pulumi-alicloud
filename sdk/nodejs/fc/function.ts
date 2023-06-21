@@ -8,9 +8,11 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Alicloud Function Compute Function resource. Function allows you to trigger execution of code in response to events in Alibaba Cloud. The Function itself includes source code and runtime configuration.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+ *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/zh/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createfunction).
  *
  * > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
+ *
+ * > **NOTE:** Available since v1.10.0.
  *
  * ## Example Usage
  *
@@ -19,33 +21,31 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "alicloudfcfunctionconfig";
- * const defaultProject = new alicloud.log.Project("defaultProject", {description: "tf unit test"});
- * const defaultStore = new alicloud.log.Store("defaultStore", {
- *     project: defaultProject.name,
- *     retentionPeriod: 3000,
- *     shardCount: 1,
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
  * });
+ * const defaultProject = new alicloud.log.Project("defaultProject", {});
+ * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
  * const defaultRole = new alicloud.ram.Role("defaultRole", {
- *     document: `        {
- *           "Statement": [
- *             {
- *               "Action": "sts:AssumeRole",
- *               "Effect": "Allow",
- *               "Principal": {
- *                 "Service": [
- *                   "fc.aliyuncs.com"
- *                 ]
- *               }
- *             }
- *           ],
- *           "Version": "1"
+ *     document: `  {
+ *       "Statement": [
+ *         {
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "fc.aliyuncs.com"
+ *             ]
+ *           }
  *         }
- *     
+ *       ],
+ *       "Version": "1"
+ *   }
  * `,
- *     description: "this is a test",
+ *     description: "this is a example",
  *     force: true,
  * });
  * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment", {
@@ -54,25 +54,29 @@ import * as utilities from "../utilities";
  *     policyType: "System",
  * });
  * const defaultService = new alicloud.fc.Service("defaultService", {
- *     description: "tf unit test",
+ *     description: "example-value",
+ *     role: defaultRole.arn,
  *     logConfig: {
  *         project: defaultProject.name,
  *         logstore: defaultStore.name,
+ *         enableInstanceMetrics: true,
+ *         enableRequestMetrics: true,
  *     },
- *     role: defaultRole.arn,
- * }, {
- *     dependsOn: [defaultRolePolicyAttachment],
  * });
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: name});
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
  * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
  * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
  *     bucket: defaultBucket.id,
- *     key: "fc/hello.zip",
- *     source: "./hello.zip",
+ *     key: "index.py",
+ *     content: `import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info('hello world') 
+ * return 'hello world'`,
  * });
  * const foo = new alicloud.fc.Function("foo", {
  *     service: defaultService.name,
- *     description: "tf",
+ *     description: "example",
  *     ossBucket: defaultBucket.id,
  *     ossKey: defaultBucketObject.key,
  *     memorySize: 512,
@@ -134,7 +138,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly codeChecksum!: pulumi.Output<string>;
     /**
-     * The configuration for custom container runtime.
+     * The configuration for custom container runtime.See `customContainerConfig` below.
      */
     public readonly customContainerConfig!: pulumi.Output<outputs.fc.FunctionCustomContainerConfig | undefined>;
     /**
@@ -302,7 +306,7 @@ export interface FunctionState {
      */
     codeChecksum?: pulumi.Input<string>;
     /**
-     * The configuration for custom container runtime.
+     * The configuration for custom container runtime.See `customContainerConfig` below.
      */
     customContainerConfig?: pulumi.Input<inputs.fc.FunctionCustomContainerConfig>;
     /**
@@ -397,7 +401,7 @@ export interface FunctionArgs {
      */
     codeChecksum?: pulumi.Input<string>;
     /**
-     * The configuration for custom container runtime.
+     * The configuration for custom container runtime.See `customContainerConfig` below.
      */
     customContainerConfig?: pulumi.Input<inputs.fc.FunctionCustomContainerConfig>;
     /**

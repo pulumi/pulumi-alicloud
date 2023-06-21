@@ -22,9 +22,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECD Desktop resource.
  * 
- * For information about ECD Desktop and how to use it, see [What is Desktop](https://help.aliyun.com/document_detail/188382.html).
+ * For information about ECD Desktop and how to use it, see [What is Desktop](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createdesktops)
  * 
- * &gt; **NOTE:** Available in v1.144.0+.
+ * &gt; **NOTE:** Available since v1.144.0.
  * 
  * ## Example Usage
  * 
@@ -37,14 +37,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.eds.SimpleOfficeSite;
  * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
- * import com.pulumi.alicloud.eds.EdsFunctions;
- * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
  * import com.pulumi.alicloud.eds.EcdPolicyGroup;
  * import com.pulumi.alicloud.eds.EcdPolicyGroupArgs;
  * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs;
  * import com.pulumi.alicloud.eds.inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs;
- * import com.pulumi.alicloud.eds.User;
- * import com.pulumi.alicloud.eds.UserArgs;
+ * import com.pulumi.alicloud.eds.EdsFunctions;
+ * import com.pulumi.alicloud.eds.inputs.GetBundlesArgs;
  * import com.pulumi.alicloud.eds.Desktop;
  * import com.pulumi.alicloud.eds.DesktopArgs;
  * import java.util.List;
@@ -60,49 +58,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .enableAdminAccess(true)
  *             .desktopAccessType(&#34;Internet&#34;)
- *             .officeSiteName(&#34;your_office_site_name&#34;)
- *             .enableInternetAccess(false)
+ *             .officeSiteName(name)
+ *             .build());
+ * 
+ *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+ *             .policyGroupName(name)
+ *             .clipboard(&#34;read&#34;)
+ *             .localDrive(&#34;read&#34;)
+ *             .usbRedirect(&#34;off&#34;)
+ *             .watermark(&#34;off&#34;)
+ *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
+ *                 .description(name)
+ *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+ *                 .build())
+ *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
+ *                 .type(&#34;inflow&#34;)
+ *                 .policy(&#34;accept&#34;)
+ *                 .description(name)
+ *                 .portRange(&#34;80/80&#34;)
+ *                 .ipProtocol(&#34;TCP&#34;)
+ *                 .priority(&#34;1&#34;)
+ *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+ *                 .build())
  *             .build());
  * 
  *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
  *             .bundleType(&#34;SYSTEM&#34;)
  *             .build());
  * 
- *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
- *             .policyGroupName(&#34;your_policy_group_name&#34;)
- *             .clipboard(&#34;readwrite&#34;)
- *             .localDrive(&#34;read&#34;)
- *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
- *                 .description(&#34;example_value&#34;)
- *                 .cidrIp(&#34;1.2.3.4/24&#34;)
- *                 .build())
- *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
- *                 .type(&#34;inflow&#34;)
- *                 .policy(&#34;accept&#34;)
- *                 .description(&#34;example_value&#34;)
- *                 .portRange(&#34;80/80&#34;)
- *                 .ipProtocol(&#34;TCP&#34;)
- *                 .priority(&#34;1&#34;)
- *                 .cidrIp(&#34;0.0.0.0/0&#34;)
- *                 .build())
- *             .build());
- * 
- *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
- *             .endUserId(&#34;your_end_user_id&#34;)
- *             .email(&#34;your_email&#34;)
- *             .phone(&#34;your_phone&#34;)
- *             .password(&#34;your_password&#34;)
- *             .build());
- * 
  *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
  *             .officeSiteId(defaultSimpleOfficeSite.id())
  *             .policyGroupId(defaultEcdPolicyGroup.id())
- *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[0].id()))
- *             .desktopName(&#34;your_desktop_name&#34;)
- *             .endUserIds(defaultUser.id())
+ *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+ *             .desktopName(name)
  *             .build());
  * 
  *     }

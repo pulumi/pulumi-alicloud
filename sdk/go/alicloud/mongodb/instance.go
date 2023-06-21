@@ -15,7 +15,7 @@ import (
 // It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
 // You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 //
-// > **NOTE:**  Available in 1.37.0+
+// > **NOTE:** Available since v1.37.0.
 //
 // > **NOTE:**  The following regions don't support create Classic network MongoDB instance.
 // [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -30,43 +30,54 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("MongoDB"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := mongodb.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
+//			index := len(defaultZones.Zones) - 1
+//			zoneId := defaultZones.Zones[index].Id
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
-//				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(zoneId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = mongodb.NewInstance(ctx, "example", &mongodb.InstanceArgs{
-//				EngineVersion:     pulumi.String("3.4"),
+//			_, err = mongodb.NewInstance(ctx, "defaultInstance", &mongodb.InstanceArgs{
+//				EngineVersion:     pulumi.String("4.2"),
 //				DbInstanceClass:   pulumi.String("dds.mongo.mid"),
 //				DbInstanceStorage: pulumi.Int(10),
 //				VswitchId:         defaultSwitch.ID(),
 //				SecurityIpLists: pulumi.StringArray{
 //					pulumi.String("10.168.1.12"),
 //					pulumi.String("100.69.7.112"),
+//				},
+//				Tags: pulumi.AnyMap{
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
@@ -130,9 +141,9 @@ type Instance struct {
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
-	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+	//   **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
-	// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntOutput `pulumi:"period"`
@@ -140,7 +151,7 @@ type Instance struct {
 	ReadonlyReplicas pulumi.IntOutput `pulumi:"readonlyReplicas"`
 	// The name of the mongo replica set
 	ReplicaSetName pulumi.StringOutput `pulumi:"replicaSetName"`
-	// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+	// Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replicaSets` below.
 	ReplicaSets InstanceReplicaSetArrayOutput `pulumi:"replicaSets"`
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
@@ -257,9 +268,9 @@ type instanceState struct {
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
-	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+	//   **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 	OrderType *string `pulumi:"orderType"`
-	// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
@@ -267,7 +278,7 @@ type instanceState struct {
 	ReadonlyReplicas *int `pulumi:"readonlyReplicas"`
 	// The name of the mongo replica set
 	ReplicaSetName *string `pulumi:"replicaSetName"`
-	// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+	// Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replicaSets` below.
 	ReplicaSets []InstanceReplicaSet `pulumi:"replicaSets"`
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor *int `pulumi:"replicationFactor"`
@@ -340,9 +351,9 @@ type InstanceState struct {
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
-	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+	//   **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 	OrderType pulumi.StringPtrInput
-	// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
@@ -350,7 +361,7 @@ type InstanceState struct {
 	ReadonlyReplicas pulumi.IntPtrInput
 	// The name of the mongo replica set
 	ReplicaSetName pulumi.StringPtrInput
-	// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+	// Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replicaSets` below.
 	ReplicaSets InstanceReplicaSetArrayInput
 	// Number of replica set nodes. Valid values: [1, 3, 5, 7]
 	ReplicationFactor pulumi.IntPtrInput
@@ -427,9 +438,9 @@ type instanceArgs struct {
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
-	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+	//   **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 	OrderType *string `pulumi:"orderType"`
-	// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period *int `pulumi:"period"`
@@ -503,9 +514,9 @@ type InstanceArgs struct {
 	// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 	// * UPGRADE: The specifications are upgraded.
 	// * DOWNGRADE: The specifications are downgraded.
-	//   Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+	//   **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 	OrderType pulumi.StringPtrInput
-	// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
 	Period pulumi.IntPtrInput
@@ -709,12 +720,12 @@ func (o InstanceOutput) NetworkType() pulumi.StringOutput {
 // The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
 //   - UPGRADE: The specifications are upgraded.
 //   - DOWNGRADE: The specifications are downgraded.
-//     Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+//     **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
 func (o InstanceOutput) OrderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
 }
 
-// Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 func (o InstanceOutput) Parameters() InstanceParameterArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceParameterArrayOutput { return v.Parameters }).(InstanceParameterArrayOutput)
 }
@@ -734,7 +745,7 @@ func (o InstanceOutput) ReplicaSetName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ReplicaSetName }).(pulumi.StringOutput)
 }
 
-// Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+// Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replicaSets` below.
 func (o InstanceOutput) ReplicaSets() InstanceReplicaSetArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceReplicaSetArrayOutput { return v.ReplicaSets }).(InstanceReplicaSetArrayOutput)
 }

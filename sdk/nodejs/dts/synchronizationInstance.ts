@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about DTS Synchronization Instance and how to use it, see [What is Synchronization Instance](https://www.alibabacloud.com/help/en/doc-detail/130744.html).
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -19,13 +19,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.dts.SynchronizationInstance("default", {
- *     destinationEndpointEngineName: "ADB30",
- *     destinationEndpointRegion: "cn-hangzhou",
- *     instanceClass: "small",
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultSynchronizationInstance = new alicloud.dts.SynchronizationInstance("defaultSynchronizationInstance", {
  *     paymentType: "PayAsYouGo",
- *     sourceEndpointEngineName: "PolarDB",
- *     sourceEndpointRegion: "cn-hangzhou",
+ *     sourceEndpointEngineName: "MySQL",
+ *     sourceEndpointRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     destinationEndpointEngineName: "MySQL",
+ *     destinationEndpointRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     instanceClass: "small",
  *     syncArchitecture: "oneway",
  * });
  * ```

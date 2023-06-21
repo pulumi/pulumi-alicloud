@@ -18,6 +18,9 @@ namespace Pulumi.AliCloud.FC.Inputs
         [Input("securityGroupId", required: true)]
         public Input<string> SecurityGroupId { get; set; } = null!;
 
+        /// <summary>
+        /// A vpc ID associated with the Function Compute Service.
+        /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 

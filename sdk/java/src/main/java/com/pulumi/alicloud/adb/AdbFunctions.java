@@ -545,7 +545,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -587,7 +587,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -629,7 +629,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -671,7 +671,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -713,7 +713,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 
@@ -755,7 +755,7 @@ public final class AdbFunctions {
     /**
      * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.121.0+.
+     * &gt; **NOTE:** Available since v1.121.0.
      * 
      * ## Example Usage
      * 

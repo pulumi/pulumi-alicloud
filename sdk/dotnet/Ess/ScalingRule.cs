@@ -12,6 +12,10 @@ namespace Pulumi.AliCloud.Ess
     /// <summary>
     /// Provides a ESS scaling rule resource.
     /// 
+    /// For information about ess scaling rule, see [CreateScalingRule](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalingrule).
+    /// 
+    /// &gt; **NOTE:** Available since v1.39.0.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,7 +27,7 @@ namespace Pulumi.AliCloud.Ess
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "essscalingruleconfig";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
@@ -113,14 +117,6 @@ namespace Pulumi.AliCloud.Ess
     /// You can use to the existing autoscaling-rule module
     /// to create different type rules, alarm task and scheduled task one-click.
     /// 
-    /// ## Block stepAdjustment
-    /// 
-    /// The stepAdjustment mapping supports the following:
-    /// 
-    /// * `metric_interval_lower_bound` - (Optional) The lower bound of step.
-    /// * `metric_interval_upper_bound` - (Optional) The upper bound of step.
-    /// * `scaling_adjustment` - (Optional) The adjust value of step.
-    /// 
     /// ## Import
     /// 
     /// ESS scaling rule can be imported using the id, e.g.
@@ -150,6 +146,9 @@ namespace Pulumi.AliCloud.Ess
         [Output("adjustmentValue")]
         public Output<int?> AdjustmentValue { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier of the scaling rule.
+        /// </summary>
         [Output("ari")]
         public Output<string> Ari { get; private set; } = null!;
 
@@ -196,7 +195,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> ScalingRuleType { get; private set; } = null!;
 
         /// <summary>
-        /// Steps for StepScalingRule. See Block stepAdjustment below for details.
+        /// Steps for StepScalingRule. See `step_adjustment` below.
         /// </summary>
         [Output("stepAdjustments")]
         public Output<ImmutableArray<Outputs.ScalingRuleStepAdjustment>> StepAdjustments { get; private set; } = null!;
@@ -317,7 +316,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingRuleStepAdjustmentArgs>? _stepAdjustments;
 
         /// <summary>
-        /// Steps for StepScalingRule. See Block stepAdjustment below for details.
+        /// Steps for StepScalingRule. See `step_adjustment` below.
         /// </summary>
         public InputList<Inputs.ScalingRuleStepAdjustmentArgs> StepAdjustments
         {
@@ -357,6 +356,9 @@ namespace Pulumi.AliCloud.Ess
         [Input("adjustmentValue")]
         public Input<int>? AdjustmentValue { get; set; }
 
+        /// <summary>
+        /// The unique identifier of the scaling rule.
+        /// </summary>
         [Input("ari")]
         public Input<string>? Ari { get; set; }
 
@@ -406,7 +408,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingRuleStepAdjustmentGetArgs>? _stepAdjustments;
 
         /// <summary>
-        /// Steps for StepScalingRule. See Block stepAdjustment below for details.
+        /// Steps for StepScalingRule. See `step_adjustment` below.
         /// </summary>
         public InputList<Inputs.ScalingRuleStepAdjustmentGetArgs> StepAdjustments
         {

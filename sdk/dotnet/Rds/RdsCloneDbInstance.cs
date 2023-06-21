@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
-    /// Provides a RDS Clone DB Instance resource.
+    /// Provides an RDS Clone DB Instance resource.
     /// 
     /// For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.149.0+.
+    /// &gt; **NOTE:** Available since v1.149.0+.
     /// 
     /// ## Example Usage
-    /// ### Create a RDS MySQL clone instance
+    /// ### Create an RDS MySQL clone instance
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -145,6 +145,9 @@ namespace Pulumi.AliCloud.Rds
         /// * **AlwaysOn**: Cluster Edition
         /// * **Finance**: Three-node Enterprise Edition.
         /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        /// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+        /// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+        /// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
         /// </summary>
         [Output("category")]
         public Output<string> Category { get; private set; } = null!;
@@ -317,7 +320,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> MaintainTime { get; private set; } = null!;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.RdsCloneDbInstanceParameter>> Parameters { get; private set; } = null!;
@@ -345,7 +348,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The details of the AD domain.See `pg_hba_conf` below.
         /// </summary>
         [Output("pgHbaConfs")]
         public Output<ImmutableArray<Outputs.RdsCloneDbInstancePgHbaConf>> PgHbaConfs { get; private set; } = null!;
@@ -429,7 +432,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> ServerKey { get; private set; } = null!;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         /// </summary>
         [Output("serverlessConfigs")]
         public Output<ImmutableArray<Outputs.RdsCloneDbInstanceServerlessConfig>> ServerlessConfigs { get; private set; } = null!;
@@ -511,7 +514,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the vSwitch associated with the specified VPC.
+        /// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
         /// 
         /// &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         /// </summary>
@@ -520,11 +523,23 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
-        /// 
-        /// &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
+
+        /// <summary>
+        /// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        /// </summary>
+        [Output("zoneIdSlaveA")]
+        public Output<string> ZoneIdSlaveA { get; private set; } = null!;
+
+        /// <summary>
+        /// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        /// 
+        /// &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
+        /// </summary>
+        [Output("zoneIdSlaveB")]
+        public Output<string> ZoneIdSlaveB { get; private set; } = null!;
 
 
         /// <summary>
@@ -617,6 +632,9 @@ namespace Pulumi.AliCloud.Rds
         /// * **AlwaysOn**: Cluster Edition
         /// * **Finance**: Three-node Enterprise Edition.
         /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        /// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+        /// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+        /// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -786,7 +804,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstanceParameterArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstanceParameterArgs> Parameters
         {
@@ -820,7 +838,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstancePgHbaConfArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The details of the AD domain.See `pg_hba_conf` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstancePgHbaConfArgs> PgHbaConfs
         {
@@ -916,7 +934,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstanceServerlessConfigArgs>? _serverlessConfigs;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstanceServerlessConfigArgs> ServerlessConfigs
         {
@@ -1001,7 +1019,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The ID of the vSwitch associated with the specified VPC.
+        /// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
         /// 
         /// &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         /// </summary>
@@ -1010,11 +1028,23 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
-        /// 
-        /// &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
+
+        /// <summary>
+        /// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        /// </summary>
+        [Input("zoneIdSlaveA")]
+        public Input<string>? ZoneIdSlaveA { get; set; }
+
+        /// <summary>
+        /// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        /// 
+        /// &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
+        /// </summary>
+        [Input("zoneIdSlaveB")]
+        public Input<string>? ZoneIdSlaveB { get; set; }
 
         public RdsCloneDbInstanceArgs()
         {
@@ -1069,6 +1099,9 @@ namespace Pulumi.AliCloud.Rds
         /// * **AlwaysOn**: Cluster Edition
         /// * **Finance**: Three-node Enterprise Edition.
         /// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        /// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+        /// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+        /// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -1244,7 +1277,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstanceParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        /// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstanceParameterGetArgs> Parameters
         {
@@ -1278,7 +1311,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstancePgHbaConfGetArgs>? _pgHbaConfs;
 
         /// <summary>
-        /// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        /// The details of the AD domain.See `pg_hba_conf` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstancePgHbaConfGetArgs> PgHbaConfs
         {
@@ -1374,7 +1407,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.RdsCloneDbInstanceServerlessConfigGetArgs>? _serverlessConfigs;
 
         /// <summary>
-        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        /// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         /// </summary>
         public InputList<Inputs.RdsCloneDbInstanceServerlessConfigGetArgs> ServerlessConfigs
         {
@@ -1459,7 +1492,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The ID of the vSwitch associated with the specified VPC.
+        /// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
         /// 
         /// &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         /// </summary>
@@ -1468,11 +1501,23 @@ namespace Pulumi.AliCloud.Rds
 
         /// <summary>
         /// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
-        /// 
-        /// &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
+
+        /// <summary>
+        /// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        /// </summary>
+        [Input("zoneIdSlaveA")]
+        public Input<string>? ZoneIdSlaveA { get; set; }
+
+        /// <summary>
+        /// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        /// 
+        /// &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
+        /// </summary>
+        [Input("zoneIdSlaveB")]
+        public Input<string>? ZoneIdSlaveB { get; set; }
 
         public RdsCloneDbInstanceState()
         {

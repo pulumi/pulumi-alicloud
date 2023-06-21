@@ -23,72 +23,78 @@ import (
 // package main
 //
 // import (
-// "fmt"
 //
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// defaultHost, err := bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
-// InstanceId: pulumi.String("bastionhost-cn-tl3xxxxxxx"),
-// HostName: pulumi.Any(_var.Name),
-// ActiveAddressType: pulumi.String("Private"),
-// HostPrivateAddress: pulumi.String("172.16.0.10"),
-// OsType: pulumi.String("Linux"),
-// Source: pulumi.String("Local"),
-// })
-// if err != nil {
-// return err
-// }
-// var defaultHostAccount []*bastionhost.HostAccount
 //
-//	for index := 0; index < 3; index++ {
-//	    key0 := index
-//	    val0 := index
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultHost, err := bastionhost.NewHost(ctx, "defaultHost", &bastionhost.HostArgs{
+//				InstanceId:         pulumi.String("bastionhost-cn-tl3xxxxxxx"),
+//				HostName:           pulumi.Any(_var.Name),
+//				ActiveAddressType:  pulumi.String("Private"),
+//				HostPrivateAddress: pulumi.String("172.16.0.10"),
+//				OsType:             pulumi.String("Linux"),
+//				Source:             pulumi.String("Local"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var defaultHostAccount []*bastionhost.HostAccount
+//			for index := 0; index < 3; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := bastionhost.NewHostAccount(ctx, fmt.Sprintf("defaultHostAccount-%v", key0), &bastionhost.HostAccountArgs{
+//					InstanceId:      defaultHost.InstanceId,
+//					HostAccountName: pulumi.String(fmt.Sprintf("example_value-%v", val0)),
+//					HostId:          defaultHost.HostId,
+//					ProtocolName:    pulumi.String("SSH"),
+//					Password:        pulumi.String("YourPassword12345"),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				defaultHostAccount = append(defaultHostAccount, __res)
+//			}
+//			defaultUser, err := bastionhost.NewUser(ctx, "defaultUser", &bastionhost.UserArgs{
+//				InstanceId:        defaultHost.InstanceId,
+//				MobileCountryCode: pulumi.String("CN"),
+//				Mobile:            pulumi.String("13312345678"),
+//				Password:          pulumi.String("YourPassword-123"),
+//				Source:            pulumi.String("Local"),
+//				UserName:          pulumi.String("my-local-user"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultHostGroup, err := bastionhost.NewHostGroup(ctx, "defaultHostGroup", &bastionhost.HostGroupArgs{
+//				HostGroupName: pulumi.String("example_value"),
+//				InstanceId:    pulumi.String("bastionhost-cn-tl3xxxxxxx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 pulumi.StringArray
+//			for _, val0 := range defaultHostAccount {
+//				splat0 = append(splat0, val0.HostAccountName)
+//			}
+//			_, err = bastionhost.NewHostGroupAccountUserAttachment(ctx, "defaultHostGroupAccountUserAttachment", &bastionhost.HostGroupAccountUserAttachmentArgs{
+//				InstanceId:       defaultHost.InstanceId,
+//				UserId:           defaultUser.UserId,
+//				HostGroupId:      defaultHostGroup.HostGroupId,
+//				HostAccountNames: splat0,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
 //
-// __res, err := bastionhost.NewHostAccount(ctx, fmt.Sprintf("defaultHostAccount-%v", key0), &bastionhost.HostAccountArgs{
-// InstanceId: defaultHost.InstanceId,
-// HostAccountName: pulumi.String(fmt.Sprintf("example_value-%v", val0)),
-// HostId: defaultHost.HostId,
-// ProtocolName: pulumi.String("SSH"),
-// Password: pulumi.String("YourPassword12345"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultHostAccount = append(defaultHostAccount, __res)
-// }
-// defaultUser, err := bastionhost.NewUser(ctx, "defaultUser", &bastionhost.UserArgs{
-// InstanceId: defaultHost.InstanceId,
-// MobileCountryCode: pulumi.String("CN"),
-// Mobile: pulumi.String("13312345678"),
-// Password: pulumi.String("YourPassword-123"),
-// Source: pulumi.String("Local"),
-// UserName: pulumi.String("my-local-user"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultHostGroup, err := bastionhost.NewHostGroup(ctx, "defaultHostGroup", &bastionhost.HostGroupArgs{
-// HostGroupName: pulumi.String("example_value"),
-// InstanceId: pulumi.String("bastionhost-cn-tl3xxxxxxx"),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = bastionhost.NewHostGroupAccountUserAttachment(ctx, "defaultHostGroupAccountUserAttachment", &bastionhost.HostGroupAccountUserAttachmentArgs{
-// InstanceId: defaultHost.InstanceId,
-// UserId: defaultUser.UserId,
-// HostGroupId: defaultHostGroup.HostGroupId,
-// HostAccountNames: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-alicloud:bastionhost-hostGroupAccountUserAttachment:HostGroupAccountUserAttachment.pp:35,22-58),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
 // ```
 //
 // ## Import

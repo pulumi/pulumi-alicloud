@@ -21,8 +21,8 @@ class Ipv6InternetBandwidthArgs:
         """
         The set of arguments for constructing a Ipv6InternetBandwidth resource.
         :param pulumi.Input[int] bandwidth: The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
-        :param pulumi.Input[str] ipv6_address_id: The ID of the IPv6 address.
-        :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway.
+        :param pulumi.Input[str] ipv6_address_id: The ID of the IPv6 address instance.
+        :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway to which the IPv6 address belongs.
         :param pulumi.Input[str] internet_charge_type: The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -47,7 +47,7 @@ class Ipv6InternetBandwidthArgs:
     @pulumi.getter(name="ipv6AddressId")
     def ipv6_address_id(self) -> pulumi.Input[str]:
         """
-        The ID of the IPv6 address.
+        The ID of the IPv6 address instance.
         """
         return pulumi.get(self, "ipv6_address_id")
 
@@ -59,7 +59,7 @@ class Ipv6InternetBandwidthArgs:
     @pulumi.getter(name="ipv6GatewayId")
     def ipv6_gateway_id(self) -> pulumi.Input[str]:
         """
-        The ID of the IPv6 gateway.
+        The ID of the IPv6 gateway to which the IPv6 address belongs.
         """
         return pulumi.get(self, "ipv6_gateway_id")
 
@@ -92,9 +92,9 @@ class _Ipv6InternetBandwidthState:
         Input properties used for looking up and filtering Ipv6InternetBandwidth resources.
         :param pulumi.Input[int] bandwidth: The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
         :param pulumi.Input[str] internet_charge_type: The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
-        :param pulumi.Input[str] ipv6_address_id: The ID of the IPv6 address.
-        :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway.
-        :param pulumi.Input[str] status: The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+        :param pulumi.Input[str] ipv6_address_id: The ID of the IPv6 address instance.
+        :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway to which the IPv6 address belongs.
+        :param pulumi.Input[str] status: The status of the resource.
         """
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
@@ -135,7 +135,7 @@ class _Ipv6InternetBandwidthState:
     @pulumi.getter(name="ipv6AddressId")
     def ipv6_address_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the IPv6 address.
+        The ID of the IPv6 address instance.
         """
         return pulumi.get(self, "ipv6_address_id")
 
@@ -147,7 +147,7 @@ class _Ipv6InternetBandwidthState:
     @pulumi.getter(name="ipv6GatewayId")
     def ipv6_gateway_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the IPv6 gateway.
+        The ID of the IPv6 gateway to which the IPv6 address belongs.
         """
         return pulumi.get(self, "ipv6_gateway_id")
 
@@ -159,7 +159,7 @@ class _Ipv6InternetBandwidthState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -179,11 +179,11 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
                  ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a VPC Ipv6 Internet Bandwidth resource.
+        Provides a VPC Ipv6 Internet Bandwidth resource. Public network bandwidth of IPv6 address.
 
-        For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/doc-detail/102213.htm).
+        For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/allocateipv6internetbandwidth).
 
-        > **NOTE:** Available in v1.143.0+.
+        > **NOTE:** Available since v1.143.0.
 
         ## Example Usage
 
@@ -193,13 +193,48 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instances = alicloud.ecs.get_instances(name_regex="ecs_with_ipv6_address",
-            status="Running")
-        example_ipv6_addresses = alicloud.vpc.get_ipv6_addresses(associated_instance_id=example_instances.instances[0].id,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            enable_ipv6=True,
+            cidr_block="172.16.0.0/12")
+        vsw = alicloud.vpc.Switch("vsw",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            availability_zone=default_zones.zones[0].id,
+            ipv6_cidr_block_mask=22)
+        group = alicloud.ecs.SecurityGroup("group",
+            description="foo",
+            vpc_id=default_network.id)
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            system_disk_category="cloud_efficiency",
+            cpu_core_count=4,
+            minimum_eni_ipv6_address_quantity=1)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        vpc_instance = alicloud.ecs.Instance("vpcInstance",
+            availability_zone=default_zones.zones[0].id,
+            ipv6_address_count=1,
+            instance_type=default_instance_types.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
+            image_id=default_images.images[0].id,
+            instance_name=name,
+            vswitch_id=vsw.id,
+            internet_max_bandwidth_out=10,
+            security_groups=[__item.id for __item in [group]])
+        example_ipv6_gateway = alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway",
+            ipv6_gateway_name="example_value",
+            vpc_id=default_network.id)
+        default_ipv6_addresses = alicloud.vpc.get_ipv6_addresses_output(associated_instance_id=vpc_instance.id,
             status="Available")
         example_ipv6_internet_bandwidth = alicloud.vpc.Ipv6InternetBandwidth("exampleIpv6InternetBandwidth",
-            ipv6_address_id=example_ipv6_addresses.addresses[0].id,
-            ipv6_gateway_id=example_ipv6_addresses.addresses[0].ipv6_gateway_id,
+            ipv6_address_id=default_ipv6_addresses.addresses[0].id,
+            ipv6_gateway_id=example_ipv6_gateway.ipv6_gateway_id,
             internet_charge_type="PayByBandwidth",
             bandwidth=20)
         ```
@@ -216,8 +251,8 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
         :param pulumi.Input[str] internet_charge_type: The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
-        :param pulumi.Input[str] ipv6_address_id: The ID of the IPv6 address.
-        :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway.
+        :param pulumi.Input[str] ipv6_address_id: The ID of the IPv6 address instance.
+        :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway to which the IPv6 address belongs.
         """
         ...
     @overload
@@ -226,11 +261,11 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
                  args: Ipv6InternetBandwidthArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Ipv6 Internet Bandwidth resource.
+        Provides a VPC Ipv6 Internet Bandwidth resource. Public network bandwidth of IPv6 address.
 
-        For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/doc-detail/102213.htm).
+        For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/allocateipv6internetbandwidth).
 
-        > **NOTE:** Available in v1.143.0+.
+        > **NOTE:** Available since v1.143.0.
 
         ## Example Usage
 
@@ -240,13 +275,48 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instances = alicloud.ecs.get_instances(name_regex="ecs_with_ipv6_address",
-            status="Running")
-        example_ipv6_addresses = alicloud.vpc.get_ipv6_addresses(associated_instance_id=example_instances.instances[0].id,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones()
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            enable_ipv6=True,
+            cidr_block="172.16.0.0/12")
+        vsw = alicloud.vpc.Switch("vsw",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/21",
+            availability_zone=default_zones.zones[0].id,
+            ipv6_cidr_block_mask=22)
+        group = alicloud.ecs.SecurityGroup("group",
+            description="foo",
+            vpc_id=default_network.id)
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            system_disk_category="cloud_efficiency",
+            cpu_core_count=4,
+            minimum_eni_ipv6_address_quantity=1)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        vpc_instance = alicloud.ecs.Instance("vpcInstance",
+            availability_zone=default_zones.zones[0].id,
+            ipv6_address_count=1,
+            instance_type=default_instance_types.instance_types[0].id,
+            system_disk_category="cloud_efficiency",
+            image_id=default_images.images[0].id,
+            instance_name=name,
+            vswitch_id=vsw.id,
+            internet_max_bandwidth_out=10,
+            security_groups=[__item.id for __item in [group]])
+        example_ipv6_gateway = alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway",
+            ipv6_gateway_name="example_value",
+            vpc_id=default_network.id)
+        default_ipv6_addresses = alicloud.vpc.get_ipv6_addresses_output(associated_instance_id=vpc_instance.id,
             status="Available")
         example_ipv6_internet_bandwidth = alicloud.vpc.Ipv6InternetBandwidth("exampleIpv6InternetBandwidth",
-            ipv6_address_id=example_ipv6_addresses.addresses[0].id,
-            ipv6_gateway_id=example_ipv6_addresses.addresses[0].ipv6_gateway_id,
+            ipv6_address_id=default_ipv6_addresses.addresses[0].id,
+            ipv6_gateway_id=example_ipv6_gateway.ipv6_gateway_id,
             internet_charge_type="PayByBandwidth",
             bandwidth=20)
         ```
@@ -322,9 +392,9 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bandwidth: The amount of Internet bandwidth resources of the IPv6 address, Unit: `Mbit/s`. Valid values: `1` to `5000`. **NOTE:** If `internet_charge_type` is set to `PayByTraffic`, the amount of Internet bandwidth resources of the IPv6 address is limited by the specification of the IPv6 gateway. `Small` (default): specifies the Free edition and the Internet bandwidth is from `1` to `500` Mbit/s. `Medium`: specifies the Medium edition and the Internet bandwidth is from `1` to `1000` Mbit/s. `Large`: specifies the Large edition and the Internet bandwidth is from `1` to `2000` Mbit/s.
         :param pulumi.Input[str] internet_charge_type: The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
-        :param pulumi.Input[str] ipv6_address_id: The ID of the IPv6 address.
-        :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway.
-        :param pulumi.Input[str] status: The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+        :param pulumi.Input[str] ipv6_address_id: The ID of the IPv6 address instance.
+        :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway to which the IPv6 address belongs.
+        :param pulumi.Input[str] status: The status of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -357,7 +427,7 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
     @pulumi.getter(name="ipv6AddressId")
     def ipv6_address_id(self) -> pulumi.Output[str]:
         """
-        The ID of the IPv6 address.
+        The ID of the IPv6 address instance.
         """
         return pulumi.get(self, "ipv6_address_id")
 
@@ -365,7 +435,7 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
     @pulumi.getter(name="ipv6GatewayId")
     def ipv6_gateway_id(self) -> pulumi.Output[str]:
         """
-        The ID of the IPv6 gateway.
+        The ID of the IPv6 gateway to which the IPv6 address belongs.
         """
         return pulumi.get(self, "ipv6_gateway_id")
 
@@ -373,7 +443,7 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 

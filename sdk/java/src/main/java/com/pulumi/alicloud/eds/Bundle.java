@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECD Bundle resource.
  * 
- * For information about ECD Bundle and how to use it, see [What is Bundle](https://help.aliyun.com/document_detail/188883.html).
+ * For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createbundle).
  * 
- * &gt; **NOTE:** Available in v1.170.0+.
+ * &gt; **NOTE:** Available since v1.170.0.
  * 
  * ## Example Usage
  * 
@@ -50,6 +50,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var defaultImages = EdsFunctions.getImages(GetImagesArgs.builder()
  *             .imageType(&#34;SYSTEM&#34;)
  *             .osType(&#34;Windows&#34;)
@@ -63,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBundle = new Bundle(&#34;defaultBundle&#34;, BundleArgs.builder()        
- *             .description(var_.name())
+ *             .description(name)
  *             .desktopType(defaultDesktopTypes.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.ids()[0]))
- *             .bundleName(var_.name())
+ *             .bundleName(name)
  *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
  *             .userDiskSizeGibs(70)
  *             .rootDiskSizeGib(80)

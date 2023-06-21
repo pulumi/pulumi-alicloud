@@ -24,13 +24,14 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -52,13 +53,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;created by terraform&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
  *             .project(exampleProject.name())
- *             .description(&#34;created by terraform&#34;)
+ *             .shardCount(3)
+ *             .autoSplit(true)
+ *             .maxSplitShardCount(60)
+ *             .appendMeta(true)
  *             .build());
  * 
  *         var exampleStoreIndex = new StoreIndex(&#34;exampleStoreIndex&#34;, StoreIndexArgs.builder()        
@@ -67,12 +76,16 @@ import javax.annotation.Nullable;
  *             .fullText(StoreIndexFullTextArgs.builder()
  *                 .caseSensitive(true)
  *                 .token(&#34;&#34;&#34;
- *  #$%^*
+ *  #$^*
  * 	                &#34;&#34;&#34;)
  *                 .build())
  *             .fieldSearches(StoreIndexFieldSearchArgs.builder()
- *                 .name(&#34;terraform&#34;)
+ *                 .name(&#34;terraform-example&#34;)
  *                 .enableAnalytics(true)
+ *                 .type(&#34;text&#34;)
+ *                 .token(&#34;&#34;&#34;
+ *  #$^*
+ * 	                &#34;&#34;&#34;)
  *                 .build())
  *             .build());
  * 

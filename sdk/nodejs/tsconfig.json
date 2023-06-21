@@ -629,6 +629,7 @@
         "ecs/eip.ts",
         "ecs/eipAddress.ts",
         "ecs/eipAssociation.ts",
+        "ecs/eipSegmentAddress.ts",
         "ecs/elasticityAssurance.ts",
         "ecs/getActivations.ts",
         "ecs/getAutoSnapshotPolicies.ts",

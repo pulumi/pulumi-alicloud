@@ -31,14 +31,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
  * import com.pulumi.alicloud.log.StoreArgs;
- * import com.pulumi.alicloud.log.MachineGroup;
- * import com.pulumi.alicloud.log.MachineGroupArgs;
  * import com.pulumi.alicloud.log.LogTailConfig;
  * import com.pulumi.alicloud.log.LogTailConfigArgs;
+ * import com.pulumi.alicloud.log.MachineGroup;
+ * import com.pulumi.alicloud.log.MachineGroupArgs;
  * import com.pulumi.alicloud.log.LogTailAttachment;
  * import com.pulumi.alicloud.log.LogTailAttachmentArgs;
  * import java.util.List;
@@ -54,12 +56,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testProject = new Project(&#34;testProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;create by terraform&#34;)
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
  *             .build());
  * 
- *         var testStore = new Store(&#34;testStore&#34;, StoreArgs.builder()        
- *             .project(testProject.name())
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *             .project(exampleProject.name())
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -67,20 +74,10 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var testMachineGroup = new MachineGroup(&#34;testMachineGroup&#34;, MachineGroupArgs.builder()        
- *             .project(testProject.name())
- *             .topic(&#34;terraform&#34;)
- *             .identifyLists(            
- *                 &#34;10.0.0.1&#34;,
- *                 &#34;10.0.0.3&#34;,
- *                 &#34;10.0.0.2&#34;)
- *             .build());
- * 
- *         var testLogTailConfig = new LogTailConfig(&#34;testLogTailConfig&#34;, LogTailConfigArgs.builder()        
- *             .project(testProject.name())
- *             .logstore(testStore.name())
+ *         var exampleLogTailConfig = new LogTailConfig(&#34;exampleLogTailConfig&#34;, LogTailConfigArgs.builder()        
+ *             .project(exampleProject.name())
+ *             .logstore(exampleStore.name())
  *             .inputType(&#34;file&#34;)
- *             .logSample(&#34;test&#34;)
  *             .outputType(&#34;LogService&#34;)
  *             .inputDetail(&#34;&#34;&#34;
  *   	{
@@ -93,14 +90,22 @@ import javax.annotation.Nullable;
  * 		&#34;fileEncoding&#34;: &#34;gbk&#34;,
  * 		&#34;maxDepth&#34;: 10
  * 	}
- * 	
  *             &#34;&#34;&#34;)
  *             .build());
  * 
- *         var testLogTailAttachment = new LogTailAttachment(&#34;testLogTailAttachment&#34;, LogTailAttachmentArgs.builder()        
- *             .project(testProject.name())
- *             .logtailConfigName(testLogTailConfig.name())
- *             .machineGroupName(testMachineGroup.name())
+ *         var exampleMachineGroup = new MachineGroup(&#34;exampleMachineGroup&#34;, MachineGroupArgs.builder()        
+ *             .project(exampleProject.name())
+ *             .identifyType(&#34;ip&#34;)
+ *             .topic(&#34;terraform&#34;)
+ *             .identifyLists(            
+ *                 &#34;10.0.0.1&#34;,
+ *                 &#34;10.0.0.2&#34;)
+ *             .build());
+ * 
+ *         var exampleLogTailAttachment = new LogTailAttachment(&#34;exampleLogTailAttachment&#34;, LogTailAttachmentArgs.builder()        
+ *             .project(exampleProject.name())
+ *             .logtailConfigName(exampleLogTailConfig.name())
+ *             .machineGroupName(exampleMachineGroup.name())
  *             .build());
  * 
  *     }

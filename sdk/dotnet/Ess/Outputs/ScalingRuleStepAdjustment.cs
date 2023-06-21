@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Ess.Outputs
     [OutputType]
     public sealed class ScalingRuleStepAdjustment
     {
+        /// <summary>
+        /// The lower bound of step.
+        /// </summary>
         public readonly string? MetricIntervalLowerBound;
+        /// <summary>
+        /// The upper bound of step.
+        /// </summary>
         public readonly string? MetricIntervalUpperBound;
+        /// <summary>
+        /// The adjust value of step.
+        /// </summary>
         public readonly int? ScalingAdjustment;
 
         [OutputConstructor]

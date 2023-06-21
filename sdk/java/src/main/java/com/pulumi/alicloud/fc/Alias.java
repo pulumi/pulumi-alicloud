@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 
 /**
  * Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
- *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/171635.htm).
+ *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createalias).
  * 
- * &gt; **NOTE:** Available in 1.104.0+
+ * &gt; **NOTE:** Available since v1.104.0.
  * 
  * ## Example Usage
  * 
@@ -30,9 +30,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.fc.Service;
+ * import com.pulumi.alicloud.fc.ServiceArgs;
  * import com.pulumi.alicloud.fc.Alias;
  * import com.pulumi.alicloud.fc.AliasArgs;
- * import com.pulumi.alicloud.fc.inputs.AliasRoutingConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,13 +49,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .description(&#34;example-value&#34;)
+ *             .publish(&#34;true&#34;)
+ *             .build());
+ * 
  *         var example = new Alias(&#34;example&#34;, AliasArgs.builder()        
- *             .aliasName(&#34;my_alias&#34;)
- *             .description(&#34;a sample description&#34;)
- *             .routingConfig(AliasRoutingConfigArgs.builder()
- *                 .additionalVersionWeights(Map.of(&#34;2&#34;, 0.5))
- *                 .build())
- *             .serviceName(&#34;my_service_name&#34;)
+ *             .aliasName(&#34;example-value&#34;)
+ *             .description(&#34;example-value&#34;)
+ *             .serviceName(defaultService.name())
  *             .serviceVersion(&#34;1&#34;)
  *             .build());
  * 
@@ -100,18 +110,14 @@ public class Alias extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The Function Compute alias&#39; route configuration settings. Fields documented below.
-     * 
-     * **routing_config** includes the following arguments:
+     * The Function Compute alias&#39; route configuration settings. See `routing_config` below.
      * 
      */
     @Export(name="routingConfig", type=AliasRoutingConfig.class, parameters={})
     private Output</* @Nullable */ AliasRoutingConfig> routingConfig;
 
     /**
-     * @return The Function Compute alias&#39; route configuration settings. Fields documented below.
-     * 
-     * **routing_config** includes the following arguments:
+     * @return The Function Compute alias&#39; route configuration settings. See `routing_config` below.
      * 
      */
     public Output<Optional<AliasRoutingConfig>> routingConfig() {

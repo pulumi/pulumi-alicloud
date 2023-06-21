@@ -13,9 +13,9 @@ import (
 
 // Provides a ECD Ad Connector Directory resource.
 //
-// For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://help.aliyun.com/document_detail/436791.html).
+// For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createadconnectordirectory).
 //
-// > **NOTE:** Available in v1.174.0+.
+// > **NOTE:** Available since v1.174.0.
 //
 // ## Example Usage
 //
@@ -29,36 +29,45 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultZones, err := eds.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
-//			}, nil)
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Ids[0]),
+//				VswitchName: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eds.NewAdConnectorDirectory(ctx, "defaultAdConnectorDirectory", &eds.AdConnectorDirectoryArgs{
-//				DirectoryName:     pulumi.Any(_var.Name),
+//				DirectoryName:     pulumi.String(name),
 //				DesktopAccessType: pulumi.String("INTERNET"),
 //				DnsAddresses: pulumi.StringArray{
 //					pulumi.String("127.0.0.2"),
 //				},
 //				DomainName:        pulumi.String("corp.example.com"),
-//				DomainPassword:    pulumi.String("YourPassword1234"),
+//				DomainPassword:    pulumi.String("Example1234"),
 //				DomainUserName:    pulumi.String("sAMAccountName"),
 //				EnableAdminAccess: pulumi.Bool(false),
 //				MfaEnabled:        pulumi.Bool(false),
@@ -68,7 +77,7 @@ import (
 //				},
 //				SubDomainName: pulumi.String("child.example.com"),
 //				VswitchIds: pulumi.StringArray{
-//					*pulumi.String(defaultSwitches.Ids[0]),
+//					defaultSwitch.ID(),
 //				},
 //			})
 //			if err != nil {

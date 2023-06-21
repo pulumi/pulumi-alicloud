@@ -23,12 +23,11 @@ import javax.annotation.Nullable;
  * 
  * For information about Dts Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance).
  * 
- * &gt; **NOTE:** Available in v1.198.0+.
+ * &gt; **NOTE:** Available since v1.198.0.
  * 
  * ## Example Usage
  * 
  * Basic Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -37,6 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.dts.Instance;
  * import com.pulumi.alicloud.dts.InstanceArgs;
  * import java.util.List;
@@ -56,15 +57,19 @@ import javax.annotation.Nullable;
  *             .status(&#34;OK&#34;)
  *             .build());
  * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .type(&#34;sync&#34;)
  *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .paymentType(&#34;Subscription&#34;)
  *             .instanceClass(&#34;large&#34;)
  *             .sourceEndpointEngineName(&#34;MySQL&#34;)
- *             .sourceRegion(&#34;cn-hangzhou&#34;)
+ *             .sourceRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .destinationEndpointEngineName(&#34;MySQL&#34;)
- *             .region(&#34;cn-hangzhou&#34;)
+ *             .destinationRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .build());
  * 
  *     }

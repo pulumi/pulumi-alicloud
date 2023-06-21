@@ -17,6 +17,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServerGroupsResult {
     private @Nullable Boolean enableDetails;
+    /**
+     * @return A list of Alb Server Groups. Each element contains the following attributes:
+     * 
+     */
     private List<GetServerGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,19 +29,43 @@ public final class GetServerGroupsResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Server Group names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable String resourceGroupId;
     private @Nullable List<String> serverGroupIds;
+    /**
+     * @return The name of the resource.
+     * 
+     */
     private @Nullable String serverGroupName;
+    /**
+     * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tags of the resource.
+     * 
+     */
     private @Nullable Map<String,Object> tags;
+    /**
+     * @return The ID of the VPC that you want to access.
+     * 
+     */
     private @Nullable String vpcId;
 
     private GetServerGroupsResult() {}
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
+    /**
+     * @return A list of Alb Server Groups. Each element contains the following attributes:
+     * 
+     */
     public List<GetServerGroupsGroup> groups() {
         return this.groups;
     }
@@ -54,6 +82,10 @@ public final class GetServerGroupsResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Server Group names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -66,15 +98,31 @@ public final class GetServerGroupsResult {
     public List<String> serverGroupIds() {
         return this.serverGroupIds == null ? List.of() : this.serverGroupIds;
     }
+    /**
+     * @return The name of the resource.
+     * 
+     */
     public Optional<String> serverGroupName() {
         return Optional.ofNullable(this.serverGroupName);
     }
+    /**
+     * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tags of the resource.
+     * 
+     */
     public Map<String,Object> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }
+    /**
+     * @return The ID of the VPC that you want to access.
+     * 
+     */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }

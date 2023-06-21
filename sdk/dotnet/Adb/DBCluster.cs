@@ -10,74 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Adb
 {
     /// <summary>
-    /// Provides a AnalyticDB for MySQL (ADB) DBCluster resource.
-    /// 
-    /// For information about AnalyticDB for MySQL (ADB) DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/doc-detail/190519.htm).
-    /// 
-    /// &gt; **NOTE:** Available in v1.121.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "adbClusterconfig";
-    ///     var creation = config.Get("creation") ?? "ADB";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = creation,
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         VswitchName = name,
-    ///     });
-    /// 
-    ///     var @this = new AliCloud.Adb.DBCluster("this", new()
-    ///     {
-    ///         DbClusterCategory = "Cluster",
-    ///         DbNodeClass = "C8",
-    ///         DbNodeCount = 4,
-    ///         DbNodeStorage = 400,
-    ///         Mode = "reserver",
-    ///         DbClusterVersion = "3.0",
-    ///         PaymentType = "PayAsYouGo",
-    ///         VswitchId = defaultSwitch.Id,
-    ///         Description = "Test new adb again.",
-    ///         MaintainTime = "23:00Z-00:00Z",
-    ///         Tags = 
-    ///         {
-    ///             { "Created", "TF-update" },
-    ///             { "For", "acceptance-test-update" },
-    ///         },
-    ///         ResourceGroupId = "rg-aek2s7ylxx6****",
-    ///         SecurityIps = new[]
-    ///         {
-    ///             "10.168.1.12",
-    ///             "10.168.1.11",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
@@ -90,7 +22,7 @@ namespace Pulumi.AliCloud.Adb
     public partial class DBCluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         /// </summary>
         [Output("autoRenewPeriod")]
         public Output<int> AutoRenewPeriod { get; private set; } = null!;
@@ -120,7 +52,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string?> DbClusterClass { get; private set; } = null!;
 
         /// <summary>
-        /// The db cluster version. Value options: `3.0`, Default to `3.0`.
+        /// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         /// </summary>
         [Output("dbClusterVersion")]
         public Output<string?> DbClusterVersion { get; private set; } = null!;
@@ -150,10 +82,22 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        /// </summary>
+        [Output("diskPerformanceLevel")]
+        public Output<string> DiskPerformanceLevel { get; private set; } = null!;
+
+        /// <summary>
         /// The elastic io resource.
         /// </summary>
         [Output("elasticIoResource")]
         public Output<int> ElasticIoResource { get; private set; } = null!;
+
+        /// <summary>
+        /// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        /// </summary>
+        [Output("elasticIoResourceSize")]
+        public Output<string> ElasticIoResourceSize { get; private set; } = null!;
 
         /// <summary>
         /// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -180,7 +124,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> PayType { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -193,7 +137,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the ADB cluster.
+        /// (Available since v1.196.0) The connection port of the ADB cluster.
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -297,7 +241,7 @@ namespace Pulumi.AliCloud.Adb
     public sealed class DBClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -321,7 +265,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterClass { get; set; }
 
         /// <summary>
-        /// The db cluster version. Value options: `3.0`, Default to `3.0`.
+        /// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         /// </summary>
         [Input("dbClusterVersion")]
         public Input<string>? DbClusterVersion { get; set; }
@@ -351,10 +295,22 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        /// </summary>
+        [Input("diskPerformanceLevel")]
+        public Input<string>? DiskPerformanceLevel { get; set; }
+
+        /// <summary>
         /// The elastic io resource.
         /// </summary>
         [Input("elasticIoResource")]
         public Input<int>? ElasticIoResource { get; set; }
+
+        /// <summary>
+        /// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        /// </summary>
+        [Input("elasticIoResourceSize")]
+        public Input<string>? ElasticIoResourceSize { get; set; }
 
         /// <summary>
         /// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -381,7 +337,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -460,7 +416,7 @@ namespace Pulumi.AliCloud.Adb
     public sealed class DBClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+        /// Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         /// </summary>
         [Input("autoRenewPeriod")]
         public Input<int>? AutoRenewPeriod { get; set; }
@@ -490,7 +446,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterClass { get; set; }
 
         /// <summary>
-        /// The db cluster version. Value options: `3.0`, Default to `3.0`.
+        /// The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         /// </summary>
         [Input("dbClusterVersion")]
         public Input<string>? DbClusterVersion { get; set; }
@@ -520,10 +476,22 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        /// </summary>
+        [Input("diskPerformanceLevel")]
+        public Input<string>? DiskPerformanceLevel { get; set; }
+
+        /// <summary>
         /// The elastic io resource.
         /// </summary>
         [Input("elasticIoResource")]
         public Input<int>? ElasticIoResource { get; set; }
+
+        /// <summary>
+        /// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        /// </summary>
+        [Input("elasticIoResourceSize")]
+        public Input<string>? ElasticIoResourceSize { get; set; }
 
         /// <summary>
         /// The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -550,7 +518,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? PayType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        /// The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -563,7 +531,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// (Available in 1.196.0+) The connection port of the ADB cluster.
+        /// (Available since v1.196.0) The connection port of the ADB cluster.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }

@@ -8,6 +8,8 @@ import * as utilities from "../utilities";
  * The project is the resource management unit in Log Service and is used to isolate and control resources.
  * You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
  *
+ * > **NOTE:** Available since v1.9.5.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -15,11 +17,17 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const example = new alicloud.log.Project("example", {
- *     description: "created by terraform",
+ *     description: "terraform-example",
  *     tags: {
- *         test: "test",
+ *         Created: "TF",
+ *         For: "example",
  *     },
  * });
  * ```
@@ -29,9 +37,14 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const examplePolicy = new alicloud.log.Project("examplePolicy", {
- *     description: "created by terraform",
+ *     description: "terraform-example",
  *     policy: `{
  *   "Statement": [
  *     {
@@ -110,6 +123,8 @@ export class Project extends pulumi.CustomResource {
     public readonly policy!: pulumi.Output<string | undefined>;
     /**
      * Log project tags.
+     * - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
@@ -160,6 +175,8 @@ export interface ProjectState {
     policy?: pulumi.Input<string>;
     /**
      * Log project tags.
+     * - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }
@@ -182,6 +199,8 @@ export interface ProjectArgs {
     policy?: pulumi.Input<string>;
     /**
      * Log project tags.
+     * - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+     * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

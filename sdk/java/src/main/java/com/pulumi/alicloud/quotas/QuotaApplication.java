@@ -107,14 +107,14 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
         return this.desireValue;
     }
     /**
-     * QuotaDimensions. See the following `Block Dimensions`.
+     * QuotaDimensions. See `dimensions` below.
      * 
      */
     @Export(name="dimensions", type=List.class, parameters={QuotaApplicationDimension.class})
     private Output</* @Nullable */ List<QuotaApplicationDimension>> dimensions;
 
     /**
-     * @return QuotaDimensions. See the following `Block Dimensions`.
+     * @return QuotaDimensions. See `dimensions` below.
      * 
      */
     public Output<Optional<List<QuotaApplicationDimension>>> dimensions() {

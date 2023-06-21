@@ -74,7 +74,9 @@ class RdsCloneDbInstanceArgs:
                  used_time: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
-                 zone_id: Optional[pulumi.Input[str]] = None):
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_b: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RdsCloneDbInstance resource.
         :param pulumi.Input[str] db_instance_storage_type: The type of storage media that is used for the new instance. Valid values:
@@ -104,6 +106,9 @@ class RdsCloneDbInstanceArgs:
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
                * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+               * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
         :param pulumi.Input[str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[int] client_ca_enabled: The client ca enabled.
@@ -144,14 +149,14 @@ class RdsCloneDbInstanceArgs:
                * **Classic**: Classic Network
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
-        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         :param pulumi.Input[str] password: The password of the certificate. 
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
                
                > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
-        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]] pg_hba_confs: The details of the AD domain.See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -170,7 +175,7 @@ class RdsCloneDbInstanceArgs:
                > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
-        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         :param pulumi.Input[str] source_biz: The source biz.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[str] switch_time: The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -196,10 +201,12 @@ class RdsCloneDbInstanceArgs:
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
                
                > **NOTE:** Make sure that the VPC resides in the specified region.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
                
                > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
                
                > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
@@ -318,6 +325,10 @@ class RdsCloneDbInstanceArgs:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+        if zone_id_slave_a is not None:
+            pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
+        if zone_id_slave_b is not None:
+            pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
 
     @property
     @pulumi.getter(name="dbInstanceStorageType")
@@ -438,6 +449,9 @@ class RdsCloneDbInstanceArgs:
         * **AlwaysOn**: Cluster Edition
         * **Finance**: Three-node Enterprise Edition.
         * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+        * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+        * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
         """
         return pulumi.get(self, "category")
 
@@ -731,7 +745,7 @@ class RdsCloneDbInstanceArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -771,7 +785,7 @@ class RdsCloneDbInstanceArgs:
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]]]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The details of the AD domain.See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 
@@ -933,7 +947,7 @@ class RdsCloneDbInstanceArgs:
     @pulumi.getter(name="serverlessConfigs")
     def serverless_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]]]:
         """
-        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         """
         return pulumi.get(self, "serverless_configs")
 
@@ -1069,7 +1083,7 @@ class RdsCloneDbInstanceArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the vSwitch associated with the specified VPC.
+        The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
 
         > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         """
@@ -1084,14 +1098,38 @@ class RdsCloneDbInstanceArgs:
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
-
-        > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveA")
+    def zone_id_slave_a(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        """
+        return pulumi.get(self, "zone_id_slave_a")
+
+    @zone_id_slave_a.setter
+    def zone_id_slave_a(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id_slave_a", value)
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveB")
+    def zone_id_slave_b(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+
+        > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
+        """
+        return pulumi.get(self, "zone_id_slave_b")
+
+    @zone_id_slave_b.setter
+    def zone_id_slave_b(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id_slave_b", value)
 
 
 @pulumi.input_type
@@ -1156,7 +1194,9 @@ class _RdsCloneDbInstanceState:
                  used_time: Optional[pulumi.Input[int]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
-                 zone_id: Optional[pulumi.Input[str]] = None):
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_b: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RdsCloneDbInstance resources.
         :param pulumi.Input[str] acl: This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
@@ -1178,6 +1218,9 @@ class _RdsCloneDbInstanceState:
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
                * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+               * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
         :param pulumi.Input[str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[int] client_ca_enabled: The client ca enabled.
@@ -1225,7 +1268,7 @@ class _RdsCloneDbInstanceState:
                * **Classic**: Classic Network
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
-        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         :param pulumi.Input[str] password: The password of the certificate. 
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
@@ -1233,7 +1276,7 @@ class _RdsCloneDbInstanceState:
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
                
                > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
-        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]] pg_hba_confs: The details of the AD domain.See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -1252,7 +1295,7 @@ class _RdsCloneDbInstanceState:
                > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
-        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        :param pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         :param pulumi.Input[str] source_biz: The source biz.
         :param pulumi.Input[str] source_db_instance_id: The source db instance id.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
@@ -1279,10 +1322,12 @@ class _RdsCloneDbInstanceState:
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
                
                > **NOTE:** Make sure that the VPC resides in the specified region.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
                
                > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
                
                > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
@@ -1406,6 +1451,10 @@ class _RdsCloneDbInstanceState:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+        if zone_id_slave_a is not None:
+            pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
+        if zone_id_slave_b is not None:
+            pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
 
     @property
     @pulumi.getter
@@ -1485,6 +1534,9 @@ class _RdsCloneDbInstanceState:
         * **AlwaysOn**: Cluster Edition
         * **Finance**: Three-node Enterprise Edition.
         * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+        * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+        * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
         """
         return pulumi.get(self, "category")
 
@@ -1807,7 +1859,7 @@ class _RdsCloneDbInstanceState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -1859,7 +1911,7 @@ class _RdsCloneDbInstanceState:
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstancePgHbaConfArgs']]]]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The details of the AD domain.See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 
@@ -2021,7 +2073,7 @@ class _RdsCloneDbInstanceState:
     @pulumi.getter(name="serverlessConfigs")
     def serverless_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsCloneDbInstanceServerlessConfigArgs']]]]:
         """
-        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         """
         return pulumi.get(self, "serverless_configs")
 
@@ -2169,7 +2221,7 @@ class _RdsCloneDbInstanceState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the vSwitch associated with the specified VPC.
+        The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
 
         > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         """
@@ -2184,14 +2236,38 @@ class _RdsCloneDbInstanceState:
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
-
-        > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveA")
+    def zone_id_slave_a(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        """
+        return pulumi.get(self, "zone_id_slave_a")
+
+    @zone_id_slave_a.setter
+    def zone_id_slave_a(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id_slave_a", value)
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveB")
+    def zone_id_slave_b(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+
+        > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
+        """
+        return pulumi.get(self, "zone_id_slave_b")
+
+    @zone_id_slave_b.setter
+    def zone_id_slave_b(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id_slave_b", value)
 
 
 class RdsCloneDbInstance(pulumi.CustomResource):
@@ -2258,16 +2334,18 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_b: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a RDS Clone DB Instance resource.
+        Provides an RDS Clone DB Instance resource.
 
         For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
 
-        > **NOTE:** Available in v1.149.0+.
+        > **NOTE:** Available since v1.149.0+.
 
         ## Example Usage
-        ### Create a RDS MySQL clone instance
+        ### Create an RDS MySQL clone instance
 
         ```python
         import pulumi
@@ -2340,6 +2418,9 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
                * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+               * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
         :param pulumi.Input[str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[int] client_ca_enabled: The client ca enabled.
@@ -2386,7 +2467,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **Classic**: Classic Network
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         :param pulumi.Input[str] password: The password of the certificate. 
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
@@ -2394,7 +2475,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
                
                > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The details of the AD domain.See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -2413,7 +2494,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         :param pulumi.Input[str] source_biz: The source biz.
         :param pulumi.Input[str] source_db_instance_id: The source db instance id.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
@@ -2440,10 +2521,12 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
                
                > **NOTE:** Make sure that the VPC resides in the specified region.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
                
                > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
                
                > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
@@ -2454,14 +2537,14 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  args: RdsCloneDbInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a RDS Clone DB Instance resource.
+        Provides an RDS Clone DB Instance resource.
 
         For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
 
-        > **NOTE:** Available in v1.149.0+.
+        > **NOTE:** Available since v1.149.0+.
 
         ## Example Usage
-        ### Create a RDS MySQL clone instance
+        ### Create an RDS MySQL clone instance
 
         ```python
         import pulumi
@@ -2587,6 +2670,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_b: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2661,6 +2746,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["zone_id_slave_a"] = zone_id_slave_a
+            __props__.__dict__["zone_id_slave_b"] = zone_id_slave_b
             __props__.__dict__["connection_string"] = None
         super(RdsCloneDbInstance, __self__).__init__(
             'alicloud:rds/rdsCloneDbInstance:RdsCloneDbInstance',
@@ -2731,7 +2818,9 @@ class RdsCloneDbInstance(pulumi.CustomResource):
             used_time: Optional[pulumi.Input[int]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
-            zone_id: Optional[pulumi.Input[str]] = None) -> 'RdsCloneDbInstance':
+            zone_id: Optional[pulumi.Input[str]] = None,
+            zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+            zone_id_slave_b: Optional[pulumi.Input[str]] = None) -> 'RdsCloneDbInstance':
         """
         Get an existing RdsCloneDbInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2758,6 +2847,9 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **AlwaysOn**: Cluster Edition
                * **Finance**: Three-node Enterprise Edition.
                * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+               * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+               * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+               * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
         :param pulumi.Input[str] certificate: The file that contains the certificate used for TDE.
         :param pulumi.Input[str] client_ca_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
         :param pulumi.Input[int] client_ca_enabled: The client ca enabled.
@@ -2805,7 +2897,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                * **Classic**: Classic Network
                * **VPC**: VPC.
         :param pulumi.Input[str] maintain_time: The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         :param pulumi.Input[str] password: The password of the certificate. 
                
                > **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
@@ -2813,7 +2905,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] period: The period. Valid values: `Month`, `Year`.
                
                > **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstancePgHbaConfArgs']]]] pg_hba_confs: The details of the AD domain.See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The port.
         :param pulumi.Input[str] private_ip_address: The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
         :param pulumi.Input[str] private_key: The file that contains the private key used for TDE.
@@ -2832,7 +2924,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
                > **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
         :param pulumi.Input[str] server_cert: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
         :param pulumi.Input[str] server_key: This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RdsCloneDbInstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         :param pulumi.Input[str] source_biz: The source biz.
         :param pulumi.Input[str] source_db_instance_id: The source db instance id.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
@@ -2859,10 +2951,12 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the new instance belongs.
                
                > **NOTE:** Make sure that the VPC resides in the specified region.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
                
                > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
                
                > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
@@ -2930,6 +3024,8 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
+        __props__.__dict__["zone_id_slave_a"] = zone_id_slave_a
+        __props__.__dict__["zone_id_slave_b"] = zone_id_slave_b
         return RdsCloneDbInstance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2990,6 +3086,9 @@ class RdsCloneDbInstance(pulumi.CustomResource):
         * **AlwaysOn**: Cluster Edition
         * **Finance**: Three-node Enterprise Edition.
         * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+        * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+        * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+        * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
         """
         return pulumi.get(self, "category")
 
@@ -3212,7 +3311,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.RdsCloneDbInstanceParameter']]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -3248,7 +3347,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> pulumi.Output[Sequence['outputs.RdsCloneDbInstancePgHbaConf']]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The details of the AD domain.See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 
@@ -3358,7 +3457,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     @pulumi.getter(name="serverlessConfigs")
     def serverless_configs(self) -> pulumi.Output[Optional[Sequence['outputs.RdsCloneDbInstanceServerlessConfig']]]:
         """
-        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
         """
         return pulumi.get(self, "serverless_configs")
 
@@ -3462,7 +3561,7 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
         """
-        The ID of the vSwitch associated with the specified VPC.
+        The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
 
         > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
         """
@@ -3473,8 +3572,24 @@ class RdsCloneDbInstance(pulumi.CustomResource):
     def zone_id(self) -> pulumi.Output[str]:
         """
         The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveA")
+    def zone_id_slave_a(self) -> pulumi.Output[str]:
+        """
+        The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        """
+        return pulumi.get(self, "zone_id_slave_a")
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveB")
+    def zone_id_slave_b(self) -> pulumi.Output[str]:
+        """
+        The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 
         > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
-        return pulumi.get(self, "zone_id")
+        return pulumi.get(self, "zone_id_slave_b")
 

@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ga.ListenerArgs;
 import com.pulumi.alicloud.ga.inputs.ListenerState;
 import com.pulumi.alicloud.ga.outputs.ListenerCertificate;
+import com.pulumi.alicloud.ga.outputs.ListenerForwardedForConfig;
 import com.pulumi.alicloud.ga.outputs.ListenerPortRange;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -21,9 +22,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Global Accelerator (GA) Listener resource.
  * 
- * For information about Global Accelerator (GA) Listener and how to use it, see [What is Listener](https://help.aliyun.com/document_detail/153253.html).
+ * For information about Global Accelerator (GA) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createlistener).
  * 
- * &gt; **NOTE:** Available in v1.111.0+.
+ * &gt; **NOTE:** Available since v1.111.0.
  * 
  * ## Example Usage
  * 
@@ -43,7 +44,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ga.Listener;
  * import com.pulumi.alicloud.ga.ListenerArgs;
  * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -57,14 +57,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAccelerator = new Accelerator(&#34;exampleAccelerator&#34;, AcceleratorArgs.builder()        
+ *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec(&#34;1&#34;)
  *             .build());
  * 
- *         var deBandwidthPackage = new BandwidthPackage(&#34;deBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
- *             .bandwidth(&#34;100&#34;)
+ *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(100)
  *             .type(&#34;Basic&#34;)
  *             .bandwidthType(&#34;Basic&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
@@ -72,20 +72,18 @@ import javax.annotation.Nullable;
  *             .ratio(30)
  *             .build());
  * 
- *         var deBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;deBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .acceleratorId(exampleAccelerator.id())
- *             .bandwidthPackageId(deBandwidthPackage.id())
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .acceleratorId(defaultAccelerator.id())
+ *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var exampleListener = new Listener(&#34;exampleListener&#34;, ListenerArgs.builder()        
- *             .acceleratorId(exampleAccelerator.id())
+ *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+ *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .portRanges(ListenerPortRangeArgs.builder()
- *                 .fromPort(60)
- *                 .toPort(70)
+ *                 .fromPort(80)
+ *                 .toPort(80)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(deBandwidthPackageAttachment)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -117,36 +115,30 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.acceleratorId;
     }
     /**
-     * The certificates of the listener.
-     * 
-     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+     * The certificates of the listener. See `certificates` below.
+     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      * 
      */
     @Export(name="certificates", type=List.class, parameters={ListenerCertificate.class})
     private Output</* @Nullable */ List<ListenerCertificate>> certificates;
 
     /**
-     * @return The certificates of the listener.
-     * 
-     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+     * @return The certificates of the listener. See `certificates` below.
+     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      * 
      */
     public Output<Optional<List<ListenerCertificate>>> certificates() {
         return Codegen.optional(this.certificates);
     }
     /**
-     * The clientAffinity of the listener. Default value is `NONE`. Valid values:
-     * `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-     * `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+     * The clientAffinity of the listener. Default value: `NONE`. Valid values:
      * 
      */
     @Export(name="clientAffinity", type=String.class, parameters={})
     private Output</* @Nullable */ String> clientAffinity;
 
     /**
-     * @return The clientAffinity of the listener. Default value is `NONE`. Valid values:
-     * `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-     * `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+     * @return The clientAffinity of the listener. Default value: `NONE`. Valid values:
      * 
      */
     public Output<Optional<String>> clientAffinity() {
@@ -165,6 +157,20 @@ public class Listener extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The XForward headers. See `forwarded_for_config` below.
+     * 
+     */
+    @Export(name="forwardedForConfig", type=ListenerForwardedForConfig.class, parameters={})
+    private Output</* @Nullable */ ListenerForwardedForConfig> forwardedForConfig;
+
+    /**
+     * @return The XForward headers. See `forwarded_for_config` below.
+     * 
+     */
+    public Output<Optional<ListenerForwardedForConfig>> forwardedForConfig() {
+        return Codegen.optional(this.forwardedForConfig);
     }
     /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
@@ -195,68 +201,58 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The portRanges of the listener.
-     * 
-     * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+     * The portRanges of the listener. See `port_ranges` below.
+     * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
     @Export(name="portRanges", type=List.class, parameters={ListenerPortRange.class})
     private Output<List<ListenerPortRange>> portRanges;
 
     /**
-     * @return The portRanges of the listener.
-     * 
-     * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+     * @return The portRanges of the listener. See `port_ranges` below.
+     * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
     public Output<List<ListenerPortRange>> portRanges() {
         return this.portRanges;
     }
     /**
-     * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-     * 
-     * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+     * Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      * 
      */
     @Export(name="protocol", type=String.class, parameters={})
     private Output</* @Nullable */ String> protocol;
 
     /**
-     * @return Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-     * 
-     * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+     * @return Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      * 
      */
     public Output<Optional<String>> protocol() {
         return Codegen.optional(this.protocol);
     }
     /**
-     * The proxy protocol of the listener. Default value is `false`. Valid values:
-     * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-     * `false`: keep client source IP function is not turned on.
+     * The proxy protocol of the listener. Default value: `false`. Valid values:
      * 
      */
     @Export(name="proxyProtocol", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> proxyProtocol;
 
     /**
-     * @return The proxy protocol of the listener. Default value is `false`. Valid values:
-     * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-     * `false`: keep client source IP function is not turned on.
+     * @return The proxy protocol of the listener. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<Boolean>> proxyProtocol() {
         return Codegen.optional(this.proxyProtocol);
     }
     /**
-     * The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     * The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      * 
      */
     @Export(name="securityPolicyId", type=String.class, parameters={})
     private Output<String> securityPolicyId;
 
     /**
-     * @return The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     * @return The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      * 
      */
     public Output<String> securityPolicyId() {

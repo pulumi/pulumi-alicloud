@@ -28,14 +28,13 @@ public final class EciScalingConfigurationContainer {
      */
     private @Nullable List<String> commands;
     /**
-     * @return The amount of CPU resources allocated to the container group.
+     * @return The amount of CPU resources allocated to the container.
      * 
      */
     private @Nullable Double cpu;
     /**
      * @return The structure of environmentVars.
-     * See Block_environment_var_in_init_container below for details.
-     * See Block_environment_var_in_container below for details.
+     * See `environment_vars` below for details.
      * 
      */
     private @Nullable List<EciScalingConfigurationContainerEnvironmentVar> environmentVars;
@@ -105,18 +104,17 @@ public final class EciScalingConfigurationContainer {
      */
     private @Nullable Integer livenessProbeTimeoutSeconds;
     /**
-     * @return The amount of memory resources allocated to the container group.
+     * @return The amount of memory resources allocated to the container.
      * 
      */
     private @Nullable Double memory;
     /**
-     * @return The name of the volume.
+     * @return The name of the mounted volume.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The structure of port. See Block_port_in_init_container below
-     * for details.
+     * @return The structure of port. See `ports` below for details.
      * 
      */
     private @Nullable List<EciScalingConfigurationContainerPort> ports;
@@ -172,8 +170,7 @@ public final class EciScalingConfigurationContainer {
     private @Nullable Integer readinessProbeTimeoutSeconds;
     /**
      * @return The structure of volumeMounts.
-     * See Block_volume_mount_in_init_container below for details.
-     * See Block_volume_mount_in_container below for details.
+     * See `volume_mounts` below for details.
      * 
      */
     private @Nullable List<EciScalingConfigurationContainerVolumeMount> volumeMounts;
@@ -199,7 +196,7 @@ public final class EciScalingConfigurationContainer {
         return this.commands == null ? List.of() : this.commands;
     }
     /**
-     * @return The amount of CPU resources allocated to the container group.
+     * @return The amount of CPU resources allocated to the container.
      * 
      */
     public Optional<Double> cpu() {
@@ -207,8 +204,7 @@ public final class EciScalingConfigurationContainer {
     }
     /**
      * @return The structure of environmentVars.
-     * See Block_environment_var_in_init_container below for details.
-     * See Block_environment_var_in_container below for details.
+     * See `environment_vars` below for details.
      * 
      */
     public List<EciScalingConfigurationContainerEnvironmentVar> environmentVars() {
@@ -306,22 +302,21 @@ public final class EciScalingConfigurationContainer {
         return Optional.ofNullable(this.livenessProbeTimeoutSeconds);
     }
     /**
-     * @return The amount of memory resources allocated to the container group.
+     * @return The amount of memory resources allocated to the container.
      * 
      */
     public Optional<Double> memory() {
         return Optional.ofNullable(this.memory);
     }
     /**
-     * @return The name of the volume.
+     * @return The name of the mounted volume.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The structure of port. See Block_port_in_init_container below
-     * for details.
+     * @return The structure of port. See `ports` below for details.
      * 
      */
     public List<EciScalingConfigurationContainerPort> ports() {
@@ -399,8 +394,7 @@ public final class EciScalingConfigurationContainer {
     }
     /**
      * @return The structure of volumeMounts.
-     * See Block_volume_mount_in_init_container below for details.
-     * See Block_volume_mount_in_container below for details.
+     * See `volume_mounts` below for details.
      * 
      */
     public List<EciScalingConfigurationContainerVolumeMount> volumeMounts() {

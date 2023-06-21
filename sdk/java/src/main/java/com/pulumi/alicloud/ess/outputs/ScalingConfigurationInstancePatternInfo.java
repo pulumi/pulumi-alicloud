@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ScalingConfigurationInstancePatternInfo {
+    /**
+     * @return The number of vCPUs that are specified for an instance type in instancePatternInfo.
+     * 
+     */
     private @Nullable Integer cores;
+    /**
+     * @return The instance family level in instancePatternInfo.
+     * 
+     */
     private @Nullable String instanceFamilyLevel;
+    /**
+     * @return The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+     * 
+     */
     private @Nullable Double maxPrice;
+    /**
+     * @return The memory size that is specified for an instance type in instancePatternInfo.
+     * 
+     */
     private @Nullable Double memory;
 
     private ScalingConfigurationInstancePatternInfo() {}
+    /**
+     * @return The number of vCPUs that are specified for an instance type in instancePatternInfo.
+     * 
+     */
     public Optional<Integer> cores() {
         return Optional.ofNullable(this.cores);
     }
+    /**
+     * @return The instance family level in instancePatternInfo.
+     * 
+     */
     public Optional<String> instanceFamilyLevel() {
         return Optional.ofNullable(this.instanceFamilyLevel);
     }
+    /**
+     * @return The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+     * 
+     */
     public Optional<Double> maxPrice() {
         return Optional.ofNullable(this.maxPrice);
     }
+    /**
+     * @return The memory size that is specified for an instance type in instancePatternInfo.
+     * 
+     */
     public Optional<Double> memory() {
         return Optional.ofNullable(this.memory);
     }

@@ -47,14 +47,14 @@ public final class Ipv6InternetBandwidthState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The ID of the IPv6 address.
+     * The ID of the IPv6 address instance.
      * 
      */
     @Import(name="ipv6AddressId")
     private @Nullable Output<String> ipv6AddressId;
 
     /**
-     * @return The ID of the IPv6 address.
+     * @return The ID of the IPv6 address instance.
      * 
      */
     public Optional<Output<String>> ipv6AddressId() {
@@ -62,14 +62,14 @@ public final class Ipv6InternetBandwidthState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The ID of the IPv6 gateway.
+     * The ID of the IPv6 gateway to which the IPv6 address belongs.
      * 
      */
     @Import(name="ipv6GatewayId")
     private @Nullable Output<String> ipv6GatewayId;
 
     /**
-     * @return The ID of the IPv6 gateway.
+     * @return The ID of the IPv6 gateway to which the IPv6 address belongs.
      * 
      */
     public Optional<Output<String>> ipv6GatewayId() {
@@ -77,14 +77,14 @@ public final class Ipv6InternetBandwidthState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -162,7 +162,7 @@ public final class Ipv6InternetBandwidthState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipv6AddressId The ID of the IPv6 address.
+         * @param ipv6AddressId The ID of the IPv6 address instance.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class Ipv6InternetBandwidthState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipv6AddressId The ID of the IPv6 address.
+         * @param ipv6AddressId The ID of the IPv6 address instance.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class Ipv6InternetBandwidthState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipv6GatewayId The ID of the IPv6 gateway.
+         * @param ipv6GatewayId The ID of the IPv6 gateway to which the IPv6 address belongs.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class Ipv6InternetBandwidthState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipv6GatewayId The ID of the IPv6 gateway.
+         * @param ipv6GatewayId The ID of the IPv6 gateway to which the IPv6 address belongs.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class Ipv6InternetBandwidthState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param status The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class Ipv6InternetBandwidthState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param status The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 

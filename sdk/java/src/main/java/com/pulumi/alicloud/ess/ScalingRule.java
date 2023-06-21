@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
 /**
  * Provides a ESS scaling rule resource.
  * 
+ * For information about ess scaling rule, see [CreateScalingRule](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalingrule).
+ * 
+ * &gt; **NOTE:** Available since v1.39.0.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -62,7 +66,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;essscalingruleconfig&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
@@ -138,14 +142,6 @@ import javax.annotation.Nullable;
  * You can use to the existing autoscaling-rule module
  * to create different type rules, alarm task and scheduled task one-click.
  * 
- * ## Block stepAdjustment
- * 
- * The stepAdjustment mapping supports the following:
- * 
- * * `metric_interval_lower_bound` - (Optional) The lower bound of step.
- * * `metric_interval_upper_bound` - (Optional) The upper bound of step.
- * * `scaling_adjustment` - (Optional) The adjust value of step.
- * 
  * ## Import
  * 
  * ESS scaling rule can be imported using the id, e.g.
@@ -197,9 +193,17 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> adjustmentValue() {
         return Codegen.optional(this.adjustmentValue);
     }
+    /**
+     * The unique identifier of the scaling rule.
+     * 
+     */
     @Export(name="ari", type=String.class, parameters={})
     private Output<String> ari;
 
+    /**
+     * @return The unique identifier of the scaling rule.
+     * 
+     */
     public Output<String> ari() {
         return this.ari;
     }
@@ -302,14 +306,14 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.scalingRuleType);
     }
     /**
-     * Steps for StepScalingRule. See Block stepAdjustment below for details.
+     * Steps for StepScalingRule. See `step_adjustment` below.
      * 
      */
     @Export(name="stepAdjustments", type=List.class, parameters={ScalingRuleStepAdjustment.class})
     private Output</* @Nullable */ List<ScalingRuleStepAdjustment>> stepAdjustments;
 
     /**
-     * @return Steps for StepScalingRule. See Block stepAdjustment below for details.
+     * @return Steps for StepScalingRule. See `step_adjustment` below.
      * 
      */
     public Output<Optional<List<ScalingRuleStepAdjustment>>> stepAdjustments() {

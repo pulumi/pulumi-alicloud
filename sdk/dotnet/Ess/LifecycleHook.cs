@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Ess
     /// <summary>
     /// Provides a ESS lifecycle hook resource. More about Ess lifecycle hook, see [LifecycleHook](https://www.alibabacloud.com/help/doc-detail/73839.htm).
     /// 
+    /// &gt; **NOTE:** Available since v1.13.0.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,36 +24,47 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
+    ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = fooNetwork.Id,
+    ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
     ///     });
     /// 
-    ///     var bar = new AliCloud.Vpc.Switch("bar", new()
+    ///     var default2 = new AliCloud.Vpc.Switch("default2", new()
     ///     {
-    ///         VpcId = fooNetwork.Id,
+    ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.1.0/24",
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = $"{name}-bar",
     ///     });
     /// 
-    ///     var fooScalingGroup = new AliCloud.Ess.ScalingGroup("fooScalingGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new()
     ///     {
     ///         MinSize = 1,
     ///         MaxSize = 1,
-    ///         ScalingGroupName = "testAccEssScaling_group",
+    ///         ScalingGroupName = name,
+    ///         DefaultCooldown = 200,
     ///         RemovalPolicies = new[]
     ///         {
     ///             "OldestInstance",
@@ -59,17 +72,17 @@ namespace Pulumi.AliCloud.Ess
     ///         },
     ///         VswitchIds = new[]
     ///         {
-    ///             fooSwitch.Id,
-    ///             bar.Id,
+    ///             defaultSwitch.Id,
+    ///             default2.Id,
     ///         },
     ///     });
     /// 
-    ///     var fooLifecycleHook = new AliCloud.Ess.LifecycleHook("fooLifecycleHook", new()
+    ///     var defaultLifecycleHook = new AliCloud.Ess.LifecycleHook("defaultLifecycleHook", new()
     ///     {
-    ///         ScalingGroupId = fooScalingGroup.Id,
+    ///         ScalingGroupId = defaultScalingGroup.Id,
     ///         LifecycleTransition = "SCALE_OUT",
     ///         HeartbeatTimeout = 400,
-    ///         NotificationMetadata = "helloworld",
+    ///         NotificationMetadata = "example",
     ///     });
     /// 
     /// });

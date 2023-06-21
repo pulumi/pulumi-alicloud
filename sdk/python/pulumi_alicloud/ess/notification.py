@@ -144,7 +144,7 @@ class Notification(pulumi.CustomResource):
         """
         Provides a ESS notification resource. More about Ess notification, see [Autoscaling Notification](https://www.alibabacloud.com/help/doc-detail/71114.htm).
 
-        > **NOTE:** Available in 1.55.0+
+        > **NOTE:** Available since v1.55.0.
 
         ## Example Usage
 
@@ -155,7 +155,7 @@ class Notification(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testAccEssNotification-%d"
+            name = "terraform-example"
         default_regions = alicloud.get_regions(current=True)
         default_account = alicloud.get_account()
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
@@ -213,7 +213,7 @@ class Notification(pulumi.CustomResource):
         """
         Provides a ESS notification resource. More about Ess notification, see [Autoscaling Notification](https://www.alibabacloud.com/help/doc-detail/71114.htm).
 
-        > **NOTE:** Available in 1.55.0+
+        > **NOTE:** Available since v1.55.0.
 
         ## Example Usage
 
@@ -224,7 +224,7 @@ class Notification(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-testAccEssNotification-%d"
+            name = "terraform-example"
         default_regions = alicloud.get_regions(current=True)
         default_account = alicloud.get_account()
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",

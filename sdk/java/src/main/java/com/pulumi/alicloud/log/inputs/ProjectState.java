@@ -64,6 +64,8 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Log project tags.
+     * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
      * 
      */
     @Import(name="tags")
@@ -71,6 +73,8 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Log project tags.
+     * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -169,6 +173,8 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags Log project tags.
+         * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+         * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
          * 
          * @return builder
          * 
@@ -180,6 +186,8 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags Log project tags.
+         * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+         * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
          * 
          * @return builder
          * 

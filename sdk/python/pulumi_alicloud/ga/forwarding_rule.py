@@ -26,8 +26,8 @@ class ForwardingRuleArgs:
         The set of arguments for constructing a ForwardingRule resource.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance.
         :param pulumi.Input[str] listener_id: The ID of the listener.
-        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]] rule_actions: Forward action.
-        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]] rule_conditions: Forwarding condition list.
+        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]] rule_actions: Forward action. See `rule_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
         :param pulumi.Input[str] forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
         :param pulumi.Input[int] priority: Forwarding policy priority.
         """
@@ -68,7 +68,7 @@ class ForwardingRuleArgs:
     @pulumi.getter(name="ruleActions")
     def rule_actions(self) -> pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]:
         """
-        Forward action.
+        Forward action. See `rule_actions` below.
         """
         return pulumi.get(self, "rule_actions")
 
@@ -80,7 +80,7 @@ class ForwardingRuleArgs:
     @pulumi.getter(name="ruleConditions")
     def rule_conditions(self) -> pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]:
         """
-        Forwarding condition list.
+        Forwarding condition list. See `rule_conditions` below.
         """
         return pulumi.get(self, "rule_conditions")
 
@@ -132,8 +132,8 @@ class _ForwardingRuleState:
         :param pulumi.Input[str] forwarding_rule_status: Forwarding Policy Status.
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[int] priority: Forwarding policy priority.
-        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]] rule_actions: Forward action.
-        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]] rule_conditions: Forwarding condition list.
+        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]] rule_actions: Forward action. See `rule_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
         """
         if accelerator_id is not None:
             pulumi.set(__self__, "accelerator_id", accelerator_id)
@@ -228,7 +228,7 @@ class _ForwardingRuleState:
     @pulumi.getter(name="ruleActions")
     def rule_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]]:
         """
-        Forward action.
+        Forward action. See `rule_actions` below.
         """
         return pulumi.get(self, "rule_actions")
 
@@ -240,7 +240,7 @@ class _ForwardingRuleState:
     @pulumi.getter(name="ruleConditions")
     def rule_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]]:
         """
-        Forwarding condition list.
+        Forwarding condition list. See `rule_conditions` below.
         """
         return pulumi.get(self, "rule_conditions")
 
@@ -266,7 +266,7 @@ class ForwardingRule(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
 
-        > **NOTE:** Available in v1.120.0+.
+        > **NOTE:** Available since v1.120.0.
 
         ## Import
 
@@ -282,8 +282,8 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[int] priority: Forwarding policy priority.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]] rule_actions: Forward action.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleConditionArgs']]]] rule_conditions: Forwarding condition list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]] rule_actions: Forward action. See `rule_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleConditionArgs']]]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
         """
         ...
     @overload
@@ -296,7 +296,7 @@ class ForwardingRule(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
 
-        > **NOTE:** Available in v1.120.0+.
+        > **NOTE:** Available since v1.120.0.
 
         ## Import
 
@@ -383,8 +383,8 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] forwarding_rule_status: Forwarding Policy Status.
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[int] priority: Forwarding policy priority.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]] rule_actions: Forward action.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleConditionArgs']]]] rule_conditions: Forwarding condition list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]] rule_actions: Forward action. See `rule_actions` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleConditionArgs']]]] rule_conditions: Forwarding condition list. See `rule_conditions` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -452,7 +452,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleActions")
     def rule_actions(self) -> pulumi.Output[Sequence['outputs.ForwardingRuleRuleAction']]:
         """
-        Forward action.
+        Forward action. See `rule_actions` below.
         """
         return pulumi.get(self, "rule_actions")
 
@@ -460,7 +460,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleConditions")
     def rule_conditions(self) -> pulumi.Output[Sequence['outputs.ForwardingRuleRuleCondition']]:
         """
-        Forwarding condition list.
+        Forwarding condition list. See `rule_conditions` below.
         """
         return pulumi.get(self, "rule_conditions")
 

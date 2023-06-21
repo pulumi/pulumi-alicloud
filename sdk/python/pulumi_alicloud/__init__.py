@@ -2868,6 +2868,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ecs/eipSegmentAddress",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/eipSegmentAddress:EipSegmentAddress": "EipSegmentAddress"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ecs/elasticityAssurance",
   "fqn": "pulumi_alicloud.ecs",
   "classes": {

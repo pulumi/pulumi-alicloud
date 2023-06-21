@@ -326,14 +326,13 @@ type CustomDomainRouteConfig struct {
 	// The name of the Function Compute function that requests are routed to.
 	FunctionName string `pulumi:"functionName"`
 	// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
-	//
-	// **cert_config** includes the following arguments:
 	Methods []string `pulumi:"methods"`
 	// The path that requests are routed from.
 	Path string `pulumi:"path"`
 	// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
-	Qualifier   *string `pulumi:"qualifier"`
-	ServiceName string  `pulumi:"serviceName"`
+	Qualifier *string `pulumi:"qualifier"`
+	// The name of the Function Compute service that requests are routed to.
+	ServiceName string `pulumi:"serviceName"`
 }
 
 // CustomDomainRouteConfigInput is an input type that accepts CustomDomainRouteConfigArgs and CustomDomainRouteConfigOutput values.
@@ -351,14 +350,13 @@ type CustomDomainRouteConfigArgs struct {
 	// The name of the Function Compute function that requests are routed to.
 	FunctionName pulumi.StringInput `pulumi:"functionName"`
 	// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
-	//
-	// **cert_config** includes the following arguments:
 	Methods pulumi.StringArrayInput `pulumi:"methods"`
 	// The path that requests are routed from.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
-	Qualifier   pulumi.StringPtrInput `pulumi:"qualifier"`
-	ServiceName pulumi.StringInput    `pulumi:"serviceName"`
+	Qualifier pulumi.StringPtrInput `pulumi:"qualifier"`
+	// The name of the Function Compute service that requests are routed to.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
 func (CustomDomainRouteConfigArgs) ElementType() reflect.Type {
@@ -418,8 +416,6 @@ func (o CustomDomainRouteConfigOutput) FunctionName() pulumi.StringOutput {
 }
 
 // The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
-//
-// **cert_config** includes the following arguments:
 func (o CustomDomainRouteConfigOutput) Methods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomDomainRouteConfig) []string { return v.Methods }).(pulumi.StringArrayOutput)
 }
@@ -434,6 +430,7 @@ func (o CustomDomainRouteConfigOutput) Qualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomDomainRouteConfig) *string { return v.Qualifier }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Function Compute service that requests are routed to.
 func (o CustomDomainRouteConfigOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomDomainRouteConfig) string { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -459,9 +456,9 @@ func (o CustomDomainRouteConfigArrayOutput) Index(i pulumi.IntInput) CustomDomai
 }
 
 type FunctionAsyncInvokeConfigDestinationConfig struct {
-	// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+	// Configuration block with destination configuration for failed asynchronous invocations. See `onFailure` below.
 	OnFailure *FunctionAsyncInvokeConfigDestinationConfigOnFailure `pulumi:"onFailure"`
-	// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+	// Configuration block with destination configuration for successful asynchronous invocations. See `onSuccess` below.
 	OnSuccess *FunctionAsyncInvokeConfigDestinationConfigOnSuccess `pulumi:"onSuccess"`
 }
 
@@ -477,9 +474,9 @@ type FunctionAsyncInvokeConfigDestinationConfigInput interface {
 }
 
 type FunctionAsyncInvokeConfigDestinationConfigArgs struct {
-	// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+	// Configuration block with destination configuration for failed asynchronous invocations. See `onFailure` below.
 	OnFailure FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrInput `pulumi:"onFailure"`
-	// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+	// Configuration block with destination configuration for successful asynchronous invocations. See `onSuccess` below.
 	OnSuccess FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrInput `pulumi:"onSuccess"`
 }
 
@@ -560,14 +557,14 @@ func (o FunctionAsyncInvokeConfigDestinationConfigOutput) ToFunctionAsyncInvokeC
 	}).(FunctionAsyncInvokeConfigDestinationConfigPtrOutput)
 }
 
-// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+// Configuration block with destination configuration for failed asynchronous invocations. See `onFailure` below.
 func (o FunctionAsyncInvokeConfigDestinationConfigOutput) OnFailure() FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
 	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfig) *FunctionAsyncInvokeConfigDestinationConfigOnFailure {
 		return v.OnFailure
 	}).(FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
 }
 
-// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+// Configuration block with destination configuration for successful asynchronous invocations. See `onSuccess` below.
 func (o FunctionAsyncInvokeConfigDestinationConfigOutput) OnSuccess() FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
 	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfig) *FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
 		return v.OnSuccess
@@ -598,7 +595,7 @@ func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) Elem() FunctionAsyn
 	}).(FunctionAsyncInvokeConfigDestinationConfigOutput)
 }
 
-// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+// Configuration block with destination configuration for failed asynchronous invocations. See `onFailure` below.
 func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) OnFailure() FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
 	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfig) *FunctionAsyncInvokeConfigDestinationConfigOnFailure {
 		if v == nil {
@@ -608,7 +605,7 @@ func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) OnFailure() Functio
 	}).(FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
 }
 
-// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+// Configuration block with destination configuration for successful asynchronous invocations. See `onSuccess` below.
 func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) OnSuccess() FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
 	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfig) *FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
 		if v == nil {
@@ -1264,7 +1261,7 @@ func (o ServiceLogConfigPtrOutput) Project() pulumi.StringPtrOutput {
 type ServiceNasConfig struct {
 	// The group id of your NAS file system.
 	GroupId int `pulumi:"groupId"`
-	// Config the NAS mount points, including following attributes:
+	// Config the NAS mount points.See `mountPoints` below.
 	MountPoints []ServiceNasConfigMountPoint `pulumi:"mountPoints"`
 	// The user id of your NAS file system.
 	UserId int `pulumi:"userId"`
@@ -1284,7 +1281,7 @@ type ServiceNasConfigInput interface {
 type ServiceNasConfigArgs struct {
 	// The group id of your NAS file system.
 	GroupId pulumi.IntInput `pulumi:"groupId"`
-	// Config the NAS mount points, including following attributes:
+	// Config the NAS mount points.See `mountPoints` below.
 	MountPoints ServiceNasConfigMountPointArrayInput `pulumi:"mountPoints"`
 	// The user id of your NAS file system.
 	UserId pulumi.IntInput `pulumi:"userId"`
@@ -1372,7 +1369,7 @@ func (o ServiceNasConfigOutput) GroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v ServiceNasConfig) int { return v.GroupId }).(pulumi.IntOutput)
 }
 
-// Config the NAS mount points, including following attributes:
+// Config the NAS mount points.See `mountPoints` below.
 func (o ServiceNasConfigOutput) MountPoints() ServiceNasConfigMountPointArrayOutput {
 	return o.ApplyT(func(v ServiceNasConfig) []ServiceNasConfigMountPoint { return v.MountPoints }).(ServiceNasConfigMountPointArrayOutput)
 }
@@ -1416,7 +1413,7 @@ func (o ServiceNasConfigPtrOutput) GroupId() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Config the NAS mount points, including following attributes:
+// Config the NAS mount points.See `mountPoints` below.
 func (o ServiceNasConfigPtrOutput) MountPoints() ServiceNasConfigMountPointArrayOutput {
 	return o.ApplyT(func(v *ServiceNasConfig) []ServiceNasConfigMountPoint {
 		if v == nil {
@@ -1700,8 +1697,9 @@ func (o ServiceTracingConfigPtrOutput) Type() pulumi.StringPtrOutput {
 
 type ServiceVpcConfig struct {
 	// A security group ID associated with the Function Compute Service.
-	SecurityGroupId string  `pulumi:"securityGroupId"`
-	VpcId           *string `pulumi:"vpcId"`
+	SecurityGroupId string `pulumi:"securityGroupId"`
+	// A vpc ID associated with the Function Compute Service.
+	VpcId *string `pulumi:"vpcId"`
 	// A list of vswitch IDs associated with the Function Compute Service.
 	VswitchIds []string `pulumi:"vswitchIds"`
 }
@@ -1719,8 +1717,9 @@ type ServiceVpcConfigInput interface {
 
 type ServiceVpcConfigArgs struct {
 	// A security group ID associated with the Function Compute Service.
-	SecurityGroupId pulumi.StringInput    `pulumi:"securityGroupId"`
-	VpcId           pulumi.StringPtrInput `pulumi:"vpcId"`
+	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
+	// A vpc ID associated with the Function Compute Service.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// A list of vswitch IDs associated with the Function Compute Service.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
 }
@@ -1807,6 +1806,7 @@ func (o ServiceVpcConfigOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceVpcConfig) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
+// A vpc ID associated with the Function Compute Service.
 func (o ServiceVpcConfigOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceVpcConfig) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
@@ -1850,6 +1850,7 @@ func (o ServiceVpcConfigPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A vpc ID associated with the Function Compute Service.
 func (o ServiceVpcConfigPtrOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceVpcConfig) *string {
 		if v == nil {

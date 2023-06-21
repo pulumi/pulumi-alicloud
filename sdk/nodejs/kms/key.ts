@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * A kms key can help user to protect data security in the transmission process. For information about Alikms Key and how to use it, see [What is Resource Alikms Key](https://www.alibabacloud.com/help/doc-detail/28947.htm).
  *
- * > **NOTE:** Available in v1.85.0+.
+ * > **NOTE:** Available since v1.85.0.
  *
  * ## Example Usage
  *
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * Alikms key can be imported using the id, e.g.
  *
  * ```sh
- *  $ pulumi import alicloud:kms/key:Key example abc123456
+ *  $ pulumi import alicloud:kms/key:Key example <id>
  * ```
  */
 export class Key extends pulumi.CustomResource {
@@ -65,12 +65,9 @@ export class Key extends pulumi.CustomResource {
      */
     public /*out*/ readonly arn!: pulumi.Output<string>;
     /**
-     * Specifies whether to enable automatic key rotation. Valid values: 
-     * - Enabled
-     * - Disabled (default value)
-     * **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
      */
-    public readonly automaticRotation!: pulumi.Output<string | undefined>;
+    public readonly automaticRotation!: pulumi.Output<string>;
     /**
      * The date and time when the CMK was created. The time is displayed in UTC.
      */
@@ -98,15 +95,15 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly dkmsInstanceId!: pulumi.Output<string | undefined>;
     /**
-     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
+     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      *
      * @deprecated Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
      */
     public readonly isEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The type of the CMK. Valid values: 
-     * "Aliyun_AES_256", "Aliyun_AES_128", "Aliyun_AES_192", "Aliyun_SM4", "RSA_2048", "RSA_3072", "EC_P256", "EC_P256K", "EC_SM2".
-     * Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+     * The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
+     * `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+     * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
      */
     public readonly keySpec!: pulumi.Output<string>;
     /**
@@ -116,11 +113,11 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly keyState!: pulumi.Output<string>;
     /**
-     * The usage of the CMK. Valid values:
-     * - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-     * - SIGN/VERIFY: generates or verifies a digital signature.
+     * The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      */
-    public readonly keyUsage!: pulumi.Output<string | undefined>;
+    public readonly keyUsage!: pulumi.Output<string>;
     /**
      * The date and time the last rotation was performed. The time is displayed in UTC.
      */
@@ -134,12 +131,7 @@ export class Key extends pulumi.CustomResource {
      */
     public /*out*/ readonly nextRotationDate!: pulumi.Output<string>;
     /**
-     * The source of key material. Valid values: 
-     * - Aliyun_KMS (default value)
-     * - EXTERNAL
-     * **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
-     * you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-     * For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+     * The source of key material. Default value: `Aliyun_KMS`. Valid values:
      */
     public readonly origin!: pulumi.Output<string>;
     /**
@@ -154,12 +146,7 @@ export class Key extends pulumi.CustomResource {
      */
     public /*out*/ readonly primaryKeyVersion!: pulumi.Output<string>;
     /**
-     * The protection level of the CMK. Valid values:
-     * - SOFTWARE (default value)
-     * - HSM
-     * **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-     * If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-     * If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+     * The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
      */
     public readonly protectionLevel!: pulumi.Output<string | undefined>;
     /**
@@ -173,12 +160,13 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly rotationInterval!: pulumi.Output<string | undefined>;
     /**
-     * The status of CMK. Valid Values: 
-     * - Disabled
-     * - Enabled (default value)
-     * - PendingDeletion
+     * The status of CMK. Default value: `Enabled`. Valid Values:
      */
     public readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Key resource with the given unique name, arguments, and options.
@@ -214,6 +202,7 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["protectionLevel"] = state ? state.protectionLevel : undefined;
             resourceInputs["rotationInterval"] = state ? state.rotationInterval : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as KeyArgs | undefined;
             resourceInputs["automaticRotation"] = args ? args.automaticRotation : undefined;
@@ -229,6 +218,7 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["protectionLevel"] = args ? args.protectionLevel : undefined;
             resourceInputs["rotationInterval"] = args ? args.rotationInterval : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["arn"] = undefined /*out*/;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
@@ -252,10 +242,7 @@ export interface KeyState {
      */
     arn?: pulumi.Input<string>;
     /**
-     * Specifies whether to enable automatic key rotation. Valid values: 
-     * - Enabled
-     * - Disabled (default value)
-     * **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
      */
     automaticRotation?: pulumi.Input<string>;
     /**
@@ -285,15 +272,15 @@ export interface KeyState {
      */
     dkmsInstanceId?: pulumi.Input<string>;
     /**
-     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
+     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      *
      * @deprecated Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
      */
     isEnabled?: pulumi.Input<boolean>;
     /**
-     * The type of the CMK. Valid values: 
-     * "Aliyun_AES_256", "Aliyun_AES_128", "Aliyun_AES_192", "Aliyun_SM4", "RSA_2048", "RSA_3072", "EC_P256", "EC_P256K", "EC_SM2".
-     * Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+     * The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
+     * `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+     * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
      */
     keySpec?: pulumi.Input<string>;
     /**
@@ -303,9 +290,9 @@ export interface KeyState {
      */
     keyState?: pulumi.Input<string>;
     /**
-     * The usage of the CMK. Valid values:
-     * - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-     * - SIGN/VERIFY: generates or verifies a digital signature.
+     * The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      */
     keyUsage?: pulumi.Input<string>;
     /**
@@ -321,12 +308,7 @@ export interface KeyState {
      */
     nextRotationDate?: pulumi.Input<string>;
     /**
-     * The source of key material. Valid values: 
-     * - Aliyun_KMS (default value)
-     * - EXTERNAL
-     * **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
-     * you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-     * For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+     * The source of key material. Default value: `Aliyun_KMS`. Valid values:
      */
     origin?: pulumi.Input<string>;
     /**
@@ -341,12 +323,7 @@ export interface KeyState {
      */
     primaryKeyVersion?: pulumi.Input<string>;
     /**
-     * The protection level of the CMK. Valid values:
-     * - SOFTWARE (default value)
-     * - HSM
-     * **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-     * If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-     * If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+     * The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
      */
     protectionLevel?: pulumi.Input<string>;
     /**
@@ -360,12 +337,13 @@ export interface KeyState {
      */
     rotationInterval?: pulumi.Input<string>;
     /**
-     * The status of CMK. Valid Values: 
-     * - Disabled
-     * - Enabled (default value)
-     * - PendingDeletion
+     * The status of CMK. Default value: `Enabled`. Valid Values:
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -373,10 +351,7 @@ export interface KeyState {
  */
 export interface KeyArgs {
     /**
-     * Specifies whether to enable automatic key rotation. Valid values: 
-     * - Enabled
-     * - Disabled (default value)
-     * **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
      */
     automaticRotation?: pulumi.Input<string>;
     /**
@@ -394,15 +369,15 @@ export interface KeyArgs {
      */
     dkmsInstanceId?: pulumi.Input<string>;
     /**
-     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `keyState` instead.
+     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      *
      * @deprecated Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
      */
     isEnabled?: pulumi.Input<boolean>;
     /**
-     * The type of the CMK. Valid values: 
-     * "Aliyun_AES_256", "Aliyun_AES_128", "Aliyun_AES_192", "Aliyun_SM4", "RSA_2048", "RSA_3072", "EC_P256", "EC_P256K", "EC_SM2".
-     * Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+     * The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
+     * `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+     * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
      */
     keySpec?: pulumi.Input<string>;
     /**
@@ -412,18 +387,13 @@ export interface KeyArgs {
      */
     keyState?: pulumi.Input<string>;
     /**
-     * The usage of the CMK. Valid values:
-     * - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-     * - SIGN/VERIFY: generates or verifies a digital signature.
+     * The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      */
     keyUsage?: pulumi.Input<string>;
     /**
-     * The source of key material. Valid values: 
-     * - Aliyun_KMS (default value)
-     * - EXTERNAL
-     * **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
-     * you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-     * For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+     * The source of key material. Default value: `Aliyun_KMS`. Valid values:
      */
     origin?: pulumi.Input<string>;
     /**
@@ -434,12 +404,7 @@ export interface KeyArgs {
      */
     pendingWindowInDays?: pulumi.Input<number>;
     /**
-     * The protection level of the CMK. Valid values:
-     * - SOFTWARE (default value)
-     * - HSM
-     * **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-     * If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-     * If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+     * The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
      */
     protectionLevel?: pulumi.Input<string>;
     /**
@@ -453,10 +418,11 @@ export interface KeyArgs {
      */
     rotationInterval?: pulumi.Input<string>;
     /**
-     * The status of CMK. Valid Values: 
-     * - Disabled
-     * - Enabled (default value)
-     * - PendingDeletion
+     * The status of CMK. Default value: `Enabled`. Valid Values:
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

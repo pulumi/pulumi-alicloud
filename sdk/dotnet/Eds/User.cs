@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eds
     /// <summary>
     /// Provides a Elastic Desktop Service (ECD) User resource.
     /// 
-    /// For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+    /// For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createusers-desktop).
     /// 
-    /// &gt; **NOTE:** Available in v1.142.0+.
+    /// &gt; **NOTE:** Available since v1.142.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,12 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Eds.User("example", new()
+    ///     var @default = new AliCloud.Eds.User("default", new()
     ///     {
-    ///         Email = "your_email",
-    ///         EndUserId = "example_value",
+    ///         Email = "tf.example@abc.com",
+    ///         EndUserId = "terraform_example123",
+    ///         Password = "Example_123",
+    ///         Phone = "18888888888",
     ///     });
     /// 
     /// });

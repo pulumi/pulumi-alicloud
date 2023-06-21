@@ -12,15 +12,27 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
     public sealed class ScalingConfigurationInstancePatternInfoArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        /// </summary>
         [Input("cores")]
         public Input<int>? Cores { get; set; }
 
+        /// <summary>
+        /// The instance family level in instancePatternInfo.
+        /// </summary>
         [Input("instanceFamilyLevel")]
         public Input<string>? InstanceFamilyLevel { get; set; }
 
+        /// <summary>
+        /// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+        /// </summary>
         [Input("maxPrice")]
         public Input<double>? MaxPrice { get; set; }
 
+        /// <summary>
+        /// The memory size that is specified for an instance type in instancePatternInfo.
+        /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
 

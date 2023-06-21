@@ -19,40 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DTS Job Monitor Rule and how to use it, see [What is Job Monitor Rule](https://www.aliyun.com/product/dts).
  * 
- * &gt; **NOTE:** Available in v1.134.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.dts.JobMonitorRule;
- * import com.pulumi.alicloud.dts.JobMonitorRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new JobMonitorRule(&#34;example&#34;, JobMonitorRuleArgs.builder()        
- *             .dtsJobId(&#34;example_value&#34;)
- *             .type(&#34;delay&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.134.0.
  * 
  * ## Import
  * 

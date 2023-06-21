@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Ipv6 Internet Bandwidth resource.
+    /// Provides a VPC Ipv6 Internet Bandwidth resource. Public network bandwidth of IPv6 address.
     /// 
-    /// For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/doc-detail/102213.htm).
+    /// For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/allocateipv6internetbandwidth).
     /// 
-    /// &gt; **NOTE:** Available in v1.143.0+.
+    /// &gt; **NOTE:** Available since v1.143.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,22 +28,78 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleInstances = AliCloud.Ecs.GetInstances.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke();
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         NameRegex = "ecs_with_ipv6_address",
-    ///         Status = "Running",
+    ///         VpcName = name,
+    ///         EnableIpv6 = true,
+    ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var exampleIpv6Addresses = AliCloud.Vpc.GetIpv6Addresses.Invoke(new()
+    ///     var vsw = new AliCloud.Vpc.Switch("vsw", new()
     ///     {
-    ///         AssociatedInstanceId = exampleInstances.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id),
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/21",
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Ipv6CidrBlockMask = 22,
+    ///     });
+    /// 
+    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     {
+    ///         Description = "foo",
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         CpuCoreCount = 4,
+    ///         MinimumEniIpv6AddressQuantity = 1,
+    ///     });
+    /// 
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var vpcInstance = new AliCloud.Ecs.Instance("vpcInstance", new()
+    ///     {
+    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Ipv6AddressCount = 1,
+    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceName = name,
+    ///         VswitchId = vsw.Id,
+    ///         InternetMaxBandwidthOut = 10,
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             @group,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///     });
+    /// 
+    ///     var exampleIpv6Gateway = new AliCloud.Vpc.Ipv6Gateway("exampleIpv6Gateway", new()
+    ///     {
+    ///         Ipv6GatewayName = "example_value",
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultIpv6Addresses = AliCloud.Vpc.GetIpv6Addresses.Invoke(new()
+    ///     {
+    ///         AssociatedInstanceId = vpcInstance.Id,
     ///         Status = "Available",
     ///     });
     /// 
     ///     var exampleIpv6InternetBandwidth = new AliCloud.Vpc.Ipv6InternetBandwidth("exampleIpv6InternetBandwidth", new()
     ///     {
-    ///         Ipv6AddressId = exampleIpv6Addresses.Apply(getIpv6AddressesResult =&gt; getIpv6AddressesResult.Addresses[0]?.Id),
-    ///         Ipv6GatewayId = exampleIpv6Addresses.Apply(getIpv6AddressesResult =&gt; getIpv6AddressesResult.Addresses[0]?.Ipv6GatewayId),
+    ///         Ipv6AddressId = defaultIpv6Addresses.Apply(getIpv6AddressesResult =&gt; getIpv6AddressesResult.Addresses[0]?.Id),
+    ///         Ipv6GatewayId = exampleIpv6Gateway.Ipv6GatewayId,
     ///         InternetChargeType = "PayByBandwidth",
     ///         Bandwidth = 20,
     ///     });
@@ -75,19 +131,19 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the IPv6 address.
+        /// The ID of the IPv6 address instance.
         /// </summary>
         [Output("ipv6AddressId")]
         public Output<string> Ipv6AddressId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the IPv6 gateway.
+        /// The ID of the IPv6 gateway to which the IPv6 address belongs.
         /// </summary>
         [Output("ipv6GatewayId")]
         public Output<string> Ipv6GatewayId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -151,13 +207,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The ID of the IPv6 address.
+        /// The ID of the IPv6 address instance.
         /// </summary>
         [Input("ipv6AddressId", required: true)]
         public Input<string> Ipv6AddressId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the IPv6 gateway.
+        /// The ID of the IPv6 gateway to which the IPv6 address belongs.
         /// </summary>
         [Input("ipv6GatewayId", required: true)]
         public Input<string> Ipv6GatewayId { get; set; } = null!;
@@ -183,19 +239,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The ID of the IPv6 address.
+        /// The ID of the IPv6 address instance.
         /// </summary>
         [Input("ipv6AddressId")]
         public Input<string>? Ipv6AddressId { get; set; }
 
         /// <summary>
-        /// The ID of the IPv6 gateway.
+        /// The ID of the IPv6 gateway to which the IPv6 address belongs.
         /// </summary>
         [Input("ipv6GatewayId")]
         public Input<string>? Ipv6GatewayId { get; set; }
 
         /// <summary>
-        /// The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

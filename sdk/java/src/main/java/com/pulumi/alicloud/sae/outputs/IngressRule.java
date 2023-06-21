@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class IngressRule {
@@ -20,6 +22,11 @@ public final class IngressRule {
      * 
      */
     private String appName;
+    /**
+     * @return The backend protocol.
+     * 
+     */
+    private @Nullable String backendProtocol;
     /**
      * @return Application backend port.
      * 
@@ -35,6 +42,11 @@ public final class IngressRule {
      * 
      */
     private String path;
+    /**
+     * @return The rewrite path.
+     * 
+     */
+    private @Nullable String rewritePath;
 
     private IngressRule() {}
     /**
@@ -50,6 +62,13 @@ public final class IngressRule {
      */
     public String appName() {
         return this.appName;
+    }
+    /**
+     * @return The backend protocol.
+     * 
+     */
+    public Optional<String> backendProtocol() {
+        return Optional.ofNullable(this.backendProtocol);
     }
     /**
      * @return Application backend port.
@@ -72,6 +91,13 @@ public final class IngressRule {
     public String path() {
         return this.path;
     }
+    /**
+     * @return The rewrite path.
+     * 
+     */
+    public Optional<String> rewritePath() {
+        return Optional.ofNullable(this.rewritePath);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -84,17 +110,21 @@ public final class IngressRule {
     public static final class Builder {
         private String appId;
         private String appName;
+        private @Nullable String backendProtocol;
         private Integer containerPort;
         private String domain;
         private String path;
+        private @Nullable String rewritePath;
         public Builder() {}
         public Builder(IngressRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.appId = defaults.appId;
     	      this.appName = defaults.appName;
+    	      this.backendProtocol = defaults.backendProtocol;
     	      this.containerPort = defaults.containerPort;
     	      this.domain = defaults.domain;
     	      this.path = defaults.path;
+    	      this.rewritePath = defaults.rewritePath;
         }
 
         @CustomType.Setter
@@ -105,6 +135,11 @@ public final class IngressRule {
         @CustomType.Setter
         public Builder appName(String appName) {
             this.appName = Objects.requireNonNull(appName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backendProtocol(@Nullable String backendProtocol) {
+            this.backendProtocol = backendProtocol;
             return this;
         }
         @CustomType.Setter
@@ -122,13 +157,20 @@ public final class IngressRule {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
+        public Builder rewritePath(@Nullable String rewritePath) {
+            this.rewritePath = rewritePath;
+            return this;
+        }
         public IngressRule build() {
             final var o = new IngressRule();
             o.appId = appId;
             o.appName = appName;
+            o.backendProtocol = backendProtocol;
             o.containerPort = containerPort;
             o.domain = domain;
             o.path = path;
+            o.rewritePath = rewritePath;
             return o;
         }
     }

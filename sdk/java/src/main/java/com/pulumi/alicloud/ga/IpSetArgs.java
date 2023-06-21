@@ -48,7 +48,6 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The bandwidth allocated to the acceleration region.
-     * 
      * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      * 
      */
@@ -57,7 +56,6 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The bandwidth allocated to the acceleration region.
-     * 
      * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      * 
      */
@@ -66,18 +64,33 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+     * The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
      * 
      */
     @Import(name="ipVersion")
     private @Nullable Output<String> ipVersion;
 
     /**
-     * @return The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+     * @return The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
      * 
      */
     public Optional<Output<String>> ipVersion() {
         return Optional.ofNullable(this.ipVersion);
+    }
+
+    /**
+     * The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+     * 
+     */
+    @Import(name="ispType")
+    private @Nullable Output<String> ispType;
+
+    /**
+     * @return The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+     * 
+     */
+    public Optional<Output<String>> ispType() {
+        return Optional.ofNullable(this.ispType);
     }
 
     private IpSetArgs() {}
@@ -87,6 +100,7 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
         this.acceleratorId = $.acceleratorId;
         this.bandwidth = $.bandwidth;
         this.ipVersion = $.ipVersion;
+        this.ispType = $.ispType;
     }
 
     public static Builder builder() {
@@ -151,7 +165,6 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bandwidth The bandwidth allocated to the acceleration region.
-         * 
          * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
          * 
          * @return builder
@@ -164,7 +177,6 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bandwidth The bandwidth allocated to the acceleration region.
-         * 
          * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
          * 
          * @return builder
@@ -175,7 +187,7 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipVersion The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+         * @param ipVersion The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
          * 
          * @return builder
          * 
@@ -186,13 +198,34 @@ public final class IpSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipVersion The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+         * @param ipVersion The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
          * 
          * @return builder
          * 
          */
         public Builder ipVersion(String ipVersion) {
             return ipVersion(Output.of(ipVersion));
+        }
+
+        /**
+         * @param ispType The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ispType(@Nullable Output<String> ispType) {
+            $.ispType = ispType;
+            return this;
+        }
+
+        /**
+         * @param ispType The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ispType(String ispType) {
+            return ispType(Output.of(ispType));
         }
 
         public IpSetArgs build() {

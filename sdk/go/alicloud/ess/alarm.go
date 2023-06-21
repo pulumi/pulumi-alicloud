@@ -13,6 +13,10 @@ import (
 
 // Provides a ESS alarm task resource.
 //
+// For information about ess alarm, see [CreateAlarm](https://www.alibabacloud.com/help/en/auto-scaling/latest/createalarm).
+//
+// > **NOTE:** Available since v1.15.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -20,16 +24,24 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
@@ -37,64 +49,86 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				MostRecent: pulumi.BoolRef(true),
-//				NameRegex:  pulumi.StringRef("^centos_6\\w{1,5}[64].*"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
 //			_, err = ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
 //				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
-//				CpuCoreCount:     pulumi.IntRef(1),
-//				MemorySize:       pulumi.Float64Ref(2),
+//				CpuCoreCount:     pulumi.IntRef(2),
+//				MemorySize:       pulumi.Float64Ref(4),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//			_, err = ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
+//				Owners:     pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("tf-testAccEssAlarm_basic_foo"),
-//				VpcId:       fooNetwork.ID(),
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			bar, err := vpc.NewSwitch(ctx, "bar", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("tf-testAccEssAlarm_basic_bar"),
-//				VpcId:       fooNetwork.ID(),
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewSecurityGroupRule(ctx, "defaultSecurityGroupRule", &ecs.SecurityGroupRuleArgs{
+//				Type:            pulumi.String("ingress"),
+//				IpProtocol:      pulumi.String("tcp"),
+//				NicType:         pulumi.String("intranet"),
+//				Policy:          pulumi.String("accept"),
+//				PortRange:       pulumi.String("22/22"),
+//				Priority:        pulumi.Int(1),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				CidrIp:          pulumi.String("172.16.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			default2, err := vpc.NewSwitch(ctx, "default2", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.1.0/24"),
 //				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(fmt.Sprintf("%v-bar", name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooScalingGroup, err := ess.NewScalingGroup(ctx, "fooScalingGroup", &ess.ScalingGroupArgs{
+//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(1),
 //				MaxSize:          pulumi.Int(1),
-//				ScalingGroupName: pulumi.String("tf-testAccEssAlarm_basic"),
+//				ScalingGroupName: pulumi.String(name),
+//				DefaultCooldown:  pulumi.Int(20),
+//				VswitchIds: pulumi.StringArray{
+//					defaultSwitch.ID(),
+//					default2.ID(),
+//				},
 //				RemovalPolicies: pulumi.StringArray{
 //					pulumi.String("OldestInstance"),
 //					pulumi.String("NewestInstance"),
 //				},
-//				VswitchIds: pulumi.StringArray{
-//					fooSwitch.ID(),
-//					bar.ID(),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooScalingRule, err := ess.NewScalingRule(ctx, "fooScalingRule", &ess.ScalingRuleArgs{
-//				ScalingRuleName: pulumi.String("tf-testAccEssAlarm_basic"),
-//				ScalingGroupId:  fooScalingGroup.ID(),
+//			defaultScalingRule, err := ess.NewScalingRule(ctx, "defaultScalingRule", &ess.ScalingRuleArgs{
+//				ScalingRuleName: pulumi.String(name),
+//				ScalingGroupId:  defaultScalingGroup.ID(),
 //				AdjustmentType:  pulumi.String("TotalCapacity"),
 //				AdjustmentValue: pulumi.Int(2),
 //				Cooldown:        pulumi.Int(60),
@@ -102,12 +136,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ess.NewAlarm(ctx, "fooAlarm", &ess.AlarmArgs{
-//				Description: pulumi.String("Acc alarm test"),
+//			_, err = ess.NewAlarm(ctx, "defaultAlarm", &ess.AlarmArgs{
+//				Description: pulumi.String(name),
 //				AlarmActions: pulumi.StringArray{
-//					fooScalingRule.Ari,
+//					defaultScalingRule.Ari,
 //				},
-//				ScalingGroupId:     fooScalingGroup.ID(),
+//				ScalingGroupId:     defaultScalingGroup.ID(),
 //				MetricType:         pulumi.String("system"),
 //				MetricName:         pulumi.String("CpuUtilization"),
 //				Period:             pulumi.Int(300),
@@ -129,31 +163,6 @@ import (
 // You can use to the existing autoscaling-rule module
 // to create alarm task, different type rules and scheduled task one-click.
 //
-// ## Block metricNames_and_dimensions
-//
-// Supported metric names and dimensions :
-//
-// | MetricName         | Dimensions                   |
-// | ------------------ | ---------------------------- |
-// | CpuUtilization     | user_id,scaling_group        |
-// | ClassicInternetRx  | user_id,scaling_group        |
-// | ClassicInternetTx  | user_id,scaling_group        |
-// | VpcInternetRx      | user_id,scaling_group        |
-// | VpcInternetTx      | user_id,scaling_group        |
-// | IntranetRx         | user_id,scaling_group        |
-// | IntranetTx         | user_id,scaling_group        |
-// | LoadAverage        | user_id,scaling_group        |
-// | MemoryUtilization  | user_id,scaling_group        |
-// | SystemDiskReadBps  | user_id,scaling_group        |
-// | SystemDiskWriteBps | user_id,scaling_group        |
-// | SystemDiskReadOps  | user_id,scaling_group        |
-// | SystemDiskWriteOps | user_id,scaling_group        |
-// | PackagesNetIn      | user_id,scaling_group,device |
-// | PackagesNetOut     | user_id,scaling_group,device |
-// | TcpConnection      | user_id,scaling_group,state  |
-//
-// > **NOTE:** Dimension `userId` and `scalingGroup` is automatically filled, which means you only need to care about dimension `device` and `state` when needed.
-//
 // ## Import
 //
 // Ess alarm can be imported using the id, e.g.
@@ -174,7 +183,7 @@ type Alarm struct {
 	ComparisonOperator pulumi.StringPtrOutput `pulumi:"comparisonOperator"`
 	// The description for the alarm.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 	Dimensions pulumi.MapOutput `pulumi:"dimensions"`
 	// Whether to enable specific ess alarm. Default to true.
 	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
@@ -190,7 +199,10 @@ type Alarm struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
-	// The state of specified alarm.
+	// The status of the event-triggered task. Valid values:
+	// - ALARM: The alert condition is met and an alert is triggered.
+	// - OK: The alert condition is not met.
+	// - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
 	Statistics pulumi.StringPtrOutput `pulumi:"statistics"`
@@ -247,7 +259,7 @@ type alarmState struct {
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
 	// The description for the alarm.
 	Description *string `pulumi:"description"`
-	// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
 	// Whether to enable specific ess alarm. Default to true.
 	Enable *bool `pulumi:"enable"`
@@ -263,7 +275,10 @@ type alarmState struct {
 	Period *int `pulumi:"period"`
 	// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
-	// The state of specified alarm.
+	// The status of the event-triggered task. Valid values:
+	// - ALARM: The alert condition is met and an alert is triggered.
+	// - OK: The alert condition is not met.
+	// - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
 	State *string `pulumi:"state"`
 	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
 	Statistics *string `pulumi:"statistics"`
@@ -280,7 +295,7 @@ type AlarmState struct {
 	ComparisonOperator pulumi.StringPtrInput
 	// The description for the alarm.
 	Description pulumi.StringPtrInput
-	// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 	Dimensions pulumi.MapInput
 	// Whether to enable specific ess alarm. Default to true.
 	Enable pulumi.BoolPtrInput
@@ -296,7 +311,10 @@ type AlarmState struct {
 	Period pulumi.IntPtrInput
 	// The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
 	ScalingGroupId pulumi.StringPtrInput
-	// The state of specified alarm.
+	// The status of the event-triggered task. Valid values:
+	// - ALARM: The alert condition is met and an alert is triggered.
+	// - OK: The alert condition is not met.
+	// - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
 	State pulumi.StringPtrInput
 	// The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
 	Statistics pulumi.StringPtrInput
@@ -317,7 +335,7 @@ type alarmArgs struct {
 	ComparisonOperator *string `pulumi:"comparisonOperator"`
 	// The description for the alarm.
 	Description *string `pulumi:"description"`
-	// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 	Dimensions map[string]interface{} `pulumi:"dimensions"`
 	// Whether to enable specific ess alarm. Default to true.
 	Enable *bool `pulumi:"enable"`
@@ -349,7 +367,7 @@ type AlarmArgs struct {
 	ComparisonOperator pulumi.StringPtrInput
 	// The description for the alarm.
 	Description pulumi.StringPtrInput
-	// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 	Dimensions pulumi.MapInput
 	// Whether to enable specific ess alarm. Default to true.
 	Enable pulumi.BoolPtrInput
@@ -478,7 +496,7 @@ func (o AlarmOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 func (o AlarmOutput) Dimensions() pulumi.MapOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.MapOutput { return v.Dimensions }).(pulumi.MapOutput)
 }
@@ -518,7 +536,10 @@ func (o AlarmOutput) ScalingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
 }
 
-// The state of specified alarm.
+// The status of the event-triggered task. Valid values:
+// - ALARM: The alert condition is met and an alert is triggered.
+// - OK: The alert condition is not met.
+// - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
 func (o AlarmOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

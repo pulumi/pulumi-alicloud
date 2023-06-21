@@ -25,6 +25,12 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public Input<string> AppName { get; set; } = null!;
 
         /// <summary>
+        /// The backend protocol.
+        /// </summary>
+        [Input("backendProtocol")]
+        public Input<string>? BackendProtocol { get; set; }
+
+        /// <summary>
         /// Application backend port.
         /// </summary>
         [Input("containerPort", required: true)]
@@ -41,6 +47,12 @@ namespace Pulumi.AliCloud.Sae.Inputs
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
+
+        /// <summary>
+        /// The rewrite path.
+        /// </summary>
+        [Input("rewritePath")]
+        public Input<string>? RewritePath { get; set; }
 
         public IngressRuleGetArgs()
         {

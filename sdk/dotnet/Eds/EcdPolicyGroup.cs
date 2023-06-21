@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eds
     /// <summary>
     /// Provides a Elastic Desktop Service (ECD) Policy Group resource.
     /// 
-    /// For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+    /// For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createpolicygroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.130.0+.
+    /// &gt; **NOTE:** Available since v1.130.0.
     /// 
     /// ## Example Usage
     /// 
@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Eds
     ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
     ///             {
     ///                 CidrIp = "1.2.3.45/24",
-    ///                 Description = "my-description1",
+    ///                 Description = "terraform-example",
     ///             },
     ///         },
     ///         AuthorizeSecurityPolicyRules = new[]
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Eds
     ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs
     ///             {
     ///                 CidrIp = "1.2.3.4/24",
-    ///                 Description = "my-description",
+    ///                 Description = "terraform-example",
     ///                 IpProtocol = "TCP",
     ///                 Policy = "accept",
     ///                 PortRange = "80/80",
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Eds
     ///         },
     ///         Clipboard = "read",
     ///         LocalDrive = "read",
-    ///         PolicyGroupName = "my-policy-group",
+    ///         PolicyGroupName = "terraform-example",
     ///         UsbRedirect = "off",
     ///         Watermark = "off",
     ///     });
@@ -73,13 +73,13 @@ namespace Pulumi.AliCloud.Eds
     public partial class EcdPolicyGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The rule of authorize access rule.
+        /// The rule of authorize access rule. See `authorize_access_policy_rules` below.
         /// </summary>
         [Output("authorizeAccessPolicyRules")]
         public Output<ImmutableArray<Outputs.EcdPolicyGroupAuthorizeAccessPolicyRule>> AuthorizeAccessPolicyRules { get; private set; } = null!;
 
         /// <summary>
-        /// The policy rule.
+        /// The policy rule. See `authorize_security_policy_rules` below.
         /// </summary>
         [Output("authorizeSecurityPolicyRules")]
         public Output<ImmutableArray<Outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule>> AuthorizeSecurityPolicyRules { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Eds
         public Output<string?> PolicyGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        /// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         /// </summary>
         [Output("recording")]
         public Output<string> Recording { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Eds
         public Output<string?> RecordingEndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        /// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         /// </summary>
         [Output("recordingExpires")]
         public Output<int> RecordingExpires { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs>? _authorizeAccessPolicyRules;
 
         /// <summary>
-        /// The rule of authorize access rule.
+        /// The rule of authorize access rule. See `authorize_access_policy_rules` below.
         /// </summary>
         public InputList<Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs> AuthorizeAccessPolicyRules
         {
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs>? _authorizeSecurityPolicyRules;
 
         /// <summary>
-        /// The policy rule.
+        /// The policy rule. See `authorize_security_policy_rules` below.
         /// </summary>
         public InputList<Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs> AuthorizeSecurityPolicyRules
         {
@@ -305,7 +305,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? PolicyGroupName { get; set; }
 
         /// <summary>
-        /// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        /// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         /// </summary>
         [Input("recording")]
         public Input<string>? Recording { get; set; }
@@ -317,7 +317,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? RecordingEndTime { get; set; }
 
         /// <summary>
-        /// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        /// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         /// </summary>
         [Input("recordingExpires")]
         public Input<int>? RecordingExpires { get; set; }
@@ -376,7 +376,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleGetArgs>? _authorizeAccessPolicyRules;
 
         /// <summary>
-        /// The rule of authorize access rule.
+        /// The rule of authorize access rule. See `authorize_access_policy_rules` below.
         /// </summary>
         public InputList<Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleGetArgs> AuthorizeAccessPolicyRules
         {
@@ -388,7 +388,7 @@ namespace Pulumi.AliCloud.Eds
         private InputList<Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleGetArgs>? _authorizeSecurityPolicyRules;
 
         /// <summary>
-        /// The policy rule.
+        /// The policy rule. See `authorize_security_policy_rules` below.
         /// </summary>
         public InputList<Inputs.EcdPolicyGroupAuthorizeSecurityPolicyRuleGetArgs> AuthorizeSecurityPolicyRules
         {
@@ -439,7 +439,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? PolicyGroupName { get; set; }
 
         /// <summary>
-        /// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        /// Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         /// </summary>
         [Input("recording")]
         public Input<string>? Recording { get; set; }
@@ -451,7 +451,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? RecordingEndTime { get; set; }
 
         /// <summary>
-        /// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        /// The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         /// </summary>
         [Input("recordingExpires")]
         public Input<int>? RecordingExpires { get; set; }

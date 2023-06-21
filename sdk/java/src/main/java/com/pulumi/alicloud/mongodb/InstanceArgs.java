@@ -256,7 +256,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
-     *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
      * 
      */
     @Import(name="orderType")
@@ -266,7 +266,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * @return The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
-     *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
      * 
      */
     public Optional<Output<String>> orderType() {
@@ -274,14 +274,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<InstanceParameterArgs>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     * @return Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
      * 
      */
     public Optional<Output<List<InstanceParameterArgs>>> parameters() {
@@ -907,7 +907,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param orderType The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
          * * UPGRADE: The specifications are upgraded.
          * * DOWNGRADE: The specifications are downgraded.
-         *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+         *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
          * 
          * @return builder
          * 
@@ -921,7 +921,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param orderType The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
          * * UPGRADE: The specifications are upgraded.
          * * DOWNGRADE: The specifications are downgraded.
-         *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+         *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
          * 
          * @return builder
          * 
@@ -931,7 +931,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
          * 
          * @return builder
          * 
@@ -942,7 +942,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
          * 
          * @return builder
          * 
@@ -952,7 +952,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+         * @param parameters Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
     public sealed class ForwardingRuleRuleActionForwardGroupConfig
     {
         /// <summary>
-        /// Terminal node group configuration.
+        /// The information about the endpoint group. See `server_group_tuples` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple> ServerGroupTuples;
 

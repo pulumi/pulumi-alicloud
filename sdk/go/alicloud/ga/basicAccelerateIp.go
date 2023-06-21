@@ -13,9 +13,9 @@ import (
 
 // Provides a Global Accelerator (GA) Basic Accelerate IP resource.
 //
-// For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://help.aliyun.com/document_detail/466833.html).
+// For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicaccelerateip).
 //
-// > **NOTE:** Available in v1.194.0+.
+// > **NOTE:** Available since v1.194.0.
 //
 // ## Example Usage
 //
@@ -28,14 +28,40 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ga.NewBasicAccelerateIp(ctx, "default", &ga.BasicAccelerateIpArgs{
-//				AcceleratorId: pulumi.String("your_accelerator_id"),
-//				IpSetId:       pulumi.String("your_ip_set_id"),
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			defaultBasicAccelerator, err := ga.NewBasicAccelerator(ctx, "defaultBasicAccelerator", &ga.BasicAcceleratorArgs{
+//				Duration:             pulumi.Int(1),
+//				BasicAcceleratorName: pulumi.String("terraform-example"),
+//				Description:          pulumi.String("terraform-example"),
+//				BandwidthBillingType: pulumi.String("CDT"),
+//				AutoUseCoupon:        pulumi.String("true"),
+//				AutoPay:              pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBasicIpSet, err := ga.NewBasicIpSet(ctx, "defaultBasicIpSet", &ga.BasicIpSetArgs{
+//				AcceleratorId:      defaultBasicAccelerator.ID(),
+//				AccelerateRegionId: pulumi.String(region),
+//				IspType:            pulumi.String("BGP"),
+//				Bandwidth:          pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewBasicAccelerateIp(ctx, "defaultBasicAccelerateIp", &ga.BasicAccelerateIpArgs{
+//				AcceleratorId: defaultBasicAccelerator.ID(),
+//				IpSetId:       defaultBasicIpSet.ID(),
 //			})
 //			if err != nil {
 //				return err

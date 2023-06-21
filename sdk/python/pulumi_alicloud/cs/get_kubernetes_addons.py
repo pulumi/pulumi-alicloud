@@ -117,7 +117,7 @@ def get_kubernetes_addons(addons: Optional[Sequence[pulumi.InputType['GetKuberne
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cs.get_kubernetes_addons(cluster_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    default = alicloud.cs.get_kubernetes_addons(cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"])
     pulumi.export("addons", default.addons)
     ```
 
@@ -162,7 +162,7 @@ def get_kubernetes_addons_output(addons: Optional[pulumi.Input[Optional[Sequence
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cs.get_kubernetes_addons(cluster_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    default = alicloud.cs.get_kubernetes_addons(cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"])
     pulumi.export("addons", default.addons)
     ```
 

@@ -9,21 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about DTS Job Monitor Rule and how to use it, see [What is Job Monitor Rule](https://www.aliyun.com/product/dts).
  *
- * > **NOTE:** Available in v1.134.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.dts.JobMonitorRule("example", {
- *     dtsJobId: "example_value",
- *     type: "delay",
- * });
- * ```
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Import
  *

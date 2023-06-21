@@ -17,6 +17,10 @@ import (
 //
 // > **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitchIds`.
 //
+// For information about ess scaling rule, see [CreateScalingGroup](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalinggroup).
+//
+// > **NOTE:** Available since v1.39.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -38,7 +42,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "essscalinggroupconfig"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}

@@ -26,6 +26,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
  * import com.pulumi.alicloud.fc.LayerVersion;
  * import com.pulumi.alicloud.fc.LayerVersionArgs;
  * import java.util.List;
@@ -41,11 +47,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .build());
+ * 
+ *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(defaultBucket.id())
+ *             .key(&#34;index.py&#34;)
+ *             .content(&#34;&#34;&#34;
+ * import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info(&#39;hello world&#39;) 
+ * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ *             .build());
+ * 
  *         var example = new LayerVersion(&#34;example&#34;, LayerVersionArgs.builder()        
- *             .compatibleRuntimes(&#34;nodejs12&#34;)
- *             .layerName(&#34;your_layer_name&#34;)
- *             .ossBucketName(&#34;your_code_oss_bucket_name&#34;)
- *             .ossObjectName(&#34;your_code_oss_object_name&#34;)
+ *             .layerName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .compatibleRuntimes(&#34;python2.7&#34;)
+ *             .ossBucketName(defaultBucket.bucket())
+ *             .ossObjectName(defaultBucketObject.key())
  *             .build());
  * 
  *     }

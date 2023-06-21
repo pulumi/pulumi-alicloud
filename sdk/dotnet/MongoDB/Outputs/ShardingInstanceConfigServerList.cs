@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly int? MaxIops;
         /// <summary>
-        /// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        /// The node class of the Config Server node.
         /// </summary>
         public readonly string? NodeClass;
         /// <summary>
@@ -38,8 +38,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? NodeId;
         /// <summary>
-        /// - Custom storage space; value range: [10, 1,000]
-        /// - 10-GB increments. Unit: GB.
+        /// The node storage of the Config Server node.
         /// </summary>
         public readonly int? NodeStorage;
         /// <summary>

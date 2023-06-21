@@ -81,14 +81,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dimension map for the alarm&#39;s associated metric (documented below). For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users.
+     * The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
      * 
      */
     @Import(name="dimensions")
     private @Nullable Output<Map<String,Object>> dimensions;
 
     /**
-     * @return The dimension map for the alarm&#39;s associated metric (documented below). For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users.
+     * @return The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
      * 
      */
     public Optional<Output<Map<String,Object>>> dimensions() {
@@ -201,14 +201,20 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The state of specified alarm.
+     * The status of the event-triggered task. Valid values:
+     * - ALARM: The alert condition is met and an alert is triggered.
+     * - OK: The alert condition is not met.
+     * - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The state of specified alarm.
+     * @return The status of the event-triggered task. Valid values:
+     * - ALARM: The alert condition is met and an alert is triggered.
+     * - OK: The alert condition is not met.
+     * - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
      * 
      */
     public Optional<Output<String>> state() {
@@ -378,7 +384,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dimensions The dimension map for the alarm&#39;s associated metric (documented below). For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users.
+         * @param dimensions The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -389,7 +395,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dimensions The dimension map for the alarm&#39;s associated metric (documented below). For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users.
+         * @param dimensions The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -546,7 +552,10 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state The state of specified alarm.
+         * @param state The status of the event-triggered task. Valid values:
+         * - ALARM: The alert condition is met and an alert is triggered.
+         * - OK: The alert condition is not met.
+         * - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
          * 
          * @return builder
          * 
@@ -557,7 +566,10 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state The state of specified alarm.
+         * @param state The status of the event-triggered task. Valid values:
+         * - ALARM: The alert condition is met and an alert is triggered.
+         * - OK: The alert condition is not met.
+         * - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
          * 
          * @return builder
          * 

@@ -16,9 +16,11 @@ import javax.annotation.Nullable;
 
 /**
  * Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+ *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createtrigger).
  * 
  * &gt; **NOTE:** The resource requires a provider field &#39;account_id&#39;. See account_id.
+ * 
+ * &gt; **NOTE:** Available since v1.93.0.
  * 
  * ## Example Usage
  * 
@@ -29,13 +31,28 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.Store;
+ * import com.pulumi.alicloud.log.StoreArgs;
  * import com.pulumi.alicloud.ram.Role;
  * import com.pulumi.alicloud.ram.RoleArgs;
  * import com.pulumi.alicloud.ram.RolePolicyAttachment;
  * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+ * import com.pulumi.alicloud.fc.Service;
+ * import com.pulumi.alicloud.fc.ServiceArgs;
+ * import com.pulumi.alicloud.fc.inputs.ServiceLogConfigArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
+ * import com.pulumi.alicloud.fc.Function;
+ * import com.pulumi.alicloud.fc.FunctionArgs;
  * import com.pulumi.alicloud.fc.Trigger;
  * import com.pulumi.alicloud.fc.TriggerArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,48 +66,106 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         final var account = config.get(&#34;account&#34;).orElse(&#34;12345&#34;);
- *         var fooRole = new Role(&#34;fooRole&#34;, RoleArgs.builder()        
+ *         final var defaultAccount = AlicloudFunctions.getAccount();
+ * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultProject = new Project(&#34;defaultProject&#34;);
+ * 
+ *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *             .project(defaultProject.name())
+ *             .build());
+ * 
+ *         var sourceStore = new Store(&#34;sourceStore&#34;, StoreArgs.builder()        
+ *             .project(defaultProject.name())
+ *             .build());
+ * 
+ *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
  *             .document(&#34;&#34;&#34;
  *   {
- *     &#34;Statement&#34;: [
- *       {
- *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *         &#34;Effect&#34;: &#34;Allow&#34;,
- *         &#34;Principal&#34;: {
- *           &#34;Service&#34;: [
- *             &#34;log.aliyuncs.com&#34;
- *           ]
+ *       &#34;Statement&#34;: [
+ *         {
+ *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *           &#34;Effect&#34;: &#34;Allow&#34;,
+ *           &#34;Principal&#34;: {
+ *             &#34;Service&#34;: [
+ *               &#34;fc.aliyuncs.com&#34;
+ *             ]
+ *           }
  *         }
- *       }
- *     ],
- *     &#34;Version&#34;: &#34;1&#34;
+ *       ],
+ *       &#34;Version&#34;: &#34;1&#34;
  *   }
- *   
  *             &#34;&#34;&#34;)
- *             .description(&#34;this is a test&#34;)
+ *             .description(&#34;this is a example&#34;)
  *             .force(true)
  *             .build());
  * 
- *         var fooRolePolicyAttachment = new RolePolicyAttachment(&#34;fooRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
- *             .roleName(fooRole.name())
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *             .roleName(defaultRole.name())
  *             .policyName(&#34;AliyunLogFullAccess&#34;)
  *             .policyType(&#34;System&#34;)
  *             .build());
  * 
- *         var fooTrigger = new Trigger(&#34;fooTrigger&#34;, TriggerArgs.builder()        
- *             .service(&#34;my-fc-service&#34;)
- *             .function(&#34;hello-world&#34;)
- *             .role(fooRole.arn())
- *             .sourceArn(String.format(&#34;acs:log:%s:%s:project/%s&#34;, region,account,alicloud_log_project.foo().name()))
+ *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .description(&#34;example-value&#34;)
+ *             .role(defaultRole.arn())
+ *             .logConfig(ServiceLogConfigArgs.builder()
+ *                 .project(defaultProject.name())
+ *                 .logstore(defaultStore.name())
+ *                 .enableInstanceMetrics(true)
+ *                 .enableRequestMetrics(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .build());
+ * 
+ *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(defaultBucket.id())
+ *             .key(&#34;index.py&#34;)
+ *             .content(&#34;&#34;&#34;
+ * import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info(&#39;hello world&#39;) 
+ * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
+ *             .service(defaultService.name())
+ *             .description(&#34;example&#34;)
+ *             .ossBucket(defaultBucket.id())
+ *             .ossKey(defaultBucketObject.key())
+ *             .memorySize(&#34;512&#34;)
+ *             .runtime(&#34;python2.7&#34;)
+ *             .handler(&#34;hello.handler&#34;)
+ *             .build());
+ * 
+ *         var defaultTrigger = new Trigger(&#34;defaultTrigger&#34;, TriggerArgs.builder()        
+ *             .service(defaultService.name())
+ *             .function(defaultFunction.name())
+ *             .role(defaultRole.arn())
+ *             .sourceArn(defaultProject.name().applyValue(name -&gt; String.format(&#34;acs:log:%s:%s:project/%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
  *             .type(&#34;log&#34;)
- *             .config(&#34;&#34;&#34;
+ *             .config(Output.tuple(defaultProject.name(), sourceStore.name(), defaultProject.name(), defaultStore.name()).applyValue(values -&gt; {
+ *                 var defaultProjectName = values.t1;
+ *                 var sourceStoreName = values.t2;
+ *                 var defaultProjectName1 = values.t3;
+ *                 var defaultStoreName = values.t4;
+ *                 return &#34;&#34;&#34;
  *     {
  *         &#34;sourceConfig&#34;: {
- *             &#34;project&#34;: &#34;project-for-fc&#34;,
- *             &#34;logstore&#34;: &#34;project-for-fc&#34;
+ *             &#34;project&#34;: &#34;%s&#34;,
+ *             &#34;logstore&#34;: &#34;%s&#34;
  *         },
  *         &#34;jobConfig&#34;: {
  *             &#34;maxRetryTime&#34;: 3,
@@ -101,16 +176,15 @@ import javax.annotation.Nullable;
  *             &#34;c&#34;: &#34;d&#34;
  *         },
  *         &#34;logConfig&#34;: {
- *             &#34;project&#34;: &#34;project-for-fc-log&#34;,
- *             &#34;logstore&#34;: &#34;project-for-fc-log&#34;
+ *              &#34;project&#34;: &#34;%s&#34;,
+ *             &#34;logstore&#34;: &#34;%s&#34;
  *         },
  *         &#34;enable&#34;: true
  *     }
  *   
- *             &#34;&#34;&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(fooRolePolicyAttachment)
- *                 .build());
+ * &#34;, defaultProjectName,sourceStoreName,defaultProjectName1,defaultStoreName);
+ *             }))
+ *             .build());
  * 
  *     }
  * }
@@ -125,11 +199,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.alicloud.log.Project;
- * import com.pulumi.alicloud.log.ProjectArgs;
- * import com.pulumi.alicloud.log.Store;
- * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.mns.Topic;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
  * import com.pulumi.alicloud.fc.Service;
  * import com.pulumi.alicloud.fc.ServiceArgs;
  * import com.pulumi.alicloud.oss.Bucket;
@@ -138,13 +214,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.oss.BucketObjectArgs;
  * import com.pulumi.alicloud.fc.Function;
  * import com.pulumi.alicloud.fc.FunctionArgs;
- * import com.pulumi.alicloud.ram.Role;
- * import com.pulumi.alicloud.ram.RoleArgs;
- * import com.pulumi.alicloud.ram.RolePolicyAttachment;
- * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
  * import com.pulumi.alicloud.fc.Trigger;
  * import com.pulumi.alicloud.fc.TriggerArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -158,100 +229,90 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;fctriggermnstopic&#34;);
- *         final var currentRegion = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var defaultAccount = AlicloudFunctions.getAccount();
+ * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         final var current = AlicloudFunctions.getAccount();
- * 
- *         var fooProject = new Project(&#34;fooProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;tf unit test&#34;)
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
  *             .build());
  * 
- *         var bar = new Store(&#34;bar&#34;, StoreArgs.builder()        
- *             .project(fooProject.name())
- *             .retentionPeriod(&#34;3000&#34;)
- *             .shardCount(1)
- *             .build());
+ *         var defaultTopic = new Topic(&#34;defaultTopic&#34;);
  * 
- *         var fooStore = new Store(&#34;fooStore&#34;, StoreArgs.builder()        
- *             .project(fooProject.name())
- *             .retentionPeriod(&#34;3000&#34;)
- *             .shardCount(1)
- *             .build());
- * 
- *         var fooTopic = new Topic(&#34;fooTopic&#34;);
- * 
- *         var fooService = new Service(&#34;fooService&#34;, ServiceArgs.builder()        
- *             .internetAccess(false)
- *             .build());
- * 
- *         var fooBucket = new Bucket(&#34;fooBucket&#34;, BucketArgs.builder()        
- *             .bucket(name)
- *             .build());
- * 
- *         var fooBucketObject = new BucketObject(&#34;fooBucketObject&#34;, BucketObjectArgs.builder()        
- *             .bucket(fooBucket.id())
- *             .key(&#34;fc/hello.zip&#34;)
- *             .source(&#34;./hello.zip&#34;)
- *             .build());
- * 
- *         var fooFunction = new Function(&#34;fooFunction&#34;, FunctionArgs.builder()        
- *             .handler(&#34;hello.handler&#34;)
- *             .memorySize(512)
- *             .ossBucket(fooBucket.id())
- *             .ossKey(fooBucketObject.key())
- *             .runtime(&#34;python2.7&#34;)
- *             .service(fooService.name())
- *             .build());
- * 
- *         var fooRole = new Role(&#34;fooRole&#34;, RoleArgs.builder()        
- *             .description(&#34;this is a test&#34;)
+ *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
  *             .document(&#34;&#34;&#34;
  *   {
- *     &#34;Statement&#34;: [
- *       {
- *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *         &#34;Effect&#34;: &#34;Allow&#34;,
- *         &#34;Principal&#34;: {
- *           &#34;Service&#34;: [
- *             &#34;mns.aliyuncs.com&#34;
- *           ]
+ *       &#34;Statement&#34;: [
+ *         {
+ *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *           &#34;Effect&#34;: &#34;Allow&#34;,
+ *           &#34;Principal&#34;: {
+ *             &#34;Service&#34;: [
+ *               &#34;mns.aliyuncs.com&#34;
+ *             ]
+ *           }
  *         }
- *       }
- *     ],
- *     &#34;Version&#34;: &#34;1&#34;
+ *       ],
+ *       &#34;Version&#34;: &#34;1&#34;
  *   }
- *   
  *             &#34;&#34;&#34;)
+ *             .description(&#34;this is a example&#34;)
  *             .force(true)
  *             .build());
  * 
- *         var fooRolePolicyAttachment = new RolePolicyAttachment(&#34;fooRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *             .roleName(defaultRole.name())
  *             .policyName(&#34;AliyunMNSNotificationRolePolicy&#34;)
  *             .policyType(&#34;System&#34;)
- *             .roleName(fooRole.name())
  *             .build());
  * 
- *         var fooTrigger = new Trigger(&#34;fooTrigger&#34;, TriggerArgs.builder()        
+ *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .description(&#34;example-value&#34;)
+ *             .internetAccess(false)
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .build());
+ * 
+ *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(defaultBucket.id())
+ *             .key(&#34;index.py&#34;)
+ *             .content(&#34;&#34;&#34;
+ * import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info(&#39;hello world&#39;) 
+ * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
+ *             .service(defaultService.name())
+ *             .description(&#34;example&#34;)
+ *             .ossBucket(defaultBucket.id())
+ *             .ossKey(defaultBucketObject.key())
+ *             .memorySize(&#34;512&#34;)
+ *             .runtime(&#34;python2.7&#34;)
+ *             .handler(&#34;hello.handler&#34;)
+ *             .build());
+ * 
+ *         var defaultTrigger = new Trigger(&#34;defaultTrigger&#34;, TriggerArgs.builder()        
+ *             .service(defaultService.name())
+ *             .function(defaultFunction.name())
+ *             .role(defaultRole.arn())
+ *             .sourceArn(defaultTopic.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/topics/%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
+ *             .type(&#34;mns_topic&#34;)
  *             .configMns(&#34;&#34;&#34;
  *   {
- *     &#34;filterTag&#34;:&#34;testTag&#34;,
+ *     &#34;filterTag&#34;:&#34;exampleTag&#34;,
  *     &#34;notifyContentFormat&#34;:&#34;STREAM&#34;,
  *     &#34;notifyStrategy&#34;:&#34;BACKOFF_RETRY&#34;
  *   }
- *   
  *             &#34;&#34;&#34;)
- *             .function(fooFunction.name())
- *             .role(fooRole.arn())
- *             .service(fooService.name())
- *             .sourceArn(fooTopic.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/topics/%s&#34;, currentRegion.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),current.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
- *             .type(&#34;mns_topic&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(&#34;alicloud_ram_role_policy_attachment.foo&#34;)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -265,26 +326,27 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.cdn.DomainNew;
  * import com.pulumi.alicloud.cdn.DomainNewArgs;
  * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
  * import com.pulumi.alicloud.fc.Service;
  * import com.pulumi.alicloud.fc.ServiceArgs;
- * import com.pulumi.alicloud.oss.Bucket;
- * import com.pulumi.alicloud.oss.BucketArgs;
- * import com.pulumi.alicloud.oss.BucketObject;
- * import com.pulumi.alicloud.oss.BucketObjectArgs;
- * import com.pulumi.alicloud.fc.Function;
- * import com.pulumi.alicloud.fc.FunctionArgs;
  * import com.pulumi.alicloud.ram.Role;
  * import com.pulumi.alicloud.ram.RoleArgs;
  * import com.pulumi.alicloud.ram.Policy;
  * import com.pulumi.alicloud.ram.PolicyArgs;
  * import com.pulumi.alicloud.ram.RolePolicyAttachment;
  * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
+ * import com.pulumi.alicloud.fc.Function;
+ * import com.pulumi.alicloud.fc.FunctionArgs;
  * import com.pulumi.alicloud.fc.Trigger;
  * import com.pulumi.alicloud.fc.TriggerArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -298,71 +360,58 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;fctriggercdneventsconfig&#34;);
- *         final var current = AlicloudFunctions.getAccount();
+ *         final var defaultAccount = AlicloudFunctions.getAccount();
  * 
- *         var domain = new DomainNew(&#34;domain&#34;, DomainNewArgs.builder()        
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultDomainNew = new DomainNew(&#34;defaultDomainNew&#34;, DomainNewArgs.builder()        
+ *             .domainName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example%s.tf.com&#34;, result)))
  *             .cdnType(&#34;web&#34;)
- *             .domainName(String.format(&#34;%s.tf.com&#34;, name))
  *             .scope(&#34;overseas&#34;)
  *             .sources(DomainNewSourceArgs.builder()
  *                 .content(&#34;1.1.1.1&#34;)
- *                 .port(80)
- *                 .priority(20)
  *                 .type(&#34;ipaddr&#34;)
+ *                 .priority(20)
+ *                 .port(80)
  *                 .weight(10)
  *                 .build())
  *             .build());
  * 
- *         var fooService = new Service(&#34;fooService&#34;, ServiceArgs.builder()        
+ *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .description(&#34;example-value&#34;)
  *             .internetAccess(false)
  *             .build());
  * 
- *         var fooBucket = new Bucket(&#34;fooBucket&#34;, BucketArgs.builder()        
- *             .bucket(name)
- *             .build());
- * 
- *         var fooBucketObject = new BucketObject(&#34;fooBucketObject&#34;, BucketObjectArgs.builder()        
- *             .bucket(fooBucket.id())
- *             .key(&#34;fc/hello.zip&#34;)
- *             .source(&#34;./hello.zip&#34;)
- *             .build());
- * 
- *         var fooFunction = new Function(&#34;fooFunction&#34;, FunctionArgs.builder()        
- *             .handler(&#34;hello.handler&#34;)
- *             .memorySize(512)
- *             .ossBucket(fooBucket.id())
- *             .ossKey(fooBucketObject.key())
- *             .runtime(&#34;python2.7&#34;)
- *             .service(fooService.name())
- *             .build());
- * 
- *         var fooRole = new Role(&#34;fooRole&#34;, RoleArgs.builder()        
- *             .description(&#34;this is a test&#34;)
+ *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
  *             .document(&#34;&#34;&#34;
  *     {
- *         &#34;Version&#34;: &#34;1&#34;,
- *         &#34;Statement&#34;: [
- *             {
- *                 &#34;Action&#34;: &#34;cdn:Describe*&#34;,
- *                 &#34;Resource&#34;: &#34;*&#34;,
- *                 &#34;Effect&#34;: &#34;Allow&#34;,
- * 		        &#34;Principal&#34;: {
- *                 &#34;Service&#34;:
- *                     [&#34;log.aliyuncs.com&#34;]
- *                 }
- *             }
- *         ]
- *     }
- *     
+ *       &#34;Statement&#34;: [
+ *         {
+ *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *           &#34;Effect&#34;: &#34;Allow&#34;,
+ *           &#34;Principal&#34;: {
+ *             &#34;Service&#34;: [
+ *               &#34;cdn.aliyuncs.com&#34;
+ *             ]
+ *           }
+ *         }
+ *       ],
+ *       &#34;Version&#34;: &#34;1&#34;
+ *   }
  *             &#34;&#34;&#34;)
+ *             .description(&#34;this is a example&#34;)
  *             .force(true)
  *             .build());
  * 
- *         var fooPolicy = new Policy(&#34;fooPolicy&#34;, PolicyArgs.builder()        
- *             .description(&#34;this is a test&#34;)
- *             .document(&#34;&#34;&#34;
+ *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
+ *             .policyName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;fcservicepolicy-%s&#34;, result)))
+ *             .policyDocument(Output.tuple(defaultService.name(), defaultService.name()).applyValue(values -&gt; {
+ *                 var defaultServiceName = values.t1;
+ *                 var defaultServiceName1 = values.t2;
+ *                 return &#34;&#34;&#34;
  *     {
  *         &#34;Version&#34;: &#34;1&#34;,
  *         &#34;Statement&#34;: [
@@ -371,26 +420,57 @@ import javax.annotation.Nullable;
  *             &#34;fc:InvokeFunction&#34;
  *             ],
  *         &#34;Resource&#34;: [
- *             &#34;acs:fc:*:*:services/tf_cdnEvents/functions/*&#34;,
- *             &#34;acs:fc:*:*:services/tf_cdnEvents.*{@literal /}functions/*&#34;
+ *             &#34;acs:fc:*:*:services/%s/functions/*&#34;,
+ *             &#34;acs:fc:*:*:services/%s.*{@literal /}functions/*&#34;
  *         ],
  *         &#34;Effect&#34;: &#34;Allow&#34;
  *         }
  *         ]
  *     }
- *     
- *             &#34;&#34;&#34;)
+ * &#34;, defaultServiceName,defaultServiceName1);
+ *             }))
+ *             .description(&#34;this is a example&#34;)
  *             .force(true)
  *             .build());
  * 
- *         var fooRolePolicyAttachment = new RolePolicyAttachment(&#34;fooRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
- *             .policyName(fooPolicy.name())
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *             .roleName(defaultRole.name())
+ *             .policyName(defaultPolicy.name())
  *             .policyType(&#34;Custom&#34;)
- *             .roleName(fooRole.name())
  *             .build());
  * 
- *         var default_ = new Trigger(&#34;default&#34;, TriggerArgs.builder()        
- *             .config(domain.domainName().applyValue(domainName -&gt; &#34;&#34;&#34;
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .build());
+ * 
+ *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(defaultBucket.id())
+ *             .key(&#34;index.py&#34;)
+ *             .content(&#34;&#34;&#34;
+ * import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info(&#39;hello world&#39;) 
+ * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
+ *             .service(defaultService.name())
+ *             .description(&#34;example&#34;)
+ *             .ossBucket(defaultBucket.id())
+ *             .ossKey(defaultBucketObject.key())
+ *             .memorySize(&#34;512&#34;)
+ *             .runtime(&#34;python2.7&#34;)
+ *             .handler(&#34;hello.handler&#34;)
+ *             .build());
+ * 
+ *         var defaultTrigger = new Trigger(&#34;defaultTrigger&#34;, TriggerArgs.builder()        
+ *             .service(defaultService.name())
+ *             .function(defaultFunction.name())
+ *             .role(defaultRole.arn())
+ *             .sourceArn(String.format(&#34;acs:cdn:*:%s&#34;, defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id())))
+ *             .type(&#34;cdn_events&#34;)
+ *             .config(defaultDomainNew.domainName().applyValue(domainName -&gt; &#34;&#34;&#34;
  *       {&#34;eventName&#34;:&#34;LogFileCreated&#34;,
  *      &#34;eventVersion&#34;:&#34;1.0.0&#34;,
  *      &#34;notes&#34;:&#34;cdn events trigger&#34;,
@@ -398,16 +478,8 @@ import javax.annotation.Nullable;
  *         &#34;domain&#34;: [&#34;%s&#34;]
  *         }
  *     }
- * 
  * &#34;, domainName)))
- *             .function(fooFunction.name())
- *             .role(fooRole.arn())
- *             .service(fooService.name())
- *             .sourceArn(String.format(&#34;acs:cdn:*:%s&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id())))
- *             .type(&#34;cdn_events&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(&#34;alicloud_ram_role_policy_attachment.foo&#34;)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -421,6 +493,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.eventbridge.ServiceLinkedRole;
  * import com.pulumi.alicloud.eventbridge.ServiceLinkedRoleArgs;
  * import com.pulumi.alicloud.fc.Service;
@@ -433,6 +508,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.fc.FunctionArgs;
  * import com.pulumi.alicloud.fc.Trigger;
  * import com.pulumi.alicloud.fc.TriggerArgs;
+ * import com.pulumi.alicloud.rocketmq.Instance;
+ * import com.pulumi.alicloud.rocketmq.InstanceArgs;
+ * import com.pulumi.alicloud.rocketmq.Group;
+ * import com.pulumi.alicloud.rocketmq.GroupArgs;
+ * import com.pulumi.alicloud.rocketmq.Topic;
+ * import com.pulumi.alicloud.rocketmq.TopicArgs;
+ * import com.pulumi.alicloud.amqp.Instance;
+ * import com.pulumi.alicloud.amqp.InstanceArgs;
+ * import com.pulumi.alicloud.amqp.VirtualHost;
+ * import com.pulumi.alicloud.amqp.VirtualHostArgs;
+ * import com.pulumi.alicloud.amqp.Queue;
+ * import com.pulumi.alicloud.amqp.QueueArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -446,38 +533,55 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;fctriggereventbridgeconfig&#34;);
- *         final var current = AlicloudFunctions.getAccount();
+ *         final var defaultAccount = AlicloudFunctions.getAccount();
+ * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
  * 
  *         var serviceLinkedRole = new ServiceLinkedRole(&#34;serviceLinkedRole&#34;, ServiceLinkedRoleArgs.builder()        
  *             .productName(&#34;AliyunServiceRoleForEventBridgeSendToFC&#34;)
  *             .build());
  * 
- *         var fooService = new Service(&#34;fooService&#34;, ServiceArgs.builder()        
+ *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .description(&#34;example-value&#34;)
  *             .internetAccess(false)
  *             .build());
  * 
- *         var fooBucket = new Bucket(&#34;fooBucket&#34;, BucketArgs.builder()        
- *             .bucket(name)
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .build());
  * 
- *         var fooBucketObject = new BucketObject(&#34;fooBucketObject&#34;, BucketObjectArgs.builder()        
- *             .bucket(fooBucket.id())
- *             .key(&#34;fc/hello.zip&#34;)
- *             .source(&#34;./hello.zip&#34;)
+ *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(defaultBucket.id())
+ *             .key(&#34;index.py&#34;)
+ *             .content(&#34;&#34;&#34;
+ * import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info(&#39;hello world&#39;) 
+ * return &#39;hello world&#39;            &#34;&#34;&#34;)
  *             .build());
  * 
- *         var fooFunction = new Function(&#34;fooFunction&#34;, FunctionArgs.builder()        
- *             .handler(&#34;hello.handler&#34;)
- *             .memorySize(512)
- *             .ossBucket(fooBucket.id())
- *             .ossKey(fooBucketObject.key())
+ *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
+ *             .service(defaultService.name())
+ *             .description(&#34;example&#34;)
+ *             .ossBucket(defaultBucket.id())
+ *             .ossKey(defaultBucketObject.key())
+ *             .memorySize(&#34;512&#34;)
  *             .runtime(&#34;python2.7&#34;)
- *             .service(fooService.name())
+ *             .handler(&#34;hello.handler&#34;)
  *             .build());
  * 
- *         var default_ = new Trigger(&#34;default&#34;, TriggerArgs.builder()        
+ *         var ossTrigger = new Trigger(&#34;ossTrigger&#34;, TriggerArgs.builder()        
+ *             .service(defaultService.name())
+ *             .function(defaultFunction.name())
+ *             .type(&#34;eventbridge&#34;)
  *             .config(&#34;&#34;&#34;
  *     {
  *         &#34;triggerEnable&#34;: false,
@@ -487,14 +591,13 @@ import javax.annotation.Nullable;
  *             &#34;eventSourceType&#34;: &#34;Default&#34;
  *         }
  *     }
- * 
  *             &#34;&#34;&#34;)
- *             .function(fooFunction.name())
- *             .service(fooService.name())
- *             .type(&#34;eventbridge&#34;)
  *             .build());
  * 
- *         var mns = new Trigger(&#34;mns&#34;, TriggerArgs.builder()        
+ *         var mnsTrigger = new Trigger(&#34;mnsTrigger&#34;, TriggerArgs.builder()        
+ *             .service(defaultService.name())
+ *             .function(defaultFunction.name())
+ *             .type(&#34;eventbridge&#34;)
  *             .config(&#34;&#34;&#34;
  *     {
  *         &#34;triggerEnable&#34;: false,
@@ -511,15 +614,36 @@ import javax.annotation.Nullable;
  *             }
  *         }
  *     }
- * 
  *             &#34;&#34;&#34;)
- *             .function(fooFunction.name())
- *             .service(fooService.name())
- *             .type(&#34;eventbridge&#34;)
  *             .build());
  * 
- *         var rocketmq = new Trigger(&#34;rocketmq&#34;, TriggerArgs.builder()        
- *             .config(&#34;&#34;&#34;
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .instanceName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .remark(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+ *             .groupName(&#34;GID-example&#34;)
+ *             .instanceId(defaultInstance.id())
+ *             .remark(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+ *             .topicName(&#34;mytopic&#34;)
+ *             .instanceId(defaultInstance.id())
+ *             .messageType(0)
+ *             .remark(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         var rocketmqTrigger = new Trigger(&#34;rocketmqTrigger&#34;, TriggerArgs.builder()        
+ *             .service(defaultService.name())
+ *             .function(defaultFunction.name())
+ *             .type(&#34;eventbridge&#34;)
+ *             .config(Output.tuple(defaultInstance.id(), defaultGroup.groupName(), defaultTopic.topicName()).applyValue(values -&gt; {
+ *                 var id = values.t1;
+ *                 var groupName = values.t2;
+ *                 var topicName = values.t3;
+ *                 return &#34;&#34;&#34;
  *     {
  *         &#34;triggerEnable&#34;: false,
  *         &#34;asyncInvocationType&#34;: false,
@@ -528,26 +652,51 @@ import javax.annotation.Nullable;
  *             &#34;eventSourceType&#34;: &#34;RocketMQ&#34;,
  *             &#34;eventSourceParameters&#34;: {
  *                 &#34;sourceRocketMQParameters&#34;: {
- *                     &#34;RegionId&#34;: &#34;cn-hangzhou&#34;,
- *                     &#34;InstanceId&#34;: &#34;MQ_INST_164901546557****_BAAN****&#34;,
- *                     &#34;GroupID&#34;: &#34;GID_group1&#34;,
- *                     &#34;Topic&#34;: &#34;mytopic&#34;,
- *                     &#34;Timestamp&#34;: 1636597951984,
- *                     &#34;Tag&#34;: &#34;test-tag&#34;,
+ *                     &#34;RegionId&#34;: &#34;%s&#34;,
+ *                     &#34;InstanceId&#34;: &#34;%s&#34;,
+ *                     &#34;GroupID&#34;: &#34;%s&#34;,
+ *                     &#34;Topic&#34;: &#34;%s&#34;,
+ *                     &#34;Timestamp&#34;: 1686296162,
+ *                     &#34;Tag&#34;: &#34;example-tag&#34;,
  *                     &#34;Offset&#34;: &#34;CONSUME_FROM_LAST_OFFSET&#34;
  *                 }
  *             }
  *         }
  *     }
- * 
- *             &#34;&#34;&#34;)
- *             .function(fooFunction.name())
- *             .service(fooService.name())
- *             .type(&#34;eventbridge&#34;)
+ * &#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),id,groupName,topicName);
+ *             }))
  *             .build());
  * 
- *         var rabbitmq = new Trigger(&#34;rabbitmq&#34;, TriggerArgs.builder()        
- *             .config(&#34;&#34;&#34;
+ *         var defaultAmqp_instanceInstance = new Instance(&#34;defaultAmqp/instanceInstance&#34;, InstanceArgs.builder()        
+ *             .instanceName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .instanceType(&#34;professional&#34;)
+ *             .maxTps(1000)
+ *             .queueCapacity(50)
+ *             .supportEip(true)
+ *             .maxEipTps(128)
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .period(1)
+ *             .build());
+ * 
+ *         var defaultVirtualHost = new VirtualHost(&#34;defaultVirtualHost&#34;, VirtualHostArgs.builder()        
+ *             .instanceId(defaultAmqp / instanceInstance.id())
+ *             .virtualHostName(&#34;example-VirtualHost&#34;)
+ *             .build());
+ * 
+ *         var defaultQueue = new Queue(&#34;defaultQueue&#34;, QueueArgs.builder()        
+ *             .instanceId(defaultVirtualHost.instanceId())
+ *             .queueName(&#34;example-queue&#34;)
+ *             .virtualHostName(defaultVirtualHost.virtualHostName())
+ *             .build());
+ * 
+ *         var rabbitmqTrigger = new Trigger(&#34;rabbitmqTrigger&#34;, TriggerArgs.builder()        
+ *             .service(defaultService.name())
+ *             .function(defaultFunction.name())
+ *             .type(&#34;eventbridge&#34;)
+ *             .config(Output.tuple(defaultVirtualHost.virtualHostName(), defaultQueue.queueName()).applyValue(values -&gt; {
+ *                 var virtualHostName = values.t1;
+ *                 var queueName = values.t2;
+ *                 return &#34;&#34;&#34;
  *     {
  *         &#34;triggerEnable&#34;: false,
  *         &#34;asyncInvocationType&#34;: false,
@@ -556,19 +705,16 @@ import javax.annotation.Nullable;
  *             &#34;eventSourceType&#34;: &#34;RabbitMQ&#34;,
  *             &#34;eventSourceParameters&#34;: {
  *                 &#34;sourceRabbitMQParameters&#34;: {
- *                     &#34;RegionId&#34;: &#34;cn-hangzhou&#34;,
- *                     &#34;InstanceId&#34;: &#34;amqp-cn-****** &#34;,
- *                     &#34;VirtualHostName&#34;: &#34;test-virtual&#34;,
- *                     &#34;QueueName&#34;: &#34;test-queue&#34;
+ *                     &#34;RegionId&#34;: &#34;%s&#34;,
+ *                     &#34;InstanceId&#34;: &#34;%s&#34;,
+ *                     &#34;VirtualHostName&#34;: &#34;%s&#34;,
+ *                     &#34;QueueName&#34;: &#34;%s&#34;
  *                 }
  *             }
  *         }
  *     }
- * 
- *             &#34;&#34;&#34;)
- *             .function(fooFunction.name())
- *             .service(fooService.name())
- *             .type(&#34;eventbridge&#34;)
+ * &#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAmqp / instanceInstance.id(),virtualHostName,queueName);
+ *             }))
  *             .build());
  * 
  *     }

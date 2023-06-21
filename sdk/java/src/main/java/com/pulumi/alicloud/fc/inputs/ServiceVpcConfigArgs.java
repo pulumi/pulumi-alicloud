@@ -31,9 +31,17 @@ public final class ServiceVpcConfigArgs extends com.pulumi.resources.ResourceArg
         return this.securityGroupId;
     }
 
+    /**
+     * A vpc ID associated with the Function Compute Service.
+     * 
+     */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
+    /**
+     * @return A vpc ID associated with the Function Compute Service.
+     * 
+     */
     public Optional<Output<String>> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
@@ -100,11 +108,23 @@ public final class ServiceVpcConfigArgs extends com.pulumi.resources.ResourceArg
             return securityGroupId(Output.of(securityGroupId));
         }
 
+        /**
+         * @param vpcId A vpc ID associated with the Function Compute Service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(@Nullable Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId A vpc ID associated with the Function Compute Service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }

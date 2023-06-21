@@ -26,16 +26,111 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hbr.NewHanaBackupClient(ctx, "default", &hbr.HanaBackupClientArgs{
-//				VaultId:      pulumi.Any(data.Alicloud_hbr_vaults.Default.Vaults[0].Id),
-//				ClientInfo:   pulumi.String("[ { \"instanceId\": \"i-bp116lr******te9q2\", \"clusterId\": \"cl-000csy09q******9rfz9\", \"sourceTypes\": [ \"HANA\" ]  }]"),
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(exampleZones.Zones[0].Id),
+//				CpuCoreCount:     pulumi.IntRef(1),
+//				MemorySize:       pulumi.Float64Ref(2),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
+//				ImageId:          *pulumi.String(exampleImages.Images[0].Id),
+//				InstanceType:     *pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
+//				AvailabilityZone: *pulumi.String(exampleZones.Zones[0].Id),
+//				SecurityGroups: pulumi.StringArray{
+//					exampleSecurityGroup.ID(),
+//				},
+//				InstanceName:       pulumi.String("terraform-example"),
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//				VswitchId:          exampleSwitch.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//				Status: pulumi.StringRef("OK"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleVault, err := hbr.NewVault(ctx, "exampleVault", &hbr.VaultArgs{
+//				VaultName: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleHanaInstance, err := hbr.NewHanaInstance(ctx, "exampleHanaInstance", &hbr.HanaInstanceArgs{
+//				AlertSetting:        pulumi.String("INHERITED"),
+//				HanaName:            pulumi.String("terraform-example"),
+//				Host:                pulumi.String("1.1.1.1"),
+//				InstanceNumber:      pulumi.Int(1),
+//				Password:            pulumi.String("YouPassword123"),
+//				ResourceGroupId:     *pulumi.String(exampleResourceGroups.Groups[0].Id),
+//				Sid:                 pulumi.String("HXE"),
+//				UseSsl:              pulumi.Bool(false),
+//				UserName:            pulumi.String("admin"),
+//				ValidateCertificate: pulumi.Bool(false),
+//				VaultId:             exampleVault.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewHanaBackupClient(ctx, "default", &hbr.HanaBackupClientArgs{
+//				VaultId: exampleVault.ID(),
+//				ClientInfo: pulumi.All(exampleInstance.ID(), exampleHanaInstance.HanaInstanceId).ApplyT(func(_args []interface{}) (string, error) {
+//					id := _args[0].(string)
+//					hanaInstanceId := _args[1].(string)
+//					return fmt.Sprintf("[ { \"instanceId\": \"%v\", \"clusterId\": \"%v\", \"sourceTypes\": [ \"HANA\" ]  }]", id, hanaInstanceId), nil
+//				}).(pulumi.StringOutput),
 //				AlertSetting: pulumi.String("INHERITED"),
 //				UseHttps:     pulumi.Bool(true),
 //			})

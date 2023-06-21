@@ -118,7 +118,24 @@ class Domain(pulumi.CustomResource):
 
         For information about Ga Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain).
 
-        > **NOTE:** Available in v1.197.0+.
+        > **NOTE:** Available since v1.197.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_domain = alicloud.ga.Domain("defaultDomain",
+            domain="changes.com.cn",
+            accelerator_id=default_accelerator.id)
+        ```
 
         ## Import
 
@@ -144,7 +161,24 @@ class Domain(pulumi.CustomResource):
 
         For information about Ga Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain).
 
-        > **NOTE:** Available in v1.197.0+.
+        > **NOTE:** Available since v1.197.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_domain = alicloud.ga.Domain("defaultDomain",
+            domain="changes.com.cn",
+            accelerator_id=default_accelerator.id)
+        ```
 
         ## Import
 

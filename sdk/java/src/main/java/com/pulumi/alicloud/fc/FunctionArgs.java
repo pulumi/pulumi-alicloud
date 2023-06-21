@@ -53,14 +53,14 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration for custom container runtime.
+     * The configuration for custom container runtime.See `custom_container_config` below.
      * 
      */
     @Import(name="customContainerConfig")
     private @Nullable Output<FunctionCustomContainerConfigArgs> customContainerConfig;
 
     /**
-     * @return The configuration for custom container runtime.
+     * @return The configuration for custom container runtime.See `custom_container_config` below.
      * 
      */
     public Optional<Output<FunctionCustomContainerConfigArgs>> customContainerConfig() {
@@ -410,7 +410,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customContainerConfig The configuration for custom container runtime.
+         * @param customContainerConfig The configuration for custom container runtime.See `custom_container_config` below.
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customContainerConfig The configuration for custom container runtime.
+         * @param customContainerConfig The configuration for custom container runtime.See `custom_container_config` below.
          * 
          * @return builder
          * 

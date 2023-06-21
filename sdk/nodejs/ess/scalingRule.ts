@@ -9,6 +9,10 @@ import * as utilities from "../utilities";
 /**
  * Provides a ESS scaling rule resource.
  *
+ * For information about ess scaling rule, see [CreateScalingRule](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalingrule).
+ *
+ * > **NOTE:** Available since v1.39.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -16,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "essscalingruleconfig";
+ * const name = config.get("name") || "terraform-example";
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
@@ -77,14 +81,6 @@ import * as utilities from "../utilities";
  * You can use to the existing autoscaling-rule module
  * to create different type rules, alarm task and scheduled task one-click.
  *
- * ## Block stepAdjustment
- *
- * The stepAdjustment mapping supports the following:
- *
- * * `metricIntervalLowerBound` - (Optional) The lower bound of step.
- * * `metricIntervalUpperBound` - (Optional) The upper bound of step.
- * * `scalingAdjustment` - (Optional) The adjust value of step.
- *
  * ## Import
  *
  * ESS scaling rule can be imported using the id, e.g.
@@ -135,6 +131,9 @@ export class ScalingRule extends pulumi.CustomResource {
      * - TotalCapacity：[0, 1000]
      */
     public readonly adjustmentValue!: pulumi.Output<number | undefined>;
+    /**
+     * The unique identifier of the scaling rule.
+     */
     public /*out*/ readonly ari!: pulumi.Output<string>;
     /**
      * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
@@ -165,7 +164,7 @@ export class ScalingRule extends pulumi.CustomResource {
      */
     public readonly scalingRuleType!: pulumi.Output<string | undefined>;
     /**
-     * Steps for StepScalingRule. See Block stepAdjustment below for details.
+     * Steps for StepScalingRule. See `stepAdjustment` below.
      */
     public readonly stepAdjustments!: pulumi.Output<outputs.ess.ScalingRuleStepAdjustment[] | undefined>;
     /**
@@ -239,6 +238,9 @@ export interface ScalingRuleState {
      * - TotalCapacity：[0, 1000]
      */
     adjustmentValue?: pulumi.Input<number>;
+    /**
+     * The unique identifier of the scaling rule.
+     */
     ari?: pulumi.Input<string>;
     /**
      * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
@@ -269,7 +271,7 @@ export interface ScalingRuleState {
      */
     scalingRuleType?: pulumi.Input<string>;
     /**
-     * Steps for StepScalingRule. See Block stepAdjustment below for details.
+     * Steps for StepScalingRule. See `stepAdjustment` below.
      */
     stepAdjustments?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleStepAdjustment>[]>;
     /**
@@ -325,7 +327,7 @@ export interface ScalingRuleArgs {
      */
     scalingRuleType?: pulumi.Input<string>;
     /**
-     * Steps for StepScalingRule. See Block stepAdjustment below for details.
+     * Steps for StepScalingRule. See `stepAdjustment` below.
      */
     stepAdjustments?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleStepAdjustment>[]>;
     /**

@@ -151,11 +151,10 @@ type EciScalingConfigurationContainer struct {
 	Args []string `pulumi:"args"`
 	// The commands run by the init container.
 	Commands []string `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container group.
+	// The amount of CPU resources allocated to the container.
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of environmentVars.
-	// See Block_environment_var_in_init_container below for details.
-	// See Block_environment_var_in_container below for details.
+	// See `environmentVars` below for details.
 	EnvironmentVars []EciScalingConfigurationContainerEnvironmentVar `pulumi:"environmentVars"`
 	// The number GPUs.
 	Gpu *int `pulumi:"gpu"`
@@ -183,12 +182,11 @@ type EciScalingConfigurationContainer struct {
 	LivenessProbeTcpSocketPort *int `pulumi:"livenessProbeTcpSocketPort"`
 	// The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
 	LivenessProbeTimeoutSeconds *int `pulumi:"livenessProbeTimeoutSeconds"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container.
 	Memory *float64 `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name *string `pulumi:"name"`
-	// The structure of port. See Block_port_in_init_container below
-	// for details.
+	// The structure of port. See `ports` below for details.
 	Ports []EciScalingConfigurationContainerPort `pulumi:"ports"`
 	// Commands that you want to run in containers when you use the CLI to perform readiness probes.
 	ReadinessProbeExecCommands []string `pulumi:"readinessProbeExecCommands"`
@@ -211,8 +209,7 @@ type EciScalingConfigurationContainer struct {
 	// The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
 	ReadinessProbeTimeoutSeconds *int `pulumi:"readinessProbeTimeoutSeconds"`
 	// The structure of volumeMounts.
-	// See Block_volume_mount_in_init_container below for details.
-	// See Block_volume_mount_in_container below for details.
+	// See `volumeMounts` below for details.
 	VolumeMounts []EciScalingConfigurationContainerVolumeMount `pulumi:"volumeMounts"`
 	// The working directory of the container.
 	WorkingDir *string `pulumi:"workingDir"`
@@ -234,11 +231,10 @@ type EciScalingConfigurationContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// The commands run by the init container.
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container group.
+	// The amount of CPU resources allocated to the container.
 	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
 	// The structure of environmentVars.
-	// See Block_environment_var_in_init_container below for details.
-	// See Block_environment_var_in_container below for details.
+	// See `environmentVars` below for details.
 	EnvironmentVars EciScalingConfigurationContainerEnvironmentVarArrayInput `pulumi:"environmentVars"`
 	// The number GPUs.
 	Gpu pulumi.IntPtrInput `pulumi:"gpu"`
@@ -266,12 +262,11 @@ type EciScalingConfigurationContainerArgs struct {
 	LivenessProbeTcpSocketPort pulumi.IntPtrInput `pulumi:"livenessProbeTcpSocketPort"`
 	// The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
 	LivenessProbeTimeoutSeconds pulumi.IntPtrInput `pulumi:"livenessProbeTimeoutSeconds"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container.
 	Memory pulumi.Float64PtrInput `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The structure of port. See Block_port_in_init_container below
-	// for details.
+	// The structure of port. See `ports` below for details.
 	Ports EciScalingConfigurationContainerPortArrayInput `pulumi:"ports"`
 	// Commands that you want to run in containers when you use the CLI to perform readiness probes.
 	ReadinessProbeExecCommands pulumi.StringArrayInput `pulumi:"readinessProbeExecCommands"`
@@ -294,8 +289,7 @@ type EciScalingConfigurationContainerArgs struct {
 	// The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
 	ReadinessProbeTimeoutSeconds pulumi.IntPtrInput `pulumi:"readinessProbeTimeoutSeconds"`
 	// The structure of volumeMounts.
-	// See Block_volume_mount_in_init_container below for details.
-	// See Block_volume_mount_in_container below for details.
+	// See `volumeMounts` below for details.
 	VolumeMounts EciScalingConfigurationContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// The working directory of the container.
 	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
@@ -362,14 +356,13 @@ func (o EciScalingConfigurationContainerOutput) Commands() pulumi.StringArrayOut
 	return o.ApplyT(func(v EciScalingConfigurationContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
-// The amount of CPU resources allocated to the container group.
+// The amount of CPU resources allocated to the container.
 func (o EciScalingConfigurationContainerOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
 
 // The structure of environmentVars.
-// See Block_environment_var_in_init_container below for details.
-// See Block_environment_var_in_container below for details.
+// See `environmentVars` below for details.
 func (o EciScalingConfigurationContainerOutput) EnvironmentVars() EciScalingConfigurationContainerEnvironmentVarArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) []EciScalingConfigurationContainerEnvironmentVar {
 		return v.EnvironmentVars
@@ -441,18 +434,17 @@ func (o EciScalingConfigurationContainerOutput) LivenessProbeTimeoutSeconds() pu
 	return o.ApplyT(func(v EciScalingConfigurationContainer) *int { return v.LivenessProbeTimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
-// The amount of memory resources allocated to the container group.
+// The amount of memory resources allocated to the container.
 func (o EciScalingConfigurationContainerOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
 
-// The name of the volume.
+// The name of the mounted volume.
 func (o EciScalingConfigurationContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The structure of port. See Block_port_in_init_container below
-// for details.
+// The structure of port. See `ports` below for details.
 func (o EciScalingConfigurationContainerOutput) Ports() EciScalingConfigurationContainerPortArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) []EciScalingConfigurationContainerPort { return v.Ports }).(EciScalingConfigurationContainerPortArrayOutput)
 }
@@ -508,8 +500,7 @@ func (o EciScalingConfigurationContainerOutput) ReadinessProbeTimeoutSeconds() p
 }
 
 // The structure of volumeMounts.
-// See Block_volume_mount_in_init_container below for details.
-// See Block_volume_mount_in_container below for details.
+// See `volumeMounts` below for details.
 func (o EciScalingConfigurationContainerOutput) VolumeMounts() EciScalingConfigurationContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainer) []EciScalingConfigurationContainerVolumeMount {
 		return v.VolumeMounts
@@ -992,7 +983,9 @@ type EciScalingConfigurationImageRegistryCredential struct {
 	Password *string `pulumi:"password"`
 	// The address of the image repository. It is required when `imageRegistryCredential` is
 	// configured.
-	Server   *string `pulumi:"server"`
+	Server *string `pulumi:"server"`
+	// The username used to log on to the image repository. It is required
+	// when `imageRegistryCredential` is configured.
 	Username *string `pulumi:"username"`
 }
 
@@ -1013,7 +1006,9 @@ type EciScalingConfigurationImageRegistryCredentialArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The address of the image repository. It is required when `imageRegistryCredential` is
 	// configured.
-	Server   pulumi.StringPtrInput `pulumi:"server"`
+	Server pulumi.StringPtrInput `pulumi:"server"`
+	// The username used to log on to the image repository. It is required
+	// when `imageRegistryCredential` is configured.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -1080,6 +1075,8 @@ func (o EciScalingConfigurationImageRegistryCredentialOutput) Server() pulumi.St
 	return o.ApplyT(func(v EciScalingConfigurationImageRegistryCredential) *string { return v.Server }).(pulumi.StringPtrOutput)
 }
 
+// The username used to log on to the image repository. It is required
+// when `imageRegistryCredential` is configured.
 func (o EciScalingConfigurationImageRegistryCredentialOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationImageRegistryCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -1109,11 +1106,10 @@ type EciScalingConfigurationInitContainer struct {
 	Args []string `pulumi:"args"`
 	// The commands run by the init container.
 	Commands []string `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container group.
+	// The amount of CPU resources allocated to the container.
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of environmentVars.
-	// See Block_environment_var_in_init_container below for details.
-	// See Block_environment_var_in_container below for details.
+	// See `environmentVars` below for details.
 	EnvironmentVars []EciScalingConfigurationInitContainerEnvironmentVar `pulumi:"environmentVars"`
 	// The number GPUs.
 	Gpu *int `pulumi:"gpu"`
@@ -1121,16 +1117,13 @@ type EciScalingConfigurationInitContainer struct {
 	Image *string `pulumi:"image"`
 	// The restart policy of the image.
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container.
 	Memory *float64 `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name *string `pulumi:"name"`
-	// The structure of port. See Block_port_in_init_container below
-	// for details.
+	// The structure of port. See `ports` below for details.
 	Ports []EciScalingConfigurationInitContainerPort `pulumi:"ports"`
-	// The structure of volumeMounts.
-	// See Block_volume_mount_in_init_container below for details.
-	// See Block_volume_mount_in_container below for details.
+	// The structure of volumeMounts. See `volumeMounts` below for details.
 	VolumeMounts []EciScalingConfigurationInitContainerVolumeMount `pulumi:"volumeMounts"`
 	// The working directory of the container.
 	WorkingDir *string `pulumi:"workingDir"`
@@ -1152,11 +1145,10 @@ type EciScalingConfigurationInitContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// The commands run by the init container.
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
-	// The amount of CPU resources allocated to the container group.
+	// The amount of CPU resources allocated to the container.
 	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
 	// The structure of environmentVars.
-	// See Block_environment_var_in_init_container below for details.
-	// See Block_environment_var_in_container below for details.
+	// See `environmentVars` below for details.
 	EnvironmentVars EciScalingConfigurationInitContainerEnvironmentVarArrayInput `pulumi:"environmentVars"`
 	// The number GPUs.
 	Gpu pulumi.IntPtrInput `pulumi:"gpu"`
@@ -1164,16 +1156,13 @@ type EciScalingConfigurationInitContainerArgs struct {
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The restart policy of the image.
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container.
 	Memory pulumi.Float64PtrInput `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The structure of port. See Block_port_in_init_container below
-	// for details.
+	// The structure of port. See `ports` below for details.
 	Ports EciScalingConfigurationInitContainerPortArrayInput `pulumi:"ports"`
-	// The structure of volumeMounts.
-	// See Block_volume_mount_in_init_container below for details.
-	// See Block_volume_mount_in_container below for details.
+	// The structure of volumeMounts. See `volumeMounts` below for details.
 	VolumeMounts EciScalingConfigurationInitContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
 	// The working directory of the container.
 	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
@@ -1240,14 +1229,13 @@ func (o EciScalingConfigurationInitContainerOutput) Commands() pulumi.StringArra
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
-// The amount of CPU resources allocated to the container group.
+// The amount of CPU resources allocated to the container.
 func (o EciScalingConfigurationInitContainerOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
 
 // The structure of environmentVars.
-// See Block_environment_var_in_init_container below for details.
-// See Block_environment_var_in_container below for details.
+// See `environmentVars` below for details.
 func (o EciScalingConfigurationInitContainerOutput) EnvironmentVars() EciScalingConfigurationInitContainerEnvironmentVarArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []EciScalingConfigurationInitContainerEnvironmentVar {
 		return v.EnvironmentVars
@@ -1269,27 +1257,24 @@ func (o EciScalingConfigurationInitContainerOutput) ImagePullPolicy() pulumi.Str
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *string { return v.ImagePullPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The amount of memory resources allocated to the container group.
+// The amount of memory resources allocated to the container.
 func (o EciScalingConfigurationInitContainerOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
 
-// The name of the volume.
+// The name of the mounted volume.
 func (o EciScalingConfigurationInitContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The structure of port. See Block_port_in_init_container below
-// for details.
+// The structure of port. See `ports` below for details.
 func (o EciScalingConfigurationInitContainerOutput) Ports() EciScalingConfigurationInitContainerPortArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []EciScalingConfigurationInitContainerPort {
 		return v.Ports
 	}).(EciScalingConfigurationInitContainerPortArrayOutput)
 }
 
-// The structure of volumeMounts.
-// See Block_volume_mount_in_init_container below for details.
-// See Block_volume_mount_in_container below for details.
+// The structure of volumeMounts. See `volumeMounts` below for details.
 func (o EciScalingConfigurationInitContainerOutput) VolumeMounts() EciScalingConfigurationInitContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainer) []EciScalingConfigurationInitContainerVolumeMount {
 		return v.VolumeMounts
@@ -1662,11 +1647,12 @@ func (o EciScalingConfigurationInitContainerVolumeMountArrayOutput) Index(i pulu
 
 type EciScalingConfigurationVolume struct {
 	// ConfigFileVolumeConfigFileToPaths.
-	// See Block_config_file_volume_config_file_to_path below for details.
+	// See `configFileVolumeConfigFileToPaths` below for details.
 	ConfigFileVolumeConfigFileToPaths []EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath `pulumi:"configFileVolumeConfigFileToPaths"`
 	// The ID of DiskVolume.
-	DiskVolumeDiskId   *string `pulumi:"diskVolumeDiskId"`
-	DiskVolumeDiskSize *int    `pulumi:"diskVolumeDiskSize"`
+	DiskVolumeDiskId *string `pulumi:"diskVolumeDiskId"`
+	// The disk size of DiskVolume.
+	DiskVolumeDiskSize *int `pulumi:"diskVolumeDiskSize"`
 	// The system type of DiskVolume.
 	DiskVolumeFsType *string `pulumi:"diskVolumeFsType"`
 	// The name of the FlexVolume driver.
@@ -1704,11 +1690,12 @@ type EciScalingConfigurationVolumeInput interface {
 
 type EciScalingConfigurationVolumeArgs struct {
 	// ConfigFileVolumeConfigFileToPaths.
-	// See Block_config_file_volume_config_file_to_path below for details.
+	// See `configFileVolumeConfigFileToPaths` below for details.
 	ConfigFileVolumeConfigFileToPaths EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayInput `pulumi:"configFileVolumeConfigFileToPaths"`
 	// The ID of DiskVolume.
-	DiskVolumeDiskId   pulumi.StringPtrInput `pulumi:"diskVolumeDiskId"`
-	DiskVolumeDiskSize pulumi.IntPtrInput    `pulumi:"diskVolumeDiskSize"`
+	DiskVolumeDiskId pulumi.StringPtrInput `pulumi:"diskVolumeDiskId"`
+	// The disk size of DiskVolume.
+	DiskVolumeDiskSize pulumi.IntPtrInput `pulumi:"diskVolumeDiskSize"`
 	// The system type of DiskVolume.
 	DiskVolumeFsType pulumi.StringPtrInput `pulumi:"diskVolumeFsType"`
 	// The name of the FlexVolume driver.
@@ -1785,7 +1772,7 @@ func (o EciScalingConfigurationVolumeOutput) ToEciScalingConfigurationVolumeOutp
 }
 
 // ConfigFileVolumeConfigFileToPaths.
-// See Block_config_file_volume_config_file_to_path below for details.
+// See `configFileVolumeConfigFileToPaths` below for details.
 func (o EciScalingConfigurationVolumeOutput) ConfigFileVolumeConfigFileToPaths() EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput {
 	return o.ApplyT(func(v EciScalingConfigurationVolume) []EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath {
 		return v.ConfigFileVolumeConfigFileToPaths
@@ -1797,6 +1784,7 @@ func (o EciScalingConfigurationVolumeOutput) DiskVolumeDiskId() pulumi.StringPtr
 	return o.ApplyT(func(v EciScalingConfigurationVolume) *string { return v.DiskVolumeDiskId }).(pulumi.StringPtrOutput)
 }
 
+// The disk size of DiskVolume.
 func (o EciScalingConfigurationVolumeOutput) DiskVolumeDiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationVolume) *int { return v.DiskVolumeDiskSize }).(pulumi.IntPtrOutput)
 }
@@ -1977,18 +1965,30 @@ func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput
 }
 
 type ScalingConfigurationDataDisk struct {
+	// The id of auto snapshot policy for data disk.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	Category             *string `pulumi:"category"`
-	DeleteWithInstance   *bool   `pulumi:"deleteWithInstance"`
-	Description          *string `pulumi:"description"`
+	// Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` and `cloud`.
+	Category *string `pulumi:"category"`
+	// Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
+	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	Description *string `pulumi:"description"`
+	// The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+	//
 	// Deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
-	Device           *string `pulumi:"device"`
-	Encrypted        *bool   `pulumi:"encrypted"`
-	KmsKeyId         *string `pulumi:"kmsKeyId"`
-	Name             *string `pulumi:"name"`
+	Device *string `pulumi:"device"`
+	// Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+	Encrypted *bool `pulumi:"encrypted"`
+	// The CMK ID for data disk N. Valid values of N: 1 to 16.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+	Name *string `pulumi:"name"`
+	// The performance level of the ESSD used as data disk.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	Size             *int    `pulumi:"size"`
-	SnapshotId       *string `pulumi:"snapshotId"`
+	// Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloudEssd disk.
+	Size *int `pulumi:"size"`
+	// Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
+	SnapshotId *string `pulumi:"snapshotId"`
 }
 
 // ScalingConfigurationDataDiskInput is an input type that accepts ScalingConfigurationDataDiskArgs and ScalingConfigurationDataDiskOutput values.
@@ -2003,18 +2003,30 @@ type ScalingConfigurationDataDiskInput interface {
 }
 
 type ScalingConfigurationDataDiskArgs struct {
+	// The id of auto snapshot policy for data disk.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	Category             pulumi.StringPtrInput `pulumi:"category"`
-	DeleteWithInstance   pulumi.BoolPtrInput   `pulumi:"deleteWithInstance"`
-	Description          pulumi.StringPtrInput `pulumi:"description"`
+	// Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` and `cloud`.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
+	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+	//
 	// Deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
-	Device           pulumi.StringPtrInput `pulumi:"device"`
-	Encrypted        pulumi.BoolPtrInput   `pulumi:"encrypted"`
-	KmsKeyId         pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	Name             pulumi.StringPtrInput `pulumi:"name"`
+	Device pulumi.StringPtrInput `pulumi:"device"`
+	// Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// The CMK ID for data disk N. Valid values of N: 1 to 16.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	// The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The performance level of the ESSD used as data disk.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	Size             pulumi.IntPtrInput    `pulumi:"size"`
-	SnapshotId       pulumi.StringPtrInput `pulumi:"snapshotId"`
+	// Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloudEssd disk.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+	// Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
 
 func (ScalingConfigurationDataDiskArgs) ElementType() reflect.Type {
@@ -2068,47 +2080,59 @@ func (o ScalingConfigurationDataDiskOutput) ToScalingConfigurationDataDiskOutput
 	return o
 }
 
+// The id of auto snapshot policy for data disk.
 func (o ScalingConfigurationDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` and `cloud`.
 func (o ScalingConfigurationDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
 func (o ScalingConfigurationDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
 
+// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 func (o ScalingConfigurationDataDiskOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+//
 // Deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
 func (o ScalingConfigurationDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
 func (o ScalingConfigurationDataDiskOutput) Encrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
 }
 
+// The CMK ID for data disk N. Valid values of N: 1 to 16.
 func (o ScalingConfigurationDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
+// The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 func (o ScalingConfigurationDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The performance level of the ESSD used as data disk.
 func (o ScalingConfigurationDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
+// Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloudEssd disk.
 func (o ScalingConfigurationDataDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
+// Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
 func (o ScalingConfigurationDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -2134,10 +2158,14 @@ func (o ScalingConfigurationDataDiskArrayOutput) Index(i pulumi.IntInput) Scalin
 }
 
 type ScalingConfigurationInstancePatternInfo struct {
-	Cores               *int     `pulumi:"cores"`
-	InstanceFamilyLevel *string  `pulumi:"instanceFamilyLevel"`
-	MaxPrice            *float64 `pulumi:"maxPrice"`
-	Memory              *float64 `pulumi:"memory"`
+	// The number of vCPUs that are specified for an instance type in instancePatternInfo.
+	Cores *int `pulumi:"cores"`
+	// The instance family level in instancePatternInfo.
+	InstanceFamilyLevel *string `pulumi:"instanceFamilyLevel"`
+	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+	MaxPrice *float64 `pulumi:"maxPrice"`
+	// The memory size that is specified for an instance type in instancePatternInfo.
+	Memory *float64 `pulumi:"memory"`
 }
 
 // ScalingConfigurationInstancePatternInfoInput is an input type that accepts ScalingConfigurationInstancePatternInfoArgs and ScalingConfigurationInstancePatternInfoOutput values.
@@ -2152,10 +2180,14 @@ type ScalingConfigurationInstancePatternInfoInput interface {
 }
 
 type ScalingConfigurationInstancePatternInfoArgs struct {
-	Cores               pulumi.IntPtrInput     `pulumi:"cores"`
-	InstanceFamilyLevel pulumi.StringPtrInput  `pulumi:"instanceFamilyLevel"`
-	MaxPrice            pulumi.Float64PtrInput `pulumi:"maxPrice"`
-	Memory              pulumi.Float64PtrInput `pulumi:"memory"`
+	// The number of vCPUs that are specified for an instance type in instancePatternInfo.
+	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// The instance family level in instancePatternInfo.
+	InstanceFamilyLevel pulumi.StringPtrInput `pulumi:"instanceFamilyLevel"`
+	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+	MaxPrice pulumi.Float64PtrInput `pulumi:"maxPrice"`
+	// The memory size that is specified for an instance type in instancePatternInfo.
+	Memory pulumi.Float64PtrInput `pulumi:"memory"`
 }
 
 func (ScalingConfigurationInstancePatternInfoArgs) ElementType() reflect.Type {
@@ -2209,18 +2241,22 @@ func (o ScalingConfigurationInstancePatternInfoOutput) ToScalingConfigurationIns
 	return o
 }
 
+// The number of vCPUs that are specified for an instance type in instancePatternInfo.
 func (o ScalingConfigurationInstancePatternInfoOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *int { return v.Cores }).(pulumi.IntPtrOutput)
 }
 
+// The instance family level in instancePatternInfo.
 func (o ScalingConfigurationInstancePatternInfoOutput) InstanceFamilyLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *string { return v.InstanceFamilyLevel }).(pulumi.StringPtrOutput)
 }
 
+// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
 func (o ScalingConfigurationInstancePatternInfoOutput) MaxPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *float64 { return v.MaxPrice }).(pulumi.Float64PtrOutput)
 }
 
+// The memory size that is specified for an instance type in instancePatternInfo.
 func (o ScalingConfigurationInstancePatternInfoOutput) Memory() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationInstancePatternInfo) *float64 { return v.Memory }).(pulumi.Float64PtrOutput)
 }
@@ -2247,8 +2283,9 @@ func (o ScalingConfigurationInstancePatternInfoArrayOutput) Index(i pulumi.IntIn
 
 type ScalingConfigurationSpotPriceLimit struct {
 	// Resource type of an ECS instance.
-	InstanceType *string  `pulumi:"instanceType"`
-	PriceLimit   *float64 `pulumi:"priceLimit"`
+	InstanceType *string `pulumi:"instanceType"`
+	// Price limit hourly of instance type, 2 decimals is allowed at most.
+	PriceLimit *float64 `pulumi:"priceLimit"`
 }
 
 // ScalingConfigurationSpotPriceLimitInput is an input type that accepts ScalingConfigurationSpotPriceLimitArgs and ScalingConfigurationSpotPriceLimitOutput values.
@@ -2264,8 +2301,9 @@ type ScalingConfigurationSpotPriceLimitInput interface {
 
 type ScalingConfigurationSpotPriceLimitArgs struct {
 	// Resource type of an ECS instance.
-	InstanceType pulumi.StringPtrInput  `pulumi:"instanceType"`
-	PriceLimit   pulumi.Float64PtrInput `pulumi:"priceLimit"`
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Price limit hourly of instance type, 2 decimals is allowed at most.
+	PriceLimit pulumi.Float64PtrInput `pulumi:"priceLimit"`
 }
 
 func (ScalingConfigurationSpotPriceLimitArgs) ElementType() reflect.Type {
@@ -2324,6 +2362,7 @@ func (o ScalingConfigurationSpotPriceLimitOutput) InstanceType() pulumi.StringPt
 	return o.ApplyT(func(v ScalingConfigurationSpotPriceLimit) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
+// Price limit hourly of instance type, 2 decimals is allowed at most.
 func (o ScalingConfigurationSpotPriceLimitOutput) PriceLimit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationSpotPriceLimit) *float64 { return v.PriceLimit }).(pulumi.Float64PtrOutput)
 }
@@ -2349,7 +2388,9 @@ func (o ScalingConfigurationSpotPriceLimitArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type ScalingGroupVServerGroupsVserverGroup struct {
-	LoadbalancerId    string                                                  `pulumi:"loadbalancerId"`
+	// Loadbalancer server ID of VServer Group.
+	LoadbalancerId string `pulumi:"loadbalancerId"`
+	// A list of VServer Group attributes. See `vserverAttributes` below.
 	VserverAttributes []ScalingGroupVServerGroupsVserverGroupVserverAttribute `pulumi:"vserverAttributes"`
 }
 
@@ -2365,7 +2406,9 @@ type ScalingGroupVServerGroupsVserverGroupInput interface {
 }
 
 type ScalingGroupVServerGroupsVserverGroupArgs struct {
-	LoadbalancerId    pulumi.StringInput                                              `pulumi:"loadbalancerId"`
+	// Loadbalancer server ID of VServer Group.
+	LoadbalancerId pulumi.StringInput `pulumi:"loadbalancerId"`
+	// A list of VServer Group attributes. See `vserverAttributes` below.
 	VserverAttributes ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayInput `pulumi:"vserverAttributes"`
 }
 
@@ -2420,10 +2463,12 @@ func (o ScalingGroupVServerGroupsVserverGroupOutput) ToScalingGroupVServerGroups
 	return o
 }
 
+// Loadbalancer server ID of VServer Group.
 func (o ScalingGroupVServerGroupsVserverGroupOutput) LoadbalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroup) string { return v.LoadbalancerId }).(pulumi.StringOutput)
 }
 
+// A list of VServer Group attributes. See `vserverAttributes` below.
 func (o ScalingGroupVServerGroupsVserverGroupOutput) VserverAttributes() ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput {
 	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroup) []ScalingGroupVServerGroupsVserverGroupVserverAttribute {
 		return v.VserverAttributes
@@ -2451,9 +2496,12 @@ func (o ScalingGroupVServerGroupsVserverGroupArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ScalingGroupVServerGroupsVserverGroupVserverAttribute struct {
-	Port           int    `pulumi:"port"`
+	// The port will be used for VServer Group backend server.
+	Port int `pulumi:"port"`
+	// ID of VServer Group.
 	VserverGroupId string `pulumi:"vserverGroupId"`
-	Weight         int    `pulumi:"weight"`
+	// The weight of an ECS instance attached to the VServer Group.
+	Weight int `pulumi:"weight"`
 }
 
 // ScalingGroupVServerGroupsVserverGroupVserverAttributeInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs and ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput values.
@@ -2468,9 +2516,12 @@ type ScalingGroupVServerGroupsVserverGroupVserverAttributeInput interface {
 }
 
 type ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs struct {
-	Port           pulumi.IntInput    `pulumi:"port"`
+	// The port will be used for VServer Group backend server.
+	Port pulumi.IntInput `pulumi:"port"`
+	// ID of VServer Group.
 	VserverGroupId pulumi.StringInput `pulumi:"vserverGroupId"`
-	Weight         pulumi.IntInput    `pulumi:"weight"`
+	// The weight of an ECS instance attached to the VServer Group.
+	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
 func (ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs) ElementType() reflect.Type {
@@ -2524,14 +2575,17 @@ func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) ToScalingGr
 	return o
 }
 
+// The port will be used for VServer Group backend server.
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// ID of VServer Group.
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) VserverGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) string { return v.VserverGroupId }).(pulumi.StringOutput)
 }
 
+// The weight of an ECS instance attached to the VServer Group.
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) int { return v.Weight }).(pulumi.IntOutput)
 }
@@ -2557,9 +2611,12 @@ func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeArrayOutput) Index(
 }
 
 type ScalingRuleStepAdjustment struct {
+	// The lower bound of step.
 	MetricIntervalLowerBound *string `pulumi:"metricIntervalLowerBound"`
+	// The upper bound of step.
 	MetricIntervalUpperBound *string `pulumi:"metricIntervalUpperBound"`
-	ScalingAdjustment        *int    `pulumi:"scalingAdjustment"`
+	// The adjust value of step.
+	ScalingAdjustment *int `pulumi:"scalingAdjustment"`
 }
 
 // ScalingRuleStepAdjustmentInput is an input type that accepts ScalingRuleStepAdjustmentArgs and ScalingRuleStepAdjustmentOutput values.
@@ -2574,9 +2631,12 @@ type ScalingRuleStepAdjustmentInput interface {
 }
 
 type ScalingRuleStepAdjustmentArgs struct {
+	// The lower bound of step.
 	MetricIntervalLowerBound pulumi.StringPtrInput `pulumi:"metricIntervalLowerBound"`
+	// The upper bound of step.
 	MetricIntervalUpperBound pulumi.StringPtrInput `pulumi:"metricIntervalUpperBound"`
-	ScalingAdjustment        pulumi.IntPtrInput    `pulumi:"scalingAdjustment"`
+	// The adjust value of step.
+	ScalingAdjustment pulumi.IntPtrInput `pulumi:"scalingAdjustment"`
 }
 
 func (ScalingRuleStepAdjustmentArgs) ElementType() reflect.Type {
@@ -2630,14 +2690,17 @@ func (o ScalingRuleStepAdjustmentOutput) ToScalingRuleStepAdjustmentOutputWithCo
 	return o
 }
 
+// The lower bound of step.
 func (o ScalingRuleStepAdjustmentOutput) MetricIntervalLowerBound() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingRuleStepAdjustment) *string { return v.MetricIntervalLowerBound }).(pulumi.StringPtrOutput)
 }
 
+// The upper bound of step.
 func (o ScalingRuleStepAdjustmentOutput) MetricIntervalUpperBound() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingRuleStepAdjustment) *string { return v.MetricIntervalUpperBound }).(pulumi.StringPtrOutput)
 }
 
+// The adjust value of step.
 func (o ScalingRuleStepAdjustmentOutput) ScalingAdjustment() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ScalingRuleStepAdjustment) *int { return v.ScalingAdjustment }).(pulumi.IntPtrOutput)
 }

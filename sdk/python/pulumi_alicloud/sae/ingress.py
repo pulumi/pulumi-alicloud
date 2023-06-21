@@ -21,17 +21,23 @@ class IngressArgs:
                  rules: pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]],
                  slb_id: pulumi.Input[str],
                  cert_id: Optional[pulumi.Input[str]] = None,
+                 cert_ids: Optional[pulumi.Input[str]] = None,
                  default_rule: Optional[pulumi.Input['IngressDefaultRuleArgs']] = None,
-                 description: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 listener_protocol: Optional[pulumi.Input[str]] = None,
+                 load_balance_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Ingress resource.
         :param pulumi.Input[int] listener_port: SLB listening port.
-        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
-        :param pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+        :param pulumi.Input[str] namespace_id: The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
+        :param pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         :param pulumi.Input[str] slb_id: SLB ID.
-        :param pulumi.Input[str] cert_id: Cert Id.
-        :param pulumi.Input['IngressDefaultRuleArgs'] default_rule: Default Rule.
+        :param pulumi.Input[str] cert_id: The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
+        :param pulumi.Input[str] cert_ids: The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+        :param pulumi.Input['IngressDefaultRuleArgs'] default_rule: Default Rule. See `default_rule` below.
         :param pulumi.Input[str] description: Description.
+        :param pulumi.Input[str] listener_protocol: The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+        :param pulumi.Input[str] load_balance_type: The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
         """
         pulumi.set(__self__, "listener_port", listener_port)
         pulumi.set(__self__, "namespace_id", namespace_id)
@@ -39,10 +45,16 @@ class IngressArgs:
         pulumi.set(__self__, "slb_id", slb_id)
         if cert_id is not None:
             pulumi.set(__self__, "cert_id", cert_id)
+        if cert_ids is not None:
+            pulumi.set(__self__, "cert_ids", cert_ids)
         if default_rule is not None:
             pulumi.set(__self__, "default_rule", default_rule)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if listener_protocol is not None:
+            pulumi.set(__self__, "listener_protocol", listener_protocol)
+        if load_balance_type is not None:
+            pulumi.set(__self__, "load_balance_type", load_balance_type)
 
     @property
     @pulumi.getter(name="listenerPort")
@@ -60,7 +72,7 @@ class IngressArgs:
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Input[str]:
         """
-        The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+        The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -72,7 +84,7 @@ class IngressArgs:
     @pulumi.getter
     def rules(self) -> pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]]:
         """
-        Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+        Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         """
         return pulumi.get(self, "rules")
 
@@ -96,7 +108,7 @@ class IngressArgs:
     @pulumi.getter(name="certId")
     def cert_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cert Id.
+        The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
         """
         return pulumi.get(self, "cert_id")
 
@@ -105,10 +117,22 @@ class IngressArgs:
         pulumi.set(self, "cert_id", value)
 
     @property
+    @pulumi.getter(name="certIds")
+    def cert_ids(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+        """
+        return pulumi.get(self, "cert_ids")
+
+    @cert_ids.setter
+    def cert_ids(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_ids", value)
+
+    @property
     @pulumi.getter(name="defaultRule")
     def default_rule(self) -> Optional[pulumi.Input['IngressDefaultRuleArgs']]:
         """
-        Default Rule.
+        Default Rule. See `default_rule` below.
         """
         return pulumi.get(self, "default_rule")
 
@@ -128,35 +152,71 @@ class IngressArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+    @property
+    @pulumi.getter(name="listenerProtocol")
+    def listener_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+        """
+        return pulumi.get(self, "listener_protocol")
+
+    @listener_protocol.setter
+    def listener_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "listener_protocol", value)
+
+    @property
+    @pulumi.getter(name="loadBalanceType")
+    def load_balance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+        """
+        return pulumi.get(self, "load_balance_type")
+
+    @load_balance_type.setter
+    def load_balance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balance_type", value)
+
 
 @pulumi.input_type
 class _IngressState:
     def __init__(__self__, *,
                  cert_id: Optional[pulumi.Input[str]] = None,
+                 cert_ids: Optional[pulumi.Input[str]] = None,
                  default_rule: Optional[pulumi.Input['IngressDefaultRuleArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  listener_port: Optional[pulumi.Input[int]] = None,
+                 listener_protocol: Optional[pulumi.Input[str]] = None,
+                 load_balance_type: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]]] = None,
                  slb_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Ingress resources.
-        :param pulumi.Input[str] cert_id: Cert Id.
-        :param pulumi.Input['IngressDefaultRuleArgs'] default_rule: Default Rule.
+        :param pulumi.Input[str] cert_id: The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
+        :param pulumi.Input[str] cert_ids: The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+        :param pulumi.Input['IngressDefaultRuleArgs'] default_rule: Default Rule. See `default_rule` below.
         :param pulumi.Input[str] description: Description.
         :param pulumi.Input[int] listener_port: SLB listening port.
-        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
-        :param pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+        :param pulumi.Input[str] listener_protocol: The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+        :param pulumi.Input[str] load_balance_type: The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+        :param pulumi.Input[str] namespace_id: The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
+        :param pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         :param pulumi.Input[str] slb_id: SLB ID.
         """
         if cert_id is not None:
             pulumi.set(__self__, "cert_id", cert_id)
+        if cert_ids is not None:
+            pulumi.set(__self__, "cert_ids", cert_ids)
         if default_rule is not None:
             pulumi.set(__self__, "default_rule", default_rule)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if listener_port is not None:
             pulumi.set(__self__, "listener_port", listener_port)
+        if listener_protocol is not None:
+            pulumi.set(__self__, "listener_protocol", listener_protocol)
+        if load_balance_type is not None:
+            pulumi.set(__self__, "load_balance_type", load_balance_type)
         if namespace_id is not None:
             pulumi.set(__self__, "namespace_id", namespace_id)
         if rules is not None:
@@ -168,7 +228,7 @@ class _IngressState:
     @pulumi.getter(name="certId")
     def cert_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Cert Id.
+        The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
         """
         return pulumi.get(self, "cert_id")
 
@@ -177,10 +237,22 @@ class _IngressState:
         pulumi.set(self, "cert_id", value)
 
     @property
+    @pulumi.getter(name="certIds")
+    def cert_ids(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+        """
+        return pulumi.get(self, "cert_ids")
+
+    @cert_ids.setter
+    def cert_ids(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_ids", value)
+
+    @property
     @pulumi.getter(name="defaultRule")
     def default_rule(self) -> Optional[pulumi.Input['IngressDefaultRuleArgs']]:
         """
-        Default Rule.
+        Default Rule. See `default_rule` below.
         """
         return pulumi.get(self, "default_rule")
 
@@ -213,10 +285,34 @@ class _IngressState:
         pulumi.set(self, "listener_port", value)
 
     @property
+    @pulumi.getter(name="listenerProtocol")
+    def listener_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+        """
+        return pulumi.get(self, "listener_protocol")
+
+    @listener_protocol.setter
+    def listener_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "listener_protocol", value)
+
+    @property
+    @pulumi.getter(name="loadBalanceType")
+    def load_balance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+        """
+        return pulumi.get(self, "load_balance_type")
+
+    @load_balance_type.setter
+    def load_balance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "load_balance_type", value)
+
+    @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+        The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -228,7 +324,7 @@ class _IngressState:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]]]:
         """
-        Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+        Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         """
         return pulumi.get(self, "rules")
 
@@ -255,9 +351,12 @@ class Ingress(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert_id: Optional[pulumi.Input[str]] = None,
+                 cert_ids: Optional[pulumi.Input[str]] = None,
                  default_rule: Optional[pulumi.Input[pulumi.InputType['IngressDefaultRuleArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  listener_port: Optional[pulumi.Input[int]] = None,
+                 listener_protocol: Optional[pulumi.Input[str]] = None,
+                 load_balance_type: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IngressRuleArgs']]]]] = None,
                  slb_id: Optional[pulumi.Input[str]] = None,
@@ -265,9 +364,9 @@ class Ingress(pulumi.CustomResource):
         """
         Provides a Serverless App Engine (SAE) Ingress resource.
 
-        For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://help.aliyun.com/document_detail/97792.html).
+        For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://www.alibabacloud.com/help/en/sae/latest/createingress).
 
-        > **NOTE:** Available in v1.137.0+.
+        > **NOTE:** Available since v1.137.0.
 
         ## Example Usage
 
@@ -332,12 +431,15 @@ class Ingress(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cert_id: Cert Id.
-        :param pulumi.Input[pulumi.InputType['IngressDefaultRuleArgs']] default_rule: Default Rule.
+        :param pulumi.Input[str] cert_id: The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
+        :param pulumi.Input[str] cert_ids: The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+        :param pulumi.Input[pulumi.InputType['IngressDefaultRuleArgs']] default_rule: Default Rule. See `default_rule` below.
         :param pulumi.Input[str] description: Description.
         :param pulumi.Input[int] listener_port: SLB listening port.
-        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IngressRuleArgs']]]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+        :param pulumi.Input[str] listener_protocol: The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+        :param pulumi.Input[str] load_balance_type: The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+        :param pulumi.Input[str] namespace_id: The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IngressRuleArgs']]]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         :param pulumi.Input[str] slb_id: SLB ID.
         """
         ...
@@ -349,9 +451,9 @@ class Ingress(pulumi.CustomResource):
         """
         Provides a Serverless App Engine (SAE) Ingress resource.
 
-        For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://help.aliyun.com/document_detail/97792.html).
+        For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://www.alibabacloud.com/help/en/sae/latest/createingress).
 
-        > **NOTE:** Available in v1.137.0+.
+        > **NOTE:** Available since v1.137.0.
 
         ## Example Usage
 
@@ -430,9 +532,12 @@ class Ingress(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert_id: Optional[pulumi.Input[str]] = None,
+                 cert_ids: Optional[pulumi.Input[str]] = None,
                  default_rule: Optional[pulumi.Input[pulumi.InputType['IngressDefaultRuleArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  listener_port: Optional[pulumi.Input[int]] = None,
+                 listener_protocol: Optional[pulumi.Input[str]] = None,
+                 load_balance_type: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IngressRuleArgs']]]]] = None,
                  slb_id: Optional[pulumi.Input[str]] = None,
@@ -446,11 +551,14 @@ class Ingress(pulumi.CustomResource):
             __props__ = IngressArgs.__new__(IngressArgs)
 
             __props__.__dict__["cert_id"] = cert_id
+            __props__.__dict__["cert_ids"] = cert_ids
             __props__.__dict__["default_rule"] = default_rule
             __props__.__dict__["description"] = description
             if listener_port is None and not opts.urn:
                 raise TypeError("Missing required property 'listener_port'")
             __props__.__dict__["listener_port"] = listener_port
+            __props__.__dict__["listener_protocol"] = listener_protocol
+            __props__.__dict__["load_balance_type"] = load_balance_type
             if namespace_id is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_id'")
             __props__.__dict__["namespace_id"] = namespace_id
@@ -471,9 +579,12 @@ class Ingress(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cert_id: Optional[pulumi.Input[str]] = None,
+            cert_ids: Optional[pulumi.Input[str]] = None,
             default_rule: Optional[pulumi.Input[pulumi.InputType['IngressDefaultRuleArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             listener_port: Optional[pulumi.Input[int]] = None,
+            listener_protocol: Optional[pulumi.Input[str]] = None,
+            load_balance_type: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IngressRuleArgs']]]]] = None,
             slb_id: Optional[pulumi.Input[str]] = None) -> 'Ingress':
@@ -484,12 +595,15 @@ class Ingress(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cert_id: Cert Id.
-        :param pulumi.Input[pulumi.InputType['IngressDefaultRuleArgs']] default_rule: Default Rule.
+        :param pulumi.Input[str] cert_id: The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
+        :param pulumi.Input[str] cert_ids: The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+        :param pulumi.Input[pulumi.InputType['IngressDefaultRuleArgs']] default_rule: Default Rule. See `default_rule` below.
         :param pulumi.Input[str] description: Description.
         :param pulumi.Input[int] listener_port: SLB listening port.
-        :param pulumi.Input[str] namespace_id: The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IngressRuleArgs']]]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+        :param pulumi.Input[str] listener_protocol: The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+        :param pulumi.Input[str] load_balance_type: The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+        :param pulumi.Input[str] namespace_id: The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IngressRuleArgs']]]] rules: Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         :param pulumi.Input[str] slb_id: SLB ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -497,9 +611,12 @@ class Ingress(pulumi.CustomResource):
         __props__ = _IngressState.__new__(_IngressState)
 
         __props__.__dict__["cert_id"] = cert_id
+        __props__.__dict__["cert_ids"] = cert_ids
         __props__.__dict__["default_rule"] = default_rule
         __props__.__dict__["description"] = description
         __props__.__dict__["listener_port"] = listener_port
+        __props__.__dict__["listener_protocol"] = listener_protocol
+        __props__.__dict__["load_balance_type"] = load_balance_type
         __props__.__dict__["namespace_id"] = namespace_id
         __props__.__dict__["rules"] = rules
         __props__.__dict__["slb_id"] = slb_id
@@ -509,15 +626,23 @@ class Ingress(pulumi.CustomResource):
     @pulumi.getter(name="certId")
     def cert_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Cert Id.
+        The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
         """
         return pulumi.get(self, "cert_id")
+
+    @property
+    @pulumi.getter(name="certIds")
+    def cert_ids(self) -> pulumi.Output[Optional[str]]:
+        """
+        The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+        """
+        return pulumi.get(self, "cert_ids")
 
     @property
     @pulumi.getter(name="defaultRule")
     def default_rule(self) -> pulumi.Output[Optional['outputs.IngressDefaultRule']]:
         """
-        Default Rule.
+        Default Rule. See `default_rule` below.
         """
         return pulumi.get(self, "default_rule")
 
@@ -538,10 +663,26 @@ class Ingress(pulumi.CustomResource):
         return pulumi.get(self, "listener_port")
 
     @property
+    @pulumi.getter(name="listenerProtocol")
+    def listener_protocol(self) -> pulumi.Output[str]:
+        """
+        The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+        """
+        return pulumi.get(self, "listener_protocol")
+
+    @property
+    @pulumi.getter(name="loadBalanceType")
+    def load_balance_type(self) -> pulumi.Output[str]:
+        """
+        The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+        """
+        return pulumi.get(self, "load_balance_type")
+
+    @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Output[str]:
         """
-        The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+        The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -549,7 +690,7 @@ class Ingress(pulumi.CustomResource):
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.IngressRule']]:
         """
-        Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+        Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         """
         return pulumi.get(self, "rules")
 

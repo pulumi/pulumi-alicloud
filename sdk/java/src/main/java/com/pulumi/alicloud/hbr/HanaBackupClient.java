@@ -31,6 +31,25 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.hbr.Vault;
+ * import com.pulumi.alicloud.hbr.VaultArgs;
+ * import com.pulumi.alicloud.hbr.HanaInstance;
+ * import com.pulumi.alicloud.hbr.HanaInstanceArgs;
  * import com.pulumi.alicloud.hbr.HanaBackupClient;
  * import com.pulumi.alicloud.hbr.HanaBackupClientArgs;
  * import java.util.List;
@@ -46,9 +65,76 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .build());
+ * 
+ *         final var exampleInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         final var exampleImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .securityGroups(exampleSecurityGroup.id())
+ *             .instanceName(&#34;terraform-example&#34;)
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .vswitchId(exampleSwitch.id())
+ *             .build());
+ * 
+ *         final var exampleResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
+ *             .build());
+ * 
+ *         var exampleVault = new Vault(&#34;exampleVault&#34;, VaultArgs.builder()        
+ *             .vaultName(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         var exampleHanaInstance = new HanaInstance(&#34;exampleHanaInstance&#34;, HanaInstanceArgs.builder()        
+ *             .alertSetting(&#34;INHERITED&#34;)
+ *             .hanaName(&#34;terraform-example&#34;)
+ *             .host(&#34;1.1.1.1&#34;)
+ *             .instanceNumber(1)
+ *             .password(&#34;YouPassword123&#34;)
+ *             .resourceGroupId(exampleResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .sid(&#34;HXE&#34;)
+ *             .useSsl(false)
+ *             .userName(&#34;admin&#34;)
+ *             .validateCertificate(false)
+ *             .vaultId(exampleVault.id())
+ *             .build());
+ * 
  *         var default_ = new HanaBackupClient(&#34;default&#34;, HanaBackupClientArgs.builder()        
- *             .vaultId(data.alicloud_hbr_vaults().default().vaults()[0].id())
- *             .clientInfo(&#34;[ { \&#34;instanceId\&#34;: \&#34;i-bp116lr******te9q2\&#34;, \&#34;clusterId\&#34;: \&#34;cl-000csy09q******9rfz9\&#34;, \&#34;sourceTypes\&#34;: [ \&#34;HANA\&#34; ]  }]&#34;)
+ *             .vaultId(exampleVault.id())
+ *             .clientInfo(Output.tuple(exampleInstance.id(), exampleHanaInstance.hanaInstanceId()).applyValue(values -&gt; {
+ *                 var id = values.t1;
+ *                 var hanaInstanceId = values.t2;
+ *                 return String.format(&#34;[ {{ \&#34;instanceId\&#34;: \&#34;%s\&#34;, \&#34;clusterId\&#34;: \&#34;%s\&#34;, \&#34;sourceTypes\&#34;: [ \&#34;HANA\&#34; ]  }}]&#34;, id,hanaInstanceId);
+ *             }))
  *             .alertSetting(&#34;INHERITED&#34;)
  *             .useHttps(true)
  *             .build());

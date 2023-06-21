@@ -47,18 +47,14 @@ public final class AliasState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Function Compute alias&#39; route configuration settings. Fields documented below.
-     * 
-     * **routing_config** includes the following arguments:
+     * The Function Compute alias&#39; route configuration settings. See `routing_config` below.
      * 
      */
     @Import(name="routingConfig")
     private @Nullable Output<AliasRoutingConfigArgs> routingConfig;
 
     /**
-     * @return The Function Compute alias&#39; route configuration settings. Fields documented below.
-     * 
-     * **routing_config** includes the following arguments:
+     * @return The Function Compute alias&#39; route configuration settings. See `routing_config` below.
      * 
      */
     public Optional<Output<AliasRoutingConfigArgs>> routingConfig() {
@@ -166,9 +162,7 @@ public final class AliasState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routingConfig The Function Compute alias&#39; route configuration settings. Fields documented below.
-         * 
-         * **routing_config** includes the following arguments:
+         * @param routingConfig The Function Compute alias&#39; route configuration settings. See `routing_config` below.
          * 
          * @return builder
          * 
@@ -179,9 +173,7 @@ public final class AliasState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routingConfig The Function Compute alias&#39; route configuration settings. Fields documented below.
-         * 
-         * **routing_config** includes the following arguments:
+         * @param routingConfig The Function Compute alias&#39; route configuration settings. See `routing_config` below.
          * 
          * @return builder
          * 

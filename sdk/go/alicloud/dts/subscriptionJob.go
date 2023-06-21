@@ -13,9 +13,9 @@ import (
 
 // Provides a DTS Subscription Job resource.
 //
-// For information about DTS Subscription Job and how to use it, see [What is Subscription Job](https://help.aliyun.com/document_detail/254791.html).
+// For information about DTS Subscription Job and how to use it, see [What is Subscription Job](https://www.alibabacloud.com/help/en/data-transmission-service/latest/configuresubscription).
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // ## Example Usage
 //
@@ -26,123 +26,143 @@ import (
 //
 // import (
 //
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
-// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-// "github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "dtsSubscriptionJob";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// creation := "Rds";
-// if param := cfg.Get("creation"); param != ""{
-// creation = param
-// }
-// defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// AvailableResourceCreation: pulumi.StringRef(creation),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-// VpcName: pulumi.String(name),
-// CidrBlock: pulumi.String("172.16.0.0/16"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-// VpcId: defaultNetwork.ID(),
-// CidrBlock: pulumi.String("172.16.0.0/24"),
-// ZoneId: *pulumi.String(defaultZones.Zones[0].Id),
-// VswitchName: pulumi.String(name),
-// })
-// if err != nil {
-// return err
-// }
-// instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
-// Engine: pulumi.String("MySQL"),
-// EngineVersion: pulumi.String("5.6"),
-// InstanceType: pulumi.String("rds.mysql.s1.small"),
-// InstanceStorage: pulumi.Int(10),
-// VswitchId: defaultSwitch.ID(),
-// InstanceName: pulumi.String(name),
-// })
-// if err != nil {
-// return err
-// }
-// var db []*rds.Database
 //
-//	for index := 0; index < 2; index++ {
-//	    key0 := index
-//	    _ := index
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			exampleRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//				Category:              pulumi.StringRef("Basic"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(exampleZones.Zones[0].Id),
+//				Engine:                pulumi.StringRef("MySQL"),
+//				EngineVersion:         pulumi.StringRef("8.0"),
+//				InstanceChargeType:    pulumi.StringRef("PostPaid"),
+//				Category:              pulumi.StringRef("Basic"),
+//				DbInstanceStorageType: pulumi.StringRef("cloud_essd"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.16.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VpcId:       exampleNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
+//				Engine:                pulumi.String("MySQL"),
+//				EngineVersion:         pulumi.String("8.0"),
+//				InstanceType:          *pulumi.String(exampleInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       *pulumi.String(exampleInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceChargeType:    pulumi.String("Postpaid"),
+//				InstanceName:          pulumi.String(name),
+//				VswitchId:             exampleSwitch.ID(),
+//				MonitoringPeriod:      pulumi.Int(60),
+//				DbInstanceStorageType: pulumi.String("cloud_essd"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					exampleSecurityGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleRdsAccount, err := rds.NewRdsAccount(ctx, "exampleRdsAccount", &rds.RdsAccountArgs{
+//				DbInstanceId:    exampleInstance.ID(),
+//				AccountName:     pulumi.String("example_name"),
+//				AccountPassword: pulumi.String("example_password"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleDatabase, err := rds.NewDatabase(ctx, "exampleDatabase", &rds.DatabaseArgs{
+//				InstanceId: exampleInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = rds.NewAccountPrivilege(ctx, "exampleAccountPrivilege", &rds.AccountPrivilegeArgs{
+//				InstanceId:  exampleInstance.ID(),
+//				AccountName: exampleRdsAccount.Name,
+//				Privilege:   pulumi.String("ReadWrite"),
+//				DbNames: pulumi.StringArray{
+//					exampleDatabase.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dts.NewSubscriptionJob(ctx, "exampleSubscriptionJob", &dts.SubscriptionJobArgs{
+//				DtsJobName:                 pulumi.String(name),
+//				PaymentType:                pulumi.String("PayAsYouGo"),
+//				SourceEndpointEngineName:   pulumi.String("MySQL"),
+//				SourceEndpointRegion:       *pulumi.String(exampleRegions.Regions[0].Id),
+//				SourceEndpointInstanceType: pulumi.String("RDS"),
+//				SourceEndpointInstanceId:   exampleInstance.ID(),
+//				SourceEndpointDatabaseName: exampleDatabase.Name,
+//				SourceEndpointUserName:     exampleRdsAccount.AccountName,
+//				SourceEndpointPassword:     exampleRdsAccount.AccountPassword,
+//				DbList: pulumi.All(exampleDatabase.Name, exampleDatabase.Name).ApplyT(func(_args []interface{}) (string, error) {
+//					exampleDatabaseName := _args[0].(string)
+//					exampleDatabaseName1 := _args[1].(string)
+//					return fmt.Sprintf("{\"%v\":{\"name\":\"%v\",\"all\":true}}", exampleDatabaseName, exampleDatabaseName1), nil
+//				}).(pulumi.StringOutput),
+//				SubscriptionInstanceNetworkType: pulumi.String("vpc"),
+//				SubscriptionInstanceVpcId:       exampleNetwork.ID(),
+//				SubscriptionInstanceVswitchId:   exampleSwitch.ID(),
+//				Status:                          pulumi.String("Normal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
 //
-// __res, err := rds.NewDatabase(ctx, fmt.Sprintf("db-%v", key0), &rds.DatabaseArgs{
-// InstanceId: instance.ID(),
-// Description: pulumi.String("from terraform"),
-// })
-// if err != nil {
-// return err
-// }
-// db = append(db, __res)
-// }
-// account, err := rds.NewAccount(ctx, "account", &rds.AccountArgs{
-// InstanceId: instance.ID(),
-// Password: pulumi.String("Test12345"),
-// Description: pulumi.String("from terraform"),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = rds.NewAccountPrivilege(ctx, "privilege", &rds.AccountPrivilegeArgs{
-// InstanceId: instance.ID(),
-// AccountName: account.Name,
-// Privilege: pulumi.String("ReadWrite"),
-// DbNames: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-alicloud:dts-subscriptionJob:SubscriptionJob.pp:44,17-26),
-// })
-// if err != nil {
-// return err
-// }
-// default1Networks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-// NameRegex: pulumi.StringRef("default-NODELETING"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// default1Switches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-// VpcId: pulumi.StringRef(data.Alicloud_vpcs.Default.Ids[0]),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// _, err = dts.NewSubscriptionJob(ctx, "defaultSubscriptionJob", &dts.SubscriptionJobArgs{
-// DtsJobName: pulumi.String(name),
-// PaymentType: pulumi.String("PayAsYouGo"),
-// SourceEndpointEngineName: pulumi.String("MySQL"),
-// SourceEndpointRegion: pulumi.String("cn-hangzhou"),
-// SourceEndpointInstanceType: pulumi.String("RDS"),
-// SourceEndpointInstanceId: instance.ID(),
-// SourceEndpointDatabaseName: pulumi.String("tfaccountpri_0"),
-// SourceEndpointUserName: pulumi.String("tftestprivilege"),
-// SourceEndpointPassword: pulumi.String("Test12345"),
-// DbList: pulumi.String("        {\"dtstestdata\": {\"name\": \"tfaccountpri_0\", \"all\": true}}\n"),
-// SubscriptionInstanceNetworkType: pulumi.String("vpc"),
-// SubscriptionInstanceVpcId: *pulumi.String(default1Networks.Ids[0]),
-// SubscriptionInstanceVswitchId: *pulumi.String(default1Switches.Ids[0]),
-// Status: pulumi.String("Normal"),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
 // ```
 //
 // ## Import

@@ -24,6 +24,8 @@ class ProjectArgs:
         :param pulumi.Input[str] name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
         :param pulumi.Input[Mapping[str, Any]] tags: Log project tags.
+               - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -75,6 +77,8 @@ class ProjectArgs:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Log project tags.
+        - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
         """
         return pulumi.get(self, "tags")
 
@@ -96,6 +100,8 @@ class _ProjectState:
         :param pulumi.Input[str] name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
         :param pulumi.Input[Mapping[str, Any]] tags: Log project tags.
+               - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -147,6 +153,8 @@ class _ProjectState:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
         Log project tags.
+        - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
         """
         return pulumi.get(self, "tags")
 
@@ -169,6 +177,8 @@ class Project(pulumi.CustomResource):
         The project is the resource management unit in Log Service and is used to isolate and control resources.
         You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
 
+        > **NOTE:** Available since v1.9.5.
+
         ## Example Usage
 
         Basic Usage
@@ -176,11 +186,16 @@ class Project(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         example = alicloud.log.Project("example",
-            description="created by terraform",
+            description="terraform-example",
             tags={
-                "test": "test",
+                "Created": "TF",
+                "For": "example",
             })
         ```
 
@@ -189,9 +204,13 @@ class Project(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         example_policy = alicloud.log.Project("examplePolicy",
-            description="created by terraform",
+            description="terraform-example",
             policy=\"\"\"{
           "Statement": [
             {
@@ -233,6 +252,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
         :param pulumi.Input[Mapping[str, Any]] tags: Log project tags.
+               - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
         """
         ...
     @overload
@@ -244,6 +265,8 @@ class Project(pulumi.CustomResource):
         The project is the resource management unit in Log Service and is used to isolate and control resources.
         You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
 
+        > **NOTE:** Available since v1.9.5.
+
         ## Example Usage
 
         Basic Usage
@@ -251,11 +274,16 @@ class Project(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         example = alicloud.log.Project("example",
-            description="created by terraform",
+            description="terraform-example",
             tags={
-                "test": "test",
+                "Created": "TF",
+                "For": "example",
             })
         ```
 
@@ -264,9 +292,13 @@ class Project(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         example_policy = alicloud.log.Project("examplePolicy",
-            description="created by terraform",
+            description="terraform-example",
             policy=\"\"\"{
           "Statement": [
             {
@@ -359,6 +391,8 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
         :param pulumi.Input[Mapping[str, Any]] tags: Log project tags.
+               - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+               - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -399,6 +433,8 @@ class Project(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
         Log project tags.
+        - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+        - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
         """
         return pulumi.get(self, "tags")
 

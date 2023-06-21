@@ -14,28 +14,7 @@ namespace Pulumi.AliCloud.Dts
     /// 
     /// For information about DTS Job Monitor Rule and how to use it, see [What is Job Monitor Rule](https://www.aliyun.com/product/dts).
     /// 
-    /// &gt; **NOTE:** Available in v1.134.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Dts.JobMonitorRule("example", new()
-    ///     {
-    ///         DtsJobId = "example_value",
-    ///         Type = "delay",
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.134.0.
     /// 
     /// ## Import
     /// 

@@ -36,6 +36,7 @@ from .ecs_snapshot_group import *
 from .eip import *
 from .eip_address import *
 from .eip_association import *
+from .eip_segment_address import *
 from .elasticity_assurance import *
 from .get_activations import *
 from .get_auto_snapshot_policies import *

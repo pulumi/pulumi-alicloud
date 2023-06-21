@@ -150,9 +150,9 @@ class Image(pulumi.CustomResource):
         """
         Provides a ECD Image resource.
 
-        For information about ECD Image and how to use it, see [What is Image](https://help.aliyun.com/document_detail/188382.html).
+        For information about ECD Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createimage).
 
-        > **NOTE:** Available in v1.146.0+.
+        > **NOTE:** Available since v1.146.0.
 
         ## Example Usage
 
@@ -162,37 +162,44 @@ class Image(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
             cidr_block="172.16.0.0/12",
+            enable_admin_access=True,
             desktop_access_type="Internet",
-            office_site_name="your_simple_office_site_name")
-        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+            office_site_name=name)
         default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
-            policy_group_name="your_policy_group_name",
-            clipboard="readwrite",
+            policy_group_name=name,
+            clipboard="read",
             local_drive="read",
+            usb_redirect="off",
+            watermark="off",
             authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                description="example_value",
-                cidr_ip="1.2.3.4/24",
+                description=name,
+                cidr_ip="1.2.3.45/24",
             )],
             authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
                 type="inflow",
                 policy="accept",
-                description="example_value",
+                description=name,
                 port_range="80/80",
                 ip_protocol="TCP",
                 priority="1",
-                cidr_ip="0.0.0.0/0",
+                cidr_ip="1.2.3.4/24",
             )])
+        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
         default_desktop = alicloud.eds.Desktop("defaultDesktop",
             office_site_id=default_simple_office_site.id,
             policy_group_id=default_ecd_policy_group.id,
             bundle_id=default_bundles.bundles[1].id,
-            desktop_name="your_desktop_name")
+            desktop_name=name)
         default_image = alicloud.eds.Image("defaultImage",
-            image_name="your_image_name",
+            image_name=name,
             desktop_id=default_desktop.id,
-            description="example_value")
+            description=name)
         ```
 
         ## Import
@@ -218,9 +225,9 @@ class Image(pulumi.CustomResource):
         """
         Provides a ECD Image resource.
 
-        For information about ECD Image and how to use it, see [What is Image](https://help.aliyun.com/document_detail/188382.html).
+        For information about ECD Image and how to use it, see [What is Image](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createimage).
 
-        > **NOTE:** Available in v1.146.0+.
+        > **NOTE:** Available since v1.146.0.
 
         ## Example Usage
 
@@ -230,37 +237,44 @@ class Image(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
             cidr_block="172.16.0.0/12",
+            enable_admin_access=True,
             desktop_access_type="Internet",
-            office_site_name="your_simple_office_site_name")
-        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+            office_site_name=name)
         default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
-            policy_group_name="your_policy_group_name",
-            clipboard="readwrite",
+            policy_group_name=name,
+            clipboard="read",
             local_drive="read",
+            usb_redirect="off",
+            watermark="off",
             authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                description="example_value",
-                cidr_ip="1.2.3.4/24",
+                description=name,
+                cidr_ip="1.2.3.45/24",
             )],
             authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
                 type="inflow",
                 policy="accept",
-                description="example_value",
+                description=name,
                 port_range="80/80",
                 ip_protocol="TCP",
                 priority="1",
-                cidr_ip="0.0.0.0/0",
+                cidr_ip="1.2.3.4/24",
             )])
+        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
         default_desktop = alicloud.eds.Desktop("defaultDesktop",
             office_site_id=default_simple_office_site.id,
             policy_group_id=default_ecd_policy_group.id,
             bundle_id=default_bundles.bundles[1].id,
-            desktop_name="your_desktop_name")
+            desktop_name=name)
         default_image = alicloud.eds.Image("defaultImage",
-            image_name="your_image_name",
+            image_name=name,
             desktop_id=default_desktop.id,
-            description="example_value")
+            description=name)
         ```
 
         ## Import

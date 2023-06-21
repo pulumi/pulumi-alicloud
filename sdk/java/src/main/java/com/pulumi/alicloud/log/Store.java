@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -49,8 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;created by terraform&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
@@ -71,6 +78,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.kms.Key;
+ * import com.pulumi.alicloud.kms.KeyArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -90,23 +102,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         final var exampleAccount = AlicloudFunctions.getAccount();
+ * 
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var exampleKey = new Key(&#34;exampleKey&#34;, KeyArgs.builder()        
+ *             .description(&#34;terraform-example&#34;)
+ *             .pendingWindowInDays(&#34;7&#34;)
+ *             .status(&#34;Enabled&#34;)
+ *             .build());
+ * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;created by terraform&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
  *             .project(exampleProject.name())
- *             .shardCount(3)
+ *             .shardCount(1)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
- *             .appendMeta(true)
  *             .encryptConf(StoreEncryptConfArgs.builder()
  *                 .enable(true)
  *                 .encryptType(&#34;default&#34;)
  *                 .userCmkInfo(StoreEncryptConfUserCmkInfoArgs.builder()
- *                     .cmkKeyId(&#34;your_cmk_key_id&#34;)
- *                     .arn(&#34;your_role_arn&#34;)
- *                     .regionId(&#34;you_cmk_region_id&#34;)
+ *                     .cmkKeyId(exampleKey.id())
+ *                     .arn(String.format(&#34;acs:ram::%s:role/aliyunlogdefaultrole&#34;, exampleAccount.applyValue(getAccountResult -&gt; getAccountResult.id())))
+ *                     .regionId(region)
  *                     .build())
  *                 .build())
  *             .build());

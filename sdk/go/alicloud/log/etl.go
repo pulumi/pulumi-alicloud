@@ -27,14 +27,22 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-//				Description: pulumi.String("created by terraform"),
+//				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -73,10 +81,10 @@ import (
 //				return err
 //			}
 //			_, err = log.NewEtl(ctx, "exampleEtl", &log.EtlArgs{
-//				EtlName:         pulumi.String("etl_name"),
+//				EtlName:         pulumi.String("terraform-example"),
 //				Project:         exampleProject.Name,
-//				DisplayName:     pulumi.String("display_name"),
-//				Description:     pulumi.String("etl_description"),
+//				DisplayName:     pulumi.String("terraform-example"),
+//				Description:     pulumi.String("terraform-example"),
 //				AccessKeyId:     pulumi.String("access_key_id"),
 //				AccessKeySecret: pulumi.String("access_key_secret"),
 //				Script:          pulumi.String("e_set('new','key')"),
@@ -97,106 +105,6 @@ import (
 //						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
 //						Project:         exampleProject.Name,
 //						Logstore:        example3.Name,
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// Stop the task in progress
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewEtl(ctx, "example", &log.EtlArgs{
-//				Status:          pulumi.Any(STOPPED),
-//				EtlName:         pulumi.String("etl_name"),
-//				Project:         pulumi.Any(alicloud_log_project.Example.Name),
-//				DisplayName:     pulumi.String("display_name"),
-//				Description:     pulumi.String("etl_description"),
-//				AccessKeyId:     pulumi.String("access_key_id"),
-//				AccessKeySecret: pulumi.String("access_key_secret"),
-//				Script:          pulumi.String("e_set('new','key')"),
-//				Logstore:        pulumi.Any(alicloud_log_store.Example.Name),
-//				EtlSinks: log.EtlEtlSinkArray{
-//					&log.EtlEtlSinkArgs{
-//						Name:            pulumi.String("target_name"),
-//						AccessKeyId:     pulumi.String("example2_access_key_id"),
-//						AccessKeySecret: pulumi.String("example2_access_key_secret"),
-//						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-//						Project:         pulumi.Any(alicloud_log_project.Example.Name),
-//						Logstore:        pulumi.Any(alicloud_log_store.Example2.Name),
-//					},
-//					&log.EtlEtlSinkArgs{
-//						Name:            pulumi.String("target_name2"),
-//						AccessKeyId:     pulumi.String("example3_access_key_id"),
-//						AccessKeySecret: pulumi.String("example3_access_key_secret"),
-//						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-//						Project:         pulumi.Any(alicloud_log_project.Example.Name),
-//						Logstore:        pulumi.Any(alicloud_log_store.Example3.Name),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ReStart the stopped task
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewEtl(ctx, "example", &log.EtlArgs{
-//				Status:          pulumi.Any(RUNNING),
-//				EtlName:         pulumi.String("etl_name"),
-//				Project:         pulumi.Any(alicloud_log_project.Example.Name),
-//				DisplayName:     pulumi.String("display_name"),
-//				Description:     pulumi.String("etl_description"),
-//				AccessKeyId:     pulumi.String("access_key_id"),
-//				AccessKeySecret: pulumi.String("access_key_secret"),
-//				Script:          pulumi.String("e_set('new','key')"),
-//				Logstore:        pulumi.Any(alicloud_log_store.Example.Name),
-//				EtlSinks: log.EtlEtlSinkArray{
-//					&log.EtlEtlSinkArgs{
-//						Name:            pulumi.String("target_name"),
-//						AccessKeyId:     pulumi.String("example2_access_key_id"),
-//						AccessKeySecret: pulumi.String("example2_access_key_secret"),
-//						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-//						Project:         pulumi.Any(alicloud_log_project.Example.Name),
-//						Logstore:        pulumi.Any(alicloud_log_store.Example2.Name),
-//					},
-//					&log.EtlEtlSinkArgs{
-//						Name:            pulumi.String("target_name2"),
-//						AccessKeyId:     pulumi.String("example3_access_key_id"),
-//						AccessKeySecret: pulumi.String("example3_access_key_secret"),
-//						Endpoint:        pulumi.String("cn-hangzhou.log.aliyuncs.com"),
-//						Project:         pulumi.Any(alicloud_log_project.Example.Name),
-//						Logstore:        pulumi.Any(alicloud_log_store.Example3.Name),
 //					},
 //				},
 //			})

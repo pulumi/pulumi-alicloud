@@ -175,7 +175,7 @@ def get_portfolios(ids: Optional[Sequence[str]] = None,
     import pulumi_alicloud as alicloud
 
     default = alicloud.servicecatalog.get_portfolios(ids=[alicloud_service_catalog_portfolio["default"]["id"]],
-        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        name_regex=alicloud_service_catalog_portfolio["default"]["name"])
     pulumi.export("alicloudServiceCatalogPortfolioExampleId", default.portfolios[0].id)
     ```
 
@@ -239,7 +239,7 @@ def get_portfolios_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     import pulumi_alicloud as alicloud
 
     default = alicloud.servicecatalog.get_portfolios(ids=[alicloud_service_catalog_portfolio["default"]["id"]],
-        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        name_regex=alicloud_service_catalog_portfolio["default"]["name"])
     pulumi.export("alicloudServiceCatalogPortfolioExampleId", default.portfolios[0].id)
     ```
 

@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<Inputs.ServiceNasConfigMountPointArgs>? _mountPoints;
 
         /// <summary>
-        /// Config the NAS mount points, including following attributes:
+        /// Config the NAS mount points.See `mount_points` below.
         /// </summary>
         public InputList<Inputs.ServiceNasConfigMountPointArgs> MountPoints
         {

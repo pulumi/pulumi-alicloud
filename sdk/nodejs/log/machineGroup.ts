@@ -15,8 +15,13 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "created by terraform"});
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
  * const exampleMachineGroup = new alicloud.log.MachineGroup("exampleMachineGroup", {
  *     project: exampleProject.name,
  *     identifyType: "ip",

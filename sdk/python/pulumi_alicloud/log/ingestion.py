@@ -336,11 +336,16 @@ class Ingestion(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         example_project = alicloud.log.Project("exampleProject",
-            description="created by terraform",
+            description="terraform-example",
             tags={
-                "test": "test",
+                "Created": "TF",
+                "For": "example",
             })
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
@@ -352,9 +357,9 @@ class Ingestion(pulumi.CustomResource):
         example_ingestion = alicloud.log.Ingestion("exampleIngestion",
             project=example_project.name,
             logstore=example_store.name,
-            ingestion_name="ingestion_name",
-            display_name="display_name",
-            description="oss2sls",
+            ingestion_name="terraform-example",
+            display_name="terraform-example",
+            description="terraform-example",
             interval="30m",
             run_immediately=True,
             time_zone="+0800",
@@ -422,11 +427,16 @@ class Ingestion(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
         example_project = alicloud.log.Project("exampleProject",
-            description="created by terraform",
+            description="terraform-example",
             tags={
-                "test": "test",
+                "Created": "TF",
+                "For": "example",
             })
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
@@ -438,9 +448,9 @@ class Ingestion(pulumi.CustomResource):
         example_ingestion = alicloud.log.Ingestion("exampleIngestion",
             project=example_project.name,
             logstore=example_store.name,
-            ingestion_name="ingestion_name",
-            display_name="display_name",
-            description="oss2sls",
+            ingestion_name="terraform-example",
+            display_name="terraform-example",
+            description="terraform-example",
             interval="30m",
             run_immediately=True,
             time_zone="+0800",

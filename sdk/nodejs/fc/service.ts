@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a Alicloud Function Compute Service resource. The resource is the base of launching Function and Trigger configuration.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+ *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createservice).
  *
  * > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
  *
@@ -18,6 +18,8 @@ import * as utilities from "../utilities";
  * > **NOTE:** Currently not all regions support Function Compute Service.
  * For more details supported regions, see [Service endpoints](https://www.alibabacloud.com/help/doc-detail/52984.htm)
  *
+ * > **NOTE:** Available since v1.93.0.
+ *
  * ## Example Usage
  *
  * Basic Usage
@@ -25,12 +27,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testaccalicloudfcservice";
- * const fooProject = new alicloud.log.Project("fooProject", {});
- * const fooStore = new alicloud.log.Store("fooStore", {project: fooProject.name});
- * const role = new alicloud.ram.Role("role", {
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultProject = new alicloud.log.Project("defaultProject", {});
+ * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
+ * const defaultRole = new alicloud.ram.Role("defaultRole", {
  *     document: `  {
  *       "Statement": [
  *         {
@@ -46,25 +51,23 @@ import * as utilities from "../utilities";
  *       "Version": "1"
  *   }
  * `,
- *     description: "this is a test",
+ *     description: "this is a example",
  *     force: true,
  * });
- * const attach = new alicloud.ram.RolePolicyAttachment("attach", {
- *     roleName: role.name,
+ * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment", {
+ *     roleName: defaultRole.name,
  *     policyName: "AliyunLogFullAccess",
  *     policyType: "System",
  * });
- * const fooService = new alicloud.fc.Service("fooService", {
- *     description: "tf unit test",
- *     role: role.arn,
+ * const defaultService = new alicloud.fc.Service("defaultService", {
+ *     description: "example-value",
+ *     role: defaultRole.arn,
  *     logConfig: {
- *         project: fooProject.name,
- *         logstore: fooStore.name,
+ *         project: defaultProject.name,
+ *         logstore: defaultStore.name,
  *         enableInstanceMetrics: true,
  *         enableRequestMetrics: true,
  *     },
- * }, {
- *     dependsOn: [attach],
  * });
  * ```
  * ## Module Support
@@ -120,7 +123,7 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModified!: pulumi.Output<string>;
     /**
-     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `logConfig` requires the following: (**NOTE:** If both `project` and `logstore` are empty, logConfig is considered to be empty or unset.)
+     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `logConfig` requires the following: (**NOTE:** If both `project` and `logstore` are empty, logConfig is considered to be empty or unset.). See `logConfig` below.
      */
     public readonly logConfig!: pulumi.Output<outputs.fc.ServiceLogConfig | undefined>;
     /**
@@ -132,7 +135,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly namePrefix!: pulumi.Output<string | undefined>;
     /**
-     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nasConfig` requires the following:
+     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nasConfig` below.
      */
     public readonly nasConfig!: pulumi.Output<outputs.fc.ServiceNasConfig | undefined>;
     /**
@@ -148,7 +151,7 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceId!: pulumi.Output<string>;
     /**
-     * Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracingConfig` requires the following: (**NOTE:** If both `type` and `params` are empty, tracingConfig is considered to be empty or unset.)
+     * Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracingConfig` requires the following: (**NOTE:** If both `type` and `params` are empty, tracingConfig is considered to be empty or unset.). See `tracingConfig` below.
      */
     public readonly tracingConfig!: pulumi.Output<outputs.fc.ServiceTracingConfig | undefined>;
     /**
@@ -156,7 +159,7 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly version!: pulumi.Output<string>;
     /**
-     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpcConfig` requires the following: (**NOTE:** If both `vswitchIds` and `securityGroupId` are empty, vpcConfig is considered to be empty or unset.)
+     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpcConfig` requires the following: (**NOTE:** If both `vswitchIds` and `securityGroupId` are empty, vpcConfig is considered to be empty or unset.). See `vpcConfig` below.
      */
     public readonly vpcConfig!: pulumi.Output<outputs.fc.ServiceVpcConfig | undefined>;
 
@@ -224,7 +227,7 @@ export interface ServiceState {
      */
     lastModified?: pulumi.Input<string>;
     /**
-     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `logConfig` requires the following: (**NOTE:** If both `project` and `logstore` are empty, logConfig is considered to be empty or unset.)
+     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `logConfig` requires the following: (**NOTE:** If both `project` and `logstore` are empty, logConfig is considered to be empty or unset.). See `logConfig` below.
      */
     logConfig?: pulumi.Input<inputs.fc.ServiceLogConfig>;
     /**
@@ -236,7 +239,7 @@ export interface ServiceState {
      */
     namePrefix?: pulumi.Input<string>;
     /**
-     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nasConfig` requires the following:
+     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nasConfig` below.
      */
     nasConfig?: pulumi.Input<inputs.fc.ServiceNasConfig>;
     /**
@@ -252,7 +255,7 @@ export interface ServiceState {
      */
     serviceId?: pulumi.Input<string>;
     /**
-     * Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracingConfig` requires the following: (**NOTE:** If both `type` and `params` are empty, tracingConfig is considered to be empty or unset.)
+     * Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracingConfig` requires the following: (**NOTE:** If both `type` and `params` are empty, tracingConfig is considered to be empty or unset.). See `tracingConfig` below.
      */
     tracingConfig?: pulumi.Input<inputs.fc.ServiceTracingConfig>;
     /**
@@ -260,7 +263,7 @@ export interface ServiceState {
      */
     version?: pulumi.Input<string>;
     /**
-     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpcConfig` requires the following: (**NOTE:** If both `vswitchIds` and `securityGroupId` are empty, vpcConfig is considered to be empty or unset.)
+     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpcConfig` requires the following: (**NOTE:** If both `vswitchIds` and `securityGroupId` are empty, vpcConfig is considered to be empty or unset.). See `vpcConfig` below.
      */
     vpcConfig?: pulumi.Input<inputs.fc.ServiceVpcConfig>;
 }
@@ -278,7 +281,7 @@ export interface ServiceArgs {
      */
     internetAccess?: pulumi.Input<boolean>;
     /**
-     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `logConfig` requires the following: (**NOTE:** If both `project` and `logstore` are empty, logConfig is considered to be empty or unset.)
+     * Provide this to store your Function Compute Service logs. Fields documented below. See [Create a Service](https://www.alibabacloud.com/help/doc-detail/51924.htm). `logConfig` requires the following: (**NOTE:** If both `project` and `logstore` are empty, logConfig is considered to be empty or unset.). See `logConfig` below.
      */
     logConfig?: pulumi.Input<inputs.fc.ServiceLogConfig>;
     /**
@@ -290,7 +293,7 @@ export interface ServiceArgs {
      */
     namePrefix?: pulumi.Input<string>;
     /**
-     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. `nasConfig` requires the following:
+     * Provide [NAS configuration](https://www.alibabacloud.com/help/doc-detail/87401.htm) to allow Function Compute Service to access your NAS resources. See `nasConfig` below.
      */
     nasConfig?: pulumi.Input<inputs.fc.ServiceNasConfig>;
     /**
@@ -302,11 +305,11 @@ export interface ServiceArgs {
      */
     role?: pulumi.Input<string>;
     /**
-     * Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracingConfig` requires the following: (**NOTE:** If both `type` and `params` are empty, tracingConfig is considered to be empty or unset.)
+     * Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracingConfig` requires the following: (**NOTE:** If both `type` and `params` are empty, tracingConfig is considered to be empty or unset.). See `tracingConfig` below.
      */
     tracingConfig?: pulumi.Input<inputs.fc.ServiceTracingConfig>;
     /**
-     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpcConfig` requires the following: (**NOTE:** If both `vswitchIds` and `securityGroupId` are empty, vpcConfig is considered to be empty or unset.)
+     * Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpcConfig` requires the following: (**NOTE:** If both `vswitchIds` and `securityGroupId` are empty, vpcConfig is considered to be empty or unset.). See `vpcConfig` below.
      */
     vpcConfig?: pulumi.Input<inputs.fc.ServiceVpcConfig>;
 }

@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,21 +23,21 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
      * The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
      * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
      * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-     * - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+     * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
-    @Import(name="acceptingAliUid", required=true)
-    private Output<Integer> acceptingAliUid;
+    @Import(name="acceptingAliUid")
+    private @Nullable Output<Integer> acceptingAliUid;
 
     /**
      * @return The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
      * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
      * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-     * - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+     * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
-    public Output<Integer> acceptingAliUid() {
-        return this.acceptingAliUid;
+    public Optional<Output<Integer>> acceptingAliUid() {
+        return Optional.ofNullable(this.acceptingAliUid);
     }
 
     /**
@@ -88,14 +90,14 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * @return The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -103,14 +105,18 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -118,18 +124,33 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      * 
      */
     @Import(name="peerConnectionName")
     private @Nullable Output<String> peerConnectionName;
 
     /**
-     * @return The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * @return The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> peerConnectionName() {
         return Optional.ofNullable(this.peerConnectionName);
+    }
+
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
     }
 
     /**
@@ -148,14 +169,29 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the requester VPC.
+     * The tags of PrefixList.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tags of PrefixList.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * You must create a VPC ID on the initiator of a VPC peer connection.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the requester VPC.
+     * @return You must create a VPC ID on the initiator of a VPC peer connection.
      * 
      */
     public Output<String> vpcId() {
@@ -172,7 +208,9 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         this.description = $.description;
         this.dryRun = $.dryRun;
         this.peerConnectionName = $.peerConnectionName;
+        this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
+        this.tags = $.tags;
         this.vpcId = $.vpcId;
     }
 
@@ -198,12 +236,12 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
          * @param acceptingAliUid The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
          * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
          * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-         * - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+         * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
          * 
          * @return builder
          * 
          */
-        public Builder acceptingAliUid(Output<Integer> acceptingAliUid) {
+        public Builder acceptingAliUid(@Nullable Output<Integer> acceptingAliUid) {
             $.acceptingAliUid = acceptingAliUid;
             return this;
         }
@@ -212,7 +250,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
          * @param acceptingAliUid The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
          * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
          * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-         * - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+         * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
          * 
          * @return builder
          * 
@@ -289,7 +327,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * @param description The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -300,7 +338,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * @param description The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -310,7 +348,9 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request. Value:
+         * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
          * 
          * @return builder
          * 
@@ -321,7 +361,9 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Whether to PreCheck only this request. Value:
+         * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+         * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
          * 
          * @return builder
          * 
@@ -331,7 +373,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param peerConnectionName The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+         * @param peerConnectionName The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -342,13 +384,34 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param peerConnectionName The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+         * @param peerConnectionName The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
          */
         public Builder peerConnectionName(String peerConnectionName) {
             return peerConnectionName(Output.of(peerConnectionName));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**
@@ -373,7 +436,28 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The ID of the requester VPC.
+         * @param tags The tags of PrefixList.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags of PrefixList.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param vpcId You must create a VPC ID on the initiator of a VPC peer connection.
          * 
          * @return builder
          * 
@@ -384,7 +468,7 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcId The ID of the requester VPC.
+         * @param vpcId You must create a VPC ID on the initiator of a VPC peer connection.
          * 
          * @return builder
          * 
@@ -394,7 +478,6 @@ public final class PeerConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public PeerConnectionArgs build() {
-            $.acceptingAliUid = Objects.requireNonNull($.acceptingAliUid, "expected parameter 'acceptingAliUid' to be non-null");
             $.acceptingRegionId = Objects.requireNonNull($.acceptingRegionId, "expected parameter 'acceptingRegionId' to be non-null");
             $.acceptingVpcId = Objects.requireNonNull($.acceptingVpcId, "expected parameter 'acceptingVpcId' to be non-null");
             $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");

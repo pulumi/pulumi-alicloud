@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** At present, The `alicloud.ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
  * 
- * &gt; **NOTE:** Available in v1.112.0+.
+ * &gt; **NOTE:** Available since v1.112.0.
  * 
  * ## Example Usage
  * 

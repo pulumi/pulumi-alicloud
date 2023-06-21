@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -49,9 +51,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;created by terraform&#34;)
- *             .tags(Map.of(&#34;test&#34;, &#34;test&#34;))
+ *             .description(&#34;terraform-example&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
@@ -66,9 +76,9 @@ import javax.annotation.Nullable;
  *         var exampleIngestion = new Ingestion(&#34;exampleIngestion&#34;, IngestionArgs.builder()        
  *             .project(exampleProject.name())
  *             .logstore(exampleStore.name())
- *             .ingestionName(&#34;ingestion_name&#34;)
- *             .displayName(&#34;display_name&#34;)
- *             .description(&#34;oss2sls&#34;)
+ *             .ingestionName(&#34;terraform-example&#34;)
+ *             .displayName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .interval(&#34;30m&#34;)
  *             .runImmediately(true)
  *             .timeZone(&#34;+0800&#34;)

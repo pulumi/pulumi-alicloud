@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Global Accelerator (GA) Additional Certificate and how to use it, see [What is Additional Certificate](https://www.alibabacloud.com/help/en/doc-detail/302356.html).
  *
- * > **NOTE:** Available in v1.150.0+.
+ * > **NOTE:** Available since v1.150.0.
  *
  * ## Import
  *

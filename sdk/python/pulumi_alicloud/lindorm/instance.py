@@ -21,7 +21,6 @@ class InstanceArgs:
                  arbiter_zone_id: Optional[pulumi.Input[str]] = None,
                  arch_version: Optional[pulumi.Input[str]] = None,
                  cold_storage: Optional[pulumi.Input[int]] = None,
-                 core_num: Optional[pulumi.Input[int]] = None,
                  core_single_storage: Optional[pulumi.Input[int]] = None,
                  core_spec: Optional[pulumi.Input[str]] = None,
                  deletion_proection: Optional[pulumi.Input[bool]] = None,
@@ -55,24 +54,21 @@ class InstanceArgs:
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
-                 upgrade_type: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
+        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
-        :param pulumi.Input[int] core_num: The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
         :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
                - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-               `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         :param pulumi.Input[bool] deletion_proection: The deletion protection of instance.
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
@@ -99,15 +95,11 @@ class InstanceArgs:
         :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
-        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: 
-               `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. 
-               Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-               and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
@@ -122,11 +114,6 @@ class InstanceArgs:
             pulumi.set(__self__, "arch_version", arch_version)
         if cold_storage is not None:
             pulumi.set(__self__, "cold_storage", cold_storage)
-        if core_num is not None:
-            warnings.warn("""Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""", DeprecationWarning)
-            pulumi.log.warn("""core_num is deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""")
-        if core_num is not None:
-            pulumi.set(__self__, "core_num", core_num)
         if core_single_storage is not None:
             pulumi.set(__self__, "core_single_storage", core_single_storage)
         if core_spec is not None:
@@ -196,11 +183,6 @@ class InstanceArgs:
             pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
         if time_serires_engine_specification is not None:
             pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
-        if upgrade_type is not None:
-            warnings.warn("""Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""", DeprecationWarning)
-            pulumi.log.warn("""upgrade_type is deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""")
-        if upgrade_type is not None:
-            pulumi.set(__self__, "upgrade_type", upgrade_type)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if zone_id is not None:
@@ -210,7 +192,7 @@ class InstanceArgs:
     @pulumi.getter(name="diskCategory")
     def disk_category(self) -> pulumi.Input[str]:
         """
-        The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
+        The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
         """
         return pulumi.get(self, "disk_category")
 
@@ -291,18 +273,6 @@ class InstanceArgs:
         pulumi.set(self, "cold_storage", value)
 
     @property
-    @pulumi.getter(name="coreNum")
-    def core_num(self) -> Optional[pulumi.Input[int]]:
-        """
-        The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-        """
-        return pulumi.get(self, "core_num")
-
-    @core_num.setter
-    def core_num(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "core_num", value)
-
-    @property
     @pulumi.getter(name="coreSingleStorage")
     def core_single_storage(self) -> Optional[pulumi.Input[int]]:
         """
@@ -320,8 +290,7 @@ class InstanceArgs:
         """
         The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
         - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-        - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-        `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+        - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         """
         return pulumi.get(self, "core_spec")
 
@@ -645,8 +614,7 @@ class InstanceArgs:
     @pulumi.getter(name="tableEngineSpecification")
     def table_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of  table engine. Valid values: 
-        `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         """
         return pulumi.get(self, "table_engine_specification")
 
@@ -682,8 +650,7 @@ class InstanceArgs:
     @pulumi.getter(name="timeSeriesEngineSpecification")
     def time_series_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of time series engine. 
-        Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+        The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         """
         return pulumi.get(self, "time_series_engine_specification")
 
@@ -702,19 +669,6 @@ class InstanceArgs:
     @time_serires_engine_specification.setter
     def time_serires_engine_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time_serires_engine_specification", value)
-
-    @property
-    @pulumi.getter(name="upgradeType")
-    def upgrade_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-        and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-        """
-        return pulumi.get(self, "upgrade_type")
-
-    @upgrade_type.setter
-    def upgrade_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "upgrade_type", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -748,7 +702,6 @@ class _InstanceState:
                  arbiter_zone_id: Optional[pulumi.Input[str]] = None,
                  arch_version: Optional[pulumi.Input[str]] = None,
                  cold_storage: Optional[pulumi.Input[int]] = None,
-                 core_num: Optional[pulumi.Input[int]] = None,
                  core_single_storage: Optional[pulumi.Input[int]] = None,
                  core_spec: Optional[pulumi.Input[str]] = None,
                  deletion_proection: Optional[pulumi.Input[bool]] = None,
@@ -791,7 +744,6 @@ class _InstanceState:
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
-                 upgrade_type: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -801,20 +753,18 @@ class _InstanceState:
         :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
-        :param pulumi.Input[int] core_num: The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
         :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
                - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-               `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         :param pulumi.Input[bool] deletion_proection: The deletion protection of instance.
-        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
+        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
-        :param pulumi.Input[bool] enabled_file_engine: (Available in v1.163.0+) Whether to enable file engine.
-        :param pulumi.Input[bool] enabled_lts_engine: (Available in v1.163.0+) Whether to enable lts engine.
-        :param pulumi.Input[bool] enabled_search_engine: (Available in v1.163.0+) Whether to enable search engine.
-        :param pulumi.Input[bool] enabled_table_engine: (Available in v1.163.0+) Whether to enable table engine.
-        :param pulumi.Input[bool] enabled_time_serires_engine: (Available in v1.163.0+) Whether to enable time serires engine.
+        :param pulumi.Input[bool] enabled_file_engine: (Available since v1.163.0) Whether to enable file engine.
+        :param pulumi.Input[bool] enabled_lts_engine: (Available since v1.163.0) Whether to enable lts engine.
+        :param pulumi.Input[bool] enabled_search_engine: (Available since v1.163.0) Whether to enable search engine.
+        :param pulumi.Input[bool] enabled_table_engine: (Available since v1.163.0) Whether to enable table engine.
+        :param pulumi.Input[bool] enabled_time_serires_engine: (Available since v1.163.0) Whether to enable time serires engine.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
         :param pulumi.Input[str] group_name: The group name.
@@ -837,20 +787,16 @@ class _InstanceState:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] search_engine_node_count: The count of search engine.
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        :param pulumi.Input[str] service_type: (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+        :param pulumi.Input[str] service_type: (Available since v1.196.0) The instance type.
         :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
-        :param pulumi.Input[str] status: The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+        :param pulumi.Input[str] status: The status of Instance.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
-        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: 
-               `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. 
-               Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-               and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -863,11 +809,6 @@ class _InstanceState:
             pulumi.set(__self__, "arch_version", arch_version)
         if cold_storage is not None:
             pulumi.set(__self__, "cold_storage", cold_storage)
-        if core_num is not None:
-            warnings.warn("""Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""", DeprecationWarning)
-            pulumi.log.warn("""core_num is deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""")
-        if core_num is not None:
-            pulumi.set(__self__, "core_num", core_num)
         if core_single_storage is not None:
             pulumi.set(__self__, "core_single_storage", core_single_storage)
         if core_spec is not None:
@@ -955,11 +896,6 @@ class _InstanceState:
             pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
         if time_serires_engine_specification is not None:
             pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
-        if upgrade_type is not None:
-            warnings.warn("""Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""", DeprecationWarning)
-            pulumi.log.warn("""upgrade_type is deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""")
-        if upgrade_type is not None:
-            pulumi.set(__self__, "upgrade_type", upgrade_type)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
@@ -1016,18 +952,6 @@ class _InstanceState:
         pulumi.set(self, "cold_storage", value)
 
     @property
-    @pulumi.getter(name="coreNum")
-    def core_num(self) -> Optional[pulumi.Input[int]]:
-        """
-        The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-        """
-        return pulumi.get(self, "core_num")
-
-    @core_num.setter
-    def core_num(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "core_num", value)
-
-    @property
     @pulumi.getter(name="coreSingleStorage")
     def core_single_storage(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1045,8 +969,7 @@ class _InstanceState:
         """
         The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
         - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-        - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-        `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+        - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         """
         return pulumi.get(self, "core_spec")
 
@@ -1070,7 +993,7 @@ class _InstanceState:
     @pulumi.getter(name="diskCategory")
     def disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
+        The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
         """
         return pulumi.get(self, "disk_category")
 
@@ -1094,7 +1017,7 @@ class _InstanceState:
     @pulumi.getter(name="enabledFileEngine")
     def enabled_file_engine(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Available in v1.163.0+) Whether to enable file engine.
+        (Available since v1.163.0) Whether to enable file engine.
         """
         return pulumi.get(self, "enabled_file_engine")
 
@@ -1106,7 +1029,7 @@ class _InstanceState:
     @pulumi.getter(name="enabledLtsEngine")
     def enabled_lts_engine(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Available in v1.163.0+) Whether to enable lts engine.
+        (Available since v1.163.0) Whether to enable lts engine.
         """
         return pulumi.get(self, "enabled_lts_engine")
 
@@ -1118,7 +1041,7 @@ class _InstanceState:
     @pulumi.getter(name="enabledSearchEngine")
     def enabled_search_engine(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Available in v1.163.0+) Whether to enable search engine.
+        (Available since v1.163.0) Whether to enable search engine.
         """
         return pulumi.get(self, "enabled_search_engine")
 
@@ -1130,7 +1053,7 @@ class _InstanceState:
     @pulumi.getter(name="enabledTableEngine")
     def enabled_table_engine(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Available in v1.163.0+) Whether to enable table engine.
+        (Available since v1.163.0) Whether to enable table engine.
         """
         return pulumi.get(self, "enabled_table_engine")
 
@@ -1142,7 +1065,7 @@ class _InstanceState:
     @pulumi.getter(name="enabledTimeSeriresEngine")
     def enabled_time_serires_engine(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Available in v1.163.0+) Whether to enable time serires engine.
+        (Available since v1.163.0) Whether to enable time serires engine.
         """
         return pulumi.get(self, "enabled_time_serires_engine")
 
@@ -1418,7 +1341,7 @@ class _InstanceState:
     @pulumi.getter(name="serviceType")
     def service_type(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+        (Available since v1.196.0) The instance type.
         """
         return pulumi.get(self, "service_type")
 
@@ -1454,7 +1377,7 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+        The status of Instance.
         """
         return pulumi.get(self, "status")
 
@@ -1478,8 +1401,7 @@ class _InstanceState:
     @pulumi.getter(name="tableEngineSpecification")
     def table_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of  table engine. Valid values: 
-        `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         """
         return pulumi.get(self, "table_engine_specification")
 
@@ -1515,8 +1437,7 @@ class _InstanceState:
     @pulumi.getter(name="timeSeriesEngineSpecification")
     def time_series_engine_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of time series engine. 
-        Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+        The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         """
         return pulumi.get(self, "time_series_engine_specification")
 
@@ -1535,19 +1456,6 @@ class _InstanceState:
     @time_serires_engine_specification.setter
     def time_serires_engine_specification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time_serires_engine_specification", value)
-
-    @property
-    @pulumi.getter(name="upgradeType")
-    def upgrade_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-        and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-        """
-        return pulumi.get(self, "upgrade_type")
-
-    @upgrade_type.setter
-    def upgrade_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "upgrade_type", value)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -1595,7 +1503,6 @@ class Instance(pulumi.CustomResource):
                  arbiter_zone_id: Optional[pulumi.Input[str]] = None,
                  arch_version: Optional[pulumi.Input[str]] = None,
                  cold_storage: Optional[pulumi.Input[int]] = None,
-                 core_num: Optional[pulumi.Input[int]] = None,
                  core_single_storage: Optional[pulumi.Input[int]] = None,
                  core_spec: Optional[pulumi.Input[str]] = None,
                  deletion_proection: Optional[pulumi.Input[bool]] = None,
@@ -1631,7 +1538,6 @@ class Instance(pulumi.CustomResource):
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
-                 upgrade_type: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -1641,7 +1547,7 @@ class Instance(pulumi.CustomResource):
 
         For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/doc-detail/174640.html).
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
 
         > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
 
@@ -1659,14 +1565,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
-        :param pulumi.Input[int] core_num: The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
         :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
                - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-               `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         :param pulumi.Input[bool] deletion_proection: The deletion protection of instance.
-        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
+        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
@@ -1693,15 +1597,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
-        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: 
-               `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. 
-               Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-               and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -1717,7 +1617,7 @@ class Instance(pulumi.CustomResource):
 
         For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/doc-detail/174640.html).
 
-        > **NOTE:** Available in v1.132.0+.
+        > **NOTE:** Available since v1.132.0.
 
         > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
 
@@ -1748,7 +1648,6 @@ class Instance(pulumi.CustomResource):
                  arbiter_zone_id: Optional[pulumi.Input[str]] = None,
                  arch_version: Optional[pulumi.Input[str]] = None,
                  cold_storage: Optional[pulumi.Input[int]] = None,
-                 core_num: Optional[pulumi.Input[int]] = None,
                  core_single_storage: Optional[pulumi.Input[int]] = None,
                  core_spec: Optional[pulumi.Input[str]] = None,
                  deletion_proection: Optional[pulumi.Input[bool]] = None,
@@ -1784,7 +1683,6 @@ class Instance(pulumi.CustomResource):
                  time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
                  time_series_engine_specification: Optional[pulumi.Input[str]] = None,
                  time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
-                 upgrade_type: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -1801,10 +1699,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["arbiter_zone_id"] = arbiter_zone_id
             __props__.__dict__["arch_version"] = arch_version
             __props__.__dict__["cold_storage"] = cold_storage
-            if core_num is not None and not opts.urn:
-                warnings.warn("""Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""", DeprecationWarning)
-                pulumi.log.warn("""core_num is deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.""")
-            __props__.__dict__["core_num"] = core_num
             __props__.__dict__["core_single_storage"] = core_single_storage
             __props__.__dict__["core_spec"] = core_spec
             __props__.__dict__["deletion_proection"] = deletion_proection
@@ -1847,10 +1741,6 @@ class Instance(pulumi.CustomResource):
                 warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
                 pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
             __props__.__dict__["time_serires_engine_specification"] = time_serires_engine_specification
-            if upgrade_type is not None and not opts.urn:
-                warnings.warn("""Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""", DeprecationWarning)
-                pulumi.log.warn("""upgrade_type is deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.""")
-            __props__.__dict__["upgrade_type"] = upgrade_type
             __props__.__dict__["vpc_id"] = vpc_id
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
@@ -1877,7 +1767,6 @@ class Instance(pulumi.CustomResource):
             arbiter_zone_id: Optional[pulumi.Input[str]] = None,
             arch_version: Optional[pulumi.Input[str]] = None,
             cold_storage: Optional[pulumi.Input[int]] = None,
-            core_num: Optional[pulumi.Input[int]] = None,
             core_single_storage: Optional[pulumi.Input[int]] = None,
             core_spec: Optional[pulumi.Input[str]] = None,
             deletion_proection: Optional[pulumi.Input[bool]] = None,
@@ -1920,7 +1809,6 @@ class Instance(pulumi.CustomResource):
             time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
             time_series_engine_specification: Optional[pulumi.Input[str]] = None,
             time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
-            upgrade_type: Optional[pulumi.Input[str]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'Instance':
@@ -1935,20 +1823,18 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
         :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
-        :param pulumi.Input[int] core_num: The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
         :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
                - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-               `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+               - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         :param pulumi.Input[bool] deletion_proection: The deletion protection of instance.
-        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
+        :param pulumi.Input[str] disk_category: The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
         :param pulumi.Input[str] duration: The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
-        :param pulumi.Input[bool] enabled_file_engine: (Available in v1.163.0+) Whether to enable file engine.
-        :param pulumi.Input[bool] enabled_lts_engine: (Available in v1.163.0+) Whether to enable lts engine.
-        :param pulumi.Input[bool] enabled_search_engine: (Available in v1.163.0+) Whether to enable search engine.
-        :param pulumi.Input[bool] enabled_table_engine: (Available in v1.163.0+) Whether to enable table engine.
-        :param pulumi.Input[bool] enabled_time_serires_engine: (Available in v1.163.0+) Whether to enable time serires engine.
+        :param pulumi.Input[bool] enabled_file_engine: (Available since v1.163.0) Whether to enable file engine.
+        :param pulumi.Input[bool] enabled_lts_engine: (Available since v1.163.0) Whether to enable lts engine.
+        :param pulumi.Input[bool] enabled_search_engine: (Available since v1.163.0) Whether to enable search engine.
+        :param pulumi.Input[bool] enabled_table_engine: (Available since v1.163.0) Whether to enable table engine.
+        :param pulumi.Input[bool] enabled_time_serires_engine: (Available since v1.163.0) Whether to enable time serires engine.
         :param pulumi.Input[int] file_engine_node_count: The count of file engine.
         :param pulumi.Input[str] file_engine_specification: The specification of file engine. Valid values: `lindorm.c.xlarge`.
         :param pulumi.Input[str] group_name: The group name.
@@ -1971,20 +1857,16 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[int] search_engine_node_count: The count of search engine.
         :param pulumi.Input[str] search_engine_specification: The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
-        :param pulumi.Input[str] service_type: (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+        :param pulumi.Input[str] service_type: (Available since v1.196.0) The instance type.
         :param pulumi.Input[str] standby_vswitch_id: The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] standby_zone_id: The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
-        :param pulumi.Input[str] status: The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+        :param pulumi.Input[str] status: The status of Instance.
         :param pulumi.Input[int] table_engine_node_count: The count of table engine.
-        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: 
-               `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        :param pulumi.Input[str] table_engine_specification: The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] time_series_engine_node_count: The count of time series engine.
-        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. 
-               Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+        :param pulumi.Input[str] time_series_engine_specification: The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         :param pulumi.Input[str] time_serires_engine_specification: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
-        :param pulumi.Input[str] upgrade_type: The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-               and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
@@ -1997,7 +1879,6 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["arbiter_zone_id"] = arbiter_zone_id
         __props__.__dict__["arch_version"] = arch_version
         __props__.__dict__["cold_storage"] = cold_storage
-        __props__.__dict__["core_num"] = core_num
         __props__.__dict__["core_single_storage"] = core_single_storage
         __props__.__dict__["core_spec"] = core_spec
         __props__.__dict__["deletion_proection"] = deletion_proection
@@ -2040,7 +1921,6 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["time_series_engine_node_count"] = time_series_engine_node_count
         __props__.__dict__["time_series_engine_specification"] = time_series_engine_specification
         __props__.__dict__["time_serires_engine_specification"] = time_serires_engine_specification
-        __props__.__dict__["upgrade_type"] = upgrade_type
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
@@ -2079,14 +1959,6 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "cold_storage")
 
     @property
-    @pulumi.getter(name="coreNum")
-    def core_num(self) -> pulumi.Output[Optional[int]]:
-        """
-        The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-        """
-        return pulumi.get(self, "core_num")
-
-    @property
     @pulumi.getter(name="coreSingleStorage")
     def core_single_storage(self) -> pulumi.Output[Optional[int]]:
         """
@@ -2100,8 +1972,7 @@ class Instance(pulumi.CustomResource):
         """
         The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
         - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-        - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-        `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+        - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
         """
         return pulumi.get(self, "core_spec")
 
@@ -2117,7 +1988,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="diskCategory")
     def disk_category(self) -> pulumi.Output[str]:
         """
-        The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
+        The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
         """
         return pulumi.get(self, "disk_category")
 
@@ -2133,7 +2004,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enabledFileEngine")
     def enabled_file_engine(self) -> pulumi.Output[bool]:
         """
-        (Available in v1.163.0+) Whether to enable file engine.
+        (Available since v1.163.0) Whether to enable file engine.
         """
         return pulumi.get(self, "enabled_file_engine")
 
@@ -2141,7 +2012,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enabledLtsEngine")
     def enabled_lts_engine(self) -> pulumi.Output[bool]:
         """
-        (Available in v1.163.0+) Whether to enable lts engine.
+        (Available since v1.163.0) Whether to enable lts engine.
         """
         return pulumi.get(self, "enabled_lts_engine")
 
@@ -2149,7 +2020,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enabledSearchEngine")
     def enabled_search_engine(self) -> pulumi.Output[bool]:
         """
-        (Available in v1.163.0+) Whether to enable search engine.
+        (Available since v1.163.0) Whether to enable search engine.
         """
         return pulumi.get(self, "enabled_search_engine")
 
@@ -2157,7 +2028,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enabledTableEngine")
     def enabled_table_engine(self) -> pulumi.Output[bool]:
         """
-        (Available in v1.163.0+) Whether to enable table engine.
+        (Available since v1.163.0) Whether to enable table engine.
         """
         return pulumi.get(self, "enabled_table_engine")
 
@@ -2165,7 +2036,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enabledTimeSeriresEngine")
     def enabled_time_serires_engine(self) -> pulumi.Output[bool]:
         """
-        (Available in v1.163.0+) Whether to enable time serires engine.
+        (Available since v1.163.0) Whether to enable time serires engine.
         """
         return pulumi.get(self, "enabled_time_serires_engine")
 
@@ -2349,7 +2220,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serviceType")
     def service_type(self) -> pulumi.Output[str]:
         """
-        (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+        (Available since v1.196.0) The instance type.
         """
         return pulumi.get(self, "service_type")
 
@@ -2373,7 +2244,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+        The status of Instance.
         """
         return pulumi.get(self, "status")
 
@@ -2389,8 +2260,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="tableEngineSpecification")
     def table_engine_specification(self) -> pulumi.Output[str]:
         """
-        The specification of  table engine. Valid values: 
-        `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+        The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
         """
         return pulumi.get(self, "table_engine_specification")
 
@@ -2414,8 +2284,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="timeSeriesEngineSpecification")
     def time_series_engine_specification(self) -> pulumi.Output[str]:
         """
-        The specification of time series engine. 
-        Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+        The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
         """
         return pulumi.get(self, "time_series_engine_specification")
 
@@ -2426,15 +2295,6 @@ class Instance(pulumi.CustomResource):
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
         return pulumi.get(self, "time_serires_engine_specification")
-
-    @property
-    @pulumi.getter(name="upgradeType")
-    def upgrade_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-        and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-        """
-        return pulumi.get(self, "upgrade_type")
 
     @property
     @pulumi.getter(name="vpcId")

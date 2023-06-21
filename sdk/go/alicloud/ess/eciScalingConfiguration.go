@@ -13,7 +13,9 @@ import (
 
 // Provides a ESS eci scaling configuration resource.
 //
-// > **NOTE:** Resource `ess.AlbServerGroupAttachment` is available in 1.164.0+.
+// For information about ess eci scaling configuration, see [CreateEciScalingConfiguration](https://www.alibabacloud.com/help/en/auto-scaling/latest/create-eci-scaling-configuration).
+//
+// > **NOTE:** Available since v1.164.0.
 //
 // ## Example Usage
 //
@@ -24,6 +26,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
@@ -35,11 +38,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "essscalingconfiguration"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -48,7 +59,7 @@ import (
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.Any(data.Alicloud_zones.Default.Zones[0].Id),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -112,9 +123,7 @@ import (
 type EciScalingConfiguration struct {
 	pulumi.CustomResourceState
 
-	// Information about the Container Registry Enterprise Edition instance. The details see
-	// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
-	// details.
+	// Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
 	AcrRegistryInfos EciScalingConfigurationAcrRegistryInfoArrayOutput `pulumi:"acrRegistryInfos"`
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
@@ -123,7 +132,7 @@ type EciScalingConfiguration struct {
 	AutoCreateEip pulumi.BoolPtrOutput `pulumi:"autoCreateEip"`
 	// The name of the container group.
 	ContainerGroupName pulumi.StringPtrOutput `pulumi:"containerGroupName"`
-	// The list of containers.See Block container below for details.
+	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayOutput `pulumi:"containers"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrOutput `pulumi:"cpu"`
@@ -141,18 +150,16 @@ type EciScalingConfiguration struct {
 	// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
 	// Default to false.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
-	// HostAliases.See Block hostAlias below for details.
+	// HostAliases. See `hostAliases` below.
 	HostAliases EciScalingConfigurationHostAliasArrayOutput `pulumi:"hostAliases"`
 	// Hostname of an ECI instance.
 	HostName pulumi.StringPtrOutput `pulumi:"hostName"`
-	// The image registry credential. The details see
-	// Block `imageRegistryCredential`.See Block imageRegistryCredential below for
+	// The image registry credential.   See `imageRegistryCredentials` below for
 	// details.
 	ImageRegistryCredentials EciScalingConfigurationImageRegistryCredentialArrayOutput `pulumi:"imageRegistryCredentials"`
 	// Ingress bandwidth.
 	IngressBandwidth pulumi.IntPtrOutput `pulumi:"ingressBandwidth"`
-	// The list of initContainers.See Block initContainer below for
-	// details.
+	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayOutput `pulumi:"initContainers"`
 	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrOutput `pulumi:"memory"`
@@ -183,7 +190,7 @@ type EciScalingConfiguration struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The list of volumes.See Block volume below for details.
+	// The list of volumes. See `volumes` below for details.
 	Volumes EciScalingConfigurationVolumeArrayOutput `pulumi:"volumes"`
 }
 
@@ -219,9 +226,7 @@ func GetEciScalingConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EciScalingConfiguration resources.
 type eciScalingConfigurationState struct {
-	// Information about the Container Registry Enterprise Edition instance. The details see
-	// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
-	// details.
+	// Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
 	AcrRegistryInfos []EciScalingConfigurationAcrRegistryInfo `pulumi:"acrRegistryInfos"`
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
@@ -230,7 +235,7 @@ type eciScalingConfigurationState struct {
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
 	// The name of the container group.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
-	// The list of containers.See Block container below for details.
+	// The list of containers. See `containers` below for details.
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
@@ -248,18 +253,16 @@ type eciScalingConfigurationState struct {
 	// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
 	// Default to false.
 	ForceDelete *bool `pulumi:"forceDelete"`
-	// HostAliases.See Block hostAlias below for details.
+	// HostAliases. See `hostAliases` below.
 	HostAliases []EciScalingConfigurationHostAlias `pulumi:"hostAliases"`
 	// Hostname of an ECI instance.
 	HostName *string `pulumi:"hostName"`
-	// The image registry credential. The details see
-	// Block `imageRegistryCredential`.See Block imageRegistryCredential below for
+	// The image registry credential.   See `imageRegistryCredentials` below for
 	// details.
 	ImageRegistryCredentials []EciScalingConfigurationImageRegistryCredential `pulumi:"imageRegistryCredentials"`
 	// Ingress bandwidth.
 	IngressBandwidth *int `pulumi:"ingressBandwidth"`
-	// The list of initContainers.See Block initContainer below for
-	// details.
+	// The list of initContainers. See `initContainers` below for details.
 	InitContainers []EciScalingConfigurationInitContainer `pulumi:"initContainers"`
 	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
@@ -290,14 +293,12 @@ type eciScalingConfigurationState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The list of volumes.See Block volume below for details.
+	// The list of volumes. See `volumes` below for details.
 	Volumes []EciScalingConfigurationVolume `pulumi:"volumes"`
 }
 
 type EciScalingConfigurationState struct {
-	// Information about the Container Registry Enterprise Edition instance. The details see
-	// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
-	// details.
+	// Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
 	AcrRegistryInfos EciScalingConfigurationAcrRegistryInfoArrayInput
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
@@ -306,7 +307,7 @@ type EciScalingConfigurationState struct {
 	AutoCreateEip pulumi.BoolPtrInput
 	// The name of the container group.
 	ContainerGroupName pulumi.StringPtrInput
-	// The list of containers.See Block container below for details.
+	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayInput
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
@@ -324,18 +325,16 @@ type EciScalingConfigurationState struct {
 	// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
 	// Default to false.
 	ForceDelete pulumi.BoolPtrInput
-	// HostAliases.See Block hostAlias below for details.
+	// HostAliases. See `hostAliases` below.
 	HostAliases EciScalingConfigurationHostAliasArrayInput
 	// Hostname of an ECI instance.
 	HostName pulumi.StringPtrInput
-	// The image registry credential. The details see
-	// Block `imageRegistryCredential`.See Block imageRegistryCredential below for
+	// The image registry credential.   See `imageRegistryCredentials` below for
 	// details.
 	ImageRegistryCredentials EciScalingConfigurationImageRegistryCredentialArrayInput
 	// Ingress bandwidth.
 	IngressBandwidth pulumi.IntPtrInput
-	// The list of initContainers.See Block initContainer below for
-	// details.
+	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayInput
 	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput
@@ -366,7 +365,7 @@ type EciScalingConfigurationState struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
 	Tags pulumi.MapInput
-	// The list of volumes.See Block volume below for details.
+	// The list of volumes. See `volumes` below for details.
 	Volumes EciScalingConfigurationVolumeArrayInput
 }
 
@@ -375,9 +374,7 @@ func (EciScalingConfigurationState) ElementType() reflect.Type {
 }
 
 type eciScalingConfigurationArgs struct {
-	// Information about the Container Registry Enterprise Edition instance. The details see
-	// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
-	// details.
+	// Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
 	AcrRegistryInfos []EciScalingConfigurationAcrRegistryInfo `pulumi:"acrRegistryInfos"`
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
@@ -386,7 +383,7 @@ type eciScalingConfigurationArgs struct {
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
 	// The name of the container group.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
-	// The list of containers.See Block container below for details.
+	// The list of containers. See `containers` below for details.
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
@@ -404,18 +401,16 @@ type eciScalingConfigurationArgs struct {
 	// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
 	// Default to false.
 	ForceDelete *bool `pulumi:"forceDelete"`
-	// HostAliases.See Block hostAlias below for details.
+	// HostAliases. See `hostAliases` below.
 	HostAliases []EciScalingConfigurationHostAlias `pulumi:"hostAliases"`
 	// Hostname of an ECI instance.
 	HostName *string `pulumi:"hostName"`
-	// The image registry credential. The details see
-	// Block `imageRegistryCredential`.See Block imageRegistryCredential below for
+	// The image registry credential.   See `imageRegistryCredentials` below for
 	// details.
 	ImageRegistryCredentials []EciScalingConfigurationImageRegistryCredential `pulumi:"imageRegistryCredentials"`
 	// Ingress bandwidth.
 	IngressBandwidth *int `pulumi:"ingressBandwidth"`
-	// The list of initContainers.See Block initContainer below for
-	// details.
+	// The list of initContainers. See `initContainers` below for details.
 	InitContainers []EciScalingConfigurationInitContainer `pulumi:"initContainers"`
 	// The amount of memory resources allocated to the container group.
 	Memory *float64 `pulumi:"memory"`
@@ -446,15 +441,13 @@ type eciScalingConfigurationArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The list of volumes.See Block volume below for details.
+	// The list of volumes. See `volumes` below for details.
 	Volumes []EciScalingConfigurationVolume `pulumi:"volumes"`
 }
 
 // The set of arguments for constructing a EciScalingConfiguration resource.
 type EciScalingConfigurationArgs struct {
-	// Information about the Container Registry Enterprise Edition instance. The details see
-	// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
-	// details.
+	// Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
 	AcrRegistryInfos EciScalingConfigurationAcrRegistryInfoArrayInput
 	// Whether active current eci scaling configuration in the specified scaling group. Note that only
 	// one configuration can be active. Default to `false`.
@@ -463,7 +456,7 @@ type EciScalingConfigurationArgs struct {
 	AutoCreateEip pulumi.BoolPtrInput
 	// The name of the container group.
 	ContainerGroupName pulumi.StringPtrInput
-	// The list of containers.See Block container below for details.
+	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayInput
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
@@ -481,18 +474,16 @@ type EciScalingConfigurationArgs struct {
 	// The eci scaling configuration will be deleted forcibly with deleting its scaling group.
 	// Default to false.
 	ForceDelete pulumi.BoolPtrInput
-	// HostAliases.See Block hostAlias below for details.
+	// HostAliases. See `hostAliases` below.
 	HostAliases EciScalingConfigurationHostAliasArrayInput
 	// Hostname of an ECI instance.
 	HostName pulumi.StringPtrInput
-	// The image registry credential. The details see
-	// Block `imageRegistryCredential`.See Block imageRegistryCredential below for
+	// The image registry credential.   See `imageRegistryCredentials` below for
 	// details.
 	ImageRegistryCredentials EciScalingConfigurationImageRegistryCredentialArrayInput
 	// Ingress bandwidth.
 	IngressBandwidth pulumi.IntPtrInput
-	// The list of initContainers.See Block initContainer below for
-	// details.
+	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayInput
 	// The amount of memory resources allocated to the container group.
 	Memory pulumi.Float64PtrInput
@@ -523,7 +514,7 @@ type EciScalingConfigurationArgs struct {
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
 	//   a null string.
 	Tags pulumi.MapInput
-	// The list of volumes.See Block volume below for details.
+	// The list of volumes. See `volumes` below for details.
 	Volumes EciScalingConfigurationVolumeArrayInput
 }
 
@@ -614,9 +605,7 @@ func (o EciScalingConfigurationOutput) ToEciScalingConfigurationOutputWithContex
 	return o
 }
 
-// Information about the Container Registry Enterprise Edition instance. The details see
-// Block `acrRegistryInfo`.See Block acrRegistryInfo below for
-// details.
+// Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
 func (o EciScalingConfigurationOutput) AcrRegistryInfos() EciScalingConfigurationAcrRegistryInfoArrayOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationAcrRegistryInfoArrayOutput {
 		return v.AcrRegistryInfos
@@ -639,7 +628,7 @@ func (o EciScalingConfigurationOutput) ContainerGroupName() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.ContainerGroupName }).(pulumi.StringPtrOutput)
 }
 
-// The list of containers.See Block container below for details.
+// The list of containers. See `containers` below for details.
 func (o EciScalingConfigurationOutput) Containers() EciScalingConfigurationContainerArrayOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationContainerArrayOutput { return v.Containers }).(EciScalingConfigurationContainerArrayOutput)
 }
@@ -681,7 +670,7 @@ func (o EciScalingConfigurationOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
-// HostAliases.See Block hostAlias below for details.
+// HostAliases. See `hostAliases` below.
 func (o EciScalingConfigurationOutput) HostAliases() EciScalingConfigurationHostAliasArrayOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationHostAliasArrayOutput { return v.HostAliases }).(EciScalingConfigurationHostAliasArrayOutput)
 }
@@ -691,8 +680,7 @@ func (o EciScalingConfigurationOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
 }
 
-// The image registry credential. The details see
-// Block `imageRegistryCredential`.See Block imageRegistryCredential below for
+// The image registry credential.   See `imageRegistryCredentials` below for
 // details.
 func (o EciScalingConfigurationOutput) ImageRegistryCredentials() EciScalingConfigurationImageRegistryCredentialArrayOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationImageRegistryCredentialArrayOutput {
@@ -705,8 +693,7 @@ func (o EciScalingConfigurationOutput) IngressBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.IntPtrOutput { return v.IngressBandwidth }).(pulumi.IntPtrOutput)
 }
 
-// The list of initContainers.See Block initContainer below for
-// details.
+// The list of initContainers. See `initContainers` below for details.
 func (o EciScalingConfigurationOutput) InitContainers() EciScalingConfigurationInitContainerArrayOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationInitContainerArrayOutput {
 		return v.InitContainers
@@ -772,7 +759,7 @@ func (o EciScalingConfigurationOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The list of volumes.See Block volume below for details.
+// The list of volumes. See `volumes` below for details.
 func (o EciScalingConfigurationOutput) Volumes() EciScalingConfigurationVolumeArrayOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationVolumeArrayOutput { return v.Volumes }).(EciScalingConfigurationVolumeArrayOutput)
 }

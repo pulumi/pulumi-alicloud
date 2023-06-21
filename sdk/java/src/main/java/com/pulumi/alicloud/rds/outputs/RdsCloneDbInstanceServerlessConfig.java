@@ -7,66 +7,86 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RdsCloneDbInstanceServerlessConfig {
     /**
-     * @return Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
+     * @return Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
      * - true: enables the feature.
      * - false: disables the feature. This is the default value.
+     * &gt; - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
      * 
      */
-    private Boolean autoPause;
+    private @Nullable Boolean autoPause;
     /**
-     * @return The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `min_capacity` parameter.
+     * @return The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+     * - MySQL: 1~8
+     * - SQLServer: 2~8
+     * - PostgreSQL: 1~12
      * 
      */
     private Double maxCapacity;
     /**
-     * @return The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `max_capacity` parameter.
+     * @return The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+     * - MySQL: 0.5~8
+     * - SQLServer: 2~8 \(Supports integers only\).
+     * - PostgreSQL: 0.5~12
      * 
      */
     private Double minCapacity;
     /**
-     * @return Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
+     * @return Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
      * - true: enables the feature.
      * - false: disables the feature. This is the default value.
+     * &gt; - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+     * &gt; - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
      * 
      */
-    private Boolean switchForce;
+    private @Nullable Boolean switchForce;
 
     private RdsCloneDbInstanceServerlessConfig() {}
     /**
-     * @return Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
+     * @return Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
      * - true: enables the feature.
      * - false: disables the feature. This is the default value.
+     * &gt; - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
      * 
      */
-    public Boolean autoPause() {
-        return this.autoPause;
+    public Optional<Boolean> autoPause() {
+        return Optional.ofNullable(this.autoPause);
     }
     /**
-     * @return The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `min_capacity` parameter.
+     * @return The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+     * - MySQL: 1~8
+     * - SQLServer: 2~8
+     * - PostgreSQL: 1~12
      * 
      */
     public Double maxCapacity() {
         return this.maxCapacity;
     }
     /**
-     * @return The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `max_capacity` parameter.
+     * @return The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+     * - MySQL: 0.5~8
+     * - SQLServer: 2~8 \(Supports integers only\).
+     * - PostgreSQL: 0.5~12
      * 
      */
     public Double minCapacity() {
         return this.minCapacity;
     }
     /**
-     * @return Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
+     * @return Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
      * - true: enables the feature.
      * - false: disables the feature. This is the default value.
+     * &gt; - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+     * &gt; - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
      * 
      */
-    public Boolean switchForce() {
-        return this.switchForce;
+    public Optional<Boolean> switchForce() {
+        return Optional.ofNullable(this.switchForce);
     }
 
     public static Builder builder() {
@@ -78,10 +98,10 @@ public final class RdsCloneDbInstanceServerlessConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean autoPause;
+        private @Nullable Boolean autoPause;
         private Double maxCapacity;
         private Double minCapacity;
-        private Boolean switchForce;
+        private @Nullable Boolean switchForce;
         public Builder() {}
         public Builder(RdsCloneDbInstanceServerlessConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -92,8 +112,8 @@ public final class RdsCloneDbInstanceServerlessConfig {
         }
 
         @CustomType.Setter
-        public Builder autoPause(Boolean autoPause) {
-            this.autoPause = Objects.requireNonNull(autoPause);
+        public Builder autoPause(@Nullable Boolean autoPause) {
+            this.autoPause = autoPause;
             return this;
         }
         @CustomType.Setter
@@ -107,8 +127,8 @@ public final class RdsCloneDbInstanceServerlessConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder switchForce(Boolean switchForce) {
-            this.switchForce = Objects.requireNonNull(switchForce);
+        public Builder switchForce(@Nullable Boolean switchForce) {
+            this.switchForce = switchForce;
             return this;
         }
         public RdsCloneDbInstanceServerlessConfig build() {

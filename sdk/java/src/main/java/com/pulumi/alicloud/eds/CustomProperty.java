@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECD Custom Property resource.
  * 
- * For information about ECD Custom Property and how to use it, see [What is Custom Property](https://help.aliyun.com/document_detail/436381.html).
+ * For information about ECD Custom Property and how to use it, see [What is Custom Property](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createproperty-desktop).
  * 
- * &gt; **NOTE:** Available in v1.176.0+.
+ * &gt; **NOTE:** Available since v1.176.0.
  * 
  * &gt; **NOTE:** Up to 10 different attributes can be created under an alibaba cloud account. Up to 50 different attribute values can be added under an attribute.
  * 
@@ -87,14 +87,14 @@ public class CustomProperty extends com.pulumi.resources.CustomResource {
         return this.propertyKey;
     }
     /**
-     * Custom attribute sets the value of. See the following `Block property_values`.
+     * Custom attribute sets the value of. See `property_values` below.
      * 
      */
     @Export(name="propertyValues", type=List.class, parameters={CustomPropertyPropertyValue.class})
     private Output</* @Nullable */ List<CustomPropertyPropertyValue>> propertyValues;
 
     /**
-     * @return Custom attribute sets the value of. See the following `Block property_values`.
+     * @return Custom attribute sets the value of. See `property_values` below.
      * 
      */
     public Output<Optional<List<CustomPropertyPropertyValue>>> propertyValues() {

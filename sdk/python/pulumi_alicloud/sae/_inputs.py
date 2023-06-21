@@ -882,19 +882,27 @@ class IngressRuleArgs:
                  app_name: pulumi.Input[str],
                  container_port: pulumi.Input[int],
                  domain: pulumi.Input[str],
-                 path: pulumi.Input[str]):
+                 path: pulumi.Input[str],
+                 backend_protocol: Optional[pulumi.Input[str]] = None,
+                 rewrite_path: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] app_id: Target application ID.
         :param pulumi.Input[str] app_name: Target application name.
         :param pulumi.Input[int] container_port: Application backend port.
         :param pulumi.Input[str] domain: Application domain name.
         :param pulumi.Input[str] path: URL path.
+        :param pulumi.Input[str] backend_protocol: The backend protocol.
+        :param pulumi.Input[str] rewrite_path: The rewrite path.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "app_name", app_name)
         pulumi.set(__self__, "container_port", container_port)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "path", path)
+        if backend_protocol is not None:
+            pulumi.set(__self__, "backend_protocol", backend_protocol)
+        if rewrite_path is not None:
+            pulumi.set(__self__, "rewrite_path", rewrite_path)
 
     @property
     @pulumi.getter(name="appId")
@@ -955,6 +963,30 @@ class IngressRuleArgs:
     @path.setter
     def path(self, value: pulumi.Input[str]):
         pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="backendProtocol")
+    def backend_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backend protocol.
+        """
+        return pulumi.get(self, "backend_protocol")
+
+    @backend_protocol.setter
+    def backend_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backend_protocol", value)
+
+    @property
+    @pulumi.getter(name="rewritePath")
+    def rewrite_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The rewrite path.
+        """
+        return pulumi.get(self, "rewrite_path")
+
+    @rewrite_path.setter
+    def rewrite_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rewrite_path", value)
 
 
 @pulumi.input_type

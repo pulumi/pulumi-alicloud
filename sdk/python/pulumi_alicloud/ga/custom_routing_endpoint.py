@@ -231,7 +231,7 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Custom Routing Endpoint and how to use it, see [What is Custom Routing Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpoints).
 
-        > **NOTE:** Available in v1.197.0+.
+        > **NOTE:** Available since v1.197.0.
 
         ## Example Usage
 
@@ -241,11 +241,51 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ga.CustomRoutingEndpoint("default",
-            endpoint="your_vswitch_id",
-            endpoint_group_id="your_custom_routing_endpoint_group_id",
-            traffic_to_endpoint_policy="DenyAll",
-            type="PrivateSubNet")
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            listener_type="CustomRouting",
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=10000,
+                to_port=16000,
+            )])
+        default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup",
+            accelerator_id=default_listener.accelerator_id,
+            listener_id=default_listener.id,
+            endpoint_group_region=region,
+            custom_routing_endpoint_group_name="terraform-example",
+            description="terraform-example")
+        default_custom_routing_endpoint = alicloud.ga.CustomRoutingEndpoint("defaultCustomRoutingEndpoint",
+            endpoint_group_id=default_custom_routing_endpoint_group.id,
+            endpoint=default_switch.id,
+            type="PrivateSubNet",
+            traffic_to_endpoint_policy="DenyAll")
         ```
 
         ## Import
@@ -274,7 +314,7 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Custom Routing Endpoint and how to use it, see [What is Custom Routing Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpoints).
 
-        > **NOTE:** Available in v1.197.0+.
+        > **NOTE:** Available since v1.197.0.
 
         ## Example Usage
 
@@ -284,11 +324,51 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ga.CustomRoutingEndpoint("default",
-            endpoint="your_vswitch_id",
-            endpoint_group_id="your_custom_routing_endpoint_group_id",
-            traffic_to_endpoint_policy="DenyAll",
-            type="PrivateSubNet")
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            listener_type="CustomRouting",
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=10000,
+                to_port=16000,
+            )])
+        default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup",
+            accelerator_id=default_listener.accelerator_id,
+            listener_id=default_listener.id,
+            endpoint_group_region=region,
+            custom_routing_endpoint_group_name="terraform-example",
+            description="terraform-example")
+        default_custom_routing_endpoint = alicloud.ga.CustomRoutingEndpoint("defaultCustomRoutingEndpoint",
+            endpoint_group_id=default_custom_routing_endpoint_group.id,
+            endpoint=default_switch.id,
+            type="PrivateSubNet",
+            traffic_to_endpoint_policy="DenyAll")
         ```
 
         ## Import

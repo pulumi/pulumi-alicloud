@@ -80,6 +80,7 @@ export class Eip extends pulumi.CustomResource {
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
      */
     public readonly bandwidth!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -94,7 +95,7 @@ export class Eip extends pulumi.CustomResource {
     /**
      * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      *
-     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+     * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
@@ -114,10 +115,10 @@ export class Eip extends pulumi.CustomResource {
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
-    public readonly netmode!: pulumi.Output<string | undefined>;
+    public readonly netmode!: pulumi.Output<string>;
     /**
      * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
      */
@@ -127,6 +128,7 @@ export class Eip extends pulumi.CustomResource {
      * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     public readonly period!: pulumi.Output<number | undefined>;
+    public readonly pricingCycle!: pulumi.Output<string | undefined>;
     public readonly publicIpAddressPoolId!: pulumi.Output<string | undefined>;
     /**
      * The Id of resource group which the eip belongs.
@@ -141,6 +143,7 @@ export class Eip extends pulumi.CustomResource {
      * A mapping of tags to assign to the resource.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Eip resource with the given unique name, arguments, and options.
@@ -162,6 +165,7 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["addressName"] = state ? state.addressName : undefined;
             resourceInputs["autoPay"] = state ? state.autoPay : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["highDefinitionMonitorLogStatus"] = state ? state.highDefinitionMonitorLogStatus : undefined;
@@ -175,11 +179,13 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["netmode"] = state ? state.netmode : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
             resourceInputs["publicIpAddressPoolId"] = state ? state.publicIpAddressPoolId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["securityProtectionTypes"] = state ? state.securityProtectionTypes : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as EipArgs | undefined;
             resourceInputs["activityId"] = args ? args.activityId : undefined;
@@ -198,10 +204,13 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["netmode"] = args ? args.netmode : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
             resourceInputs["publicIpAddressPoolId"] = args ? args.publicIpAddressPoolId : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["securityProtectionTypes"] = args ? args.securityProtectionTypes : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -224,6 +233,7 @@ export interface EipState {
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
      */
     bandwidth?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -238,7 +248,7 @@ export interface EipState {
     /**
      * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      *
-     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+     * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -258,7 +268,7 @@ export interface EipState {
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */
     name?: pulumi.Input<string>;
     netmode?: pulumi.Input<string>;
@@ -271,6 +281,7 @@ export interface EipState {
      * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period?: pulumi.Input<number>;
+    pricingCycle?: pulumi.Input<string>;
     publicIpAddressPoolId?: pulumi.Input<string>;
     /**
      * The Id of resource group which the eip belongs.
@@ -285,6 +296,7 @@ export interface EipState {
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -315,7 +327,7 @@ export interface EipArgs {
     /**
      * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      *
-     * @deprecated Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
+     * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
@@ -331,7 +343,7 @@ export interface EipArgs {
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */
     name?: pulumi.Input<string>;
     netmode?: pulumi.Input<string>;
@@ -344,6 +356,7 @@ export interface EipArgs {
      * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period?: pulumi.Input<number>;
+    pricingCycle?: pulumi.Input<string>;
     publicIpAddressPoolId?: pulumi.Input<string>;
     /**
      * The Id of resource group which the eip belongs.
@@ -354,4 +367,5 @@ export interface EipArgs {
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
+    zone?: pulumi.Input<string>;
 }

@@ -18,7 +18,48 @@ import javax.annotation.Nullable;
  * 
  * For information about Ga Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain).
  * 
- * &gt; **NOTE:** Available in v1.197.0+.
+ * &gt; **NOTE:** Available since v1.197.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ga.Accelerator;
+ * import com.pulumi.alicloud.ga.AcceleratorArgs;
+ * import com.pulumi.alicloud.ga.Domain;
+ * import com.pulumi.alicloud.ga.DomainArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
+ *             .duration(1)
+ *             .autoUseCoupon(true)
+ *             .spec(&#34;1&#34;)
+ *             .build());
+ * 
+ *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
+ *             .domain(&#34;changes.com.cn&#34;)
+ *             .acceleratorId(defaultAccelerator.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

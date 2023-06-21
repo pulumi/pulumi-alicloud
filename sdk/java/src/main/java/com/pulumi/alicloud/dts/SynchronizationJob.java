@@ -20,71 +20,8 @@ import javax.annotation.Nullable;
  * 
  * For information about DTS Synchronization Job and how to use it, see [What is Synchronization Job](https://www.alibabacloud.com/product/data-transmission-service).
  * 
- * &gt; **NOTE:** Available in v1.138.0+.
+ * &gt; **NOTE:** Available since v1.138.0.
  * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.dts.SynchronizationInstance;
- * import com.pulumi.alicloud.dts.SynchronizationInstanceArgs;
- * import com.pulumi.alicloud.dts.SynchronizationJob;
- * import com.pulumi.alicloud.dts.SynchronizationJobArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var defaultSynchronizationInstance = new SynchronizationInstance(&#34;defaultSynchronizationInstance&#34;, SynchronizationInstanceArgs.builder()        
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .sourceEndpointEngineName(&#34;PolarDB&#34;)
- *             .sourceEndpointRegion(&#34;cn-hangzhou&#34;)
- *             .destinationEndpointEngineName(&#34;ADB30&#34;)
- *             .destinationEndpointRegion(&#34;cn-hangzhou&#34;)
- *             .instanceClass(&#34;small&#34;)
- *             .syncArchitecture(&#34;oneway&#34;)
- *             .build());
- * 
- *         var defaultSynchronizationJob = new SynchronizationJob(&#34;defaultSynchronizationJob&#34;, SynchronizationJobArgs.builder()        
- *             .dtsInstanceId(defaultSynchronizationInstance.id())
- *             .dtsJobName(&#34;tf-testAccCase1&#34;)
- *             .sourceEndpointInstanceType(&#34;PolarDB&#34;)
- *             .sourceEndpointInstanceId(&#34;pc-xxxxxxxx&#34;)
- *             .sourceEndpointEngineName(&#34;PolarDB&#34;)
- *             .sourceEndpointRegion(&#34;cn-hangzhou&#34;)
- *             .sourceEndpointDatabaseName(&#34;tf-testacc&#34;)
- *             .sourceEndpointUserName(&#34;root&#34;)
- *             .sourceEndpointPassword(&#34;password&#34;)
- *             .destinationEndpointInstanceType(&#34;ads&#34;)
- *             .destinationEndpointInstanceId(&#34;am-xxxxxxxx&#34;)
- *             .destinationEndpointEngineName(&#34;ADB30&#34;)
- *             .destinationEndpointRegion(&#34;cn-hangzhou&#34;)
- *             .destinationEndpointDatabaseName(&#34;tf-testacc&#34;)
- *             .destinationEndpointUserName(&#34;root&#34;)
- *             .destinationEndpointPassword(&#34;password&#34;)
- *             .dbList(&#34;{\&#34;tf-testacc\&#34;:{\&#34;name\&#34;:\&#34;tf-test\&#34;,\&#34;all\&#34;:true,\&#34;state\&#34;:\&#34;normal\&#34;}}&#34;)
- *             .structureInitialization(&#34;true&#34;)
- *             .dataInitialization(&#34;true&#34;)
- *             .dataSynchronization(&#34;true&#34;)
- *             .status(&#34;Synchronizing&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * ## Notice
  * 
  * 1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;

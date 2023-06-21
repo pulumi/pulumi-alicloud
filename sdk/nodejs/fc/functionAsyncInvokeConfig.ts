@@ -8,9 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an asynchronous invocation configuration for a FC Function or Alias.\
- *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/181866.htm).
+ *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-putfunctionasyncinvokeconfig).
  *
- * > **NOTE:** Available in 1.100.0+
+ * > **NOTE:** Available since v1.100.0.
  *
  * ## Example Usage
  * ### Destination Configuration
@@ -20,16 +20,90 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const example = new alicloud.fc.FunctionAsyncInvokeConfig("example", {
- *     serviceName: alicloud_fc_service.example.name,
- *     functionName: alicloud_fc_function.example.name,
+ * const defaultAccount = alicloud.getAccount({});
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultRole = new alicloud.ram.Role("defaultRole", {
+ *     document: `	{
+ * 		"Statement": [
+ * 		  {
+ * 			"Action": "sts:AssumeRole",
+ * 			"Effect": "Allow",
+ * 			"Principal": {
+ * 			  "Service": [
+ * 				"fc.aliyuncs.com"
+ * 			  ]
+ * 			}
+ * 		  }
+ * 		],
+ * 		"Version": "1"
+ * 	}
+ * `,
+ *     description: "this is a example",
+ *     force: true,
+ * });
+ * const defaultPolicy = new alicloud.ram.Policy("defaultPolicy", {
+ *     policyName: pulumi.interpolate`examplepolicy${defaultRandomInteger.result}`,
+ *     policyDocument: `	{
+ * 		"Version": "1",
+ * 		"Statement": [
+ * 		  {
+ * 			"Action": "mns:*",
+ * 			"Resource": "*",
+ * 			"Effect": "Allow"
+ * 		  }
+ * 		]
+ * 	  }
+ * `,
+ * });
+ * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment", {
+ *     roleName: defaultRole.name,
+ *     policyName: defaultPolicy.name,
+ *     policyType: "Custom",
+ * });
+ * const defaultService = new alicloud.fc.Service("defaultService", {
+ *     description: "example-value",
+ *     role: defaultRole.arn,
+ *     internetAccess: false,
+ * });
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
+ * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
+ *     bucket: defaultBucket.id,
+ *     key: "index.py",
+ *     content: `import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info('hello world') 
+ * return 'hello world'`,
+ * });
+ * const defaultFunction = new alicloud.fc.Function("defaultFunction", {
+ *     service: defaultService.name,
+ *     description: "example",
+ *     ossBucket: defaultBucket.id,
+ *     ossKey: defaultBucketObject.key,
+ *     memorySize: 512,
+ *     runtime: "python2.7",
+ *     handler: "hello.handler",
+ * });
+ * const defaultQueue = new alicloud.mns.Queue("defaultQueue", {});
+ * const defaultTopic = new alicloud.mns.Topic("defaultTopic", {});
+ * const defaultFunctionAsyncInvokeConfig = new alicloud.fc.FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig", {
+ *     serviceName: defaultService.name,
+ *     functionName: defaultFunction.name,
  *     destinationConfig: {
  *         onFailure: {
- *             destination: the_example_mns_queue_arn,
+ *             destination: pulumi.all([defaultRegions, defaultAccount, defaultQueue.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:mns:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:/queues/${name}/messages`),
  *         },
  *         onSuccess: {
- *             destination: the_example_mns_topic_arn,
+ *             destination: pulumi.all([defaultRegions, defaultAccount, defaultTopic.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:mns:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:/topics/${name}/messages`),
  *         },
  *     },
  * });
@@ -114,7 +188,7 @@ export class FunctionAsyncInvokeConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdTime!: pulumi.Output<string>;
     /**
-     * Configuration block with destination configuration. See below for details.
+     * Configuration block with destination configuration. See `destinationConfig` below.
      */
     public readonly destinationConfig!: pulumi.Output<outputs.fc.FunctionAsyncInvokeConfigDestinationConfig | undefined>;
     /**
@@ -200,7 +274,7 @@ export interface FunctionAsyncInvokeConfigState {
      */
     createdTime?: pulumi.Input<string>;
     /**
-     * Configuration block with destination configuration. See below for details.
+     * Configuration block with destination configuration. See `destinationConfig` below.
      */
     destinationConfig?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfig>;
     /**
@@ -238,7 +312,7 @@ export interface FunctionAsyncInvokeConfigState {
  */
 export interface FunctionAsyncInvokeConfigArgs {
     /**
-     * Configuration block with destination configuration. See below for details.
+     * Configuration block with destination configuration. See `destinationConfig` below.
      */
     destinationConfig?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfig>;
     /**

@@ -28,41 +28,41 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
-    ///     {
-    ///         VaultName = @var.Name,
-    ///     });
-    /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var exampleResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var defaultHanaInstance = new AliCloud.Hbr.HanaInstance("defaultHanaInstance", new()
+    ///     var exampleVault = new AliCloud.Hbr.Vault("exampleVault", new()
+    ///     {
+    ///         VaultName = "terraform-example",
+    ///     });
+    /// 
+    ///     var exampleHanaInstance = new AliCloud.Hbr.HanaInstance("exampleHanaInstance", new()
     ///     {
     ///         AlertSetting = "INHERITED",
-    ///         HanaName = @var.Name,
+    ///         HanaName = "terraform-example",
     ///         Host = "1.1.1.1",
     ///         InstanceNumber = 1,
     ///         Password = "YouPassword123",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///         Sid = "HXE",
     ///         UseSsl = false,
     ///         UserName = "admin",
     ///         ValidateCertificate = false,
-    ///         VaultId = defaultVault.Id,
+    ///         VaultId = exampleVault.Id,
     ///     });
     /// 
-    ///     var defaultHanaBackupPlan = new AliCloud.Hbr.HanaBackupPlan("defaultHanaBackupPlan", new()
+    ///     var exampleHanaBackupPlan = new AliCloud.Hbr.HanaBackupPlan("exampleHanaBackupPlan", new()
     ///     {
     ///         BackupPrefix = "DIFF_DATA_BACKUP",
     ///         BackupType = "COMPLETE",
-    ///         ClusterId = defaultHanaInstance.HanaInstanceId,
+    ///         ClusterId = exampleHanaInstance.HanaInstanceId,
     ///         DatabaseName = "SYSTEMDB",
-    ///         PlanName = @var.Name,
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         PlanName = "terraform-example",
+    ///         ResourceGroupId = exampleResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///         Schedule = "I|1602673264|P1D",
-    ///         VaultId = defaultHanaInstance.VaultId,
+    ///         VaultId = exampleHanaInstance.VaultId,
     ///     });
     /// 
     /// });

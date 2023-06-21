@@ -12,7 +12,7 @@ import (
 
 // This data source provides the Adb DBClusters of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.121.0+.
+// > **NOTE:** Available since v1.121.0.
 //
 // ## Example Usage
 //
@@ -69,27 +69,33 @@ type GetDBClustersArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// The tag of the resource.
+	// A map of tags assigned to the cluster.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
 // A collection of values returned by getDBClusters.
 type GetDBClustersResult struct {
-	Clusters         []GetDBClustersCluster `pulumi:"clusters"`
-	Description      *string                `pulumi:"description"`
-	DescriptionRegex *string                `pulumi:"descriptionRegex"`
-	Descriptions     []string               `pulumi:"descriptions"`
-	EnableDetails    *bool                  `pulumi:"enableDetails"`
+	// A list of Adb Db Clusters. Each element contains the following attributes:
+	Clusters []GetDBClustersCluster `pulumi:"clusters"`
+	// The description of DBCluster.
+	Description      *string `pulumi:"description"`
+	DescriptionRegex *string `pulumi:"descriptionRegex"`
+	// A list of DBCluster descriptions.
+	Descriptions  []string `pulumi:"descriptions"`
+	EnableDetails *bool    `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                 `pulumi:"id"`
-	Ids             []string               `pulumi:"ids"`
-	OutputFile      *string                `pulumi:"outputFile"`
-	PageNumber      *int                   `pulumi:"pageNumber"`
-	PageSize        *int                   `pulumi:"pageSize"`
-	ResourceGroupId *string                `pulumi:"resourceGroupId"`
-	Status          *string                `pulumi:"status"`
-	Tags            map[string]interface{} `pulumi:"tags"`
-	TotalCount      int                    `pulumi:"totalCount"`
+	Id         string   `pulumi:"id"`
+	Ids        []string `pulumi:"ids"`
+	OutputFile *string  `pulumi:"outputFile"`
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the resource.
+	Status *string `pulumi:"status"`
+	// The tags of the resource.
+	Tags       map[string]interface{} `pulumi:"tags"`
+	TotalCount int                    `pulumi:"totalCount"`
 }
 
 func GetDBClustersOutput(ctx *pulumi.Context, args GetDBClustersOutputArgs, opts ...pulumi.InvokeOption) GetDBClustersResultOutput {
@@ -123,7 +129,7 @@ type GetDBClustersOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The tag of the resource.
+	// A map of tags assigned to the cluster.
 	Tags pulumi.MapInput `pulumi:"tags"`
 }
 
@@ -146,10 +152,12 @@ func (o GetDBClustersResultOutput) ToGetDBClustersResultOutputWithContext(ctx co
 	return o
 }
 
+// A list of Adb Db Clusters. Each element contains the following attributes:
 func (o GetDBClustersResultOutput) Clusters() GetDBClustersClusterArrayOutput {
 	return o.ApplyT(func(v GetDBClustersResult) []GetDBClustersCluster { return v.Clusters }).(GetDBClustersClusterArrayOutput)
 }
 
+// The description of DBCluster.
 func (o GetDBClustersResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDBClustersResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -158,6 +166,7 @@ func (o GetDBClustersResultOutput) DescriptionRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDBClustersResult) *string { return v.DescriptionRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of DBCluster descriptions.
 func (o GetDBClustersResultOutput) Descriptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDBClustersResult) []string { return v.Descriptions }).(pulumi.StringArrayOutput)
 }
@@ -187,14 +196,17 @@ func (o GetDBClustersResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetDBClustersResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// The ID of the resource group.
 func (o GetDBClustersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDBClustersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The status of the resource.
 func (o GetDBClustersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDBClustersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the resource.
 func (o GetDBClustersResultOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetDBClustersResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }

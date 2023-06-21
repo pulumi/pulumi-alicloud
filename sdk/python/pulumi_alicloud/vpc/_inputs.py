@@ -27,40 +27,39 @@ __all__ = [
 @pulumi.input_type
 class DhcpOptionsSetAssociateVpcArgs:
     def __init__(__self__, *,
-                 associate_status: Optional[pulumi.Input[str]] = None,
-                 vpc_id: Optional[pulumi.Input[str]] = None):
+                 vpc_id: pulumi.Input[str],
+                 associate_status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] associate_status: The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
         :param pulumi.Input[str] vpc_id: The ID of the VPC network that is associated with the DHCP options set.
+        :param pulumi.Input[str] associate_status: The status of the VPC associated with the DHCP option set.
         """
+        pulumi.set(__self__, "vpc_id", vpc_id)
         if associate_status is not None:
             pulumi.set(__self__, "associate_status", associate_status)
-        if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
-
-    @property
-    @pulumi.getter(name="associateStatus")
-    def associate_status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
-        """
-        return pulumi.get(self, "associate_status")
-
-    @associate_status.setter
-    def associate_status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "associate_status", value)
 
     @property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+    def vpc_id(self) -> pulumi.Input[str]:
         """
         The ID of the VPC network that is associated with the DHCP options set.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+    def vpc_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="associateStatus")
+    def associate_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the VPC associated with the DHCP option set.
+        """
+        return pulumi.get(self, "associate_status")
+
+    @associate_status.setter
+    def associate_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "associate_status", value)
 
 
 @pulumi.input_type

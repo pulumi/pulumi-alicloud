@@ -20,14 +20,14 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
     public static final EcdPolicyGroupState Empty = new EcdPolicyGroupState();
 
     /**
-     * The rule of authorize access rule.
+     * The rule of authorize access rule. See `authorize_access_policy_rules` below.
      * 
      */
     @Import(name="authorizeAccessPolicyRules")
     private @Nullable Output<List<EcdPolicyGroupAuthorizeAccessPolicyRuleArgs>> authorizeAccessPolicyRules;
 
     /**
-     * @return The rule of authorize access rule.
+     * @return The rule of authorize access rule. See `authorize_access_policy_rules` below.
      * 
      */
     public Optional<Output<List<EcdPolicyGroupAuthorizeAccessPolicyRuleArgs>>> authorizeAccessPolicyRules() {
@@ -35,14 +35,14 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The policy rule.
+     * The policy rule. See `authorize_security_policy_rules` below.
      * 
      */
     @Import(name="authorizeSecurityPolicyRules")
     private @Nullable Output<List<EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs>> authorizeSecurityPolicyRules;
 
     /**
-     * @return The policy rule.
+     * @return The policy rule. See `authorize_security_policy_rules` below.
      * 
      */
     public Optional<Output<List<EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs>>> authorizeSecurityPolicyRules() {
@@ -155,14 +155,14 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      * 
      */
     @Import(name="recording")
     private @Nullable Output<String> recording;
 
     /**
-     * @return Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     * @return Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      * 
      */
     public Optional<Output<String>> recording() {
@@ -185,14 +185,14 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
      * 
      */
     @Import(name="recordingExpires")
     private @Nullable Output<Integer> recordingExpires;
 
     /**
-     * @return The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     * @return The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
      * 
      */
     public Optional<Output<Integer>> recordingExpires() {
@@ -363,7 +363,7 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizeAccessPolicyRules The rule of authorize access rule.
+         * @param authorizeAccessPolicyRules The rule of authorize access rule. See `authorize_access_policy_rules` below.
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizeAccessPolicyRules The rule of authorize access rule.
+         * @param authorizeAccessPolicyRules The rule of authorize access rule. See `authorize_access_policy_rules` below.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizeAccessPolicyRules The rule of authorize access rule.
+         * @param authorizeAccessPolicyRules The rule of authorize access rule. See `authorize_access_policy_rules` below.
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizeSecurityPolicyRules The policy rule.
+         * @param authorizeSecurityPolicyRules The policy rule. See `authorize_security_policy_rules` below.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizeSecurityPolicyRules The policy rule.
+         * @param authorizeSecurityPolicyRules The policy rule. See `authorize_security_policy_rules` below.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param authorizeSecurityPolicyRules The policy rule.
+         * @param authorizeSecurityPolicyRules The policy rule. See `authorize_security_policy_rules` below.
          * 
          * @return builder
          * 
@@ -572,7 +572,7 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param recording Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+         * @param recording Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
          * 
          * @return builder
          * 
@@ -583,7 +583,7 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param recording Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+         * @param recording Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
          * 
          * @return builder
          * 
@@ -614,7 +614,7 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param recordingExpires The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+         * @param recordingExpires The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
          * 
          * @return builder
          * 
@@ -625,7 +625,7 @@ public final class EcdPolicyGroupState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param recordingExpires The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+         * @param recordingExpires The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
          * 
          * @return builder
          * 

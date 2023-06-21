@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
     public sealed class InstanceParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of DB instance. It a string of 2 to 256 characters.
+        /// The name of the parameter.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

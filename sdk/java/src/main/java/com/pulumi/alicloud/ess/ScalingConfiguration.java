@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `is_outdated` to true. For more about the upgraded instance type, refer to `alicloud.ecs.getInstanceTypes` datasource.
  * 
+ * &gt; **NOTE:** Available since v1.39.0.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -65,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;essscalingconfiguration&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
@@ -136,38 +138,6 @@ import javax.annotation.Nullable;
  * You can use to the existing autoscaling module
  * to create a configuration, scaling group and lifecycle hook one-click.
  * 
- * ## Block datadisk
- * 
- * The datadisk mapping supports the following:
- * 
- * * `size` - (Optional) Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
- * * `device` - (Optional, Available in 1.92.0+) The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
- * * `category` - (Optional) Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
- * * `snapshot_id` - (Optional) Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
- * * `delete_with_instance` - (Optional) Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
- * * `encrypted` - (Optional, Available in 1.92.0+) Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
- * * `kms_key_id` - (Optional, Available in 1.92.0+) The CMK ID for data disk N. Valid values of N: 1 to 16.
- * * `name` - (Optional, Available in 1.92.0+) The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
- * * `description` - (Optional, Available in 1.92.0+) The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
- * * `auto_snapshot_policy_id` - (Optional, Available in 1.92.0+) The id of auto snapshot policy for data disk.
- * * `performance_level` - (Optional, Available in 1.124.3+) The performance level of the ESSD used as data disk.
- * 
- * ## Block instancePatternInfo
- * 
- * The instancePatternInfo mapping supports the following:
- * 
- * * `cores` - (Optional) The number of vCPUs that are specified for an instance type in instancePatternInfo.
- * * `instance_family_level` - (Optional) The instance family level in instancePatternInfo.
- * * `max_price` - (Optional) The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
- * * `memory` - (Optional) The memory size that is specified for an instance type in instancePatternInfo.
- * 
- * ## Block spotPriceLimit
- * 
- * The spotPriceLimit mapping supports the following:
- * 
- * * `instance_type` - (Optional, Available in 1.151.0+) Resource type of an ECS instance.
- * * `price_limit` - (Optional, Available in 1.151.0+) Price limit hourly of instance type, 2 decimals is allowed at most.
- * 
  * ## Import
  * 
  * ESS scaling configuration can be imported using the id, e.g.
@@ -208,14 +178,14 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.creditSpecification);
     }
     /**
-     * DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+     * DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
      * 
      */
     @Export(name="dataDisks", type=List.class, parameters={ScalingConfigurationDataDisk.class})
     private Output</* @Nullable */ List<ScalingConfigurationDataDisk>> dataDisks;
 
     /**
-     * @return DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+     * @return DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
      * 
      */
     public Output<Optional<List<ScalingConfigurationDataDisk>>> dataDisks() {
@@ -324,14 +294,14 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceName);
     }
     /**
-     * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+     * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
      * 
      */
     @Export(name="instancePatternInfos", type=List.class, parameters={ScalingConfigurationInstancePatternInfo.class})
     private Output</* @Nullable */ List<ScalingConfigurationInstancePatternInfo>> instancePatternInfos;
 
     /**
-     * @return intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+     * @return intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
      * 
      */
     public Output<Optional<List<ScalingConfigurationInstancePatternInfo>>> instancePatternInfos() {
@@ -608,7 +578,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.securityGroupIds);
     }
     /**
-     * Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+     * Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
      * 
      * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
      * 
@@ -629,7 +599,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<ScalingConfigurationSpotPriceLimit>> spotPriceLimits;
 
     /**
-     * @return Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+     * @return Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
      * 
      * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
      * 

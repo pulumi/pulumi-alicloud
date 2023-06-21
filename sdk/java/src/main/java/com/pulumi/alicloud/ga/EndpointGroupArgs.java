@@ -50,14 +50,14 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+     * The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
      * 
      */
     @Import(name="endpointConfigurations", required=true)
     private Output<List<EndpointGroupEndpointConfigurationArgs>> endpointConfigurations;
 
     /**
-     * @return The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+     * @return The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
      * 
      */
     public Output<List<EndpointGroupEndpointConfigurationArgs>> endpointConfigurations() {
@@ -208,7 +208,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+     * Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
      * 
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
@@ -217,7 +217,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<EndpointGroupPortOverridesArgs> portOverrides;
 
     /**
-     * @return Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+     * @return Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
      * 
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
@@ -337,7 +337,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointConfigurations The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+         * @param endpointConfigurations The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointConfigurations The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+         * @param endpointConfigurations The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointConfigurations The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+         * @param endpointConfigurations The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portOverrides Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+         * @param portOverrides Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
          * 
          * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
          * 
@@ -578,7 +578,7 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portOverrides Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+         * @param portOverrides Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
          * 
          * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
          * 

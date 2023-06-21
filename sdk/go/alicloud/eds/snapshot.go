@@ -15,7 +15,7 @@ import (
 //
 // For information about ECD Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createsnapshot).
 //
-// > **NOTE:** Available in v1.169.0+.
+// > **NOTE:** Available since v1.169.0.
 //
 // ## Example Usage
 //
@@ -35,15 +35,42 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "example_value"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
-//				CidrBlock:            pulumi.String("172.16.0.0/12"),
-//				DesktopAccessType:    pulumi.String("Internet"),
-//				OfficeSiteName:       pulumi.String(name),
-//				EnableInternetAccess: pulumi.Bool(false),
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				EnableAdminAccess: pulumi.Bool(true),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
+//				PolicyGroupName: pulumi.String(name),
+//				Clipboard:       pulumi.String("read"),
+//				LocalDrive:      pulumi.String("read"),
+//				UsbRedirect:     pulumi.String("off"),
+//				Watermark:       pulumi.String("off"),
+//				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
+//						Description: pulumi.String(name),
+//						CidrIp:      pulumi.String("1.2.3.45/24"),
+//					},
+//				},
+//				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
+//					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
+//						Type:        pulumi.String("inflow"),
+//						Policy:      pulumi.String("accept"),
+//						Description: pulumi.String(name),
+//						PortRange:   pulumi.String("80/80"),
+//						IpProtocol:  pulumi.String("TCP"),
+//						Priority:    pulumi.String("1"),
+//						CidrIp:      pulumi.String("1.2.3.4/24"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -54,35 +81,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultEcdPolicyGroup, err := eds.NewEcdPolicyGroup(ctx, "defaultEcdPolicyGroup", &eds.EcdPolicyGroupArgs{
-//				PolicyGroupName: pulumi.String(name),
-//				Clipboard:       pulumi.String("readwrite"),
-//				LocalDrive:      pulumi.String("read"),
-//				AuthorizeAccessPolicyRules: eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArray{
-//					&eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs{
-//						Description: pulumi.String("example_value"),
-//						CidrIp:      pulumi.String("1.2.3.4/24"),
-//					},
-//				},
-//				AuthorizeSecurityPolicyRules: eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArray{
-//					&eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs{
-//						Type:        pulumi.String("inflow"),
-//						Policy:      pulumi.String("accept"),
-//						Description: pulumi.String("example_value"),
-//						PortRange:   pulumi.String("80/80"),
-//						IpProtocol:  pulumi.String("TCP"),
-//						Priority:    pulumi.String("1"),
-//						CidrIp:      pulumi.String("0.0.0.0/0"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			defaultDesktop, err := eds.NewDesktop(ctx, "defaultDesktop", &eds.DesktopArgs{
 //				OfficeSiteId:  defaultSimpleOfficeSite.ID(),
 //				PolicyGroupId: defaultEcdPolicyGroup.ID(),
-//				BundleId:      *pulumi.String(defaultBundles.Bundles[0].Id),
+//				BundleId:      *pulumi.String(defaultBundles.Bundles[1].Id),
 //				DesktopName:   pulumi.String(name),
 //			})
 //			if err != nil {

@@ -28,7 +28,7 @@ public final class ShardingInstanceConfigServerList {
      */
     private @Nullable Integer maxIops;
     /**
-     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return The node class of the Config Server node.
      * 
      */
     private @Nullable String nodeClass;
@@ -43,8 +43,7 @@ public final class ShardingInstanceConfigServerList {
      */
     private @Nullable String nodeId;
     /**
-     * @return - Custom storage space; value range: [10, 1,000]
-     * - 10-GB increments. Unit: GB.
+     * @return The node storage of the Config Server node.
      * 
      */
     private @Nullable Integer nodeStorage;
@@ -77,7 +76,7 @@ public final class ShardingInstanceConfigServerList {
         return Optional.ofNullable(this.maxIops);
     }
     /**
-     * @return Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+     * @return The node class of the Config Server node.
      * 
      */
     public Optional<String> nodeClass() {
@@ -98,8 +97,7 @@ public final class ShardingInstanceConfigServerList {
         return Optional.ofNullable(this.nodeId);
     }
     /**
-     * @return - Custom storage space; value range: [10, 1,000]
-     * - 10-GB increments. Unit: GB.
+     * @return The node storage of the Config Server node.
      * 
      */
     public Optional<Integer> nodeStorage() {

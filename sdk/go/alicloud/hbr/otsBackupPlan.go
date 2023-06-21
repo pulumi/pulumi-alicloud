@@ -26,41 +26,49 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "testAcc"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
 //			}
-//			_, err := hbr.NewVault(ctx, "default", &hbr.VaultArgs{
-//				VaultName: pulumi.String(name),
+//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
+//				VaultName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				VaultType: pulumi.String("OTS_BACKUP"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			foo, err := ots.NewInstance(ctx, "foo", &ots.InstanceArgs{
-//				Description: pulumi.String(name),
+//			defaultInstance, err := ots.NewInstance(ctx, "defaultInstance", &ots.InstanceArgs{
+//				Description: pulumi.String("terraform-example"),
 //				AccessedBy:  pulumi.String("Any"),
 //				Tags: pulumi.AnyMap{
 //					"Created": pulumi.Any("TF"),
-//					"For":     pulumi.Any("acceptance test"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			basic, err := ots.NewTable(ctx, "basic", &ots.TableArgs{
-//				InstanceName: foo.Name,
-//				TableName:    pulumi.String(name),
+//			defaultTable, err := ots.NewTable(ctx, "defaultTable", &ots.TableArgs{
+//				InstanceName: defaultInstance.Name,
+//				TableName:    pulumi.String("terraform_example"),
 //				PrimaryKeys: ots.TablePrimaryKeyArray{
 //					&ots.TablePrimaryKeyArgs{
 //						Name: pulumi.String("pk1"),
@@ -74,18 +82,42 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//				Document: pulumi.String("		{\n			\"Statement\": [\n			{\n				\"Action\": \"sts:AssumeRole\",\n				\"Effect\": \"Allow\",\n				\"Principal\": {\n					\"Service\": [\n						\"crossbackup.hbr.aliyuncs.com\"\n					]\n				}\n			}\n			],\n  			\"Version\": \"1\"\n		}\n"),
+//				Force:    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
 //			_, err = hbr.NewOtsBackupPlan(ctx, "example", &hbr.OtsBackupPlanArgs{
-//				OtsBackupPlanName: pulumi.String(name),
-//				VaultId:           _default.ID(),
-//				BackupType:        pulumi.String("COMPLETE"),
-//				Schedule:          pulumi.String("I|1602673264|PT2H"),
-//				Retention:         pulumi.String("2"),
-//				InstanceName:      foo.Name,
+//				OtsBackupPlanName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//				VaultId:              defaultVault.ID(),
+//				BackupType:           pulumi.String("COMPLETE"),
+//				Retention:            pulumi.String("1"),
+//				InstanceName:         defaultInstance.Name,
+//				CrossAccountType:     pulumi.String("SELF_ACCOUNT"),
+//				CrossAccountUserId:   *pulumi.String(defaultAccount.Id),
+//				CrossAccountRoleName: defaultRole.ID(),
 //				OtsDetails: hbr.OtsBackupPlanOtsDetailArray{
 //					&hbr.OtsBackupPlanOtsDetailArgs{
 //						TableNames: pulumi.StringArray{
-//							basic.TableName,
+//							defaultTable.TableName,
 //						},
+//					},
+//				},
+//				Rules: hbr.OtsBackupPlanRuleArray{
+//					&hbr.OtsBackupPlanRuleArgs{
+//						Schedule:   pulumi.String("I|1602673264|PT2H"),
+//						Retention:  pulumi.String("1"),
+//						Disabled:   pulumi.Bool(false),
+//						RuleName:   pulumi.String("terraform-example"),
+//						BackupType: pulumi.String("COMPLETE"),
 //					},
 //				},
 //			})

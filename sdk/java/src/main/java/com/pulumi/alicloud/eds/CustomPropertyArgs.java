@@ -33,14 +33,14 @@ public final class CustomPropertyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Custom attribute sets the value of. See the following `Block property_values`.
+     * Custom attribute sets the value of. See `property_values` below.
      * 
      */
     @Import(name="propertyValues")
     private @Nullable Output<List<CustomPropertyPropertyValueArgs>> propertyValues;
 
     /**
-     * @return Custom attribute sets the value of. See the following `Block property_values`.
+     * @return Custom attribute sets the value of. See `property_values` below.
      * 
      */
     public Optional<Output<List<CustomPropertyPropertyValueArgs>>> propertyValues() {
@@ -94,7 +94,7 @@ public final class CustomPropertyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param propertyValues Custom attribute sets the value of. See the following `Block property_values`.
+         * @param propertyValues Custom attribute sets the value of. See `property_values` below.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class CustomPropertyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param propertyValues Custom attribute sets the value of. See the following `Block property_values`.
+         * @param propertyValues Custom attribute sets the value of. See `property_values` below.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class CustomPropertyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param propertyValues Custom attribute sets the value of. See the following `Block property_values`.
+         * @param propertyValues Custom attribute sets the value of. See `property_values` below.
          * 
          * @return builder
          * 

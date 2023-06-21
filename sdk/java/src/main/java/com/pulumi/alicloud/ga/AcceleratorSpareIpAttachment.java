@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Global Accelerator (GA) Accelerator Spare Ip Attachment resource.
  * 
- * For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://help.aliyun.com/document_detail/262120.html).
+ * For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createspareips).
  * 
- * &gt; **NOTE:** Available in v1.167.0+.
+ * &gt; **NOTE:** Available since v1.167.0.
  * 
  * ## Example Usage
  * 
@@ -55,9 +55,9 @@ import javax.annotation.Nullable;
  *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
  *             .duration(1)
  *             .spec(&#34;1&#34;)
- *             .acceleratorName(var_.name())
+ *             .acceleratorName(&#34;terraform-example&#34;)
  *             .autoUseCoupon(true)
- *             .description(var_.name())
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .billingType(&#34;PayBy95&#34;)
  *             .ratio(30)
- *             .bandwidthPackageName(var_.name())
+ *             .bandwidthPackageName(&#34;terraform-example&#34;)
  *             .autoPay(true)
  *             .autoUseCoupon(true)
  *             .build());

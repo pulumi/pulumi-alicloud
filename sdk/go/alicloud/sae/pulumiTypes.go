@@ -1776,12 +1776,16 @@ type IngressRule struct {
 	AppId string `pulumi:"appId"`
 	// Target application name.
 	AppName string `pulumi:"appName"`
+	// The backend protocol.
+	BackendProtocol *string `pulumi:"backendProtocol"`
 	// Application backend port.
 	ContainerPort int `pulumi:"containerPort"`
 	// Application domain name.
 	Domain string `pulumi:"domain"`
 	// URL path.
 	Path string `pulumi:"path"`
+	// The rewrite path.
+	RewritePath *string `pulumi:"rewritePath"`
 }
 
 // IngressRuleInput is an input type that accepts IngressRuleArgs and IngressRuleOutput values.
@@ -1800,12 +1804,16 @@ type IngressRuleArgs struct {
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// Target application name.
 	AppName pulumi.StringInput `pulumi:"appName"`
+	// The backend protocol.
+	BackendProtocol pulumi.StringPtrInput `pulumi:"backendProtocol"`
 	// Application backend port.
 	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
 	// Application domain name.
 	Domain pulumi.StringInput `pulumi:"domain"`
 	// URL path.
 	Path pulumi.StringInput `pulumi:"path"`
+	// The rewrite path.
+	RewritePath pulumi.StringPtrInput `pulumi:"rewritePath"`
 }
 
 func (IngressRuleArgs) ElementType() reflect.Type {
@@ -1869,6 +1877,11 @@ func (o IngressRuleOutput) AppName() pulumi.StringOutput {
 	return o.ApplyT(func(v IngressRule) string { return v.AppName }).(pulumi.StringOutput)
 }
 
+// The backend protocol.
+func (o IngressRuleOutput) BackendProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressRule) *string { return v.BackendProtocol }).(pulumi.StringPtrOutput)
+}
+
 // Application backend port.
 func (o IngressRuleOutput) ContainerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v IngressRule) int { return v.ContainerPort }).(pulumi.IntOutput)
@@ -1882,6 +1895,11 @@ func (o IngressRuleOutput) Domain() pulumi.StringOutput {
 // URL path.
 func (o IngressRuleOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v IngressRule) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The rewrite path.
+func (o IngressRuleOutput) RewritePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IngressRule) *string { return v.RewritePath }).(pulumi.StringPtrOutput)
 }
 
 type IngressRuleArrayOutput struct{ *pulumi.OutputState }

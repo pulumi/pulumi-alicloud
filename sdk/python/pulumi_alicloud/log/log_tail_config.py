@@ -271,8 +271,12 @@ class LogTailConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             retention_period=3650,
@@ -284,9 +288,18 @@ class LogTailConfig(pulumi.CustomResource):
             project=example_project.name,
             logstore=example_store.name,
             input_type="file",
-            log_sample="test",
             output_type="LogService",
-            input_detail=(lambda path: open(path).read())("config.json"))
+            input_detail=\"\"\"  	{
+        		"logPath": "/logPath",
+        		"filePattern": "access.log",
+        		"logType": "json_log",
+        		"topicFormat": "default",
+        		"discardUnmatch": false,
+        		"enableRawLog": true,
+        		"fileEncoding": "gbk",
+        		"maxDepth": 10
+        	}
+        \"\"\")
         ```
         ## Module Support
 
@@ -329,8 +342,12 @@ class LogTailConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             retention_period=3650,
@@ -342,9 +359,18 @@ class LogTailConfig(pulumi.CustomResource):
             project=example_project.name,
             logstore=example_store.name,
             input_type="file",
-            log_sample="test",
             output_type="LogService",
-            input_detail=(lambda path: open(path).read())("config.json"))
+            input_detail=\"\"\"  	{
+        		"logPath": "/logPath",
+        		"filePattern": "access.log",
+        		"logType": "json_log",
+        		"topicFormat": "default",
+        		"discardUnmatch": false,
+        		"enableRawLog": true,
+        		"fileEncoding": "gbk",
+        		"maxDepth": 10
+        	}
+        \"\"\")
         ```
         ## Module Support
 

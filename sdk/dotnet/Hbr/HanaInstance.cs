@@ -30,20 +30,20 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVault = new AliCloud.Hbr.Vault("exampleVault", new()
-    ///     {
-    ///         VaultName = @var.Name,
-    ///     });
-    /// 
     ///     var exampleResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
     ///     });
     /// 
+    ///     var exampleVault = new AliCloud.Hbr.Vault("exampleVault", new()
+    ///     {
+    ///         VaultName = "terraform-example",
+    ///     });
+    /// 
     ///     var exampleHanaInstance = new AliCloud.Hbr.HanaInstance("exampleHanaInstance", new()
     ///     {
     ///         AlertSetting = "INHERITED",
-    ///         HanaName = @var.Name,
+    ///         HanaName = "terraform-example",
     ///         Host = "1.1.1.1",
     ///         InstanceNumber = 1,
     ///         Password = "YouPassword123",

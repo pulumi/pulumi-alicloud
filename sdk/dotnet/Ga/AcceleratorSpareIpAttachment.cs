@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Ga
     /// <summary>
     /// Provides a Global Accelerator (GA) Accelerator Spare Ip Attachment resource.
     /// 
-    /// For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://help.aliyun.com/document_detail/262120.html).
+    /// For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createspareips).
     /// 
-    /// &gt; **NOTE:** Available in v1.167.0+.
+    /// &gt; **NOTE:** Available since v1.167.0.
     /// 
     /// ## Example Usage
     /// 
@@ -32,9 +32,9 @@ namespace Pulumi.AliCloud.Ga
     ///     {
     ///         Duration = 1,
     ///         Spec = "1",
-    ///         AcceleratorName = @var.Name,
+    ///         AcceleratorName = "terraform-example",
     ///         AutoUseCoupon = true,
-    ///         Description = @var.Name,
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.Ga
     ///         PaymentType = "PayAsYouGo",
     ///         BillingType = "PayBy95",
     ///         Ratio = 30,
-    ///         BandwidthPackageName = @var.Name,
+    ///         BandwidthPackageName = "terraform-example",
     ///         AutoPay = true,
     ///         AutoUseCoupon = true,
     ///     });

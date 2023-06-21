@@ -1322,47 +1322,8 @@ class SynchronizationJob(pulumi.CustomResource):
 
         For information about DTS Synchronization Job and how to use it, see [What is Synchronization Job](https://www.alibabacloud.com/product/data-transmission-service).
 
-        > **NOTE:** Available in v1.138.0+.
+        > **NOTE:** Available since v1.138.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_synchronization_instance = alicloud.dts.SynchronizationInstance("defaultSynchronizationInstance",
-            payment_type="PayAsYouGo",
-            source_endpoint_engine_name="PolarDB",
-            source_endpoint_region="cn-hangzhou",
-            destination_endpoint_engine_name="ADB30",
-            destination_endpoint_region="cn-hangzhou",
-            instance_class="small",
-            sync_architecture="oneway")
-        default_synchronization_job = alicloud.dts.SynchronizationJob("defaultSynchronizationJob",
-            dts_instance_id=default_synchronization_instance.id,
-            dts_job_name="tf-testAccCase1",
-            source_endpoint_instance_type="PolarDB",
-            source_endpoint_instance_id="pc-xxxxxxxx",
-            source_endpoint_engine_name="PolarDB",
-            source_endpoint_region="cn-hangzhou",
-            source_endpoint_database_name="tf-testacc",
-            source_endpoint_user_name="root",
-            source_endpoint_password="password",
-            destination_endpoint_instance_type="ads",
-            destination_endpoint_instance_id="am-xxxxxxxx",
-            destination_endpoint_engine_name="ADB30",
-            destination_endpoint_region="cn-hangzhou",
-            destination_endpoint_database_name="tf-testacc",
-            destination_endpoint_user_name="root",
-            destination_endpoint_password="password",
-            db_list="{\\"tf-testacc\\":{\\"name\\":\\"tf-test\\",\\"all\\":true,\\"state\\":\\"normal\\"}}",
-            structure_initialization=True,
-            data_initialization=True,
-            data_synchronization=True,
-            status="Synchronizing")
-        ```
         ## Notice
 
         1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;
@@ -1442,47 +1403,8 @@ class SynchronizationJob(pulumi.CustomResource):
 
         For information about DTS Synchronization Job and how to use it, see [What is Synchronization Job](https://www.alibabacloud.com/product/data-transmission-service).
 
-        > **NOTE:** Available in v1.138.0+.
+        > **NOTE:** Available since v1.138.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        default_synchronization_instance = alicloud.dts.SynchronizationInstance("defaultSynchronizationInstance",
-            payment_type="PayAsYouGo",
-            source_endpoint_engine_name="PolarDB",
-            source_endpoint_region="cn-hangzhou",
-            destination_endpoint_engine_name="ADB30",
-            destination_endpoint_region="cn-hangzhou",
-            instance_class="small",
-            sync_architecture="oneway")
-        default_synchronization_job = alicloud.dts.SynchronizationJob("defaultSynchronizationJob",
-            dts_instance_id=default_synchronization_instance.id,
-            dts_job_name="tf-testAccCase1",
-            source_endpoint_instance_type="PolarDB",
-            source_endpoint_instance_id="pc-xxxxxxxx",
-            source_endpoint_engine_name="PolarDB",
-            source_endpoint_region="cn-hangzhou",
-            source_endpoint_database_name="tf-testacc",
-            source_endpoint_user_name="root",
-            source_endpoint_password="password",
-            destination_endpoint_instance_type="ads",
-            destination_endpoint_instance_id="am-xxxxxxxx",
-            destination_endpoint_engine_name="ADB30",
-            destination_endpoint_region="cn-hangzhou",
-            destination_endpoint_database_name="tf-testacc",
-            destination_endpoint_user_name="root",
-            destination_endpoint_password="password",
-            db_list="{\\"tf-testacc\\":{\\"name\\":\\"tf-test\\",\\"all\\":true,\\"state\\":\\"normal\\"}}",
-            structure_initialization=True,
-            data_initialization=True,
-            data_synchronization=True,
-            status="Synchronizing")
-        ```
         ## Notice
 
         1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;

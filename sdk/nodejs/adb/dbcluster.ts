@@ -5,59 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a AnalyticDB for MySQL (ADB) DBCluster resource.
- *
- * For information about AnalyticDB for MySQL (ADB) DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/doc-detail/190519.htm).
- *
- * > **NOTE:** Available in v1.121.0+.
- *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "adbClusterconfig";
- * const creation = config.get("creation") || "ADB";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const _this = new alicloud.adb.DBCluster("this", {
- *     dbClusterCategory: "Cluster",
- *     dbNodeClass: "C8",
- *     dbNodeCount: 4,
- *     dbNodeStorage: 400,
- *     mode: "reserver",
- *     dbClusterVersion: "3.0",
- *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitch.id,
- *     description: "Test new adb again.",
- *     maintainTime: "23:00Z-00:00Z",
- *     tags: {
- *         Created: "TF-update",
- *         For: "acceptance-test-update",
- *     },
- *     resourceGroupId: "rg-aek2s7ylxx6****",
- *     securityIps: [
- *         "10.168.1.12",
- *         "10.168.1.11",
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
@@ -95,7 +42,7 @@ export class DBCluster extends pulumi.CustomResource {
     }
 
     /**
-     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      */
     public readonly autoRenewPeriod!: pulumi.Output<number>;
     /**
@@ -117,7 +64,7 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly dbClusterClass!: pulumi.Output<string | undefined>;
     /**
-     * The db cluster version. Value options: `3.0`, Default to `3.0`.
+     * The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      */
     public readonly dbClusterVersion!: pulumi.Output<string | undefined>;
     /**
@@ -137,9 +84,17 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+     */
+    public readonly diskPerformanceLevel!: pulumi.Output<string>;
+    /**
      * The elastic io resource.
      */
     public readonly elasticIoResource!: pulumi.Output<number>;
+    /**
+     * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+     */
+    public readonly elasticIoResourceSize!: pulumi.Output<string>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */
@@ -159,7 +114,7 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly payType!: pulumi.Output<string>;
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+     * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -168,7 +123,7 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     * (Available since v1.196.0) The connection port of the ADB cluster.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
@@ -231,7 +186,9 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
             resourceInputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskPerformanceLevel"] = state ? state.diskPerformanceLevel : undefined;
             resourceInputs["elasticIoResource"] = state ? state.elasticIoResource : undefined;
+            resourceInputs["elasticIoResourceSize"] = state ? state.elasticIoResourceSize : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["modifyType"] = state ? state.modifyType : undefined;
@@ -264,7 +221,9 @@ export class DBCluster extends pulumi.CustomResource {
             resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
             resourceInputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskPerformanceLevel"] = args ? args.diskPerformanceLevel : undefined;
             resourceInputs["elasticIoResource"] = args ? args.elasticIoResource : undefined;
+            resourceInputs["elasticIoResourceSize"] = args ? args.elasticIoResourceSize : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["modifyType"] = args ? args.modifyType : undefined;
@@ -292,7 +251,7 @@ export class DBCluster extends pulumi.CustomResource {
  */
 export interface DBClusterState {
     /**
-     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
@@ -314,7 +273,7 @@ export interface DBClusterState {
      */
     dbClusterClass?: pulumi.Input<string>;
     /**
-     * The db cluster version. Value options: `3.0`, Default to `3.0`.
+     * The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      */
     dbClusterVersion?: pulumi.Input<string>;
     /**
@@ -334,9 +293,17 @@ export interface DBClusterState {
      */
     description?: pulumi.Input<string>;
     /**
+     * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+     */
+    diskPerformanceLevel?: pulumi.Input<string>;
+    /**
      * The elastic io resource.
      */
     elasticIoResource?: pulumi.Input<number>;
+    /**
+     * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+     */
+    elasticIoResourceSize?: pulumi.Input<string>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */
@@ -356,7 +323,7 @@ export interface DBClusterState {
      */
     payType?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+     * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -365,7 +332,7 @@ export interface DBClusterState {
      */
     period?: pulumi.Input<number>;
     /**
-     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     * (Available since v1.196.0) The connection port of the ADB cluster.
      */
     port?: pulumi.Input<string>;
     /**
@@ -411,7 +378,7 @@ export interface DBClusterState {
  */
 export interface DBClusterArgs {
     /**
-     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
@@ -429,7 +396,7 @@ export interface DBClusterArgs {
      */
     dbClusterClass?: pulumi.Input<string>;
     /**
-     * The db cluster version. Value options: `3.0`, Default to `3.0`.
+     * The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      */
     dbClusterVersion?: pulumi.Input<string>;
     /**
@@ -449,9 +416,17 @@ export interface DBClusterArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+     */
+    diskPerformanceLevel?: pulumi.Input<string>;
+    /**
      * The elastic io resource.
      */
     elasticIoResource?: pulumi.Input<number>;
+    /**
+     * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+     */
+    elasticIoResourceSize?: pulumi.Input<string>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */
@@ -471,7 +446,7 @@ export interface DBClusterArgs {
      */
     payType?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
+     * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      */
     paymentType?: pulumi.Input<string>;
     /**

@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Eds.Inputs
     public sealed class EcdPolicyGroupAuthorizeAccessPolicyRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cidrip of security rules.
+        /// The cidrip of authorize access rule.
         /// </summary>
         [Input("cidrIp")]
         public Input<string>? CidrIp { get; set; }
 
         /// <summary>
-        /// The description of security rules.
+        /// The description of authorize access rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

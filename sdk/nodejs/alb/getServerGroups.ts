@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Alb Server Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *
@@ -78,9 +78,12 @@ export interface GetServerGroupsArgs {
      */
     serverGroupName?: string;
     /**
-     * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * The status of the resource.
      */
     status?: string;
+    /**
+     * A map of tags assigned to the group.
+     */
     tags?: {[key: string]: any};
     /**
      * The ID of the VPC that you want to access.
@@ -93,6 +96,9 @@ export interface GetServerGroupsArgs {
  */
 export interface GetServerGroupsResult {
     readonly enableDetails?: boolean;
+    /**
+     * A list of Alb Server Groups. Each element contains the following attributes:
+     */
     readonly groups: outputs.alb.GetServerGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -100,19 +106,34 @@ export interface GetServerGroupsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Server Group names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
     readonly serverGroupIds?: string[];
+    /**
+     * The name of the resource.
+     */
     readonly serverGroupName?: string;
+    /**
+     * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     */
     readonly status?: string;
+    /**
+     * The tags of the resource.
+     */
     readonly tags?: {[key: string]: any};
+    /**
+     * The ID of the VPC that you want to access.
+     */
     readonly vpcId?: string;
 }
 /**
  * This data source provides the Alb Server Groups of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.131.0+.
+ * > **NOTE:** Available since v1.131.0.
  *
  * ## Example Usage
  *
@@ -167,9 +188,12 @@ export interface GetServerGroupsOutputArgs {
      */
     serverGroupName?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A map of tags assigned to the group.
+     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the VPC that you want to access.

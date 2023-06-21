@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECD Nas File System resource.
  *
- * For information about ECD Nas File System and how to use it, see [What is Nas File System](https://help.aliyun.com/document_detail/188382.html).
+ * For information about ECD Nas File System and how to use it, see [What is Nas File System](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-reference-for-easy-use-1).
  *
- * > **NOTE:** Available in v1.141.0+.
+ * > **NOTE:** Available since v1.141.0.
  *
  * ## Example Usage
  *
@@ -19,16 +19,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
+ *     enableAdminAccess: false,
  *     desktopAccessType: "Internet",
- *     officeSiteName: "your_office_site_name",
- *     enableInternetAccess: false,
+ *     officeSiteName: name,
  * });
  * const example = new alicloud.eds.NasFileSystem("example", {
- *     nasFileSystemName: "example_value",
+ *     nasFileSystemName: name,
  *     officeSiteId: _default.id,
- *     description: "example_value",
+ *     description: name,
  * });
  * ```
  *

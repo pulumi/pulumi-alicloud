@@ -20,16 +20,22 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         Description = "create by terraform",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
@@ -47,9 +53,18 @@ namespace Pulumi.AliCloud.Log
     ///         Project = exampleProject.Name,
     ///         Logstore = exampleStore.Name,
     ///         InputType = "file",
-    ///         LogSample = "test",
     ///         OutputType = "LogService",
-    ///         InputDetail = File.ReadAllText("config.json"),
+    ///         InputDetail = @"  	{
+    /// 		""logPath"": ""/logPath"",
+    /// 		""filePattern"": ""access.log"",
+    /// 		""logType"": ""json_log"",
+    /// 		""topicFormat"": ""default"",
+    /// 		""discardUnmatch"": false,
+    /// 		""enableRawLog"": true,
+    /// 		""fileEncoding"": ""gbk"",
+    /// 		""maxDepth"": 10
+    /// 	}
+    /// ",
     ///     });
     /// 
     /// });

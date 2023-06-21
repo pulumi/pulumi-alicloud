@@ -13,16 +13,32 @@ public final class SiteMonitorIspCityArgs extends com.pulumi.resources.ResourceA
 
     public static final SiteMonitorIspCityArgs Empty = new SiteMonitorIspCityArgs();
 
+    /**
+     * The ID of the city.
+     * 
+     */
     @Import(name="city", required=true)
     private Output<String> city;
 
+    /**
+     * @return The ID of the city.
+     * 
+     */
     public Output<String> city() {
         return this.city;
     }
 
+    /**
+     * The ID of the carrier.
+     * 
+     */
     @Import(name="isp", required=true)
     private Output<String> isp;
 
+    /**
+     * @return The ID of the carrier.
+     * 
+     */
     public Output<String> isp() {
         return this.isp;
     }
@@ -52,20 +68,44 @@ public final class SiteMonitorIspCityArgs extends com.pulumi.resources.ResourceA
             $ = new SiteMonitorIspCityArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param city The ID of the city.
+         * 
+         * @return builder
+         * 
+         */
         public Builder city(Output<String> city) {
             $.city = city;
             return this;
         }
 
+        /**
+         * @param city The ID of the city.
+         * 
+         * @return builder
+         * 
+         */
         public Builder city(String city) {
             return city(Output.of(city));
         }
 
+        /**
+         * @param isp The ID of the carrier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isp(Output<String> isp) {
             $.isp = isp;
             return this;
         }
 
+        /**
+         * @param isp The ID of the carrier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isp(String isp) {
             return isp(Output.of(isp));
         }

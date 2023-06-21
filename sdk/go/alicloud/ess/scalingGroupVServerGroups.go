@@ -29,20 +29,7 @@ import (
 //
 // > **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.
 //
-// > **NOTE:** Resource `ess.ScalingGroupVServerGroups` is available in 1.53.0+.
-//
-// ## Block vserverGroup
-//
-// the vserverGroup supports the following:
-//
-// * `loadbalancerId` - (Required) Loadbalancer server ID of VServer Group.
-// * `vserverAttributes` - (Required) A list of VServer Group attributes. See Block vserverAttribute below for details.
-//
-// ## Block vserverAttribute
-//
-// * `vserverGroupId` - (Required) ID of VServer Group.
-// * `port` - (Required) - The port will be used for VServer Group backend server.
-// * `weight` - (Required) The weight of an ECS instance attached to the VServer Group.
+// > **NOTE:** Available since v1.53.0.
 //
 // ## Import
 //
@@ -60,7 +47,7 @@ type ScalingGroupVServerGroups struct {
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// ID of the scaling group.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
-	// A list of vserver groups attached on scaling group. See Block vserverGroup below for details.
+	// A list of vserver groups attached on scaling group. See `vserverGroups` below.
 	VserverGroups ScalingGroupVServerGroupsVserverGroupArrayOutput `pulumi:"vserverGroups"`
 }
 
@@ -103,7 +90,7 @@ type scalingGroupVServerGroupsState struct {
 	Force *bool `pulumi:"force"`
 	// ID of the scaling group.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
-	// A list of vserver groups attached on scaling group. See Block vserverGroup below for details.
+	// A list of vserver groups attached on scaling group. See `vserverGroups` below.
 	VserverGroups []ScalingGroupVServerGroupsVserverGroup `pulumi:"vserverGroups"`
 }
 
@@ -112,7 +99,7 @@ type ScalingGroupVServerGroupsState struct {
 	Force pulumi.BoolPtrInput
 	// ID of the scaling group.
 	ScalingGroupId pulumi.StringPtrInput
-	// A list of vserver groups attached on scaling group. See Block vserverGroup below for details.
+	// A list of vserver groups attached on scaling group. See `vserverGroups` below.
 	VserverGroups ScalingGroupVServerGroupsVserverGroupArrayInput
 }
 
@@ -125,7 +112,7 @@ type scalingGroupVServerGroupsArgs struct {
 	Force *bool `pulumi:"force"`
 	// ID of the scaling group.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
-	// A list of vserver groups attached on scaling group. See Block vserverGroup below for details.
+	// A list of vserver groups attached on scaling group. See `vserverGroups` below.
 	VserverGroups []ScalingGroupVServerGroupsVserverGroup `pulumi:"vserverGroups"`
 }
 
@@ -135,7 +122,7 @@ type ScalingGroupVServerGroupsArgs struct {
 	Force pulumi.BoolPtrInput
 	// ID of the scaling group.
 	ScalingGroupId pulumi.StringInput
-	// A list of vserver groups attached on scaling group. See Block vserverGroup below for details.
+	// A list of vserver groups attached on scaling group. See `vserverGroups` below.
 	VserverGroups ScalingGroupVServerGroupsVserverGroupArrayInput
 }
 
@@ -236,7 +223,7 @@ func (o ScalingGroupVServerGroupsOutput) ScalingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScalingGroupVServerGroups) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
 }
 
-// A list of vserver groups attached on scaling group. See Block vserverGroup below for details.
+// A list of vserver groups attached on scaling group. See `vserverGroups` below.
 func (o ScalingGroupVServerGroupsOutput) VserverGroups() ScalingGroupVServerGroupsVserverGroupArrayOutput {
 	return o.ApplyT(func(v *ScalingGroupVServerGroups) ScalingGroupVServerGroupsVserverGroupArrayOutput {
 		return v.VserverGroups

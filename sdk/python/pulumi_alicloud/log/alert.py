@@ -1005,8 +1005,12 @@ class Alert(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             retention_period=3650,
@@ -1016,10 +1020,10 @@ class Alert(pulumi.CustomResource):
             append_meta=True)
         example_alert = alicloud.log.Alert("exampleAlert",
             project_name=example_project.name,
-            alert_name="tf-test-alert",
-            alert_displayname="tf-test-alert-displayname",
+            alert_name="example-alert",
+            alert_displayname="example-alert",
             condition="count> 100",
-            dashboard="tf-test-dashboard",
+            dashboard="example-dashboard",
             schedule=alicloud.log.AlertScheduleArgs(
                 type="FixedRate",
                 interval="5m",
@@ -1029,7 +1033,7 @@ class Alert(pulumi.CustomResource):
                 run_immediately=False,
             ),
             query_lists=[alicloud.log.AlertQueryListArgs(
-                logstore="tf-test-logstore",
+                logstore=example_store.name,
                 chart_title="chart_title",
                 start="-60s",
                 end="20s",
@@ -1048,7 +1052,7 @@ class Alert(pulumi.CustomResource):
                     type="Email",
                     email_lists=[
                         "aliyun@alibaba-inc.com",
-                        "tf-test@123.com",
+                        "tf-example@123.com",
                     ],
                     content="alert content",
                 ),
@@ -1065,8 +1069,12 @@ class Alert(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             retention_period=3650,
@@ -1078,14 +1086,14 @@ class Alert(pulumi.CustomResource):
             version="2.0",
             type="default",
             project_name=example_project.name,
-            alert_name="tf-test-alert-2",
-            alert_displayname="tf-test-alert-displayname-2",
-            dashboard="tf-test-dashboard",
+            alert_name="example-alert",
+            alert_displayname="example-alert",
             mute_until=1632486684,
             no_data_fire=False,
             no_data_severity=8,
             send_resolved=True,
             auto_annotation=True,
+            dashboard="example-dashboard",
             schedule=alicloud.log.AlertScheduleArgs(
                 type="FixedRate",
                 interval="5m",
@@ -1096,7 +1104,7 @@ class Alert(pulumi.CustomResource):
             ),
             query_lists=[
                 alicloud.log.AlertQueryListArgs(
-                    store="tf-test-logstore",
+                    store=example_store.name,
                     store_type="log",
                     project=example_project.name,
                     region="cn-heyuan",
@@ -1107,7 +1115,7 @@ class Alert(pulumi.CustomResource):
                     power_sql_mode="auto",
                 ),
                 alicloud.log.AlertQueryListArgs(
-                    store="tf-test-logstore",
+                    store=example_store.name,
                     store_type="log",
                     project=example_project.name,
                     region="cn-heyuan",
@@ -1179,8 +1187,12 @@ class Alert(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             retention_period=3650,
@@ -1192,8 +1204,8 @@ class Alert(pulumi.CustomResource):
             version="2.0",
             type="tpl",
             project_name=example_project.name,
-            alert_name="tf-test-alert-3",
-            alert_displayname="tf-test-alert-displayname-3",
+            alert_name="example-alert",
+            alert_displayname="example-alert",
             mute_until=1632486684,
             schedule=alicloud.log.AlertScheduleArgs(
                 type="FixedRate",
@@ -1217,7 +1229,7 @@ class Alert(pulumi.CustomResource):
                     "default.logstore": "k8s-event",
                     "default.repeatInterval": "4h",
                     "trigger_threshold": "1",
-                    "default.clusterId": "test-cluster-id",
+                    "default.clusterId": "example-cluster-id",
                 },
             ))
         ```
@@ -1281,8 +1293,12 @@ class Alert(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             retention_period=3650,
@@ -1292,10 +1308,10 @@ class Alert(pulumi.CustomResource):
             append_meta=True)
         example_alert = alicloud.log.Alert("exampleAlert",
             project_name=example_project.name,
-            alert_name="tf-test-alert",
-            alert_displayname="tf-test-alert-displayname",
+            alert_name="example-alert",
+            alert_displayname="example-alert",
             condition="count> 100",
-            dashboard="tf-test-dashboard",
+            dashboard="example-dashboard",
             schedule=alicloud.log.AlertScheduleArgs(
                 type="FixedRate",
                 interval="5m",
@@ -1305,7 +1321,7 @@ class Alert(pulumi.CustomResource):
                 run_immediately=False,
             ),
             query_lists=[alicloud.log.AlertQueryListArgs(
-                logstore="tf-test-logstore",
+                logstore=example_store.name,
                 chart_title="chart_title",
                 start="-60s",
                 end="20s",
@@ -1324,7 +1340,7 @@ class Alert(pulumi.CustomResource):
                     type="Email",
                     email_lists=[
                         "aliyun@alibaba-inc.com",
-                        "tf-test@123.com",
+                        "tf-example@123.com",
                     ],
                     content="alert content",
                 ),
@@ -1341,8 +1357,12 @@ class Alert(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             retention_period=3650,
@@ -1354,14 +1374,14 @@ class Alert(pulumi.CustomResource):
             version="2.0",
             type="default",
             project_name=example_project.name,
-            alert_name="tf-test-alert-2",
-            alert_displayname="tf-test-alert-displayname-2",
-            dashboard="tf-test-dashboard",
+            alert_name="example-alert",
+            alert_displayname="example-alert",
             mute_until=1632486684,
             no_data_fire=False,
             no_data_severity=8,
             send_resolved=True,
             auto_annotation=True,
+            dashboard="example-dashboard",
             schedule=alicloud.log.AlertScheduleArgs(
                 type="FixedRate",
                 interval="5m",
@@ -1372,7 +1392,7 @@ class Alert(pulumi.CustomResource):
             ),
             query_lists=[
                 alicloud.log.AlertQueryListArgs(
-                    store="tf-test-logstore",
+                    store=example_store.name,
                     store_type="log",
                     project=example_project.name,
                     region="cn-heyuan",
@@ -1383,7 +1403,7 @@ class Alert(pulumi.CustomResource):
                     power_sql_mode="auto",
                 ),
                 alicloud.log.AlertQueryListArgs(
-                    store="tf-test-logstore",
+                    store=example_store.name,
                     store_type="log",
                     project=example_project.name,
                     region="cn-heyuan",
@@ -1455,8 +1475,12 @@ class Alert(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="create by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             retention_period=3650,
@@ -1468,8 +1492,8 @@ class Alert(pulumi.CustomResource):
             version="2.0",
             type="tpl",
             project_name=example_project.name,
-            alert_name="tf-test-alert-3",
-            alert_displayname="tf-test-alert-displayname-3",
+            alert_name="example-alert",
+            alert_displayname="example-alert",
             mute_until=1632486684,
             schedule=alicloud.log.AlertScheduleArgs(
                 type="FixedRate",
@@ -1493,7 +1517,7 @@ class Alert(pulumi.CustomResource):
                     "default.logstore": "k8s-event",
                     "default.repeatInterval": "4h",
                     "trigger_threshold": "1",
-                    "default.clusterId": "test-cluster-id",
+                    "default.clusterId": "example-cluster-id",
                 },
             ))
         ```

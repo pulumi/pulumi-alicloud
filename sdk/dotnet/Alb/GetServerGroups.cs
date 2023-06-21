@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Server Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// &gt; **NOTE:** Available since v1.131.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// This data source provides the Alb Server Groups of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.131.0+.
+        /// &gt; **NOTE:** Available since v1.131.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -148,13 +148,17 @@ namespace Pulumi.AliCloud.Alb
         public string? ServerGroupName { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the group.
+        /// </summary>
         public Dictionary<string, object> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, object>());
@@ -230,13 +234,17 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ServerGroupName { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A map of tags assigned to the group.
+        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -260,6 +268,9 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetServerGroupsResult
     {
         public readonly bool? EnableDetails;
+        /// <summary>
+        /// A list of Alb Server Groups. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -267,13 +278,28 @@ namespace Pulumi.AliCloud.Alb
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Server Group names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? ResourceGroupId;
         public readonly ImmutableArray<string> ServerGroupIds;
+        /// <summary>
+        /// The name of the resource.
+        /// </summary>
         public readonly string? ServerGroupName;
+        /// <summary>
+        /// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tags of the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
+        /// <summary>
+        /// The ID of the VPC that you want to access.
+        /// </summary>
         public readonly string? VpcId;
 
         [OutputConstructor]

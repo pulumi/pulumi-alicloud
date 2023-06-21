@@ -706,15 +706,17 @@ class GetDBClustersClusterResult(dict):
         :param str lock_reason: The reason why the cluster is locked.
         :param str maintain_time: The maintenance window of the cluster.
         :param str mode: The lock mode of the cluster.
+        :param str network_type: The db cluster network type.
         :param str payment_type: The payment type of the resource.
         :param int port: The port that is used to access the cluster.
         :param str rds_instance_id: The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
+        :param str region_id: The region ID  of the resource.
         :param str renewal_status: The status of renewal.
         :param str resource_group_id: The ID of the resource group.
         :param Sequence[str] security_ips: List of IP addresses allowed to access all databases of an cluster.
         :param str status: The status of the resource.
         :param str storage_resource: The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
-        :param Mapping[str, Any] tags: The tag of the resource.
+        :param Mapping[str, Any] tags: A map of tags assigned to the cluster.
         :param str vpc_cloud_instance_id: The vpc cloud instance id.
         :param str vpc_id: The vpc id.
         :param str vswitch_id: The vswitch id.
@@ -991,6 +993,9 @@ class GetDBClustersClusterResult(dict):
     @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> str:
+        """
+        The db cluster network type.
+        """
         return pulumi.get(self, "network_type")
 
     @property
@@ -1020,6 +1025,9 @@ class GetDBClustersClusterResult(dict):
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> str:
+        """
+        The region ID  of the resource.
+        """
         return pulumi.get(self, "region_id")
 
     @property
@@ -1066,7 +1074,7 @@ class GetDBClustersClusterResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, Any]:
         """
-        The tag of the resource.
+        A map of tags assigned to the cluster.
         """
         return pulumi.get(self, "tags")
 

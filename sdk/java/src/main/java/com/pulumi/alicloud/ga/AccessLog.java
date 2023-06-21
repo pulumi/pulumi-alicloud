@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Global Accelerator (GA) Access Log and how to use it, see [What is Access Log](https://www.alibabacloud.com/help/en/global-accelerator/latest/attachlogstoretoendpointgroup).
  * 
- * &gt; **NOTE:** Available in v1.187.0+.
+ * &gt; **NOTE:** Available since v1.187.0.
  * 
  * ## Example Usage
  * 
@@ -29,11 +29,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ga.GaFunctions;
- * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.Store;
  * import com.pulumi.alicloud.log.StoreArgs;
+ * import com.pulumi.alicloud.ga.Accelerator;
+ * import com.pulumi.alicloud.ga.AcceleratorArgs;
  * import com.pulumi.alicloud.ga.BandwidthPackage;
  * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
  * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
@@ -61,14 +63,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultAccelerators = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
- *             .status(&#34;active&#34;)
+ *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
  *             .build());
  * 
  *         var defaultProject = new Project(&#34;defaultProject&#34;);
  * 
  *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
  *             .project(defaultProject.name())
+ *             .build());
+ * 
+ *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
+ *             .duration(1)
+ *             .autoUseCoupon(true)
+ *             .spec(&#34;2&#34;)
  *             .build());
  * 
  *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
@@ -81,20 +92,24 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .acceleratorId(defaultAccelerators.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()))
+ *             .acceleratorId(defaultAccelerator.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
  *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
+ *             .clientAffinity(&#34;SOURCE_IP&#34;)
+ *             .protocol(&#34;HTTP&#34;)
  *             .portRanges(ListenerPortRangeArgs.builder()
- *                 .fromPort(80)
- *                 .toPort(80)
+ *                 .fromPort(70)
+ *                 .toPort(70)
  *                 .build())
  *             .build());
  * 
  *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .bandwidth(&#34;10&#34;)
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .addressName(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
@@ -104,17 +119,17 @@ import javax.annotation.Nullable;
  *                 .type(&#34;PublicIp&#34;)
  *                 .weight(20)
  *                 .build())
- *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+ *             .endpointGroupRegion(region)
  *             .listenerId(defaultListener.id())
  *             .build());
  * 
  *         var defaultAccessLog = new AccessLog(&#34;defaultAccessLog&#34;, AccessLogArgs.builder()        
- *             .acceleratorId(defaultAccelerators.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()))
+ *             .acceleratorId(defaultAccelerator.id())
  *             .listenerId(defaultListener.id())
  *             .endpointGroupId(defaultEndpointGroup.id())
  *             .slsProjectName(defaultProject.name())
  *             .slsLogStoreName(defaultStore.name())
- *             .slsRegionId(&#34;cn-hangzhou&#34;)
+ *             .slsRegionId(region)
  *             .build());
  * 
  *     }

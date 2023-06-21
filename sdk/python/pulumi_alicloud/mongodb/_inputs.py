@@ -26,7 +26,7 @@ class InstanceParameterArgs:
                  name: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: The name of DB instance. It a string of 2 to 256 characters.
+        :param pulumi.Input[str] name: The name of the parameter.
         :param pulumi.Input[str] value: The value of the parameter.
         """
         pulumi.set(__self__, "name", name)
@@ -36,7 +36,7 @@ class InstanceParameterArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of DB instance. It a string of 2 to 256 characters.
+        The name of the parameter.
         """
         return pulumi.get(self, "name")
 
@@ -246,11 +246,10 @@ class ShardingInstanceConfigServerListArgs:
         :param pulumi.Input[str] connect_string: The connection address of the Config Server node.
         :param pulumi.Input[int] max_connections: The max connections of the Config Server node.
         :param pulumi.Input[int] max_iops: The maximum IOPS of the Config Server node.
-        :param pulumi.Input[str] node_class: Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param pulumi.Input[str] node_class: The node class of the Config Server node.
         :param pulumi.Input[str] node_description: The description of the Config Server node.
         :param pulumi.Input[str] node_id: The ID of the Config Server node.
-        :param pulumi.Input[int] node_storage: - Custom storage space; value range: [10, 1,000]
-               - 10-GB increments. Unit: GB.
+        :param pulumi.Input[int] node_storage: The node storage of the Config Server node.
         :param pulumi.Input[int] port: The connection port of the Config Server node.
         """
         if connect_string is not None:
@@ -310,7 +309,7 @@ class ShardingInstanceConfigServerListArgs:
     @pulumi.getter(name="nodeClass")
     def node_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        The node class of the Config Server node.
         """
         return pulumi.get(self, "node_class")
 
@@ -346,8 +345,7 @@ class ShardingInstanceConfigServerListArgs:
     @pulumi.getter(name="nodeStorage")
     def node_storage(self) -> Optional[pulumi.Input[int]]:
         """
-        - Custom storage space; value range: [10, 1,000]
-        - 10-GB increments. Unit: GB.
+        The node storage of the Config Server node.
         """
         return pulumi.get(self, "node_storage")
 
@@ -377,9 +375,9 @@ class ShardingInstanceMongoListArgs:
                  port: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] node_class: Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-        :param pulumi.Input[str] connect_string: The connection address of the Config Server node.
-        :param pulumi.Input[str] node_id: The ID of the Config Server node.
-        :param pulumi.Input[int] port: The connection port of the Config Server node.
+        :param pulumi.Input[str] connect_string: Mongo node connection string.
+        :param pulumi.Input[str] node_id: The ID of the mongo-node.
+        :param pulumi.Input[int] port: Mongo node port.
         """
         pulumi.set(__self__, "node_class", node_class)
         if connect_string is not None:
@@ -405,7 +403,7 @@ class ShardingInstanceMongoListArgs:
     @pulumi.getter(name="connectString")
     def connect_string(self) -> Optional[pulumi.Input[str]]:
         """
-        The connection address of the Config Server node.
+        Mongo node connection string.
         """
         return pulumi.get(self, "connect_string")
 
@@ -417,7 +415,7 @@ class ShardingInstanceMongoListArgs:
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Config Server node.
+        The ID of the mongo-node.
         """
         return pulumi.get(self, "node_id")
 
@@ -429,7 +427,7 @@ class ShardingInstanceMongoListArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The connection port of the Config Server node.
+        Mongo node port.
         """
         return pulumi.get(self, "port")
 
@@ -449,7 +447,7 @@ class ShardingInstanceShardListArgs:
         :param pulumi.Input[str] node_class: Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[int] node_storage: - Custom storage space; value range: [10, 1,000]
                - 10-GB increments. Unit: GB.
-        :param pulumi.Input[str] node_id: The ID of the Config Server node.
+        :param pulumi.Input[str] node_id: The ID of the shard-node.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
         """
         pulumi.set(__self__, "node_class", node_class)
@@ -488,7 +486,7 @@ class ShardingInstanceShardListArgs:
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Config Server node.
+        The ID of the shard-node.
         """
         return pulumi.get(self, "node_id")
 

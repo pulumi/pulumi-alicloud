@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Quotas Quota Alarm resource.
  *
- * For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
+ * For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createquotaalarm).
  *
- * > **NOTE:** Available in v1.116.0+.
+ * > **NOTE:** Available since v1.116.0.
  *
  * ## Example Usage
  *
@@ -89,7 +89,7 @@ export class QuotaAlarm extends pulumi.CustomResource {
      */
     public readonly quotaAlarmName!: pulumi.Output<string>;
     /**
-     * The Quota Dimensions. See the following `Block QuotaDimensions`.
+     * The Quota Dimensions. See `quotaDimensions` below.
      */
     public readonly quotaDimensions!: pulumi.Output<outputs.quotas.QuotaAlarmQuotaDimension[] | undefined>;
     /**
@@ -180,7 +180,7 @@ export interface QuotaAlarmState {
      */
     quotaAlarmName?: pulumi.Input<string>;
     /**
-     * The Quota Dimensions. See the following `Block QuotaDimensions`.
+     * The Quota Dimensions. See `quotaDimensions` below.
      */
     quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[]>;
     /**
@@ -220,7 +220,7 @@ export interface QuotaAlarmArgs {
      */
     quotaAlarmName: pulumi.Input<string>;
     /**
-     * The Quota Dimensions. See the following `Block QuotaDimensions`.
+     * The Quota Dimensions. See `quotaDimensions` below.
      */
     quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaAlarmQuotaDimension>[]>;
     /**

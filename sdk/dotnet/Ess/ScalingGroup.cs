@@ -16,6 +16,10 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// &gt; **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitch_ids`.
     /// 
+    /// For information about ess scaling rule, see [CreateScalingGroup](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalinggroup).
+    /// 
+    /// &gt; **NOTE:** Available since v1.39.0.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -27,7 +31,7 @@ namespace Pulumi.AliCloud.Ess
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "essscalinggroupconfig";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",

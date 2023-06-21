@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Global Accelerator (GA) Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createacl).
  *
- * > **NOTE:** Available in v1.150.0+.
+ * > **NOTE:** Available since v1.150.0.
  *
  * ## Example Usage
  *
@@ -21,13 +21,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ga.Acl("default", {
- *     aclEntries: [{
- *         entry: "192.168.1.0/24",
- *         entryDescription: "tf-test1",
- *     }],
- *     aclName: "tf-testAccAcl",
+ * const defaultAcl = new alicloud.ga.Acl("defaultAcl", {
+ *     aclName: "terraform-example",
  *     addressIpVersion: "IPv4",
+ * });
+ * const defaultAclEntryAttachment = new alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment", {
+ *     aclId: defaultAcl.id,
+ *     entry: "192.168.1.1/32",
+ *     entryDescription: "terraform-example",
  * });
  * ```
  *
@@ -68,7 +69,7 @@ export class Acl extends pulumi.CustomResource {
     }
 
     /**
-     * The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+     * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
      *
      * @deprecated Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
      */
@@ -129,7 +130,7 @@ export class Acl extends pulumi.CustomResource {
  */
 export interface AclState {
     /**
-     * The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+     * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
      *
      * @deprecated Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
      */
@@ -157,7 +158,7 @@ export interface AclState {
  */
 export interface AclArgs {
     /**
-     * The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+     * The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
      *
      * @deprecated Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
      */

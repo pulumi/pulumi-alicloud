@@ -28,45 +28,30 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAccHBRNas";
     ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
     ///     {
-    ///         VaultName = name,
+    ///         VaultName = "terraform-example2",
     ///     });
     /// 
     ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
     ///     {
     ///         ProtocolType = "NFS",
     ///         StorageType = "Performance",
-    ///         Description = name,
+    ///         Description = "terraform-example",
     ///         EncryptType = 1,
-    ///     });
-    /// 
-    ///     var defaultFileSystems = AliCloud.Nas.GetFileSystems.Invoke(new()
-    ///     {
-    ///         ProtocolType = "NFS",
-    ///         DescriptionRegex = defaultFileSystem.Description,
     ///     });
     /// 
     ///     var defaultNasBackupPlan = new AliCloud.Hbr.NasBackupPlan("defaultNasBackupPlan", new()
     ///     {
-    ///         NasBackupPlanName = name,
+    ///         NasBackupPlanName = "terraform-example",
     ///         FileSystemId = defaultFileSystem.Id,
     ///         Schedule = "I|1602673264|PT2H",
     ///         BackupType = "COMPLETE",
     ///         VaultId = defaultVault.Id,
-    ///         CreateTime = defaultFileSystems.Apply(getFileSystemsResult =&gt; getFileSystemsResult.Systems[0]?.CreateTime),
     ///         Retention = "2",
     ///         Paths = new[]
     ///         {
     ///             "/",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             "alicloud_nas_file_system.default",
     ///         },
     ///     });
     /// 

@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation resource.
  *
- * For information about Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation and how to use it, see [What is Basic Accelerate Ip Endpoint Relation](https://help.aliyun.com/document_detail/466842.html).
+ * For information about Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation and how to use it, see [What is Basic Accelerate Ip Endpoint Relation](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicaccelerateipendpointrelation).
  *
- * > **NOTE:** Available in v1.194.0+.
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *
@@ -19,47 +19,60 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const sz = new alicloud.Provider("sz", {region: "cn-shenzhen"});
- * const hz = new alicloud.Provider("hz", {region: "cn-hangzhou"});
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "your_vpc_name",
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-shenzhen";
+ * const endpointRegion = config.get("endpointRegion") || "cn-hangzhou";
+ * const sz = new alicloud.Provider("sz", {region: region});
+ * const hz = new alicloud.Provider("hz", {region: endpointRegion});
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])}, {
- *     provider: "alicloud.sz",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * }, {
+ *     provider: alicloud.sz,
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * }, {
+ *     provider: alicloud.sz,
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id}, {
+ *     provider: alicloud.sz,
  * });
  * const defaultEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface", {
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultSwitch.id,
  *     securityGroupIds: [defaultSecurityGroup.id],
  * }, {
- *     provider: "alicloud.sz",
+ *     provider: alicloud.sz,
  * });
  * const defaultBasicAccelerator = new alicloud.ga.BasicAccelerator("defaultBasicAccelerator", {
  *     duration: 1,
- *     pricingCycle: "Month",
- *     basicAcceleratorName: _var.name,
- *     description: _var.name,
+ *     basicAcceleratorName: "terraform-example",
+ *     description: "terraform-example",
  *     bandwidthBillingType: "CDT",
- *     autoPay: true,
  *     autoUseCoupon: "true",
- *     autoRenew: false,
- *     autoRenewDuration: 1,
+ *     autoPay: true,
  * });
  * const defaultBasicIpSet = new alicloud.ga.BasicIpSet("defaultBasicIpSet", {
  *     acceleratorId: defaultBasicAccelerator.id,
- *     accelerateRegionId: "cn-hangzhou",
+ *     accelerateRegionId: endpointRegion,
  *     ispType: "BGP",
  *     bandwidth: 5,
  * });
  * const defaultBasicAccelerateIp = new alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp", {
- *     acceleratorId: defaultBasicIpSet.acceleratorId,
+ *     acceleratorId: defaultBasicAccelerator.id,
  *     ipSetId: defaultBasicIpSet.id,
  * });
  * const defaultBasicEndpointGroup = new alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup", {
  *     acceleratorId: defaultBasicAccelerator.id,
- *     endpointGroupRegion: "cn-shenzhen",
+ *     endpointGroupRegion: region,
+ *     basicEndpointGroupName: "terraform-example",
+ *     description: "terraform-example",
  * });
  * const defaultBasicEndpoint = new alicloud.ga.BasicEndpoint("defaultBasicEndpoint", {
  *     acceleratorId: defaultBasicAccelerator.id,
@@ -68,7 +81,9 @@ import * as utilities from "../utilities";
  *     endpointAddress: defaultEcsNetworkInterface.id,
  *     endpointSubAddressType: "primary",
  *     endpointSubAddress: "192.168.0.1",
- *     basicEndpointName: _var.name,
+ *     basicEndpointName: "terraform-example",
+ * }, {
+ *     provider: alicloud.hz,
  * });
  * const defaultBasicAccelerateIpEndpointRelation = new alicloud.ga.BasicAccelerateIpEndpointRelation("defaultBasicAccelerateIpEndpointRelation", {
  *     acceleratorId: defaultBasicAccelerateIp.acceleratorId,

@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 
 /**
  * Manages an asynchronous invocation configuration for a FC Function or Alias.\
- *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/181866.htm).
+ *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-putfunctionasyncinvokeconfig).
  * 
- * &gt; **NOTE:** Available in 1.100.0+
+ * &gt; **NOTE:** Available since v1.100.0.
  * 
  * ## Example Usage
  * ### Destination Configuration
@@ -33,6 +33,26 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.ram.Policy;
+ * import com.pulumi.alicloud.ram.PolicyArgs;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachment;
+ * import com.pulumi.alicloud.ram.RolePolicyAttachmentArgs;
+ * import com.pulumi.alicloud.fc.Service;
+ * import com.pulumi.alicloud.fc.ServiceArgs;
+ * import com.pulumi.alicloud.oss.Bucket;
+ * import com.pulumi.alicloud.oss.BucketArgs;
+ * import com.pulumi.alicloud.oss.BucketObject;
+ * import com.pulumi.alicloud.oss.BucketObjectArgs;
+ * import com.pulumi.alicloud.fc.Function;
+ * import com.pulumi.alicloud.fc.FunctionArgs;
+ * import com.pulumi.alicloud.mns.Queue;
+ * import com.pulumi.alicloud.mns.Topic;
  * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfig;
  * import com.pulumi.alicloud.fc.FunctionAsyncInvokeConfigArgs;
  * import com.pulumi.alicloud.fc.inputs.FunctionAsyncInvokeConfigDestinationConfigArgs;
@@ -51,15 +71,104 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new FunctionAsyncInvokeConfig(&#34;example&#34;, FunctionAsyncInvokeConfigArgs.builder()        
- *             .serviceName(alicloud_fc_service.example().name())
- *             .functionName(alicloud_fc_function.example().name())
+ *         final var defaultAccount = AlicloudFunctions.getAccount();
+ * 
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *             .document(&#34;&#34;&#34;
+ * 	{
+ * 		&#34;Statement&#34;: [
+ * 		  {
+ * 			&#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ * 			&#34;Effect&#34;: &#34;Allow&#34;,
+ * 			&#34;Principal&#34;: {
+ * 			  &#34;Service&#34;: [
+ * 				&#34;fc.aliyuncs.com&#34;
+ * 			  ]
+ * 			}
+ * 		  }
+ * 		],
+ * 		&#34;Version&#34;: &#34;1&#34;
+ * 	}
+ *             &#34;&#34;&#34;)
+ *             .description(&#34;this is a example&#34;)
+ *             .force(true)
+ *             .build());
+ * 
+ *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
+ *             .policyName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;examplepolicy%s&#34;, result)))
+ *             .policyDocument(&#34;&#34;&#34;
+ * 	{
+ * 		&#34;Version&#34;: &#34;1&#34;,
+ * 		&#34;Statement&#34;: [
+ * 		  {
+ * 			&#34;Action&#34;: &#34;mns:*&#34;,
+ * 			&#34;Resource&#34;: &#34;*&#34;,
+ * 			&#34;Effect&#34;: &#34;Allow&#34;
+ * 		  }
+ * 		]
+ * 	  }
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *             .roleName(defaultRole.name())
+ *             .policyName(defaultPolicy.name())
+ *             .policyType(&#34;Custom&#34;)
+ *             .build());
+ * 
+ *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .description(&#34;example-value&#34;)
+ *             .role(defaultRole.arn())
+ *             .internetAccess(false)
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .build());
+ * 
+ *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(defaultBucket.id())
+ *             .key(&#34;index.py&#34;)
+ *             .content(&#34;&#34;&#34;
+ * import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info(&#39;hello world&#39;) 
+ * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
+ *             .service(defaultService.name())
+ *             .description(&#34;example&#34;)
+ *             .ossBucket(defaultBucket.id())
+ *             .ossKey(defaultBucketObject.key())
+ *             .memorySize(&#34;512&#34;)
+ *             .runtime(&#34;python2.7&#34;)
+ *             .handler(&#34;hello.handler&#34;)
+ *             .build());
+ * 
+ *         var defaultQueue = new Queue(&#34;defaultQueue&#34;);
+ * 
+ *         var defaultTopic = new Topic(&#34;defaultTopic&#34;);
+ * 
+ *         var defaultFunctionAsyncInvokeConfig = new FunctionAsyncInvokeConfig(&#34;defaultFunctionAsyncInvokeConfig&#34;, FunctionAsyncInvokeConfigArgs.builder()        
+ *             .serviceName(defaultService.name())
+ *             .functionName(defaultFunction.name())
  *             .destinationConfig(FunctionAsyncInvokeConfigDestinationConfigArgs.builder()
  *                 .onFailure(FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs.builder()
- *                     .destination(the_example_mns_queue_arn)
+ *                     .destination(defaultQueue.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/queues/%s/messages&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
  *                     .build())
  *                 .onSuccess(FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs.builder()
- *                     .destination(the_example_mns_topic_arn)
+ *                     .destination(defaultTopic.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/topics/%s/messages&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
  *                     .build())
  *                 .build())
  *             .build());
@@ -188,14 +297,14 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
         return this.createdTime;
     }
     /**
-     * Configuration block with destination configuration. See below for details.
+     * Configuration block with destination configuration. See `destination_config` below.
      * 
      */
     @Export(name="destinationConfig", type=FunctionAsyncInvokeConfigDestinationConfig.class, parameters={})
     private Output</* @Nullable */ FunctionAsyncInvokeConfigDestinationConfig> destinationConfig;
 
     /**
-     * @return Configuration block with destination configuration. See below for details.
+     * @return Configuration block with destination configuration. See `destination_config` below.
      * 
      */
     public Output<Optional<FunctionAsyncInvokeConfigDestinationConfig>> destinationConfig() {

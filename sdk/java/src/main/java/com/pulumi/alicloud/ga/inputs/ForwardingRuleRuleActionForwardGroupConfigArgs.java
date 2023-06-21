@@ -15,14 +15,14 @@ public final class ForwardingRuleRuleActionForwardGroupConfigArgs extends com.pu
     public static final ForwardingRuleRuleActionForwardGroupConfigArgs Empty = new ForwardingRuleRuleActionForwardGroupConfigArgs();
 
     /**
-     * Terminal node group configuration.
+     * The information about the endpoint group. See `server_group_tuples` below.
      * 
      */
     @Import(name="serverGroupTuples", required=true)
     private Output<List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
     /**
-     * @return Terminal node group configuration.
+     * @return The information about the endpoint group. See `server_group_tuples` below.
      * 
      */
     public Output<List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples() {
@@ -54,7 +54,7 @@ public final class ForwardingRuleRuleActionForwardGroupConfigArgs extends com.pu
         }
 
         /**
-         * @param serverGroupTuples Terminal node group configuration.
+         * @param serverGroupTuples The information about the endpoint group. See `server_group_tuples` below.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ForwardingRuleRuleActionForwardGroupConfigArgs extends com.pu
         }
 
         /**
-         * @param serverGroupTuples Terminal node group configuration.
+         * @param serverGroupTuples The information about the endpoint group. See `server_group_tuples` below.
          * 
          * @return builder
          * 
@@ -75,7 +75,7 @@ public final class ForwardingRuleRuleActionForwardGroupConfigArgs extends com.pu
         }
 
         /**
-         * @param serverGroupTuples Terminal node group configuration.
+         * @param serverGroupTuples The information about the endpoint group. See `server_group_tuples` below.
          * 
          * @return builder
          * 

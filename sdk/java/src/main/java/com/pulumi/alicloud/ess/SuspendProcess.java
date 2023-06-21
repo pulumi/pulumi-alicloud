@@ -18,10 +18,9 @@ import javax.annotation.Nullable;
  * 
  * For information about scaling group suspend process, see [SuspendProcesses](https://www.alibabacloud.com/help/en/auto-scaling/latest/suspendprocesses).
  * 
- * &gt; NOTE: Available in v1.166.0+
+ * &gt; **NOTE:** Available since v1.166.0.
  * 
  * ## Example Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -30,18 +29,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.alb.ServerGroup;
- * import com.pulumi.alicloud.alb.ServerGroupArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ess.ScalingGroup;
  * import com.pulumi.alicloud.ess.ScalingGroupArgs;
  * import com.pulumi.alicloud.ess.ScalingConfiguration;
  * import com.pulumi.alicloud.ess.ScalingConfigurationArgs;
- * import com.pulumi.alicloud.alb.inputs.ServerGroupHealthCheckConfigArgs;
- * import com.pulumi.alicloud.alb.inputs.ServerGroupStickySessionConfigArgs;
  * import com.pulumi.alicloud.ess.SuspendProcess;
  * import com.pulumi.alicloud.ess.SuspendProcessArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -59,13 +59,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;testAccEssSuspendProcess&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(2)
+ *             .memorySize(4)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
@@ -73,48 +86,37 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
- *             .loadBalancerId(alicloud_slb_load_balancer.default().id())
- *             .name(&#34;test&#34;)
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
- *             .minSize(&#34;2&#34;)
- *             .maxSize(&#34;2&#34;)
+ *             .minSize(1)
+ *             .maxSize(1)
  *             .scalingGroupName(name)
  *             .vswitchIds(defaultSwitch.id())
+ *             .removalPolicies(&#34;OldestInstance&#34;)
+ *             .defaultCooldown(200)
  *             .build());
  * 
  *         var defaultScalingConfiguration = new ScalingConfiguration(&#34;defaultScalingConfiguration&#34;, ScalingConfigurationArgs.builder()        
  *             .scalingGroupId(defaultScalingGroup.id())
- *             .imageId(data.alicloud_images().default().images()[0].id())
- *             .instanceType(data.alicloud_instance_types().default().instance_types()[0].id())
- *             .securityGroupId(alicloud_security_group.default().id())
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroupId(defaultSecurityGroup.id())
  *             .forceDelete(true)
  *             .active(true)
  *             .enable(true)
- *             .build());
- * 
- *         var defaultAlb_serverGroupServerGroup = new ServerGroup(&#34;defaultAlb/serverGroupServerGroup&#34;, ServerGroupArgs.builder()        
- *             .serverGroupName(name)
- *             .vpcId(defaultNetwork.id())
- *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
- *                 .healthCheckEnabled(&#34;false&#34;)
- *                 .build())
- *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
- *                 .stickySessionEnabled(true)
- *                 .cookie(&#34;tf-testAcc&#34;)
- *                 .stickySessionType(&#34;Server&#34;)
- *                 .build())
  *             .build());
  * 
  *         var defaultSuspendProcess = new SuspendProcess(&#34;defaultSuspendProcess&#34;, SuspendProcessArgs.builder()        
  *             .scalingGroupId(defaultScalingGroup.id())
  *             .process(&#34;ScaleIn&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(&#34;alicloud_ess_scaling_configuration.default&#34;)
+ *                 .dependsOn(defaultScalingConfiguration)
  *                 .build());
  * 
  *     }
@@ -123,7 +125,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Timeouts The `timeouts` block allows you to specify timeouts for certain actions* `create` - (Defaults to 1 mins) Used when create the process. * `delete` - (Defaults to 1 mins) Used when delete the process.
+ * ESS suspend process can be imported using the id, e.g.
+ * 
+ * ```sh
+ *  $ pulumi import alicloud:ess/suspendProcess:SuspendProcess example asg-xxx:sgp-xxx:5000
+ * ```
  * 
  */
 @ResourceType(type="alicloud:ess/suspendProcess:SuspendProcess")

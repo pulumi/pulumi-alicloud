@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ScalingRuleStepAdjustment {
+    /**
+     * @return The lower bound of step.
+     * 
+     */
     private @Nullable String metricIntervalLowerBound;
+    /**
+     * @return The upper bound of step.
+     * 
+     */
     private @Nullable String metricIntervalUpperBound;
+    /**
+     * @return The adjust value of step.
+     * 
+     */
     private @Nullable Integer scalingAdjustment;
 
     private ScalingRuleStepAdjustment() {}
+    /**
+     * @return The lower bound of step.
+     * 
+     */
     public Optional<String> metricIntervalLowerBound() {
         return Optional.ofNullable(this.metricIntervalLowerBound);
     }
+    /**
+     * @return The upper bound of step.
+     * 
+     */
     public Optional<String> metricIntervalUpperBound() {
         return Optional.ofNullable(this.metricIntervalUpperBound);
     }
+    /**
+     * @return The adjust value of step.
+     * 
+     */
     public Optional<Integer> scalingAdjustment() {
         return Optional.ofNullable(this.scalingAdjustment);
     }

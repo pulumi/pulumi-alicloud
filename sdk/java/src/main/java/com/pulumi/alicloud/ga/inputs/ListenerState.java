@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ga.inputs;
 
 import com.pulumi.alicloud.ga.inputs.ListenerCertificateArgs;
+import com.pulumi.alicloud.ga.inputs.ListenerForwardedForConfigArgs;
 import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -35,18 +36,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The certificates of the listener.
-     * 
-     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+     * The certificates of the listener. See `certificates` below.
+     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      * 
      */
     @Import(name="certificates")
     private @Nullable Output<List<ListenerCertificateArgs>> certificates;
 
     /**
-     * @return The certificates of the listener.
-     * 
-     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+     * @return The certificates of the listener. See `certificates` below.
+     * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      * 
      */
     public Optional<Output<List<ListenerCertificateArgs>>> certificates() {
@@ -54,18 +53,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The clientAffinity of the listener. Default value is `NONE`. Valid values:
-     * `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-     * `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+     * The clientAffinity of the listener. Default value: `NONE`. Valid values:
      * 
      */
     @Import(name="clientAffinity")
     private @Nullable Output<String> clientAffinity;
 
     /**
-     * @return The clientAffinity of the listener. Default value is `NONE`. Valid values:
-     * `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-     * `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+     * @return The clientAffinity of the listener. Default value: `NONE`. Valid values:
      * 
      */
     public Optional<Output<String>> clientAffinity() {
@@ -85,6 +80,21 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The XForward headers. See `forwarded_for_config` below.
+     * 
+     */
+    @Import(name="forwardedForConfig")
+    private @Nullable Output<ListenerForwardedForConfigArgs> forwardedForConfig;
+
+    /**
+     * @return The XForward headers. See `forwarded_for_config` below.
+     * 
+     */
+    public Optional<Output<ListenerForwardedForConfigArgs>> forwardedForConfig() {
+        return Optional.ofNullable(this.forwardedForConfig);
     }
 
     /**
@@ -118,18 +128,16 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The portRanges of the listener.
-     * 
-     * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+     * The portRanges of the listener. See `port_ranges` below.
+     * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
     @Import(name="portRanges")
     private @Nullable Output<List<ListenerPortRangeArgs>> portRanges;
 
     /**
-     * @return The portRanges of the listener.
-     * 
-     * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+     * @return The portRanges of the listener. See `port_ranges` below.
+     * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      * 
      */
     public Optional<Output<List<ListenerPortRangeArgs>>> portRanges() {
@@ -137,18 +145,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-     * 
-     * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+     * Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-     * 
-     * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+     * @return Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -156,18 +160,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The proxy protocol of the listener. Default value is `false`. Valid values:
-     * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-     * `false`: keep client source IP function is not turned on.
+     * The proxy protocol of the listener. Default value: `false`. Valid values:
      * 
      */
     @Import(name="proxyProtocol")
     private @Nullable Output<Boolean> proxyProtocol;
 
     /**
-     * @return The proxy protocol of the listener. Default value is `false`. Valid values:
-     * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-     * `false`: keep client source IP function is not turned on.
+     * @return The proxy protocol of the listener. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> proxyProtocol() {
@@ -175,14 +175,14 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     * The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      * 
      */
     @Import(name="securityPolicyId")
     private @Nullable Output<String> securityPolicyId;
 
     /**
-     * @return The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+     * @return The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      * 
      */
     public Optional<Output<String>> securityPolicyId() {
@@ -211,6 +211,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         this.certificates = $.certificates;
         this.clientAffinity = $.clientAffinity;
         this.description = $.description;
+        this.forwardedForConfig = $.forwardedForConfig;
         this.listenerType = $.listenerType;
         this.name = $.name;
         this.portRanges = $.portRanges;
@@ -260,9 +261,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificates The certificates of the listener.
-         * 
-         * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+         * @param certificates The certificates of the listener. See `certificates` below.
+         * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
          * 
          * @return builder
          * 
@@ -273,9 +273,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificates The certificates of the listener.
-         * 
-         * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+         * @param certificates The certificates of the listener. See `certificates` below.
+         * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
          * 
          * @return builder
          * 
@@ -285,9 +284,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificates The certificates of the listener.
-         * 
-         * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+         * @param certificates The certificates of the listener. See `certificates` below.
+         * &gt; **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
          * 
          * @return builder
          * 
@@ -297,9 +295,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientAffinity The clientAffinity of the listener. Default value is `NONE`. Valid values:
-         * `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-         * `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+         * @param clientAffinity The clientAffinity of the listener. Default value: `NONE`. Valid values:
          * 
          * @return builder
          * 
@@ -310,9 +306,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientAffinity The clientAffinity of the listener. Default value is `NONE`. Valid values:
-         * `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-         * `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+         * @param clientAffinity The clientAffinity of the listener. Default value: `NONE`. Valid values:
          * 
          * @return builder
          * 
@@ -340,6 +334,27 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param forwardedForConfig The XForward headers. See `forwarded_for_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardedForConfig(@Nullable Output<ListenerForwardedForConfigArgs> forwardedForConfig) {
+            $.forwardedForConfig = forwardedForConfig;
+            return this;
+        }
+
+        /**
+         * @param forwardedForConfig The XForward headers. See `forwarded_for_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardedForConfig(ListenerForwardedForConfigArgs forwardedForConfig) {
+            return forwardedForConfig(Output.of(forwardedForConfig));
         }
 
         /**
@@ -385,9 +400,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portRanges The portRanges of the listener.
-         * 
-         * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+         * @param portRanges The portRanges of the listener. See `port_ranges` below.
+         * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
          * 
          * @return builder
          * 
@@ -398,9 +412,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portRanges The portRanges of the listener.
-         * 
-         * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+         * @param portRanges The portRanges of the listener. See `port_ranges` below.
+         * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
          * 
          * @return builder
          * 
@@ -410,9 +423,8 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portRanges The portRanges of the listener.
-         * 
-         * &gt; **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+         * @param portRanges The portRanges of the listener. See `port_ranges` below.
+         * &gt; **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
          * 
          * @return builder
          * 
@@ -422,9 +434,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-         * 
-         * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+         * @param protocol Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
          * 
          * @return builder
          * 
@@ -435,9 +445,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-         * 
-         * &gt; **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+         * @param protocol Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
          * 
          * @return builder
          * 
@@ -447,9 +455,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyProtocol The proxy protocol of the listener. Default value is `false`. Valid values:
-         * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-         * `false`: keep client source IP function is not turned on.
+         * @param proxyProtocol The proxy protocol of the listener. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -460,9 +466,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyProtocol The proxy protocol of the listener. Default value is `false`. Valid values:
-         * `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-         * `false`: keep client source IP function is not turned on.
+         * @param proxyProtocol The proxy protocol of the listener. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -472,7 +476,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityPolicyId The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+         * @param securityPolicyId The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
          * 
          * @return builder
          * 
@@ -483,7 +487,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityPolicyId The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+         * @param securityPolicyId The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
          * 
          * @return builder
          * 

@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
  * 
- * &gt; **NOTE:**  Available in 1.40.0+
+ * &gt; **NOTE:** Available since v1.40.0.
  * 
  * &gt; **NOTE:**  The following regions don&#39;t support create Classic network MongoDB sharding instance.
  * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -36,21 +36,22 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * ### Create a Mongodb Sharding instance
- * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+ * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.mongodb.ShardingInstance;
  * import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
+ * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
+ * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -65,32 +66,46 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var shard = config.get(&#34;shard&#34;).orElse(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
- *         final var mongo = config.get(&#34;mongo&#34;).orElse(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference));
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;MongoDB&#34;)
- *             .build());
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultZones = MongodbFunctions.getZones();
+ * 
+ *         final var index = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()).length() - 1;
+ * 
+ *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones())[index].id();
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(zoneId)
  *             .build());
  * 
- *         var foo = new ShardingInstance(&#34;foo&#34;, ShardingInstanceArgs.builder()        
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         var defaultShardingInstance = new ShardingInstance(&#34;defaultShardingInstance&#34;, ShardingInstanceArgs.builder()        
+ *             .zoneId(zoneId)
  *             .vswitchId(defaultSwitch.id())
  *             .engineVersion(&#34;4.2&#34;)
- *             .dynamic(            
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                 %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .shardLists(            
+ *                 ShardingInstanceShardListArgs.builder()
+ *                     .nodeClass(&#34;dds.shard.mid&#34;)
+ *                     .nodeStorage(&#34;10&#34;)
+ *                     .build(),
+ *                 ShardingInstanceShardListArgs.builder()
+ *                     .nodeClass(&#34;dds.shard.standard&#34;)
+ *                     .nodeStorage(&#34;20&#34;)
+ *                     .readonlyReplicas(&#34;1&#34;)
+ *                     .build())
+ *             .mongoLists(            
+ *                 ShardingInstanceMongoListArgs.builder()
+ *                     .nodeClass(&#34;dds.mongos.mid&#34;)
+ *                     .build(),
+ *                 ShardingInstanceMongoListArgs.builder()
+ *                     .nodeClass(&#34;dds.mongos.mid&#34;)
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -169,14 +184,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.backupTime;
     }
     /**
-     * The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
+     * The node information list of config server. See `config_server_list` below.
      * 
      */
     @Export(name="configServerLists", type=List.class, parameters={ShardingInstanceConfigServerList.class})
     private Output<List<ShardingInstanceConfigServerList>> configServerLists;
 
     /**
-     * @return The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
+     * @return The node information list of config server. See `config_server_list` below.
      * 
      */
     public Output<List<ShardingInstanceConfigServerList>> configServerLists() {
@@ -239,14 +254,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * The mongo-node count can be purchased is in range of [2, 32].
+     * The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
      * 
      */
     @Export(name="mongoLists", type=List.class, parameters={ShardingInstanceMongoList.class})
     private Output<List<ShardingInstanceMongoList>> mongoLists;
 
     /**
-     * @return The mongo-node count can be purchased is in range of [2, 32].
+     * @return The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
      * 
      */
     public Output<List<ShardingInstanceMongoList>> mongoLists() {
@@ -385,14 +400,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.securityIpLists;
     }
     /**
-     * the shard-node count can be purchased is in range of [2, 32].
+     * the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
      * 
      */
     @Export(name="shardLists", type=List.class, parameters={ShardingInstanceShardList.class})
     private Output<List<ShardingInstanceShardList>> shardLists;
 
     /**
-     * @return the shard-node count can be purchased is in range of [2, 32].
+     * @return the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
      * 
      */
     public Output<List<ShardingInstanceShardList>> shardLists() {

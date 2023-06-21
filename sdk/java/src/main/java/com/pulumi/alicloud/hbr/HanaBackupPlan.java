@@ -30,10 +30,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.hbr.Vault;
- * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.hbr.Vault;
+ * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.HanaInstance;
  * import com.pulumi.alicloud.hbr.HanaInstanceArgs;
  * import com.pulumi.alicloud.hbr.HanaBackupPlan;
@@ -51,37 +51,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultVault = new Vault(&#34;defaultVault&#34;, VaultArgs.builder()        
- *             .vaultName(var_.name())
- *             .build());
- * 
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *         final var exampleResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status(&#34;OK&#34;)
  *             .build());
  * 
- *         var defaultHanaInstance = new HanaInstance(&#34;defaultHanaInstance&#34;, HanaInstanceArgs.builder()        
+ *         var exampleVault = new Vault(&#34;exampleVault&#34;, VaultArgs.builder()        
+ *             .vaultName(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         var exampleHanaInstance = new HanaInstance(&#34;exampleHanaInstance&#34;, HanaInstanceArgs.builder()        
  *             .alertSetting(&#34;INHERITED&#34;)
- *             .hanaName(var_.name())
+ *             .hanaName(&#34;terraform-example&#34;)
  *             .host(&#34;1.1.1.1&#34;)
- *             .instanceNumber(&#34;1&#34;)
+ *             .instanceNumber(1)
  *             .password(&#34;YouPassword123&#34;)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(exampleResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .sid(&#34;HXE&#34;)
  *             .useSsl(false)
  *             .userName(&#34;admin&#34;)
  *             .validateCertificate(false)
- *             .vaultId(defaultVault.id())
+ *             .vaultId(exampleVault.id())
  *             .build());
  * 
- *         var defaultHanaBackupPlan = new HanaBackupPlan(&#34;defaultHanaBackupPlan&#34;, HanaBackupPlanArgs.builder()        
+ *         var exampleHanaBackupPlan = new HanaBackupPlan(&#34;exampleHanaBackupPlan&#34;, HanaBackupPlanArgs.builder()        
  *             .backupPrefix(&#34;DIFF_DATA_BACKUP&#34;)
  *             .backupType(&#34;COMPLETE&#34;)
- *             .clusterId(defaultHanaInstance.hanaInstanceId())
+ *             .clusterId(exampleHanaInstance.hanaInstanceId())
  *             .databaseName(&#34;SYSTEMDB&#34;)
- *             .planName(var_.name())
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .planName(&#34;terraform-example&#34;)
+ *             .resourceGroupId(exampleResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .schedule(&#34;I|1602673264|P1D&#34;)
- *             .vaultId(defaultHanaInstance.vaultId())
+ *             .vaultId(exampleHanaInstance.vaultId())
  *             .build());
  * 
  *     }

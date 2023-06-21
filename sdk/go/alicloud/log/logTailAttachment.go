@@ -29,20 +29,28 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testProject, err := log.NewProject(ctx, "testProject", &log.ProjectArgs{
-//				Description: pulumi.String("create by terraform"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			testStore, err := log.NewStore(ctx, "testStore", &log.StoreArgs{
-//				Project:            testProject.Name,
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+//				Project:            exampleProject.Name,
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -52,33 +60,32 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			testMachineGroup, err := log.NewMachineGroup(ctx, "testMachineGroup", &log.MachineGroupArgs{
-//				Project: testProject.Name,
-//				Topic:   pulumi.String("terraform"),
+//			exampleLogTailConfig, err := log.NewLogTailConfig(ctx, "exampleLogTailConfig", &log.LogTailConfigArgs{
+//				Project:     exampleProject.Name,
+//				Logstore:    exampleStore.Name,
+//				InputType:   pulumi.String("file"),
+//				OutputType:  pulumi.String("LogService"),
+//				InputDetail: pulumi.String("  	{\n		\"logPath\": \"/logPath\",\n		\"filePattern\": \"access.log\",\n		\"logType\": \"json_log\",\n		\"topicFormat\": \"default\",\n		\"discardUnmatch\": false,\n		\"enableRawLog\": true,\n		\"fileEncoding\": \"gbk\",\n		\"maxDepth\": 10\n	}\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleMachineGroup, err := log.NewMachineGroup(ctx, "exampleMachineGroup", &log.MachineGroupArgs{
+//				Project:      exampleProject.Name,
+//				IdentifyType: pulumi.String("ip"),
+//				Topic:        pulumi.String("terraform"),
 //				IdentifyLists: pulumi.StringArray{
 //					pulumi.String("10.0.0.1"),
-//					pulumi.String("10.0.0.3"),
 //					pulumi.String("10.0.0.2"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			testLogTailConfig, err := log.NewLogTailConfig(ctx, "testLogTailConfig", &log.LogTailConfigArgs{
-//				Project:     testProject.Name,
-//				Logstore:    testStore.Name,
-//				InputType:   pulumi.String("file"),
-//				LogSample:   pulumi.String("test"),
-//				OutputType:  pulumi.String("LogService"),
-//				InputDetail: pulumi.String("  	{\n		\"logPath\": \"/logPath\",\n		\"filePattern\": \"access.log\",\n		\"logType\": \"json_log\",\n		\"topicFormat\": \"default\",\n		\"discardUnmatch\": false,\n		\"enableRawLog\": true,\n		\"fileEncoding\": \"gbk\",\n		\"maxDepth\": 10\n	}\n	\n"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = log.NewLogTailAttachment(ctx, "testLogTailAttachment", &log.LogTailAttachmentArgs{
-//				Project:           testProject.Name,
-//				LogtailConfigName: testLogTailConfig.Name,
-//				MachineGroupName:  testMachineGroup.Name,
+//			_, err = log.NewLogTailAttachment(ctx, "exampleLogTailAttachment", &log.LogTailAttachmentArgs{
+//				Project:           exampleProject.Name,
+//				LogtailConfigName: exampleLogTailConfig.Name,
+//				MachineGroupName:  exampleMachineGroup.Name,
 //			})
 //			if err != nil {
 //				return err

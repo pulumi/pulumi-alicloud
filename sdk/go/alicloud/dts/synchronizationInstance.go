@@ -15,7 +15,7 @@ import (
 //
 // For information about DTS Synchronization Instance and how to use it, see [What is Synchronization Instance](https://www.alibabacloud.com/help/en/doc-detail/130744.html).
 //
-// > **NOTE:** Available in v1.138.0+.
+// > **NOTE:** Available since v1.138.0.
 //
 // ## Example Usage
 //
@@ -26,6 +26,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -33,13 +34,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dts.NewSynchronizationInstance(ctx, "default", &dts.SynchronizationInstanceArgs{
-//				DestinationEndpointEngineName: pulumi.String("ADB30"),
-//				DestinationEndpointRegion:     pulumi.String("cn-hangzhou"),
-//				InstanceClass:                 pulumi.String("small"),
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dts.NewSynchronizationInstance(ctx, "defaultSynchronizationInstance", &dts.SynchronizationInstanceArgs{
 //				PaymentType:                   pulumi.String("PayAsYouGo"),
-//				SourceEndpointEngineName:      pulumi.String("PolarDB"),
-//				SourceEndpointRegion:          pulumi.String("cn-hangzhou"),
+//				SourceEndpointEngineName:      pulumi.String("MySQL"),
+//				SourceEndpointRegion:          *pulumi.String(defaultRegions.Regions[0].Id),
+//				DestinationEndpointEngineName: pulumi.String("MySQL"),
+//				DestinationEndpointRegion:     *pulumi.String(defaultRegions.Regions[0].Id),
+//				InstanceClass:                 pulumi.String("small"),
 //				SyncArchitecture:              pulumi.String("oneway"),
 //			})
 //			if err != nil {

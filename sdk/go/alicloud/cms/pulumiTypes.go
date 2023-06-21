@@ -4004,8 +4004,10 @@ func (o MonitorGroupInstancesInstanceArrayOutput) Index(i pulumi.IntInput) Monit
 }
 
 type SiteMonitorIspCity struct {
+	// The ID of the city.
 	City string `pulumi:"city"`
-	Isp  string `pulumi:"isp"`
+	// The ID of the carrier.
+	Isp string `pulumi:"isp"`
 }
 
 // SiteMonitorIspCityInput is an input type that accepts SiteMonitorIspCityArgs and SiteMonitorIspCityOutput values.
@@ -4020,8 +4022,10 @@ type SiteMonitorIspCityInput interface {
 }
 
 type SiteMonitorIspCityArgs struct {
+	// The ID of the city.
 	City pulumi.StringInput `pulumi:"city"`
-	Isp  pulumi.StringInput `pulumi:"isp"`
+	// The ID of the carrier.
+	Isp pulumi.StringInput `pulumi:"isp"`
 }
 
 func (SiteMonitorIspCityArgs) ElementType() reflect.Type {
@@ -4075,10 +4079,12 @@ func (o SiteMonitorIspCityOutput) ToSiteMonitorIspCityOutputWithContext(ctx cont
 	return o
 }
 
+// The ID of the city.
 func (o SiteMonitorIspCityOutput) City() pulumi.StringOutput {
 	return o.ApplyT(func(v SiteMonitorIspCity) string { return v.City }).(pulumi.StringOutput)
 }
 
+// The ID of the carrier.
 func (o SiteMonitorIspCityOutput) Isp() pulumi.StringOutput {
 	return o.ApplyT(func(v SiteMonitorIspCity) string { return v.Isp }).(pulumi.StringOutput)
 }

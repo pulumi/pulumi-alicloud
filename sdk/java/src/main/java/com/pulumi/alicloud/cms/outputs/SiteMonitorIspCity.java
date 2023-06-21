@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class SiteMonitorIspCity {
+    /**
+     * @return The ID of the city.
+     * 
+     */
     private String city;
+    /**
+     * @return The ID of the carrier.
+     * 
+     */
     private String isp;
 
     private SiteMonitorIspCity() {}
+    /**
+     * @return The ID of the city.
+     * 
+     */
     public String city() {
         return this.city;
     }
+    /**
+     * @return The ID of the carrier.
+     * 
+     */
     public String isp() {
         return this.isp;
     }

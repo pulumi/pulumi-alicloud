@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class EciScalingConfigurationVolume {
     /**
      * @return ConfigFileVolumeConfigFileToPaths.
-     * See Block_config_file_volume_config_file_to_path below for details.
+     * See `config_file_volume_config_file_to_paths` below for details.
      * 
      */
     private @Nullable List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths;
@@ -26,6 +26,10 @@ public final class EciScalingConfigurationVolume {
      * 
      */
     private @Nullable String diskVolumeDiskId;
+    /**
+     * @return The disk size of DiskVolume.
+     * 
+     */
     private @Nullable Integer diskVolumeDiskSize;
     /**
      * @return The system type of DiskVolume.
@@ -80,7 +84,7 @@ public final class EciScalingConfigurationVolume {
     private EciScalingConfigurationVolume() {}
     /**
      * @return ConfigFileVolumeConfigFileToPaths.
-     * See Block_config_file_volume_config_file_to_path below for details.
+     * See `config_file_volume_config_file_to_paths` below for details.
      * 
      */
     public List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths() {
@@ -93,6 +97,10 @@ public final class EciScalingConfigurationVolume {
     public Optional<String> diskVolumeDiskId() {
         return Optional.ofNullable(this.diskVolumeDiskId);
     }
+    /**
+     * @return The disk size of DiskVolume.
+     * 
+     */
     public Optional<Integer> diskVolumeDiskSize() {
         return Optional.ofNullable(this.diskVolumeDiskSize);
     }

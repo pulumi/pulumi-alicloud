@@ -149,9 +149,9 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Accelerator Spare Ip Attachment resource.
 
-        For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://help.aliyun.com/document_detail/262120.html).
+        For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createspareips).
 
-        > **NOTE:** Available in v1.167.0+.
+        > **NOTE:** Available since v1.167.0.
 
         ## Example Usage
 
@@ -164,9 +164,9 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
             duration=1,
             spec="1",
-            accelerator_name=var["name"],
+            accelerator_name="terraform-example",
             auto_use_coupon=True,
-            description=var["name"])
+            description="terraform-example")
         default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
             bandwidth=100,
             type="Basic",
@@ -174,7 +174,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30,
-            bandwidth_package_name=var["name"],
+            bandwidth_package_name="terraform-example",
             auto_pay=True,
             auto_use_coupon=True)
         default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
@@ -208,9 +208,9 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Accelerator Spare Ip Attachment resource.
 
-        For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://help.aliyun.com/document_detail/262120.html).
+        For information about Global Accelerator (GA) Accelerator Spare Ip Attachment and how to use it, see [What is Accelerator Spare Ip Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createspareips).
 
-        > **NOTE:** Available in v1.167.0+.
+        > **NOTE:** Available since v1.167.0.
 
         ## Example Usage
 
@@ -223,9 +223,9 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
             duration=1,
             spec="1",
-            accelerator_name=var["name"],
+            accelerator_name="terraform-example",
             auto_use_coupon=True,
-            description=var["name"])
+            description="terraform-example")
         default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
             bandwidth=100,
             type="Basic",
@@ -233,7 +233,7 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30,
-            bandwidth_package_name=var["name"],
+            bandwidth_package_name="terraform-example",
             auto_pay=True,
             auto_use_coupon=True)
         default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",

@@ -17,15 +17,16 @@ class IpSetArgs:
                  accelerate_region_id: pulumi.Input[str],
                  accelerator_id: pulumi.Input[str],
                  bandwidth: Optional[pulumi.Input[int]] = None,
-                 ip_version: Optional[pulumi.Input[str]] = None):
+                 ip_version: Optional[pulumi.Input[str]] = None,
+                 isp_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a IpSet resource.
         :param pulumi.Input[str] accelerate_region_id: The ID of an acceleration region.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator (GA) instance.
         :param pulumi.Input[int] bandwidth: The bandwidth allocated to the acceleration region.
-               
                > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
-        :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+        :param pulumi.Input[str] isp_type: The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
         """
         pulumi.set(__self__, "accelerate_region_id", accelerate_region_id)
         pulumi.set(__self__, "accelerator_id", accelerator_id)
@@ -33,6 +34,8 @@ class IpSetArgs:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
+        if isp_type is not None:
+            pulumi.set(__self__, "isp_type", isp_type)
 
     @property
     @pulumi.getter(name="accelerateRegionId")
@@ -63,7 +66,6 @@ class IpSetArgs:
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
         The bandwidth allocated to the acceleration region.
-
         > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         """
         return pulumi.get(self, "bandwidth")
@@ -76,13 +78,25 @@ class IpSetArgs:
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
     def ip_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_version", value)
+
+    @property
+    @pulumi.getter(name="ispType")
+    def isp_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+        """
+        return pulumi.get(self, "isp_type")
+
+    @isp_type.setter
+    def isp_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "isp_type", value)
 
 
 @pulumi.input_type
@@ -93,16 +107,17 @@ class _IpSetState:
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  ip_address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
+                 isp_type: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IpSet resources.
         :param pulumi.Input[str] accelerate_region_id: The ID of an acceleration region.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator (GA) instance.
         :param pulumi.Input[int] bandwidth: The bandwidth allocated to the acceleration region.
-               
                > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_address_lists: The list of accelerated IP addresses in the acceleration region.
-        :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+        :param pulumi.Input[str] isp_type: The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
         :param pulumi.Input[str] status: The status of the acceleration region.
         """
         if accelerate_region_id is not None:
@@ -115,6 +130,8 @@ class _IpSetState:
             pulumi.set(__self__, "ip_address_lists", ip_address_lists)
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
+        if isp_type is not None:
+            pulumi.set(__self__, "isp_type", isp_type)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -147,7 +164,6 @@ class _IpSetState:
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
         The bandwidth allocated to the acceleration region.
-
         > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         """
         return pulumi.get(self, "bandwidth")
@@ -172,13 +188,25 @@ class _IpSetState:
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
     def ip_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_version", value)
+
+    @property
+    @pulumi.getter(name="ispType")
+    def isp_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+        """
+        return pulumi.get(self, "isp_type")
+
+    @isp_type.setter
+    def isp_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "isp_type", value)
 
     @property
     @pulumi.getter
@@ -202,13 +230,14 @@ class IpSet(pulumi.CustomResource):
                  accelerator_id: Optional[pulumi.Input[str]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
+                 isp_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Ip Set resource.
 
         For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/doc-detail/153246.htm).
 
-        > **NOTE:** Available in v1.113.0+.
+        > **NOTE:** Available since v1.113.0.
 
         ## Example Usage
 
@@ -218,25 +247,28 @@ class IpSet(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
-            bandwidth=20,
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
-            duration="1",
-            auto_pay=True,
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
             ratio=30)
-        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
-            bandwidth_package_id=example_bandwidth_package.id)
-        example_ip_set = alicloud.ga.IpSet("exampleIpSet",
-            accelerate_region_id="cn-hangzhou",
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        example = alicloud.ga.IpSet("example",
+            accelerate_region_id=region,
             bandwidth=5,
-            accelerator_id=example_accelerator.id,
-            opts=pulumi.ResourceOptions(depends_on=[example_bandwidth_package_attachment]))
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id)
         ```
 
         ## Import
@@ -252,9 +284,9 @@ class IpSet(pulumi.CustomResource):
         :param pulumi.Input[str] accelerate_region_id: The ID of an acceleration region.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator (GA) instance.
         :param pulumi.Input[int] bandwidth: The bandwidth allocated to the acceleration region.
-               
                > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
-        :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+        :param pulumi.Input[str] isp_type: The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
         """
         ...
     @overload
@@ -267,7 +299,7 @@ class IpSet(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/doc-detail/153246.htm).
 
-        > **NOTE:** Available in v1.113.0+.
+        > **NOTE:** Available since v1.113.0.
 
         ## Example Usage
 
@@ -277,25 +309,28 @@ class IpSet(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
-            bandwidth=20,
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
-            duration="1",
-            auto_pay=True,
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
             ratio=30)
-        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
-            bandwidth_package_id=example_bandwidth_package.id)
-        example_ip_set = alicloud.ga.IpSet("exampleIpSet",
-            accelerate_region_id="cn-hangzhou",
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        example = alicloud.ga.IpSet("example",
+            accelerate_region_id=region,
             bandwidth=5,
-            accelerator_id=example_accelerator.id,
-            opts=pulumi.ResourceOptions(depends_on=[example_bandwidth_package_attachment]))
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id)
         ```
 
         ## Import
@@ -325,6 +360,7 @@ class IpSet(pulumi.CustomResource):
                  accelerator_id: Optional[pulumi.Input[str]] = None,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
+                 isp_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -342,6 +378,7 @@ class IpSet(pulumi.CustomResource):
             __props__.__dict__["accelerator_id"] = accelerator_id
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["ip_version"] = ip_version
+            __props__.__dict__["isp_type"] = isp_type
             __props__.__dict__["ip_address_lists"] = None
             __props__.__dict__["status"] = None
         super(IpSet, __self__).__init__(
@@ -359,6 +396,7 @@ class IpSet(pulumi.CustomResource):
             bandwidth: Optional[pulumi.Input[int]] = None,
             ip_address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ip_version: Optional[pulumi.Input[str]] = None,
+            isp_type: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'IpSet':
         """
         Get an existing IpSet resource's state with the given name, id, and optional extra
@@ -370,10 +408,10 @@ class IpSet(pulumi.CustomResource):
         :param pulumi.Input[str] accelerate_region_id: The ID of an acceleration region.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator (GA) instance.
         :param pulumi.Input[int] bandwidth: The bandwidth allocated to the acceleration region.
-               
                > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_address_lists: The list of accelerated IP addresses in the acceleration region.
-        :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        :param pulumi.Input[str] ip_version: The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+        :param pulumi.Input[str] isp_type: The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
         :param pulumi.Input[str] status: The status of the acceleration region.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -385,6 +423,7 @@ class IpSet(pulumi.CustomResource):
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["ip_address_lists"] = ip_address_lists
         __props__.__dict__["ip_version"] = ip_version
+        __props__.__dict__["isp_type"] = isp_type
         __props__.__dict__["status"] = status
         return IpSet(resource_name, opts=opts, __props__=__props__)
 
@@ -409,7 +448,6 @@ class IpSet(pulumi.CustomResource):
     def bandwidth(self) -> pulumi.Output[Optional[int]]:
         """
         The bandwidth allocated to the acceleration region.
-
         > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         """
         return pulumi.get(self, "bandwidth")
@@ -424,11 +462,19 @@ class IpSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> pulumi.Output[Optional[str]]:
+    def ip_version(self) -> pulumi.Output[str]:
         """
-        The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
         """
         return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter(name="ispType")
+    def isp_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+        """
+        return pulumi.get(self, "isp_type")
 
     @property
     @pulumi.getter

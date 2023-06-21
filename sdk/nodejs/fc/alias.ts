@@ -8,9 +8,9 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
- *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/171635.htm).
+ *  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createalias).
  *
- * > **NOTE:** Available in 1.104.0+
+ * > **NOTE:** Available since v1.104.0.
  *
  * ## Example Usage
  *
@@ -19,16 +19,20 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultService = new alicloud.fc.Service("defaultService", {
+ *     description: "example-value",
+ *     publish: true,
+ * });
  * const example = new alicloud.fc.Alias("example", {
- *     aliasName: "my_alias",
- *     description: "a sample description",
- *     routingConfig: {
- *         additionalVersionWeights: {
- *             "2": 0.5,
- *         },
- *     },
- *     serviceName: "my_service_name",
+ *     aliasName: "example-value",
+ *     description: "example-value",
+ *     serviceName: defaultService.name,
  *     serviceVersion: "1",
  * });
  * ```
@@ -78,9 +82,7 @@ export class Alias extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The Function Compute alias' route configuration settings. Fields documented below.
-     *
-     * **routing_config** includes the following arguments:
+     * The Function Compute alias' route configuration settings. See `routingConfig` below.
      */
     public readonly routingConfig!: pulumi.Output<outputs.fc.AliasRoutingConfig | undefined>;
     /**
@@ -145,9 +147,7 @@ export interface AliasState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The Function Compute alias' route configuration settings. Fields documented below.
-     *
-     * **routing_config** includes the following arguments:
+     * The Function Compute alias' route configuration settings. See `routingConfig` below.
      */
     routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig>;
     /**
@@ -173,9 +173,7 @@ export interface AliasArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The Function Compute alias' route configuration settings. Fields documented below.
-     *
-     * **routing_config** includes the following arguments:
+     * The Function Compute alias' route configuration settings. See `routingConfig` below.
      */
     routingConfig?: pulumi.Input<inputs.fc.AliasRoutingConfig>;
     /**

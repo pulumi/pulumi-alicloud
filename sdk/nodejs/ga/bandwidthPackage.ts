@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** At present, The `alicloud.ga.BandwidthPackage` created with `Subscription` cannot be deleted. you need to wait until the resource is outdated and released automatically.
  *
- * > **NOTE:** Available in v1.112.0+.
+ * > **NOTE:** Available since v1.112.0.
  *
  * ## Example Usage
  *

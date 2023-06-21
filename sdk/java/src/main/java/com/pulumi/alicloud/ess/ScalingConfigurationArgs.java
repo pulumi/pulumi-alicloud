@@ -54,14 +54,14 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+     * DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
      * 
      */
     @Import(name="dataDisks")
     private @Nullable Output<List<ScalingConfigurationDataDiskArgs>> dataDisks;
 
     /**
-     * @return DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+     * @return DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
      * 
      */
     public Optional<Output<List<ScalingConfigurationDataDiskArgs>>> dataDisks() {
@@ -182,14 +182,14 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+     * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
      * 
      */
     @Import(name="instancePatternInfos")
     private @Nullable Output<List<ScalingConfigurationInstancePatternInfoArgs>> instancePatternInfos;
 
     /**
-     * @return intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+     * @return intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
      * 
      */
     public Optional<Output<List<ScalingConfigurationInstancePatternInfoArgs>>> instancePatternInfos() {
@@ -490,7 +490,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+     * Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
      * 
      * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
      * 
@@ -511,7 +511,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<List<ScalingConfigurationSpotPriceLimitArgs>> spotPriceLimits;
 
     /**
-     * @return Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+     * @return Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
      * 
      * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
      * 
@@ -809,7 +809,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dataDisks DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+         * @param dataDisks DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
          * 
          * @return builder
          * 
@@ -820,7 +820,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dataDisks DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+         * @param dataDisks DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
          * 
          * @return builder
          * 
@@ -830,7 +830,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dataDisks DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+         * @param dataDisks DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
          * 
          * @return builder
          * 
@@ -1009,7 +1009,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param instancePatternInfos intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+         * @param instancePatternInfos intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
          * 
          * @return builder
          * 
@@ -1020,7 +1020,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param instancePatternInfos intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+         * @param instancePatternInfos intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
          * 
          * @return builder
          * 
@@ -1030,7 +1030,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param instancePatternInfos intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+         * @param instancePatternInfos intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
          * 
          * @return builder
          * 
@@ -1467,7 +1467,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param spotPriceLimits Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+         * @param spotPriceLimits Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
          * 
          * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
          * 
@@ -1492,7 +1492,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param spotPriceLimits Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+         * @param spotPriceLimits Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
          * 
          * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
          * 
@@ -1516,7 +1516,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param spotPriceLimits Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+         * @param spotPriceLimits Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
          * 
          * &gt; **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
          * 

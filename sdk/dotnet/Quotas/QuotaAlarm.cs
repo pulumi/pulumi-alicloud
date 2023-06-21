@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Quotas
     /// <summary>
     /// Provides a Quotas Quota Alarm resource.
     /// 
-    /// For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
+    /// For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createquotaalarm).
     /// 
-    /// &gt; **NOTE:** Available in v1.116.0+.
+    /// &gt; **NOTE:** Available since v1.116.0.
     /// 
     /// ## Example Usage
     /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Quotas
         public Output<string> QuotaAlarmName { get; private set; } = null!;
 
         /// <summary>
-        /// The Quota Dimensions. See the following `Block QuotaDimensions`.
+        /// The Quota Dimensions. See `quota_dimensions` below.
         /// </summary>
         [Output("quotaDimensions")]
         public Output<ImmutableArray<Outputs.QuotaAlarmQuotaDimension>> QuotaDimensions { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.QuotaAlarmQuotaDimensionArgs>? _quotaDimensions;
 
         /// <summary>
-        /// The Quota Dimensions. See the following `Block QuotaDimensions`.
+        /// The Quota Dimensions. See `quota_dimensions` below.
         /// </summary>
         public InputList<Inputs.QuotaAlarmQuotaDimensionArgs> QuotaDimensions
         {
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.QuotaAlarmQuotaDimensionGetArgs>? _quotaDimensions;
 
         /// <summary>
-        /// The Quota Dimensions. See the following `Block QuotaDimensions`.
+        /// The Quota Dimensions. See `quota_dimensions` below.
         /// </summary>
         public InputList<Inputs.QuotaAlarmQuotaDimensionGetArgs> QuotaDimensions
         {

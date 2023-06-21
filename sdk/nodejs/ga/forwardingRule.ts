@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Import
  *
@@ -74,11 +74,11 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * Forward action.
+     * Forward action. See `ruleActions` below.
      */
     public readonly ruleActions!: pulumi.Output<outputs.ga.ForwardingRuleRuleAction[]>;
     /**
-     * Forwarding condition list.
+     * Forwarding condition list. See `ruleConditions` below.
      */
     public readonly ruleConditions!: pulumi.Output<outputs.ga.ForwardingRuleRuleCondition[]>;
 
@@ -160,11 +160,11 @@ export interface ForwardingRuleState {
      */
     priority?: pulumi.Input<number>;
     /**
-     * Forward action.
+     * Forward action. See `ruleActions` below.
      */
     ruleActions?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleAction>[]>;
     /**
-     * Forwarding condition list.
+     * Forwarding condition list. See `ruleConditions` below.
      */
     ruleConditions?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleCondition>[]>;
 }
@@ -190,11 +190,11 @@ export interface ForwardingRuleArgs {
      */
     priority?: pulumi.Input<number>;
     /**
-     * Forward action.
+     * Forward action. See `ruleActions` below.
      */
     ruleActions: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleAction>[]>;
     /**
-     * Forwarding condition list.
+     * Forwarding condition list. See `ruleConditions` below.
      */
     ruleConditions: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleCondition>[]>;
 }

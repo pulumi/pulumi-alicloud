@@ -22,7 +22,7 @@ class ScalingGroupVServerGroupsArgs:
         """
         The set of arguments for constructing a ScalingGroupVServerGroups resource.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
-        :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]] vserver_groups: A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]] vserver_groups: A list of vserver groups attached on scaling group. See `vserver_groups` below.
         :param pulumi.Input[bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
         """
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
@@ -46,7 +46,7 @@ class ScalingGroupVServerGroupsArgs:
     @pulumi.getter(name="vserverGroups")
     def vserver_groups(self) -> pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]:
         """
-        A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        A list of vserver groups attached on scaling group. See `vserver_groups` below.
         """
         return pulumi.get(self, "vserver_groups")
 
@@ -77,7 +77,7 @@ class _ScalingGroupVServerGroupsState:
         Input properties used for looking up and filtering ScalingGroupVServerGroups resources.
         :param pulumi.Input[bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
-        :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]] vserver_groups: A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]] vserver_groups: A list of vserver groups attached on scaling group. See `vserver_groups` below.
         """
         if force is not None:
             pulumi.set(__self__, "force", force)
@@ -114,7 +114,7 @@ class _ScalingGroupVServerGroupsState:
     @pulumi.getter(name="vserverGroups")
     def vserver_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]]:
         """
-        A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        A list of vserver groups attached on scaling group. See `vserver_groups` below.
         """
         return pulumi.get(self, "vserver_groups")
 
@@ -151,66 +151,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
 
         > **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.
 
-        > **NOTE:** Resource `ess.ScalingGroupVServerGroups` is available in 1.53.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "testAccEssVserverGroupsAttachment"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name=name,
-            vswitch_id=default_switch.id)
-        default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
-        default_listener = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_listener.append(alicloud.slb.Listener(f"defaultListener-{range['value']}",
-                load_balancer_id=[__item.id for __item in [default_application_load_balancer]][range["value"]],
-                backend_port=22,
-                frontend_port=22,
-                protocol="tcp",
-                bandwidth=10,
-                health_check_type="tcp"))
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=2,
-            max_size=2,
-            scaling_group_name=name,
-            vswitch_ids=[default_switch.id])
-        default_scaling_group_v_server_groups = alicloud.ess.ScalingGroupVServerGroups("defaultScalingGroupVServerGroups",
-            scaling_group_id=default_scaling_group.id,
-            vserver_groups=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupArgs(
-                loadbalancer_id=default_application_load_balancer.id,
-                vserver_attributes=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs(
-                    vserver_group_id=default_server_group.id,
-                    port=100,
-                    weight=60,
-                )],
-            )])
-        ```
-        ## Block vserver_group
-
-        the vserver_group supports the following:
-
-        * `loadbalancer_id` - (Required) Loadbalancer server ID of VServer Group.
-        * `vserver_attributes` - (Required) A list of VServer Group attributes. See Block vserver_attribute below for details.
-
-        ## Block vserver_attribute
-
-        * `vserver_group_id` - (Required) ID of VServer Group.
-        * `port` - (Required) - The port will be used for VServer Group backend server.
-        * `weight` - (Required) The weight of an ECS instance attached to the VServer Group.
+        > **NOTE:** Available since v1.53.0.
 
         ## Import
 
@@ -224,7 +165,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]] vserver_groups: A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]] vserver_groups: A list of vserver groups attached on scaling group. See `vserver_groups` below.
         """
         ...
     @overload
@@ -251,66 +192,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
 
         > **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.
 
-        > **NOTE:** Resource `ess.ScalingGroupVServerGroups` is available in 1.53.0+.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "testAccEssVserverGroupsAttachment"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
-            load_balancer_name=name,
-            vswitch_id=default_switch.id)
-        default_server_group = alicloud.slb.ServerGroup("defaultServerGroup", load_balancer_id=default_application_load_balancer.id)
-        default_listener = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            default_listener.append(alicloud.slb.Listener(f"defaultListener-{range['value']}",
-                load_balancer_id=[__item.id for __item in [default_application_load_balancer]][range["value"]],
-                backend_port=22,
-                frontend_port=22,
-                protocol="tcp",
-                bandwidth=10,
-                health_check_type="tcp"))
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
-            min_size=2,
-            max_size=2,
-            scaling_group_name=name,
-            vswitch_ids=[default_switch.id])
-        default_scaling_group_v_server_groups = alicloud.ess.ScalingGroupVServerGroups("defaultScalingGroupVServerGroups",
-            scaling_group_id=default_scaling_group.id,
-            vserver_groups=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupArgs(
-                loadbalancer_id=default_application_load_balancer.id,
-                vserver_attributes=[alicloud.ess.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs(
-                    vserver_group_id=default_server_group.id,
-                    port=100,
-                    weight=60,
-                )],
-            )])
-        ```
-        ## Block vserver_group
-
-        the vserver_group supports the following:
-
-        * `loadbalancer_id` - (Required) Loadbalancer server ID of VServer Group.
-        * `vserver_attributes` - (Required) A list of VServer Group attributes. See Block vserver_attribute below for details.
-
-        ## Block vserver_attribute
-
-        * `vserver_group_id` - (Required) ID of VServer Group.
-        * `port` - (Required) - The port will be used for VServer Group backend server.
-        * `weight` - (Required) The weight of an ECS instance attached to the VServer Group.
+        > **NOTE:** Available since v1.53.0.
 
         ## Import
 
@@ -376,7 +258,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] force: If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]] vserver_groups: A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingGroupVServerGroupsVserverGroupArgs']]]] vserver_groups: A list of vserver groups attached on scaling group. See `vserver_groups` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -407,7 +289,7 @@ class ScalingGroupVServerGroups(pulumi.CustomResource):
     @pulumi.getter(name="vserverGroups")
     def vserver_groups(self) -> pulumi.Output[Sequence['outputs.ScalingGroupVServerGroupsVserverGroup']]:
         """
-        A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        A list of vserver groups attached on scaling group. See `vserver_groups` below.
         """
         return pulumi.get(self, "vserver_groups")
 

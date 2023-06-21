@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECD Simple Office Site resource.
  *
- * For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://help.aliyun.com/document_detail/188382.html).
+ * For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createsimpleofficesite).
  *
- * > **NOTE:** Available in v1.140.0+.
+ * > **NOTE:** Available since v1.140.0.
  *
  * ## Example Usage
  *
@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.eds.SimpleOfficeSite("default", {
- *     bandwidth: 5,
  *     cidrBlock: "172.16.0.0/12",
  *     desktopAccessType: "Internet",
- *     officeSiteName: "site_name",
+ *     enableAdminAccess: true,
+ *     officeSiteName: "terraform-example",
  * });
  * ```
  *

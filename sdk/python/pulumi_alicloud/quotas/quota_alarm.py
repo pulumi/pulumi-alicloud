@@ -29,7 +29,7 @@ class QuotaAlarmArgs:
         :param pulumi.Input[str] product_code: The Product Code.
         :param pulumi.Input[str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]] quota_dimensions: The Quota Dimensions. See the following `Block QuotaDimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
         :param pulumi.Input[float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
         :param pulumi.Input[str] threshold_type: Quota alarm type. Value:
@@ -91,7 +91,7 @@ class QuotaAlarmArgs:
     @pulumi.getter(name="quotaDimensions")
     def quota_dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]]]:
         """
-        The Quota Dimensions. See the following `Block QuotaDimensions`.
+        The Quota Dimensions. See `quota_dimensions` below.
         """
         return pulumi.get(self, "quota_dimensions")
 
@@ -168,7 +168,7 @@ class _QuotaAlarmState:
         :param pulumi.Input[str] product_code: The Product Code.
         :param pulumi.Input[str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]] quota_dimensions: The Quota Dimensions. See the following `Block QuotaDimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
         :param pulumi.Input[float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
         :param pulumi.Input[str] threshold_type: Quota alarm type. Value:
@@ -247,7 +247,7 @@ class _QuotaAlarmState:
     @pulumi.getter(name="quotaDimensions")
     def quota_dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaAlarmQuotaDimensionArgs']]]]:
         """
-        The Quota Dimensions. See the following `Block QuotaDimensions`.
+        The Quota Dimensions. See `quota_dimensions` below.
         """
         return pulumi.get(self, "quota_dimensions")
 
@@ -323,9 +323,9 @@ class QuotaAlarm(pulumi.CustomResource):
         """
         Provides a Quotas Quota Alarm resource.
 
-        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
+        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createquotaalarm).
 
-        > **NOTE:** Available in v1.116.0+.
+        > **NOTE:** Available since v1.116.0.
 
         ## Example Usage
 
@@ -364,7 +364,7 @@ class QuotaAlarm(pulumi.CustomResource):
         :param pulumi.Input[str] product_code: The Product Code.
         :param pulumi.Input[str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]] quota_dimensions: The Quota Dimensions. See the following `Block QuotaDimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
         :param pulumi.Input[float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
         :param pulumi.Input[str] threshold_type: Quota alarm type. Value:
@@ -381,9 +381,9 @@ class QuotaAlarm(pulumi.CustomResource):
         """
         Provides a Quotas Quota Alarm resource.
 
-        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
+        For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createquotaalarm).
 
-        > **NOTE:** Available in v1.116.0+.
+        > **NOTE:** Available since v1.116.0.
 
         ## Example Usage
 
@@ -494,7 +494,7 @@ class QuotaAlarm(pulumi.CustomResource):
         :param pulumi.Input[str] product_code: The Product Code.
         :param pulumi.Input[str] quota_action_code: The Quota Action Code.
         :param pulumi.Input[str] quota_alarm_name: The name of Quota Alarm.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]] quota_dimensions: The Quota Dimensions. See the following `Block QuotaDimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaAlarmQuotaDimensionArgs']]]] quota_dimensions: The Quota Dimensions. See `quota_dimensions` below.
         :param pulumi.Input[float] threshold: The threshold of Quota Alarm.
         :param pulumi.Input[float] threshold_percent: The threshold percent of Quota Alarm.
         :param pulumi.Input[str] threshold_type: Quota alarm type. Value:
@@ -553,7 +553,7 @@ class QuotaAlarm(pulumi.CustomResource):
     @pulumi.getter(name="quotaDimensions")
     def quota_dimensions(self) -> pulumi.Output[Optional[Sequence['outputs.QuotaAlarmQuotaDimension']]]:
         """
-        The Quota Dimensions. See the following `Block QuotaDimensions`.
+        The Quota Dimensions. See `quota_dimensions` below.
         """
         return pulumi.get(self, "quota_dimensions")
 

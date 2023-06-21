@@ -22,6 +22,7 @@ __all__ = [
     'ForwardingRuleRuleConditionHostConfig',
     'ForwardingRuleRuleConditionPathConfig',
     'ListenerCertificate',
+    'ListenerForwardedForConfig',
     'ListenerPortRange',
     'GetAcceleratorSpareIpAttachmentsAttachmentResult',
     'GetAcceleratorsAcceleratorResult',
@@ -291,10 +292,12 @@ class ForwardingRuleRuleAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "forwardGroupConfig":
-            suggest = "forward_group_config"
-        elif key == "ruleActionType":
+        if key == "ruleActionType":
             suggest = "rule_action_type"
+        elif key == "forwardGroupConfig":
+            suggest = "forward_group_config"
+        elif key == "ruleActionValue":
+            suggest = "rule_action_value"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ForwardingRuleRuleAction. Access the value via the '{suggest}' property getter instead.")
@@ -308,25 +311,23 @@ class ForwardingRuleRuleAction(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 forward_group_config: 'outputs.ForwardingRuleRuleActionForwardGroupConfig',
                  order: int,
-                 rule_action_type: str):
+                 rule_action_type: str,
+                 forward_group_config: Optional['outputs.ForwardingRuleRuleActionForwardGroupConfig'] = None,
+                 rule_action_value: Optional[str] = None):
         """
-        :param 'ForwardingRuleRuleActionForwardGroupConfigArgs' forward_group_config: Forwarding configuration.
         :param int order: Forwarding priority.
-        :param str rule_action_type: Forward action type. Default: forwardgroup.
+        :param str rule_action_type: Forward action type.
+        :param 'ForwardingRuleRuleActionForwardGroupConfigArgs' forward_group_config: Forwarding configuration. See `forward_group_config` below.
+               > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
+        :param str rule_action_value: The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
         """
-        pulumi.set(__self__, "forward_group_config", forward_group_config)
         pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "rule_action_type", rule_action_type)
-
-    @property
-    @pulumi.getter(name="forwardGroupConfig")
-    def forward_group_config(self) -> 'outputs.ForwardingRuleRuleActionForwardGroupConfig':
-        """
-        Forwarding configuration.
-        """
-        return pulumi.get(self, "forward_group_config")
+        if forward_group_config is not None:
+            pulumi.set(__self__, "forward_group_config", forward_group_config)
+        if rule_action_value is not None:
+            pulumi.set(__self__, "rule_action_value", rule_action_value)
 
     @property
     @pulumi.getter
@@ -340,9 +341,26 @@ class ForwardingRuleRuleAction(dict):
     @pulumi.getter(name="ruleActionType")
     def rule_action_type(self) -> str:
         """
-        Forward action type. Default: forwardgroup.
+        Forward action type.
         """
         return pulumi.get(self, "rule_action_type")
+
+    @property
+    @pulumi.getter(name="forwardGroupConfig")
+    def forward_group_config(self) -> Optional['outputs.ForwardingRuleRuleActionForwardGroupConfig']:
+        """
+        Forwarding configuration. See `forward_group_config` below.
+        > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
+        """
+        return pulumi.get(self, "forward_group_config")
+
+    @property
+    @pulumi.getter(name="ruleActionValue")
+    def rule_action_value(self) -> Optional[str]:
+        """
+        The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+        """
+        return pulumi.get(self, "rule_action_value")
 
 
 @pulumi.output_type
@@ -367,7 +385,7 @@ class ForwardingRuleRuleActionForwardGroupConfig(dict):
     def __init__(__self__, *,
                  server_group_tuples: Sequence['outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple']):
         """
-        :param Sequence['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs'] server_group_tuples: Terminal node group configuration.
+        :param Sequence['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs'] server_group_tuples: The information about the endpoint group. See `server_group_tuples` below.
         """
         pulumi.set(__self__, "server_group_tuples", server_group_tuples)
 
@@ -375,7 +393,7 @@ class ForwardingRuleRuleActionForwardGroupConfig(dict):
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> Sequence['outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple']:
         """
-        Terminal node group configuration.
+        The information about the endpoint group. See `server_group_tuples` below.
         """
         return pulumi.get(self, "server_group_tuples")
 
@@ -402,7 +420,7 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(dict):
     def __init__(__self__, *,
                  endpoint_group_id: str):
         """
-        :param str endpoint_group_id: Terminal node group ID.
+        :param str endpoint_group_id: The ID of the endpoint group.
         """
         pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
 
@@ -410,7 +428,7 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(dict):
     @pulumi.getter(name="endpointGroupId")
     def endpoint_group_id(self) -> str:
         """
-        Terminal node group ID.
+        The ID of the endpoint group.
         """
         return pulumi.get(self, "endpoint_group_id")
 
@@ -443,9 +461,9 @@ class ForwardingRuleRuleCondition(dict):
                  host_configs: Optional[Sequence['outputs.ForwardingRuleRuleConditionHostConfig']] = None,
                  path_config: Optional['outputs.ForwardingRuleRuleConditionPathConfig'] = None):
         """
-        :param str rule_condition_type: Forwarding condition type. Valid value: `Host`, `Path`.
-        :param Sequence['ForwardingRuleRuleConditionHostConfigArgs'] host_configs: Domain name configuration information.
-        :param 'ForwardingRuleRuleConditionPathConfigArgs' path_config: Path configuration information.
+        :param str rule_condition_type: The type of the forwarding conditions. Valid values: `Host`, `Path`.
+        :param Sequence['ForwardingRuleRuleConditionHostConfigArgs'] host_configs: The configuration of the domain name. See `host_config` below.
+        :param 'ForwardingRuleRuleConditionPathConfigArgs' path_config: The configuration of the path. See `path_config` below.
         """
         pulumi.set(__self__, "rule_condition_type", rule_condition_type)
         if host_configs is not None:
@@ -457,7 +475,7 @@ class ForwardingRuleRuleCondition(dict):
     @pulumi.getter(name="ruleConditionType")
     def rule_condition_type(self) -> str:
         """
-        Forwarding condition type. Valid value: `Host`, `Path`.
+        The type of the forwarding conditions. Valid values: `Host`, `Path`.
         """
         return pulumi.get(self, "rule_condition_type")
 
@@ -465,7 +483,7 @@ class ForwardingRuleRuleCondition(dict):
     @pulumi.getter(name="hostConfigs")
     def host_configs(self) -> Optional[Sequence['outputs.ForwardingRuleRuleConditionHostConfig']]:
         """
-        Domain name configuration information.
+        The configuration of the domain name. See `host_config` below.
         """
         return pulumi.get(self, "host_configs")
 
@@ -473,7 +491,7 @@ class ForwardingRuleRuleCondition(dict):
     @pulumi.getter(name="pathConfig")
     def path_config(self) -> Optional['outputs.ForwardingRuleRuleConditionPathConfig']:
         """
-        Path configuration information.
+        The configuration of the path. See `path_config` below.
         """
         return pulumi.get(self, "path_config")
 
@@ -533,6 +551,98 @@ class ListenerCertificate(dict):
         The id of the certificate.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class ListenerForwardedForConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forwardedForGaApEnabled":
+            suggest = "forwarded_for_ga_ap_enabled"
+        elif key == "forwardedForGaIdEnabled":
+            suggest = "forwarded_for_ga_id_enabled"
+        elif key == "forwardedForPortEnabled":
+            suggest = "forwarded_for_port_enabled"
+        elif key == "forwardedForProtoEnabled":
+            suggest = "forwarded_for_proto_enabled"
+        elif key == "realIpEnabled":
+            suggest = "real_ip_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListenerForwardedForConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListenerForwardedForConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListenerForwardedForConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 forwarded_for_ga_ap_enabled: Optional[bool] = None,
+                 forwarded_for_ga_id_enabled: Optional[bool] = None,
+                 forwarded_for_port_enabled: Optional[bool] = None,
+                 forwarded_for_proto_enabled: Optional[bool] = None,
+                 real_ip_enabled: Optional[bool] = None):
+        """
+        :param bool forwarded_for_ga_ap_enabled: Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
+        :param bool forwarded_for_ga_id_enabled: Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
+        :param bool forwarded_for_port_enabled: Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
+        :param bool forwarded_for_proto_enabled: Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
+        :param bool real_ip_enabled: Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
+        """
+        if forwarded_for_ga_ap_enabled is not None:
+            pulumi.set(__self__, "forwarded_for_ga_ap_enabled", forwarded_for_ga_ap_enabled)
+        if forwarded_for_ga_id_enabled is not None:
+            pulumi.set(__self__, "forwarded_for_ga_id_enabled", forwarded_for_ga_id_enabled)
+        if forwarded_for_port_enabled is not None:
+            pulumi.set(__self__, "forwarded_for_port_enabled", forwarded_for_port_enabled)
+        if forwarded_for_proto_enabled is not None:
+            pulumi.set(__self__, "forwarded_for_proto_enabled", forwarded_for_proto_enabled)
+        if real_ip_enabled is not None:
+            pulumi.set(__self__, "real_ip_enabled", real_ip_enabled)
+
+    @property
+    @pulumi.getter(name="forwardedForGaApEnabled")
+    def forwarded_for_ga_ap_enabled(self) -> Optional[bool]:
+        """
+        Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "forwarded_for_ga_ap_enabled")
+
+    @property
+    @pulumi.getter(name="forwardedForGaIdEnabled")
+    def forwarded_for_ga_id_enabled(self) -> Optional[bool]:
+        """
+        Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "forwarded_for_ga_id_enabled")
+
+    @property
+    @pulumi.getter(name="forwardedForPortEnabled")
+    def forwarded_for_port_enabled(self) -> Optional[bool]:
+        """
+        Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "forwarded_for_port_enabled")
+
+    @property
+    @pulumi.getter(name="forwardedForProtoEnabled")
+    def forwarded_for_proto_enabled(self) -> Optional[bool]:
+        """
+        Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "forwarded_for_proto_enabled")
+
+    @property
+    @pulumi.getter(name="realIpEnabled")
+    def real_ip_enabled(self) -> Optional[bool]:
+        """
+        Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "real_ip_enabled")
 
 
 @pulumi.output_type

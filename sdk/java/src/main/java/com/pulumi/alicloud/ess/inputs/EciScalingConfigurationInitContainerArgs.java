@@ -52,14 +52,14 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
     }
 
     /**
-     * The amount of CPU resources allocated to the container group.
+     * The amount of CPU resources allocated to the container.
      * 
      */
     @Import(name="cpu")
     private @Nullable Output<Double> cpu;
 
     /**
-     * @return The amount of CPU resources allocated to the container group.
+     * @return The amount of CPU resources allocated to the container.
      * 
      */
     public Optional<Output<Double>> cpu() {
@@ -68,8 +68,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
 
     /**
      * The structure of environmentVars.
-     * See Block_environment_var_in_init_container below for details.
-     * See Block_environment_var_in_container below for details.
+     * See `environment_vars` below for details.
      * 
      */
     @Import(name="environmentVars")
@@ -77,8 +76,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
 
     /**
      * @return The structure of environmentVars.
-     * See Block_environment_var_in_init_container below for details.
-     * See Block_environment_var_in_container below for details.
+     * See `environment_vars` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationInitContainerEnvironmentVarArgs>>> environmentVars() {
@@ -131,14 +129,14 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
     }
 
     /**
-     * The amount of memory resources allocated to the container group.
+     * The amount of memory resources allocated to the container.
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Double> memory;
 
     /**
-     * @return The amount of memory resources allocated to the container group.
+     * @return The amount of memory resources allocated to the container.
      * 
      */
     public Optional<Output<Double>> memory() {
@@ -146,14 +144,14 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
     }
 
     /**
-     * The name of the volume.
+     * The name of the mounted volume.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the volume.
+     * @return The name of the mounted volume.
      * 
      */
     public Optional<Output<String>> name() {
@@ -161,16 +159,14 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
     }
 
     /**
-     * The structure of port. See Block_port_in_init_container below
-     * for details.
+     * The structure of port. See `ports` below for details.
      * 
      */
     @Import(name="ports")
     private @Nullable Output<List<EciScalingConfigurationInitContainerPortArgs>> ports;
 
     /**
-     * @return The structure of port. See Block_port_in_init_container below
-     * for details.
+     * @return The structure of port. See `ports` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationInitContainerPortArgs>>> ports() {
@@ -178,18 +174,14 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
     }
 
     /**
-     * The structure of volumeMounts.
-     * See Block_volume_mount_in_init_container below for details.
-     * See Block_volume_mount_in_container below for details.
+     * The structure of volumeMounts. See `volume_mounts` below for details.
      * 
      */
     @Import(name="volumeMounts")
     private @Nullable Output<List<EciScalingConfigurationInitContainerVolumeMountArgs>> volumeMounts;
 
     /**
-     * @return The structure of volumeMounts.
-     * See Block_volume_mount_in_init_container below for details.
-     * See Block_volume_mount_in_container below for details.
+     * @return The structure of volumeMounts. See `volume_mounts` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationInitContainerVolumeMountArgs>>> volumeMounts() {
@@ -309,7 +301,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container group.
+         * @param cpu The amount of CPU resources allocated to the container.
          * 
          * @return builder
          * 
@@ -320,7 +312,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param cpu The amount of CPU resources allocated to the container group.
+         * @param cpu The amount of CPU resources allocated to the container.
          * 
          * @return builder
          * 
@@ -331,8 +323,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
 
         /**
          * @param environmentVars The structure of environmentVars.
-         * See Block_environment_var_in_init_container below for details.
-         * See Block_environment_var_in_container below for details.
+         * See `environment_vars` below for details.
          * 
          * @return builder
          * 
@@ -344,8 +335,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
 
         /**
          * @param environmentVars The structure of environmentVars.
-         * See Block_environment_var_in_init_container below for details.
-         * See Block_environment_var_in_container below for details.
+         * See `environment_vars` below for details.
          * 
          * @return builder
          * 
@@ -356,8 +346,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
 
         /**
          * @param environmentVars The structure of environmentVars.
-         * See Block_environment_var_in_init_container below for details.
-         * See Block_environment_var_in_container below for details.
+         * See `environment_vars` below for details.
          * 
          * @return builder
          * 
@@ -430,7 +419,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container group.
+         * @param memory The amount of memory resources allocated to the container.
          * 
          * @return builder
          * 
@@ -441,7 +430,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param memory The amount of memory resources allocated to the container group.
+         * @param memory The amount of memory resources allocated to the container.
          * 
          * @return builder
          * 
@@ -451,7 +440,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param name The name of the volume.
+         * @param name The name of the mounted volume.
          * 
          * @return builder
          * 
@@ -462,7 +451,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param name The name of the volume.
+         * @param name The name of the mounted volume.
          * 
          * @return builder
          * 
@@ -472,8 +461,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param ports The structure of port. See Block_port_in_init_container below
-         * for details.
+         * @param ports The structure of port. See `ports` below for details.
          * 
          * @return builder
          * 
@@ -484,8 +472,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param ports The structure of port. See Block_port_in_init_container below
-         * for details.
+         * @param ports The structure of port. See `ports` below for details.
          * 
          * @return builder
          * 
@@ -495,8 +482,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param ports The structure of port. See Block_port_in_init_container below
-         * for details.
+         * @param ports The structure of port. See `ports` below for details.
          * 
          * @return builder
          * 
@@ -506,9 +492,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts.
-         * See Block_volume_mount_in_init_container below for details.
-         * See Block_volume_mount_in_container below for details.
+         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below for details.
          * 
          * @return builder
          * 
@@ -519,9 +503,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts.
-         * See Block_volume_mount_in_init_container below for details.
-         * See Block_volume_mount_in_container below for details.
+         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below for details.
          * 
          * @return builder
          * 
@@ -531,9 +513,7 @@ public final class EciScalingConfigurationInitContainerArgs extends com.pulumi.r
         }
 
         /**
-         * @param volumeMounts The structure of volumeMounts.
-         * See Block_volume_mount_in_init_container below for details.
-         * See Block_volume_mount_in_container below for details.
+         * @param volumeMounts The structure of volumeMounts. See `volume_mounts` below for details.
          * 
          * @return builder
          * 

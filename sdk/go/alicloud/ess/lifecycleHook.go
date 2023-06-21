@@ -13,6 +13,8 @@ import (
 
 // Provides a ESS lifecycle hook resource. More about Ess lifecycle hook, see [LifecycleHook](https://www.alibabacloud.com/help/doc-detail/73839.htm).
 //
+// > **NOTE:** Available since v1.13.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -20,65 +22,84 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
-//				VpcId:     fooNetwork.ID(),
-//				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    *pulumi.String(_default.Zones[0].Id),
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			bar, err := vpc.NewSwitch(ctx, "bar", &vpc.SwitchArgs{
-//				VpcId:     fooNetwork.ID(),
-//				CidrBlock: pulumi.String("172.16.1.0/24"),
-//				ZoneId:    *pulumi.String(_default.Zones[0].Id),
+//			default2, err := vpc.NewSwitch(ctx, "default2", &vpc.SwitchArgs{
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("172.16.1.0/24"),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//				VswitchName: pulumi.String(fmt.Sprintf("%v-bar", name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooScalingGroup, err := ess.NewScalingGroup(ctx, "fooScalingGroup", &ess.ScalingGroupArgs{
+//			_, err = ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(1),
 //				MaxSize:          pulumi.Int(1),
-//				ScalingGroupName: pulumi.String("testAccEssScaling_group"),
+//				ScalingGroupName: pulumi.String(name),
+//				DefaultCooldown:  pulumi.Int(200),
 //				RemovalPolicies: pulumi.StringArray{
 //					pulumi.String("OldestInstance"),
 //					pulumi.String("NewestInstance"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					fooSwitch.ID(),
-//					bar.ID(),
+//					defaultSwitch.ID(),
+//					default2.ID(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ess.NewLifecycleHook(ctx, "fooLifecycleHook", &ess.LifecycleHookArgs{
-//				ScalingGroupId:       fooScalingGroup.ID(),
+//			_, err = ess.NewLifecycleHook(ctx, "defaultLifecycleHook", &ess.LifecycleHookArgs{
+//				ScalingGroupId:       defaultScalingGroup.ID(),
 //				LifecycleTransition:  pulumi.String("SCALE_OUT"),
 //				HeartbeatTimeout:     pulumi.Int(400),
-//				NotificationMetadata: pulumi.String("helloworld"),
+//				NotificationMetadata: pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err

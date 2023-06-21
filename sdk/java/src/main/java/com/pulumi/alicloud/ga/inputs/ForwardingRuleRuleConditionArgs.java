@@ -19,14 +19,14 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
     public static final ForwardingRuleRuleConditionArgs Empty = new ForwardingRuleRuleConditionArgs();
 
     /**
-     * Domain name configuration information.
+     * The configuration of the domain name. See `host_config` below.
      * 
      */
     @Import(name="hostConfigs")
     private @Nullable Output<List<ForwardingRuleRuleConditionHostConfigArgs>> hostConfigs;
 
     /**
-     * @return Domain name configuration information.
+     * @return The configuration of the domain name. See `host_config` below.
      * 
      */
     public Optional<Output<List<ForwardingRuleRuleConditionHostConfigArgs>>> hostConfigs() {
@@ -34,14 +34,14 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
     }
 
     /**
-     * Path configuration information.
+     * The configuration of the path. See `path_config` below.
      * 
      */
     @Import(name="pathConfig")
     private @Nullable Output<ForwardingRuleRuleConditionPathConfigArgs> pathConfig;
 
     /**
-     * @return Path configuration information.
+     * @return The configuration of the path. See `path_config` below.
      * 
      */
     public Optional<Output<ForwardingRuleRuleConditionPathConfigArgs>> pathConfig() {
@@ -49,14 +49,14 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
     }
 
     /**
-     * Forwarding condition type. Valid value: `Host`, `Path`.
+     * The type of the forwarding conditions. Valid values: `Host`, `Path`.
      * 
      */
     @Import(name="ruleConditionType", required=true)
     private Output<String> ruleConditionType;
 
     /**
-     * @return Forwarding condition type. Valid value: `Host`, `Path`.
+     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`.
      * 
      */
     public Output<String> ruleConditionType() {
@@ -90,7 +90,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param hostConfigs Domain name configuration information.
+         * @param hostConfigs The configuration of the domain name. See `host_config` below.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param hostConfigs Domain name configuration information.
+         * @param hostConfigs The configuration of the domain name. See `host_config` below.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param hostConfigs Domain name configuration information.
+         * @param hostConfigs The configuration of the domain name. See `host_config` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param pathConfig Path configuration information.
+         * @param pathConfig The configuration of the path. See `path_config` below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param pathConfig Path configuration information.
+         * @param pathConfig The configuration of the path. See `path_config` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleConditionType Forwarding condition type. Valid value: `Host`, `Path`.
+         * @param ruleConditionType The type of the forwarding conditions. Valid values: `Host`, `Path`.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleConditionType Forwarding condition type. Valid value: `Host`, `Path`.
+         * @param ruleConditionType The type of the forwarding conditions. Valid values: `Host`, `Path`.
          * 
          * @return builder
          * 

@@ -7,77 +7,10 @@ import * as utilities from "../utilities";
 /**
  * Provides a ESS schedule resource.
  *
- * ## Example Usage
+ * For information about ess schedule task, see [Scheduled Tasks](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscheduledtask).
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
+ * > **NOTE:** Available since v1.60.0.
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "essscheduleconfig";
- * const defaultZones = alicloud.getZones({
- *     availableDiskCategory: "cloud_efficiency",
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
- *     cpuCoreCount: 2,
- *     memorySize: 4,
- * }));
- * const defaultImages = alicloud.ecs.getImages({
- *     nameRegex: "^ubuntu_18.*64",
- *     mostRecent: true,
- *     owners: "system",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
- *     type: "ingress",
- *     ipProtocol: "tcp",
- *     nicType: "intranet",
- *     policy: "accept",
- *     portRange: "22/22",
- *     priority: 1,
- *     securityGroupId: defaultSecurityGroup.id,
- *     cidrIp: "172.16.0.0/24",
- * });
- * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
- *     minSize: 1,
- *     maxSize: 1,
- *     scalingGroupName: name,
- *     vswitchIds: [defaultSwitch.id],
- *     removalPolicies: [
- *         "OldestInstance",
- *         "NewestInstance",
- *     ],
- * });
- * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("defaultScalingConfiguration", {
- *     scalingGroupId: defaultScalingGroup.id,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
- *     securityGroupId: defaultSecurityGroup.id,
- *     forceDelete: true,
- * });
- * const defaultScalingRule = new alicloud.ess.ScalingRule("defaultScalingRule", {
- *     scalingGroupId: defaultScalingGroup.id,
- *     adjustmentType: "TotalCapacity",
- *     adjustmentValue: 2,
- *     cooldown: 60,
- * });
- * const defaultScheduledTask = new alicloud.ess.ScheduledTask("defaultScheduledTask", {
- *     scheduledAction: defaultScalingRule.ari,
- *     launchTime: "2019-05-21T11:37Z",
- *     scheduledTaskName: name,
- * });
- * ```
  * ## Module Support
  *
  * You can use to the existing autoscaling-rule module

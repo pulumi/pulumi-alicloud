@@ -16,14 +16,14 @@ public final class DhcpOptionsSetAssociateVpcArgs extends com.pulumi.resources.R
     public static final DhcpOptionsSetAssociateVpcArgs Empty = new DhcpOptionsSetAssociateVpcArgs();
 
     /**
-     * The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+     * The status of the VPC associated with the DHCP option set.
      * 
      */
     @Import(name="associateStatus")
     private @Nullable Output<String> associateStatus;
 
     /**
-     * @return The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+     * @return The status of the VPC associated with the DHCP option set.
      * 
      */
     public Optional<Output<String>> associateStatus() {
@@ -34,15 +34,15 @@ public final class DhcpOptionsSetAssociateVpcArgs extends com.pulumi.resources.R
      * The ID of the VPC network that is associated with the DHCP options set.
      * 
      */
-    @Import(name="vpcId")
-    private @Nullable Output<String> vpcId;
+    @Import(name="vpcId", required=true)
+    private Output<String> vpcId;
 
     /**
      * @return The ID of the VPC network that is associated with the DHCP options set.
      * 
      */
-    public Optional<Output<String>> vpcId() {
-        return Optional.ofNullable(this.vpcId);
+    public Output<String> vpcId() {
+        return this.vpcId;
     }
 
     private DhcpOptionsSetAssociateVpcArgs() {}
@@ -71,7 +71,7 @@ public final class DhcpOptionsSetAssociateVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param associateStatus The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+         * @param associateStatus The status of the VPC associated with the DHCP option set.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class DhcpOptionsSetAssociateVpcArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param associateStatus The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+         * @param associateStatus The status of the VPC associated with the DHCP option set.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class DhcpOptionsSetAssociateVpcArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder vpcId(@Nullable Output<String> vpcId) {
+        public Builder vpcId(Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
@@ -113,6 +113,7 @@ public final class DhcpOptionsSetAssociateVpcArgs extends com.pulumi.resources.R
         }
 
         public DhcpOptionsSetAssociateVpcArgs build() {
+            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
             return $;
         }
     }

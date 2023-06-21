@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/doc-detail/153259.htm).
  *
- * > **NOTE:** Available in v1.113.0+.
+ * > **NOTE:** Available since v1.113.0.
  *
  * > **NOTE:** Listeners that use different protocols support different types of endpoint groups:
  * * For a TCP or UDP listener, you can create only one default endpoint group.
@@ -28,12 +28,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleAccelerator = new alicloud.ga.Accelerator("exampleAccelerator", {
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
  *     duration: 1,
  *     autoUseCoupon: true,
  *     spec: "1",
  * });
- * const deBandwidthPackage = new alicloud.ga.BandwidthPackage("deBandwidthPackage", {
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
  *     bandwidth: 100,
  *     type: "Basic",
  *     bandwidthType: "Basic",
@@ -41,32 +43,43 @@ import * as utilities from "../utilities";
  *     billingType: "PayBy95",
  *     ratio: 30,
  * });
- * const deBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment", {
- *     acceleratorId: exampleAccelerator.id,
- *     bandwidthPackageId: deBandwidthPackage.id,
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ *     acceleratorId: defaultAccelerator.id,
+ *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
- * const exampleListener = new alicloud.ga.Listener("exampleListener", {
- *     acceleratorId: exampleAccelerator.id,
+ * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
  *     portRanges: [{
  *         fromPort: 60,
  *         toPort: 70,
  *     }],
- * }, {
- *     dependsOn: [deBandwidthPackageAttachment],
+ *     clientAffinity: "SOURCE_IP",
+ *     protocol: "UDP",
  * });
- * const exampleEipAddress = new alicloud.ecs.EipAddress("exampleEipAddress", {
- *     bandwidth: "10",
- *     internetChargeType: "PayByBandwidth",
- * });
- * const exampleEndpointGroup = new alicloud.ga.EndpointGroup("exampleEndpointGroup", {
- *     acceleratorId: exampleAccelerator.id,
- *     endpointConfigurations: [{
- *         endpoint: exampleEipAddress.ipAddress,
- *         type: "PublicIp",
- *         weight: 20,
- *     }],
- *     endpointGroupRegion: "cn-hangzhou",
- *     listenerId: exampleListener.id,
+ * const defaultEipAddress: alicloud.ecs.EipAddress[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     defaultEipAddress.push(new alicloud.ecs.EipAddress(`defaultEipAddress-${range.value}`, {
+ *         bandwidth: "10",
+ *         internetChargeType: "PayByBandwidth",
+ *         addressName: "terraform-example",
+ *     }));
+ * }
+ * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("defaultEndpointGroup", {
+ *     acceleratorId: defaultAccelerator.id,
+ *     endpointConfigurations: [
+ *         {
+ *             endpoint: defaultEipAddress[0].ipAddress,
+ *             type: "PublicIp",
+ *             weight: 20,
+ *         },
+ *         {
+ *             endpoint: defaultEipAddress[1].ipAddress,
+ *             type: "PublicIp",
+ *             weight: 20,
+ *         },
+ *     ],
+ *     endpointGroupRegion: region,
+ *     listenerId: defaultListener.id,
  * });
  * ```
  *
@@ -115,7 +128,7 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
+     * The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
      */
     public readonly endpointConfigurations!: pulumi.Output<outputs.ga.EndpointGroupEndpointConfiguration[]>;
     /**
@@ -159,7 +172,7 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+     * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
      *
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
@@ -255,7 +268,7 @@ export interface EndpointGroupState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
+     * The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
      */
     endpointConfigurations?: pulumi.Input<pulumi.Input<inputs.ga.EndpointGroupEndpointConfiguration>[]>;
     /**
@@ -299,7 +312,7 @@ export interface EndpointGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+     * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
      *
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
@@ -331,7 +344,7 @@ export interface EndpointGroupArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The endpointConfigurations of the endpoint group. See the following `Block endpointConfigurations`.
+     * The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
      */
     endpointConfigurations: pulumi.Input<pulumi.Input<inputs.ga.EndpointGroupEndpointConfiguration>[]>;
     /**
@@ -375,7 +388,7 @@ export interface EndpointGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Mapping between listening port and forwarding port of boarding point. See the following `Block portOverrides`.
+     * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
      *
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly int GroupId;
         /// <summary>
-        /// Config the NAS mount points, including following attributes:
+        /// Config the NAS mount points.See `mount_points` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceNasConfigMountPoint> MountPoints;
         /// <summary>

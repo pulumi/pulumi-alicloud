@@ -81,29 +81,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-     * 
-     * @deprecated
-     * Field &#39;core_num&#39; has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-     * 
-     */
-    @Deprecated /* Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version. */
-    @Import(name="coreNum")
-    private @Nullable Output<Integer> coreNum;
-
-    /**
-     * @return The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-     * 
-     * @deprecated
-     * Field &#39;core_num&#39; has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-     * 
-     */
-    @Deprecated /* Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version. */
-    public Optional<Output<Integer>> coreNum() {
-        return Optional.ofNullable(this.coreNum);
-    }
-
-    /**
      * The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
      * 
      */
@@ -121,8 +98,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
      * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-     *   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      * 
      */
     @Import(name="coreSpec")
@@ -131,8 +107,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
      * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-     *   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+     * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      * 
      */
     public Optional<Output<String>> coreSpec() {
@@ -155,14 +130,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
+     * The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
      * 
      */
     @Import(name="diskCategory")
     private @Nullable Output<String> diskCategory;
 
     /**
-     * @return The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
+     * @return The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
      * 
      */
     public Optional<Output<String>> diskCategory() {
@@ -185,14 +160,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in v1.163.0+) Whether to enable file engine.
+     * (Available since v1.163.0) Whether to enable file engine.
      * 
      */
     @Import(name="enabledFileEngine")
     private @Nullable Output<Boolean> enabledFileEngine;
 
     /**
-     * @return (Available in v1.163.0+) Whether to enable file engine.
+     * @return (Available since v1.163.0) Whether to enable file engine.
      * 
      */
     public Optional<Output<Boolean>> enabledFileEngine() {
@@ -200,14 +175,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in v1.163.0+) Whether to enable lts engine.
+     * (Available since v1.163.0) Whether to enable lts engine.
      * 
      */
     @Import(name="enabledLtsEngine")
     private @Nullable Output<Boolean> enabledLtsEngine;
 
     /**
-     * @return (Available in v1.163.0+) Whether to enable lts engine.
+     * @return (Available since v1.163.0) Whether to enable lts engine.
      * 
      */
     public Optional<Output<Boolean>> enabledLtsEngine() {
@@ -215,14 +190,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in v1.163.0+) Whether to enable search engine.
+     * (Available since v1.163.0) Whether to enable search engine.
      * 
      */
     @Import(name="enabledSearchEngine")
     private @Nullable Output<Boolean> enabledSearchEngine;
 
     /**
-     * @return (Available in v1.163.0+) Whether to enable search engine.
+     * @return (Available since v1.163.0) Whether to enable search engine.
      * 
      */
     public Optional<Output<Boolean>> enabledSearchEngine() {
@@ -230,14 +205,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in v1.163.0+) Whether to enable table engine.
+     * (Available since v1.163.0) Whether to enable table engine.
      * 
      */
     @Import(name="enabledTableEngine")
     private @Nullable Output<Boolean> enabledTableEngine;
 
     /**
-     * @return (Available in v1.163.0+) Whether to enable table engine.
+     * @return (Available since v1.163.0) Whether to enable table engine.
      * 
      */
     public Optional<Output<Boolean>> enabledTableEngine() {
@@ -245,14 +220,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in v1.163.0+) Whether to enable time serires engine.
+     * (Available since v1.163.0) Whether to enable time serires engine.
      * 
      */
     @Import(name="enabledTimeSeriresEngine")
     private @Nullable Output<Boolean> enabledTimeSeriresEngine;
 
     /**
-     * @return (Available in v1.163.0+) Whether to enable time serires engine.
+     * @return (Available since v1.163.0) Whether to enable time serires engine.
      * 
      */
     public Optional<Output<Boolean>> enabledTimeSeriresEngine() {
@@ -590,14 +565,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+     * (Available since v1.196.0) The instance type.
      * 
      */
     @Import(name="serviceType")
     private @Nullable Output<String> serviceType;
 
     /**
-     * @return (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+     * @return (Available since v1.196.0) The instance type.
      * 
      */
     public Optional<Output<String>> serviceType() {
@@ -635,14 +610,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+     * The status of Instance.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+     * @return The status of Instance.
      * 
      */
     public Optional<Output<String>> status() {
@@ -665,16 +640,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The specification of  table engine. Valid values:
-     * `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+     * The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
      * 
      */
     @Import(name="tableEngineSpecification")
     private @Nullable Output<String> tableEngineSpecification;
 
     /**
-     * @return The specification of  table engine. Valid values:
-     * `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+     * @return The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
      * 
      */
     public Optional<Output<String>> tableEngineSpecification() {
@@ -712,16 +685,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The specification of time series engine.
-     * Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+     * The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
      * 
      */
     @Import(name="timeSeriesEngineSpecification")
     private @Nullable Output<String> timeSeriesEngineSpecification;
 
     /**
-     * @return The specification of time series engine.
-     * Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+     * @return The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
      * 
      */
     public Optional<Output<String>> timeSeriesEngineSpecification() {
@@ -749,31 +720,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead. */
     public Optional<Output<String>> timeSeriresEngineSpecification() {
         return Optional.ofNullable(this.timeSeriresEngineSpecification);
-    }
-
-    /**
-     * The upgrade type. **NOTE:** Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0,
-     * and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-     * 
-     * @deprecated
-     * Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version.
-     * 
-     */
-    @Deprecated /* Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. */
-    @Import(name="upgradeType")
-    private @Nullable Output<String> upgradeType;
-
-    /**
-     * @return The upgrade type. **NOTE:** Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0,
-     * and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-     * 
-     * @deprecated
-     * Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version.
-     * 
-     */
-    @Deprecated /* Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. */
-    public Optional<Output<String>> upgradeType() {
-        return Optional.ofNullable(this.upgradeType);
     }
 
     /**
@@ -828,7 +774,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.arbiterZoneId = $.arbiterZoneId;
         this.archVersion = $.archVersion;
         this.coldStorage = $.coldStorage;
-        this.coreNum = $.coreNum;
         this.coreSingleStorage = $.coreSingleStorage;
         this.coreSpec = $.coreSpec;
         this.deletionProection = $.deletionProection;
@@ -871,7 +816,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.timeSeriesEngineNodeCount = $.timeSeriesEngineNodeCount;
         this.timeSeriesEngineSpecification = $.timeSeriesEngineSpecification;
         this.timeSeriresEngineSpecification = $.timeSeriresEngineSpecification;
-        this.upgradeType = $.upgradeType;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
@@ -980,35 +924,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param coreNum The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;core_num&#39; has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-         * 
-         */
-        @Deprecated /* Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version. */
-        public Builder coreNum(@Nullable Output<Integer> coreNum) {
-            $.coreNum = coreNum;
-            return this;
-        }
-
-        /**
-         * @param coreNum The core num. **NOTE:** Field `core_num` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;core_num&#39; has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-         * 
-         */
-        @Deprecated /* Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version. */
-        public Builder coreNum(Integer coreNum) {
-            return coreNum(Output.of(coreNum));
-        }
-
-        /**
          * @param coreSingleStorage The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
          * 
          * @return builder
@@ -1032,8 +947,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param coreSpec The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
          * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-         * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-         *   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+         * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
          * 
          * @return builder
          * 
@@ -1046,8 +960,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param coreSpec The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
          * - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-         * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-         *   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+         * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
          * 
          * @return builder
          * 
@@ -1078,7 +991,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskCategory The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
+         * @param diskCategory The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
          * 
          * @return builder
          * 
@@ -1089,7 +1002,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param diskCategory The disk type of instance. Valid values: `capacity_cloud_storage`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `local_ssd_pro`, `local_hdd_pro`.
+         * @param diskCategory The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
          * 
          * @return builder
          * 
@@ -1120,7 +1033,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledFileEngine (Available in v1.163.0+) Whether to enable file engine.
+         * @param enabledFileEngine (Available since v1.163.0) Whether to enable file engine.
          * 
          * @return builder
          * 
@@ -1131,7 +1044,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledFileEngine (Available in v1.163.0+) Whether to enable file engine.
+         * @param enabledFileEngine (Available since v1.163.0) Whether to enable file engine.
          * 
          * @return builder
          * 
@@ -1141,7 +1054,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledLtsEngine (Available in v1.163.0+) Whether to enable lts engine.
+         * @param enabledLtsEngine (Available since v1.163.0) Whether to enable lts engine.
          * 
          * @return builder
          * 
@@ -1152,7 +1065,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledLtsEngine (Available in v1.163.0+) Whether to enable lts engine.
+         * @param enabledLtsEngine (Available since v1.163.0) Whether to enable lts engine.
          * 
          * @return builder
          * 
@@ -1162,7 +1075,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledSearchEngine (Available in v1.163.0+) Whether to enable search engine.
+         * @param enabledSearchEngine (Available since v1.163.0) Whether to enable search engine.
          * 
          * @return builder
          * 
@@ -1173,7 +1086,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledSearchEngine (Available in v1.163.0+) Whether to enable search engine.
+         * @param enabledSearchEngine (Available since v1.163.0) Whether to enable search engine.
          * 
          * @return builder
          * 
@@ -1183,7 +1096,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledTableEngine (Available in v1.163.0+) Whether to enable table engine.
+         * @param enabledTableEngine (Available since v1.163.0) Whether to enable table engine.
          * 
          * @return builder
          * 
@@ -1194,7 +1107,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledTableEngine (Available in v1.163.0+) Whether to enable table engine.
+         * @param enabledTableEngine (Available since v1.163.0) Whether to enable table engine.
          * 
          * @return builder
          * 
@@ -1204,7 +1117,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledTimeSeriresEngine (Available in v1.163.0+) Whether to enable time serires engine.
+         * @param enabledTimeSeriresEngine (Available since v1.163.0) Whether to enable time serires engine.
          * 
          * @return builder
          * 
@@ -1215,7 +1128,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabledTimeSeriresEngine (Available in v1.163.0+) Whether to enable time serires engine.
+         * @param enabledTimeSeriresEngine (Available since v1.163.0) Whether to enable time serires engine.
          * 
          * @return builder
          * 
@@ -1697,7 +1610,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceType (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+         * @param serviceType (Available since v1.196.0) The instance type.
          * 
          * @return builder
          * 
@@ -1708,7 +1621,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceType (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindorm_multizone`, `serverless_lindorm`, `lindorm_standalone`, `lts`.
+         * @param serviceType (Available since v1.196.0) The instance type.
          * 
          * @return builder
          * 
@@ -1760,7 +1673,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+         * @param status The status of Instance.
          * 
          * @return builder
          * 
@@ -1771,7 +1684,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+         * @param status The status of Instance.
          * 
          * @return builder
          * 
@@ -1802,8 +1715,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableEngineSpecification The specification of  table engine. Valid values:
-         * `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+         * @param tableEngineSpecification The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
          * 
          * @return builder
          * 
@@ -1814,8 +1726,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tableEngineSpecification The specification of  table engine. Valid values:
-         * `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+         * @param tableEngineSpecification The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
          * 
          * @return builder
          * 
@@ -1867,8 +1778,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeSeriesEngineSpecification The specification of time series engine.
-         * Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+         * @param timeSeriesEngineSpecification The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
          * 
          * @return builder
          * 
@@ -1879,8 +1789,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeSeriesEngineSpecification The specification of time series engine.
-         * Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+         * @param timeSeriesEngineSpecification The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
          * 
          * @return builder
          * 
@@ -1916,37 +1825,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead. */
         public Builder timeSeriresEngineSpecification(String timeSeriresEngineSpecification) {
             return timeSeriresEngineSpecification(Output.of(timeSeriresEngineSpecification));
-        }
-
-        /**
-         * @param upgradeType The upgrade type. **NOTE:** Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0,
-         * and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version.
-         * 
-         */
-        @Deprecated /* Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. */
-        public Builder upgradeType(@Nullable Output<String> upgradeType) {
-            $.upgradeType = upgradeType;
-            return this;
-        }
-
-        /**
-         * @param upgradeType The upgrade type. **NOTE:** Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0,
-         * and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Field &#39;upgrade_type&#39; has been deprecated from provider version 1.163.0 and it will be removed in the future version.
-         * 
-         */
-        @Deprecated /* Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version. */
-        public Builder upgradeType(String upgradeType) {
-            return upgradeType(Output.of(upgradeType));
         }
 
         /**

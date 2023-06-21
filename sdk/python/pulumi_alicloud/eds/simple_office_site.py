@@ -426,9 +426,9 @@ class SimpleOfficeSite(pulumi.CustomResource):
         """
         Provides a ECD Simple Office Site resource.
 
-        For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://help.aliyun.com/document_detail/188382.html).
+        For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createsimpleofficesite).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available since v1.140.0.
 
         ## Example Usage
 
@@ -439,10 +439,10 @@ class SimpleOfficeSite(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.eds.SimpleOfficeSite("default",
-            bandwidth=5,
             cidr_block="172.16.0.0/12",
             desktop_access_type="Internet",
-            office_site_name="site_name")
+            enable_admin_access=True,
+            office_site_name="terraform-example")
         ```
 
         ## Import
@@ -476,9 +476,9 @@ class SimpleOfficeSite(pulumi.CustomResource):
         """
         Provides a ECD Simple Office Site resource.
 
-        For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://help.aliyun.com/document_detail/188382.html).
+        For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createsimpleofficesite).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available since v1.140.0.
 
         ## Example Usage
 
@@ -489,10 +489,10 @@ class SimpleOfficeSite(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.eds.SimpleOfficeSite("default",
-            bandwidth=5,
             cidr_block="172.16.0.0/12",
             desktop_access_type="Internet",
-            office_site_name="site_name")
+            enable_admin_access=True,
+            office_site_name="terraform-example")
         ```
 
         ## Import

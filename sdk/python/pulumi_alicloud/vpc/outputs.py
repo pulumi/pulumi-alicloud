@@ -73,10 +73,10 @@ class DhcpOptionsSetAssociateVpc(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "associateStatus":
-            suggest = "associate_status"
-        elif key == "vpcId":
+        if key == "vpcId":
             suggest = "vpc_id"
+        elif key == "associateStatus":
+            suggest = "associate_status"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DhcpOptionsSetAssociateVpc. Access the value via the '{suggest}' property getter instead.")
@@ -90,32 +90,31 @@ class DhcpOptionsSetAssociateVpc(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 associate_status: Optional[str] = None,
-                 vpc_id: Optional[str] = None):
+                 vpc_id: str,
+                 associate_status: Optional[str] = None):
         """
-        :param str associate_status: The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
         :param str vpc_id: The ID of the VPC network that is associated with the DHCP options set.
+        :param str associate_status: The status of the VPC associated with the DHCP option set.
         """
+        pulumi.set(__self__, "vpc_id", vpc_id)
         if associate_status is not None:
             pulumi.set(__self__, "associate_status", associate_status)
-        if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> str:
+        """
+        The ID of the VPC network that is associated with the DHCP options set.
+        """
+        return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="associateStatus")
     def associate_status(self) -> Optional[str]:
         """
-        The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+        The status of the VPC associated with the DHCP option set.
         """
         return pulumi.get(self, "associate_status")
-
-    @property
-    @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[str]:
-        """
-        The ID of the VPC network that is associated with the DHCP options set.
-        """
-        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type

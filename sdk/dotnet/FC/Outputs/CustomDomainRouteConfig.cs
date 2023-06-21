@@ -19,8 +19,6 @@ namespace Pulumi.AliCloud.FC.Outputs
         public readonly string FunctionName;
         /// <summary>
         /// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
-        /// 
-        /// **cert_config** includes the following arguments:
         /// </summary>
         public readonly ImmutableArray<string> Methods;
         /// <summary>
@@ -31,6 +29,9 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
         /// </summary>
         public readonly string? Qualifier;
+        /// <summary>
+        /// The name of the Function Compute service that requests are routed to.
+        /// </summary>
         public readonly string ServiceName;
 
         [OutputConstructor]

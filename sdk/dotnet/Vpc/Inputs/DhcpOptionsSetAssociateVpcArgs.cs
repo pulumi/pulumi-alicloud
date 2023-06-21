@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Vpc.Inputs
     public sealed class DhcpOptionsSetAssociateVpcArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+        /// The status of the VPC associated with the DHCP option set.
         /// </summary>
         [Input("associateStatus")]
         public Input<string>? AssociateStatus { get; set; }
@@ -21,8 +21,8 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         /// <summary>
         /// The ID of the VPC network that is associated with the DHCP options set.
         /// </summary>
-        [Input("vpcId")]
-        public Input<string>? VpcId { get; set; }
+        [Input("vpcId", required: true)]
+        public Input<string> VpcId { get; set; } = null!;
 
         public DhcpOptionsSetAssociateVpcArgs()
         {

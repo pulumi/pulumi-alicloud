@@ -28,18 +28,14 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     public static final EciScalingConfigurationState Empty = new EciScalingConfigurationState();
 
     /**
-     * Information about the Container Registry Enterprise Edition instance. The details see
-     * Block `acr_registry_info`.See Block acr_registry_info below for
-     * details.
+     * Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
      * 
      */
     @Import(name="acrRegistryInfos")
     private @Nullable Output<List<EciScalingConfigurationAcrRegistryInfoArgs>> acrRegistryInfos;
 
     /**
-     * @return Information about the Container Registry Enterprise Edition instance. The details see
-     * Block `acr_registry_info`.See Block acr_registry_info below for
-     * details.
+     * @return Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationAcrRegistryInfoArgs>>> acrRegistryInfos() {
@@ -94,14 +90,14 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * The list of containers.See Block container below for details.
+     * The list of containers. See `containers` below for details.
      * 
      */
     @Import(name="containers")
     private @Nullable Output<List<EciScalingConfigurationContainerArgs>> containers;
 
     /**
-     * @return The list of containers.See Block container below for details.
+     * @return The list of containers. See `containers` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationContainerArgs>>> containers() {
@@ -218,14 +214,14 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * HostAliases.See Block host_alias below for details.
+     * HostAliases. See `host_aliases` below.
      * 
      */
     @Import(name="hostAliases")
     private @Nullable Output<List<EciScalingConfigurationHostAliasArgs>> hostAliases;
 
     /**
-     * @return HostAliases.See Block host_alias below for details.
+     * @return HostAliases. See `host_aliases` below.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationHostAliasArgs>>> hostAliases() {
@@ -248,8 +244,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * The image registry credential. The details see
-     * Block `image_registry_credential`.See Block image_registry_credential below for
+     * The image registry credential.   See `image_registry_credentials` below for
      * details.
      * 
      */
@@ -257,8 +252,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     private @Nullable Output<List<EciScalingConfigurationImageRegistryCredentialArgs>> imageRegistryCredentials;
 
     /**
-     * @return The image registry credential. The details see
-     * Block `image_registry_credential`.See Block image_registry_credential below for
+     * @return The image registry credential.   See `image_registry_credentials` below for
      * details.
      * 
      */
@@ -282,16 +276,14 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * The list of initContainers.See Block init_container below for
-     * details.
+     * The list of initContainers. See `init_containers` below for details.
      * 
      */
     @Import(name="initContainers")
     private @Nullable Output<List<EciScalingConfigurationInitContainerArgs>> initContainers;
 
     /**
-     * @return The list of initContainers.See Block init_container below for
-     * details.
+     * @return The list of initContainers. See `init_containers` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationInitContainerArgs>>> initContainers() {
@@ -467,14 +459,14 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * The list of volumes.See Block volume below for details.
+     * The list of volumes. See `volumes` below for details.
      * 
      */
     @Import(name="volumes")
     private @Nullable Output<List<EciScalingConfigurationVolumeArgs>> volumes;
 
     /**
-     * @return The list of volumes.See Block volume below for details.
+     * @return The list of volumes. See `volumes` below for details.
      * 
      */
     public Optional<Output<List<EciScalingConfigurationVolumeArgs>>> volumes() {
@@ -533,9 +525,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. The details see
-         * Block `acr_registry_info`.See Block acr_registry_info below for
-         * details.
+         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
          * 
          * @return builder
          * 
@@ -546,9 +536,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. The details see
-         * Block `acr_registry_info`.See Block acr_registry_info below for
-         * details.
+         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
          * 
          * @return builder
          * 
@@ -558,9 +546,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. The details see
-         * Block `acr_registry_info`.See Block acr_registry_info below for
-         * details.
+         * @param acrRegistryInfos Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
          * 
          * @return builder
          * 
@@ -635,7 +621,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param containers The list of containers.See Block container below for details.
+         * @param containers The list of containers. See `containers` below for details.
          * 
          * @return builder
          * 
@@ -646,7 +632,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param containers The list of containers.See Block container below for details.
+         * @param containers The list of containers. See `containers` below for details.
          * 
          * @return builder
          * 
@@ -656,7 +642,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param containers The list of containers.See Block container below for details.
+         * @param containers The list of containers. See `containers` below for details.
          * 
          * @return builder
          * 
@@ -817,7 +803,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param hostAliases HostAliases.See Block host_alias below for details.
+         * @param hostAliases HostAliases. See `host_aliases` below.
          * 
          * @return builder
          * 
@@ -828,7 +814,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param hostAliases HostAliases.See Block host_alias below for details.
+         * @param hostAliases HostAliases. See `host_aliases` below.
          * 
          * @return builder
          * 
@@ -838,7 +824,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param hostAliases HostAliases.See Block host_alias below for details.
+         * @param hostAliases HostAliases. See `host_aliases` below.
          * 
          * @return builder
          * 
@@ -869,8 +855,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential. The details see
-         * Block `image_registry_credential`.See Block image_registry_credential below for
+         * @param imageRegistryCredentials The image registry credential.   See `image_registry_credentials` below for
          * details.
          * 
          * @return builder
@@ -882,8 +867,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential. The details see
-         * Block `image_registry_credential`.See Block image_registry_credential below for
+         * @param imageRegistryCredentials The image registry credential.   See `image_registry_credentials` below for
          * details.
          * 
          * @return builder
@@ -894,8 +878,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param imageRegistryCredentials The image registry credential. The details see
-         * Block `image_registry_credential`.See Block image_registry_credential below for
+         * @param imageRegistryCredentials The image registry credential.   See `image_registry_credentials` below for
          * details.
          * 
          * @return builder
@@ -927,8 +910,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param initContainers The list of initContainers.See Block init_container below for
-         * details.
+         * @param initContainers The list of initContainers. See `init_containers` below for details.
          * 
          * @return builder
          * 
@@ -939,8 +921,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param initContainers The list of initContainers.See Block init_container below for
-         * details.
+         * @param initContainers The list of initContainers. See `init_containers` below for details.
          * 
          * @return builder
          * 
@@ -950,8 +931,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param initContainers The list of initContainers.See Block init_container below for
-         * details.
+         * @param initContainers The list of initContainers. See `init_containers` below for details.
          * 
          * @return builder
          * 
@@ -1189,7 +1169,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param volumes The list of volumes.See Block volume below for details.
+         * @param volumes The list of volumes. See `volumes` below for details.
          * 
          * @return builder
          * 
@@ -1200,7 +1180,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param volumes The list of volumes.See Block volume below for details.
+         * @param volumes The list of volumes. See `volumes` below for details.
          * 
          * @return builder
          * 
@@ -1210,7 +1190,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param volumes The list of volumes.See Block volume below for details.
+         * @param volumes The list of volumes. See `volumes` below for details.
          * 
          * @return builder
          * 

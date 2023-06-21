@@ -14,14 +14,14 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     public static final InstanceParameterArgs Empty = new InstanceParameterArgs();
 
     /**
-     * The name of DB instance. It a string of 2 to 256 characters.
+     * The name of the parameter.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of DB instance. It a string of 2 to 256 characters.
+     * @return The name of the parameter.
      * 
      */
     public Output<String> name() {
@@ -69,7 +69,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of DB instance. It a string of 2 to 256 characters.
+         * @param name The name of the parameter.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of DB instance. It a string of 2 to 256 characters.
+         * @param name The name of the parameter.
          * 
          * @return builder
          * 

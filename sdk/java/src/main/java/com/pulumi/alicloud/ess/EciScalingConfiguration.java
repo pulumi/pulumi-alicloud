@@ -29,7 +29,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ESS eci scaling configuration resource.
  * 
- * &gt; **NOTE:** Resource `alicloud.ess.AlbServerGroupAttachment` is available in 1.164.0+.
+ * For information about ess eci scaling configuration, see [CreateEciScalingConfiguration](https://www.alibabacloud.com/help/en/auto-scaling/latest/create-eci-scaling-configuration).
+ * 
+ * &gt; **NOTE:** Available since v1.164.0.
  * 
  * ## Example Usage
  * 
@@ -40,6 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -65,15 +69,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;essscalingconfiguration&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(data.alicloud_zones().default().zones()[0].id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
  *             .build());
  * 
@@ -122,18 +132,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ess/eciScalingConfiguration:EciScalingConfiguration")
 public class EciScalingConfiguration extends com.pulumi.resources.CustomResource {
     /**
-     * Information about the Container Registry Enterprise Edition instance. The details see
-     * Block `acr_registry_info`.See Block acr_registry_info below for
-     * details.
+     * Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
      * 
      */
     @Export(name="acrRegistryInfos", type=List.class, parameters={EciScalingConfigurationAcrRegistryInfo.class})
     private Output</* @Nullable */ List<EciScalingConfigurationAcrRegistryInfo>> acrRegistryInfos;
 
     /**
-     * @return Information about the Container Registry Enterprise Edition instance. The details see
-     * Block `acr_registry_info`.See Block acr_registry_info below for
-     * details.
+     * @return Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
      * 
      */
     public Output<Optional<List<EciScalingConfigurationAcrRegistryInfo>>> acrRegistryInfos() {
@@ -184,14 +190,14 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.containerGroupName);
     }
     /**
-     * The list of containers.See Block container below for details.
+     * The list of containers. See `containers` below for details.
      * 
      */
     @Export(name="containers", type=List.class, parameters={EciScalingConfigurationContainer.class})
     private Output</* @Nullable */ List<EciScalingConfigurationContainer>> containers;
 
     /**
-     * @return The list of containers.See Block container below for details.
+     * @return The list of containers. See `containers` below for details.
      * 
      */
     public Output<Optional<List<EciScalingConfigurationContainer>>> containers() {
@@ -300,14 +306,14 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.forceDelete);
     }
     /**
-     * HostAliases.See Block host_alias below for details.
+     * HostAliases. See `host_aliases` below.
      * 
      */
     @Export(name="hostAliases", type=List.class, parameters={EciScalingConfigurationHostAlias.class})
     private Output</* @Nullable */ List<EciScalingConfigurationHostAlias>> hostAliases;
 
     /**
-     * @return HostAliases.See Block host_alias below for details.
+     * @return HostAliases. See `host_aliases` below.
      * 
      */
     public Output<Optional<List<EciScalingConfigurationHostAlias>>> hostAliases() {
@@ -328,8 +334,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.hostName);
     }
     /**
-     * The image registry credential. The details see
-     * Block `image_registry_credential`.See Block image_registry_credential below for
+     * The image registry credential.   See `image_registry_credentials` below for
      * details.
      * 
      */
@@ -337,8 +342,7 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
     private Output</* @Nullable */ List<EciScalingConfigurationImageRegistryCredential>> imageRegistryCredentials;
 
     /**
-     * @return The image registry credential. The details see
-     * Block `image_registry_credential`.See Block image_registry_credential below for
+     * @return The image registry credential.   See `image_registry_credentials` below for
      * details.
      * 
      */
@@ -360,16 +364,14 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.ingressBandwidth);
     }
     /**
-     * The list of initContainers.See Block init_container below for
-     * details.
+     * The list of initContainers. See `init_containers` below for details.
      * 
      */
     @Export(name="initContainers", type=List.class, parameters={EciScalingConfigurationInitContainer.class})
     private Output</* @Nullable */ List<EciScalingConfigurationInitContainer>> initContainers;
 
     /**
-     * @return The list of initContainers.See Block init_container below for
-     * details.
+     * @return The list of initContainers. See `init_containers` below for details.
      * 
      */
     public Output<Optional<List<EciScalingConfigurationInitContainer>>> initContainers() {
@@ -534,14 +536,14 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.tags);
     }
     /**
-     * The list of volumes.See Block volume below for details.
+     * The list of volumes. See `volumes` below for details.
      * 
      */
     @Export(name="volumes", type=List.class, parameters={EciScalingConfigurationVolume.class})
     private Output</* @Nullable */ List<EciScalingConfigurationVolume>> volumes;
 
     /**
-     * @return The list of volumes.See Block volume below for details.
+     * @return The list of volumes. See `volumes` below for details.
      * 
      */
     public Output<Optional<List<EciScalingConfigurationVolume>>> volumes() {

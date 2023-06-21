@@ -19,86 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a AnalyticDB for MySQL (ADB) DBCluster resource.
- * 
- * For information about AnalyticDB for MySQL (ADB) DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/doc-detail/190519.htm).
- * 
- * &gt; **NOTE:** Available in v1.121.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.adb.DBCluster;
- * import com.pulumi.alicloud.adb.DBClusterArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;adbClusterconfig&#34;);
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;ADB&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
- *             .build());
- * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
- *             .build());
- * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(name)
- *             .build());
- * 
- *         var this_ = new DBCluster(&#34;this&#34;, DBClusterArgs.builder()        
- *             .dbClusterCategory(&#34;Cluster&#34;)
- *             .dbNodeClass(&#34;C8&#34;)
- *             .dbNodeCount(&#34;4&#34;)
- *             .dbNodeStorage(&#34;400&#34;)
- *             .mode(&#34;reserver&#34;)
- *             .dbClusterVersion(&#34;3.0&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .vswitchId(defaultSwitch.id())
- *             .description(&#34;Test new adb again.&#34;)
- *             .maintainTime(&#34;23:00Z-00:00Z&#34;)
- *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF-update&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;acceptance-test-update&#34;)
- *             ))
- *             .resourceGroupId(&#34;rg-aek2s7ylxx6****&#34;)
- *             .securityIps(            
- *                 &#34;10.168.1.12&#34;,
- *                 &#34;10.168.1.11&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
@@ -111,14 +31,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:adb/dBCluster:DBCluster")
 public class DBCluster extends com.pulumi.resources.CustomResource {
     /**
-     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      * 
      */
     @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
     private Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      * 
      */
     public Output<Integer> autoRenewPeriod() {
@@ -185,14 +105,14 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dbClusterClass);
     }
     /**
-     * The db cluster version. Value options: `3.0`, Default to `3.0`.
+     * The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      * 
      */
     @Export(name="dbClusterVersion", type=String.class, parameters={})
     private Output</* @Nullable */ String> dbClusterVersion;
 
     /**
-     * @return The db cluster version. Value options: `3.0`, Default to `3.0`.
+     * @return The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      * 
      */
     public Output<Optional<String>> dbClusterVersion() {
@@ -255,6 +175,20 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
+     * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+     * 
+     */
+    @Export(name="diskPerformanceLevel", type=String.class, parameters={})
+    private Output<String> diskPerformanceLevel;
+
+    /**
+     * @return The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+     * 
+     */
+    public Output<String> diskPerformanceLevel() {
+        return this.diskPerformanceLevel;
+    }
+    /**
      * The elastic io resource.
      * 
      */
@@ -267,6 +201,20 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> elasticIoResource() {
         return this.elasticIoResource;
+    }
+    /**
+     * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+     * 
+     */
+    @Export(name="elasticIoResourceSize", type=String.class, parameters={})
+    private Output<String> elasticIoResourceSize;
+
+    /**
+     * @return The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+     * 
+     */
+    public Output<String> elasticIoResourceSize() {
+        return this.elasticIoResourceSize;
     }
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
@@ -329,14 +277,14 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
         return this.payType;
     }
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+     * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
      * 
      */
     @Export(name="paymentType", type=String.class, parameters={})
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
      * 
      */
     public Output<String> paymentType() {
@@ -359,14 +307,14 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * (Available in 1.196.0+) The connection port of the ADB cluster.
+     * (Available since v1.196.0) The connection port of the ADB cluster.
      * 
      */
     @Export(name="port", type=String.class, parameters={})
     private Output<String> port;
 
     /**
-     * @return (Available in 1.196.0+) The connection port of the ADB cluster.
+     * @return (Available since v1.196.0) The connection port of the ADB cluster.
      * 
      */
     public Output<String> port() {

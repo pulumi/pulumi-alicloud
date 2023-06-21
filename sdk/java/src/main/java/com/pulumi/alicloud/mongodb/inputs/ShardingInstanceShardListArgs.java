@@ -32,14 +32,14 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The ID of the Config Server node.
+     * The ID of the shard-node.
      * 
      */
     @Import(name="nodeId")
     private @Nullable Output<String> nodeId;
 
     /**
-     * @return The ID of the Config Server node.
+     * @return The ID of the shard-node.
      * 
      */
     public Optional<Output<String>> nodeId() {
@@ -127,7 +127,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeId The ID of the Config Server node.
+         * @param nodeId The ID of the shard-node.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeId The ID of the Config Server node.
+         * @param nodeId The ID of the shard-node.
          * 
          * @return builder
          * 

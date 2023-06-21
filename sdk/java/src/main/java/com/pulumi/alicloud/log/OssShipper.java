@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -52,15 +54,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;created by terraform&#34;)
- *             .tags(Map.of(&#34;test&#34;, &#34;test&#34;))
+ *             .description(&#34;terraform-example&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
  *             .project(exampleProject.name())
  *             .retentionPeriod(3650)
- *             .shardCount(3)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
  *             .appendMeta(true)
@@ -69,8 +78,8 @@ import javax.annotation.Nullable;
  *         var exampleOssShipper = new OssShipper(&#34;exampleOssShipper&#34;, OssShipperArgs.builder()        
  *             .projectName(exampleProject.name())
  *             .logstoreName(exampleStore.name())
- *             .shipperName(&#34;oss_shipper_name&#34;)
- *             .ossBucket(&#34;test_bucket&#34;)
+ *             .shipperName(&#34;terraform-example&#34;)
+ *             .ossBucket(&#34;example_bucket&#34;)
  *             .ossPrefix(&#34;root&#34;)
  *             .bufferInterval(300)
  *             .bufferSize(250)

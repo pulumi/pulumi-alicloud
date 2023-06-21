@@ -17,6 +17,10 @@ public final class ServiceVpcConfig {
      * 
      */
     private String securityGroupId;
+    /**
+     * @return A vpc ID associated with the Function Compute Service.
+     * 
+     */
     private @Nullable String vpcId;
     /**
      * @return A list of vswitch IDs associated with the Function Compute Service.
@@ -32,6 +36,10 @@ public final class ServiceVpcConfig {
     public String securityGroupId() {
         return this.securityGroupId;
     }
+    /**
+     * @return A vpc ID associated with the Function Compute Service.
+     * 
+     */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }

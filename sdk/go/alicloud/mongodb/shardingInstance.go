@@ -15,7 +15,7 @@ import (
 // It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
 // You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 //
-// > **NOTE:**  Available in 1.40.0+
+// > **NOTE:** Available since v1.40.0.
 //
 // > **NOTE:**  The following regions don't support create Classic network MongoDB sharding instance.
 // [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -23,6 +23,81 @@ import (
 // > **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation
 //
 // ## Example Usage
+// ### Create a Mongodb Sharding instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mongodb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultZones, err := mongodb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			index := len(defaultZones.Zones) - 1
+//			zoneId := defaultZones.Zones[index].Id
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(zoneId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mongodb.NewShardingInstance(ctx, "defaultShardingInstance", &mongodb.ShardingInstanceArgs{
+//				ZoneId:        *pulumi.String(zoneId),
+//				VswitchId:     defaultSwitch.ID(),
+//				EngineVersion: pulumi.String("4.2"),
+//				ShardLists: mongodb.ShardingInstanceShardListArray{
+//					&mongodb.ShardingInstanceShardListArgs{
+//						NodeClass:   pulumi.String("dds.shard.mid"),
+//						NodeStorage: pulumi.Int(10),
+//					},
+//					&mongodb.ShardingInstanceShardListArgs{
+//						NodeClass:        pulumi.String("dds.shard.standard"),
+//						NodeStorage:      pulumi.Int(20),
+//						ReadonlyReplicas: pulumi.Int(1),
+//					},
+//				},
+//				MongoLists: mongodb.ShardingInstanceMongoListArray{
+//					&mongodb.ShardingInstanceMongoListArgs{
+//						NodeClass: pulumi.String("dds.mongos.mid"),
+//					},
+//					&mongodb.ShardingInstanceMongoListArgs{
+//						NodeClass: pulumi.String("dds.mongos.mid"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Module Support
 //
 // You can use to the existing mongodb-sharding module
@@ -48,7 +123,7 @@ type ShardingInstance struct {
 	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
-	// The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+	// The node information list of config server. See `configServerList` below.
 	ConfigServerLists ShardingInstanceConfigServerListArrayOutput `pulumi:"configServerLists"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
@@ -58,7 +133,7 @@ type ShardingInstance struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapOutput `pulumi:"kmsEncryptionContext"`
-	// The mongo-node count can be purchased is in range of [2, 32].
+	// The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists ShardingInstanceMongoListArrayOutput `pulumi:"mongoLists"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -81,7 +156,7 @@ type ShardingInstance struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayOutput `pulumi:"securityIpLists"`
-	// the shard-node count can be purchased is in range of [2, 32].
+	// the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
 	ShardLists ShardingInstanceShardListArrayOutput `pulumi:"shardLists"`
 	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine pulumi.StringOutput `pulumi:"storageEngine"`
@@ -151,7 +226,7 @@ type shardingInstanceState struct {
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
-	// The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+	// The node information list of config server. See `configServerList` below.
 	ConfigServerLists []ShardingInstanceConfigServerList `pulumi:"configServerLists"`
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion *string `pulumi:"engineVersion"`
@@ -161,7 +236,7 @@ type shardingInstanceState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
-	// The mongo-node count can be purchased is in range of [2, 32].
+	// The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists []ShardingInstanceMongoList `pulumi:"mongoLists"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name *string `pulumi:"name"`
@@ -184,7 +259,7 @@ type shardingInstanceState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
-	// the shard-node count can be purchased is in range of [2, 32].
+	// the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
 	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
 	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine *string `pulumi:"storageEngine"`
@@ -210,7 +285,7 @@ type ShardingInstanceState struct {
 	BackupPeriods pulumi.StringArrayInput
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
-	// The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+	// The node information list of config server. See `configServerList` below.
 	ConfigServerLists ShardingInstanceConfigServerListArrayInput
 	// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
 	EngineVersion pulumi.StringPtrInput
@@ -220,7 +295,7 @@ type ShardingInstanceState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
-	// The mongo-node count can be purchased is in range of [2, 32].
+	// The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists ShardingInstanceMongoListArrayInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringPtrInput
@@ -243,7 +318,7 @@ type ShardingInstanceState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayInput
-	// the shard-node count can be purchased is in range of [2, 32].
+	// the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
 	ShardLists ShardingInstanceShardListArrayInput
 	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine pulumi.StringPtrInput
@@ -281,7 +356,7 @@ type shardingInstanceArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]interface{} `pulumi:"kmsEncryptionContext"`
-	// The mongo-node count can be purchased is in range of [2, 32].
+	// The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists []ShardingInstanceMongoList `pulumi:"mongoLists"`
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name *string `pulumi:"name"`
@@ -302,7 +377,7 @@ type shardingInstanceArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
-	// the shard-node count can be purchased is in range of [2, 32].
+	// the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
 	ShardLists []ShardingInstanceShardList `pulumi:"shardLists"`
 	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine *string `pulumi:"storageEngine"`
@@ -337,7 +412,7 @@ type ShardingInstanceArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.MapInput
-	// The mongo-node count can be purchased is in range of [2, 32].
+	// The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 	MongoLists ShardingInstanceMongoListArrayInput
 	// The name of DB instance. It a string of 2 to 256 characters.
 	Name pulumi.StringPtrInput
@@ -358,7 +433,7 @@ type ShardingInstanceArgs struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
 	SecurityIpLists pulumi.StringArrayInput
-	// the shard-node count can be purchased is in range of [2, 32].
+	// the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
 	ShardLists ShardingInstanceShardListArrayInput
 	// Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
 	StorageEngine pulumi.StringPtrInput
@@ -482,7 +557,7 @@ func (o ShardingInstanceOutput) BackupTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringOutput { return v.BackupTime }).(pulumi.StringOutput)
 }
 
-// The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+// The node information list of config server. See `configServerList` below.
 func (o ShardingInstanceOutput) ConfigServerLists() ShardingInstanceConfigServerListArrayOutput {
 	return o.ApplyT(func(v *ShardingInstance) ShardingInstanceConfigServerListArrayOutput { return v.ConfigServerLists }).(ShardingInstanceConfigServerListArrayOutput)
 }
@@ -507,7 +582,7 @@ func (o ShardingInstanceOutput) KmsEncryptionContext() pulumi.MapOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.MapOutput { return v.KmsEncryptionContext }).(pulumi.MapOutput)
 }
 
-// The mongo-node count can be purchased is in range of [2, 32].
+// The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
 func (o ShardingInstanceOutput) MongoLists() ShardingInstanceMongoListArrayOutput {
 	return o.ApplyT(func(v *ShardingInstance) ShardingInstanceMongoListArrayOutput { return v.MongoLists }).(ShardingInstanceMongoListArrayOutput)
 }
@@ -560,7 +635,7 @@ func (o ShardingInstanceOutput) SecurityIpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringArrayOutput { return v.SecurityIpLists }).(pulumi.StringArrayOutput)
 }
 
-// the shard-node count can be purchased is in range of [2, 32].
+// the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
 func (o ShardingInstanceOutput) ShardLists() ShardingInstanceShardListArrayOutput {
 	return o.ApplyT(func(v *ShardingInstance) ShardingInstanceShardListArrayOutput { return v.ShardLists }).(ShardingInstanceShardListArrayOutput)
 }

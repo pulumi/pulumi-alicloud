@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
     public sealed class InstanceParameter
     {
         /// <summary>
-        /// The name of DB instance. It a string of 2 to 256 characters.
+        /// The name of the parameter.
         /// </summary>
         public readonly string Name;
         /// <summary>

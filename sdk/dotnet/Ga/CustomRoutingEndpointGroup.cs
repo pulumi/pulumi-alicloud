@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Global Accelerator (GA) Custom Routing Endpoint Group and how to use it, see [What is Custom Routing Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointgroups).
     /// 
-    /// &gt; **NOTE:** Available in v1.197.0+.
+    /// &gt; **NOTE:** Available since v1.197.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,9 +28,13 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccelerators = AliCloud.Ga.GetAccelerators.Invoke(new()
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
     ///     {
-    ///         Status = "active",
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "1",
     ///     });
     /// 
     ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
@@ -45,7 +49,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
     ///     {
-    ///         AcceleratorId = defaultAccelerators.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators[0]?.Id),
+    ///         AcceleratorId = defaultAccelerator.Id,
     ///         BandwidthPackageId = defaultBandwidthPackage.Id,
     ///     });
     /// 
@@ -67,9 +71,9 @@ namespace Pulumi.AliCloud.Ga
     ///     {
     ///         AcceleratorId = defaultListener.AcceleratorId,
     ///         ListenerId = defaultListener.Id,
-    ///         EndpointGroupRegion = "cn-hangzhou",
-    ///         CustomRoutingEndpointGroupName = "example_value",
-    ///         Description = "example_value",
+    ///         EndpointGroupRegion = region,
+    ///         CustomRoutingEndpointGroupName = "terraform-example",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     /// });

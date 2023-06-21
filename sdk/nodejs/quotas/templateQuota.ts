@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Quotas Template Quota resource.
  *
- * For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://help.aliyun.com/document_detail/450615.html).
+ * For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createtemplatequotaitem).
  *
- * > **NOTE:** Available in v1.206.0+.
+ * > **NOTE:** Available since v1.206.0.
  *
  * ## Example Usage
  *
@@ -78,7 +78,7 @@ export class TemplateQuota extends pulumi.CustomResource {
      */
     public readonly desireValue!: pulumi.Output<number>;
     /**
-     * The Quota Dimensions. See the following `Block Dimensions`.
+     * The Quota Dimensions. See `dimensions` below.
      */
     public readonly dimensions!: pulumi.Output<outputs.quotas.TemplateQuotaDimension[] | undefined>;
     /**
@@ -174,7 +174,7 @@ export interface TemplateQuotaState {
      */
     desireValue?: pulumi.Input<number>;
     /**
-     * The Quota Dimensions. See the following `Block Dimensions`.
+     * The Quota Dimensions. See `dimensions` below.
      */
     dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateQuotaDimension>[]>;
     /**
@@ -223,7 +223,7 @@ export interface TemplateQuotaArgs {
      */
     desireValue: pulumi.Input<number>;
     /**
-     * The Quota Dimensions. See the following `Block Dimensions`.
+     * The Quota Dimensions. See `dimensions` below.
      */
     dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateQuotaDimension>[]>;
     /**

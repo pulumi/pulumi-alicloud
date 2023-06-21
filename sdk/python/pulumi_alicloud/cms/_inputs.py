@@ -1647,12 +1647,19 @@ class SiteMonitorIspCityArgs:
     def __init__(__self__, *,
                  city: pulumi.Input[str],
                  isp: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] city: The ID of the city.
+        :param pulumi.Input[str] isp: The ID of the carrier.
+        """
         pulumi.set(__self__, "city", city)
         pulumi.set(__self__, "isp", isp)
 
     @property
     @pulumi.getter
     def city(self) -> pulumi.Input[str]:
+        """
+        The ID of the city.
+        """
         return pulumi.get(self, "city")
 
     @city.setter
@@ -1662,6 +1669,9 @@ class SiteMonitorIspCityArgs:
     @property
     @pulumi.getter
     def isp(self) -> pulumi.Input[str]:
+        """
+        The ID of the carrier.
+        """
         return pulumi.get(self, "isp")
 
     @isp.setter

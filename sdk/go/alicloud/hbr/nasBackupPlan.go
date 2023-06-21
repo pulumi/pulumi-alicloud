@@ -29,19 +29,13 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-testAccHBRNas"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
 //			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
-//				VaultName: pulumi.String(name),
+//				VaultName: pulumi.String("terraform-example2"),
 //			})
 //			if err != nil {
 //				return err
@@ -49,34 +43,23 @@ import (
 //			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
 //				ProtocolType: pulumi.String("NFS"),
 //				StorageType:  pulumi.String("Performance"),
-//				Description:  pulumi.String(name),
+//				Description:  pulumi.String("terraform-example"),
 //				EncryptType:  pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultFileSystems := defaultFileSystem.Description.ApplyT(func(description *string) (nas.GetFileSystemsResult, error) {
-//				return nas.GetFileSystemsOutput(ctx, nas.GetFileSystemsOutputArgs{
-//					ProtocolType:     "NFS",
-//					DescriptionRegex: description,
-//				}, nil), nil
-//			}).(nas.GetFileSystemsResultOutput)
 //			_, err = hbr.NewNasBackupPlan(ctx, "defaultNasBackupPlan", &hbr.NasBackupPlanArgs{
-//				NasBackupPlanName: pulumi.String(name),
+//				NasBackupPlanName: pulumi.String("terraform-example"),
 //				FileSystemId:      defaultFileSystem.ID(),
 //				Schedule:          pulumi.String("I|1602673264|PT2H"),
 //				BackupType:        pulumi.String("COMPLETE"),
 //				VaultId:           defaultVault.ID(),
-//				CreateTime: defaultFileSystems.ApplyT(func(defaultFileSystems nas.GetFileSystemsResult) (*string, error) {
-//					return &defaultFileSystems.Systems[0].CreateTime, nil
-//				}).(pulumi.StringPtrOutput),
-//				Retention: pulumi.String("2"),
+//				Retention:         pulumi.String("2"),
 //				Paths: pulumi.StringArray{
 //					pulumi.String("/"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				pulumi.Resource("alicloud_nas_file_system.default"),
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

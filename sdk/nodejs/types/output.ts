@@ -939,6 +939,9 @@ export namespace adb {
          * The lock mode of the cluster.
          */
         mode: string;
+        /**
+         * The db cluster network type.
+         */
         networkType: string;
         /**
          * The payment type of the resource.
@@ -952,6 +955,9 @@ export namespace adb {
          * The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
          */
         rdsInstanceId: string;
+        /**
+         * The region ID  of the resource.
+         */
         regionId: string;
         /**
          * The status of renewal.
@@ -974,7 +980,7 @@ export namespace adb {
          */
         storageResource: string;
         /**
-         * The tag of the resource.
+         * A map of tags assigned to the cluster.
          */
         tags: {[key: string]: any};
         /**
@@ -1987,13 +1993,16 @@ export namespace alb {
          */
         servers: outputs.alb.GetServerGroupsGroupServer[];
         /**
-         * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+         * The status of the resource.
          */
         status: string;
         /**
          * The configuration of the sticky session.
          */
         stickySessionConfigs: outputs.alb.GetServerGroupsGroupStickySessionConfig[];
+        /**
+         * A map of tags assigned to the group.
+         */
         tags: {[key: string]: any};
         /**
          * The ID of the VPC that you want to access.
@@ -2074,7 +2083,7 @@ export namespace alb {
          */
         serverType: string;
         /**
-         * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+         * The status of the resource.
          */
         status: string;
         /**
@@ -10649,7 +10658,13 @@ export namespace cms {
     }
 
     export interface SiteMonitorIspCity {
+        /**
+         * The ID of the city.
+         */
         city: string;
+        /**
+         * The ID of the carrier.
+         */
         isp: string;
     }
 
@@ -21876,11 +21891,11 @@ export namespace eds {
 
     export interface EcdPolicyGroupAuthorizeAccessPolicyRule {
         /**
-         * The cidrip of security rules.
+         * The cidrip of authorize access rule.
          */
         cidrIp?: string;
         /**
-         * The description of security rules.
+         * The description of authorize access rule.
          */
         description?: string;
     }
@@ -24654,13 +24669,12 @@ export namespace ess {
          */
         commands?: string[];
         /**
-         * The amount of CPU resources allocated to the container group.
+         * The amount of CPU resources allocated to the container.
          */
         cpu?: number;
         /**
          * The structure of environmentVars.
-         * See Block_environment_var_in_init_container below for details.
-         * See Block_environment_var_in_container below for details.
+         * See `environmentVars` below for details.
          */
         environmentVars?: outputs.ess.EciScalingConfigurationContainerEnvironmentVar[];
         /**
@@ -24716,16 +24730,15 @@ export namespace ess {
          */
         livenessProbeTimeoutSeconds?: number;
         /**
-         * The amount of memory resources allocated to the container group.
+         * The amount of memory resources allocated to the container.
          */
         memory?: number;
         /**
-         * The name of the volume.
+         * The name of the mounted volume.
          */
         name?: string;
         /**
-         * The structure of port. See Block_port_in_init_container below
-         * for details.
+         * The structure of port. See `ports` below for details.
          */
         ports?: outputs.ess.EciScalingConfigurationContainerPort[];
         /**
@@ -24769,9 +24782,8 @@ export namespace ess {
          */
         readinessProbeTimeoutSeconds?: number;
         /**
-         * The structure of volumeMounts.
-         * See Block_volume_mount_in_init_container below for details.
-         * See Block_volume_mount_in_container below for details.
+         * The structure of volumeMounts. 
+         * See `volumeMounts` below for details.
          */
         volumeMounts?: outputs.ess.EciScalingConfigurationContainerVolumeMount[];
         /**
@@ -24843,6 +24855,10 @@ export namespace ess {
          * configured.
          */
         server?: string;
+        /**
+         * The username used to log on to the image repository. It is required
+         * when `imageRegistryCredential` is configured.
+         */
         username?: string;
     }
 
@@ -24856,13 +24872,12 @@ export namespace ess {
          */
         commands?: string[];
         /**
-         * The amount of CPU resources allocated to the container group.
+         * The amount of CPU resources allocated to the container.
          */
         cpu?: number;
         /**
-         * The structure of environmentVars.
-         * See Block_environment_var_in_init_container below for details.
-         * See Block_environment_var_in_container below for details.
+         * The structure of environmentVars. 
+         * See `environmentVars` below for details.
          */
         environmentVars?: outputs.ess.EciScalingConfigurationInitContainerEnvironmentVar[];
         /**
@@ -24878,22 +24893,19 @@ export namespace ess {
          */
         imagePullPolicy?: string;
         /**
-         * The amount of memory resources allocated to the container group.
+         * The amount of memory resources allocated to the container.
          */
         memory?: number;
         /**
-         * The name of the volume.
+         * The name of the mounted volume.
          */
         name?: string;
         /**
-         * The structure of port. See Block_port_in_init_container below
-         * for details.
+         * The structure of port. See `ports` below for details.
          */
         ports?: outputs.ess.EciScalingConfigurationInitContainerPort[];
         /**
-         * The structure of volumeMounts.
-         * See Block_volume_mount_in_init_container below for details.
-         * See Block_volume_mount_in_container below for details.
+         * The structure of volumeMounts. See `volumeMounts` below for details.
          */
         volumeMounts?: outputs.ess.EciScalingConfigurationInitContainerVolumeMount[];
         /**
@@ -24946,13 +24958,16 @@ export namespace ess {
     export interface EciScalingConfigurationVolume {
         /**
          * ConfigFileVolumeConfigFileToPaths.
-         * See Block_config_file_volume_config_file_to_path below for details.
+         * See `configFileVolumeConfigFileToPaths` below for details.
          */
         configFileVolumeConfigFileToPaths?: outputs.ess.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath[];
         /**
          * The ID of DiskVolume.
          */
         diskVolumeDiskId?: string;
+        /**
+         * The disk size of DiskVolume.
+         */
         diskVolumeDiskSize?: number;
         /**
          * The system type of DiskVolume.
@@ -25442,26 +25457,70 @@ export namespace ess {
     }
 
     export interface ScalingConfigurationDataDisk {
+        /**
+         * The id of auto snapshot policy for data disk.
+         */
         autoSnapshotPolicyId?: string;
+        /**
+         * Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` and `cloud`.
+         */
         category?: string;
+        /**
+         * Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+         */
         deleteWithInstance?: boolean;
+        /**
+         * The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+         */
         description?: string;
         /**
+         * The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+         *
          * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
          */
         device?: string;
+        /**
+         * Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+         */
         encrypted?: boolean;
+        /**
+         * The CMK ID for data disk N. Valid values of N: 1 to 16.
+         */
         kmsKeyId?: string;
+        /**
+         * The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+         */
         name?: string;
+        /**
+         * The performance level of the ESSD used as data disk.
+         */
         performanceLevel?: string;
+        /**
+         * Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloudEssd disk.
+         */
         size?: number;
+        /**
+         * Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
+         */
         snapshotId?: string;
     }
 
     export interface ScalingConfigurationInstancePatternInfo {
+        /**
+         * The number of vCPUs that are specified for an instance type in instancePatternInfo.
+         */
         cores?: number;
+        /**
+         * The instance family level in instancePatternInfo.
+         */
         instanceFamilyLevel?: string;
+        /**
+         * The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+         */
         maxPrice?: number;
+        /**
+         * The memory size that is specified for an instance type in instancePatternInfo.
+         */
         memory?: number;
     }
 
@@ -25470,23 +25529,50 @@ export namespace ess {
          * Resource type of an ECS instance.
          */
         instanceType?: string;
+        /**
+         * Price limit hourly of instance type, 2 decimals is allowed at most.
+         */
         priceLimit?: number;
     }
 
     export interface ScalingGroupVServerGroupsVserverGroup {
+        /**
+         * Loadbalancer server ID of VServer Group.
+         */
         loadbalancerId: string;
+        /**
+         * A list of VServer Group attributes. See `vserverAttributes` below.
+         */
         vserverAttributes: outputs.ess.ScalingGroupVServerGroupsVserverGroupVserverAttribute[];
     }
 
     export interface ScalingGroupVServerGroupsVserverGroupVserverAttribute {
+        /**
+         * The port will be used for VServer Group backend server.
+         */
         port: number;
+        /**
+         * ID of VServer Group.
+         */
         vserverGroupId: string;
+        /**
+         * The weight of an ECS instance attached to the VServer Group.
+         */
         weight: number;
     }
 
     export interface ScalingRuleStepAdjustment {
+        /**
+         * The lower bound of step.
+         */
         metricIntervalLowerBound?: string;
+        /**
+         * The upper bound of step.
+         */
         metricIntervalUpperBound?: string;
+        /**
+         * The adjust value of step.
+         */
         scalingAdjustment?: number;
     }
 
@@ -26338,8 +26424,6 @@ export namespace fc {
         functionName: string;
         /**
          * The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
-         *
-         * **cert_config** includes the following arguments:
          */
         methods?: string[];
         /**
@@ -26350,16 +26434,19 @@ export namespace fc {
          * The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
          */
         qualifier?: string;
+        /**
+         * The name of the Function Compute service that requests are routed to.
+         */
         serviceName: string;
     }
 
     export interface FunctionAsyncInvokeConfigDestinationConfig {
         /**
-         * Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+         * Configuration block with destination configuration for failed asynchronous invocations. See `onFailure` below.
          */
         onFailure?: outputs.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailure;
         /**
-         * Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+         * Configuration block with destination configuration for successful asynchronous invocations. See `onSuccess` below.
          */
         onSuccess?: outputs.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccess;
     }
@@ -26718,7 +26805,7 @@ export namespace fc {
          */
         groupId: number;
         /**
-         * Config the NAS mount points, including following attributes:
+         * Config the NAS mount points.See `mountPoints` below.
          */
         mountPoints: outputs.fc.ServiceNasConfigMountPoint[];
         /**
@@ -26754,6 +26841,9 @@ export namespace fc {
          * A security group ID associated with the Function Compute Service.
          */
         securityGroupId: string;
+        /**
+         * A vpc ID associated with the Function Compute Service.
+         */
         vpcId: string;
         /**
          * A list of vswitch IDs associated with the Function Compute Service.
@@ -26930,44 +27020,49 @@ export namespace ga {
 
     export interface ForwardingRuleRuleAction {
         /**
-         * Forwarding configuration.
+         * Forwarding configuration. See `forwardGroupConfig` below.
+         * > **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
          */
-        forwardGroupConfig: outputs.ga.ForwardingRuleRuleActionForwardGroupConfig;
+        forwardGroupConfig?: outputs.ga.ForwardingRuleRuleActionForwardGroupConfig;
         /**
          * Forwarding priority.
          */
         order: number;
         /**
-         * Forward action type. Default: forwardgroup.
+         * Forward action type.
          */
         ruleActionType: string;
+        /**
+         * The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+         */
+        ruleActionValue?: string;
     }
 
     export interface ForwardingRuleRuleActionForwardGroupConfig {
         /**
-         * Terminal node group configuration.
+         * The information about the endpoint group. See `serverGroupTuples` below.
          */
         serverGroupTuples: outputs.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple[];
     }
 
     export interface ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
         /**
-         * Terminal node group ID.
+         * The ID of the endpoint group.
          */
         endpointGroupId: string;
     }
 
     export interface ForwardingRuleRuleCondition {
         /**
-         * Domain name configuration information.
+         * The configuration of the domain name. See `hostConfig` below.
          */
         hostConfigs?: outputs.ga.ForwardingRuleRuleConditionHostConfig[];
         /**
-         * Path configuration information.
+         * The configuration of the path. See `pathConfig` below.
          */
         pathConfig?: outputs.ga.ForwardingRuleRuleConditionPathConfig;
         /**
-         * Forwarding condition type. Valid value: `Host`, `Path`.
+         * The type of the forwarding conditions. Valid values: `Host`, `Path`.
          */
         ruleConditionType: string;
     }
@@ -27912,6 +28007,29 @@ export namespace ga {
          * The id of the certificate.
          */
         id?: string;
+    }
+
+    export interface ListenerForwardedForConfig {
+        /**
+         * Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
+         */
+        forwardedForGaApEnabled?: boolean;
+        /**
+         * Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
+         */
+        forwardedForGaIdEnabled?: boolean;
+        /**
+         * Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
+         */
+        forwardedForPortEnabled?: boolean;
+        /**
+         * Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
+         */
+        forwardedForProtoEnabled?: boolean;
+        /**
+         * Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
+         */
+        realIpEnabled?: boolean;
     }
 
     export interface ListenerPortRange {
@@ -32244,7 +32362,7 @@ export namespace mongodb {
 
     export interface InstanceParameter {
         /**
-         * The name of DB instance. It a string of 2 to 256 characters.
+         * The name of the parameter.
          */
         name: string;
         /**
@@ -32313,7 +32431,7 @@ export namespace mongodb {
          */
         maxIops: number;
         /**
-         * Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * The node class of the Config Server node.
          */
         nodeClass: string;
         /**
@@ -32325,8 +32443,7 @@ export namespace mongodb {
          */
         nodeId: string;
         /**
-         * - Custom storage space; value range: [10, 1,000]
-         * - 10-GB increments. Unit: GB.
+         * The node storage of the Config Server node.
          */
         nodeStorage: number;
         /**
@@ -32337,7 +32454,7 @@ export namespace mongodb {
 
     export interface ShardingInstanceMongoList {
         /**
-         * The connection address of the Config Server node.
+         * Mongo node connection string.
          */
         connectString: string;
         /**
@@ -32345,11 +32462,11 @@ export namespace mongodb {
          */
         nodeClass: string;
         /**
-         * The ID of the Config Server node.
+         * The ID of the mongo-node.
          */
         nodeId: string;
         /**
-         * The connection port of the Config Server node.
+         * Mongo node port.
          */
         port: number;
     }
@@ -32360,7 +32477,7 @@ export namespace mongodb {
          */
         nodeClass: string;
         /**
-         * The ID of the Config Server node.
+         * The ID of the shard-node.
          */
         nodeId: string;
         /**
@@ -37746,7 +37863,13 @@ export namespace rds {
     }
 
     export interface RdsCloneDbInstanceParameter {
+        /**
+         * The parameters name.
+         */
         name: string;
+        /**
+         * The parameters value.
+         */
         value: string;
     }
 
@@ -37792,25 +37915,34 @@ export namespace rds {
 
     export interface RdsCloneDbInstanceServerlessConfig {
         /**
-         * Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
+         * Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
          * - true: enables the feature.
          * - false: disables the feature. This is the default value.
+         * > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
          */
-        autoPause: boolean;
+        autoPause?: boolean;
         /**
-         * The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `minCapacity` parameter.
+         * The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
+         * - MySQL: 1~8
+         * - SQLServer: 2~8
+         * - PostgreSQL: 1~12
          */
         maxCapacity: number;
         /**
-         * The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `maxCapacity` parameter.
+         * The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
+         * - MySQL: 0.5~8
+         * - SQLServer: 2~8 \(Supports integers only\).
+         * - PostgreSQL: 0.5~12
          */
         minCapacity: number;
         /**
-         * Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
+         * Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
          * - true: enables the feature.
          * - false: disables the feature. This is the default value.
+         * > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+         * > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
          */
-        switchForce: boolean;
+        switchForce?: boolean;
     }
 
     export interface RdsDbProxyReadOnlyInstanceWeight {
@@ -39955,6 +40087,10 @@ export namespace sae {
          */
         appName: string;
         /**
+         * The backend protocol.
+         */
+        backendProtocol?: string;
+        /**
          * Application backend port.
          */
         containerPort: number;
@@ -39966,6 +40102,10 @@ export namespace sae {
          * URL path.
          */
         path: string;
+        /**
+         * The rewrite path.
+         */
+        rewritePath?: string;
     }
 
     export interface LoadBalancerInternetInternet {
@@ -43557,13 +43697,13 @@ export namespace vod {
 export namespace vpc {
     export interface DhcpOptionsSetAssociateVpc {
         /**
-         * The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+         * The status of the VPC associated with the DHCP option set.
          */
         associateStatus: string;
         /**
          * The ID of the VPC network that is associated with the DHCP options set.
          */
-        vpcId?: string;
+        vpcId: string;
     }
 
     export interface GetBgpGroupsGroup {

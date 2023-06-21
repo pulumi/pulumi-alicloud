@@ -17,9 +17,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDBClustersResult {
+    /**
+     * @return A list of Adb Db Clusters. Each element contains the following attributes:
+     * 
+     */
     private List<GetDBClustersCluster> clusters;
+    /**
+     * @return The description of DBCluster.
+     * 
+     */
     private @Nullable String description;
     private @Nullable String descriptionRegex;
+    /**
+     * @return A list of DBCluster descriptions.
+     * 
+     */
     private List<String> descriptions;
     private @Nullable Boolean enableDetails;
     /**
@@ -31,21 +43,45 @@ public final class GetDBClustersResult {
     private @Nullable String outputFile;
     private @Nullable Integer pageNumber;
     private @Nullable Integer pageSize;
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The status of the resource.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tags of the resource.
+     * 
+     */
     private @Nullable Map<String,Object> tags;
     private Integer totalCount;
 
     private GetDBClustersResult() {}
+    /**
+     * @return A list of Adb Db Clusters. Each element contains the following attributes:
+     * 
+     */
     public List<GetDBClustersCluster> clusters() {
         return this.clusters;
     }
+    /**
+     * @return The description of DBCluster.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     public Optional<String> descriptionRegex() {
         return Optional.ofNullable(this.descriptionRegex);
     }
+    /**
+     * @return A list of DBCluster descriptions.
+     * 
+     */
     public List<String> descriptions() {
         return this.descriptions;
     }
@@ -71,12 +107,24 @@ public final class GetDBClustersResult {
     public Optional<Integer> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The status of the resource.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tags of the resource.
+     * 
+     */
     public Map<String,Object> tags() {
         return this.tags == null ? Map.of() : this.tags;
     }

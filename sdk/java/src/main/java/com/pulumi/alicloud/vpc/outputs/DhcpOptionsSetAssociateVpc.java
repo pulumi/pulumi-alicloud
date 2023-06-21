@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DhcpOptionsSetAssociateVpc {
     /**
-     * @return The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+     * @return The status of the VPC associated with the DHCP option set.
      * 
      */
     private @Nullable String associateStatus;
@@ -20,11 +20,11 @@ public final class DhcpOptionsSetAssociateVpc {
      * @return The ID of the VPC network that is associated with the DHCP options set.
      * 
      */
-    private @Nullable String vpcId;
+    private String vpcId;
 
     private DhcpOptionsSetAssociateVpc() {}
     /**
-     * @return The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+     * @return The status of the VPC associated with the DHCP option set.
      * 
      */
     public Optional<String> associateStatus() {
@@ -34,8 +34,8 @@ public final class DhcpOptionsSetAssociateVpc {
      * @return The ID of the VPC network that is associated with the DHCP options set.
      * 
      */
-    public Optional<String> vpcId() {
-        return Optional.ofNullable(this.vpcId);
+    public String vpcId() {
+        return this.vpcId;
     }
 
     public static Builder builder() {
@@ -48,7 +48,7 @@ public final class DhcpOptionsSetAssociateVpc {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String associateStatus;
-        private @Nullable String vpcId;
+        private String vpcId;
         public Builder() {}
         public Builder(DhcpOptionsSetAssociateVpc defaults) {
     	      Objects.requireNonNull(defaults);
@@ -62,8 +62,8 @@ public final class DhcpOptionsSetAssociateVpc {
             return this;
         }
         @CustomType.Setter
-        public Builder vpcId(@Nullable String vpcId) {
-            this.vpcId = vpcId;
+        public Builder vpcId(String vpcId) {
+            this.vpcId = Objects.requireNonNull(vpcId);
             return this;
         }
         public DhcpOptionsSetAssociateVpc build() {

@@ -160,6 +160,11 @@ export type EipAssociation = import("./eipAssociation").EipAssociation;
 export const EipAssociation: typeof import("./eipAssociation").EipAssociation = null as any;
 utilities.lazyLoad(exports, ["EipAssociation"], () => require("./eipAssociation"));
 
+export { EipSegmentAddressArgs, EipSegmentAddressState } from "./eipSegmentAddress";
+export type EipSegmentAddress = import("./eipSegmentAddress").EipSegmentAddress;
+export const EipSegmentAddress: typeof import("./eipSegmentAddress").EipSegmentAddress = null as any;
+utilities.lazyLoad(exports, ["EipSegmentAddress"], () => require("./eipSegmentAddress"));
+
 export { ElasticityAssuranceArgs, ElasticityAssuranceState } from "./elasticityAssurance";
 export type ElasticityAssurance = import("./elasticityAssurance").ElasticityAssurance;
 export const ElasticityAssurance: typeof import("./elasticityAssurance").ElasticityAssurance = null as any;
@@ -482,6 +487,8 @@ const _module = {
                 return new EipAddress(name, <any>undefined, { urn })
             case "alicloud:ecs/eipAssociation:EipAssociation":
                 return new EipAssociation(name, <any>undefined, { urn })
+            case "alicloud:ecs/eipSegmentAddress:EipSegmentAddress":
+                return new EipSegmentAddress(name, <any>undefined, { urn })
             case "alicloud:ecs/elasticityAssurance:ElasticityAssurance":
                 return new ElasticityAssurance(name, <any>undefined, { urn })
             case "alicloud:ecs/hpcCluster:HpcCluster":
@@ -552,6 +559,7 @@ pulumi.runtime.registerResourceModule("alicloud", "ecs/ecsSnapshotGroup", _modul
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/eipAssociation", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ecs/eipSegmentAddress", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/elasticityAssurance", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/hpcCluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ecs/image", _module)

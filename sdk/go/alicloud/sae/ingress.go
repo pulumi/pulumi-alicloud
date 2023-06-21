@@ -13,9 +13,9 @@ import (
 
 // Provides a Serverless App Engine (SAE) Ingress resource.
 //
-// For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://help.aliyun.com/document_detail/97792.html).
+// For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://www.alibabacloud.com/help/en/sae/latest/createingress).
 //
-// > **NOTE:** Available in v1.137.0+.
+// > **NOTE:** Available since v1.137.0.
 //
 // ## Example Usage
 //
@@ -132,17 +132,23 @@ import (
 type Ingress struct {
 	pulumi.CustomResourceState
 
-	// Cert Id.
+	// The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
 	CertId pulumi.StringPtrOutput `pulumi:"certId"`
-	// Default Rule.
+	// The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
+	CertIds pulumi.StringPtrOutput `pulumi:"certIds"`
+	// Default Rule. See `defaultRule` below.
 	DefaultRule IngressDefaultRulePtrOutput `pulumi:"defaultRule"`
 	// Description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// SLB listening port.
 	ListenerPort pulumi.IntOutput `pulumi:"listenerPort"`
-	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+	// The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+	ListenerProtocol pulumi.StringOutput `pulumi:"listenerProtocol"`
+	// The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+	LoadBalanceType pulumi.StringOutput `pulumi:"loadBalanceType"`
+	// The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
-	// Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+	// Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
 	Rules IngressRuleArrayOutput `pulumi:"rules"`
 	// SLB ID.
 	SlbId pulumi.StringOutput `pulumi:"slbId"`
@@ -189,34 +195,46 @@ func GetIngress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ingress resources.
 type ingressState struct {
-	// Cert Id.
+	// The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
 	CertId *string `pulumi:"certId"`
-	// Default Rule.
+	// The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
+	CertIds *string `pulumi:"certIds"`
+	// Default Rule. See `defaultRule` below.
 	DefaultRule *IngressDefaultRule `pulumi:"defaultRule"`
 	// Description.
 	Description *string `pulumi:"description"`
 	// SLB listening port.
 	ListenerPort *int `pulumi:"listenerPort"`
-	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+	// The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+	ListenerProtocol *string `pulumi:"listenerProtocol"`
+	// The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+	LoadBalanceType *string `pulumi:"loadBalanceType"`
+	// The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
 	NamespaceId *string `pulumi:"namespaceId"`
-	// Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+	// Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
 	Rules []IngressRule `pulumi:"rules"`
 	// SLB ID.
 	SlbId *string `pulumi:"slbId"`
 }
 
 type IngressState struct {
-	// Cert Id.
+	// The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
 	CertId pulumi.StringPtrInput
-	// Default Rule.
+	// The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
+	CertIds pulumi.StringPtrInput
+	// Default Rule. See `defaultRule` below.
 	DefaultRule IngressDefaultRulePtrInput
 	// Description.
 	Description pulumi.StringPtrInput
 	// SLB listening port.
 	ListenerPort pulumi.IntPtrInput
-	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+	// The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+	ListenerProtocol pulumi.StringPtrInput
+	// The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+	LoadBalanceType pulumi.StringPtrInput
+	// The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
 	NamespaceId pulumi.StringPtrInput
-	// Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+	// Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
 	Rules IngressRuleArrayInput
 	// SLB ID.
 	SlbId pulumi.StringPtrInput
@@ -227,17 +245,23 @@ func (IngressState) ElementType() reflect.Type {
 }
 
 type ingressArgs struct {
-	// Cert Id.
+	// The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
 	CertId *string `pulumi:"certId"`
-	// Default Rule.
+	// The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
+	CertIds *string `pulumi:"certIds"`
+	// Default Rule. See `defaultRule` below.
 	DefaultRule *IngressDefaultRule `pulumi:"defaultRule"`
 	// Description.
 	Description *string `pulumi:"description"`
 	// SLB listening port.
 	ListenerPort int `pulumi:"listenerPort"`
-	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+	// The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+	ListenerProtocol *string `pulumi:"listenerProtocol"`
+	// The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+	LoadBalanceType *string `pulumi:"loadBalanceType"`
+	// The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
 	NamespaceId string `pulumi:"namespaceId"`
-	// Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+	// Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
 	Rules []IngressRule `pulumi:"rules"`
 	// SLB ID.
 	SlbId string `pulumi:"slbId"`
@@ -245,17 +269,23 @@ type ingressArgs struct {
 
 // The set of arguments for constructing a Ingress resource.
 type IngressArgs struct {
-	// Cert Id.
+	// The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
 	CertId pulumi.StringPtrInput
-	// Default Rule.
+	// The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
+	CertIds pulumi.StringPtrInput
+	// Default Rule. See `defaultRule` below.
 	DefaultRule IngressDefaultRulePtrInput
 	// Description.
 	Description pulumi.StringPtrInput
 	// SLB listening port.
 	ListenerPort pulumi.IntInput
-	// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+	// The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+	ListenerProtocol pulumi.StringPtrInput
+	// The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+	LoadBalanceType pulumi.StringPtrInput
+	// The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
 	NamespaceId pulumi.StringInput
-	// Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+	// Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
 	Rules IngressRuleArrayInput
 	// SLB ID.
 	SlbId pulumi.StringInput
@@ -348,12 +378,17 @@ func (o IngressOutput) ToIngressOutputWithContext(ctx context.Context) IngressOu
 	return o
 }
 
-// Cert Id.
+// The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
 func (o IngressOutput) CertId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ingress) pulumi.StringPtrOutput { return v.CertId }).(pulumi.StringPtrOutput)
 }
 
-// Default Rule.
+// The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
+func (o IngressOutput) CertIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Ingress) pulumi.StringPtrOutput { return v.CertIds }).(pulumi.StringPtrOutput)
+}
+
+// Default Rule. See `defaultRule` below.
 func (o IngressOutput) DefaultRule() IngressDefaultRulePtrOutput {
 	return o.ApplyT(func(v *Ingress) IngressDefaultRulePtrOutput { return v.DefaultRule }).(IngressDefaultRulePtrOutput)
 }
@@ -368,12 +403,22 @@ func (o IngressOutput) ListenerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *Ingress) pulumi.IntOutput { return v.ListenerPort }).(pulumi.IntOutput)
 }
 
-// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+// The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+func (o IngressOutput) ListenerProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ingress) pulumi.StringOutput { return v.ListenerProtocol }).(pulumi.StringOutput)
+}
+
+// The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+func (o IngressOutput) LoadBalanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ingress) pulumi.StringOutput { return v.LoadBalanceType }).(pulumi.StringOutput)
+}
+
+// The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
 func (o IngressOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ingress) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
 }
 
-// Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+// Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
 func (o IngressOutput) Rules() IngressRuleArrayOutput {
 	return o.ApplyT(func(v *Ingress) IngressRuleArrayOutput { return v.Rules }).(IngressRuleArrayOutput)
 }

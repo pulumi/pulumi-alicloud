@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Global Accelerator (GA) Access Log and how to use it, see [What is Access Log](https://www.alibabacloud.com/help/en/global-accelerator/latest/attachlogstoretoendpointgroup).
  *
- * > **NOTE:** Available in v1.187.0+.
+ * > **NOTE:** Available since v1.187.0.
  *
  * ## Example Usage
  *
@@ -18,12 +18,21 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const defaultAccelerators = alicloud.ga.getAccelerators({
- *     status: "active",
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
  * });
  * const defaultProject = new alicloud.log.Project("defaultProject", {});
  * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
+ * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ *     duration: 1,
+ *     autoUseCoupon: true,
+ *     spec: "2",
+ * });
  * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
  *     bandwidth: 100,
  *     type: "Basic",
@@ -33,17 +42,23 @@ import * as utilities from "../utilities";
  *     ratio: 30,
  * });
  * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
- *     acceleratorId: defaultAccelerators.then(defaultAccelerators => defaultAccelerators.accelerators?.[0]?.id),
+ *     acceleratorId: defaultAccelerator.id,
  *     bandwidthPackageId: defaultBandwidthPackage.id,
  * });
  * const defaultListener = new alicloud.ga.Listener("defaultListener", {
  *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
+ *     clientAffinity: "SOURCE_IP",
+ *     protocol: "HTTP",
  *     portRanges: [{
- *         fromPort: 80,
- *         toPort: 80,
+ *         fromPort: 70,
+ *         toPort: 70,
  *     }],
  * });
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {paymentType: "PayAsYouGo"});
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ *     bandwidth: "10",
+ *     internetChargeType: "PayByBandwidth",
+ *     addressName: "terraform-example",
+ * });
  * const defaultEndpointGroup = new alicloud.ga.EndpointGroup("defaultEndpointGroup", {
  *     acceleratorId: defaultListener.acceleratorId,
  *     endpointConfigurations: [{
@@ -51,16 +66,16 @@ import * as utilities from "../utilities";
  *         type: "PublicIp",
  *         weight: 20,
  *     }],
- *     endpointGroupRegion: "cn-hangzhou",
+ *     endpointGroupRegion: region,
  *     listenerId: defaultListener.id,
  * });
  * const defaultAccessLog = new alicloud.ga.AccessLog("defaultAccessLog", {
- *     acceleratorId: defaultAccelerators.then(defaultAccelerators => defaultAccelerators.accelerators?.[0]?.id),
+ *     acceleratorId: defaultAccelerator.id,
  *     listenerId: defaultListener.id,
  *     endpointGroupId: defaultEndpointGroup.id,
  *     slsProjectName: defaultProject.name,
  *     slsLogStoreName: defaultStore.name,
- *     slsRegionId: "cn-hangzhou",
+ *     slsRegionId: region,
  * });
  * ```
  *

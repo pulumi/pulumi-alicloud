@@ -26,6 +26,10 @@ namespace Pulumi.AliCloud.Ess.Inputs
         [Input("server")]
         public Input<string>? Server { get; set; }
 
+        /// <summary>
+        /// The username used to log on to the image repository. It is required
+        /// when `image_registry_credential` is configured.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

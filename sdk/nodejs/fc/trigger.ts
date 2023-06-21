@@ -6,9 +6,11 @@ import * as utilities from "../utilities";
 
 /**
  * Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+ *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createtrigger).
  *
  * > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
+ *
+ * > **NOTE:** Available since v1.93.0.
  *
  * ## Example Usage
  *
@@ -17,45 +19,83 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const region = config.get("region") || "cn-hangzhou";
- * const account = config.get("account") || "12345";
- * const fooRole = new alicloud.ram.Role("fooRole", {
+ * const defaultAccount = alicloud.getAccount({});
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultProject = new alicloud.log.Project("defaultProject", {});
+ * const defaultStore = new alicloud.log.Store("defaultStore", {project: defaultProject.name});
+ * const sourceStore = new alicloud.log.Store("sourceStore", {project: defaultProject.name});
+ * const defaultRole = new alicloud.ram.Role("defaultRole", {
  *     document: `  {
- *     "Statement": [
- *       {
- *         "Action": "sts:AssumeRole",
- *         "Effect": "Allow",
- *         "Principal": {
- *           "Service": [
- *             "log.aliyuncs.com"
- *           ]
+ *       "Statement": [
+ *         {
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "fc.aliyuncs.com"
+ *             ]
+ *           }
  *         }
- *       }
- *     ],
- *     "Version": "1"
+ *       ],
+ *       "Version": "1"
  *   }
- *   
  * `,
- *     description: "this is a test",
+ *     description: "this is a example",
  *     force: true,
  * });
- * const fooRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("fooRolePolicyAttachment", {
- *     roleName: fooRole.name,
+ * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment", {
+ *     roleName: defaultRole.name,
  *     policyName: "AliyunLogFullAccess",
  *     policyType: "System",
  * });
- * const fooTrigger = new alicloud.fc.Trigger("fooTrigger", {
- *     service: "my-fc-service",
- *     "function": "hello-world",
- *     role: fooRole.arn,
- *     sourceArn: `acs:log:${region}:${account}:project/${alicloud_log_project.foo.name}`,
+ * const defaultService = new alicloud.fc.Service("defaultService", {
+ *     description: "example-value",
+ *     role: defaultRole.arn,
+ *     logConfig: {
+ *         project: defaultProject.name,
+ *         logstore: defaultStore.name,
+ *         enableInstanceMetrics: true,
+ *         enableRequestMetrics: true,
+ *     },
+ * });
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
+ * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
+ *     bucket: defaultBucket.id,
+ *     key: "index.py",
+ *     content: `import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info('hello world') 
+ * return 'hello world'`,
+ * });
+ * const defaultFunction = new alicloud.fc.Function("defaultFunction", {
+ *     service: defaultService.name,
+ *     description: "example",
+ *     ossBucket: defaultBucket.id,
+ *     ossKey: defaultBucketObject.key,
+ *     memorySize: 512,
+ *     runtime: "python2.7",
+ *     handler: "hello.handler",
+ * });
+ * const defaultTrigger = new alicloud.fc.Trigger("defaultTrigger", {
+ *     service: defaultService.name,
+ *     "function": defaultFunction.name,
+ *     role: defaultRole.arn,
+ *     sourceArn: pulumi.all([defaultRegions, defaultAccount, defaultProject.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:log:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:project/${name}`),
  *     type: "log",
- *     config: `    {
+ *     config: pulumi.interpolate`    {
  *         "sourceConfig": {
- *             "project": "project-for-fc",
- *             "logstore": "project-for-fc"
+ *             "project": "${defaultProject.name}",
+ *             "logstore": "${sourceStore.name}"
  *         },
  *         "jobConfig": {
  *             "maxRetryTime": 3,
@@ -66,15 +106,13 @@ import * as utilities from "../utilities";
  *             "c": "d"
  *         },
  *         "logConfig": {
- *             "project": "project-for-fc-log",
- *             "logstore": "project-for-fc-log"
+ *              "project": "${defaultProject.name}",
+ *             "logstore": "${defaultStore.name}"
  *         },
  *         "enable": true
  *     }
  *   
  * `,
- * }, {
- *     dependsOn: [fooRolePolicyAttachment],
  * });
  * ```
  *
@@ -83,81 +121,77 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "fctriggermnstopic";
- * const currentRegion = alicloud.getRegions({
+ * const defaultAccount = alicloud.getAccount({});
+ * const defaultRegions = alicloud.getRegions({
  *     current: true,
  * });
- * const current = alicloud.getAccount({});
- * const fooProject = new alicloud.log.Project("fooProject", {description: "tf unit test"});
- * const bar = new alicloud.log.Store("bar", {
- *     project: fooProject.name,
- *     retentionPeriod: 3000,
- *     shardCount: 1,
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
  * });
- * const fooStore = new alicloud.log.Store("fooStore", {
- *     project: fooProject.name,
- *     retentionPeriod: 3000,
- *     shardCount: 1,
- * });
- * const fooTopic = new alicloud.mns.Topic("fooTopic", {});
- * const fooService = new alicloud.fc.Service("fooService", {internetAccess: false});
- * const fooBucket = new alicloud.oss.Bucket("fooBucket", {bucket: name});
- * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- * const fooBucketObject = new alicloud.oss.BucketObject("fooBucketObject", {
- *     bucket: fooBucket.id,
- *     key: "fc/hello.zip",
- *     source: "./hello.zip",
- * });
- * const fooFunction = new alicloud.fc.Function("fooFunction", {
- *     handler: "hello.handler",
- *     memorySize: 512,
- *     ossBucket: fooBucket.id,
- *     ossKey: fooBucketObject.key,
- *     runtime: "python2.7",
- *     service: fooService.name,
- * });
- * const fooRole = new alicloud.ram.Role("fooRole", {
- *     description: "this is a test",
+ * const defaultTopic = new alicloud.mns.Topic("defaultTopic", {});
+ * const defaultRole = new alicloud.ram.Role("defaultRole", {
  *     document: `  {
- *     "Statement": [
- *       {
- *         "Action": "sts:AssumeRole",
- *         "Effect": "Allow",
- *         "Principal": {
- *           "Service": [
- *             "mns.aliyuncs.com"
- *           ]
+ *       "Statement": [
+ *         {
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "mns.aliyuncs.com"
+ *             ]
+ *           }
  *         }
- *       }
- *     ],
- *     "Version": "1"
+ *       ],
+ *       "Version": "1"
  *   }
- *   
  * `,
+ *     description: "this is a example",
  *     force: true,
  * });
- * const fooRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("fooRolePolicyAttachment", {
+ * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment", {
+ *     roleName: defaultRole.name,
  *     policyName: "AliyunMNSNotificationRolePolicy",
  *     policyType: "System",
- *     roleName: fooRole.name,
  * });
- * const fooTrigger = new alicloud.fc.Trigger("fooTrigger", {
+ * const defaultService = new alicloud.fc.Service("defaultService", {
+ *     description: "example-value",
+ *     internetAccess: false,
+ * });
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
+ * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
+ *     bucket: defaultBucket.id,
+ *     key: "index.py",
+ *     content: `import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info('hello world') 
+ * return 'hello world'`,
+ * });
+ * const defaultFunction = new alicloud.fc.Function("defaultFunction", {
+ *     service: defaultService.name,
+ *     description: "example",
+ *     ossBucket: defaultBucket.id,
+ *     ossKey: defaultBucketObject.key,
+ *     memorySize: 512,
+ *     runtime: "python2.7",
+ *     handler: "hello.handler",
+ * });
+ * const defaultTrigger = new alicloud.fc.Trigger("defaultTrigger", {
+ *     service: defaultService.name,
+ *     "function": defaultFunction.name,
+ *     role: defaultRole.arn,
+ *     sourceArn: pulumi.all([defaultRegions, defaultAccount, defaultTopic.name]).apply(([defaultRegions, defaultAccount, name]) => `acs:mns:${defaultRegions.regions?.[0]?.id}:${defaultAccount.id}:/topics/${name}`),
+ *     type: "mns_topic",
  *     configMns: `  {
- *     "filterTag":"testTag",
+ *     "filterTag":"exampleTag",
  *     "notifyContentFormat":"STREAM",
  *     "notifyStrategy":"BACKOFF_RETRY"
  *   }
- *   
  * `,
- *     "function": fooFunction.name,
- *     role: fooRole.arn,
- *     service: fooService.name,
- *     sourceArn: pulumi.all([currentRegion, current, fooTopic.name]).apply(([currentRegion, current, name]) => `acs:mns:${currentRegion.regions?.[0]?.id}:${current.id}:/topics/${name}`),
- *     type: "mns_topic",
- * }, {
- *     dependsOn: ["alicloud_ram_role_policy_attachment.foo"],
  * });
  * ```
  *
@@ -166,61 +200,51 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "fctriggercdneventsconfig";
- * const current = alicloud.getAccount({});
- * const domain = new alicloud.cdn.DomainNew("domain", {
+ * const defaultAccount = alicloud.getAccount({});
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultDomainNew = new alicloud.cdn.DomainNew("defaultDomainNew", {
+ *     domainName: pulumi.interpolate`example${defaultRandomInteger.result}.tf.com`,
  *     cdnType: "web",
- *     domainName: `${name}.tf.com`,
  *     scope: "overseas",
  *     sources: [{
  *         content: "1.1.1.1",
- *         port: 80,
- *         priority: 20,
  *         type: "ipaddr",
+ *         priority: 20,
+ *         port: 80,
  *         weight: 10,
  *     }],
  * });
- * const fooService = new alicloud.fc.Service("fooService", {internetAccess: false});
- * const fooBucket = new alicloud.oss.Bucket("fooBucket", {bucket: name});
- * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- * const fooBucketObject = new alicloud.oss.BucketObject("fooBucketObject", {
- *     bucket: fooBucket.id,
- *     key: "fc/hello.zip",
- *     source: "./hello.zip",
+ * const defaultService = new alicloud.fc.Service("defaultService", {
+ *     description: "example-value",
+ *     internetAccess: false,
  * });
- * const fooFunction = new alicloud.fc.Function("fooFunction", {
- *     handler: "hello.handler",
- *     memorySize: 512,
- *     ossBucket: fooBucket.id,
- *     ossKey: fooBucketObject.key,
- *     runtime: "python2.7",
- *     service: fooService.name,
- * });
- * const fooRole = new alicloud.ram.Role("fooRole", {
- *     description: "this is a test",
+ * const defaultRole = new alicloud.ram.Role("defaultRole", {
  *     document: `    {
- *         "Version": "1",
- *         "Statement": [
- *             {
- *                 "Action": "cdn:Describe*",
- *                 "Resource": "*",
- *                 "Effect": "Allow",
- * 		        "Principal": {
- *                 "Service":
- *                     ["log.aliyuncs.com"]
- *                 }
- *             }
- *         ]
- *     }
- *     
+ *       "Statement": [
+ *         {
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "cdn.aliyuncs.com"
+ *             ]
+ *           }
+ *         }
+ *       ],
+ *       "Version": "1"
+ *   }
  * `,
+ *     description: "this is a example",
  *     force: true,
  * });
- * const fooPolicy = new alicloud.ram.Policy("fooPolicy", {
- *     description: "this is a test",
- *     document: `    {
+ * const defaultPolicy = new alicloud.ram.Policy("defaultPolicy", {
+ *     policyName: pulumi.interpolate`fcservicepolicy-${defaultRandomInteger.result}`,
+ *     policyDocument: pulumi.interpolate`    {
  *         "Version": "1",
  *         "Statement": [
  *         {
@@ -228,39 +252,56 @@ import * as utilities from "../utilities";
  *             "fc:InvokeFunction"
  *             ],
  *         "Resource": [
- *             "acs:fc:*:*:services/tf_cdnEvents/functions/*",
- *             "acs:fc:*:*:services/tf_cdnEvents.*&#47;functions/*"
+ *             "acs:fc:*:*:services/${defaultService.name}/functions/*",
+ *             "acs:fc:*:*:services/${defaultService.name}.*&#47;functions/*"
  *         ],
  *         "Effect": "Allow"
  *         }
  *         ]
  *     }
- *     
  * `,
+ *     description: "this is a example",
  *     force: true,
  * });
- * const fooRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("fooRolePolicyAttachment", {
- *     policyName: fooPolicy.name,
+ * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment", {
+ *     roleName: defaultRole.name,
+ *     policyName: defaultPolicy.name,
  *     policyType: "Custom",
- *     roleName: fooRole.name,
  * });
- * const _default = new alicloud.fc.Trigger("default", {
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
+ * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
+ *     bucket: defaultBucket.id,
+ *     key: "index.py",
+ *     content: `import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info('hello world') 
+ * return 'hello world'`,
+ * });
+ * const defaultFunction = new alicloud.fc.Function("defaultFunction", {
+ *     service: defaultService.name,
+ *     description: "example",
+ *     ossBucket: defaultBucket.id,
+ *     ossKey: defaultBucketObject.key,
+ *     memorySize: 512,
+ *     runtime: "python2.7",
+ *     handler: "hello.handler",
+ * });
+ * const defaultTrigger = new alicloud.fc.Trigger("defaultTrigger", {
+ *     service: defaultService.name,
+ *     "function": defaultFunction.name,
+ *     role: defaultRole.arn,
+ *     sourceArn: defaultAccount.then(defaultAccount => `acs:cdn:*:${defaultAccount.id}`),
+ *     type: "cdn_events",
  *     config: pulumi.interpolate`      {"eventName":"LogFileCreated",
  *      "eventVersion":"1.0.0",
  *      "notes":"cdn events trigger",
  *      "filter":{
- *         "domain": ["${domain.domainName}"]
+ *         "domain": ["${defaultDomainNew.domainName}"]
  *         }
  *     }
- *
  * `,
- *     "function": fooFunction.name,
- *     role: fooRole.arn,
- *     service: fooService.name,
- *     sourceArn: current.then(current => `acs:cdn:*:${current.id}`),
- *     type: "cdn_events",
- * }, {
- *     dependsOn: ["alicloud_ram_role_policy_attachment.foo"],
  * });
  * ```
  *
@@ -269,29 +310,45 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "fctriggereventbridgeconfig";
- * const current = alicloud.getAccount({});
- * // Please make eventbridge available and then assume a specific service-linked role, which refers to https://registry.terraform.io/providers/aliyun/alicloud/latest/docs/resources/event_bridge_service_linked_role
+ * const defaultAccount = alicloud.getAccount({});
+ * const defaultRegions = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const serviceLinkedRole = new alicloud.eventbridge.ServiceLinkedRole("serviceLinkedRole", {productName: "AliyunServiceRoleForEventBridgeSendToFC"});
- * const fooService = new alicloud.fc.Service("fooService", {internetAccess: false});
- * const fooBucket = new alicloud.oss.Bucket("fooBucket", {bucket: name});
+ * const defaultService = new alicloud.fc.Service("defaultService", {
+ *     description: "example-value",
+ *     internetAccess: false,
+ * });
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
  * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- * const fooBucketObject = new alicloud.oss.BucketObject("fooBucketObject", {
- *     bucket: fooBucket.id,
- *     key: "fc/hello.zip",
- *     source: "./hello.zip",
+ * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
+ *     bucket: defaultBucket.id,
+ *     key: "index.py",
+ *     content: `import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info('hello world') 
+ * return 'hello world'`,
  * });
- * const fooFunction = new alicloud.fc.Function("fooFunction", {
- *     handler: "hello.handler",
+ * const defaultFunction = new alicloud.fc.Function("defaultFunction", {
+ *     service: defaultService.name,
+ *     description: "example",
+ *     ossBucket: defaultBucket.id,
+ *     ossKey: defaultBucketObject.key,
  *     memorySize: 512,
- *     ossBucket: fooBucket.id,
- *     ossKey: fooBucketObject.key,
  *     runtime: "python2.7",
- *     service: fooService.name,
+ *     handler: "hello.handler",
  * });
- * const _default = new alicloud.fc.Trigger("default", {
+ * const ossTrigger = new alicloud.fc.Trigger("ossTrigger", {
+ *     service: defaultService.name,
+ *     "function": defaultFunction.name,
+ *     type: "eventbridge",
  *     config: `    {
  *         "triggerEnable": false,
  *         "asyncInvocationType": false,
@@ -300,13 +357,12 @@ import * as utilities from "../utilities";
  *             "eventSourceType": "Default"
  *         }
  *     }
- *
  * `,
- *     "function": fooFunction.name,
- *     service: fooService.name,
- *     type: "eventbridge",
  * });
- * const mns = new alicloud.fc.Trigger("mns", {
+ * const mnsTrigger = new alicloud.fc.Trigger("mnsTrigger", {
+ *     service: defaultService.name,
+ *     "function": defaultFunction.name,
+ *     type: "eventbridge",
  *     config: `    {
  *         "triggerEnable": false,
  *         "asyncInvocationType": false,
@@ -322,14 +378,28 @@ import * as utilities from "../utilities";
  *             }
  *         }
  *     }
- *
  * `,
- *     "function": fooFunction.name,
- *     service: fooService.name,
- *     type: "eventbridge",
  * });
- * const rocketmq = new alicloud.fc.Trigger("rocketmq", {
- *     config: `    {
+ * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {
+ *     instanceName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     remark: "terraform-example",
+ * });
+ * const defaultGroup = new alicloud.rocketmq.Group("defaultGroup", {
+ *     groupName: "GID-example",
+ *     instanceId: defaultInstance.id,
+ *     remark: "terraform-example",
+ * });
+ * const defaultTopic = new alicloud.rocketmq.Topic("defaultTopic", {
+ *     topicName: "mytopic",
+ *     instanceId: defaultInstance.id,
+ *     messageType: 0,
+ *     remark: "terraform-example",
+ * });
+ * const rocketmqTrigger = new alicloud.fc.Trigger("rocketmqTrigger", {
+ *     service: defaultService.name,
+ *     "function": defaultFunction.name,
+ *     type: "eventbridge",
+ *     config: pulumi.all([defaultRegions, defaultInstance.id, defaultGroup.groupName, defaultTopic.topicName]).apply(([defaultRegions, id, groupName, topicName]) => `    {
  *         "triggerEnable": false,
  *         "asyncInvocationType": false,
  *         "eventRuleFilterPattern": "{}",
@@ -337,25 +407,43 @@ import * as utilities from "../utilities";
  *             "eventSourceType": "RocketMQ",
  *             "eventSourceParameters": {
  *                 "sourceRocketMQParameters": {
- *                     "RegionId": "cn-hangzhou",
- *                     "InstanceId": "MQ_INST_164901546557****_BAAN****",
- *                     "GroupID": "GID_group1",
- *                     "Topic": "mytopic",
- *                     "Timestamp": 1636597951984,
- *                     "Tag": "test-tag",
+ *                     "RegionId": "${defaultRegions.regions?.[0]?.id}",
+ *                     "InstanceId": "${id}",
+ *                     "GroupID": "${groupName}",
+ *                     "Topic": "${topicName}",
+ *                     "Timestamp": 1686296162,
+ *                     "Tag": "example-tag",
  *                     "Offset": "CONSUME_FROM_LAST_OFFSET"
  *                 }
  *             }
  *         }
  *     }
- *
- * `,
- *     "function": fooFunction.name,
- *     service: fooService.name,
- *     type: "eventbridge",
+ * `),
  * });
- * const rabbitmq = new alicloud.fc.Trigger("rabbitmq", {
- *     config: `    {
+ * const defaultAmqp_instanceInstance = new alicloud.amqp.Instance("defaultAmqp/instanceInstance", {
+ *     instanceName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     instanceType: "professional",
+ *     maxTps: "1000",
+ *     queueCapacity: "50",
+ *     supportEip: true,
+ *     maxEipTps: "128",
+ *     paymentType: "Subscription",
+ *     period: 1,
+ * });
+ * const defaultVirtualHost = new alicloud.amqp.VirtualHost("defaultVirtualHost", {
+ *     instanceId: defaultAmqp / instanceInstance.id,
+ *     virtualHostName: "example-VirtualHost",
+ * });
+ * const defaultQueue = new alicloud.amqp.Queue("defaultQueue", {
+ *     instanceId: defaultVirtualHost.instanceId,
+ *     queueName: "example-queue",
+ *     virtualHostName: defaultVirtualHost.virtualHostName,
+ * });
+ * const rabbitmqTrigger = new alicloud.fc.Trigger("rabbitmqTrigger", {
+ *     service: defaultService.name,
+ *     "function": defaultFunction.name,
+ *     type: "eventbridge",
+ *     config: pulumi.all([defaultRegions, defaultVirtualHost.virtualHostName, defaultQueue.queueName]).apply(([defaultRegions, virtualHostName, queueName]) => `    {
  *         "triggerEnable": false,
  *         "asyncInvocationType": false,
  *         "eventRuleFilterPattern": "{}",
@@ -363,19 +451,15 @@ import * as utilities from "../utilities";
  *             "eventSourceType": "RabbitMQ",
  *             "eventSourceParameters": {
  *                 "sourceRabbitMQParameters": {
- *                     "RegionId": "cn-hangzhou",
- *                     "InstanceId": "amqp-cn-****** ",
- *                     "VirtualHostName": "test-virtual",
- *                     "QueueName": "test-queue"
+ *                     "RegionId": "${defaultRegions.regions?.[0]?.id}",
+ *                     "InstanceId": "${defaultAmqp / instanceInstance.id}",
+ *                     "VirtualHostName": "${virtualHostName}",
+ *                     "QueueName": "${queueName}"
  *                 }
  *             }
  *         }
  *     }
- *
- * `,
- *     "function": fooFunction.name,
- *     service: fooService.name,
- *     type: "eventbridge",
+ * `),
  * });
  * ```
  * ## Module Support

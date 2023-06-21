@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Global Accelerator (GA) Custom Routing Endpoint Traffic Policy and how to use it, see [What is Custom Routing Endpoint Traffic Policy](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointtrafficpolicies).
  * 
- * &gt; **NOTE:** Available in v1.197.0+.
+ * &gt; **NOTE:** Available since v1.197.0.
  * 
  * ## Example Usage
  * 
@@ -32,6 +32,27 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ga.Accelerator;
+ * import com.pulumi.alicloud.ga.AcceleratorArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackage;
+ * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
+ * import com.pulumi.alicloud.ga.Listener;
+ * import com.pulumi.alicloud.ga.ListenerArgs;
+ * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
+ * import com.pulumi.alicloud.ga.CustomRoutingEndpointGroup;
+ * import com.pulumi.alicloud.ga.CustomRoutingEndpointGroupArgs;
+ * import com.pulumi.alicloud.ga.CustomRoutingEndpoint;
+ * import com.pulumi.alicloud.ga.CustomRoutingEndpointArgs;
+ * import com.pulumi.alicloud.ga.CustomRoutingEndpointGroupDestination;
+ * import com.pulumi.alicloud.ga.CustomRoutingEndpointGroupDestinationArgs;
  * import com.pulumi.alicloud.ga.CustomRoutingEndpointTrafficPolicy;
  * import com.pulumi.alicloud.ga.CustomRoutingEndpointTrafficPolicyArgs;
  * import com.pulumi.alicloud.ga.inputs.CustomRoutingEndpointTrafficPolicyPortRangeArgs;
@@ -48,12 +69,81 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CustomRoutingEndpointTrafficPolicy(&#34;default&#34;, CustomRoutingEndpointTrafficPolicyArgs.builder()        
- *             .address(&#34;192.168.192.2&#34;)
- *             .endpointId(&#34;your_custom_routing_endpoint_id&#34;)
+ *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
+ *             .duration(1)
+ *             .autoUseCoupon(true)
+ *             .spec(&#34;1&#34;)
+ *             .build());
+ * 
+ *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(100)
+ *             .type(&#34;Basic&#34;)
+ *             .bandwidthType(&#34;Basic&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .billingType(&#34;PayBy95&#34;)
+ *             .ratio(30)
+ *             .build());
+ * 
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .acceleratorId(defaultAccelerator.id())
+ *             .bandwidthPackageId(defaultBandwidthPackage.id())
+ *             .build());
+ * 
+ *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+ *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
+ *             .listenerType(&#34;CustomRouting&#34;)
+ *             .portRanges(ListenerPortRangeArgs.builder()
+ *                 .fromPort(10000)
+ *                 .toPort(16000)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultCustomRoutingEndpointGroup = new CustomRoutingEndpointGroup(&#34;defaultCustomRoutingEndpointGroup&#34;, CustomRoutingEndpointGroupArgs.builder()        
+ *             .acceleratorId(defaultListener.acceleratorId())
+ *             .listenerId(defaultListener.id())
+ *             .endpointGroupRegion(region)
+ *             .customRoutingEndpointGroupName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         var defaultCustomRoutingEndpoint = new CustomRoutingEndpoint(&#34;defaultCustomRoutingEndpoint&#34;, CustomRoutingEndpointArgs.builder()        
+ *             .endpointGroupId(defaultCustomRoutingEndpointGroup.id())
+ *             .endpoint(defaultSwitch.id())
+ *             .type(&#34;PrivateSubNet&#34;)
+ *             .trafficToEndpointPolicy(&#34;AllowCustom&#34;)
+ *             .build());
+ * 
+ *         var defaultCustomRoutingEndpointGroupDestination = new CustomRoutingEndpointGroupDestination(&#34;defaultCustomRoutingEndpointGroupDestination&#34;, CustomRoutingEndpointGroupDestinationArgs.builder()        
+ *             .endpointGroupId(defaultCustomRoutingEndpointGroup.id())
+ *             .protocols(&#34;TCP&#34;)
+ *             .fromPort(1)
+ *             .toPort(10)
+ *             .build());
+ * 
+ *         var defaultCustomRoutingEndpointTrafficPolicy = new CustomRoutingEndpointTrafficPolicy(&#34;defaultCustomRoutingEndpointTrafficPolicy&#34;, CustomRoutingEndpointTrafficPolicyArgs.builder()        
+ *             .endpointId(defaultCustomRoutingEndpoint.customRoutingEndpointId())
+ *             .address(&#34;172.17.3.0&#34;)
  *             .portRanges(CustomRoutingEndpointTrafficPolicyPortRangeArgs.builder()
- *                 .fromPort(10001)
- *                 .toPort(10002)
+ *                 .fromPort(1)
+ *                 .toPort(10)
  *                 .build())
  *             .build());
  * 
@@ -157,14 +247,14 @@ public class CustomRoutingEndpointTrafficPolicy extends com.pulumi.resources.Cus
         return this.listenerId;
     }
     /**
-     * Port rangeSee the following. See the following `Block port_ranges`.
+     * Port rangeSee the following. See `port_ranges` below.
      * 
      */
     @Export(name="portRanges", type=List.class, parameters={CustomRoutingEndpointTrafficPolicyPortRange.class})
     private Output</* @Nullable */ List<CustomRoutingEndpointTrafficPolicyPortRange>> portRanges;
 
     /**
-     * @return Port rangeSee the following. See the following `Block port_ranges`.
+     * @return Port rangeSee the following. See `port_ranges` below.
      * 
      */
     public Output<Optional<List<CustomRoutingEndpointTrafficPolicyPortRange>>> portRanges() {

@@ -24,25 +24,23 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-//				Description: pulumi.String("create by terraform"),
+//				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -62,9 +60,8 @@ import (
 //				Project:     exampleProject.Name,
 //				Logstore:    exampleStore.Name,
 //				InputType:   pulumi.String("file"),
-//				LogSample:   pulumi.String("test"),
 //				OutputType:  pulumi.String("LogService"),
-//				InputDetail: readFileOrPanic("config.json"),
+//				InputDetail: pulumi.String("  	{\n		\"logPath\": \"/logPath\",\n		\"filePattern\": \"access.log\",\n		\"logType\": \"json_log\",\n		\"topicFormat\": \"default\",\n		\"discardUnmatch\": false,\n		\"enableRawLog\": true,\n		\"fileEncoding\": \"gbk\",\n		\"maxDepth\": 10\n	}\n"),
 //			})
 //			if err != nil {
 //				return err

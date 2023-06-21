@@ -69,11 +69,17 @@ class GetDBClustersResult:
     @property
     @pulumi.getter
     def clusters(self) -> Sequence['outputs.GetDBClustersClusterResult']:
+        """
+        A list of Adb Db Clusters. Each element contains the following attributes:
+        """
         return pulumi.get(self, "clusters")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of DBCluster.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -84,6 +90,9 @@ class GetDBClustersResult:
     @property
     @pulumi.getter
     def descriptions(self) -> Sequence[str]:
+        """
+        A list of DBCluster descriptions.
+        """
         return pulumi.get(self, "descriptions")
 
     @property
@@ -122,16 +131,25 @@ class GetDBClustersResult:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
+        """
+        The ID of the resource group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        The tags of the resource.
+        """
         return pulumi.get(self, "tags")
 
     @property
@@ -176,7 +194,7 @@ def get_db_clusters(description: Optional[str] = None,
     """
     This data source provides the Adb DBClusters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.121.0+.
+    > **NOTE:** Available since v1.121.0.
 
     ## Example Usage
 
@@ -198,7 +216,7 @@ def get_db_clusters(description: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the resource.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param Mapping[str, Any] tags: A map of tags assigned to the cluster.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -246,7 +264,7 @@ def get_db_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = 
     """
     This data source provides the Adb DBClusters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.121.0+.
+    > **NOTE:** Available since v1.121.0.
 
     ## Example Usage
 
@@ -268,6 +286,6 @@ def get_db_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the resource.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param Mapping[str, Any] tags: A map of tags assigned to the cluster.
     """
     ...

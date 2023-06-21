@@ -30,33 +30,46 @@ class EipAddressArgs:
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EipAddress resource.
-        :param pulumi.Input[str] activity_id: The activity id.
+        :param pulumi.Input[str] activity_id: Special activity ID. This parameter is not required.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
-        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+        :param pulumi.Input[bool] deletion_protection: Whether the delete protection function is turned on.
+               - **true**: enabled.
+               - **false**: not enabled.
         :param pulumi.Input[str] description: The description of the EIP.
-        :param pulumi.Input[str] high_definition_monitor_log_status: The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
-        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
-        :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
-               Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        :param pulumi.Input[str] high_definition_monitor_log_status: Whether the second-level monitoring is enabled for the EIP.
+               - **OFF**: not enabled.
+               - **ON**: enabled.
+        :param pulumi.Input[str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        :param pulumi.Input[str] internet_charge_type: Renewal Payment type.
+               - **PayByBandwidth**: billed by fixed bandwidth.
+               - **PayByTraffic**: Billing by traffic.
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
-        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+        :param pulumi.Input[int] period: When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+        :param pulumi.Input[str] pricing_cycle: Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool to which the EIP belongs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
+               - When the return is empty, the basic DDoS protection is specified.
+               - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[str] zone: The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if activity_id is not None:
             pulumi.set(__self__, "activity_id", activity_id)
@@ -73,8 +86,8 @@ class EipAddressArgs:
         if high_definition_monitor_log_status is not None:
             pulumi.set(__self__, "high_definition_monitor_log_status", high_definition_monitor_log_status)
         if instance_charge_type is not None:
-            warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
-            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
+            warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
@@ -86,8 +99,8 @@ class EipAddressArgs:
         if log_store is not None:
             pulumi.set(__self__, "log_store", log_store)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if netmode is not None:
@@ -96,6 +109,8 @@ class EipAddressArgs:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if pricing_cycle is not None:
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if public_ip_address_pool_id is not None:
             pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
         if resource_group_id is not None:
@@ -104,12 +119,14 @@ class EipAddressArgs:
             pulumi.set(__self__, "security_protection_types", security_protection_types)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="activityId")
     def activity_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The activity id.
+        Special activity ID. This parameter is not required.
         """
         return pulumi.get(self, "activity_id")
 
@@ -157,7 +174,9 @@ class EipAddressArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether enable the deletion protection or not. Default value: `false`.
+        Whether the delete protection function is turned on.
+        - **true**: enabled.
+        - **false**: not enabled.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -181,7 +200,9 @@ class EipAddressArgs:
     @pulumi.getter(name="highDefinitionMonitorLogStatus")
     def high_definition_monitor_log_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        Whether the second-level monitoring is enabled for the EIP.
+        - **OFF**: not enabled.
+        - **ON**: enabled.
         """
         return pulumi.get(self, "high_definition_monitor_log_status")
 
@@ -193,7 +214,7 @@ class EipAddressArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+        . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -205,8 +226,9 @@ class EipAddressArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The metering method of the EIP. 
-        Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        Renewal Payment type.
+        - **PayByBandwidth**: billed by fixed bandwidth.
+        - **PayByTraffic**: Billing by traffic.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -254,7 +276,7 @@ class EipAddressArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -278,7 +300,7 @@ class EipAddressArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -290,7 +312,7 @@ class EipAddressArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
         """
         return pulumi.get(self, "period")
 
@@ -299,10 +321,22 @@ class EipAddressArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+        """
+        return pulumi.get(self, "pricing_cycle")
+
+    @pricing_cycle.setter
+    def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_cycle", value)
+
+    @property
     @pulumi.getter(name="publicIpAddressPoolId")
     def public_ip_address_pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        The ID of the IP address pool to which the EIP belongs.
         """
         return pulumi.get(self, "public_ip_address_pool_id")
 
@@ -326,7 +360,9 @@ class EipAddressArgs:
     @pulumi.getter(name="securityProtectionTypes")
     def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+        Security protection level.
+        - When the return is empty, the basic DDoS protection is specified.
+        - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
         """
         return pulumi.get(self, "security_protection_types")
 
@@ -338,13 +374,27 @@ class EipAddressArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
@@ -354,6 +404,7 @@ class _EipAddressState:
                  address_name: Optional[pulumi.Input[str]] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
@@ -367,36 +418,50 @@ class _EipAddressState:
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EipAddress resources.
-        :param pulumi.Input[str] activity_id: The activity id.
+        :param pulumi.Input[str] activity_id: Special activity ID. This parameter is not required.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
-        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+        :param pulumi.Input[str] create_time: The time when the EIP was created.
+        :param pulumi.Input[bool] deletion_protection: Whether the delete protection function is turned on.
+               - **true**: enabled.
+               - **false**: not enabled.
         :param pulumi.Input[str] description: The description of the EIP.
-        :param pulumi.Input[str] high_definition_monitor_log_status: The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
-        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
-        :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
-               Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
-        :param pulumi.Input[str] ip_address: The address of the EIP.
+        :param pulumi.Input[str] high_definition_monitor_log_status: Whether the second-level monitoring is enabled for the EIP.
+               - **OFF**: not enabled.
+               - **ON**: enabled.
+        :param pulumi.Input[str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        :param pulumi.Input[str] internet_charge_type: Renewal Payment type.
+               - **PayByBandwidth**: billed by fixed bandwidth.
+               - **PayByTraffic**: Billing by traffic.
+        :param pulumi.Input[str] ip_address: The IP address of the EIP.
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
-        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+        :param pulumi.Input[int] period: When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+        :param pulumi.Input[str] pricing_cycle: Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool to which the EIP belongs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
-        :param pulumi.Input[str] status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
+               - When the return is empty, the basic DDoS protection is specified.
+               - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+        :param pulumi.Input[str] status: The status of the EIP.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[str] zone: The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if activity_id is not None:
             pulumi.set(__self__, "activity_id", activity_id)
@@ -406,6 +471,8 @@ class _EipAddressState:
             pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -413,8 +480,8 @@ class _EipAddressState:
         if high_definition_monitor_log_status is not None:
             pulumi.set(__self__, "high_definition_monitor_log_status", high_definition_monitor_log_status)
         if instance_charge_type is not None:
-            warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
-            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
+            warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
@@ -428,8 +495,8 @@ class _EipAddressState:
         if log_store is not None:
             pulumi.set(__self__, "log_store", log_store)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if netmode is not None:
@@ -438,6 +505,8 @@ class _EipAddressState:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if pricing_cycle is not None:
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if public_ip_address_pool_id is not None:
             pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
         if resource_group_id is not None:
@@ -448,12 +517,14 @@ class _EipAddressState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="activityId")
     def activity_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The activity id.
+        Special activity ID. This parameter is not required.
         """
         return pulumi.get(self, "activity_id")
 
@@ -498,10 +569,24 @@ class _EipAddressState:
         pulumi.set(self, "bandwidth", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the EIP was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether enable the deletion protection or not. Default value: `false`.
+        Whether the delete protection function is turned on.
+        - **true**: enabled.
+        - **false**: not enabled.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -525,7 +610,9 @@ class _EipAddressState:
     @pulumi.getter(name="highDefinitionMonitorLogStatus")
     def high_definition_monitor_log_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        Whether the second-level monitoring is enabled for the EIP.
+        - **OFF**: not enabled.
+        - **ON**: enabled.
         """
         return pulumi.get(self, "high_definition_monitor_log_status")
 
@@ -537,7 +624,7 @@ class _EipAddressState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+        . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -549,8 +636,9 @@ class _EipAddressState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The metering method of the EIP. 
-        Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        Renewal Payment type.
+        - **PayByBandwidth**: billed by fixed bandwidth.
+        - **PayByTraffic**: Billing by traffic.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -562,7 +650,7 @@ class _EipAddressState:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The address of the EIP.
+        The IP address of the EIP.
         """
         return pulumi.get(self, "ip_address")
 
@@ -610,7 +698,7 @@ class _EipAddressState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         """
         return pulumi.get(self, "name")
 
@@ -634,7 +722,7 @@ class _EipAddressState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -646,7 +734,7 @@ class _EipAddressState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
         """
         return pulumi.get(self, "period")
 
@@ -655,10 +743,22 @@ class _EipAddressState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+        """
+        return pulumi.get(self, "pricing_cycle")
+
+    @pricing_cycle.setter
+    def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_cycle", value)
+
+    @property
     @pulumi.getter(name="publicIpAddressPoolId")
     def public_ip_address_pool_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        The ID of the IP address pool to which the EIP belongs.
         """
         return pulumi.get(self, "public_ip_address_pool_id")
 
@@ -682,7 +782,9 @@ class _EipAddressState:
     @pulumi.getter(name="securityProtectionTypes")
     def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+        Security protection level.
+        - When the return is empty, the basic DDoS protection is specified.
+        - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
         """
         return pulumi.get(self, "security_protection_types")
 
@@ -694,7 +796,7 @@ class _EipAddressState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
+        The status of the EIP.
         """
         return pulumi.get(self, "status")
 
@@ -706,13 +808,27 @@ class _EipAddressState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class EipAddress(pulumi.CustomResource):
@@ -736,38 +852,14 @@ class EipAddress(pulumi.CustomResource):
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a EIP Address resource.
-
-        For information about EIP Address and how to use it, see [What is EIP Address](https://www.alibabacloud.com/help/en/doc-detail/36016.htm).
-
-        > **NOTE:** Available in v1.126.0+.
-
-        > **NOTE:** BGP (Multi-ISP) lines are supported in all regions. BGP (Multi-ISP) Pro lines are supported only in the China (Hong Kong) region.
-
-        > **NOTE:** The resource only supports to create `PayAsYouGo PayByTraffic`  or `Subscription PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
-        Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ecs.EipAddress("example",
-            address_name="tf-testAcc1234",
-            internet_charge_type="PayByBandwidth",
-            isp="BGP",
-            payment_type="PayAsYouGo")
-        ```
-
         ## Import
 
         EIP Address can be imported using the id, e.g.
@@ -778,27 +870,38 @@ class EipAddress(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] activity_id: The activity id.
+        :param pulumi.Input[str] activity_id: Special activity ID. This parameter is not required.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
-        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+        :param pulumi.Input[bool] deletion_protection: Whether the delete protection function is turned on.
+               - **true**: enabled.
+               - **false**: not enabled.
         :param pulumi.Input[str] description: The description of the EIP.
-        :param pulumi.Input[str] high_definition_monitor_log_status: The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
-        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
-        :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
-               Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        :param pulumi.Input[str] high_definition_monitor_log_status: Whether the second-level monitoring is enabled for the EIP.
+               - **OFF**: not enabled.
+               - **ON**: enabled.
+        :param pulumi.Input[str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        :param pulumi.Input[str] internet_charge_type: Renewal Payment type.
+               - **PayByBandwidth**: billed by fixed bandwidth.
+               - **PayByTraffic**: Billing by traffic.
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
-        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+        :param pulumi.Input[int] period: When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+        :param pulumi.Input[str] pricing_cycle: Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool to which the EIP belongs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
+               - When the return is empty, the basic DDoS protection is specified.
+               - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[str] zone: The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -807,32 +910,6 @@ class EipAddress(pulumi.CustomResource):
                  args: Optional[EipAddressArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a EIP Address resource.
-
-        For information about EIP Address and how to use it, see [What is EIP Address](https://www.alibabacloud.com/help/en/doc-detail/36016.htm).
-
-        > **NOTE:** Available in v1.126.0+.
-
-        > **NOTE:** BGP (Multi-ISP) lines are supported in all regions. BGP (Multi-ISP) Pro lines are supported only in the China (Hong Kong) region.
-
-        > **NOTE:** The resource only supports to create `PayAsYouGo PayByTraffic`  or `Subscription PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
-        Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.ecs.EipAddress("example",
-            address_name="tf-testAcc1234",
-            internet_charge_type="PayByBandwidth",
-            isp="BGP",
-            payment_type="PayAsYouGo")
-        ```
-
         ## Import
 
         EIP Address can be imported using the id, e.g.
@@ -872,10 +949,12 @@ class EipAddress(pulumi.CustomResource):
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -893,24 +972,27 @@ class EipAddress(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["high_definition_monitor_log_status"] = high_definition_monitor_log_status
             if instance_charge_type is not None and not opts.urn:
-                warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
-                pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
+                warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
+                pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
             __props__.__dict__["isp"] = isp
             __props__.__dict__["log_project"] = log_project
             __props__.__dict__["log_store"] = log_store
             if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
+                warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
             __props__.__dict__["name"] = name
             __props__.__dict__["netmode"] = netmode
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
+            __props__.__dict__["pricing_cycle"] = pricing_cycle
             __props__.__dict__["public_ip_address_pool_id"] = public_ip_address_pool_id
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_protection_types"] = security_protection_types
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["status"] = None
         super(EipAddress, __self__).__init__(
@@ -927,6 +1009,7 @@ class EipAddress(pulumi.CustomResource):
             address_name: Optional[pulumi.Input[str]] = None,
             auto_pay: Optional[pulumi.Input[bool]] = None,
             bandwidth: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
@@ -940,11 +1023,13 @@ class EipAddress(pulumi.CustomResource):
             netmode: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            pricing_cycle: Optional[pulumi.Input[str]] = None,
             public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'EipAddress':
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            zone: Optional[pulumi.Input[str]] = None) -> 'EipAddress':
         """
         Get an existing EipAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -952,29 +1037,41 @@ class EipAddress(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] activity_id: The activity id.
+        :param pulumi.Input[str] activity_id: Special activity ID. This parameter is not required.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
-        :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
+        :param pulumi.Input[str] create_time: The time when the EIP was created.
+        :param pulumi.Input[bool] deletion_protection: Whether the delete protection function is turned on.
+               - **true**: enabled.
+               - **false**: not enabled.
         :param pulumi.Input[str] description: The description of the EIP.
-        :param pulumi.Input[str] high_definition_monitor_log_status: The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
-        :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
-        :param pulumi.Input[str] internet_charge_type: The metering method of the EIP. 
-               Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
-        :param pulumi.Input[str] ip_address: The address of the EIP.
+        :param pulumi.Input[str] high_definition_monitor_log_status: Whether the second-level monitoring is enabled for the EIP.
+               - **OFF**: not enabled.
+               - **ON**: enabled.
+        :param pulumi.Input[str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        :param pulumi.Input[str] internet_charge_type: Renewal Payment type.
+               - **PayByBandwidth**: billed by fixed bandwidth.
+               - **PayByTraffic**: Billing by traffic.
+        :param pulumi.Input[str] ip_address: The IP address of the EIP.
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
-        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
-        :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
-        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
+        :param pulumi.Input[int] period: When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
+        :param pulumi.Input[str] pricing_cycle: Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+        :param pulumi.Input[str] public_ip_address_pool_id: The ID of the IP address pool to which the EIP belongs.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
-        :param pulumi.Input[str] status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
-        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_protection_types: Security protection level.
+               - When the return is empty, the basic DDoS protection is specified.
+               - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
+        :param pulumi.Input[str] status: The status of the EIP.
+        :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
+        :param pulumi.Input[str] zone: The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -984,6 +1081,7 @@ class EipAddress(pulumi.CustomResource):
         __props__.__dict__["address_name"] = address_name
         __props__.__dict__["auto_pay"] = auto_pay
         __props__.__dict__["bandwidth"] = bandwidth
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["high_definition_monitor_log_status"] = high_definition_monitor_log_status
@@ -997,18 +1095,20 @@ class EipAddress(pulumi.CustomResource):
         __props__.__dict__["netmode"] = netmode
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["pricing_cycle"] = pricing_cycle
         __props__.__dict__["public_ip_address_pool_id"] = public_ip_address_pool_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_protection_types"] = security_protection_types
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["zone"] = zone
         return EipAddress(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="activityId")
     def activity_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The activity id.
+        Special activity ID. This parameter is not required.
         """
         return pulumi.get(self, "activity_id")
 
@@ -1037,10 +1137,20 @@ class EipAddress(pulumi.CustomResource):
         return pulumi.get(self, "bandwidth")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the EIP was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[bool]:
         """
-        Whether enable the deletion protection or not. Default value: `false`.
+        Whether the delete protection function is turned on.
+        - **true**: enabled.
+        - **false**: not enabled.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -1056,7 +1166,9 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter(name="highDefinitionMonitorLogStatus")
     def high_definition_monitor_log_status(self) -> pulumi.Output[str]:
         """
-        The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        Whether the second-level monitoring is enabled for the EIP.
+        - **OFF**: not enabled.
+        - **ON**: enabled.
         """
         return pulumi.get(self, "high_definition_monitor_log_status")
 
@@ -1064,7 +1176,7 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
-        Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+        . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         """
         return pulumi.get(self, "instance_charge_type")
 
@@ -1072,8 +1184,9 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[str]:
         """
-        The metering method of the EIP. 
-        Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        Renewal Payment type.
+        - **PayByBandwidth**: billed by fixed bandwidth.
+        - **PayByTraffic**: Billing by traffic.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -1081,7 +1194,7 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[str]:
         """
-        The address of the EIP.
+        The IP address of the EIP.
         """
         return pulumi.get(self, "ip_address")
 
@@ -1113,13 +1226,13 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def netmode(self) -> pulumi.Output[Optional[str]]:
+    def netmode(self) -> pulumi.Output[str]:
         """
         The type of the network. Valid value is `public` (Internet).
         """
@@ -1129,7 +1242,7 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -1137,15 +1250,23 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         """
-        The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
         """
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> pulumi.Output[Optional[str]]:
+        """
+        Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+        """
+        return pulumi.get(self, "pricing_cycle")
 
     @property
     @pulumi.getter(name="publicIpAddressPoolId")
     def public_ip_address_pool_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        The ID of the IP address pool to which the EIP belongs.
         """
         return pulumi.get(self, "public_ip_address_pool_id")
 
@@ -1161,7 +1282,9 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter(name="securityProtectionTypes")
     def security_protection_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+        Security protection level.
+        - When the return is empty, the basic DDoS protection is specified.
+        - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
         """
         return pulumi.get(self, "security_protection_types")
 
@@ -1169,7 +1292,7 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
+        The status of the EIP.
         """
         return pulumi.get(self, "status")
 
@@ -1177,7 +1300,17 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        A mapping of tags to assign to the resource.
+        The tag of the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        """
+        The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "zone")
 

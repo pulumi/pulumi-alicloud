@@ -13,6 +13,8 @@ namespace Pulumi.AliCloud.Log
     /// The project is the resource management unit in Log Service and is used to isolate and control resources.
     /// You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
     /// 
+    /// &gt; **NOTE:** Available since v1.9.5.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -22,15 +24,23 @@ namespace Pulumi.AliCloud.Log
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         Description = "created by terraform",
+    ///         Description = "terraform-example",
     ///         Tags = 
     ///         {
-    ///             { "test", "test" },
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 
@@ -44,12 +54,19 @@ namespace Pulumi.AliCloud.Log
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var examplePolicy = new AliCloud.Log.Project("examplePolicy", new()
     ///     {
-    ///         Description = "created by terraform",
+    ///         Description = "terraform-example",
     ///         Policy = @"{
     ///   ""Statement"": [
     ///     {
@@ -111,6 +128,8 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// Log project tags.
+        /// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -184,6 +203,8 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// Log project tags.
+        /// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
         /// </summary>
         public InputMap<object> Tags
         {
@@ -222,6 +243,8 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// Log project tags.
+        /// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+        /// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
         /// </summary>
         public InputMap<object> Tags
         {

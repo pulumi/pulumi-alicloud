@@ -23,9 +23,8 @@ import * as utilities from "../utilities";
  *     const example = await alicloud.cms.getAlarmContacts({
  *         ids: ["tf-testAccCmsAlarmContact"],
  *     });
- *     const first_contact = data.alicloud_cms_alarm_contacts["this"].contacts;
  *     return {
- *         "first-contact": first_contact,
+ *         "first-contact": data.alicloud_cms_alarm_contacts["this"].contacts,
  *     };
  * }
  * ```
@@ -113,9 +112,8 @@ export interface GetAlarmContactsResult {
  *     const example = await alicloud.cms.getAlarmContacts({
  *         ids: ["tf-testAccCmsAlarmContact"],
  *     });
- *     const first_contact = data.alicloud_cms_alarm_contacts["this"].contacts;
  *     return {
- *         "first-contact": first_contact,
+ *         "first-contact": data.alicloud_cms_alarm_contacts["this"].contacts,
  *     };
  * }
  * ```

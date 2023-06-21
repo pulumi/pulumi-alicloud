@@ -71,8 +71,8 @@ class InstanceArgs:
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
-               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
@@ -343,7 +343,7 @@ class InstanceArgs:
         The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         * UPGRADE: The specifications are upgraded.
         * DOWNGRADE: The specifications are downgraded.
-        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "order_type")
 
@@ -355,7 +355,7 @@ class InstanceArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -608,12 +608,12 @@ class _InstanceState:
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
-               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
@@ -895,7 +895,7 @@ class _InstanceState:
         The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         * UPGRADE: The specifications are upgraded.
         * DOWNGRADE: The specifications are downgraded.
-        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "order_type")
 
@@ -907,7 +907,7 @@ class _InstanceState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -955,7 +955,7 @@ class _InstanceState:
     @pulumi.getter(name="replicaSets")
     def replica_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]]]:
         """
-        Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+        Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
         """
         return pulumi.get(self, "replica_sets")
 
@@ -1189,7 +1189,7 @@ class Instance(pulumi.CustomResource):
         It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
         You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 
-        > **NOTE:**  Available in 1.37.0+
+        > **NOTE:** Available since v1.37.0.
 
         > **NOTE:**  The following regions don't support create Classic network MongoDB instance.
         [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -1203,21 +1203,34 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="MongoDB")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.mongodb.get_zones()
+        index = len(default_zones.zones) - 1
+        zone_id = default_zones.zones[index].id
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        example = alicloud.mongodb.Instance("example",
-            engine_version="3.4",
+            zone_id=zone_id)
+        default_instance = alicloud.mongodb.Instance("defaultInstance",
+            engine_version="4.2",
             db_instance_class="dds.mongo.mid",
             db_instance_storage=10,
             vswitch_id=default_switch.id,
             security_ip_lists=[
                 "10.168.1.12",
                 "100.69.7.112",
-            ])
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
         ```
         ## Module Support
 
@@ -1255,8 +1268,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
-               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
@@ -1286,7 +1299,7 @@ class Instance(pulumi.CustomResource):
         It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
         You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
 
-        > **NOTE:**  Available in 1.37.0+
+        > **NOTE:** Available since v1.37.0.
 
         > **NOTE:**  The following regions don't support create Classic network MongoDB instance.
         [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -1300,21 +1313,34 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="MongoDB")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.mongodb.get_zones()
+        index = len(default_zones.zones) - 1
+        zone_id = default_zones.zones[index].id
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        example = alicloud.mongodb.Instance("example",
-            engine_version="3.4",
+            zone_id=zone_id)
+        default_instance = alicloud.mongodb.Instance("defaultInstance",
+            engine_version="4.2",
             db_instance_class="dds.mongo.mid",
             db_instance_storage=10,
             vswitch_id=default_switch.id,
             security_ip_lists=[
                 "10.168.1.12",
                 "100.69.7.112",
-            ])
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
         ```
         ## Module Support
 
@@ -1503,12 +1529,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
-               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
         :param pulumi.Input[str] replica_set_name: The name of the mongo replica set
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceReplicaSetArgs']]]] replica_sets: Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
         :param pulumi.Input[int] replication_factor: Number of replica set nodes. Valid values: [1, 3, 5, 7]
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
         :param pulumi.Input[int] retention_period: Instance log backup retention days. Available in 1.42.0+.
@@ -1699,7 +1725,7 @@ class Instance(pulumi.CustomResource):
         The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         * UPGRADE: The specifications are upgraded.
         * DOWNGRADE: The specifications are downgraded.
-        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "order_type")
 
@@ -1707,7 +1733,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.InstanceParameter']]:
         """
-        Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+        Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -1739,7 +1765,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="replicaSets")
     def replica_sets(self) -> pulumi.Output[Sequence['outputs.InstanceReplicaSet']]:
         """
-        Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+        Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
         """
         return pulumi.get(self, "replica_sets")
 

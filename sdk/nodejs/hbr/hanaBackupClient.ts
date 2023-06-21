@@ -19,9 +19,58 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const exampleZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const exampleInstanceTypes = exampleZones.then(exampleZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: exampleZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const exampleImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     owners: "system",
+ * });
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.ecs.Instance("exampleInstance", {
+ *     imageId: exampleImages.then(exampleImages => exampleImages.images?.[0]?.id),
+ *     instanceType: exampleInstanceTypes.then(exampleInstanceTypes => exampleInstanceTypes.instanceTypes?.[0]?.id),
+ *     availabilityZone: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     securityGroups: [exampleSecurityGroup.id],
+ *     instanceName: "terraform-example",
+ *     internetChargeType: "PayByBandwidth",
+ *     vswitchId: exampleSwitch.id,
+ * });
+ * const exampleResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
+ * });
+ * const exampleVault = new alicloud.hbr.Vault("exampleVault", {vaultName: "terraform-example"});
+ * const exampleHanaInstance = new alicloud.hbr.HanaInstance("exampleHanaInstance", {
+ *     alertSetting: "INHERITED",
+ *     hanaName: "terraform-example",
+ *     host: "1.1.1.1",
+ *     instanceNumber: 1,
+ *     password: "YouPassword123",
+ *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?.[0]?.id),
+ *     sid: "HXE",
+ *     useSsl: false,
+ *     userName: "admin",
+ *     validateCertificate: false,
+ *     vaultId: exampleVault.id,
+ * });
  * const _default = new alicloud.hbr.HanaBackupClient("default", {
- *     vaultId: data.alicloud_hbr_vaults["default"].vaults[0].id,
- *     clientInfo: "[ { \"instanceId\": \"i-bp116lr******te9q2\", \"clusterId\": \"cl-000csy09q******9rfz9\", \"sourceTypes\": [ \"HANA\" ]  }]",
+ *     vaultId: exampleVault.id,
+ *     clientInfo: pulumi.interpolate`[ { "instanceId": "${exampleInstance.id}", "clusterId": "${exampleHanaInstance.hanaInstanceId}", "sourceTypes": [ "HANA" ]  }]`,
  *     alertSetting: "INHERITED",
  *     useHttps: true,
  * });

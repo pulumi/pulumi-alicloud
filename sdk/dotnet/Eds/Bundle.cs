@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eds
     /// <summary>
     /// Provides a ECD Bundle resource.
     /// 
-    /// For information about ECD Bundle and how to use it, see [What is Bundle](https://help.aliyun.com/document_detail/188883.html).
+    /// For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createbundle).
     /// 
-    /// &gt; **NOTE:** Available in v1.170.0+.
+    /// &gt; **NOTE:** Available since v1.170.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,6 +28,8 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultImages = AliCloud.Eds.GetImages.Invoke(new()
     ///     {
     ///         ImageType = "SYSTEM",
@@ -44,9 +46,9 @@ namespace Pulumi.AliCloud.Eds
     /// 
     ///     var defaultBundle = new AliCloud.Eds.Bundle("defaultBundle", new()
     ///     {
-    ///         Description = @var.Name,
+    ///         Description = name,
     ///         DesktopType = defaultDesktopTypes.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Ids[0]),
-    ///         BundleName = @var.Name,
+    ///         BundleName = name,
     ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
     ///         UserDiskSizeGibs = new[]
     ///         {

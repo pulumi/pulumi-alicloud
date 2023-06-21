@@ -13,9 +13,9 @@ import (
 
 // Provides an Alicloud Function Compute custom domain resource.
 //
-//	For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/90759.htm).
+//	For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createcustomdomain).
 //
-// > **NOTE:** Available in 1.98.0+
+// > **NOTE:** Available since v1.98.0.
 //
 // ## Example Usage
 //
@@ -29,46 +29,86 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-testaccalicloudfcservice"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+//				Project: defaultProject.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//				Document:    pulumi.String("  {\n      \"Statement\": [\n        {\n          \"Action\": \"sts:AssumeRole\",\n          \"Effect\": \"Allow\",\n          \"Principal\": {\n            \"Service\": [\n              \"fc.aliyuncs.com\"\n            ]\n          }\n        }\n      ],\n      \"Version\": \"1\"\n  }\n"),
+//				Description: pulumi.String("this is a example"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewRolePolicyAttachment(ctx, "defaultRolePolicyAttachment", &ram.RolePolicyAttachmentArgs{
+//				RoleName:   defaultRole.Name,
+//				PolicyName: pulumi.String("AliyunLogFullAccess"),
+//				PolicyType: pulumi.String("System"),
+//			})
+//			if err != nil {
+//				return err
 //			}
 //			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
-//				Description: pulumi.String(fmt.Sprintf("%v-description", name)),
+//				Description: pulumi.String("example-value"),
+//				Role:        defaultRole.Arn,
+//				LogConfig: &fc.ServiceLogConfigArgs{
+//					Project:               defaultProject.Name,
+//					Logstore:              defaultStore.Name,
+//					EnableInstanceMetrics: pulumi.Bool(true),
+//					EnableRequestMetrics:  pulumi.Bool(true),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-//				Bucket: pulumi.String(name),
+//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
 //				Bucket:  defaultBucket.ID(),
-//				Key:     pulumi.String("fc/hello.zip"),
-//				Content: pulumi.String("		# -*- coding: utf-8 -*-\n	def handler(event, context):\n		print \"hello world\"\n		return 'hello world'\n"),
+//				Key:     pulumi.String("index.py"),
+//				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultFunction, err := fc.NewFunction(ctx, "defaultFunction", &fc.FunctionArgs{
-//				Service:    defaultService.Name,
-//				OssBucket:  defaultBucket.ID(),
-//				OssKey:     defaultBucketObject.Key,
-//				MemorySize: pulumi.Int(512),
-//				Runtime:    pulumi.String("python2.7"),
-//				Handler:    pulumi.String("hello.handler"),
+//				Service:     defaultService.Name,
+//				Description: pulumi.String("example"),
+//				OssBucket:   defaultBucket.ID(),
+//				OssKey:      defaultBucketObject.Key,
+//				MemorySize:  pulumi.Int(512),
+//				Runtime:     pulumi.String("python2.7"),
+//				Handler:     pulumi.String("hello.handler"),
 //			})
 //			if err != nil {
 //				return err
@@ -81,7 +121,7 @@ import (
 //						Path:         pulumi.String("/login/*"),
 //						ServiceName:  defaultService.Name,
 //						FunctionName: defaultFunction.Name,
-//						Qualifier:    pulumi.String("v1"),
+//						Qualifier:    pulumi.String("?query"),
 //						Methods: pulumi.StringArray{
 //							pulumi.String("GET"),
 //							pulumi.String("POST"),
@@ -89,9 +129,9 @@ import (
 //					},
 //				},
 //				CertConfig: &fc.CustomDomainCertConfigArgs{
-//					CertName:    pulumi.String("your certificate name"),
-//					PrivateKey:  pulumi.String("your private key"),
-//					Certificate: pulumi.String("your certificate data"),
+//					CertName:    pulumi.String("example"),
+//					Certificate: pulumi.String("-----BEGIN CERTIFICATE-----\nMIICWD****-----END CERTIFICATE-----"),
+//					PrivateKey:  pulumi.String("-----BEGIN RSA PRIVATE KEY-----\nMIICX****n-----END RSA PRIVATE KEY-----"),
 //				},
 //			})
 //			if err != nil {
@@ -119,9 +159,7 @@ type CustomDomain struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The api version of Function Compute.
 	ApiVersion pulumi.StringOutput `pulumi:"apiVersion"`
-	// The configuration of HTTPS certificate.
-	//
-	// **route_config** includes the following arguments:
+	// The configuration of HTTPS certificate.See `certConfig` below.
 	CertConfig CustomDomainCertConfigPtrOutput `pulumi:"certConfig"`
 	// The date this resource was created.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
@@ -131,7 +169,7 @@ type CustomDomain struct {
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The protocol, `HTTP` or `HTTP,HTTPS`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// The configuration of domain route, mapping the path and Function Compute function.
+	// The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
 	RouteConfigs CustomDomainRouteConfigArrayOutput `pulumi:"routeConfigs"`
 }
 
@@ -174,9 +212,7 @@ type customDomainState struct {
 	AccountId *string `pulumi:"accountId"`
 	// The api version of Function Compute.
 	ApiVersion *string `pulumi:"apiVersion"`
-	// The configuration of HTTPS certificate.
-	//
-	// **route_config** includes the following arguments:
+	// The configuration of HTTPS certificate.See `certConfig` below.
 	CertConfig *CustomDomainCertConfig `pulumi:"certConfig"`
 	// The date this resource was created.
 	CreatedTime *string `pulumi:"createdTime"`
@@ -186,7 +222,7 @@ type customDomainState struct {
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The protocol, `HTTP` or `HTTP,HTTPS`.
 	Protocol *string `pulumi:"protocol"`
-	// The configuration of domain route, mapping the path and Function Compute function.
+	// The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
 	RouteConfigs []CustomDomainRouteConfig `pulumi:"routeConfigs"`
 }
 
@@ -195,9 +231,7 @@ type CustomDomainState struct {
 	AccountId pulumi.StringPtrInput
 	// The api version of Function Compute.
 	ApiVersion pulumi.StringPtrInput
-	// The configuration of HTTPS certificate.
-	//
-	// **route_config** includes the following arguments:
+	// The configuration of HTTPS certificate.See `certConfig` below.
 	CertConfig CustomDomainCertConfigPtrInput
 	// The date this resource was created.
 	CreatedTime pulumi.StringPtrInput
@@ -207,7 +241,7 @@ type CustomDomainState struct {
 	LastModifiedTime pulumi.StringPtrInput
 	// The protocol, `HTTP` or `HTTP,HTTPS`.
 	Protocol pulumi.StringPtrInput
-	// The configuration of domain route, mapping the path and Function Compute function.
+	// The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
 	RouteConfigs CustomDomainRouteConfigArrayInput
 }
 
@@ -216,29 +250,25 @@ func (CustomDomainState) ElementType() reflect.Type {
 }
 
 type customDomainArgs struct {
-	// The configuration of HTTPS certificate.
-	//
-	// **route_config** includes the following arguments:
+	// The configuration of HTTPS certificate.See `certConfig` below.
 	CertConfig *CustomDomainCertConfig `pulumi:"certConfig"`
 	// The custom domain name. For example, "example.com".
 	DomainName string `pulumi:"domainName"`
 	// The protocol, `HTTP` or `HTTP,HTTPS`.
 	Protocol string `pulumi:"protocol"`
-	// The configuration of domain route, mapping the path and Function Compute function.
+	// The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
 	RouteConfigs []CustomDomainRouteConfig `pulumi:"routeConfigs"`
 }
 
 // The set of arguments for constructing a CustomDomain resource.
 type CustomDomainArgs struct {
-	// The configuration of HTTPS certificate.
-	//
-	// **route_config** includes the following arguments:
+	// The configuration of HTTPS certificate.See `certConfig` below.
 	CertConfig CustomDomainCertConfigPtrInput
 	// The custom domain name. For example, "example.com".
 	DomainName pulumi.StringInput
 	// The protocol, `HTTP` or `HTTP,HTTPS`.
 	Protocol pulumi.StringInput
-	// The configuration of domain route, mapping the path and Function Compute function.
+	// The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
 	RouteConfigs CustomDomainRouteConfigArrayInput
 }
 
@@ -339,9 +369,7 @@ func (o CustomDomainOutput) ApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
 }
 
-// The configuration of HTTPS certificate.
-//
-// **route_config** includes the following arguments:
+// The configuration of HTTPS certificate.See `certConfig` below.
 func (o CustomDomainOutput) CertConfig() CustomDomainCertConfigPtrOutput {
 	return o.ApplyT(func(v *CustomDomain) CustomDomainCertConfigPtrOutput { return v.CertConfig }).(CustomDomainCertConfigPtrOutput)
 }
@@ -366,7 +394,7 @@ func (o CustomDomainOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDomain) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The configuration of domain route, mapping the path and Function Compute function.
+// The configuration of domain route, mapping the path and Function Compute function.See `routeConfig` below.
 func (o CustomDomainOutput) RouteConfigs() CustomDomainRouteConfigArrayOutput {
 	return o.ApplyT(func(v *CustomDomain) CustomDomainRouteConfigArrayOutput { return v.RouteConfigs }).(CustomDomainRouteConfigArrayOutput)
 }

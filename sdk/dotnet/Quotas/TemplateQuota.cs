@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Quotas
     /// <summary>
     /// Provides a Quotas Template Quota resource.
     /// 
-    /// For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://help.aliyun.com/document_detail/450615.html).
+    /// For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createtemplatequotaitem).
     /// 
-    /// &gt; **NOTE:** Available in v1.206.0+.
+    /// &gt; **NOTE:** Available since v1.206.0.
     /// 
     /// ## Example Usage
     /// 
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Quotas
         public Output<double> DesireValue { get; private set; } = null!;
 
         /// <summary>
-        /// The Quota Dimensions. See the following `Block Dimensions`.
+        /// The Quota Dimensions. See `dimensions` below.
         /// </summary>
         [Output("dimensions")]
         public Output<ImmutableArray<Outputs.TemplateQuotaDimension>> Dimensions { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.TemplateQuotaDimensionArgs>? _dimensions;
 
         /// <summary>
-        /// The Quota Dimensions. See the following `Block Dimensions`.
+        /// The Quota Dimensions. See `dimensions` below.
         /// </summary>
         public InputList<Inputs.TemplateQuotaDimensionArgs> Dimensions
         {
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.Quotas
         private InputList<Inputs.TemplateQuotaDimensionGetArgs>? _dimensions;
 
         /// <summary>
-        /// The Quota Dimensions. See the following `Block Dimensions`.
+        /// The Quota Dimensions. See `dimensions` below.
         /// </summary>
         public InputList<Inputs.TemplateQuotaDimensionGetArgs> Dimensions
         {

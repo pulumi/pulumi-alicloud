@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Global Accelerator (GA) Custom Routing Endpoint Traffic Policy and how to use it, see [What is Custom Routing Endpoint Traffic Policy](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointtrafficpolicies).
  *
- * > **NOTE:** Available in v1.197.0+.
+ * > **NOTE:** Available since v1.197.0.
  *
  * ## Example Usage
  *
@@ -21,12 +21,71 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ga.CustomRoutingEndpointTrafficPolicy("default", {
- *     address: "192.168.192.2",
- *     endpointId: "your_custom_routing_endpoint_id",
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
+ * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ *     duration: 1,
+ *     autoUseCoupon: true,
+ *     spec: "1",
+ * });
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ *     bandwidth: 100,
+ *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     paymentType: "PayAsYouGo",
+ *     billingType: "PayBy95",
+ *     ratio: 30,
+ * });
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ *     acceleratorId: defaultAccelerator.id,
+ *     bandwidthPackageId: defaultBandwidthPackage.id,
+ * });
+ * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
+ *     listenerType: "CustomRouting",
  *     portRanges: [{
- *         fromPort: 10001,
- *         toPort: 10002,
+ *         fromPort: 10000,
+ *         toPort: 16000,
+ *     }],
+ * });
+ * const defaultCustomRoutingEndpointGroup = new alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", {
+ *     acceleratorId: defaultListener.acceleratorId,
+ *     listenerId: defaultListener.id,
+ *     endpointGroupRegion: region,
+ *     customRoutingEndpointGroupName: "terraform-example",
+ *     description: "terraform-example",
+ * });
+ * const defaultCustomRoutingEndpoint = new alicloud.ga.CustomRoutingEndpoint("defaultCustomRoutingEndpoint", {
+ *     endpointGroupId: defaultCustomRoutingEndpointGroup.id,
+ *     endpoint: defaultSwitch.id,
+ *     type: "PrivateSubNet",
+ *     trafficToEndpointPolicy: "AllowCustom",
+ * });
+ * const defaultCustomRoutingEndpointGroupDestination = new alicloud.ga.CustomRoutingEndpointGroupDestination("defaultCustomRoutingEndpointGroupDestination", {
+ *     endpointGroupId: defaultCustomRoutingEndpointGroup.id,
+ *     protocols: ["TCP"],
+ *     fromPort: 1,
+ *     toPort: 10,
+ * });
+ * const defaultCustomRoutingEndpointTrafficPolicy = new alicloud.ga.CustomRoutingEndpointTrafficPolicy("defaultCustomRoutingEndpointTrafficPolicy", {
+ *     endpointId: defaultCustomRoutingEndpoint.customRoutingEndpointId,
+ *     address: "172.17.3.0",
+ *     portRanges: [{
+ *         fromPort: 1,
+ *         toPort: 10,
  *     }],
  * });
  * ```
@@ -92,7 +151,7 @@ export class CustomRoutingEndpointTrafficPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly listenerId!: pulumi.Output<string>;
     /**
-     * Port rangeSee the following. See the following `Block portRanges`.
+     * Port rangeSee the following. See `portRanges` below.
      */
     public readonly portRanges!: pulumi.Output<outputs.ga.CustomRoutingEndpointTrafficPolicyPortRange[] | undefined>;
     /**
@@ -172,7 +231,7 @@ export interface CustomRoutingEndpointTrafficPolicyState {
      */
     listenerId?: pulumi.Input<string>;
     /**
-     * Port rangeSee the following. See the following `Block portRanges`.
+     * Port rangeSee the following. See `portRanges` below.
      */
     portRanges?: pulumi.Input<pulumi.Input<inputs.ga.CustomRoutingEndpointTrafficPolicyPortRange>[]>;
     /**
@@ -194,7 +253,7 @@ export interface CustomRoutingEndpointTrafficPolicyArgs {
      */
     endpointId: pulumi.Input<string>;
     /**
-     * Port rangeSee the following. See the following `Block portRanges`.
+     * Port rangeSee the following. See `portRanges` below.
      */
     portRanges?: pulumi.Input<pulumi.Input<inputs.ga.CustomRoutingEndpointTrafficPolicyPortRange>[]>;
 }

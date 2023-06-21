@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECD Bundle resource.
  *
- * For information about ECD Bundle and how to use it, see [What is Bundle](https://help.aliyun.com/document_detail/188883.html).
+ * For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createbundle).
  *
- * > **NOTE:** Available in v1.170.0+.
+ * > **NOTE:** Available since v1.170.0.
  *
  * ## Example Usage
  *
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const defaultImages = alicloud.eds.getImages({
  *     imageType: "SYSTEM",
  *     osType: "Windows",
@@ -30,9 +32,9 @@ import * as utilities from "../utilities";
  *     memorySize: 8192,
  * });
  * const defaultBundle = new alicloud.eds.Bundle("defaultBundle", {
- *     description: _var.name,
+ *     description: name,
  *     desktopType: defaultDesktopTypes.then(defaultDesktopTypes => defaultDesktopTypes.ids?.[0]),
- *     bundleName: _var.name,
+ *     bundleName: name,
  *     imageId: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
  *     userDiskSizeGibs: [70],
  *     rootDiskSizeGib: 80,

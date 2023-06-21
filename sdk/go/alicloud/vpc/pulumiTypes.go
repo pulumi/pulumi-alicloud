@@ -11,10 +11,10 @@ import (
 )
 
 type DhcpOptionsSetAssociateVpc struct {
-	// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+	// The status of the VPC associated with the DHCP option set.
 	AssociateStatus *string `pulumi:"associateStatus"`
 	// The ID of the VPC network that is associated with the DHCP options set.
-	VpcId *string `pulumi:"vpcId"`
+	VpcId string `pulumi:"vpcId"`
 }
 
 // DhcpOptionsSetAssociateVpcInput is an input type that accepts DhcpOptionsSetAssociateVpcArgs and DhcpOptionsSetAssociateVpcOutput values.
@@ -29,10 +29,10 @@ type DhcpOptionsSetAssociateVpcInput interface {
 }
 
 type DhcpOptionsSetAssociateVpcArgs struct {
-	// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+	// The status of the VPC associated with the DHCP option set.
 	AssociateStatus pulumi.StringPtrInput `pulumi:"associateStatus"`
 	// The ID of the VPC network that is associated with the DHCP options set.
-	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
 func (DhcpOptionsSetAssociateVpcArgs) ElementType() reflect.Type {
@@ -86,14 +86,14 @@ func (o DhcpOptionsSetAssociateVpcOutput) ToDhcpOptionsSetAssociateVpcOutputWith
 	return o
 }
 
-// The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+// The status of the VPC associated with the DHCP option set.
 func (o DhcpOptionsSetAssociateVpcOutput) AssociateStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DhcpOptionsSetAssociateVpc) *string { return v.AssociateStatus }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the VPC network that is associated with the DHCP options set.
-func (o DhcpOptionsSetAssociateVpcOutput) VpcId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DhcpOptionsSetAssociateVpc) *string { return v.VpcId }).(pulumi.StringPtrOutput)
+func (o DhcpOptionsSetAssociateVpcOutput) VpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v DhcpOptionsSetAssociateVpc) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
 type DhcpOptionsSetAssociateVpcArrayOutput struct{ *pulumi.OutputState }

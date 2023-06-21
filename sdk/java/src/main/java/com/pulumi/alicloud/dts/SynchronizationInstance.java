@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about DTS Synchronization Instance and how to use it, see [What is Synchronization Instance](https://www.alibabacloud.com/help/en/doc-detail/130744.html).
  * 
- * &gt; **NOTE:** Available in v1.138.0+.
+ * &gt; **NOTE:** Available since v1.138.0.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.dts.SynchronizationInstance;
  * import com.pulumi.alicloud.dts.SynchronizationInstanceArgs;
  * import java.util.List;
@@ -46,13 +48,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SynchronizationInstance(&#34;default&#34;, SynchronizationInstanceArgs.builder()        
- *             .destinationEndpointEngineName(&#34;ADB30&#34;)
- *             .destinationEndpointRegion(&#34;cn-hangzhou&#34;)
- *             .instanceClass(&#34;small&#34;)
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         var defaultSynchronizationInstance = new SynchronizationInstance(&#34;defaultSynchronizationInstance&#34;, SynchronizationInstanceArgs.builder()        
  *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .sourceEndpointEngineName(&#34;PolarDB&#34;)
- *             .sourceEndpointRegion(&#34;cn-hangzhou&#34;)
+ *             .sourceEndpointEngineName(&#34;MySQL&#34;)
+ *             .sourceEndpointRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .destinationEndpointEngineName(&#34;MySQL&#34;)
+ *             .destinationEndpointRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .instanceClass(&#34;small&#34;)
  *             .syncArchitecture(&#34;oneway&#34;)
  *             .build());
  * 

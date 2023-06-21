@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.121.0+.
+ * > **NOTE:** Available since v1.121.0.
  *
  * ## Example Usage
  *
@@ -78,7 +78,7 @@ export interface GetDBClustersArgs {
      */
     status?: string;
     /**
-     * The tag of the resource.
+     * A map of tags assigned to the cluster.
      */
     tags?: {[key: string]: any};
 }
@@ -87,9 +87,18 @@ export interface GetDBClustersArgs {
  * A collection of values returned by getDBClusters.
  */
 export interface GetDBClustersResult {
+    /**
+     * A list of Adb Db Clusters. Each element contains the following attributes:
+     */
     readonly clusters: outputs.adb.GetDBClustersCluster[];
+    /**
+     * The description of DBCluster.
+     */
     readonly description?: string;
     readonly descriptionRegex?: string;
+    /**
+     * A list of DBCluster descriptions.
+     */
     readonly descriptions: string[];
     readonly enableDetails?: boolean;
     /**
@@ -100,15 +109,24 @@ export interface GetDBClustersResult {
     readonly outputFile?: string;
     readonly pageNumber?: number;
     readonly pageSize?: number;
+    /**
+     * The ID of the resource group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
+    /**
+     * The tags of the resource.
+     */
     readonly tags?: {[key: string]: any};
     readonly totalCount: number;
 }
 /**
  * This data source provides the Adb DBClusters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.121.0+.
+ * > **NOTE:** Available since v1.121.0.
  *
  * ## Example Usage
  *
@@ -163,7 +181,7 @@ export interface GetDBClustersOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * A map of tags assigned to the cluster.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

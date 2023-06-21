@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Global Accelerator (GA) Additional Certificate and how to use it, see [What is Additional Certificate](https://www.alibabacloud.com/help/en/doc-detail/302356.html).
  * 
- * &gt; **NOTE:** Available in v1.150.0+.
+ * &gt; **NOTE:** Available since v1.150.0.
  * 
  * ## Import
  * 

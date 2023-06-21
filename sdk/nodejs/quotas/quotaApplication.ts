@@ -67,7 +67,7 @@ export class QuotaApplication extends pulumi.CustomResource {
      */
     public readonly desireValue!: pulumi.Output<number>;
     /**
-     * QuotaDimensions. See the following `Block Dimensions`.
+     * QuotaDimensions. See `dimensions` below.
      */
     public readonly dimensions!: pulumi.Output<outputs.quotas.QuotaApplicationDimension[] | undefined>;
     /**
@@ -225,7 +225,7 @@ export interface QuotaApplicationState {
      */
     desireValue?: pulumi.Input<number>;
     /**
-     * QuotaDimensions. See the following `Block Dimensions`.
+     * QuotaDimensions. See `dimensions` below.
      */
     dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaApplicationDimension>[]>;
     /**
@@ -303,7 +303,7 @@ export interface QuotaApplicationArgs {
      */
     desireValue: pulumi.Input<number>;
     /**
-     * QuotaDimensions. See the following `Block Dimensions`.
+     * QuotaDimensions. See `dimensions` below.
      */
     dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.QuotaApplicationDimension>[]>;
     /**

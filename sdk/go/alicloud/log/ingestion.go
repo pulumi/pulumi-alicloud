@@ -26,16 +26,25 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-//				Description: pulumi.String("created by terraform"),
+//				Description: pulumi.String("terraform-example"),
 //				Tags: pulumi.AnyMap{
-//					"test": pulumi.Any("test"),
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
@@ -55,9 +64,9 @@ import (
 //			_, err = log.NewIngestion(ctx, "exampleIngestion", &log.IngestionArgs{
 //				Project:        exampleProject.Name,
 //				Logstore:       exampleStore.Name,
-//				IngestionName:  pulumi.String("ingestion_name"),
-//				DisplayName:    pulumi.String("display_name"),
-//				Description:    pulumi.String("oss2sls"),
+//				IngestionName:  pulumi.String("terraform-example"),
+//				DisplayName:    pulumi.String("terraform-example"),
+//				Description:    pulumi.String("terraform-example"),
 //				Interval:       pulumi.String("30m"),
 //				RunImmediately: pulumi.Bool(true),
 //				TimeZone:       pulumi.String("+0800"),

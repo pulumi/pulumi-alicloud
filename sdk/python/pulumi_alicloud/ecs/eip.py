@@ -30,10 +30,12 @@ class EipArgs:
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Eip resource.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
@@ -67,8 +69,8 @@ class EipArgs:
         if high_definition_monitor_log_status is not None:
             pulumi.set(__self__, "high_definition_monitor_log_status", high_definition_monitor_log_status)
         if instance_charge_type is not None:
-            warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
-            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
+            warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
@@ -80,8 +82,8 @@ class EipArgs:
         if log_store is not None:
             pulumi.set(__self__, "log_store", log_store)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if netmode is not None:
@@ -90,6 +92,8 @@ class EipArgs:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if pricing_cycle is not None:
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if public_ip_address_pool_id is not None:
             pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
         if resource_group_id is not None:
@@ -98,6 +102,8 @@ class EipArgs:
             pulumi.set(__self__, "security_protection_types", security_protection_types)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="activityId")
@@ -277,6 +283,15 @@ class EipArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pricing_cycle")
+
+    @pricing_cycle.setter
+    def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_cycle", value)
+
+    @property
     @pulumi.getter(name="publicIpAddressPoolId")
     def public_ip_address_pool_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "public_ip_address_pool_id")
@@ -318,6 +333,15 @@ class EipArgs:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 @pulumi.input_type
 class _EipState:
@@ -326,6 +350,7 @@ class _EipState:
                  address_name: Optional[pulumi.Input[str]] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
@@ -339,11 +364,13 @@ class _EipState:
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Eip resources.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
@@ -372,6 +399,8 @@ class _EipState:
             pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -379,8 +408,8 @@ class _EipState:
         if high_definition_monitor_log_status is not None:
             pulumi.set(__self__, "high_definition_monitor_log_status", high_definition_monitor_log_status)
         if instance_charge_type is not None:
-            warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
-            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
+            warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
@@ -394,8 +423,8 @@ class _EipState:
         if log_store is not None:
             pulumi.set(__self__, "log_store", log_store)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if netmode is not None:
@@ -404,6 +433,8 @@ class _EipState:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if pricing_cycle is not None:
+            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if public_ip_address_pool_id is not None:
             pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
         if resource_group_id is not None:
@@ -414,6 +445,8 @@ class _EipState:
             pulumi.set(__self__, "status", status)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="activityId")
@@ -456,6 +489,15 @@ class _EipState:
     @bandwidth.setter
     def bandwidth(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -605,6 +647,15 @@ class _EipState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pricing_cycle")
+
+    @pricing_cycle.setter
+    def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pricing_cycle", value)
+
+    @property
     @pulumi.getter(name="publicIpAddressPoolId")
     def public_ip_address_pool_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "public_ip_address_pool_id")
@@ -658,6 +709,15 @@ class _EipState:
     def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 warnings.warn("""This resource has been deprecated in favour of the EipAddress resource""", DeprecationWarning)
 
@@ -685,10 +745,12 @@ class Eip(pulumi.CustomResource):
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides an elastic IP resource.
@@ -813,10 +875,12 @@ class Eip(pulumi.CustomResource):
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         pulumi.log.warn("""Eip is deprecated: This resource has been deprecated in favour of the EipAddress resource""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -835,24 +899,27 @@ class Eip(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["high_definition_monitor_log_status"] = high_definition_monitor_log_status
             if instance_charge_type is not None and not opts.urn:
-                warnings.warn("""Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
-                pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
+                warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
+                pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
             __props__.__dict__["isp"] = isp
             __props__.__dict__["log_project"] = log_project
             __props__.__dict__["log_store"] = log_store
             if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead.""")
+                warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
             __props__.__dict__["name"] = name
             __props__.__dict__["netmode"] = netmode
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
+            __props__.__dict__["pricing_cycle"] = pricing_cycle
             __props__.__dict__["public_ip_address_pool_id"] = public_ip_address_pool_id
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["security_protection_types"] = security_protection_types
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["zone"] = zone
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["status"] = None
         super(Eip, __self__).__init__(
@@ -869,6 +936,7 @@ class Eip(pulumi.CustomResource):
             address_name: Optional[pulumi.Input[str]] = None,
             auto_pay: Optional[pulumi.Input[bool]] = None,
             bandwidth: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             high_definition_monitor_log_status: Optional[pulumi.Input[str]] = None,
@@ -882,11 +950,13 @@ class Eip(pulumi.CustomResource):
             netmode: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            pricing_cycle: Optional[pulumi.Input[str]] = None,
             public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Eip':
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            zone: Optional[pulumi.Input[str]] = None) -> 'Eip':
         """
         Get an existing Eip resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -920,6 +990,7 @@ class Eip(pulumi.CustomResource):
         __props__.__dict__["address_name"] = address_name
         __props__.__dict__["auto_pay"] = auto_pay
         __props__.__dict__["bandwidth"] = bandwidth
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["high_definition_monitor_log_status"] = high_definition_monitor_log_status
@@ -933,11 +1004,13 @@ class Eip(pulumi.CustomResource):
         __props__.__dict__["netmode"] = netmode
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["pricing_cycle"] = pricing_cycle
         __props__.__dict__["public_ip_address_pool_id"] = public_ip_address_pool_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_protection_types"] = security_protection_types
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["zone"] = zone
         return Eip(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -965,6 +1038,11 @@ class Eip(pulumi.CustomResource):
         Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
         """
         return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -1041,7 +1119,7 @@ class Eip(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def netmode(self) -> pulumi.Output[Optional[str]]:
+    def netmode(self) -> pulumi.Output[str]:
         return pulumi.get(self, "netmode")
 
     @property
@@ -1060,6 +1138,11 @@ class Eip(pulumi.CustomResource):
         **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="pricingCycle")
+    def pricing_cycle(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "pricing_cycle")
 
     @property
     @pulumi.getter(name="publicIpAddressPoolId")
@@ -1094,4 +1177,9 @@ class Eip(pulumi.CustomResource):
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "zone")
 

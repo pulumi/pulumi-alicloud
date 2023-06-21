@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Ga
     /// <summary>
     /// Provides a Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation resource.
     /// 
-    /// For information about Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation and how to use it, see [What is Basic Accelerate Ip Endpoint Relation](https://help.aliyun.com/document_detail/466842.html).
+    /// For information about Global Accelerator (GA) Basic Accelerate Ip Endpoint Relation and how to use it, see [What is Basic Accelerate Ip Endpoint Relation](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicaccelerateipendpointrelation).
     /// 
-    /// &gt; **NOTE:** Available in v1.194.0+.
+    /// &gt; **NOTE:** Available since v1.194.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,77 +28,94 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-shenzhen";
+    ///     var endpointRegion = config.Get("endpointRegion") ?? "cn-hangzhou";
     ///     var sz = new AliCloud.Provider("sz", new()
     ///     {
-    ///         Region = "cn-shenzhen",
+    ///         Region = region,
     ///     });
     /// 
     ///     var hz = new AliCloud.Provider("hz", new()
     ///     {
-    ///         Region = "cn-hangzhou",
+    ///         Region = endpointRegion,
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         NameRegex = "your_vpc_name",
+    ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Sz,
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Sz,
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = "alicloud.sz",
+    ///         Provider = alicloud.Sz,
     ///     });
     /// 
     ///     var defaultEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("defaultEcsNetworkInterface", new()
     ///     {
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VswitchId = defaultSwitch.Id,
     ///         SecurityGroupIds = new[]
     ///         {
     ///             defaultSecurityGroup.Id,
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = "alicloud.sz",
+    ///         Provider = alicloud.Sz,
     ///     });
     /// 
     ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("defaultBasicAccelerator", new()
     ///     {
     ///         Duration = 1,
-    ///         PricingCycle = "Month",
-    ///         BasicAcceleratorName = @var.Name,
-    ///         Description = @var.Name,
+    ///         BasicAcceleratorName = "terraform-example",
+    ///         Description = "terraform-example",
     ///         BandwidthBillingType = "CDT",
-    ///         AutoPay = true,
     ///         AutoUseCoupon = "true",
-    ///         AutoRenew = false,
-    ///         AutoRenewDuration = 1,
+    ///         AutoPay = true,
     ///     });
     /// 
     ///     var defaultBasicIpSet = new AliCloud.Ga.BasicIpSet("defaultBasicIpSet", new()
     ///     {
     ///         AcceleratorId = defaultBasicAccelerator.Id,
-    ///         AccelerateRegionId = "cn-hangzhou",
+    ///         AccelerateRegionId = endpointRegion,
     ///         IspType = "BGP",
     ///         Bandwidth = 5,
     ///     });
     /// 
     ///     var defaultBasicAccelerateIp = new AliCloud.Ga.BasicAccelerateIp("defaultBasicAccelerateIp", new()
     ///     {
-    ///         AcceleratorId = defaultBasicIpSet.AcceleratorId,
+    ///         AcceleratorId = defaultBasicAccelerator.Id,
     ///         IpSetId = defaultBasicIpSet.Id,
     ///     });
     /// 
     ///     var defaultBasicEndpointGroup = new AliCloud.Ga.BasicEndpointGroup("defaultBasicEndpointGroup", new()
     ///     {
     ///         AcceleratorId = defaultBasicAccelerator.Id,
-    ///         EndpointGroupRegion = "cn-shenzhen",
+    ///         EndpointGroupRegion = region,
+    ///         BasicEndpointGroupName = "terraform-example",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var defaultBasicEndpoint = new AliCloud.Ga.BasicEndpoint("defaultBasicEndpoint", new()
@@ -109,7 +126,10 @@ namespace Pulumi.AliCloud.Ga
     ///         EndpointAddress = defaultEcsNetworkInterface.Id,
     ///         EndpointSubAddressType = "primary",
     ///         EndpointSubAddress = "192.168.0.1",
-    ///         BasicEndpointName = @var.Name,
+    ///         BasicEndpointName = "terraform-example",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
     ///     });
     /// 
     ///     var defaultBasicAccelerateIpEndpointRelation = new AliCloud.Ga.BasicAccelerateIpEndpointRelation("defaultBasicAccelerateIpEndpointRelation", new()

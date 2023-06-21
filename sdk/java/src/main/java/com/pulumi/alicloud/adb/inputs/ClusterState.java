@@ -165,11 +165,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="diskPerformanceLevel")
+    private @Nullable Output<String> diskPerformanceLevel;
+
+    public Optional<Output<String>> diskPerformanceLevel() {
+        return Optional.ofNullable(this.diskPerformanceLevel);
+    }
+
     @Import(name="elasticIoResource")
     private @Nullable Output<Integer> elasticIoResource;
 
     public Optional<Output<Integer>> elasticIoResource() {
         return Optional.ofNullable(this.elasticIoResource);
+    }
+
+    @Import(name="elasticIoResourceSize")
+    private @Nullable Output<String> elasticIoResourceSize;
+
+    public Optional<Output<String>> elasticIoResourceSize() {
+        return Optional.ofNullable(this.elasticIoResourceSize);
     }
 
     /**
@@ -386,7 +400,9 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.dbNodeCount = $.dbNodeCount;
         this.dbNodeStorage = $.dbNodeStorage;
         this.description = $.description;
+        this.diskPerformanceLevel = $.diskPerformanceLevel;
         this.elasticIoResource = $.elasticIoResource;
+        this.elasticIoResourceSize = $.elasticIoResourceSize;
         this.maintainTime = $.maintainTime;
         this.mode = $.mode;
         this.modifyType = $.modifyType;
@@ -624,6 +640,15 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        public Builder diskPerformanceLevel(@Nullable Output<String> diskPerformanceLevel) {
+            $.diskPerformanceLevel = diskPerformanceLevel;
+            return this;
+        }
+
+        public Builder diskPerformanceLevel(String diskPerformanceLevel) {
+            return diskPerformanceLevel(Output.of(diskPerformanceLevel));
+        }
+
         public Builder elasticIoResource(@Nullable Output<Integer> elasticIoResource) {
             $.elasticIoResource = elasticIoResource;
             return this;
@@ -631,6 +656,15 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder elasticIoResource(Integer elasticIoResource) {
             return elasticIoResource(Output.of(elasticIoResource));
+        }
+
+        public Builder elasticIoResourceSize(@Nullable Output<String> elasticIoResourceSize) {
+            $.elasticIoResourceSize = elasticIoResourceSize;
+            return this;
+        }
+
+        public Builder elasticIoResourceSize(String elasticIoResourceSize) {
+            return elasticIoResourceSize(Output.of(elasticIoResourceSize));
         }
 
         /**

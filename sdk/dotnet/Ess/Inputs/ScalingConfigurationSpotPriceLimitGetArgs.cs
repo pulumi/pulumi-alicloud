@@ -18,6 +18,9 @@ namespace Pulumi.AliCloud.Ess.Inputs
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
+        /// <summary>
+        /// Price limit hourly of instance type, 2 decimals is allowed at most.
+        /// </summary>
         [Input("priceLimit")]
         public Input<double>? PriceLimit { get; set; }
 
