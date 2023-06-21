@@ -3155,6 +3155,9 @@
             "alicloud_eip_association": {
                 "current": "alicloud:ecs/eipAssociation:EipAssociation"
             },
+            "alicloud_eip_segment_address": {
+                "current": "alicloud:ecs/eipSegmentAddress:EipSegmentAddress"
+            },
             "alicloud_eipanycast_anycast_eip_address": {
                 "current": "alicloud:eipanycast/anycastEipAddress:AnycastEipAddress"
             },
@@ -3782,6 +3785,9 @@
                 "fields": {
                     "certificates": {
                         "maxItemsOne": false
+                    },
+                    "forwarded_for_config": {
+                        "maxItemsOne": true
                     },
                     "port_ranges": {
                         "maxItemsOne": false
@@ -4839,6 +4845,12 @@
             "alicloud_polardb_backup_policy": {
                 "current": "alicloud:polardb/backupPolicy:BackupPolicy",
                 "fields": {
+                    "data_level1_backup_period": {
+                        "maxItemsOne": false
+                    },
+                    "data_level2_backup_period": {
+                        "maxItemsOne": false
+                    },
                     "preferred_backup_period": {
                         "maxItemsOne": false
                     }
@@ -8483,6 +8495,7 @@
             "alicloud:ecs/eip:Eip": "alicloud_eip",
             "alicloud:ecs/eipAddress:EipAddress": "alicloud_eip_address",
             "alicloud:ecs/eipAssociation:EipAssociation": "alicloud_eip_association",
+            "alicloud:ecs/eipSegmentAddress:EipSegmentAddress": "alicloud_eip_segment_address",
             "alicloud:ecs/elasticityAssurance:ElasticityAssurance": "alicloud_ecs_elasticity_assurance",
             "alicloud:ecs/hpcCluster:HpcCluster": "alicloud_ecs_hpc_cluster",
             "alicloud:ecs/image:Image": "alicloud_image",
@@ -9836,7 +9849,9 @@
                 "dbNodeClass": "db_node_class",
                 "dbNodeCount": "db_node_count",
                 "dbNodeStorage": "db_node_storage",
+                "diskPerformanceLevel": "disk_performance_level",
                 "elasticIoResource": "elastic_io_resource",
+                "elasticIoResourceSize": "elastic_io_resource_size",
                 "maintainTime": "maintain_time",
                 "modifyType": "modify_type",
                 "payType": "pay_type",
@@ -9864,7 +9879,9 @@
                 "dbNodeClass": "db_node_class",
                 "dbNodeCount": "db_node_count",
                 "dbNodeStorage": "db_node_storage",
+                "diskPerformanceLevel": "disk_performance_level",
                 "elasticIoResource": "elastic_io_resource",
+                "elasticIoResourceSize": "elastic_io_resource_size",
                 "maintainTime": "maintain_time",
                 "modifyType": "modify_type",
                 "payType": "pay_type",
@@ -18046,6 +18063,7 @@
                 "activityId": "activity_id",
                 "addressName": "address_name",
                 "autoPay": "auto_pay",
+                "createTime": "create_time",
                 "deletionProtection": "deletion_protection",
                 "highDefinitionMonitorLogStatus": "high_definition_monitor_log_status",
                 "instanceChargeType": "instance_charge_type",
@@ -18054,6 +18072,7 @@
                 "logProject": "log_project",
                 "logStore": "log_store",
                 "paymentType": "payment_type",
+                "pricingCycle": "pricing_cycle",
                 "publicIpAddressPoolId": "public_ip_address_pool_id",
                 "resourceGroupId": "resource_group_id",
                 "securityProtectionTypes": "security_protection_types"
@@ -18062,6 +18081,7 @@
                 "activityId": "activity_id",
                 "addressName": "address_name",
                 "autoPay": "auto_pay",
+                "createTime": "create_time",
                 "deletionProtection": "deletion_protection",
                 "highDefinitionMonitorLogStatus": "high_definition_monitor_log_status",
                 "instanceChargeType": "instance_charge_type",
@@ -18070,6 +18090,7 @@
                 "logProject": "log_project",
                 "logStore": "log_store",
                 "paymentType": "payment_type",
+                "pricingCycle": "pricing_cycle",
                 "publicIpAddressPoolId": "public_ip_address_pool_id",
                 "resourceGroupId": "resource_group_id",
                 "securityProtectionTypes": "security_protection_types"
@@ -18080,6 +18101,11 @@
                 "instanceType": "instance_type",
                 "privateIpAddress": "private_ip_address",
                 "vpcId": "vpc_id"
+            },
+            "alicloud:ecs/eipSegmentAddress:EipSegmentAddress": {
+                "createTime": "create_time",
+                "eipMask": "eip_mask",
+                "internetChargeType": "internet_charge_type"
             },
             "alicloud:ecs/elasticityAssurance:ElasticityAssurance": {
                 "assuranceTimes": "assurance_times",
@@ -21541,7 +21567,8 @@
             },
             "alicloud:ga/ForwardingRuleRuleAction:ForwardingRuleRuleAction": {
                 "forwardGroupConfig": "forward_group_config",
-                "ruleActionType": "rule_action_type"
+                "ruleActionType": "rule_action_type",
+                "ruleActionValue": "rule_action_value"
             },
             "alicloud:ga/ForwardingRuleRuleActionForwardGroupConfig:ForwardingRuleRuleActionForwardGroupConfig": {
                 "serverGroupTuples": "server_group_tuples"
@@ -21553,6 +21580,13 @@
                 "hostConfigs": "host_config",
                 "pathConfig": "path_config",
                 "ruleConditionType": "rule_condition_type"
+            },
+            "alicloud:ga/ListenerForwardedForConfig:ListenerForwardedForConfig": {
+                "forwardedForGaApEnabled": "forwarded_for_ga_ap_enabled",
+                "forwardedForGaIdEnabled": "forwarded_for_ga_id_enabled",
+                "forwardedForPortEnabled": "forwarded_for_port_enabled",
+                "forwardedForProtoEnabled": "forwarded_for_proto_enabled",
+                "realIpEnabled": "real_ip_enabled"
             },
             "alicloud:ga/ListenerPortRange:ListenerPortRange": {
                 "fromPort": "from_port",
@@ -22051,11 +22085,13 @@
                 "accelerateRegionId": "accelerate_region_id",
                 "acceleratorId": "accelerator_id",
                 "ipAddressLists": "ip_address_list",
-                "ipVersion": "ip_version"
+                "ipVersion": "ip_version",
+                "ispType": "isp_type"
             },
             "alicloud:ga/listener:Listener": {
                 "acceleratorId": "accelerator_id",
                 "clientAffinity": "client_affinity",
+                "forwardedForConfig": "forwarded_for_config",
                 "listenerType": "listener_type",
                 "portRanges": "port_ranges",
                 "proxyProtocol": "proxy_protocol",
@@ -23478,7 +23514,6 @@
                 "arbiterZoneId": "arbiter_zone_id",
                 "archVersion": "arch_version",
                 "coldStorage": "cold_storage",
-                "coreNum": "core_num",
                 "coreSingleStorage": "core_single_storage",
                 "coreSpec": "core_spec",
                 "deletionProection": "deletion_proection",
@@ -23518,7 +23553,6 @@
                 "timeSeriesEngineNodeCount": "time_series_engine_node_count",
                 "timeSeriesEngineSpecification": "time_series_engine_specification",
                 "timeSeriresEngineSpecification": "time_serires_engine_specification",
-                "upgradeType": "upgrade_type",
                 "vpcId": "vpc_id",
                 "vswitchId": "vswitch_id",
                 "zoneId": "zone_id"
@@ -25558,9 +25592,22 @@
                 "dbNames": "db_names"
             },
             "alicloud:polardb/backupPolicy:BackupPolicy": {
+                "backupFrequency": "backup_frequency",
                 "backupRetentionPeriod": "backup_retention_period",
                 "backupRetentionPolicyOnClusterDeletion": "backup_retention_policy_on_cluster_deletion",
+                "dataLevel1BackupFrequency": "data_level1_backup_frequency",
+                "dataLevel1BackupPeriods": "data_level1_backup_period",
+                "dataLevel1BackupRetentionPeriod": "data_level1_backup_retention_period",
+                "dataLevel1BackupTime": "data_level1_backup_time",
+                "dataLevel2BackupAnotherRegionRegion": "data_level2_backup_another_region_region",
+                "dataLevel2BackupAnotherRegionRetentionPeriod": "data_level2_backup_another_region_retention_period",
+                "dataLevel2BackupPeriods": "data_level2_backup_period",
+                "dataLevel2BackupRetentionPeriod": "data_level2_backup_retention_period",
                 "dbClusterId": "db_cluster_id",
+                "enableBackupLog": "enable_backup_log",
+                "logBackupAnotherRegionRegion": "log_backup_another_region_region",
+                "logBackupAnotherRegionRetentionPeriod": "log_backup_another_region_retention_period",
+                "logBackupRetentionPeriod": "log_backup_retention_period",
                 "preferredBackupPeriods": "preferred_backup_period",
                 "preferredBackupTime": "preferred_backup_time"
             },
@@ -26973,7 +27020,9 @@
                 "usedTime": "used_time",
                 "vpcId": "vpc_id",
                 "vswitchId": "vswitch_id",
-                "zoneId": "zone_id"
+                "zoneId": "zone_id",
+                "zoneIdSlaveA": "zone_id_slave_a",
+                "zoneIdSlaveB": "zone_id_slave_b"
             },
             "alicloud:rds/rdsDbProxy:RdsDbProxy": {
                 "dbProxyConnectStringPort": "db_proxy_connect_string_port",
@@ -27826,7 +27875,9 @@
             "alicloud:sae/IngressRule:IngressRule": {
                 "appId": "app_id",
                 "appName": "app_name",
-                "containerPort": "container_port"
+                "backendProtocol": "backend_protocol",
+                "containerPort": "container_port",
+                "rewritePath": "rewrite_path"
             },
             "alicloud:sae/LoadBalancerInternetInternet:LoadBalancerInternetInternet": {
                 "httpsCertId": "https_cert_id",
@@ -28077,8 +28128,11 @@
             },
             "alicloud:sae/ingress:Ingress": {
                 "certId": "cert_id",
+                "certIds": "cert_ids",
                 "defaultRule": "default_rule",
                 "listenerPort": "listener_port",
+                "listenerProtocol": "listener_protocol",
+                "loadBalanceType": "load_balance_type",
                 "namespaceId": "namespace_id",
                 "slbId": "slb_id"
             },
@@ -29769,8 +29823,10 @@
             },
             "alicloud:vpc/commonBandwithPackage:CommonBandwithPackage": {
                 "bandwidthPackageName": "bandwidth_package_name",
+                "createTime": "create_time",
                 "deletionProtection": "deletion_protection",
                 "internetChargeType": "internet_charge_type",
+                "paymentType": "payment_type",
                 "resourceGroupId": "resource_group_id",
                 "securityProtectionTypes": "security_protection_types"
             },
@@ -29787,7 +29843,10 @@
                 "domainName": "domain_name",
                 "domainNameServers": "domain_name_servers",
                 "dryRun": "dry_run",
-                "ownerId": "owner_id"
+                "ipv6LeaseTime": "ipv6_lease_time",
+                "leaseTime": "lease_time",
+                "ownerId": "owner_id",
+                "resourceGroupId": "resource_group_id"
             },
             "alicloud:vpc/dhcpOptionsSetAttachment:DhcpOptionsSetAttachment": {
                 "dhcpOptionsSetId": "dhcp_options_set_id",
@@ -30614,8 +30673,10 @@
                 "acceptingAliUid": "accepting_ali_uid",
                 "acceptingRegionId": "accepting_region_id",
                 "acceptingVpcId": "accepting_vpc_id",
+                "createTime": "create_time",
                 "dryRun": "dry_run",
                 "peerConnectionName": "peer_connection_name",
+                "resourceGroupId": "resource_group_id",
                 "vpcId": "vpc_id"
             },
             "alicloud:vpc/peerConnectionAccepter:PeerConnectionAccepter": {
@@ -30649,6 +30710,7 @@
             },
             "alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock": {
                 "cidrBlock": "cidr_block",
+                "createTime": "create_time",
                 "publicIpAddressPoolId": "public_ip_address_pool_id"
             },
             "alicloud:vpc/routeEntry:RouteEntry": {

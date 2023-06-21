@@ -819,6 +819,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"alicloud_eip_address":              {Tok: resource(ecsMod, "EipAddress")},
 			"alicloud_eip_association":          {Tok: resource(ecsMod, "EipAssociation")},
+			"alicloud_eip_segment_address":      {Tok: resource(ecsMod, "EipSegmentAddress")},
 			"alicloud_ecs_elasticity_assurance": {Tok: resource(ecsMod, "ElasticityAssurance")},
 			"alicloud_instance":                 {Tok: resource(ecsMod, "Instance")},
 			"alicloud_key_pair":                 {Tok: resource(ecsMod, "KeyPair")},
