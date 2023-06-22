@@ -79,14 +79,14 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Quota Dimensions. See the following `Block QuotaDimensions`.
+     * The Quota Dimensions. See `quota_dimensions` below.
      * 
      */
     @Import(name="quotaDimensions")
     private @Nullable Output<List<QuotaAlarmQuotaDimensionArgs>> quotaDimensions;
 
     /**
-     * @return The Quota Dimensions. See the following `Block QuotaDimensions`.
+     * @return The Quota Dimensions. See `quota_dimensions` below.
      * 
      */
     public Optional<Output<List<QuotaAlarmQuotaDimensionArgs>>> quotaDimensions() {
@@ -274,7 +274,7 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quotaDimensions The Quota Dimensions. See the following `Block QuotaDimensions`.
+         * @param quotaDimensions The Quota Dimensions. See `quota_dimensions` below.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quotaDimensions The Quota Dimensions. See the following `Block QuotaDimensions`.
+         * @param quotaDimensions The Quota Dimensions. See `quota_dimensions` below.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class QuotaAlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param quotaDimensions The Quota Dimensions. See the following `Block QuotaDimensions`.
+         * @param quotaDimensions The Quota Dimensions. See `quota_dimensions` below.
          * 
          * @return builder
          * 

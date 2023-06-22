@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eds
     /// <summary>
     /// Provides a ECD Simple Office Site resource.
     /// 
-    /// For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://help.aliyun.com/document_detail/188382.html).
+    /// For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createsimpleofficesite).
     /// 
-    /// &gt; **NOTE:** Available in v1.140.0+.
+    /// &gt; **NOTE:** Available since v1.140.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,10 +30,10 @@ namespace Pulumi.AliCloud.Eds
     /// {
     ///     var @default = new AliCloud.Eds.SimpleOfficeSite("default", new()
     ///     {
-    ///         Bandwidth = 5,
     ///         CidrBlock = "172.16.0.0/12",
     ///         DesktopAccessType = "Internet",
-    ///         OfficeSiteName = "site_name",
+    ///         EnableAdminAccess = true,
+    ///         OfficeSiteName = "terraform-example",
     ///     });
     /// 
     /// });

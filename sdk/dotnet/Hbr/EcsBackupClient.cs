@@ -28,17 +28,62 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = AliCloud.Ecs.GetInstances.Invoke(new()
+    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         NameRegex = "ecs_instance_name",
-    ///         Status = "Running",
+    ///         AvailableResourceCreation = "Instance",
     ///     });
     /// 
-    ///     var example = new AliCloud.Hbr.EcsBackupClient("example", new()
+    ///     var exampleInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var exampleImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     {
+    ///         VpcId = exampleNetwork.Id,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Ecs.Instance("exampleInstance", new()
+    ///     {
+    ///         ImageId = exampleImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             exampleSecurityGroup.Id,
+    ///         },
+    ///         InstanceName = "terraform-example",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         VswitchId = exampleSwitch.Id,
+    ///     });
+    /// 
+    ///     var exampleEcsBackupClient = new AliCloud.Hbr.EcsBackupClient("exampleEcsBackupClient", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
     ///         UseHttps = false,
-    ///         DataNetworkType = "PUBLIC",
+    ///         DataNetworkType = "VPC",
     ///         MaxCpuCore = "2",
     ///         MaxWorker = "4",
     ///         DataProxySetting = "USE_CONTROL_PROXY",

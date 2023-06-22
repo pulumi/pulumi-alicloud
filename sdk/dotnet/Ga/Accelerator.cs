@@ -10,36 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ga
 {
     /// <summary>
-    /// Provides a Global Accelerator (GA) Accelerator resource.
-    /// 
-    /// For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://help.aliyun.com/document_detail/153235.html).
-    /// 
-    /// &gt; **NOTE:** At present, The `alicloud.ga.Accelerator` cannot be deleted. you need to wait until the resource is outdated and released automatically.
-    /// 
-    /// &gt; **NOTE:** Available in v1.111.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Ga.Accelerator("example", new()
-    ///     {
-    ///         AutoUseCoupon = true,
-    ///         Duration = 1,
-    ///         Spec = "1",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Ga Accelerator can be imported using the id, e.g.

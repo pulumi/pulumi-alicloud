@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eds
     /// <summary>
     /// Provides a ECD Command resource.
     /// 
-    /// For information about ECD Command and how to use it, see [What is Command](https://help.aliyun.com/document_detail/188382.html).
+    /// For information about ECD Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-runcommand).
     /// 
-    /// &gt; **NOTE:** Available in v1.146.0+.
+    /// &gt; **NOTE:** Available since v1.146.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,30 +28,29 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
     ///     {
     ///         CidrBlock = "172.16.0.0/12",
+    ///         EnableAdminAccess = true,
     ///         DesktopAccessType = "Internet",
-    ///         OfficeSiteName = "your_office_site_name",
-    ///     });
-    /// 
-    ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
-    ///     {
-    ///         BundleType = "SYSTEM",
-    ///         NameRegex = "windows",
+    ///         OfficeSiteName = name,
     ///     });
     /// 
     ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new()
     ///     {
-    ///         PolicyGroupName = "your_policy_group_name",
-    ///         Clipboard = "readwrite",
+    ///         PolicyGroupName = name,
+    ///         Clipboard = "read",
     ///         LocalDrive = "read",
+    ///         UsbRedirect = "off",
+    ///         Watermark = "off",
     ///         AuthorizeAccessPolicyRules = new[]
     ///         {
     ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
     ///             {
-    ///                 Description = "example_value",
-    ///                 CidrIp = "1.2.3.4/24",
+    ///                 Description = name,
+    ///                 CidrIp = "1.2.3.45/24",
     ///             },
     ///         },
     ///         AuthorizeSecurityPolicyRules = new[]
@@ -60,13 +59,18 @@ namespace Pulumi.AliCloud.Eds
     ///             {
     ///                 Type = "inflow",
     ///                 Policy = "accept",
-    ///                 Description = "example_value",
+    ///                 Description = name,
     ///                 PortRange = "80/80",
     ///                 IpProtocol = "TCP",
     ///                 Priority = "1",
-    ///                 CidrIp = "0.0.0.0/0",
+    ///                 CidrIp = "1.2.3.4/24",
     ///             },
     ///         },
+    ///     });
+    /// 
+    ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
+    ///     {
+    ///         BundleType = "SYSTEM",
     ///     });
     /// 
     ///     var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new()
@@ -74,7 +78,7 @@ namespace Pulumi.AliCloud.Eds
     ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
     ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
     ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id),
-    ///         DesktopName = @var.Name,
+    ///         DesktopName = name,
     ///     });
     /// 
     ///     var defaultCommand = new AliCloud.Eds.Command("defaultCommand", new()

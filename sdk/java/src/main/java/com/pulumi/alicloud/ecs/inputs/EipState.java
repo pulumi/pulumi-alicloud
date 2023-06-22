@@ -64,6 +64,13 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.bandwidth);
     }
 
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -109,10 +116,10 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
      * (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
      * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
@@ -120,10 +127,10 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
      * @return (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
      * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
@@ -191,10 +198,10 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
      * It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;address_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -202,10 +209,10 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
      * @return It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;address_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -247,6 +254,13 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
+    }
+
+    @Import(name="pricingCycle")
+    private @Nullable Output<String> pricingCycle;
+
+    public Optional<Output<String>> pricingCycle() {
+        return Optional.ofNullable(this.pricingCycle);
     }
 
     @Import(name="publicIpAddressPoolId")
@@ -308,6 +322,13 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    @Import(name="zone")
+    private @Nullable Output<String> zone;
+
+    public Optional<Output<String>> zone() {
+        return Optional.ofNullable(this.zone);
+    }
+
     private EipState() {}
 
     private EipState(EipState $) {
@@ -315,6 +336,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         this.addressName = $.addressName;
         this.autoPay = $.autoPay;
         this.bandwidth = $.bandwidth;
+        this.createTime = $.createTime;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.highDefinitionMonitorLogStatus = $.highDefinitionMonitorLogStatus;
@@ -328,11 +350,13 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         this.netmode = $.netmode;
         this.paymentType = $.paymentType;
         this.period = $.period;
+        this.pricingCycle = $.pricingCycle;
         this.publicIpAddressPoolId = $.publicIpAddressPoolId;
         this.resourceGroupId = $.resourceGroupId;
         this.securityProtectionTypes = $.securityProtectionTypes;
         this.status = $.status;
         this.tags = $.tags;
+        this.zone = $.zone;
     }
 
     public static Builder builder() {
@@ -413,6 +437,15 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
             return bandwidth(Output.of(bandwidth));
         }
 
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
         /**
          * @param deletionProtection Whether enable the deletion protection or not. Default value: `false`.
          * - true: Enable deletion protection.
@@ -474,10 +507,10 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
@@ -489,10 +522,10 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+         * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
          * 
          */
-        @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+        @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
@@ -584,10 +617,10 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;address_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -599,10 +632,10 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;address_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -658,6 +691,15 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder period(Integer period) {
             return period(Output.of(period));
+        }
+
+        public Builder pricingCycle(@Nullable Output<String> pricingCycle) {
+            $.pricingCycle = pricingCycle;
+            return this;
+        }
+
+        public Builder pricingCycle(String pricingCycle) {
+            return pricingCycle(Output.of(pricingCycle));
         }
 
         public Builder publicIpAddressPoolId(@Nullable Output<String> publicIpAddressPoolId) {
@@ -743,6 +785,15 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
+        }
+
+        public Builder zone(@Nullable Output<String> zone) {
+            $.zone = zone;
+            return this;
+        }
+
+        public Builder zone(String zone) {
+            return zone(Output.of(zone));
         }
 
         public EipState build() {

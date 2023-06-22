@@ -13,9 +13,9 @@ import (
 
 // Provides a Global Accelerator (GA) Listener resource.
 //
-// For information about Global Accelerator (GA) Listener and how to use it, see [What is Listener](https://help.aliyun.com/document_detail/153253.html).
+// For information about Global Accelerator (GA) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createlistener).
 //
-// > **NOTE:** Available in v1.111.0+.
+// > **NOTE:** Available since v1.111.0.
 //
 // ## Example Usage
 //
@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
+//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
 //				Duration:      pulumi.Int(1),
 //				AutoUseCoupon: pulumi.Bool(true),
 //				Spec:          pulumi.String("1"),
@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			deBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "deBandwidthPackage", &ga.BandwidthPackageArgs{
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
 //				Bandwidth:     pulumi.Int(100),
 //				Type:          pulumi.String("Basic"),
 //				BandwidthType: pulumi.String("Basic"),
@@ -52,24 +52,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			deBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "deBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      exampleAccelerator.ID(),
-//				BandwidthPackageId: deBandwidthPackage.ID(),
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      defaultAccelerator.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewListener(ctx, "exampleListener", &ga.ListenerArgs{
-//				AcceleratorId: exampleAccelerator.ID(),
+//			_, err = ga.NewListener(ctx, "defaultListener", &ga.ListenerArgs{
+//				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
 //				PortRanges: ga.ListenerPortRangeArray{
 //					&ga.ListenerPortRangeArgs{
-//						FromPort: pulumi.Int(60),
-//						ToPort:   pulumi.Int(70),
+//						FromPort: pulumi.Int(80),
+//						ToPort:   pulumi.Int(80),
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				deBandwidthPackageAttachment,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -93,33 +91,27 @@ type Listener struct {
 
 	// The accelerator id.
 	AcceleratorId pulumi.StringOutput `pulumi:"acceleratorId"`
-	// The certificates of the listener.
-	//
-	// > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+	// The certificates of the listener. See `certificates` below.
+	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates ListenerCertificateArrayOutput `pulumi:"certificates"`
-	// The clientAffinity of the listener. Default value is `NONE`. Valid values:
-	// `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-	// `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
 	ClientAffinity pulumi.StringPtrOutput `pulumi:"clientAffinity"`
 	// The description of the listener.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The XForward headers. See `forwardedForConfig` below.
+	ForwardedForConfig ListenerForwardedForConfigPtrOutput `pulumi:"forwardedForConfig"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	ListenerType pulumi.StringOutput `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The portRanges of the listener.
-	//
-	// > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+	// The portRanges of the listener. See `portRanges` below.
+	// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 	PortRanges ListenerPortRangeArrayOutput `pulumi:"portRanges"`
-	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-	//
-	// > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+	// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
-	// The proxy protocol of the listener. Default value is `false`. Valid values:
-	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-	// `false`: keep client source IP function is not turned on.
+	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol pulumi.BoolPtrOutput `pulumi:"proxyProtocol"`
-	// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// The status of the listener.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -162,33 +154,27 @@ func GetListener(ctx *pulumi.Context,
 type listenerState struct {
 	// The accelerator id.
 	AcceleratorId *string `pulumi:"acceleratorId"`
-	// The certificates of the listener.
-	//
-	// > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+	// The certificates of the listener. See `certificates` below.
+	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates []ListenerCertificate `pulumi:"certificates"`
-	// The clientAffinity of the listener. Default value is `NONE`. Valid values:
-	// `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-	// `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
 	ClientAffinity *string `pulumi:"clientAffinity"`
 	// The description of the listener.
 	Description *string `pulumi:"description"`
+	// The XForward headers. See `forwardedForConfig` below.
+	ForwardedForConfig *ListenerForwardedForConfig `pulumi:"forwardedForConfig"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	ListenerType *string `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name *string `pulumi:"name"`
-	// The portRanges of the listener.
-	//
-	// > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+	// The portRanges of the listener. See `portRanges` below.
+	// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 	PortRanges []ListenerPortRange `pulumi:"portRanges"`
-	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-	//
-	// > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+	// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
 	Protocol *string `pulumi:"protocol"`
-	// The proxy protocol of the listener. Default value is `false`. Valid values:
-	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-	// `false`: keep client source IP function is not turned on.
+	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
-	// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The status of the listener.
 	Status *string `pulumi:"status"`
@@ -197,33 +183,27 @@ type listenerState struct {
 type ListenerState struct {
 	// The accelerator id.
 	AcceleratorId pulumi.StringPtrInput
-	// The certificates of the listener.
-	//
-	// > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+	// The certificates of the listener. See `certificates` below.
+	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates ListenerCertificateArrayInput
-	// The clientAffinity of the listener. Default value is `NONE`. Valid values:
-	// `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-	// `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
 	ClientAffinity pulumi.StringPtrInput
 	// The description of the listener.
 	Description pulumi.StringPtrInput
+	// The XForward headers. See `forwardedForConfig` below.
+	ForwardedForConfig ListenerForwardedForConfigPtrInput
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	ListenerType pulumi.StringPtrInput
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringPtrInput
-	// The portRanges of the listener.
-	//
-	// > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+	// The portRanges of the listener. See `portRanges` below.
+	// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 	PortRanges ListenerPortRangeArrayInput
-	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-	//
-	// > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+	// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
 	Protocol pulumi.StringPtrInput
-	// The proxy protocol of the listener. Default value is `false`. Valid values:
-	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-	// `false`: keep client source IP function is not turned on.
+	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol pulumi.BoolPtrInput
-	// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
 	SecurityPolicyId pulumi.StringPtrInput
 	// The status of the listener.
 	Status pulumi.StringPtrInput
@@ -236,33 +216,27 @@ func (ListenerState) ElementType() reflect.Type {
 type listenerArgs struct {
 	// The accelerator id.
 	AcceleratorId string `pulumi:"acceleratorId"`
-	// The certificates of the listener.
-	//
-	// > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+	// The certificates of the listener. See `certificates` below.
+	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates []ListenerCertificate `pulumi:"certificates"`
-	// The clientAffinity of the listener. Default value is `NONE`. Valid values:
-	// `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-	// `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
 	ClientAffinity *string `pulumi:"clientAffinity"`
 	// The description of the listener.
 	Description *string `pulumi:"description"`
+	// The XForward headers. See `forwardedForConfig` below.
+	ForwardedForConfig *ListenerForwardedForConfig `pulumi:"forwardedForConfig"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	ListenerType *string `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name *string `pulumi:"name"`
-	// The portRanges of the listener.
-	//
-	// > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+	// The portRanges of the listener. See `portRanges` below.
+	// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 	PortRanges []ListenerPortRange `pulumi:"portRanges"`
-	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-	//
-	// > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+	// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
 	Protocol *string `pulumi:"protocol"`
-	// The proxy protocol of the listener. Default value is `false`. Valid values:
-	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-	// `false`: keep client source IP function is not turned on.
+	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol *bool `pulumi:"proxyProtocol"`
-	// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 }
 
@@ -270,33 +244,27 @@ type listenerArgs struct {
 type ListenerArgs struct {
 	// The accelerator id.
 	AcceleratorId pulumi.StringInput
-	// The certificates of the listener.
-	//
-	// > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+	// The certificates of the listener. See `certificates` below.
+	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates ListenerCertificateArrayInput
-	// The clientAffinity of the listener. Default value is `NONE`. Valid values:
-	// `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-	// `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
 	ClientAffinity pulumi.StringPtrInput
 	// The description of the listener.
 	Description pulumi.StringPtrInput
+	// The XForward headers. See `forwardedForConfig` below.
+	ForwardedForConfig ListenerForwardedForConfigPtrInput
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
 	ListenerType pulumi.StringPtrInput
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringPtrInput
-	// The portRanges of the listener.
-	//
-	// > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+	// The portRanges of the listener. See `portRanges` below.
+	// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 	PortRanges ListenerPortRangeArrayInput
-	// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-	//
-	// > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+	// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
 	Protocol pulumi.StringPtrInput
-	// The proxy protocol of the listener. Default value is `false`. Valid values:
-	// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-	// `false`: keep client source IP function is not turned on.
+	// The proxy protocol of the listener. Default value: `false`. Valid values:
 	ProxyProtocol pulumi.BoolPtrInput
-	// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+	// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
 	SecurityPolicyId pulumi.StringPtrInput
 }
 
@@ -392,16 +360,13 @@ func (o ListenerOutput) AcceleratorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.AcceleratorId }).(pulumi.StringOutput)
 }
 
-// The certificates of the listener.
-//
-// > **NOTE:** This parameter needs to be configured only for monitoring of the HTTPS protocol.
+// The certificates of the listener. See `certificates` below.
+// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 func (o ListenerOutput) Certificates() ListenerCertificateArrayOutput {
 	return o.ApplyT(func(v *Listener) ListenerCertificateArrayOutput { return v.Certificates }).(ListenerCertificateArrayOutput)
 }
 
-// The clientAffinity of the listener. Default value is `NONE`. Valid values:
-// `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
-// `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
+// The clientAffinity of the listener. Default value: `NONE`. Valid values:
 func (o ListenerOutput) ClientAffinity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.ClientAffinity }).(pulumi.StringPtrOutput)
 }
@@ -409,6 +374,11 @@ func (o ListenerOutput) ClientAffinity() pulumi.StringPtrOutput {
 // The description of the listener.
 func (o ListenerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The XForward headers. See `forwardedForConfig` below.
+func (o ListenerOutput) ForwardedForConfig() ListenerForwardedForConfigPtrOutput {
+	return o.ApplyT(func(v *Listener) ListenerForwardedForConfigPtrOutput { return v.ForwardedForConfig }).(ListenerForwardedForConfigPtrOutput)
 }
 
 // The routing type of the listener. Default Value: `Standard`. Valid values:
@@ -421,28 +391,23 @@ func (o ListenerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The portRanges of the listener.
-//
-// > **NOTE:** For HTTP or HTTPS protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
+// The portRanges of the listener. See `portRanges` below.
+// > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
 func (o ListenerOutput) PortRanges() ListenerPortRangeArrayOutput {
 	return o.ApplyT(func(v *Listener) ListenerPortRangeArrayOutput { return v.PortRanges }).(ListenerPortRangeArrayOutput)
 }
 
-// Type of network transport protocol monitored. Default value is `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
-//
-// > **NOTE:** At present, the white list of HTTP and HTTPS monitoring protocols is open. If you need to use it, please submit a work order.
+// Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
 func (o ListenerOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// The proxy protocol of the listener. Default value is `false`. Valid values:
-// `true`: Turn on the keep client source IP function. After it is turned on, the back-end service is supported to view the original IP address of the client.
-// `false`: keep client source IP function is not turned on.
+// The proxy protocol of the listener. Default value: `false`. Valid values:
 func (o ListenerOutput) ProxyProtocol() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolPtrOutput { return v.ProxyProtocol }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the security policy. **NOTE:** Only HTTPS listeners support this parameter. Valid values:
+// The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
 func (o ListenerOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }

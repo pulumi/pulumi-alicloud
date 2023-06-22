@@ -18,13 +18,16 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-test112358";
- * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: name});
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: name});
+ * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
+ * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
  * const defaultOssBackupPlan = new alicloud.hbr.OssBackupPlan("defaultOssBackupPlan", {
- *     ossBackupPlanName: name,
+ *     ossBackupPlanName: "terraform-example",
  *     prefix: "/",
  *     bucket: defaultBucket.bucket,
  *     vaultId: defaultVault.id,

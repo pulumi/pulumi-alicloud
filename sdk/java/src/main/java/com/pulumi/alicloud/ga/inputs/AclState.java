@@ -19,7 +19,7 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
     public static final AclState Empty = new AclState();
 
     /**
-     * The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+     * The entries of the Acl. See `acl_entries` below. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
      * 
      * @deprecated
      * Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_ga_acl_entry_attachment&#39;.
@@ -30,7 +30,7 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<AclAclEntryArgs>> aclEntries;
 
     /**
-     * @return The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+     * @return The entries of the Acl. See `acl_entries` below. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
      * 
      * @deprecated
      * Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_ga_acl_entry_attachment&#39;.
@@ -130,7 +130,7 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntries The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+         * @param aclEntries The entries of the Acl. See `acl_entries` below. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntries The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+         * @param aclEntries The entries of the Acl. See `acl_entries` below. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class AclState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aclEntries The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+         * @param aclEntries The entries of the Acl. See `acl_entries` below. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
          * 
          * @return builder
          * 

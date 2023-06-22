@@ -32,10 +32,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.Provider;
  * import com.pulumi.alicloud.ProviderArgs;
- * import com.pulumi.alicloud.hbr.Vault;
- * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.HbrFunctions;
  * import com.pulumi.alicloud.hbr.inputs.GetReplicationVaultRegionsArgs;
+ * import com.pulumi.alicloud.hbr.Vault;
+ * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.ReplicationVault;
  * import com.pulumi.alicloud.hbr.ReplicationVaultArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -53,32 +53,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccReplicationVault&#34;);
- *         final var regionSource = config.get(&#34;regionSource&#34;).orElse(&#34;you Replication value source region&#34;);
+ *         final var sourceRegion = config.get(&#34;sourceRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
  *         var source = new Provider(&#34;source&#34;, ProviderArgs.builder()        
- *             .region(regionSource)
+ *             .region(sourceRegion)
+ *             .build());
+ * 
+ *         final var defaultReplicationVaultRegions = HbrFunctions.getReplicationVaultRegions();
+ * 
+ *         var replication = new Provider(&#34;replication&#34;, ProviderArgs.builder()        
+ *             .region(defaultReplicationVaultRegions.applyValue(getReplicationVaultRegionsResult -&gt; getReplicationVaultRegionsResult.regions()[0].replicationRegionId()))
  *             .build());
  * 
  *         var defaultVault = new Vault(&#34;defaultVault&#34;, VaultArgs.builder()        
- *             .vaultName(name)
+ *             .vaultName(&#34;terraform-example&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(alicloud.source())
  *                 .build());
  * 
- *         final var defaultReplicationVaultRegions = HbrFunctions.getReplicationVaultRegions();
- * 
- *         final var regionReplication = defaultReplicationVaultRegions.applyValue(getReplicationVaultRegionsResult -&gt; getReplicationVaultRegionsResult.regions()[0].replicationRegionId());
- * 
- *         var replication = new Provider(&#34;replication&#34;, ProviderArgs.builder()        
- *             .region(regionReplication)
- *             .build());
- * 
  *         var defaultReplicationVault = new ReplicationVault(&#34;defaultReplicationVault&#34;, ReplicationVaultArgs.builder()        
- *             .replicationSourceRegionId(regionReplication)
+ *             .replicationSourceRegionId(sourceRegion)
  *             .replicationSourceVaultId(defaultVault.id())
- *             .vaultName(name)
+ *             .vaultName(&#34;terraform-example&#34;)
  *             .vaultStorageClass(&#34;STANDARD&#34;)
- *             .description(name)
+ *             .description(&#34;terraform-example&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(alicloud.replication())
  *                 .build());

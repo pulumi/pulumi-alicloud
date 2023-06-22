@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Ipv6 Internet Bandwidth resource.
+ * Provides a VPC Ipv6 Internet Bandwidth resource. Public network bandwidth of IPv6 address.
  *
- * For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/doc-detail/102213.htm).
+ * For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/allocateipv6internetbandwidth).
  *
- * > **NOTE:** Available in v1.143.0+.
+ * > **NOTE:** Available since v1.143.0.
  *
  * ## Example Usage
  *
@@ -19,17 +19,57 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleInstances = alicloud.ecs.getInstances({
- *     nameRegex: "ecs_with_ipv6_address",
- *     status: "Running",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     enableIpv6: true,
+ *     cidrBlock: "172.16.0.0/12",
  * });
- * const exampleIpv6Addresses = exampleInstances.then(exampleInstances => alicloud.vpc.getIpv6Addresses({
- *     associatedInstanceId: exampleInstances.instances?.[0]?.id,
- *     status: "Available",
+ * const vsw = new alicloud.vpc.Switch("vsw", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/21",
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     ipv6CidrBlockMask: 22,
+ * });
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     description: "foo",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultZones.zones?.[0]?.id,
+ *     systemDiskCategory: "cloud_efficiency",
+ *     cpuCoreCount: 4,
+ *     minimumEniIpv6AddressQuantity: 1,
  * }));
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const vpcInstance = new alicloud.ecs.Instance("vpcInstance", {
+ *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     ipv6AddressCount: 1,
+ *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     systemDiskCategory: "cloud_efficiency",
+ *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     instanceName: name,
+ *     vswitchId: vsw.id,
+ *     internetMaxBandwidthOut: 10,
+ *     securityGroups: [group].map(__item => __item.id),
+ * });
+ * const exampleIpv6Gateway = new alicloud.vpc.Ipv6Gateway("exampleIpv6Gateway", {
+ *     ipv6GatewayName: "example_value",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultIpv6Addresses = alicloud.vpc.getIpv6AddressesOutput({
+ *     associatedInstanceId: vpcInstance.id,
+ *     status: "Available",
+ * });
  * const exampleIpv6InternetBandwidth = new alicloud.vpc.Ipv6InternetBandwidth("exampleIpv6InternetBandwidth", {
- *     ipv6AddressId: exampleIpv6Addresses.then(exampleIpv6Addresses => exampleIpv6Addresses.addresses?.[0]?.id),
- *     ipv6GatewayId: exampleIpv6Addresses.then(exampleIpv6Addresses => exampleIpv6Addresses.addresses?.[0]?.ipv6GatewayId),
+ *     ipv6AddressId: defaultIpv6Addresses.apply(defaultIpv6Addresses => defaultIpv6Addresses.addresses?.[0]?.id),
+ *     ipv6GatewayId: exampleIpv6Gateway.ipv6GatewayId,
  *     internetChargeType: "PayByBandwidth",
  *     bandwidth: 20,
  * });
@@ -80,15 +120,15 @@ export class Ipv6InternetBandwidth extends pulumi.CustomResource {
      */
     public readonly internetChargeType!: pulumi.Output<string>;
     /**
-     * The ID of the IPv6 address.
+     * The ID of the IPv6 address instance.
      */
     public readonly ipv6AddressId!: pulumi.Output<string>;
     /**
-     * The ID of the IPv6 gateway.
+     * The ID of the IPv6 gateway to which the IPv6 address belongs.
      */
     public readonly ipv6GatewayId!: pulumi.Output<string>;
     /**
-     * The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+     * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -145,15 +185,15 @@ export interface Ipv6InternetBandwidthState {
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The ID of the IPv6 address.
+     * The ID of the IPv6 address instance.
      */
     ipv6AddressId?: pulumi.Input<string>;
     /**
-     * The ID of the IPv6 gateway.
+     * The ID of the IPv6 gateway to which the IPv6 address belongs.
      */
     ipv6GatewayId?: pulumi.Input<string>;
     /**
-     * The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
 }
@@ -171,11 +211,11 @@ export interface Ipv6InternetBandwidthArgs {
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * The ID of the IPv6 address.
+     * The ID of the IPv6 address instance.
      */
     ipv6AddressId: pulumi.Input<string>;
     /**
-     * The ID of the IPv6 gateway.
+     * The ID of the IPv6 gateway to which the IPv6 address belongs.
      */
     ipv6GatewayId: pulumi.Input<string>;
 }

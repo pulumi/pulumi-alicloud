@@ -90,10 +90,14 @@ import (
 // if err != nil {
 // return err
 // }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
 // _, err = ecs.NewInstance(ctx, "ruleInstance", &ecs.InstanceArgs{
 // ImageId: *pulumi.String(ruleImages.Images[0].Id),
 // InstanceType: *pulumi.String(ruleInstanceTypes.InstanceTypes[0].Id),
-// SecurityGroups: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-alicloud:slb-rule:Rule.pp:33,30-55),
+// SecurityGroups: splat0,
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
 // AvailabilityZone: *pulumi.String(ruleZones.Zones[0].Id),

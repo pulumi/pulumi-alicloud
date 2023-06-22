@@ -19,32 +19,32 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: _var.name});
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ * const exampleResourceGroups = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const defaultHanaInstance = new alicloud.hbr.HanaInstance("defaultHanaInstance", {
+ * const exampleVault = new alicloud.hbr.Vault("exampleVault", {vaultName: "terraform-example"});
+ * const exampleHanaInstance = new alicloud.hbr.HanaInstance("exampleHanaInstance", {
  *     alertSetting: "INHERITED",
- *     hanaName: _var.name,
+ *     hanaName: "terraform-example",
  *     host: "1.1.1.1",
  *     instanceNumber: 1,
  *     password: "YouPassword123",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?.[0]?.id),
  *     sid: "HXE",
  *     useSsl: false,
  *     userName: "admin",
  *     validateCertificate: false,
- *     vaultId: defaultVault.id,
+ *     vaultId: exampleVault.id,
  * });
- * const defaultHanaBackupPlan = new alicloud.hbr.HanaBackupPlan("defaultHanaBackupPlan", {
+ * const exampleHanaBackupPlan = new alicloud.hbr.HanaBackupPlan("exampleHanaBackupPlan", {
  *     backupPrefix: "DIFF_DATA_BACKUP",
  *     backupType: "COMPLETE",
- *     clusterId: defaultHanaInstance.hanaInstanceId,
+ *     clusterId: exampleHanaInstance.hanaInstanceId,
  *     databaseName: "SYSTEMDB",
- *     planName: _var.name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     planName: "terraform-example",
+ *     resourceGroupId: exampleResourceGroups.then(exampleResourceGroups => exampleResourceGroups.groups?.[0]?.id),
  *     schedule: "I|1602673264|P1D",
- *     vaultId: defaultHanaInstance.vaultId,
+ *     vaultId: exampleHanaInstance.vaultId,
  * });
  * ```
  *

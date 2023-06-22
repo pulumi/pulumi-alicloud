@@ -23,8 +23,6 @@ namespace Pulumi.AliCloud.FC.Inputs
 
         /// <summary>
         /// The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
-        /// 
-        /// **cert_config** includes the following arguments:
         /// </summary>
         public InputList<string> Methods
         {
@@ -44,6 +42,9 @@ namespace Pulumi.AliCloud.FC.Inputs
         [Input("qualifier")]
         public Input<string>? Qualifier { get; set; }
 
+        /// <summary>
+        /// The name of the Function Compute service that requests are routed to.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 

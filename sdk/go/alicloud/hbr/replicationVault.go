@@ -36,23 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testAccReplicationVault"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			regionSource := "you Replication value source region"
-//			if param := cfg.Get("regionSource"); param != "" {
-//				regionSource = param
+//			sourceRegion := "cn-hangzhou"
+//			if param := cfg.Get("sourceRegion"); param != "" {
+//				sourceRegion = param
 //			}
 //			_, err := alicloud.NewProvider(ctx, "source", &alicloud.ProviderArgs{
-//				Region: pulumi.String(regionSource),
+//				Region: pulumi.String(sourceRegion),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
-//				VaultName: pulumi.String(name),
-//			}, pulumi.Provider(alicloud.Source))
 //			if err != nil {
 //				return err
 //			}
@@ -60,19 +50,24 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			regionReplication := defaultReplicationVaultRegions.Regions[0].ReplicationRegionId
 //			_, err = alicloud.NewProvider(ctx, "replication", &alicloud.ProviderArgs{
-//				Region: *pulumi.String(regionReplication),
+//				Region: *pulumi.String(defaultReplicationVaultRegions.Regions[0].ReplicationRegionId),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
+//				VaultName: pulumi.String("terraform-example"),
+//			}, pulumi.Provider(alicloud.Source))
+//			if err != nil {
+//				return err
+//			}
 //			_, err = hbr.NewReplicationVault(ctx, "defaultReplicationVault", &hbr.ReplicationVaultArgs{
-//				ReplicationSourceRegionId: *pulumi.String(regionReplication),
+//				ReplicationSourceRegionId: pulumi.String(sourceRegion),
 //				ReplicationSourceVaultId:  defaultVault.ID(),
-//				VaultName:                 pulumi.String(name),
+//				VaultName:                 pulumi.String("terraform-example"),
 //				VaultStorageClass:         pulumi.String("STANDARD"),
-//				Description:               pulumi.String(name),
+//				Description:               pulumi.String("terraform-example"),
 //			}, pulumi.Provider(alicloud.Replication))
 //			if err != nil {
 //				return err

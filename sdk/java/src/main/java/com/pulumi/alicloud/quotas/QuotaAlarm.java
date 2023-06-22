@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Quotas Quota Alarm resource.
  * 
- * For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
+ * For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createquotaalarm).
  * 
- * &gt; **NOTE:** Available in v1.116.0+.
+ * &gt; **NOTE:** Available since v1.116.0.
  * 
  * ## Example Usage
  * 
@@ -135,14 +135,14 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
         return this.quotaAlarmName;
     }
     /**
-     * The Quota Dimensions. See the following `Block QuotaDimensions`.
+     * The Quota Dimensions. See `quota_dimensions` below.
      * 
      */
     @Export(name="quotaDimensions", type=List.class, parameters={QuotaAlarmQuotaDimension.class})
     private Output</* @Nullable */ List<QuotaAlarmQuotaDimension>> quotaDimensions;
 
     /**
-     * @return The Quota Dimensions. See the following `Block QuotaDimensions`.
+     * @return The Quota Dimensions. See `quota_dimensions` below.
      * 
      */
     public Output<Optional<List<QuotaAlarmQuotaDimension>>> quotaDimensions() {

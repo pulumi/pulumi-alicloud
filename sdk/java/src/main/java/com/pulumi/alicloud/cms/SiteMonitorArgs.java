@@ -49,14 +49,14 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+     * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
      * 
      */
     @Import(name="interval")
     private @Nullable Output<Integer> interval;
 
     /**
-     * @return The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+     * @return The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
      * 
      */
     public Optional<Output<Integer>> interval() {
@@ -64,14 +64,14 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+     * The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
      * 
      */
     @Import(name="ispCities")
     private @Nullable Output<List<SiteMonitorIspCityArgs>> ispCities;
 
     /**
-     * @return The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+     * @return The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
      * 
      */
     public Optional<Output<List<SiteMonitorIspCityArgs>>> ispCities() {
@@ -206,7 +206,7 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interval The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+         * @param interval The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interval The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+         * @param interval The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class SiteMonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
          * 
          * @return builder
          * 

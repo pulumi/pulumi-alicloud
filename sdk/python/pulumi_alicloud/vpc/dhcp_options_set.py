@@ -21,19 +21,29 @@ class DhcpOptionsSetArgs:
                  dhcp_options_set_name: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_name_servers: Optional[pulumi.Input[str]] = None,
-                 dry_run: Optional[pulumi.Input[bool]] = None):
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 ipv6_lease_time: Optional[pulumi.Input[str]] = None,
+                 lease_time: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a DhcpOptionsSet resource.
-        :param pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]] associate_vpcs: AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
-        :param pulumi.Input[str] dhcp_options_set_description: The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] dhcp_options_set_name: The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+        :param pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+        :param pulumi.Input[str] dhcp_options_set_description: The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
+        :param pulumi.Input[str] dhcp_options_set_name: The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         :param pulumi.Input[str] domain_name: The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
-        :param pulumi.Input[str] domain_name_servers: The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` or `false`.
+        :param pulumi.Input[str] domain_name_servers: The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value:
+               - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+               - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
+        :param pulumi.Input[str] ipv6_lease_time: The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        :param pulumi.Input[str] lease_time: The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, Any]] tags: Tags of the current resource.
         """
         if associate_vpcs is not None:
-            warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
-            pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
+            warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
+            pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
         if associate_vpcs is not None:
             pulumi.set(__self__, "associate_vpcs", associate_vpcs)
         if dhcp_options_set_description is not None:
@@ -46,12 +56,20 @@ class DhcpOptionsSetArgs:
             pulumi.set(__self__, "domain_name_servers", domain_name_servers)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if ipv6_lease_time is not None:
+            pulumi.set(__self__, "ipv6_lease_time", ipv6_lease_time)
+        if lease_time is not None:
+            pulumi.set(__self__, "lease_time", lease_time)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="associateVpcs")
     def associate_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]]:
         """
-        AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+        Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         """
         return pulumi.get(self, "associate_vpcs")
 
@@ -63,7 +81,7 @@ class DhcpOptionsSetArgs:
     @pulumi.getter(name="dhcpOptionsSetDescription")
     def dhcp_options_set_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         """
         return pulumi.get(self, "dhcp_options_set_description")
 
@@ -75,7 +93,7 @@ class DhcpOptionsSetArgs:
     @pulumi.getter(name="dhcpOptionsSetName")
     def dhcp_options_set_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+        The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         """
         return pulumi.get(self, "dhcp_options_set_name")
 
@@ -99,7 +117,7 @@ class DhcpOptionsSetArgs:
     @pulumi.getter(name="domainNameServers")
     def domain_name_servers(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+        The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
         """
         return pulumi.get(self, "domain_name_servers")
 
@@ -111,13 +129,63 @@ class DhcpOptionsSetArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to precheck this request only. Valid values: `true` or `false`.
+        Whether to PreCheck only this request, value:
+        - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
     def dry_run(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter(name="ipv6LeaseTime")
+    def ipv6_lease_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        """
+        return pulumi.get(self, "ipv6_lease_time")
+
+    @ipv6_lease_time.setter
+    def ipv6_lease_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_lease_time", value)
+
+    @property
+    @pulumi.getter(name="leaseTime")
+    def lease_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        """
+        return pulumi.get(self, "lease_time")
+
+    @lease_time.setter
+    def lease_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lease_time", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Tags of the current resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -129,22 +197,32 @@ class _DhcpOptionsSetState:
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_name_servers: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
-                 owner_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 ipv6_lease_time: Optional[pulumi.Input[str]] = None,
+                 lease_time: Optional[pulumi.Input[str]] = None,
+                 owner_id: Optional[pulumi.Input[int]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering DhcpOptionsSet resources.
-        :param pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]] associate_vpcs: AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
-        :param pulumi.Input[str] dhcp_options_set_description: The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] dhcp_options_set_name: The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+        :param pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+        :param pulumi.Input[str] dhcp_options_set_description: The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
+        :param pulumi.Input[str] dhcp_options_set_name: The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         :param pulumi.Input[str] domain_name: The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
-        :param pulumi.Input[str] domain_name_servers: The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` or `false`.
-        :param pulumi.Input[str] owner_id: The ID of the account to which the DHCP options set belongs.
-        :param pulumi.Input[str] status: The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+        :param pulumi.Input[str] domain_name_servers: The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value:
+               - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+               - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
+        :param pulumi.Input[str] ipv6_lease_time: The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        :param pulumi.Input[str] lease_time: The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        :param pulumi.Input[int] owner_id: The ID of the account to which the DHCP options set belongs.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: Tags of the current resource.
         """
         if associate_vpcs is not None:
-            warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
-            pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
+            warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
+            pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
         if associate_vpcs is not None:
             pulumi.set(__self__, "associate_vpcs", associate_vpcs)
         if dhcp_options_set_description is not None:
@@ -157,16 +235,24 @@ class _DhcpOptionsSetState:
             pulumi.set(__self__, "domain_name_servers", domain_name_servers)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if ipv6_lease_time is not None:
+            pulumi.set(__self__, "ipv6_lease_time", ipv6_lease_time)
+        if lease_time is not None:
+            pulumi.set(__self__, "lease_time", lease_time)
         if owner_id is not None:
             pulumi.set(__self__, "owner_id", owner_id)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="associateVpcs")
     def associate_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]]:
         """
-        AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+        Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         """
         return pulumi.get(self, "associate_vpcs")
 
@@ -178,7 +264,7 @@ class _DhcpOptionsSetState:
     @pulumi.getter(name="dhcpOptionsSetDescription")
     def dhcp_options_set_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         """
         return pulumi.get(self, "dhcp_options_set_description")
 
@@ -190,7 +276,7 @@ class _DhcpOptionsSetState:
     @pulumi.getter(name="dhcpOptionsSetName")
     def dhcp_options_set_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+        The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         """
         return pulumi.get(self, "dhcp_options_set_name")
 
@@ -214,7 +300,7 @@ class _DhcpOptionsSetState:
     @pulumi.getter(name="domainNameServers")
     def domain_name_servers(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+        The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
         """
         return pulumi.get(self, "domain_name_servers")
 
@@ -226,7 +312,9 @@ class _DhcpOptionsSetState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to precheck this request only. Valid values: `true` or `false`.
+        Whether to PreCheck only this request, value:
+        - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
         """
         return pulumi.get(self, "dry_run")
 
@@ -235,28 +323,76 @@ class _DhcpOptionsSetState:
         pulumi.set(self, "dry_run", value)
 
     @property
+    @pulumi.getter(name="ipv6LeaseTime")
+    def ipv6_lease_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        """
+        return pulumi.get(self, "ipv6_lease_time")
+
+    @ipv6_lease_time.setter
+    def ipv6_lease_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_lease_time", value)
+
+    @property
+    @pulumi.getter(name="leaseTime")
+    def lease_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        """
+        return pulumi.get(self, "lease_time")
+
+    @lease_time.setter
+    def lease_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lease_time", value)
+
+    @property
     @pulumi.getter(name="ownerId")
-    def owner_id(self) -> Optional[pulumi.Input[str]]:
+    def owner_id(self) -> Optional[pulumi.Input[int]]:
         """
         The ID of the account to which the DHCP options set belongs.
         """
         return pulumi.get(self, "owner_id")
 
     @owner_id.setter
-    def owner_id(self, value: Optional[pulumi.Input[str]]):
+    def owner_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "owner_id", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Tags of the current resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class DhcpOptionsSet(pulumi.CustomResource):
@@ -270,13 +406,17 @@ class DhcpOptionsSet(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_name_servers: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 ipv6_lease_time: Optional[pulumi.Input[str]] = None,
+                 lease_time: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
-        Provides a VPC Dhcp Options Set resource.
+        Provides a VPC Dhcp Options Set resource. DHCP option set.
 
-        For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
+        For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/dhcp-options-sets-overview).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -286,10 +426,17 @@ class DhcpOptionsSet(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        domain = config.get("domain")
+        if domain is None:
+            domain = "terraform-example.com"
         example = alicloud.vpc.DhcpOptionsSet("example",
-            dhcp_options_set_description="example_value",
-            dhcp_options_set_name="example_value",
-            domain_name="example.com",
+            dhcp_options_set_name=name,
+            dhcp_options_set_description=name,
+            domain_name=domain,
             domain_name_servers="100.100.2.136")
         ```
 
@@ -303,12 +450,18 @@ class DhcpOptionsSet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionsSetAssociateVpcArgs']]]] associate_vpcs: AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
-        :param pulumi.Input[str] dhcp_options_set_description: The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] dhcp_options_set_name: The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionsSetAssociateVpcArgs']]]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+        :param pulumi.Input[str] dhcp_options_set_description: The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
+        :param pulumi.Input[str] dhcp_options_set_name: The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         :param pulumi.Input[str] domain_name: The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
-        :param pulumi.Input[str] domain_name_servers: The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` or `false`.
+        :param pulumi.Input[str] domain_name_servers: The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value:
+               - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+               - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
+        :param pulumi.Input[str] ipv6_lease_time: The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        :param pulumi.Input[str] lease_time: The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, Any]] tags: Tags of the current resource.
         """
         ...
     @overload
@@ -317,11 +470,11 @@ class DhcpOptionsSet(pulumi.CustomResource):
                  args: Optional[DhcpOptionsSetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a VPC Dhcp Options Set resource.
+        Provides a VPC Dhcp Options Set resource. DHCP option set.
 
-        For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
+        For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/dhcp-options-sets-overview).
 
-        > **NOTE:** Available in v1.134.0+.
+        > **NOTE:** Available since v1.134.0.
 
         ## Example Usage
 
@@ -331,10 +484,17 @@ class DhcpOptionsSet(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        domain = config.get("domain")
+        if domain is None:
+            domain = "terraform-example.com"
         example = alicloud.vpc.DhcpOptionsSet("example",
-            dhcp_options_set_description="example_value",
-            dhcp_options_set_name="example_value",
-            domain_name="example.com",
+            dhcp_options_set_name=name,
+            dhcp_options_set_description=name,
+            domain_name=domain,
             domain_name_servers="100.100.2.136")
         ```
 
@@ -367,6 +527,10 @@ class DhcpOptionsSet(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_name_servers: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 ipv6_lease_time: Optional[pulumi.Input[str]] = None,
+                 lease_time: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -377,14 +541,18 @@ class DhcpOptionsSet(pulumi.CustomResource):
             __props__ = DhcpOptionsSetArgs.__new__(DhcpOptionsSetArgs)
 
             if associate_vpcs is not None and not opts.urn:
-                warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
-                pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
+                warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
+                pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
             __props__.__dict__["associate_vpcs"] = associate_vpcs
             __props__.__dict__["dhcp_options_set_description"] = dhcp_options_set_description
             __props__.__dict__["dhcp_options_set_name"] = dhcp_options_set_name
             __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["domain_name_servers"] = domain_name_servers
             __props__.__dict__["dry_run"] = dry_run
+            __props__.__dict__["ipv6_lease_time"] = ipv6_lease_time
+            __props__.__dict__["lease_time"] = lease_time
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["owner_id"] = None
             __props__.__dict__["status"] = None
         super(DhcpOptionsSet, __self__).__init__(
@@ -403,8 +571,12 @@ class DhcpOptionsSet(pulumi.CustomResource):
             domain_name: Optional[pulumi.Input[str]] = None,
             domain_name_servers: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
-            owner_id: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[str]] = None) -> 'DhcpOptionsSet':
+            ipv6_lease_time: Optional[pulumi.Input[str]] = None,
+            lease_time: Optional[pulumi.Input[str]] = None,
+            owner_id: Optional[pulumi.Input[int]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'DhcpOptionsSet':
         """
         Get an existing DhcpOptionsSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -412,14 +584,20 @@ class DhcpOptionsSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionsSetAssociateVpcArgs']]]] associate_vpcs: AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
-        :param pulumi.Input[str] dhcp_options_set_description: The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        :param pulumi.Input[str] dhcp_options_set_name: The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DhcpOptionsSetAssociateVpcArgs']]]] associate_vpcs: Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
+        :param pulumi.Input[str] dhcp_options_set_description: The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
+        :param pulumi.Input[str] dhcp_options_set_name: The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         :param pulumi.Input[str] domain_name: The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
-        :param pulumi.Input[str] domain_name_servers: The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
-        :param pulumi.Input[bool] dry_run: Specifies whether to precheck this request only. Valid values: `true` or `false`.
-        :param pulumi.Input[str] owner_id: The ID of the account to which the DHCP options set belongs.
-        :param pulumi.Input[str] status: The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+        :param pulumi.Input[str] domain_name_servers: The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+        :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request, value:
+               - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+               - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
+        :param pulumi.Input[str] ipv6_lease_time: The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        :param pulumi.Input[str] lease_time: The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        :param pulumi.Input[int] owner_id: The ID of the account to which the DHCP options set belongs.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] status: The status of the resource.
+        :param pulumi.Input[Mapping[str, Any]] tags: Tags of the current resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -431,15 +609,19 @@ class DhcpOptionsSet(pulumi.CustomResource):
         __props__.__dict__["domain_name"] = domain_name
         __props__.__dict__["domain_name_servers"] = domain_name_servers
         __props__.__dict__["dry_run"] = dry_run
+        __props__.__dict__["ipv6_lease_time"] = ipv6_lease_time
+        __props__.__dict__["lease_time"] = lease_time
         __props__.__dict__["owner_id"] = owner_id
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return DhcpOptionsSet(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="associateVpcs")
-    def associate_vpcs(self) -> pulumi.Output[Optional[Sequence['outputs.DhcpOptionsSetAssociateVpc']]]:
+    def associate_vpcs(self) -> pulumi.Output[Sequence['outputs.DhcpOptionsSetAssociateVpc']]:
         """
-        AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+        Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         """
         return pulumi.get(self, "associate_vpcs")
 
@@ -447,7 +629,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
     @pulumi.getter(name="dhcpOptionsSetDescription")
     def dhcp_options_set_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         """
         return pulumi.get(self, "dhcp_options_set_description")
 
@@ -455,7 +637,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
     @pulumi.getter(name="dhcpOptionsSetName")
     def dhcp_options_set_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+        The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         """
         return pulumi.get(self, "dhcp_options_set_name")
 
@@ -471,7 +653,7 @@ class DhcpOptionsSet(pulumi.CustomResource):
     @pulumi.getter(name="domainNameServers")
     def domain_name_servers(self) -> pulumi.Output[Optional[str]]:
         """
-        The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+        The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
         """
         return pulumi.get(self, "domain_name_servers")
 
@@ -479,23 +661,57 @@ class DhcpOptionsSet(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to precheck this request only. Valid values: `true` or `false`.
+        Whether to PreCheck only this request, value:
+        - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
         """
         return pulumi.get(self, "dry_run")
 
     @property
+    @pulumi.getter(name="ipv6LeaseTime")
+    def ipv6_lease_time(self) -> pulumi.Output[str]:
+        """
+        The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        """
+        return pulumi.get(self, "ipv6_lease_time")
+
+    @property
+    @pulumi.getter(name="leaseTime")
+    def lease_time(self) -> pulumi.Output[str]:
+        """
+        The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        """
+        return pulumi.get(self, "lease_time")
+
+    @property
     @pulumi.getter(name="ownerId")
-    def owner_id(self) -> pulumi.Output[str]:
+    def owner_id(self) -> pulumi.Output[int]:
         """
         The ID of the account to which the DHCP options set belongs.
         """
         return pulumi.get(self, "owner_id")
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Tags of the current resource.
+        """
+        return pulumi.get(self, "tags")
 

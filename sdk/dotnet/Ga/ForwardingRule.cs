@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.120.0+.
+    /// &gt; **NOTE:** Available since v1.120.0.
     /// 
     /// ## Import
     /// 
@@ -64,13 +64,13 @@ namespace Pulumi.AliCloud.Ga
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// Forward action.
+        /// Forward action. See `rule_actions` below.
         /// </summary>
         [Output("ruleActions")]
         public Output<ImmutableArray<Outputs.ForwardingRuleRuleAction>> RuleActions { get; private set; } = null!;
 
         /// <summary>
-        /// Forwarding condition list.
+        /// Forwarding condition list. See `rule_conditions` below.
         /// </summary>
         [Output("ruleConditions")]
         public Output<ImmutableArray<Outputs.ForwardingRuleRuleCondition>> RuleConditions { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ForwardingRuleRuleActionArgs>? _ruleActions;
 
         /// <summary>
-        /// Forward action.
+        /// Forward action. See `rule_actions` below.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleActionArgs> RuleActions
         {
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ForwardingRuleRuleConditionArgs>? _ruleConditions;
 
         /// <summary>
-        /// Forwarding condition list.
+        /// Forwarding condition list. See `rule_conditions` below.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleConditionArgs> RuleConditions
         {
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ForwardingRuleRuleActionGetArgs>? _ruleActions;
 
         /// <summary>
-        /// Forward action.
+        /// Forward action. See `rule_actions` below.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleActionGetArgs> RuleActions
         {
@@ -229,7 +229,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.ForwardingRuleRuleConditionGetArgs>? _ruleConditions;
 
         /// <summary>
-        /// Forwarding condition list.
+        /// Forwarding condition list. See `rule_conditions` below.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleConditionGetArgs> RuleConditions
         {

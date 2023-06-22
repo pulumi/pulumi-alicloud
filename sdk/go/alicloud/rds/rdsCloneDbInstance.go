@@ -11,14 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a RDS Clone DB Instance resource.
+// Provides an RDS Clone DB Instance resource.
 //
 // For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
 //
-// > **NOTE:** Available in v1.149.0+.
+// > **NOTE:** Available since v1.149.0+.
 //
 // ## Example Usage
-// ### Create a RDS MySQL clone instance
+// ### Create an RDS MySQL clone instance
 //
 // ```go
 // package main
@@ -141,6 +141,9 @@ type RdsCloneDbInstance struct {
 	// * **AlwaysOn**: Cluster Edition
 	// * **Finance**: Three-node Enterprise Edition.
 	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+	// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
 	Category pulumi.StringOutput `pulumi:"category"`
 	// The file that contains the certificate used for TDE.
 	Certificate pulumi.StringPtrOutput `pulumi:"certificate"`
@@ -213,7 +216,7 @@ type RdsCloneDbInstance struct {
 	InstanceNetworkType pulumi.StringOutput `pulumi:"instanceNetworkType"`
 	// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
 	Parameters RdsCloneDbInstanceParameterArrayOutput `pulumi:"parameters"`
 	// The password of the certificate.
 	//
@@ -225,7 +228,7 @@ type RdsCloneDbInstance struct {
 	//
 	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The details of the AD domain.See `pgHbaConf` below.
 	PgHbaConfs RdsCloneDbInstancePgHbaConfArrayOutput `pulumi:"pgHbaConfs"`
 	// The port.
 	Port pulumi.StringOutput `pulumi:"port"`
@@ -257,7 +260,7 @@ type RdsCloneDbInstance struct {
 	ServerCert pulumi.StringOutput `pulumi:"serverCert"`
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
 	ServerKey pulumi.StringOutput `pulumi:"serverKey"`
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverlessConfig` below.
 	ServerlessConfigs RdsCloneDbInstanceServerlessConfigArrayOutput `pulumi:"serverlessConfigs"`
 	// The source biz.
 	SourceBiz pulumi.StringPtrOutput `pulumi:"sourceBiz"`
@@ -295,14 +298,18 @@ type RdsCloneDbInstance struct {
 	//
 	// > **NOTE:** Make sure that the VPC resides in the specified region.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The ID of the vSwitch associated with the specified VPC.
+	// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitchId` check.
 	//
 	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA pulumi.StringOutput `pulumi:"zoneIdSlaveA"`
+	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	//
 	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	ZoneIdSlaveB pulumi.StringOutput `pulumi:"zoneIdSlaveB"`
 }
 
 // NewRdsCloneDbInstance registers a new resource with the given unique name, arguments, and options.
@@ -367,6 +374,9 @@ type rdsCloneDbInstanceState struct {
 	// * **AlwaysOn**: Cluster Edition
 	// * **Finance**: Three-node Enterprise Edition.
 	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+	// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
 	Category *string `pulumi:"category"`
 	// The file that contains the certificate used for TDE.
 	Certificate *string `pulumi:"certificate"`
@@ -439,7 +449,7 @@ type rdsCloneDbInstanceState struct {
 	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
 	// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
 	MaintainTime *string `pulumi:"maintainTime"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
 	Parameters []RdsCloneDbInstanceParameter `pulumi:"parameters"`
 	// The password of the certificate.
 	//
@@ -451,7 +461,7 @@ type rdsCloneDbInstanceState struct {
 	//
 	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
 	Period *string `pulumi:"period"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The details of the AD domain.See `pgHbaConf` below.
 	PgHbaConfs []RdsCloneDbInstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The port.
 	Port *string `pulumi:"port"`
@@ -483,7 +493,7 @@ type rdsCloneDbInstanceState struct {
 	ServerCert *string `pulumi:"serverCert"`
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
 	ServerKey *string `pulumi:"serverKey"`
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverlessConfig` below.
 	ServerlessConfigs []RdsCloneDbInstanceServerlessConfig `pulumi:"serverlessConfigs"`
 	// The source biz.
 	SourceBiz *string `pulumi:"sourceBiz"`
@@ -521,14 +531,18 @@ type rdsCloneDbInstanceState struct {
 	//
 	// > **NOTE:** Make sure that the VPC resides in the specified region.
 	VpcId *string `pulumi:"vpcId"`
-	// The ID of the vSwitch associated with the specified VPC.
+	// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitchId` check.
 	//
 	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	ZoneId *string `pulumi:"zoneId"`
+	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA *string `pulumi:"zoneIdSlaveA"`
+	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	//
 	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneIdSlaveB *string `pulumi:"zoneIdSlaveB"`
 }
 
 type RdsCloneDbInstanceState struct {
@@ -556,6 +570,9 @@ type RdsCloneDbInstanceState struct {
 	// * **AlwaysOn**: Cluster Edition
 	// * **Finance**: Three-node Enterprise Edition.
 	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+	// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
 	Category pulumi.StringPtrInput
 	// The file that contains the certificate used for TDE.
 	Certificate pulumi.StringPtrInput
@@ -628,7 +645,7 @@ type RdsCloneDbInstanceState struct {
 	InstanceNetworkType pulumi.StringPtrInput
 	// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
 	MaintainTime pulumi.StringPtrInput
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
 	Parameters RdsCloneDbInstanceParameterArrayInput
 	// The password of the certificate.
 	//
@@ -640,7 +657,7 @@ type RdsCloneDbInstanceState struct {
 	//
 	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
 	Period pulumi.StringPtrInput
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The details of the AD domain.See `pgHbaConf` below.
 	PgHbaConfs RdsCloneDbInstancePgHbaConfArrayInput
 	// The port.
 	Port pulumi.StringPtrInput
@@ -672,7 +689,7 @@ type RdsCloneDbInstanceState struct {
 	ServerCert pulumi.StringPtrInput
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
 	ServerKey pulumi.StringPtrInput
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverlessConfig` below.
 	ServerlessConfigs RdsCloneDbInstanceServerlessConfigArrayInput
 	// The source biz.
 	SourceBiz pulumi.StringPtrInput
@@ -710,14 +727,18 @@ type RdsCloneDbInstanceState struct {
 	//
 	// > **NOTE:** Make sure that the VPC resides in the specified region.
 	VpcId pulumi.StringPtrInput
-	// The ID of the vSwitch associated with the specified VPC.
+	// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitchId` check.
 	//
 	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId pulumi.StringPtrInput
 	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	ZoneId pulumi.StringPtrInput
+	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA pulumi.StringPtrInput
+	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	//
 	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
-	ZoneId pulumi.StringPtrInput
+	ZoneIdSlaveB pulumi.StringPtrInput
 }
 
 func (RdsCloneDbInstanceState) ElementType() reflect.Type {
@@ -749,6 +770,9 @@ type rdsCloneDbInstanceArgs struct {
 	// * **AlwaysOn**: Cluster Edition
 	// * **Finance**: Three-node Enterprise Edition.
 	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+	// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
 	Category *string `pulumi:"category"`
 	// The file that contains the certificate used for TDE.
 	Certificate *string `pulumi:"certificate"`
@@ -819,7 +843,7 @@ type rdsCloneDbInstanceArgs struct {
 	InstanceNetworkType *string `pulumi:"instanceNetworkType"`
 	// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
 	MaintainTime *string `pulumi:"maintainTime"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
 	Parameters []RdsCloneDbInstanceParameter `pulumi:"parameters"`
 	// The password of the certificate.
 	//
@@ -831,7 +855,7 @@ type rdsCloneDbInstanceArgs struct {
 	//
 	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
 	Period *string `pulumi:"period"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The details of the AD domain.See `pgHbaConf` below.
 	PgHbaConfs []RdsCloneDbInstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The port.
 	Port *string `pulumi:"port"`
@@ -863,7 +887,7 @@ type rdsCloneDbInstanceArgs struct {
 	ServerCert *string `pulumi:"serverCert"`
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
 	ServerKey *string `pulumi:"serverKey"`
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverlessConfig` below.
 	ServerlessConfigs []RdsCloneDbInstanceServerlessConfig `pulumi:"serverlessConfigs"`
 	// The source biz.
 	SourceBiz *string `pulumi:"sourceBiz"`
@@ -901,14 +925,18 @@ type rdsCloneDbInstanceArgs struct {
 	//
 	// > **NOTE:** Make sure that the VPC resides in the specified region.
 	VpcId *string `pulumi:"vpcId"`
-	// The ID of the vSwitch associated with the specified VPC.
+	// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitchId` check.
 	//
 	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	ZoneId *string `pulumi:"zoneId"`
+	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA *string `pulumi:"zoneIdSlaveA"`
+	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	//
 	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
-	ZoneId *string `pulumi:"zoneId"`
+	ZoneIdSlaveB *string `pulumi:"zoneIdSlaveB"`
 }
 
 // The set of arguments for constructing a RdsCloneDbInstance resource.
@@ -937,6 +965,9 @@ type RdsCloneDbInstanceArgs struct {
 	// * **AlwaysOn**: Cluster Edition
 	// * **Finance**: Three-node Enterprise Edition.
 	// * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+	// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+	// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+	// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
 	Category pulumi.StringPtrInput
 	// The file that contains the certificate used for TDE.
 	Certificate pulumi.StringPtrInput
@@ -1007,7 +1038,7 @@ type RdsCloneDbInstanceArgs struct {
 	InstanceNetworkType pulumi.StringPtrInput
 	// The maintainable time period of the instance. Format: <I> HH:mm</I> Z-<I> HH:mm</I> Z(UTC time).
 	MaintainTime pulumi.StringPtrInput
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
 	Parameters RdsCloneDbInstanceParameterArrayInput
 	// The password of the certificate.
 	//
@@ -1019,7 +1050,7 @@ type RdsCloneDbInstanceArgs struct {
 	//
 	// > **NOTE:** If you set the paymentType parameter to Subscription, you must specify the period parameter.
 	Period pulumi.StringPtrInput
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The details of the AD domain.See `pgHbaConf` below.
 	PgHbaConfs RdsCloneDbInstancePgHbaConfArrayInput
 	// The port.
 	Port pulumi.StringPtrInput
@@ -1051,7 +1082,7 @@ type RdsCloneDbInstanceArgs struct {
 	ServerCert pulumi.StringPtrInput
 	// This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
 	ServerKey pulumi.StringPtrInput
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverlessConfig` below.
 	ServerlessConfigs RdsCloneDbInstanceServerlessConfigArrayInput
 	// The source biz.
 	SourceBiz pulumi.StringPtrInput
@@ -1089,14 +1120,18 @@ type RdsCloneDbInstanceArgs struct {
 	//
 	// > **NOTE:** Make sure that the VPC resides in the specified region.
 	VpcId pulumi.StringPtrInput
-	// The ID of the vSwitch associated with the specified VPC.
+	// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitchId` check.
 	//
 	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId pulumi.StringPtrInput
 	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	ZoneId pulumi.StringPtrInput
+	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+	ZoneIdSlaveA pulumi.StringPtrInput
+	// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	//
 	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
-	ZoneId pulumi.StringPtrInput
+	ZoneIdSlaveB pulumi.StringPtrInput
 }
 
 func (RdsCloneDbInstanceArgs) ElementType() reflect.Type {
@@ -1225,6 +1260,9 @@ func (o RdsCloneDbInstanceOutput) CaType() pulumi.StringOutput {
 // * **AlwaysOn**: Cluster Edition
 // * **Finance**: Three-node Enterprise Edition.
 // * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+// * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+// * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+// * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
 func (o RdsCloneDbInstanceOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
@@ -1372,7 +1410,7 @@ func (o RdsCloneDbInstanceOutput) MaintainTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.MaintainTime }).(pulumi.StringOutput)
 }
 
-// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
 func (o RdsCloneDbInstanceOutput) Parameters() RdsCloneDbInstanceParameterArrayOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) RdsCloneDbInstanceParameterArrayOutput { return v.Parameters }).(RdsCloneDbInstanceParameterArrayOutput)
 }
@@ -1396,7 +1434,7 @@ func (o RdsCloneDbInstanceOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringPtrOutput { return v.Period }).(pulumi.StringPtrOutput)
 }
 
-// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+// The details of the AD domain.See `pgHbaConf` below.
 func (o RdsCloneDbInstanceOutput) PgHbaConfs() RdsCloneDbInstancePgHbaConfArrayOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) RdsCloneDbInstancePgHbaConfArrayOutput { return v.PgHbaConfs }).(RdsCloneDbInstancePgHbaConfArrayOutput)
 }
@@ -1467,7 +1505,7 @@ func (o RdsCloneDbInstanceOutput) ServerKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.ServerKey }).(pulumi.StringOutput)
 }
 
-// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverlessConfig` below.
 func (o RdsCloneDbInstanceOutput) ServerlessConfigs() RdsCloneDbInstanceServerlessConfigArrayOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) RdsCloneDbInstanceServerlessConfigArrayOutput { return v.ServerlessConfigs }).(RdsCloneDbInstanceServerlessConfigArrayOutput)
 }
@@ -1538,7 +1576,7 @@ func (o RdsCloneDbInstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The ID of the vSwitch associated with the specified VPC.
+// The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitchId` check.
 //
 // > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 func (o RdsCloneDbInstanceOutput) VswitchId() pulumi.StringOutput {
@@ -1546,10 +1584,20 @@ func (o RdsCloneDbInstanceOutput) VswitchId() pulumi.StringOutput {
 }
 
 // The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
-//
-// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 func (o RdsCloneDbInstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+func (o RdsCloneDbInstanceOutput) ZoneIdSlaveA() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.ZoneIdSlaveA }).(pulumi.StringOutput)
+}
+
+// The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+//
+// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
+func (o RdsCloneDbInstanceOutput) ZoneIdSlaveB() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsCloneDbInstance) pulumi.StringOutput { return v.ZoneIdSlaveB }).(pulumi.StringOutput)
 }
 
 type RdsCloneDbInstanceArrayOutput struct{ *pulumi.OutputState }

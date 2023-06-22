@@ -119,6 +119,12 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<String> bandwidth() {
         return this.bandwidth;
     }
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -161,10 +167,10 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
      * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
     @Export(name="instanceChargeType", type=String.class, parameters={})
     private Output<String> instanceChargeType;
 
@@ -233,10 +239,10 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;address_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
@@ -248,10 +254,10 @@ public class Eip extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     @Export(name="netmode", type=String.class, parameters={})
-    private Output</* @Nullable */ String> netmode;
+    private Output<String> netmode;
 
-    public Output<Optional<String>> netmode() {
-        return Codegen.optional(this.netmode);
+    public Output<String> netmode() {
+        return this.netmode;
     }
     /**
      * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -282,6 +288,12 @@ public class Eip extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
+    }
+    @Export(name="pricingCycle", type=String.class, parameters={})
+    private Output</* @Nullable */ String> pricingCycle;
+
+    public Output<Optional<String>> pricingCycle() {
+        return Codegen.optional(this.pricingCycle);
     }
     @Export(name="publicIpAddressPoolId", type=String.class, parameters={})
     private Output</* @Nullable */ String> publicIpAddressPoolId;
@@ -336,6 +348,12 @@ public class Eip extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    @Export(name="zone", type=String.class, parameters={})
+    private Output<String> zone;
+
+    public Output<String> zone() {
+        return this.zone;
     }
 
     /**

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Ga
     /// <summary>
     /// Provides a Global Accelerator (GA) Basic Accelerate IP resource.
     /// 
-    /// For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://help.aliyun.com/document_detail/466833.html).
+    /// For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicaccelerateip).
     /// 
-    /// &gt; **NOTE:** Available in v1.194.0+.
+    /// &gt; **NOTE:** Available since v1.194.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,10 +28,30 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Ga.BasicAccelerateIp("default", new()
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("defaultBasicAccelerator", new()
     ///     {
-    ///         AcceleratorId = "your_accelerator_id",
-    ///         IpSetId = "your_ip_set_id",
+    ///         Duration = 1,
+    ///         BasicAcceleratorName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///         BandwidthBillingType = "CDT",
+    ///         AutoUseCoupon = "true",
+    ///         AutoPay = true,
+    ///     });
+    /// 
+    ///     var defaultBasicIpSet = new AliCloud.Ga.BasicIpSet("defaultBasicIpSet", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         AccelerateRegionId = region,
+    ///         IspType = "BGP",
+    ///         Bandwidth = 5,
+    ///     });
+    /// 
+    ///     var defaultBasicAccelerateIp = new AliCloud.Ga.BasicAccelerateIp("defaultBasicAccelerateIp", new()
+    ///     {
+    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         IpSetId = defaultBasicIpSet.Id,
     ///     });
     /// 
     /// });

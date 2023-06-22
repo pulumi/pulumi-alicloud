@@ -10,40 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a EIP Address resource.
-    /// 
-    /// For information about EIP Address and how to use it, see [What is EIP Address](https://www.alibabacloud.com/help/en/doc-detail/36016.htm).
-    /// 
-    /// &gt; **NOTE:** Available in v1.126.0+.
-    /// 
-    /// &gt; **NOTE:** BGP (Multi-ISP) lines are supported in all regions. BGP (Multi-ISP) Pro lines are supported only in the China (Hong Kong) region.
-    /// 
-    /// &gt; **NOTE:** The resource only supports to create `PayAsYouGo PayByTraffic`  or `Subscription PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
-    /// Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Ecs.EipAddress("example", new()
-    ///     {
-    ///         AddressName = "tf-testAcc1234",
-    ///         InternetChargeType = "PayByBandwidth",
-    ///         Isp = "BGP",
-    ///         PaymentType = "PayAsYouGo",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// EIP Address can be imported using the id, e.g.
@@ -56,7 +22,7 @@ namespace Pulumi.AliCloud.Ecs
     public partial class EipAddress : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The activity id.
+        /// Special activity ID. This parameter is not required.
         /// </summary>
         [Output("activityId")]
         public Output<string?> ActivityId { get; private set; } = null!;
@@ -80,7 +46,15 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// The time when the EIP was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the delete protection function is turned on.
+        /// - **true**: enabled.
+        /// - **false**: not enabled.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool> DeletionProtection { get; private set; } = null!;
@@ -92,26 +66,29 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        /// Whether the second-level monitoring is enabled for the EIP.
+        /// - **OFF**: not enabled.
+        /// - **ON**: enabled.
         /// </summary>
         [Output("highDefinitionMonitorLogStatus")]
         public Output<string> HighDefinitionMonitorLogStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+        /// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The metering method of the EIP. 
-        /// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        /// Renewal Payment type.
+        /// - **PayByBandwidth**: billed by fixed bandwidth.
+        /// - **PayByTraffic**: Billing by traffic.
         /// </summary>
         [Output("internetChargeType")]
         public Output<string> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// The address of the EIP.
+        /// The IP address of the EIP.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
@@ -135,7 +112,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> LogStore { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        /// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -144,22 +121,28 @@ namespace Pulumi.AliCloud.Ecs
         /// The type of the network. Valid value is `public` (Internet).
         /// </summary>
         [Output("netmode")]
-        public Output<string?> Netmode { get; private set; } = null!;
+        public Output<string> Netmode { get; private set; } = null!;
 
         /// <summary>
-        /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        /// The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        /// Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+        /// </summary>
+        [Output("pricingCycle")]
+        public Output<string?> PricingCycle { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the IP address pool to which the EIP belongs.
         /// </summary>
         [Output("publicIpAddressPoolId")]
         public Output<string?> PublicIpAddressPoolId { get; private set; } = null!;
@@ -171,22 +154,32 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+        /// Security protection level.
+        /// - When the return is empty, the basic DDoS protection is specified.
+        /// - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
         /// </summary>
         [Output("securityProtectionTypes")]
         public Output<ImmutableArray<string>> SecurityProtectionTypes { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
+        /// The status of the EIP.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -235,7 +228,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EipAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The activity id.
+        /// Special activity ID. This parameter is not required.
         /// </summary>
         [Input("activityId")]
         public Input<string>? ActivityId { get; set; }
@@ -259,7 +252,9 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// Whether the delete protection function is turned on.
+        /// - **true**: enabled.
+        /// - **false**: not enabled.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -271,20 +266,23 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        /// Whether the second-level monitoring is enabled for the EIP.
+        /// - **OFF**: not enabled.
+        /// - **ON**: enabled.
         /// </summary>
         [Input("highDefinitionMonitorLogStatus")]
         public Input<string>? HighDefinitionMonitorLogStatus { get; set; }
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+        /// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The metering method of the EIP. 
-        /// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        /// Renewal Payment type.
+        /// - **PayByBandwidth**: billed by fixed bandwidth.
+        /// - **PayByTraffic**: Billing by traffic.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
@@ -308,7 +306,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LogStore { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        /// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -320,19 +318,25 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Netmode { get; set; }
 
         /// <summary>
-        /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        /// The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        /// Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+        /// </summary>
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The ID of the IP address pool to which the EIP belongs.
         /// </summary>
         [Input("publicIpAddressPoolId")]
         public Input<string>? PublicIpAddressPoolId { get; set; }
@@ -347,7 +351,9 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityProtectionTypes;
 
         /// <summary>
-        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+        /// Security protection level.
+        /// - When the return is empty, the basic DDoS protection is specified.
+        /// - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
         /// </summary>
         public InputList<string> SecurityProtectionTypes
         {
@@ -359,13 +365,21 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource.
         /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public EipAddressArgs()
         {
@@ -376,7 +390,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EipAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The activity id.
+        /// Special activity ID. This parameter is not required.
         /// </summary>
         [Input("activityId")]
         public Input<string>? ActivityId { get; set; }
@@ -400,7 +414,15 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
-        /// Whether enable the deletion protection or not. Default value: `false`.
+        /// The time when the EIP was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Whether the delete protection function is turned on.
+        /// - **true**: enabled.
+        /// - **false**: not enabled.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -412,26 +434,29 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+        /// Whether the second-level monitoring is enabled for the EIP.
+        /// - **OFF**: not enabled.
+        /// - **ON**: enabled.
         /// </summary>
         [Input("highDefinitionMonitorLogStatus")]
         public Input<string>? HighDefinitionMonitorLogStatus { get; set; }
 
         /// <summary>
-        /// Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+        /// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The metering method of the EIP. 
-        /// Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to "PayByBandwidth" when `payment_type` is "Subscription".
+        /// Renewal Payment type.
+        /// - **PayByBandwidth**: billed by fixed bandwidth.
+        /// - **PayByTraffic**: Billing by traffic.
         /// </summary>
         [Input("internetChargeType")]
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// The address of the EIP.
+        /// The IP address of the EIP.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -455,7 +480,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LogStore { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+        /// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -467,19 +492,25 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Netmode { get; set; }
 
         /// <summary>
-        /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+        /// The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
+        /// When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+        /// Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+        /// </summary>
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
+
+        /// <summary>
+        /// The ID of the IP address pool to which the EIP belongs.
         /// </summary>
         [Input("publicIpAddressPoolId")]
         public Input<string>? PublicIpAddressPoolId { get; set; }
@@ -494,7 +525,9 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _securityProtectionTypes;
 
         /// <summary>
-        /// The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+        /// Security protection level.
+        /// - When the return is empty, the basic DDoS protection is specified.
+        /// - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
         /// </summary>
         public InputList<string> SecurityProtectionTypes
         {
@@ -503,7 +536,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
+        /// The status of the EIP.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -512,13 +545,21 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tag of the resource.
         /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public EipAddressState()
         {

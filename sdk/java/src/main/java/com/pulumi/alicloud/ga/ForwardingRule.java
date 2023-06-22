@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
  * 
- * &gt; **NOTE:** Available in v1.120.0+.
+ * &gt; **NOTE:** Available since v1.120.0.
  * 
  * ## Example Usage
  * 
@@ -279,28 +279,28 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
         return this.priority;
     }
     /**
-     * Forward action.
+     * Forward action. See `rule_actions` below.
      * 
      */
     @Export(name="ruleActions", type=List.class, parameters={ForwardingRuleRuleAction.class})
     private Output<List<ForwardingRuleRuleAction>> ruleActions;
 
     /**
-     * @return Forward action.
+     * @return Forward action. See `rule_actions` below.
      * 
      */
     public Output<List<ForwardingRuleRuleAction>> ruleActions() {
         return this.ruleActions;
     }
     /**
-     * Forwarding condition list.
+     * Forwarding condition list. See `rule_conditions` below.
      * 
      */
     @Export(name="ruleConditions", type=List.class, parameters={ForwardingRuleRuleCondition.class})
     private Output<List<ForwardingRuleRuleCondition>> ruleConditions;
 
     /**
-     * @return Forwarding condition list.
+     * @return Forwarding condition list. See `rule_conditions` below.
      * 
      */
     public Output<List<ForwardingRuleRuleCondition>> ruleConditions() {

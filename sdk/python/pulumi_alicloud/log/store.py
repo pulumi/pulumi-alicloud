@@ -457,8 +457,12 @@ class Store(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             shard_count=3,
@@ -470,21 +474,33 @@ class Store(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        example_account = alicloud.get_account()
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_key = alicloud.kms.Key("exampleKey",
+            description="terraform-example",
+            pending_window_in_days=7,
+            status="Enabled")
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
-            shard_count=3,
+            shard_count=1,
             auto_split=True,
             max_split_shard_count=60,
-            append_meta=True,
             encrypt_conf=alicloud.log.StoreEncryptConfArgs(
                 enable=True,
                 encrypt_type="default",
                 user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
-                    cmk_key_id="your_cmk_key_id",
-                    arn="your_role_arn",
-                    region_id="you_cmk_region_id",
+                    cmk_key_id=example_key.id,
+                    arn=f"acs:ram::{example_account.id}:role/aliyunlogdefaultrole",
+                    region_id=region,
                 ),
             ))
         ```
@@ -533,8 +549,12 @@ class Store(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             shard_count=3,
@@ -546,21 +566,33 @@ class Store(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        example_account = alicloud.get_account()
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_key = alicloud.kms.Key("exampleKey",
+            description="terraform-example",
+            pending_window_in_days=7,
+            status="Enabled")
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
-            shard_count=3,
+            shard_count=1,
             auto_split=True,
             max_split_shard_count=60,
-            append_meta=True,
             encrypt_conf=alicloud.log.StoreEncryptConfArgs(
                 enable=True,
                 encrypt_type="default",
                 user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
-                    cmk_key_id="your_cmk_key_id",
-                    arn="your_role_arn",
-                    region_id="you_cmk_region_id",
+                    cmk_key_id=example_key.id,
+                    arn=f"acs:ram::{example_account.id}:role/aliyunlogdefaultrole",
+                    region_id=region,
                 ),
             ))
         ```

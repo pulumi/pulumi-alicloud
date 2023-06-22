@@ -19,17 +19,22 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
  * const exampleProject = new alicloud.log.Project("exampleProject", {
- *     description: "created by terraform",
+ *     description: "terraform-example",
  *     tags: {
- *         test: "test",
+ *         Created: "TF",
+ *         For: "example",
  *     },
  * });
  * const exampleStore = new alicloud.log.Store("exampleStore", {
  *     project: exampleProject.name,
  *     retentionPeriod: 3650,
- *     shardCount: 3,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
  *     appendMeta: true,
@@ -37,8 +42,8 @@ import * as utilities from "../utilities";
  * const exampleOssShipper = new alicloud.log.OssShipper("exampleOssShipper", {
  *     projectName: exampleProject.name,
  *     logstoreName: exampleStore.name,
- *     shipperName: "oss_shipper_name",
- *     ossBucket: "test_bucket",
+ *     shipperName: "terraform-example",
+ *     ossBucket: "example_bucket",
  *     ossPrefix: "root",
  *     bufferInterval: 300,
  *     bufferSize: 250,

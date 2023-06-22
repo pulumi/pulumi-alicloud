@@ -42,13 +42,16 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupServerResult> Servers;
         /// <summary>
-        /// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        /// The status of the resource.
         /// </summary>
         public readonly string Status;
         /// <summary>
         /// The configuration of the sticky session.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServerGroupsGroupStickySessionConfigResult> StickySessionConfigs;
+        /// <summary>
+        /// A map of tags assigned to the group.
+        /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;
         /// <summary>
         /// The ID of the VPC that you want to access.

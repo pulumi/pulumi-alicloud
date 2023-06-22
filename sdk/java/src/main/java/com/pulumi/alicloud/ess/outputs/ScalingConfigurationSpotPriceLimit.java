@@ -17,6 +17,10 @@ public final class ScalingConfigurationSpotPriceLimit {
      * 
      */
     private @Nullable String instanceType;
+    /**
+     * @return Price limit hourly of instance type, 2 decimals is allowed at most.
+     * 
+     */
     private @Nullable Double priceLimit;
 
     private ScalingConfigurationSpotPriceLimit() {}
@@ -27,6 +31,10 @@ public final class ScalingConfigurationSpotPriceLimit {
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
+    /**
+     * @return Price limit hourly of instance type, 2 decimals is allowed at most.
+     * 
+     */
     public Optional<Double> priceLimit() {
         return Optional.ofNullable(this.priceLimit);
     }

@@ -20,20 +20,49 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fc.NewLayerVersion(ctx, "example", &fc.LayerVersionArgs{
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//				Bucket:  defaultBucket.ID(),
+//				Key:     pulumi.String("index.py"),
+//				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewLayerVersion(ctx, "example", &fc.LayerVersionArgs{
+//				LayerName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //				CompatibleRuntimes: pulumi.StringArray{
-//					pulumi.String("nodejs12"),
+//					pulumi.String("python2.7"),
 //				},
-//				LayerName:     pulumi.String("your_layer_name"),
-//				OssBucketName: pulumi.String("your_code_oss_bucket_name"),
-//				OssObjectName: pulumi.String("your_code_oss_object_name"),
+//				OssBucketName: defaultBucket.Bucket,
+//				OssObjectName: defaultBucketObject.Key,
 //			})
 //			if err != nil {
 //				return err

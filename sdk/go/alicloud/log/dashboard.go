@@ -26,31 +26,41 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
-//				Description: pulumi.String("tf unit test"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = log.NewStore(ctx, "defaultStore", &log.StoreArgs{
-//				Project:         pulumi.String("tf-project"),
-//				RetentionPeriod: pulumi.Int(3000),
-//				ShardCount:      pulumi.Int(1),
+//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = log.NewDashboard(ctx, "example", &log.DashboardArgs{
+//			_, err = log.NewStore(ctx, "exampleStore", &log.StoreArgs{
+//				Project:            exampleProject.Name,
+//				ShardCount:         pulumi.Int(3),
+//				AutoSplit:          pulumi.Bool(true),
+//				MaxSplitShardCount: pulumi.Int(60),
+//				AppendMeta:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewDashboard(ctx, "exampleDashboard", &log.DashboardArgs{
+//				ProjectName:   exampleProject.Name,
+//				DashboardName: pulumi.String("terraform-example"),
 //				Attribute:     pulumi.String("{\"type\":\"grid\"}"),
-//				CharList:      pulumi.String("  [\n    {\n      \"action\": {},\n      \"title\":\"new_title\",\n      \"type\":\"map\",\n      \"search\":{\n        \"logstore\":\"tf-logstore\",\n        \"topic\":\"new_topic\",\n        \"query\":\"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product\",\n        \"start\":\"-86400s\",\n        \"end\":\"now\"\n      },\n      \"display\":{\n        \"xAxis\":[\n          \"ct_name\"\n        ],\n        \"yAxis\":[\n          \"ct_product\"\n        ],\n        \"xPos\":0,\n        \"yPos\":0,\n        \"width\":10,\n        \"height\":12,\n        \"displayName\":\"xixihaha911\"\n      }\n    }\n  ]\n\n"),
-//				DashboardName: pulumi.String("tf-dashboard"),
-//				ProjectName:   pulumi.String("tf-project"),
+//				CharList:      pulumi.String("  [\n    {\n      \"action\": {},\n      \"title\":\"new_title\",\n      \"type\":\"map\",\n      \"search\":{\n        \"logstore\":\"example-store\",\n        \"topic\":\"new_topic\",\n        \"query\":\"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product\",\n        \"start\":\"-86400s\",\n        \"end\":\"now\"\n      },\n      \"display\":{\n        \"xAxis\":[\n          \"ct_name\"\n        ],\n        \"yAxis\":[\n          \"ct_product\"\n        ],\n        \"xPos\":0,\n        \"yPos\":0,\n        \"width\":10,\n        \"height\":12,\n        \"displayName\":\"terraform-example\"\n      }\n    }\n  ]\n"),
 //			})
 //			if err != nil {
 //				return err

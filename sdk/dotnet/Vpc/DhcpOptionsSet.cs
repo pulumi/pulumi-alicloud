@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Dhcp Options Set resource.
+    /// Provides a VPC Dhcp Options Set resource. DHCP option set.
     /// 
-    /// For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
+    /// For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/dhcp-options-sets-overview).
     /// 
-    /// &gt; **NOTE:** Available in v1.134.0+.
+    /// &gt; **NOTE:** Available since v1.134.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,11 +28,14 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var domain = config.Get("domain") ?? "terraform-example.com";
     ///     var example = new AliCloud.Vpc.DhcpOptionsSet("example", new()
     ///     {
-    ///         DhcpOptionsSetDescription = "example_value",
-    ///         DhcpOptionsSetName = "example_value",
-    ///         DomainName = "example.com",
+    ///         DhcpOptionsSetName = name,
+    ///         DhcpOptionsSetDescription = name,
+    ///         DomainName = domain,
     ///         DomainNameServers = "100.100.2.136",
     ///     });
     /// 
@@ -51,19 +54,19 @@ namespace Pulumi.AliCloud.Vpc
     public partial class DhcpOptionsSet : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+        /// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         /// </summary>
         [Output("associateVpcs")]
         public Output<ImmutableArray<Outputs.DhcpOptionsSetAssociateVpc>> AssociateVpcs { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         /// </summary>
         [Output("dhcpOptionsSetDescription")]
         public Output<string?> DhcpOptionsSetDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+        /// The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         /// </summary>
         [Output("dhcpOptionsSetName")]
         public Output<string?> DhcpOptionsSetName { get; private set; } = null!;
@@ -75,28 +78,54 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+        /// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
         /// </summary>
         [Output("domainNameServers")]
         public Output<string?> DomainNameServers { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to precheck this request only. Valid values: `true` or `false`.
+        /// Whether to PreCheck only this request, value:
+        /// - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
+        /// The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        /// </summary>
+        [Output("ipv6LeaseTime")]
+        public Output<string> Ipv6LeaseTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        /// </summary>
+        [Output("leaseTime")]
+        public Output<string> LeaseTime { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the account to which the DHCP options set belongs.
         /// </summary>
         [Output("ownerId")]
-        public Output<string> OwnerId { get; private set; } = null!;
+        public Output<int> OwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Tags of the current resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,9 +177,9 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.DhcpOptionsSetAssociateVpcArgs>? _associateVpcs;
 
         /// <summary>
-        /// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+        /// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         /// </summary>
-        [Obsolete(@"Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.")]
+        [Obsolete(@"Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.")]
         public InputList<Inputs.DhcpOptionsSetAssociateVpcArgs> AssociateVpcs
         {
             get => _associateVpcs ?? (_associateVpcs = new InputList<Inputs.DhcpOptionsSetAssociateVpcArgs>());
@@ -158,13 +187,13 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         /// </summary>
         [Input("dhcpOptionsSetDescription")]
         public Input<string>? DhcpOptionsSetDescription { get; set; }
 
         /// <summary>
-        /// The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+        /// The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         /// </summary>
         [Input("dhcpOptionsSetName")]
         public Input<string>? DhcpOptionsSetName { get; set; }
@@ -176,16 +205,48 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+        /// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
         /// </summary>
         [Input("domainNameServers")]
         public Input<string>? DomainNameServers { get; set; }
 
         /// <summary>
-        /// Specifies whether to precheck this request only. Valid values: `true` or `false`.
+        /// Whether to PreCheck only this request, value:
+        /// - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
+
+        /// <summary>
+        /// The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        /// </summary>
+        [Input("ipv6LeaseTime")]
+        public Input<string>? Ipv6LeaseTime { get; set; }
+
+        /// <summary>
+        /// The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        /// </summary>
+        [Input("leaseTime")]
+        public Input<string>? LeaseTime { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Tags of the current resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public DhcpOptionsSetArgs()
         {
@@ -199,9 +260,9 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<Inputs.DhcpOptionsSetAssociateVpcGetArgs>? _associateVpcs;
 
         /// <summary>
-        /// AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associate_vpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+        /// Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         /// </summary>
-        [Obsolete(@"Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.")]
+        [Obsolete(@"Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.")]
         public InputList<Inputs.DhcpOptionsSetAssociateVpcGetArgs> AssociateVpcs
         {
             get => _associateVpcs ?? (_associateVpcs = new InputList<Inputs.DhcpOptionsSetAssociateVpcGetArgs>());
@@ -209,13 +270,13 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         /// </summary>
         [Input("dhcpOptionsSetDescription")]
         public Input<string>? DhcpOptionsSetDescription { get; set; }
 
         /// <summary>
-        /// The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+        /// The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         /// </summary>
         [Input("dhcpOptionsSetName")]
         public Input<string>? DhcpOptionsSetName { get; set; }
@@ -227,28 +288,60 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+        /// The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
         /// </summary>
         [Input("domainNameServers")]
         public Input<string>? DomainNameServers { get; set; }
 
         /// <summary>
-        /// Specifies whether to precheck this request only. Valid values: `true` or `false`.
+        /// Whether to PreCheck only this request, value:
+        /// - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+        /// - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
+        /// The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        /// </summary>
+        [Input("ipv6LeaseTime")]
+        public Input<string>? Ipv6LeaseTime { get; set; }
+
+        /// <summary>
+        /// The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+        /// </summary>
+        [Input("leaseTime")]
+        public Input<string>? LeaseTime { get; set; }
+
+        /// <summary>
         /// The ID of the account to which the DHCP options set belongs.
         /// </summary>
         [Input("ownerId")]
-        public Input<string>? OwnerId { get; set; }
+        public Input<int>? OwnerId { get; set; }
 
         /// <summary>
-        /// The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// Tags of the current resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public DhcpOptionsSetState()
         {

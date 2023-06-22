@@ -13,6 +13,8 @@ import (
 // The project is the resource management unit in Log Service and is used to isolate and control resources.
 // You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
 //
+// > **NOTE:** Available since v1.9.5.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -23,16 +25,25 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewProject(ctx, "example", &log.ProjectArgs{
-//				Description: pulumi.String("created by terraform"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewProject(ctx, "example", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-example"),
 //				Tags: pulumi.AnyMap{
-//					"test": pulumi.Any("test"),
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {
@@ -52,14 +63,22 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewProject(ctx, "examplePolicy", &log.ProjectArgs{
-//				Description: pulumi.String("created by terraform"),
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewProject(ctx, "examplePolicy", &log.ProjectArgs{
+//				Description: pulumi.String("terraform-example"),
 //				Policy:      pulumi.String("{\n  \"Statement\": [\n    {\n      \"Action\": [\n        \"log:PostLogStoreLogs\"\n      ],\n      \"Condition\": {\n        \"StringNotLike\": {\n          \"acs:SourceVpc\": [\n            \"vpc-*\"\n          ]\n        }\n      },\n      \"Effect\": \"Deny\",\n      \"Resource\": \"acs:log:*:*:project/tf-log/*\"\n    }\n  ],\n  \"Version\": \"1\"\n}\n\n"),
 //			})
 //			if err != nil {
@@ -94,6 +113,8 @@ type Project struct {
 	// Log project policy, used to set a policy for a project.
 	Policy pulumi.StringPtrOutput `pulumi:"policy"`
 	// Log project tags.
+	// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
 	Tags pulumi.MapOutput `pulumi:"tags"`
 }
 
@@ -133,6 +154,8 @@ type projectState struct {
 	// Log project policy, used to set a policy for a project.
 	Policy *string `pulumi:"policy"`
 	// Log project tags.
+	// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -144,6 +167,8 @@ type ProjectState struct {
 	// Log project policy, used to set a policy for a project.
 	Policy pulumi.StringPtrInput
 	// Log project tags.
+	// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
 	Tags pulumi.MapInput
 }
 
@@ -159,6 +184,8 @@ type projectArgs struct {
 	// Log project policy, used to set a policy for a project.
 	Policy *string `pulumi:"policy"`
 	// Log project tags.
+	// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -171,6 +198,8 @@ type ProjectArgs struct {
 	// Log project policy, used to set a policy for a project.
 	Policy pulumi.StringPtrInput
 	// Log project tags.
+	// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
 	Tags pulumi.MapInput
 }
 
@@ -277,6 +306,8 @@ func (o ProjectOutput) Policy() pulumi.StringPtrOutput {
 }
 
 // Log project tags.
+// - Key: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
+// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://".
 func (o ProjectOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Project) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }

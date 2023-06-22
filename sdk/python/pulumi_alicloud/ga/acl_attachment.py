@@ -183,7 +183,48 @@ class AclAttachment(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Acl Attachment and how to use it, see [What is Acl Attachment](https://www.alibabacloud.com/help/en/doc-detail/258295.html).
 
-        > **NOTE:** Available in v1.150.0+.
+        > **NOTE:** Available since v1.150.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=80,
+                to_port=80,
+            )])
+        default_acl = alicloud.ga.Acl("defaultAcl",
+            acl_name="terraform-example",
+            address_ip_version="IPv4")
+        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
+            acl_id=default_acl.id,
+            entry="192.168.1.1/32",
+            entry_description="terraform-example")
+        default_acl_attachment = alicloud.ga.AclAttachment("defaultAclAttachment",
+            acl_id=default_acl.id,
+            listener_id=default_listener.id,
+            acl_type="white")
+        ```
 
         ## Import
 
@@ -211,7 +252,48 @@ class AclAttachment(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Acl Attachment and how to use it, see [What is Acl Attachment](https://www.alibabacloud.com/help/en/doc-detail/258295.html).
 
-        > **NOTE:** Available in v1.150.0+.
+        > **NOTE:** Available since v1.150.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=80,
+                to_port=80,
+            )])
+        default_acl = alicloud.ga.Acl("defaultAcl",
+            acl_name="terraform-example",
+            address_ip_version="IPv4")
+        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
+            acl_id=default_acl.id,
+            entry="192.168.1.1/32",
+            entry_description="terraform-example")
+        default_acl_attachment = alicloud.ga.AclAttachment("defaultAclAttachment",
+            acl_id=default_acl.id,
+            listener_id=default_listener.id,
+            acl_type="white")
+        ```
 
         ## Import
 

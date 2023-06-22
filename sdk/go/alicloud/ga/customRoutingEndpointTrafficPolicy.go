@@ -15,7 +15,7 @@ import (
 //
 // For information about Global Accelerator (GA) Custom Routing Endpoint Traffic Policy and how to use it, see [What is Custom Routing Endpoint Traffic Policy](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointtrafficpolicies).
 //
-// > **NOTE:** Available in v1.197.0+.
+// > **NOTE:** Available since v1.197.0.
 //
 // ## Example Usage
 //
@@ -26,20 +26,119 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ga.NewCustomRoutingEndpointTrafficPolicy(ctx, "default", &ga.CustomRoutingEndpointTrafficPolicyArgs{
-//				Address:    pulumi.String("192.168.192.2"),
-//				EndpointId: pulumi.String("your_custom_routing_endpoint_id"),
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
+//				Duration:      pulumi.Int(1),
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Spec:          pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
+//				Bandwidth:     pulumi.Int(100),
+//				Type:          pulumi.String("Basic"),
+//				BandwidthType: pulumi.String("Basic"),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				BillingType:   pulumi.String("PayBy95"),
+//				Ratio:         pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      defaultAccelerator.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultListener, err := ga.NewListener(ctx, "defaultListener", &ga.ListenerArgs{
+//				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
+//				ListenerType:  pulumi.String("CustomRouting"),
+//				PortRanges: ga.ListenerPortRangeArray{
+//					&ga.ListenerPortRangeArgs{
+//						FromPort: pulumi.Int(10000),
+//						ToPort:   pulumi.Int(16000),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCustomRoutingEndpointGroup, err := ga.NewCustomRoutingEndpointGroup(ctx, "defaultCustomRoutingEndpointGroup", &ga.CustomRoutingEndpointGroupArgs{
+//				AcceleratorId:                  defaultListener.AcceleratorId,
+//				ListenerId:                     defaultListener.ID(),
+//				EndpointGroupRegion:            pulumi.String(region),
+//				CustomRoutingEndpointGroupName: pulumi.String("terraform-example"),
+//				Description:                    pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCustomRoutingEndpoint, err := ga.NewCustomRoutingEndpoint(ctx, "defaultCustomRoutingEndpoint", &ga.CustomRoutingEndpointArgs{
+//				EndpointGroupId:         defaultCustomRoutingEndpointGroup.ID(),
+//				Endpoint:                defaultSwitch.ID(),
+//				Type:                    pulumi.String("PrivateSubNet"),
+//				TrafficToEndpointPolicy: pulumi.String("AllowCustom"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewCustomRoutingEndpointGroupDestination(ctx, "defaultCustomRoutingEndpointGroupDestination", &ga.CustomRoutingEndpointGroupDestinationArgs{
+//				EndpointGroupId: defaultCustomRoutingEndpointGroup.ID(),
+//				Protocols: pulumi.StringArray{
+//					pulumi.String("TCP"),
+//				},
+//				FromPort: pulumi.Int(1),
+//				ToPort:   pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewCustomRoutingEndpointTrafficPolicy(ctx, "defaultCustomRoutingEndpointTrafficPolicy", &ga.CustomRoutingEndpointTrafficPolicyArgs{
+//				EndpointId: defaultCustomRoutingEndpoint.CustomRoutingEndpointId,
+//				Address:    pulumi.String("172.17.3.0"),
 //				PortRanges: ga.CustomRoutingEndpointTrafficPolicyPortRangeArray{
 //					&ga.CustomRoutingEndpointTrafficPolicyPortRangeArgs{
-//						FromPort: pulumi.Int(10001),
-//						ToPort:   pulumi.Int(10002),
+//						FromPort: pulumi.Int(1),
+//						ToPort:   pulumi.Int(10),
 //					},
 //				},
 //			})
@@ -76,7 +175,7 @@ type CustomRoutingEndpointTrafficPolicy struct {
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
 	// The ID of the listener.
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// Port rangeSee the following. See the following `Block portRanges`.
+	// Port rangeSee the following. See `portRanges` below.
 	PortRanges CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput `pulumi:"portRanges"`
 	// The status of the Custom Routing Endpoint Traffic Policy.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -129,7 +228,7 @@ type customRoutingEndpointTrafficPolicyState struct {
 	EndpointId *string `pulumi:"endpointId"`
 	// The ID of the listener.
 	ListenerId *string `pulumi:"listenerId"`
-	// Port rangeSee the following. See the following `Block portRanges`.
+	// Port rangeSee the following. See `portRanges` below.
 	PortRanges []CustomRoutingEndpointTrafficPolicyPortRange `pulumi:"portRanges"`
 	// The status of the Custom Routing Endpoint Traffic Policy.
 	Status *string `pulumi:"status"`
@@ -148,7 +247,7 @@ type CustomRoutingEndpointTrafficPolicyState struct {
 	EndpointId pulumi.StringPtrInput
 	// The ID of the listener.
 	ListenerId pulumi.StringPtrInput
-	// Port rangeSee the following. See the following `Block portRanges`.
+	// Port rangeSee the following. See `portRanges` below.
 	PortRanges CustomRoutingEndpointTrafficPolicyPortRangeArrayInput
 	// The status of the Custom Routing Endpoint Traffic Policy.
 	Status pulumi.StringPtrInput
@@ -163,7 +262,7 @@ type customRoutingEndpointTrafficPolicyArgs struct {
 	Address string `pulumi:"address"`
 	// The ID of the Custom Routing Endpoint.
 	EndpointId string `pulumi:"endpointId"`
-	// Port rangeSee the following. See the following `Block portRanges`.
+	// Port rangeSee the following. See `portRanges` below.
 	PortRanges []CustomRoutingEndpointTrafficPolicyPortRange `pulumi:"portRanges"`
 }
 
@@ -173,7 +272,7 @@ type CustomRoutingEndpointTrafficPolicyArgs struct {
 	Address pulumi.StringInput
 	// The ID of the Custom Routing Endpoint.
 	EndpointId pulumi.StringInput
-	// Port rangeSee the following. See the following `Block portRanges`.
+	// Port rangeSee the following. See `portRanges` below.
 	PortRanges CustomRoutingEndpointTrafficPolicyPortRangeArrayInput
 }
 
@@ -296,7 +395,7 @@ func (o CustomRoutingEndpointTrafficPolicyOutput) ListenerId() pulumi.StringOutp
 	return o.ApplyT(func(v *CustomRoutingEndpointTrafficPolicy) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// Port rangeSee the following. See the following `Block portRanges`.
+// Port rangeSee the following. See `portRanges` below.
 func (o CustomRoutingEndpointTrafficPolicyOutput) PortRanges() CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput {
 	return o.ApplyT(func(v *CustomRoutingEndpointTrafficPolicy) CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput {
 		return v.PortRanges

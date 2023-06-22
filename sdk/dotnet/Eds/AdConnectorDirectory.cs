@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eds
     /// <summary>
     /// Provides a ECD Ad Connector Directory resource.
     /// 
-    /// For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://help.aliyun.com/document_detail/436791.html).
+    /// For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createadconnectordirectory).
     /// 
-    /// &gt; **NOTE:** Available in v1.174.0+.
+    /// &gt; **NOTE:** Available since v1.174.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,29 +28,34 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultZones = AliCloud.Eds.GetZones.Invoke();
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         VswitchName = name,
     ///     });
     /// 
     ///     var defaultAdConnectorDirectory = new AliCloud.Eds.AdConnectorDirectory("defaultAdConnectorDirectory", new()
     ///     {
-    ///         DirectoryName = @var.Name,
+    ///         DirectoryName = name,
     ///         DesktopAccessType = "INTERNET",
     ///         DnsAddresses = new[]
     ///         {
     ///             "127.0.0.2",
     ///         },
     ///         DomainName = "corp.example.com",
-    ///         DomainPassword = "YourPassword1234",
+    ///         DomainPassword = "Example1234",
     ///         DomainUserName = "sAMAccountName",
     ///         EnableAdminAccess = false,
     ///         MfaEnabled = false,
@@ -62,7 +67,7 @@ namespace Pulumi.AliCloud.Eds
     ///         SubDomainName = "child.example.com",
     ///         VswitchIds = new[]
     ///         {
-    ///             defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///             defaultSwitch.Id,
     ///         },
     ///     });
     /// 

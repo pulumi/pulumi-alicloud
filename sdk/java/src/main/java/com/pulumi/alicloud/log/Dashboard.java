@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -48,17 +50,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;tf unit test&#34;)
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
  *             .build());
  * 
- *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
- *             .project(&#34;tf-project&#34;)
- *             .retentionPeriod(&#34;3000&#34;)
- *             .shardCount(1)
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
- *         var example = new Dashboard(&#34;example&#34;, DashboardArgs.builder()        
+ *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *             .project(exampleProject.name())
+ *             .shardCount(3)
+ *             .autoSplit(true)
+ *             .maxSplitShardCount(60)
+ *             .appendMeta(true)
+ *             .build());
+ * 
+ *         var exampleDashboard = new Dashboard(&#34;exampleDashboard&#34;, DashboardArgs.builder()        
+ *             .projectName(exampleProject.name())
+ *             .dashboardName(&#34;terraform-example&#34;)
  *             .attribute(&#34;{\&#34;type\&#34;:\&#34;grid\&#34;}&#34;)
  *             .charList(&#34;&#34;&#34;
  *   [
@@ -67,7 +78,7 @@ import javax.annotation.Nullable;
  *       &#34;title&#34;:&#34;new_title&#34;,
  *       &#34;type&#34;:&#34;map&#34;,
  *       &#34;search&#34;:{
- *         &#34;logstore&#34;:&#34;tf-logstore&#34;,
+ *         &#34;logstore&#34;:&#34;example-store&#34;,
  *         &#34;topic&#34;:&#34;new_topic&#34;,
  *         &#34;query&#34;:&#34;* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product&#34;,
  *         &#34;start&#34;:&#34;-86400s&#34;,
@@ -84,14 +95,11 @@ import javax.annotation.Nullable;
  *         &#34;yPos&#34;:0,
  *         &#34;width&#34;:10,
  *         &#34;height&#34;:12,
- *         &#34;displayName&#34;:&#34;xixihaha911&#34;
+ *         &#34;displayName&#34;:&#34;terraform-example&#34;
  *       }
  *     }
  *   ]
- * 
  *             &#34;&#34;&#34;)
- *             .dashboardName(&#34;tf-dashboard&#34;)
- *             .projectName(&#34;tf-project&#34;)
  *             .build());
  * 
  *     }

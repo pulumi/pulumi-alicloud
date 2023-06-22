@@ -283,7 +283,7 @@ class BasicEndpointGroup(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Basic Endpoint Group and how to use it, see [What is Basic Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/createbasicendpointgroup).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
 
         ## Example Usage
 
@@ -293,27 +293,42 @@ class BasicEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        endpoint_group_region = config.get("endpointGroupRegion")
+        if endpoint_group_region is None:
+            endpoint_group_region = "cn-beijing"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
         default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name="terraform-example",
+            vswitch_id=default_switch.id,
             load_balancer_spec="slb.s2.small",
-            vswitch_id=default_switches.ids[0])
+            address_type="intranet")
         default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
             duration=1,
-            pricing_cycle="Month",
+            basic_accelerator_name="terraform-example",
+            description="terraform-example",
             bandwidth_billing_type="CDT",
-            auto_pay=True,
             auto_use_coupon="true",
-            auto_renew=False,
-            auto_renew_duration=1)
+            auto_pay=True)
         default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
             accelerator_id=default_basic_accelerator.id,
-            endpoint_group_region="cn-beijing",
+            endpoint_group_region=endpoint_group_region,
             endpoint_type="SLB",
             endpoint_address=default_application_load_balancer.id,
             endpoint_sub_address="192.168.0.1",
-            basic_endpoint_group_name="example_value",
-            description="example_value")
+            basic_endpoint_group_name="terraform-example",
+            description="terraform-example")
         ```
 
         ## Import
@@ -345,7 +360,7 @@ class BasicEndpointGroup(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Basic Endpoint Group and how to use it, see [What is Basic Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/createbasicendpointgroup).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
 
         ## Example Usage
 
@@ -355,27 +370,42 @@ class BasicEndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        endpoint_group_region = config.get("endpointGroupRegion")
+        if endpoint_group_region is None:
+            endpoint_group_region = "cn-beijing"
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id)
         default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+            load_balancer_name="terraform-example",
+            vswitch_id=default_switch.id,
             load_balancer_spec="slb.s2.small",
-            vswitch_id=default_switches.ids[0])
+            address_type="intranet")
         default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
             duration=1,
-            pricing_cycle="Month",
+            basic_accelerator_name="terraform-example",
+            description="terraform-example",
             bandwidth_billing_type="CDT",
-            auto_pay=True,
             auto_use_coupon="true",
-            auto_renew=False,
-            auto_renew_duration=1)
+            auto_pay=True)
         default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
             accelerator_id=default_basic_accelerator.id,
-            endpoint_group_region="cn-beijing",
+            endpoint_group_region=endpoint_group_region,
             endpoint_type="SLB",
             endpoint_address=default_application_load_balancer.id,
             endpoint_sub_address="192.168.0.1",
-            basic_endpoint_group_name="example_value",
-            description="example_value")
+            basic_endpoint_group_name="terraform-example",
+            description="terraform-example")
         ```
 
         ## Import

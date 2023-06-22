@@ -17,6 +17,9 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// A security group ID associated with the Function Compute Service.
         /// </summary>
         public readonly string SecurityGroupId;
+        /// <summary>
+        /// A vpc ID associated with the Function Compute Service.
+        /// </summary>
         public readonly string? VpcId;
         /// <summary>
         /// A list of vswitch IDs associated with the Function Compute Service.

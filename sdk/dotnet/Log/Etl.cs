@@ -25,12 +25,19 @@ namespace Pulumi.AliCloud.Log
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         Description = "created by terraform",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
@@ -65,10 +72,10 @@ namespace Pulumi.AliCloud.Log
     /// 
     ///     var exampleEtl = new AliCloud.Log.Etl("exampleEtl", new()
     ///     {
-    ///         EtlName = "etl_name",
+    ///         EtlName = "terraform-example",
     ///         Project = exampleProject.Name,
-    ///         DisplayName = "display_name",
-    ///         Description = "etl_description",
+    ///         DisplayName = "terraform-example",
+    ///         Description = "terraform-example",
     ///         AccessKeyId = "access_key_id",
     ///         AccessKeySecret = "access_key_secret",
     ///         Script = "e_set('new','key')",
@@ -92,96 +99,6 @@ namespace Pulumi.AliCloud.Log
     ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
     ///                 Project = exampleProject.Name,
     ///                 Logstore = example3.Name,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// Stop the task in progress
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Log.Etl("example", new()
-    ///     {
-    ///         Status = STOPPED,
-    ///         EtlName = "etl_name",
-    ///         Project = alicloud_log_project.Example.Name,
-    ///         DisplayName = "display_name",
-    ///         Description = "etl_description",
-    ///         AccessKeyId = "access_key_id",
-    ///         AccessKeySecret = "access_key_secret",
-    ///         Script = "e_set('new','key')",
-    ///         Logstore = alicloud_log_store.Example.Name,
-    ///         EtlSinks = new[]
-    ///         {
-    ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
-    ///             {
-    ///                 Name = "target_name",
-    ///                 AccessKeyId = "example2_access_key_id",
-    ///                 AccessKeySecret = "example2_access_key_secret",
-    ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                 Project = alicloud_log_project.Example.Name,
-    ///                 Logstore = alicloud_log_store.Example2.Name,
-    ///             },
-    ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
-    ///             {
-    ///                 Name = "target_name2",
-    ///                 AccessKeyId = "example3_access_key_id",
-    ///                 AccessKeySecret = "example3_access_key_secret",
-    ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                 Project = alicloud_log_project.Example.Name,
-    ///                 Logstore = alicloud_log_store.Example3.Name,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ReStart the stopped task
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AliCloud.Log.Etl("example", new()
-    ///     {
-    ///         Status = RUNNING,
-    ///         EtlName = "etl_name",
-    ///         Project = alicloud_log_project.Example.Name,
-    ///         DisplayName = "display_name",
-    ///         Description = "etl_description",
-    ///         AccessKeyId = "access_key_id",
-    ///         AccessKeySecret = "access_key_secret",
-    ///         Script = "e_set('new','key')",
-    ///         Logstore = alicloud_log_store.Example.Name,
-    ///         EtlSinks = new[]
-    ///         {
-    ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
-    ///             {
-    ///                 Name = "target_name",
-    ///                 AccessKeyId = "example2_access_key_id",
-    ///                 AccessKeySecret = "example2_access_key_secret",
-    ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                 Project = alicloud_log_project.Example.Name,
-    ///                 Logstore = alicloud_log_store.Example2.Name,
-    ///             },
-    ///             new AliCloud.Log.Inputs.EtlEtlSinkArgs
-    ///             {
-    ///                 Name = "target_name2",
-    ///                 AccessKeyId = "example3_access_key_id",
-    ///                 AccessKeySecret = "example3_access_key_secret",
-    ///                 Endpoint = "cn-hangzhou.log.aliyuncs.com",
-    ///                 Project = alicloud_log_project.Example.Name,
-    ///                 Logstore = alicloud_log_store.Example3.Name,
     ///             },
     ///         },
     ///     });

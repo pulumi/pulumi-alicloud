@@ -18,7 +18,7 @@ public final class ShardingInstanceShardList {
      */
     private String nodeClass;
     /**
-     * @return The ID of the Config Server node.
+     * @return The ID of the shard-node.
      * 
      */
     private @Nullable String nodeId;
@@ -43,7 +43,7 @@ public final class ShardingInstanceShardList {
         return this.nodeClass;
     }
     /**
-     * @return The ID of the Config Server node.
+     * @return The ID of the shard-node.
      * 
      */
     public Optional<String> nodeId() {

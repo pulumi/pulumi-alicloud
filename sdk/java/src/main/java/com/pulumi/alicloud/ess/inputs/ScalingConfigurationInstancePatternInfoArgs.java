@@ -17,30 +17,62 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
 
     public static final ScalingConfigurationInstancePatternInfoArgs Empty = new ScalingConfigurationInstancePatternInfoArgs();
 
+    /**
+     * The number of vCPUs that are specified for an instance type in instancePatternInfo.
+     * 
+     */
     @Import(name="cores")
     private @Nullable Output<Integer> cores;
 
+    /**
+     * @return The number of vCPUs that are specified for an instance type in instancePatternInfo.
+     * 
+     */
     public Optional<Output<Integer>> cores() {
         return Optional.ofNullable(this.cores);
     }
 
+    /**
+     * The instance family level in instancePatternInfo.
+     * 
+     */
     @Import(name="instanceFamilyLevel")
     private @Nullable Output<String> instanceFamilyLevel;
 
+    /**
+     * @return The instance family level in instancePatternInfo.
+     * 
+     */
     public Optional<Output<String>> instanceFamilyLevel() {
         return Optional.ofNullable(this.instanceFamilyLevel);
     }
 
+    /**
+     * The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+     * 
+     */
     @Import(name="maxPrice")
     private @Nullable Output<Double> maxPrice;
 
+    /**
+     * @return The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+     * 
+     */
     public Optional<Output<Double>> maxPrice() {
         return Optional.ofNullable(this.maxPrice);
     }
 
+    /**
+     * The memory size that is specified for an instance type in instancePatternInfo.
+     * 
+     */
     @Import(name="memory")
     private @Nullable Output<Double> memory;
 
+    /**
+     * @return The memory size that is specified for an instance type in instancePatternInfo.
+     * 
+     */
     public Optional<Output<Double>> memory() {
         return Optional.ofNullable(this.memory);
     }
@@ -72,38 +104,86 @@ public final class ScalingConfigurationInstancePatternInfoArgs extends com.pulum
             $ = new ScalingConfigurationInstancePatternInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cores The number of vCPUs that are specified for an instance type in instancePatternInfo.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cores(@Nullable Output<Integer> cores) {
             $.cores = cores;
             return this;
         }
 
+        /**
+         * @param cores The number of vCPUs that are specified for an instance type in instancePatternInfo.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cores(Integer cores) {
             return cores(Output.of(cores));
         }
 
+        /**
+         * @param instanceFamilyLevel The instance family level in instancePatternInfo.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceFamilyLevel(@Nullable Output<String> instanceFamilyLevel) {
             $.instanceFamilyLevel = instanceFamilyLevel;
             return this;
         }
 
+        /**
+         * @param instanceFamilyLevel The instance family level in instancePatternInfo.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceFamilyLevel(String instanceFamilyLevel) {
             return instanceFamilyLevel(Output.of(instanceFamilyLevel));
         }
 
+        /**
+         * @param maxPrice The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxPrice(@Nullable Output<Double> maxPrice) {
             $.maxPrice = maxPrice;
             return this;
         }
 
+        /**
+         * @param maxPrice The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxPrice(Double maxPrice) {
             return maxPrice(Output.of(maxPrice));
         }
 
+        /**
+         * @param memory The memory size that is specified for an instance type in instancePatternInfo.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memory(@Nullable Output<Double> memory) {
             $.memory = memory;
             return this;
         }
 
+        /**
+         * @param memory The memory size that is specified for an instance type in instancePatternInfo.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memory(Double memory) {
             return memory(Output.of(memory));
         }

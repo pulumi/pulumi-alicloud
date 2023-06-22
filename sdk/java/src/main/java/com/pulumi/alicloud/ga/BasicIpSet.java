@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Global Accelerator (GA) Basic Ip Set and how to use it, see [What is Basic Ip Set](https://www.alibabacloud.com/help/en/global-accelerator/latest/createbasicipset).
  * 
- * &gt; **NOTE:** Available in v1.194.0+.
+ * &gt; **NOTE:** Available since v1.194.0.
  * 
  * ## Example Usage
  * 

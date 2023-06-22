@@ -328,9 +328,9 @@ class BasicEndpoint(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Basic Endpoint resource.
 
-        For information about Global Accelerator (GA) Basic Endpoint and how to use it, see [What is Basic Endpoint](https://help.aliyun.com/document_detail/466839.html).
+        For information about Global Accelerator (GA) Basic Endpoint and how to use it, see [What is Basic Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicendpoint).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
 
         ## Example Usage
 
@@ -340,21 +340,53 @@ class BasicEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        sz = alicloud.Provider("sz", region="cn-shenzhen")
-        hz = alicloud.Provider("hz", region="cn-hangzhou")
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-shenzhen"
+        endpoint_region = config.get("endpointRegion")
+        if endpoint_region is None:
+            endpoint_region = "cn-hangzhou"
+        sz = alicloud.Provider("sz", region=region)
+        hz = alicloud.Provider("hz", region=endpoint_region)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id,
+            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id,
+        opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
         default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
-            vswitch_id="your_vswitch_id",
-            security_group_ids=["your_security_group_id"],
-            opts=pulumi.ResourceOptions(provider="alicloud.sz"))
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id],
+            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
+        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+            duration=1,
+            basic_accelerator_name="terraform-example",
+            description="terraform-example",
+            bandwidth_billing_type="CDT",
+            auto_use_coupon="true",
+            auto_pay=True)
+        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
+            accelerator_id=default_basic_accelerator.id,
+            endpoint_group_region=region,
+            basic_endpoint_group_name="terraform-example",
+            description="terraform-example")
         default_basic_endpoint = alicloud.ga.BasicEndpoint("defaultBasicEndpoint",
-            accelerator_id="your_accelerator_id",
-            endpoint_group_id="your_endpoint_group_id",
+            accelerator_id=default_basic_accelerator.id,
+            endpoint_group_id=default_basic_endpoint_group.id,
             endpoint_type="ENI",
             endpoint_address=default_ecs_network_interface.id,
             endpoint_sub_address_type="secondary",
             endpoint_sub_address="192.168.0.1",
-            basic_endpoint_name="example_value",
-            opts=pulumi.ResourceOptions(provider="alicloud.hz"))
+            basic_endpoint_name="terraform-example",
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         ```
 
         ## Import
@@ -385,9 +417,9 @@ class BasicEndpoint(pulumi.CustomResource):
         """
         Provides a Global Accelerator (GA) Basic Endpoint resource.
 
-        For information about Global Accelerator (GA) Basic Endpoint and how to use it, see [What is Basic Endpoint](https://help.aliyun.com/document_detail/466839.html).
+        For information about Global Accelerator (GA) Basic Endpoint and how to use it, see [What is Basic Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicendpoint).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
 
         ## Example Usage
 
@@ -397,21 +429,53 @@ class BasicEndpoint(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        sz = alicloud.Provider("sz", region="cn-shenzhen")
-        hz = alicloud.Provider("hz", region="cn-hangzhou")
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-shenzhen"
+        endpoint_region = config.get("endpointRegion")
+        if endpoint_region is None:
+            endpoint_region = "cn-hangzhou"
+        sz = alicloud.Provider("sz", region=region)
+        hz = alicloud.Provider("hz", region=endpoint_region)
+        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=default_zones.zones[0].id,
+            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id,
+        opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
         default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("defaultEcsNetworkInterface",
-            vswitch_id="your_vswitch_id",
-            security_group_ids=["your_security_group_id"],
-            opts=pulumi.ResourceOptions(provider="alicloud.sz"))
+            vswitch_id=default_switch.id,
+            security_group_ids=[default_security_group.id],
+            opts=pulumi.ResourceOptions(provider=alicloud["sz"]))
+        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+            duration=1,
+            basic_accelerator_name="terraform-example",
+            description="terraform-example",
+            bandwidth_billing_type="CDT",
+            auto_use_coupon="true",
+            auto_pay=True)
+        default_basic_endpoint_group = alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup",
+            accelerator_id=default_basic_accelerator.id,
+            endpoint_group_region=region,
+            basic_endpoint_group_name="terraform-example",
+            description="terraform-example")
         default_basic_endpoint = alicloud.ga.BasicEndpoint("defaultBasicEndpoint",
-            accelerator_id="your_accelerator_id",
-            endpoint_group_id="your_endpoint_group_id",
+            accelerator_id=default_basic_accelerator.id,
+            endpoint_group_id=default_basic_endpoint_group.id,
             endpoint_type="ENI",
             endpoint_address=default_ecs_network_interface.id,
             endpoint_sub_address_type="secondary",
             endpoint_sub_address="192.168.0.1",
-            basic_endpoint_name="example_value",
-            opts=pulumi.ResourceOptions(provider="alicloud.hz"))
+            basic_endpoint_name="terraform-example",
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
         ```
 
         ## Import

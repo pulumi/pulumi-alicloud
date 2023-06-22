@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Global Accelerator (GA) Custom Routing Endpoint Group Destination and how to use it, see [What is Custom Routing Endpoint Group Destination](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointgroupdestinations).
  *
- * > **NOTE:** Available in v1.197.0+.
+ * > **NOTE:** Available since v1.197.0.
  *
  * ## Example Usage
  *
@@ -19,13 +19,44 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ga.CustomRoutingEndpointGroupDestination("default", {
- *     endpointGroupId: "your_custom_routing_endpoint_group_id",
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const defaultAccelerator = new alicloud.ga.Accelerator("defaultAccelerator", {
+ *     duration: 1,
+ *     autoUseCoupon: true,
+ *     spec: "1",
+ * });
+ * const defaultBandwidthPackage = new alicloud.ga.BandwidthPackage("defaultBandwidthPackage", {
+ *     bandwidth: 100,
+ *     type: "Basic",
+ *     bandwidthType: "Basic",
+ *     paymentType: "PayAsYouGo",
+ *     billingType: "PayBy95",
+ *     ratio: 30,
+ * });
+ * const defaultBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", {
+ *     acceleratorId: defaultAccelerator.id,
+ *     bandwidthPackageId: defaultBandwidthPackage.id,
+ * });
+ * const defaultListener = new alicloud.ga.Listener("defaultListener", {
+ *     acceleratorId: defaultBandwidthPackageAttachment.acceleratorId,
+ *     listenerType: "CustomRouting",
+ *     portRanges: [{
+ *         fromPort: 10000,
+ *         toPort: 16000,
+ *     }],
+ * });
+ * const defaultCustomRoutingEndpointGroup = new alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", {
+ *     acceleratorId: defaultListener.acceleratorId,
+ *     listenerId: defaultListener.id,
+ *     endpointGroupRegion: region,
+ *     customRoutingEndpointGroupName: "terraform-example",
+ *     description: "terraform-example",
+ * });
+ * const defaultCustomRoutingEndpointGroupDestination = new alicloud.ga.CustomRoutingEndpointGroupDestination("defaultCustomRoutingEndpointGroupDestination", {
+ *     endpointGroupId: defaultCustomRoutingEndpointGroup.id,
+ *     protocols: ["TCP"],
  *     fromPort: 1,
- *     protocols: [
- *         "TCP",
- *         "UDP",
- *     ],
  *     toPort: 2,
  * });
  * ```

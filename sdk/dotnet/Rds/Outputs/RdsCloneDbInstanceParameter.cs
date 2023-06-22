@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Rds.Outputs
     [OutputType]
     public sealed class RdsCloneDbInstanceParameter
     {
+        /// <summary>
+        /// The parameters name.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The parameters value.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

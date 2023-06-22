@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Adb
         /// <summary>
         /// This data source provides the Adb DBClusters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.121.0+.
+        /// &gt; **NOTE:** Available since v1.121.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Adb
         /// <summary>
         /// This data source provides the Adb DBClusters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.121.0+.
+        /// &gt; **NOTE:** Available since v1.121.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.Adb
         private Dictionary<string, object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// A map of tags assigned to the cluster.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.Adb
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// A map of tags assigned to the cluster.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -237,9 +237,18 @@ namespace Pulumi.AliCloud.Adb
     [OutputType]
     public sealed class GetDBClustersResult
     {
+        /// <summary>
+        /// A list of Adb Db Clusters. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDBClustersClusterResult> Clusters;
+        /// <summary>
+        /// The description of DBCluster.
+        /// </summary>
         public readonly string? Description;
         public readonly string? DescriptionRegex;
+        /// <summary>
+        /// A list of DBCluster descriptions.
+        /// </summary>
         public readonly ImmutableArray<string> Descriptions;
         public readonly bool? EnableDetails;
         /// <summary>
@@ -250,8 +259,17 @@ namespace Pulumi.AliCloud.Adb
         public readonly string? OutputFile;
         public readonly int? PageNumber;
         public readonly int? PageSize;
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tags of the resource.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         public readonly int TotalCount;
 

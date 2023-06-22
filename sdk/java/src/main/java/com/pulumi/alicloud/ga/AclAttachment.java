@@ -20,7 +20,93 @@ import javax.annotation.Nullable;
  * 
  * For information about Global Accelerator (GA) Acl Attachment and how to use it, see [What is Acl Attachment](https://www.alibabacloud.com/help/en/doc-detail/258295.html).
  * 
- * &gt; **NOTE:** Available in v1.150.0+.
+ * &gt; **NOTE:** Available since v1.150.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ga.Accelerator;
+ * import com.pulumi.alicloud.ga.AcceleratorArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackage;
+ * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
+ * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
+ * import com.pulumi.alicloud.ga.Listener;
+ * import com.pulumi.alicloud.ga.ListenerArgs;
+ * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
+ * import com.pulumi.alicloud.ga.Acl;
+ * import com.pulumi.alicloud.ga.AclArgs;
+ * import com.pulumi.alicloud.ga.AclEntryAttachment;
+ * import com.pulumi.alicloud.ga.AclEntryAttachmentArgs;
+ * import com.pulumi.alicloud.ga.AclAttachment;
+ * import com.pulumi.alicloud.ga.AclAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
+ *             .duration(1)
+ *             .autoUseCoupon(true)
+ *             .spec(&#34;1&#34;)
+ *             .build());
+ * 
+ *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(100)
+ *             .type(&#34;Basic&#34;)
+ *             .bandwidthType(&#34;Basic&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .billingType(&#34;PayBy95&#34;)
+ *             .ratio(30)
+ *             .build());
+ * 
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .acceleratorId(defaultAccelerator.id())
+ *             .bandwidthPackageId(defaultBandwidthPackage.id())
+ *             .build());
+ * 
+ *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+ *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
+ *             .portRanges(ListenerPortRangeArgs.builder()
+ *                 .fromPort(80)
+ *                 .toPort(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+ *             .aclName(&#34;terraform-example&#34;)
+ *             .addressIpVersion(&#34;IPv4&#34;)
+ *             .build());
+ * 
+ *         var defaultAclEntryAttachment = new AclEntryAttachment(&#34;defaultAclEntryAttachment&#34;, AclEntryAttachmentArgs.builder()        
+ *             .aclId(defaultAcl.id())
+ *             .entry(&#34;192.168.1.1/32&#34;)
+ *             .entryDescription(&#34;terraform-example&#34;)
+ *             .build());
+ * 
+ *         var defaultAclAttachment = new AclAttachment(&#34;defaultAclAttachment&#34;, AclAttachmentArgs.builder()        
+ *             .aclId(defaultAcl.id())
+ *             .listenerId(defaultListener.id())
+ *             .aclType(&#34;white&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

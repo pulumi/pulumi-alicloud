@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Global Accelerator (GA) Basic Endpoint Group and how to use it, see [What is Basic Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/createbasicendpointgroup).
  * 
- * &gt; **NOTE:** Available in v1.194.0+.
+ * &gt; **NOTE:** Available since v1.194.0.
  * 
  * ## Example Usage
  * 
@@ -30,9 +30,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
  * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
  * import com.pulumi.alicloud.ga.BasicAccelerator;
@@ -52,37 +55,49 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         final var endpointGroupRegion = config.get(&#34;endpointGroupRegion&#34;).orElse(&#34;cn-beijing&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(&#34;terraform-example&#34;)
+ *             .vswitchId(defaultSwitch.id())
  *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .addressType(&#34;intranet&#34;)
  *             .build());
  * 
  *         var defaultBasicAccelerator = new BasicAccelerator(&#34;defaultBasicAccelerator&#34;, BasicAcceleratorArgs.builder()        
  *             .duration(1)
- *             .pricingCycle(&#34;Month&#34;)
+ *             .basicAcceleratorName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .bandwidthBillingType(&#34;CDT&#34;)
- *             .autoPay(true)
  *             .autoUseCoupon(&#34;true&#34;)
- *             .autoRenew(false)
- *             .autoRenewDuration(1)
+ *             .autoPay(true)
  *             .build());
  * 
  *         var defaultBasicEndpointGroup = new BasicEndpointGroup(&#34;defaultBasicEndpointGroup&#34;, BasicEndpointGroupArgs.builder()        
  *             .acceleratorId(defaultBasicAccelerator.id())
- *             .endpointGroupRegion(&#34;cn-beijing&#34;)
+ *             .endpointGroupRegion(endpointGroupRegion)
  *             .endpointType(&#34;SLB&#34;)
  *             .endpointAddress(defaultApplicationLoadBalancer.id())
  *             .endpointSubAddress(&#34;192.168.0.1&#34;)
- *             .basicEndpointGroupName(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
+ *             .basicEndpointGroupName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *     }

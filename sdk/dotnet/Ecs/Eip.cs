@@ -73,6 +73,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
 
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `false`.
         /// - true: Enable deletion protection.
@@ -127,7 +130,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         [Output("netmode")]
-        public Output<string?> Netmode { get; private set; } = null!;
+        public Output<string> Netmode { get; private set; } = null!;
 
         /// <summary>
         /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
@@ -141,6 +144,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
+
+        [Output("pricingCycle")]
+        public Output<string?> PricingCycle { get; private set; } = null!;
 
         [Output("publicIpAddressPoolId")]
         public Output<string?> PublicIpAddressPoolId { get; private set; } = null!;
@@ -165,6 +171,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
+
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -293,6 +302,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
+
         [Input("publicIpAddressPoolId")]
         public Input<string>? PublicIpAddressPoolId { get; set; }
 
@@ -322,6 +334,9 @@ namespace Pulumi.AliCloud.Ecs
             set => _tags = value;
         }
 
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
+
         public EipArgs()
         {
         }
@@ -347,6 +362,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
+
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Whether enable the deletion protection or not. Default value: `false`.
@@ -417,6 +435,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("period")]
         public Input<int>? Period { get; set; }
 
+        [Input("pricingCycle")]
+        public Input<string>? PricingCycle { get; set; }
+
         [Input("publicIpAddressPoolId")]
         public Input<string>? PublicIpAddressPoolId { get; set; }
 
@@ -451,6 +472,9 @@ namespace Pulumi.AliCloud.Ecs
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
+
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public EipState()
         {

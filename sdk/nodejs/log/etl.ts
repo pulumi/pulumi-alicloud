@@ -20,8 +20,13 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "created by terraform"});
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
  * const exampleStore = new alicloud.log.Store("exampleStore", {
  *     project: exampleProject.name,
  *     retentionPeriod: 3650,
@@ -47,10 +52,10 @@ import * as utilities from "../utilities";
  *     appendMeta: true,
  * });
  * const exampleEtl = new alicloud.log.Etl("exampleEtl", {
- *     etlName: "etl_name",
+ *     etlName: "terraform-example",
  *     project: exampleProject.name,
- *     displayName: "display_name",
- *     description: "etl_description",
+ *     displayName: "terraform-example",
+ *     description: "terraform-example",
  *     accessKeyId: "access_key_id",
  *     accessKeySecret: "access_key_secret",
  *     script: "e_set('new','key')",
@@ -71,76 +76,6 @@ import * as utilities from "../utilities";
  *             endpoint: "cn-hangzhou.log.aliyuncs.com",
  *             project: exampleProject.name,
  *             logstore: example3.name,
- *         },
- *     ],
- * });
- * ```
- * Stop the task in progress
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.log.Etl("example", {
- *     status: STOPPED,
- *     etlName: "etl_name",
- *     project: alicloud_log_project.example.name,
- *     displayName: "display_name",
- *     description: "etl_description",
- *     accessKeyId: "access_key_id",
- *     accessKeySecret: "access_key_secret",
- *     script: "e_set('new','key')",
- *     logstore: alicloud_log_store.example.name,
- *     etlSinks: [
- *         {
- *             name: "target_name",
- *             accessKeyId: "example2_access_key_id",
- *             accessKeySecret: "example2_access_key_secret",
- *             endpoint: "cn-hangzhou.log.aliyuncs.com",
- *             project: alicloud_log_project.example.name,
- *             logstore: alicloud_log_store.example2.name,
- *         },
- *         {
- *             name: "target_name2",
- *             accessKeyId: "example3_access_key_id",
- *             accessKeySecret: "example3_access_key_secret",
- *             endpoint: "cn-hangzhou.log.aliyuncs.com",
- *             project: alicloud_log_project.example.name,
- *             logstore: alicloud_log_store.example3.name,
- *         },
- *     ],
- * });
- * ```
- * ReStart the stopped task
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const example = new alicloud.log.Etl("example", {
- *     status: RUNNING,
- *     etlName: "etl_name",
- *     project: alicloud_log_project.example.name,
- *     displayName: "display_name",
- *     description: "etl_description",
- *     accessKeyId: "access_key_id",
- *     accessKeySecret: "access_key_secret",
- *     script: "e_set('new','key')",
- *     logstore: alicloud_log_store.example.name,
- *     etlSinks: [
- *         {
- *             name: "target_name",
- *             accessKeyId: "example2_access_key_id",
- *             accessKeySecret: "example2_access_key_secret",
- *             endpoint: "cn-hangzhou.log.aliyuncs.com",
- *             project: alicloud_log_project.example.name,
- *             logstore: alicloud_log_store.example2.name,
- *         },
- *         {
- *             name: "target_name2",
- *             accessKeyId: "example3_access_key_id",
- *             accessKeySecret: "example3_access_key_secret",
- *             endpoint: "cn-hangzhou.log.aliyuncs.com",
- *             project: alicloud_log_project.example.name,
- *             logstore: alicloud_log_store.example3.name,
  *         },
  *     ],
  * });

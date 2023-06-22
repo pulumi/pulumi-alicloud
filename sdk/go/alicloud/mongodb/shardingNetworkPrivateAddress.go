@@ -15,7 +15,7 @@ import (
 //
 // For information about MongoDB Sharding Network Private Address and how to use it, see [What is Sharding Network Private Address](https://www.alibabacloud.com/help/en/doc-detail/141403.html).
 //
-// > **NOTE:** Available in v1.157.0+.
+// > **NOTE:** Available since v1.157.0.
 //
 // ## Example Usage
 //
@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -44,23 +44,39 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
-//			}, nil)
+//			index := len(defaultZones.Zones) - 1
+//			zoneId := defaultZones.Zones[index].Id
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Zones[0].Id),
-//			}, nil)
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(zoneId),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultShardingInstance, err := mongodb.NewShardingInstance(ctx, "defaultShardingInstance", &mongodb.ShardingInstanceArgs{
-//				ZoneId:        *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchId:     *pulumi.String(defaultSwitches.Ids[0]),
+//				ZoneId:        *pulumi.String(zoneId),
+//				VswitchId:     defaultSwitch.ID(),
 //				EngineVersion: pulumi.String("4.2"),
+//				ShardLists: mongodb.ShardingInstanceShardListArray{
+//					&mongodb.ShardingInstanceShardListArgs{
+//						NodeClass:   pulumi.String("dds.shard.mid"),
+//						NodeStorage: pulumi.Int(10),
+//					},
+//					&mongodb.ShardingInstanceShardListArgs{
+//						NodeClass:        pulumi.String("dds.shard.standard"),
+//						NodeStorage:      pulumi.Int(20),
+//						ReadonlyReplicas: pulumi.Int(1),
+//					},
+//				},
 //				MongoLists: mongodb.ShardingInstanceMongoListArray{
 //					&mongodb.ShardingInstanceMongoListArgs{
 //						NodeClass: pulumi.String("dds.mongos.mid"),
@@ -69,28 +85,18 @@ import (
 //						NodeClass: pulumi.String("dds.mongos.mid"),
 //					},
 //				},
-//				ShardLists: mongodb.ShardingInstanceShardListArray{
-//					&mongodb.ShardingInstanceShardListArgs{
-//						NodeClass:   pulumi.String("dds.shard.mid"),
-//						NodeStorage: pulumi.Int(10),
-//					},
-//					&mongodb.ShardingInstanceShardListArgs{
-//						NodeClass:   pulumi.String("dds.shard.mid"),
-//						NodeStorage: pulumi.Int(10),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = mongodb.NewShardingNetworkPrivateAddress(ctx, "example", &mongodb.ShardingNetworkPrivateAddressArgs{
+//			_, err = mongodb.NewShardingNetworkPrivateAddress(ctx, "defaultShardingNetworkPrivateAddress", &mongodb.ShardingNetworkPrivateAddressArgs{
 //				DbInstanceId: defaultShardingInstance.ID(),
 //				NodeId: defaultShardingInstance.ShardLists.ApplyT(func(shardLists []mongodb.ShardingInstanceShardList) (*string, error) {
 //					return &shardLists[0].NodeId, nil
 //				}).(pulumi.StringPtrOutput),
 //				ZoneId:          defaultShardingInstance.ZoneId,
-//				AccountName:     pulumi.String("example_value"),
-//				AccountPassword: pulumi.String("YourPassword+12345"),
+//				AccountName:     pulumi.String("example"),
+//				AccountPassword: pulumi.String("Example_123"),
 //			})
 //			if err != nil {
 //				return err

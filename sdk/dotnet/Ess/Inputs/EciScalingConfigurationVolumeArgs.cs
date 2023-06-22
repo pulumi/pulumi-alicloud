@@ -17,7 +17,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// ConfigFileVolumeConfigFileToPaths.
-        /// See Block_config_file_volume_config_file_to_path below for details.
+        /// See `config_file_volume_config_file_to_paths` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs> ConfigFileVolumeConfigFileToPaths
         {
@@ -31,6 +31,9 @@ namespace Pulumi.AliCloud.Ess.Inputs
         [Input("diskVolumeDiskId")]
         public Input<string>? DiskVolumeDiskId { get; set; }
 
+        /// <summary>
+        /// The disk size of DiskVolume.
+        /// </summary>
         [Input("diskVolumeDiskSize")]
         public Input<int>? DiskVolumeDiskSize { get; set; }
 

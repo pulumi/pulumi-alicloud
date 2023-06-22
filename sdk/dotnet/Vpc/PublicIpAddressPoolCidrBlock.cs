@@ -11,12 +11,11 @@ namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
     /// Provides a VPC Public Ip Address Pool Cidr Block resource.
+    /// &gt; **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
     /// 
     /// For information about VPC Public Ip Address Pool Cidr Block and how to use it, see [What is Public Ip Address Pool Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
     /// 
-    /// &gt; **NOTE:** Available in v1.189.0+.
-    /// 
-    /// &gt; **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+    /// &gt; **NOTE:** Available since v1.189.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,17 +29,19 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultPublicIpAddressPool = new AliCloud.Vpc.PublicIpAddressPool("defaultPublicIpAddressPool", new()
     ///     {
-    ///         PublicIpAddressPoolName = "example_value",
+    ///         PublicIpAddressPoolName = name,
+    ///         Description = name,
     ///         Isp = "BGP",
-    ///         Description = "example_value",
     ///     });
     /// 
     ///     var defaultPublicIpAddressPoolCidrBlock = new AliCloud.Vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock", new()
     ///     {
     ///         PublicIpAddressPoolId = defaultPublicIpAddressPool.Id,
-    ///         CidrBlock = "your_cidr_block",
+    ///         CidrBlock = "47.118.126.0/25",
     ///     });
     /// 
     /// });
@@ -62,6 +63,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the resource.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VPC Public IP address pool.
@@ -124,8 +131,8 @@ namespace Pulumi.AliCloud.Vpc
         /// <summary>
         /// The CIDR block.
         /// </summary>
-        [Input("cidrBlock", required: true)]
-        public Input<string> CidrBlock { get; set; } = null!;
+        [Input("cidrBlock")]
+        public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
         /// The ID of the VPC Public IP address pool.
@@ -146,6 +153,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
+
+        /// <summary>
+        /// The creation time of the resource.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// The ID of the VPC Public IP address pool.

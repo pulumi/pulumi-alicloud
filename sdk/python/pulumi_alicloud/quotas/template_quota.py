@@ -30,7 +30,7 @@ class TemplateQuotaArgs:
         :param pulumi.Input[float] desire_value: Quota application value.
         :param pulumi.Input[str] product_code: The abbreviation of the cloud service name.
         :param pulumi.Input[str] quota_action_code: The quota ID.
-        :param pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]] dimensions: The Quota Dimensions. See the following `Block Dimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]] dimensions: The Quota Dimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The UTC time when the quota takes effect.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh: Chinese.
@@ -100,7 +100,7 @@ class TemplateQuotaArgs:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]]:
         """
-        The Quota Dimensions. See the following `Block Dimensions`.
+        The Quota Dimensions. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
@@ -191,7 +191,7 @@ class _TemplateQuotaState:
         """
         Input properties used for looking up and filtering TemplateQuota resources.
         :param pulumi.Input[float] desire_value: Quota application value.
-        :param pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]] dimensions: The Quota Dimensions. See the following `Block Dimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]] dimensions: The Quota Dimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The UTC time when the quota takes effect.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh: Chinese.
@@ -242,7 +242,7 @@ class _TemplateQuotaState:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TemplateQuotaDimensionArgs']]]]:
         """
-        The Quota Dimensions. See the following `Block Dimensions`.
+        The Quota Dimensions. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
@@ -360,9 +360,9 @@ class TemplateQuota(pulumi.CustomResource):
         """
         Provides a Quotas Template Quota resource.
 
-        For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://help.aliyun.com/document_detail/450615.html).
+        For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createtemplatequotaitem).
 
-        > **NOTE:** Available in v1.206.0+.
+        > **NOTE:** Available since v1.206.0.
 
         ## Example Usage
 
@@ -400,7 +400,7 @@ class TemplateQuota(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] desire_value: Quota application value.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateQuotaDimensionArgs']]]] dimensions: The Quota Dimensions. See the following `Block Dimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateQuotaDimensionArgs']]]] dimensions: The Quota Dimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The UTC time when the quota takes effect.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh: Chinese.
@@ -425,9 +425,9 @@ class TemplateQuota(pulumi.CustomResource):
         """
         Provides a Quotas Template Quota resource.
 
-        For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://help.aliyun.com/document_detail/450615.html).
+        For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createtemplatequotaitem).
 
-        > **NOTE:** Available in v1.206.0+.
+        > **NOTE:** Available since v1.206.0.
 
         ## Example Usage
 
@@ -537,7 +537,7 @@ class TemplateQuota(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[float] desire_value: Quota application value.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateQuotaDimensionArgs']]]] dimensions: The Quota Dimensions. See the following `Block Dimensions`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TemplateQuotaDimensionArgs']]]] dimensions: The Quota Dimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The UTC time when the quota takes effect.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
                - zh: Chinese.
@@ -580,7 +580,7 @@ class TemplateQuota(pulumi.CustomResource):
     @pulumi.getter
     def dimensions(self) -> pulumi.Output[Optional[Sequence['outputs.TemplateQuotaDimension']]]:
         """
-        The Quota Dimensions. See the following `Block Dimensions`.
+        The Quota Dimensions. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 

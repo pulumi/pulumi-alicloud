@@ -197,7 +197,7 @@ def get_vpds(enable_details: Optional[bool] = None,
     import pulumi_alicloud as alicloud
 
     default = alicloud.eflo.get_vpds(ids=[alicloud_eflo_vpd["default"]["id"]],
-        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        name_regex=alicloud_eflo_vpd["default"]["name"],
         vpd_name="RMC-Terraform-Test")
     pulumi.export("alicloudEfloVpdExampleId", default.vpds[0].id)
     ```
@@ -266,7 +266,7 @@ def get_vpds_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
     import pulumi_alicloud as alicloud
 
     default = alicloud.eflo.get_vpds(ids=[alicloud_eflo_vpd["default"]["id"]],
-        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        name_regex=alicloud_eflo_vpd["default"]["name"],
         vpd_name="RMC-Terraform-Test")
     pulumi.export("alicloudEfloVpdExampleId", default.vpds[0].id)
     ```

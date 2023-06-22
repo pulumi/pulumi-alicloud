@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Elastic Desktop Service (ECD) User resource.
  * 
- * For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+ * For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createusers-desktop).
  * 
- * &gt; **NOTE:** Available in v1.142.0+.
+ * &gt; **NOTE:** Available since v1.142.0.
  * 
  * ## Example Usage
  * 
@@ -46,9 +46,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new User(&#34;example&#34;, UserArgs.builder()        
- *             .email(&#34;your_email&#34;)
- *             .endUserId(&#34;example_value&#34;)
+ *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
+ *             .email(&#34;tf.example@abc.com&#34;)
+ *             .endUserId(&#34;terraform_example123&#34;)
+ *             .password(&#34;Example_123&#34;)
+ *             .phone(&#34;18888888888&#34;)
  *             .build());
  * 
  *     }

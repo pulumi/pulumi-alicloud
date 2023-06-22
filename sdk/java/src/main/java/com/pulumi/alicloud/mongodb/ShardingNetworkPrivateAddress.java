@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about MongoDB Sharding Network Private Address and how to use it, see [What is Sharding Network Private Address](https://www.alibabacloud.com/help/en/doc-detail/141403.html).
  * 
- * &gt; **NOTE:** Available in v1.157.0+.
+ * &gt; **NOTE:** Available since v1.157.0.
  * 
  * ## Example Usage
  * 
@@ -34,13 +34,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.mongodb.MongodbFunctions;
  * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.mongodb.ShardingInstance;
  * import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
- * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
  * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
+ * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
  * import com.pulumi.alicloud.mongodb.ShardingNetworkPrivateAddress;
  * import com.pulumi.alicloud.mongodb.ShardingNetworkPrivateAddressArgs;
  * import java.util.List;
@@ -57,22 +58,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var defaultZones = MongodbFunctions.getZones();
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         final var index = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()).length() - 1;
+ * 
+ *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones())[index].id();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(zoneId)
  *             .build());
  * 
  *         var defaultShardingInstance = new ShardingInstance(&#34;defaultShardingInstance&#34;, ShardingInstanceArgs.builder()        
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .zoneId(zoneId)
+ *             .vswitchId(defaultSwitch.id())
  *             .engineVersion(&#34;4.2&#34;)
+ *             .shardLists(            
+ *                 ShardingInstanceShardListArgs.builder()
+ *                     .nodeClass(&#34;dds.shard.mid&#34;)
+ *                     .nodeStorage(&#34;10&#34;)
+ *                     .build(),
+ *                 ShardingInstanceShardListArgs.builder()
+ *                     .nodeClass(&#34;dds.shard.standard&#34;)
+ *                     .nodeStorage(&#34;20&#34;)
+ *                     .readonlyReplicas(&#34;1&#34;)
+ *                     .build())
  *             .mongoLists(            
  *                 ShardingInstanceMongoListArgs.builder()
  *                     .nodeClass(&#34;dds.mongos.mid&#34;)
@@ -80,23 +98,14 @@ import javax.annotation.Nullable;
  *                 ShardingInstanceMongoListArgs.builder()
  *                     .nodeClass(&#34;dds.mongos.mid&#34;)
  *                     .build())
- *             .shardLists(            
- *                 ShardingInstanceShardListArgs.builder()
- *                     .nodeClass(&#34;dds.shard.mid&#34;)
- *                     .nodeStorage(10)
- *                     .build(),
- *                 ShardingInstanceShardListArgs.builder()
- *                     .nodeClass(&#34;dds.shard.mid&#34;)
- *                     .nodeStorage(10)
- *                     .build())
  *             .build());
  * 
- *         var example = new ShardingNetworkPrivateAddress(&#34;example&#34;, ShardingNetworkPrivateAddressArgs.builder()        
+ *         var defaultShardingNetworkPrivateAddress = new ShardingNetworkPrivateAddress(&#34;defaultShardingNetworkPrivateAddress&#34;, ShardingNetworkPrivateAddressArgs.builder()        
  *             .dbInstanceId(defaultShardingInstance.id())
  *             .nodeId(defaultShardingInstance.shardLists().applyValue(shardLists -&gt; shardLists[0].nodeId()))
  *             .zoneId(defaultShardingInstance.zoneId())
- *             .accountName(&#34;example_value&#34;)
- *             .accountPassword(&#34;YourPassword+12345&#34;)
+ *             .accountName(&#34;example&#34;)
+ *             .accountPassword(&#34;Example_123&#34;)
  *             .build());
  * 
  *     }

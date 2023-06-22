@@ -243,9 +243,46 @@ class HanaBackupClient(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            availability_zone=example_zones.zones[0].id,
+            security_groups=[example_security_group.id],
+            instance_name="terraform-example",
+            internet_charge_type="PayByBandwidth",
+            vswitch_id=example_switch.id)
+        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
+        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
+            alert_setting="INHERITED",
+            hana_name="terraform-example",
+            host="1.1.1.1",
+            instance_number=1,
+            password="YouPassword123",
+            resource_group_id=example_resource_groups.groups[0].id,
+            sid="HXE",
+            use_ssl=False,
+            user_name="admin",
+            validate_certificate=False,
+            vault_id=example_vault.id)
         default = alicloud.hbr.HanaBackupClient("default",
-            vault_id=data["alicloud_hbr_vaults"]["default"]["vaults"][0]["id"],
-            client_info="[ { \\"instanceId\\": \\"i-bp116lr******te9q2\\", \\"clusterId\\": \\"cl-000csy09q******9rfz9\\", \\"sourceTypes\\": [ \\"HANA\\" ]  }]",
+            vault_id=example_vault.id,
+            client_info=pulumi.Output.all(example_instance.id, example_hana_instance.hana_instance_id).apply(lambda id, hana_instance_id: f"[ {{ \\"instanceId\\": \\"{id}\\", \\"clusterId\\": \\"{hana_instance_id}\\", \\"sourceTypes\\": [ \\"HANA\\" ]  }}]"),
             alert_setting="INHERITED",
             use_https=True)
         ```
@@ -286,9 +323,46 @@ class HanaBackupClient(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+            owners="system")
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            availability_zone=example_zones.zones[0].id,
+            security_groups=[example_security_group.id],
+            instance_name="terraform-example",
+            internet_charge_type="PayByBandwidth",
+            vswitch_id=example_switch.id)
+        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
+        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
+            alert_setting="INHERITED",
+            hana_name="terraform-example",
+            host="1.1.1.1",
+            instance_number=1,
+            password="YouPassword123",
+            resource_group_id=example_resource_groups.groups[0].id,
+            sid="HXE",
+            use_ssl=False,
+            user_name="admin",
+            validate_certificate=False,
+            vault_id=example_vault.id)
         default = alicloud.hbr.HanaBackupClient("default",
-            vault_id=data["alicloud_hbr_vaults"]["default"]["vaults"][0]["id"],
-            client_info="[ { \\"instanceId\\": \\"i-bp116lr******te9q2\\", \\"clusterId\\": \\"cl-000csy09q******9rfz9\\", \\"sourceTypes\\": [ \\"HANA\\" ]  }]",
+            vault_id=example_vault.id,
+            client_info=pulumi.Output.all(example_instance.id, example_hana_instance.hana_instance_id).apply(lambda id, hana_instance_id: f"[ {{ \\"instanceId\\": \\"{id}\\", \\"clusterId\\": \\"{hana_instance_id}\\", \\"sourceTypes\\": [ \\"HANA\\" ]  }}]"),
             alert_setting="INHERITED",
             use_https=True)
         ```

@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string AppName;
         /// <summary>
+        /// The backend protocol.
+        /// </summary>
+        public readonly string? BackendProtocol;
+        /// <summary>
         /// Application backend port.
         /// </summary>
         public readonly int ContainerPort;
@@ -33,6 +37,10 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// URL path.
         /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// The rewrite path.
+        /// </summary>
+        public readonly string? RewritePath;
 
         [OutputConstructor]
         private IngressRule(
@@ -40,17 +48,23 @@ namespace Pulumi.AliCloud.Sae.Outputs
 
             string appName,
 
+            string? backendProtocol,
+
             int containerPort,
 
             string domain,
 
-            string path)
+            string path,
+
+            string? rewritePath)
         {
             AppId = appId;
             AppName = appName;
+            BackendProtocol = backendProtocol;
             ContainerPort = containerPort;
             Domain = domain;
             Path = path;
+            RewritePath = rewritePath;
         }
     }
 }

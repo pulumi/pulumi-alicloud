@@ -14,7 +14,78 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Global Accelerator (GA) Acl Attachment and how to use it, see [What is Acl Attachment](https://www.alibabacloud.com/help/en/doc-detail/258295.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.150.0+.
+    /// &gt; **NOTE:** Available since v1.150.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     {
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "1",
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 100,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         PaymentType = "PayAsYouGo",
+    ///         BillingType = "PayBy95",
+    ///         Ratio = 30,
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     {
+    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var defaultListener = new AliCloud.Ga.Listener("defaultListener", new()
+    ///     {
+    ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
+    ///         PortRanges = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
+    ///             {
+    ///                 FromPort = 80,
+    ///                 ToPort = 80,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultAcl = new AliCloud.Ga.Acl("defaultAcl", new()
+    ///     {
+    ///         AclName = "terraform-example",
+    ///         AddressIpVersion = "IPv4",
+    ///     });
+    /// 
+    ///     var defaultAclEntryAttachment = new AliCloud.Ga.AclEntryAttachment("defaultAclEntryAttachment", new()
+    ///     {
+    ///         AclId = defaultAcl.Id,
+    ///         Entry = "192.168.1.1/32",
+    ///         EntryDescription = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultAclAttachment = new AliCloud.Ga.AclAttachment("defaultAclAttachment", new()
+    ///     {
+    ///         AclId = defaultAcl.Id,
+    ///         ListenerId = defaultListener.Id,
+    ///         AclType = "white",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

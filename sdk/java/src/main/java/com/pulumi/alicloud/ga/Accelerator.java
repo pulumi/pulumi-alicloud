@@ -17,48 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Global Accelerator (GA) Accelerator resource.
- * 
- * For information about Global Accelerator (GA) Accelerator and how to use it, see [What is Accelerator](https://help.aliyun.com/document_detail/153235.html).
- * 
- * &gt; **NOTE:** At present, The `alicloud.ga.Accelerator` cannot be deleted. you need to wait until the resource is outdated and released automatically.
- * 
- * &gt; **NOTE:** Available in v1.111.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ga.Accelerator;
- * import com.pulumi.alicloud.ga.AcceleratorArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Accelerator(&#34;example&#34;, AcceleratorArgs.builder()        
- *             .autoUseCoupon(true)
- *             .duration(1)
- *             .spec(&#34;1&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * Ga Accelerator can be imported using the id, e.g.

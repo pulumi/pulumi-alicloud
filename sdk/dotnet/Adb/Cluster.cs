@@ -131,8 +131,14 @@ namespace Pulumi.AliCloud.Adb
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        [Output("diskPerformanceLevel")]
+        public Output<string> DiskPerformanceLevel { get; private set; } = null!;
+
         [Output("elasticIoResource")]
         public Output<int> ElasticIoResource { get; private set; } = null!;
+
+        [Output("elasticIoResourceSize")]
+        public Output<string> ElasticIoResourceSize { get; private set; } = null!;
 
         /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -307,8 +313,14 @@ namespace Pulumi.AliCloud.Adb
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("diskPerformanceLevel")]
+        public Input<string>? DiskPerformanceLevel { get; set; }
+
         [Input("elasticIoResource")]
         public Input<int>? ElasticIoResource { get; set; }
+
+        [Input("elasticIoResourceSize")]
+        public Input<string>? ElasticIoResourceSize { get; set; }
 
         /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -454,8 +466,14 @@ namespace Pulumi.AliCloud.Adb
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("diskPerformanceLevel")]
+        public Input<string>? DiskPerformanceLevel { get; set; }
+
         [Input("elasticIoResource")]
         public Input<int>? ElasticIoResource { get; set; }
+
+        [Input("elasticIoResourceSize")]
+        public Input<string>? ElasticIoResourceSize { get; set; }
 
         /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)

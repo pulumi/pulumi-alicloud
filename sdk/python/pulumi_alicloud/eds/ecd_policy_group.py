@@ -37,8 +37,8 @@ class EcdPolicyGroupArgs:
                  watermark_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EcdPolicyGroup resource.
-        :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]] authorize_access_policy_rules: The rule of authorize access rule.
-        :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]] authorize_security_policy_rules: The policy rule.
+        :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param pulumi.Input[str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[str] domain_list: The list of domain.
@@ -46,9 +46,9 @@ class EcdPolicyGroupArgs:
         :param pulumi.Input[str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
         :param pulumi.Input[str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
         :param pulumi.Input[str] policy_group_name: The name of policy group.
-        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
-        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] usb_redirect: The usb redirect policy. Valid values: `off`, `on`.
@@ -100,7 +100,7 @@ class EcdPolicyGroupArgs:
     @pulumi.getter(name="authorizeAccessPolicyRules")
     def authorize_access_policy_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]:
         """
-        The rule of authorize access rule.
+        The rule of authorize access rule. See `authorize_access_policy_rules` below.
         """
         return pulumi.get(self, "authorize_access_policy_rules")
 
@@ -112,7 +112,7 @@ class EcdPolicyGroupArgs:
     @pulumi.getter(name="authorizeSecurityPolicyRules")
     def authorize_security_policy_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]:
         """
-        The policy rule.
+        The policy rule. See `authorize_security_policy_rules` below.
         """
         return pulumi.get(self, "authorize_security_policy_rules")
 
@@ -208,7 +208,7 @@ class EcdPolicyGroupArgs:
     @pulumi.getter
     def recording(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         """
         return pulumi.get(self, "recording")
 
@@ -232,7 +232,7 @@ class EcdPolicyGroupArgs:
     @pulumi.getter(name="recordingExpires")
     def recording_expires(self) -> Optional[pulumi.Input[int]]:
         """
-        The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         """
         return pulumi.get(self, "recording_expires")
 
@@ -350,8 +350,8 @@ class _EcdPolicyGroupState:
                  watermark_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EcdPolicyGroup resources.
-        :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]] authorize_access_policy_rules: The rule of authorize access rule.
-        :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]] authorize_security_policy_rules: The policy rule.
+        :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param pulumi.Input[str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[str] domain_list: The list of domain.
@@ -359,9 +359,9 @@ class _EcdPolicyGroupState:
         :param pulumi.Input[str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
         :param pulumi.Input[str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
         :param pulumi.Input[str] policy_group_name: The name of policy group.
-        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
-        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] status: The status of policy.
@@ -416,7 +416,7 @@ class _EcdPolicyGroupState:
     @pulumi.getter(name="authorizeAccessPolicyRules")
     def authorize_access_policy_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]]:
         """
-        The rule of authorize access rule.
+        The rule of authorize access rule. See `authorize_access_policy_rules` below.
         """
         return pulumi.get(self, "authorize_access_policy_rules")
 
@@ -428,7 +428,7 @@ class _EcdPolicyGroupState:
     @pulumi.getter(name="authorizeSecurityPolicyRules")
     def authorize_security_policy_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]]:
         """
-        The policy rule.
+        The policy rule. See `authorize_security_policy_rules` below.
         """
         return pulumi.get(self, "authorize_security_policy_rules")
 
@@ -524,7 +524,7 @@ class _EcdPolicyGroupState:
     @pulumi.getter
     def recording(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         """
         return pulumi.get(self, "recording")
 
@@ -548,7 +548,7 @@ class _EcdPolicyGroupState:
     @pulumi.getter(name="recordingExpires")
     def recording_expires(self) -> Optional[pulumi.Input[int]]:
         """
-        The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         """
         return pulumi.get(self, "recording_expires")
 
@@ -681,9 +681,9 @@ class EcdPolicyGroup(pulumi.CustomResource):
         """
         Provides a Elastic Desktop Service (ECD) Policy Group resource.
 
-        For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+        For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createpolicygroup).
 
-        > **NOTE:** Available in v1.130.0+.
+        > **NOTE:** Available since v1.130.0.
 
         ## Example Usage
 
@@ -696,11 +696,11 @@ class EcdPolicyGroup(pulumi.CustomResource):
         default = alicloud.eds.EcdPolicyGroup("default",
             authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
                 cidr_ip="1.2.3.45/24",
-                description="my-description1",
+                description="terraform-example",
             )],
             authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
                 cidr_ip="1.2.3.4/24",
-                description="my-description",
+                description="terraform-example",
                 ip_protocol="TCP",
                 policy="accept",
                 port_range="80/80",
@@ -709,7 +709,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
             )],
             clipboard="read",
             local_drive="read",
-            policy_group_name="my-policy-group",
+            policy_group_name="terraform-example",
             usb_redirect="off",
             watermark="off")
         ```
@@ -724,8 +724,8 @@ class EcdPolicyGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] authorize_access_policy_rules: The rule of authorize access rule.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] authorize_security_policy_rules: The policy rule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param pulumi.Input[str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[str] domain_list: The list of domain.
@@ -733,9 +733,9 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param pulumi.Input[str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
         :param pulumi.Input[str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
         :param pulumi.Input[str] policy_group_name: The name of policy group.
-        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
-        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] usb_redirect: The usb redirect policy. Valid values: `off`, `on`.
@@ -753,9 +753,9 @@ class EcdPolicyGroup(pulumi.CustomResource):
         """
         Provides a Elastic Desktop Service (ECD) Policy Group resource.
 
-        For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+        For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createpolicygroup).
 
-        > **NOTE:** Available in v1.130.0+.
+        > **NOTE:** Available since v1.130.0.
 
         ## Example Usage
 
@@ -768,11 +768,11 @@ class EcdPolicyGroup(pulumi.CustomResource):
         default = alicloud.eds.EcdPolicyGroup("default",
             authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
                 cidr_ip="1.2.3.45/24",
-                description="my-description1",
+                description="terraform-example",
             )],
             authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
                 cidr_ip="1.2.3.4/24",
-                description="my-description",
+                description="terraform-example",
                 ip_protocol="TCP",
                 policy="accept",
                 port_range="80/80",
@@ -781,7 +781,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
             )],
             clipboard="read",
             local_drive="read",
-            policy_group_name="my-policy-group",
+            policy_group_name="terraform-example",
             usb_redirect="off",
             watermark="off")
         ```
@@ -894,8 +894,8 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] authorize_access_policy_rules: The rule of authorize access rule.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] authorize_security_policy_rules: The policy rule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeAccessPolicyRuleArgs']]]] authorize_access_policy_rules: The rule of authorize access rule. See `authorize_access_policy_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs']]]] authorize_security_policy_rules: The policy rule. See `authorize_security_policy_rules` below.
         :param pulumi.Input[str] camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param pulumi.Input[str] clipboard: The clipboard policy. Valid values: `off`, `read`, `readwrite`.
         :param pulumi.Input[str] domain_list: The list of domain.
@@ -903,9 +903,9 @@ class EcdPolicyGroup(pulumi.CustomResource):
         :param pulumi.Input[str] html_file_transfer: The html5 file transfer. Valid values: `all`, `download`, `off`, `upload`.
         :param pulumi.Input[str] local_drive: Local drive redirect policy. Valid values: ` readwrite`, `off`, `read`.
         :param pulumi.Input[str] policy_group_name: The name of policy group.
-        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        :param pulumi.Input[str] recording: Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         :param pulumi.Input[str] recording_end_time: The end time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
-        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        :param pulumi.Input[int] recording_expires: The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         :param pulumi.Input[int] recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         :param pulumi.Input[str] recording_start_time: The start time of recording, value: `HH:MM:SS`. This return value is meaningful only when the value of `recording` is `period`.
         :param pulumi.Input[str] status: The status of policy.
@@ -945,7 +945,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
     @pulumi.getter(name="authorizeAccessPolicyRules")
     def authorize_access_policy_rules(self) -> pulumi.Output[Optional[Sequence['outputs.EcdPolicyGroupAuthorizeAccessPolicyRule']]]:
         """
-        The rule of authorize access rule.
+        The rule of authorize access rule. See `authorize_access_policy_rules` below.
         """
         return pulumi.get(self, "authorize_access_policy_rules")
 
@@ -953,7 +953,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
     @pulumi.getter(name="authorizeSecurityPolicyRules")
     def authorize_security_policy_rules(self) -> pulumi.Output[Optional[Sequence['outputs.EcdPolicyGroupAuthorizeSecurityPolicyRule']]]:
         """
-        The policy rule.
+        The policy rule. See `authorize_security_policy_rules` below.
         """
         return pulumi.get(self, "authorize_security_policy_rules")
 
@@ -1017,7 +1017,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
     @pulumi.getter
     def recording(self) -> pulumi.Output[str]:
         """
-        Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
         """
         return pulumi.get(self, "recording")
 
@@ -1033,7 +1033,7 @@ class EcdPolicyGroup(pulumi.CustomResource):
     @pulumi.getter(name="recordingExpires")
     def recording_expires(self) -> pulumi.Output[int]:
         """
-        The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+        The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
         """
         return pulumi.get(self, "recording_expires")
 

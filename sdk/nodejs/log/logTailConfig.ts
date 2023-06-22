@@ -16,9 +16,13 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as fs from "fs";
+ * import * as random from "@pulumi/random";
  *
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "create by terraform"});
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
  * const exampleStore = new alicloud.log.Store("exampleStore", {
  *     project: exampleProject.name,
  *     retentionPeriod: 3650,
@@ -31,9 +35,18 @@ import * as utilities from "../utilities";
  *     project: exampleProject.name,
  *     logstore: exampleStore.name,
  *     inputType: "file",
- *     logSample: "test",
  *     outputType: "LogService",
- *     inputDetail: fs.readFileSync("config.json"),
+ *     inputDetail: `  	{
+ * 		"logPath": "/logPath",
+ * 		"filePattern": "access.log",
+ * 		"logType": "json_log",
+ * 		"topicFormat": "default",
+ * 		"discardUnmatch": false,
+ * 		"enableRawLog": true,
+ * 		"fileEncoding": "gbk",
+ * 		"maxDepth": 10
+ * 	}
+ * `,
  * });
  * ```
  * ## Module Support

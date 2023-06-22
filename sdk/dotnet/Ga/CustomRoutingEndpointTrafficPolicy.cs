@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Global Accelerator (GA) Custom Routing Endpoint Traffic Policy and how to use it, see [What is Custom Routing Endpoint Traffic Policy](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointtrafficpolicies).
     /// 
-    /// &gt; **NOTE:** Available in v1.197.0+.
+    /// &gt; **NOTE:** Available since v1.197.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,16 +28,102 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Ga.CustomRoutingEndpointTrafficPolicy("default", new()
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
-    ///         Address = "192.168.192.2",
-    ///         EndpointId = "your_custom_routing_endpoint_id",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     {
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "1",
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     {
+    ///         Bandwidth = 100,
+    ///         Type = "Basic",
+    ///         BandwidthType = "Basic",
+    ///         PaymentType = "PayAsYouGo",
+    ///         BillingType = "PayBy95",
+    ///         Ratio = 30,
+    ///     });
+    /// 
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     {
+    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
+    ///     });
+    /// 
+    ///     var defaultListener = new AliCloud.Ga.Listener("defaultListener", new()
+    ///     {
+    ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
+    ///         ListenerType = "CustomRouting",
+    ///         PortRanges = new[]
+    ///         {
+    ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
+    ///             {
+    ///                 FromPort = 10000,
+    ///                 ToPort = 16000,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultCustomRoutingEndpointGroup = new AliCloud.Ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", new()
+    ///     {
+    ///         AcceleratorId = defaultListener.AcceleratorId,
+    ///         ListenerId = defaultListener.Id,
+    ///         EndpointGroupRegion = region,
+    ///         CustomRoutingEndpointGroupName = "terraform-example",
+    ///         Description = "terraform-example",
+    ///     });
+    /// 
+    ///     var defaultCustomRoutingEndpoint = new AliCloud.Ga.CustomRoutingEndpoint("defaultCustomRoutingEndpoint", new()
+    ///     {
+    ///         EndpointGroupId = defaultCustomRoutingEndpointGroup.Id,
+    ///         Endpoint = defaultSwitch.Id,
+    ///         Type = "PrivateSubNet",
+    ///         TrafficToEndpointPolicy = "AllowCustom",
+    ///     });
+    /// 
+    ///     var defaultCustomRoutingEndpointGroupDestination = new AliCloud.Ga.CustomRoutingEndpointGroupDestination("defaultCustomRoutingEndpointGroupDestination", new()
+    ///     {
+    ///         EndpointGroupId = defaultCustomRoutingEndpointGroup.Id,
+    ///         Protocols = new[]
+    ///         {
+    ///             "TCP",
+    ///         },
+    ///         FromPort = 1,
+    ///         ToPort = 10,
+    ///     });
+    /// 
+    ///     var defaultCustomRoutingEndpointTrafficPolicy = new AliCloud.Ga.CustomRoutingEndpointTrafficPolicy("defaultCustomRoutingEndpointTrafficPolicy", new()
+    ///     {
+    ///         EndpointId = defaultCustomRoutingEndpoint.CustomRoutingEndpointId,
+    ///         Address = "172.17.3.0",
     ///         PortRanges = new[]
     ///         {
     ///             new AliCloud.Ga.Inputs.CustomRoutingEndpointTrafficPolicyPortRangeArgs
     ///             {
-    ///                 FromPort = 10001,
-    ///                 ToPort = 10002,
+    ///                 FromPort = 1,
+    ///                 ToPort = 10,
     ///             },
     ///         },
     ///     });
@@ -93,7 +179,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> ListenerId { get; private set; } = null!;
 
         /// <summary>
-        /// Port rangeSee the following. See the following `Block port_ranges`.
+        /// Port rangeSee the following. See `port_ranges` below.
         /// </summary>
         [Output("portRanges")]
         public Output<ImmutableArray<Outputs.CustomRoutingEndpointTrafficPolicyPortRange>> PortRanges { get; private set; } = null!;
@@ -166,7 +252,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.CustomRoutingEndpointTrafficPolicyPortRangeArgs>? _portRanges;
 
         /// <summary>
-        /// Port rangeSee the following. See the following `Block port_ranges`.
+        /// Port rangeSee the following. See `port_ranges` below.
         /// </summary>
         public InputList<Inputs.CustomRoutingEndpointTrafficPolicyPortRangeArgs> PortRanges
         {
@@ -222,7 +308,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.CustomRoutingEndpointTrafficPolicyPortRangeGetArgs>? _portRanges;
 
         /// <summary>
-        /// Port rangeSee the following. See the following `Block port_ranges`.
+        /// Port rangeSee the following. See `port_ranges` below.
         /// </summary>
         public InputList<Inputs.CustomRoutingEndpointTrafficPolicyPortRangeGetArgs> PortRanges
         {

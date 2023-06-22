@@ -172,7 +172,7 @@ def get_groups(group_id_regex: Optional[str] = None,
         instance_id=default_instance.id,
         remark="dafault_ons_group_remark")
     groups_ds = default_group.instance_id.apply(lambda instance_id: alicloud.rocketmq.get_groups_output(instance_id=instance_id,
-        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        name_regex=var["group_id"],
         output_file="groups.txt"))
     pulumi.export("firstGroupName", groups_ds.groups[0].group_name)
     ```
@@ -244,7 +244,7 @@ def get_groups_output(group_id_regex: Optional[pulumi.Input[Optional[str]]] = No
         instance_id=default_instance.id,
         remark="dafault_ons_group_remark")
     groups_ds = default_group.instance_id.apply(lambda instance_id: alicloud.rocketmq.get_groups_output(instance_id=instance_id,
-        name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        name_regex=var["group_id"],
         output_file="groups.txt"))
     pulumi.export("firstGroupName", groups_ds.groups[0].group_name)
     ```

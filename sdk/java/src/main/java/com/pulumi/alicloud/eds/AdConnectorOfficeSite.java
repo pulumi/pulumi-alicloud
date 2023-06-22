@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createadconnectorofficesite).
  * 
- * &gt; **NOTE:** Available in v1.176.0+.
+ * &gt; **NOTE:** Available since v1.176.0.
  * 
  * ## Example Usage
  * 
@@ -50,26 +50,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(var_.name())
+ *             .cenInstanceName(name)
  *             .protectionLevel(&#34;REDUCED&#34;)
  *             .build());
  * 
  *         var defaultAdConnectorOfficeSite = new AdConnectorOfficeSite(&#34;defaultAdConnectorOfficeSite&#34;, AdConnectorOfficeSiteArgs.builder()        
- *             .adConnectorOfficeSiteName(var_.name())
+ *             .adConnectorOfficeSiteName(name)
  *             .bandwidth(100)
  *             .cenId(defaultInstance.id())
  *             .cidrBlock(&#34;10.0.0.0/12&#34;)
  *             .desktopAccessType(&#34;INTERNET&#34;)
  *             .dnsAddresses(&#34;127.0.0.2&#34;)
- *             .domainName(&#34;example1234.com&#34;)
- *             .domainPassword(&#34;YourPassword1234&#34;)
- *             .domainUserName(&#34;Administrator&#34;)
- *             .enableAdminAccess(true)
- *             .enableInternetAccess(true)
+ *             .domainName(&#34;corp.example.com&#34;)
+ *             .domainPassword(&#34;Example1234&#34;)
+ *             .domainUserName(&#34;sAMAccountName&#34;)
+ *             .enableAdminAccess(false)
+ *             .enableInternetAccess(false)
  *             .mfaEnabled(false)
  *             .subDomainDnsAddresses(&#34;127.0.0.3&#34;)
- *             .subDomainName(&#34;child.example1234.com&#34;)
+ *             .subDomainName(&#34;child.example.com&#34;)
  *             .build());
  * 
  *     }

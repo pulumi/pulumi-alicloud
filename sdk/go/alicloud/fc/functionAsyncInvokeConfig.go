@@ -12,9 +12,9 @@ import (
 )
 
 //	Manages an asynchronous invocation configuration for a FC Function or Alias.\
-//	 For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/181866.htm).
+//	 For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-putfunctionasyncinvokeconfig).
 //
-// > **NOTE:** Available in 1.100.0+
+// > **NOTE:** Available since v1.100.0.
 //
 // ## Example Usage
 // ### Destination Configuration
@@ -26,22 +26,119 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fc.NewFunctionAsyncInvokeConfig(ctx, "example", &fc.FunctionAsyncInvokeConfigArgs{
-//				ServiceName:  pulumi.Any(alicloud_fc_service.Example.Name),
-//				FunctionName: pulumi.Any(alicloud_fc_function.Example.Name),
+//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//				Document:    pulumi.String("	{\n		\"Statement\": [\n		  {\n			\"Action\": \"sts:AssumeRole\",\n			\"Effect\": \"Allow\",\n			\"Principal\": {\n			  \"Service\": [\n				\"fc.aliyuncs.com\"\n			  ]\n			}\n		  }\n		],\n		\"Version\": \"1\"\n	}\n"),
+//				Description: pulumi.String("this is a example"),
+//				Force:       pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultPolicy, err := ram.NewPolicy(ctx, "defaultPolicy", &ram.PolicyArgs{
+//				PolicyName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("examplepolicy%v", result), nil
+//				}).(pulumi.StringOutput),
+//				PolicyDocument: pulumi.String("	{\n		\"Version\": \"1\",\n		\"Statement\": [\n		  {\n			\"Action\": \"mns:*\",\n			\"Resource\": \"*\",\n			\"Effect\": \"Allow\"\n		  }\n		]\n	  }\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewRolePolicyAttachment(ctx, "defaultRolePolicyAttachment", &ram.RolePolicyAttachmentArgs{
+//				RoleName:   defaultRole.Name,
+//				PolicyName: defaultPolicy.Name,
+//				PolicyType: pulumi.String("Custom"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//				Description:    pulumi.String("example-value"),
+//				Role:           defaultRole.Arn,
+//				InternetAccess: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//				Bucket:  defaultBucket.ID(),
+//				Key:     pulumi.String("index.py"),
+//				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultFunction, err := fc.NewFunction(ctx, "defaultFunction", &fc.FunctionArgs{
+//				Service:     defaultService.Name,
+//				Description: pulumi.String("example"),
+//				OssBucket:   defaultBucket.ID(),
+//				OssKey:      defaultBucketObject.Key,
+//				MemorySize:  pulumi.Int(512),
+//				Runtime:     pulumi.String("python2.7"),
+//				Handler:     pulumi.String("hello.handler"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultQueue, err := mns.NewQueue(ctx, "defaultQueue", nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultTopic, err := mns.NewTopic(ctx, "defaultTopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewFunctionAsyncInvokeConfig(ctx, "defaultFunctionAsyncInvokeConfig", &fc.FunctionAsyncInvokeConfigArgs{
+//				ServiceName:  defaultService.Name,
+//				FunctionName: defaultFunction.Name,
 //				DestinationConfig: &fc.FunctionAsyncInvokeConfigDestinationConfigArgs{
 //					OnFailure: &fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{
-//						Destination: pulumi.Any(the_example_mns_queue_arn),
+//						Destination: defaultQueue.Name.ApplyT(func(name string) (string, error) {
+//							return fmt.Sprintf("acs:mns:%v:%v:/queues/%v/messages", defaultRegions.Regions[0].Id, defaultAccount.Id, name), nil
+//						}).(pulumi.StringOutput),
 //					},
 //					OnSuccess: &fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{
-//						Destination: pulumi.Any(the_example_mns_topic_arn),
+//						Destination: defaultTopic.Name.ApplyT(func(name string) (string, error) {
+//							return fmt.Sprintf("acs:mns:%v:%v:/topics/%v/messages", defaultRegions.Regions[0].Id, defaultAccount.Id, name), nil
+//						}).(pulumi.StringOutput),
 //					},
 //				},
 //			})
@@ -150,7 +247,7 @@ type FunctionAsyncInvokeConfig struct {
 
 	// The date this resource was created.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
-	// Configuration block with destination configuration. See below for details.
+	// Configuration block with destination configuration. See `destinationConfig` below.
 	DestinationConfig FunctionAsyncInvokeConfigDestinationConfigPtrOutput `pulumi:"destinationConfig"`
 	// Name of the Function Compute Function.
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
@@ -205,7 +302,7 @@ func GetFunctionAsyncInvokeConfig(ctx *pulumi.Context,
 type functionAsyncInvokeConfigState struct {
 	// The date this resource was created.
 	CreatedTime *string `pulumi:"createdTime"`
-	// Configuration block with destination configuration. See below for details.
+	// Configuration block with destination configuration. See `destinationConfig` below.
 	DestinationConfig *FunctionAsyncInvokeConfigDestinationConfig `pulumi:"destinationConfig"`
 	// Name of the Function Compute Function.
 	FunctionName *string `pulumi:"functionName"`
@@ -226,7 +323,7 @@ type functionAsyncInvokeConfigState struct {
 type FunctionAsyncInvokeConfigState struct {
 	// The date this resource was created.
 	CreatedTime pulumi.StringPtrInput
-	// Configuration block with destination configuration. See below for details.
+	// Configuration block with destination configuration. See `destinationConfig` below.
 	DestinationConfig FunctionAsyncInvokeConfigDestinationConfigPtrInput
 	// Name of the Function Compute Function.
 	FunctionName pulumi.StringPtrInput
@@ -249,7 +346,7 @@ func (FunctionAsyncInvokeConfigState) ElementType() reflect.Type {
 }
 
 type functionAsyncInvokeConfigArgs struct {
-	// Configuration block with destination configuration. See below for details.
+	// Configuration block with destination configuration. See `destinationConfig` below.
 	DestinationConfig *FunctionAsyncInvokeConfigDestinationConfig `pulumi:"destinationConfig"`
 	// Name of the Function Compute Function.
 	FunctionName string `pulumi:"functionName"`
@@ -267,7 +364,7 @@ type functionAsyncInvokeConfigArgs struct {
 
 // The set of arguments for constructing a FunctionAsyncInvokeConfig resource.
 type FunctionAsyncInvokeConfigArgs struct {
-	// Configuration block with destination configuration. See below for details.
+	// Configuration block with destination configuration. See `destinationConfig` below.
 	DestinationConfig FunctionAsyncInvokeConfigDestinationConfigPtrInput
 	// Name of the Function Compute Function.
 	FunctionName pulumi.StringInput
@@ -375,7 +472,7 @@ func (o FunctionAsyncInvokeConfigOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) pulumi.StringOutput { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
-// Configuration block with destination configuration. See below for details.
+// Configuration block with destination configuration. See `destinationConfig` below.
 func (o FunctionAsyncInvokeConfigOutput) DestinationConfig() FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
 	return o.ApplyT(func(v *FunctionAsyncInvokeConfig) FunctionAsyncInvokeConfigDestinationConfigPtrOutput {
 		return v.DestinationConfig

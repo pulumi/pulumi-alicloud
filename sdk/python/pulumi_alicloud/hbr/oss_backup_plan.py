@@ -404,15 +404,15 @@ class OssBackupPlan(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-test112358"
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=name)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
         default_oss_backup_plan = alicloud.hbr.OssBackupPlan("defaultOssBackupPlan",
-            oss_backup_plan_name=name,
+            oss_backup_plan_name="terraform-example",
             prefix="/",
             bucket=default_bucket.bucket,
             vault_id=default_vault.id,
@@ -463,15 +463,15 @@ class OssBackupPlan(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-test112358"
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=name)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=name)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
         default_oss_backup_plan = alicloud.hbr.OssBackupPlan("defaultOssBackupPlan",
-            oss_backup_plan_name=name,
+            oss_backup_plan_name="terraform-example",
             prefix="/",
             bucket=default_bucket.bucket,
             vault_id=default_vault.id,

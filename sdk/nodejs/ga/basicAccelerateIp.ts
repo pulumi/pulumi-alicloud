@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Global Accelerator (GA) Basic Accelerate IP resource.
  *
- * For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://help.aliyun.com/document_detail/466833.html).
+ * For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicaccelerateip).
  *
- * > **NOTE:** Available in v1.194.0+.
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ga.BasicAccelerateIp("default", {
- *     acceleratorId: "your_accelerator_id",
- *     ipSetId: "your_ip_set_id",
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const defaultBasicAccelerator = new alicloud.ga.BasicAccelerator("defaultBasicAccelerator", {
+ *     duration: 1,
+ *     basicAcceleratorName: "terraform-example",
+ *     description: "terraform-example",
+ *     bandwidthBillingType: "CDT",
+ *     autoUseCoupon: "true",
+ *     autoPay: true,
+ * });
+ * const defaultBasicIpSet = new alicloud.ga.BasicIpSet("defaultBasicIpSet", {
+ *     acceleratorId: defaultBasicAccelerator.id,
+ *     accelerateRegionId: region,
+ *     ispType: "BGP",
+ *     bandwidth: 5,
+ * });
+ * const defaultBasicAccelerateIp = new alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp", {
+ *     acceleratorId: defaultBasicAccelerator.id,
+ *     ipSetId: defaultBasicIpSet.id,
  * });
  * ```
  *

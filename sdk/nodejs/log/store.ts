@@ -17,8 +17,13 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "created by terraform"});
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
  * const exampleStore = new alicloud.log.Store("exampleStore", {
  *     project: exampleProject.name,
  *     shardCount: 3,
@@ -31,21 +36,33 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "created by terraform"});
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const exampleAccount = alicloud.getAccount({});
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleKey = new alicloud.kms.Key("exampleKey", {
+ *     description: "terraform-example",
+ *     pendingWindowInDays: 7,
+ *     status: "Enabled",
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
  * const exampleStore = new alicloud.log.Store("exampleStore", {
  *     project: exampleProject.name,
- *     shardCount: 3,
+ *     shardCount: 1,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
- *     appendMeta: true,
  *     encryptConf: {
  *         enable: true,
  *         encryptType: "default",
  *         userCmkInfo: {
- *             cmkKeyId: "your_cmk_key_id",
- *             arn: "your_role_arn",
- *             regionId: "you_cmk_region_id",
+ *             cmkKeyId: exampleKey.id,
+ *             arn: exampleAccount.then(exampleAccount => `acs:ram::${exampleAccount.id}:role/aliyunlogdefaultrole`),
+ *             regionId: region,
  *         },
  *     },
  * });

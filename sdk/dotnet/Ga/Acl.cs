@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Global Accelerator (GA) Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createacl).
     /// 
-    /// &gt; **NOTE:** Available in v1.150.0+.
+    /// &gt; **NOTE:** Available since v1.150.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,18 +28,17 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Ga.Acl("default", new()
+    ///     var defaultAcl = new AliCloud.Ga.Acl("defaultAcl", new()
     ///     {
-    ///         AclEntries = new[]
-    ///         {
-    ///             new AliCloud.Ga.Inputs.AclAclEntryArgs
-    ///             {
-    ///                 Entry = "192.168.1.0/24",
-    ///                 EntryDescription = "tf-test1",
-    ///             },
-    ///         },
-    ///         AclName = "tf-testAccAcl",
+    ///         AclName = "terraform-example",
     ///         AddressIpVersion = "IPv4",
+    ///     });
+    /// 
+    ///     var defaultAclEntryAttachment = new AliCloud.Ga.AclEntryAttachment("defaultAclEntryAttachment", new()
+    ///     {
+    ///         AclId = defaultAcl.Id,
+    ///         Entry = "192.168.1.1/32",
+    ///         EntryDescription = "terraform-example",
     ///     });
     /// 
     /// });
@@ -57,7 +56,7 @@ namespace Pulumi.AliCloud.Ga
     public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The entries of the Acl. See the following `Block acl_entries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
         /// </summary>
         [Output("aclEntries")]
         public Output<ImmutableArray<Outputs.AclAclEntry>> AclEntries { get; private set; } = null!;
@@ -136,7 +135,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.AclAclEntryArgs>? _aclEntries;
 
         /// <summary>
-        /// The entries of the Acl. See the following `Block acl_entries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
         /// </summary>
         [Obsolete(@"Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.")]
         public InputList<Inputs.AclAclEntryArgs> AclEntries
@@ -175,7 +174,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.AclAclEntryGetArgs>? _aclEntries;
 
         /// <summary>
-        /// The entries of the Acl. See the following `Block acl_entries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
+        /// The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`."
         /// </summary>
         [Obsolete(@"Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.")]
         public InputList<Inputs.AclAclEntryGetArgs> AclEntries

@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/doc-detail/153246.htm).
  * 
- * &gt; **NOTE:** Available in v1.113.0+.
+ * &gt; **NOTE:** Available since v1.113.0.
  * 
  * ## Example Usage
  * 
@@ -40,7 +40,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
  * import com.pulumi.alicloud.ga.IpSet;
  * import com.pulumi.alicloud.ga.IpSetArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,33 +53,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAccelerator = new Accelerator(&#34;exampleAccelerator&#34;, AcceleratorArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec(&#34;1&#34;)
  *             .build());
  * 
- *         var exampleBandwidthPackage = new BandwidthPackage(&#34;exampleBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
- *             .bandwidth(20)
+ *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(100)
  *             .type(&#34;Basic&#34;)
  *             .bandwidthType(&#34;Basic&#34;)
- *             .duration(1)
- *             .autoPay(true)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .billingType(&#34;PayBy95&#34;)
  *             .ratio(30)
  *             .build());
  * 
- *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .acceleratorId(exampleAccelerator.id())
- *             .bandwidthPackageId(exampleBandwidthPackage.id())
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .acceleratorId(defaultAccelerator.id())
+ *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var exampleIpSet = new IpSet(&#34;exampleIpSet&#34;, IpSetArgs.builder()        
- *             .accelerateRegionId(&#34;cn-hangzhou&#34;)
+ *         var example = new IpSet(&#34;example&#34;, IpSetArgs.builder()        
+ *             .accelerateRegionId(region)
  *             .bandwidth(&#34;5&#34;)
- *             .acceleratorId(exampleAccelerator.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(exampleBandwidthPackageAttachment)
- *                 .build());
+ *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
+ *             .build());
  * 
  *     }
  * }
@@ -127,7 +126,6 @@ public class IpSet extends com.pulumi.resources.CustomResource {
     }
     /**
      * The bandwidth allocated to the acceleration region.
-     * 
      * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      * 
      */
@@ -136,7 +134,6 @@ public class IpSet extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The bandwidth allocated to the acceleration region.
-     * 
      * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      * 
      */
@@ -158,18 +155,32 @@ public class IpSet extends com.pulumi.resources.CustomResource {
         return this.ipAddressLists;
     }
     /**
-     * The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+     * The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
      * 
      */
     @Export(name="ipVersion", type=String.class, parameters={})
-    private Output</* @Nullable */ String> ipVersion;
+    private Output<String> ipVersion;
 
     /**
-     * @return The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+     * @return The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
      * 
      */
-    public Output<Optional<String>> ipVersion() {
-        return Codegen.optional(this.ipVersion);
+    public Output<String> ipVersion() {
+        return this.ipVersion;
+    }
+    /**
+     * The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+     * 
+     */
+    @Export(name="ispType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> ispType;
+
+    /**
+     * @return The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+     * 
+     */
+    public Output<Optional<String>> ispType() {
+        return Codegen.optional(this.ispType);
     }
     /**
      * The status of the acceleration region.

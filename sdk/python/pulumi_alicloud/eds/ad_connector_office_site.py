@@ -676,7 +676,7 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
 
         For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createadconnectorofficesite).
 
-        > **NOTE:** Available in v1.176.0+.
+        > **NOTE:** Available since v1.176.0.
 
         ## Example Usage
 
@@ -686,24 +686,28 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=var["name"],
+            cen_instance_name=name,
             protection_level="REDUCED")
         default_ad_connector_office_site = alicloud.eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite",
-            ad_connector_office_site_name=var["name"],
+            ad_connector_office_site_name=name,
             bandwidth=100,
             cen_id=default_instance.id,
             cidr_block="10.0.0.0/12",
             desktop_access_type="INTERNET",
             dns_addresses=["127.0.0.2"],
-            domain_name="example1234.com",
-            domain_password="YourPassword1234",
-            domain_user_name="Administrator",
-            enable_admin_access=True,
-            enable_internet_access=True,
+            domain_name="corp.example.com",
+            domain_password="Example1234",
+            domain_user_name="sAMAccountName",
+            enable_admin_access=False,
+            enable_internet_access=False,
             mfa_enabled=False,
             sub_domain_dns_addresses=["127.0.0.3"],
-            sub_domain_name="child.example1234.com")
+            sub_domain_name="child.example.com")
         ```
 
         ## Import
@@ -747,7 +751,7 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
 
         For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createadconnectorofficesite).
 
-        > **NOTE:** Available in v1.176.0+.
+        > **NOTE:** Available since v1.176.0.
 
         ## Example Usage
 
@@ -757,24 +761,28 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_instance = alicloud.cen.Instance("defaultInstance",
-            cen_instance_name=var["name"],
+            cen_instance_name=name,
             protection_level="REDUCED")
         default_ad_connector_office_site = alicloud.eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite",
-            ad_connector_office_site_name=var["name"],
+            ad_connector_office_site_name=name,
             bandwidth=100,
             cen_id=default_instance.id,
             cidr_block="10.0.0.0/12",
             desktop_access_type="INTERNET",
             dns_addresses=["127.0.0.2"],
-            domain_name="example1234.com",
-            domain_password="YourPassword1234",
-            domain_user_name="Administrator",
-            enable_admin_access=True,
-            enable_internet_access=True,
+            domain_name="corp.example.com",
+            domain_password="Example1234",
+            domain_user_name="sAMAccountName",
+            enable_admin_access=False,
+            enable_internet_access=False,
             mfa_enabled=False,
             sub_domain_dns_addresses=["127.0.0.3"],
-            sub_domain_name="child.example1234.com")
+            sub_domain_name="child.example.com")
         ```
 
         ## Import

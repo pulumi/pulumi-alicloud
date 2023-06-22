@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.MongoDB
     /// It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
     /// You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
     /// 
-    /// &gt; **NOTE:**  Available in 1.40.0+
+    /// &gt; **NOTE:** Available since v1.40.0.
     /// 
     /// &gt; **NOTE:**  The following regions don't support create Classic network MongoDB sharding instance.
     /// [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -22,6 +22,72 @@ namespace Pulumi.AliCloud.MongoDB
     /// &gt; **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation
     /// 
     /// ## Example Usage
+    /// ### Create a Mongodb Sharding instance
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
+    /// 
+    ///     var index = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones).Length.Apply(length =&gt; length - 1);
+    /// 
+    ///     var zoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id;
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var defaultShardingInstance = new AliCloud.MongoDB.ShardingInstance("defaultShardingInstance", new()
+    ///     {
+    ///         ZoneId = zoneId,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         EngineVersion = "4.2",
+    ///         ShardLists = new[]
+    ///         {
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
+    ///             {
+    ///                 NodeClass = "dds.shard.mid",
+    ///                 NodeStorage = 10,
+    ///             },
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceShardListArgs
+    ///             {
+    ///                 NodeClass = "dds.shard.standard",
+    ///                 NodeStorage = 20,
+    ///                 ReadonlyReplicas = 1,
+    ///             },
+    ///         },
+    ///         MongoLists = new[]
+    ///         {
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
+    ///             {
+    ///                 NodeClass = "dds.mongos.mid",
+    ///             },
+    ///             new AliCloud.MongoDB.Inputs.ShardingInstanceMongoListArgs
+    ///             {
+    ///                 NodeClass = "dds.mongos.mid",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Module Support
     /// 
     /// You can use to the existing mongodb-sharding module
@@ -63,7 +129,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> BackupTime { get; private set; } = null!;
 
         /// <summary>
-        /// The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
+        /// The node information list of config server. See `config_server_list` below.
         /// </summary>
         [Output("configServerLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceConfigServerList>> ConfigServerLists { get; private set; } = null!;
@@ -93,7 +159,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// The mongo-node count can be purchased is in range of [2, 32].
+        /// The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
         /// </summary>
         [Output("mongoLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceMongoList>> MongoLists { get; private set; } = null!;
@@ -156,7 +222,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<string>> SecurityIpLists { get; private set; } = null!;
 
         /// <summary>
-        /// the shard-node count can be purchased is in range of [2, 32].
+        /// the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         /// </summary>
         [Output("shardLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceShardList>> ShardLists { get; private set; } = null!;
@@ -322,7 +388,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceMongoListArgs>? _mongoLists;
 
         /// <summary>
-        /// The mongo-node count can be purchased is in range of [2, 32].
+        /// The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceMongoListArgs> MongoLists
         {
@@ -391,7 +457,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceShardListArgs>? _shardLists;
 
         /// <summary>
-        /// the shard-node count can be purchased is in range of [2, 32].
+        /// the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceShardListArgs> ShardLists
         {
@@ -494,7 +560,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceConfigServerListGetArgs>? _configServerLists;
 
         /// <summary>
-        /// The node information list of config server. The details see Block `config_server_list`. **NOTE:** Available in v1.140+.
+        /// The node information list of config server. See `config_server_list` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceConfigServerListGetArgs> ConfigServerLists
         {
@@ -536,7 +602,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceMongoListGetArgs>? _mongoLists;
 
         /// <summary>
-        /// The mongo-node count can be purchased is in range of [2, 32].
+        /// The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceMongoListGetArgs> MongoLists
         {
@@ -611,7 +677,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceShardListGetArgs>? _shardLists;
 
         /// <summary>
-        /// the shard-node count can be purchased is in range of [2, 32].
+        /// the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceShardListGetArgs> ShardLists
         {

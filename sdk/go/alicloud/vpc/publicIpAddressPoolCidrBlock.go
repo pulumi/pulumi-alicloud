@@ -12,12 +12,11 @@ import (
 )
 
 // Provides a VPC Public Ip Address Pool Cidr Block resource.
+// > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
 //
 // For information about VPC Public Ip Address Pool Cidr Block and how to use it, see [What is Public Ip Address Pool Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
 //
-// > **NOTE:** Available in v1.189.0+.
-//
-// > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// > **NOTE:** Available since v1.189.0.
 //
 // ## Example Usage
 //
@@ -30,22 +29,28 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultPublicIpAddressPool, err := vpc.NewPublicIpAddressPool(ctx, "defaultPublicIpAddressPool", &vpc.PublicIpAddressPoolArgs{
-//				PublicIpAddressPoolName: pulumi.String("example_value"),
+//				PublicIpAddressPoolName: pulumi.String(name),
+//				Description:             pulumi.String(name),
 //				Isp:                     pulumi.String("BGP"),
-//				Description:             pulumi.String("example_value"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vpc.NewPublicIpAddressPoolCidrBlock(ctx, "defaultPublicIpAddressPoolCidrBlock", &vpc.PublicIpAddressPoolCidrBlockArgs{
 //				PublicIpAddressPoolId: defaultPublicIpAddressPool.ID(),
-//				CidrBlock:             pulumi.String("your_cidr_block"),
+//				CidrBlock:             pulumi.String("47.118.126.0/25"),
 //			})
 //			if err != nil {
 //				return err
@@ -70,6 +75,8 @@ type PublicIpAddressPoolCidrBlock struct {
 
 	// The CIDR block.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
+	// The creation time of the resource.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The ID of the VPC Public IP address pool.
 	PublicIpAddressPoolId pulumi.StringOutput `pulumi:"publicIpAddressPoolId"`
 	// The status of the VPC Public Ip Address Pool Cidr Block.
@@ -83,9 +90,6 @@ func NewPublicIpAddressPoolCidrBlock(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CidrBlock == nil {
-		return nil, errors.New("invalid value for required argument 'CidrBlock'")
-	}
 	if args.PublicIpAddressPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'PublicIpAddressPoolId'")
 	}
@@ -113,6 +117,8 @@ func GetPublicIpAddressPoolCidrBlock(ctx *pulumi.Context,
 type publicIpAddressPoolCidrBlockState struct {
 	// The CIDR block.
 	CidrBlock *string `pulumi:"cidrBlock"`
+	// The creation time of the resource.
+	CreateTime *string `pulumi:"createTime"`
 	// The ID of the VPC Public IP address pool.
 	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The status of the VPC Public Ip Address Pool Cidr Block.
@@ -122,6 +128,8 @@ type publicIpAddressPoolCidrBlockState struct {
 type PublicIpAddressPoolCidrBlockState struct {
 	// The CIDR block.
 	CidrBlock pulumi.StringPtrInput
+	// The creation time of the resource.
+	CreateTime pulumi.StringPtrInput
 	// The ID of the VPC Public IP address pool.
 	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The status of the VPC Public Ip Address Pool Cidr Block.
@@ -134,7 +142,7 @@ func (PublicIpAddressPoolCidrBlockState) ElementType() reflect.Type {
 
 type publicIpAddressPoolCidrBlockArgs struct {
 	// The CIDR block.
-	CidrBlock string `pulumi:"cidrBlock"`
+	CidrBlock *string `pulumi:"cidrBlock"`
 	// The ID of the VPC Public IP address pool.
 	PublicIpAddressPoolId string `pulumi:"publicIpAddressPoolId"`
 }
@@ -142,7 +150,7 @@ type publicIpAddressPoolCidrBlockArgs struct {
 // The set of arguments for constructing a PublicIpAddressPoolCidrBlock resource.
 type PublicIpAddressPoolCidrBlockArgs struct {
 	// The CIDR block.
-	CidrBlock pulumi.StringInput
+	CidrBlock pulumi.StringPtrInput
 	// The ID of the VPC Public IP address pool.
 	PublicIpAddressPoolId pulumi.StringInput
 }
@@ -237,6 +245,11 @@ func (o PublicIpAddressPoolCidrBlockOutput) ToPublicIpAddressPoolCidrBlockOutput
 // The CIDR block.
 func (o PublicIpAddressPoolCidrBlockOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicIpAddressPoolCidrBlock) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The creation time of the resource.
+func (o PublicIpAddressPoolCidrBlockOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicIpAddressPoolCidrBlock) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The ID of the VPC Public IP address pool.

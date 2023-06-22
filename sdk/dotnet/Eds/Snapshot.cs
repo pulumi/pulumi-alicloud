@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// For information about ECD Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createsnapshot).
     /// 
-    /// &gt; **NOTE:** Available in v1.169.0+.
+    /// &gt; **NOTE:** Available since v1.169.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,31 +29,28 @@ namespace Pulumi.AliCloud.Eds
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "example_value";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
     ///     {
     ///         CidrBlock = "172.16.0.0/12",
+    ///         EnableAdminAccess = true,
     ///         DesktopAccessType = "Internet",
     ///         OfficeSiteName = name,
-    ///         EnableInternetAccess = false,
-    ///     });
-    /// 
-    ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
-    ///     {
-    ///         BundleType = "SYSTEM",
     ///     });
     /// 
     ///     var defaultEcdPolicyGroup = new AliCloud.Eds.EcdPolicyGroup("defaultEcdPolicyGroup", new()
     ///     {
     ///         PolicyGroupName = name,
-    ///         Clipboard = "readwrite",
+    ///         Clipboard = "read",
     ///         LocalDrive = "read",
+    ///         UsbRedirect = "off",
+    ///         Watermark = "off",
     ///         AuthorizeAccessPolicyRules = new[]
     ///         {
     ///             new AliCloud.Eds.Inputs.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs
     ///             {
-    ///                 Description = "example_value",
-    ///                 CidrIp = "1.2.3.4/24",
+    ///                 Description = name,
+    ///                 CidrIp = "1.2.3.45/24",
     ///             },
     ///         },
     ///         AuthorizeSecurityPolicyRules = new[]
@@ -62,20 +59,25 @@ namespace Pulumi.AliCloud.Eds
     ///             {
     ///                 Type = "inflow",
     ///                 Policy = "accept",
-    ///                 Description = "example_value",
+    ///                 Description = name,
     ///                 PortRange = "80/80",
     ///                 IpProtocol = "TCP",
     ///                 Priority = "1",
-    ///                 CidrIp = "0.0.0.0/0",
+    ///                 CidrIp = "1.2.3.4/24",
     ///             },
     ///         },
+    ///     });
+    /// 
+    ///     var defaultBundles = AliCloud.Eds.GetBundles.Invoke(new()
+    ///     {
+    ///         BundleType = "SYSTEM",
     ///     });
     /// 
     ///     var defaultDesktop = new AliCloud.Eds.Desktop("defaultDesktop", new()
     ///     {
     ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
     ///         PolicyGroupId = defaultEcdPolicyGroup.Id,
-    ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[0]?.Id),
+    ///         BundleId = defaultBundles.Apply(getBundlesResult =&gt; getBundlesResult.Bundles[1]?.Id),
     ///         DesktopName = name,
     ///     });
     /// 

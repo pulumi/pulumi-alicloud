@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * The project is the resource management unit in Log Service and is used to isolate and control resources.
  * You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
  * 
+ * &gt; **NOTE:** Available since v1.9.5.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -29,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import java.util.List;
@@ -44,9 +48,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .description(&#34;created by terraform&#34;)
- *             .tags(Map.of(&#34;test&#34;, &#34;test&#34;))
+ *             .description(&#34;terraform-example&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
  *             .build());
  * 
  *     }
@@ -60,6 +72,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import java.util.List;
@@ -75,8 +89,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var examplePolicy = new Project(&#34;examplePolicy&#34;, ProjectArgs.builder()        
- *             .description(&#34;created by terraform&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .policy(&#34;&#34;&#34;
  * {
  *   &#34;Statement&#34;: [
@@ -164,6 +183,8 @@ public class Project extends com.pulumi.resources.CustomResource {
     }
     /**
      * Log project tags.
+     * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
      * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
@@ -171,6 +192,8 @@ public class Project extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Log project tags.
+     * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

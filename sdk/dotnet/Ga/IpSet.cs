@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/doc-detail/153246.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.113.0+.
+    /// &gt; **NOTE:** Available since v1.113.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,40 +28,36 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new()
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
     ///     {
     ///         Duration = 1,
     ///         AutoUseCoupon = true,
     ///         Spec = "1",
     ///     });
     /// 
-    ///     var exampleBandwidthPackage = new AliCloud.Ga.BandwidthPackage("exampleBandwidthPackage", new()
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
     ///     {
-    ///         Bandwidth = 20,
+    ///         Bandwidth = 100,
     ///         Type = "Basic",
     ///         BandwidthType = "Basic",
-    ///         Duration = "1",
-    ///         AutoPay = true,
+    ///         PaymentType = "PayAsYouGo",
+    ///         BillingType = "PayBy95",
     ///         Ratio = 30,
     ///     });
     /// 
-    ///     var exampleBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new()
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
     ///     {
-    ///         AcceleratorId = exampleAccelerator.Id,
-    ///         BandwidthPackageId = exampleBandwidthPackage.Id,
+    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
     ///     });
     /// 
-    ///     var exampleIpSet = new AliCloud.Ga.IpSet("exampleIpSet", new()
+    ///     var example = new AliCloud.Ga.IpSet("example", new()
     ///     {
-    ///         AccelerateRegionId = "cn-hangzhou",
+    ///         AccelerateRegionId = region,
     ///         Bandwidth = 5,
-    ///         AcceleratorId = exampleAccelerator.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             exampleBandwidthPackageAttachment,
-    ///         },
+    ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
     ///     });
     /// 
     /// });
@@ -92,7 +88,6 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth allocated to the acceleration region.
-        /// 
         /// &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         /// </summary>
         [Output("bandwidth")]
@@ -105,10 +100,16 @@ namespace Pulumi.AliCloud.Ga
         public Output<ImmutableArray<string>> IpAddressLists { get; private set; } = null!;
 
         /// <summary>
-        /// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        /// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
         /// </summary>
         [Output("ipVersion")]
-        public Output<string?> IpVersion { get; private set; } = null!;
+        public Output<string> IpVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+        /// </summary>
+        [Output("ispType")]
+        public Output<string?> IspType { get; private set; } = null!;
 
         /// <summary>
         /// The status of the acceleration region.
@@ -176,17 +177,22 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth allocated to the acceleration region.
-        /// 
         /// &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        /// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
+        /// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+        /// </summary>
+        [Input("ispType")]
+        public Input<string>? IspType { get; set; }
 
         public IpSetArgs()
         {
@@ -210,7 +216,6 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The bandwidth allocated to the acceleration region.
-        /// 
         /// &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
         /// </summary>
         [Input("bandwidth")]
@@ -229,10 +234,16 @@ namespace Pulumi.AliCloud.Ga
         }
 
         /// <summary>
-        /// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+        /// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
+        /// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+        /// </summary>
+        [Input("ispType")]
+        public Input<string>? IspType { get; set; }
 
         /// <summary>
         /// The status of the acceleration region.

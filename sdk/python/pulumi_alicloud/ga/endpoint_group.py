@@ -34,7 +34,7 @@ class EndpointGroupArgs:
         """
         The set of arguments for constructing a EndpointGroup resource.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
-        :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+        :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] description: The description of the endpoint group.
@@ -49,7 +49,7 @@ class EndpointGroupArgs:
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
         :param pulumi.Input[str] name: The name of the endpoint group.
-        :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
                
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
@@ -98,7 +98,7 @@ class EndpointGroupArgs:
     @pulumi.getter(name="endpointConfigurations")
     def endpoint_configurations(self) -> pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]]:
         """
-        The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+        The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         """
         return pulumi.get(self, "endpoint_configurations")
 
@@ -234,7 +234,7 @@ class EndpointGroupArgs:
     @pulumi.getter(name="portOverrides")
     def port_overrides(self) -> Optional[pulumi.Input['EndpointGroupPortOverridesArgs']]:
         """
-        Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
 
         > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         """
@@ -292,7 +292,7 @@ class _EndpointGroupState:
         Input properties used for looking up and filtering EndpointGroup resources.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[str] description: The description of the endpoint group.
-        :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+        :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
                
@@ -306,7 +306,7 @@ class _EndpointGroupState:
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
-        :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
                
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         :param pulumi.Input[str] status: The status of the endpoint group.
@@ -374,7 +374,7 @@ class _EndpointGroupState:
     @pulumi.getter(name="endpointConfigurations")
     def endpoint_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]]]:
         """
-        The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+        The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         """
         return pulumi.get(self, "endpoint_configurations")
 
@@ -498,7 +498,7 @@ class _EndpointGroupState:
     @pulumi.getter(name="portOverrides")
     def port_overrides(self) -> Optional[pulumi.Input['EndpointGroupPortOverridesArgs']]:
         """
-        Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
 
         > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         """
@@ -571,7 +571,7 @@ class EndpointGroup(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/doc-detail/153259.htm).
 
-        > **NOTE:** Available in v1.113.0+.
+        > **NOTE:** Available since v1.113.0.
 
         > **NOTE:** Listeners that use different protocols support different types of endpoint groups:
         * For a TCP or UDP listener, you can create only one default endpoint group.
@@ -588,39 +588,54 @@ class EndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        de_bandwidth_package = alicloud.ga.BandwidthPackage("deBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
-        de_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
-            bandwidth_package_id=de_bandwidth_package.id)
-        example_listener = alicloud.ga.Listener("exampleListener",
-            accelerator_id=example_accelerator.id,
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=60,
                 to_port=70,
             )],
-            opts=pulumi.ResourceOptions(depends_on=[de_bandwidth_package_attachment]))
-        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
-            bandwidth="10",
-            internet_charge_type="PayByBandwidth")
-        example_endpoint_group = alicloud.ga.EndpointGroup("exampleEndpointGroup",
-            accelerator_id=example_accelerator.id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=example_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-            )],
-            endpoint_group_region="cn-hangzhou",
-            listener_id=example_listener.id)
+            client_affinity="SOURCE_IP",
+            protocol="UDP")
+        default_eip_address = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_eip_address.append(alicloud.ecs.EipAddress(f"defaultEipAddress-{range['value']}",
+                bandwidth="10",
+                internet_charge_type="PayByBandwidth",
+                address_name="terraform-example"))
+        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
+            accelerator_id=default_accelerator.id,
+            endpoint_configurations=[
+                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                    endpoint=default_eip_address[0].ip_address,
+                    type="PublicIp",
+                    weight=20,
+                ),
+                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                    endpoint=default_eip_address[1].ip_address,
+                    type="PublicIp",
+                    weight=20,
+                ),
+            ],
+            endpoint_group_region=region,
+            listener_id=default_listener.id)
         ```
 
         ## Import
@@ -635,7 +650,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[str] description: The description of the endpoint group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
                
@@ -649,7 +664,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
-        :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
                
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
@@ -666,7 +681,7 @@ class EndpointGroup(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/doc-detail/153259.htm).
 
-        > **NOTE:** Available in v1.113.0+.
+        > **NOTE:** Available since v1.113.0.
 
         > **NOTE:** Listeners that use different protocols support different types of endpoint groups:
         * For a TCP or UDP listener, you can create only one default endpoint group.
@@ -683,39 +698,54 @@ class EndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        de_bandwidth_package = alicloud.ga.BandwidthPackage("deBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
-        de_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("deBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
-            bandwidth_package_id=de_bandwidth_package.id)
-        example_listener = alicloud.ga.Listener("exampleListener",
-            accelerator_id=example_accelerator.id,
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=60,
                 to_port=70,
             )],
-            opts=pulumi.ResourceOptions(depends_on=[de_bandwidth_package_attachment]))
-        example_eip_address = alicloud.ecs.EipAddress("exampleEipAddress",
-            bandwidth="10",
-            internet_charge_type="PayByBandwidth")
-        example_endpoint_group = alicloud.ga.EndpointGroup("exampleEndpointGroup",
-            accelerator_id=example_accelerator.id,
-            endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
-                endpoint=example_eip_address.ip_address,
-                type="PublicIp",
-                weight=20,
-            )],
-            endpoint_group_region="cn-hangzhou",
-            listener_id=example_listener.id)
+            client_affinity="SOURCE_IP",
+            protocol="UDP")
+        default_eip_address = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            default_eip_address.append(alicloud.ecs.EipAddress(f"defaultEipAddress-{range['value']}",
+                bandwidth="10",
+                internet_charge_type="PayByBandwidth",
+                address_name="terraform-example"))
+        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
+            accelerator_id=default_accelerator.id,
+            endpoint_configurations=[
+                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                    endpoint=default_eip_address[0].ip_address,
+                    type="PublicIp",
+                    weight=20,
+                ),
+                alicloud.ga.EndpointGroupEndpointConfigurationArgs(
+                    endpoint=default_eip_address[1].ip_address,
+                    type="PublicIp",
+                    weight=20,
+                ),
+            ],
+            endpoint_group_region=region,
+            listener_id=default_listener.id)
         ```
 
         ## Import
@@ -824,7 +854,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance to which the endpoint group will be added.
         :param pulumi.Input[str] description: The description of the endpoint group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
                
@@ -838,7 +868,7 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
-        :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
                
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         :param pulumi.Input[str] status: The status of the endpoint group.
@@ -887,7 +917,7 @@ class EndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="endpointConfigurations")
     def endpoint_configurations(self) -> pulumi.Output[Sequence['outputs.EndpointGroupEndpointConfiguration']]:
         """
-        The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+        The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         """
         return pulumi.get(self, "endpoint_configurations")
 
@@ -971,7 +1001,7 @@ class EndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="portOverrides")
     def port_overrides(self) -> pulumi.Output[Optional['outputs.EndpointGroupPortOverrides']]:
         """
-        Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
 
         > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         """

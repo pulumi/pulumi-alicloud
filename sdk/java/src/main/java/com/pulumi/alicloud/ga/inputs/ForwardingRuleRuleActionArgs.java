@@ -9,6 +9,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,18 +18,20 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
     public static final ForwardingRuleRuleActionArgs Empty = new ForwardingRuleRuleActionArgs();
 
     /**
-     * Forwarding configuration.
+     * Forwarding configuration. See `forward_group_config` below.
+     * &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
      * 
      */
-    @Import(name="forwardGroupConfig", required=true)
-    private Output<ForwardingRuleRuleActionForwardGroupConfigArgs> forwardGroupConfig;
+    @Import(name="forwardGroupConfig")
+    private @Nullable Output<ForwardingRuleRuleActionForwardGroupConfigArgs> forwardGroupConfig;
 
     /**
-     * @return Forwarding configuration.
+     * @return Forwarding configuration. See `forward_group_config` below.
+     * &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
      * 
      */
-    public Output<ForwardingRuleRuleActionForwardGroupConfigArgs> forwardGroupConfig() {
-        return this.forwardGroupConfig;
+    public Optional<Output<ForwardingRuleRuleActionForwardGroupConfigArgs>> forwardGroupConfig() {
+        return Optional.ofNullable(this.forwardGroupConfig);
     }
 
     /**
@@ -46,18 +50,33 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Forward action type. Default: forwardgroup.
+     * Forward action type.
      * 
      */
     @Import(name="ruleActionType", required=true)
     private Output<String> ruleActionType;
 
     /**
-     * @return Forward action type. Default: forwardgroup.
+     * @return Forward action type.
      * 
      */
     public Output<String> ruleActionType() {
         return this.ruleActionType;
+    }
+
+    /**
+     * The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+     * 
+     */
+    @Import(name="ruleActionValue")
+    private @Nullable Output<String> ruleActionValue;
+
+    /**
+     * @return The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+     * 
+     */
+    public Optional<Output<String>> ruleActionValue() {
+        return Optional.ofNullable(this.ruleActionValue);
     }
 
     private ForwardingRuleRuleActionArgs() {}
@@ -66,6 +85,7 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
         this.forwardGroupConfig = $.forwardGroupConfig;
         this.order = $.order;
         this.ruleActionType = $.ruleActionType;
+        this.ruleActionValue = $.ruleActionValue;
     }
 
     public static Builder builder() {
@@ -87,18 +107,20 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param forwardGroupConfig Forwarding configuration.
+         * @param forwardGroupConfig Forwarding configuration. See `forward_group_config` below.
+         * &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
          * 
          * @return builder
          * 
          */
-        public Builder forwardGroupConfig(Output<ForwardingRuleRuleActionForwardGroupConfigArgs> forwardGroupConfig) {
+        public Builder forwardGroupConfig(@Nullable Output<ForwardingRuleRuleActionForwardGroupConfigArgs> forwardGroupConfig) {
             $.forwardGroupConfig = forwardGroupConfig;
             return this;
         }
 
         /**
-         * @param forwardGroupConfig Forwarding configuration.
+         * @param forwardGroupConfig Forwarding configuration. See `forward_group_config` below.
+         * &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
          * 
          * @return builder
          * 
@@ -129,7 +151,7 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ruleActionType Forward action type. Default: forwardgroup.
+         * @param ruleActionType Forward action type.
          * 
          * @return builder
          * 
@@ -140,7 +162,7 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ruleActionType Forward action type. Default: forwardgroup.
+         * @param ruleActionType Forward action type.
          * 
          * @return builder
          * 
@@ -149,8 +171,28 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
             return ruleActionType(Output.of(ruleActionType));
         }
 
+        /**
+         * @param ruleActionValue The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruleActionValue(@Nullable Output<String> ruleActionValue) {
+            $.ruleActionValue = ruleActionValue;
+            return this;
+        }
+
+        /**
+         * @param ruleActionValue The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruleActionValue(String ruleActionValue) {
+            return ruleActionValue(Output.of(ruleActionValue));
+        }
+
         public ForwardingRuleRuleActionArgs build() {
-            $.forwardGroupConfig = Objects.requireNonNull($.forwardGroupConfig, "expected parameter 'forwardGroupConfig' to be non-null");
             $.order = Objects.requireNonNull($.order, "expected parameter 'order' to be non-null");
             $.ruleActionType = Objects.requireNonNull($.ruleActionType, "expected parameter 'ruleActionType' to be non-null");
             return $;

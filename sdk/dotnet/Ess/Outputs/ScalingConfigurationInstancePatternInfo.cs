@@ -13,9 +13,21 @@ namespace Pulumi.AliCloud.Ess.Outputs
     [OutputType]
     public sealed class ScalingConfigurationInstancePatternInfo
     {
+        /// <summary>
+        /// The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        /// </summary>
         public readonly int? Cores;
+        /// <summary>
+        /// The instance family level in instancePatternInfo.
+        /// </summary>
         public readonly string? InstanceFamilyLevel;
+        /// <summary>
+        /// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+        /// </summary>
         public readonly double? MaxPrice;
+        /// <summary>
+        /// The memory size that is specified for an instance type in instancePatternInfo.
+        /// </summary>
         public readonly double? Memory;
 
         [OutputConstructor]

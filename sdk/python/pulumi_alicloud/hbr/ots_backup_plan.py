@@ -448,24 +448,24 @@ class OtsBackupPlan(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "testAcc"
-        default = alicloud.hbr.Vault("default",
-            vault_name=name,
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_vault = alicloud.hbr.Vault("defaultVault",
+            vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
             vault_type="OTS_BACKUP")
-        foo = alicloud.ots.Instance("foo",
-            description=name,
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description="terraform-example",
             accessed_by="Any",
             tags={
                 "Created": "TF",
-                "For": "acceptance test",
+                "For": "example",
             })
-        basic = alicloud.ots.Table("basic",
-            instance_name=foo.name,
-            table_name=name,
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="terraform_example",
             primary_keys=[alicloud.ots.TablePrimaryKeyArgs(
                 name="pk1",
                 type="Integer",
@@ -473,15 +473,42 @@ class OtsBackupPlan(pulumi.CustomResource):
             time_to_live=-1,
             max_version=1,
             deviation_cell_version_in_sec="1")
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"		{
+        			"Statement": [
+        			{
+        				"Action": "sts:AssumeRole",
+        				"Effect": "Allow",
+        				"Principal": {
+        					"Service": [
+        						"crossbackup.hbr.aliyuncs.com"
+        					]
+        				}
+        			}
+        			],
+          			"Version": "1"
+        		}
+        \"\"\",
+            force=True)
+        default_account = alicloud.get_account()
         example = alicloud.hbr.OtsBackupPlan("example",
-            ots_backup_plan_name=name,
-            vault_id=default.id,
+            ots_backup_plan_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            vault_id=default_vault.id,
             backup_type="COMPLETE",
-            schedule="I|1602673264|PT2H",
-            retention="2",
-            instance_name=foo.name,
+            retention="1",
+            instance_name=default_instance.name,
+            cross_account_type="SELF_ACCOUNT",
+            cross_account_user_id=default_account.id,
+            cross_account_role_name=default_role.id,
             ots_details=[alicloud.hbr.OtsBackupPlanOtsDetailArgs(
-                table_names=[basic.table_name],
+                table_names=[default_table.table_name],
+            )],
+            rules=[alicloud.hbr.OtsBackupPlanRuleArgs(
+                schedule="I|1602673264|PT2H",
+                retention="1",
+                disabled=False,
+                rule_name="terraform-example",
+                backup_type="COMPLETE",
             )])
         ```
 
@@ -528,24 +555,24 @@ class OtsBackupPlan(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "testAcc"
-        default = alicloud.hbr.Vault("default",
-            vault_name=name,
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_vault = alicloud.hbr.Vault("defaultVault",
+            vault_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
             vault_type="OTS_BACKUP")
-        foo = alicloud.ots.Instance("foo",
-            description=name,
+        default_instance = alicloud.ots.Instance("defaultInstance",
+            description="terraform-example",
             accessed_by="Any",
             tags={
                 "Created": "TF",
-                "For": "acceptance test",
+                "For": "example",
             })
-        basic = alicloud.ots.Table("basic",
-            instance_name=foo.name,
-            table_name=name,
+        default_table = alicloud.ots.Table("defaultTable",
+            instance_name=default_instance.name,
+            table_name="terraform_example",
             primary_keys=[alicloud.ots.TablePrimaryKeyArgs(
                 name="pk1",
                 type="Integer",
@@ -553,15 +580,42 @@ class OtsBackupPlan(pulumi.CustomResource):
             time_to_live=-1,
             max_version=1,
             deviation_cell_version_in_sec="1")
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"		{
+        			"Statement": [
+        			{
+        				"Action": "sts:AssumeRole",
+        				"Effect": "Allow",
+        				"Principal": {
+        					"Service": [
+        						"crossbackup.hbr.aliyuncs.com"
+        					]
+        				}
+        			}
+        			],
+          			"Version": "1"
+        		}
+        \"\"\",
+            force=True)
+        default_account = alicloud.get_account()
         example = alicloud.hbr.OtsBackupPlan("example",
-            ots_backup_plan_name=name,
-            vault_id=default.id,
+            ots_backup_plan_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            vault_id=default_vault.id,
             backup_type="COMPLETE",
-            schedule="I|1602673264|PT2H",
-            retention="2",
-            instance_name=foo.name,
+            retention="1",
+            instance_name=default_instance.name,
+            cross_account_type="SELF_ACCOUNT",
+            cross_account_user_id=default_account.id,
+            cross_account_role_name=default_role.id,
             ots_details=[alicloud.hbr.OtsBackupPlanOtsDetailArgs(
-                table_names=[basic.table_name],
+                table_names=[default_table.table_name],
+            )],
+            rules=[alicloud.hbr.OtsBackupPlanRuleArgs(
+                schedule="I|1602673264|PT2H",
+                retention="1",
+                disabled=False,
+                rule_name="terraform-example",
+                backup_type="COMPLETE",
             )])
         ```
 

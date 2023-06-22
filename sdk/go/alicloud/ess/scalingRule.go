@@ -13,6 +13,10 @@ import (
 
 // Provides a ESS scaling rule resource.
 //
+// For information about ess scaling rule, see [CreateScalingRule](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalingrule).
+//
+// > **NOTE:** Available since v1.39.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -32,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "essscalingruleconfig"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -136,14 +140,6 @@ import (
 // You can use to the existing autoscaling-rule module
 // to create different type rules, alarm task and scheduled task one-click.
 //
-// ## Block stepAdjustment
-//
-// The stepAdjustment mapping supports the following:
-//
-// * `metricIntervalLowerBound` - (Optional) The lower bound of step.
-// * `metricIntervalUpperBound` - (Optional) The upper bound of step.
-// * `scalingAdjustment` - (Optional) The adjust value of step.
-//
 // ## Import
 //
 // ESS scaling rule can be imported using the id, e.g.
@@ -166,7 +162,8 @@ type ScalingRule struct {
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue pulumi.IntPtrOutput `pulumi:"adjustmentValue"`
-	Ari             pulumi.StringOutput `pulumi:"ari"`
+	// The unique identifier of the scaling rule.
+	Ari pulumi.StringOutput `pulumi:"ari"`
 	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown pulumi.IntPtrOutput `pulumi:"cooldown"`
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
@@ -181,7 +178,7 @@ type ScalingRule struct {
 	ScalingRuleName pulumi.StringOutput `pulumi:"scalingRuleName"`
 	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType pulumi.StringPtrOutput `pulumi:"scalingRuleType"`
-	// Steps for StepScalingRule. See Block stepAdjustment below for details.
+	// Steps for StepScalingRule. See `stepAdjustment` below.
 	StepAdjustments ScalingRuleStepAdjustmentArrayOutput `pulumi:"stepAdjustments"`
 	// The target value for the metric.
 	TargetValue pulumi.Float64PtrOutput `pulumi:"targetValue"`
@@ -228,8 +225,9 @@ type scalingRuleState struct {
 	// - QuantityChangeInCapacity：(0, 500] U (-500, 0]
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
-	AdjustmentValue *int    `pulumi:"adjustmentValue"`
-	Ari             *string `pulumi:"ari"`
+	AdjustmentValue *int `pulumi:"adjustmentValue"`
+	// The unique identifier of the scaling rule.
+	Ari *string `pulumi:"ari"`
 	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown *int `pulumi:"cooldown"`
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
@@ -244,7 +242,7 @@ type scalingRuleState struct {
 	ScalingRuleName *string `pulumi:"scalingRuleName"`
 	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType *string `pulumi:"scalingRuleType"`
-	// Steps for StepScalingRule. See Block stepAdjustment below for details.
+	// Steps for StepScalingRule. See `stepAdjustment` below.
 	StepAdjustments []ScalingRuleStepAdjustment `pulumi:"stepAdjustments"`
 	// The target value for the metric.
 	TargetValue *float64 `pulumi:"targetValue"`
@@ -261,7 +259,8 @@ type ScalingRuleState struct {
 	// - PercentChangeInCapacity：[0, 10000] U [-100, 0]
 	// - TotalCapacity：[0, 1000]
 	AdjustmentValue pulumi.IntPtrInput
-	Ari             pulumi.StringPtrInput
+	// The unique identifier of the scaling rule.
+	Ari pulumi.StringPtrInput
 	// The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
 	Cooldown pulumi.IntPtrInput
 	// Indicates whether scale in by the target tracking policy is disabled. Default to false.
@@ -276,7 +275,7 @@ type ScalingRuleState struct {
 	ScalingRuleName pulumi.StringPtrInput
 	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType pulumi.StringPtrInput
-	// Steps for StepScalingRule. See Block stepAdjustment below for details.
+	// Steps for StepScalingRule. See `stepAdjustment` below.
 	StepAdjustments ScalingRuleStepAdjustmentArrayInput
 	// The target value for the metric.
 	TargetValue pulumi.Float64PtrInput
@@ -311,7 +310,7 @@ type scalingRuleArgs struct {
 	ScalingRuleName *string `pulumi:"scalingRuleName"`
 	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType *string `pulumi:"scalingRuleType"`
-	// Steps for StepScalingRule. See Block stepAdjustment below for details.
+	// Steps for StepScalingRule. See `stepAdjustment` below.
 	StepAdjustments []ScalingRuleStepAdjustment `pulumi:"stepAdjustments"`
 	// The target value for the metric.
 	TargetValue *float64 `pulumi:"targetValue"`
@@ -343,7 +342,7 @@ type ScalingRuleArgs struct {
 	ScalingRuleName pulumi.StringPtrInput
 	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType pulumi.StringPtrInput
-	// Steps for StepScalingRule. See Block stepAdjustment below for details.
+	// Steps for StepScalingRule. See `stepAdjustment` below.
 	StepAdjustments ScalingRuleStepAdjustmentArrayInput
 	// The target value for the metric.
 	TargetValue pulumi.Float64PtrInput
@@ -452,6 +451,7 @@ func (o ScalingRuleOutput) AdjustmentValue() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.IntPtrOutput { return v.AdjustmentValue }).(pulumi.IntPtrOutput)
 }
 
+// The unique identifier of the scaling rule.
 func (o ScalingRuleOutput) Ari() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.StringOutput { return v.Ari }).(pulumi.StringOutput)
 }
@@ -491,7 +491,7 @@ func (o ScalingRuleOutput) ScalingRuleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.StringPtrOutput { return v.ScalingRuleType }).(pulumi.StringPtrOutput)
 }
 
-// Steps for StepScalingRule. See Block stepAdjustment below for details.
+// Steps for StepScalingRule. See `stepAdjustment` below.
 func (o ScalingRuleOutput) StepAdjustments() ScalingRuleStepAdjustmentArrayOutput {
 	return o.ApplyT(func(v *ScalingRule) ScalingRuleStepAdjustmentArrayOutput { return v.StepAdjustments }).(ScalingRuleStepAdjustmentArrayOutput)
 }

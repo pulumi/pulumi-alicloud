@@ -49,14 +49,14 @@ public final class ScalingGroupVServerGroupsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+     * A list of vserver groups attached on scaling group. See `vserver_groups` below.
      * 
      */
     @Import(name="vserverGroups", required=true)
     private Output<List<ScalingGroupVServerGroupsVserverGroupArgs>> vserverGroups;
 
     /**
-     * @return A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+     * @return A list of vserver groups attached on scaling group. See `vserver_groups` below.
      * 
      */
     public Output<List<ScalingGroupVServerGroupsVserverGroupArgs>> vserverGroups() {
@@ -132,7 +132,7 @@ public final class ScalingGroupVServerGroupsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vserverGroups A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserver_groups` below.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class ScalingGroupVServerGroupsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vserverGroups A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserver_groups` below.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ScalingGroupVServerGroupsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param vserverGroups A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserver_groups` below.
          * 
          * @return builder
          * 

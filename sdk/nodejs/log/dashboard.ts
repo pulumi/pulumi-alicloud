@@ -17,14 +17,23 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const defaultProject = new alicloud.log.Project("defaultProject", {description: "tf unit test"});
- * const defaultStore = new alicloud.log.Store("defaultStore", {
- *     project: "tf-project",
- *     retentionPeriod: 3000,
- *     shardCount: 1,
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
  * });
- * const example = new alicloud.log.Dashboard("example", {
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const exampleDashboard = new alicloud.log.Dashboard("exampleDashboard", {
+ *     projectName: exampleProject.name,
+ *     dashboardName: "terraform-example",
  *     attribute: "{\"type\":\"grid\"}",
  *     charList: `  [
  *     {
@@ -32,7 +41,7 @@ import * as utilities from "../utilities";
  *       "title":"new_title",
  *       "type":"map",
  *       "search":{
- *         "logstore":"tf-logstore",
+ *         "logstore":"example-store",
  *         "topic":"new_topic",
  *         "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
  *         "start":"-86400s",
@@ -49,14 +58,11 @@ import * as utilities from "../utilities";
  *         "yPos":0,
  *         "width":10,
  *         "height":12,
- *         "displayName":"xixihaha911"
+ *         "displayName":"terraform-example"
  *       }
  *     }
  *   ]
- *
  * `,
- *     dashboardName: "tf-dashboard",
- *     projectName: "tf-project",
  * });
  * ```
  *

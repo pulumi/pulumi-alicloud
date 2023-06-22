@@ -153,6 +153,10 @@ public final class GetDBClustersCluster {
      * 
      */
     private String mode;
+    /**
+     * @return The db cluster network type.
+     * 
+     */
     private String networkType;
     /**
      * @return The payment type of the resource.
@@ -169,6 +173,10 @@ public final class GetDBClustersCluster {
      * 
      */
     private String rdsInstanceId;
+    /**
+     * @return The region ID  of the resource.
+     * 
+     */
     private String regionId;
     /**
      * @return The status of renewal.
@@ -196,7 +204,7 @@ public final class GetDBClustersCluster {
      */
     private String storageResource;
     /**
-     * @return The tag of the resource.
+     * @return A map of tags assigned to the cluster.
      * 
      */
     private Map<String,Object> tags;
@@ -418,6 +426,10 @@ public final class GetDBClustersCluster {
     public String mode() {
         return this.mode;
     }
+    /**
+     * @return The db cluster network type.
+     * 
+     */
     public String networkType() {
         return this.networkType;
     }
@@ -442,6 +454,10 @@ public final class GetDBClustersCluster {
     public String rdsInstanceId() {
         return this.rdsInstanceId;
     }
+    /**
+     * @return The region ID  of the resource.
+     * 
+     */
     public String regionId() {
         return this.regionId;
     }
@@ -481,7 +497,7 @@ public final class GetDBClustersCluster {
         return this.storageResource;
     }
     /**
-     * @return The tag of the resource.
+     * @return A map of tags assigned to the cluster.
      * 
      */
     public Map<String,Object> tags() {

@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -55,8 +57,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;created by terraform&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
@@ -87,10 +94,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleEtl = new Etl(&#34;exampleEtl&#34;, EtlArgs.builder()        
- *             .etlName(&#34;etl_name&#34;)
+ *             .etlName(&#34;terraform-example&#34;)
  *             .project(exampleProject.name())
- *             .displayName(&#34;display_name&#34;)
- *             .description(&#34;etl_description&#34;)
+ *             .displayName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .accessKeyId(&#34;access_key_id&#34;)
  *             .accessKeySecret(&#34;access_key_secret&#34;)
  *             .script(&#34;e_set(&#39;new&#39;,&#39;key&#39;)&#34;)
@@ -111,116 +118,6 @@ import javax.annotation.Nullable;
  *                     .endpoint(&#34;cn-hangzhou.log.aliyuncs.com&#34;)
  *                     .project(exampleProject.name())
  *                     .logstore(example3.name())
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * Stop the task in progress
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.log.Etl;
- * import com.pulumi.alicloud.log.EtlArgs;
- * import com.pulumi.alicloud.log.inputs.EtlEtlSinkArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Etl(&#34;example&#34;, EtlArgs.builder()        
- *             .status(STOPPED)
- *             .etlName(&#34;etl_name&#34;)
- *             .project(alicloud_log_project.example().name())
- *             .displayName(&#34;display_name&#34;)
- *             .description(&#34;etl_description&#34;)
- *             .accessKeyId(&#34;access_key_id&#34;)
- *             .accessKeySecret(&#34;access_key_secret&#34;)
- *             .script(&#34;e_set(&#39;new&#39;,&#39;key&#39;)&#34;)
- *             .logstore(alicloud_log_store.example().name())
- *             .etlSinks(            
- *                 EtlEtlSinkArgs.builder()
- *                     .name(&#34;target_name&#34;)
- *                     .accessKeyId(&#34;example2_access_key_id&#34;)
- *                     .accessKeySecret(&#34;example2_access_key_secret&#34;)
- *                     .endpoint(&#34;cn-hangzhou.log.aliyuncs.com&#34;)
- *                     .project(alicloud_log_project.example().name())
- *                     .logstore(alicloud_log_store.example2().name())
- *                     .build(),
- *                 EtlEtlSinkArgs.builder()
- *                     .name(&#34;target_name2&#34;)
- *                     .accessKeyId(&#34;example3_access_key_id&#34;)
- *                     .accessKeySecret(&#34;example3_access_key_secret&#34;)
- *                     .endpoint(&#34;cn-hangzhou.log.aliyuncs.com&#34;)
- *                     .project(alicloud_log_project.example().name())
- *                     .logstore(alicloud_log_store.example3().name())
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * ReStart the stopped task
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.log.Etl;
- * import com.pulumi.alicloud.log.EtlArgs;
- * import com.pulumi.alicloud.log.inputs.EtlEtlSinkArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Etl(&#34;example&#34;, EtlArgs.builder()        
- *             .status(RUNNING)
- *             .etlName(&#34;etl_name&#34;)
- *             .project(alicloud_log_project.example().name())
- *             .displayName(&#34;display_name&#34;)
- *             .description(&#34;etl_description&#34;)
- *             .accessKeyId(&#34;access_key_id&#34;)
- *             .accessKeySecret(&#34;access_key_secret&#34;)
- *             .script(&#34;e_set(&#39;new&#39;,&#39;key&#39;)&#34;)
- *             .logstore(alicloud_log_store.example().name())
- *             .etlSinks(            
- *                 EtlEtlSinkArgs.builder()
- *                     .name(&#34;target_name&#34;)
- *                     .accessKeyId(&#34;example2_access_key_id&#34;)
- *                     .accessKeySecret(&#34;example2_access_key_secret&#34;)
- *                     .endpoint(&#34;cn-hangzhou.log.aliyuncs.com&#34;)
- *                     .project(alicloud_log_project.example().name())
- *                     .logstore(alicloud_log_store.example2().name())
- *                     .build(),
- *                 EtlEtlSinkArgs.builder()
- *                     .name(&#34;target_name2&#34;)
- *                     .accessKeyId(&#34;example3_access_key_id&#34;)
- *                     .accessKeySecret(&#34;example3_access_key_secret&#34;)
- *                     .endpoint(&#34;cn-hangzhou.log.aliyuncs.com&#34;)
- *                     .project(alicloud_log_project.example().name())
- *                     .logstore(alicloud_log_store.example3().name())
  *                     .build())
  *             .build());
  * 

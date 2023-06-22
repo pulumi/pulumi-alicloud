@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         }
 
         /// <summary>
-        /// The amount of CPU resources allocated to the container group.
+        /// The amount of CPU resources allocated to the container.
         /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
@@ -47,8 +47,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
         /// <summary>
         /// The structure of environmentVars.
-        /// See Block_environment_var_in_init_container below for details.
-        /// See Block_environment_var_in_container below for details.
+        /// See `environment_vars` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationContainerEnvironmentVarArgs> EnvironmentVars
         {
@@ -141,13 +140,13 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public Input<int>? LivenessProbeTimeoutSeconds { get; set; }
 
         /// <summary>
-        /// The amount of memory resources allocated to the container group.
+        /// The amount of memory resources allocated to the container.
         /// </summary>
         [Input("memory")]
         public Input<double>? Memory { get; set; }
 
         /// <summary>
-        /// The name of the volume.
+        /// The name of the mounted volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -156,8 +155,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         private InputList<Inputs.EciScalingConfigurationContainerPortArgs>? _ports;
 
         /// <summary>
-        /// The structure of port. See Block_port_in_init_container below
-        /// for details.
+        /// The structure of port. See `ports` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationContainerPortArgs> Ports
         {
@@ -235,9 +233,8 @@ namespace Pulumi.AliCloud.Ess.Inputs
         private InputList<Inputs.EciScalingConfigurationContainerVolumeMountArgs>? _volumeMounts;
 
         /// <summary>
-        /// The structure of volumeMounts.
-        /// See Block_volume_mount_in_init_container below for details.
-        /// See Block_volume_mount_in_container below for details.
+        /// The structure of volumeMounts. 
+        /// See `volume_mounts` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationContainerVolumeMountArgs> VolumeMounts
         {

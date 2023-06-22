@@ -20,21 +20,19 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccReplicationVault";
- * const regionSource = config.get("regionSource") || "you Replication value source region";
- * const source = new alicloud.Provider("source", {region: regionSource});
- * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: name}, {
+ * const sourceRegion = config.get("sourceRegion") || "cn-hangzhou";
+ * const source = new alicloud.Provider("source", {region: sourceRegion});
+ * const defaultReplicationVaultRegions = alicloud.hbr.getReplicationVaultRegions({});
+ * const replication = new alicloud.Provider("replication", {region: defaultReplicationVaultRegions.then(defaultReplicationVaultRegions => defaultReplicationVaultRegions.regions?.[0]?.replicationRegionId)});
+ * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: "terraform-example"}, {
  *     provider: alicloud.source,
  * });
- * const defaultReplicationVaultRegions = alicloud.hbr.getReplicationVaultRegions({});
- * const regionReplication = defaultReplicationVaultRegions.then(defaultReplicationVaultRegions => defaultReplicationVaultRegions.regions?.[0]?.replicationRegionId);
- * const replication = new alicloud.Provider("replication", {region: regionReplication});
  * const defaultReplicationVault = new alicloud.hbr.ReplicationVault("defaultReplicationVault", {
- *     replicationSourceRegionId: regionReplication,
+ *     replicationSourceRegionId: sourceRegion,
  *     replicationSourceVaultId: defaultVault.id,
- *     vaultName: name,
+ *     vaultName: "terraform-example",
  *     vaultStorageClass: "STANDARD",
- *     description: name,
+ *     description: "terraform-example",
  * }, {
  *     provider: alicloud.replication,
  * });

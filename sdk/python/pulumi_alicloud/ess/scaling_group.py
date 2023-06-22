@@ -854,6 +854,10 @@ class ScalingGroup(pulumi.CustomResource):
 
         > **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitch_ids`.
 
+        For information about ess scaling rule, see [CreateScalingGroup](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalinggroup).
+
+        > **NOTE:** Available since v1.39.0.
+
         ## Example Usage
 
         ```python
@@ -863,7 +867,7 @@ class ScalingGroup(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "essscalinggroupconfig"
+            name = "terraform-example"
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -981,6 +985,10 @@ class ScalingGroup(pulumi.CustomResource):
 
         > **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitch_ids`.
 
+        For information about ess scaling rule, see [CreateScalingGroup](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalinggroup).
+
+        > **NOTE:** Available since v1.39.0.
+
         ## Example Usage
 
         ```python
@@ -990,7 +998,7 @@ class ScalingGroup(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "essscalinggroupconfig"
+            name = "terraform-example"
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,

@@ -16,23 +16,47 @@ public final class ScalingRuleStepAdjustmentArgs extends com.pulumi.resources.Re
 
     public static final ScalingRuleStepAdjustmentArgs Empty = new ScalingRuleStepAdjustmentArgs();
 
+    /**
+     * The lower bound of step.
+     * 
+     */
     @Import(name="metricIntervalLowerBound")
     private @Nullable Output<String> metricIntervalLowerBound;
 
+    /**
+     * @return The lower bound of step.
+     * 
+     */
     public Optional<Output<String>> metricIntervalLowerBound() {
         return Optional.ofNullable(this.metricIntervalLowerBound);
     }
 
+    /**
+     * The upper bound of step.
+     * 
+     */
     @Import(name="metricIntervalUpperBound")
     private @Nullable Output<String> metricIntervalUpperBound;
 
+    /**
+     * @return The upper bound of step.
+     * 
+     */
     public Optional<Output<String>> metricIntervalUpperBound() {
         return Optional.ofNullable(this.metricIntervalUpperBound);
     }
 
+    /**
+     * The adjust value of step.
+     * 
+     */
     @Import(name="scalingAdjustment")
     private @Nullable Output<Integer> scalingAdjustment;
 
+    /**
+     * @return The adjust value of step.
+     * 
+     */
     public Optional<Output<Integer>> scalingAdjustment() {
         return Optional.ofNullable(this.scalingAdjustment);
     }
@@ -63,29 +87,65 @@ public final class ScalingRuleStepAdjustmentArgs extends com.pulumi.resources.Re
             $ = new ScalingRuleStepAdjustmentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param metricIntervalLowerBound The lower bound of step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricIntervalLowerBound(@Nullable Output<String> metricIntervalLowerBound) {
             $.metricIntervalLowerBound = metricIntervalLowerBound;
             return this;
         }
 
+        /**
+         * @param metricIntervalLowerBound The lower bound of step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricIntervalLowerBound(String metricIntervalLowerBound) {
             return metricIntervalLowerBound(Output.of(metricIntervalLowerBound));
         }
 
+        /**
+         * @param metricIntervalUpperBound The upper bound of step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricIntervalUpperBound(@Nullable Output<String> metricIntervalUpperBound) {
             $.metricIntervalUpperBound = metricIntervalUpperBound;
             return this;
         }
 
+        /**
+         * @param metricIntervalUpperBound The upper bound of step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricIntervalUpperBound(String metricIntervalUpperBound) {
             return metricIntervalUpperBound(Output.of(metricIntervalUpperBound));
         }
 
+        /**
+         * @param scalingAdjustment The adjust value of step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scalingAdjustment(@Nullable Output<Integer> scalingAdjustment) {
             $.scalingAdjustment = scalingAdjustment;
             return this;
         }
 
+        /**
+         * @param scalingAdjustment The adjust value of step.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scalingAdjustment(Integer scalingAdjustment) {
             return scalingAdjustment(Output.of(scalingAdjustment));
         }

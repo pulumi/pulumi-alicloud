@@ -47,14 +47,14 @@ public final class Ipv6InternetBandwidthArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the IPv6 address.
+     * The ID of the IPv6 address instance.
      * 
      */
     @Import(name="ipv6AddressId", required=true)
     private Output<String> ipv6AddressId;
 
     /**
-     * @return The ID of the IPv6 address.
+     * @return The ID of the IPv6 address instance.
      * 
      */
     public Output<String> ipv6AddressId() {
@@ -62,14 +62,14 @@ public final class Ipv6InternetBandwidthArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the IPv6 gateway.
+     * The ID of the IPv6 gateway to which the IPv6 address belongs.
      * 
      */
     @Import(name="ipv6GatewayId", required=true)
     private Output<String> ipv6GatewayId;
 
     /**
-     * @return The ID of the IPv6 gateway.
+     * @return The ID of the IPv6 gateway to which the IPv6 address belongs.
      * 
      */
     public Output<String> ipv6GatewayId() {
@@ -146,7 +146,7 @@ public final class Ipv6InternetBandwidthArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipv6AddressId The ID of the IPv6 address.
+         * @param ipv6AddressId The ID of the IPv6 address instance.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class Ipv6InternetBandwidthArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipv6AddressId The ID of the IPv6 address.
+         * @param ipv6AddressId The ID of the IPv6 address instance.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class Ipv6InternetBandwidthArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipv6GatewayId The ID of the IPv6 gateway.
+         * @param ipv6GatewayId The ID of the IPv6 gateway to which the IPv6 address belongs.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class Ipv6InternetBandwidthArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param ipv6GatewayId The ID of the IPv6 gateway.
+         * @param ipv6GatewayId The ID of the IPv6 gateway to which the IPv6 address belongs.
          * 
          * @return builder
          * 

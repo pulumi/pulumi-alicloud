@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Serverless App Engine (SAE) Ingress resource.
  * 
- * For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://help.aliyun.com/document_detail/97792.html).
+ * For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://www.alibabacloud.com/help/en/sae/latest/createingress).
  * 
- * &gt; **NOTE:** Available in v1.137.0+.
+ * &gt; **NOTE:** Available since v1.137.0.
  * 
  * ## Example Usage
  * 
@@ -133,28 +133,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:sae/ingress:Ingress")
 public class Ingress extends com.pulumi.resources.CustomResource {
     /**
-     * Cert Id.
+     * The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
      * 
      */
     @Export(name="certId", type=String.class, parameters={})
     private Output</* @Nullable */ String> certId;
 
     /**
-     * @return Cert Id.
+     * @return The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
      * 
      */
     public Output<Optional<String>> certId() {
         return Codegen.optional(this.certId);
     }
     /**
-     * Default Rule.
+     * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+     * 
+     */
+    @Export(name="certIds", type=String.class, parameters={})
+    private Output</* @Nullable */ String> certIds;
+
+    /**
+     * @return The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+     * 
+     */
+    public Output<Optional<String>> certIds() {
+        return Codegen.optional(this.certIds);
+    }
+    /**
+     * Default Rule. See `default_rule` below.
      * 
      */
     @Export(name="defaultRule", type=IngressDefaultRule.class, parameters={})
     private Output</* @Nullable */ IngressDefaultRule> defaultRule;
 
     /**
-     * @return Default Rule.
+     * @return Default Rule. See `default_rule` below.
      * 
      */
     public Output<Optional<IngressDefaultRule>> defaultRule() {
@@ -189,28 +203,56 @@ public class Ingress extends com.pulumi.resources.CustomResource {
         return this.listenerPort;
     }
     /**
-     * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+     * The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+     * 
+     */
+    @Export(name="listenerProtocol", type=String.class, parameters={})
+    private Output<String> listenerProtocol;
+
+    /**
+     * @return The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+     * 
+     */
+    public Output<String> listenerProtocol() {
+        return this.listenerProtocol;
+    }
+    /**
+     * The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+     * 
+     */
+    @Export(name="loadBalanceType", type=String.class, parameters={})
+    private Output<String> loadBalanceType;
+
+    /**
+     * @return The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+     * 
+     */
+    public Output<String> loadBalanceType() {
+        return this.loadBalanceType;
+    }
+    /**
+     * The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
      * 
      */
     @Export(name="namespaceId", type=String.class, parameters={})
     private Output<String> namespaceId;
 
     /**
-     * @return The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+     * @return The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
      * 
      */
     public Output<String> namespaceId() {
         return this.namespaceId;
     }
     /**
-     * Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+     * Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
      * 
      */
     @Export(name="rules", type=List.class, parameters={IngressRule.class})
     private Output<List<IngressRule>> rules;
 
     /**
-     * @return Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+     * @return Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
      * 
      */
     public Output<List<IngressRule>> rules() {

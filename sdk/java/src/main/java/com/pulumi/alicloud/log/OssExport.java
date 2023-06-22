@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -52,9 +54,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;created by terraform&#34;)
- *             .tags(Map.of(&#34;test&#34;, &#34;test&#34;))
+ *             .description(&#34;terraform-example&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
@@ -69,9 +79,9 @@ import javax.annotation.Nullable;
  *         var exampleOssExport = new OssExport(&#34;exampleOssExport&#34;, OssExportArgs.builder()        
  *             .projectName(exampleProject.name())
  *             .logstoreName(exampleStore.name())
- *             .exportName(&#34;oss_export_name&#34;)
- *             .displayName(&#34;oss_export_display_name&#34;)
- *             .bucket(&#34;test_bucket&#34;)
+ *             .exportName(&#34;terraform-example&#34;)
+ *             .displayName(&#34;terraform-example&#34;)
+ *             .bucket(&#34;example-bucket&#34;)
  *             .prefix(&#34;root&#34;)
  *             .suffix(&#34;&#34;)
  *             .bufferInterval(300)
@@ -82,6 +92,7 @@ import javax.annotation.Nullable;
  *             .jsonEnableTag(true)
  *             .roleArn(&#34;role_arn_for_oss_write&#34;)
  *             .logReadRoleArn(&#34;role_arn_for_sls_read&#34;)
+ *             .timeZone(&#34;+0800&#34;)
  *             .build());
  * 
  *     }

@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECD Simple Office Site resource.
  * 
- * For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://help.aliyun.com/document_detail/188382.html).
+ * For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createsimpleofficesite).
  * 
- * &gt; **NOTE:** Available in v1.140.0+.
+ * &gt; **NOTE:** Available since v1.140.0.
  * 
  * ## Example Usage
  * 
@@ -48,10 +48,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
- *             .bandwidth(5)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .desktopAccessType(&#34;Internet&#34;)
- *             .officeSiteName(&#34;site_name&#34;)
+ *             .enableAdminAccess(true)
+ *             .officeSiteName(&#34;terraform-example&#34;)
  *             .build());
  * 
  *     }

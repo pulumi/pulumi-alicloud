@@ -395,7 +395,7 @@ class MigrationInstance(pulumi.CustomResource):
 
         For information about DTS Migration Instance and how to use it, see [What is Synchronization Instance](https://www.alibabacloud.com/help/en/doc-detail/208270.html).
 
-        > **NOTE:** Available in v1.157.0+.
+        > **NOTE:** Available since v1.157.0.
 
         ## Example Usage
 
@@ -405,13 +405,14 @@ class MigrationInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.dts.MigrationInstance("default",
-            destination_endpoint_engine_name="MySQL",
-            destination_endpoint_region="cn-hangzhou",
-            instance_class="small",
+        default_regions = alicloud.get_regions(current=True)
+        default_migration_instance = alicloud.dts.MigrationInstance("defaultMigrationInstance",
             payment_type="PayAsYouGo",
             source_endpoint_engine_name="MySQL",
-            source_endpoint_region="cn-hangzhou",
+            source_endpoint_region=default_regions.regions[0].id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=default_regions.regions[0].id,
+            instance_class="small",
             sync_architecture="oneway")
         ```
 
@@ -447,7 +448,7 @@ class MigrationInstance(pulumi.CustomResource):
 
         For information about DTS Migration Instance and how to use it, see [What is Synchronization Instance](https://www.alibabacloud.com/help/en/doc-detail/208270.html).
 
-        > **NOTE:** Available in v1.157.0+.
+        > **NOTE:** Available since v1.157.0.
 
         ## Example Usage
 
@@ -457,13 +458,14 @@ class MigrationInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.dts.MigrationInstance("default",
-            destination_endpoint_engine_name="MySQL",
-            destination_endpoint_region="cn-hangzhou",
-            instance_class="small",
+        default_regions = alicloud.get_regions(current=True)
+        default_migration_instance = alicloud.dts.MigrationInstance("defaultMigrationInstance",
             payment_type="PayAsYouGo",
             source_endpoint_engine_name="MySQL",
-            source_endpoint_region="cn-hangzhou",
+            source_endpoint_region=default_regions.regions[0].id,
+            destination_endpoint_engine_name="MySQL",
+            destination_endpoint_region=default_regions.regions[0].id,
+            instance_class="small",
             sync_architecture="oneway")
         ```
 

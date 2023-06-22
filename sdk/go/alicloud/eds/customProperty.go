@@ -13,9 +13,9 @@ import (
 
 // Provides a ECD Custom Property resource.
 //
-// For information about ECD Custom Property and how to use it, see [What is Custom Property](https://help.aliyun.com/document_detail/436381.html).
+// For information about ECD Custom Property and how to use it, see [What is Custom Property](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createproperty-desktop).
 //
-// > **NOTE:** Available in v1.176.0+.
+// > **NOTE:** Available since v1.176.0.
 //
 // > **NOTE:** Up to 10 different attributes can be created under an alibaba cloud account. Up to 50 different attribute values can be added under an attribute.
 //
@@ -66,7 +66,7 @@ type CustomProperty struct {
 
 	// The Custom attribute key.
 	PropertyKey pulumi.StringOutput `pulumi:"propertyKey"`
-	// Custom attribute sets the value of. See the following `Block propertyValues`.
+	// Custom attribute sets the value of. See `propertyValues` below.
 	PropertyValues CustomPropertyPropertyValueArrayOutput `pulumi:"propertyValues"`
 }
 
@@ -104,14 +104,14 @@ func GetCustomProperty(ctx *pulumi.Context,
 type customPropertyState struct {
 	// The Custom attribute key.
 	PropertyKey *string `pulumi:"propertyKey"`
-	// Custom attribute sets the value of. See the following `Block propertyValues`.
+	// Custom attribute sets the value of. See `propertyValues` below.
 	PropertyValues []CustomPropertyPropertyValue `pulumi:"propertyValues"`
 }
 
 type CustomPropertyState struct {
 	// The Custom attribute key.
 	PropertyKey pulumi.StringPtrInput
-	// Custom attribute sets the value of. See the following `Block propertyValues`.
+	// Custom attribute sets the value of. See `propertyValues` below.
 	PropertyValues CustomPropertyPropertyValueArrayInput
 }
 
@@ -122,7 +122,7 @@ func (CustomPropertyState) ElementType() reflect.Type {
 type customPropertyArgs struct {
 	// The Custom attribute key.
 	PropertyKey string `pulumi:"propertyKey"`
-	// Custom attribute sets the value of. See the following `Block propertyValues`.
+	// Custom attribute sets the value of. See `propertyValues` below.
 	PropertyValues []CustomPropertyPropertyValue `pulumi:"propertyValues"`
 }
 
@@ -130,7 +130,7 @@ type customPropertyArgs struct {
 type CustomPropertyArgs struct {
 	// The Custom attribute key.
 	PropertyKey pulumi.StringInput
-	// Custom attribute sets the value of. See the following `Block propertyValues`.
+	// Custom attribute sets the value of. See `propertyValues` below.
 	PropertyValues CustomPropertyPropertyValueArrayInput
 }
 
@@ -226,7 +226,7 @@ func (o CustomPropertyOutput) PropertyKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomProperty) pulumi.StringOutput { return v.PropertyKey }).(pulumi.StringOutput)
 }
 
-// Custom attribute sets the value of. See the following `Block propertyValues`.
+// Custom attribute sets the value of. See `propertyValues` below.
 func (o CustomPropertyOutput) PropertyValues() CustomPropertyPropertyValueArrayOutput {
 	return o.ApplyT(func(v *CustomProperty) CustomPropertyPropertyValueArrayOutput { return v.PropertyValues }).(CustomPropertyPropertyValueArrayOutput)
 }

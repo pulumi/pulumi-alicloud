@@ -7,8 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +21,16 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     public static final CommonBandwithPackageState Empty = new CommonBandwithPackageState();
 
     /**
-     * The bandwidth of the common bandwidth package. Unit: Mbps.
+     * The peak bandwidth of the shared bandwidth. Unit: Mbps.
+     * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<String> bandwidth;
 
     /**
-     * @return The bandwidth of the common bandwidth package. Unit: Mbps.
+     * @return The peak bandwidth of the shared bandwidth. Unit: Mbps.
+     * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
      * 
      */
     public Optional<Output<String>> bandwidth() {
@@ -34,14 +38,14 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The name of the common bandwidth package.
+     * The name of the Internet Shared Bandwidth instance.
      * 
      */
     @Import(name="bandwidthPackageName")
     private @Nullable Output<String> bandwidthPackageName;
 
     /**
-     * @return The name of the common bandwidth package.
+     * @return The name of the Internet Shared Bandwidth instance.
      * 
      */
     public Optional<Output<String>> bandwidthPackageName() {
@@ -49,18 +53,33 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
+     * The create time.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The create time.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Whether enable the deletion protection or not. Default value: false.
+     * - **true**: Enable deletion protection.
+     * - **false**: Disable deletion protection.
      * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether enable the deletion protection or not. Default value: `false`.
-     * - true: Enable deletion protection.
-     * - false: Disable deletion protection.
+     * @return Whether enable the deletion protection or not. Default value: false.
+     * - **true**: Enable deletion protection.
+     * - **false**: Disable deletion protection.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -68,14 +87,14 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The description of the common bandwidth package instance.
+     * The description of the shared bandwidth.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the common bandwidth package instance.
+     * @return The description of the shared bandwidth.
      * 
      */
     public Optional<Output<String>> description() {
@@ -83,14 +102,18 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+     * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+     * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
      * 
      */
     @Import(name="force")
     private @Nullable Output<String> force;
 
     /**
-     * @return This parameter is used for resource destroy. Default value is `false`.
+     * @return Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+     * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+     * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
      * 
      */
     public Optional<Output<String>> force() {
@@ -98,14 +121,14 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn&#39;t supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+     * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn&#39;t supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+     * @return The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -113,16 +136,14 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-     * **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
+     * The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
      * 
      */
     @Import(name="isp")
     private @Nullable Output<String> isp;
 
     /**
-     * @return The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-     * **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
+     * @return The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
      * 
      */
     public Optional<Output<String>> isp() {
@@ -130,37 +151,52 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
+     * The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    @Import(name="paymentType")
+    private @Nullable Output<String> paymentType;
+
+    /**
+     * @return The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
+     * 
+     */
+    public Optional<Output<String>> paymentType() {
+        return Optional.ofNullable(this.paymentType);
+    }
+
+    /**
+     * Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
      * 
      */
     @Import(name="ratio")
     private @Nullable Output<Integer> ratio;
 
     /**
-     * @return Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
+     * @return Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
      * 
      */
     public Optional<Output<Integer>> ratio() {
@@ -183,14 +219,14 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
      * 
      */
     @Import(name="securityProtectionTypes")
     private @Nullable Output<List<String>> securityProtectionTypes;
 
     /**
-     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
      * 
      */
     public Optional<Output<List<String>>> securityProtectionTypes() {
@@ -198,14 +234,14 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Available in 1.120.0+) The status of bandwidth package.
+     * The status of the Internet Shared Bandwidth instance. Default value: **Available**.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return (Available in 1.120.0+) The status of bandwidth package.
+     * @return The status of the Internet Shared Bandwidth instance. Default value: **Available**.
      * 
      */
     public Optional<Output<String>> status() {
@@ -213,14 +249,33 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The zone of bandwidth package.
+     * The tag of the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The available area of the shared bandwidth.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
-     * @return The zone of bandwidth package.
+     * @return The available area of the shared bandwidth.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> zone() {
@@ -232,16 +287,19 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
     private CommonBandwithPackageState(CommonBandwithPackageState $) {
         this.bandwidth = $.bandwidth;
         this.bandwidthPackageName = $.bandwidthPackageName;
+        this.createTime = $.createTime;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.force = $.force;
         this.internetChargeType = $.internetChargeType;
         this.isp = $.isp;
         this.name = $.name;
+        this.paymentType = $.paymentType;
         this.ratio = $.ratio;
         this.resourceGroupId = $.resourceGroupId;
         this.securityProtectionTypes = $.securityProtectionTypes;
         this.status = $.status;
+        this.tags = $.tags;
         this.zone = $.zone;
     }
 
@@ -264,7 +322,8 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param bandwidth The bandwidth of the common bandwidth package. Unit: Mbps.
+         * @param bandwidth The peak bandwidth of the shared bandwidth. Unit: Mbps.
+         * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
          * 
          * @return builder
          * 
@@ -275,7 +334,8 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param bandwidth The bandwidth of the common bandwidth package. Unit: Mbps.
+         * @param bandwidth The peak bandwidth of the shared bandwidth. Unit: Mbps.
+         * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
          * 
          * @return builder
          * 
@@ -285,7 +345,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param bandwidthPackageName The name of the common bandwidth package.
+         * @param bandwidthPackageName The name of the Internet Shared Bandwidth instance.
          * 
          * @return builder
          * 
@@ -296,7 +356,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param bandwidthPackageName The name of the common bandwidth package.
+         * @param bandwidthPackageName The name of the Internet Shared Bandwidth instance.
          * 
          * @return builder
          * 
@@ -306,9 +366,30 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param deletionProtection Whether enable the deletion protection or not. Default value: `false`.
-         * - true: Enable deletion protection.
-         * - false: Disable deletion protection.
+         * @param createTime The create time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The create time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param deletionProtection Whether enable the deletion protection or not. Default value: false.
+         * - **true**: Enable deletion protection.
+         * - **false**: Disable deletion protection.
          * 
          * @return builder
          * 
@@ -319,9 +400,9 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param deletionProtection Whether enable the deletion protection or not. Default value: `false`.
-         * - true: Enable deletion protection.
-         * - false: Disable deletion protection.
+         * @param deletionProtection Whether enable the deletion protection or not. Default value: false.
+         * - **true**: Enable deletion protection.
+         * - **false**: Disable deletion protection.
          * 
          * @return builder
          * 
@@ -331,7 +412,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description The description of the common bandwidth package instance.
+         * @param description The description of the shared bandwidth.
          * 
          * @return builder
          * 
@@ -342,7 +423,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description The description of the common bandwidth package instance.
+         * @param description The description of the shared bandwidth.
          * 
          * @return builder
          * 
@@ -352,7 +433,9 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param force This parameter is used for resource destroy. Default value is `false`.
+         * @param force Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+         * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+         * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
          * 
          * @return builder
          * 
@@ -363,7 +446,9 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param force This parameter is used for resource destroy. Default value is `false`.
+         * @param force Whether to forcibly delete an Internet Shared Bandwidth instance. Value:
+         * - **false** (default): only the internet shared bandwidth that does not contain the EIP is deleted.
+         * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
          * 
          * @return builder
          * 
@@ -373,7 +458,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param internetChargeType The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn&#39;t supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+         * @param internetChargeType The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
          * 
          * @return builder
          * 
@@ -384,7 +469,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param internetChargeType The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International Account doesn&#39;t supports `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
+         * @param internetChargeType The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
          * 
          * @return builder
          * 
@@ -394,8 +479,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param isp The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-         * **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
+         * @param isp The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
          * 
          * @return builder
          * 
@@ -406,8 +490,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param isp The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`.
-         * **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
+         * @param isp The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
          * 
          * @return builder
          * 
@@ -417,36 +500,57 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from provider version 1.120.0. New field `bandwidth_package_name` instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.120.0. New field &#39;bandwidth_package_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param ratio Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
+         * @param paymentType The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(@Nullable Output<String> paymentType) {
+            $.paymentType = paymentType;
+            return this;
+        }
+
+        /**
+         * @param paymentType The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paymentType(String paymentType) {
+            return paymentType(Output.of(paymentType));
+        }
+
+        /**
+         * @param ratio Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
          * 
          * @return builder
          * 
@@ -457,7 +561,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ratio Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to `100`. Valid values: [10-100].
+         * @param ratio Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
          * 
          * @return builder
          * 
@@ -488,7 +592,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
          * 
          * @return builder
          * 
@@ -499,7 +603,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
          * 
          * @return builder
          * 
@@ -509,7 +613,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to `AntiDDoS_Enhanced`, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
+         * @param securityProtectionTypes The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
          * 
          * @return builder
          * 
@@ -519,7 +623,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param status (Available in 1.120.0+) The status of bandwidth package.
+         * @param status The status of the Internet Shared Bandwidth instance. Default value: **Available**.
          * 
          * @return builder
          * 
@@ -530,7 +634,7 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param status (Available in 1.120.0+) The status of bandwidth package.
+         * @param status The status of the Internet Shared Bandwidth instance. Default value: **Available**.
          * 
          * @return builder
          * 
@@ -540,7 +644,30 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param zone The zone of bandwidth package.
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param zone The available area of the shared bandwidth.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -551,7 +678,9 @@ public final class CommonBandwithPackageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param zone The zone of bandwidth package.
+         * @param zone The available area of the shared bandwidth.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

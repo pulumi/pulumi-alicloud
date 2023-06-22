@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECD Nas File System resource.
  * 
- * For information about ECD Nas File System and how to use it, see [What is Nas File System](https://help.aliyun.com/document_detail/188382.html).
+ * For information about ECD Nas File System and how to use it, see [What is Nas File System](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-reference-for-easy-use-1).
  * 
- * &gt; **NOTE:** Available in v1.141.0+.
+ * &gt; **NOTE:** Available since v1.141.0.
  * 
  * ## Example Usage
  * 
@@ -48,17 +48,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .enableAdminAccess(false)
  *             .desktopAccessType(&#34;Internet&#34;)
- *             .officeSiteName(&#34;your_office_site_name&#34;)
- *             .enableInternetAccess(false)
+ *             .officeSiteName(name)
  *             .build());
  * 
  *         var example = new NasFileSystem(&#34;example&#34;, NasFileSystemArgs.builder()        
- *             .nasFileSystemName(&#34;example_value&#34;)
+ *             .nasFileSystemName(name)
  *             .officeSiteId(default_.id())
- *             .description(&#34;example_value&#34;)
+ *             .description(name)
  *             .build());
  * 
  *     }

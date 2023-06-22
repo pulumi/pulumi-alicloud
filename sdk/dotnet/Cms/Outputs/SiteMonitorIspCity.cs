@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class SiteMonitorIspCity
     {
+        /// <summary>
+        /// The ID of the city.
+        /// </summary>
         public readonly string City;
+        /// <summary>
+        /// The ID of the carrier.
+        /// </summary>
         public readonly string Isp;
 
         [OutputConstructor]

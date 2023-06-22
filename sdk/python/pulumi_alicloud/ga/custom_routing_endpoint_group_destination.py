@@ -230,7 +230,7 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Custom Routing Endpoint Group Destination and how to use it, see [What is Custom Routing Endpoint Group Destination](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointgroupdestinations).
 
-        > **NOTE:** Available in v1.197.0+.
+        > **NOTE:** Available since v1.197.0.
 
         ## Example Usage
 
@@ -240,13 +240,41 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ga.CustomRoutingEndpointGroupDestination("default",
-            endpoint_group_id="your_custom_routing_endpoint_group_id",
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            listener_type="CustomRouting",
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=10000,
+                to_port=16000,
+            )])
+        default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup",
+            accelerator_id=default_listener.accelerator_id,
+            listener_id=default_listener.id,
+            endpoint_group_region=region,
+            custom_routing_endpoint_group_name="terraform-example",
+            description="terraform-example")
+        default_custom_routing_endpoint_group_destination = alicloud.ga.CustomRoutingEndpointGroupDestination("defaultCustomRoutingEndpointGroupDestination",
+            endpoint_group_id=default_custom_routing_endpoint_group.id,
+            protocols=["TCP"],
             from_port=1,
-            protocols=[
-                "TCP",
-                "UDP",
-            ],
             to_port=2)
         ```
 
@@ -276,7 +304,7 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Custom Routing Endpoint Group Destination and how to use it, see [What is Custom Routing Endpoint Group Destination](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpointgroupdestinations).
 
-        > **NOTE:** Available in v1.197.0+.
+        > **NOTE:** Available since v1.197.0.
 
         ## Example Usage
 
@@ -286,13 +314,41 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ga.CustomRoutingEndpointGroupDestination("default",
-            endpoint_group_id="your_custom_routing_endpoint_group_id",
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="1")
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+            bandwidth=100,
+            type="Basic",
+            bandwidth_type="Basic",
+            payment_type="PayAsYouGo",
+            billing_type="PayBy95",
+            ratio=30)
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
+            accelerator_id=default_accelerator.id,
+            bandwidth_package_id=default_bandwidth_package.id)
+        default_listener = alicloud.ga.Listener("defaultListener",
+            accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            listener_type="CustomRouting",
+            port_ranges=[alicloud.ga.ListenerPortRangeArgs(
+                from_port=10000,
+                to_port=16000,
+            )])
+        default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup",
+            accelerator_id=default_listener.accelerator_id,
+            listener_id=default_listener.id,
+            endpoint_group_region=region,
+            custom_routing_endpoint_group_name="terraform-example",
+            description="terraform-example")
+        default_custom_routing_endpoint_group_destination = alicloud.ga.CustomRoutingEndpointGroupDestination("defaultCustomRoutingEndpointGroupDestination",
+            endpoint_group_id=default_custom_routing_endpoint_group.id,
+            protocols=["TCP"],
             from_port=1,
-            protocols=[
-                "TCP",
-                "UDP",
-            ],
             to_port=2)
         ```
 

@@ -20,30 +20,25 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const testProject = new alicloud.log.Project("testProject", {description: "create by terraform"});
- * const testStore = new alicloud.log.Store("testStore", {
- *     project: testProject.name,
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
  *     appendMeta: true,
  * });
- * const testMachineGroup = new alicloud.log.MachineGroup("testMachineGroup", {
- *     project: testProject.name,
- *     topic: "terraform",
- *     identifyLists: [
- *         "10.0.0.1",
- *         "10.0.0.3",
- *         "10.0.0.2",
- *     ],
- * });
- * const testLogTailConfig = new alicloud.log.LogTailConfig("testLogTailConfig", {
- *     project: testProject.name,
- *     logstore: testStore.name,
+ * const exampleLogTailConfig = new alicloud.log.LogTailConfig("exampleLogTailConfig", {
+ *     project: exampleProject.name,
+ *     logstore: exampleStore.name,
  *     inputType: "file",
- *     logSample: "test",
  *     outputType: "LogService",
  *     inputDetail: `  	{
  * 		"logPath": "/logPath",
@@ -55,13 +50,21 @@ import * as utilities from "../utilities";
  * 		"fileEncoding": "gbk",
  * 		"maxDepth": 10
  * 	}
- * 	
  * `,
  * });
- * const testLogTailAttachment = new alicloud.log.LogTailAttachment("testLogTailAttachment", {
- *     project: testProject.name,
- *     logtailConfigName: testLogTailConfig.name,
- *     machineGroupName: testMachineGroup.name,
+ * const exampleMachineGroup = new alicloud.log.MachineGroup("exampleMachineGroup", {
+ *     project: exampleProject.name,
+ *     identifyType: "ip",
+ *     topic: "terraform",
+ *     identifyLists: [
+ *         "10.0.0.1",
+ *         "10.0.0.2",
+ *     ],
+ * });
+ * const exampleLogTailAttachment = new alicloud.log.LogTailAttachment("exampleLogTailAttachment", {
+ *     project: exampleProject.name,
+ *     logtailConfigName: exampleLogTailConfig.name,
+ *     machineGroupName: exampleMachineGroup.name,
  * });
  * ```
  *

@@ -36,21 +36,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVault, err := hbr.NewVault(ctx, "exampleVault", &hbr.VaultArgs{
-//				VaultName: pulumi.Any(_var.Name),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			exampleResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			exampleVault, err := hbr.NewVault(ctx, "exampleVault", &hbr.VaultArgs{
+//				VaultName: pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = hbr.NewHanaInstance(ctx, "exampleHanaInstance", &hbr.HanaInstanceArgs{
 //				AlertSetting:        pulumi.String("INHERITED"),
-//				HanaName:            pulumi.Any(_var.Name),
+//				HanaName:            pulumi.String("terraform-example"),
 //				Host:                pulumi.String("1.1.1.1"),
 //				InstanceNumber:      pulumi.Int(1),
 //				Password:            pulumi.String("YouPassword123"),

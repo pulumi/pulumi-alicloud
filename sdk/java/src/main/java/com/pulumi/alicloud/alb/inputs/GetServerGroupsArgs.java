@@ -125,23 +125,31 @@ public final class GetServerGroupsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * A map of tags assigned to the group.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
+    /**
+     * @return A map of tags assigned to the group.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -362,7 +370,7 @@ public final class GetServerGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -373,7 +381,7 @@ public final class GetServerGroupsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -382,11 +390,23 @@ public final class GetServerGroupsArgs extends com.pulumi.resources.InvokeArgs {
             return status(Output.of(status));
         }
 
+        /**
+         * @param tags A map of tags assigned to the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags A map of tags assigned to the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }

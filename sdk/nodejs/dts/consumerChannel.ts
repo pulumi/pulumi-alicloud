@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about DTS Consumer Channel and how to use it, see [What is Consumer Channel](https://www.alibabacloud.com/help/en/doc-detail/264593.htm).
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *
@@ -20,66 +20,81 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tftestdts";
- * const creation = config.get("creation") || "Rds";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const name = config.get("name") || "terraform-example";
+ * const exampleRegions = alicloud.getRegions({
+ *     current: true,
  * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
- * }));
- * const instance = new alicloud.rds.Instance("instance", {
+ * const exampleZones = alicloud.rds.getZones({
  *     engine: "MySQL",
- *     engineVersion: "5.6",
- *     instanceType: "rds.mysql.s1.small",
- *     instanceStorage: 10,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleInstanceClasses = exampleZones.then(exampleZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: exampleZones.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vpcId: exampleNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     vswitchName: name,
+ * });
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceType: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceChargeType: "Postpaid",
  *     instanceName: name,
+ *     vswitchId: exampleSwitch.id,
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     securityGroupIds: [exampleSecurityGroup.id],
  * });
- * const db: alicloud.rds.Database[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     db.push(new alicloud.rds.Database(`db-${range.value}`, {
- *         instanceId: instance.id,
- *         description: "from terraform",
- *     }));
- * }
- * const account = new alicloud.rds.Account("account", {
- *     dbInstanceId: instance.id,
- *     accountName: "tftestprivilege",
- *     accountPassword: "Test12345",
- *     accountDescription: "from terraform",
+ * const exampleRdsAccount = new alicloud.rds.RdsAccount("exampleRdsAccount", {
+ *     dbInstanceId: exampleInstance.id,
+ *     accountName: "example_name",
+ *     accountPassword: "example_1234",
  * });
- * const privilege = new alicloud.rds.AccountPrivilege("privilege", {
- *     instanceId: instance.id,
- *     accountName: account.name,
+ * const exampleDatabase = new alicloud.rds.Database("exampleDatabase", {instanceId: exampleInstance.id});
+ * const exampleAccountPrivilege = new alicloud.rds.AccountPrivilege("exampleAccountPrivilege", {
+ *     instanceId: exampleInstance.id,
+ *     accountName: exampleRdsAccount.name,
  *     privilege: "ReadWrite",
- *     dbNames: db.map(__item => __item.name),
+ *     dbNames: [exampleDatabase.name],
  * });
- * const defaultSubscriptionJob = new alicloud.dts.SubscriptionJob("defaultSubscriptionJob", {
+ * const exampleSubscriptionJob = new alicloud.dts.SubscriptionJob("exampleSubscriptionJob", {
  *     dtsJobName: name,
  *     paymentType: "PayAsYouGo",
  *     sourceEndpointEngineName: "MySQL",
- *     sourceEndpointRegion: "cn-hangzhou",
+ *     sourceEndpointRegion: exampleRegions.then(exampleRegions => exampleRegions.regions?.[0]?.id),
  *     sourceEndpointInstanceType: "RDS",
- *     sourceEndpointInstanceId: instance.id,
- *     sourceEndpointDatabaseName: "tfaccountpri_0",
- *     sourceEndpointUserName: "tftestprivilege",
- *     sourceEndpointPassword: "Test12345",
+ *     sourceEndpointInstanceId: exampleInstance.id,
+ *     sourceEndpointDatabaseName: exampleDatabase.name,
+ *     sourceEndpointUserName: exampleRdsAccount.accountName,
+ *     sourceEndpointPassword: exampleRdsAccount.accountPassword,
+ *     dbList: pulumi.interpolate`{"${exampleDatabase.name}":{"name":"${exampleDatabase.name}","all":true}}`,
  *     subscriptionInstanceNetworkType: "vpc",
- *     dbList: "        {\"dtstestdata\": {\"name\": \"tfaccountpri_0\", \"all\": true}}\n",
- *     subscriptionInstanceVpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     subscriptionInstanceVswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     subscriptionInstanceVpcId: exampleNetwork.id,
+ *     subscriptionInstanceVswitchId: exampleSwitch.id,
  *     status: "Normal",
  * });
- * const defaultConsumerChannel = new alicloud.dts.ConsumerChannel("defaultConsumerChannel", {
- *     dtsInstanceId: defaultSubscriptionJob.dtsInstanceId,
+ * const exampleConsumerChannel = new alicloud.dts.ConsumerChannel("exampleConsumerChannel", {
+ *     dtsInstanceId: exampleSubscriptionJob.dtsInstanceId,
  *     consumerGroupName: name,
- *     consumerGroupUserName: name,
- *     consumerGroupPassword: "tftestAcc123",
+ *     consumerGroupUserName: "example",
+ *     consumerGroupPassword: "example1234",
  * });
  * ```
  *

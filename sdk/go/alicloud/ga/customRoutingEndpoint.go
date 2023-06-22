@@ -15,7 +15,7 @@ import (
 //
 // For information about Global Accelerator (GA) Custom Routing Endpoint and how to use it, see [What is Custom Routing Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/createcustomroutingendpoints).
 //
-// > **NOTE:** Available in v1.197.0+.
+// > **NOTE:** Available since v1.197.0.
 //
 // ## Example Usage
 //
@@ -26,18 +26,97 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ga.NewCustomRoutingEndpoint(ctx, "default", &ga.CustomRoutingEndpointArgs{
-//				Endpoint:                pulumi.String("your_vswitch_id"),
-//				EndpointGroupId:         pulumi.String("your_custom_routing_endpoint_group_id"),
-//				TrafficToEndpointPolicy: pulumi.String("DenyAll"),
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
+//				Duration:      pulumi.Int(1),
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Spec:          pulumi.String("1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
+//				Bandwidth:     pulumi.Int(100),
+//				Type:          pulumi.String("Basic"),
+//				BandwidthType: pulumi.String("Basic"),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				BillingType:   pulumi.String("PayBy95"),
+//				Ratio:         pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      defaultAccelerator.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultListener, err := ga.NewListener(ctx, "defaultListener", &ga.ListenerArgs{
+//				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
+//				ListenerType:  pulumi.String("CustomRouting"),
+//				PortRanges: ga.ListenerPortRangeArray{
+//					&ga.ListenerPortRangeArgs{
+//						FromPort: pulumi.Int(10000),
+//						ToPort:   pulumi.Int(16000),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultCustomRoutingEndpointGroup, err := ga.NewCustomRoutingEndpointGroup(ctx, "defaultCustomRoutingEndpointGroup", &ga.CustomRoutingEndpointGroupArgs{
+//				AcceleratorId:                  defaultListener.AcceleratorId,
+//				ListenerId:                     defaultListener.ID(),
+//				EndpointGroupRegion:            pulumi.String(region),
+//				CustomRoutingEndpointGroupName: pulumi.String("terraform-example"),
+//				Description:                    pulumi.String("terraform-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewCustomRoutingEndpoint(ctx, "defaultCustomRoutingEndpoint", &ga.CustomRoutingEndpointArgs{
+//				EndpointGroupId:         defaultCustomRoutingEndpointGroup.ID(),
+//				Endpoint:                defaultSwitch.ID(),
 //				Type:                    pulumi.String("PrivateSubNet"),
+//				TrafficToEndpointPolicy: pulumi.String("DenyAll"),
 //			})
 //			if err != nil {
 //				return err

@@ -12,11 +12,18 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
     public sealed class ScalingGroupVServerGroupsVserverGroupGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Loadbalancer server ID of VServer Group.
+        /// </summary>
         [Input("loadbalancerId", required: true)]
         public Input<string> LoadbalancerId { get; set; } = null!;
 
         [Input("vserverAttributes", required: true)]
         private InputList<Inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeGetArgs>? _vserverAttributes;
+
+        /// <summary>
+        /// A list of VServer Group attributes. See `vserver_attributes` below.
+        /// </summary>
         public InputList<Inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeGetArgs> VserverAttributes
         {
             get => _vserverAttributes ?? (_vserverAttributes = new InputList<Inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeGetArgs>());

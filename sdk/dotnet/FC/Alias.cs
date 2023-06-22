@@ -11,9 +11,9 @@ namespace Pulumi.AliCloud.FC
 {
     /// <summary>
     /// Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
-    ///  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/171635.htm).
+    ///  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createalias).
     /// 
-    /// &gt; **NOTE:** Available in 1.104.0+
+    /// &gt; **NOTE:** Available since v1.104.0.
     /// 
     /// ## Example Usage
     /// 
@@ -24,21 +24,27 @@ namespace Pulumi.AliCloud.FC
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
+    ///     {
+    ///         Description = "example-value",
+    ///         Publish = true,
+    ///     });
+    /// 
     ///     var example = new AliCloud.FC.Alias("example", new()
     ///     {
-    ///         AliasName = "my_alias",
-    ///         Description = "a sample description",
-    ///         RoutingConfig = new AliCloud.FC.Inputs.AliasRoutingConfigArgs
-    ///         {
-    ///             AdditionalVersionWeights = 
-    ///             {
-    ///                 { "2", 0.5 },
-    ///             },
-    ///         },
-    ///         ServiceName = "my_service_name",
+    ///         AliasName = "example-value",
+    ///         Description = "example-value",
+    ///         ServiceName = defaultService.Name,
     ///         ServiceVersion = "1",
     ///     });
     /// 
@@ -69,9 +75,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The Function Compute alias' route configuration settings. Fields documented below.
-        /// 
-        /// **routing_config** includes the following arguments:
+        /// The Function Compute alias' route configuration settings. See `routing_config` below.
         /// </summary>
         [Output("routingConfig")]
         public Output<Outputs.AliasRoutingConfig?> RoutingConfig { get; private set; } = null!;
@@ -147,9 +151,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Function Compute alias' route configuration settings. Fields documented below.
-        /// 
-        /// **routing_config** includes the following arguments:
+        /// The Function Compute alias' route configuration settings. See `routing_config` below.
         /// </summary>
         [Input("routingConfig")]
         public Input<Inputs.AliasRoutingConfigArgs>? RoutingConfig { get; set; }
@@ -187,9 +189,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Function Compute alias' route configuration settings. Fields documented below.
-        /// 
-        /// **routing_config** includes the following arguments:
+        /// The Function Compute alias' route configuration settings. See `routing_config` below.
         /// </summary>
         [Input("routingConfig")]
         public Input<Inputs.AliasRoutingConfigGetArgs>? RoutingConfig { get; set; }

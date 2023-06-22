@@ -14,14 +14,14 @@ public final class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArg
     public static final ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs Empty = new ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs();
 
     /**
-     * Terminal node group ID.
+     * The ID of the endpoint group.
      * 
      */
     @Import(name="endpointGroupId", required=true)
     private Output<String> endpointGroupId;
 
     /**
-     * @return Terminal node group ID.
+     * @return The ID of the endpoint group.
      * 
      */
     public Output<String> endpointGroupId() {
@@ -53,7 +53,7 @@ public final class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArg
         }
 
         /**
-         * @param endpointGroupId Terminal node group ID.
+         * @param endpointGroupId The ID of the endpoint group.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArg
         }
 
         /**
-         * @param endpointGroupId Terminal node group ID.
+         * @param endpointGroupId The ID of the endpoint group.
          * 
          * @return builder
          * 

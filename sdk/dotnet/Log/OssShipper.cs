@@ -24,15 +24,23 @@ namespace Pulumi.AliCloud.Log
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         Description = "created by terraform",
+    ///         Description = "terraform-example",
     ///         Tags = 
     ///         {
-    ///             { "test", "test" },
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 
@@ -40,7 +48,6 @@ namespace Pulumi.AliCloud.Log
     ///     {
     ///         Project = exampleProject.Name,
     ///         RetentionPeriod = 3650,
-    ///         ShardCount = 3,
     ///         AutoSplit = true,
     ///         MaxSplitShardCount = 60,
     ///         AppendMeta = true,
@@ -50,8 +57,8 @@ namespace Pulumi.AliCloud.Log
     ///     {
     ///         ProjectName = exampleProject.Name,
     ///         LogstoreName = exampleStore.Name,
-    ///         ShipperName = "oss_shipper_name",
-    ///         OssBucket = "test_bucket",
+    ///         ShipperName = "terraform-example",
+    ///         OssBucket = "example_bucket",
     ///         OssPrefix = "root",
     ///         BufferInterval = 300,
     ///         BufferSize = 250,

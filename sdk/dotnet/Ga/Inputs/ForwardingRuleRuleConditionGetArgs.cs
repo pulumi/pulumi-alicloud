@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ga.Inputs
         private InputList<Inputs.ForwardingRuleRuleConditionHostConfigGetArgs>? _hostConfigs;
 
         /// <summary>
-        /// Domain name configuration information.
+        /// The configuration of the domain name. See `host_config` below.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleConditionHostConfigGetArgs> HostConfigs
         {
@@ -25,13 +25,13 @@ namespace Pulumi.AliCloud.Ga.Inputs
         }
 
         /// <summary>
-        /// Path configuration information.
+        /// The configuration of the path. See `path_config` below.
         /// </summary>
         [Input("pathConfig")]
         public Input<Inputs.ForwardingRuleRuleConditionPathConfigGetArgs>? PathConfig { get; set; }
 
         /// <summary>
-        /// Forwarding condition type. Valid value: `Host`, `Path`.
+        /// The type of the forwarding conditions. Valid values: `Host`, `Path`.
         /// </summary>
         [Input("ruleConditionType", required: true)]
         public Input<string> RuleConditionType { get; set; } = null!;

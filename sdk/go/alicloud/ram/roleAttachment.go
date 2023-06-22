@@ -115,9 +115,13 @@ import (
 // if err != nil {
 // return err
 // }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
 // _, err = ram.NewRoleAttachment(ctx, "attach", &ram.RoleAttachmentArgs{
 // RoleName: role.Name,
-// InstanceIds: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-alicloud:ram-roleAttachment:RoleAttachment.pp:73,16-27),
+// InstanceIds: splat0,
 // })
 // if err != nil {
 // return err

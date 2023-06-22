@@ -342,12 +342,26 @@ class LayerVersion(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
         example = alicloud.fc.LayerVersion("example",
-            compatible_runtimes=["nodejs12"],
-            layer_name="your_layer_name",
-            oss_bucket_name="your_code_oss_bucket_name",
-            oss_object_name="your_code_oss_object_name")
+            layer_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            compatible_runtimes=["python2.7"],
+            oss_bucket_name=default_bucket.bucket,
+            oss_object_name=default_bucket_object.key)
         ```
 
         ## Import
@@ -384,12 +398,26 @@ class LayerVersion(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
         example = alicloud.fc.LayerVersion("example",
-            compatible_runtimes=["nodejs12"],
-            layer_name="your_layer_name",
-            oss_bucket_name="your_code_oss_bucket_name",
-            oss_object_name="your_code_oss_object_name")
+            layer_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            compatible_runtimes=["python2.7"],
+            oss_bucket_name=default_bucket.bucket,
+            oss_object_name=default_bucket_object.key)
         ```
 
         ## Import

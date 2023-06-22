@@ -15,7 +15,7 @@ import (
 //
 // For information about Global Accelerator (GA) Basic Endpoint Group and how to use it, see [What is Basic Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/createbasicendpointgroup).
 //
-// > **NOTE:** Available in v1.194.0+.
+// > **NOTE:** Available since v1.194.0.
 //
 // ## Example Usage
 //
@@ -26,54 +26,76 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			endpointGroupRegion := "cn-beijing"
+//			if param := cfg.Get("endpointGroupRegion"); param != "" {
+//				endpointGroupRegion = param
+//			}
+//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
-//			}, nil)
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "defaultApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//				LoadBalancerName: pulumi.String("terraform-example"),
+//				VswitchId:        defaultSwitch.ID(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
-//				VswitchId:        *pulumi.String(defaultSwitches.Ids[0]),
+//				AddressType:      pulumi.String("intranet"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultBasicAccelerator, err := ga.NewBasicAccelerator(ctx, "defaultBasicAccelerator", &ga.BasicAcceleratorArgs{
 //				Duration:             pulumi.Int(1),
-//				PricingCycle:         pulumi.String("Month"),
+//				BasicAcceleratorName: pulumi.String("terraform-example"),
+//				Description:          pulumi.String("terraform-example"),
 //				BandwidthBillingType: pulumi.String("CDT"),
-//				AutoPay:              pulumi.Bool(true),
 //				AutoUseCoupon:        pulumi.String("true"),
-//				AutoRenew:            pulumi.Bool(false),
-//				AutoRenewDuration:    pulumi.Int(1),
+//				AutoPay:              pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ga.NewBasicEndpointGroup(ctx, "defaultBasicEndpointGroup", &ga.BasicEndpointGroupArgs{
 //				AcceleratorId:          defaultBasicAccelerator.ID(),
-//				EndpointGroupRegion:    pulumi.String("cn-beijing"),
+//				EndpointGroupRegion:    pulumi.String(endpointGroupRegion),
 //				EndpointType:           pulumi.String("SLB"),
 //				EndpointAddress:        defaultApplicationLoadBalancer.ID(),
 //				EndpointSubAddress:     pulumi.String("192.168.0.1"),
-//				BasicEndpointGroupName: pulumi.String("example_value"),
-//				Description:            pulumi.String("example_value"),
+//				BasicEndpointGroupName: pulumi.String("terraform-example"),
+//				Description:            pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err

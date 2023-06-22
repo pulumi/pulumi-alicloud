@@ -207,8 +207,12 @@ class MachineGroup(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
             project=example_project.name,
             identify_type="ip",
@@ -256,8 +260,12 @@ class MachineGroup(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
             project=example_project.name,
             identify_type="ip",

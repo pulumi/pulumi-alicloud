@@ -49,14 +49,14 @@ public final class ScalingGroupVServerGroupsState extends com.pulumi.resources.R
     }
 
     /**
-     * A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+     * A list of vserver groups attached on scaling group. See `vserver_groups` below.
      * 
      */
     @Import(name="vserverGroups")
     private @Nullable Output<List<ScalingGroupVServerGroupsVserverGroupArgs>> vserverGroups;
 
     /**
-     * @return A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+     * @return A list of vserver groups attached on scaling group. See `vserver_groups` below.
      * 
      */
     public Optional<Output<List<ScalingGroupVServerGroupsVserverGroupArgs>>> vserverGroups() {
@@ -132,7 +132,7 @@ public final class ScalingGroupVServerGroupsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param vserverGroups A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserver_groups` below.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class ScalingGroupVServerGroupsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param vserverGroups A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserver_groups` below.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ScalingGroupVServerGroupsState extends com.pulumi.resources.R
         }
 
         /**
-         * @param vserverGroups A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+         * @param vserverGroups A list of vserver groups attached on scaling group. See `vserver_groups` below.
          * 
          * @return builder
          * 

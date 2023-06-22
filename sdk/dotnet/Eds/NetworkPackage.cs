@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eds
     /// <summary>
     /// Provides a ECD Network Package resource.
     /// 
-    /// For information about ECD Network Package and how to use it, see [What is Network Package](https://help.aliyun.com/document_detail/188382.html).
+    /// For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createnetworkpackage).
     /// 
-    /// &gt; **NOTE:** Available in v1.142.0+.
+    /// &gt; **NOTE:** Available since v1.142.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,17 +28,20 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Eds.SimpleOfficeSite("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
     ///     {
     ///         CidrBlock = "172.16.0.0/12",
+    ///         EnableAdminAccess = false,
     ///         DesktopAccessType = "Internet",
-    ///         OfficeSiteName = "your_office_site_name",
+    ///         OfficeSiteName = name,
     ///     });
     /// 
-    ///     var example = new AliCloud.Eds.NetworkPackage("example", new()
+    ///     var defaultNetworkPackage = new AliCloud.Eds.NetworkPackage("defaultNetworkPackage", new()
     ///     {
     ///         Bandwidth = 10,
-    ///         OfficeSiteId = @default.Id,
+    ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
     ///     });
     /// 
     /// });

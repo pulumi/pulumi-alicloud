@@ -11,9 +11,11 @@ namespace Pulumi.AliCloud.FC
 {
     /// <summary>
     /// Provides a Alicloud Function Compute Function resource. Function allows you to trigger execution of code in response to events in Alibaba Cloud. The Function itself includes source code and runtime configuration.
-    ///  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+    ///  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/zh/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createfunction).
     /// 
     /// &gt; **NOTE:** The resource requires a provider field 'account_id'. See account_id.
+    /// 
+    /// &gt; **NOTE:** Available since v1.10.0.
     /// 
     /// ## Example Usage
     /// 
@@ -24,42 +26,41 @@ namespace Pulumi.AliCloud.FC
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "alicloudfcfunctionconfig";
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
-    ///         Description = "tf unit test",
+    ///         Max = 99999,
+    ///         Min = 10000,
     ///     });
+    /// 
+    ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
     /// 
     ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
     ///     {
     ///         Project = defaultProject.Name,
-    ///         RetentionPeriod = 3000,
-    ///         ShardCount = 1,
     ///     });
     /// 
     ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
     ///     {
-    ///         Document = @"        {
-    ///           ""Statement"": [
-    ///             {
-    ///               ""Action"": ""sts:AssumeRole"",
-    ///               ""Effect"": ""Allow"",
-    ///               ""Principal"": {
-    ///                 ""Service"": [
-    ///                   ""fc.aliyuncs.com""
-    ///                 ]
-    ///               }
-    ///             }
-    ///           ],
-    ///           ""Version"": ""1""
+    ///         Document = @"  {
+    ///       ""Statement"": [
+    ///         {
+    ///           ""Action"": ""sts:AssumeRole"",
+    ///           ""Effect"": ""Allow"",
+    ///           ""Principal"": {
+    ///             ""Service"": [
+    ///               ""fc.aliyuncs.com""
+    ///             ]
+    ///           }
     ///         }
-    ///     
+    ///       ],
+    ///       ""Version"": ""1""
+    ///   }
     /// ",
-    ///         Description = "this is a test",
+    ///         Description = "this is a example",
     ///         Force = true,
     ///     });
     /// 
@@ -72,38 +73,38 @@ namespace Pulumi.AliCloud.FC
     /// 
     ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
     ///     {
-    ///         Description = "tf unit test",
+    ///         Description = "example-value",
+    ///         Role = defaultRole.Arn,
     ///         LogConfig = new AliCloud.FC.Inputs.ServiceLogConfigArgs
     ///         {
     ///             Project = defaultProject.Name,
     ///             Logstore = defaultStore.Name,
-    ///         },
-    ///         Role = defaultRole.Arn,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultRolePolicyAttachment,
+    ///             EnableInstanceMetrics = true,
+    ///             EnableRequestMetrics = true,
     ///         },
     ///     });
     /// 
     ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
     ///     {
-    ///         BucketName = name,
+    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///     });
     /// 
     ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
     ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
     ///     {
     ///         Bucket = defaultBucket.Id,
-    ///         Key = "fc/hello.zip",
-    ///         Source = "./hello.zip",
+    ///         Key = "index.py",
+    ///         Content = @"import logging 
+    /// def handler(event, context): 
+    /// logger = logging.getLogger() 
+    /// logger.info('hello world') 
+    /// return 'hello world'",
     ///     });
     /// 
     ///     var foo = new AliCloud.FC.Function("foo", new()
     ///     {
     ///         Service = defaultService.Name,
-    ///         Description = "tf",
+    ///         Description = "example",
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
     ///         MemorySize = 512,
@@ -147,7 +148,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> CodeChecksum { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration for custom container runtime.
+        /// The configuration for custom container runtime.See `custom_container_config` below.
         /// </summary>
         [Output("customContainerConfig")]
         public Output<Outputs.FunctionCustomContainerConfig?> CustomContainerConfig { get; private set; } = null!;
@@ -326,7 +327,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? CodeChecksum { get; set; }
 
         /// <summary>
-        /// The configuration for custom container runtime.
+        /// The configuration for custom container runtime.See `custom_container_config` below.
         /// </summary>
         [Input("customContainerConfig")]
         public Input<Inputs.FunctionCustomContainerConfigArgs>? CustomContainerConfig { get; set; }
@@ -467,7 +468,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? CodeChecksum { get; set; }
 
         /// <summary>
-        /// The configuration for custom container runtime.
+        /// The configuration for custom container runtime.See `custom_container_config` below.
         /// </summary>
         [Input("customContainerConfig")]
         public Input<Inputs.FunctionCustomContainerConfigGetArgs>? CustomContainerConfig { get; set; }

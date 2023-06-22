@@ -355,29 +355,29 @@ class HanaBackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=var["name"])
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_hana_instance = alicloud.hbr.HanaInstance("defaultHanaInstance",
+        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
+        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
             alert_setting="INHERITED",
-            hana_name=var["name"],
+            hana_name="terraform-example",
             host="1.1.1.1",
             instance_number=1,
             password="YouPassword123",
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=example_resource_groups.groups[0].id,
             sid="HXE",
             use_ssl=False,
             user_name="admin",
             validate_certificate=False,
-            vault_id=default_vault.id)
-        default_hana_backup_plan = alicloud.hbr.HanaBackupPlan("defaultHanaBackupPlan",
+            vault_id=example_vault.id)
+        example_hana_backup_plan = alicloud.hbr.HanaBackupPlan("exampleHanaBackupPlan",
             backup_prefix="DIFF_DATA_BACKUP",
             backup_type="COMPLETE",
-            cluster_id=default_hana_instance.hana_instance_id,
+            cluster_id=example_hana_instance.hana_instance_id,
             database_name="SYSTEMDB",
-            plan_name=var["name"],
-            resource_group_id=default_resource_groups.groups[0].id,
+            plan_name="terraform-example",
+            resource_group_id=example_resource_groups.groups[0].id,
             schedule="I|1602673264|P1D",
-            vault_id=default_hana_instance.vault_id)
+            vault_id=example_hana_instance.vault_id)
         ```
 
         ## Import
@@ -421,29 +421,29 @@ class HanaBackupPlan(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_vault = alicloud.hbr.Vault("defaultVault", vault_name=var["name"])
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_hana_instance = alicloud.hbr.HanaInstance("defaultHanaInstance",
+        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
+        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
             alert_setting="INHERITED",
-            hana_name=var["name"],
+            hana_name="terraform-example",
             host="1.1.1.1",
             instance_number=1,
             password="YouPassword123",
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=example_resource_groups.groups[0].id,
             sid="HXE",
             use_ssl=False,
             user_name="admin",
             validate_certificate=False,
-            vault_id=default_vault.id)
-        default_hana_backup_plan = alicloud.hbr.HanaBackupPlan("defaultHanaBackupPlan",
+            vault_id=example_vault.id)
+        example_hana_backup_plan = alicloud.hbr.HanaBackupPlan("exampleHanaBackupPlan",
             backup_prefix="DIFF_DATA_BACKUP",
             backup_type="COMPLETE",
-            cluster_id=default_hana_instance.hana_instance_id,
+            cluster_id=example_hana_instance.hana_instance_id,
             database_name="SYSTEMDB",
-            plan_name=var["name"],
-            resource_group_id=default_resource_groups.groups[0].id,
+            plan_name="terraform-example",
+            resource_group_id=example_resource_groups.groups[0].id,
             schedule="I|1602673264|P1D",
-            vault_id=default_hana_instance.vault_id)
+            vault_id=example_hana_instance.vault_id)
         ```
 
         ## Import

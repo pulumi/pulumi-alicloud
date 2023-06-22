@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/doc-detail/153259.htm).
  * 
- * &gt; **NOTE:** Available in v1.113.0+.
+ * &gt; **NOTE:** Available since v1.113.0.
  * 
  * &gt; **NOTE:** Listeners that use different protocols support different types of endpoint groups:
  * * For a TCP or UDP listener, you can create only one default endpoint group.
@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ga.EndpointGroup;
  * import com.pulumi.alicloud.ga.EndpointGroupArgs;
  * import com.pulumi.alicloud.ga.inputs.EndpointGroupEndpointConfigurationArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.codegen.internal.KeyedValue;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -69,14 +69,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAccelerator = new Accelerator(&#34;exampleAccelerator&#34;, AcceleratorArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec(&#34;1&#34;)
  *             .build());
  * 
- *         var deBandwidthPackage = new BandwidthPackage(&#34;deBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
- *             .bandwidth(&#34;100&#34;)
+ *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(100)
  *             .type(&#34;Basic&#34;)
  *             .bandwidthType(&#34;Basic&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
@@ -84,35 +86,45 @@ import javax.annotation.Nullable;
  *             .ratio(30)
  *             .build());
  * 
- *         var deBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;deBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .acceleratorId(exampleAccelerator.id())
- *             .bandwidthPackageId(deBandwidthPackage.id())
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .acceleratorId(defaultAccelerator.id())
+ *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var exampleListener = new Listener(&#34;exampleListener&#34;, ListenerArgs.builder()        
- *             .acceleratorId(exampleAccelerator.id())
+ *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+ *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .portRanges(ListenerPortRangeArgs.builder()
  *                 .fromPort(60)
  *                 .toPort(70)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(deBandwidthPackageAttachment)
- *                 .build());
- * 
- *         var exampleEipAddress = new EipAddress(&#34;exampleEipAddress&#34;, EipAddressArgs.builder()        
- *             .bandwidth(&#34;10&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .clientAffinity(&#34;SOURCE_IP&#34;)
+ *             .protocol(&#34;UDP&#34;)
  *             .build());
  * 
- *         var exampleEndpointGroup = new EndpointGroup(&#34;exampleEndpointGroup&#34;, EndpointGroupArgs.builder()        
- *             .acceleratorId(exampleAccelerator.id())
- *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
- *                 .endpoint(exampleEipAddress.ipAddress())
- *                 .type(&#34;PublicIp&#34;)
- *                 .weight(&#34;20&#34;)
- *                 .build())
- *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
- *             .listenerId(exampleListener.id())
+ *         for (var i = 0; i &lt; 2; i++) {
+ *             new EipAddress(&#34;defaultEipAddress-&#34; + i, EipAddressArgs.builder()            
+ *                 .bandwidth(&#34;10&#34;)
+ *                 .internetChargeType(&#34;PayByBandwidth&#34;)
+ *                 .addressName(&#34;terraform-example&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
+ *             .acceleratorId(defaultAccelerator.id())
+ *             .endpointConfigurations(            
+ *                 EndpointGroupEndpointConfigurationArgs.builder()
+ *                     .endpoint(defaultEipAddress[0].ipAddress())
+ *                     .type(&#34;PublicIp&#34;)
+ *                     .weight(&#34;20&#34;)
+ *                     .build(),
+ *                 EndpointGroupEndpointConfigurationArgs.builder()
+ *                     .endpoint(defaultEipAddress[1].ipAddress())
+ *                     .type(&#34;PublicIp&#34;)
+ *                     .weight(&#34;20&#34;)
+ *                     .build())
+ *             .endpointGroupRegion(region)
+ *             .listenerId(defaultListener.id())
  *             .build());
  * 
  *     }
@@ -159,14 +171,14 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+     * The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
      * 
      */
     @Export(name="endpointConfigurations", type=List.class, parameters={EndpointGroupEndpointConfiguration.class})
     private Output<List<EndpointGroupEndpointConfiguration>> endpointConfigurations;
 
     /**
-     * @return The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+     * @return The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
      * 
      */
     public Output<List<EndpointGroupEndpointConfiguration>> endpointConfigurations() {
@@ -307,7 +319,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+     * Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
      * 
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 
@@ -316,7 +328,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ EndpointGroupPortOverrides> portOverrides;
 
     /**
-     * @return Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+     * @return Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
      * 
      * &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      * 

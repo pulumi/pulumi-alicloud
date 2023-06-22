@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Ipv6 Internet Bandwidth resource.
+// Provides a VPC Ipv6 Internet Bandwidth resource. Public network bandwidth of IPv6 address.
 //
-// For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/doc-detail/102213.htm).
+// For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/allocateipv6internetbandwidth).
 //
-// > **NOTE:** Available in v1.143.0+.
+// > **NOTE:** Available since v1.143.0.
 //
 // ## Example Usage
 //
@@ -26,41 +26,107 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+// "github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleInstances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-//				NameRegex: pulumi.StringRef("ecs_with_ipv6_address"),
-//				Status:    pulumi.StringRef("Running"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleIpv6Addresses, err := vpc.GetIpv6Addresses(ctx, &vpc.GetIpv6AddressesArgs{
-//				AssociatedInstanceId: pulumi.StringRef(exampleInstances.Instances[0].Id),
-//				Status:               pulumi.StringRef("Available"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewIpv6InternetBandwidth(ctx, "exampleIpv6InternetBandwidth", &vpc.Ipv6InternetBandwidthArgs{
-//				Ipv6AddressId:      *pulumi.String(exampleIpv6Addresses.Addresses[0].Id),
-//				Ipv6GatewayId:      *pulumi.String(exampleIpv6Addresses.Addresses[0].Ipv6GatewayId),
-//				InternetChargeType: pulumi.String("PayByBandwidth"),
-//				Bandwidth:          pulumi.Int(20),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// defaultZones, err := alicloud.GetZones(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// EnableIpv6: pulumi.Bool(true),
+// CidrBlock: pulumi.String("172.16.0.0/12"),
+// })
+// if err != nil {
+// return err
+// }
+// vsw, err := vpc.NewSwitch(ctx, "vsw", &vpc.SwitchArgs{
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("172.16.0.0/21"),
+// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// Ipv6CidrBlockMask: pulumi.Int(22),
+// })
+// if err != nil {
+// return err
+// }
+// group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+// Description: pulumi.String("foo"),
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+// SystemDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// CpuCoreCount: pulumi.IntRef(4),
+// MinimumEniIpv6AddressQuantity: pulumi.IntRef(1),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
+// MostRecent: pulumi.BoolRef(true),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// vpcInstance, err := ecs.NewInstance(ctx, "vpcInstance", &ecs.InstanceArgs{
+// AvailabilityZone: *pulumi.String(defaultZones.Zones[0].Id),
+// Ipv6AddressCount: pulumi.Int(1),
+// InstanceType: *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// ImageId: *pulumi.String(defaultImages.Images[0].Id),
+// InstanceName: pulumi.String(name),
+// VswitchId: vsw.ID(),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// SecurityGroups: splat0,
+// })
+// if err != nil {
+// return err
+// }
+// exampleIpv6Gateway, err := vpc.NewIpv6Gateway(ctx, "exampleIpv6Gateway", &vpc.Ipv6GatewayArgs{
+// Ipv6GatewayName: pulumi.String("example_value"),
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// defaultIpv6Addresses := vpc.GetIpv6AddressesOutput(ctx, vpc.GetIpv6AddressesOutputArgs{
+// AssociatedInstanceId: vpcInstance.ID(),
+// Status: pulumi.String("Available"),
+// }, nil);
+// _, err = vpc.NewIpv6InternetBandwidth(ctx, "exampleIpv6InternetBandwidth", &vpc.Ipv6InternetBandwidthArgs{
+// Ipv6AddressId: defaultIpv6Addresses.ApplyT(func(defaultIpv6Addresses vpc.GetIpv6AddressesResult) (*string, error) {
+// return &defaultIpv6Addresses.Addresses[0].Id, nil
+// }).(pulumi.StringPtrOutput),
+// Ipv6GatewayId: exampleIpv6Gateway.Ipv6GatewayId,
+// InternetChargeType: pulumi.String("PayByBandwidth"),
+// Bandwidth: pulumi.Int(20),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import
@@ -79,11 +145,11 @@ type Ipv6InternetBandwidth struct {
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType pulumi.StringOutput `pulumi:"internetChargeType"`
-	// The ID of the IPv6 address.
+	// The ID of the IPv6 address instance.
 	Ipv6AddressId pulumi.StringOutput `pulumi:"ipv6AddressId"`
-	// The ID of the IPv6 gateway.
+	// The ID of the IPv6 gateway to which the IPv6 address belongs.
 	Ipv6GatewayId pulumi.StringOutput `pulumi:"ipv6GatewayId"`
-	// The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -129,11 +195,11 @@ type ipv6InternetBandwidthState struct {
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The ID of the IPv6 address.
+	// The ID of the IPv6 address instance.
 	Ipv6AddressId *string `pulumi:"ipv6AddressId"`
-	// The ID of the IPv6 gateway.
+	// The ID of the IPv6 gateway to which the IPv6 address belongs.
 	Ipv6GatewayId *string `pulumi:"ipv6GatewayId"`
-	// The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+	// The status of the resource.
 	Status *string `pulumi:"status"`
 }
 
@@ -142,11 +208,11 @@ type Ipv6InternetBandwidthState struct {
 	Bandwidth pulumi.IntPtrInput
 	// The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType pulumi.StringPtrInput
-	// The ID of the IPv6 address.
+	// The ID of the IPv6 address instance.
 	Ipv6AddressId pulumi.StringPtrInput
-	// The ID of the IPv6 gateway.
+	// The ID of the IPv6 gateway to which the IPv6 address belongs.
 	Ipv6GatewayId pulumi.StringPtrInput
-	// The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+	// The status of the resource.
 	Status pulumi.StringPtrInput
 }
 
@@ -159,9 +225,9 @@ type ipv6InternetBandwidthArgs struct {
 	Bandwidth int `pulumi:"bandwidth"`
 	// The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType *string `pulumi:"internetChargeType"`
-	// The ID of the IPv6 address.
+	// The ID of the IPv6 address instance.
 	Ipv6AddressId string `pulumi:"ipv6AddressId"`
-	// The ID of the IPv6 gateway.
+	// The ID of the IPv6 gateway to which the IPv6 address belongs.
 	Ipv6GatewayId string `pulumi:"ipv6GatewayId"`
 }
 
@@ -171,9 +237,9 @@ type Ipv6InternetBandwidthArgs struct {
 	Bandwidth pulumi.IntInput
 	// The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
 	InternetChargeType pulumi.StringPtrInput
-	// The ID of the IPv6 address.
+	// The ID of the IPv6 address instance.
 	Ipv6AddressId pulumi.StringInput
-	// The ID of the IPv6 gateway.
+	// The ID of the IPv6 gateway to which the IPv6 address belongs.
 	Ipv6GatewayId pulumi.StringInput
 }
 
@@ -274,17 +340,17 @@ func (o Ipv6InternetBandwidthOutput) InternetChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6InternetBandwidth) pulumi.StringOutput { return v.InternetChargeType }).(pulumi.StringOutput)
 }
 
-// The ID of the IPv6 address.
+// The ID of the IPv6 address instance.
 func (o Ipv6InternetBandwidthOutput) Ipv6AddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6InternetBandwidth) pulumi.StringOutput { return v.Ipv6AddressId }).(pulumi.StringOutput)
 }
 
-// The ID of the IPv6 gateway.
+// The ID of the IPv6 gateway to which the IPv6 address belongs.
 func (o Ipv6InternetBandwidthOutput) Ipv6GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6InternetBandwidth) pulumi.StringOutput { return v.Ipv6GatewayId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+// The status of the resource.
 func (o Ipv6InternetBandwidthOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6InternetBandwidth) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

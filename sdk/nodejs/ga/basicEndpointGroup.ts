@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Global Accelerator (GA) Basic Endpoint Group and how to use it, see [What is Basic Endpoint Group](https://www.alibabacloud.com/help/en/global-accelerator/latest/createbasicendpointgroup).
  *
- * > **NOTE:** Available in v1.194.0+.
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *
@@ -19,33 +19,44 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const config = new pulumi.Config();
+ * const region = config.get("region") || "cn-hangzhou";
+ * const endpointGroupRegion = config.get("endpointGroupRegion") || "cn-beijing";
+ * const defaultZones = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- * }));
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * });
  * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ *     loadBalancerName: "terraform-example",
+ *     vswitchId: defaultSwitch.id,
  *     loadBalancerSpec: "slb.s2.small",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     addressType: "intranet",
  * });
  * const defaultBasicAccelerator = new alicloud.ga.BasicAccelerator("defaultBasicAccelerator", {
  *     duration: 1,
- *     pricingCycle: "Month",
+ *     basicAcceleratorName: "terraform-example",
+ *     description: "terraform-example",
  *     bandwidthBillingType: "CDT",
- *     autoPay: true,
  *     autoUseCoupon: "true",
- *     autoRenew: false,
- *     autoRenewDuration: 1,
+ *     autoPay: true,
  * });
  * const defaultBasicEndpointGroup = new alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup", {
  *     acceleratorId: defaultBasicAccelerator.id,
- *     endpointGroupRegion: "cn-beijing",
+ *     endpointGroupRegion: endpointGroupRegion,
  *     endpointType: "SLB",
  *     endpointAddress: defaultApplicationLoadBalancer.id,
  *     endpointSubAddress: "192.168.0.1",
- *     basicEndpointGroupName: "example_value",
- *     description: "example_value",
+ *     basicEndpointGroupName: "terraform-example",
+ *     description: "terraform-example",
  * });
  * ```
  *

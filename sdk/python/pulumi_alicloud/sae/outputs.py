@@ -885,6 +885,10 @@ class IngressRule(dict):
             suggest = "app_name"
         elif key == "containerPort":
             suggest = "container_port"
+        elif key == "backendProtocol":
+            suggest = "backend_protocol"
+        elif key == "rewritePath":
+            suggest = "rewrite_path"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in IngressRule. Access the value via the '{suggest}' property getter instead.")
@@ -902,19 +906,27 @@ class IngressRule(dict):
                  app_name: str,
                  container_port: int,
                  domain: str,
-                 path: str):
+                 path: str,
+                 backend_protocol: Optional[str] = None,
+                 rewrite_path: Optional[str] = None):
         """
         :param str app_id: Target application ID.
         :param str app_name: Target application name.
         :param int container_port: Application backend port.
         :param str domain: Application domain name.
         :param str path: URL path.
+        :param str backend_protocol: The backend protocol.
+        :param str rewrite_path: The rewrite path.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "app_name", app_name)
         pulumi.set(__self__, "container_port", container_port)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "path", path)
+        if backend_protocol is not None:
+            pulumi.set(__self__, "backend_protocol", backend_protocol)
+        if rewrite_path is not None:
+            pulumi.set(__self__, "rewrite_path", rewrite_path)
 
     @property
     @pulumi.getter(name="appId")
@@ -955,6 +967,22 @@ class IngressRule(dict):
         URL path.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="backendProtocol")
+    def backend_protocol(self) -> Optional[str]:
+        """
+        The backend protocol.
+        """
+        return pulumi.get(self, "backend_protocol")
+
+    @property
+    @pulumi.getter(name="rewritePath")
+    def rewrite_path(self) -> Optional[str]:
+        """
+        The rewrite path.
+        """
+        return pulumi.get(self, "rewrite_path")
 
 
 @pulumi.output_type

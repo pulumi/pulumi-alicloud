@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Serverless App Engine (SAE) Ingress resource.
  *
- * For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://help.aliyun.com/document_detail/97792.html).
+ * For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://www.alibabacloud.com/help/en/sae/latest/createingress).
  *
- * > **NOTE:** Available in v1.137.0+.
+ * > **NOTE:** Available since v1.137.0.
  *
  * ## Example Usage
  *
@@ -106,11 +106,15 @@ export class Ingress extends pulumi.CustomResource {
     }
 
     /**
-     * Cert Id.
+     * The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
      */
     public readonly certId!: pulumi.Output<string | undefined>;
     /**
-     * Default Rule.
+     * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
+     */
+    public readonly certIds!: pulumi.Output<string | undefined>;
+    /**
+     * Default Rule. See `defaultRule` below.
      */
     public readonly defaultRule!: pulumi.Output<outputs.sae.IngressDefaultRule | undefined>;
     /**
@@ -122,11 +126,19 @@ export class Ingress extends pulumi.CustomResource {
      */
     public readonly listenerPort!: pulumi.Output<number>;
     /**
-     * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+     * The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+     */
+    public readonly listenerProtocol!: pulumi.Output<string>;
+    /**
+     * The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+     */
+    public readonly loadBalanceType!: pulumi.Output<string>;
+    /**
+     * The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
      */
     public readonly namespaceId!: pulumi.Output<string>;
     /**
-     * Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+     * Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
      */
     public readonly rules!: pulumi.Output<outputs.sae.IngressRule[]>;
     /**
@@ -148,9 +160,12 @@ export class Ingress extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IngressState | undefined;
             resourceInputs["certId"] = state ? state.certId : undefined;
+            resourceInputs["certIds"] = state ? state.certIds : undefined;
             resourceInputs["defaultRule"] = state ? state.defaultRule : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["listenerPort"] = state ? state.listenerPort : undefined;
+            resourceInputs["listenerProtocol"] = state ? state.listenerProtocol : undefined;
+            resourceInputs["loadBalanceType"] = state ? state.loadBalanceType : undefined;
             resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["slbId"] = state ? state.slbId : undefined;
@@ -169,9 +184,12 @@ export class Ingress extends pulumi.CustomResource {
                 throw new Error("Missing required property 'slbId'");
             }
             resourceInputs["certId"] = args ? args.certId : undefined;
+            resourceInputs["certIds"] = args ? args.certIds : undefined;
             resourceInputs["defaultRule"] = args ? args.defaultRule : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["listenerPort"] = args ? args.listenerPort : undefined;
+            resourceInputs["listenerProtocol"] = args ? args.listenerProtocol : undefined;
+            resourceInputs["loadBalanceType"] = args ? args.loadBalanceType : undefined;
             resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["slbId"] = args ? args.slbId : undefined;
@@ -186,11 +204,15 @@ export class Ingress extends pulumi.CustomResource {
  */
 export interface IngressState {
     /**
-     * Cert Id.
+     * The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
      */
     certId?: pulumi.Input<string>;
     /**
-     * Default Rule.
+     * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
+     */
+    certIds?: pulumi.Input<string>;
+    /**
+     * Default Rule. See `defaultRule` below.
      */
     defaultRule?: pulumi.Input<inputs.sae.IngressDefaultRule>;
     /**
@@ -202,11 +224,19 @@ export interface IngressState {
      */
     listenerPort?: pulumi.Input<number>;
     /**
-     * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+     * The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+     */
+    listenerProtocol?: pulumi.Input<string>;
+    /**
+     * The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+     */
+    loadBalanceType?: pulumi.Input<string>;
+    /**
+     * The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
      */
     namespaceId?: pulumi.Input<string>;
     /**
-     * Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+     * Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.sae.IngressRule>[]>;
     /**
@@ -220,11 +250,15 @@ export interface IngressState {
  */
 export interface IngressArgs {
     /**
-     * Cert Id.
+     * The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
      */
     certId?: pulumi.Input<string>;
     /**
-     * Default Rule.
+     * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
+     */
+    certIds?: pulumi.Input<string>;
+    /**
+     * Default Rule. See `defaultRule` below.
      */
     defaultRule?: pulumi.Input<inputs.sae.IngressDefaultRule>;
     /**
@@ -236,11 +270,19 @@ export interface IngressArgs {
      */
     listenerPort: pulumi.Input<number>;
     /**
-     * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+     * The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+     */
+    listenerProtocol?: pulumi.Input<string>;
+    /**
+     * The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+     */
+    loadBalanceType?: pulumi.Input<string>;
+    /**
+     * The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
      */
     namespaceId: pulumi.Input<string>;
     /**
-     * Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+     * Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
      */
     rules: pulumi.Input<pulumi.Input<inputs.sae.IngressRule>[]>;
     /**

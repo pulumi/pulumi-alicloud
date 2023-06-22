@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Elastic Desktop Service (ECD) User resource.
  *
- * For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+ * For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createusers-desktop).
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *
@@ -19,9 +19,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.eds.User("example", {
- *     email: "your_email",
- *     endUserId: "example_value",
+ * const _default = new alicloud.eds.User("default", {
+ *     email: "tf.example@abc.com",
+ *     endUserId: "terraform_example123",
+ *     password: "Example_123",
+ *     phone: "18888888888",
  * });
  * ```
  *

@@ -17,14 +17,14 @@ public final class FunctionAsyncInvokeConfigDestinationConfigArgs extends com.pu
     public static final FunctionAsyncInvokeConfigDestinationConfigArgs Empty = new FunctionAsyncInvokeConfigDestinationConfigArgs();
 
     /**
-     * Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+     * Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
      * 
      */
     @Import(name="onFailure")
     private @Nullable Output<FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs> onFailure;
 
     /**
-     * @return Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+     * @return Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
      * 
      */
     public Optional<Output<FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs>> onFailure() {
@@ -32,14 +32,14 @@ public final class FunctionAsyncInvokeConfigDestinationConfigArgs extends com.pu
     }
 
     /**
-     * Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+     * Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
      * 
      */
     @Import(name="onSuccess")
     private @Nullable Output<FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs> onSuccess;
 
     /**
-     * @return Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+     * @return Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
      * 
      */
     public Optional<Output<FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs>> onSuccess() {
@@ -72,7 +72,7 @@ public final class FunctionAsyncInvokeConfigDestinationConfigArgs extends com.pu
         }
 
         /**
-         * @param onFailure Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+         * @param onFailure Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class FunctionAsyncInvokeConfigDestinationConfigArgs extends com.pu
         }
 
         /**
-         * @param onFailure Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+         * @param onFailure Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class FunctionAsyncInvokeConfigDestinationConfigArgs extends com.pu
         }
 
         /**
-         * @param onSuccess Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+         * @param onSuccess Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class FunctionAsyncInvokeConfigDestinationConfigArgs extends com.pu
         }
 
         /**
-         * @param onSuccess Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+         * @param onSuccess Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
          * 
          * @return builder
          * 

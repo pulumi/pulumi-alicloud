@@ -13,7 +13,7 @@ import (
 
 // Provides a ESS notification resource. More about Ess notification, see [Autoscaling Notification](https://www.alibabacloud.com/help/doc-detail/71114.htm).
 //
-// > **NOTE:** Available in 1.55.0+
+// > **NOTE:** Available since v1.55.0.
 //
 // ## Example Usage
 //
@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testAccEssNotification-%d"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}

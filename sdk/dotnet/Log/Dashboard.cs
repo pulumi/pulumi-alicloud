@@ -24,23 +24,34 @@ namespace Pulumi.AliCloud.Log
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
+    ///     var @default = new Random.RandomInteger("default", new()
     ///     {
-    ///         Description = "tf unit test",
+    ///         Max = 99999,
+    ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         Project = "tf-project",
-    ///         RetentionPeriod = 3000,
-    ///         ShardCount = 1,
+    ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var example = new AliCloud.Log.Dashboard("example", new()
+    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
     ///     {
+    ///         Project = exampleProject.Name,
+    ///         ShardCount = 3,
+    ///         AutoSplit = true,
+    ///         MaxSplitShardCount = 60,
+    ///         AppendMeta = true,
+    ///     });
+    /// 
+    ///     var exampleDashboard = new AliCloud.Log.Dashboard("exampleDashboard", new()
+    ///     {
+    ///         ProjectName = exampleProject.Name,
+    ///         DashboardName = "terraform-example",
     ///         Attribute = "{\"type\":\"grid\"}",
     ///         CharList = @"  [
     ///     {
@@ -48,7 +59,7 @@ namespace Pulumi.AliCloud.Log
     ///       ""title"":""new_title"",
     ///       ""type"":""map"",
     ///       ""search"":{
-    ///         ""logstore"":""tf-logstore"",
+    ///         ""logstore"":""example-store"",
     ///         ""topic"":""new_topic"",
     ///         ""query"":""* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product"",
     ///         ""start"":""-86400s"",
@@ -65,14 +76,11 @@ namespace Pulumi.AliCloud.Log
     ///         ""yPos"":0,
     ///         ""width"":10,
     ///         ""height"":12,
-    ///         ""displayName"":""xixihaha911""
+    ///         ""displayName"":""terraform-example""
     ///       }
     ///     }
     ///   ]
-    /// 
     /// ",
-    ///         DashboardName = "tf-dashboard",
-    ///         ProjectName = "tf-project",
     ///     });
     /// 
     /// });

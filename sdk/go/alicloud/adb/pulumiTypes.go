@@ -743,7 +743,8 @@ type GetDBClustersCluster struct {
 	// The maintenance window of the cluster.
 	MaintainTime string `pulumi:"maintainTime"`
 	// The lock mode of the cluster.
-	Mode        string `pulumi:"mode"`
+	Mode string `pulumi:"mode"`
+	// The db cluster network type.
 	NetworkType string `pulumi:"networkType"`
 	// The payment type of the resource.
 	PaymentType string `pulumi:"paymentType"`
@@ -751,7 +752,8 @@ type GetDBClustersCluster struct {
 	Port int `pulumi:"port"`
 	// The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
 	RdsInstanceId string `pulumi:"rdsInstanceId"`
-	RegionId      string `pulumi:"regionId"`
+	// The region ID  of the resource.
+	RegionId string `pulumi:"regionId"`
 	// The status of renewal.
 	RenewalStatus string `pulumi:"renewalStatus"`
 	// The ID of the resource group.
@@ -762,7 +764,7 @@ type GetDBClustersCluster struct {
 	Status string `pulumi:"status"`
 	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
 	StorageResource string `pulumi:"storageResource"`
-	// The tag of the resource.
+	// A map of tags assigned to the cluster.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The vpc cloud instance id.
 	VpcCloudInstanceId string `pulumi:"vpcCloudInstanceId"`
@@ -841,7 +843,8 @@ type GetDBClustersClusterArgs struct {
 	// The maintenance window of the cluster.
 	MaintainTime pulumi.StringInput `pulumi:"maintainTime"`
 	// The lock mode of the cluster.
-	Mode        pulumi.StringInput `pulumi:"mode"`
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The db cluster network type.
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
 	// The payment type of the resource.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
@@ -849,7 +852,8 @@ type GetDBClustersClusterArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is valid only for analytic instances.
 	RdsInstanceId pulumi.StringInput `pulumi:"rdsInstanceId"`
-	RegionId      pulumi.StringInput `pulumi:"regionId"`
+	// The region ID  of the resource.
+	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// The status of renewal.
 	RenewalStatus pulumi.StringInput `pulumi:"renewalStatus"`
 	// The ID of the resource group.
@@ -860,7 +864,7 @@ type GetDBClustersClusterArgs struct {
 	Status pulumi.StringInput `pulumi:"status"`
 	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
 	StorageResource pulumi.StringInput `pulumi:"storageResource"`
-	// The tag of the resource.
+	// A map of tags assigned to the cluster.
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// The vpc cloud instance id.
 	VpcCloudInstanceId pulumi.StringInput `pulumi:"vpcCloudInstanceId"`
@@ -1063,6 +1067,7 @@ func (o GetDBClustersClusterOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Mode }).(pulumi.StringOutput)
 }
 
+// The db cluster network type.
 func (o GetDBClustersClusterOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.NetworkType }).(pulumi.StringOutput)
 }
@@ -1082,6 +1087,7 @@ func (o GetDBClustersClusterOutput) RdsInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.RdsInstanceId }).(pulumi.StringOutput)
 }
 
+// The region ID  of the resource.
 func (o GetDBClustersClusterOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.RegionId }).(pulumi.StringOutput)
 }
@@ -1111,7 +1117,7 @@ func (o GetDBClustersClusterOutput) StorageResource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.StorageResource }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// A map of tags assigned to the cluster.
 func (o GetDBClustersClusterOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }

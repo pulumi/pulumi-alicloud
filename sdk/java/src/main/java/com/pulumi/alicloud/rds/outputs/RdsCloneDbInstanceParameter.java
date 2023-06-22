@@ -9,13 +9,29 @@ import java.util.Objects;
 
 @CustomType
 public final class RdsCloneDbInstanceParameter {
+    /**
+     * @return The parameters name.
+     * 
+     */
     private String name;
+    /**
+     * @return The parameters value.
+     * 
+     */
     private String value;
 
     private RdsCloneDbInstanceParameter() {}
+    /**
+     * @return The parameters name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The parameters value.
+     * 
+     */
     public String value() {
         return this.value;
     }

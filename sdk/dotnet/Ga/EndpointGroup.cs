@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Global Accelerator (GA) Endpoint Group and how to use it, see [What is Endpoint Group](https://www.alibabacloud.com/help/en/doc-detail/153259.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.113.0+.
+    /// &gt; **NOTE:** Available since v1.113.0.
     /// 
     /// &gt; **NOTE:** Listeners that use different protocols support different types of endpoint groups:
     /// * For a TCP or UDP listener, you can create only one default endpoint group.
@@ -35,14 +35,16 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccelerator = new AliCloud.Ga.Accelerator("exampleAccelerator", new()
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
     ///     {
     ///         Duration = 1,
     ///         AutoUseCoupon = true,
     ///         Spec = "1",
     ///     });
     /// 
-    ///     var deBandwidthPackage = new AliCloud.Ga.BandwidthPackage("deBandwidthPackage", new()
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
     ///     {
     ///         Bandwidth = 100,
     ///         Type = "Basic",
@@ -52,15 +54,15 @@ namespace Pulumi.AliCloud.Ga
     ///         Ratio = 30,
     ///     });
     /// 
-    ///     var deBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("deBandwidthPackageAttachment", new()
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
     ///     {
-    ///         AcceleratorId = exampleAccelerator.Id,
-    ///         BandwidthPackageId = deBandwidthPackage.Id,
+    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         BandwidthPackageId = defaultBandwidthPackage.Id,
     ///     });
     /// 
-    ///     var exampleListener = new AliCloud.Ga.Listener("exampleListener", new()
+    ///     var defaultListener = new AliCloud.Ga.Listener("defaultListener", new()
     ///     {
-    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
     ///         PortRanges = new[]
     ///         {
     ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
@@ -69,34 +71,41 @@ namespace Pulumi.AliCloud.Ga
     ///                 ToPort = 70,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
+    ///         ClientAffinity = "SOURCE_IP",
+    ///         Protocol = "UDP",
+    ///     });
+    /// 
+    ///     var defaultEipAddress = new List&lt;AliCloud.Ecs.EipAddress&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
     ///     {
-    ///         DependsOn = new[]
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultEipAddress.Add(new AliCloud.Ecs.EipAddress($"defaultEipAddress-{range.Value}", new()
     ///         {
-    ///             deBandwidthPackageAttachment,
-    ///         },
-    ///     });
-    /// 
-    ///     var exampleEipAddress = new AliCloud.Ecs.EipAddress("exampleEipAddress", new()
+    ///             Bandwidth = "10",
+    ///             InternetChargeType = "PayByBandwidth",
+    ///             AddressName = "terraform-example",
+    ///         }));
+    ///     }
+    ///     var defaultEndpointGroup = new AliCloud.Ga.EndpointGroup("defaultEndpointGroup", new()
     ///     {
-    ///         Bandwidth = "10",
-    ///         InternetChargeType = "PayByBandwidth",
-    ///     });
-    /// 
-    ///     var exampleEndpointGroup = new AliCloud.Ga.EndpointGroup("exampleEndpointGroup", new()
-    ///     {
-    ///         AcceleratorId = exampleAccelerator.Id,
+    ///         AcceleratorId = defaultAccelerator.Id,
     ///         EndpointConfigurations = new[]
     ///         {
     ///             new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs
     ///             {
-    ///                 Endpoint = exampleEipAddress.IpAddress,
+    ///                 Endpoint = defaultEipAddress[0].IpAddress,
+    ///                 Type = "PublicIp",
+    ///                 Weight = 20,
+    ///             },
+    ///             new AliCloud.Ga.Inputs.EndpointGroupEndpointConfigurationArgs
+    ///             {
+    ///                 Endpoint = defaultEipAddress[1].IpAddress,
     ///                 Type = "PublicIp",
     ///                 Weight = 20,
     ///             },
     ///         },
-    ///         EndpointGroupRegion = "cn-hangzhou",
-    ///         ListenerId = exampleListener.Id,
+    ///         EndpointGroupRegion = region,
+    ///         ListenerId = defaultListener.Id,
     ///     });
     /// 
     /// });
@@ -126,7 +135,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+        /// The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         /// </summary>
         [Output("endpointConfigurations")]
         public Output<ImmutableArray<Outputs.EndpointGroupEndpointConfiguration>> EndpointConfigurations { get; private set; } = null!;
@@ -190,7 +199,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        /// Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
         /// 
         /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>
@@ -277,7 +286,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.EndpointGroupEndpointConfigurationArgs>? _endpointConfigurations;
 
         /// <summary>
-        /// The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+        /// The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         /// </summary>
         public InputList<Inputs.EndpointGroupEndpointConfigurationArgs> EndpointConfigurations
         {
@@ -344,7 +353,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        /// Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
         /// 
         /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>
@@ -387,7 +396,7 @@ namespace Pulumi.AliCloud.Ga
         private InputList<Inputs.EndpointGroupEndpointConfigurationGetArgs>? _endpointConfigurations;
 
         /// <summary>
-        /// The endpointConfigurations of the endpoint group. See the following `Block endpoint_configurations`.
+        /// The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         /// </summary>
         public InputList<Inputs.EndpointGroupEndpointConfigurationGetArgs> EndpointConfigurations
         {
@@ -454,7 +463,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Mapping between listening port and forwarding port of boarding point. See the following `Block port_overrides`.
+        /// Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
         /// 
         /// &gt; **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         /// </summary>

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createadconnectorofficesite).
  *
- * > **NOTE:** Available in v1.176.0+.
+ * > **NOTE:** Available since v1.176.0.
  *
  * ## Example Usage
  *
@@ -19,25 +19,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
- *     cenInstanceName: _var.name,
+ *     cenInstanceName: name,
  *     protectionLevel: "REDUCED",
  * });
  * const defaultAdConnectorOfficeSite = new alicloud.eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite", {
- *     adConnectorOfficeSiteName: _var.name,
+ *     adConnectorOfficeSiteName: name,
  *     bandwidth: 100,
  *     cenId: defaultInstance.id,
  *     cidrBlock: "10.0.0.0/12",
  *     desktopAccessType: "INTERNET",
  *     dnsAddresses: ["127.0.0.2"],
- *     domainName: "example1234.com",
- *     domainPassword: "YourPassword1234",
- *     domainUserName: "Administrator",
- *     enableAdminAccess: true,
- *     enableInternetAccess: true,
+ *     domainName: "corp.example.com",
+ *     domainPassword: "Example1234",
+ *     domainUserName: "sAMAccountName",
+ *     enableAdminAccess: false,
+ *     enableInternetAccess: false,
  *     mfaEnabled: false,
  *     subDomainDnsAddresses: ["127.0.0.3"],
- *     subDomainName: "child.example1234.com",
+ *     subDomainName: "child.example.com",
  * });
  * ```
  *

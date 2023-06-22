@@ -16,9 +16,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Global Accelerator (GA) Basic Accelerate IP resource.
  * 
- * For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://help.aliyun.com/document_detail/466833.html).
+ * For information about Global Accelerator (GA) Basic Accelerate IP and how to use it, see [What is Basic Accelerate IP](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicaccelerateip).
  * 
- * &gt; **NOTE:** Available in v1.194.0+.
+ * &gt; **NOTE:** Available since v1.194.0.
  * 
  * ## Example Usage
  * 
@@ -29,6 +29,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ga.BasicAccelerator;
+ * import com.pulumi.alicloud.ga.BasicAcceleratorArgs;
+ * import com.pulumi.alicloud.ga.BasicIpSet;
+ * import com.pulumi.alicloud.ga.BasicIpSetArgs;
  * import com.pulumi.alicloud.ga.BasicAccelerateIp;
  * import com.pulumi.alicloud.ga.BasicAccelerateIpArgs;
  * import java.util.List;
@@ -44,9 +48,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BasicAccelerateIp(&#34;default&#34;, BasicAccelerateIpArgs.builder()        
- *             .acceleratorId(&#34;your_accelerator_id&#34;)
- *             .ipSetId(&#34;your_ip_set_id&#34;)
+ *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         var defaultBasicAccelerator = new BasicAccelerator(&#34;defaultBasicAccelerator&#34;, BasicAcceleratorArgs.builder()        
+ *             .duration(1)
+ *             .basicAcceleratorName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .bandwidthBillingType(&#34;CDT&#34;)
+ *             .autoUseCoupon(&#34;true&#34;)
+ *             .autoPay(true)
+ *             .build());
+ * 
+ *         var defaultBasicIpSet = new BasicIpSet(&#34;defaultBasicIpSet&#34;, BasicIpSetArgs.builder()        
+ *             .acceleratorId(defaultBasicAccelerator.id())
+ *             .accelerateRegionId(region)
+ *             .ispType(&#34;BGP&#34;)
+ *             .bandwidth(&#34;5&#34;)
+ *             .build());
+ * 
+ *         var defaultBasicAccelerateIp = new BasicAccelerateIp(&#34;defaultBasicAccelerateIp&#34;, BasicAccelerateIpArgs.builder()        
+ *             .acceleratorId(defaultBasicAccelerator.id())
+ *             .ipSetId(defaultBasicIpSet.id())
  *             .build());
  * 
  *     }

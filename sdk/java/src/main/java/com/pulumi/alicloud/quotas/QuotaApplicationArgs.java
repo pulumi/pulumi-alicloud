@@ -56,14 +56,14 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * QuotaDimensions. See the following `Block Dimensions`.
+     * QuotaDimensions. See `dimensions` below.
      * 
      */
     @Import(name="dimensions")
     private @Nullable Output<List<QuotaApplicationDimensionArgs>> dimensions;
 
     /**
-     * @return QuotaDimensions. See the following `Block Dimensions`.
+     * @return QuotaDimensions. See `dimensions` below.
      * 
      */
     public Optional<Output<List<QuotaApplicationDimensionArgs>>> dimensions() {
@@ -283,7 +283,7 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dimensions QuotaDimensions. See the following `Block Dimensions`.
+         * @param dimensions QuotaDimensions. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dimensions QuotaDimensions. See the following `Block Dimensions`.
+         * @param dimensions QuotaDimensions. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param dimensions QuotaDimensions. See the following `Block Dimensions`.
+         * @param dimensions QuotaDimensions. See `dimensions` below.
          * 
          * @return builder
          * 

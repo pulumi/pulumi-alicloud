@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECD Ram Directory resource.
  *
- * For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://help.aliyun.com/document_detail/436216.html).
+ * For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createramdirectory).
  *
- * > **NOTE:** Available in v1.174.0+.
+ * > **NOTE:** Available since v1.174.0.
  *
  * ## Example Usage
  *
@@ -19,20 +19,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const defaultZones = alicloud.eds.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.ids?.[0],
- * }));
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "172.16.0.0/24",
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     vswitchName: name,
+ * });
  * const defaultRamDirectory = new alicloud.eds.RamDirectory("defaultRamDirectory", {
  *     desktopAccessType: "INTERNET",
  *     enableAdminAccess: true,
  *     enableInternetAccess: true,
- *     ramDirectoryName: _var.name,
- *     vswitchIds: [defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0])],
+ *     ramDirectoryName: name,
+ *     vswitchIds: [defaultSwitch.id],
  * });
  * ```
  *

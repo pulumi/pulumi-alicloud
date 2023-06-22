@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string ServerType;
         /// <summary>
-        /// The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        /// The status of the resource.
         /// </summary>
         public readonly string Status;
         /// <summary>

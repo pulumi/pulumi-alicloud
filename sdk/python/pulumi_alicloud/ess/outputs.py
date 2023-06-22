@@ -226,10 +226,9 @@ class EciScalingConfigurationContainer(dict):
         """
         :param Sequence[str] args: The arguments passed to the commands.
         :param Sequence[str] commands: The commands run by the init container.
-        :param float cpu: The amount of CPU resources allocated to the container group.
+        :param float cpu: The amount of CPU resources allocated to the container.
         :param Sequence['EciScalingConfigurationContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars.
-               See Block_environment_var_in_init_container below for details.
-               See Block_environment_var_in_container below for details.
+               See `environment_vars` below for details.
         :param int gpu: The number GPUs.
         :param str image: The image of the container.
         :param str image_pull_policy: The restart policy of the image.
@@ -243,10 +242,9 @@ class EciScalingConfigurationContainer(dict):
         :param int liveness_probe_success_threshold: The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
         :param int liveness_probe_tcp_socket_port: The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
         :param int liveness_probe_timeout_seconds: The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
-        :param float memory: The amount of memory resources allocated to the container group.
-        :param str name: The name of the volume.
-        :param Sequence['EciScalingConfigurationContainerPortArgs'] ports: The structure of port. See Block_port_in_init_container below
-               for details.
+        :param float memory: The amount of memory resources allocated to the container.
+        :param str name: The name of the mounted volume.
+        :param Sequence['EciScalingConfigurationContainerPortArgs'] ports: The structure of port. See `ports` below for details.
         :param Sequence[str] readiness_probe_exec_commands: Commands that you want to run in containers when you use the CLI to perform readiness probes.
         :param int readiness_probe_failure_threshold: The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
         :param str readiness_probe_http_get_path: The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
@@ -257,9 +255,8 @@ class EciScalingConfigurationContainer(dict):
         :param int readiness_probe_success_threshold: The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
         :param int readiness_probe_tcp_socket_port: The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
         :param int readiness_probe_timeout_seconds: The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
-        :param Sequence['EciScalingConfigurationContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts.
-               See Block_volume_mount_in_init_container below for details.
-               See Block_volume_mount_in_container below for details.
+        :param Sequence['EciScalingConfigurationContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts. 
+               See `volume_mounts` below for details.
         :param str working_dir: The working directory of the container.
         """
         if args is not None:
@@ -347,7 +344,7 @@ class EciScalingConfigurationContainer(dict):
     @pulumi.getter
     def cpu(self) -> Optional[float]:
         """
-        The amount of CPU resources allocated to the container group.
+        The amount of CPU resources allocated to the container.
         """
         return pulumi.get(self, "cpu")
 
@@ -356,8 +353,7 @@ class EciScalingConfigurationContainer(dict):
     def environment_vars(self) -> Optional[Sequence['outputs.EciScalingConfigurationContainerEnvironmentVar']]:
         """
         The structure of environmentVars.
-        See Block_environment_var_in_init_container below for details.
-        See Block_environment_var_in_container below for details.
+        See `environment_vars` below for details.
         """
         return pulumi.get(self, "environment_vars")
 
@@ -469,7 +465,7 @@ class EciScalingConfigurationContainer(dict):
     @pulumi.getter
     def memory(self) -> Optional[float]:
         """
-        The amount of memory resources allocated to the container group.
+        The amount of memory resources allocated to the container.
         """
         return pulumi.get(self, "memory")
 
@@ -477,7 +473,7 @@ class EciScalingConfigurationContainer(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the volume.
+        The name of the mounted volume.
         """
         return pulumi.get(self, "name")
 
@@ -485,8 +481,7 @@ class EciScalingConfigurationContainer(dict):
     @pulumi.getter
     def ports(self) -> Optional[Sequence['outputs.EciScalingConfigurationContainerPort']]:
         """
-        The structure of port. See Block_port_in_init_container below
-        for details.
+        The structure of port. See `ports` below for details.
         """
         return pulumi.get(self, "ports")
 
@@ -574,9 +569,8 @@ class EciScalingConfigurationContainer(dict):
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Optional[Sequence['outputs.EciScalingConfigurationContainerVolumeMount']]:
         """
-        The structure of volumeMounts.
-        See Block_volume_mount_in_init_container below for details.
-        See Block_volume_mount_in_container below for details.
+        The structure of volumeMounts. 
+        See `volume_mounts` below for details.
         """
         return pulumi.get(self, "volume_mounts")
 
@@ -763,6 +757,8 @@ class EciScalingConfigurationImageRegistryCredential(dict):
                when `image_registry_credential` is configured.
         :param str server: The address of the image repository. It is required when `image_registry_credential` is
                configured.
+        :param str username: The username used to log on to the image repository. It is required
+               when `image_registry_credential` is configured.
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -792,6 +788,10 @@ class EciScalingConfigurationImageRegistryCredential(dict):
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        The username used to log on to the image repository. It is required
+        when `image_registry_credential` is configured.
+        """
         return pulumi.get(self, "username")
 
 
@@ -836,20 +836,16 @@ class EciScalingConfigurationInitContainer(dict):
         """
         :param Sequence[str] args: The arguments passed to the commands.
         :param Sequence[str] commands: The commands run by the init container.
-        :param float cpu: The amount of CPU resources allocated to the container group.
-        :param Sequence['EciScalingConfigurationInitContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars.
-               See Block_environment_var_in_init_container below for details.
-               See Block_environment_var_in_container below for details.
+        :param float cpu: The amount of CPU resources allocated to the container.
+        :param Sequence['EciScalingConfigurationInitContainerEnvironmentVarArgs'] environment_vars: The structure of environmentVars. 
+               See `environment_vars` below for details.
         :param int gpu: The number GPUs.
         :param str image: The image of the container.
         :param str image_pull_policy: The restart policy of the image.
-        :param float memory: The amount of memory resources allocated to the container group.
-        :param str name: The name of the volume.
-        :param Sequence['EciScalingConfigurationInitContainerPortArgs'] ports: The structure of port. See Block_port_in_init_container below
-               for details.
-        :param Sequence['EciScalingConfigurationInitContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts.
-               See Block_volume_mount_in_init_container below for details.
-               See Block_volume_mount_in_container below for details.
+        :param float memory: The amount of memory resources allocated to the container.
+        :param str name: The name of the mounted volume.
+        :param Sequence['EciScalingConfigurationInitContainerPortArgs'] ports: The structure of port. See `ports` below for details.
+        :param Sequence['EciScalingConfigurationInitContainerVolumeMountArgs'] volume_mounts: The structure of volumeMounts. See `volume_mounts` below for details.
         :param str working_dir: The working directory of the container.
         """
         if args is not None:
@@ -897,7 +893,7 @@ class EciScalingConfigurationInitContainer(dict):
     @pulumi.getter
     def cpu(self) -> Optional[float]:
         """
-        The amount of CPU resources allocated to the container group.
+        The amount of CPU resources allocated to the container.
         """
         return pulumi.get(self, "cpu")
 
@@ -905,9 +901,8 @@ class EciScalingConfigurationInitContainer(dict):
     @pulumi.getter(name="environmentVars")
     def environment_vars(self) -> Optional[Sequence['outputs.EciScalingConfigurationInitContainerEnvironmentVar']]:
         """
-        The structure of environmentVars.
-        See Block_environment_var_in_init_container below for details.
-        See Block_environment_var_in_container below for details.
+        The structure of environmentVars. 
+        See `environment_vars` below for details.
         """
         return pulumi.get(self, "environment_vars")
 
@@ -939,7 +934,7 @@ class EciScalingConfigurationInitContainer(dict):
     @pulumi.getter
     def memory(self) -> Optional[float]:
         """
-        The amount of memory resources allocated to the container group.
+        The amount of memory resources allocated to the container.
         """
         return pulumi.get(self, "memory")
 
@@ -947,7 +942,7 @@ class EciScalingConfigurationInitContainer(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the volume.
+        The name of the mounted volume.
         """
         return pulumi.get(self, "name")
 
@@ -955,8 +950,7 @@ class EciScalingConfigurationInitContainer(dict):
     @pulumi.getter
     def ports(self) -> Optional[Sequence['outputs.EciScalingConfigurationInitContainerPort']]:
         """
-        The structure of port. See Block_port_in_init_container below
-        for details.
+        The structure of port. See `ports` below for details.
         """
         return pulumi.get(self, "ports")
 
@@ -964,9 +958,7 @@ class EciScalingConfigurationInitContainer(dict):
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Optional[Sequence['outputs.EciScalingConfigurationInitContainerVolumeMount']]:
         """
-        The structure of volumeMounts.
-        See Block_volume_mount_in_init_container below for details.
-        See Block_volume_mount_in_container below for details.
+        The structure of volumeMounts. See `volume_mounts` below for details.
         """
         return pulumi.get(self, "volume_mounts")
 
@@ -1163,8 +1155,9 @@ class EciScalingConfigurationVolume(dict):
                  type: Optional[str] = None):
         """
         :param Sequence['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs'] config_file_volume_config_file_to_paths: ConfigFileVolumeConfigFileToPaths.
-               See Block_config_file_volume_config_file_to_path below for details.
+               See `config_file_volume_config_file_to_paths` below for details.
         :param str disk_volume_disk_id: The ID of DiskVolume.
+        :param int disk_volume_disk_size: The disk size of DiskVolume.
         :param str disk_volume_fs_type: The system type of DiskVolume.
         :param str flex_volume_driver: The name of the FlexVolume driver.
         :param str flex_volume_fs_type: The type of the mounted file system. The default value is determined by the script
@@ -1209,7 +1202,7 @@ class EciScalingConfigurationVolume(dict):
     def config_file_volume_config_file_to_paths(self) -> Optional[Sequence['outputs.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath']]:
         """
         ConfigFileVolumeConfigFileToPaths.
-        See Block_config_file_volume_config_file_to_path below for details.
+        See `config_file_volume_config_file_to_paths` below for details.
         """
         return pulumi.get(self, "config_file_volume_config_file_to_paths")
 
@@ -1224,6 +1217,9 @@ class EciScalingConfigurationVolume(dict):
     @property
     @pulumi.getter(name="diskVolumeDiskSize")
     def disk_volume_disk_size(self) -> Optional[int]:
+        """
+        The disk size of DiskVolume.
+        """
         return pulumi.get(self, "disk_volume_disk_size")
 
     @property
@@ -1373,6 +1369,19 @@ class ScalingConfigurationDataDisk(dict):
                  performance_level: Optional[str] = None,
                  size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
+        """
+        :param str auto_snapshot_policy_id: The id of auto snapshot policy for data disk.
+        :param str category: Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+        :param bool delete_with_instance: Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+        :param str description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param str device: The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+        :param bool encrypted: Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+        :param str kms_key_id: The CMK ID for data disk N. Valid values of N: 1 to 16.
+        :param str name: The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+        :param str performance_level: The performance level of the ESSD used as data disk.
+        :param int size: Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+        :param str snapshot_id: Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
+        """
         if auto_snapshot_policy_id is not None:
             pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
@@ -1399,56 +1408,89 @@ class ScalingConfigurationDataDisk(dict):
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[str]:
+        """
+        The id of auto snapshot policy for data disk.
+        """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
     @property
     @pulumi.getter
     def category(self) -> Optional[str]:
+        """
+        Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+        """
         return pulumi.get(self, "category")
 
     @property
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[bool]:
+        """
+        Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+        """
         return pulumi.get(self, "delete_with_instance")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def device(self) -> Optional[str]:
+        """
+        The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+        """
         return pulumi.get(self, "device")
 
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[bool]:
+        """
+        Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+        """
         return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[str]:
+        """
+        The CMK ID for data disk N. Valid values of N: 1 to 16.
+        """
         return pulumi.get(self, "kms_key_id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[str]:
+        """
+        The performance level of the ESSD used as data disk.
+        """
         return pulumi.get(self, "performance_level")
 
     @property
     @pulumi.getter
     def size(self) -> Optional[int]:
+        """
+        Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[str]:
+        """
+        Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
+        """
         return pulumi.get(self, "snapshot_id")
 
 
@@ -1478,6 +1520,12 @@ class ScalingConfigurationInstancePatternInfo(dict):
                  instance_family_level: Optional[str] = None,
                  max_price: Optional[float] = None,
                  memory: Optional[float] = None):
+        """
+        :param int cores: The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        :param str instance_family_level: The instance family level in instancePatternInfo.
+        :param float max_price: The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+        :param float memory: The memory size that is specified for an instance type in instancePatternInfo.
+        """
         if cores is not None:
             pulumi.set(__self__, "cores", cores)
         if instance_family_level is not None:
@@ -1490,21 +1538,33 @@ class ScalingConfigurationInstancePatternInfo(dict):
     @property
     @pulumi.getter
     def cores(self) -> Optional[int]:
+        """
+        The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        """
         return pulumi.get(self, "cores")
 
     @property
     @pulumi.getter(name="instanceFamilyLevel")
     def instance_family_level(self) -> Optional[str]:
+        """
+        The instance family level in instancePatternInfo.
+        """
         return pulumi.get(self, "instance_family_level")
 
     @property
     @pulumi.getter(name="maxPrice")
     def max_price(self) -> Optional[float]:
+        """
+        The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+        """
         return pulumi.get(self, "max_price")
 
     @property
     @pulumi.getter
     def memory(self) -> Optional[float]:
+        """
+        The memory size that is specified for an instance type in instancePatternInfo.
+        """
         return pulumi.get(self, "memory")
 
 
@@ -1534,6 +1594,7 @@ class ScalingConfigurationSpotPriceLimit(dict):
                  price_limit: Optional[float] = None):
         """
         :param str instance_type: Resource type of an ECS instance.
+        :param float price_limit: Price limit hourly of instance type, 2 decimals is allowed at most.
         """
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
@@ -1551,6 +1612,9 @@ class ScalingConfigurationSpotPriceLimit(dict):
     @property
     @pulumi.getter(name="priceLimit")
     def price_limit(self) -> Optional[float]:
+        """
+        Price limit hourly of instance type, 2 decimals is allowed at most.
+        """
         return pulumi.get(self, "price_limit")
 
 
@@ -1578,17 +1642,27 @@ class ScalingGroupVServerGroupsVserverGroup(dict):
     def __init__(__self__, *,
                  loadbalancer_id: str,
                  vserver_attributes: Sequence['outputs.ScalingGroupVServerGroupsVserverGroupVserverAttribute']):
+        """
+        :param str loadbalancer_id: Loadbalancer server ID of VServer Group.
+        :param Sequence['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs'] vserver_attributes: A list of VServer Group attributes. See `vserver_attributes` below.
+        """
         pulumi.set(__self__, "loadbalancer_id", loadbalancer_id)
         pulumi.set(__self__, "vserver_attributes", vserver_attributes)
 
     @property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> str:
+        """
+        Loadbalancer server ID of VServer Group.
+        """
         return pulumi.get(self, "loadbalancer_id")
 
     @property
     @pulumi.getter(name="vserverAttributes")
     def vserver_attributes(self) -> Sequence['outputs.ScalingGroupVServerGroupsVserverGroupVserverAttribute']:
+        """
+        A list of VServer Group attributes. See `vserver_attributes` below.
+        """
         return pulumi.get(self, "vserver_attributes")
 
 
@@ -1615,6 +1689,11 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
                  port: int,
                  vserver_group_id: str,
                  weight: int):
+        """
+        :param int port: The port will be used for VServer Group backend server.
+        :param str vserver_group_id: ID of VServer Group.
+        :param int weight: The weight of an ECS instance attached to the VServer Group.
+        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "vserver_group_id", vserver_group_id)
         pulumi.set(__self__, "weight", weight)
@@ -1622,16 +1701,25 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        The port will be used for VServer Group backend server.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="vserverGroupId")
     def vserver_group_id(self) -> str:
+        """
+        ID of VServer Group.
+        """
         return pulumi.get(self, "vserver_group_id")
 
     @property
     @pulumi.getter
     def weight(self) -> int:
+        """
+        The weight of an ECS instance attached to the VServer Group.
+        """
         return pulumi.get(self, "weight")
 
 
@@ -1662,6 +1750,11 @@ class ScalingRuleStepAdjustment(dict):
                  metric_interval_lower_bound: Optional[str] = None,
                  metric_interval_upper_bound: Optional[str] = None,
                  scaling_adjustment: Optional[int] = None):
+        """
+        :param str metric_interval_lower_bound: The lower bound of step.
+        :param str metric_interval_upper_bound: The upper bound of step.
+        :param int scaling_adjustment: The adjust value of step.
+        """
         if metric_interval_lower_bound is not None:
             pulumi.set(__self__, "metric_interval_lower_bound", metric_interval_lower_bound)
         if metric_interval_upper_bound is not None:
@@ -1672,16 +1765,25 @@ class ScalingRuleStepAdjustment(dict):
     @property
     @pulumi.getter(name="metricIntervalLowerBound")
     def metric_interval_lower_bound(self) -> Optional[str]:
+        """
+        The lower bound of step.
+        """
         return pulumi.get(self, "metric_interval_lower_bound")
 
     @property
     @pulumi.getter(name="metricIntervalUpperBound")
     def metric_interval_upper_bound(self) -> Optional[str]:
+        """
+        The upper bound of step.
+        """
         return pulumi.get(self, "metric_interval_upper_bound")
 
     @property
     @pulumi.getter(name="scalingAdjustment")
     def scaling_adjustment(self) -> Optional[int]:
+        """
+        The adjust value of step.
+        """
         return pulumi.get(self, "scaling_adjustment")
 
 

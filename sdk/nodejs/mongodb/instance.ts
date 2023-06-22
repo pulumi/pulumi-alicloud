@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
  *
- * > **NOTE:**  Available in 1.37.0+
+ * > **NOTE:** Available since v1.37.0.
  *
  * > **NOTE:**  The following regions don't support create Classic network MongoDB instance.
  * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -25,17 +25,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "MongoDB",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.mongodb.getZones({});
+ * const index = defaultZones.then(defaultZones => defaultZones.zones).length.then(length => length - 1);
+ * const zoneId = defaultZones.then(defaultZones => defaultZones.zones[index].id);
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.17.3.0/24",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "172.17.3.0/24",
  *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: zoneId,
  * });
- * const example = new alicloud.mongodb.Instance("example", {
- *     engineVersion: "3.4",
+ * const defaultInstance = new alicloud.mongodb.Instance("defaultInstance", {
+ *     engineVersion: "4.2",
  *     dbInstanceClass: "dds.mongo.mid",
  *     dbInstanceStorage: 10,
  *     vswitchId: defaultSwitch.id,
@@ -43,6 +49,10 @@ import * as utilities from "../utilities";
  *         "10.168.1.12",
  *         "100.69.7.112",
  *     ],
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
  * });
  * ```
  * ## Module Support
@@ -153,11 +163,11 @@ export class Instance extends pulumi.CustomResource {
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
-     * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     * **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
      */
     public readonly orderType!: pulumi.Output<string | undefined>;
     /**
-     * Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
      */
     public readonly parameters!: pulumi.Output<outputs.mongodb.InstanceParameter[]>;
     /**
@@ -173,7 +183,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly replicaSetName!: pulumi.Output<string>;
     /**
-     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replicaSets` below.
      */
     public /*out*/ readonly replicaSets!: pulumi.Output<outputs.mongodb.InstanceReplicaSet[]>;
     /**
@@ -414,11 +424,11 @@ export interface InstanceState {
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
-     * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     * **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
      */
     orderType?: pulumi.Input<string>;
     /**
-     * Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceParameter>[]>;
     /**
@@ -434,7 +444,7 @@ export interface InstanceState {
      */
     replicaSetName?: pulumi.Input<string>;
     /**
-     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replicaSets` below.
      */
     replicaSets?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceReplicaSet>[]>;
     /**
@@ -572,11 +582,11 @@ export interface InstanceArgs {
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
-     * Note: This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     * **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
      */
     orderType?: pulumi.Input<string>;
     /**
-     * Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceParameter>[]>;
     /**

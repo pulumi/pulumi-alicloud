@@ -20,8 +20,6 @@ public final class CustomDomainRouteConfig {
     /**
      * @return The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
      * 
-     * **cert_config** includes the following arguments:
-     * 
      */
     private @Nullable List<String> methods;
     /**
@@ -34,6 +32,10 @@ public final class CustomDomainRouteConfig {
      * 
      */
     private @Nullable String qualifier;
+    /**
+     * @return The name of the Function Compute service that requests are routed to.
+     * 
+     */
     private String serviceName;
 
     private CustomDomainRouteConfig() {}
@@ -46,8 +48,6 @@ public final class CustomDomainRouteConfig {
     }
     /**
      * @return The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
-     * 
-     * **cert_config** includes the following arguments:
      * 
      */
     public List<String> methods() {
@@ -67,6 +67,10 @@ public final class CustomDomainRouteConfig {
     public Optional<String> qualifier() {
         return Optional.ofNullable(this.qualifier);
     }
+    /**
+     * @return The name of the Function Compute service that requests are routed to.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }

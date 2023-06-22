@@ -138,63 +138,6 @@ class BackendServer(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.53.0+
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        slb_backend_server_name = config.get("slbBackendServerName")
-        if slb_backend_server_name is None:
-            slb_backend_server_name = "slbbackendservertest"
-        backend_server_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        backend_server_instance_types = alicloud.ecs.get_instance_types(availability_zone=backend_server_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        backend_server_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        backend_server_network = alicloud.vpc.Network("backendServerNetwork",
-            vpc_name=slb_backend_server_name,
-            cidr_block="172.16.0.0/16")
-        backend_server_switch = alicloud.vpc.Switch("backendServerSwitch",
-            vpc_id=backend_server_network.id,
-            cidr_block="172.16.0.0/16",
-            zone_id=backend_server_zones.zones[0].id,
-            vswitch_name=slb_backend_server_name)
-        backend_server_security_group = alicloud.ecs.SecurityGroup("backendServerSecurityGroup", vpc_id=backend_server_network.id)
-        backend_server_instance = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            backend_server_instance.append(alicloud.ecs.Instance(f"backendServerInstance-{range['value']}",
-                image_id=backend_server_images.images[0].id,
-                instance_type=backend_server_instance_types.instance_types[0].id,
-                instance_name=slb_backend_server_name,
-                security_groups=[__item.id for __item in [backend_server_security_group]],
-                internet_charge_type="PayByTraffic",
-                internet_max_bandwidth_out=10,
-                availability_zone=backend_server_zones.zones[0].id,
-                instance_charge_type="PostPaid",
-                system_disk_category="cloud_efficiency",
-                vswitch_id=backend_server_switch.id))
-        backend_server_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("backendServerApplicationLoadBalancer",
-            load_balancer_name=slb_backend_server_name,
-            vswitch_id=backend_server_switch.id,
-            instance_charge_type="PayByCLCU")
-        backend_server_backend_server = alicloud.slb.BackendServer("backendServerBackendServer",
-            load_balancer_id=backend_server_application_load_balancer.id,
-            backend_servers=[
-                alicloud.slb.BackendServerBackendServerArgs(
-                    server_id=backend_server_instance[0].id,
-                    weight=100,
-                ),
-                alicloud.slb.BackendServerBackendServerArgs(
-                    server_id=backend_server_instance[1].id,
-                    weight=100,
-                ),
-            ])
-        ```
         ## Block servers
 
         The servers mapping supports the following:
@@ -229,63 +172,6 @@ class BackendServer(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.53.0+
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        slb_backend_server_name = config.get("slbBackendServerName")
-        if slb_backend_server_name is None:
-            slb_backend_server_name = "slbbackendservertest"
-        backend_server_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        backend_server_instance_types = alicloud.ecs.get_instance_types(availability_zone=backend_server_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        backend_server_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
-        backend_server_network = alicloud.vpc.Network("backendServerNetwork",
-            vpc_name=slb_backend_server_name,
-            cidr_block="172.16.0.0/16")
-        backend_server_switch = alicloud.vpc.Switch("backendServerSwitch",
-            vpc_id=backend_server_network.id,
-            cidr_block="172.16.0.0/16",
-            zone_id=backend_server_zones.zones[0].id,
-            vswitch_name=slb_backend_server_name)
-        backend_server_security_group = alicloud.ecs.SecurityGroup("backendServerSecurityGroup", vpc_id=backend_server_network.id)
-        backend_server_instance = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            backend_server_instance.append(alicloud.ecs.Instance(f"backendServerInstance-{range['value']}",
-                image_id=backend_server_images.images[0].id,
-                instance_type=backend_server_instance_types.instance_types[0].id,
-                instance_name=slb_backend_server_name,
-                security_groups=[__item.id for __item in [backend_server_security_group]],
-                internet_charge_type="PayByTraffic",
-                internet_max_bandwidth_out=10,
-                availability_zone=backend_server_zones.zones[0].id,
-                instance_charge_type="PostPaid",
-                system_disk_category="cloud_efficiency",
-                vswitch_id=backend_server_switch.id))
-        backend_server_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("backendServerApplicationLoadBalancer",
-            load_balancer_name=slb_backend_server_name,
-            vswitch_id=backend_server_switch.id,
-            instance_charge_type="PayByCLCU")
-        backend_server_backend_server = alicloud.slb.BackendServer("backendServerBackendServer",
-            load_balancer_id=backend_server_application_load_balancer.id,
-            backend_servers=[
-                alicloud.slb.BackendServerBackendServerArgs(
-                    server_id=backend_server_instance[0].id,
-                    weight=100,
-                ),
-                alicloud.slb.BackendServerBackendServerArgs(
-                    server_id=backend_server_instance[1].id,
-                    weight=100,
-                ),
-            ])
-        ```
         ## Block servers
 
         The servers mapping supports the following:

@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PublicIpAddressPoolCidrBlockArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,15 +19,15 @@ public final class PublicIpAddressPoolCidrBlockArgs extends com.pulumi.resources
      * The CIDR block.
      * 
      */
-    @Import(name="cidrBlock", required=true)
-    private Output<String> cidrBlock;
+    @Import(name="cidrBlock")
+    private @Nullable Output<String> cidrBlock;
 
     /**
      * @return The CIDR block.
      * 
      */
-    public Output<String> cidrBlock() {
-        return this.cidrBlock;
+    public Optional<Output<String>> cidrBlock() {
+        return Optional.ofNullable(this.cidrBlock);
     }
 
     /**
@@ -74,7 +76,7 @@ public final class PublicIpAddressPoolCidrBlockArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder cidrBlock(Output<String> cidrBlock) {
+        public Builder cidrBlock(@Nullable Output<String> cidrBlock) {
             $.cidrBlock = cidrBlock;
             return this;
         }
@@ -111,7 +113,6 @@ public final class PublicIpAddressPoolCidrBlockArgs extends com.pulumi.resources
         }
 
         public PublicIpAddressPoolCidrBlockArgs build() {
-            $.cidrBlock = Objects.requireNonNull($.cidrBlock, "expected parameter 'cidrBlock' to be non-null");
             $.publicIpAddressPoolId = Objects.requireNonNull($.publicIpAddressPoolId, "expected parameter 'publicIpAddressPoolId' to be non-null");
             return $;
         }

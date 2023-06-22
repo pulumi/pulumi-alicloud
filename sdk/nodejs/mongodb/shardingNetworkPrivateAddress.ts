@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about MongoDB Sharding Network Private Address and how to use it, see [What is Sharding Network Private Address](https://www.alibabacloud.com/help/en/doc-detail/141403.html).
  *
- * > **NOTE:** Available in v1.157.0+.
+ * > **NOTE:** Available since v1.157.0.
  *
  * ## Example Usage
  *
@@ -22,19 +22,35 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const defaultZones = alicloud.mongodb.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
+ * const index = defaultZones.then(defaultZones => defaultZones.zones).length.then(length => length - 1);
+ * const zoneId = defaultZones.then(defaultZones => defaultZones.zones[index].id);
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.17.3.0/24",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
- * }));
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: zoneId,
+ * });
  * const defaultShardingInstance = new alicloud.mongodb.ShardingInstance("defaultShardingInstance", {
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     zoneId: zoneId,
+ *     vswitchId: defaultSwitch.id,
  *     engineVersion: "4.2",
+ *     shardLists: [
+ *         {
+ *             nodeClass: "dds.shard.mid",
+ *             nodeStorage: 10,
+ *         },
+ *         {
+ *             nodeClass: "dds.shard.standard",
+ *             nodeStorage: 20,
+ *             readonlyReplicas: 1,
+ *         },
+ *     ],
  *     mongoLists: [
  *         {
  *             nodeClass: "dds.mongos.mid",
@@ -43,23 +59,13 @@ import * as utilities from "../utilities";
  *             nodeClass: "dds.mongos.mid",
  *         },
  *     ],
- *     shardLists: [
- *         {
- *             nodeClass: "dds.shard.mid",
- *             nodeStorage: 10,
- *         },
- *         {
- *             nodeClass: "dds.shard.mid",
- *             nodeStorage: 10,
- *         },
- *     ],
  * });
- * const example = new alicloud.mongodb.ShardingNetworkPrivateAddress("example", {
+ * const defaultShardingNetworkPrivateAddress = new alicloud.mongodb.ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress", {
  *     dbInstanceId: defaultShardingInstance.id,
  *     nodeId: defaultShardingInstance.shardLists.apply(shardLists => shardLists[0].nodeId),
  *     zoneId: defaultShardingInstance.zoneId,
- *     accountName: "example_value",
- *     accountPassword: "YourPassword+12345",
+ *     accountName: "example",
+ *     accountPassword: "Example_123",
  * });
  * ```
  *

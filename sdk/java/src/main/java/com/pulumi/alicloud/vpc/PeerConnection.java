@@ -12,16 +12,18 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Peer Connection resource.
+ * Provides a VPC Peer Connection resource. Vpc peer connection.
  * 
  * For information about VPC Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
  * 
- * &gt; **NOTE:** Available in v1.186.0+.
+ * &gt; **NOTE:** Available since v1.186.0.
  * 
  * ## Example Usage
  * 
@@ -109,21 +111,21 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
      * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
      * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-     * - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+     * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
     @Export(name="acceptingAliUid", type=Integer.class, parameters={})
-    private Output<Integer> acceptingAliUid;
+    private Output</* @Nullable */ Integer> acceptingAliUid;
 
     /**
      * @return The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
      * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
      * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-     * - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+     * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
-    public Output<Integer> acceptingAliUid() {
-        return this.acceptingAliUid;
+    public Output<Optional<Integer>> acceptingAliUid() {
+        return Codegen.optional(this.acceptingAliUid);
     }
     /**
      * The region ID of the recipient of the VPC peering connection to be created.
@@ -172,46 +174,78 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
         return this.bandwidth;
     }
     /**
-     * The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * The creation time of the VPC peer connection. Use UTC time in the format&#39; YYYY-MM-DDThh:mm:ssZ &#39;.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the VPC peer connection. Use UTC time in the format&#39; YYYY-MM-DDThh:mm:ssZ &#39;.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * @return The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The dry run.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
      * 
      */
     @Export(name="dryRun", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      * 
      */
     @Export(name="peerConnectionName", type=String.class, parameters={})
     private Output</* @Nullable */ String> peerConnectionName;
 
     /**
-     * @return The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * @return The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      * 
      */
     public Output<Optional<String>> peerConnectionName() {
         return Codegen.optional(this.peerConnectionName);
+    }
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", type=String.class, parameters={})
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * The status of the resource.
@@ -228,14 +262,28 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The ID of the requester VPC.
+     * The tags of PrefixList.
+     * 
+     */
+    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> tags;
+
+    /**
+     * @return The tags of PrefixList.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * You must create a VPC ID on the initiator of a VPC peer connection.
      * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the requester VPC.
+     * @return You must create a VPC ID on the initiator of a VPC peer connection.
      * 
      */
     public Output<String> vpcId() {

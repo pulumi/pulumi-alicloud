@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Elastic Desktop Service (ECD) Policy Group resource.
  * 
- * For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+ * For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createpolicygroup).
  * 
- * &gt; **NOTE:** Available in v1.130.0+.
+ * &gt; **NOTE:** Available since v1.130.0.
  * 
  * ## Example Usage
  * 
@@ -54,11 +54,11 @@ import javax.annotation.Nullable;
  *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
  *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
  *                 .cidrIp(&#34;1.2.3.45/24&#34;)
- *                 .description(&#34;my-description1&#34;)
+ *                 .description(&#34;terraform-example&#34;)
  *                 .build())
  *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
  *                 .cidrIp(&#34;1.2.3.4/24&#34;)
- *                 .description(&#34;my-description&#34;)
+ *                 .description(&#34;terraform-example&#34;)
  *                 .ipProtocol(&#34;TCP&#34;)
  *                 .policy(&#34;accept&#34;)
  *                 .portRange(&#34;80/80&#34;)
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .clipboard(&#34;read&#34;)
  *             .localDrive(&#34;read&#34;)
- *             .policyGroupName(&#34;my-policy-group&#34;)
+ *             .policyGroupName(&#34;terraform-example&#34;)
  *             .usbRedirect(&#34;off&#34;)
  *             .watermark(&#34;off&#34;)
  *             .build());
@@ -88,28 +88,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eds/ecdPolicyGroup:EcdPolicyGroup")
 public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
     /**
-     * The rule of authorize access rule.
+     * The rule of authorize access rule. See `authorize_access_policy_rules` below.
      * 
      */
     @Export(name="authorizeAccessPolicyRules", type=List.class, parameters={EcdPolicyGroupAuthorizeAccessPolicyRule.class})
     private Output</* @Nullable */ List<EcdPolicyGroupAuthorizeAccessPolicyRule>> authorizeAccessPolicyRules;
 
     /**
-     * @return The rule of authorize access rule.
+     * @return The rule of authorize access rule. See `authorize_access_policy_rules` below.
      * 
      */
     public Output<Optional<List<EcdPolicyGroupAuthorizeAccessPolicyRule>>> authorizeAccessPolicyRules() {
         return Codegen.optional(this.authorizeAccessPolicyRules);
     }
     /**
-     * The policy rule.
+     * The policy rule. See `authorize_security_policy_rules` below.
      * 
      */
     @Export(name="authorizeSecurityPolicyRules", type=List.class, parameters={EcdPolicyGroupAuthorizeSecurityPolicyRule.class})
     private Output</* @Nullable */ List<EcdPolicyGroupAuthorizeSecurityPolicyRule>> authorizeSecurityPolicyRules;
 
     /**
-     * @return The policy rule.
+     * @return The policy rule. See `authorize_security_policy_rules` below.
      * 
      */
     public Output<Optional<List<EcdPolicyGroupAuthorizeSecurityPolicyRule>>> authorizeSecurityPolicyRules() {
@@ -214,14 +214,14 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.policyGroupName);
     }
     /**
-     * Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      * 
      */
     @Export(name="recording", type=String.class, parameters={})
     private Output<String> recording;
 
     /**
-     * @return Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     * @return Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      * 
      */
     public Output<String> recording() {
@@ -242,14 +242,14 @@ public class EcdPolicyGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.recordingEndTime);
     }
     /**
-     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
      * 
      */
     @Export(name="recordingExpires", type=Integer.class, parameters={})
     private Output<Integer> recordingExpires;
 
     /**
-     * @return The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     * @return The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
      * 
      */
     public Output<Integer> recordingExpires() {

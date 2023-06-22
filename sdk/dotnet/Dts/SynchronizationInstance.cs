@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dts
     /// 
     /// For information about DTS Synchronization Instance and how to use it, see [What is Synchronization Instance](https://www.alibabacloud.com/help/en/doc-detail/130744.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.138.0+.
+    /// &gt; **NOTE:** Available since v1.138.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,14 +28,19 @@ namespace Pulumi.AliCloud.Dts
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Dts.SynchronizationInstance("default", new()
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         DestinationEndpointEngineName = "ADB30",
-    ///         DestinationEndpointRegion = "cn-hangzhou",
-    ///         InstanceClass = "small",
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultSynchronizationInstance = new AliCloud.Dts.SynchronizationInstance("defaultSynchronizationInstance", new()
+    ///     {
     ///         PaymentType = "PayAsYouGo",
-    ///         SourceEndpointEngineName = "PolarDB",
-    ///         SourceEndpointRegion = "cn-hangzhou",
+    ///         SourceEndpointEngineName = "MySQL",
+    ///         SourceEndpointRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         DestinationEndpointEngineName = "MySQL",
+    ///         DestinationEndpointRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         InstanceClass = "small",
     ///         SyncArchitecture = "oneway",
     ///     });
     /// 

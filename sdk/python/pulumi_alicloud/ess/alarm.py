@@ -37,7 +37,7 @@ class AlarmArgs:
         :param pulumi.Input[int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[str] metric_type: The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
@@ -158,7 +158,7 @@ class AlarmArgs:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
@@ -263,7 +263,7 @@ class _AlarmState:
         :param pulumi.Input[int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[str] metric_name: The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
@@ -271,7 +271,10 @@ class _AlarmState:
         :param pulumi.Input[str] name: The name for ess alarm.
         :param pulumi.Input[int] period: The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
         :param pulumi.Input[str] scaling_group_id: The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
-        :param pulumi.Input[str] state: The state of specified alarm.
+        :param pulumi.Input[str] state: The status of the event-triggered task. Valid values:
+               - ALARM: The alert condition is met and an alert is triggered.
+               - OK: The alert condition is not met.
+               - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
         :param pulumi.Input[str] statistics: The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         :param pulumi.Input[str] threshold: The value against which the specified statistics is compared.
         """
@@ -358,7 +361,7 @@ class _AlarmState:
     @pulumi.getter
     def dimensions(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
@@ -454,7 +457,10 @@ class _AlarmState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The state of specified alarm.
+        The status of the event-triggered task. Valid values:
+        - ALARM: The alert condition is met and an alert is triggered.
+        - OK: The alert condition is not met.
+        - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
         """
         return pulumi.get(self, "state")
 
@@ -510,52 +516,74 @@ class Alarm(pulumi.CustomResource):
         """
         Provides a ESS alarm task resource.
 
+        For information about ess alarm, see [CreateAlarm](https://www.alibabacloud.com/help/en/auto-scaling/latest/createalarm).
+
+        > **NOTE:** Available since v1.15.0.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        ecs_image = alicloud.ecs.get_images(most_recent=True,
-            name_regex="^centos_6\\\\w{1,5}[64].*")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/16")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="tf-testAccEssAlarm_basic_foo",
-            vpc_id=foo_network.id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        bar = alicloud.vpc.Switch("bar",
-            vswitch_name="tf-testAccEssAlarm_basic_bar",
-            vpc_id=foo_network.id,
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default2 = alicloud.vpc.Switch("default2",
+            vpc_id=default_network.id,
             cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id)
-        foo_scaling_group = alicloud.ess.ScalingGroup("fooScalingGroup",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=f"{name}-bar")
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=1,
             max_size=1,
-            scaling_group_name="tf-testAccEssAlarm_basic",
+            scaling_group_name=name,
+            default_cooldown=20,
+            vswitch_ids=[
+                default_switch.id,
+                default2.id,
+            ],
             removal_policies=[
                 "OldestInstance",
                 "NewestInstance",
-            ],
-            vswitch_ids=[
-                foo_switch.id,
-                bar.id,
             ])
-        foo_scaling_rule = alicloud.ess.ScalingRule("fooScalingRule",
-            scaling_rule_name="tf-testAccEssAlarm_basic",
-            scaling_group_id=foo_scaling_group.id,
+        default_scaling_rule = alicloud.ess.ScalingRule("defaultScalingRule",
+            scaling_rule_name=name,
+            scaling_group_id=default_scaling_group.id,
             adjustment_type="TotalCapacity",
             adjustment_value=2,
             cooldown=60)
-        foo_alarm = alicloud.ess.Alarm("fooAlarm",
-            description="Acc alarm test",
-            alarm_actions=[foo_scaling_rule.ari],
-            scaling_group_id=foo_scaling_group.id,
+        default_alarm = alicloud.ess.Alarm("defaultAlarm",
+            description=name,
+            alarm_actions=[default_scaling_rule.ari],
+            scaling_group_id=default_scaling_group.id,
             metric_type="system",
             metric_name="CpuUtilization",
             period=300,
@@ -568,31 +596,6 @@ class Alarm(pulumi.CustomResource):
 
         You can use to the existing autoscaling-rule module
         to create alarm task, different type rules and scheduled task one-click.
-
-        ## Block metricNames_and_dimensions
-
-        Supported metric names and dimensions :
-
-        | MetricName         | Dimensions                   |
-        | ------------------ | ---------------------------- |
-        | CpuUtilization     | user_id,scaling_group        |
-        | ClassicInternetRx  | user_id,scaling_group        |
-        | ClassicInternetTx  | user_id,scaling_group        |
-        | VpcInternetRx      | user_id,scaling_group        |
-        | VpcInternetTx      | user_id,scaling_group        |
-        | IntranetRx         | user_id,scaling_group        |
-        | IntranetTx         | user_id,scaling_group        |
-        | LoadAverage        | user_id,scaling_group        |
-        | MemoryUtilization  | user_id,scaling_group        |
-        | SystemDiskReadBps  | user_id,scaling_group        |
-        | SystemDiskWriteBps | user_id,scaling_group        |
-        | SystemDiskReadOps  | user_id,scaling_group        |
-        | SystemDiskWriteOps | user_id,scaling_group        |
-        | PackagesNetIn      | user_id,scaling_group,device |
-        | PackagesNetOut     | user_id,scaling_group,device |
-        | TcpConnection      | user_id,scaling_group,state  |
-
-        > **NOTE:** Dimension `user_id` and `scaling_group` is automatically filled, which means you only need to care about dimension `device` and `state` when needed.
 
         ## Import
 
@@ -608,7 +611,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[str] metric_name: The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
@@ -628,52 +631,74 @@ class Alarm(pulumi.CustomResource):
         """
         Provides a ESS alarm task resource.
 
+        For information about ess alarm, see [CreateAlarm](https://www.alibabacloud.com/help/en/auto-scaling/latest/createalarm).
+
+        > **NOTE:** Available since v1.15.0.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        ecs_image = alicloud.ecs.get_images(most_recent=True,
-            name_regex="^centos_6\\\\w{1,5}[64].*")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        foo_network = alicloud.vpc.Network("fooNetwork", cidr_block="172.16.0.0/16")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vswitch_name="tf-testAccEssAlarm_basic_foo",
-            vpc_id=foo_network.id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        bar = alicloud.vpc.Switch("bar",
-            vswitch_name="tf-testAccEssAlarm_basic_bar",
-            vpc_id=foo_network.id,
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
+            type="ingress",
+            ip_protocol="tcp",
+            nic_type="intranet",
+            policy="accept",
+            port_range="22/22",
+            priority=1,
+            security_group_id=default_security_group.id,
+            cidr_ip="172.16.0.0/24")
+        default2 = alicloud.vpc.Switch("default2",
+            vpc_id=default_network.id,
             cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id)
-        foo_scaling_group = alicloud.ess.ScalingGroup("fooScalingGroup",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=f"{name}-bar")
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
             min_size=1,
             max_size=1,
-            scaling_group_name="tf-testAccEssAlarm_basic",
+            scaling_group_name=name,
+            default_cooldown=20,
+            vswitch_ids=[
+                default_switch.id,
+                default2.id,
+            ],
             removal_policies=[
                 "OldestInstance",
                 "NewestInstance",
-            ],
-            vswitch_ids=[
-                foo_switch.id,
-                bar.id,
             ])
-        foo_scaling_rule = alicloud.ess.ScalingRule("fooScalingRule",
-            scaling_rule_name="tf-testAccEssAlarm_basic",
-            scaling_group_id=foo_scaling_group.id,
+        default_scaling_rule = alicloud.ess.ScalingRule("defaultScalingRule",
+            scaling_rule_name=name,
+            scaling_group_id=default_scaling_group.id,
             adjustment_type="TotalCapacity",
             adjustment_value=2,
             cooldown=60)
-        foo_alarm = alicloud.ess.Alarm("fooAlarm",
-            description="Acc alarm test",
-            alarm_actions=[foo_scaling_rule.ari],
-            scaling_group_id=foo_scaling_group.id,
+        default_alarm = alicloud.ess.Alarm("defaultAlarm",
+            description=name,
+            alarm_actions=[default_scaling_rule.ari],
+            scaling_group_id=default_scaling_group.id,
             metric_type="system",
             metric_name="CpuUtilization",
             period=300,
@@ -686,31 +711,6 @@ class Alarm(pulumi.CustomResource):
 
         You can use to the existing autoscaling-rule module
         to create alarm task, different type rules and scheduled task one-click.
-
-        ## Block metricNames_and_dimensions
-
-        Supported metric names and dimensions :
-
-        | MetricName         | Dimensions                   |
-        | ------------------ | ---------------------------- |
-        | CpuUtilization     | user_id,scaling_group        |
-        | ClassicInternetRx  | user_id,scaling_group        |
-        | ClassicInternetTx  | user_id,scaling_group        |
-        | VpcInternetRx      | user_id,scaling_group        |
-        | VpcInternetTx      | user_id,scaling_group        |
-        | IntranetRx         | user_id,scaling_group        |
-        | IntranetTx         | user_id,scaling_group        |
-        | LoadAverage        | user_id,scaling_group        |
-        | MemoryUtilization  | user_id,scaling_group        |
-        | SystemDiskReadBps  | user_id,scaling_group        |
-        | SystemDiskWriteBps | user_id,scaling_group        |
-        | SystemDiskReadOps  | user_id,scaling_group        |
-        | SystemDiskWriteOps | user_id,scaling_group        |
-        | PackagesNetIn      | user_id,scaling_group,device |
-        | PackagesNetOut     | user_id,scaling_group,device |
-        | TcpConnection      | user_id,scaling_group,state  |
-
-        > **NOTE:** Dimension `user_id` and `scaling_group` is automatically filled, which means you only need to care about dimension `device` and `state` when needed.
 
         ## Import
 
@@ -817,7 +817,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[int] cloud_monitor_group_id: Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
-        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        :param pulumi.Input[Mapping[str, Any]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[str] metric_name: The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
@@ -825,7 +825,10 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name for ess alarm.
         :param pulumi.Input[int] period: The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
         :param pulumi.Input[str] scaling_group_id: The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
-        :param pulumi.Input[str] state: The state of specified alarm.
+        :param pulumi.Input[str] state: The status of the event-triggered task. Valid values:
+               - ALARM: The alert condition is met and an alert is triggered.
+               - OK: The alert condition is not met.
+               - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
         :param pulumi.Input[str] statistics: The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         :param pulumi.Input[str] threshold: The value against which the specified statistics is compared.
         """
@@ -886,7 +889,7 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def dimensions(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
 
@@ -950,7 +953,10 @@ class Alarm(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The state of specified alarm.
+        The status of the event-triggered task. Valid values:
+        - ALARM: The alert condition is met and an alert is triggered.
+        - OK: The alert condition is not met.
+        - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
         """
         return pulumi.get(self, "state")
 

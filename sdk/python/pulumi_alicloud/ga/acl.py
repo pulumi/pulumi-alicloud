@@ -23,7 +23,7 @@ class AclArgs:
         """
         The set of arguments for constructing a Acl resource.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `IPv4` and `IPv6`.
-        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The entries of the Acl. See the following `Block acl_entries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[bool] dry_run: The dry run.
         """
@@ -54,7 +54,7 @@ class AclArgs:
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
-        The entries of the Acl. See the following `Block acl_entries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
         return pulumi.get(self, "acl_entries")
 
@@ -97,7 +97,7 @@ class _AclState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
-        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The entries of the Acl. See the following `Block acl_entries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `IPv4` and `IPv6`.
         :param pulumi.Input[bool] dry_run: The dry run.
@@ -121,7 +121,7 @@ class _AclState:
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
-        The entries of the Acl. See the following `Block acl_entries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
         return pulumi.get(self, "acl_entries")
 
@@ -193,7 +193,7 @@ class Acl(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createacl).
 
-        > **NOTE:** Available in v1.150.0+.
+        > **NOTE:** Available since v1.150.0.
 
         ## Example Usage
 
@@ -203,13 +203,13 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ga.Acl("default",
-            acl_entries=[alicloud.ga.AclAclEntryArgs(
-                entry="192.168.1.0/24",
-                entry_description="tf-test1",
-            )],
-            acl_name="tf-testAccAcl",
+        default_acl = alicloud.ga.Acl("defaultAcl",
+            acl_name="terraform-example",
             address_ip_version="IPv4")
+        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
+            acl_id=default_acl.id,
+            entry="192.168.1.1/32",
+            entry_description="terraform-example")
         ```
 
         ## Import
@@ -222,7 +222,7 @@ class Acl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The entries of the Acl. See the following `Block acl_entries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `IPv4` and `IPv6`.
         :param pulumi.Input[bool] dry_run: The dry run.
@@ -238,7 +238,7 @@ class Acl(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createacl).
 
-        > **NOTE:** Available in v1.150.0+.
+        > **NOTE:** Available since v1.150.0.
 
         ## Example Usage
 
@@ -248,13 +248,13 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ga.Acl("default",
-            acl_entries=[alicloud.ga.AclAclEntryArgs(
-                entry="192.168.1.0/24",
-                entry_description="tf-test1",
-            )],
-            acl_name="tf-testAccAcl",
+        default_acl = alicloud.ga.Acl("defaultAcl",
+            acl_name="terraform-example",
             address_ip_version="IPv4")
+        default_acl_entry_attachment = alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment",
+            acl_id=default_acl.id,
+            entry="192.168.1.1/32",
+            entry_description="terraform-example")
         ```
 
         ## Import
@@ -325,7 +325,7 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The entries of the Acl. See the following `Block acl_entries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[str] address_ip_version: The IP version. Valid values: `IPv4` and `IPv6`.
         :param pulumi.Input[bool] dry_run: The dry run.
@@ -346,7 +346,7 @@ class Acl(pulumi.CustomResource):
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> pulumi.Output[Sequence['outputs.AclAclEntry']]:
         """
-        The entries of the Acl. See the following `Block acl_entries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+        The entries of the Acl. See `acl_entries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
         """
         return pulumi.get(self, "acl_entries")
 

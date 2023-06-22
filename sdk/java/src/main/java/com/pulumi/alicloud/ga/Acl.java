@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Global Accelerator (GA) Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createacl).
  * 
- * &gt; **NOTE:** Available in v1.150.0+.
+ * &gt; **NOTE:** Available since v1.150.0.
  * 
  * ## Example Usage
  * 
@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.ga.Acl;
  * import com.pulumi.alicloud.ga.AclArgs;
- * import com.pulumi.alicloud.ga.inputs.AclAclEntryArgs;
+ * import com.pulumi.alicloud.ga.AclEntryAttachment;
+ * import com.pulumi.alicloud.ga.AclEntryAttachmentArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,13 +50,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Acl(&#34;default&#34;, AclArgs.builder()        
- *             .aclEntries(AclAclEntryArgs.builder()
- *                 .entry(&#34;192.168.1.0/24&#34;)
- *                 .entryDescription(&#34;tf-test1&#34;)
- *                 .build())
- *             .aclName(&#34;tf-testAccAcl&#34;)
+ *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+ *             .aclName(&#34;terraform-example&#34;)
  *             .addressIpVersion(&#34;IPv4&#34;)
+ *             .build());
+ * 
+ *         var defaultAclEntryAttachment = new AclEntryAttachment(&#34;defaultAclEntryAttachment&#34;, AclEntryAttachmentArgs.builder()        
+ *             .aclId(defaultAcl.id())
+ *             .entry(&#34;192.168.1.1/32&#34;)
+ *             .entryDescription(&#34;terraform-example&#34;)
  *             .build());
  * 
  *     }
@@ -74,7 +77,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ga/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {
     /**
-     * The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+     * The entries of the Acl. See `acl_entries` below. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
      * 
      * @deprecated
      * Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_ga_acl_entry_attachment&#39;.
@@ -85,7 +88,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
     private Output<List<AclAclEntry>> aclEntries;
 
     /**
-     * @return The entries of the Acl. See the following `Block acl_entries`. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
+     * @return The entries of the Acl. See `acl_entries` below. **NOTE:** &#34;Field &#39;acl_entries&#39; has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud.ga.AclEntryAttachment`.&#34;
      * 
      */
     public Output<List<AclAclEntry>> aclEntries() {

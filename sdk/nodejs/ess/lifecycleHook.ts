@@ -7,45 +7,56 @@ import * as utilities from "../utilities";
 /**
  * Provides a ESS lifecycle hook resource. More about Ess lifecycle hook, see [LifecycleHook](https://www.alibabacloud.com/help/doc-detail/73839.htm).
  *
+ * > **NOTE:** Available since v1.13.0.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const default = alicloud.getZones({
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/16"});
- * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
- *     vpcId: fooNetwork.id,
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
  * });
- * const bar = new alicloud.vpc.Switch("bar", {
- *     vpcId: fooNetwork.id,
+ * const default2 = new alicloud.vpc.Switch("default2", {
+ *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.1.0/24",
- *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: `${name}-bar`,
  * });
- * const fooScalingGroup = new alicloud.ess.ScalingGroup("fooScalingGroup", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
  *     minSize: 1,
  *     maxSize: 1,
- *     scalingGroupName: "testAccEssScaling_group",
+ *     scalingGroupName: name,
+ *     defaultCooldown: 200,
  *     removalPolicies: [
  *         "OldestInstance",
  *         "NewestInstance",
  *     ],
  *     vswitchIds: [
- *         fooSwitch.id,
- *         bar.id,
+ *         defaultSwitch.id,
+ *         default2.id,
  *     ],
  * });
- * const fooLifecycleHook = new alicloud.ess.LifecycleHook("fooLifecycleHook", {
- *     scalingGroupId: fooScalingGroup.id,
+ * const defaultLifecycleHook = new alicloud.ess.LifecycleHook("defaultLifecycleHook", {
+ *     scalingGroupId: defaultScalingGroup.id,
  *     lifecycleTransition: "SCALE_OUT",
  *     heartbeatTimeout: 400,
- *     notificationMetadata: "helloworld",
+ *     notificationMetadata: "example",
  * });
  * ```
  * ## Module Support

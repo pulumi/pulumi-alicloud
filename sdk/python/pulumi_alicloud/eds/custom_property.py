@@ -21,7 +21,7 @@ class CustomPropertyArgs:
         """
         The set of arguments for constructing a CustomProperty resource.
         :param pulumi.Input[str] property_key: The Custom attribute key.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]] property_values: Custom attribute sets the value of. See the following `Block property_values`.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]] property_values: Custom attribute sets the value of. See `property_values` below.
         """
         pulumi.set(__self__, "property_key", property_key)
         if property_values is not None:
@@ -43,7 +43,7 @@ class CustomPropertyArgs:
     @pulumi.getter(name="propertyValues")
     def property_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]]:
         """
-        Custom attribute sets the value of. See the following `Block property_values`.
+        Custom attribute sets the value of. See `property_values` below.
         """
         return pulumi.get(self, "property_values")
 
@@ -60,7 +60,7 @@ class _CustomPropertyState:
         """
         Input properties used for looking up and filtering CustomProperty resources.
         :param pulumi.Input[str] property_key: The Custom attribute key.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]] property_values: Custom attribute sets the value of. See the following `Block property_values`.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]] property_values: Custom attribute sets the value of. See `property_values` below.
         """
         if property_key is not None:
             pulumi.set(__self__, "property_key", property_key)
@@ -83,7 +83,7 @@ class _CustomPropertyState:
     @pulumi.getter(name="propertyValues")
     def property_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]]:
         """
-        Custom attribute sets the value of. See the following `Block property_values`.
+        Custom attribute sets the value of. See `property_values` below.
         """
         return pulumi.get(self, "property_values")
 
@@ -103,9 +103,9 @@ class CustomProperty(pulumi.CustomResource):
         """
         Provides a ECD Custom Property resource.
 
-        For information about ECD Custom Property and how to use it, see [What is Custom Property](https://help.aliyun.com/document_detail/436381.html).
+        For information about ECD Custom Property and how to use it, see [What is Custom Property](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createproperty-desktop).
 
-        > **NOTE:** Available in v1.176.0+.
+        > **NOTE:** Available since v1.176.0.
 
         > **NOTE:** Up to 10 different attributes can be created under an alibaba cloud account. Up to 50 different attribute values can be added under an attribute.
 
@@ -135,7 +135,7 @@ class CustomProperty(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] property_key: The Custom attribute key.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomPropertyPropertyValueArgs']]]] property_values: Custom attribute sets the value of. See the following `Block property_values`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomPropertyPropertyValueArgs']]]] property_values: Custom attribute sets the value of. See `property_values` below.
         """
         ...
     @overload
@@ -146,9 +146,9 @@ class CustomProperty(pulumi.CustomResource):
         """
         Provides a ECD Custom Property resource.
 
-        For information about ECD Custom Property and how to use it, see [What is Custom Property](https://help.aliyun.com/document_detail/436381.html).
+        For information about ECD Custom Property and how to use it, see [What is Custom Property](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createproperty-desktop).
 
-        > **NOTE:** Available in v1.176.0+.
+        > **NOTE:** Available since v1.176.0.
 
         > **NOTE:** Up to 10 different attributes can be created under an alibaba cloud account. Up to 50 different attribute values can be added under an attribute.
 
@@ -225,7 +225,7 @@ class CustomProperty(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] property_key: The Custom attribute key.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomPropertyPropertyValueArgs']]]] property_values: Custom attribute sets the value of. See the following `Block property_values`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomPropertyPropertyValueArgs']]]] property_values: Custom attribute sets the value of. See `property_values` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -247,7 +247,7 @@ class CustomProperty(pulumi.CustomResource):
     @pulumi.getter(name="propertyValues")
     def property_values(self) -> pulumi.Output[Optional[Sequence['outputs.CustomPropertyPropertyValue']]]:
         """
-        Custom attribute sets the value of. See the following `Block property_values`.
+        Custom attribute sets the value of. See `property_values` below.
         """
         return pulumi.get(self, "property_values")
 

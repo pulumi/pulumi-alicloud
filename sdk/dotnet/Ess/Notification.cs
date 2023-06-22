@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Ess
     /// <summary>
     /// Provides a ESS notification resource. More about Ess notification, see [Autoscaling Notification](https://www.alibabacloud.com/help/doc-detail/71114.htm).
     /// 
-    /// &gt; **NOTE:** Available in 1.55.0+
+    /// &gt; **NOTE:** Available since v1.55.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ess
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAccEssNotification-%d";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,

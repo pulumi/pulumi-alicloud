@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Ga.Inputs
         private InputList<Inputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs>? _serverGroupTuples;
 
         /// <summary>
-        /// Terminal node group configuration.
+        /// The information about the endpoint group. See `server_group_tuples` below.
         /// </summary>
         public InputList<Inputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs> ServerGroupTuples
         {

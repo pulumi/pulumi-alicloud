@@ -21,14 +21,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a RDS Clone DB Instance resource.
+ * Provides an RDS Clone DB Instance resource.
  * 
  * For information about RDS Clone DB Instance and how to use it, see [What is ApsaraDB for RDS](https://www.alibabacloud.com/help/en/doc-detail/26092.htm).
  * 
- * &gt; **NOTE:** Available in v1.149.0+.
+ * &gt; **NOTE:** Available since v1.149.0+.
  * 
  * ## Example Usage
- * ### Create a RDS MySQL clone instance
+ * ### Create an RDS MySQL clone instance
  * ```java
  * package generated_program;
  * 
@@ -221,6 +221,9 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **AlwaysOn**: Cluster Edition
      * * **Finance**: Three-node Enterprise Edition.
      * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+     * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+     * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+     * * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
      * 
      */
     @Export(name="category", type=String.class, parameters={})
@@ -233,6 +236,9 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **AlwaysOn**: Cluster Edition
      * * **Finance**: Three-node Enterprise Edition.
      * * **serverless_basic**: Serverless Basic Edition. (Available in 1.200.0+)
+     * * **serverless_standard**: MySQL Serverless High Availability Edition. (Available in 1.207.0+)
+     * * **serverless_ha**: SQLServer Serverless High Availability Edition. (Available in 1.207.0+)
+     * * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
      * 
      */
     public Output<String> category() {
@@ -621,14 +627,14 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
         return this.maintainTime;
     }
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
      * 
      */
     @Export(name="parameters", type=List.class, parameters={RdsCloneDbInstanceParameter.class})
     private Output<List<RdsCloneDbInstanceParameter>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).
+     * @return Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
      * 
      */
     public Output<List<RdsCloneDbInstanceParameter>> parameters() {
@@ -685,14 +691,14 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.period);
     }
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The details of the AD domain.See `pg_hba_conf` below.
      * 
      */
     @Export(name="pgHbaConfs", type=List.class, parameters={RdsCloneDbInstancePgHbaConf.class})
     private Output<List<RdsCloneDbInstancePgHbaConf>> pgHbaConfs;
 
     /**
-     * @return The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * @return The details of the AD domain.See `pg_hba_conf` below.
      * 
      */
     public Output<List<RdsCloneDbInstancePgHbaConf>> pgHbaConfs() {
@@ -879,14 +885,14 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
         return this.serverKey;
     }
     /**
-     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
      * 
      */
     @Export(name="serverlessConfigs", type=List.class, parameters={RdsCloneDbInstanceServerlessConfig.class})
     private Output</* @Nullable */ List<RdsCloneDbInstanceServerlessConfig>> serverlessConfigs;
 
     /**
-     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.
+     * @return The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
      * 
      */
     public Output<Optional<List<RdsCloneDbInstanceServerlessConfig>>> serverlessConfigs() {
@@ -1065,7 +1071,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * The ID of the vSwitch associated with the specified VPC.
+     * The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
      * 
      * &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      * 
@@ -1074,7 +1080,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch associated with the specified VPC.
+     * @return The ID of the vSwitch associated with the specified VPC. If there are multiple vswitches, separate them with commas. The first vswitch is a primary zone switch and the query only returns that vswitch. If there are multiple vswitches, do not perform `vswitch_id` check.
      * 
      * &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      * 
@@ -1085,8 +1091,6 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
      * 
-     * &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
-     * 
      */
     @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
@@ -1094,11 +1098,41 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
      * 
-     * &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
-     * 
      */
     public Output<String> zoneId() {
         return this.zoneId;
+    }
+    /**
+     * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+     * 
+     */
+    @Export(name="zoneIdSlaveA", type=String.class, parameters={})
+    private Output<String> zoneIdSlaveA;
+
+    /**
+     * @return The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+     * 
+     */
+    public Output<String> zoneIdSlaveA() {
+        return this.zoneIdSlaveA;
+    }
+    /**
+     * The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+     * 
+     * &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
+     * 
+     */
+    @Export(name="zoneIdSlaveB", type=String.class, parameters={})
+    private Output<String> zoneIdSlaveB;
+
+    /**
+     * @return The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+     * 
+     * &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
+     * 
+     */
+    public Output<String> zoneIdSlaveB() {
+        return this.zoneIdSlaveB;
     }
 
     /**

@@ -121,7 +121,9 @@ export class Cluster extends pulumi.CustomResource {
      * The description of cluster.
      */
     public readonly description!: pulumi.Output<string>;
+    public readonly diskPerformanceLevel!: pulumi.Output<string>;
     public readonly elasticIoResource!: pulumi.Output<number>;
+    public readonly elasticIoResourceSize!: pulumi.Output<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
@@ -197,7 +199,9 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
             resourceInputs["dbNodeStorage"] = state ? state.dbNodeStorage : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskPerformanceLevel"] = state ? state.diskPerformanceLevel : undefined;
             resourceInputs["elasticIoResource"] = state ? state.elasticIoResource : undefined;
+            resourceInputs["elasticIoResourceSize"] = state ? state.elasticIoResourceSize : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["modifyType"] = state ? state.modifyType : undefined;
@@ -230,7 +234,9 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
             resourceInputs["dbNodeStorage"] = args ? args.dbNodeStorage : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskPerformanceLevel"] = args ? args.diskPerformanceLevel : undefined;
             resourceInputs["elasticIoResource"] = args ? args.elasticIoResource : undefined;
+            resourceInputs["elasticIoResourceSize"] = args ? args.elasticIoResourceSize : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["modifyType"] = args ? args.modifyType : undefined;
@@ -294,7 +300,9 @@ export interface ClusterState {
      * The description of cluster.
      */
     description?: pulumi.Input<string>;
+    diskPerformanceLevel?: pulumi.Input<string>;
     elasticIoResource?: pulumi.Input<number>;
+    elasticIoResourceSize?: pulumi.Input<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
@@ -385,7 +393,9 @@ export interface ClusterArgs {
      * The description of cluster.
      */
     description?: pulumi.Input<string>;
+    diskPerformanceLevel?: pulumi.Input<string>;
     elasticIoResource?: pulumi.Input<number>;
+    elasticIoResourceSize?: pulumi.Input<string>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */

@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -47,8 +49,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;create by terraform&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
@@ -64,9 +71,19 @@ import javax.annotation.Nullable;
  *             .project(exampleProject.name())
  *             .logstore(exampleStore.name())
  *             .inputType(&#34;file&#34;)
- *             .logSample(&#34;test&#34;)
  *             .outputType(&#34;LogService&#34;)
- *             .inputDetail(Files.readString(Paths.get(&#34;config.json&#34;)))
+ *             .inputDetail(&#34;&#34;&#34;
+ *   	{
+ * 		&#34;logPath&#34;: &#34;/logPath&#34;,
+ * 		&#34;filePattern&#34;: &#34;access.log&#34;,
+ * 		&#34;logType&#34;: &#34;json_log&#34;,
+ * 		&#34;topicFormat&#34;: &#34;default&#34;,
+ * 		&#34;discardUnmatch&#34;: false,
+ * 		&#34;enableRawLog&#34;: true,
+ * 		&#34;fileEncoding&#34;: &#34;gbk&#34;,
+ * 		&#34;maxDepth&#34;: 10
+ * 	}
+ *             &#34;&#34;&#34;)
  *             .build());
  * 
  *     }

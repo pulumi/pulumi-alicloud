@@ -4944,8 +4944,9 @@ class GetServerGroupsGroupResult(dict):
         :param str server_group_id: The first ID of the res ource.
         :param str server_group_name: The name of the resource.
         :param Sequence['GetServerGroupsGroupServerArgs'] servers: The backend server.
-        :param str status: The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        :param str status: The status of the resource.
         :param Sequence['GetServerGroupsGroupStickySessionConfigArgs'] sticky_session_configs: The configuration of the sticky session.
+        :param Mapping[str, Any] tags: A map of tags assigned to the group.
         :param str vpc_id: The ID of the VPC that you want to access.
         """
         pulumi.set(__self__, "health_check_configs", health_check_configs)
@@ -5020,7 +5021,7 @@ class GetServerGroupsGroupResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -5035,6 +5036,9 @@ class GetServerGroupsGroupResult(dict):
     @property
     @pulumi.getter
     def tags(self) -> Mapping[str, Any]:
+        """
+        A map of tags assigned to the group.
+        """
         return pulumi.get(self, "tags")
 
     @property
@@ -5201,7 +5205,7 @@ class GetServerGroupsGroupServerResult(dict):
         :param str server_id: The ID of the ECS instance, ENI instance or ECI instance.
         :param str server_ip: The IP address of the ENI instance when it is in the inclusive ENI mode.
         :param str server_type: The type of the server. The type of the server. Valid values: `Ecs`, `Eni` and `Eci`.
-        :param str status: The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        :param str status: The status of the resource.
         :param int weight: The weight of the server.  Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the server.
         """
         pulumi.set(__self__, "description", description)
@@ -5256,7 +5260,7 @@ class GetServerGroupsGroupServerResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 

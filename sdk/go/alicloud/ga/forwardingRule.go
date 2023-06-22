@@ -15,7 +15,7 @@ import (
 //
 // For information about Global Accelerator (GA) Forwarding Rule and how to use it, see [What is Forwarding Rule](https://www.alibabacloud.com/help/zh/doc-detail/205815.htm).
 //
-// > **NOTE:** Available in v1.120.0+.
+// > **NOTE:** Available since v1.120.0.
 //
 // ## Import
 //
@@ -41,9 +41,9 @@ type ForwardingRule struct {
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
 	// Forwarding policy priority.
 	Priority pulumi.IntOutput `pulumi:"priority"`
-	// Forward action.
+	// Forward action. See `ruleActions` below.
 	RuleActions ForwardingRuleRuleActionArrayOutput `pulumi:"ruleActions"`
-	// Forwarding condition list.
+	// Forwarding condition list. See `ruleConditions` below.
 	RuleConditions ForwardingRuleRuleConditionArrayOutput `pulumi:"ruleConditions"`
 }
 
@@ -100,9 +100,9 @@ type forwardingRuleState struct {
 	ListenerId *string `pulumi:"listenerId"`
 	// Forwarding policy priority.
 	Priority *int `pulumi:"priority"`
-	// Forward action.
+	// Forward action. See `ruleActions` below.
 	RuleActions []ForwardingRuleRuleAction `pulumi:"ruleActions"`
-	// Forwarding condition list.
+	// Forwarding condition list. See `ruleConditions` below.
 	RuleConditions []ForwardingRuleRuleCondition `pulumi:"ruleConditions"`
 }
 
@@ -119,9 +119,9 @@ type ForwardingRuleState struct {
 	ListenerId pulumi.StringPtrInput
 	// Forwarding policy priority.
 	Priority pulumi.IntPtrInput
-	// Forward action.
+	// Forward action. See `ruleActions` below.
 	RuleActions ForwardingRuleRuleActionArrayInput
-	// Forwarding condition list.
+	// Forwarding condition list. See `ruleConditions` below.
 	RuleConditions ForwardingRuleRuleConditionArrayInput
 }
 
@@ -138,9 +138,9 @@ type forwardingRuleArgs struct {
 	ListenerId string `pulumi:"listenerId"`
 	// Forwarding policy priority.
 	Priority *int `pulumi:"priority"`
-	// Forward action.
+	// Forward action. See `ruleActions` below.
 	RuleActions []ForwardingRuleRuleAction `pulumi:"ruleActions"`
-	// Forwarding condition list.
+	// Forwarding condition list. See `ruleConditions` below.
 	RuleConditions []ForwardingRuleRuleCondition `pulumi:"ruleConditions"`
 }
 
@@ -154,9 +154,9 @@ type ForwardingRuleArgs struct {
 	ListenerId pulumi.StringInput
 	// Forwarding policy priority.
 	Priority pulumi.IntPtrInput
-	// Forward action.
+	// Forward action. See `ruleActions` below.
 	RuleActions ForwardingRuleRuleActionArrayInput
-	// Forwarding condition list.
+	// Forwarding condition list. See `ruleConditions` below.
 	RuleConditions ForwardingRuleRuleConditionArrayInput
 }
 
@@ -277,12 +277,12 @@ func (o ForwardingRuleOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// Forward action.
+// Forward action. See `ruleActions` below.
 func (o ForwardingRuleOutput) RuleActions() ForwardingRuleRuleActionArrayOutput {
 	return o.ApplyT(func(v *ForwardingRule) ForwardingRuleRuleActionArrayOutput { return v.RuleActions }).(ForwardingRuleRuleActionArrayOutput)
 }
 
-// Forwarding condition list.
+// Forwarding condition list. See `ruleConditions` below.
 func (o ForwardingRuleOutput) RuleConditions() ForwardingRuleRuleConditionArrayOutput {
 	return o.ApplyT(func(v *ForwardingRule) ForwardingRuleRuleConditionArrayOutput { return v.RuleConditions }).(ForwardingRuleRuleConditionArrayOutput)
 }

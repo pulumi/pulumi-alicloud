@@ -13,9 +13,11 @@ import (
 
 // Provides a Alicloud Function Compute Function resource. Function allows you to trigger execution of code in response to events in Alibaba Cloud. The Function itself includes source code and runtime configuration.
 //
-//	For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+//	For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/zh/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createfunction).
 //
 // > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
+//
+// > **NOTE:** Available since v1.10.0.
 //
 // ## Example Usage
 //
@@ -26,45 +28,45 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oss"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "alicloudfcfunctionconfig"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultProject, err := log.NewProject(ctx, "defaultProject", &log.ProjectArgs{
-//				Description: pulumi.String("tf unit test"),
+//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
+//			if err != nil {
+//				return err
+//			}
 //			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
-//				Project:         defaultProject.Name,
-//				RetentionPeriod: pulumi.Int(3000),
-//				ShardCount:      pulumi.Int(1),
+//				Project: defaultProject.Name,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
-//				Document:    pulumi.String("        {\n          \"Statement\": [\n            {\n              \"Action\": \"sts:AssumeRole\",\n              \"Effect\": \"Allow\",\n              \"Principal\": {\n                \"Service\": [\n                  \"fc.aliyuncs.com\"\n                ]\n              }\n            }\n          ],\n          \"Version\": \"1\"\n        }\n    \n"),
-//				Description: pulumi.String("this is a test"),
+//				Document:    pulumi.String("  {\n      \"Statement\": [\n        {\n          \"Action\": \"sts:AssumeRole\",\n          \"Effect\": \"Allow\",\n          \"Principal\": {\n            \"Service\": [\n              \"fc.aliyuncs.com\"\n            ]\n          }\n        }\n      ],\n      \"Version\": \"1\"\n  }\n"),
+//				Description: pulumi.String("this is a example"),
 //				Force:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRolePolicyAttachment, err := ram.NewRolePolicyAttachment(ctx, "defaultRolePolicyAttachment", &ram.RolePolicyAttachmentArgs{
+//			_, err = ram.NewRolePolicyAttachment(ctx, "defaultRolePolicyAttachment", &ram.RolePolicyAttachmentArgs{
 //				RoleName:   defaultRole.Name,
 //				PolicyName: pulumi.String("AliyunLogFullAccess"),
 //				PolicyType: pulumi.String("System"),
@@ -73,35 +75,37 @@ import (
 //				return err
 //			}
 //			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
-//				Description: pulumi.String("tf unit test"),
+//				Description: pulumi.String("example-value"),
+//				Role:        defaultRole.Arn,
 //				LogConfig: &fc.ServiceLogConfigArgs{
-//					Project:  defaultProject.Name,
-//					Logstore: defaultStore.Name,
+//					Project:               defaultProject.Name,
+//					Logstore:              defaultStore.Name,
+//					EnableInstanceMetrics: pulumi.Bool(true),
+//					EnableRequestMetrics:  pulumi.Bool(true),
 //				},
-//				Role: defaultRole.Arn,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				defaultRolePolicyAttachment,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-//				Bucket: pulumi.String(name),
+//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
+//					return fmt.Sprintf("terraform-example-%v", result), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
-//				Bucket: defaultBucket.ID(),
-//				Key:    pulumi.String("fc/hello.zip"),
-//				Source: pulumi.String("./hello.zip"),
+//				Bucket:  defaultBucket.ID(),
+//				Key:     pulumi.String("index.py"),
+//				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = fc.NewFunction(ctx, "foo", &fc.FunctionArgs{
 //				Service:     defaultService.Name,
-//				Description: pulumi.String("tf"),
+//				Description: pulumi.String("example"),
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
 //				MemorySize:  pulumi.Int(512),
@@ -141,7 +145,7 @@ type Function struct {
 	// The checksum (crc64) of the function code.Used to trigger updates.The value can be generated by data source alicloud_file_crc64_checksum.
 	// > **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
 	CodeChecksum pulumi.StringOutput `pulumi:"codeChecksum"`
-	// The configuration for custom container runtime.
+	// The configuration for custom container runtime.See `customContainerConfig` below.
 	CustomContainerConfig FunctionCustomContainerConfigPtrOutput `pulumi:"customContainerConfig"`
 	// The Function Compute function description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -226,7 +230,7 @@ type functionState struct {
 	// The checksum (crc64) of the function code.Used to trigger updates.The value can be generated by data source alicloud_file_crc64_checksum.
 	// > **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
 	CodeChecksum *string `pulumi:"codeChecksum"`
-	// The configuration for custom container runtime.
+	// The configuration for custom container runtime.See `customContainerConfig` below.
 	CustomContainerConfig *FunctionCustomContainerConfig `pulumi:"customContainerConfig"`
 	// The Function Compute function description.
 	Description *string `pulumi:"description"`
@@ -274,7 +278,7 @@ type FunctionState struct {
 	// The checksum (crc64) of the function code.Used to trigger updates.The value can be generated by data source alicloud_file_crc64_checksum.
 	// > **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
 	CodeChecksum pulumi.StringPtrInput
-	// The configuration for custom container runtime.
+	// The configuration for custom container runtime.See `customContainerConfig` below.
 	CustomContainerConfig FunctionCustomContainerConfigPtrInput
 	// The Function Compute function description.
 	Description pulumi.StringPtrInput
@@ -326,7 +330,7 @@ type functionArgs struct {
 	// The checksum (crc64) of the function code.Used to trigger updates.The value can be generated by data source alicloud_file_crc64_checksum.
 	// > **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
 	CodeChecksum *string `pulumi:"codeChecksum"`
-	// The configuration for custom container runtime.
+	// The configuration for custom container runtime.See `customContainerConfig` below.
 	CustomContainerConfig *FunctionCustomContainerConfig `pulumi:"customContainerConfig"`
 	// The Function Compute function description.
 	Description *string `pulumi:"description"`
@@ -371,7 +375,7 @@ type FunctionArgs struct {
 	// The checksum (crc64) of the function code.Used to trigger updates.The value can be generated by data source alicloud_file_crc64_checksum.
 	// > **NOTE:** For more information, see [Limits](https://www.alibabacloud.com/help/doc-detail/51907.htm).
 	CodeChecksum pulumi.StringPtrInput
-	// The configuration for custom container runtime.
+	// The configuration for custom container runtime.See `customContainerConfig` below.
 	CustomContainerConfig FunctionCustomContainerConfigPtrInput
 	// The Function Compute function description.
 	Description pulumi.StringPtrInput
@@ -507,7 +511,7 @@ func (o FunctionOutput) CodeChecksum() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.CodeChecksum }).(pulumi.StringOutput)
 }
 
-// The configuration for custom container runtime.
+// The configuration for custom container runtime.See `customContainerConfig` below.
 func (o FunctionOutput) CustomContainerConfig() FunctionCustomContainerConfigPtrOutput {
 	return o.ApplyT(func(v *Function) FunctionCustomContainerConfigPtrOutput { return v.CustomContainerConfig }).(FunctionCustomContainerConfigPtrOutput)
 }

@@ -20,14 +20,14 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
     public static final DBClusterArgs Empty = new DBClusterArgs();
 
     /**
-     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+     * Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      * 
      */
     @Import(name="autoRenewPeriod")
     private @Nullable Output<Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+     * @return Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      * 
      */
     public Optional<Output<Integer>> autoRenewPeriod() {
@@ -88,14 +88,14 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The db cluster version. Value options: `3.0`, Default to `3.0`.
+     * The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      * 
      */
     @Import(name="dbClusterVersion")
     private @Nullable Output<String> dbClusterVersion;
 
     /**
-     * @return The db cluster version. Value options: `3.0`, Default to `3.0`.
+     * @return The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      * 
      */
     public Optional<Output<String>> dbClusterVersion() {
@@ -163,6 +163,21 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+     * 
+     */
+    @Import(name="diskPerformanceLevel")
+    private @Nullable Output<String> diskPerformanceLevel;
+
+    /**
+     * @return The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+     * 
+     */
+    public Optional<Output<String>> diskPerformanceLevel() {
+        return Optional.ofNullable(this.diskPerformanceLevel);
+    }
+
+    /**
      * The elastic io resource.
      * 
      */
@@ -175,6 +190,21 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> elasticIoResource() {
         return Optional.ofNullable(this.elasticIoResource);
+    }
+
+    /**
+     * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+     * 
+     */
+    @Import(name="elasticIoResourceSize")
+    private @Nullable Output<String> elasticIoResourceSize;
+
+    /**
+     * @return The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> elasticIoResourceSize() {
+        return Optional.ofNullable(this.elasticIoResourceSize);
     }
 
     /**
@@ -246,14 +276,14 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+     * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -402,7 +432,9 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.dbNodeCount = $.dbNodeCount;
         this.dbNodeStorage = $.dbNodeStorage;
         this.description = $.description;
+        this.diskPerformanceLevel = $.diskPerformanceLevel;
         this.elasticIoResource = $.elasticIoResource;
+        this.elasticIoResourceSize = $.elasticIoResourceSize;
         this.maintainTime = $.maintainTime;
         this.mode = $.mode;
         this.modifyType = $.modifyType;
@@ -437,7 +469,7 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
          * 
          * @return builder
          * 
@@ -448,7 +480,7 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+         * @param autoRenewPeriod Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
          * 
          * @return builder
          * 
@@ -529,7 +561,7 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterVersion The db cluster version. Value options: `3.0`, Default to `3.0`.
+         * @param dbClusterVersion The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
          * 
          * @return builder
          * 
@@ -540,7 +572,7 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterVersion The db cluster version. Value options: `3.0`, Default to `3.0`.
+         * @param dbClusterVersion The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
          * 
          * @return builder
          * 
@@ -634,6 +666,27 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param diskPerformanceLevel The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskPerformanceLevel(@Nullable Output<String> diskPerformanceLevel) {
+            $.diskPerformanceLevel = diskPerformanceLevel;
+            return this;
+        }
+
+        /**
+         * @param diskPerformanceLevel The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskPerformanceLevel(String diskPerformanceLevel) {
+            return diskPerformanceLevel(Output.of(diskPerformanceLevel));
+        }
+
+        /**
          * @param elasticIoResource The elastic io resource.
          * 
          * @return builder
@@ -652,6 +705,27 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder elasticIoResource(Integer elasticIoResource) {
             return elasticIoResource(Output.of(elasticIoResource));
+        }
+
+        /**
+         * @param elasticIoResourceSize The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder elasticIoResourceSize(@Nullable Output<String> elasticIoResourceSize) {
+            $.elasticIoResourceSize = elasticIoResourceSize;
+            return this;
+        }
+
+        /**
+         * @param elasticIoResourceSize The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder elasticIoResourceSize(String elasticIoResourceSize) {
+            return elasticIoResourceSize(Output.of(elasticIoResourceSize));
         }
 
         /**
@@ -747,7 +821,7 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
          * 
          * @return builder
          * 
@@ -758,7 +832,7 @@ public final class DBClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
          * 
          * @return builder
          * 

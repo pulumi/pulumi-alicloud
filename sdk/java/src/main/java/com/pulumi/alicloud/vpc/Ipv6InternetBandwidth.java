@@ -15,11 +15,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Ipv6 Internet Bandwidth resource.
+ * Provides a VPC Ipv6 Internet Bandwidth resource. Public network bandwidth of IPv6 address.
  * 
- * For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/doc-detail/102213.htm).
+ * For information about VPC Ipv6 Internet Bandwidth and how to use it, see [What is Ipv6 Internet Bandwidth](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/allocateipv6internetbandwidth).
  * 
- * &gt; **NOTE:** Available in v1.143.0+.
+ * &gt; **NOTE:** Available since v1.143.0.
  * 
  * ## Example Usage
  * 
@@ -30,8 +30,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.vpc.Ipv6Gateway;
+ * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
  * import com.pulumi.alicloud.vpc.VpcFunctions;
  * import com.pulumi.alicloud.vpc.inputs.GetIpv6AddressesArgs;
  * import com.pulumi.alicloud.vpc.Ipv6InternetBandwidth;
@@ -49,19 +62,66 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
- *             .nameRegex(&#34;ecs_with_ipv6_address&#34;)
- *             .status(&#34;Running&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .enableIpv6(&#34;true&#34;)
+ *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
- *         final var exampleIpv6Addresses = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
- *             .associatedInstanceId(exampleInstances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()))
+ *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .ipv6CidrBlockMask(&#34;22&#34;)
+ *             .build());
+ * 
+ *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *             .description(&#34;foo&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .cpuCoreCount(4)
+ *             .minimumEniIpv6AddressQuantity(1)
+ *             .build());
+ * 
+ *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .mostRecent(true)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var vpcInstance = new Instance(&#34;vpcInstance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .ipv6AddressCount(1)
+ *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceName(name)
+ *             .vswitchId(vsw.id())
+ *             .internetMaxBandwidthOut(10)
+ *             .securityGroups(group.stream().map(element -&gt; element.id()).collect(toList()))
+ *             .build());
+ * 
+ *         var exampleIpv6Gateway = new Ipv6Gateway(&#34;exampleIpv6Gateway&#34;, Ipv6GatewayArgs.builder()        
+ *             .ipv6GatewayName(&#34;example_value&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         final var defaultIpv6Addresses = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+ *             .associatedInstanceId(vpcInstance.id())
  *             .status(&#34;Available&#34;)
  *             .build());
  * 
  *         var exampleIpv6InternetBandwidth = new Ipv6InternetBandwidth(&#34;exampleIpv6InternetBandwidth&#34;, Ipv6InternetBandwidthArgs.builder()        
- *             .ipv6AddressId(exampleIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()))
- *             .ipv6GatewayId(exampleIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].ipv6GatewayId()))
+ *             .ipv6AddressId(defaultIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult).applyValue(defaultIpv6Addresses -&gt; defaultIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id())))
+ *             .ipv6GatewayId(exampleIpv6Gateway.ipv6GatewayId())
  *             .internetChargeType(&#34;PayByBandwidth&#34;)
  *             .bandwidth(&#34;20&#34;)
  *             .build());
@@ -110,42 +170,42 @@ public class Ipv6InternetBandwidth extends com.pulumi.resources.CustomResource {
         return this.internetChargeType;
     }
     /**
-     * The ID of the IPv6 address.
+     * The ID of the IPv6 address instance.
      * 
      */
     @Export(name="ipv6AddressId", type=String.class, parameters={})
     private Output<String> ipv6AddressId;
 
     /**
-     * @return The ID of the IPv6 address.
+     * @return The ID of the IPv6 address instance.
      * 
      */
     public Output<String> ipv6AddressId() {
         return this.ipv6AddressId;
     }
     /**
-     * The ID of the IPv6 gateway.
+     * The ID of the IPv6 gateway to which the IPv6 address belongs.
      * 
      */
     @Export(name="ipv6GatewayId", type=String.class, parameters={})
     private Output<String> ipv6GatewayId;
 
     /**
-     * @return The ID of the IPv6 gateway.
+     * @return The ID of the IPv6 gateway to which the IPv6 address belongs.
      * 
      */
     public Output<String> ipv6GatewayId() {
         return this.ipv6GatewayId;
     }
     /**
-     * The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+     * The status of the resource.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the resource.Valid values:`Normal`, `FinancialLocked` and `SecurityLocked`.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {

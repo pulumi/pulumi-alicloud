@@ -36,7 +36,7 @@ public final class GetServerGroupsGroupServer {
      */
     private String serverType;
     /**
-     * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * @return The status of the resource.
      * 
      */
     private String status;
@@ -83,7 +83,7 @@ public final class GetServerGroupsGroupServer {
         return this.serverType;
     }
     /**
-     * @return The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+     * @return The status of the resource.
      * 
      */
     public String status() {

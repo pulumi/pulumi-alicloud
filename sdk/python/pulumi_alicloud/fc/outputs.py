@@ -162,9 +162,8 @@ class CustomDomainRouteConfig(dict):
         """
         :param str function_name: The name of the Function Compute function that requests are routed to.
         :param str path: The path that requests are routed from.
+        :param str service_name: The name of the Function Compute service that requests are routed to.
         :param Sequence[str] methods: The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
-               
-               **cert_config** includes the following arguments:
         :param str qualifier: The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
         """
         pulumi.set(__self__, "function_name", function_name)
@@ -194,6 +193,9 @@ class CustomDomainRouteConfig(dict):
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        The name of the Function Compute service that requests are routed to.
+        """
         return pulumi.get(self, "service_name")
 
     @property
@@ -201,8 +203,6 @@ class CustomDomainRouteConfig(dict):
     def methods(self) -> Optional[Sequence[str]]:
         """
         The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
-
-        **cert_config** includes the following arguments:
         """
         return pulumi.get(self, "methods")
 
@@ -240,8 +240,8 @@ class FunctionAsyncInvokeConfigDestinationConfig(dict):
                  on_failure: Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnFailure'] = None,
                  on_success: Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccess'] = None):
         """
-        :param 'FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs' on_failure: Configuration block with destination configuration for failed asynchronous invocations. See below for details.
-        :param 'FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs' on_success: Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+        :param 'FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs' on_failure: Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
+        :param 'FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs' on_success: Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
         """
         if on_failure is not None:
             pulumi.set(__self__, "on_failure", on_failure)
@@ -252,7 +252,7 @@ class FunctionAsyncInvokeConfigDestinationConfig(dict):
     @pulumi.getter(name="onFailure")
     def on_failure(self) -> Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnFailure']:
         """
-        Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+        Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
         """
         return pulumi.get(self, "on_failure")
 
@@ -260,7 +260,7 @@ class FunctionAsyncInvokeConfigDestinationConfig(dict):
     @pulumi.getter(name="onSuccess")
     def on_success(self) -> Optional['outputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccess']:
         """
-        Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+        Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
         """
         return pulumi.get(self, "on_success")
 
@@ -444,7 +444,7 @@ class ServiceNasConfig(dict):
                  user_id: int):
         """
         :param int group_id: The group id of your NAS file system.
-        :param Sequence['ServiceNasConfigMountPointArgs'] mount_points: Config the NAS mount points, including following attributes:
+        :param Sequence['ServiceNasConfigMountPointArgs'] mount_points: Config the NAS mount points.See `mount_points` below.
         :param int user_id: The user id of your NAS file system.
         """
         pulumi.set(__self__, "group_id", group_id)
@@ -463,7 +463,7 @@ class ServiceNasConfig(dict):
     @pulumi.getter(name="mountPoints")
     def mount_points(self) -> Sequence['outputs.ServiceNasConfigMountPoint']:
         """
-        Config the NAS mount points, including following attributes:
+        Config the NAS mount points.See `mount_points` below.
         """
         return pulumi.get(self, "mount_points")
 
@@ -583,6 +583,7 @@ class ServiceVpcConfig(dict):
         """
         :param str security_group_id: A security group ID associated with the Function Compute Service.
         :param Sequence[str] vswitch_ids: A list of vswitch IDs associated with the Function Compute Service.
+        :param str vpc_id: A vpc ID associated with the Function Compute Service.
         """
         pulumi.set(__self__, "security_group_id", security_group_id)
         pulumi.set(__self__, "vswitch_ids", vswitch_ids)
@@ -608,6 +609,9 @@ class ServiceVpcConfig(dict):
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
+        """
+        A vpc ID associated with the Function Compute Service.
+        """
         return pulumi.get(self, "vpc_id")
 
 

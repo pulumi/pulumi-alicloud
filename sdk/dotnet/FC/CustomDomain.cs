@@ -11,9 +11,9 @@ namespace Pulumi.AliCloud.FC
 {
     /// <summary>
     /// Provides an Alicloud Function Compute custom domain resource.
-    ///  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/90759.htm).
+    ///  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createcustomdomain).
     /// 
-    /// &gt; **NOTE:** Available in 1.98.0+
+    /// &gt; **NOTE:** Available since v1.98.0.
     /// 
     /// ## Example Usage
     /// 
@@ -24,35 +24,85 @@ namespace Pulumi.AliCloud.FC
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testaccalicloudfcservice";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
+    /// 
+    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     {
+    ///         Project = defaultProject.Name,
+    ///     });
+    /// 
+    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
+    ///     {
+    ///         Document = @"  {
+    ///       ""Statement"": [
+    ///         {
+    ///           ""Action"": ""sts:AssumeRole"",
+    ///           ""Effect"": ""Allow"",
+    ///           ""Principal"": {
+    ///             ""Service"": [
+    ///               ""fc.aliyuncs.com""
+    ///             ]
+    ///           }
+    ///         }
+    ///       ],
+    ///       ""Version"": ""1""
+    ///   }
+    /// ",
+    ///         Description = "this is a example",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("defaultRolePolicyAttachment", new()
+    ///     {
+    ///         RoleName = defaultRole.Name,
+    ///         PolicyName = "AliyunLogFullAccess",
+    ///         PolicyType = "System",
+    ///     });
+    /// 
     ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
     ///     {
-    ///         Description = $"{name}-description",
+    ///         Description = "example-value",
+    ///         Role = defaultRole.Arn,
+    ///         LogConfig = new AliCloud.FC.Inputs.ServiceLogConfigArgs
+    ///         {
+    ///             Project = defaultProject.Name,
+    ///             Logstore = defaultStore.Name,
+    ///             EnableInstanceMetrics = true,
+    ///             EnableRequestMetrics = true,
+    ///         },
     ///     });
     /// 
     ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
     ///     {
-    ///         BucketName = name,
+    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///     });
     /// 
+    ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
     ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
     ///     {
     ///         Bucket = defaultBucket.Id,
-    ///         Key = "fc/hello.zip",
-    ///         Content = @"		# -*- coding: utf-8 -*-
-    /// 	def handler(event, context):
-    /// 		print ""hello world""
-    /// 		return 'hello world'
-    /// ",
+    ///         Key = "index.py",
+    ///         Content = @"import logging 
+    /// def handler(event, context): 
+    /// logger = logging.getLogger() 
+    /// logger.info('hello world') 
+    /// return 'hello world'",
     ///     });
     /// 
     ///     var defaultFunction = new AliCloud.FC.Function("defaultFunction", new()
     ///     {
     ///         Service = defaultService.Name,
+    ///         Description = "example",
     ///         OssBucket = defaultBucket.Id,
     ///         OssKey = defaultBucketObject.Key,
     ///         MemorySize = 512,
@@ -71,7 +121,7 @@ namespace Pulumi.AliCloud.FC
     ///                 Path = "/login/*",
     ///                 ServiceName = defaultService.Name,
     ///                 FunctionName = defaultFunction.Name,
-    ///                 Qualifier = "v1",
+    ///                 Qualifier = "?query",
     ///                 Methods = new[]
     ///                 {
     ///                     "GET",
@@ -81,9 +131,11 @@ namespace Pulumi.AliCloud.FC
     ///         },
     ///         CertConfig = new AliCloud.FC.Inputs.CustomDomainCertConfigArgs
     ///         {
-    ///             CertName = "your certificate name",
-    ///             PrivateKey = "your private key",
-    ///             Certificate = "your certificate data",
+    ///             CertName = "example",
+    ///             Certificate = @"-----BEGIN CERTIFICATE-----
+    /// MIICWD****-----END CERTIFICATE-----",
+    ///             PrivateKey = @"-----BEGIN RSA PRIVATE KEY-----
+    /// MIICX****n-----END RSA PRIVATE KEY-----",
     ///         },
     ///     });
     /// 
@@ -114,10 +166,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> ApiVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of HTTPS certificate.
-        /// 
-        /// 
-        /// **route_config** includes the following arguments:
+        /// The configuration of HTTPS certificate.See `cert_config` below.
         /// </summary>
         [Output("certConfig")]
         public Output<Outputs.CustomDomainCertConfig?> CertConfig { get; private set; } = null!;
@@ -147,7 +196,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration of domain route, mapping the path and Function Compute function.
+        /// The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         /// </summary>
         [Output("routeConfigs")]
         public Output<ImmutableArray<Outputs.CustomDomainRouteConfig>> RouteConfigs { get; private set; } = null!;
@@ -199,10 +248,7 @@ namespace Pulumi.AliCloud.FC
     public sealed class CustomDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration of HTTPS certificate.
-        /// 
-        /// 
-        /// **route_config** includes the following arguments:
+        /// The configuration of HTTPS certificate.See `cert_config` below.
         /// </summary>
         [Input("certConfig")]
         public Input<Inputs.CustomDomainCertConfigArgs>? CertConfig { get; set; }
@@ -223,7 +269,7 @@ namespace Pulumi.AliCloud.FC
         private InputList<Inputs.CustomDomainRouteConfigArgs>? _routeConfigs;
 
         /// <summary>
-        /// The configuration of domain route, mapping the path and Function Compute function.
+        /// The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         /// </summary>
         public InputList<Inputs.CustomDomainRouteConfigArgs> RouteConfigs
         {
@@ -252,10 +298,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? ApiVersion { get; set; }
 
         /// <summary>
-        /// The configuration of HTTPS certificate.
-        /// 
-        /// 
-        /// **route_config** includes the following arguments:
+        /// The configuration of HTTPS certificate.See `cert_config` below.
         /// </summary>
         [Input("certConfig")]
         public Input<Inputs.CustomDomainCertConfigGetArgs>? CertConfig { get; set; }
@@ -288,7 +331,7 @@ namespace Pulumi.AliCloud.FC
         private InputList<Inputs.CustomDomainRouteConfigGetArgs>? _routeConfigs;
 
         /// <summary>
-        /// The configuration of domain route, mapping the path and Function Compute function.
+        /// The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         /// </summary>
         public InputList<Inputs.CustomDomainRouteConfigGetArgs> RouteConfigs
         {

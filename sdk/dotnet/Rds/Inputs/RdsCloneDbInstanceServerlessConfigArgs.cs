@@ -13,32 +13,41 @@ namespace Pulumi.AliCloud.Rds.Inputs
     public sealed class RdsCloneDbInstanceServerlessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
+        /// Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
         /// - true: enables the feature.
         /// - false: disables the feature. This is the default value.
+        /// &gt; - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
         /// </summary>
-        [Input("autoPause", required: true)]
-        public Input<bool> AutoPause { get; set; } = null!;
+        [Input("autoPause")]
+        public Input<bool>? AutoPause { get; set; }
 
         /// <summary>
-        /// The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `min_capacity` parameter.
+        /// The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
+        /// - MySQL: 1~8
+        /// - SQLServer: 2~8
+        /// - PostgreSQL: 1~12
         /// </summary>
         [Input("maxCapacity", required: true)]
         public Input<double> MaxCapacity { get; set; } = null!;
 
         /// <summary>
-        /// The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `max_capacity` parameter.
+        /// The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
+        /// - MySQL: 0.5~8
+        /// - SQLServer: 2~8 \(Supports integers only\).
+        /// - PostgreSQL: 0.5~12
         /// </summary>
         [Input("minCapacity", required: true)]
         public Input<double> MinCapacity { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
+        /// Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
         /// - true: enables the feature.
         /// - false: disables the feature. This is the default value.
+        /// &gt; - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+        /// &gt; - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
         /// </summary>
-        [Input("switchForce", required: true)]
-        public Input<bool> SwitchForce { get; set; } = null!;
+        [Input("switchForce")]
+        public Input<bool>? SwitchForce { get; set; }
 
         public RdsCloneDbInstanceServerlessConfigArgs()
         {

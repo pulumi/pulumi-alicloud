@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECD Ad Connector Directory resource.
  * 
- * For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://help.aliyun.com/document_detail/436791.html).
+ * For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createadconnectordirectory).
  * 
- * &gt; **NOTE:** Available in v1.174.0+.
+ * &gt; **NOTE:** Available since v1.174.0.
  * 
  * ## Example Usage
  * 
@@ -35,9 +35,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.eds.EdsFunctions;
  * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.eds.AdConnectorDirectory;
  * import com.pulumi.alicloud.eds.AdConnectorDirectoryArgs;
  * import java.util.List;
@@ -53,30 +54,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var defaultZones = EdsFunctions.getZones();
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .vswitchName(name)
  *             .build());
  * 
  *         var defaultAdConnectorDirectory = new AdConnectorDirectory(&#34;defaultAdConnectorDirectory&#34;, AdConnectorDirectoryArgs.builder()        
- *             .directoryName(var_.name())
+ *             .directoryName(name)
  *             .desktopAccessType(&#34;INTERNET&#34;)
  *             .dnsAddresses(&#34;127.0.0.2&#34;)
  *             .domainName(&#34;corp.example.com&#34;)
- *             .domainPassword(&#34;YourPassword1234&#34;)
+ *             .domainPassword(&#34;Example1234&#34;)
  *             .domainUserName(&#34;sAMAccountName&#34;)
  *             .enableAdminAccess(false)
  *             .mfaEnabled(false)
  *             .specification(1)
  *             .subDomainDnsAddresses(&#34;127.0.0.3&#34;)
  *             .subDomainName(&#34;child.example.com&#34;)
- *             .vswitchIds(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vswitchIds(defaultSwitch.id())
  *             .build());
  * 
  *     }

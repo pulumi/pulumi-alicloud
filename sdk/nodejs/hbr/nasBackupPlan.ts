@@ -19,30 +19,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-testAccHBRNas";
- * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: name});
+ * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: "terraform-example2"});
  * const defaultFileSystem = new alicloud.nas.FileSystem("defaultFileSystem", {
  *     protocolType: "NFS",
  *     storageType: "Performance",
- *     description: name,
+ *     description: "terraform-example",
  *     encryptType: 1,
  * });
- * const defaultFileSystems = defaultFileSystem.description.apply(description => alicloud.nas.getFileSystemsOutput({
- *     protocolType: "NFS",
- *     descriptionRegex: description,
- * }));
  * const defaultNasBackupPlan = new alicloud.hbr.NasBackupPlan("defaultNasBackupPlan", {
- *     nasBackupPlanName: name,
+ *     nasBackupPlanName: "terraform-example",
  *     fileSystemId: defaultFileSystem.id,
  *     schedule: "I|1602673264|PT2H",
  *     backupType: "COMPLETE",
  *     vaultId: defaultVault.id,
- *     createTime: defaultFileSystems.apply(defaultFileSystems => defaultFileSystems.systems?.[0]?.createTime),
  *     retention: "2",
  *     paths: ["/"],
- * }, {
- *     dependsOn: ["alicloud_nas_file_system.default"],
  * });
  * ```
  *

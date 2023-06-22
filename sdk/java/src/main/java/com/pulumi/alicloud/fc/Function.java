@@ -21,9 +21,11 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a Alicloud Function Compute Function resource. Function allows you to trigger execution of code in response to events in Alibaba Cloud. The Function itself includes source code and runtime configuration.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/doc-detail/52895.htm).
+ *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/zh/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createfunction).
  * 
  * &gt; **NOTE:** The resource requires a provider field &#39;account_id&#39;. See account_id.
+ * 
+ * &gt; **NOTE:** Available since v1.10.0.
  * 
  * ## Example Usage
  * 
@@ -34,8 +36,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
- * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
  * import com.pulumi.alicloud.log.StoreArgs;
  * import com.pulumi.alicloud.ram.Role;
@@ -51,7 +54,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.oss.BucketObjectArgs;
  * import com.pulumi.alicloud.fc.Function;
  * import com.pulumi.alicloud.fc.FunctionArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -65,37 +67,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;alicloudfcfunctionconfig&#34;);
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;tf unit test&#34;)
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
  *             .build());
+ * 
+ *         var defaultProject = new Project(&#34;defaultProject&#34;);
  * 
  *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
  *             .project(defaultProject.name())
- *             .retentionPeriod(&#34;3000&#34;)
- *             .shardCount(1)
  *             .build());
  * 
  *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
  *             .document(&#34;&#34;&#34;
+ *   {
+ *       &#34;Statement&#34;: [
  *         {
- *           &#34;Statement&#34;: [
- *             {
- *               &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *               &#34;Effect&#34;: &#34;Allow&#34;,
- *               &#34;Principal&#34;: {
- *                 &#34;Service&#34;: [
- *                   &#34;fc.aliyuncs.com&#34;
- *                 ]
- *               }
- *             }
- *           ],
- *           &#34;Version&#34;: &#34;1&#34;
+ *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
+ *           &#34;Effect&#34;: &#34;Allow&#34;,
+ *           &#34;Principal&#34;: {
+ *             &#34;Service&#34;: [
+ *               &#34;fc.aliyuncs.com&#34;
+ *             ]
+ *           }
  *         }
- *     
+ *       ],
+ *       &#34;Version&#34;: &#34;1&#34;
+ *   }
  *             &#34;&#34;&#34;)
- *             .description(&#34;this is a test&#34;)
+ *             .description(&#34;this is a example&#34;)
  *             .force(true)
  *             .build());
  * 
@@ -106,29 +106,34 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .description(&#34;tf unit test&#34;)
+ *             .description(&#34;example-value&#34;)
+ *             .role(defaultRole.arn())
  *             .logConfig(ServiceLogConfigArgs.builder()
  *                 .project(defaultProject.name())
  *                 .logstore(defaultStore.name())
+ *                 .enableInstanceMetrics(true)
+ *                 .enableRequestMetrics(true)
  *                 .build())
- *             .role(defaultRole.arn())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(defaultRolePolicyAttachment)
- *                 .build());
+ *             .build());
  * 
  *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(name)
+ *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .build());
  * 
  *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.id())
- *             .key(&#34;fc/hello.zip&#34;)
- *             .source(&#34;./hello.zip&#34;)
+ *             .key(&#34;index.py&#34;)
+ *             .content(&#34;&#34;&#34;
+ * import logging 
+ * def handler(event, context): 
+ * logger = logging.getLogger() 
+ * logger.info(&#39;hello world&#39;) 
+ * return &#39;hello world&#39;            &#34;&#34;&#34;)
  *             .build());
  * 
  *         var foo = new Function(&#34;foo&#34;, FunctionArgs.builder()        
  *             .service(defaultService.name())
- *             .description(&#34;tf&#34;)
+ *             .description(&#34;example&#34;)
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
  *             .memorySize(&#34;512&#34;)
@@ -187,14 +192,14 @@ public class Function extends com.pulumi.resources.CustomResource {
         return this.codeChecksum;
     }
     /**
-     * The configuration for custom container runtime.
+     * The configuration for custom container runtime.See `custom_container_config` below.
      * 
      */
     @Export(name="customContainerConfig", type=FunctionCustomContainerConfig.class, parameters={})
     private Output</* @Nullable */ FunctionCustomContainerConfig> customContainerConfig;
 
     /**
-     * @return The configuration for custom container runtime.
+     * @return The configuration for custom container runtime.See `custom_container_config` below.
      * 
      */
     public Output<Optional<FunctionCustomContainerConfig>> customContainerConfig() {

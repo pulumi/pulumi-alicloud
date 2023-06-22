@@ -27,7 +27,7 @@ class FunctionAsyncInvokeConfigArgs:
         The set of arguments for constructing a FunctionAsyncInvokeConfig resource.
         :param pulumi.Input[str] function_name: Name of the Function Compute Function.
         :param pulumi.Input[str] service_name: Name of the Function Compute Function, omitting any version or alias qualifier.
-        :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs'] destination_config: Configuration block with destination configuration. See below for details.
+        :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs'] destination_config: Configuration block with destination configuration. See `destination_config` below.
         :param pulumi.Input[int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
         :param pulumi.Input[int] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
         :param pulumi.Input[str] qualifier: Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
@@ -74,7 +74,7 @@ class FunctionAsyncInvokeConfigArgs:
     @pulumi.getter(name="destinationConfig")
     def destination_config(self) -> Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']]:
         """
-        Configuration block with destination configuration. See below for details.
+        Configuration block with destination configuration. See `destination_config` below.
         """
         return pulumi.get(self, "destination_config")
 
@@ -146,7 +146,7 @@ class _FunctionAsyncInvokeConfigState:
         """
         Input properties used for looking up and filtering FunctionAsyncInvokeConfig resources.
         :param pulumi.Input[str] created_time: The date this resource was created.
-        :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs'] destination_config: Configuration block with destination configuration. See below for details.
+        :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs'] destination_config: Configuration block with destination configuration. See `destination_config` below.
         :param pulumi.Input[str] function_name: Name of the Function Compute Function.
         :param pulumi.Input[str] last_modified_time: The date this resource was last modified.
         :param pulumi.Input[int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
@@ -190,7 +190,7 @@ class _FunctionAsyncInvokeConfigState:
     @pulumi.getter(name="destinationConfig")
     def destination_config(self) -> Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']]:
         """
-        Configuration block with destination configuration. See below for details.
+        Configuration block with destination configuration. See `destination_config` below.
         """
         return pulumi.get(self, "destination_config")
 
@@ -298,9 +298,9 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
                  __props__=None):
         """
         Manages an asynchronous invocation configuration for a FC Function or Alias.\\
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/181866.htm).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-putfunctionasyncinvokeconfig).
 
-        > **NOTE:** Available in 1.100.0+
+        > **NOTE:** Available since v1.100.0.
 
         ## Example Usage
         ### Destination Configuration
@@ -310,16 +310,81 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example = alicloud.fc.FunctionAsyncInvokeConfig("example",
-            service_name=alicloud_fc_service["example"]["name"],
-            function_name=alicloud_fc_function["example"]["name"],
+        default_account = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"	{
+        		"Statement": [
+        		  {
+        			"Action": "sts:AssumeRole",
+        			"Effect": "Allow",
+        			"Principal": {
+        			  "Service": [
+        				"fc.aliyuncs.com"
+        			  ]
+        			}
+        		  }
+        		],
+        		"Version": "1"
+        	}
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_policy = alicloud.ram.Policy("defaultPolicy",
+            policy_name=default_random_integer.result.apply(lambda result: f"examplepolicy{result}"),
+            policy_document=\"\"\"	{
+        		"Version": "1",
+        		"Statement": [
+        		  {
+        			"Action": "mns:*",
+        			"Resource": "*",
+        			"Effect": "Allow"
+        		  }
+        		]
+        	  }
+        \"\"\")
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name=default_policy.name,
+            policy_type="Custom")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            role=default_role.arn,
+            internet_access=False)
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        default_function = alicloud.fc.Function("defaultFunction",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python2.7",
+            handler="hello.handler")
+        default_queue = alicloud.mns.Queue("defaultQueue")
+        default_topic = alicloud.mns.Topic("defaultTopic")
+        default_function_async_invoke_config = alicloud.fc.FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig",
+            service_name=default_service.name,
+            function_name=default_function.name,
             destination_config=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigArgs(
                 on_failure=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs(
-                    destination=the_example_mns_queue_arn,
+                    destination=default_queue.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/queues/{name}/messages"),
                 ),
                 on_success=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs(
-                    destination=the_example_mns_topic_arn,
+                    destination=default_topic.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/topics/{name}/messages"),
                 ),
             ))
         ```
@@ -369,7 +434,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']] destination_config: Configuration block with destination configuration. See below for details.
+        :param pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']] destination_config: Configuration block with destination configuration. See `destination_config` below.
         :param pulumi.Input[str] function_name: Name of the Function Compute Function.
         :param pulumi.Input[int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
         :param pulumi.Input[int] maximum_retry_attempts: Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
@@ -385,9 +450,9 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an asynchronous invocation configuration for a FC Function or Alias.\\
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/181866.htm).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-putfunctionasyncinvokeconfig).
 
-        > **NOTE:** Available in 1.100.0+
+        > **NOTE:** Available since v1.100.0.
 
         ## Example Usage
         ### Destination Configuration
@@ -397,16 +462,81 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example = alicloud.fc.FunctionAsyncInvokeConfig("example",
-            service_name=alicloud_fc_service["example"]["name"],
-            function_name=alicloud_fc_function["example"]["name"],
+        default_account = alicloud.get_account()
+        default_regions = alicloud.get_regions(current=True)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"	{
+        		"Statement": [
+        		  {
+        			"Action": "sts:AssumeRole",
+        			"Effect": "Allow",
+        			"Principal": {
+        			  "Service": [
+        				"fc.aliyuncs.com"
+        			  ]
+        			}
+        		  }
+        		],
+        		"Version": "1"
+        	}
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_policy = alicloud.ram.Policy("defaultPolicy",
+            policy_name=default_random_integer.result.apply(lambda result: f"examplepolicy{result}"),
+            policy_document=\"\"\"	{
+        		"Version": "1",
+        		"Statement": [
+        		  {
+        			"Action": "mns:*",
+        			"Resource": "*",
+        			"Effect": "Allow"
+        		  }
+        		]
+        	  }
+        \"\"\")
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name=default_policy.name,
+            policy_type="Custom")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            role=default_role.arn,
+            internet_access=False)
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+            bucket=default_bucket.id,
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
+        default_function = alicloud.fc.Function("defaultFunction",
+            service=default_service.name,
+            description="example",
+            oss_bucket=default_bucket.id,
+            oss_key=default_bucket_object.key,
+            memory_size=512,
+            runtime="python2.7",
+            handler="hello.handler")
+        default_queue = alicloud.mns.Queue("defaultQueue")
+        default_topic = alicloud.mns.Topic("defaultTopic")
+        default_function_async_invoke_config = alicloud.fc.FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig",
+            service_name=default_service.name,
+            function_name=default_function.name,
             destination_config=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigArgs(
                 on_failure=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs(
-                    destination=the_example_mns_queue_arn,
+                    destination=default_queue.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/queues/{name}/messages"),
                 ),
                 on_success=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs(
-                    destination=the_example_mns_topic_arn,
+                    destination=default_topic.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/topics/{name}/messages"),
                 ),
             ))
         ```
@@ -525,7 +655,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_time: The date this resource was created.
-        :param pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']] destination_config: Configuration block with destination configuration. See below for details.
+        :param pulumi.Input[pulumi.InputType['FunctionAsyncInvokeConfigDestinationConfigArgs']] destination_config: Configuration block with destination configuration. See `destination_config` below.
         :param pulumi.Input[str] function_name: Name of the Function Compute Function.
         :param pulumi.Input[str] last_modified_time: The date this resource was last modified.
         :param pulumi.Input[int] maximum_event_age_in_seconds: Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
@@ -561,7 +691,7 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
     @pulumi.getter(name="destinationConfig")
     def destination_config(self) -> pulumi.Output[Optional['outputs.FunctionAsyncInvokeConfigDestinationConfig']]:
         """
-        Configuration block with destination configuration. See below for details.
+        Configuration block with destination configuration. See `destination_config` below.
         """
         return pulumi.get(self, "destination_config")
 

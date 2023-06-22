@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a VPC Peer Connection resource.
+// Provides a VPC Peer Connection resource. Vpc peer connection.
 //
 // For information about VPC Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
 //
-// > **NOTE:** Available in v1.186.0+.
+// > **NOTE:** Available since v1.186.0.
 //
 // ## Example Usage
 //
@@ -102,8 +102,8 @@ type PeerConnection struct {
 	// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
 	// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
 	// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-	// - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
-	AcceptingAliUid pulumi.IntOutput `pulumi:"acceptingAliUid"`
+	// > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+	AcceptingAliUid pulumi.IntPtrOutput `pulumi:"acceptingAliUid"`
 	// The region ID of the recipient of the VPC peering connection to be created.
 	// - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
 	// - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
@@ -112,15 +112,23 @@ type PeerConnection struct {
 	AcceptingVpcId pulumi.StringOutput `pulumi:"acceptingVpcId"`
 	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
-	// The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
+	// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 	PeerConnectionName pulumi.StringPtrOutput `pulumi:"peerConnectionName"`
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The ID of the requester VPC.
+	// The tags of PrefixList.
+	Tags pulumi.MapOutput `pulumi:"tags"`
+	// You must create a VPC ID on the initiator of a VPC peer connection.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -131,9 +139,6 @@ func NewPeerConnection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AcceptingAliUid == nil {
-		return nil, errors.New("invalid value for required argument 'AcceptingAliUid'")
-	}
 	if args.AcceptingRegionId == nil {
 		return nil, errors.New("invalid value for required argument 'AcceptingRegionId'")
 	}
@@ -168,7 +173,7 @@ type peerConnectionState struct {
 	// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
 	// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
 	// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-	// - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+	// > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
 	AcceptingAliUid *int `pulumi:"acceptingAliUid"`
 	// The region ID of the recipient of the VPC peering connection to be created.
 	// - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
@@ -178,15 +183,23 @@ type peerConnectionState struct {
 	AcceptingVpcId *string `pulumi:"acceptingVpcId"`
 	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+	CreateTime *string `pulumi:"createTime"`
+	// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
+	// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
 	DryRun *bool `pulumi:"dryRun"`
-	// The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 	PeerConnectionName *string `pulumi:"peerConnectionName"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// The ID of the requester VPC.
+	// The tags of PrefixList.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// You must create a VPC ID on the initiator of a VPC peer connection.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -194,7 +207,7 @@ type PeerConnectionState struct {
 	// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
 	// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
 	// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-	// - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+	// > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
 	AcceptingAliUid pulumi.IntPtrInput
 	// The region ID of the recipient of the VPC peering connection to be created.
 	// - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
@@ -204,15 +217,23 @@ type PeerConnectionState struct {
 	AcceptingVpcId pulumi.StringPtrInput
 	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
 	Bandwidth pulumi.IntPtrInput
-	// The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+	CreateTime pulumi.StringPtrInput
+	// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
+	// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
 	DryRun pulumi.BoolPtrInput
-	// The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 	PeerConnectionName pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
-	// The ID of the requester VPC.
+	// The tags of PrefixList.
+	Tags pulumi.MapInput
+	// You must create a VPC ID on the initiator of a VPC peer connection.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -224,8 +245,8 @@ type peerConnectionArgs struct {
 	// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
 	// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
 	// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-	// - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
-	AcceptingAliUid int `pulumi:"acceptingAliUid"`
+	// > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+	AcceptingAliUid *int `pulumi:"acceptingAliUid"`
 	// The region ID of the recipient of the VPC peering connection to be created.
 	// - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
 	// - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
@@ -234,15 +255,21 @@ type peerConnectionArgs struct {
 	AcceptingVpcId string `pulumi:"acceptingVpcId"`
 	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
+	// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
 	DryRun *bool `pulumi:"dryRun"`
-	// The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 	PeerConnectionName *string `pulumi:"peerConnectionName"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// The ID of the requester VPC.
+	// The tags of PrefixList.
+	Tags map[string]interface{} `pulumi:"tags"`
+	// You must create a VPC ID on the initiator of a VPC peer connection.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -251,8 +278,8 @@ type PeerConnectionArgs struct {
 	// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
 	// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
 	// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-	// - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
-	AcceptingAliUid pulumi.IntInput
+	// > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+	AcceptingAliUid pulumi.IntPtrInput
 	// The region ID of the recipient of the VPC peering connection to be created.
 	// - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
 	// - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
@@ -261,15 +288,21 @@ type PeerConnectionArgs struct {
 	AcceptingVpcId pulumi.StringInput
 	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
 	Bandwidth pulumi.IntPtrInput
-	// The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// The dry run.
+	// Whether to PreCheck only this request. Value:
+	// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+	// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
 	DryRun pulumi.BoolPtrInput
-	// The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+	// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 	PeerConnectionName pulumi.StringPtrInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
-	// The ID of the requester VPC.
+	// The tags of PrefixList.
+	Tags pulumi.MapInput
+	// You must create a VPC ID on the initiator of a VPC peer connection.
 	VpcId pulumi.StringInput
 }
 
@@ -363,9 +396,9 @@ func (o PeerConnectionOutput) ToPeerConnectionOutputWithContext(ctx context.Cont
 // The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
 // - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
 // - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-// - If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
-func (o PeerConnectionOutput) AcceptingAliUid() pulumi.IntOutput {
-	return o.ApplyT(func(v *PeerConnection) pulumi.IntOutput { return v.AcceptingAliUid }).(pulumi.IntOutput)
+// > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+func (o PeerConnectionOutput) AcceptingAliUid() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PeerConnection) pulumi.IntPtrOutput { return v.AcceptingAliUid }).(pulumi.IntPtrOutput)
 }
 
 // The region ID of the recipient of the VPC peering connection to be created.
@@ -385,19 +418,31 @@ func (o PeerConnectionOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// The description of the VPC peer connection to be created. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
+func (o PeerConnectionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PeerConnection) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 func (o PeerConnectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The dry run.
+// Whether to PreCheck only this request. Value:
+// - **true**: The check request is sent without creating a VPC peer-to-peer connection. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+// - **false** (default): A normal request is sent. After checking, the HTTP 2xx status code is returned and the operation is performed directly.
 func (o PeerConnectionOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+// The name of the resource. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
 func (o PeerConnectionOutput) PeerConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.StringPtrOutput { return v.PeerConnectionName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the resource group.
+func (o PeerConnectionOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PeerConnection) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The status of the resource.
@@ -405,7 +450,12 @@ func (o PeerConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the requester VPC.
+// The tags of PrefixList.
+func (o PeerConnectionOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *PeerConnection) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
+// You must create a VPC ID on the initiator of a VPC peer connection.
 func (o PeerConnectionOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PeerConnection) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

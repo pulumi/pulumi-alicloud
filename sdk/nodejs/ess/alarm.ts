@@ -7,62 +7,84 @@ import * as utilities from "../utilities";
 /**
  * Provides a ESS alarm task resource.
  *
+ * For information about ess alarm, see [CreateAlarm](https://www.alibabacloud.com/help/en/auto-scaling/latest/createalarm).
+ *
+ * > **NOTE:** Available since v1.15.0.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const ecsImage = alicloud.ecs.getImages({
- *     mostRecent: true,
- *     nameRegex: "^centos_6\\w{1,5}[64].*",
- * });
  * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
  *     availabilityZone: defaultZones.zones?.[0]?.id,
- *     cpuCoreCount: 1,
- *     memorySize: 2,
+ *     cpuCoreCount: 2,
+ *     memorySize: 4,
  * }));
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/16"});
- * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
- *     vswitchName: "tf-testAccEssAlarm_basic_foo",
- *     vpcId: fooNetwork.id,
+ * const defaultImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
  * });
- * const bar = new alicloud.vpc.Switch("bar", {
- *     vswitchName: "tf-testAccEssAlarm_basic_bar",
- *     vpcId: fooNetwork.id,
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
+ * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule", {
+ *     type: "ingress",
+ *     ipProtocol: "tcp",
+ *     nicType: "intranet",
+ *     policy: "accept",
+ *     portRange: "22/22",
+ *     priority: 1,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     cidrIp: "172.16.0.0/24",
+ * });
+ * const default2 = new alicloud.vpc.Switch("default2", {
+ *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.1.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: `${name}-bar`,
  * });
- * const fooScalingGroup = new alicloud.ess.ScalingGroup("fooScalingGroup", {
+ * const defaultScalingGroup = new alicloud.ess.ScalingGroup("defaultScalingGroup", {
  *     minSize: 1,
  *     maxSize: 1,
- *     scalingGroupName: "tf-testAccEssAlarm_basic",
+ *     scalingGroupName: name,
+ *     defaultCooldown: 20,
+ *     vswitchIds: [
+ *         defaultSwitch.id,
+ *         default2.id,
+ *     ],
  *     removalPolicies: [
  *         "OldestInstance",
  *         "NewestInstance",
  *     ],
- *     vswitchIds: [
- *         fooSwitch.id,
- *         bar.id,
- *     ],
  * });
- * const fooScalingRule = new alicloud.ess.ScalingRule("fooScalingRule", {
- *     scalingRuleName: "tf-testAccEssAlarm_basic",
- *     scalingGroupId: fooScalingGroup.id,
+ * const defaultScalingRule = new alicloud.ess.ScalingRule("defaultScalingRule", {
+ *     scalingRuleName: name,
+ *     scalingGroupId: defaultScalingGroup.id,
  *     adjustmentType: "TotalCapacity",
  *     adjustmentValue: 2,
  *     cooldown: 60,
  * });
- * const fooAlarm = new alicloud.ess.Alarm("fooAlarm", {
- *     description: "Acc alarm test",
- *     alarmActions: [fooScalingRule.ari],
- *     scalingGroupId: fooScalingGroup.id,
+ * const defaultAlarm = new alicloud.ess.Alarm("defaultAlarm", {
+ *     description: name,
+ *     alarmActions: [defaultScalingRule.ari],
+ *     scalingGroupId: defaultScalingGroup.id,
  *     metricType: "system",
  *     metricName: "CpuUtilization",
  *     period: 300,
@@ -76,31 +98,6 @@ import * as utilities from "../utilities";
  *
  * You can use to the existing autoscaling-rule module
  * to create alarm task, different type rules and scheduled task one-click.
- *
- * ## Block metricNames_and_dimensions
- *
- * Supported metric names and dimensions :
- *
- * | MetricName         | Dimensions                   |
- * | ------------------ | ---------------------------- |
- * | CpuUtilization     | user_id,scaling_group        |
- * | ClassicInternetRx  | user_id,scaling_group        |
- * | ClassicInternetTx  | user_id,scaling_group        |
- * | VpcInternetRx      | user_id,scaling_group        |
- * | VpcInternetTx      | user_id,scaling_group        |
- * | IntranetRx         | user_id,scaling_group        |
- * | IntranetTx         | user_id,scaling_group        |
- * | LoadAverage        | user_id,scaling_group        |
- * | MemoryUtilization  | user_id,scaling_group        |
- * | SystemDiskReadBps  | user_id,scaling_group        |
- * | SystemDiskWriteBps | user_id,scaling_group        |
- * | SystemDiskReadOps  | user_id,scaling_group        |
- * | SystemDiskWriteOps | user_id,scaling_group        |
- * | PackagesNetIn      | user_id,scaling_group,device |
- * | PackagesNetOut     | user_id,scaling_group,device |
- * | TcpConnection      | user_id,scaling_group,state  |
- *
- * > **NOTE:** Dimension `userId` and `scalingGroup` is automatically filled, which means you only need to care about dimension `device` and `state` when needed.
  *
  * ## Import
  *
@@ -155,7 +152,7 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+     * The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -187,7 +184,10 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly scalingGroupId!: pulumi.Output<string>;
     /**
-     * The state of specified alarm.
+     * The status of the event-triggered task. Valid values:
+     * - ALARM: The alert condition is met and an alert is triggered.
+     * - OK: The alert condition is not met.
+     * - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -283,7 +283,7 @@ export interface AlarmState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+     * The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
      */
     dimensions?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -315,7 +315,10 @@ export interface AlarmState {
      */
     scalingGroupId?: pulumi.Input<string>;
     /**
-     * The state of specified alarm.
+     * The status of the event-triggered task. Valid values:
+     * - ALARM: The alert condition is met and an alert is triggered.
+     * - OK: The alert condition is not met.
+     * - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
      */
     state?: pulumi.Input<string>;
     /**
@@ -349,7 +352,7 @@ export interface AlarmArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+     * The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
      */
     dimensions?: pulumi.Input<{[key: string]: any}>;
     /**

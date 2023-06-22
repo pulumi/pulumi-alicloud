@@ -802,8 +802,12 @@ class Etl(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             retention_period=3650,
@@ -826,10 +830,10 @@ class Etl(pulumi.CustomResource):
             max_split_shard_count=60,
             append_meta=True)
         example_etl = alicloud.log.Etl("exampleEtl",
-            etl_name="etl_name",
+            etl_name="terraform-example",
             project=example_project.name,
-            display_name="display_name",
-            description="etl_description",
+            display_name="terraform-example",
+            description="terraform-example",
             access_key_id="access_key_id",
             access_key_secret="access_key_secret",
             script="e_set('new','key')",
@@ -850,74 +854,6 @@ class Etl(pulumi.CustomResource):
                     endpoint="cn-hangzhou.log.aliyuncs.com",
                     project=example_project.name,
                     logstore=example3.name,
-                ),
-            ])
-        ```
-        Stop the task in progress
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.log.Etl("example",
-            status=stopped,
-            etl_name="etl_name",
-            project=alicloud_log_project["example"]["name"],
-            display_name="display_name",
-            description="etl_description",
-            access_key_id="access_key_id",
-            access_key_secret="access_key_secret",
-            script="e_set('new','key')",
-            logstore=alicloud_log_store["example"]["name"],
-            etl_sinks=[
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name",
-                    access_key_id="example2_access_key_id",
-                    access_key_secret="example2_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                ),
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name2",
-                    access_key_id="example3_access_key_id",
-                    access_key_secret="example3_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                ),
-            ])
-        ```
-        ReStart the stopped task
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.log.Etl("example",
-            status=running,
-            etl_name="etl_name",
-            project=alicloud_log_project["example"]["name"],
-            display_name="display_name",
-            description="etl_description",
-            access_key_id="access_key_id",
-            access_key_secret="access_key_secret",
-            script="e_set('new','key')",
-            logstore=alicloud_log_store["example"]["name"],
-            etl_sinks=[
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name",
-                    access_key_id="example2_access_key_id",
-                    access_key_secret="example2_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                ),
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name2",
-                    access_key_id="example3_access_key_id",
-                    access_key_secret="example3_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 ),
             ])
         ```
@@ -976,8 +912,12 @@ class Etl(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example_project = alicloud.log.Project("exampleProject", description="created by terraform")
+        default = random.RandomInteger("default",
+            max=99999,
+            min=10000)
+        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
         example_store = alicloud.log.Store("exampleStore",
             project=example_project.name,
             retention_period=3650,
@@ -1000,10 +940,10 @@ class Etl(pulumi.CustomResource):
             max_split_shard_count=60,
             append_meta=True)
         example_etl = alicloud.log.Etl("exampleEtl",
-            etl_name="etl_name",
+            etl_name="terraform-example",
             project=example_project.name,
-            display_name="display_name",
-            description="etl_description",
+            display_name="terraform-example",
+            description="terraform-example",
             access_key_id="access_key_id",
             access_key_secret="access_key_secret",
             script="e_set('new','key')",
@@ -1024,74 +964,6 @@ class Etl(pulumi.CustomResource):
                     endpoint="cn-hangzhou.log.aliyuncs.com",
                     project=example_project.name,
                     logstore=example3.name,
-                ),
-            ])
-        ```
-        Stop the task in progress
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.log.Etl("example",
-            status=stopped,
-            etl_name="etl_name",
-            project=alicloud_log_project["example"]["name"],
-            display_name="display_name",
-            description="etl_description",
-            access_key_id="access_key_id",
-            access_key_secret="access_key_secret",
-            script="e_set('new','key')",
-            logstore=alicloud_log_store["example"]["name"],
-            etl_sinks=[
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name",
-                    access_key_id="example2_access_key_id",
-                    access_key_secret="example2_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                ),
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name2",
-                    access_key_id="example3_access_key_id",
-                    access_key_secret="example3_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                ),
-            ])
-        ```
-        ReStart the stopped task
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        example = alicloud.log.Etl("example",
-            status=running,
-            etl_name="etl_name",
-            project=alicloud_log_project["example"]["name"],
-            display_name="display_name",
-            description="etl_description",
-            access_key_id="access_key_id",
-            access_key_secret="access_key_secret",
-            script="e_set('new','key')",
-            logstore=alicloud_log_store["example"]["name"],
-            etl_sinks=[
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name",
-                    access_key_id="example2_access_key_id",
-                    access_key_secret="example2_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                ),
-                alicloud.log.EtlEtlSinkArgs(
-                    name="target_name2",
-                    access_key_id="example3_access_key_id",
-                    access_key_secret="example3_access_key_secret",
-                    endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                    logstore=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 ),
             ])
         ```

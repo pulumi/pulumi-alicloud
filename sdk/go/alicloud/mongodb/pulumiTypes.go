@@ -11,7 +11,7 @@ import (
 )
 
 type InstanceParameter struct {
-	// The name of DB instance. It a string of 2 to 256 characters.
+	// The name of the parameter.
 	Name string `pulumi:"name"`
 	// The value of the parameter.
 	Value string `pulumi:"value"`
@@ -29,7 +29,7 @@ type InstanceParameterInput interface {
 }
 
 type InstanceParameterArgs struct {
-	// The name of DB instance. It a string of 2 to 256 characters.
+	// The name of the parameter.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the parameter.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -86,7 +86,7 @@ func (o InstanceParameterOutput) ToInstanceParameterOutputWithContext(ctx contex
 	return o
 }
 
-// The name of DB instance. It a string of 2 to 256 characters.
+// The name of the parameter.
 func (o InstanceParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -389,14 +389,13 @@ type ShardingInstanceConfigServerList struct {
 	MaxConnections *int `pulumi:"maxConnections"`
 	// The maximum IOPS of the Config Server node.
 	MaxIops *int `pulumi:"maxIops"`
-	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	// The node class of the Config Server node.
 	NodeClass *string `pulumi:"nodeClass"`
 	// The description of the Config Server node.
 	NodeDescription *string `pulumi:"nodeDescription"`
 	// The ID of the Config Server node.
 	NodeId *string `pulumi:"nodeId"`
-	// - Custom storage space; value range: [10, 1,000]
-	// - 10-GB increments. Unit: GB.
+	// The node storage of the Config Server node.
 	NodeStorage *int `pulumi:"nodeStorage"`
 	// The connection port of the Config Server node.
 	Port *int `pulumi:"port"`
@@ -420,14 +419,13 @@ type ShardingInstanceConfigServerListArgs struct {
 	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
 	// The maximum IOPS of the Config Server node.
 	MaxIops pulumi.IntPtrInput `pulumi:"maxIops"`
-	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	// The node class of the Config Server node.
 	NodeClass pulumi.StringPtrInput `pulumi:"nodeClass"`
 	// The description of the Config Server node.
 	NodeDescription pulumi.StringPtrInput `pulumi:"nodeDescription"`
 	// The ID of the Config Server node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
-	// - Custom storage space; value range: [10, 1,000]
-	// - 10-GB increments. Unit: GB.
+	// The node storage of the Config Server node.
 	NodeStorage pulumi.IntPtrInput `pulumi:"nodeStorage"`
 	// The connection port of the Config Server node.
 	Port pulumi.IntPtrInput `pulumi:"port"`
@@ -499,7 +497,7 @@ func (o ShardingInstanceConfigServerListOutput) MaxIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *int { return v.MaxIops }).(pulumi.IntPtrOutput)
 }
 
-// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+// The node class of the Config Server node.
 func (o ShardingInstanceConfigServerListOutput) NodeClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *string { return v.NodeClass }).(pulumi.StringPtrOutput)
 }
@@ -514,8 +512,7 @@ func (o ShardingInstanceConfigServerListOutput) NodeId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
 
-// - Custom storage space; value range: [10, 1,000]
-// - 10-GB increments. Unit: GB.
+// The node storage of the Config Server node.
 func (o ShardingInstanceConfigServerListOutput) NodeStorage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *int { return v.NodeStorage }).(pulumi.IntPtrOutput)
 }
@@ -546,13 +543,13 @@ func (o ShardingInstanceConfigServerListArrayOutput) Index(i pulumi.IntInput) Sh
 }
 
 type ShardingInstanceMongoList struct {
-	// The connection address of the Config Server node.
+	// Mongo node connection string.
 	ConnectString *string `pulumi:"connectString"`
 	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass string `pulumi:"nodeClass"`
-	// The ID of the Config Server node.
+	// The ID of the mongo-node.
 	NodeId *string `pulumi:"nodeId"`
-	// The connection port of the Config Server node.
+	// Mongo node port.
 	Port *int `pulumi:"port"`
 }
 
@@ -568,13 +565,13 @@ type ShardingInstanceMongoListInput interface {
 }
 
 type ShardingInstanceMongoListArgs struct {
-	// The connection address of the Config Server node.
+	// Mongo node connection string.
 	ConnectString pulumi.StringPtrInput `pulumi:"connectString"`
 	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass pulumi.StringInput `pulumi:"nodeClass"`
-	// The ID of the Config Server node.
+	// The ID of the mongo-node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
-	// The connection port of the Config Server node.
+	// Mongo node port.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -629,7 +626,7 @@ func (o ShardingInstanceMongoListOutput) ToShardingInstanceMongoListOutputWithCo
 	return o
 }
 
-// The connection address of the Config Server node.
+// Mongo node connection string.
 func (o ShardingInstanceMongoListOutput) ConnectString() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceMongoList) *string { return v.ConnectString }).(pulumi.StringPtrOutput)
 }
@@ -639,12 +636,12 @@ func (o ShardingInstanceMongoListOutput) NodeClass() pulumi.StringOutput {
 	return o.ApplyT(func(v ShardingInstanceMongoList) string { return v.NodeClass }).(pulumi.StringOutput)
 }
 
-// The ID of the Config Server node.
+// The ID of the mongo-node.
 func (o ShardingInstanceMongoListOutput) NodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceMongoList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
 
-// The connection port of the Config Server node.
+// Mongo node port.
 func (o ShardingInstanceMongoListOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceMongoList) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -672,7 +669,7 @@ func (o ShardingInstanceMongoListArrayOutput) Index(i pulumi.IntInput) ShardingI
 type ShardingInstanceShardList struct {
 	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass string `pulumi:"nodeClass"`
-	// The ID of the Config Server node.
+	// The ID of the shard-node.
 	NodeId *string `pulumi:"nodeId"`
 	// - Custom storage space; value range: [10, 1,000]
 	// - 10-GB increments. Unit: GB.
@@ -695,7 +692,7 @@ type ShardingInstanceShardListInput interface {
 type ShardingInstanceShardListArgs struct {
 	// Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
 	NodeClass pulumi.StringInput `pulumi:"nodeClass"`
-	// The ID of the Config Server node.
+	// The ID of the shard-node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
 	// - Custom storage space; value range: [10, 1,000]
 	// - 10-GB increments. Unit: GB.
@@ -760,7 +757,7 @@ func (o ShardingInstanceShardListOutput) NodeClass() pulumi.StringOutput {
 	return o.ApplyT(func(v ShardingInstanceShardList) string { return v.NodeClass }).(pulumi.StringOutput)
 }
 
-// The ID of the Config Server node.
+// The ID of the shard-node.
 func (o ShardingInstanceShardListOutput) NodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceShardList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }

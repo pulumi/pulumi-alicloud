@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
  * 
- * &gt; **NOTE:**  Available in 1.37.0+
+ * &gt; **NOTE:** Available since v1.37.0.
  * 
  * &gt; **NOTE:**  The following regions don&#39;t support create Classic network MongoDB instance.
  * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+ * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -62,28 +62,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;MongoDB&#34;)
- *             .build());
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultZones = MongodbFunctions.getZones();
+ * 
+ *         final var index = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()).length() - 1;
+ * 
+ *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones())[index].id();
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(zoneId)
  *             .build());
  * 
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .engineVersion(&#34;3.4&#34;)
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .engineVersion(&#34;4.2&#34;)
  *             .dbInstanceClass(&#34;dds.mongo.mid&#34;)
  *             .dbInstanceStorage(10)
  *             .vswitchId(defaultSwitch.id())
  *             .securityIpLists(            
  *                 &#34;10.168.1.12&#34;,
  *                 &#34;100.69.7.112&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
  *             .build());
  * 
  *     }
@@ -325,7 +335,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
-     *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
      * 
      */
     @Export(name="orderType", type=String.class, parameters={})
@@ -335,21 +345,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
-     *   Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
      * 
      */
     public Output<Optional<String>> orderType() {
         return Codegen.optional(this.orderType);
     }
     /**
-     * Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
      * 
      */
     @Export(name="parameters", type=List.class, parameters={InstanceParameter.class})
     private Output<List<InstanceParameter>> parameters;
 
     /**
-     * @return Set of parameters needs to be set after mongodb instance was launched. See the following `Block parameters`.
+     * @return Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
      * 
      */
     public Output<List<InstanceParameter>> parameters() {
@@ -398,14 +408,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.replicaSetName;
     }
     /**
-     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
      * 
      */
     @Export(name="replicaSets", type=List.class, parameters={InstanceReplicaSet.class})
     private Output<List<InstanceReplicaSet>> replicaSets;
 
     /**
-     * @return Replica set instance information. The details see Block replica_sets. **NOTE:** Available in v1.140+.
+     * @return Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
      * 
      */
     public Output<List<InstanceReplicaSet>> replicaSets() {

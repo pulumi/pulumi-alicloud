@@ -23,6 +23,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// configured.
         /// </summary>
         public readonly string? Server;
+        /// <summary>
+        /// The username used to log on to the image repository. It is required
+        /// when `image_registry_credential` is configured.
+        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

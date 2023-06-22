@@ -15,38 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ForwardingRuleRuleCondition {
     /**
-     * @return Domain name configuration information.
+     * @return The configuration of the domain name. See `host_config` below.
      * 
      */
     private @Nullable List<ForwardingRuleRuleConditionHostConfig> hostConfigs;
     /**
-     * @return Path configuration information.
+     * @return The configuration of the path. See `path_config` below.
      * 
      */
     private @Nullable ForwardingRuleRuleConditionPathConfig pathConfig;
     /**
-     * @return Forwarding condition type. Valid value: `Host`, `Path`.
+     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`.
      * 
      */
     private String ruleConditionType;
 
     private ForwardingRuleRuleCondition() {}
     /**
-     * @return Domain name configuration information.
+     * @return The configuration of the domain name. See `host_config` below.
      * 
      */
     public List<ForwardingRuleRuleConditionHostConfig> hostConfigs() {
         return this.hostConfigs == null ? List.of() : this.hostConfigs;
     }
     /**
-     * @return Path configuration information.
+     * @return The configuration of the path. See `path_config` below.
      * 
      */
     public Optional<ForwardingRuleRuleConditionPathConfig> pathConfig() {
         return Optional.ofNullable(this.pathConfig);
     }
     /**
-     * @return Forwarding condition type. Valid value: `Host`, `Path`.
+     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`.
      * 
      */
     public String ruleConditionType() {

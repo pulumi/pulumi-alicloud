@@ -24,14 +24,22 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-//				Description: pulumi.String("created by terraform"),
+//				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -57,32 +65,61 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kms"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			exampleAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleKey, err := kms.NewKey(ctx, "exampleKey", &kms.KeyArgs{
+//				Description:         pulumi.String("terraform-example"),
+//				PendingWindowInDays: pulumi.Int(7),
+//				Status:              pulumi.String("Enabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
-//				Description: pulumi.String("created by terraform"),
+//				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = log.NewStore(ctx, "exampleStore", &log.StoreArgs{
 //				Project:            exampleProject.Name,
-//				ShardCount:         pulumi.Int(3),
+//				ShardCount:         pulumi.Int(1),
 //				AutoSplit:          pulumi.Bool(true),
 //				MaxSplitShardCount: pulumi.Int(60),
-//				AppendMeta:         pulumi.Bool(true),
 //				EncryptConf: &log.StoreEncryptConfArgs{
 //					Enable:      pulumi.Bool(true),
 //					EncryptType: pulumi.String("default"),
 //					UserCmkInfo: &log.StoreEncryptConfUserCmkInfoArgs{
-//						CmkKeyId: pulumi.String("your_cmk_key_id"),
-//						Arn:      pulumi.String("your_role_arn"),
-//						RegionId: pulumi.String("you_cmk_region_id"),
+//						CmkKeyId: exampleKey.ID(),
+//						Arn:      pulumi.String(fmt.Sprintf("acs:ram::%v:role/aliyunlogdefaultrole", exampleAccount.Id)),
+//						RegionId: pulumi.String(region),
 //					},
 //				},
 //			})

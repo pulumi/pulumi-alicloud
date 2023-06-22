@@ -15,7 +15,7 @@ import (
 //
 // For information about Global Accelerator (GA) Access Log and how to use it, see [What is Access Log](https://www.alibabacloud.com/help/en/global-accelerator/latest/attachlogstoretoendpointgroup).
 //
-// > **NOTE:** Available in v1.187.0+.
+// > **NOTE:** Available since v1.187.0.
 //
 // ## Example Usage
 //
@@ -29,15 +29,23 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccelerators, err := ga.GetAccelerators(ctx, &ga.GetAcceleratorsArgs{
-//				Status: pulumi.StringRef("active"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			_, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -47,6 +55,14 @@ import (
 //			}
 //			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
 //				Project: defaultProject.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
+//				Duration:      pulumi.Int(1),
+//				AutoUseCoupon: pulumi.Bool(true),
+//				Spec:          pulumi.String("2"),
 //			})
 //			if err != nil {
 //				return err
@@ -63,18 +79,20 @@ import (
 //				return err
 //			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      *pulumi.String(defaultAccelerators.Accelerators[0].Id),
+//				AcceleratorId:      defaultAccelerator.ID(),
 //				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultListener, err := ga.NewListener(ctx, "defaultListener", &ga.ListenerArgs{
-//				AcceleratorId: defaultBandwidthPackageAttachment.AcceleratorId,
+//				AcceleratorId:  defaultBandwidthPackageAttachment.AcceleratorId,
+//				ClientAffinity: pulumi.String("SOURCE_IP"),
+//				Protocol:       pulumi.String("HTTP"),
 //				PortRanges: ga.ListenerPortRangeArray{
 //					&ga.ListenerPortRangeArgs{
-//						FromPort: pulumi.Int(80),
-//						ToPort:   pulumi.Int(80),
+//						FromPort: pulumi.Int(70),
+//						ToPort:   pulumi.Int(70),
 //					},
 //				},
 //			})
@@ -82,7 +100,9 @@ import (
 //				return err
 //			}
 //			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
-//				PaymentType: pulumi.String("PayAsYouGo"),
+//				Bandwidth:          pulumi.String("10"),
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//				AddressName:        pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -96,19 +116,19 @@ import (
 //						Weight:   pulumi.Int(20),
 //					},
 //				},
-//				EndpointGroupRegion: pulumi.String("cn-hangzhou"),
+//				EndpointGroupRegion: pulumi.String(region),
 //				ListenerId:          defaultListener.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = ga.NewAccessLog(ctx, "defaultAccessLog", &ga.AccessLogArgs{
-//				AcceleratorId:   *pulumi.String(defaultAccelerators.Accelerators[0].Id),
+//				AcceleratorId:   defaultAccelerator.ID(),
 //				ListenerId:      defaultListener.ID(),
 //				EndpointGroupId: defaultEndpointGroup.ID(),
 //				SlsProjectName:  defaultProject.Name,
 //				SlsLogStoreName: defaultStore.Name,
-//				SlsRegionId:     pulumi.String("cn-hangzhou"),
+//				SlsRegionId:     pulumi.String(region),
 //			})
 //			if err != nil {
 //				return err

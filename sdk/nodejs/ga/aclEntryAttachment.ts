@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Global Accelerator (GA) Acl entry attachment and how to use it, see [What is Acl entry attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-addentriestoacl).
  *
- * > **NOTE:** Available in v1.190.0+.
+ * > **NOTE:** Available since v1.190.0.
  *
  * ## Example Usage
  *

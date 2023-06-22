@@ -47,14 +47,12 @@ class EciScalingConfigurationArgs:
         """
         The set of arguments for constructing a EciScalingConfiguration resource.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a eci scaling configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. The details see
-               Block `acr_registry_info`.See Block acr_registry_info below for
-               details.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         :param pulumi.Input[bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
                one configuration can be active. Default to `false`.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers.See Block container below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
@@ -64,14 +62,12 @@ class EciScalingConfigurationArgs:
         :param pulumi.Input[bool] enable_sls: Enable sls log service.
         :param pulumi.Input[bool] force_delete: The eci scaling configuration will be deleted forcibly with deleting its scaling group.
                Default to false.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationHostAliasArgs']]] host_aliases: HostAliases.See Block host_alias below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationHostAliasArgs']]] host_aliases: HostAliases. See `host_aliases` below.
         :param pulumi.Input[str] host_name: Hostname of an ECI instance.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. The details see
-               Block `image_registry_credential`.See Block image_registry_credential below for
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential.   See `image_registry_credentials` below for
                details.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]] init_containers: The list of initContainers.See Block init_container below for
-               details.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]] init_containers: The list of initContainers. See `init_containers` below for details.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: ID of resource group.
@@ -90,7 +86,7 @@ class EciScalingConfigurationArgs:
                be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
                a null string.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]] volumes: The list of volumes.See Block volume below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]] volumes: The list of volumes. See `volumes` below for details.
         """
         pulumi.set(__self__, "scaling_group_id", scaling_group_id)
         if acr_registry_infos is not None:
@@ -164,9 +160,7 @@ class EciScalingConfigurationArgs:
     @pulumi.getter(name="acrRegistryInfos")
     def acr_registry_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]]]:
         """
-        Information about the Container Registry Enterprise Edition instance. The details see
-        Block `acr_registry_info`.See Block acr_registry_info below for
-        details.
+        Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         """
         return pulumi.get(self, "acr_registry_infos")
 
@@ -215,7 +209,7 @@ class EciScalingConfigurationArgs:
     @pulumi.getter
     def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]]]:
         """
-        The list of containers.See Block container below for details.
+        The list of containers. See `containers` below for details.
         """
         return pulumi.get(self, "containers")
 
@@ -313,7 +307,7 @@ class EciScalingConfigurationArgs:
     @pulumi.getter(name="hostAliases")
     def host_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationHostAliasArgs']]]]:
         """
-        HostAliases.See Block host_alias below for details.
+        HostAliases. See `host_aliases` below.
         """
         return pulumi.get(self, "host_aliases")
 
@@ -337,8 +331,7 @@ class EciScalingConfigurationArgs:
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationImageRegistryCredentialArgs']]]]:
         """
-        The image registry credential. The details see
-        Block `image_registry_credential`.See Block image_registry_credential below for
+        The image registry credential.   See `image_registry_credentials` below for
         details.
         """
         return pulumi.get(self, "image_registry_credentials")
@@ -363,8 +356,7 @@ class EciScalingConfigurationArgs:
     @pulumi.getter(name="initContainers")
     def init_containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]]]:
         """
-        The list of initContainers.See Block init_container below for
-        details.
+        The list of initContainers. See `init_containers` below for details.
         """
         return pulumi.get(self, "init_containers")
 
@@ -493,7 +485,7 @@ class EciScalingConfigurationArgs:
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]]:
         """
-        The list of volumes.See Block volume below for details.
+        The list of volumes. See `volumes` below for details.
         """
         return pulumi.get(self, "volumes")
 
@@ -535,14 +527,12 @@ class _EciScalingConfigurationState:
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None):
         """
         Input properties used for looking up and filtering EciScalingConfiguration resources.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. The details see
-               Block `acr_registry_info`.See Block acr_registry_info below for
-               details.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         :param pulumi.Input[bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
                one configuration can be active. Default to `false`.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers.See Block container below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
@@ -552,14 +542,12 @@ class _EciScalingConfigurationState:
         :param pulumi.Input[bool] enable_sls: Enable sls log service.
         :param pulumi.Input[bool] force_delete: The eci scaling configuration will be deleted forcibly with deleting its scaling group.
                Default to false.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationHostAliasArgs']]] host_aliases: HostAliases.See Block host_alias below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationHostAliasArgs']]] host_aliases: HostAliases. See `host_aliases` below.
         :param pulumi.Input[str] host_name: Hostname of an ECI instance.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential. The details see
-               Block `image_registry_credential`.See Block image_registry_credential below for
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationImageRegistryCredentialArgs']]] image_registry_credentials: The image registry credential.   See `image_registry_credentials` below for
                details.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]] init_containers: The list of initContainers.See Block init_container below for
-               details.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]] init_containers: The list of initContainers. See `init_containers` below for details.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: ID of resource group.
@@ -579,7 +567,7 @@ class _EciScalingConfigurationState:
                be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
                a null string.
-        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]] volumes: The list of volumes.See Block volume below for details.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]] volumes: The list of volumes. See `volumes` below for details.
         """
         if acr_registry_infos is not None:
             pulumi.set(__self__, "acr_registry_infos", acr_registry_infos)
@@ -642,9 +630,7 @@ class _EciScalingConfigurationState:
     @pulumi.getter(name="acrRegistryInfos")
     def acr_registry_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationAcrRegistryInfoArgs']]]]:
         """
-        Information about the Container Registry Enterprise Edition instance. The details see
-        Block `acr_registry_info`.See Block acr_registry_info below for
-        details.
+        Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         """
         return pulumi.get(self, "acr_registry_infos")
 
@@ -693,7 +679,7 @@ class _EciScalingConfigurationState:
     @pulumi.getter
     def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]]]:
         """
-        The list of containers.See Block container below for details.
+        The list of containers. See `containers` below for details.
         """
         return pulumi.get(self, "containers")
 
@@ -791,7 +777,7 @@ class _EciScalingConfigurationState:
     @pulumi.getter(name="hostAliases")
     def host_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationHostAliasArgs']]]]:
         """
-        HostAliases.See Block host_alias below for details.
+        HostAliases. See `host_aliases` below.
         """
         return pulumi.get(self, "host_aliases")
 
@@ -815,8 +801,7 @@ class _EciScalingConfigurationState:
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationImageRegistryCredentialArgs']]]]:
         """
-        The image registry credential. The details see
-        Block `image_registry_credential`.See Block image_registry_credential below for
+        The image registry credential.   See `image_registry_credentials` below for
         details.
         """
         return pulumi.get(self, "image_registry_credentials")
@@ -841,8 +826,7 @@ class _EciScalingConfigurationState:
     @pulumi.getter(name="initContainers")
     def init_containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]]]:
         """
-        The list of initContainers.See Block init_container below for
-        details.
+        The list of initContainers. See `init_containers` below for details.
         """
         return pulumi.get(self, "init_containers")
 
@@ -983,7 +967,7 @@ class _EciScalingConfigurationState:
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]]:
         """
-        The list of volumes.See Block volume below for details.
+        The list of volumes. See `volumes` below for details.
         """
         return pulumi.get(self, "volumes")
 
@@ -1029,7 +1013,9 @@ class EciScalingConfiguration(pulumi.CustomResource):
         """
         Provides a ESS eci scaling configuration resource.
 
-        > **NOTE:** Resource `ess.AlbServerGroupAttachment` is available in 1.164.0+.
+        For information about ess eci scaling configuration, see [CreateEciScalingConfiguration](https://www.alibabacloud.com/help/en/auto-scaling/latest/create-eci-scaling-configuration).
+
+        > **NOTE:** Available since v1.164.0.
 
         ## Example Usage
 
@@ -1042,12 +1028,16 @@ class EciScalingConfiguration(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "essscalingconfiguration"
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=data["alicloud_zones"]["default"]["zones"][0]["id"],
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
@@ -1084,14 +1074,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. The details see
-               Block `acr_registry_info`.See Block acr_registry_info below for
-               details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         :param pulumi.Input[bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
                one configuration can be active. Default to `false`.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]] containers: The list of containers.See Block container below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
@@ -1101,14 +1089,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_sls: Enable sls log service.
         :param pulumi.Input[bool] force_delete: The eci scaling configuration will be deleted forcibly with deleting its scaling group.
                Default to false.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationHostAliasArgs']]]] host_aliases: HostAliases.See Block host_alias below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationHostAliasArgs']]]] host_aliases: HostAliases. See `host_aliases` below.
         :param pulumi.Input[str] host_name: Hostname of an ECI instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. The details see
-               Block `image_registry_credential`.See Block image_registry_credential below for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential.   See `image_registry_credentials` below for
                details.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]] init_containers: The list of initContainers.See Block init_container below for
-               details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]] init_containers: The list of initContainers. See `init_containers` below for details.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: ID of resource group.
@@ -1128,7 +1114,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
                a null string.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationVolumeArgs']]]] volumes: The list of volumes.See Block volume below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationVolumeArgs']]]] volumes: The list of volumes. See `volumes` below for details.
         """
         ...
     @overload
@@ -1139,7 +1125,9 @@ class EciScalingConfiguration(pulumi.CustomResource):
         """
         Provides a ESS eci scaling configuration resource.
 
-        > **NOTE:** Resource `ess.AlbServerGroupAttachment` is available in 1.164.0+.
+        For information about ess eci scaling configuration, see [CreateEciScalingConfiguration](https://www.alibabacloud.com/help/en/auto-scaling/latest/create-eci-scaling-configuration).
+
+        > **NOTE:** Available since v1.164.0.
 
         ## Example Usage
 
@@ -1152,12 +1140,16 @@ class EciScalingConfiguration(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "essscalingconfiguration"
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=data["alicloud_zones"]["default"]["zones"][0]["id"],
+            zone_id=default_zones.zones[0].id,
             vswitch_name=name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
@@ -1319,14 +1311,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. The details see
-               Block `acr_registry_info`.See Block acr_registry_info below for
-               details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationAcrRegistryInfoArgs']]]] acr_registry_infos: Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         :param pulumi.Input[bool] active: Whether active current eci scaling configuration in the specified scaling group. Note that only
                one configuration can be active. Default to `false`.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[str] container_group_name: The name of the container group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]] containers: The list of containers.See Block container below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationContainerArgs']]]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
@@ -1336,14 +1326,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_sls: Enable sls log service.
         :param pulumi.Input[bool] force_delete: The eci scaling configuration will be deleted forcibly with deleting its scaling group.
                Default to false.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationHostAliasArgs']]]] host_aliases: HostAliases.See Block host_alias below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationHostAliasArgs']]]] host_aliases: HostAliases. See `host_aliases` below.
         :param pulumi.Input[str] host_name: Hostname of an ECI instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential. The details see
-               Block `image_registry_credential`.See Block image_registry_credential below for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationImageRegistryCredentialArgs']]]] image_registry_credentials: The image registry credential.   See `image_registry_credentials` below for
                details.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]] init_containers: The list of initContainers.See Block init_container below for
-               details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]] init_containers: The list of initContainers. See `init_containers` below for details.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
         :param pulumi.Input[str] ram_role_name: The RAM role that the container group assumes. ECI and ECS share the same RAM role.
         :param pulumi.Input[str] resource_group_id: ID of resource group.
@@ -1363,7 +1351,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
                a null string.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationVolumeArgs']]]] volumes: The list of volumes.See Block volume below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationVolumeArgs']]]] volumes: The list of volumes. See `volumes` below for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1403,9 +1391,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="acrRegistryInfos")
     def acr_registry_infos(self) -> pulumi.Output[Optional[Sequence['outputs.EciScalingConfigurationAcrRegistryInfo']]]:
         """
-        Information about the Container Registry Enterprise Edition instance. The details see
-        Block `acr_registry_info`.See Block acr_registry_info below for
-        details.
+        Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         """
         return pulumi.get(self, "acr_registry_infos")
 
@@ -1438,7 +1424,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter
     def containers(self) -> pulumi.Output[Optional[Sequence['outputs.EciScalingConfigurationContainer']]]:
         """
-        The list of containers.See Block container below for details.
+        The list of containers. See `containers` below for details.
         """
         return pulumi.get(self, "containers")
 
@@ -1504,7 +1490,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="hostAliases")
     def host_aliases(self) -> pulumi.Output[Optional[Sequence['outputs.EciScalingConfigurationHostAlias']]]:
         """
-        HostAliases.See Block host_alias below for details.
+        HostAliases. See `host_aliases` below.
         """
         return pulumi.get(self, "host_aliases")
 
@@ -1520,8 +1506,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="imageRegistryCredentials")
     def image_registry_credentials(self) -> pulumi.Output[Optional[Sequence['outputs.EciScalingConfigurationImageRegistryCredential']]]:
         """
-        The image registry credential. The details see
-        Block `image_registry_credential`.See Block image_registry_credential below for
+        The image registry credential.   See `image_registry_credentials` below for
         details.
         """
         return pulumi.get(self, "image_registry_credentials")
@@ -1538,8 +1523,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="initContainers")
     def init_containers(self) -> pulumi.Output[Optional[Sequence['outputs.EciScalingConfigurationInitContainer']]]:
         """
-        The list of initContainers.See Block init_container below for
-        details.
+        The list of initContainers. See `init_containers` below for details.
         """
         return pulumi.get(self, "init_containers")
 
@@ -1636,7 +1620,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter
     def volumes(self) -> pulumi.Output[Optional[Sequence['outputs.EciScalingConfigurationVolume']]]:
         """
-        The list of volumes.See Block volume below for details.
+        The list of volumes. See `volumes` below for details.
         """
         return pulumi.get(self, "volumes")
 

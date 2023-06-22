@@ -13,9 +13,9 @@ import (
 
 // Provides a ECD Nas File System resource.
 //
-// For information about ECD Nas File System and how to use it, see [What is Nas File System](https://help.aliyun.com/document_detail/188382.html).
+// For information about ECD Nas File System and how to use it, see [What is Nas File System](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-reference-for-easy-use-1).
 //
-// > **NOTE:** Available in v1.141.0+.
+// > **NOTE:** Available since v1.141.0.
 //
 // ## Example Usage
 //
@@ -28,24 +28,30 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
-//				CidrBlock:            pulumi.String("172.16.0.0/12"),
-//				DesktopAccessType:    pulumi.String("Internet"),
-//				OfficeSiteName:       pulumi.String("your_office_site_name"),
-//				EnableInternetAccess: pulumi.Bool(false),
+//				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				EnableAdminAccess: pulumi.Bool(false),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eds.NewNasFileSystem(ctx, "example", &eds.NasFileSystemArgs{
-//				NasFileSystemName: pulumi.String("example_value"),
+//				NasFileSystemName: pulumi.String(name),
 //				OfficeSiteId:      _default.ID(),
-//				Description:       pulumi.String("example_value"),
+//				Description:       pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

@@ -139,14 +139,14 @@ public final class GetDBClustersPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The tag of the resource.
+     * A map of tags assigned to the cluster.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return A map of tags assigned to the cluster.
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -284,7 +284,7 @@ public final class GetDBClustersPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A map of tags assigned to the cluster.
          * 
          * @return builder
          * 

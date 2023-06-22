@@ -22,12 +22,19 @@ namespace Pulumi.AliCloud.Log
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         Description = "created by terraform",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
@@ -47,30 +54,47 @@ namespace Pulumi.AliCloud.Log
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var exampleAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var exampleKey = new AliCloud.Kms.Key("exampleKey", new()
+    ///     {
+    ///         Description = "terraform-example",
+    ///         PendingWindowInDays = 7,
+    ///         Status = "Enabled",
+    ///     });
+    /// 
     ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         Description = "created by terraform",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
     ///     {
     ///         Project = exampleProject.Name,
-    ///         ShardCount = 3,
+    ///         ShardCount = 1,
     ///         AutoSplit = true,
     ///         MaxSplitShardCount = 60,
-    ///         AppendMeta = true,
     ///         EncryptConf = new AliCloud.Log.Inputs.StoreEncryptConfArgs
     ///         {
     ///             Enable = true,
     ///             EncryptType = "default",
     ///             UserCmkInfo = new AliCloud.Log.Inputs.StoreEncryptConfUserCmkInfoArgs
     ///             {
-    ///                 CmkKeyId = "your_cmk_key_id",
-    ///                 Arn = "your_role_arn",
-    ///                 RegionId = "you_cmk_region_id",
+    ///                 CmkKeyId = exampleKey.Id,
+    ///                 Arn = $"acs:ram::{exampleAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:role/aliyunlogdefaultrole",
+    ///                 RegionId = region,
     ///             },
     ///         },
     ///     });

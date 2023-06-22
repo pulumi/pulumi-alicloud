@@ -24,7 +24,9 @@ class DBClusterArgs:
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
+                 elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  pay_type: Optional[pulumi.Input[str]] = None,
@@ -41,19 +43,21 @@ class DBClusterArgs:
         The set of arguments for constructing a DBCluster resource.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
-        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
         :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
-        :param pulumi.Input[str] db_cluster_version: The db cluster version. Value options: `3.0`, Default to `3.0`.
+        :param pulumi.Input[str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
+        :param pulumi.Input[str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[int] elastic_io_resource: The elastic io resource.
+        :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -89,8 +93,12 @@ class DBClusterArgs:
             pulumi.set(__self__, "db_node_storage", db_node_storage)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_performance_level is not None:
+            pulumi.set(__self__, "disk_performance_level", disk_performance_level)
         if elastic_io_resource is not None:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
+        if elastic_io_resource_size is not None:
+            pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if modify_type is not None:
@@ -147,7 +155,7 @@ class DBClusterArgs:
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+        Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -183,7 +191,7 @@ class DBClusterArgs:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The db cluster version. Value options: `3.0`, Default to `3.0`.
+        The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -240,6 +248,18 @@ class DBClusterArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="diskPerformanceLevel")
+    def disk_performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        """
+        return pulumi.get(self, "disk_performance_level")
+
+    @disk_performance_level.setter
+    def disk_performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_performance_level", value)
+
+    @property
     @pulumi.getter(name="elasticIoResource")
     def elastic_io_resource(self) -> Optional[pulumi.Input[int]]:
         """
@@ -250,6 +270,18 @@ class DBClusterArgs:
     @elastic_io_resource.setter
     def elastic_io_resource(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "elastic_io_resource", value)
+
+    @property
+    @pulumi.getter(name="elasticIoResourceSize")
+    def elastic_io_resource_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        """
+        return pulumi.get(self, "elastic_io_resource_size")
+
+    @elastic_io_resource_size.setter
+    def elastic_io_resource_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "elastic_io_resource_size", value)
 
     @property
     @pulumi.getter(name="maintainTime")
@@ -291,7 +323,7 @@ class DBClusterArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         """
         return pulumi.get(self, "payment_type")
 
@@ -414,7 +446,9 @@ class _DBClusterState:
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
+                 elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -432,25 +466,27 @@ class _DBClusterState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DBCluster resources.
-        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
         :param pulumi.Input[str] connection_string: The connection string of the cluster.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
-        :param pulumi.Input[str] db_cluster_version: The db cluster version. Value options: `3.0`, Default to `3.0`.
+        :param pulumi.Input[str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
+        :param pulumi.Input[str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[int] elastic_io_resource: The elastic io resource.
+        :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
-        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the ADB cluster.
+        :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the ADB cluster.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -487,8 +523,12 @@ class _DBClusterState:
             pulumi.set(__self__, "db_node_storage", db_node_storage)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_performance_level is not None:
+            pulumi.set(__self__, "disk_performance_level", disk_performance_level)
         if elastic_io_resource is not None:
             pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
+        if elastic_io_resource_size is not None:
+            pulumi.set(__self__, "elastic_io_resource_size", elastic_io_resource_size)
         if maintain_time is not None:
             pulumi.set(__self__, "maintain_time", maintain_time)
         if mode is not None:
@@ -527,7 +567,7 @@ class _DBClusterState:
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+        Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -587,7 +627,7 @@ class _DBClusterState:
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The db cluster version. Value options: `3.0`, Default to `3.0`.
+        The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -644,6 +684,18 @@ class _DBClusterState:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="diskPerformanceLevel")
+    def disk_performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        """
+        return pulumi.get(self, "disk_performance_level")
+
+    @disk_performance_level.setter
+    def disk_performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_performance_level", value)
+
+    @property
     @pulumi.getter(name="elasticIoResource")
     def elastic_io_resource(self) -> Optional[pulumi.Input[int]]:
         """
@@ -654,6 +706,18 @@ class _DBClusterState:
     @elastic_io_resource.setter
     def elastic_io_resource(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "elastic_io_resource", value)
+
+    @property
+    @pulumi.getter(name="elasticIoResourceSize")
+    def elastic_io_resource_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        """
+        return pulumi.get(self, "elastic_io_resource_size")
+
+    @elastic_io_resource_size.setter
+    def elastic_io_resource_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "elastic_io_resource_size", value)
 
     @property
     @pulumi.getter(name="maintainTime")
@@ -707,7 +771,7 @@ class _DBClusterState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         """
         return pulumi.get(self, "payment_type")
 
@@ -732,7 +796,7 @@ class _DBClusterState:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in 1.196.0+) The connection port of the ADB cluster.
+        (Available since v1.196.0) The connection port of the ADB cluster.
         """
         return pulumi.get(self, "port")
 
@@ -855,7 +919,9 @@ class DBCluster(pulumi.CustomResource):
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
+                 elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -871,58 +937,6 @@ class DBCluster(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a AnalyticDB for MySQL (ADB) DBCluster resource.
-
-        For information about AnalyticDB for MySQL (ADB) DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/doc-detail/190519.htm).
-
-        > **NOTE:** Available in v1.121.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "adbClusterconfig"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "ADB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        this = alicloud.adb.DBCluster("this",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=4,
-            db_node_storage=400,
-            mode="reserver",
-            db_cluster_version="3.0",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            description="Test new adb again.",
-            maintain_time="23:00Z-00:00Z",
-            tags={
-                "Created": "TF-update",
-                "For": "acceptance-test-update",
-            },
-            resource_group_id="rg-aek2s7ylxx6****",
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ])
-        ```
-
         ## Import
 
         AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
@@ -933,21 +947,23 @@ class DBCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
-        :param pulumi.Input[str] db_cluster_version: The db cluster version. Value options: `3.0`, Default to `3.0`.
+        :param pulumi.Input[str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
+        :param pulumi.Input[str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[int] elastic_io_resource: The elastic io resource.
+        :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -969,58 +985,6 @@ class DBCluster(pulumi.CustomResource):
                  args: DBClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a AnalyticDB for MySQL (ADB) DBCluster resource.
-
-        For information about AnalyticDB for MySQL (ADB) DBCluster and how to use it, see [What is DBCluster](https://www.alibabacloud.com/help/en/doc-detail/190519.htm).
-
-        > **NOTE:** Available in v1.121.0+.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "adbClusterconfig"
-        creation = config.get("creation")
-        if creation is None:
-            creation = "ADB"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name)
-        this = alicloud.adb.DBCluster("this",
-            db_cluster_category="Cluster",
-            db_node_class="C8",
-            db_node_count=4,
-            db_node_storage=400,
-            mode="reserver",
-            db_cluster_version="3.0",
-            payment_type="PayAsYouGo",
-            vswitch_id=default_switch.id,
-            description="Test new adb again.",
-            maintain_time="23:00Z-00:00Z",
-            tags={
-                "Created": "TF-update",
-                "For": "acceptance-test-update",
-            },
-            resource_group_id="rg-aek2s7ylxx6****",
-            security_ips=[
-                "10.168.1.12",
-                "10.168.1.11",
-            ])
-        ```
-
         ## Import
 
         AnalyticDB for MySQL (ADB) DBCluster can be imported using the id, e.g.
@@ -1053,7 +1017,9 @@ class DBCluster(pulumi.CustomResource):
                  db_node_count: Optional[pulumi.Input[int]] = None,
                  db_node_storage: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_performance_level: Optional[pulumi.Input[str]] = None,
                  elastic_io_resource: Optional[pulumi.Input[int]] = None,
+                 elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -1090,7 +1056,9 @@ class DBCluster(pulumi.CustomResource):
             __props__.__dict__["db_node_count"] = db_node_count
             __props__.__dict__["db_node_storage"] = db_node_storage
             __props__.__dict__["description"] = description
+            __props__.__dict__["disk_performance_level"] = disk_performance_level
             __props__.__dict__["elastic_io_resource"] = elastic_io_resource
+            __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
             __props__.__dict__["maintain_time"] = maintain_time
             if mode is None and not opts.urn:
                 raise TypeError("Missing required property 'mode'")
@@ -1132,7 +1100,9 @@ class DBCluster(pulumi.CustomResource):
             db_node_count: Optional[pulumi.Input[int]] = None,
             db_node_storage: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disk_performance_level: Optional[pulumi.Input[str]] = None,
             elastic_io_resource: Optional[pulumi.Input[int]] = None,
+            elastic_io_resource_size: Optional[pulumi.Input[str]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             modify_type: Optional[pulumi.Input[str]] = None,
@@ -1155,25 +1125,27 @@ class DBCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
         :param pulumi.Input[str] connection_string: The connection string of the cluster.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
-        :param pulumi.Input[str] db_cluster_version: The db cluster version. Value options: `3.0`, Default to `3.0`.
+        :param pulumi.Input[str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
         :param pulumi.Input[int] db_node_storage: The db node storage.
         :param pulumi.Input[str] description: The description of DBCluster.
+        :param pulumi.Input[str] disk_performance_level: The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
         :param pulumi.Input[int] elastic_io_resource: The elastic io resource.
+        :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
         :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
-        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
-        :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the ADB cluster.
+        :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the ADB cluster.
         :param pulumi.Input[str] renewal_status: Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -1201,7 +1173,9 @@ class DBCluster(pulumi.CustomResource):
         __props__.__dict__["db_node_count"] = db_node_count
         __props__.__dict__["db_node_storage"] = db_node_storage
         __props__.__dict__["description"] = description
+        __props__.__dict__["disk_performance_level"] = disk_performance_level
         __props__.__dict__["elastic_io_resource"] = elastic_io_resource
+        __props__.__dict__["elastic_io_resource_size"] = elastic_io_resource_size
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["mode"] = mode
         __props__.__dict__["modify_type"] = modify_type
@@ -1223,7 +1197,7 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Output[int]:
         """
-        Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default to `1`.
+        Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -1263,7 +1237,7 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterVersion")
     def db_cluster_version(self) -> pulumi.Output[Optional[str]]:
         """
-        The db cluster version. Value options: `3.0`, Default to `3.0`.
+        The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         """
         return pulumi.get(self, "db_cluster_version")
 
@@ -1300,12 +1274,28 @@ class DBCluster(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="diskPerformanceLevel")
+    def disk_performance_level(self) -> pulumi.Output[str]:
+        """
+        The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
+        """
+        return pulumi.get(self, "disk_performance_level")
+
+    @property
     @pulumi.getter(name="elasticIoResource")
     def elastic_io_resource(self) -> pulumi.Output[int]:
         """
         The elastic io resource.
         """
         return pulumi.get(self, "elastic_io_resource")
+
+    @property
+    @pulumi.getter(name="elasticIoResourceSize")
+    def elastic_io_resource_size(self) -> pulumi.Output[str]:
+        """
+        The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+        """
+        return pulumi.get(self, "elastic_io_resource_size")
 
     @property
     @pulumi.getter(name="maintainTime")
@@ -1343,7 +1333,7 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type of the resource. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
+        The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         """
         return pulumi.get(self, "payment_type")
 
@@ -1360,7 +1350,7 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[str]:
         """
-        (Available in 1.196.0+) The connection port of the ADB cluster.
+        (Available since v1.196.0) The connection port of the ADB cluster.
         """
         return pulumi.get(self, "port")
 

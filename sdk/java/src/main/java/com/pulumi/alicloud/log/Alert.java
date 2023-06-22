@@ -44,6 +44,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -66,8 +68,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;create by terraform&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
@@ -81,10 +88,10 @@ import javax.annotation.Nullable;
  * 
  *         var exampleAlert = new Alert(&#34;exampleAlert&#34;, AlertArgs.builder()        
  *             .projectName(exampleProject.name())
- *             .alertName(&#34;tf-test-alert&#34;)
- *             .alertDisplayname(&#34;tf-test-alert-displayname&#34;)
+ *             .alertName(&#34;example-alert&#34;)
+ *             .alertDisplayname(&#34;example-alert&#34;)
  *             .condition(&#34;count&gt; 100&#34;)
- *             .dashboard(&#34;tf-test-dashboard&#34;)
+ *             .dashboard(&#34;example-dashboard&#34;)
  *             .schedule(AlertScheduleArgs.builder()
  *                 .type(&#34;FixedRate&#34;)
  *                 .interval(&#34;5m&#34;)
@@ -94,7 +101,7 @@ import javax.annotation.Nullable;
  *                 .runImmediately(false)
  *                 .build())
  *             .queryLists(AlertQueryListArgs.builder()
- *                 .logstore(&#34;tf-test-logstore&#34;)
+ *                 .logstore(exampleStore.name())
  *                 .chartTitle(&#34;chart_title&#34;)
  *                 .start(&#34;-60s&#34;)
  *                 .end(&#34;20s&#34;)
@@ -112,7 +119,7 @@ import javax.annotation.Nullable;
  *                     .type(&#34;Email&#34;)
  *                     .emailLists(                    
  *                         &#34;aliyun@alibaba-inc.com&#34;,
- *                         &#34;tf-test@123.com&#34;)
+ *                         &#34;tf-example@123.com&#34;)
  *                     .content(&#34;alert content&#34;)
  *                     .build(),
  *                 AlertNotificationListArgs.builder()
@@ -133,6 +140,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -160,8 +169,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;create by terraform&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
@@ -177,14 +191,14 @@ import javax.annotation.Nullable;
  *             .version(&#34;2.0&#34;)
  *             .type(&#34;default&#34;)
  *             .projectName(exampleProject.name())
- *             .alertName(&#34;tf-test-alert-2&#34;)
- *             .alertDisplayname(&#34;tf-test-alert-displayname-2&#34;)
- *             .dashboard(&#34;tf-test-dashboard&#34;)
+ *             .alertName(&#34;example-alert&#34;)
+ *             .alertDisplayname(&#34;example-alert&#34;)
  *             .muteUntil(&#34;1632486684&#34;)
  *             .noDataFire(&#34;false&#34;)
  *             .noDataSeverity(8)
  *             .sendResolved(true)
  *             .autoAnnotation(true)
+ *             .dashboard(&#34;example-dashboard&#34;)
  *             .schedule(AlertScheduleArgs.builder()
  *                 .type(&#34;FixedRate&#34;)
  *                 .interval(&#34;5m&#34;)
@@ -195,7 +209,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .queryLists(            
  *                 AlertQueryListArgs.builder()
- *                     .store(&#34;tf-test-logstore&#34;)
+ *                     .store(exampleStore.name())
  *                     .storeType(&#34;log&#34;)
  *                     .project(exampleProject.name())
  *                     .region(&#34;cn-heyuan&#34;)
@@ -206,7 +220,7 @@ import javax.annotation.Nullable;
  *                     .powerSqlMode(&#34;auto&#34;)
  *                     .build(),
  *                 AlertQueryListArgs.builder()
- *                     .store(&#34;tf-test-logstore&#34;)
+ *                     .store(exampleStore.name())
  *                     .storeType(&#34;log&#34;)
  *                     .project(exampleProject.name())
  *                     .region(&#34;cn-heyuan&#34;)
@@ -281,6 +295,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -302,8 +318,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .description(&#34;create by terraform&#34;)
+ *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
@@ -319,8 +340,8 @@ import javax.annotation.Nullable;
  *             .version(&#34;2.0&#34;)
  *             .type(&#34;tpl&#34;)
  *             .projectName(exampleProject.name())
- *             .alertName(&#34;tf-test-alert-3&#34;)
- *             .alertDisplayname(&#34;tf-test-alert-displayname-3&#34;)
+ *             .alertName(&#34;example-alert&#34;)
+ *             .alertDisplayname(&#34;example-alert&#34;)
  *             .muteUntil(&#34;1632486684&#34;)
  *             .schedule(AlertScheduleArgs.builder()
  *                 .type(&#34;FixedRate&#34;)
@@ -344,7 +365,7 @@ import javax.annotation.Nullable;
  *                     Map.entry(&#34;default.logstore&#34;, &#34;k8s-event&#34;),
  *                     Map.entry(&#34;default.repeatInterval&#34;, &#34;4h&#34;),
  *                     Map.entry(&#34;trigger_threshold&#34;, &#34;1&#34;),
- *                     Map.entry(&#34;default.clusterId&#34;, &#34;test-cluster-id&#34;)
+ *                     Map.entry(&#34;default.clusterId&#34;, &#34;example-cluster-id&#34;)
  *                 ))
  *                 .build())
  *             .build());

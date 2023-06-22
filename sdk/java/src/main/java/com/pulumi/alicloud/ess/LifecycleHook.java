@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a ESS lifecycle hook resource. More about Ess lifecycle hook, see [LifecycleHook](https://www.alibabacloud.com/help/doc-detail/73839.htm).
  * 
+ * &gt; **NOTE:** Available since v1.13.0.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -31,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ess.ScalingGroup;
  * import com.pulumi.alicloud.ess.ScalingGroupArgs;
  * import com.pulumi.alicloud.ess.LifecycleHook;
@@ -48,44 +52,54 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
- *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(fooNetwork.id())
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(default_.zones()[0].id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
  *             .build());
  * 
- *         var bar = new Switch(&#34;bar&#34;, SwitchArgs.builder()        
- *             .vpcId(fooNetwork.id())
+ *         var default2 = new Switch(&#34;default2&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.1.0/24&#34;)
- *             .zoneId(default_.zones()[0].id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(String.format(&#34;%s-bar&#34;, name))
  *             .build());
  * 
- *         var fooScalingGroup = new ScalingGroup(&#34;fooScalingGroup&#34;, ScalingGroupArgs.builder()        
- *             .minSize(1)
- *             .maxSize(1)
- *             .scalingGroupName(&#34;testAccEssScaling_group&#34;)
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *             .minSize(&#34;1&#34;)
+ *             .maxSize(&#34;1&#34;)
+ *             .scalingGroupName(name)
+ *             .defaultCooldown(200)
  *             .removalPolicies(            
  *                 &#34;OldestInstance&#34;,
  *                 &#34;NewestInstance&#34;)
  *             .vswitchIds(            
- *                 fooSwitch.id(),
- *                 bar.id())
+ *                 defaultSwitch.id(),
+ *                 default2.id())
  *             .build());
  * 
- *         var fooLifecycleHook = new LifecycleHook(&#34;fooLifecycleHook&#34;, LifecycleHookArgs.builder()        
- *             .scalingGroupId(fooScalingGroup.id())
+ *         var defaultLifecycleHook = new LifecycleHook(&#34;defaultLifecycleHook&#34;, LifecycleHookArgs.builder()        
+ *             .scalingGroupId(defaultScalingGroup.id())
  *             .lifecycleTransition(&#34;SCALE_OUT&#34;)
  *             .heartbeatTimeout(400)
- *             .notificationMetadata(&#34;helloworld&#34;)
+ *             .notificationMetadata(&#34;example&#34;)
  *             .build());
  * 
  *     }

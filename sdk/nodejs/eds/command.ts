@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECD Command resource.
  *
- * For information about ECD Command and how to use it, see [What is Command](https://help.aliyun.com/document_detail/188382.html).
+ * For information about ECD Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-runcommand).
  *
- * > **NOTE:** Available in v1.146.0+.
+ * > **NOTE:** Available since v1.146.0.
  *
  * ## Example Usage
  *
@@ -19,38 +19,42 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
  * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
  *     cidrBlock: "172.16.0.0/12",
+ *     enableAdminAccess: true,
  *     desktopAccessType: "Internet",
- *     officeSiteName: "your_office_site_name",
- * });
- * const defaultBundles = alicloud.eds.getBundles({
- *     bundleType: "SYSTEM",
- *     nameRegex: "windows",
+ *     officeSiteName: name,
  * });
  * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup", {
- *     policyGroupName: "your_policy_group_name",
- *     clipboard: "readwrite",
+ *     policyGroupName: name,
+ *     clipboard: "read",
  *     localDrive: "read",
+ *     usbRedirect: "off",
+ *     watermark: "off",
  *     authorizeAccessPolicyRules: [{
- *         description: "example_value",
- *         cidrIp: "1.2.3.4/24",
+ *         description: name,
+ *         cidrIp: "1.2.3.45/24",
  *     }],
  *     authorizeSecurityPolicyRules: [{
  *         type: "inflow",
  *         policy: "accept",
- *         description: "example_value",
+ *         description: name,
  *         portRange: "80/80",
  *         ipProtocol: "TCP",
  *         priority: "1",
- *         cidrIp: "0.0.0.0/0",
+ *         cidrIp: "1.2.3.4/24",
  *     }],
+ * });
+ * const defaultBundles = alicloud.eds.getBundles({
+ *     bundleType: "SYSTEM",
  * });
  * const defaultDesktop = new alicloud.eds.Desktop("defaultDesktop", {
  *     officeSiteId: defaultSimpleOfficeSite.id,
  *     policyGroupId: defaultEcdPolicyGroup.id,
  *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?.[0]?.id),
- *     desktopName: _var.name,
+ *     desktopName: name,
  * });
  * const defaultCommand = new alicloud.eds.Command("defaultCommand", {
  *     commandContent: "ipconfig",

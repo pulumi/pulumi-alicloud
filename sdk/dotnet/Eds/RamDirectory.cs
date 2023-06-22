@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Eds
     /// <summary>
     /// Provides a ECD Ram Directory resource.
     /// 
-    /// For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://help.aliyun.com/document_detail/436216.html).
+    /// For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createramdirectory).
     /// 
-    /// &gt; **NOTE:** Available in v1.174.0+.
+    /// &gt; **NOTE:** Available since v1.174.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,17 +28,22 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultZones = AliCloud.Eds.GetZones.Invoke();
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
-    ///         NameRegex = "default-NODELETING",
+    ///         VpcName = name,
+    ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "172.16.0.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         VswitchName = name,
     ///     });
     /// 
     ///     var defaultRamDirectory = new AliCloud.Eds.RamDirectory("defaultRamDirectory", new()
@@ -46,10 +51,10 @@ namespace Pulumi.AliCloud.Eds
     ///         DesktopAccessType = "INTERNET",
     ///         EnableAdminAccess = true,
     ///         EnableInternetAccess = true,
-    ///         RamDirectoryName = @var.Name,
+    ///         RamDirectoryName = name,
     ///         VswitchIds = new[]
     ///         {
-    ///             defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///             defaultSwitch.Id,
     ///         },
     ///     });
     /// 

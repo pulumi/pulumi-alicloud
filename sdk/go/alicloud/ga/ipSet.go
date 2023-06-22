@@ -15,7 +15,7 @@ import (
 //
 // For information about Global Accelerator (GA) Ip Set and how to use it, see [What is Ip Set](https://www.alibabacloud.com/help/en/doc-detail/153246.htm).
 //
-// > **NOTE:** Available in v1.113.0+.
+// > **NOTE:** Available since v1.113.0.
 //
 // ## Example Usage
 //
@@ -28,12 +28,18 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
+//			cfg := config.New(ctx, "")
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
 //				Duration:      pulumi.Int(1),
 //				AutoUseCoupon: pulumi.Bool(true),
 //				Spec:          pulumi.String("1"),
@@ -41,31 +47,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
-//				Bandwidth:     pulumi.Int(20),
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
+//				Bandwidth:     pulumi.Int(100),
 //				Type:          pulumi.String("Basic"),
 //				BandwidthType: pulumi.String("Basic"),
-//				Duration:      pulumi.String("1"),
-//				AutoPay:       pulumi.Bool(true),
+//				PaymentType:   pulumi.String("PayAsYouGo"),
+//				BillingType:   pulumi.String("PayBy95"),
 //				Ratio:         pulumi.Int(30),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      exampleAccelerator.ID(),
-//				BandwidthPackageId: exampleBandwidthPackage.ID(),
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      defaultAccelerator.ID(),
+//				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewIpSet(ctx, "exampleIpSet", &ga.IpSetArgs{
-//				AccelerateRegionId: pulumi.String("cn-hangzhou"),
+//			_, err = ga.NewIpSet(ctx, "example", &ga.IpSetArgs{
+//				AccelerateRegionId: pulumi.String(region),
 //				Bandwidth:          pulumi.Int(5),
-//				AcceleratorId:      exampleAccelerator.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				exampleBandwidthPackageAttachment,
-//			}))
+//				AcceleratorId:      defaultBandwidthPackageAttachment.AcceleratorId,
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -92,13 +96,14 @@ type IpSet struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId pulumi.StringOutput `pulumi:"acceleratorId"`
 	// The bandwidth allocated to the acceleration region.
-	//
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth pulumi.IntPtrOutput `pulumi:"bandwidth"`
 	// The list of accelerated IP addresses in the acceleration region.
 	IpAddressLists pulumi.StringArrayOutput `pulumi:"ipAddressLists"`
-	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
-	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
+	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+	IpVersion pulumi.StringOutput `pulumi:"ipVersion"`
+	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+	IspType pulumi.StringPtrOutput `pulumi:"ispType"`
 	// The status of the acceleration region.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -143,13 +148,14 @@ type ipSetState struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId *string `pulumi:"acceleratorId"`
 	// The bandwidth allocated to the acceleration region.
-	//
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The list of accelerated IP addresses in the acceleration region.
 	IpAddressLists []string `pulumi:"ipAddressLists"`
-	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
 	IpVersion *string `pulumi:"ipVersion"`
+	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+	IspType *string `pulumi:"ispType"`
 	// The status of the acceleration region.
 	Status *string `pulumi:"status"`
 }
@@ -160,13 +166,14 @@ type IpSetState struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId pulumi.StringPtrInput
 	// The bandwidth allocated to the acceleration region.
-	//
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth pulumi.IntPtrInput
 	// The list of accelerated IP addresses in the acceleration region.
 	IpAddressLists pulumi.StringArrayInput
-	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
 	IpVersion pulumi.StringPtrInput
+	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+	IspType pulumi.StringPtrInput
 	// The status of the acceleration region.
 	Status pulumi.StringPtrInput
 }
@@ -181,11 +188,12 @@ type ipSetArgs struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId string `pulumi:"acceleratorId"`
 	// The bandwidth allocated to the acceleration region.
-	//
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth *int `pulumi:"bandwidth"`
-	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
 	IpVersion *string `pulumi:"ipVersion"`
+	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+	IspType *string `pulumi:"ispType"`
 }
 
 // The set of arguments for constructing a IpSet resource.
@@ -195,11 +203,12 @@ type IpSetArgs struct {
 	// The ID of the Global Accelerator (GA) instance.
 	AcceleratorId pulumi.StringInput
 	// The bandwidth allocated to the acceleration region.
-	//
 	// > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 	Bandwidth pulumi.IntPtrInput
-	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
+	// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
 	IpVersion pulumi.StringPtrInput
+	// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+	IspType pulumi.StringPtrInput
 }
 
 func (IpSetArgs) ElementType() reflect.Type {
@@ -300,7 +309,6 @@ func (o IpSetOutput) AcceleratorId() pulumi.StringOutput {
 }
 
 // The bandwidth allocated to the acceleration region.
-//
 // > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
 func (o IpSetOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IpSet) pulumi.IntPtrOutput { return v.Bandwidth }).(pulumi.IntPtrOutput)
@@ -311,9 +319,14 @@ func (o IpSetOutput) IpAddressLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IpSet) pulumi.StringArrayOutput { return v.IpAddressLists }).(pulumi.StringArrayOutput)
 }
 
-// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value is `IPv4`.
-func (o IpSetOutput) IpVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IpSet) pulumi.StringPtrOutput { return v.IpVersion }).(pulumi.StringPtrOutput)
+// The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
+func (o IpSetOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSet) pulumi.StringOutput { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
+func (o IpSetOutput) IspType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpSet) pulumi.StringPtrOutput { return v.IspType }).(pulumi.StringPtrOutput)
 }
 
 // The status of the acceleration region.

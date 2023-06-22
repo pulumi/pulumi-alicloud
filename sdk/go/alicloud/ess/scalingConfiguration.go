@@ -15,6 +15,8 @@ import (
 //
 // > **NOTE:** Several instance types have outdated in some regions and availability zones, such as `ecs.t1.*`, `ecs.s2.*`, `ecs.n1.*` and so on. If you want to keep them, you should set `isOutdated` to true. For more about the upgraded instance type, refer to `ecs.getInstanceTypes` datasource.
 //
+// > **NOTE:** Available since v1.39.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -34,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "essscalingconfiguration"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -131,38 +133,6 @@ import (
 // You can use to the existing autoscaling module
 // to create a configuration, scaling group and lifecycle hook one-click.
 //
-// ## Block datadisk
-//
-// The datadisk mapping supports the following:
-//
-// * `size` - (Optional) Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloudEssd disk.
-// * `device` - (Optional, Available in 1.92.0+) The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
-// * `category` - (Optional) Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` and `cloud`.
-// * `snapshotId` - (Optional) Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
-// * `deleteWithInstance` - (Optional) Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
-// * `encrypted` - (Optional, Available in 1.92.0+) Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
-// * `kmsKeyId` - (Optional, Available in 1.92.0+) The CMK ID for data disk N. Valid values of N: 1 to 16.
-// * `name` - (Optional, Available in 1.92.0+) The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
-// * `description` - (Optional, Available in 1.92.0+) The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
-// * `autoSnapshotPolicyId` - (Optional, Available in 1.92.0+) The id of auto snapshot policy for data disk.
-// * `performanceLevel` - (Optional, Available in 1.124.3+) The performance level of the ESSD used as data disk.
-//
-// ## Block instancePatternInfo
-//
-// The instancePatternInfo mapping supports the following:
-//
-// * `cores` - (Optional) The number of vCPUs that are specified for an instance type in instancePatternInfo.
-// * `instanceFamilyLevel` - (Optional) The instance family level in instancePatternInfo.
-// * `maxPrice` - (Optional) The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
-// * `memory` - (Optional) The memory size that is specified for an instance type in instancePatternInfo.
-//
-// ## Block spotPriceLimit
-//
-// The spotPriceLimit mapping supports the following:
-//
-// * `instanceType` - (Optional, Available in 1.151.0+) Resource type of an ECS instance.
-// * `priceLimit` - (Optional, Available in 1.151.0+) Price limit hourly of instance type, 2 decimals is allowed at most.
-//
 // ## Import
 //
 // ESS scaling configuration can be imported using the id, e.g.
@@ -179,7 +149,7 @@ type ScalingConfiguration struct {
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification pulumi.StringPtrOutput `pulumi:"creditSpecification"`
-	// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks ScalingConfigurationDataDiskArrayOutput `pulumi:"dataDisks"`
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
 	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
@@ -197,7 +167,7 @@ type ScalingConfiguration struct {
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
-	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instancePatternInfo` below for details.
 	InstancePatternInfos ScalingConfigurationInstancePatternInfoArrayOutput `pulumi:"instancePatternInfos"`
 	// Resource type of an ECS instance.
 	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
@@ -239,7 +209,7 @@ type ScalingConfiguration struct {
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
 	//
 	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
 	//
@@ -317,7 +287,7 @@ type scalingConfigurationState struct {
 	Active *bool `pulumi:"active"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification *string `pulumi:"creditSpecification"`
-	// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks []ScalingConfigurationDataDisk `pulumi:"dataDisks"`
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
 	Enable *bool `pulumi:"enable"`
@@ -335,7 +305,7 @@ type scalingConfigurationState struct {
 	InstanceIds []string `pulumi:"instanceIds"`
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName *string `pulumi:"instanceName"`
-	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instancePatternInfo` below for details.
 	InstancePatternInfos []ScalingConfigurationInstancePatternInfo `pulumi:"instancePatternInfos"`
 	// Resource type of an ECS instance.
 	InstanceType *string `pulumi:"instanceType"`
@@ -377,7 +347,7 @@ type scalingConfigurationState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
 	//
 	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
 	//
@@ -424,7 +394,7 @@ type ScalingConfigurationState struct {
 	Active pulumi.BoolPtrInput
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification pulumi.StringPtrInput
-	// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks ScalingConfigurationDataDiskArrayInput
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
 	Enable pulumi.BoolPtrInput
@@ -442,7 +412,7 @@ type ScalingConfigurationState struct {
 	InstanceIds pulumi.StringArrayInput
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName pulumi.StringPtrInput
-	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instancePatternInfo` below for details.
 	InstancePatternInfos ScalingConfigurationInstancePatternInfoArrayInput
 	// Resource type of an ECS instance.
 	InstanceType pulumi.StringPtrInput
@@ -484,7 +454,7 @@ type ScalingConfigurationState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
 	//
 	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
 	//
@@ -535,7 +505,7 @@ type scalingConfigurationArgs struct {
 	Active *bool `pulumi:"active"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification *string `pulumi:"creditSpecification"`
-	// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks []ScalingConfigurationDataDisk `pulumi:"dataDisks"`
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
 	Enable *bool `pulumi:"enable"`
@@ -553,7 +523,7 @@ type scalingConfigurationArgs struct {
 	InstanceIds []string `pulumi:"instanceIds"`
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName *string `pulumi:"instanceName"`
-	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instancePatternInfo` below for details.
 	InstancePatternInfos []ScalingConfigurationInstancePatternInfo `pulumi:"instancePatternInfos"`
 	// Resource type of an ECS instance.
 	InstanceType *string `pulumi:"instanceType"`
@@ -595,7 +565,7 @@ type scalingConfigurationArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
 	//
 	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
 	//
@@ -643,7 +613,7 @@ type ScalingConfigurationArgs struct {
 	Active pulumi.BoolPtrInput
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification pulumi.StringPtrInput
-	// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks ScalingConfigurationDataDiskArrayInput
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
 	Enable pulumi.BoolPtrInput
@@ -661,7 +631,7 @@ type ScalingConfigurationArgs struct {
 	InstanceIds pulumi.StringArrayInput
 	// Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
 	InstanceName pulumi.StringPtrInput
-	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+	// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instancePatternInfo` below for details.
 	InstancePatternInfos ScalingConfigurationInstancePatternInfoArrayInput
 	// Resource type of an ECS instance.
 	InstanceType pulumi.StringPtrInput
@@ -703,7 +673,7 @@ type ScalingConfigurationArgs struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
 	//
 	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
 	//
@@ -842,7 +812,7 @@ func (o ScalingConfigurationOutput) CreditSpecification() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.CreditSpecification }).(pulumi.StringPtrOutput)
 }
 
-// DataDisk mappings to attach to ecs instance. See Block datadisk below for details.
+// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 func (o ScalingConfigurationOutput) DataDisks() ScalingConfigurationDataDiskArrayOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) ScalingConfigurationDataDiskArrayOutput { return v.DataDisks }).(ScalingConfigurationDataDiskArrayOutput)
 }
@@ -884,7 +854,7 @@ func (o ScalingConfigurationOutput) InstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
 }
 
-// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types
+// intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instancePatternInfo` below for details.
 func (o ScalingConfigurationOutput) InstancePatternInfos() ScalingConfigurationInstancePatternInfoArrayOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) ScalingConfigurationInstancePatternInfoArrayOutput {
 		return v.InstancePatternInfos
@@ -988,7 +958,7 @@ func (o ScalingConfigurationOutput) SecurityGroupIds() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Sets the maximum price hourly for instance types. See Block spotPriceLimit below for details.
+// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
 //
 // > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
 //

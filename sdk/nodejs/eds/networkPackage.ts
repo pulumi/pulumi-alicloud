@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a ECD Network Package resource.
  *
- * For information about ECD Network Package and how to use it, see [What is Network Package](https://help.aliyun.com/document_detail/188382.html).
+ * For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createnetworkpackage).
  *
- * > **NOTE:** Available in v1.142.0+.
+ * > **NOTE:** Available since v1.142.0.
  *
  * ## Example Usage
  *
@@ -19,14 +19,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.eds.SimpleOfficeSite("default", {
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
  *     cidrBlock: "172.16.0.0/12",
+ *     enableAdminAccess: false,
  *     desktopAccessType: "Internet",
- *     officeSiteName: "your_office_site_name",
+ *     officeSiteName: name,
  * });
- * const example = new alicloud.eds.NetworkPackage("example", {
+ * const defaultNetworkPackage = new alicloud.eds.NetworkPackage("defaultNetworkPackage", {
  *     bandwidth: 10,
- *     officeSiteId: _default.id,
+ *     officeSiteId: defaultSimpleOfficeSite.id,
  * });
  * ```
  *

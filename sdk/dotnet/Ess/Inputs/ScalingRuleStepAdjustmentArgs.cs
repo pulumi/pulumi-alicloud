@@ -12,12 +12,21 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
     public sealed class ScalingRuleStepAdjustmentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The lower bound of step.
+        /// </summary>
         [Input("metricIntervalLowerBound")]
         public Input<string>? MetricIntervalLowerBound { get; set; }
 
+        /// <summary>
+        /// The upper bound of step.
+        /// </summary>
         [Input("metricIntervalUpperBound")]
         public Input<string>? MetricIntervalUpperBound { get; set; }
 
+        /// <summary>
+        /// The adjust value of step.
+        /// </summary>
         [Input("scalingAdjustment")]
         public Input<int>? ScalingAdjustment { get; set; }
 

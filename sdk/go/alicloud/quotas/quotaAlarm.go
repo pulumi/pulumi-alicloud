@@ -13,9 +13,9 @@ import (
 
 // Provides a Quotas Quota Alarm resource.
 //
-// For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://help.aliyun.com/document_detail/440558.html).
+// For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createquotaalarm).
 //
-// > **NOTE:** Available in v1.116.0+.
+// > **NOTE:** Available since v1.116.0.
 //
 // ## Example Usage
 //
@@ -81,7 +81,7 @@ type QuotaAlarm struct {
 	QuotaActionCode pulumi.StringOutput `pulumi:"quotaActionCode"`
 	// The name of Quota Alarm.
 	QuotaAlarmName pulumi.StringOutput `pulumi:"quotaAlarmName"`
-	// The Quota Dimensions. See the following `Block QuotaDimensions`.
+	// The Quota Dimensions. See `quotaDimensions` below.
 	QuotaDimensions QuotaAlarmQuotaDimensionArrayOutput `pulumi:"quotaDimensions"`
 	// The threshold of Quota Alarm.
 	Threshold pulumi.Float64PtrOutput `pulumi:"threshold"`
@@ -141,7 +141,7 @@ type quotaAlarmState struct {
 	QuotaActionCode *string `pulumi:"quotaActionCode"`
 	// The name of Quota Alarm.
 	QuotaAlarmName *string `pulumi:"quotaAlarmName"`
-	// The Quota Dimensions. See the following `Block QuotaDimensions`.
+	// The Quota Dimensions. See `quotaDimensions` below.
 	QuotaDimensions []QuotaAlarmQuotaDimension `pulumi:"quotaDimensions"`
 	// The threshold of Quota Alarm.
 	Threshold *float64 `pulumi:"threshold"`
@@ -164,7 +164,7 @@ type QuotaAlarmState struct {
 	QuotaActionCode pulumi.StringPtrInput
 	// The name of Quota Alarm.
 	QuotaAlarmName pulumi.StringPtrInput
-	// The Quota Dimensions. See the following `Block QuotaDimensions`.
+	// The Quota Dimensions. See `quotaDimensions` below.
 	QuotaDimensions QuotaAlarmQuotaDimensionArrayInput
 	// The threshold of Quota Alarm.
 	Threshold pulumi.Float64PtrInput
@@ -189,7 +189,7 @@ type quotaAlarmArgs struct {
 	QuotaActionCode string `pulumi:"quotaActionCode"`
 	// The name of Quota Alarm.
 	QuotaAlarmName string `pulumi:"quotaAlarmName"`
-	// The Quota Dimensions. See the following `Block QuotaDimensions`.
+	// The Quota Dimensions. See `quotaDimensions` below.
 	QuotaDimensions []QuotaAlarmQuotaDimension `pulumi:"quotaDimensions"`
 	// The threshold of Quota Alarm.
 	Threshold *float64 `pulumi:"threshold"`
@@ -211,7 +211,7 @@ type QuotaAlarmArgs struct {
 	QuotaActionCode pulumi.StringInput
 	// The name of Quota Alarm.
 	QuotaAlarmName pulumi.StringInput
-	// The Quota Dimensions. See the following `Block QuotaDimensions`.
+	// The Quota Dimensions. See `quotaDimensions` below.
 	QuotaDimensions QuotaAlarmQuotaDimensionArrayInput
 	// The threshold of Quota Alarm.
 	Threshold pulumi.Float64PtrInput
@@ -332,7 +332,7 @@ func (o QuotaAlarmOutput) QuotaAlarmName() pulumi.StringOutput {
 	return o.ApplyT(func(v *QuotaAlarm) pulumi.StringOutput { return v.QuotaAlarmName }).(pulumi.StringOutput)
 }
 
-// The Quota Dimensions. See the following `Block QuotaDimensions`.
+// The Quota Dimensions. See `quotaDimensions` below.
 func (o QuotaAlarmOutput) QuotaDimensions() QuotaAlarmQuotaDimensionArrayOutput {
 	return o.ApplyT(func(v *QuotaAlarm) QuotaAlarmQuotaDimensionArrayOutput { return v.QuotaDimensions }).(QuotaAlarmQuotaDimensionArrayOutput)
 }

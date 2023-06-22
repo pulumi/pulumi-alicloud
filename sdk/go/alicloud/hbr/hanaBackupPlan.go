@@ -34,43 +34,43 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
-//				VaultName: pulumi.Any(_var.Name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			exampleResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultHanaInstance, err := hbr.NewHanaInstance(ctx, "defaultHanaInstance", &hbr.HanaInstanceArgs{
-//				AlertSetting:        pulumi.String("INHERITED"),
-//				HanaName:            pulumi.Any(_var.Name),
-//				Host:                pulumi.String("1.1.1.1"),
-//				InstanceNumber:      pulumi.Int(1),
-//				Password:            pulumi.String("YouPassword123"),
-//				ResourceGroupId:     *pulumi.String(defaultResourceGroups.Groups[0].Id),
-//				Sid:                 pulumi.String("HXE"),
-//				UseSsl:              pulumi.Bool(false),
-//				UserName:            pulumi.String("admin"),
-//				ValidateCertificate: pulumi.Bool(false),
-//				VaultId:             defaultVault.ID(),
+//			exampleVault, err := hbr.NewVault(ctx, "exampleVault", &hbr.VaultArgs{
+//				VaultName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = hbr.NewHanaBackupPlan(ctx, "defaultHanaBackupPlan", &hbr.HanaBackupPlanArgs{
+//			exampleHanaInstance, err := hbr.NewHanaInstance(ctx, "exampleHanaInstance", &hbr.HanaInstanceArgs{
+//				AlertSetting:        pulumi.String("INHERITED"),
+//				HanaName:            pulumi.String("terraform-example"),
+//				Host:                pulumi.String("1.1.1.1"),
+//				InstanceNumber:      pulumi.Int(1),
+//				Password:            pulumi.String("YouPassword123"),
+//				ResourceGroupId:     *pulumi.String(exampleResourceGroups.Groups[0].Id),
+//				Sid:                 pulumi.String("HXE"),
+//				UseSsl:              pulumi.Bool(false),
+//				UserName:            pulumi.String("admin"),
+//				ValidateCertificate: pulumi.Bool(false),
+//				VaultId:             exampleVault.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewHanaBackupPlan(ctx, "exampleHanaBackupPlan", &hbr.HanaBackupPlanArgs{
 //				BackupPrefix:    pulumi.String("DIFF_DATA_BACKUP"),
 //				BackupType:      pulumi.String("COMPLETE"),
-//				ClusterId:       defaultHanaInstance.HanaInstanceId,
+//				ClusterId:       exampleHanaInstance.HanaInstanceId,
 //				DatabaseName:    pulumi.String("SYSTEMDB"),
-//				PlanName:        pulumi.Any(_var.Name),
-//				ResourceGroupId: *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				PlanName:        pulumi.String("terraform-example"),
+//				ResourceGroupId: *pulumi.String(exampleResourceGroups.Groups[0].Id),
 //				Schedule:        pulumi.String("I|1602673264|P1D"),
-//				VaultId:         defaultHanaInstance.VaultId,
+//				VaultId:         exampleHanaInstance.VaultId,
 //			})
 //			if err != nil {
 //				return err

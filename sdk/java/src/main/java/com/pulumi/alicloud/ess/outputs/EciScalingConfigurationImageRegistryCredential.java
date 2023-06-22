@@ -23,6 +23,11 @@ public final class EciScalingConfigurationImageRegistryCredential {
      * 
      */
     private @Nullable String server;
+    /**
+     * @return The username used to log on to the image repository. It is required
+     * when `image_registry_credential` is configured.
+     * 
+     */
     private @Nullable String username;
 
     private EciScalingConfigurationImageRegistryCredential() {}
@@ -42,6 +47,11 @@ public final class EciScalingConfigurationImageRegistryCredential {
     public Optional<String> server() {
         return Optional.ofNullable(this.server);
     }
+    /**
+     * @return The username used to log on to the image repository. It is required
+     * when `image_registry_credential` is configured.
+     * 
+     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

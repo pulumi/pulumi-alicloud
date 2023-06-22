@@ -10,6 +10,44 @@ import * as utilities from "../utilities";
  * Log Service provides the LogSearch/Analytics function to query and analyze large amounts of logs in real time.
  * You can use this function by enabling the index and field statistics. [Refer to details](https://www.alibabacloud.com/help/doc-detail/43772.htm)
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
+ * const exampleStore = new alicloud.log.Store("exampleStore", {
+ *     project: exampleProject.name,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const exampleStoreIndex = new alicloud.log.StoreIndex("exampleStoreIndex", {
+ *     project: exampleProject.name,
+ *     logstore: exampleStore.name,
+ *     fullText: {
+ *         caseSensitive: true,
+ *         token: ` #$^*
+ * 	`,
+ *     },
+ *     fieldSearches: [{
+ *         name: "terraform-example",
+ *         enableAnalytics: true,
+ *         type: "text",
+ *         token: ` #$^*
+ * 	`,
+ *     }],
+ * });
+ * ```
  * ## Module Support
  *
  * You can use the existing sls module

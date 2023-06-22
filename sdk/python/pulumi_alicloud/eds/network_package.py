@@ -132,9 +132,9 @@ class NetworkPackage(pulumi.CustomResource):
         """
         Provides a ECD Network Package resource.
 
-        For information about ECD Network Package and how to use it, see [What is Network Package](https://help.aliyun.com/document_detail/188382.html).
+        For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createnetworkpackage).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 
@@ -144,13 +144,18 @@ class NetworkPackage(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.eds.SimpleOfficeSite("default",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
             cidr_block="172.16.0.0/12",
+            enable_admin_access=False,
             desktop_access_type="Internet",
-            office_site_name="your_office_site_name")
-        example = alicloud.eds.NetworkPackage("example",
+            office_site_name=name)
+        default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
             bandwidth=10,
-            office_site_id=default.id)
+            office_site_id=default_simple_office_site.id)
         ```
 
         ## Import
@@ -175,9 +180,9 @@ class NetworkPackage(pulumi.CustomResource):
         """
         Provides a ECD Network Package resource.
 
-        For information about ECD Network Package and how to use it, see [What is Network Package](https://help.aliyun.com/document_detail/188382.html).
+        For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createnetworkpackage).
 
-        > **NOTE:** Available in v1.142.0+.
+        > **NOTE:** Available since v1.142.0.
 
         ## Example Usage
 
@@ -187,13 +192,18 @@ class NetworkPackage(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.eds.SimpleOfficeSite("default",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
             cidr_block="172.16.0.0/12",
+            enable_admin_access=False,
             desktop_access_type="Internet",
-            office_site_name="your_office_site_name")
-        example = alicloud.eds.NetworkPackage("example",
+            office_site_name=name)
+        default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
             bandwidth=10,
-            office_site_id=default.id)
+            office_site_id=default_simple_office_site.id)
         ```
 
         ## Import

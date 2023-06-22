@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECD Ram Directory resource.
  * 
- * For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://help.aliyun.com/document_detail/436216.html).
+ * For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createramdirectory).
  * 
- * &gt; **NOTE:** Available in v1.174.0+.
+ * &gt; **NOTE:** Available since v1.174.0.
  * 
  * ## Example Usage
  * 
@@ -33,9 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.eds.EdsFunctions;
  * import com.pulumi.alicloud.eds.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.eds.RamDirectory;
  * import com.pulumi.alicloud.eds.RamDirectoryArgs;
  * import java.util.List;
@@ -51,23 +52,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var defaultZones = EdsFunctions.getZones();
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .vswitchName(name)
  *             .build());
  * 
  *         var defaultRamDirectory = new RamDirectory(&#34;defaultRamDirectory&#34;, RamDirectoryArgs.builder()        
  *             .desktopAccessType(&#34;INTERNET&#34;)
- *             .enableAdminAccess(&#34;true&#34;)
- *             .enableInternetAccess(&#34;true&#34;)
- *             .ramDirectoryName(var_.name())
- *             .vswitchIds(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .enableAdminAccess(true)
+ *             .enableInternetAccess(true)
+ *             .ramDirectoryName(name)
+ *             .vswitchIds(defaultSwitch.id())
  *             .build());
  * 
  *     }

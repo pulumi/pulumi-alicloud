@@ -246,7 +246,7 @@ class AccessLog(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Access Log and how to use it, see [What is Access Log](https://www.alibabacloud.com/help/en/global-accelerator/latest/attachlogstoretoendpointgroup).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -255,10 +255,21 @@ class AccessLog(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default_accelerators = alicloud.ga.get_accelerators(status="active")
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
         default_project = alicloud.log.Project("defaultProject")
         default_store = alicloud.log.Store("defaultStore", project=default_project.name)
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="2")
         default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
             bandwidth=100,
             type="Basic",
@@ -267,15 +278,20 @@ class AccessLog(pulumi.CustomResource):
             billing_type="PayBy95",
             ratio=30)
         default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerators.accelerators[0].id,
+            accelerator_id=default_accelerator.id,
             bandwidth_package_id=default_bandwidth_package.id)
         default_listener = alicloud.ga.Listener("defaultListener",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            client_affinity="SOURCE_IP",
+            protocol="HTTP",
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
+                from_port=70,
+                to_port=70,
             )])
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", payment_type="PayAsYouGo")
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            bandwidth="10",
+            internet_charge_type="PayByBandwidth",
+            address_name="terraform-example")
         default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
             accelerator_id=default_listener.accelerator_id,
             endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
@@ -283,15 +299,15 @@ class AccessLog(pulumi.CustomResource):
                 type="PublicIp",
                 weight=20,
             )],
-            endpoint_group_region="cn-hangzhou",
+            endpoint_group_region=region,
             listener_id=default_listener.id)
         default_access_log = alicloud.ga.AccessLog("defaultAccessLog",
-            accelerator_id=default_accelerators.accelerators[0].id,
+            accelerator_id=default_accelerator.id,
             listener_id=default_listener.id,
             endpoint_group_id=default_endpoint_group.id,
             sls_project_name=default_project.name,
             sls_log_store_name=default_store.name,
-            sls_region_id="cn-hangzhou")
+            sls_region_id=region)
         ```
 
         ## Import
@@ -322,7 +338,7 @@ class AccessLog(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Access Log and how to use it, see [What is Access Log](https://www.alibabacloud.com/help/en/global-accelerator/latest/attachlogstoretoendpointgroup).
 
-        > **NOTE:** Available in v1.187.0+.
+        > **NOTE:** Available since v1.187.0.
 
         ## Example Usage
 
@@ -331,10 +347,21 @@ class AccessLog(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default_accelerators = alicloud.ga.get_accelerators(status="active")
+        config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
         default_project = alicloud.log.Project("defaultProject")
         default_store = alicloud.log.Store("defaultStore", project=default_project.name)
+        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+            duration=1,
+            auto_use_coupon=True,
+            spec="2")
         default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
             bandwidth=100,
             type="Basic",
@@ -343,15 +370,20 @@ class AccessLog(pulumi.CustomResource):
             billing_type="PayBy95",
             ratio=30)
         default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerators.accelerators[0].id,
+            accelerator_id=default_accelerator.id,
             bandwidth_package_id=default_bandwidth_package.id)
         default_listener = alicloud.ga.Listener("defaultListener",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
+            client_affinity="SOURCE_IP",
+            protocol="HTTP",
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
-                from_port=80,
-                to_port=80,
+                from_port=70,
+                to_port=70,
             )])
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", payment_type="PayAsYouGo")
+        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            bandwidth="10",
+            internet_charge_type="PayByBandwidth",
+            address_name="terraform-example")
         default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
             accelerator_id=default_listener.accelerator_id,
             endpoint_configurations=[alicloud.ga.EndpointGroupEndpointConfigurationArgs(
@@ -359,15 +391,15 @@ class AccessLog(pulumi.CustomResource):
                 type="PublicIp",
                 weight=20,
             )],
-            endpoint_group_region="cn-hangzhou",
+            endpoint_group_region=region,
             listener_id=default_listener.id)
         default_access_log = alicloud.ga.AccessLog("defaultAccessLog",
-            accelerator_id=default_accelerators.accelerators[0].id,
+            accelerator_id=default_accelerator.id,
             listener_id=default_listener.id,
             endpoint_group_id=default_endpoint_group.id,
             sls_project_name=default_project.name,
             sls_log_store_name=default_store.name,
-            sls_region_id="cn-hangzhou")
+            sls_region_id=region)
         ```
 
         ## Import

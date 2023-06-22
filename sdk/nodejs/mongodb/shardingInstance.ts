@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * It offers a full range of database solutions, such as disaster recovery, backup, recovery, monitoring, and alarms.
  * You can see detail product introduction [here](https://www.alibabacloud.com/help/doc-detail/26558.htm)
  *
- * > **NOTE:**  Available in 1.40.0+
+ * > **NOTE:** Available since v1.40.0.
  *
  * > **NOTE:**  The following regions don't support create Classic network MongoDB sharding instance.
  * [`cn-zhangjiakou`,`cn-huhehaote`,`ap-southeast-2`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`me-east-1`,`ap-northeast-1`,`eu-west-1`]
@@ -19,6 +19,52 @@ import * as utilities from "../utilities";
  * > **NOTE:**  Create MongoDB Sharding instance or change instance type and storage would cost 10~20 minutes. Please make full preparation
  *
  * ## Example Usage
+ * ### Create a Mongodb Sharding instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const defaultZones = alicloud.mongodb.getZones({});
+ * const index = defaultZones.then(defaultZones => defaultZones.zones).length.then(length => length - 1);
+ * const zoneId = defaultZones.then(defaultZones => defaultZones.zones[index].id);
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ *     vswitchName: name,
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: zoneId,
+ * });
+ * const defaultShardingInstance = new alicloud.mongodb.ShardingInstance("defaultShardingInstance", {
+ *     zoneId: zoneId,
+ *     vswitchId: defaultSwitch.id,
+ *     engineVersion: "4.2",
+ *     shardLists: [
+ *         {
+ *             nodeClass: "dds.shard.mid",
+ *             nodeStorage: 10,
+ *         },
+ *         {
+ *             nodeClass: "dds.shard.standard",
+ *             nodeStorage: 20,
+ *             readonlyReplicas: 1,
+ *         },
+ *     ],
+ *     mongoLists: [
+ *         {
+ *             nodeClass: "dds.mongos.mid",
+ *         },
+ *         {
+ *             nodeClass: "dds.mongos.mid",
+ *         },
+ *     ],
+ * });
+ * ```
  * ## Module Support
  *
  * You can use to the existing mongodb-sharding module
@@ -77,7 +123,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly backupTime!: pulumi.Output<string>;
     /**
-     * The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+     * The node information list of config server. See `configServerList` below.
      */
     public /*out*/ readonly configServerLists!: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
     /**
@@ -97,7 +143,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The mongo-node count can be purchased is in range of [2, 32].
+     * The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      */
     public readonly mongoLists!: pulumi.Output<outputs.mongodb.ShardingInstanceMongoList[]>;
     /**
@@ -140,7 +186,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly securityIpLists!: pulumi.Output<string[]>;
     /**
-     * the shard-node count can be purchased is in range of [2, 32].
+     * the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      */
     public readonly shardLists!: pulumi.Output<outputs.mongodb.ShardingInstanceShardList[]>;
     /**
@@ -274,7 +320,7 @@ export interface ShardingInstanceState {
      */
     backupTime?: pulumi.Input<string>;
     /**
-     * The node information list of config server. The details see Block `configServerList`. **NOTE:** Available in v1.140+.
+     * The node information list of config server. See `configServerList` below.
      */
     configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
     /**
@@ -294,7 +340,7 @@ export interface ShardingInstanceState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The mongo-node count can be purchased is in range of [2, 32].
+     * The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      */
     mongoLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceMongoList>[]>;
     /**
@@ -337,7 +383,7 @@ export interface ShardingInstanceState {
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * the shard-node count can be purchased is in range of [2, 32].
+     * the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      */
     shardLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
     /**
@@ -404,7 +450,7 @@ export interface ShardingInstanceArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The mongo-node count can be purchased is in range of [2, 32].
+     * The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      */
     mongoLists: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceMongoList>[]>;
     /**
@@ -443,7 +489,7 @@ export interface ShardingInstanceArgs {
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * the shard-node count can be purchased is in range of [2, 32].
+     * the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      */
     shardLists: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
     /**

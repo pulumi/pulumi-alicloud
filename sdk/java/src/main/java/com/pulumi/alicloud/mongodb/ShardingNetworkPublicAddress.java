@@ -20,9 +20,95 @@ import javax.annotation.Nullable;
  * 
  * For information about MongoDB Sharding Network Public Address and how to use it, see [What is Sharding Network Public Address](https://www.alibabacloud.com/help/doc-detail/67602.html).
  * 
- * &gt; **NOTE:** Available in v1.149.0+.
+ * &gt; **NOTE:** Available since v1.149.0.
  * 
  * &gt; **NOTE:** This operation supports sharded cluster instances only.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.mongodb.MongodbFunctions;
+ * import com.pulumi.alicloud.mongodb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.mongodb.ShardingInstance;
+ * import com.pulumi.alicloud.mongodb.ShardingInstanceArgs;
+ * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceShardListArgs;
+ * import com.pulumi.alicloud.mongodb.inputs.ShardingInstanceMongoListArgs;
+ * import com.pulumi.alicloud.mongodb.ShardingNetworkPublicAddress;
+ * import com.pulumi.alicloud.mongodb.ShardingNetworkPublicAddressArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var defaultZones = MongodbFunctions.getZones();
+ * 
+ *         final var index = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()).length() - 1;
+ * 
+ *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones())[index].id();
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(zoneId)
+ *             .build());
+ * 
+ *         var defaultShardingInstance = new ShardingInstance(&#34;defaultShardingInstance&#34;, ShardingInstanceArgs.builder()        
+ *             .zoneId(zoneId)
+ *             .vswitchId(defaultSwitch.id())
+ *             .engineVersion(&#34;4.2&#34;)
+ *             .shardLists(            
+ *                 ShardingInstanceShardListArgs.builder()
+ *                     .nodeClass(&#34;dds.shard.mid&#34;)
+ *                     .nodeStorage(&#34;10&#34;)
+ *                     .build(),
+ *                 ShardingInstanceShardListArgs.builder()
+ *                     .nodeClass(&#34;dds.shard.standard&#34;)
+ *                     .nodeStorage(&#34;20&#34;)
+ *                     .readonlyReplicas(&#34;1&#34;)
+ *                     .build())
+ *             .mongoLists(            
+ *                 ShardingInstanceMongoListArgs.builder()
+ *                     .nodeClass(&#34;dds.mongos.mid&#34;)
+ *                     .build(),
+ *                 ShardingInstanceMongoListArgs.builder()
+ *                     .nodeClass(&#34;dds.mongos.mid&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *         var example = new ShardingNetworkPublicAddress(&#34;example&#34;, ShardingNetworkPublicAddressArgs.builder()        
+ *             .dbInstanceId(defaultShardingInstance.id())
+ *             .nodeId(defaultShardingInstance.mongoLists().applyValue(mongoLists -&gt; mongoLists[0].nodeId()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

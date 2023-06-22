@@ -22,13 +22,12 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
-        /// The amount of CPU resources allocated to the container group.
+        /// The amount of CPU resources allocated to the container.
         /// </summary>
         public readonly double? Cpu;
         /// <summary>
         /// The structure of environmentVars.
-        /// See Block_environment_var_in_init_container below for details.
-        /// See Block_environment_var_in_container below for details.
+        /// See `environment_vars` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationContainerEnvironmentVar> EnvironmentVars;
         /// <summary>
@@ -84,16 +83,15 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int? LivenessProbeTimeoutSeconds;
         /// <summary>
-        /// The amount of memory resources allocated to the container group.
+        /// The amount of memory resources allocated to the container.
         /// </summary>
         public readonly double? Memory;
         /// <summary>
-        /// The name of the volume.
+        /// The name of the mounted volume.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The structure of port. See Block_port_in_init_container below
-        /// for details.
+        /// The structure of port. See `ports` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationContainerPort> Ports;
         /// <summary>
@@ -137,9 +135,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int? ReadinessProbeTimeoutSeconds;
         /// <summary>
-        /// The structure of volumeMounts.
-        /// See Block_volume_mount_in_init_container below for details.
-        /// See Block_volume_mount_in_container below for details.
+        /// The structure of volumeMounts. 
+        /// See `volume_mounts` below for details.
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationContainerVolumeMount> VolumeMounts;
         /// <summary>

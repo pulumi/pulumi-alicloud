@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class InstanceParameter {
     /**
-     * @return The name of DB instance. It a string of 2 to 256 characters.
+     * @return The name of the parameter.
      * 
      */
     private String name;
@@ -22,7 +22,7 @@ public final class InstanceParameter {
 
     private InstanceParameter() {}
     /**
-     * @return The name of DB instance. It a string of 2 to 256 characters.
+     * @return The name of the parameter.
      * 
      */
     public String name() {

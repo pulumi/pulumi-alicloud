@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a DTS Subscription Job resource.
  *
- * For information about DTS Subscription Job and how to use it, see [What is Subscription Job](https://help.aliyun.com/document_detail/254791.html).
+ * For information about DTS Subscription Job and how to use it, see [What is Subscription Job](https://www.alibabacloud.com/help/en/data-transmission-service/latest/configuresubscription).
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
  * ## Example Usage
  *
@@ -20,67 +20,74 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "dtsSubscriptionJob";
- * const creation = config.get("creation") || "Rds";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const name = config.get("name") || "terraform-example";
+ * const exampleRegions = alicloud.getRegions({
+ *     current: true,
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const exampleZones = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * const exampleInstanceClasses = exampleZones.then(exampleZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: exampleZones.zones?.[0]?.id,
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * }));
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
+ * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const instance = new alicloud.rds.Instance("instance", {
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
+ * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
  *     engine: "MySQL",
- *     engineVersion: "5.6",
- *     instanceType: "rds.mysql.s1.small",
- *     instanceStorage: 10,
- *     vswitchId: defaultSwitch.id,
+ *     engineVersion: "8.0",
+ *     instanceType: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceChargeType: "Postpaid",
  *     instanceName: name,
+ *     vswitchId: exampleSwitch.id,
+ *     monitoringPeriod: 60,
+ *     dbInstanceStorageType: "cloud_essd",
+ *     securityGroupIds: [exampleSecurityGroup.id],
  * });
- * const db: alicloud.rds.Database[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     db.push(new alicloud.rds.Database(`db-${range.value}`, {
- *         instanceId: instance.id,
- *         description: "from terraform",
- *     }));
- * }
- * const account = new alicloud.rds.Account("account", {
- *     instanceId: instance.id,
- *     password: "Test12345",
- *     description: "from terraform",
+ * const exampleRdsAccount = new alicloud.rds.RdsAccount("exampleRdsAccount", {
+ *     dbInstanceId: exampleInstance.id,
+ *     accountName: "example_name",
+ *     accountPassword: "example_password",
  * });
- * const privilege = new alicloud.rds.AccountPrivilege("privilege", {
- *     instanceId: instance.id,
- *     accountName: account.name,
+ * const exampleDatabase = new alicloud.rds.Database("exampleDatabase", {instanceId: exampleInstance.id});
+ * const exampleAccountPrivilege = new alicloud.rds.AccountPrivilege("exampleAccountPrivilege", {
+ *     instanceId: exampleInstance.id,
+ *     accountName: exampleRdsAccount.name,
  *     privilege: "ReadWrite",
- *     dbNames: db.map(__item => __item.name),
+ *     dbNames: [exampleDatabase.name],
  * });
- * const default1Networks = alicloud.vpc.getNetworks({
- *     nameRegex: "default-NODELETING",
- * });
- * const default1Switches = alicloud.vpc.getSwitches({
- *     vpcId: data.alicloud_vpcs["default"].ids[0],
- * });
- * const defaultSubscriptionJob = new alicloud.dts.SubscriptionJob("defaultSubscriptionJob", {
+ * const exampleSubscriptionJob = new alicloud.dts.SubscriptionJob("exampleSubscriptionJob", {
  *     dtsJobName: name,
  *     paymentType: "PayAsYouGo",
  *     sourceEndpointEngineName: "MySQL",
- *     sourceEndpointRegion: "cn-hangzhou",
+ *     sourceEndpointRegion: exampleRegions.then(exampleRegions => exampleRegions.regions?.[0]?.id),
  *     sourceEndpointInstanceType: "RDS",
- *     sourceEndpointInstanceId: instance.id,
- *     sourceEndpointDatabaseName: "tfaccountpri_0",
- *     sourceEndpointUserName: "tftestprivilege",
- *     sourceEndpointPassword: "Test12345",
- *     dbList: "        {\"dtstestdata\": {\"name\": \"tfaccountpri_0\", \"all\": true}}\n",
+ *     sourceEndpointInstanceId: exampleInstance.id,
+ *     sourceEndpointDatabaseName: exampleDatabase.name,
+ *     sourceEndpointUserName: exampleRdsAccount.accountName,
+ *     sourceEndpointPassword: exampleRdsAccount.accountPassword,
+ *     dbList: pulumi.interpolate`{"${exampleDatabase.name}":{"name":"${exampleDatabase.name}","all":true}}`,
  *     subscriptionInstanceNetworkType: "vpc",
- *     subscriptionInstanceVpcId: default1Networks.then(default1Networks => default1Networks.ids?.[0]),
- *     subscriptionInstanceVswitchId: default1Switches.then(default1Switches => default1Switches.ids?.[0]),
+ *     subscriptionInstanceVpcId: exampleNetwork.id,
+ *     subscriptionInstanceVswitchId: exampleSwitch.id,
  *     status: "Normal",
  * });
  * ```

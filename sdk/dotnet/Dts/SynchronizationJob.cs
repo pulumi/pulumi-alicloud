@@ -14,58 +14,8 @@ namespace Pulumi.AliCloud.Dts
     /// 
     /// For information about DTS Synchronization Job and how to use it, see [What is Synchronization Job](https://www.alibabacloud.com/product/data-transmission-service).
     /// 
-    /// &gt; **NOTE:** Available in v1.138.0+.
+    /// &gt; **NOTE:** Available since v1.138.0.
     /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultSynchronizationInstance = new AliCloud.Dts.SynchronizationInstance("defaultSynchronizationInstance", new()
-    ///     {
-    ///         PaymentType = "PayAsYouGo",
-    ///         SourceEndpointEngineName = "PolarDB",
-    ///         SourceEndpointRegion = "cn-hangzhou",
-    ///         DestinationEndpointEngineName = "ADB30",
-    ///         DestinationEndpointRegion = "cn-hangzhou",
-    ///         InstanceClass = "small",
-    ///         SyncArchitecture = "oneway",
-    ///     });
-    /// 
-    ///     var defaultSynchronizationJob = new AliCloud.Dts.SynchronizationJob("defaultSynchronizationJob", new()
-    ///     {
-    ///         DtsInstanceId = defaultSynchronizationInstance.Id,
-    ///         DtsJobName = "tf-testAccCase1",
-    ///         SourceEndpointInstanceType = "PolarDB",
-    ///         SourceEndpointInstanceId = "pc-xxxxxxxx",
-    ///         SourceEndpointEngineName = "PolarDB",
-    ///         SourceEndpointRegion = "cn-hangzhou",
-    ///         SourceEndpointDatabaseName = "tf-testacc",
-    ///         SourceEndpointUserName = "root",
-    ///         SourceEndpointPassword = "password",
-    ///         DestinationEndpointInstanceType = "ads",
-    ///         DestinationEndpointInstanceId = "am-xxxxxxxx",
-    ///         DestinationEndpointEngineName = "ADB30",
-    ///         DestinationEndpointRegion = "cn-hangzhou",
-    ///         DestinationEndpointDatabaseName = "tf-testacc",
-    ///         DestinationEndpointUserName = "root",
-    ///         DestinationEndpointPassword = "password",
-    ///         DbList = "{\"tf-testacc\":{\"name\":\"tf-test\",\"all\":true,\"state\":\"normal\"}}",
-    ///         StructureInitialization = true,
-    ///         DataInitialization = true,
-    ///         DataSynchronization = true,
-    ///         Status = "Synchronizing",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Notice
     /// 
     /// 1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;

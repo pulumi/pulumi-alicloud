@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// For information about Global Accelerator (GA) Access Log and how to use it, see [What is Access Log](https://www.alibabacloud.com/help/en/global-accelerator/latest/attachlogstoretoendpointgroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.187.0+.
+    /// &gt; **NOTE:** Available since v1.187.0.
     /// 
     /// ## Example Usage
     /// 
@@ -25,12 +25,16 @@ namespace Pulumi.AliCloud.Ga
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccelerators = AliCloud.Ga.GetAccelerators.Invoke(new()
+    ///     var config = new Config();
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
-    ///         Status = "active",
+    ///         Max = 99999,
+    ///         Min = 10000,
     ///     });
     /// 
     ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
@@ -38,6 +42,13 @@ namespace Pulumi.AliCloud.Ga
     ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
     ///     {
     ///         Project = defaultProject.Name,
+    ///     });
+    /// 
+    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     {
+    ///         Duration = 1,
+    ///         AutoUseCoupon = true,
+    ///         Spec = "2",
     ///     });
     /// 
     ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
@@ -52,26 +63,30 @@ namespace Pulumi.AliCloud.Ga
     /// 
     ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
     ///     {
-    ///         AcceleratorId = defaultAccelerators.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators[0]?.Id),
+    ///         AcceleratorId = defaultAccelerator.Id,
     ///         BandwidthPackageId = defaultBandwidthPackage.Id,
     ///     });
     /// 
     ///     var defaultListener = new AliCloud.Ga.Listener("defaultListener", new()
     ///     {
     ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
+    ///         ClientAffinity = "SOURCE_IP",
+    ///         Protocol = "HTTP",
     ///         PortRanges = new[]
     ///         {
     ///             new AliCloud.Ga.Inputs.ListenerPortRangeArgs
     ///             {
-    ///                 FromPort = 80,
-    ///                 ToPort = 80,
+    ///                 FromPort = 70,
+    ///                 ToPort = 70,
     ///             },
     ///         },
     ///     });
     /// 
     ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
     ///     {
-    ///         PaymentType = "PayAsYouGo",
+    ///         Bandwidth = "10",
+    ///         InternetChargeType = "PayByBandwidth",
+    ///         AddressName = "terraform-example",
     ///     });
     /// 
     ///     var defaultEndpointGroup = new AliCloud.Ga.EndpointGroup("defaultEndpointGroup", new()
@@ -86,18 +101,18 @@ namespace Pulumi.AliCloud.Ga
     ///                 Weight = 20,
     ///             },
     ///         },
-    ///         EndpointGroupRegion = "cn-hangzhou",
+    ///         EndpointGroupRegion = region,
     ///         ListenerId = defaultListener.Id,
     ///     });
     /// 
     ///     var defaultAccessLog = new AliCloud.Ga.AccessLog("defaultAccessLog", new()
     ///     {
-    ///         AcceleratorId = defaultAccelerators.Apply(getAcceleratorsResult =&gt; getAcceleratorsResult.Accelerators[0]?.Id),
+    ///         AcceleratorId = defaultAccelerator.Id,
     ///         ListenerId = defaultListener.Id,
     ///         EndpointGroupId = defaultEndpointGroup.Id,
     ///         SlsProjectName = defaultProject.Name,
     ///         SlsLogStoreName = defaultStore.Name,
-    ///         SlsRegionId = "cn-hangzhou",
+    ///         SlsRegionId = region,
     ///     });
     /// 
     /// });

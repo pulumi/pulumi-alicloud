@@ -337,9 +337,9 @@ class Bundle(pulumi.CustomResource):
         """
         Provides a ECD Bundle resource.
 
-        For information about ECD Bundle and how to use it, see [What is Bundle](https://help.aliyun.com/document_detail/188883.html).
+        For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createbundle).
 
-        > **NOTE:** Available in v1.170.0+.
+        > **NOTE:** Available since v1.170.0.
 
         ## Example Usage
 
@@ -349,6 +349,10 @@ class Bundle(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_images = alicloud.eds.get_images(image_type="SYSTEM",
             os_type="Windows",
             desktop_instance_type="eds.hf.4c8g")
@@ -356,9 +360,9 @@ class Bundle(pulumi.CustomResource):
             cpu_count=4,
             memory_size=8192)
         default_bundle = alicloud.eds.Bundle("defaultBundle",
-            description=var["name"],
+            description=name,
             desktop_type=default_desktop_types.ids[0],
-            bundle_name=var["name"],
+            bundle_name=name,
             image_id=default_images.ids[0],
             user_disk_size_gibs=[70],
             root_disk_size_gib=80,
@@ -397,9 +401,9 @@ class Bundle(pulumi.CustomResource):
         """
         Provides a ECD Bundle resource.
 
-        For information about ECD Bundle and how to use it, see [What is Bundle](https://help.aliyun.com/document_detail/188883.html).
+        For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createbundle).
 
-        > **NOTE:** Available in v1.170.0+.
+        > **NOTE:** Available since v1.170.0.
 
         ## Example Usage
 
@@ -409,6 +413,10 @@ class Bundle(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_images = alicloud.eds.get_images(image_type="SYSTEM",
             os_type="Windows",
             desktop_instance_type="eds.hf.4c8g")
@@ -416,9 +424,9 @@ class Bundle(pulumi.CustomResource):
             cpu_count=4,
             memory_size=8192)
         default_bundle = alicloud.eds.Bundle("defaultBundle",
-            description=var["name"],
+            description=name,
             desktop_type=default_desktop_types.ids[0],
-            bundle_name=var["name"],
+            bundle_name=name,
             image_id=default_images.ids[0],
             user_disk_size_gibs=[70],
             root_disk_size_gib=80,

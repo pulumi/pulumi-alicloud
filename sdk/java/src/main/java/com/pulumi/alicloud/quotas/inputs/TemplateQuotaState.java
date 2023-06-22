@@ -35,14 +35,14 @@ public final class TemplateQuotaState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The Quota Dimensions. See the following `Block Dimensions`.
+     * The Quota Dimensions. See `dimensions` below.
      * 
      */
     @Import(name="dimensions")
     private @Nullable Output<List<TemplateQuotaDimensionArgs>> dimensions;
 
     /**
-     * @return The Quota Dimensions. See the following `Block Dimensions`.
+     * @return The Quota Dimensions. See `dimensions` below.
      * 
      */
     public Optional<Output<List<TemplateQuotaDimensionArgs>>> dimensions() {
@@ -222,7 +222,7 @@ public final class TemplateQuotaState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dimensions The Quota Dimensions. See the following `Block Dimensions`.
+         * @param dimensions The Quota Dimensions. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class TemplateQuotaState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dimensions The Quota Dimensions. See the following `Block Dimensions`.
+         * @param dimensions The Quota Dimensions. See `dimensions` below.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class TemplateQuotaState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dimensions The Quota Dimensions. See the following `Block Dimensions`.
+         * @param dimensions The Quota Dimensions. See `dimensions` below.
          * 
          * @return builder
          * 

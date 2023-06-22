@@ -48,22 +48,30 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.alertIds);
     }
 
+    /**
+     * The time when the site monitoring task was created.
+     * 
+     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
+    /**
+     * @return The time when the site monitoring task was created.
+     * 
+     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
     /**
-     * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+     * The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
      * 
      */
     @Import(name="interval")
     private @Nullable Output<Integer> interval;
 
     /**
-     * @return The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+     * @return The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
      * 
      */
     public Optional<Output<Integer>> interval() {
@@ -71,14 +79,14 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+     * The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
      * 
      */
     @Import(name="ispCities")
     private @Nullable Output<List<SiteMonitorIspCityArgs>> ispCities;
 
     /**
-     * @return The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+     * @return The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
      * 
      */
     public Optional<Output<List<SiteMonitorIspCityArgs>>> ispCities() {
@@ -115,9 +123,17 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.taskName);
     }
 
+    /**
+     * The status of the site monitoring task.
+     * 
+     */
     @Import(name="taskState")
     private @Nullable Output<String> taskState;
 
+    /**
+     * @return The status of the site monitoring task.
+     * 
+     */
     public Optional<Output<String>> taskState() {
         return Optional.ofNullable(this.taskState);
     }
@@ -137,9 +153,17 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.taskType);
     }
 
+    /**
+     * The time when the site monitoring task was updated.
+     * 
+     */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
+    /**
+     * @return The time when the site monitoring task was updated.
+     * 
+     */
     public Optional<Output<String>> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }
@@ -229,17 +253,29 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
             return alertIds(List.of(alertIds));
         }
 
+        /**
+         * @param createTime The time when the site monitoring task was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
+        /**
+         * @param createTime The time when the site monitoring task was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 
         /**
-         * @param interval The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+         * @param interval The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
          * 
          * @return builder
          * 
@@ -250,7 +286,7 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interval The monitoring interval of the site monitoring task. Unit: minutes. Valid values: 1, 5, and 15. Default value: 1.
+         * @param interval The monitoring interval of the site monitoring task. Unit: minutes. Valid values: `1`, `5`, `15`, `30` and `60`. Default value: `1`. **NOTE:** From version 1.207.0, `interval` can be set to `30`, `60`.
          * 
          * @return builder
          * 
@@ -260,7 +296,7 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
          * 
          * @return builder
          * 
@@ -271,7 +307,7 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
          * 
          * @return builder
          * 
@@ -281,7 +317,7 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring.
+         * @param ispCities The detection points in a JSON array. For example, `[{&#34;city&#34;:&#34;546&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;572&#34;,&#34;isp&#34;:&#34;465&#34;},{&#34;city&#34;:&#34;738&#34;,&#34;isp&#34;:&#34;465&#34;}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
          * 
          * @return builder
          * 
@@ -332,11 +368,23 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
             return taskName(Output.of(taskName));
         }
 
+        /**
+         * @param taskState The status of the site monitoring task.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskState(@Nullable Output<String> taskState) {
             $.taskState = taskState;
             return this;
         }
 
+        /**
+         * @param taskState The status of the site monitoring task.
+         * 
+         * @return builder
+         * 
+         */
         public Builder taskState(String taskState) {
             return taskState(Output.of(taskState));
         }
@@ -362,11 +410,23 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
             return taskType(Output.of(taskType));
         }
 
+        /**
+         * @param updateTime The time when the site monitoring task was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(@Nullable Output<String> updateTime) {
             $.updateTime = updateTime;
             return this;
         }
 
+        /**
+         * @param updateTime The time when the site monitoring task was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
         }

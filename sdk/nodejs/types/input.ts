@@ -2178,7 +2178,13 @@ export namespace cms {
     }
 
     export interface SiteMonitorIspCity {
+        /**
+         * The ID of the city.
+         */
         city: pulumi.Input<string>;
+        /**
+         * The ID of the carrier.
+         */
         isp: pulumi.Input<string>;
     }
 
@@ -5156,11 +5162,11 @@ export namespace eds {
 
     export interface EcdPolicyGroupAuthorizeAccessPolicyRule {
         /**
-         * The cidrip of security rules.
+         * The cidrip of authorize access rule.
          */
         cidrIp?: pulumi.Input<string>;
         /**
-         * The description of security rules.
+         * The description of authorize access rule.
          */
         description?: pulumi.Input<string>;
     }
@@ -5780,13 +5786,12 @@ export namespace ess {
          */
         commands?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The amount of CPU resources allocated to the container group.
+         * The amount of CPU resources allocated to the container.
          */
         cpu?: pulumi.Input<number>;
         /**
          * The structure of environmentVars.
-         * See Block_environment_var_in_init_container below for details.
-         * See Block_environment_var_in_container below for details.
+         * See `environmentVars` below for details.
          */
         environmentVars?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainerEnvironmentVar>[]>;
         /**
@@ -5842,16 +5847,15 @@ export namespace ess {
          */
         livenessProbeTimeoutSeconds?: pulumi.Input<number>;
         /**
-         * The amount of memory resources allocated to the container group.
+         * The amount of memory resources allocated to the container.
          */
         memory?: pulumi.Input<number>;
         /**
-         * The name of the volume.
+         * The name of the mounted volume.
          */
         name?: pulumi.Input<string>;
         /**
-         * The structure of port. See Block_port_in_init_container below
-         * for details.
+         * The structure of port. See `ports` below for details.
          */
         ports?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainerPort>[]>;
         /**
@@ -5895,9 +5899,8 @@ export namespace ess {
          */
         readinessProbeTimeoutSeconds?: pulumi.Input<number>;
         /**
-         * The structure of volumeMounts.
-         * See Block_volume_mount_in_init_container below for details.
-         * See Block_volume_mount_in_container below for details.
+         * The structure of volumeMounts. 
+         * See `volumeMounts` below for details.
          */
         volumeMounts?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainerVolumeMount>[]>;
         /**
@@ -5969,6 +5972,10 @@ export namespace ess {
          * configured.
          */
         server?: pulumi.Input<string>;
+        /**
+         * The username used to log on to the image repository. It is required
+         * when `imageRegistryCredential` is configured.
+         */
         username?: pulumi.Input<string>;
     }
 
@@ -5982,13 +5989,12 @@ export namespace ess {
          */
         commands?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The amount of CPU resources allocated to the container group.
+         * The amount of CPU resources allocated to the container.
          */
         cpu?: pulumi.Input<number>;
         /**
-         * The structure of environmentVars.
-         * See Block_environment_var_in_init_container below for details.
-         * See Block_environment_var_in_container below for details.
+         * The structure of environmentVars. 
+         * See `environmentVars` below for details.
          */
         environmentVars?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainerEnvironmentVar>[]>;
         /**
@@ -6004,22 +6010,19 @@ export namespace ess {
          */
         imagePullPolicy?: pulumi.Input<string>;
         /**
-         * The amount of memory resources allocated to the container group.
+         * The amount of memory resources allocated to the container.
          */
         memory?: pulumi.Input<number>;
         /**
-         * The name of the volume.
+         * The name of the mounted volume.
          */
         name?: pulumi.Input<string>;
         /**
-         * The structure of port. See Block_port_in_init_container below
-         * for details.
+         * The structure of port. See `ports` below for details.
          */
         ports?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainerPort>[]>;
         /**
-         * The structure of volumeMounts.
-         * See Block_volume_mount_in_init_container below for details.
-         * See Block_volume_mount_in_container below for details.
+         * The structure of volumeMounts. See `volumeMounts` below for details.
          */
         volumeMounts?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainerVolumeMount>[]>;
         /**
@@ -6072,13 +6075,16 @@ export namespace ess {
     export interface EciScalingConfigurationVolume {
         /**
          * ConfigFileVolumeConfigFileToPaths.
-         * See Block_config_file_volume_config_file_to_path below for details.
+         * See `configFileVolumeConfigFileToPaths` below for details.
          */
         configFileVolumeConfigFileToPaths?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath>[]>;
         /**
          * The ID of DiskVolume.
          */
         diskVolumeDiskId?: pulumi.Input<string>;
+        /**
+         * The disk size of DiskVolume.
+         */
         diskVolumeDiskSize?: pulumi.Input<number>;
         /**
          * The system type of DiskVolume.
@@ -6134,26 +6140,70 @@ export namespace ess {
     }
 
     export interface ScalingConfigurationDataDisk {
+        /**
+         * The id of auto snapshot policy for data disk.
+         */
         autoSnapshotPolicyId?: pulumi.Input<string>;
+        /**
+         * Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` and `cloud`.
+         */
         category?: pulumi.Input<string>;
+        /**
+         * Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+         */
         deleteWithInstance?: pulumi.Input<boolean>;
+        /**
+         * The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+         */
         description?: pulumi.Input<string>;
         /**
+         * The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+         *
          * @deprecated Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
          */
         device?: pulumi.Input<string>;
+        /**
+         * Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+         */
         encrypted?: pulumi.Input<boolean>;
+        /**
+         * The CMK ID for data disk N. Valid values of N: 1 to 16.
+         */
         kmsKeyId?: pulumi.Input<string>;
+        /**
+         * The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+         */
         name?: pulumi.Input<string>;
+        /**
+         * The performance level of the ESSD used as data disk.
+         */
         performanceLevel?: pulumi.Input<string>;
+        /**
+         * Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloudEssd disk.
+         */
         size?: pulumi.Input<number>;
+        /**
+         * Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
+         */
         snapshotId?: pulumi.Input<string>;
     }
 
     export interface ScalingConfigurationInstancePatternInfo {
+        /**
+         * The number of vCPUs that are specified for an instance type in instancePatternInfo.
+         */
         cores?: pulumi.Input<number>;
+        /**
+         * The instance family level in instancePatternInfo.
+         */
         instanceFamilyLevel?: pulumi.Input<string>;
+        /**
+         * The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+         */
         maxPrice?: pulumi.Input<number>;
+        /**
+         * The memory size that is specified for an instance type in instancePatternInfo.
+         */
         memory?: pulumi.Input<number>;
     }
 
@@ -6162,23 +6212,50 @@ export namespace ess {
          * Resource type of an ECS instance.
          */
         instanceType?: pulumi.Input<string>;
+        /**
+         * Price limit hourly of instance type, 2 decimals is allowed at most.
+         */
         priceLimit?: pulumi.Input<number>;
     }
 
     export interface ScalingGroupVServerGroupsVserverGroup {
+        /**
+         * Loadbalancer server ID of VServer Group.
+         */
         loadbalancerId: pulumi.Input<string>;
+        /**
+         * A list of VServer Group attributes. See `vserverAttributes` below.
+         */
         vserverAttributes: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupVServerGroupsVserverGroupVserverAttribute>[]>;
     }
 
     export interface ScalingGroupVServerGroupsVserverGroupVserverAttribute {
+        /**
+         * The port will be used for VServer Group backend server.
+         */
         port: pulumi.Input<number>;
+        /**
+         * ID of VServer Group.
+         */
         vserverGroupId: pulumi.Input<string>;
+        /**
+         * The weight of an ECS instance attached to the VServer Group.
+         */
         weight: pulumi.Input<number>;
     }
 
     export interface ScalingRuleStepAdjustment {
+        /**
+         * The lower bound of step.
+         */
         metricIntervalLowerBound?: pulumi.Input<string>;
+        /**
+         * The upper bound of step.
+         */
         metricIntervalUpperBound?: pulumi.Input<string>;
+        /**
+         * The adjust value of step.
+         */
         scalingAdjustment?: pulumi.Input<number>;
     }
 }
@@ -6313,8 +6390,6 @@ export namespace fc {
         functionName: pulumi.Input<string>;
         /**
          * The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
-         *
-         * **cert_config** includes the following arguments:
          */
         methods?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -6325,16 +6400,19 @@ export namespace fc {
          * The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
          */
         qualifier?: pulumi.Input<string>;
+        /**
+         * The name of the Function Compute service that requests are routed to.
+         */
         serviceName: pulumi.Input<string>;
     }
 
     export interface FunctionAsyncInvokeConfigDestinationConfig {
         /**
-         * Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+         * Configuration block with destination configuration for failed asynchronous invocations. See `onFailure` below.
          */
         onFailure?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailure>;
         /**
-         * Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+         * Configuration block with destination configuration for successful asynchronous invocations. See `onSuccess` below.
          */
         onSuccess?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccess>;
     }
@@ -6393,7 +6471,7 @@ export namespace fc {
          */
         groupId: pulumi.Input<number>;
         /**
-         * Config the NAS mount points, including following attributes:
+         * Config the NAS mount points.See `mountPoints` below.
          */
         mountPoints: pulumi.Input<pulumi.Input<inputs.fc.ServiceNasConfigMountPoint>[]>;
         /**
@@ -6429,6 +6507,9 @@ export namespace fc {
          * A security group ID associated with the Function Compute Service.
          */
         securityGroupId: pulumi.Input<string>;
+        /**
+         * A vpc ID associated with the Function Compute Service.
+         */
         vpcId?: pulumi.Input<string>;
         /**
          * A list of vswitch IDs associated with the Function Compute Service.
@@ -6499,44 +6580,49 @@ export namespace ga {
 
     export interface ForwardingRuleRuleAction {
         /**
-         * Forwarding configuration.
+         * Forwarding configuration. See `forwardGroupConfig` below.
+         * > **NOTE:** From version 1.207.0, We recommend that you do not use `forwardGroupConfig`, and we recommend that you use the `ruleActionType` and `ruleActionValue` to configure forwarding actions.
          */
-        forwardGroupConfig: pulumi.Input<inputs.ga.ForwardingRuleRuleActionForwardGroupConfig>;
+        forwardGroupConfig?: pulumi.Input<inputs.ga.ForwardingRuleRuleActionForwardGroupConfig>;
         /**
          * Forwarding priority.
          */
         order: pulumi.Input<number>;
         /**
-         * Forward action type. Default: forwardgroup.
+         * Forward action type.
          */
         ruleActionType: pulumi.Input<string>;
+        /**
+         * The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+         */
+        ruleActionValue?: pulumi.Input<string>;
     }
 
     export interface ForwardingRuleRuleActionForwardGroupConfig {
         /**
-         * Terminal node group configuration.
+         * The information about the endpoint group. See `serverGroupTuples` below.
          */
         serverGroupTuples: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple>[]>;
     }
 
     export interface ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
         /**
-         * Terminal node group ID.
+         * The ID of the endpoint group.
          */
         endpointGroupId: pulumi.Input<string>;
     }
 
     export interface ForwardingRuleRuleCondition {
         /**
-         * Domain name configuration information.
+         * The configuration of the domain name. See `hostConfig` below.
          */
         hostConfigs?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleConditionHostConfig>[]>;
         /**
-         * Path configuration information.
+         * The configuration of the path. See `pathConfig` below.
          */
         pathConfig?: pulumi.Input<inputs.ga.ForwardingRuleRuleConditionPathConfig>;
         /**
-         * Forwarding condition type. Valid value: `Host`, `Path`.
+         * The type of the forwarding conditions. Valid values: `Host`, `Path`.
          */
         ruleConditionType: pulumi.Input<string>;
     }
@@ -6560,6 +6646,29 @@ export namespace ga {
          * The id of the certificate.
          */
         id?: pulumi.Input<string>;
+    }
+
+    export interface ListenerForwardedForConfig {
+        /**
+         * Specifies whether to use the GA-AP header to retrieve the information about acceleration regions. Default value: `false`. Valid values:
+         */
+        forwardedForGaApEnabled?: pulumi.Input<boolean>;
+        /**
+         * Specifies whether to use the GA-ID header to retrieve the ID of the GA instance. Default value: `false`. Valid values:
+         */
+        forwardedForGaIdEnabled?: pulumi.Input<boolean>;
+        /**
+         * Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
+         */
+        forwardedForPortEnabled?: pulumi.Input<boolean>;
+        /**
+         * Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
+         */
+        forwardedForProtoEnabled?: pulumi.Input<boolean>;
+        /**
+         * Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
+         */
+        realIpEnabled?: pulumi.Input<boolean>;
     }
 
     export interface ListenerPortRange {
@@ -7392,7 +7501,7 @@ export namespace mns {
 export namespace mongodb {
     export interface InstanceParameter {
         /**
-         * The name of DB instance. It a string of 2 to 256 characters.
+         * The name of the parameter.
          */
         name: pulumi.Input<string>;
         /**
@@ -7461,7 +7570,7 @@ export namespace mongodb {
          */
         maxIops?: pulumi.Input<number>;
         /**
-         * Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * The node class of the Config Server node.
          */
         nodeClass?: pulumi.Input<string>;
         /**
@@ -7473,8 +7582,7 @@ export namespace mongodb {
          */
         nodeId?: pulumi.Input<string>;
         /**
-         * - Custom storage space; value range: [10, 1,000]
-         * - 10-GB increments. Unit: GB.
+         * The node storage of the Config Server node.
          */
         nodeStorage?: pulumi.Input<number>;
         /**
@@ -7485,7 +7593,7 @@ export namespace mongodb {
 
     export interface ShardingInstanceMongoList {
         /**
-         * The connection address of the Config Server node.
+         * Mongo node connection string.
          */
         connectString?: pulumi.Input<string>;
         /**
@@ -7493,11 +7601,11 @@ export namespace mongodb {
          */
         nodeClass: pulumi.Input<string>;
         /**
-         * The ID of the Config Server node.
+         * The ID of the mongo-node.
          */
         nodeId?: pulumi.Input<string>;
         /**
-         * The connection port of the Config Server node.
+         * Mongo node port.
          */
         port?: pulumi.Input<number>;
     }
@@ -7508,7 +7616,7 @@ export namespace mongodb {
          */
         nodeClass: pulumi.Input<string>;
         /**
-         * The ID of the Config Server node.
+         * The ID of the shard-node.
          */
         nodeId?: pulumi.Input<string>;
         /**
@@ -8761,7 +8869,13 @@ export namespace rds {
     }
 
     export interface RdsCloneDbInstanceParameter {
+        /**
+         * The parameters name.
+         */
         name: pulumi.Input<string>;
+        /**
+         * The parameters value.
+         */
         value: pulumi.Input<string>;
     }
 
@@ -8807,25 +8921,34 @@ export namespace rds {
 
     export interface RdsCloneDbInstanceServerlessConfig {
         /**
-         * Specifies whether to enable the smart startup and stop feature for the serverless instance. After the smart startup and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is stopped. After a connection is established to the instance, the instance is automatically woken up. Valid values:
+         * Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
          * - true: enables the feature.
          * - false: disables the feature. This is the default value.
+         * > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
          */
-        autoPause: pulumi.Input<boolean>;
+        autoPause?: pulumi.Input<boolean>;
         /**
-         * The maximum number of RDS Capacity Units (RCUs). Valid values: 0.5 to 8. The value of this parameter must be greater than or equal to the value of the `minCapacity` parameter.
+         * The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `minCapacity` and only supports passing integers. Valid values:
+         * - MySQL: 1~8
+         * - SQLServer: 2~8
+         * - PostgreSQL: 1~12
          */
         maxCapacity: pulumi.Input<number>;
         /**
-         * The minimum number of RCUs. Valid values: 0.5 to 8. The value of this parameter must be less than or equal to the value of the `maxCapacity` parameter.
+         * The minimum number of RCUs. The value of this parameter must be less than or equal to `maxCapacity`. Valid values:
+         * - MySQL: 0.5~8
+         * - SQLServer: 2~8 \(Supports integers only\).
+         * - PostgreSQL: 0.5~12
          */
         minCapacity: pulumi.Input<number>;
         /**
-         * Specifies whether to enable the forced scaling feature for the serverless instance. If you set this parameter to true, a transient connection that lasts approximately 1 minute occurs during the forced scaling process. Process with caution. The RCU scaling for a serverless instance immediately takes effect. In some cases, such as the execution of large transactions, the scaling does not immediately take effect. In this case, you can enable this feature to forcefully scale the RCUs of the instance. Valid values:
+         * Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
          * - true: enables the feature.
          * - false: disables the feature. This is the default value.
+         * > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+         * > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
          */
-        switchForce: pulumi.Input<boolean>;
+        switchForce?: pulumi.Input<boolean>;
     }
 
     export interface RdsDbProxyReadOnlyInstanceWeight {
@@ -9246,6 +9369,10 @@ export namespace sae {
          */
         appName: pulumi.Input<string>;
         /**
+         * The backend protocol.
+         */
+        backendProtocol?: pulumi.Input<string>;
+        /**
          * Application backend port.
          */
         containerPort: pulumi.Input<number>;
@@ -9257,6 +9384,10 @@ export namespace sae {
          * URL path.
          */
         path: pulumi.Input<string>;
+        /**
+         * The rewrite path.
+         */
+        rewritePath?: pulumi.Input<string>;
     }
 
     export interface LoadBalancerInternetInternet {
@@ -9776,13 +9907,13 @@ export namespace vod {
 export namespace vpc {
     export interface DhcpOptionsSetAssociateVpc {
         /**
-         * The status of the VPC network that is associated with the DHCP options set. Valid values:`InUse` or `Pending`. `InUse`: The VPC network is in use. `Pending`: The VPC network is being configured.
+         * The status of the VPC associated with the DHCP option set.
          */
         associateStatus?: pulumi.Input<string>;
         /**
          * The ID of the VPC network that is associated with the DHCP options set.
          */
-        vpcId?: pulumi.Input<string>;
+        vpcId: pulumi.Input<string>;
     }
 
     export interface NetworkAclAttachmentResource {

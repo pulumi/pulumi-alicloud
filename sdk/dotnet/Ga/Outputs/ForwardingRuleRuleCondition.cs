@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Ga.Outputs
     public sealed class ForwardingRuleRuleCondition
     {
         /// <summary>
-        /// Domain name configuration information.
+        /// The configuration of the domain name. See `host_config` below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ForwardingRuleRuleConditionHostConfig> HostConfigs;
         /// <summary>
-        /// Path configuration information.
+        /// The configuration of the path. See `path_config` below.
         /// </summary>
         public readonly Outputs.ForwardingRuleRuleConditionPathConfig? PathConfig;
         /// <summary>
-        /// Forwarding condition type. Valid value: `Host`, `Path`.
+        /// The type of the forwarding conditions. Valid values: `Host`, `Path`.
         /// </summary>
         public readonly string RuleConditionType;
 

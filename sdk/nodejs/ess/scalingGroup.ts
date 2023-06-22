@@ -11,6 +11,10 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** You can launch an ESS scaling group for a VPC network via specifying parameter `vswitchIds`.
  *
+ * For information about ess scaling rule, see [CreateScalingGroup](https://www.alibabacloud.com/help/en/auto-scaling/latest/createscalinggroup).
+ *
+ * > **NOTE:** Available since v1.39.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -18,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "essscalinggroupconfig";
+ * const name = config.get("name") || "terraform-example";
  * const defaultZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",

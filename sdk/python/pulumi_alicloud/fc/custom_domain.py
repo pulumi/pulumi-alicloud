@@ -24,11 +24,8 @@ class CustomDomainArgs:
         The set of arguments for constructing a CustomDomain resource.
         :param pulumi.Input[str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
-        :param pulumi.Input['CustomDomainCertConfigArgs'] cert_config: The configuration of HTTPS certificate.
-               
-               
-               **route_config** includes the following arguments:
-        :param pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
+        :param pulumi.Input['CustomDomainCertConfigArgs'] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]] route_configs: The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
         pulumi.set(__self__, "domain_name", domain_name)
         pulumi.set(__self__, "protocol", protocol)
@@ -65,10 +62,7 @@ class CustomDomainArgs:
     @pulumi.getter(name="certConfig")
     def cert_config(self) -> Optional[pulumi.Input['CustomDomainCertConfigArgs']]:
         """
-        The configuration of HTTPS certificate.
-
-
-        **route_config** includes the following arguments:
+        The configuration of HTTPS certificate.See `cert_config` below.
         """
         return pulumi.get(self, "cert_config")
 
@@ -80,7 +74,7 @@ class CustomDomainArgs:
     @pulumi.getter(name="routeConfigs")
     def route_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]:
         """
-        The configuration of domain route, mapping the path and Function Compute function.
+        The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
         return pulumi.get(self, "route_configs")
 
@@ -104,15 +98,12 @@ class _CustomDomainState:
         Input properties used for looking up and filtering CustomDomain resources.
         :param pulumi.Input[str] account_id: The account id.
         :param pulumi.Input[str] api_version: The api version of Function Compute.
-        :param pulumi.Input['CustomDomainCertConfigArgs'] cert_config: The configuration of HTTPS certificate.
-               
-               
-               **route_config** includes the following arguments:
+        :param pulumi.Input['CustomDomainCertConfigArgs'] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
         :param pulumi.Input[str] created_time: The date this resource was created.
         :param pulumi.Input[str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[str] last_modified_time: The date this resource was last modified.
         :param pulumi.Input[str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]] route_configs: The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -159,10 +150,7 @@ class _CustomDomainState:
     @pulumi.getter(name="certConfig")
     def cert_config(self) -> Optional[pulumi.Input['CustomDomainCertConfigArgs']]:
         """
-        The configuration of HTTPS certificate.
-
-
-        **route_config** includes the following arguments:
+        The configuration of HTTPS certificate.See `cert_config` below.
         """
         return pulumi.get(self, "cert_config")
 
@@ -222,7 +210,7 @@ class _CustomDomainState:
     @pulumi.getter(name="routeConfigs")
     def route_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomDomainRouteConfigArgs']]]]:
         """
-        The configuration of domain route, mapping the path and Function Compute function.
+        The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
         return pulumi.get(self, "route_configs")
 
@@ -243,9 +231,9 @@ class CustomDomain(pulumi.CustomResource):
                  __props__=None):
         """
         Provides an Alicloud Function Compute custom domain resource.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/90759.htm).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createcustomdomain).
 
-        > **NOTE:** Available in 1.98.0+
+        > **NOTE:** Available since v1.98.0.
 
         ## Example Usage
 
@@ -254,23 +242,57 @@ class CustomDomain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testaccalicloudfcservice"
-        default_service = alicloud.fc.Service("defaultService", description=f"{name}-description")
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=name)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_project = alicloud.log.Project("defaultProject")
+        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"  {
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRole",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "fc.aliyuncs.com"
+                    ]
+                  }
+                }
+              ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name="AliyunLogFullAccess",
+            policy_type="System")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            role=default_role.arn,
+            log_config=alicloud.fc.ServiceLogConfigArgs(
+                project=default_project.name,
+                logstore=default_store.name,
+                enable_instance_metrics=True,
+                enable_request_metrics=True,
+            ))
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
         default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
             bucket=default_bucket.id,
-            key="fc/hello.zip",
-            content=\"\"\"		# -*- coding: utf-8 -*-
-        	def handler(event, context):
-        		print "hello world"
-        		return 'hello world'
-        \"\"\")
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
         default_function = alicloud.fc.Function("defaultFunction",
             service=default_service.name,
+            description="example",
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
@@ -283,16 +305,18 @@ class CustomDomain(pulumi.CustomResource):
                 path="/login/*",
                 service_name=default_service.name,
                 function_name=default_function.name,
-                qualifier="v1",
+                qualifier="?query",
                 methods=[
                     "GET",
                     "POST",
                 ],
             )],
             cert_config=alicloud.fc.CustomDomainCertConfigArgs(
-                cert_name="your certificate name",
-                private_key="your private key",
-                certificate="your certificate data",
+                cert_name="example",
+                certificate=\"\"\"-----BEGIN CERTIFICATE-----
+        MIICWD****-----END CERTIFICATE-----\"\"\",
+                private_key=\"\"\"-----BEGIN RSA PRIVATE KEY-----
+        MIICX****n-----END RSA PRIVATE KEY-----\"\"\",
             ))
         ```
 
@@ -306,13 +330,10 @@ class CustomDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CustomDomainCertConfigArgs']] cert_config: The configuration of HTTPS certificate.
-               
-               
-               **route_config** includes the following arguments:
+        :param pulumi.Input[pulumi.InputType['CustomDomainCertConfigArgs']] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
         :param pulumi.Input[str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
         ...
     @overload
@@ -322,9 +343,9 @@ class CustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides an Alicloud Function Compute custom domain resource.
-         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/90759.htm).
+         For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createcustomdomain).
 
-        > **NOTE:** Available in 1.98.0+
+        > **NOTE:** Available since v1.98.0.
 
         ## Example Usage
 
@@ -333,23 +354,57 @@ class CustomDomain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testaccalicloudfcservice"
-        default_service = alicloud.fc.Service("defaultService", description=f"{name}-description")
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=name)
+        default_random_integer = random.RandomInteger("defaultRandomInteger",
+            max=99999,
+            min=10000)
+        default_project = alicloud.log.Project("defaultProject")
+        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
+        default_role = alicloud.ram.Role("defaultRole",
+            document=\"\"\"  {
+              "Statement": [
+                {
+                  "Action": "sts:AssumeRole",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "fc.aliyuncs.com"
+                    ]
+                  }
+                }
+              ],
+              "Version": "1"
+          }
+        \"\"\",
+            description="this is a example",
+            force=True)
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+            role_name=default_role.name,
+            policy_name="AliyunLogFullAccess",
+            policy_type="System")
+        default_service = alicloud.fc.Service("defaultService",
+            description="example-value",
+            role=default_role.arn,
+            log_config=alicloud.fc.ServiceLogConfigArgs(
+                project=default_project.name,
+                logstore=default_store.name,
+                enable_instance_metrics=True,
+                enable_request_metrics=True,
+            ))
+        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
         default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
             bucket=default_bucket.id,
-            key="fc/hello.zip",
-            content=\"\"\"		# -*- coding: utf-8 -*-
-        	def handler(event, context):
-        		print "hello world"
-        		return 'hello world'
-        \"\"\")
+            key="index.py",
+            content=\"\"\"import logging 
+        def handler(event, context): 
+        logger = logging.getLogger() 
+        logger.info('hello world') 
+        return 'hello world'\"\"\")
         default_function = alicloud.fc.Function("defaultFunction",
             service=default_service.name,
+            description="example",
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
@@ -362,16 +417,18 @@ class CustomDomain(pulumi.CustomResource):
                 path="/login/*",
                 service_name=default_service.name,
                 function_name=default_function.name,
-                qualifier="v1",
+                qualifier="?query",
                 methods=[
                     "GET",
                     "POST",
                 ],
             )],
             cert_config=alicloud.fc.CustomDomainCertConfigArgs(
-                cert_name="your certificate name",
-                private_key="your private key",
-                certificate="your certificate data",
+                cert_name="example",
+                certificate=\"\"\"-----BEGIN CERTIFICATE-----
+        MIICWD****-----END CERTIFICATE-----\"\"\",
+                private_key=\"\"\"-----BEGIN RSA PRIVATE KEY-----
+        MIICX****n-----END RSA PRIVATE KEY-----\"\"\",
             ))
         ```
 
@@ -450,15 +507,12 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account id.
         :param pulumi.Input[str] api_version: The api version of Function Compute.
-        :param pulumi.Input[pulumi.InputType['CustomDomainCertConfigArgs']] cert_config: The configuration of HTTPS certificate.
-               
-               
-               **route_config** includes the following arguments:
+        :param pulumi.Input[pulumi.InputType['CustomDomainCertConfigArgs']] cert_config: The configuration of HTTPS certificate.See `cert_config` below.
         :param pulumi.Input[str] created_time: The date this resource was created.
         :param pulumi.Input[str] domain_name: The custom domain name. For example, "example.com".
         :param pulumi.Input[str] last_modified_time: The date this resource was last modified.
         :param pulumi.Input[str] protocol: The protocol, `HTTP` or `HTTP,HTTPS`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDomainRouteConfigArgs']]]] route_configs: The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -494,10 +548,7 @@ class CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="certConfig")
     def cert_config(self) -> pulumi.Output[Optional['outputs.CustomDomainCertConfig']]:
         """
-        The configuration of HTTPS certificate.
-
-
-        **route_config** includes the following arguments:
+        The configuration of HTTPS certificate.See `cert_config` below.
         """
         return pulumi.get(self, "cert_config")
 
@@ -537,7 +588,7 @@ class CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="routeConfigs")
     def route_configs(self) -> pulumi.Output[Optional[Sequence['outputs.CustomDomainRouteConfig']]]:
         """
-        The configuration of domain route, mapping the path and Function Compute function.
+        The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
         """
         return pulumi.get(self, "route_configs")
 

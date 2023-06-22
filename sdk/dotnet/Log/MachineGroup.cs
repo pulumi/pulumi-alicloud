@@ -22,12 +22,19 @@ namespace Pulumi.AliCloud.Log
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.RandomInteger("default", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
     ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
     ///     {
-    ///         Description = "created by terraform",
+    ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var exampleMachineGroup = new AliCloud.Log.MachineGroup("exampleMachineGroup", new()

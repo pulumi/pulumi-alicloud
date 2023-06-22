@@ -80,14 +80,14 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Forward action.
+     * Forward action. See `rule_actions` below.
      * 
      */
     @Import(name="ruleActions", required=true)
     private Output<List<ForwardingRuleRuleActionArgs>> ruleActions;
 
     /**
-     * @return Forward action.
+     * @return Forward action. See `rule_actions` below.
      * 
      */
     public Output<List<ForwardingRuleRuleActionArgs>> ruleActions() {
@@ -95,14 +95,14 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Forwarding condition list.
+     * Forwarding condition list. See `rule_conditions` below.
      * 
      */
     @Import(name="ruleConditions", required=true)
     private Output<List<ForwardingRuleRuleConditionArgs>> ruleConditions;
 
     /**
-     * @return Forwarding condition list.
+     * @return Forwarding condition list. See `rule_conditions` below.
      * 
      */
     public Output<List<ForwardingRuleRuleConditionArgs>> ruleConditions() {
@@ -223,7 +223,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleActions Forward action.
+         * @param ruleActions Forward action. See `rule_actions` below.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleActions Forward action.
+         * @param ruleActions Forward action. See `rule_actions` below.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleActions Forward action.
+         * @param ruleActions Forward action. See `rule_actions` below.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleConditions Forwarding condition list.
+         * @param ruleConditions Forwarding condition list. See `rule_conditions` below.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleConditions Forwarding condition list.
+         * @param ruleConditions Forwarding condition list. See `rule_conditions` below.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ruleConditions Forwarding condition list.
+         * @param ruleConditions Forwarding condition list. See `rule_conditions` below.
          * 
          * @return builder
          * 

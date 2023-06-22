@@ -25,32 +25,37 @@ namespace Pulumi.AliCloud.Hbr
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "testAcc";
-    ///     var @default = new AliCloud.Hbr.Vault("default", new()
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
     ///     {
-    ///         VaultName = name,
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
+    ///     {
+    ///         VaultName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
     ///         VaultType = "OTS_BACKUP",
     ///     });
     /// 
-    ///     var foo = new AliCloud.Ots.Instance("foo", new()
+    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
     ///     {
-    ///         Description = name,
+    ///         Description = "terraform-example",
     ///         AccessedBy = "Any",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
-    ///             { "For", "acceptance test" },
+    ///             { "For", "example" },
     ///         },
     ///     });
     /// 
-    ///     var basic = new AliCloud.Ots.Table("basic", new()
+    ///     var defaultTable = new AliCloud.Ots.Table("defaultTable", new()
     ///     {
-    ///         InstanceName = foo.Name,
-    ///         TableName = name,
+    ///         InstanceName = defaultInstance.Name,
+    ///         TableName = "terraform_example",
     ///         PrimaryKeys = new[]
     ///         {
     ///             new AliCloud.Ots.Inputs.TablePrimaryKeyArgs
@@ -64,22 +69,57 @@ namespace Pulumi.AliCloud.Hbr
     ///         DeviationCellVersionInSec = "1",
     ///     });
     /// 
+    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
+    ///     {
+    ///         Document = @"		{
+    /// 			""Statement"": [
+    /// 			{
+    /// 				""Action"": ""sts:AssumeRole"",
+    /// 				""Effect"": ""Allow"",
+    /// 				""Principal"": {
+    /// 					""Service"": [
+    /// 						""crossbackup.hbr.aliyuncs.com""
+    /// 					]
+    /// 				}
+    /// 			}
+    /// 			],
+    ///   			""Version"": ""1""
+    /// 		}
+    /// ",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    /// 
     ///     var example = new AliCloud.Hbr.OtsBackupPlan("example", new()
     ///     {
-    ///         OtsBackupPlanName = name,
-    ///         VaultId = @default.Id,
+    ///         OtsBackupPlanName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         VaultId = defaultVault.Id,
     ///         BackupType = "COMPLETE",
-    ///         Schedule = "I|1602673264|PT2H",
-    ///         Retention = "2",
-    ///         InstanceName = foo.Name,
+    ///         Retention = "1",
+    ///         InstanceName = defaultInstance.Name,
+    ///         CrossAccountType = "SELF_ACCOUNT",
+    ///         CrossAccountUserId = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         CrossAccountRoleName = defaultRole.Id,
     ///         OtsDetails = new[]
     ///         {
     ///             new AliCloud.Hbr.Inputs.OtsBackupPlanOtsDetailArgs
     ///             {
     ///                 TableNames = new[]
     ///                 {
-    ///                     basic.TableName,
+    ///                     defaultTable.TableName,
     ///                 },
+    ///             },
+    ///         },
+    ///         Rules = new[]
+    ///         {
+    ///             new AliCloud.Hbr.Inputs.OtsBackupPlanRuleArgs
+    ///             {
+    ///                 Schedule = "I|1602673264|PT2H",
+    ///                 Retention = "1",
+    ///                 Disabled = false,
+    ///                 RuleName = "terraform-example",
+    ///                 BackupType = "COMPLETE",
     ///             },
     ///         },
     ///     });

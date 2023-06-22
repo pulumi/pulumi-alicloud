@@ -13,10 +13,11 @@ namespace Pulumi.AliCloud.Ga.Inputs
     public sealed class ForwardingRuleRuleActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Forwarding configuration.
+        /// Forwarding configuration. See `forward_group_config` below.
+        /// &gt; **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
         /// </summary>
-        [Input("forwardGroupConfig", required: true)]
-        public Input<Inputs.ForwardingRuleRuleActionForwardGroupConfigArgs> ForwardGroupConfig { get; set; } = null!;
+        [Input("forwardGroupConfig")]
+        public Input<Inputs.ForwardingRuleRuleActionForwardGroupConfigArgs>? ForwardGroupConfig { get; set; }
 
         /// <summary>
         /// Forwarding priority.
@@ -25,10 +26,16 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public Input<int> Order { get; set; } = null!;
 
         /// <summary>
-        /// Forward action type. Default: forwardgroup.
+        /// Forward action type.
         /// </summary>
         [Input("ruleActionType", required: true)]
         public Input<string> RuleActionType { get; set; } = null!;
+
+        /// <summary>
+        /// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+        /// </summary>
+        [Input("ruleActionValue")]
+        public Input<string>? RuleActionValue { get; set; }
 
         public ForwardingRuleRuleActionArgs()
         {

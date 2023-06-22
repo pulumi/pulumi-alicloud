@@ -26,40 +26,28 @@ class KeyArgs:
                  pending_window_in_days: Optional[pulumi.Input[int]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None,
                  rotation_interval: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Key resource.
-        :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Valid values: 
-               - Enabled
-               - Disabled (default value)
-               **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+        :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
         :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the CMK. The description can be 0 to 8,192 characters in length.
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
-        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
-        :param pulumi.Input[str] key_spec: The type of the CMK. Valid values: 
-               "Aliyun_AES_256", "Aliyun_AES_128", "Aliyun_AES_192", "Aliyun_SM4", "RSA_2048", "RSA_3072", "EC_P256", "EC_P256K", "EC_SM2".
-               Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        :param pulumi.Input[str] key_spec: The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
+               `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+               Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
         :param pulumi.Input[str] key_state: Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
-        :param pulumi.Input[str] key_usage: The usage of the CMK. Valid values:
-               - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-               - SIGN/VERIFY: generates or verifies a digital signature.
-        :param pulumi.Input[str] origin: The source of key material. Valid values: 
-               - Aliyun_KMS (default value)
-               - EXTERNAL
-               **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-               you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-               For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+        :param pulumi.Input[str] key_usage: The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+               - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+               - `SIGN/VERIFY`: generates or verifies a digital signature.
+        :param pulumi.Input[str] origin: The source of key material. Default value: `Aliyun_KMS`. Valid values:
         :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. 
                During this period, the CMK is in the PendingDeletion state.
                After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
                **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
-        :param pulumi.Input[str] protection_level: The protection level of the CMK. Valid values:
-               - SOFTWARE (default value)
-               - HSM
-               **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-               If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-               If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+        :param pulumi.Input[str] protection_level: The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
         :param pulumi.Input[str] rotation_interval: The interval for automatic key rotation. Specify the value in the integer[unit] format.
                The following units are supported: d (day), h (hour), m (minute), and s (second).
                For example, you can use either 7d or 604800s to specify a seven-day interval.
@@ -67,10 +55,8 @@ class KeyArgs:
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
                
                > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
-        :param pulumi.Input[str] status: The status of CMK. Valid Values: 
-               - Disabled
-               - Enabled (default value)
-               - PendingDeletion
+        :param pulumi.Input[str] status: The status of CMK. Default value: `Enabled`. Valid Values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if automatic_rotation is not None:
             pulumi.set(__self__, "automatic_rotation", automatic_rotation)
@@ -107,15 +93,14 @@ class KeyArgs:
             pulumi.set(__self__, "rotation_interval", rotation_interval)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="automaticRotation")
     def automatic_rotation(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to enable automatic key rotation. Valid values: 
-        - Enabled
-        - Disabled (default value)
-        **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+        Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
         """
         return pulumi.get(self, "automatic_rotation")
 
@@ -163,7 +148,7 @@ class KeyArgs:
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+        Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         """
         return pulumi.get(self, "is_enabled")
 
@@ -175,9 +160,9 @@ class KeyArgs:
     @pulumi.getter(name="keySpec")
     def key_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the CMK. Valid values: 
-        "Aliyun_AES_256", "Aliyun_AES_128", "Aliyun_AES_192", "Aliyun_SM4", "RSA_2048", "RSA_3072", "EC_P256", "EC_P256K", "EC_SM2".
-        Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+        The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
+        `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+        Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
         """
         return pulumi.get(self, "key_spec")
 
@@ -201,9 +186,9 @@ class KeyArgs:
     @pulumi.getter(name="keyUsage")
     def key_usage(self) -> Optional[pulumi.Input[str]]:
         """
-        The usage of the CMK. Valid values:
-        - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-        - SIGN/VERIFY: generates or verifies a digital signature.
+        The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+        - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+        - `SIGN/VERIFY`: generates or verifies a digital signature.
         """
         return pulumi.get(self, "key_usage")
 
@@ -215,12 +200,7 @@ class KeyArgs:
     @pulumi.getter
     def origin(self) -> Optional[pulumi.Input[str]]:
         """
-        The source of key material. Valid values: 
-        - Aliyun_KMS (default value)
-        - EXTERNAL
-        **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-        you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-        For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+        The source of key material. Default value: `Aliyun_KMS`. Valid values:
         """
         return pulumi.get(self, "origin")
 
@@ -247,12 +227,7 @@ class KeyArgs:
     @pulumi.getter(name="protectionLevel")
     def protection_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The protection level of the CMK. Valid values:
-        - SOFTWARE (default value)
-        - HSM
-        **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-        If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-        If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+        The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
         """
         return pulumi.get(self, "protection_level")
 
@@ -282,16 +257,25 @@ class KeyArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of CMK. Valid Values: 
-        - Disabled
-        - Enabled (default value)
-        - PendingDeletion
+        The status of CMK. Default value: `Enabled`. Valid Values:
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
@@ -317,48 +301,36 @@ class _KeyState:
                  primary_key_version: Optional[pulumi.Input[str]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None,
                  rotation_interval: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Key resources.
         :param pulumi.Input[str] arn: The Alicloud Resource Name (ARN) of the key.
-        :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Valid values: 
-               - Enabled
-               - Disabled (default value)
-               **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+        :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
         :param pulumi.Input[str] creation_date: The date and time when the CMK was created. The time is displayed in UTC.
         :param pulumi.Input[str] creator: The creator of the CMK.
         :param pulumi.Input[str] delete_date: The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
         :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the CMK. The description can be 0 to 8,192 characters in length.
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
-        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
-        :param pulumi.Input[str] key_spec: The type of the CMK. Valid values: 
-               "Aliyun_AES_256", "Aliyun_AES_128", "Aliyun_AES_192", "Aliyun_SM4", "RSA_2048", "RSA_3072", "EC_P256", "EC_P256K", "EC_SM2".
-               Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        :param pulumi.Input[str] key_spec: The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
+               `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+               Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
         :param pulumi.Input[str] key_state: Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
-        :param pulumi.Input[str] key_usage: The usage of the CMK. Valid values:
-               - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-               - SIGN/VERIFY: generates or verifies a digital signature.
+        :param pulumi.Input[str] key_usage: The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+               - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+               - `SIGN/VERIFY`: generates or verifies a digital signature.
         :param pulumi.Input[str] last_rotation_date: The date and time the last rotation was performed. The time is displayed in UTC.
         :param pulumi.Input[str] material_expire_time: The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
         :param pulumi.Input[str] next_rotation_date: The time the next rotation is scheduled for execution.
-        :param pulumi.Input[str] origin: The source of key material. Valid values: 
-               - Aliyun_KMS (default value)
-               - EXTERNAL
-               **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-               you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-               For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+        :param pulumi.Input[str] origin: The source of key material. Default value: `Aliyun_KMS`. Valid values:
         :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. 
                During this period, the CMK is in the PendingDeletion state.
                After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
                **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         :param pulumi.Input[str] primary_key_version: The ID of the current primary key version of the symmetric CMK.
-        :param pulumi.Input[str] protection_level: The protection level of the CMK. Valid values:
-               - SOFTWARE (default value)
-               - HSM
-               **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-               If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-               If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+        :param pulumi.Input[str] protection_level: The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
         :param pulumi.Input[str] rotation_interval: The interval for automatic key rotation. Specify the value in the integer[unit] format.
                The following units are supported: d (day), h (hour), m (minute), and s (second).
                For example, you can use either 7d or 604800s to specify a seven-day interval.
@@ -366,10 +338,8 @@ class _KeyState:
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
                
                > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
-        :param pulumi.Input[str] status: The status of CMK. Valid Values: 
-               - Disabled
-               - Enabled (default value)
-               - PendingDeletion
+        :param pulumi.Input[str] status: The status of CMK. Default value: `Enabled`. Valid Values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
@@ -422,6 +392,8 @@ class _KeyState:
             pulumi.set(__self__, "rotation_interval", rotation_interval)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -439,10 +411,7 @@ class _KeyState:
     @pulumi.getter(name="automaticRotation")
     def automatic_rotation(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to enable automatic key rotation. Valid values: 
-        - Enabled
-        - Disabled (default value)
-        **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+        Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
         """
         return pulumi.get(self, "automatic_rotation")
 
@@ -526,7 +495,7 @@ class _KeyState:
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+        Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         """
         return pulumi.get(self, "is_enabled")
 
@@ -538,9 +507,9 @@ class _KeyState:
     @pulumi.getter(name="keySpec")
     def key_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the CMK. Valid values: 
-        "Aliyun_AES_256", "Aliyun_AES_128", "Aliyun_AES_192", "Aliyun_SM4", "RSA_2048", "RSA_3072", "EC_P256", "EC_P256K", "EC_SM2".
-        Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+        The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
+        `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+        Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
         """
         return pulumi.get(self, "key_spec")
 
@@ -564,9 +533,9 @@ class _KeyState:
     @pulumi.getter(name="keyUsage")
     def key_usage(self) -> Optional[pulumi.Input[str]]:
         """
-        The usage of the CMK. Valid values:
-        - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-        - SIGN/VERIFY: generates or verifies a digital signature.
+        The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+        - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+        - `SIGN/VERIFY`: generates or verifies a digital signature.
         """
         return pulumi.get(self, "key_usage")
 
@@ -614,12 +583,7 @@ class _KeyState:
     @pulumi.getter
     def origin(self) -> Optional[pulumi.Input[str]]:
         """
-        The source of key material. Valid values: 
-        - Aliyun_KMS (default value)
-        - EXTERNAL
-        **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-        you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-        For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+        The source of key material. Default value: `Aliyun_KMS`. Valid values:
         """
         return pulumi.get(self, "origin")
 
@@ -658,12 +622,7 @@ class _KeyState:
     @pulumi.getter(name="protectionLevel")
     def protection_level(self) -> Optional[pulumi.Input[str]]:
         """
-        The protection level of the CMK. Valid values:
-        - SOFTWARE (default value)
-        - HSM
-        **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-        If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-        If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+        The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
         """
         return pulumi.get(self, "protection_level")
 
@@ -693,16 +652,25 @@ class _KeyState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of CMK. Valid Values: 
-        - Disabled
-        - Enabled (default value)
-        - PendingDeletion
+        The status of CMK. Default value: `Enabled`. Valid Values:
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
 
 
 class Key(pulumi.CustomResource):
@@ -723,11 +691,12 @@ class Key(pulumi.CustomResource):
                  protection_level: Optional[pulumi.Input[str]] = None,
                  rotation_interval: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
         A kms key can help user to protect data security in the transmission process. For information about Alikms Key and how to use it, see [What is Resource Alikms Key](https://www.alibabacloud.com/help/doc-detail/28947.htm).
 
-        > **NOTE:** Available in v1.85.0+.
+        > **NOTE:** Available since v1.85.0.
 
         ## Example Usage
 
@@ -748,42 +717,29 @@ class Key(pulumi.CustomResource):
         Alikms key can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kms/key:Key example abc123456
+         $ pulumi import alicloud:kms/key:Key example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Valid values: 
-               - Enabled
-               - Disabled (default value)
-               **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+        :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
         :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the CMK. The description can be 0 to 8,192 characters in length.
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
-        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
-        :param pulumi.Input[str] key_spec: The type of the CMK. Valid values: 
-               "Aliyun_AES_256", "Aliyun_AES_128", "Aliyun_AES_192", "Aliyun_SM4", "RSA_2048", "RSA_3072", "EC_P256", "EC_P256K", "EC_SM2".
-               Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        :param pulumi.Input[str] key_spec: The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
+               `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+               Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
         :param pulumi.Input[str] key_state: Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
-        :param pulumi.Input[str] key_usage: The usage of the CMK. Valid values:
-               - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-               - SIGN/VERIFY: generates or verifies a digital signature.
-        :param pulumi.Input[str] origin: The source of key material. Valid values: 
-               - Aliyun_KMS (default value)
-               - EXTERNAL
-               **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-               you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-               For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+        :param pulumi.Input[str] key_usage: The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+               - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+               - `SIGN/VERIFY`: generates or verifies a digital signature.
+        :param pulumi.Input[str] origin: The source of key material. Default value: `Aliyun_KMS`. Valid values:
         :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. 
                During this period, the CMK is in the PendingDeletion state.
                After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
                **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
-        :param pulumi.Input[str] protection_level: The protection level of the CMK. Valid values:
-               - SOFTWARE (default value)
-               - HSM
-               **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-               If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-               If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+        :param pulumi.Input[str] protection_level: The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
         :param pulumi.Input[str] rotation_interval: The interval for automatic key rotation. Specify the value in the integer[unit] format.
                The following units are supported: d (day), h (hour), m (minute), and s (second).
                For example, you can use either 7d or 604800s to specify a seven-day interval.
@@ -791,10 +747,8 @@ class Key(pulumi.CustomResource):
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
                
                > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
-        :param pulumi.Input[str] status: The status of CMK. Valid Values: 
-               - Disabled
-               - Enabled (default value)
-               - PendingDeletion
+        :param pulumi.Input[str] status: The status of CMK. Default value: `Enabled`. Valid Values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -805,7 +759,7 @@ class Key(pulumi.CustomResource):
         """
         A kms key can help user to protect data security in the transmission process. For information about Alikms Key and how to use it, see [What is Resource Alikms Key](https://www.alibabacloud.com/help/doc-detail/28947.htm).
 
-        > **NOTE:** Available in v1.85.0+.
+        > **NOTE:** Available since v1.85.0.
 
         ## Example Usage
 
@@ -826,7 +780,7 @@ class Key(pulumi.CustomResource):
         Alikms key can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:kms/key:Key example abc123456
+         $ pulumi import alicloud:kms/key:Key example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -857,6 +811,7 @@ class Key(pulumi.CustomResource):
                  protection_level: Optional[pulumi.Input[str]] = None,
                  rotation_interval: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -888,6 +843,7 @@ class Key(pulumi.CustomResource):
             __props__.__dict__["protection_level"] = protection_level
             __props__.__dict__["rotation_interval"] = rotation_interval
             __props__.__dict__["status"] = status
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["arn"] = None
             __props__.__dict__["creation_date"] = None
             __props__.__dict__["creator"] = None
@@ -926,7 +882,8 @@ class Key(pulumi.CustomResource):
             primary_key_version: Optional[pulumi.Input[str]] = None,
             protection_level: Optional[pulumi.Input[str]] = None,
             rotation_interval: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[str]] = None) -> 'Key':
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Key':
         """
         Get an existing Key resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -935,44 +892,31 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] arn: The Alicloud Resource Name (ARN) of the key.
-        :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Valid values: 
-               - Enabled
-               - Disabled (default value)
-               **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+        :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
         :param pulumi.Input[str] creation_date: The date and time when the CMK was created. The time is displayed in UTC.
         :param pulumi.Input[str] creator: The creator of the CMK.
         :param pulumi.Input[str] delete_date: The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
         :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the CMK. The description can be 0 to 8,192 characters in length.
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
-        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
-        :param pulumi.Input[str] key_spec: The type of the CMK. Valid values: 
-               "Aliyun_AES_256", "Aliyun_AES_128", "Aliyun_AES_192", "Aliyun_SM4", "RSA_2048", "RSA_3072", "EC_P256", "EC_P256K", "EC_SM2".
-               Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        :param pulumi.Input[str] key_spec: The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
+               `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+               Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
         :param pulumi.Input[str] key_state: Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
-        :param pulumi.Input[str] key_usage: The usage of the CMK. Valid values:
-               - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-               - SIGN/VERIFY: generates or verifies a digital signature.
+        :param pulumi.Input[str] key_usage: The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+               - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+               - `SIGN/VERIFY`: generates or verifies a digital signature.
         :param pulumi.Input[str] last_rotation_date: The date and time the last rotation was performed. The time is displayed in UTC.
         :param pulumi.Input[str] material_expire_time: The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
         :param pulumi.Input[str] next_rotation_date: The time the next rotation is scheduled for execution.
-        :param pulumi.Input[str] origin: The source of key material. Valid values: 
-               - Aliyun_KMS (default value)
-               - EXTERNAL
-               **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-               you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-               For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+        :param pulumi.Input[str] origin: The source of key material. Default value: `Aliyun_KMS`. Valid values:
         :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. 
                During this period, the CMK is in the PendingDeletion state.
                After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
                **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         :param pulumi.Input[str] primary_key_version: The ID of the current primary key version of the symmetric CMK.
-        :param pulumi.Input[str] protection_level: The protection level of the CMK. Valid values:
-               - SOFTWARE (default value)
-               - HSM
-               **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-               If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-               If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+        :param pulumi.Input[str] protection_level: The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
         :param pulumi.Input[str] rotation_interval: The interval for automatic key rotation. Specify the value in the integer[unit] format.
                The following units are supported: d (day), h (hour), m (minute), and s (second).
                For example, you can use either 7d or 604800s to specify a seven-day interval.
@@ -980,10 +924,8 @@ class Key(pulumi.CustomResource):
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
                
                > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
-        :param pulumi.Input[str] status: The status of CMK. Valid Values: 
-               - Disabled
-               - Enabled (default value)
-               - PendingDeletion
+        :param pulumi.Input[str] status: The status of CMK. Default value: `Enabled`. Valid Values:
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1010,6 +952,7 @@ class Key(pulumi.CustomResource):
         __props__.__dict__["protection_level"] = protection_level
         __props__.__dict__["rotation_interval"] = rotation_interval
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return Key(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1022,12 +965,9 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="automaticRotation")
-    def automatic_rotation(self) -> pulumi.Output[Optional[str]]:
+    def automatic_rotation(self) -> pulumi.Output[str]:
         """
-        Specifies whether to enable automatic key rotation. Valid values: 
-        - Enabled
-        - Disabled (default value)
-        **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+        Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
         """
         return pulumi.get(self, "automatic_rotation")
 
@@ -1083,7 +1023,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+        Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         """
         return pulumi.get(self, "is_enabled")
 
@@ -1091,9 +1031,9 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="keySpec")
     def key_spec(self) -> pulumi.Output[str]:
         """
-        The type of the CMK. Valid values: 
-        "Aliyun_AES_256", "Aliyun_AES_128", "Aliyun_AES_192", "Aliyun_SM4", "RSA_2048", "RSA_3072", "EC_P256", "EC_P256K", "EC_SM2".
-        Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+        The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
+        `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+        Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
         """
         return pulumi.get(self, "key_spec")
 
@@ -1107,11 +1047,11 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyUsage")
-    def key_usage(self) -> pulumi.Output[Optional[str]]:
+    def key_usage(self) -> pulumi.Output[str]:
         """
-        The usage of the CMK. Valid values:
-        - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-        - SIGN/VERIFY: generates or verifies a digital signature.
+        The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+        - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+        - `SIGN/VERIFY`: generates or verifies a digital signature.
         """
         return pulumi.get(self, "key_usage")
 
@@ -1143,12 +1083,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter
     def origin(self) -> pulumi.Output[str]:
         """
-        The source of key material. Valid values: 
-        - Aliyun_KMS (default value)
-        - EXTERNAL
-        **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-        you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-        For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+        The source of key material. Default value: `Aliyun_KMS`. Valid values:
         """
         return pulumi.get(self, "origin")
 
@@ -1175,12 +1110,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="protectionLevel")
     def protection_level(self) -> pulumi.Output[Optional[str]]:
         """
-        The protection level of the CMK. Valid values:
-        - SOFTWARE (default value)
-        - HSM
-        **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-        If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-        If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+        The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
         """
         return pulumi.get(self, "protection_level")
 
@@ -1202,10 +1132,15 @@ class Key(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of CMK. Valid Values: 
-        - Disabled
-        - Enabled (default value)
-        - PendingDeletion
+        The status of CMK. Default value: `Enabled`. Valid Values:
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 

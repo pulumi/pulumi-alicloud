@@ -20,14 +20,14 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
     public static final IngressState Empty = new IngressState();
 
     /**
-     * Cert Id.
+     * The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
      * 
      */
     @Import(name="certId")
     private @Nullable Output<String> certId;
 
     /**
-     * @return Cert Id.
+     * @return The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
      * 
      */
     public Optional<Output<String>> certId() {
@@ -35,14 +35,29 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Default Rule.
+     * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+     * 
+     */
+    @Import(name="certIds")
+    private @Nullable Output<String> certIds;
+
+    /**
+     * @return The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+     * 
+     */
+    public Optional<Output<String>> certIds() {
+        return Optional.ofNullable(this.certIds);
+    }
+
+    /**
+     * Default Rule. See `default_rule` below.
      * 
      */
     @Import(name="defaultRule")
     private @Nullable Output<IngressDefaultRuleArgs> defaultRule;
 
     /**
-     * @return Default Rule.
+     * @return Default Rule. See `default_rule` below.
      * 
      */
     public Optional<Output<IngressDefaultRuleArgs>> defaultRule() {
@@ -80,14 +95,44 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+     * The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+     * 
+     */
+    @Import(name="listenerProtocol")
+    private @Nullable Output<String> listenerProtocol;
+
+    /**
+     * @return The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+     * 
+     */
+    public Optional<Output<String>> listenerProtocol() {
+        return Optional.ofNullable(this.listenerProtocol);
+    }
+
+    /**
+     * The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+     * 
+     */
+    @Import(name="loadBalanceType")
+    private @Nullable Output<String> loadBalanceType;
+
+    /**
+     * @return The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+     * 
+     */
+    public Optional<Output<String>> loadBalanceType() {
+        return Optional.ofNullable(this.loadBalanceType);
+    }
+
+    /**
+     * The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
      * 
      */
     @Import(name="namespaceId")
     private @Nullable Output<String> namespaceId;
 
     /**
-     * @return The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+     * @return The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
      * 
      */
     public Optional<Output<String>> namespaceId() {
@@ -95,14 +140,14 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+     * Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<IngressRuleArgs>> rules;
 
     /**
-     * @return Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+     * @return Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
      * 
      */
     public Optional<Output<List<IngressRuleArgs>>> rules() {
@@ -128,9 +173,12 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
 
     private IngressState(IngressState $) {
         this.certId = $.certId;
+        this.certIds = $.certIds;
         this.defaultRule = $.defaultRule;
         this.description = $.description;
         this.listenerPort = $.listenerPort;
+        this.listenerProtocol = $.listenerProtocol;
+        this.loadBalanceType = $.loadBalanceType;
         this.namespaceId = $.namespaceId;
         this.rules = $.rules;
         this.slbId = $.slbId;
@@ -155,7 +203,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certId Cert Id.
+         * @param certId The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
          * 
          * @return builder
          * 
@@ -166,7 +214,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certId Cert Id.
+         * @param certId The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
          * 
          * @return builder
          * 
@@ -176,7 +224,28 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRule Default Rule.
+         * @param certIds The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certIds(@Nullable Output<String> certIds) {
+            $.certIds = certIds;
+            return this;
+        }
+
+        /**
+         * @param certIds The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certIds(String certIds) {
+            return certIds(Output.of(certIds));
+        }
+
+        /**
+         * @param defaultRule Default Rule. See `default_rule` below.
          * 
          * @return builder
          * 
@@ -187,7 +256,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRule Default Rule.
+         * @param defaultRule Default Rule. See `default_rule` below.
          * 
          * @return builder
          * 
@@ -239,7 +308,49 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceId The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+         * @param listenerProtocol The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder listenerProtocol(@Nullable Output<String> listenerProtocol) {
+            $.listenerProtocol = listenerProtocol;
+            return this;
+        }
+
+        /**
+         * @param listenerProtocol The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder listenerProtocol(String listenerProtocol) {
+            return listenerProtocol(Output.of(listenerProtocol));
+        }
+
+        /**
+         * @param loadBalanceType The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalanceType(@Nullable Output<String> loadBalanceType) {
+            $.loadBalanceType = loadBalanceType;
+            return this;
+        }
+
+        /**
+         * @param loadBalanceType The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loadBalanceType(String loadBalanceType) {
+            return loadBalanceType(Output.of(loadBalanceType));
+        }
+
+        /**
+         * @param namespaceId The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
          * 
          * @return builder
          * 
@@ -250,7 +361,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespaceId The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+         * @param namespaceId The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
          * 
          * @return builder
          * 
@@ -260,7 +371,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+         * @param rules Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
          * 
          * @return builder
          * 
@@ -271,7 +382,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+         * @param rules Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
          * 
          * @return builder
          * 
@@ -281,7 +392,7 @@ public final class IngressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+         * @param rules Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
          * 
          * @return builder
          * 

@@ -7,11 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a VPC Dhcp Options Set resource.
+ * Provides a VPC Dhcp Options Set resource. DHCP option set.
  *
- * For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/doc-detail/174112.htm).
+ * For information about VPC Dhcp Options Set and how to use it, see [What is Dhcp Options Set](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/dhcp-options-sets-overview).
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -21,10 +21,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const domain = config.get("domain") || "terraform-example.com";
  * const example = new alicloud.vpc.DhcpOptionsSet("example", {
- *     dhcpOptionsSetDescription: "example_value",
- *     dhcpOptionsSetName: "example_value",
- *     domainName: "example.com",
+ *     dhcpOptionsSetName: name,
+ *     dhcpOptionsSetDescription: name,
+ *     domainName: domain,
  *     domainNameServers: "100.100.2.136",
  * });
  * ```
@@ -66,17 +69,17 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
     }
 
     /**
-     * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+     * Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
      *
-     * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+     * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
      */
-    public readonly associateVpcs!: pulumi.Output<outputs.vpc.DhcpOptionsSetAssociateVpc[] | undefined>;
+    public readonly associateVpcs!: pulumi.Output<outputs.vpc.DhcpOptionsSetAssociateVpc[]>;
     /**
-     * The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
      */
     public readonly dhcpOptionsSetDescription!: pulumi.Output<string | undefined>;
     /**
-     * The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+     * The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      */
     public readonly dhcpOptionsSetName!: pulumi.Output<string | undefined>;
     /**
@@ -84,21 +87,39 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
      */
     public readonly domainName!: pulumi.Output<string | undefined>;
     /**
-     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
      */
     public readonly domainNameServers!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether to precheck this request only. Valid values: `true` or `false`.
+     * Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
+     * The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     */
+    public readonly ipv6LeaseTime!: pulumi.Output<string>;
+    /**
+     * The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     */
+    public readonly leaseTime!: pulumi.Output<string>;
+    /**
      * The ID of the account to which the DHCP options set belongs.
      */
-    public /*out*/ readonly ownerId!: pulumi.Output<string>;
+    public /*out*/ readonly ownerId!: pulumi.Output<number>;
     /**
-     * The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+     * The ID of the resource group.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * Tags of the current resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a DhcpOptionsSet resource with the given unique name, arguments, and options.
@@ -119,8 +140,12 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
             resourceInputs["domainName"] = state ? state.domainName : undefined;
             resourceInputs["domainNameServers"] = state ? state.domainNameServers : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["ipv6LeaseTime"] = state ? state.ipv6LeaseTime : undefined;
+            resourceInputs["leaseTime"] = state ? state.leaseTime : undefined;
             resourceInputs["ownerId"] = state ? state.ownerId : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DhcpOptionsSetArgs | undefined;
             resourceInputs["associateVpcs"] = args ? args.associateVpcs : undefined;
@@ -129,6 +154,10 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
             resourceInputs["domainName"] = args ? args.domainName : undefined;
             resourceInputs["domainNameServers"] = args ? args.domainNameServers : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
+            resourceInputs["ipv6LeaseTime"] = args ? args.ipv6LeaseTime : undefined;
+            resourceInputs["leaseTime"] = args ? args.leaseTime : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["ownerId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -142,17 +171,17 @@ export class DhcpOptionsSet extends pulumi.CustomResource {
  */
 export interface DhcpOptionsSetState {
     /**
-     * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+     * Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
      *
-     * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+     * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
      */
     associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[]>;
     /**
-     * The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
      */
     dhcpOptionsSetDescription?: pulumi.Input<string>;
     /**
-     * The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+     * The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      */
     dhcpOptionsSetName?: pulumi.Input<string>;
     /**
@@ -160,21 +189,39 @@ export interface DhcpOptionsSetState {
      */
     domainName?: pulumi.Input<string>;
     /**
-     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
      */
     domainNameServers?: pulumi.Input<string>;
     /**
-     * Specifies whether to precheck this request only. Valid values: `true` or `false`.
+     * Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
+     * The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     */
+    ipv6LeaseTime?: pulumi.Input<string>;
+    /**
+     * The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     */
+    leaseTime?: pulumi.Input<string>;
+    /**
      * The ID of the account to which the DHCP options set belongs.
      */
-    ownerId?: pulumi.Input<string>;
+    ownerId?: pulumi.Input<number>;
     /**
-     * The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
+    /**
+     * Tags of the current resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -182,17 +229,17 @@ export interface DhcpOptionsSetState {
  */
 export interface DhcpOptionsSetArgs {
     /**
-     * AssociateVpcs. Number of VPCs that can be associated with each DHCP options set is 10. Field `associateVpcs` has been deprecated from provider version 1.153.0. It will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+     * Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associateVpcs` below.
      *
-     * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
+     * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.207.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
      */
     associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[]>;
     /**
-     * The description of the DHCP options set. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
      */
     dhcpOptionsSetDescription?: pulumi.Input<string>;
     /**
-     * The name of the DHCP options set. The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+     * The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      */
     dhcpOptionsSetName?: pulumi.Input<string>;
     /**
@@ -200,11 +247,29 @@ export interface DhcpOptionsSetArgs {
      */
     domainName?: pulumi.Input<string>;
     /**
-     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are `100.100.2.136` and `100.100.2.138`.
+     * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
      */
     domainNameServers?: pulumi.Input<string>;
     /**
-     * Specifies whether to precheck this request only. Valid values: `true` or `false`.
+     * Whether to PreCheck only this request, value:
+     * - **true**: sends a check request and does not delete the DHCP option set. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     */
+    ipv6LeaseTime?: pulumi.Input<string>;
+    /**
+     * The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
+     */
+    leaseTime?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Tags of the current resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

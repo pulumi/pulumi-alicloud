@@ -134,7 +134,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/bandwidthpackageaddaccelerator).
 
-        > **NOTE:** Available in v1.113.0+.
+        > **NOTE:** Available since v1.113.0.
 
         ## Example Usage
 
@@ -184,7 +184,7 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
 
         For information about Global Accelerator (GA) Bandwidth Package Attachment and how to use it, see [What is Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/global-accelerator/latest/bandwidthpackageaddaccelerator).
 
-        > **NOTE:** Available in v1.113.0+.
+        > **NOTE:** Available since v1.113.0.
 
         ## Example Usage
 

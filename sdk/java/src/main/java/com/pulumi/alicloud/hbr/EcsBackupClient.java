@@ -30,8 +30,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.hbr.EcsBackupClient;
  * import com.pulumi.alicloud.hbr.EcsBackupClientArgs;
  * import java.util.List;
@@ -47,15 +58,51 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
- *             .nameRegex(&#34;ecs_instance_name&#34;)
- *             .status(&#34;Running&#34;)
+ *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;Instance&#34;)
  *             .build());
  * 
- *         var example = new EcsBackupClient(&#34;example&#34;, EcsBackupClientArgs.builder()        
- *             .instanceId(default_.instances()[0].id())
+ *         final var exampleInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         final var exampleImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .owners(&#34;system&#34;)
+ *             .build());
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
+ * 
+ *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .securityGroups(exampleSecurityGroup.id())
+ *             .instanceName(&#34;terraform-example&#34;)
+ *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .vswitchId(exampleSwitch.id())
+ *             .build());
+ * 
+ *         var exampleEcsBackupClient = new EcsBackupClient(&#34;exampleEcsBackupClient&#34;, EcsBackupClientArgs.builder()        
+ *             .instanceId(exampleInstance.id())
  *             .useHttps(false)
- *             .dataNetworkType(&#34;PUBLIC&#34;)
+ *             .dataNetworkType(&#34;VPC&#34;)
  *             .maxCpuCore(2)
  *             .maxWorker(4)
  *             .dataProxySetting(&#34;USE_CONTROL_PROXY&#34;)

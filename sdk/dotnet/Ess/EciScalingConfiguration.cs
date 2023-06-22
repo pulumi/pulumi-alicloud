@@ -12,7 +12,9 @@ namespace Pulumi.AliCloud.Ess
     /// <summary>
     /// Provides a ESS eci scaling configuration resource.
     /// 
-    /// &gt; **NOTE:** Resource `alicloud.ess.AlbServerGroupAttachment` is available in 1.164.0+.
+    /// For information about ess eci scaling configuration, see [CreateEciScalingConfiguration](https://www.alibabacloud.com/help/en/auto-scaling/latest/create-eci-scaling-configuration).
+    /// 
+    /// &gt; **NOTE:** Available since v1.164.0.
     /// 
     /// ## Example Usage
     /// 
@@ -27,9 +29,16 @@ namespace Pulumi.AliCloud.Ess
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "essscalingconfiguration";
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
     ///     {
+    ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
@@ -37,7 +46,7 @@ namespace Pulumi.AliCloud.Ess
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = data.Alicloud_zones.Default.Zones[0].Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = name,
     ///     });
     /// 
@@ -97,9 +106,7 @@ namespace Pulumi.AliCloud.Ess
     public partial class EciScalingConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Information about the Container Registry Enterprise Edition instance. The details see
-        /// Block `acr_registry_info`.See Block acr_registry_info below for
-        /// details.
+        /// Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         /// </summary>
         [Output("acrRegistryInfos")]
         public Output<ImmutableArray<Outputs.EciScalingConfigurationAcrRegistryInfo>> AcrRegistryInfos { get; private set; } = null!;
@@ -124,7 +131,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> ContainerGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The list of containers.See Block container below for details.
+        /// The list of containers. See `containers` below for details.
         /// </summary>
         [Output("containers")]
         public Output<ImmutableArray<Outputs.EciScalingConfigurationContainer>> Containers { get; private set; } = null!;
@@ -174,7 +181,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
-        /// HostAliases.See Block host_alias below for details.
+        /// HostAliases. See `host_aliases` below.
         /// </summary>
         [Output("hostAliases")]
         public Output<ImmutableArray<Outputs.EciScalingConfigurationHostAlias>> HostAliases { get; private set; } = null!;
@@ -186,8 +193,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> HostName { get; private set; } = null!;
 
         /// <summary>
-        /// The image registry credential. The details see
-        /// Block `image_registry_credential`.See Block image_registry_credential below for
+        /// The image registry credential.   See `image_registry_credentials` below for
         /// details.
         /// </summary>
         [Output("imageRegistryCredentials")]
@@ -200,8 +206,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<int?> IngressBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The list of initContainers.See Block init_container below for
-        /// details.
+        /// The list of initContainers. See `init_containers` below for details.
         /// </summary>
         [Output("initContainers")]
         public Output<ImmutableArray<Outputs.EciScalingConfigurationInitContainer>> InitContainers { get; private set; } = null!;
@@ -276,7 +281,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The list of volumes.See Block volume below for details.
+        /// The list of volumes. See `volumes` below for details.
         /// </summary>
         [Output("volumes")]
         public Output<ImmutableArray<Outputs.EciScalingConfigurationVolume>> Volumes { get; private set; } = null!;
@@ -331,9 +336,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationAcrRegistryInfoArgs>? _acrRegistryInfos;
 
         /// <summary>
-        /// Information about the Container Registry Enterprise Edition instance. The details see
-        /// Block `acr_registry_info`.See Block acr_registry_info below for
-        /// details.
+        /// Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationAcrRegistryInfoArgs> AcrRegistryInfos
         {
@@ -364,7 +367,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationContainerArgs>? _containers;
 
         /// <summary>
-        /// The list of containers.See Block container below for details.
+        /// The list of containers. See `containers` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationContainerArgs> Containers
         {
@@ -420,7 +423,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationHostAliasArgs>? _hostAliases;
 
         /// <summary>
-        /// HostAliases.See Block host_alias below for details.
+        /// HostAliases. See `host_aliases` below.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationHostAliasArgs> HostAliases
         {
@@ -438,8 +441,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationImageRegistryCredentialArgs>? _imageRegistryCredentials;
 
         /// <summary>
-        /// The image registry credential. The details see
-        /// Block `image_registry_credential`.See Block image_registry_credential below for
+        /// The image registry credential.   See `image_registry_credentials` below for
         /// details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationImageRegistryCredentialArgs> ImageRegistryCredentials
@@ -458,8 +460,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationInitContainerArgs>? _initContainers;
 
         /// <summary>
-        /// The list of initContainers.See Block init_container below for
-        /// details.
+        /// The list of initContainers. See `init_containers` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationInitContainerArgs> InitContainers
         {
@@ -546,7 +547,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationVolumeArgs>? _volumes;
 
         /// <summary>
-        /// The list of volumes.See Block volume below for details.
+        /// The list of volumes. See `volumes` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationVolumeArgs> Volumes
         {
@@ -566,9 +567,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationAcrRegistryInfoGetArgs>? _acrRegistryInfos;
 
         /// <summary>
-        /// Information about the Container Registry Enterprise Edition instance. The details see
-        /// Block `acr_registry_info`.See Block acr_registry_info below for
-        /// details.
+        /// Information about the Container Registry Enterprise Edition instance. See `acr_registry_infos` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationAcrRegistryInfoGetArgs> AcrRegistryInfos
         {
@@ -599,7 +598,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationContainerGetArgs>? _containers;
 
         /// <summary>
-        /// The list of containers.See Block container below for details.
+        /// The list of containers. See `containers` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationContainerGetArgs> Containers
         {
@@ -655,7 +654,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationHostAliasGetArgs>? _hostAliases;
 
         /// <summary>
-        /// HostAliases.See Block host_alias below for details.
+        /// HostAliases. See `host_aliases` below.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationHostAliasGetArgs> HostAliases
         {
@@ -673,8 +672,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationImageRegistryCredentialGetArgs>? _imageRegistryCredentials;
 
         /// <summary>
-        /// The image registry credential. The details see
-        /// Block `image_registry_credential`.See Block image_registry_credential below for
+        /// The image registry credential.   See `image_registry_credentials` below for
         /// details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationImageRegistryCredentialGetArgs> ImageRegistryCredentials
@@ -693,8 +691,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationInitContainerGetArgs>? _initContainers;
 
         /// <summary>
-        /// The list of initContainers.See Block init_container below for
-        /// details.
+        /// The list of initContainers. See `init_containers` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationInitContainerGetArgs> InitContainers
         {
@@ -781,7 +778,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.EciScalingConfigurationVolumeGetArgs>? _volumes;
 
         /// <summary>
-        /// The list of volumes.See Block volume below for details.
+        /// The list of volumes. See `volumes` below for details.
         /// </summary>
         public InputList<Inputs.EciScalingConfigurationVolumeGetArgs> Volumes
         {

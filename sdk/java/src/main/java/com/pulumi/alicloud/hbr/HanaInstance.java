@@ -35,10 +35,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.hbr.Vault;
- * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.alicloud.hbr.Vault;
+ * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.HanaInstance;
  * import com.pulumi.alicloud.hbr.HanaInstanceArgs;
  * import java.util.List;
@@ -54,17 +54,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVault = new Vault(&#34;exampleVault&#34;, VaultArgs.builder()        
- *             .vaultName(var_.name())
- *             .build());
- * 
  *         final var exampleResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status(&#34;OK&#34;)
  *             .build());
  * 
+ *         var exampleVault = new Vault(&#34;exampleVault&#34;, VaultArgs.builder()        
+ *             .vaultName(&#34;terraform-example&#34;)
+ *             .build());
+ * 
  *         var exampleHanaInstance = new HanaInstance(&#34;exampleHanaInstance&#34;, HanaInstanceArgs.builder()        
  *             .alertSetting(&#34;INHERITED&#34;)
- *             .hanaName(var_.name())
+ *             .hanaName(&#34;terraform-example&#34;)
  *             .host(&#34;1.1.1.1&#34;)
  *             .instanceNumber(1)
  *             .password(&#34;YouPassword123&#34;)

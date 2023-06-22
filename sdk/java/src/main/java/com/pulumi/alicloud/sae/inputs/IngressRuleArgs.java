@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class IngressRuleArgs extends com.pulumi.resources.ResourceArgs {
@@ -42,6 +44,21 @@ public final class IngressRuleArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> appName() {
         return this.appName;
+    }
+
+    /**
+     * The backend protocol.
+     * 
+     */
+    @Import(name="backendProtocol")
+    private @Nullable Output<String> backendProtocol;
+
+    /**
+     * @return The backend protocol.
+     * 
+     */
+    public Optional<Output<String>> backendProtocol() {
+        return Optional.ofNullable(this.backendProtocol);
     }
 
     /**
@@ -89,14 +106,31 @@ public final class IngressRuleArgs extends com.pulumi.resources.ResourceArgs {
         return this.path;
     }
 
+    /**
+     * The rewrite path.
+     * 
+     */
+    @Import(name="rewritePath")
+    private @Nullable Output<String> rewritePath;
+
+    /**
+     * @return The rewrite path.
+     * 
+     */
+    public Optional<Output<String>> rewritePath() {
+        return Optional.ofNullable(this.rewritePath);
+    }
+
     private IngressRuleArgs() {}
 
     private IngressRuleArgs(IngressRuleArgs $) {
         this.appId = $.appId;
         this.appName = $.appName;
+        this.backendProtocol = $.backendProtocol;
         this.containerPort = $.containerPort;
         this.domain = $.domain;
         this.path = $.path;
+        this.rewritePath = $.rewritePath;
     }
 
     public static Builder builder() {
@@ -160,6 +194,27 @@ public final class IngressRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param backendProtocol The backend protocol.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendProtocol(@Nullable Output<String> backendProtocol) {
+            $.backendProtocol = backendProtocol;
+            return this;
+        }
+
+        /**
+         * @param backendProtocol The backend protocol.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendProtocol(String backendProtocol) {
+            return backendProtocol(Output.of(backendProtocol));
+        }
+
+        /**
          * @param containerPort Application backend port.
          * 
          * @return builder
@@ -220,6 +275,27 @@ public final class IngressRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param rewritePath The rewrite path.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rewritePath(@Nullable Output<String> rewritePath) {
+            $.rewritePath = rewritePath;
+            return this;
+        }
+
+        /**
+         * @param rewritePath The rewrite path.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rewritePath(String rewritePath) {
+            return rewritePath(Output.of(rewritePath));
         }
 
         public IngressRuleArgs build() {

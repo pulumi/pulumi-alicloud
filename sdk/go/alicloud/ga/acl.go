@@ -15,7 +15,7 @@ import (
 //
 // For information about Global Accelerator (GA) Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createacl).
 //
-// > **NOTE:** Available in v1.150.0+.
+// > **NOTE:** Available since v1.150.0.
 //
 // ## Example Usage
 //
@@ -33,15 +33,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ga.NewAcl(ctx, "default", &ga.AclArgs{
-//				AclEntries: ga.AclAclEntryArray{
-//					&ga.AclAclEntryArgs{
-//						Entry:            pulumi.String("192.168.1.0/24"),
-//						EntryDescription: pulumi.String("tf-test1"),
-//					},
-//				},
-//				AclName:          pulumi.String("tf-testAccAcl"),
+//			defaultAcl, err := ga.NewAcl(ctx, "defaultAcl", &ga.AclArgs{
+//				AclName:          pulumi.String("terraform-example"),
 //				AddressIpVersion: pulumi.String("IPv4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ga.NewAclEntryAttachment(ctx, "defaultAclEntryAttachment", &ga.AclEntryAttachmentArgs{
+//				AclId:            defaultAcl.ID(),
+//				Entry:            pulumi.String("192.168.1.1/32"),
+//				EntryDescription: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
@@ -64,7 +66,7 @@ import (
 type Acl struct {
 	pulumi.CustomResourceState
 
-	// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+	// The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
 	//
 	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 	AclEntries AclAclEntryArrayOutput `pulumi:"aclEntries"`
@@ -110,7 +112,7 @@ func GetAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Acl resources.
 type aclState struct {
-	// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+	// The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
 	//
 	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 	AclEntries []AclAclEntry `pulumi:"aclEntries"`
@@ -125,7 +127,7 @@ type aclState struct {
 }
 
 type AclState struct {
-	// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+	// The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
 	//
 	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 	AclEntries AclAclEntryArrayInput
@@ -144,7 +146,7 @@ func (AclState) ElementType() reflect.Type {
 }
 
 type aclArgs struct {
-	// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+	// The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
 	//
 	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 	AclEntries []AclAclEntry `pulumi:"aclEntries"`
@@ -158,7 +160,7 @@ type aclArgs struct {
 
 // The set of arguments for constructing a Acl resource.
 type AclArgs struct {
-	// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+	// The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
 	//
 	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 	AclEntries AclAclEntryArrayInput
@@ -257,7 +259,7 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
-// The entries of the Acl. See the following `Block aclEntries`. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
+// The entries of the Acl. See `aclEntries` below. **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `ga.AclEntryAttachment`."
 //
 // Deprecated: Field 'acl_entries' has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource 'alicloud_ga_acl_entry_attachment'.
 func (o AclOutput) AclEntries() AclAclEntryArrayOutput {

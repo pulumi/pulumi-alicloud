@@ -238,7 +238,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
 
         For information about MongoDB Sharding Network Private Address and how to use it, see [What is Sharding Network Private Address](https://www.alibabacloud.com/help/en/doc-detail/141403.html).
 
-        > **NOTE:** Available in v1.157.0+.
+        > **NOTE:** Available since v1.157.0.
 
         ## Example Usage
 
@@ -251,15 +251,33 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default_zones = alicloud.mongodb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
+        index = len(default_zones.zones) - 1
+        zone_id = default_zones.zones[index].id
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=zone_id)
         default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
-            zone_id=default_zones.zones[0].id,
-            vswitch_id=default_switches.ids[0],
+            zone_id=zone_id,
+            vswitch_id=default_switch.id,
             engine_version="4.2",
+            shard_lists=[
+                alicloud.mongodb.ShardingInstanceShardListArgs(
+                    node_class="dds.shard.mid",
+                    node_storage=10,
+                ),
+                alicloud.mongodb.ShardingInstanceShardListArgs(
+                    node_class="dds.shard.standard",
+                    node_storage=20,
+                    readonly_replicas=1,
+                ),
+            ],
             mongo_lists=[
                 alicloud.mongodb.ShardingInstanceMongoListArgs(
                     node_class="dds.mongos.mid",
@@ -267,23 +285,13 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
                 alicloud.mongodb.ShardingInstanceMongoListArgs(
                     node_class="dds.mongos.mid",
                 ),
-            ],
-            shard_lists=[
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.mid",
-                    node_storage=10,
-                ),
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.mid",
-                    node_storage=10,
-                ),
             ])
-        example = alicloud.mongodb.ShardingNetworkPrivateAddress("example",
+        default_sharding_network_private_address = alicloud.mongodb.ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress",
             db_instance_id=default_sharding_instance.id,
             node_id=default_sharding_instance.shard_lists[0].node_id,
             zone_id=default_sharding_instance.zone_id,
-            account_name="example_value",
-            account_password="YourPassword+12345")
+            account_name="example",
+            account_password="Example_123")
         ```
 
         ## Import
@@ -318,7 +326,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
 
         For information about MongoDB Sharding Network Private Address and how to use it, see [What is Sharding Network Private Address](https://www.alibabacloud.com/help/en/doc-detail/141403.html).
 
-        > **NOTE:** Available in v1.157.0+.
+        > **NOTE:** Available since v1.157.0.
 
         ## Example Usage
 
@@ -331,15 +339,33 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         default_zones = alicloud.mongodb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
+        index = len(default_zones.zones) - 1
+        zone_id = default_zones.zones[index].id
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.17.3.0/24")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vswitch_name=name,
+            cidr_block="172.17.3.0/24",
+            vpc_id=default_network.id,
+            zone_id=zone_id)
         default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
-            zone_id=default_zones.zones[0].id,
-            vswitch_id=default_switches.ids[0],
+            zone_id=zone_id,
+            vswitch_id=default_switch.id,
             engine_version="4.2",
+            shard_lists=[
+                alicloud.mongodb.ShardingInstanceShardListArgs(
+                    node_class="dds.shard.mid",
+                    node_storage=10,
+                ),
+                alicloud.mongodb.ShardingInstanceShardListArgs(
+                    node_class="dds.shard.standard",
+                    node_storage=20,
+                    readonly_replicas=1,
+                ),
+            ],
             mongo_lists=[
                 alicloud.mongodb.ShardingInstanceMongoListArgs(
                     node_class="dds.mongos.mid",
@@ -347,23 +373,13 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
                 alicloud.mongodb.ShardingInstanceMongoListArgs(
                     node_class="dds.mongos.mid",
                 ),
-            ],
-            shard_lists=[
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.mid",
-                    node_storage=10,
-                ),
-                alicloud.mongodb.ShardingInstanceShardListArgs(
-                    node_class="dds.shard.mid",
-                    node_storage=10,
-                ),
             ])
-        example = alicloud.mongodb.ShardingNetworkPrivateAddress("example",
+        default_sharding_network_private_address = alicloud.mongodb.ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress",
             db_instance_id=default_sharding_instance.id,
             node_id=default_sharding_instance.shard_lists[0].node_id,
             zone_id=default_sharding_instance.zone_id,
-            account_name="example_value",
-            account_password="YourPassword+12345")
+            account_name="example",
+            account_password="Example_123")
         ```
 
         ## Import

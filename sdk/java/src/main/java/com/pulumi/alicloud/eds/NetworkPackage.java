@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECD Network Package resource.
  * 
- * For information about ECD Network Package and how to use it, see [What is Network Package](https://help.aliyun.com/document_detail/188382.html).
+ * For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createnetworkpackage).
  * 
- * &gt; **NOTE:** Available in v1.142.0+.
+ * &gt; **NOTE:** Available since v1.142.0.
  * 
  * ## Example Usage
  * 
@@ -47,15 +47,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .enableAdminAccess(false)
  *             .desktopAccessType(&#34;Internet&#34;)
- *             .officeSiteName(&#34;your_office_site_name&#34;)
+ *             .officeSiteName(name)
  *             .build());
  * 
- *         var example = new NetworkPackage(&#34;example&#34;, NetworkPackageArgs.builder()        
+ *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
  *             .bandwidth(10)
- *             .officeSiteId(default_.id())
+ *             .officeSiteId(defaultSimpleOfficeSite.id())
  *             .build());
  * 
  *     }

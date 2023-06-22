@@ -13,9 +13,9 @@ import (
 
 // Provides a Elastic Desktop Service (ECD) User resource.
 //
-// For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://help.aliyun.com/document_detail/188382.html).
+// For information about Elastic Desktop Service (ECD) User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-eds-user-2021-03-08-api-doc-createusers-desktop).
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Example Usage
 //
@@ -33,9 +33,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eds.NewUser(ctx, "example", &eds.UserArgs{
-//				Email:     pulumi.String("your_email"),
-//				EndUserId: pulumi.String("example_value"),
+//			_, err := eds.NewUser(ctx, "default", &eds.UserArgs{
+//				Email:     pulumi.String("tf.example@abc.com"),
+//				EndUserId: pulumi.String("terraform_example123"),
+//				Password:  pulumi.String("Example_123"),
+//				Phone:     pulumi.String("18888888888"),
 //			})
 //			if err != nil {
 //				return err

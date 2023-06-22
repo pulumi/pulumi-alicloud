@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.oss.Bucket;
@@ -51,18 +53,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-test112358&#34;);
+ *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
  *         var defaultVault = new Vault(&#34;defaultVault&#34;, VaultArgs.builder()        
- *             .vaultName(name)
+ *             .vaultName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .build());
  * 
  *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(name)
+ *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
  *             .build());
  * 
  *         var defaultOssBackupPlan = new OssBackupPlan(&#34;defaultOssBackupPlan&#34;, OssBackupPlanArgs.builder()        
- *             .ossBackupPlanName(name)
+ *             .ossBackupPlanName(&#34;terraform-example&#34;)
  *             .prefix(&#34;/&#34;)
  *             .bucket(defaultBucket.bucket())
  *             .vaultId(defaultVault.id())

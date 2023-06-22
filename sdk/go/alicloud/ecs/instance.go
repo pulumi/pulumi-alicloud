@@ -86,9 +86,13 @@ import (
 // if err != nil {
 // return err
 // }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
 // _, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
 // AvailabilityZone: *pulumi.String(_default.Zones[0].Id),
-// SecurityGroups: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-alicloud:ecs-instance:Instance.pp:31,21-34),
+// SecurityGroups: splat0,
 // InstanceType: pulumi.String("ecs.n4.large"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // SystemDiskName: pulumi.String("test_foo_system_disk_name"),

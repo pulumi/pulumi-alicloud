@@ -20,52 +20,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a EIP Address resource.
- * 
- * For information about EIP Address and how to use it, see [What is EIP Address](https://www.alibabacloud.com/help/en/doc-detail/36016.htm).
- * 
- * &gt; **NOTE:** Available in v1.126.0+.
- * 
- * &gt; **NOTE:** BGP (Multi-ISP) lines are supported in all regions. BGP (Multi-ISP) Pro lines are supported only in the China (Hong Kong) region.
- * 
- * &gt; **NOTE:** The resource only supports to create `PayAsYouGo PayByTraffic`  or `Subscription PayByBandwidth` elastic IP for international account. Otherwise, you will happened error `COMMODITY.INVALID_COMPONENT`.
- * Your account is international if you can use it to login in [International Web Console](https://account.alibabacloud.com/login/login.htm).
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ecs.EipAddress;
- * import com.pulumi.alicloud.ecs.EipAddressArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new EipAddress(&#34;example&#34;, EipAddressArgs.builder()        
- *             .addressName(&#34;tf-testAcc1234&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
- *             .isp(&#34;BGP&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
  * EIP Address can be imported using the id, e.g.
@@ -78,14 +32,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/eipAddress:EipAddress")
 public class EipAddress extends com.pulumi.resources.CustomResource {
     /**
-     * The activity id.
+     * Special activity ID. This parameter is not required.
      * 
      */
     @Export(name="activityId", type=String.class, parameters={})
     private Output</* @Nullable */ String> activityId;
 
     /**
-     * @return The activity id.
+     * @return Special activity ID. This parameter is not required.
      * 
      */
     public Output<Optional<String>> activityId() {
@@ -134,14 +88,32 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return this.bandwidth;
     }
     /**
-     * Whether enable the deletion protection or not. Default value: `false`.
+     * The time when the EIP was created.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The time when the EIP was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Whether the delete protection function is turned on.
+     * - **true**: enabled.
+     * - **false**: not enabled.
      * 
      */
     @Export(name="deletionProtection", type=Boolean.class, parameters={})
     private Output<Boolean> deletionProtection;
 
     /**
-     * @return Whether enable the deletion protection or not. Default value: `false`.
+     * @return Whether the delete protection function is turned on.
+     * - **true**: enabled.
+     * - **false**: not enabled.
      * 
      */
     public Output<Boolean> deletionProtection() {
@@ -162,62 +134,68 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+     * Whether the second-level monitoring is enabled for the EIP.
+     * - **OFF**: not enabled.
+     * - **ON**: enabled.
      * 
      */
     @Export(name="highDefinitionMonitorLogStatus", type=String.class, parameters={})
     private Output<String> highDefinitionMonitorLogStatus;
 
     /**
-     * @return The status of the EIP. configuring high precision second-by-second monitoring for EIP. Valid values: `ON` and `OFF`.
+     * @return Whether the second-level monitoring is enabled for the EIP.
+     * - **OFF**: not enabled.
+     * - **ON**: enabled.
      * 
      */
     public Output<String> highDefinitionMonitorLogStatus() {
         return this.highDefinitionMonitorLogStatus;
     }
     /**
-     * Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+     * . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      * @deprecated
-     * Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
+     * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      */
-    @Deprecated /* Field 'instance_charge_type' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
+    @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
     @Export(name="instanceChargeType", type=String.class, parameters={})
     private Output<String> instanceChargeType;
 
     /**
-     * @return Field `instance_charge_type` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `payment_type` instead.
+     * @return . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      */
     public Output<String> instanceChargeType() {
         return this.instanceChargeType;
     }
     /**
-     * The metering method of the EIP.
-     * Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to &#34;PayByBandwidth&#34; when `payment_type` is &#34;Subscription&#34;.
+     * Renewal Payment type.
+     * - **PayByBandwidth**: billed by fixed bandwidth.
+     * - **PayByTraffic**: Billing by traffic.
      * 
      */
     @Export(name="internetChargeType", type=String.class, parameters={})
     private Output<String> internetChargeType;
 
     /**
-     * @return The metering method of the EIP.
-     * Valid values: `PayByDominantTraffic`, `PayByBandwidth` and `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** It must be set to &#34;PayByBandwidth&#34; when `payment_type` is &#34;Subscription&#34;.
+     * @return Renewal Payment type.
+     * - **PayByBandwidth**: billed by fixed bandwidth.
+     * - **PayByTraffic**: Billing by traffic.
      * 
      */
     public Output<String> internetChargeType() {
         return this.internetChargeType;
     }
     /**
-     * The address of the EIP.
+     * The IP address of the EIP.
      * 
      */
     @Export(name="ipAddress", type=String.class, parameters={})
     private Output<String> ipAddress;
 
     /**
-     * @return The address of the EIP.
+     * @return The IP address of the EIP.
      * 
      */
     public Output<String> ipAddress() {
@@ -266,18 +244,18 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logStore);
     }
     /**
-     * Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute &#39;address_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.126.0 and it will be remove in the future version. Please use the new attribute 'address_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.126.0, and it will be removed in the future version. Please use the new attribute `address_name` instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      */
     public Output<String> name() {
@@ -288,52 +266,66 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="netmode", type=String.class, parameters={})
-    private Output</* @Nullable */ String> netmode;
+    private Output<String> netmode;
 
     /**
      * @return The type of the network. Valid value is `public` (Internet).
      * 
      */
-    public Output<Optional<String>> netmode() {
-        return Codegen.optional(this.netmode);
+    public Output<String> netmode() {
+        return this.netmode;
     }
     /**
-     * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
      * 
      */
     @Export(name="paymentType", type=String.class, parameters={})
     private Output<String> paymentType;
 
     /**
-     * @return The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
+     * @return The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
      * 
      */
     @Export(name="period", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify &#34;period&#34; and you can do that via web console.
+     * @return When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+     * Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * 
+     */
+    @Export(name="pricingCycle", type=String.class, parameters={})
+    private Output</* @Nullable */ String> pricingCycle;
+
+    /**
+     * @return Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
+     * 
+     */
+    public Output<Optional<String>> pricingCycle() {
+        return Codegen.optional(this.pricingCycle);
+    }
+    /**
+     * The ID of the IP address pool to which the EIP belongs.
      * 
      */
     @Export(name="publicIpAddressPoolId", type=String.class, parameters={})
     private Output</* @Nullable */ String> publicIpAddressPoolId;
 
     /**
-     * @return The ID of the IP address pool. The EIP is allocated from the IP address pool. **NOTE:** The feature is available only to users whose accounts are included in the whitelist. If you want to use the feature,[submit a ticket](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
+     * @return The ID of the IP address pool to which the EIP belongs.
      * 
      */
     public Output<Optional<String>> publicIpAddressPoolId() {
@@ -354,46 +346,68 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+     * Security protection level.
+     * - When the return is empty, the basic DDoS protection is specified.
+     * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
      * 
      */
     @Export(name="securityProtectionTypes", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> securityProtectionTypes;
 
     /**
-     * @return The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS is basic level. If you set the value to `AntiDDoS_Enhanced`, High capacity Anti-DDoS Origin is enabled.
+     * @return Security protection level.
+     * - When the return is empty, the basic DDoS protection is specified.
+     * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
      * 
      */
     public Output<Optional<List<String>>> securityProtectionTypes() {
         return Codegen.optional(this.securityProtectionTypes);
     }
     /**
-     * The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
+     * The status of the EIP.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
-     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
+     * @return The status of the EIP.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tag of the resource.
      * 
      */
     @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tag of the resource.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Export(name="zone", type=String.class, parameters={})
+    private Output<String> zone;
+
+    /**
+     * @return The zone of the EIP.This parameter is returned only for whitelist users that are visible to the zone.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Output<String> zone() {
+        return this.zone;
     }
 
     /**

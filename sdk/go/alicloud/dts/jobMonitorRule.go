@@ -15,36 +15,7 @@ import (
 //
 // For information about DTS Job Monitor Rule and how to use it, see [What is Job Monitor Rule](https://www.aliyun.com/product/dts).
 //
-// > **NOTE:** Available in v1.134.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dts"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dts.NewJobMonitorRule(ctx, "example", &dts.JobMonitorRuleArgs{
-//				DtsJobId: pulumi.String("example_value"),
-//				Type:     pulumi.String("delay"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.134.0.
 //
 // ## Import
 //

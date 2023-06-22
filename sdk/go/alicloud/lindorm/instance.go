@@ -15,7 +15,7 @@ import (
 //
 // For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/doc-detail/174640.html).
 //
-// > **NOTE:** Available in v1.132.0+.
+// > **NOTE:** Available since v1.132.0.
 //
 // > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
 //
@@ -39,32 +39,27 @@ type Instance struct {
 	ArchVersion pulumi.StringPtrOutput `pulumi:"archVersion"`
 	// The cold storage capacity of the instance. Unit: GB.
 	ColdStorage pulumi.IntOutput `pulumi:"coldStorage"`
-	// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-	//
-	// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-	CoreNum pulumi.IntPtrOutput `pulumi:"coreNum"`
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
 	CoreSingleStorage pulumi.IntPtrOutput `pulumi:"coreSingleStorage"`
 	// The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
 	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-	//   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec pulumi.StringOutput `pulumi:"coreSpec"`
 	// The deletion protection of instance.
 	DeletionProection pulumi.BoolOutput `pulumi:"deletionProection"`
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
+	// The disk type of instance. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdPl0`, `capacityCloudStorage`, `localSsdPro`, `localHddPro`. **NOTE:** From version 1.207.0, `diskCategory` can be set to `cloudEssdPl0`.
 	DiskCategory pulumi.StringOutput `pulumi:"diskCategory"`
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration pulumi.StringPtrOutput `pulumi:"duration"`
-	// (Available in v1.163.0+) Whether to enable file engine.
+	// (Available since v1.163.0) Whether to enable file engine.
 	EnabledFileEngine pulumi.BoolOutput `pulumi:"enabledFileEngine"`
-	// (Available in v1.163.0+) Whether to enable lts engine.
+	// (Available since v1.163.0) Whether to enable lts engine.
 	EnabledLtsEngine pulumi.BoolOutput `pulumi:"enabledLtsEngine"`
-	// (Available in v1.163.0+) Whether to enable search engine.
+	// (Available since v1.163.0) Whether to enable search engine.
 	EnabledSearchEngine pulumi.BoolOutput `pulumi:"enabledSearchEngine"`
-	// (Available in v1.163.0+) Whether to enable table engine.
+	// (Available since v1.163.0) Whether to enable table engine.
 	EnabledTableEngine pulumi.BoolOutput `pulumi:"enabledTableEngine"`
-	// (Available in v1.163.0+) Whether to enable time serires engine.
+	// (Available since v1.163.0) Whether to enable time serires engine.
 	EnabledTimeSeriresEngine pulumi.BoolOutput `pulumi:"enabledTimeSeriresEngine"`
 	// The count of file engine.
 	FileEngineNodeCount pulumi.IntOutput `pulumi:"fileEngineNodeCount"`
@@ -110,35 +105,28 @@ type Instance struct {
 	SearchEngineNodeCount pulumi.IntOutput `pulumi:"searchEngineNodeCount"`
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	SearchEngineSpecification pulumi.StringOutput `pulumi:"searchEngineSpecification"`
-	// (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindormMultizone`, `serverlessLindorm`, `lindormStandalone`, `lts`.
+	// (Available since v1.196.0) The instance type.
 	ServiceType pulumi.StringOutput `pulumi:"serviceType"`
 	// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
 	StandbyVswitchId pulumi.StringPtrOutput `pulumi:"standbyVswitchId"`
 	// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
 	StandbyZoneId pulumi.StringPtrOutput `pulumi:"standbyZoneId"`
-	// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+	// The status of Instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The count of table engine.
 	TableEngineNodeCount pulumi.IntOutput `pulumi:"tableEngineNodeCount"`
-	// The specification of  table engine. Valid values:
-	// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 	TableEngineSpecification pulumi.StringOutput `pulumi:"tableEngineSpecification"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount pulumi.IntOutput `pulumi:"timeSeriesEngineNodeCount"`
-	// The specification of time series engine.
-	// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+	// The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 	TimeSeriesEngineSpecification pulumi.StringOutput `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
 	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
 	TimeSeriresEngineSpecification pulumi.StringOutput `pulumi:"timeSeriresEngineSpecification"`
-	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-	// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-	//
-	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
-	UpgradeType pulumi.StringPtrOutput `pulumi:"upgradeType"`
 	// The VPC ID of the instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitch id.
@@ -193,32 +181,27 @@ type instanceState struct {
 	ArchVersion *string `pulumi:"archVersion"`
 	// The cold storage capacity of the instance. Unit: GB.
 	ColdStorage *int `pulumi:"coldStorage"`
-	// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-	//
-	// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-	CoreNum *int `pulumi:"coreNum"`
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
 	CoreSingleStorage *int `pulumi:"coreSingleStorage"`
 	// The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
 	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-	//   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec *string `pulumi:"coreSpec"`
 	// The deletion protection of instance.
 	DeletionProection *bool `pulumi:"deletionProection"`
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
+	// The disk type of instance. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdPl0`, `capacityCloudStorage`, `localSsdPro`, `localHddPro`. **NOTE:** From version 1.207.0, `diskCategory` can be set to `cloudEssdPl0`.
 	DiskCategory *string `pulumi:"diskCategory"`
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration *string `pulumi:"duration"`
-	// (Available in v1.163.0+) Whether to enable file engine.
+	// (Available since v1.163.0) Whether to enable file engine.
 	EnabledFileEngine *bool `pulumi:"enabledFileEngine"`
-	// (Available in v1.163.0+) Whether to enable lts engine.
+	// (Available since v1.163.0) Whether to enable lts engine.
 	EnabledLtsEngine *bool `pulumi:"enabledLtsEngine"`
-	// (Available in v1.163.0+) Whether to enable search engine.
+	// (Available since v1.163.0) Whether to enable search engine.
 	EnabledSearchEngine *bool `pulumi:"enabledSearchEngine"`
-	// (Available in v1.163.0+) Whether to enable table engine.
+	// (Available since v1.163.0) Whether to enable table engine.
 	EnabledTableEngine *bool `pulumi:"enabledTableEngine"`
-	// (Available in v1.163.0+) Whether to enable time serires engine.
+	// (Available since v1.163.0) Whether to enable time serires engine.
 	EnabledTimeSeriresEngine *bool `pulumi:"enabledTimeSeriresEngine"`
 	// The count of file engine.
 	FileEngineNodeCount *int `pulumi:"fileEngineNodeCount"`
@@ -264,35 +247,28 @@ type instanceState struct {
 	SearchEngineNodeCount *int `pulumi:"searchEngineNodeCount"`
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	SearchEngineSpecification *string `pulumi:"searchEngineSpecification"`
-	// (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindormMultizone`, `serverlessLindorm`, `lindormStandalone`, `lts`.
+	// (Available since v1.196.0) The instance type.
 	ServiceType *string `pulumi:"serviceType"`
 	// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
 	StandbyVswitchId *string `pulumi:"standbyVswitchId"`
 	// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
 	StandbyZoneId *string `pulumi:"standbyZoneId"`
-	// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+	// The status of Instance.
 	Status *string `pulumi:"status"`
 	// The count of table engine.
 	TableEngineNodeCount *int `pulumi:"tableEngineNodeCount"`
-	// The specification of  table engine. Valid values:
-	// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 	TableEngineSpecification *string `pulumi:"tableEngineSpecification"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount *int `pulumi:"timeSeriesEngineNodeCount"`
-	// The specification of time series engine.
-	// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+	// The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 	TimeSeriesEngineSpecification *string `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
 	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
 	TimeSeriresEngineSpecification *string `pulumi:"timeSeriresEngineSpecification"`
-	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-	// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-	//
-	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
-	UpgradeType *string `pulumi:"upgradeType"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
@@ -310,32 +286,27 @@ type InstanceState struct {
 	ArchVersion pulumi.StringPtrInput
 	// The cold storage capacity of the instance. Unit: GB.
 	ColdStorage pulumi.IntPtrInput
-	// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-	//
-	// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-	CoreNum pulumi.IntPtrInput
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
 	CoreSingleStorage pulumi.IntPtrInput
 	// The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
 	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-	//   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec pulumi.StringPtrInput
 	// The deletion protection of instance.
 	DeletionProection pulumi.BoolPtrInput
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
+	// The disk type of instance. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdPl0`, `capacityCloudStorage`, `localSsdPro`, `localHddPro`. **NOTE:** From version 1.207.0, `diskCategory` can be set to `cloudEssdPl0`.
 	DiskCategory pulumi.StringPtrInput
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration pulumi.StringPtrInput
-	// (Available in v1.163.0+) Whether to enable file engine.
+	// (Available since v1.163.0) Whether to enable file engine.
 	EnabledFileEngine pulumi.BoolPtrInput
-	// (Available in v1.163.0+) Whether to enable lts engine.
+	// (Available since v1.163.0) Whether to enable lts engine.
 	EnabledLtsEngine pulumi.BoolPtrInput
-	// (Available in v1.163.0+) Whether to enable search engine.
+	// (Available since v1.163.0) Whether to enable search engine.
 	EnabledSearchEngine pulumi.BoolPtrInput
-	// (Available in v1.163.0+) Whether to enable table engine.
+	// (Available since v1.163.0) Whether to enable table engine.
 	EnabledTableEngine pulumi.BoolPtrInput
-	// (Available in v1.163.0+) Whether to enable time serires engine.
+	// (Available since v1.163.0) Whether to enable time serires engine.
 	EnabledTimeSeriresEngine pulumi.BoolPtrInput
 	// The count of file engine.
 	FileEngineNodeCount pulumi.IntPtrInput
@@ -381,35 +352,28 @@ type InstanceState struct {
 	SearchEngineNodeCount pulumi.IntPtrInput
 	// The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
 	SearchEngineSpecification pulumi.StringPtrInput
-	// (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindormMultizone`, `serverlessLindorm`, `lindormStandalone`, `lts`.
+	// (Available since v1.196.0) The instance type.
 	ServiceType pulumi.StringPtrInput
 	// The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
 	StandbyVswitchId pulumi.StringPtrInput
 	// The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
 	StandbyZoneId pulumi.StringPtrInput
-	// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+	// The status of Instance.
 	Status pulumi.StringPtrInput
 	// The count of table engine.
 	TableEngineNodeCount pulumi.IntPtrInput
-	// The specification of  table engine. Valid values:
-	// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 	TableEngineSpecification pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount pulumi.IntPtrInput
-	// The specification of time series engine.
-	// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+	// The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 	TimeSeriesEngineSpecification pulumi.StringPtrInput
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
 	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
 	TimeSeriresEngineSpecification pulumi.StringPtrInput
-	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-	// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-	//
-	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
-	UpgradeType pulumi.StringPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
 	// The vswitch id.
@@ -431,20 +395,15 @@ type instanceArgs struct {
 	ArchVersion *string `pulumi:"archVersion"`
 	// The cold storage capacity of the instance. Unit: GB.
 	ColdStorage *int `pulumi:"coldStorage"`
-	// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-	//
-	// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-	CoreNum *int `pulumi:"coreNum"`
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
 	CoreSingleStorage *int `pulumi:"coreSingleStorage"`
 	// The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
 	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-	//   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec *string `pulumi:"coreSpec"`
 	// The deletion protection of instance.
 	DeletionProection *bool `pulumi:"deletionProection"`
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
+	// The disk type of instance. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdPl0`, `capacityCloudStorage`, `localSsdPro`, `localHddPro`. **NOTE:** From version 1.207.0, `diskCategory` can be set to `cloudEssdPl0`.
 	DiskCategory string `pulumi:"diskCategory"`
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration *string `pulumi:"duration"`
@@ -498,25 +457,18 @@ type instanceArgs struct {
 	StandbyZoneId *string `pulumi:"standbyZoneId"`
 	// The count of table engine.
 	TableEngineNodeCount *int `pulumi:"tableEngineNodeCount"`
-	// The specification of  table engine. Valid values:
-	// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 	TableEngineSpecification *string `pulumi:"tableEngineSpecification"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount *int `pulumi:"timeSeriesEngineNodeCount"`
-	// The specification of time series engine.
-	// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+	// The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 	TimeSeriesEngineSpecification *string `pulumi:"timeSeriesEngineSpecification"`
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
 	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
 	TimeSeriresEngineSpecification *string `pulumi:"timeSeriresEngineSpecification"`
-	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-	// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-	//
-	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
-	UpgradeType *string `pulumi:"upgradeType"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
@@ -535,20 +487,15 @@ type InstanceArgs struct {
 	ArchVersion pulumi.StringPtrInput
 	// The cold storage capacity of the instance. Unit: GB.
 	ColdStorage pulumi.IntPtrInput
-	// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-	//
-	// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-	CoreNum pulumi.IntPtrInput
 	// The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
 	CoreSingleStorage pulumi.IntPtrInput
 	// The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
 	// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-	//   `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+	// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 	CoreSpec pulumi.StringPtrInput
 	// The deletion protection of instance.
 	DeletionProection pulumi.BoolPtrInput
-	// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
+	// The disk type of instance. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdPl0`, `capacityCloudStorage`, `localSsdPro`, `localHddPro`. **NOTE:** From version 1.207.0, `diskCategory` can be set to `cloudEssdPl0`.
 	DiskCategory pulumi.StringInput
 	// The duration of paid. Valid when the `paymentType` is `Subscription`.  When `pricingCycle` set to `Month`, the valid value id `1` to `9`.  When `pricingCycle` set to `Year`, the valid value id `1` to `3`.
 	Duration pulumi.StringPtrInput
@@ -602,25 +549,18 @@ type InstanceArgs struct {
 	StandbyZoneId pulumi.StringPtrInput
 	// The count of table engine.
 	TableEngineNodeCount pulumi.IntPtrInput
-	// The specification of  table engine. Valid values:
-	// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+	// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 	TableEngineSpecification pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The count of time series engine.
 	TimeSeriesEngineNodeCount pulumi.IntPtrInput
-	// The specification of time series engine.
-	// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+	// The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 	TimeSeriesEngineSpecification pulumi.StringPtrInput
 	// Field `timeSeriresEngineSpecification` has been deprecated from provider version 1.182.0. New field `timeSeriesEngineSpecification` instead.
 	//
 	// Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
 	TimeSeriresEngineSpecification pulumi.StringPtrInput
-	// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-	// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-	//
-	// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
-	UpgradeType pulumi.StringPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
 	// The vswitch id.
@@ -736,22 +676,14 @@ func (o InstanceOutput) ColdStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ColdStorage }).(pulumi.IntOutput)
 }
 
-// The core num. **NOTE:** Field `coreNum` has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-//
-// Deprecated: Field 'core_num' has been deprecated from provider version 1.188.0 and it will be removed in the future version.
-func (o InstanceOutput) CoreNum() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.CoreNum }).(pulumi.IntPtrOutput)
-}
-
 // The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
 func (o InstanceOutput) CoreSingleStorage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.CoreSingleStorage }).(pulumi.IntPtrOutput)
 }
 
 // The core spec. When `diskCategory` is `localSsdPro` or `localHddPro`, this filed is valid.
-//   - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
-//   - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`,
-//     `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
+// - When `diskCategory` is `localSsdPro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
+// - When `diskCategory` is `localHddPro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
 func (o InstanceOutput) CoreSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CoreSpec }).(pulumi.StringOutput)
 }
@@ -761,7 +693,7 @@ func (o InstanceOutput) DeletionProection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.DeletionProection }).(pulumi.BoolOutput)
 }
 
-// The disk type of instance. Valid values: `capacityCloudStorage`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `localSsdPro`, `localHddPro`.
+// The disk type of instance. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudEssdPl0`, `capacityCloudStorage`, `localSsdPro`, `localHddPro`. **NOTE:** From version 1.207.0, `diskCategory` can be set to `cloudEssdPl0`.
 func (o InstanceOutput) DiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DiskCategory }).(pulumi.StringOutput)
 }
@@ -771,27 +703,27 @@ func (o InstanceOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
-// (Available in v1.163.0+) Whether to enable file engine.
+// (Available since v1.163.0) Whether to enable file engine.
 func (o InstanceOutput) EnabledFileEngine() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledFileEngine }).(pulumi.BoolOutput)
 }
 
-// (Available in v1.163.0+) Whether to enable lts engine.
+// (Available since v1.163.0) Whether to enable lts engine.
 func (o InstanceOutput) EnabledLtsEngine() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledLtsEngine }).(pulumi.BoolOutput)
 }
 
-// (Available in v1.163.0+) Whether to enable search engine.
+// (Available since v1.163.0) Whether to enable search engine.
 func (o InstanceOutput) EnabledSearchEngine() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledSearchEngine }).(pulumi.BoolOutput)
 }
 
-// (Available in v1.163.0+) Whether to enable table engine.
+// (Available since v1.163.0) Whether to enable table engine.
 func (o InstanceOutput) EnabledTableEngine() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledTableEngine }).(pulumi.BoolOutput)
 }
 
-// (Available in v1.163.0+) Whether to enable time serires engine.
+// (Available since v1.163.0) Whether to enable time serires engine.
 func (o InstanceOutput) EnabledTimeSeriresEngine() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnabledTimeSeriresEngine }).(pulumi.BoolOutput)
 }
@@ -906,7 +838,7 @@ func (o InstanceOutput) SearchEngineSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SearchEngineSpecification }).(pulumi.StringOutput)
 }
 
-// (Available in v1.196.0+) The instance type. Valid values: `lindorm`, `lindormMultizone`, `serverlessLindorm`, `lindormStandalone`, `lts`.
+// (Available since v1.196.0) The instance type.
 func (o InstanceOutput) ServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceType }).(pulumi.StringOutput)
 }
@@ -921,7 +853,7 @@ func (o InstanceOutput) StandbyZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.StandbyZoneId }).(pulumi.StringPtrOutput)
 }
 
-// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+// The status of Instance.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -931,8 +863,7 @@ func (o InstanceOutput) TableEngineNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TableEngineNodeCount }).(pulumi.IntOutput)
 }
 
-// The specification of  table engine. Valid values:
-// `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
+// The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
 func (o InstanceOutput) TableEngineSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TableEngineSpecification }).(pulumi.StringOutput)
 }
@@ -947,8 +878,7 @@ func (o InstanceOutput) TimeSeriesEngineNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TimeSeriesEngineNodeCount }).(pulumi.IntOutput)
 }
 
-// The specification of time series engine.
-// Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
+// The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
 func (o InstanceOutput) TimeSeriesEngineSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TimeSeriesEngineSpecification }).(pulumi.StringOutput)
 }
@@ -958,14 +888,6 @@ func (o InstanceOutput) TimeSeriesEngineSpecification() pulumi.StringOutput {
 // Deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.
 func (o InstanceOutput) TimeSeriresEngineSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TimeSeriresEngineSpecification }).(pulumi.StringOutput)
-}
-
-// The upgrade type. **NOTE:** Field 'upgrade_type' has been deprecated from provider version 1.163.0,
-// and it will be removed in the future version. Valid values:  `open-lindorm-engine`, `open-phoenix-engine`, `open-search-engine`, `open-tsdb-engine`,  `upgrade-cold-storage`, `upgrade-disk-size`,  `upgrade-lindorm-core-num`, `upgrade-lindorm-engine`,  `upgrade-search-core-num`, `upgrade-search-engine`, `upgrade-tsdb-core-num`, `upgrade-tsdb-engine`.
-//
-// Deprecated: Field 'upgrade_type' has been deprecated from provider version 1.163.0 and it will be removed in the future version.
-func (o InstanceOutput) UpgradeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UpgradeType }).(pulumi.StringPtrOutput)
 }
 
 // The VPC ID of the instance.

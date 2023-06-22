@@ -222,10 +222,10 @@ def get_subnets(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.eflo.get_subnets(name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    default = alicloud.eflo.get_subnets(name_regex=alicloud_eflo_subnet["default"]["name"],
         subnet_name="SubnetTestForTerraform",
-        vpd_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        zone_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        vpd_id=var["vpdId"],
+        zone_id=var["zoneId"])
     pulumi.export("alicloudEfloSubnetExampleId", default.subnets[0].id)
     ```
 
@@ -302,10 +302,10 @@ def get_subnets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.eflo.get_subnets(name_regex=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    default = alicloud.eflo.get_subnets(name_regex=alicloud_eflo_subnet["default"]["name"],
         subnet_name="SubnetTestForTerraform",
-        vpd_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        zone_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        vpd_id=var["vpdId"],
+        zone_id=var["zoneId"])
     pulumi.export("alicloudEfloSubnetExampleId", default.subnets[0].id)
     ```
 

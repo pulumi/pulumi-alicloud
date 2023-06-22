@@ -13,9 +13,9 @@ import (
 
 // Provides a ECD Bundle resource.
 //
-// For information about ECD Bundle and how to use it, see [What is Bundle](https://help.aliyun.com/document_detail/188883.html).
+// For information about ECD Bundle and how to use it, see [What is Bundle](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createbundle).
 //
-// > **NOTE:** Available in v1.170.0+.
+// > **NOTE:** Available since v1.170.0.
 //
 // ## Example Usage
 //
@@ -28,11 +28,17 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			defaultImages, err := eds.GetImages(ctx, &eds.GetImagesArgs{
 //				ImageType:           pulumi.StringRef("SYSTEM"),
 //				OsType:              pulumi.StringRef("Windows"),
@@ -50,9 +56,9 @@ import (
 //				return err
 //			}
 //			_, err = eds.NewBundle(ctx, "defaultBundle", &eds.BundleArgs{
-//				Description: pulumi.Any(_var.Name),
+//				Description: pulumi.String(name),
 //				DesktopType: *pulumi.String(defaultDesktopTypes.Ids[0]),
-//				BundleName:  pulumi.Any(_var.Name),
+//				BundleName:  pulumi.String(name),
 //				ImageId:     *pulumi.String(defaultImages.Ids[0]),
 //				UserDiskSizeGibs: pulumi.IntArray{
 //					pulumi.Int(70),

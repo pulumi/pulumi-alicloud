@@ -9,49 +9,8 @@ import * as utilities from "../utilities";
  *
  * For information about DTS Synchronization Job and how to use it, see [What is Synchronization Job](https://www.alibabacloud.com/product/data-transmission-service).
  *
- * > **NOTE:** Available in v1.138.0+.
+ * > **NOTE:** Available since v1.138.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const defaultSynchronizationInstance = new alicloud.dts.SynchronizationInstance("defaultSynchronizationInstance", {
- *     paymentType: "PayAsYouGo",
- *     sourceEndpointEngineName: "PolarDB",
- *     sourceEndpointRegion: "cn-hangzhou",
- *     destinationEndpointEngineName: "ADB30",
- *     destinationEndpointRegion: "cn-hangzhou",
- *     instanceClass: "small",
- *     syncArchitecture: "oneway",
- * });
- * const defaultSynchronizationJob = new alicloud.dts.SynchronizationJob("defaultSynchronizationJob", {
- *     dtsInstanceId: defaultSynchronizationInstance.id,
- *     dtsJobName: "tf-testAccCase1",
- *     sourceEndpointInstanceType: "PolarDB",
- *     sourceEndpointInstanceId: "pc-xxxxxxxx",
- *     sourceEndpointEngineName: "PolarDB",
- *     sourceEndpointRegion: "cn-hangzhou",
- *     sourceEndpointDatabaseName: "tf-testacc",
- *     sourceEndpointUserName: "root",
- *     sourceEndpointPassword: "password",
- *     destinationEndpointInstanceType: "ads",
- *     destinationEndpointInstanceId: "am-xxxxxxxx",
- *     destinationEndpointEngineName: "ADB30",
- *     destinationEndpointRegion: "cn-hangzhou",
- *     destinationEndpointDatabaseName: "tf-testacc",
- *     destinationEndpointUserName: "root",
- *     destinationEndpointPassword: "password",
- *     dbList: "{\"tf-testacc\":{\"name\":\"tf-test\",\"all\":true,\"state\":\"normal\"}}",
- *     structureInitialization: true,
- *     dataInitialization: true,
- *     dataSynchronization: true,
- *     status: "Synchronizing",
- * });
- * ```
  * ## Notice
  *
  * 1. The expiration time cannot be changed after the work of the annual and monthly subscription suspended;

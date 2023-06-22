@@ -36,7 +36,7 @@ type QuotaApplication struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The desire value of the quota application.
 	DesireValue pulumi.Float64Output `pulumi:"desireValue"`
-	// QuotaDimensions. See the following `Block Dimensions`.
+	// QuotaDimensions. See `dimensions` below.
 	Dimensions QuotaApplicationDimensionArrayOutput `pulumi:"dimensions"`
 	// The effective time of the quota application.
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
@@ -127,7 +127,7 @@ type quotaApplicationState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The desire value of the quota application.
 	DesireValue *float64 `pulumi:"desireValue"`
-	// QuotaDimensions. See the following `Block Dimensions`.
+	// QuotaDimensions. See `dimensions` below.
 	Dimensions []QuotaApplicationDimension `pulumi:"dimensions"`
 	// The effective time of the quota application.
 	EffectiveTime *string `pulumi:"effectiveTime"`
@@ -178,7 +178,7 @@ type QuotaApplicationState struct {
 	CreateTime pulumi.StringPtrInput
 	// The desire value of the quota application.
 	DesireValue pulumi.Float64PtrInput
-	// QuotaDimensions. See the following `Block Dimensions`.
+	// QuotaDimensions. See `dimensions` below.
 	Dimensions QuotaApplicationDimensionArrayInput
 	// The effective time of the quota application.
 	EffectiveTime pulumi.StringPtrInput
@@ -227,7 +227,7 @@ type quotaApplicationArgs struct {
 	AuditMode *string `pulumi:"auditMode"`
 	// The desire value of the quota application.
 	DesireValue float64 `pulumi:"desireValue"`
-	// QuotaDimensions. See the following `Block Dimensions`.
+	// QuotaDimensions. See `dimensions` below.
 	Dimensions []QuotaApplicationDimension `pulumi:"dimensions"`
 	// The effective time of the quota application.
 	EffectiveTime *string `pulumi:"effectiveTime"`
@@ -261,7 +261,7 @@ type QuotaApplicationArgs struct {
 	AuditMode pulumi.StringPtrInput
 	// The desire value of the quota application.
 	DesireValue pulumi.Float64Input
-	// QuotaDimensions. See the following `Block Dimensions`.
+	// QuotaDimensions. See `dimensions` below.
 	Dimensions QuotaApplicationDimensionArrayInput
 	// The effective time of the quota application.
 	EffectiveTime pulumi.StringPtrInput
@@ -401,7 +401,7 @@ func (o QuotaApplicationOutput) DesireValue() pulumi.Float64Output {
 	return o.ApplyT(func(v *QuotaApplication) pulumi.Float64Output { return v.DesireValue }).(pulumi.Float64Output)
 }
 
-// QuotaDimensions. See the following `Block Dimensions`.
+// QuotaDimensions. See `dimensions` below.
 func (o QuotaApplicationOutput) Dimensions() QuotaApplicationDimensionArrayOutput {
 	return o.ApplyT(func(v *QuotaApplication) QuotaApplicationDimensionArrayOutput { return v.Dimensions }).(QuotaApplicationDimensionArrayOutput)
 }

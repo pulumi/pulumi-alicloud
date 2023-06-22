@@ -14,27 +14,16 @@ __all__ = ['PublicIpAddressPoolCidrBlockArgs', 'PublicIpAddressPoolCidrBlock']
 @pulumi.input_type
 class PublicIpAddressPoolCidrBlockArgs:
     def __init__(__self__, *,
-                 cidr_block: pulumi.Input[str],
-                 public_ip_address_pool_id: pulumi.Input[str]):
+                 public_ip_address_pool_id: pulumi.Input[str],
+                 cidr_block: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PublicIpAddressPoolCidrBlock resource.
-        :param pulumi.Input[str] cidr_block: The CIDR block.
         :param pulumi.Input[str] public_ip_address_pool_id: The ID of the VPC Public IP address pool.
+        :param pulumi.Input[str] cidr_block: The CIDR block.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
         pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
-
-    @property
-    @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> pulumi.Input[str]:
-        """
-        The CIDR block.
-        """
-        return pulumi.get(self, "cidr_block")
-
-    @cidr_block.setter
-    def cidr_block(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cidr_block", value)
+        if cidr_block is not None:
+            pulumi.set(__self__, "cidr_block", cidr_block)
 
     @property
     @pulumi.getter(name="publicIpAddressPoolId")
@@ -48,21 +37,37 @@ class PublicIpAddressPoolCidrBlockArgs:
     def public_ip_address_pool_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "public_ip_address_pool_id", value)
 
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CIDR block.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr_block", value)
+
 
 @pulumi.input_type
 class _PublicIpAddressPoolCidrBlockState:
     def __init__(__self__, *,
                  cidr_block: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PublicIpAddressPoolCidrBlock resources.
         :param pulumi.Input[str] cidr_block: The CIDR block.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] public_ip_address_pool_id: The ID of the VPC Public IP address pool.
         :param pulumi.Input[str] status: The status of the VPC Public Ip Address Pool Cidr Block.
         """
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if public_ip_address_pool_id is not None:
             pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
         if status is not None:
@@ -79,6 +84,18 @@ class _PublicIpAddressPoolCidrBlockState:
     @cidr_block.setter
     def cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="publicIpAddressPoolId")
@@ -115,12 +132,11 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a VPC Public Ip Address Pool Cidr Block resource.
+        > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
 
         For information about VPC Public Ip Address Pool Cidr Block and how to use it, see [What is Public Ip Address Pool Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
 
-        > **NOTE:** Available in v1.189.0+.
-
-        > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+        > **NOTE:** Available since v1.189.0.
 
         ## Example Usage
 
@@ -130,13 +146,17 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
-            public_ip_address_pool_name="example_value",
-            isp="BGP",
-            description="example_value")
+            public_ip_address_pool_name=name,
+            description=name,
+            isp="BGP")
         default_public_ip_address_pool_cidr_block = alicloud.vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock",
             public_ip_address_pool_id=default_public_ip_address_pool.id,
-            cidr_block="your_cidr_block")
+            cidr_block="47.118.126.0/25")
         ```
 
         ## Import
@@ -160,12 +180,11 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a VPC Public Ip Address Pool Cidr Block resource.
+        > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
 
         For information about VPC Public Ip Address Pool Cidr Block and how to use it, see [What is Public Ip Address Pool Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
 
-        > **NOTE:** Available in v1.189.0+.
-
-        > **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+        > **NOTE:** Available since v1.189.0.
 
         ## Example Usage
 
@@ -175,13 +194,17 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_public_ip_address_pool = alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool",
-            public_ip_address_pool_name="example_value",
-            isp="BGP",
-            description="example_value")
+            public_ip_address_pool_name=name,
+            description=name,
+            isp="BGP")
         default_public_ip_address_pool_cidr_block = alicloud.vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock",
             public_ip_address_pool_id=default_public_ip_address_pool.id,
-            cidr_block="your_cidr_block")
+            cidr_block="47.118.126.0/25")
         ```
 
         ## Import
@@ -218,12 +241,11 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PublicIpAddressPoolCidrBlockArgs.__new__(PublicIpAddressPoolCidrBlockArgs)
 
-            if cidr_block is None and not opts.urn:
-                raise TypeError("Missing required property 'cidr_block'")
             __props__.__dict__["cidr_block"] = cidr_block
             if public_ip_address_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'public_ip_address_pool_id'")
             __props__.__dict__["public_ip_address_pool_id"] = public_ip_address_pool_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(PublicIpAddressPoolCidrBlock, __self__).__init__(
             'alicloud:vpc/publicIpAddressPoolCidrBlock:PublicIpAddressPoolCidrBlock',
@@ -236,6 +258,7 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cidr_block: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'PublicIpAddressPoolCidrBlock':
         """
@@ -246,6 +269,7 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cidr_block: The CIDR block.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] public_ip_address_pool_id: The ID of the VPC Public IP address pool.
         :param pulumi.Input[str] status: The status of the VPC Public Ip Address Pool Cidr Block.
         """
@@ -254,6 +278,7 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         __props__ = _PublicIpAddressPoolCidrBlockState.__new__(_PublicIpAddressPoolCidrBlockState)
 
         __props__.__dict__["cidr_block"] = cidr_block
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["public_ip_address_pool_id"] = public_ip_address_pool_id
         __props__.__dict__["status"] = status
         return PublicIpAddressPoolCidrBlock(resource_name, opts=opts, __props__=__props__)
@@ -265,6 +290,14 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         The CIDR block.
         """
         return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="publicIpAddressPoolId")

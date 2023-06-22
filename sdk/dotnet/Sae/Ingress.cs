@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Sae
     /// <summary>
     /// Provides a Serverless App Engine (SAE) Ingress resource.
     /// 
-    /// For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://help.aliyun.com/document_detail/97792.html).
+    /// For information about Serverless App Engine (SAE) Ingress and how to use it, see [What is Ingress](https://www.alibabacloud.com/help/en/sae/latest/createingress).
     /// 
-    /// &gt; **NOTE:** Available in v1.137.0+.
+    /// &gt; **NOTE:** Available since v1.137.0.
     /// 
     /// ## Example Usage
     /// 
@@ -109,13 +109,19 @@ namespace Pulumi.AliCloud.Sae
     public partial class Ingress : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Cert Id.
+        /// The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
         /// </summary>
         [Output("certId")]
         public Output<string?> CertId { get; private set; } = null!;
 
         /// <summary>
-        /// Default Rule.
+        /// The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+        /// </summary>
+        [Output("certIds")]
+        public Output<string?> CertIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Default Rule. See `default_rule` below.
         /// </summary>
         [Output("defaultRule")]
         public Output<Outputs.IngressDefaultRule?> DefaultRule { get; private set; } = null!;
@@ -133,13 +139,25 @@ namespace Pulumi.AliCloud.Sae
         public Output<int> ListenerPort { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+        /// The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+        /// </summary>
+        [Output("listenerProtocol")]
+        public Output<string> ListenerProtocol { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+        /// </summary>
+        [Output("loadBalanceType")]
+        public Output<string> LoadBalanceType { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
         /// </summary>
         [Output("namespaceId")]
         public Output<string> NamespaceId { get; private set; } = null!;
 
         /// <summary>
-        /// Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+        /// Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.IngressRule>> Rules { get; private set; } = null!;
@@ -197,13 +215,19 @@ namespace Pulumi.AliCloud.Sae
     public sealed class IngressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cert Id.
+        /// The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
         /// </summary>
         [Input("certId")]
         public Input<string>? CertId { get; set; }
 
         /// <summary>
-        /// Default Rule.
+        /// The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+        /// </summary>
+        [Input("certIds")]
+        public Input<string>? CertIds { get; set; }
+
+        /// <summary>
+        /// Default Rule. See `default_rule` below.
         /// </summary>
         [Input("defaultRule")]
         public Input<Inputs.IngressDefaultRuleArgs>? DefaultRule { get; set; }
@@ -221,7 +245,19 @@ namespace Pulumi.AliCloud.Sae
         public Input<int> ListenerPort { get; set; } = null!;
 
         /// <summary>
-        /// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+        /// The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+        /// </summary>
+        [Input("listenerProtocol")]
+        public Input<string>? ListenerProtocol { get; set; }
+
+        /// <summary>
+        /// The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+        /// </summary>
+        [Input("loadBalanceType")]
+        public Input<string>? LoadBalanceType { get; set; }
+
+        /// <summary>
+        /// The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
         /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
@@ -230,7 +266,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.IngressRuleArgs>? _rules;
 
         /// <summary>
-        /// Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+        /// Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         /// </summary>
         public InputList<Inputs.IngressRuleArgs> Rules
         {
@@ -253,13 +289,19 @@ namespace Pulumi.AliCloud.Sae
     public sealed class IngressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cert Id.
+        /// The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
         /// </summary>
         [Input("certId")]
         public Input<string>? CertId { get; set; }
 
         /// <summary>
-        /// Default Rule.
+        /// The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
+        /// </summary>
+        [Input("certIds")]
+        public Input<string>? CertIds { get; set; }
+
+        /// <summary>
+        /// Default Rule. See `default_rule` below.
         /// </summary>
         [Input("defaultRule")]
         public Input<Inputs.IngressDefaultRuleGetArgs>? DefaultRule { get; set; }
@@ -277,7 +319,19 @@ namespace Pulumi.AliCloud.Sae
         public Input<int>? ListenerPort { get; set; }
 
         /// <summary>
-        /// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
+        /// The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
+        /// </summary>
+        [Input("listenerProtocol")]
+        public Input<string>? ListenerProtocol { get; set; }
+
+        /// <summary>
+        /// The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
+        /// </summary>
+        [Input("loadBalanceType")]
+        public Input<string>? LoadBalanceType { get; set; }
+
+        /// <summary>
+        /// The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }
@@ -286,7 +340,7 @@ namespace Pulumi.AliCloud.Sae
         private InputList<Inputs.IngressRuleGetArgs>? _rules;
 
         /// <summary>
-        /// Forwarding rules. Forward traffic to the specified application according to the domain name and path.
+        /// Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         /// </summary>
         public InputList<Inputs.IngressRuleGetArgs> Rules
         {

@@ -48,14 +48,14 @@ public final class CustomRoutingEndpointTrafficPolicyArgs extends com.pulumi.res
     }
 
     /**
-     * Port rangeSee the following. See the following `Block port_ranges`.
+     * Port rangeSee the following. See `port_ranges` below.
      * 
      */
     @Import(name="portRanges")
     private @Nullable Output<List<CustomRoutingEndpointTrafficPolicyPortRangeArgs>> portRanges;
 
     /**
-     * @return Port rangeSee the following. See the following `Block port_ranges`.
+     * @return Port rangeSee the following. See `port_ranges` below.
      * 
      */
     public Optional<Output<List<CustomRoutingEndpointTrafficPolicyPortRangeArgs>>> portRanges() {
@@ -131,7 +131,7 @@ public final class CustomRoutingEndpointTrafficPolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param portRanges Port rangeSee the following. See the following `Block port_ranges`.
+         * @param portRanges Port rangeSee the following. See `port_ranges` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class CustomRoutingEndpointTrafficPolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param portRanges Port rangeSee the following. See the following `Block port_ranges`.
+         * @param portRanges Port rangeSee the following. See `port_ranges` below.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class CustomRoutingEndpointTrafficPolicyArgs extends com.pulumi.res
         }
 
         /**
-         * @param portRanges Port rangeSee the following. See the following `Block port_ranges`.
+         * @param portRanges Port rangeSee the following. See `port_ranges` below.
          * 
          * @return builder
          * 

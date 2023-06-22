@@ -21,8 +21,13 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "create by terraform"});
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
  * const exampleStore = new alicloud.log.Store("exampleStore", {
  *     project: exampleProject.name,
  *     retentionPeriod: 3650,
@@ -33,10 +38,10 @@ import * as utilities from "../utilities";
  * });
  * const exampleAlert = new alicloud.log.Alert("exampleAlert", {
  *     projectName: exampleProject.name,
- *     alertName: "tf-test-alert",
- *     alertDisplayname: "tf-test-alert-displayname",
+ *     alertName: "example-alert",
+ *     alertDisplayname: "example-alert",
  *     condition: "count> 100",
- *     dashboard: "tf-test-dashboard",
+ *     dashboard: "example-dashboard",
  *     schedule: {
  *         type: "FixedRate",
  *         interval: "5m",
@@ -46,7 +51,7 @@ import * as utilities from "../utilities";
  *         runImmediately: false,
  *     },
  *     queryLists: [{
- *         logstore: "tf-test-logstore",
+ *         logstore: exampleStore.name,
  *         chartTitle: "chart_title",
  *         start: "-60s",
  *         end: "20s",
@@ -65,7 +70,7 @@ import * as utilities from "../utilities";
  *             type: "Email",
  *             emailLists: [
  *                 "aliyun@alibaba-inc.com",
- *                 "tf-test@123.com",
+ *                 "tf-example@123.com",
  *             ],
  *             content: "alert content",
  *         },
@@ -83,8 +88,13 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "create by terraform"});
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
  * const exampleStore = new alicloud.log.Store("exampleStore", {
  *     project: exampleProject.name,
  *     retentionPeriod: 3650,
@@ -97,14 +107,14 @@ import * as utilities from "../utilities";
  *     version: "2.0",
  *     type: "default",
  *     projectName: exampleProject.name,
- *     alertName: "tf-test-alert-2",
- *     alertDisplayname: "tf-test-alert-displayname-2",
- *     dashboard: "tf-test-dashboard",
+ *     alertName: "example-alert",
+ *     alertDisplayname: "example-alert",
  *     muteUntil: 1632486684,
  *     noDataFire: false,
  *     noDataSeverity: 8,
  *     sendResolved: true,
  *     autoAnnotation: true,
+ *     dashboard: "example-dashboard",
  *     schedule: {
  *         type: "FixedRate",
  *         interval: "5m",
@@ -115,7 +125,7 @@ import * as utilities from "../utilities";
  *     },
  *     queryLists: [
  *         {
- *             store: "tf-test-logstore",
+ *             store: exampleStore.name,
  *             storeType: "log",
  *             project: exampleProject.name,
  *             region: "cn-heyuan",
@@ -126,7 +136,7 @@ import * as utilities from "../utilities";
  *             powerSqlMode: "auto",
  *         },
  *         {
- *             store: "tf-test-logstore",
+ *             store: exampleStore.name,
  *             storeType: "log",
  *             project: exampleProject.name,
  *             region: "cn-heyuan",
@@ -199,8 +209,13 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "create by terraform"});
+ * const _default = new random.RandomInteger("default", {
+ *     max: 99999,
+ *     min: 10000,
+ * });
+ * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
  * const exampleStore = new alicloud.log.Store("exampleStore", {
  *     project: exampleProject.name,
  *     retentionPeriod: 3650,
@@ -213,8 +228,8 @@ import * as utilities from "../utilities";
  *     version: "2.0",
  *     type: "tpl",
  *     projectName: exampleProject.name,
- *     alertName: "tf-test-alert-3",
- *     alertDisplayname: "tf-test-alert-displayname-3",
+ *     alertName: "example-alert",
+ *     alertDisplayname: "example-alert",
  *     muteUntil: 1632486684,
  *     schedule: {
  *         type: "FixedRate",
@@ -238,7 +253,7 @@ import * as utilities from "../utilities";
  *             "default.logstore": "k8s-event",
  *             "default.repeatInterval": "4h",
  *             trigger_threshold: "1",
- *             "default.clusterId": "test-cluster-id",
+ *             "default.clusterId": "example-cluster-id",
  *         },
  *     },
  * });

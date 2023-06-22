@@ -209,7 +209,68 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
 
         > **NOTE:** Resource `ess.AlbServerGroupAttachment` don't support modification.
 
-        > **NOTE:** Resource `ess.AlbServerGroupAttachment` is available in 1.158.0+.
+        > **NOTE:** Available since v1.158.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=0,
+            max_size=2,
+            scaling_group_name=name,
+            default_cooldown=200,
+            removal_policies=["OldestInstance"],
+            vswitch_ids=[default_switch.id])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True,
+            enable=True)
+        default_server_group = alicloud.alb.ServerGroup("defaultServerGroup",
+            server_group_name=name,
+            vpc_id=default_network.id,
+            health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
+                health_check_enabled=False,
+            ),
+            sticky_session_config=alicloud.alb.ServerGroupStickySessionConfigArgs(
+                sticky_session_enabled=True,
+                cookie="tf-example",
+                sticky_session_type="Server",
+            ))
+        default_alb_server_group_attachment = alicloud.ess.AlbServerGroupAttachment("defaultAlbServerGroupAttachment",
+            scaling_group_id=default_scaling_configuration.scaling_group_id,
+            alb_server_group_id=default_server_group.id,
+            port=9000,
+            weight=50,
+            force_attach=True)
+        ```
 
         ## Import
 
@@ -245,7 +306,68 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
 
         > **NOTE:** Resource `ess.AlbServerGroupAttachment` don't support modification.
 
-        > **NOTE:** Resource `ess.AlbServerGroupAttachment` is available in 1.158.0+.
+        > **NOTE:** Available since v1.158.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+            cpu_core_count=2,
+            memory_size=4)
+        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
+        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+            min_size=0,
+            max_size=2,
+            scaling_group_name=name,
+            default_cooldown=200,
+            removal_policies=["OldestInstance"],
+            vswitch_ids=[default_switch.id])
+        default_scaling_configuration = alicloud.ess.ScalingConfiguration("defaultScalingConfiguration",
+            scaling_group_id=default_scaling_group.id,
+            image_id=default_images.images[0].id,
+            instance_type=default_instance_types.instance_types[0].id,
+            security_group_id=default_security_group.id,
+            force_delete=True,
+            active=True,
+            enable=True)
+        default_server_group = alicloud.alb.ServerGroup("defaultServerGroup",
+            server_group_name=name,
+            vpc_id=default_network.id,
+            health_check_config=alicloud.alb.ServerGroupHealthCheckConfigArgs(
+                health_check_enabled=False,
+            ),
+            sticky_session_config=alicloud.alb.ServerGroupStickySessionConfigArgs(
+                sticky_session_enabled=True,
+                cookie="tf-example",
+                sticky_session_type="Server",
+            ))
+        default_alb_server_group_attachment = alicloud.ess.AlbServerGroupAttachment("defaultAlbServerGroupAttachment",
+            scaling_group_id=default_scaling_configuration.scaling_group_id,
+            alb_server_group_id=default_server_group.id,
+            port=9000,
+            weight=50,
+            force_attach=True)
+        ```
 
         ## Import
 

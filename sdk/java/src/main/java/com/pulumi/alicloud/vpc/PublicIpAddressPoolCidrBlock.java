@@ -15,12 +15,11 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a VPC Public Ip Address Pool Cidr Block resource.
+ * &gt; **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
  * 
  * For information about VPC Public Ip Address Pool Cidr Block and how to use it, see [What is Public Ip Address Pool Cidr Block](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/429100).
  * 
- * &gt; **NOTE:** Available in v1.189.0+.
- * 
- * &gt; **NOTE:** Only users who have the required permissions can use the IP address pool feature of Elastic IP Address (EIP). To apply for the required permissions, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+ * &gt; **NOTE:** Available since v1.189.0.
  * 
  * ## Example Usage
  * 
@@ -48,15 +47,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var defaultPublicIpAddressPool = new PublicIpAddressPool(&#34;defaultPublicIpAddressPool&#34;, PublicIpAddressPoolArgs.builder()        
- *             .publicIpAddressPoolName(&#34;example_value&#34;)
+ *             .publicIpAddressPoolName(name)
+ *             .description(name)
  *             .isp(&#34;BGP&#34;)
- *             .description(&#34;example_value&#34;)
  *             .build());
  * 
  *         var defaultPublicIpAddressPoolCidrBlock = new PublicIpAddressPoolCidrBlock(&#34;defaultPublicIpAddressPoolCidrBlock&#34;, PublicIpAddressPoolCidrBlockArgs.builder()        
  *             .publicIpAddressPoolId(defaultPublicIpAddressPool.id())
- *             .cidrBlock(&#34;your_cidr_block&#34;)
+ *             .cidrBlock(&#34;47.118.126.0/25&#34;)
  *             .build());
  * 
  *     }
@@ -87,6 +88,20 @@ public class PublicIpAddressPoolCidrBlock extends com.pulumi.resources.CustomRes
      */
     public Output<String> cidrBlock() {
         return this.cidrBlock;
+    }
+    /**
+     * The creation time of the resource.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * The ID of the VPC Public IP address pool.

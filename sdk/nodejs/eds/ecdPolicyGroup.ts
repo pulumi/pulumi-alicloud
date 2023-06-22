@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Elastic Desktop Service (ECD) Policy Group resource.
  *
- * For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://help.aliyun.com/document_detail/188382.html).
+ * For information about Elastic Desktop Service (ECD) Policy Group and how to use it, see [What is Policy Group](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createpolicygroup).
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *
@@ -24,11 +24,11 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.eds.EcdPolicyGroup("default", {
  *     authorizeAccessPolicyRules: [{
  *         cidrIp: "1.2.3.45/24",
- *         description: "my-description1",
+ *         description: "terraform-example",
  *     }],
  *     authorizeSecurityPolicyRules: [{
  *         cidrIp: "1.2.3.4/24",
- *         description: "my-description",
+ *         description: "terraform-example",
  *         ipProtocol: "TCP",
  *         policy: "accept",
  *         portRange: "80/80",
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     }],
  *     clipboard: "read",
  *     localDrive: "read",
- *     policyGroupName: "my-policy-group",
+ *     policyGroupName: "terraform-example",
  *     usbRedirect: "off",
  *     watermark: "off",
  * });
@@ -80,11 +80,11 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The rule of authorize access rule.
+     * The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
      */
     public readonly authorizeAccessPolicyRules!: pulumi.Output<outputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule[] | undefined>;
     /**
-     * The policy rule.
+     * The policy rule. See `authorizeSecurityPolicyRules` below.
      */
     public readonly authorizeSecurityPolicyRules!: pulumi.Output<outputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule[] | undefined>;
     /**
@@ -116,7 +116,7 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
      */
     public readonly policyGroupName!: pulumi.Output<string | undefined>;
     /**
-     * Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      */
     public readonly recording!: pulumi.Output<string>;
     /**
@@ -124,7 +124,7 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
      */
     public readonly recordingEndTime!: pulumi.Output<string | undefined>;
     /**
-     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
      */
     public readonly recordingExpires!: pulumi.Output<number>;
     /**
@@ -226,11 +226,11 @@ export class EcdPolicyGroup extends pulumi.CustomResource {
  */
 export interface EcdPolicyGroupState {
     /**
-     * The rule of authorize access rule.
+     * The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
      */
     authorizeAccessPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule>[]>;
     /**
-     * The policy rule.
+     * The policy rule. See `authorizeSecurityPolicyRules` below.
      */
     authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[]>;
     /**
@@ -262,7 +262,7 @@ export interface EcdPolicyGroupState {
      */
     policyGroupName?: pulumi.Input<string>;
     /**
-     * Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      */
     recording?: pulumi.Input<string>;
     /**
@@ -270,7 +270,7 @@ export interface EcdPolicyGroupState {
      */
     recordingEndTime?: pulumi.Input<string>;
     /**
-     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
      */
     recordingExpires?: pulumi.Input<number>;
     /**
@@ -312,11 +312,11 @@ export interface EcdPolicyGroupState {
  */
 export interface EcdPolicyGroupArgs {
     /**
-     * The rule of authorize access rule.
+     * The rule of authorize access rule. See `authorizeAccessPolicyRules` below.
      */
     authorizeAccessPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeAccessPolicyRule>[]>;
     /**
-     * The policy rule.
+     * The policy rule. See `authorizeSecurityPolicyRules` below.
      */
     authorizeSecurityPolicyRules?: pulumi.Input<pulumi.Input<inputs.eds.EcdPolicyGroupAuthorizeSecurityPolicyRule>[]>;
     /**
@@ -348,7 +348,7 @@ export interface EcdPolicyGroupArgs {
      */
     policyGroupName?: pulumi.Input<string>;
     /**
-     * Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+     * Whether to enable screen recording. Valid values: `off`, `all-time`, `period`.
      */
     recording?: pulumi.Input<string>;
     /**
@@ -356,7 +356,7 @@ export interface EcdPolicyGroupArgs {
      */
     recordingEndTime?: pulumi.Input<string>;
     /**
-     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `alltime`.
+     * The screen recording video retention. Valid values between 30 and 180. This return value is meaningful only when the value of `recording` is `period` or `all-time`.
      */
     recordingExpires?: pulumi.Input<number>;
     /**

@@ -34,16 +34,12 @@ public final class CustomDomainRouteConfigArgs extends com.pulumi.resources.Reso
     /**
      * The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
      * 
-     * **cert_config** includes the following arguments:
-     * 
      */
     @Import(name="methods")
     private @Nullable Output<List<String>> methods;
 
     /**
      * @return The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
-     * 
-     * **cert_config** includes the following arguments:
      * 
      */
     public Optional<Output<List<String>>> methods() {
@@ -80,9 +76,17 @@ public final class CustomDomainRouteConfigArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.qualifier);
     }
 
+    /**
+     * The name of the Function Compute service that requests are routed to.
+     * 
+     */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
+    /**
+     * @return The name of the Function Compute service that requests are routed to.
+     * 
+     */
     public Output<String> serviceName() {
         return this.serviceName;
     }
@@ -139,8 +143,6 @@ public final class CustomDomainRouteConfigArgs extends com.pulumi.resources.Reso
         /**
          * @param methods The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
          * 
-         * **cert_config** includes the following arguments:
-         * 
          * @return builder
          * 
          */
@@ -152,8 +154,6 @@ public final class CustomDomainRouteConfigArgs extends com.pulumi.resources.Reso
         /**
          * @param methods The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
          * 
-         * **cert_config** includes the following arguments:
-         * 
          * @return builder
          * 
          */
@@ -163,8 +163,6 @@ public final class CustomDomainRouteConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param methods The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, &#34;GET, HEAD&#34; methods indicate that only requests from GET and HEAD methods are routed.
-         * 
-         * **cert_config** includes the following arguments:
          * 
          * @return builder
          * 
@@ -215,11 +213,23 @@ public final class CustomDomainRouteConfigArgs extends com.pulumi.resources.Reso
             return qualifier(Output.of(qualifier));
         }
 
+        /**
+         * @param serviceName The name of the Function Compute service that requests are routed to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param serviceName The name of the Function Compute service that requests are routed to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
         }

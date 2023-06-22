@@ -49,9 +49,19 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
         return Optional.ofNullable(this.server);
     }
 
+    /**
+     * The username used to log on to the image repository. It is required
+     * when `image_registry_credential` is configured.
+     * 
+     */
     @Import(name="username")
     private @Nullable Output<String> username;
 
+    /**
+     * @return The username used to log on to the image repository. It is required
+     * when `image_registry_credential` is configured.
+     * 
+     */
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
     }
@@ -128,11 +138,25 @@ public final class EciScalingConfigurationImageRegistryCredentialArgs extends co
             return server(Output.of(server));
         }
 
+        /**
+         * @param username The username used to log on to the image repository. It is required
+         * when `image_registry_credential` is configured.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
+        /**
+         * @param username The username used to log on to the image repository. It is required
+         * when `image_registry_credential` is configured.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             return username(Output.of(username));
         }

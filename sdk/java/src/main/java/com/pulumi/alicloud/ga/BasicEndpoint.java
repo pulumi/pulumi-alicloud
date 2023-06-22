@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Global Accelerator (GA) Basic Endpoint resource.
  * 
- * For information about Global Accelerator (GA) Basic Endpoint and how to use it, see [What is Basic Endpoint](https://help.aliyun.com/document_detail/466839.html).
+ * For information about Global Accelerator (GA) Basic Endpoint and how to use it, see [What is Basic Endpoint](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createbasicendpoint).
  * 
- * &gt; **NOTE:** Available in v1.194.0+.
+ * &gt; **NOTE:** Available since v1.194.0.
  * 
  * ## Example Usage
  * 
@@ -32,8 +32,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.Provider;
  * import com.pulumi.alicloud.ProviderArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
  * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
+ * import com.pulumi.alicloud.ga.BasicAccelerator;
+ * import com.pulumi.alicloud.ga.BasicAcceleratorArgs;
+ * import com.pulumi.alicloud.ga.BasicEndpointGroup;
+ * import com.pulumi.alicloud.ga.BasicEndpointGroupArgs;
  * import com.pulumi.alicloud.ga.BasicEndpoint;
  * import com.pulumi.alicloud.ga.BasicEndpointArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -50,31 +62,76 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-shenzhen&#34;);
+ *         final var endpointRegion = config.get(&#34;endpointRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
  *         var sz = new Provider(&#34;sz&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-shenzhen&#34;)
+ *             .region(region)
  *             .build());
  * 
  *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-hangzhou&#34;)
+ *             .region(endpointRegion)
  *             .build());
  * 
- *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
- *             .vswitchId(&#34;your_vswitch_id&#34;)
- *             .securityGroupIds(&#34;your_security_group_id&#34;)
+ *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.sz&#34;)
+ *                 .provider(alicloud.sz())
  *                 .build());
  * 
+ *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.sz())
+ *                 .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(defaultNetwork.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.sz())
+ *                 .build());
+ * 
+ *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityGroupIds(defaultSecurityGroup.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(alicloud.sz())
+ *                 .build());
+ * 
+ *         var defaultBasicAccelerator = new BasicAccelerator(&#34;defaultBasicAccelerator&#34;, BasicAcceleratorArgs.builder()        
+ *             .duration(1)
+ *             .basicAcceleratorName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .bandwidthBillingType(&#34;CDT&#34;)
+ *             .autoUseCoupon(&#34;true&#34;)
+ *             .autoPay(true)
+ *             .build());
+ * 
+ *         var defaultBasicEndpointGroup = new BasicEndpointGroup(&#34;defaultBasicEndpointGroup&#34;, BasicEndpointGroupArgs.builder()        
+ *             .acceleratorId(defaultBasicAccelerator.id())
+ *             .endpointGroupRegion(region)
+ *             .basicEndpointGroupName(&#34;terraform-example&#34;)
+ *             .description(&#34;terraform-example&#34;)
+ *             .build());
+ * 
  *         var defaultBasicEndpoint = new BasicEndpoint(&#34;defaultBasicEndpoint&#34;, BasicEndpointArgs.builder()        
- *             .acceleratorId(&#34;your_accelerator_id&#34;)
- *             .endpointGroupId(&#34;your_endpoint_group_id&#34;)
+ *             .acceleratorId(defaultBasicAccelerator.id())
+ *             .endpointGroupId(defaultBasicEndpointGroup.id())
  *             .endpointType(&#34;ENI&#34;)
  *             .endpointAddress(defaultEcsNetworkInterface.id())
  *             .endpointSubAddressType(&#34;secondary&#34;)
  *             .endpointSubAddress(&#34;192.168.0.1&#34;)
- *             .basicEndpointName(&#34;example_value&#34;)
+ *             .basicEndpointName(&#34;terraform-example&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.hz&#34;)
+ *                 .provider(alicloud.hz())
  *                 .build());
  * 
  *     }

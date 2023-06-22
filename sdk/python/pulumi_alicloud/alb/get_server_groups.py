@@ -71,6 +71,9 @@ class GetServerGroupsResult:
     @property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetServerGroupsGroupResult']:
+        """
+        A list of Alb Server Groups. Each element contains the following attributes:
+        """
         return pulumi.get(self, "groups")
 
     @property
@@ -94,6 +97,9 @@ class GetServerGroupsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Server Group names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -114,21 +120,33 @@ class GetServerGroupsResult:
     @property
     @pulumi.getter(name="serverGroupName")
     def server_group_name(self) -> Optional[str]:
+        """
+        The name of the resource.
+        """
         return pulumi.get(self, "server_group_name")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        The tags of the resource.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
+        """
+        The ID of the VPC that you want to access.
+        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -167,7 +185,7 @@ def get_server_groups(enable_details: Optional[bool] = None,
     """
     This data source provides the Alb Server Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.131.0+.
+    > **NOTE:** Available since v1.131.0.
 
     ## Example Usage
 
@@ -191,7 +209,8 @@ def get_server_groups(enable_details: Optional[bool] = None,
     :param str resource_group_id: The ID of the resource group.
     :param Sequence[str] server_group_ids: The server group ids.
     :param str server_group_name: The name of the resource.
-    :param str status: The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+    :param str status: The status of the resource.
+    :param Mapping[str, Any] tags: A map of tags assigned to the group.
     :param str vpc_id: The ID of the VPC that you want to access.
     """
     __args__ = dict()
@@ -239,7 +258,7 @@ def get_server_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
     """
     This data source provides the Alb Server Groups of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.131.0+.
+    > **NOTE:** Available since v1.131.0.
 
     ## Example Usage
 
@@ -263,7 +282,8 @@ def get_server_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
     :param str resource_group_id: The ID of the resource group.
     :param Sequence[str] server_group_ids: The server group ids.
     :param str server_group_name: The name of the resource.
-    :param str status: The status of the resource. Valid values: `Provisioning`, `Available` and `Configuring`.
+    :param str status: The status of the resource.
+    :param Mapping[str, Any] tags: A map of tags assigned to the group.
     :param str vpc_id: The ID of the VPC that you want to access.
     """
     ...

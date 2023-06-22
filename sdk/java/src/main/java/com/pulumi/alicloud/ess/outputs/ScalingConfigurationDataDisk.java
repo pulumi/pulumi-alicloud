@@ -13,38 +13,98 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ScalingConfigurationDataDisk {
+    /**
+     * @return The id of auto snapshot policy for data disk.
+     * 
+     */
     private @Nullable String autoSnapshotPolicyId;
+    /**
+     * @return Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+     * 
+     */
     private @Nullable String category;
+    /**
+     * @return Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+     * 
+     */
     private @Nullable Boolean deleteWithInstance;
+    /**
+     * @return The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     * 
+     */
     private @Nullable String description;
     /**
+     * @return The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+     * 
      * @deprecated
      * Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
      * 
      */
     @Deprecated /* Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template. */
     private @Nullable String device;
+    /**
+     * @return Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+     * 
+     */
     private @Nullable Boolean encrypted;
+    /**
+     * @return The CMK ID for data disk N. Valid values of N: 1 to 16.
+     * 
+     */
     private @Nullable String kmsKeyId;
+    /**
+     * @return The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return The performance level of the ESSD used as data disk.
+     * 
+     */
     private @Nullable String performanceLevel;
+    /**
+     * @return Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+     * 
+     */
     private @Nullable Integer size;
+    /**
+     * @return Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
+     * 
+     */
     private @Nullable String snapshotId;
 
     private ScalingConfigurationDataDisk() {}
+    /**
+     * @return The id of auto snapshot policy for data disk.
+     * 
+     */
     public Optional<String> autoSnapshotPolicyId() {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
+    /**
+     * @return Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+     * 
+     */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+     * 
+     */
     public Optional<Boolean> deleteWithInstance() {
         return Optional.ofNullable(this.deleteWithInstance);
     }
+    /**
+     * @return The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
+     * @return The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+     * 
      * @deprecated
      * Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.
      * 
@@ -53,21 +113,45 @@ public final class ScalingConfigurationDataDisk {
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }
+    /**
+     * @return Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+     * 
+     */
     public Optional<Boolean> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
+    /**
+     * @return The CMK ID for data disk N. Valid values of N: 1 to 16.
+     * 
+     */
     public Optional<String> kmsKeyId() {
         return Optional.ofNullable(this.kmsKeyId);
     }
+    /**
+     * @return The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The performance level of the ESSD used as data disk.
+     * 
+     */
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
+    /**
+     * @return Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+     * 
+     */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }
+    /**
+     * @return Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
+     * 
+     */
     public Optional<String> snapshotId() {
         return Optional.ofNullable(this.snapshotId);
     }

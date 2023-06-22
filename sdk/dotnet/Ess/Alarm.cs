@@ -12,6 +12,10 @@ namespace Pulumi.AliCloud.Ess
     /// <summary>
     /// Provides a ESS alarm task resource.
     /// 
+    /// For information about ess alarm, see [CreateAlarm](https://www.alibabacloud.com/help/en/auto-scaling/latest/createalarm).
+    /// 
+    /// &gt; **NOTE:** Available since v1.15.0.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,80 +26,102 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var defaultZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var ecsImage = AliCloud.Ecs.GetImages.Invoke(new()
-    ///     {
-    ///         MostRecent = true,
-    ///         NameRegex = "^centos_6\\w{1,5}[64].*",
-    ///     });
-    /// 
     ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
+    ///         CpuCoreCount = 2,
+    ///         MemorySize = 4,
     ///     });
     /// 
-    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
     ///     {
-    ///         VswitchName = "tf-testAccEssAlarm_basic_foo",
-    ///         VpcId = fooNetwork.Id,
+    ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
     ///     });
     /// 
-    ///     var bar = new AliCloud.Vpc.Switch("bar", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
     ///     {
-    ///         VswitchName = "tf-testAccEssAlarm_basic_bar",
-    ///         VpcId = fooNetwork.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultSecurityGroupRule = new AliCloud.Ecs.SecurityGroupRule("defaultSecurityGroupRule", new()
+    ///     {
+    ///         Type = "ingress",
+    ///         IpProtocol = "tcp",
+    ///         NicType = "intranet",
+    ///         Policy = "accept",
+    ///         PortRange = "22/22",
+    ///         Priority = 1,
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         CidrIp = "172.16.0.0/24",
+    ///     });
+    /// 
+    ///     var default2 = new AliCloud.Vpc.Switch("default2", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.1.0/24",
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = $"{name}-bar",
     ///     });
     /// 
-    ///     var fooScalingGroup = new AliCloud.Ess.ScalingGroup("fooScalingGroup", new()
+    ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new()
     ///     {
     ///         MinSize = 1,
     ///         MaxSize = 1,
-    ///         ScalingGroupName = "tf-testAccEssAlarm_basic",
+    ///         ScalingGroupName = name,
+    ///         DefaultCooldown = 20,
+    ///         VswitchIds = new[]
+    ///         {
+    ///             defaultSwitch.Id,
+    ///             default2.Id,
+    ///         },
     ///         RemovalPolicies = new[]
     ///         {
     ///             "OldestInstance",
     ///             "NewestInstance",
     ///         },
-    ///         VswitchIds = new[]
-    ///         {
-    ///             fooSwitch.Id,
-    ///             bar.Id,
-    ///         },
     ///     });
     /// 
-    ///     var fooScalingRule = new AliCloud.Ess.ScalingRule("fooScalingRule", new()
+    ///     var defaultScalingRule = new AliCloud.Ess.ScalingRule("defaultScalingRule", new()
     ///     {
-    ///         ScalingRuleName = "tf-testAccEssAlarm_basic",
-    ///         ScalingGroupId = fooScalingGroup.Id,
+    ///         ScalingRuleName = name,
+    ///         ScalingGroupId = defaultScalingGroup.Id,
     ///         AdjustmentType = "TotalCapacity",
     ///         AdjustmentValue = 2,
     ///         Cooldown = 60,
     ///     });
     /// 
-    ///     var fooAlarm = new AliCloud.Ess.Alarm("fooAlarm", new()
+    ///     var defaultAlarm = new AliCloud.Ess.Alarm("defaultAlarm", new()
     ///     {
-    ///         Description = "Acc alarm test",
+    ///         Description = name,
     ///         AlarmActions = new[]
     ///         {
-    ///             fooScalingRule.Ari,
+    ///             defaultScalingRule.Ari,
     ///         },
-    ///         ScalingGroupId = fooScalingGroup.Id,
+    ///         ScalingGroupId = defaultScalingGroup.Id,
     ///         MetricType = "system",
     ///         MetricName = "CpuUtilization",
     ///         Period = 300,
@@ -111,31 +137,6 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// You can use to the existing autoscaling-rule module
     /// to create alarm task, different type rules and scheduled task one-click.
-    /// 
-    /// ## Block metricNames_and_dimensions
-    /// 
-    /// Supported metric names and dimensions :
-    /// 
-    /// | MetricName         | Dimensions                   |
-    /// | ------------------ | ---------------------------- |
-    /// | CpuUtilization     | user_id,scaling_group        |
-    /// | ClassicInternetRx  | user_id,scaling_group        |
-    /// | ClassicInternetTx  | user_id,scaling_group        |
-    /// | VpcInternetRx      | user_id,scaling_group        |
-    /// | VpcInternetTx      | user_id,scaling_group        |
-    /// | IntranetRx         | user_id,scaling_group        |
-    /// | IntranetTx         | user_id,scaling_group        |
-    /// | LoadAverage        | user_id,scaling_group        |
-    /// | MemoryUtilization  | user_id,scaling_group        |
-    /// | SystemDiskReadBps  | user_id,scaling_group        |
-    /// | SystemDiskWriteBps | user_id,scaling_group        |
-    /// | SystemDiskReadOps  | user_id,scaling_group        |
-    /// | SystemDiskWriteOps | user_id,scaling_group        |
-    /// | PackagesNetIn      | user_id,scaling_group,device |
-    /// | PackagesNetOut     | user_id,scaling_group,device |
-    /// | TcpConnection      | user_id,scaling_group,state  |
-    /// 
-    /// &gt; **NOTE:** Dimension `user_id` and `scaling_group` is automatically filled, which means you only need to care about dimension `device` and `state` when needed.
     /// 
     /// ## Import
     /// 
@@ -173,7 +174,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         /// </summary>
         [Output("dimensions")]
         public Output<ImmutableDictionary<string, object>> Dimensions { get; private set; } = null!;
@@ -221,7 +222,10 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of specified alarm.
+        /// The status of the event-triggered task. Valid values:
+        /// - ALARM: The alert condition is met and an alert is triggered.
+        /// - OK: The alert condition is not met.
+        /// - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -318,7 +322,7 @@ namespace Pulumi.AliCloud.Ess
         private InputMap<object>? _dimensions;
 
         /// <summary>
-        /// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         /// </summary>
         public InputMap<object> Dimensions
         {
@@ -422,7 +426,7 @@ namespace Pulumi.AliCloud.Ess
         private InputMap<object>? _dimensions;
 
         /// <summary>
-        /// The dimension map for the alarm's associated metric (documented below). For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users.
+        /// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         /// </summary>
         public InputMap<object> Dimensions
         {
@@ -473,7 +477,10 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ScalingGroupId { get; set; }
 
         /// <summary>
-        /// The state of specified alarm.
+        /// The status of the event-triggered task. Valid values:
+        /// - ALARM: The alert condition is met and an alert is triggered.
+        /// - OK: The alert condition is not met.
+        /// - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

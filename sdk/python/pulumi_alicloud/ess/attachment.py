@@ -177,6 +177,8 @@ class Attachment(pulumi.CustomResource):
 
         > **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
 
+        > **NOTE:** Available since v1.6.0.
+
         ## Example Usage
 
         ```python
@@ -186,7 +188,7 @@ class Attachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "essattachmentconfig"
+            name = "terraform-example"
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -201,7 +203,8 @@ class Attachment(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",
@@ -287,6 +290,8 @@ class Attachment(pulumi.CustomResource):
 
         > **NOTE:** There are two types ECS instances in a scaling group: "AutoCreated" and "Attached". The total number of them can not larger than the scaling group "MaxSize".
 
+        > **NOTE:** Available since v1.6.0.
+
         ## Example Usage
 
         ```python
@@ -296,7 +301,7 @@ class Attachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "essattachmentconfig"
+            name = "terraform-example"
         default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
@@ -311,7 +316,8 @@ class Attachment(pulumi.CustomResource):
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
         default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("defaultSecurityGroupRule",
             type="ingress",

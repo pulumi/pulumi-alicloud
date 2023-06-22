@@ -13,9 +13,9 @@ import (
 
 // Creates a Function Compute service alias. Creates an alias that points to the specified Function Compute service version.
 //
-//	For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/171635.htm).
+//	For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createalias).
 //
-// > **NOTE:** Available in 1.104.0+
+// > **NOTE:** Available since v1.104.0.
 //
 // ## Example Usage
 //
@@ -27,21 +27,31 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fc.NewAlias(ctx, "example", &fc.AliasArgs{
-//				AliasName:   pulumi.String("my_alias"),
-//				Description: pulumi.String("a sample description"),
-//				RoutingConfig: &fc.AliasRoutingConfigArgs{
-//					AdditionalVersionWeights: pulumi.Float64Map{
-//						"2": pulumi.Float64(0.5),
-//					},
-//				},
-//				ServiceName:    pulumi.String("my_service_name"),
+//			_, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
+//				Max: pulumi.Int(99999),
+//				Min: pulumi.Int(10000),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//				Description: pulumi.String("example-value"),
+//				Publish:     pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = fc.NewAlias(ctx, "example", &fc.AliasArgs{
+//				AliasName:      pulumi.String("example-value"),
+//				Description:    pulumi.String("example-value"),
+//				ServiceName:    defaultService.Name,
 //				ServiceVersion: pulumi.String("1"),
 //			})
 //			if err != nil {
@@ -69,9 +79,7 @@ type Alias struct {
 	AliasName pulumi.StringOutput `pulumi:"aliasName"`
 	// Description of the alias.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The Function Compute alias' route configuration settings. Fields documented below.
-	//
-	// **routing_config** includes the following arguments:
+	// The Function Compute alias' route configuration settings. See `routingConfig` below.
 	RoutingConfig AliasRoutingConfigPtrOutput `pulumi:"routingConfig"`
 	// The Function Compute service name.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -121,9 +129,7 @@ type aliasState struct {
 	AliasName *string `pulumi:"aliasName"`
 	// Description of the alias.
 	Description *string `pulumi:"description"`
-	// The Function Compute alias' route configuration settings. Fields documented below.
-	//
-	// **routing_config** includes the following arguments:
+	// The Function Compute alias' route configuration settings. See `routingConfig` below.
 	RoutingConfig *AliasRoutingConfig `pulumi:"routingConfig"`
 	// The Function Compute service name.
 	ServiceName *string `pulumi:"serviceName"`
@@ -136,9 +142,7 @@ type AliasState struct {
 	AliasName pulumi.StringPtrInput
 	// Description of the alias.
 	Description pulumi.StringPtrInput
-	// The Function Compute alias' route configuration settings. Fields documented below.
-	//
-	// **routing_config** includes the following arguments:
+	// The Function Compute alias' route configuration settings. See `routingConfig` below.
 	RoutingConfig AliasRoutingConfigPtrInput
 	// The Function Compute service name.
 	ServiceName pulumi.StringPtrInput
@@ -155,9 +159,7 @@ type aliasArgs struct {
 	AliasName string `pulumi:"aliasName"`
 	// Description of the alias.
 	Description *string `pulumi:"description"`
-	// The Function Compute alias' route configuration settings. Fields documented below.
-	//
-	// **routing_config** includes the following arguments:
+	// The Function Compute alias' route configuration settings. See `routingConfig` below.
 	RoutingConfig *AliasRoutingConfig `pulumi:"routingConfig"`
 	// The Function Compute service name.
 	ServiceName string `pulumi:"serviceName"`
@@ -171,9 +173,7 @@ type AliasArgs struct {
 	AliasName pulumi.StringInput
 	// Description of the alias.
 	Description pulumi.StringPtrInput
-	// The Function Compute alias' route configuration settings. Fields documented below.
-	//
-	// **routing_config** includes the following arguments:
+	// The Function Compute alias' route configuration settings. See `routingConfig` below.
 	RoutingConfig AliasRoutingConfigPtrInput
 	// The Function Compute service name.
 	ServiceName pulumi.StringInput
@@ -278,9 +278,7 @@ func (o AliasOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alias) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The Function Compute alias' route configuration settings. Fields documented below.
-//
-// **routing_config** includes the following arguments:
+// The Function Compute alias' route configuration settings. See `routingConfig` below.
 func (o AliasOutput) RoutingConfig() AliasRoutingConfigPtrOutput {
 	return o.ApplyT(func(v *Alias) AliasRoutingConfigPtrOutput { return v.RoutingConfig }).(AliasRoutingConfigPtrOutput)
 }

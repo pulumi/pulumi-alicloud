@@ -11,9 +11,9 @@ namespace Pulumi.AliCloud.FC
 {
     /// <summary>
     /// Manages an asynchronous invocation configuration for a FC Function or Alias.\
-    ///  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/181866.htm).
+    ///  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-putfunctionasyncinvokeconfig).
     /// 
-    /// &gt; **NOTE:** Available in 1.100.0+
+    /// &gt; **NOTE:** Available since v1.100.0.
     /// 
     /// ## Example Usage
     /// ### Destination Configuration
@@ -25,22 +25,131 @@ namespace Pulumi.AliCloud.FC
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.FC.FunctionAsyncInvokeConfig("example", new()
+    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         ServiceName = alicloud_fc_service.Example.Name,
-    ///         FunctionName = alicloud_fc_function.Example.Name,
+    ///         Current = true,
+    ///     });
+    /// 
+    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     {
+    ///         Max = 99999,
+    ///         Min = 10000,
+    ///     });
+    /// 
+    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
+    ///     {
+    ///         Document = @"	{
+    /// 		""Statement"": [
+    /// 		  {
+    /// 			""Action"": ""sts:AssumeRole"",
+    /// 			""Effect"": ""Allow"",
+    /// 			""Principal"": {
+    /// 			  ""Service"": [
+    /// 				""fc.aliyuncs.com""
+    /// 			  ]
+    /// 			}
+    /// 		  }
+    /// 		],
+    /// 		""Version"": ""1""
+    /// 	}
+    /// ",
+    ///         Description = "this is a example",
+    ///         Force = true,
+    ///     });
+    /// 
+    ///     var defaultPolicy = new AliCloud.Ram.Policy("defaultPolicy", new()
+    ///     {
+    ///         PolicyName = defaultRandomInteger.Result.Apply(result =&gt; $"examplepolicy{result}"),
+    ///         PolicyDocument = @"	{
+    /// 		""Version"": ""1"",
+    /// 		""Statement"": [
+    /// 		  {
+    /// 			""Action"": ""mns:*"",
+    /// 			""Resource"": ""*"",
+    /// 			""Effect"": ""Allow""
+    /// 		  }
+    /// 		]
+    /// 	  }
+    /// ",
+    ///     });
+    /// 
+    ///     var defaultRolePolicyAttachment = new AliCloud.Ram.RolePolicyAttachment("defaultRolePolicyAttachment", new()
+    ///     {
+    ///         RoleName = defaultRole.Name,
+    ///         PolicyName = defaultPolicy.Name,
+    ///         PolicyType = "Custom",
+    ///     });
+    /// 
+    ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
+    ///     {
+    ///         Description = "example-value",
+    ///         Role = defaultRole.Arn,
+    ///         InternetAccess = false,
+    ///     });
+    /// 
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     {
+    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///     });
+    /// 
+    ///     // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     {
+    ///         Bucket = defaultBucket.Id,
+    ///         Key = "index.py",
+    ///         Content = @"import logging 
+    /// def handler(event, context): 
+    /// logger = logging.getLogger() 
+    /// logger.info('hello world') 
+    /// return 'hello world'",
+    ///     });
+    /// 
+    ///     var defaultFunction = new AliCloud.FC.Function("defaultFunction", new()
+    ///     {
+    ///         Service = defaultService.Name,
+    ///         Description = "example",
+    ///         OssBucket = defaultBucket.Id,
+    ///         OssKey = defaultBucketObject.Key,
+    ///         MemorySize = 512,
+    ///         Runtime = "python2.7",
+    ///         Handler = "hello.handler",
+    ///     });
+    /// 
+    ///     var defaultQueue = new AliCloud.Mns.Queue("defaultQueue");
+    /// 
+    ///     var defaultTopic = new AliCloud.Mns.Topic("defaultTopic");
+    /// 
+    ///     var defaultFunctionAsyncInvokeConfig = new AliCloud.FC.FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig", new()
+    ///     {
+    ///         ServiceName = defaultService.Name,
+    ///         FunctionName = defaultFunction.Name,
     ///         DestinationConfig = new AliCloud.FC.Inputs.FunctionAsyncInvokeConfigDestinationConfigArgs
     ///         {
     ///             OnFailure = new AliCloud.FC.Inputs.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs
     ///             {
-    ///                 Destination = the_example_mns_queue_arn,
+    ///                 Destination = Output.Tuple(defaultRegions, defaultAccount, defaultQueue.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var defaultRegions = values.Item1;
+    ///                     var defaultAccount = values.Item2;
+    ///                     var name = values.Item3;
+    ///                     return $"acs:mns:{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:/queues/{name}/messages";
+    ///                 }),
     ///             },
     ///             OnSuccess = new AliCloud.FC.Inputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs
     ///             {
-    ///                 Destination = the_example_mns_topic_arn,
+    ///                 Destination = Output.Tuple(defaultRegions, defaultAccount, defaultTopic.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var defaultRegions = values.Item1;
+    ///                     var defaultAccount = values.Item2;
+    ///                     var name = values.Item3;
+    ///                     return $"acs:mns:{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:/topics/{name}/messages";
+    ///                 }),
     ///             },
     ///         },
     ///     });
@@ -125,7 +234,7 @@ namespace Pulumi.AliCloud.FC
         public Output<string> CreatedTime { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration block with destination configuration. See below for details.
+        /// Configuration block with destination configuration. See `destination_config` below.
         /// </summary>
         [Output("destinationConfig")]
         public Output<Outputs.FunctionAsyncInvokeConfigDestinationConfig?> DestinationConfig { get; private set; } = null!;
@@ -219,7 +328,7 @@ namespace Pulumi.AliCloud.FC
     public sealed class FunctionAsyncInvokeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration block with destination configuration. See below for details.
+        /// Configuration block with destination configuration. See `destination_config` below.
         /// </summary>
         [Input("destinationConfig")]
         public Input<Inputs.FunctionAsyncInvokeConfigDestinationConfigArgs>? DestinationConfig { get; set; }
@@ -275,7 +384,7 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? CreatedTime { get; set; }
 
         /// <summary>
-        /// Configuration block with destination configuration. See below for details.
+        /// Configuration block with destination configuration. See `destination_config` below.
         /// </summary>
         [Input("destinationConfig")]
         public Input<Inputs.FunctionAsyncInvokeConfigDestinationConfigGetArgs>? DestinationConfig { get; set; }

@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class FunctionAsyncInvokeConfigDestinationConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration block with destination configuration for failed asynchronous invocations. See below for details.
+        /// Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
         /// </summary>
         [Input("onFailure")]
         public Input<Inputs.FunctionAsyncInvokeConfigDestinationConfigOnFailureGetArgs>? OnFailure { get; set; }
 
         /// <summary>
-        /// Configuration block with destination configuration for successful asynchronous invocations. See below for details.
+        /// Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
         /// </summary>
         [Input("onSuccess")]
         public Input<Inputs.FunctionAsyncInvokeConfigDestinationConfigOnSuccessGetArgs>? OnSuccess { get; set; }

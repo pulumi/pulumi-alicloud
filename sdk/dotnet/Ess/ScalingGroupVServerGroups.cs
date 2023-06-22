@@ -28,112 +28,7 @@ namespace Pulumi.AliCloud.Ess
     /// 
     /// &gt; **NOTE:** Modifing `weight` attribute means detach vserver group first and then, attach with new weight parameter.
     /// 
-    /// &gt; **NOTE:** Resource `alicloud.ess.ScalingGroupVServerGroups` is available in 1.53.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "testAccEssVserverGroupsAttachment";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableDiskCategory = "cloud_efficiency",
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
-    ///     {
-    ///         CidrBlock = "172.16.0.0/16",
-    ///     });
-    /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
-    ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     });
-    /// 
-    ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new()
-    ///     {
-    ///         LoadBalancerName = name,
-    ///         VswitchId = defaultSwitch.Id,
-    ///     });
-    /// 
-    ///     var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new()
-    ///     {
-    ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
-    ///     });
-    /// 
-    ///     var defaultListener = new List&lt;AliCloud.Slb.Listener&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
-    ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         defaultListener.Add(new AliCloud.Slb.Listener($"defaultListener-{range.Value}", new()
-    ///         {
-    ///             LoadBalancerId = new[]
-    ///             {
-    ///                 defaultApplicationLoadBalancer,
-    ///             }.Select(__item =&gt; __item.Id).ToList()[range.Value],
-    ///             BackendPort = 22,
-    ///             FrontendPort = 22,
-    ///             Protocol = "tcp",
-    ///             Bandwidth = 10,
-    ///             HealthCheckType = "tcp",
-    ///         }));
-    ///     }
-    ///     var defaultScalingGroup = new AliCloud.Ess.ScalingGroup("defaultScalingGroup", new()
-    ///     {
-    ///         MinSize = 2,
-    ///         MaxSize = 2,
-    ///         ScalingGroupName = name,
-    ///         VswitchIds = new[]
-    ///         {
-    ///             defaultSwitch.Id,
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultScalingGroupVServerGroups = new AliCloud.Ess.ScalingGroupVServerGroups("defaultScalingGroupVServerGroups", new()
-    ///     {
-    ///         ScalingGroupId = defaultScalingGroup.Id,
-    ///         VserverGroups = new[]
-    ///         {
-    ///             new AliCloud.Ess.Inputs.ScalingGroupVServerGroupsVserverGroupArgs
-    ///             {
-    ///                 LoadbalancerId = defaultApplicationLoadBalancer.Id,
-    ///                 VserverAttributes = new[]
-    ///                 {
-    ///                     new AliCloud.Ess.Inputs.ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs
-    ///                     {
-    ///                         VserverGroupId = defaultServerGroup.Id,
-    ///                         Port = 100,
-    ///                         Weight = 60,
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ## Block vserver_group
-    /// 
-    /// the vserver_group supports the following:
-    /// 
-    /// * `loadbalancer_id` - (Required) Loadbalancer server ID of VServer Group.
-    /// * `vserver_attributes` - (Required) A list of VServer Group attributes. See Block vserver_attribute below for details.
-    /// 
-    /// ## Block vserver_attribute
-    /// 
-    /// * `vserver_group_id` - (Required) ID of VServer Group.
-    /// * `port` - (Required) - The port will be used for VServer Group backend server.
-    /// * `weight` - (Required) The weight of an ECS instance attached to the VServer Group.
+    /// &gt; **NOTE:** Available since v1.53.0.
     /// 
     /// ## Import
     /// 
@@ -159,7 +54,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        /// A list of vserver groups attached on scaling group. See `vserver_groups` below.
         /// </summary>
         [Output("vserverGroups")]
         public Output<ImmutableArray<Outputs.ScalingGroupVServerGroupsVserverGroup>> VserverGroups { get; private set; } = null!;
@@ -226,7 +121,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingGroupVServerGroupsVserverGroupArgs>? _vserverGroups;
 
         /// <summary>
-        /// A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        /// A list of vserver groups attached on scaling group. See `vserver_groups` below.
         /// </summary>
         public InputList<Inputs.ScalingGroupVServerGroupsVserverGroupArgs> VserverGroups
         {
@@ -258,7 +153,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<Inputs.ScalingGroupVServerGroupsVserverGroupGetArgs>? _vserverGroups;
 
         /// <summary>
-        /// A list of vserver groups attached on scaling group. See Block vserver_group below for details.
+        /// A list of vserver groups attached on scaling group. See `vserver_groups` below.
         /// </summary>
         public InputList<Inputs.ScalingGroupVServerGroupsVserverGroupGetArgs> VserverGroups
         {

@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,20 +35,14 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable automatic key rotation. Valid values:
-     * - Enabled
-     * - Disabled (default value)
-     *   **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
      * 
      */
     @Import(name="automaticRotation")
     private @Nullable Output<String> automaticRotation;
 
     /**
-     * @return Specifies whether to enable automatic key rotation. Valid values:
-     * - Enabled
-     * - Disabled (default value)
-     *   **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+     * @return Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
      * 
      */
     public Optional<Output<String>> automaticRotation() {
@@ -152,7 +148,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+     * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
      * @deprecated
      * Field &#39;is_enabled&#39; has been deprecated from provider version 1.85.0. New field &#39;key_state&#39; instead.
@@ -163,7 +159,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> isEnabled;
 
     /**
-     * @return Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+     * @return Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
      * @deprecated
      * Field &#39;is_enabled&#39; has been deprecated from provider version 1.85.0. New field &#39;key_state&#39; instead.
@@ -175,18 +171,18 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the CMK. Valid values:
-     * &#34;Aliyun_AES_256&#34;, &#34;Aliyun_AES_128&#34;, &#34;Aliyun_AES_192&#34;, &#34;Aliyun_SM4&#34;, &#34;RSA_2048&#34;, &#34;RSA_3072&#34;, &#34;EC_P256&#34;, &#34;EC_P256K&#34;, &#34;EC_SM2&#34;.
-     * Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+     * The type of the CMK. Default value: `Aliyun_AES_256`. Valid values:
+     * `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+     * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
      * 
      */
     @Import(name="keySpec")
     private @Nullable Output<String> keySpec;
 
     /**
-     * @return The type of the CMK. Valid values:
-     * &#34;Aliyun_AES_256&#34;, &#34;Aliyun_AES_128&#34;, &#34;Aliyun_AES_192&#34;, &#34;Aliyun_SM4&#34;, &#34;RSA_2048&#34;, &#34;RSA_3072&#34;, &#34;EC_P256&#34;, &#34;EC_P256K&#34;, &#34;EC_SM2&#34;.
-     * Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+     * @return The type of the CMK. Default value: `Aliyun_AES_256`. Valid values:
+     * `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+     * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
      * 
      */
     public Optional<Output<String>> keySpec() {
@@ -217,18 +213,18 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The usage of the CMK. Valid values:
-     * - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-     * - SIGN/VERIFY: generates or verifies a digital signature.
+     * The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      * 
      */
     @Import(name="keyUsage")
     private @Nullable Output<String> keyUsage;
 
     /**
-     * @return The usage of the CMK. Valid values:
-     * - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-     * - SIGN/VERIFY: generates or verifies a digital signature.
+     * @return The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      * 
      */
     public Optional<Output<String>> keyUsage() {
@@ -281,24 +277,14 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source of key material. Valid values:
-     * - Aliyun_KMS (default value)
-     * - EXTERNAL
-     *   **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-     *   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-     *   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+     * The source of key material. Default value: `Aliyun_KMS`. Valid values:
      * 
      */
     @Import(name="origin")
     private @Nullable Output<String> origin;
 
     /**
-     * @return The source of key material. Valid values:
-     * - Aliyun_KMS (default value)
-     * - EXTERNAL
-     *   **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-     *   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-     *   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+     * @return The source of key material. Default value: `Aliyun_KMS`. Valid values:
      * 
      */
     public Optional<Output<String>> origin() {
@@ -342,24 +328,14 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protection level of the CMK. Valid values:
-     * - SOFTWARE (default value)
-     * - HSM
-     *   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-     *   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-     *   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+     * The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
      * 
      */
     @Import(name="protectionLevel")
     private @Nullable Output<String> protectionLevel;
 
     /**
-     * @return The protection level of the CMK. Valid values:
-     * - SOFTWARE (default value)
-     * - HSM
-     *   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-     *   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-     *   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+     * @return The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
      * 
      */
     public Optional<Output<String>> protectionLevel() {
@@ -394,24 +370,33 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of CMK. Valid Values:
-     * - Disabled
-     * - Enabled (default value)
-     * - PendingDeletion
+     * The status of CMK. Default value: `Enabled`. Valid Values:
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of CMK. Valid Values:
-     * - Disabled
-     * - Enabled (default value)
-     * - PendingDeletion
+     * @return The status of CMK. Default value: `Enabled`. Valid Values:
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private KeyState() {}
@@ -438,6 +423,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         this.protectionLevel = $.protectionLevel;
         this.rotationInterval = $.rotationInterval;
         this.status = $.status;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -480,10 +466,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param automaticRotation Specifies whether to enable automatic key rotation. Valid values:
-         * - Enabled
-         * - Disabled (default value)
-         *   **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+         * @param automaticRotation Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
          * 
          * @return builder
          * 
@@ -494,10 +477,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param automaticRotation Specifies whether to enable automatic key rotation. Valid values:
-         * - Enabled
-         * - Disabled (default value)
-         *   **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
+         * @param automaticRotation Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
          * 
          * @return builder
          * 
@@ -641,7 +621,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isEnabled Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+         * @param isEnabled Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
          * 
          * @return builder
          * 
@@ -656,7 +636,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isEnabled Field `is_enabled` has been deprecated from provider version 1.85.0. New field `key_state` instead.
+         * @param isEnabled Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
          * 
          * @return builder
          * 
@@ -670,9 +650,9 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keySpec The type of the CMK. Valid values:
-         * &#34;Aliyun_AES_256&#34;, &#34;Aliyun_AES_128&#34;, &#34;Aliyun_AES_192&#34;, &#34;Aliyun_SM4&#34;, &#34;RSA_2048&#34;, &#34;RSA_3072&#34;, &#34;EC_P256&#34;, &#34;EC_P256K&#34;, &#34;EC_SM2&#34;.
-         * Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+         * @param keySpec The type of the CMK. Default value: `Aliyun_AES_256`. Valid values:
+         * `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+         * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
          * 
          * @return builder
          * 
@@ -683,9 +663,9 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keySpec The type of the CMK. Valid values:
-         * &#34;Aliyun_AES_256&#34;, &#34;Aliyun_AES_128&#34;, &#34;Aliyun_AES_192&#34;, &#34;Aliyun_SM4&#34;, &#34;RSA_2048&#34;, &#34;RSA_3072&#34;, &#34;EC_P256&#34;, &#34;EC_P256K&#34;, &#34;EC_SM2&#34;.
-         * Note: The default type of the CMK is Aliyun_AES_256. Only Dedicated KMS supports Aliyun_AES_128 and Aliyun_AES_192.
+         * @param keySpec The type of the CMK. Default value: `Aliyun_AES_256`. Valid values:
+         * `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
+         * Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
          * 
          * @return builder
          * 
@@ -724,9 +704,9 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyUsage The usage of the CMK. Valid values:
-         * - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-         * - SIGN/VERIFY: generates or verifies a digital signature.
+         * @param keyUsage The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+         * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+         * - `SIGN/VERIFY`: generates or verifies a digital signature.
          * 
          * @return builder
          * 
@@ -737,9 +717,9 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyUsage The usage of the CMK. Valid values:
-         * - ENCRYPT/DECRYPT(default value): encrypts or decrypts data.
-         * - SIGN/VERIFY: generates or verifies a digital signature.
+         * @param keyUsage The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
+         * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
+         * - `SIGN/VERIFY`: generates or verifies a digital signature.
          * 
          * @return builder
          * 
@@ -812,12 +792,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param origin The source of key material. Valid values:
-         * - Aliyun_KMS (default value)
-         * - EXTERNAL
-         *   **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-         *   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-         *   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+         * @param origin The source of key material. Default value: `Aliyun_KMS`. Valid values:
          * 
          * @return builder
          * 
@@ -828,12 +803,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param origin The source of key material. Valid values:
-         * - Aliyun_KMS (default value)
-         * - EXTERNAL
-         *   **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
-         *   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
-         *   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
+         * @param origin The source of key material. Default value: `Aliyun_KMS`. Valid values:
          * 
          * @return builder
          * 
@@ -891,12 +861,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protectionLevel The protection level of the CMK. Valid values:
-         * - SOFTWARE (default value)
-         * - HSM
-         *   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-         *   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-         *   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+         * @param protectionLevel The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
          * 
          * @return builder
          * 
@@ -907,12 +872,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protectionLevel The protection level of the CMK. Valid values:
-         * - SOFTWARE (default value)
-         * - HSM
-         *   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
-         *   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
-         *   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
+         * @param protectionLevel The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
          * 
          * @return builder
          * 
@@ -955,10 +915,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of CMK. Valid Values:
-         * - Disabled
-         * - Enabled (default value)
-         * - PendingDeletion
+         * @param status The status of CMK. Default value: `Enabled`. Valid Values:
          * 
          * @return builder
          * 
@@ -969,16 +926,34 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of CMK. Valid Values:
-         * - Disabled
-         * - Enabled (default value)
-         * - PendingDeletion
+         * @param status The status of CMK. Default value: `Enabled`. Valid Values:
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public KeyState build() {

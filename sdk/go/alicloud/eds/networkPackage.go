@@ -13,9 +13,9 @@ import (
 
 // Provides a ECD Network Package resource.
 //
-// For information about ECD Network Package and how to use it, see [What is Network Package](https://help.aliyun.com/document_detail/188382.html).
+// For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createnetworkpackage).
 //
-// > **NOTE:** Available in v1.142.0+.
+// > **NOTE:** Available since v1.142.0.
 //
 // ## Example Usage
 //
@@ -28,22 +28,29 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eds"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultSimpleOfficeSite, err := eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
 //				CidrBlock:         pulumi.String("172.16.0.0/12"),
+//				EnableAdminAccess: pulumi.Bool(false),
 //				DesktopAccessType: pulumi.String("Internet"),
-//				OfficeSiteName:    pulumi.String("your_office_site_name"),
+//				OfficeSiteName:    pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eds.NewNetworkPackage(ctx, "example", &eds.NetworkPackageArgs{
+//			_, err = eds.NewNetworkPackage(ctx, "defaultNetworkPackage", &eds.NetworkPackageArgs{
 //				Bandwidth:    pulumi.Int(10),
-//				OfficeSiteId: _default.ID(),
+//				OfficeSiteId: defaultSimpleOfficeSite.ID(),
 //			})
 //			if err != nil {
 //				return err

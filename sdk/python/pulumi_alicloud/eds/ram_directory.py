@@ -215,9 +215,9 @@ class RamDirectory(pulumi.CustomResource):
         """
         Provides a ECD Ram Directory resource.
 
-        For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://help.aliyun.com/document_detail/436216.html).
+        For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createramdirectory).
 
-        > **NOTE:** Available in v1.174.0+.
+        > **NOTE:** Available since v1.174.0.
 
         ## Example Usage
 
@@ -227,16 +227,25 @@ class RamDirectory(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_zones = alicloud.eds.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.ids[0],
+            vswitch_name=name)
         default_ram_directory = alicloud.eds.RamDirectory("defaultRamDirectory",
             desktop_access_type="INTERNET",
             enable_admin_access=True,
             enable_internet_access=True,
-            ram_directory_name=var["name"],
-            vswitch_ids=[default_switches.ids[0]])
+            ram_directory_name=name,
+            vswitch_ids=[default_switch.id])
         ```
 
         ## Import
@@ -264,9 +273,9 @@ class RamDirectory(pulumi.CustomResource):
         """
         Provides a ECD Ram Directory resource.
 
-        For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://help.aliyun.com/document_detail/436216.html).
+        For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createramdirectory).
 
-        > **NOTE:** Available in v1.174.0+.
+        > **NOTE:** Available since v1.174.0.
 
         ## Example Usage
 
@@ -276,16 +285,25 @@ class RamDirectory(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
         default_zones = alicloud.eds.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("defaultSwitch",
+            vpc_id=default_network.id,
+            cidr_block="172.16.0.0/24",
+            zone_id=default_zones.ids[0],
+            vswitch_name=name)
         default_ram_directory = alicloud.eds.RamDirectory("defaultRamDirectory",
             desktop_access_type="INTERNET",
             enable_admin_access=True,
             enable_internet_access=True,
-            ram_directory_name=var["name"],
-            vswitch_ids=[default_switches.ids[0]])
+            ram_directory_name=name,
+            vswitch_ids=[default_switch.id])
         ```
 
         ## Import
