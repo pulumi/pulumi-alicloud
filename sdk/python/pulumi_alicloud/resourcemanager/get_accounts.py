@@ -134,12 +134,12 @@ def get_accounts(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult).value
 
     return AwaitableGetAccountsResult(
-        accounts=__ret__.accounts,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        accounts=pulumi.get(__ret__, 'accounts'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_accounts)

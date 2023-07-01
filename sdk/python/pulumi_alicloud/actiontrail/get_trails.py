@@ -25,10 +25,6 @@ class GetTrailsResult:
     def __init__(__self__, actiontrails=None, id=None, ids=None, include_organization_trail=None, include_shadow_trails=None, name_regex=None, names=None, output_file=None, status=None, trails=None):
         if actiontrails and not isinstance(actiontrails, list):
             raise TypeError("Expected argument 'actiontrails' to be a list")
-        if actiontrails is not None:
-            warnings.warn("""Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""", DeprecationWarning)
-            pulumi.log.warn("""actiontrails is deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""")
-
         pulumi.set(__self__, "actiontrails", actiontrails)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -64,6 +60,9 @@ class GetTrailsResult:
         """
         Field `actiontrails` has been deprecated from version 1.95.0. Use `trails` instead."
         """
+        warnings.warn("""Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""", DeprecationWarning)
+        pulumi.log.warn("""actiontrails is deprecated: Field 'actiontrails' has been deprecated from version 1.95.0. Use 'trails' instead.""")
+
         return pulumi.get(self, "actiontrails")
 
     @property
@@ -186,16 +185,16 @@ def get_trails(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:actiontrail/getTrails:getTrails', __args__, opts=opts, typ=GetTrailsResult).value
 
     return AwaitableGetTrailsResult(
-        actiontrails=__ret__.actiontrails,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        include_organization_trail=__ret__.include_organization_trail,
-        include_shadow_trails=__ret__.include_shadow_trails,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        trails=__ret__.trails)
+        actiontrails=pulumi.get(__ret__, 'actiontrails'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        include_organization_trail=pulumi.get(__ret__, 'include_organization_trail'),
+        include_shadow_trails=pulumi.get(__ret__, 'include_shadow_trails'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        trails=pulumi.get(__ret__, 'trails'))
 
 
 @_utilities.lift_output_func(get_trails)

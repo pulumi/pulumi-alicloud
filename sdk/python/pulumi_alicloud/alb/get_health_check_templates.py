@@ -150,14 +150,14 @@ def get_health_check_templates(health_check_template_ids: Optional[Sequence[str]
     __ret__ = pulumi.runtime.invoke('alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates', __args__, opts=opts, typ=GetHealthCheckTemplatesResult).value
 
     return AwaitableGetHealthCheckTemplatesResult(
-        health_check_template_ids=__ret__.health_check_template_ids,
-        health_check_template_name=__ret__.health_check_template_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        templates=__ret__.templates)
+        health_check_template_ids=pulumi.get(__ret__, 'health_check_template_ids'),
+        health_check_template_name=pulumi.get(__ret__, 'health_check_template_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        templates=pulumi.get(__ret__, 'templates'))
 
 
 @_utilities.lift_output_func(get_health_check_templates)

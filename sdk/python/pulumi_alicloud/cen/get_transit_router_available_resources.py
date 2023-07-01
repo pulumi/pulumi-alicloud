@@ -92,9 +92,9 @@ def get_transit_router_available_resources(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources', __args__, opts=opts, typ=GetTransitRouterAvailableResourcesResult).value
 
     return AwaitableGetTransitRouterAvailableResourcesResult(
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        resources=__ret__.resources)
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resources=pulumi.get(__ret__, 'resources'))
 
 
 @_utilities.lift_output_func(get_transit_router_available_resources)

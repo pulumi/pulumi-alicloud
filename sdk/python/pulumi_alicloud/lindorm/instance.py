@@ -64,7 +64,7 @@ class InstanceArgs:
         :param pulumi.Input[str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
-        :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
+        :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
                - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
@@ -264,7 +264,7 @@ class InstanceArgs:
     @pulumi.getter(name="coldStorage")
     def cold_storage(self) -> Optional[pulumi.Input[int]]:
         """
-        The cold storage capacity of the instance. Unit: GB.
+        The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         """
         return pulumi.get(self, "cold_storage")
 
@@ -664,6 +664,9 @@ class InstanceArgs:
         """
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
+        warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
+        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
+
         return pulumi.get(self, "time_serires_engine_specification")
 
     @time_serires_engine_specification.setter
@@ -752,7 +755,7 @@ class _InstanceState:
         :param pulumi.Input[str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
-        :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
+        :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
                - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
@@ -943,7 +946,7 @@ class _InstanceState:
     @pulumi.getter(name="coldStorage")
     def cold_storage(self) -> Optional[pulumi.Input[int]]:
         """
-        The cold storage capacity of the instance. Unit: GB.
+        The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         """
         return pulumi.get(self, "cold_storage")
 
@@ -1451,6 +1454,9 @@ class _InstanceState:
         """
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
+        warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
+        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
+
         return pulumi.get(self, "time_serires_engine_specification")
 
     @time_serires_engine_specification.setter
@@ -1545,11 +1551,11 @@ class Instance(pulumi.CustomResource):
         """
         Provides a Lindorm Instance resource.
 
-        For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/doc-detail/174640.html).
+        For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/lindorm/latest/product-introduction-overview).
 
         > **NOTE:** Available since v1.132.0.
 
-        > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
+        > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
 
         ## Import
 
@@ -1564,7 +1570,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
-        :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
+        :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
                - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
@@ -1615,11 +1621,11 @@ class Instance(pulumi.CustomResource):
         """
         Provides a Lindorm Instance resource.
 
-        For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/doc-detail/174640.html).
+        For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/lindorm/latest/product-introduction-overview).
 
         > **NOTE:** Available since v1.132.0.
 
-        > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
+        > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
 
         ## Import
 
@@ -1822,7 +1828,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] arbiter_vswitch_id: The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arbiter_zone_id: The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
         :param pulumi.Input[str] arch_version: The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
-        :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB.
+        :param pulumi.Input[int] cold_storage: The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         :param pulumi.Input[int] core_single_storage: The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
         :param pulumi.Input[str] core_spec: The core spec. When `disk_category` is `local_ssd_pro` or `local_hdd_pro`, this filed is valid.
                - When `disk_category` is `local_ssd_pro`, the valid values is `lindorm.i2.xlarge`, `lindorm.i2.2xlarge`, `lindorm.i2.4xlarge`, `lindorm.i2.8xlarge`.
@@ -1954,7 +1960,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="coldStorage")
     def cold_storage(self) -> pulumi.Output[int]:
         """
-        The cold storage capacity of the instance. Unit: GB.
+        The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
         """
         return pulumi.get(self, "cold_storage")
 
@@ -2294,6 +2300,9 @@ class Instance(pulumi.CustomResource):
         """
         Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         """
+        warnings.warn("""Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""", DeprecationWarning)
+        pulumi.log.warn("""time_serires_engine_specification is deprecated: Field 'time_serires_engine_specification' has been deprecated from provider version 1.182.0. New field 'time_series_engine_specification' instead.""")
+
         return pulumi.get(self, "time_serires_engine_specification")
 
     @property

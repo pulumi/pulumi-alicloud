@@ -13,9 +13,9 @@ namespace Pulumi.AliCloud.Cen
     /// This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance.
     /// After you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.
     /// 
-    /// For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/doc-detail/71141.htm).
+    /// For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-enablecenvbrhealthcheck).
     /// 
-    /// &gt; **NOTE:** Available in 1.88.0+
+    /// &gt; **NOTE:** Available since v1.88.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,38 +26,64 @@ namespace Pulumi.AliCloud.Cen
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a cen vbr HealrhCheck resource and use it.
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         CenInstanceName = "test_name",
+    ///         Current = true,
     ///     });
     /// 
-    ///     var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new()
+    ///     var defaultPhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
-    ///         InstanceId = defaultInstance.Id,
-    ///         ChildInstanceId = "vbr-xxxxx",
+    ///         NameRegex = "^preserved-NODELETING",
+    ///     });
+    /// 
+    ///     var vlanId = new Random.RandomInteger("vlanId", new()
+    ///     {
+    ///         Max = 2999,
+    ///         Min = 1,
+    ///     });
+    /// 
+    ///     var exampleVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("exampleVirtualBorderRouter", new()
+    ///     {
+    ///         LocalGatewayIp = "10.0.0.1",
+    ///         PeerGatewayIp = "10.0.0.2",
+    ///         PeeringSubnetMask = "255.255.255.252",
+    ///         PhysicalConnectionId = defaultPhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         VirtualBorderRouterName = name,
+    ///         VlanId = vlanId.Id,
+    ///         MinRxInterval = 1000,
+    ///         MinTxInterval = 1000,
+    ///         DetectMultiplier = 10,
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = name,
+    ///         ProtectionLevel = "REDUCED",
+    ///     });
+    /// 
+    ///     var exampleInstanceAttachment = new AliCloud.Cen.InstanceAttachment("exampleInstanceAttachment", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
+    ///         ChildInstanceId = exampleVirtualBorderRouter.Id,
     ///         ChildInstanceType = "VBR",
-    ///         ChildInstanceRegionId = "cn-hangzhou",
+    ///         ChildInstanceRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
     ///     });
     /// 
-    ///     var defaultVbrHealthCheck = new AliCloud.Cen.VbrHealthCheck("defaultVbrHealthCheck", new()
+    ///     var exampleVbrHealthCheck = new AliCloud.Cen.VbrHealthCheck("exampleVbrHealthCheck", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
+    ///         CenId = exampleInstance.Id,
     ///         HealthCheckSourceIp = "192.168.1.2",
     ///         HealthCheckTargetIp = "10.0.0.2",
-    ///         VbrInstanceId = "vbr-xxxxx",
-    ///         VbrInstanceRegionId = "cn-hangzhou",
+    ///         VbrInstanceId = exampleVirtualBorderRouter.Id,
+    ///         VbrInstanceRegionId = exampleInstanceAttachment.ChildInstanceRegionId,
     ///         HealthCheckInterval = 2,
     ///         HealthyThreshold = 8,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultInstanceAttachment,
-    ///         },
     ///     });
     /// 
     /// });

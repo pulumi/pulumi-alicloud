@@ -138,13 +138,13 @@ def get_waf_rules(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dcdn/getWafRules:getWafRules', __args__, opts=opts, typ=GetWafRulesResult).value
 
     return AwaitableGetWafRulesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        query_args=__ret__.query_args,
-        waf_rules=__ret__.waf_rules)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        query_args=pulumi.get(__ret__, 'query_args'),
+        waf_rules=pulumi.get(__ret__, 'waf_rules'))
 
 
 @_utilities.lift_output_func(get_waf_rules)

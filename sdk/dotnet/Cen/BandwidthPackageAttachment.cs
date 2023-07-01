@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
     /// 
+    /// &gt; **NOTE:** Available since v1.18.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage
@@ -24,26 +26,24 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new bandwidth package attachment and use it to attach a bandwidth package to a new CEN
-    ///     var cen = new AliCloud.Cen.Instance("cen", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         Description = "tf-testAccCenBandwidthPackageAttachmentDescription",
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var bwp = new AliCloud.Cen.BandwidthPackage("bwp", new()
+    ///     var exampleBandwidthPackage = new AliCloud.Cen.BandwidthPackage("exampleBandwidthPackage", new()
     ///     {
-    ///         Bandwidth = 20,
-    ///         GeographicRegionIds = new[]
-    ///         {
-    ///             "China",
-    ///             "Asia-Pacific",
-    ///         },
+    ///         Bandwidth = 5,
+    ///         CenBandwidthPackageName = "tf_example",
+    ///         GeographicRegionAId = "China",
+    ///         GeographicRegionBId = "China",
     ///     });
     /// 
-    ///     var foo = new AliCloud.Cen.BandwidthPackageAttachment("foo", new()
+    ///     var exampleBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new()
     ///     {
-    ///         InstanceId = cen.Id,
-    ///         BandwidthPackageId = bwp.Id,
+    ///         InstanceId = exampleInstance.Id,
+    ///         BandwidthPackageId = exampleBandwidthPackage.Id,
     ///     });
     /// 
     /// });

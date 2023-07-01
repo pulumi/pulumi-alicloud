@@ -12,33 +12,9 @@ namespace Pulumi.AliCloud.Alb
     /// <summary>
     /// Provides a Alb Ascript resource.
     /// 
-    /// For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/what-is-application-load-balancer).
+    /// For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createascripts).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// Basic Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AliCloud = Pulumi.AliCloud;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new AliCloud.Alb.AScript("default", new()
-    ///     {
-    ///         ScriptContent = "time()",
-    ///         Position = "RequestHead",
-    ///         AscriptName = "test",
-    ///         Enabled = true,
-    ///         ListenerId = @var.ListenerId,
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Import
     /// 
@@ -70,7 +46,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<bool> ExtAttributeEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Extended attribute list. See the following `Block ExtAttributes`.
+        /// Extended attribute list. See `ext_attributes` below for details.
         /// </summary>
         [Output("extAttributes")]
         public Output<ImmutableArray<Outputs.AScriptExtAttribute>> ExtAttributes { get; private set; } = null!;
@@ -173,7 +149,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AScriptExtAttributeArgs>? _extAttributes;
 
         /// <summary>
-        /// Extended attribute list. See the following `Block ExtAttributes`.
+        /// Extended attribute list. See `ext_attributes` below for details.
         /// </summary>
         public InputList<Inputs.AScriptExtAttributeArgs> ExtAttributes
         {
@@ -229,7 +205,7 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AScriptExtAttributeGetArgs>? _extAttributes;
 
         /// <summary>
-        /// Extended attribute list. See the following `Block ExtAttributes`.
+        /// Extended attribute list. See `ext_attributes` below for details.
         /// </summary>
         public InputList<Inputs.AScriptExtAttributeGetArgs> ExtAttributes
         {

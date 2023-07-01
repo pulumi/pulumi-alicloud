@@ -110,6 +110,9 @@ class RouteEntryArgs:
         """
         This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
+        warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
+
         return pulumi.get(self, "router_id")
 
     @router_id.setter
@@ -217,6 +220,9 @@ class _RouteEntryState:
         """
         This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
+        warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
+
         return pulumi.get(self, "router_id")
 
     @router_id.setter
@@ -522,5 +528,8 @@ class RouteEntry(pulumi.CustomResource):
         """
         This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
+        warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
+
         return pulumi.get(self, "router_id")
 

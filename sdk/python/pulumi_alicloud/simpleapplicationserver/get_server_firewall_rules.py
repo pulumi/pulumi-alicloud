@@ -119,11 +119,11 @@ def get_server_firewall_rules(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules', __args__, opts=opts, typ=GetServerFirewallRulesResult).value
 
     return AwaitableGetServerFirewallRulesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        output_file=__ret__.output_file,
-        rules=__ret__.rules)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rules=pulumi.get(__ret__, 'rules'))
 
 
 @_utilities.lift_output_func(get_server_firewall_rules)

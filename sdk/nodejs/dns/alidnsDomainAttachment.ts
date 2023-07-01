@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides bind the domain name to the Alidns instance resource.
  *
- * > **NOTE:** Available in v1.99.0+.
+ * > **NOTE:** Available since v1.99.0.
  *
  * ## Example Usage
  *
@@ -15,12 +15,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const dns = new alicloud.dns.AlidnsDomainAttachment("dns", {
- *     domainNames: [
- *         "test111.abc",
- *         "test222.abc",
- *     ],
- *     instanceId: "dns-cn-mp91lyq9xxxx",
+ * const defaultDomainGroup = new alicloud.dns.DomainGroup("defaultDomainGroup", {domainGroupName: "tf-example"});
+ * const defaultAlidnsDomain = new alicloud.dns.AlidnsDomain("defaultAlidnsDomain", {
+ *     domainName: "starmove.com",
+ *     groupId: defaultDomainGroup.id,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
+ * const defaultAlidnsInstance = new alicloud.dns.AlidnsInstance("defaultAlidnsInstance", {
+ *     dnsSecurity: "basic",
+ *     domainNumbers: "3",
+ *     versionCode: "version_personal",
+ *     period: 1,
+ *     renewalStatus: "ManualRenewal",
+ * });
+ * const defaultAlidnsDomainAttachment = new alicloud.dns.AlidnsDomainAttachment("defaultAlidnsDomainAttachment", {
+ *     instanceId: defaultAlidnsInstance.id,
+ *     domainNames: [defaultAlidnsDomain.domainName],
  * });
  * ```
  *

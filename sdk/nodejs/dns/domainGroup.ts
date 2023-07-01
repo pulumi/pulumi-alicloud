@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).
  *
- * > **NOTE:** Available in v1.84.0+.
+ * > **NOTE:** Available since v1.84.0.
  *
  * ## Example Usage
  *
@@ -15,8 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Add a new Alinds Domain Group.
- * const example = new alicloud.dns.DomainGroup("example", {domainGroupName: "tf-testDG"});
+ * const _default = new alicloud.dns.DomainGroup("default", {domainGroupName: "tf-example"});
  * ```
  *
  * ## Import

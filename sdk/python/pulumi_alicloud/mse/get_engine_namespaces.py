@@ -128,12 +128,12 @@ def get_engine_namespaces(accept_language: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:mse/getEngineNamespaces:getEngineNamespaces', __args__, opts=opts, typ=GetEngineNamespacesResult).value
 
     return AwaitableGetEngineNamespacesResult(
-        accept_language=__ret__.accept_language,
-        cluster_id=__ret__.cluster_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        namespaces=__ret__.namespaces,
-        output_file=__ret__.output_file)
+        accept_language=pulumi.get(__ret__, 'accept_language'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        namespaces=pulumi.get(__ret__, 'namespaces'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_engine_namespaces)

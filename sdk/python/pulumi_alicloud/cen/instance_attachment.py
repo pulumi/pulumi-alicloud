@@ -254,7 +254,7 @@ class InstanceAttachment(pulumi.CustomResource):
         """
         Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
 
-        ->**NOTE:** Available in 1.42.0+
+        > **NOTE:** Available since v1.42.0.
 
         ## Example Usage
 
@@ -264,17 +264,18 @@ class InstanceAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccCenInstanceAttachmentBasic"
-        cen = alicloud.cen.Instance("cen", description="terraform01")
-        vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/16")
-        foo = alicloud.cen.InstanceAttachment("foo",
-            instance_id=cen.id,
-            child_instance_id=vpc.id,
+        default = alicloud.get_regions(current=True)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=example_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-beijing")
+            child_instance_region_id=default.regions[0].id)
         ```
 
         ## Import
@@ -305,7 +306,7 @@ class InstanceAttachment(pulumi.CustomResource):
         """
         Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
 
-        ->**NOTE:** Available in 1.42.0+
+        > **NOTE:** Available since v1.42.0.
 
         ## Example Usage
 
@@ -315,17 +316,18 @@ class InstanceAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccCenInstanceAttachmentBasic"
-        cen = alicloud.cen.Instance("cen", description="terraform01")
-        vpc = alicloud.vpc.Network("vpc", cidr_block="192.168.0.0/16")
-        foo = alicloud.cen.InstanceAttachment("foo",
-            instance_id=cen.id,
-            child_instance_id=vpc.id,
+        default = alicloud.get_regions(current=True)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_instance.id,
+            child_instance_id=example_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-beijing")
+            child_instance_region_id=default.regions[0].id)
         ```
 
         ## Import

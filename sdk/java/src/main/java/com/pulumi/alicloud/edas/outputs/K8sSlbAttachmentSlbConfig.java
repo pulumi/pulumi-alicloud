@@ -19,7 +19,7 @@ public final class K8sSlbAttachmentSlbConfig {
      */
     private @Nullable String name;
     /**
-     * @return The port configuration for SLB instance, which is supported for multiple configurations.
+     * @return The port configuration for SLB instance, which is supported for multiple configurations. See `port_mappings` below.
      * 
      */
     private List<K8sSlbAttachmentSlbConfigPortMapping> portMappings;
@@ -53,7 +53,7 @@ public final class K8sSlbAttachmentSlbConfig {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The port configuration for SLB instance, which is supported for multiple configurations.
+     * @return The port configuration for SLB instance, which is supported for multiple configurations. See `port_mappings` below.
      * 
      */
     public List<K8sSlbAttachmentSlbConfigPortMapping> portMappings() {

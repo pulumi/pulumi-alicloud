@@ -18,9 +18,9 @@ import javax.annotation.Nullable;
  * PrivateZone is a VPC-based resolution and management service for private domain names.
  * After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
  * 
- * For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/doc-detail/106693.htm).
+ * For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-routeprivatezoneincentovpc).
  * 
- * &gt; **NOTE:** Available in 1.83.0+
+ * &gt; **NOTE:** Available since v1.83.0.
  * 
  * ## Example Usage
  * 
@@ -31,14 +31,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.InstanceAttachment;
  * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
  * import com.pulumi.alicloud.cen.PrivateZone;
  * import com.pulumi.alicloud.cen.PrivateZoneArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,32 +54,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;);
- * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;test_name&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
  *             .build());
  * 
- *         var defaultInstanceAttachment = new InstanceAttachment(&#34;defaultInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(defaultInstance.id())
- *             .childInstanceId(defaultNetwork.id())
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
+ *             .build());
+ * 
+ *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(exampleInstance.id())
+ *             .childInstanceId(exampleNetwork.id())
  *             .childInstanceType(&#34;VPC&#34;)
- *             .childInstanceRegionId(&#34;cn-hangzhou&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     defaultInstance,
- *                     defaultNetwork)
- *                 .build());
+ *             .childInstanceRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .build());
  * 
  *         var defaultPrivateZone = new PrivateZone(&#34;defaultPrivateZone&#34;, PrivateZoneArgs.builder()        
- *             .accessRegionId(&#34;cn-hangzhou&#34;)
- *             .cenId(defaultInstance.id())
- *             .hostRegionId(&#34;cn-hangzhou&#34;)
- *             .hostVpcId(defaultNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(defaultInstanceAttachment)
- *                 .build());
+ *             .accessRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .cenId(exampleInstanceAttachment.instanceId())
+ *             .hostRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .hostVpcId(exampleNetwork.id())
+ *             .build());
  * 
  *     }
  * }

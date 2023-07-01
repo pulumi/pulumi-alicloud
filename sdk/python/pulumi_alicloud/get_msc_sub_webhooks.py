@@ -126,12 +126,12 @@ def get_msc_sub_webhooks(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:index/getMscSubWebhooks:getMscSubWebhooks', __args__, opts=opts, typ=GetMscSubWebhooksResult).value
 
     return AwaitableGetMscSubWebhooksResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        webhooks=__ret__.webhooks)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        webhooks=pulumi.get(__ret__, 'webhooks'))
 
 
 @_utilities.lift_output_func(get_msc_sub_webhooks)

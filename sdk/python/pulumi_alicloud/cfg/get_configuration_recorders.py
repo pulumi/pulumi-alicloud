@@ -94,9 +94,9 @@ def get_configuration_recorders(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders', __args__, opts=opts, typ=GetConfigurationRecordersResult).value
 
     return AwaitableGetConfigurationRecordersResult(
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        recorders=__ret__.recorders)
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        recorders=pulumi.get(__ret__, 'recorders'))
 
 
 @_utilities.lift_output_func(get_configuration_recorders)

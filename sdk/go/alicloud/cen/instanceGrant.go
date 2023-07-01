@@ -13,7 +13,9 @@ import (
 
 // Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
 //
-// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm).
+// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-attachcenchildinstance).
+//
+// > **NOTE:** Available since v1.37.0.
 //
 // ## Example Usage
 //
@@ -34,51 +36,70 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := alicloud.NewProvider(ctx, "account1", &alicloud.ProviderArgs{
-//				AccessKey: pulumi.String("access123"),
-//				SecretKey: pulumi.String("secret123"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alicloud.NewProvider(ctx, "account2", &alicloud.ProviderArgs{
-//				AccessKey: pulumi.String("access456"),
-//				SecretKey: pulumi.String("secret456"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			cfg := config.New(ctx, "")
-//			name := "tf-testAccCenInstanceGrantBasic"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
+//			childAccountAk := "example-ak"
+//			if param := cfg.Get("childAccountAk"); param != "" {
+//				childAccountAk = param
 //			}
-//			cen, err := cen.NewInstance(ctx, "cen", nil, pulumi.Provider(alicloud.Account2))
+//			childAccountSk := "example-sk"
+//			if param := cfg.Get("childAccountSk"); param != "" {
+//				childAccountSk = param
+//			}
+//			_, err := alicloud.NewProvider(ctx, "yourAccount", nil)
 //			if err != nil {
 //				return err
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("192.168.0.0/16"),
-//			}, pulumi.Provider(alicloud.Account1))
+//			_, err = alicloud.NewProvider(ctx, "childAccount", &alicloud.ProviderArgs{
+//				AccessKey: pulumi.String(childAccountAk),
+//				SecretKey: pulumi.String(childAccountSk),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			fooInstanceGrant, err := cen.NewInstanceGrant(ctx, "fooInstanceGrant", &cen.InstanceGrantArgs{
-//				CenId:           cen.ID(),
-//				ChildInstanceId: vpc.ID(),
-//				CenOwnerId:      pulumi.String("uid2"),
-//			}, pulumi.Provider(alicloud.Account1))
+//			yourAccountAccount, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewInstanceAttachment(ctx, "fooInstanceAttachment", &cen.InstanceAttachmentArgs{
-//				InstanceId:            cen.ID(),
-//				ChildInstanceId:       vpc.ID(),
+//			childAccountAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
+//			}, pulumi.Provider(alicloud.Your_account))
+//			if err != nil {
+//				return err
+//			}
+//			childAccountNetwork, err := vpc.NewNetwork(ctx, "childAccountNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			}, pulumi.Provider(alicloud.Child_account))
+//			if err != nil {
+//				return err
+//			}
+//			childAccountInstanceGrant, err := cen.NewInstanceGrant(ctx, "childAccountInstanceGrant", &cen.InstanceGrantArgs{
+//				CenId:           exampleInstance.ID(),
+//				ChildInstanceId: childAccountNetwork.ID(),
+//				CenOwnerId:      *pulumi.String(yourAccountAccount.Id),
+//			}, pulumi.Provider(alicloud.Child_account))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            exampleInstance.ID(),
+//				ChildInstanceId:       childAccountNetwork.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String("cn-qingdao"),
-//				ChildInstanceOwnerId:  pulumi.Int("uid1"),
-//			}, pulumi.Provider(alicloud.Account2), pulumi.DependsOn([]pulumi.Resource{
-//				fooInstanceGrant,
+//				ChildInstanceRegionId: *pulumi.String(_default.Regions[0].Id),
+//				ChildInstanceOwnerId:  *pulumi.String(childAccountAccount.Id),
+//			}, pulumi.Provider(alicloud.Your_account), pulumi.DependsOn([]pulumi.Resource{
+//				childAccountInstanceGrant,
 //			}))
 //			if err != nil {
 //				return err

@@ -161,15 +161,15 @@ def get_control_policies(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getControlPolicies:getControlPolicies', __args__, opts=opts, typ=GetControlPoliciesResult).value
 
     return AwaitableGetControlPoliciesResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        language=__ret__.language,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        policies=__ret__.policies,
-        policy_type=__ret__.policy_type)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        language=pulumi.get(__ret__, 'language'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policies=pulumi.get(__ret__, 'policies'),
+        policy_type=pulumi.get(__ret__, 'policy_type'))
 
 
 @_utilities.lift_output_func(get_control_policies)

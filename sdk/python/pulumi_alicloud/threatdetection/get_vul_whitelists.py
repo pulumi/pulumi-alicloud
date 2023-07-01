@@ -128,12 +128,12 @@ def get_vul_whitelists(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:threatdetection/getVulWhitelists:getVulWhitelists', __args__, opts=opts, typ=GetVulWhitelistsResult).value
 
     return AwaitableGetVulWhitelistsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        whitelists=__ret__.whitelists)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        whitelists=pulumi.get(__ret__, 'whitelists'))
 
 
 @_utilities.lift_output_func(get_vul_whitelists)

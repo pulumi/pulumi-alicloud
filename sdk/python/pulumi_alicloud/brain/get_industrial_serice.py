@@ -94,9 +94,9 @@ def get_industrial_serice(enable: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:brain/getIndustrialSerice:getIndustrialSerice', __args__, opts=opts, typ=GetIndustrialSericeResult).value
 
     return AwaitableGetIndustrialSericeResult(
-        enable=__ret__.enable,
-        id=__ret__.id,
-        status=__ret__.status)
+        enable=pulumi.get(__ret__, 'enable'),
+        id=pulumi.get(__ret__, 'id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_industrial_serice)

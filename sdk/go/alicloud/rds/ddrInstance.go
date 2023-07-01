@@ -87,7 +87,7 @@ type DdrInstance struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
-	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
@@ -134,14 +134,14 @@ type DdrInstance struct {
 	ModifyMode pulumi.StringPtrOutput `pulumi:"modifyMode"`
 	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntOutput `pulumi:"monitoringPeriod"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters DdrInstanceParameterArrayOutput `pulumi:"parameters"`
 	// Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs DdrInstancePgHbaConfArrayOutput `pulumi:"pgHbaConfs"`
 	// The private port of the database service. If you want to update public port, please use resource rds.Connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
@@ -181,7 +181,6 @@ type DdrInstance struct {
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey pulumi.StringOutput `pulumi:"serverKey"`
 	// The ID of the source instance if you want to restore data to a point in time.
-	// #### Block pg_hba_conf
 	SourceDbInstanceName pulumi.StringPtrOutput `pulumi:"sourceDbInstanceName"`
 	// The region ID of the source instance if you want to restore data to a point in time.
 	SourceRegion pulumi.StringPtrOutput `pulumi:"sourceRegion"`
@@ -379,7 +378,7 @@ type ddrInstanceState struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	EffectiveTime *string `pulumi:"effectiveTime"`
@@ -426,14 +425,14 @@ type ddrInstanceState struct {
 	ModifyMode *string `pulumi:"modifyMode"`
 	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
 	MonitoringPeriod *int `pulumi:"monitoringPeriod"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters []DdrInstanceParameter `pulumi:"parameters"`
 	// Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs []DdrInstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The private port of the database service. If you want to update public port, please use resource rds.Connection port.
 	Port *string `pulumi:"port"`
@@ -473,7 +472,6 @@ type ddrInstanceState struct {
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey *string `pulumi:"serverKey"`
 	// The ID of the source instance if you want to restore data to a point in time.
-	// #### Block pg_hba_conf
 	SourceDbInstanceName *string `pulumi:"sourceDbInstanceName"`
 	// The region ID of the source instance if you want to restore data to a point in time.
 	SourceRegion *string `pulumi:"sourceRegion"`
@@ -625,7 +623,7 @@ type DdrInstanceState struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
-	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	EffectiveTime pulumi.StringPtrInput
@@ -672,14 +670,14 @@ type DdrInstanceState struct {
 	ModifyMode pulumi.StringPtrInput
 	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntPtrInput
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters DdrInstanceParameterArrayInput
 	// Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs DdrInstancePgHbaConfArrayInput
 	// The private port of the database service. If you want to update public port, please use resource rds.Connection port.
 	Port pulumi.StringPtrInput
@@ -719,7 +717,6 @@ type DdrInstanceState struct {
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey pulumi.StringPtrInput
 	// The ID of the source instance if you want to restore data to a point in time.
-	// #### Block pg_hba_conf
 	SourceDbInstanceName pulumi.StringPtrInput
 	// The region ID of the source instance if you want to restore data to a point in time.
 	SourceRegion pulumi.StringPtrInput
@@ -871,7 +868,7 @@ type ddrInstanceArgs struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	EffectiveTime *string `pulumi:"effectiveTime"`
@@ -918,14 +915,14 @@ type ddrInstanceArgs struct {
 	ModifyMode *string `pulumi:"modifyMode"`
 	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
 	MonitoringPeriod *int `pulumi:"monitoringPeriod"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters []DdrInstanceParameter `pulumi:"parameters"`
 	// Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
 	// The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs []DdrInstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The private port of the database service. If you want to update public port, please use resource rds.Connection port.
 	Port *string `pulumi:"port"`
@@ -965,7 +962,6 @@ type ddrInstanceArgs struct {
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey *string `pulumi:"serverKey"`
 	// The ID of the source instance if you want to restore data to a point in time.
-	// #### Block pg_hba_conf
 	SourceDbInstanceName *string `pulumi:"sourceDbInstanceName"`
 	// The region ID of the source instance if you want to restore data to a point in time.
 	SourceRegion *string `pulumi:"sourceRegion"`
@@ -1108,7 +1104,7 @@ type DdrInstanceArgs struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
-	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	EffectiveTime pulumi.StringPtrInput
@@ -1155,14 +1151,14 @@ type DdrInstanceArgs struct {
 	ModifyMode pulumi.StringPtrInput
 	// The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntPtrInput
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters DdrInstanceParameterArrayInput
 	// Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
 	PaymentType pulumi.StringInput
 	// The duration that you will buy DB instance (in month). It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs DdrInstancePgHbaConfArrayInput
 	// The private port of the database service. If you want to update public port, please use resource rds.Connection port.
 	Port pulumi.StringPtrInput
@@ -1202,7 +1198,6 @@ type DdrInstanceArgs struct {
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey pulumi.StringPtrInput
 	// The ID of the source instance if you want to restore data to a point in time.
-	// #### Block pg_hba_conf
 	SourceDbInstanceName pulumi.StringPtrInput
 	// The region ID of the source instance if you want to restore data to a point in time.
 	SourceRegion pulumi.StringPtrInput
@@ -1485,7 +1480,7 @@ func (o DdrInstanceOutput) DeletionProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DdrInstance) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
-// The method to update the engine version.  Default value: Immediate. Valid values:
+// The method to update the engine version and change.  Default value: Immediate. Valid values:
 // - Immediate: The change immediately takes effect.
 // - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 func (o DdrInstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
@@ -1574,7 +1569,7 @@ func (o DdrInstanceOutput) MonitoringPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *DdrInstance) pulumi.IntOutput { return v.MonitoringPeriod }).(pulumi.IntOutput)
 }
 
-// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 func (o DdrInstanceOutput) Parameters() DdrInstanceParameterArrayOutput {
 	return o.ApplyT(func(v *DdrInstance) DdrInstanceParameterArrayOutput { return v.Parameters }).(DdrInstanceParameterArrayOutput)
 }
@@ -1590,7 +1585,7 @@ func (o DdrInstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DdrInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 func (o DdrInstanceOutput) PgHbaConfs() DdrInstancePgHbaConfArrayOutput {
 	return o.ApplyT(func(v *DdrInstance) DdrInstancePgHbaConfArrayOutput { return v.PgHbaConfs }).(DdrInstancePgHbaConfArrayOutput)
 }
@@ -1672,7 +1667,6 @@ func (o DdrInstanceOutput) ServerKey() pulumi.StringOutput {
 }
 
 // The ID of the source instance if you want to restore data to a point in time.
-// #### Block pg_hba_conf
 func (o DdrInstanceOutput) SourceDbInstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DdrInstance) pulumi.StringPtrOutput { return v.SourceDbInstanceName }).(pulumi.StringPtrOutput)
 }

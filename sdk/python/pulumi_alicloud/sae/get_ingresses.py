@@ -115,12 +115,12 @@ def get_ingresses(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:sae/getIngresses:getIngresses', __args__, opts=opts, typ=GetIngressesResult).value
 
     return AwaitableGetIngressesResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        ingresses=__ret__.ingresses,
-        namespace_id=__ret__.namespace_id,
-        output_file=__ret__.output_file)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        ingresses=pulumi.get(__ret__, 'ingresses'),
+        namespace_id=pulumi.get(__ret__, 'namespace_id'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_ingresses)

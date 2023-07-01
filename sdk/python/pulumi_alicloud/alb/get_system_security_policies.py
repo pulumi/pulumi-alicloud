@@ -120,11 +120,11 @@ def get_system_security_policies(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies', __args__, opts=opts, typ=GetSystemSecurityPoliciesResult).value
 
     return AwaitableGetSystemSecurityPoliciesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        policies=__ret__.policies,
-        tags=__ret__.tags)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policies=pulumi.get(__ret__, 'policies'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_system_security_policies)

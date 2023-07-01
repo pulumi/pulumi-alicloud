@@ -14,9 +14,9 @@ namespace Pulumi.AliCloud.Cen
     /// PrivateZone is a VPC-based resolution and management service for private domain names.
     /// After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
     /// 
-    /// For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/doc-detail/106693.htm).
+    /// For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-routeprivatezoneincentovpc).
     /// 
-    /// &gt; **NOTE:** Available in 1.83.0+
+    /// &gt; **NOTE:** Available since v1.83.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,42 +30,37 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a cen Private Zone resource and use it.
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance");
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         VpcName = "test_name",
-    ///         CidrBlock = "172.16.0.0/12",
+    ///         Current = true,
     ///     });
     /// 
-    ///     var defaultInstanceAttachment = new AliCloud.Cen.InstanceAttachment("defaultInstanceAttachment", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         InstanceId = defaultInstance.Id,
-    ///         ChildInstanceId = defaultNetwork.Id,
+    ///         VpcName = "tf_example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     {
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
+    ///     });
+    /// 
+    ///     var exampleInstanceAttachment = new AliCloud.Cen.InstanceAttachment("exampleInstanceAttachment", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
+    ///         ChildInstanceId = exampleNetwork.Id,
     ///         ChildInstanceType = "VPC",
-    ///         ChildInstanceRegionId = "cn-hangzhou",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultInstance,
-    ///             defaultNetwork,
-    ///         },
+    ///         ChildInstanceRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
     ///     });
     /// 
     ///     var defaultPrivateZone = new AliCloud.Cen.PrivateZone("defaultPrivateZone", new()
     ///     {
-    ///         AccessRegionId = "cn-hangzhou",
-    ///         CenId = defaultInstance.Id,
-    ///         HostRegionId = "cn-hangzhou",
-    ///         HostVpcId = defaultNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             defaultInstanceAttachment,
-    ///         },
+    ///         AccessRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         CenId = exampleInstanceAttachment.InstanceId,
+    ///         HostRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         HostVpcId = exampleNetwork.Id,
     ///     });
     /// 
     /// });

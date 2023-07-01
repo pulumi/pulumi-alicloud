@@ -395,7 +395,7 @@ class AlidnsRecord(pulumi.CustomResource):
         """
         Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/doc-detail/29772.htm).
 
-        > **NOTE:** Available in v1.85.0+.
+        > **NOTE:** Available since v1.85.0.
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
 
@@ -405,14 +405,21 @@ class AlidnsRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a new Domain Record
+        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+            domain_name="starmove.com",
+            group_id=default_domain_group.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
         record = alicloud.dns.AlidnsRecord("record",
-            domain_name="domainname",
-            remark="Test new alidns record.",
-            rr="@",
-            status="ENABLE",
-            type="A",
-            value="192.168.99.99")
+            domain_name=default_alidns_domain.domain_name,
+            rr="alimail",
+            type="CNAME",
+            value="mail.mxhichin.com",
+            remark="tf-example",
+            status="ENABLE")
         ```
 
         ## Import
@@ -446,7 +453,7 @@ class AlidnsRecord(pulumi.CustomResource):
         """
         Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/doc-detail/29772.htm).
 
-        > **NOTE:** Available in v1.85.0+.
+        > **NOTE:** Available since v1.85.0.
 
         > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
 
@@ -456,14 +463,21 @@ class AlidnsRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a new Domain Record
+        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+            domain_name="starmove.com",
+            group_id=default_domain_group.id,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
         record = alicloud.dns.AlidnsRecord("record",
-            domain_name="domainname",
-            remark="Test new alidns record.",
-            rr="@",
-            status="ENABLE",
-            type="A",
-            value="192.168.99.99")
+            domain_name=default_alidns_domain.domain_name,
+            rr="alimail",
+            type="CNAME",
+            value="mail.mxhichin.com",
+            remark="tf-example",
+            status="ENABLE")
         ```
 
         ## Import

@@ -68,6 +68,9 @@ class GroupArgs:
         """
         Replaced by `group_name` after version 1.98.0.
         """
+        warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
+
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -183,6 +186,9 @@ class _GroupState:
         """
         Replaced by `group_name` after version 1.98.0.
         """
+        warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
+
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -465,6 +471,9 @@ class Group(pulumi.CustomResource):
         """
         Replaced by `group_name` after version 1.98.0.
         """
+        warnings.warn("""Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""group_id is deprecated: Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead.""")
+
         return pulumi.get(self, "group_id")
 
     @property

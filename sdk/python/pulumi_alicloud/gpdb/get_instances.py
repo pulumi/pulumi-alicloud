@@ -244,22 +244,22 @@ def get_instances(availability_zone: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:gpdb/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
-        availability_zone=__ret__.availability_zone,
-        db_instance_categories=__ret__.db_instance_categories,
-        db_instance_modes=__ret__.db_instance_modes,
-        description=__ret__.description,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_network_type=__ret__.instance_network_type,
-        instances=__ret__.instances,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        vswitch_id=__ret__.vswitch_id)
+        availability_zone=pulumi.get(__ret__, 'availability_zone'),
+        db_instance_categories=pulumi.get(__ret__, 'db_instance_categories'),
+        db_instance_modes=pulumi.get(__ret__, 'db_instance_modes'),
+        description=pulumi.get(__ret__, 'description'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_network_type=pulumi.get(__ret__, 'instance_network_type'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
 
 
 @_utilities.lift_output_func(get_instances)

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.204.0+.
+ * > **NOTE:** Available since v1.204.0+.
  *
  * ## Example Usage
  *
@@ -64,12 +64,15 @@ export interface GetSlotsResult {
     readonly id: string;
     readonly outputFile?: string;
     readonly resourceGroupId?: string;
+    /**
+     * A list of Rds Replication Slots. Each element contains the following attributes:
+     */
     readonly slots: outputs.rds.GetSlotsSlot[];
 }
 /**
  * This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.204.0+.
+ * > **NOTE:** Available since v1.204.0+.
  *
  * ## Example Usage
  *

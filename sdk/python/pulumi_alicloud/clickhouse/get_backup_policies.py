@@ -103,10 +103,10 @@ def get_backup_policies(db_cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:clickhouse/getBackupPolicies:getBackupPolicies', __args__, opts=opts, typ=GetBackupPoliciesResult).value
 
     return AwaitableGetBackupPoliciesResult(
-        db_cluster_id=__ret__.db_cluster_id,
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        policies=__ret__.policies)
+        db_cluster_id=pulumi.get(__ret__, 'db_cluster_id'),
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policies=pulumi.get(__ret__, 'policies'))
 
 
 @_utilities.lift_output_func(get_backup_policies)

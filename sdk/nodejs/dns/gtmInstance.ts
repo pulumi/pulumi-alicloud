@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about Alidns Gtm Instance and how to use it, see [What is Gtm Instance](https://www.alibabacloud.com/help/en/doc-detail/204852.html).
  *
- * > **NOTE:** Available in v1.151.0+.
+ * > **NOTE:** Available since v1.151.0.
  *
  * ## Example Usage
  *
@@ -21,10 +21,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const domainName = config.get("domainName") || "alicloud-provider.com";
  * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {alarmContactGroupName: _var.name});
+ * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {alarmContactGroupName: "tf_example"});
  * const defaultGtmInstance = new alicloud.dns.GtmInstance("defaultGtmInstance", {
- *     instanceName: _var.name,
+ *     instanceName: "tf_example",
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewalStatus: "ManualRenewal",
@@ -36,7 +38,7 @@ import * as utilities from "../utilities";
  *     cnameType: "PUBLIC",
  *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
  *     alertGroups: [defaultAlarmContactGroup.alarmContactGroupName],
- *     publicUserDomainName: _var.domain_name,
+ *     publicUserDomainName: domainName,
  *     alertConfigs: [{
  *         smsNotice: true,
  *         noticeType: "ADDR_ALERT",
@@ -83,7 +85,7 @@ export class GtmInstance extends pulumi.CustomResource {
     }
 
     /**
-     * The alert notification methods. See the following `Block alertConfig`.
+     * The alert notification methods. See `alertConfig` below for details.
      */
     public readonly alertConfigs!: pulumi.Output<outputs.dns.GtmInstanceAlertConfig[] | undefined>;
     /**
@@ -247,7 +249,7 @@ export class GtmInstance extends pulumi.CustomResource {
  */
 export interface GtmInstanceState {
     /**
-     * The alert notification methods. See the following `Block alertConfig`.
+     * The alert notification methods. See `alertConfig` below for details.
      */
     alertConfigs?: pulumi.Input<pulumi.Input<inputs.dns.GtmInstanceAlertConfig>[]>;
     /**
@@ -333,7 +335,7 @@ export interface GtmInstanceState {
  */
 export interface GtmInstanceArgs {
     /**
-     * The alert notification methods. See the following `Block alertConfig`.
+     * The alert notification methods. See `alertConfig` below for details.
      */
     alertConfigs?: pulumi.Input<pulumi.Input<inputs.dns.GtmInstanceAlertConfig>[]>;
     /**

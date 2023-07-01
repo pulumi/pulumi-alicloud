@@ -253,9 +253,9 @@ class RouteService(pulumi.CustomResource):
         """
         Provides a CEN Route Service resource. The virtual border routers (VBRs) and Cloud Connect Network (CCN) instances attached to Cloud Enterprise Network (CEN) instances can access the cloud services deployed in VPCs through the CEN instances.
 
-        For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/doc-detail/106671.htm).
+        For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-resolveandrouteserviceincen).
 
-        > **NOTE:** Available in v1.99.0+.
+        > **NOTE:** Available since v1.99.0.
 
         > **NOTE:** Ensure that at least one VPC in the selected region is attached to the CEN instance.
 
@@ -267,22 +267,23 @@ class RouteService(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-test"
-        example_networks = alicloud.vpc.get_networks(is_default=True)
-        example_instance = alicloud.cen.Instance("exampleInstance")
-        vpc = alicloud.cen.InstanceAttachment("vpc",
+        default = alicloud.get_regions(current=True)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
             instance_id=example_instance.id,
-            child_instance_id=example_networks.vpcs[0].id,
+            child_instance_id=example_network.id,
             child_instance_type="VPC",
-            child_instance_region_id=example_networks.vpcs[0].region_id)
-        this = alicloud.cen.RouteService("this",
-            access_region_id=example_networks.vpcs[0].region_id,
-            host_region_id=example_networks.vpcs[0].region_id,
-            host_vpc_id=example_networks.vpcs[0].id,
-            cen_id=vpc.instance_id,
+            child_instance_region_id=default.regions[0].id)
+        example_route_service = alicloud.cen.RouteService("exampleRouteService",
+            access_region_id=default.regions[0].id,
+            host_region_id=default.regions[0].id,
+            host_vpc_id=example_network.id,
+            cen_id=example_instance_attachment.instance_id,
             host="100.118.28.52/32")
         ```
 
@@ -314,9 +315,9 @@ class RouteService(pulumi.CustomResource):
         """
         Provides a CEN Route Service resource. The virtual border routers (VBRs) and Cloud Connect Network (CCN) instances attached to Cloud Enterprise Network (CEN) instances can access the cloud services deployed in VPCs through the CEN instances.
 
-        For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/doc-detail/106671.htm).
+        For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-resolveandrouteserviceincen).
 
-        > **NOTE:** Available in v1.99.0+.
+        > **NOTE:** Available since v1.99.0.
 
         > **NOTE:** Ensure that at least one VPC in the selected region is attached to the CEN instance.
 
@@ -328,22 +329,23 @@ class RouteService(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-test"
-        example_networks = alicloud.vpc.get_networks(is_default=True)
-        example_instance = alicloud.cen.Instance("exampleInstance")
-        vpc = alicloud.cen.InstanceAttachment("vpc",
+        default = alicloud.get_regions(current=True)
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.17.3.0/24")
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
             instance_id=example_instance.id,
-            child_instance_id=example_networks.vpcs[0].id,
+            child_instance_id=example_network.id,
             child_instance_type="VPC",
-            child_instance_region_id=example_networks.vpcs[0].region_id)
-        this = alicloud.cen.RouteService("this",
-            access_region_id=example_networks.vpcs[0].region_id,
-            host_region_id=example_networks.vpcs[0].region_id,
-            host_vpc_id=example_networks.vpcs[0].id,
-            cen_id=vpc.instance_id,
+            child_instance_region_id=default.regions[0].id)
+        example_route_service = alicloud.cen.RouteService("exampleRouteService",
+            access_region_id=default.regions[0].id,
+            host_region_id=default.regions[0].id,
+            host_vpc_id=example_network.id,
+            cen_id=example_instance_attachment.instance_id,
             host="100.118.28.52/32")
         ```
 

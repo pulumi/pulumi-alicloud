@@ -91,9 +91,9 @@ def get_msc_sub_subscriptions(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions', __args__, opts=opts, typ=GetMscSubSubscriptionsResult).value
 
     return AwaitableGetMscSubSubscriptionsResult(
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        subscriptions=__ret__.subscriptions)
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        subscriptions=pulumi.get(__ret__, 'subscriptions'))
 
 
 @_utilities.lift_output_func(get_msc_sub_subscriptions)

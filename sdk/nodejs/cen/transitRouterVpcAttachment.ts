@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://help.aliyun.com/document_detail/261358.html)
+ * Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervpcattachment)
  *
- * > **NOTE:** Available in 1.126.0+
+ * > **NOTE:** Available since v1.126.0.
  *
  * ## Example Usage
  *
@@ -20,46 +20,50 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const transitRouterAttachmentName = config.get("transitRouterAttachmentName") || "sdk_rebot_cen_tr_yaochi";
- * const transitRouterAttachmentDescription = config.get("transitRouterAttachmentDescription") || "sdk_rebot_cen_tr_yaochi";
- * const defaultTransitRouterAvailableResources = alicloud.cen.getTransitRouterAvailableResources({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "sdk_rebot_cen_tr_yaochi",
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const masterZone = _default.then(_default => _default.resources?.[0]?.masterZones?.[0]);
+ * const slaveZone = _default.then(_default => _default.resources?.[0]?.slaveZones?.[1]);
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
  *     cidrBlock: "192.168.0.0/16",
  * });
- * const defaultMaster = new alicloud.vpc.Switch("defaultMaster", {
- *     vswitchName: "sdk_rebot_cen_tr_yaochi",
- *     vpcId: defaultNetwork.id,
+ * const exampleMaster = new alicloud.vpc.Switch("exampleMaster", {
+ *     vswitchName: name,
  *     cidrBlock: "192.168.1.0/24",
- *     zoneId: defaultTransitRouterAvailableResources.then(defaultTransitRouterAvailableResources => defaultTransitRouterAvailableResources.resources?.[0]?.masterZones?.[0]),
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: masterZone,
  * });
- * const defaultSlave = new alicloud.vpc.Switch("defaultSlave", {
- *     vswitchName: "sdk_rebot_cen_tr_yaochi",
- *     vpcId: defaultNetwork.id,
+ * const exampleSlave = new alicloud.vpc.Switch("exampleSlave", {
+ *     vswitchName: name,
  *     cidrBlock: "192.168.2.0/24",
- *     zoneId: defaultTransitRouterAvailableResources.then(defaultTransitRouterAvailableResources => defaultTransitRouterAvailableResources.resources?.[0]?.slaveZones?.[0]),
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: slaveZone,
  * });
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
- *     cenInstanceName: "sdk_rebot_cen_tr_yaochi",
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: name,
  *     protectionLevel: "REDUCED",
  * });
- * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {cenId: defaultInstance.id});
- * const defaultTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", {
- *     cenId: defaultInstance.id,
- *     transitRouterId: defaultTransitRouter.transitRouterId,
- *     vpcId: defaultNetwork.id,
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: name,
+ *     cenId: exampleInstance.id,
+ * });
+ * const exampleTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", {
+ *     cenId: exampleInstance.id,
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
+ *     vpcId: exampleNetwork.id,
  *     zoneMappings: [
  *         {
- *             zoneId: defaultTransitRouterAvailableResources.then(defaultTransitRouterAvailableResources => defaultTransitRouterAvailableResources.resources?.[0]?.masterZones?.[0]),
- *             vswitchId: defaultMaster.id,
+ *             zoneId: masterZone,
+ *             vswitchId: exampleMaster.id,
  *         },
  *         {
- *             zoneId: defaultTransitRouterAvailableResources.then(defaultTransitRouterAvailableResources => defaultTransitRouterAvailableResources.resources?.[0]?.slaveZones?.[1]),
- *             vswitchId: defaultSlave.id,
+ *             zoneId: slaveZone,
+ *             vswitchId: exampleSlave.id,
  *         },
  *     ],
- *     transitRouterAttachmentName: transitRouterAttachmentName,
- *     transitRouterAttachmentDescription: transitRouterAttachmentDescription,
+ *     transitRouterAttachmentName: name,
+ *     transitRouterAttachmentDescription: name,
  * });
  * ```
  *
@@ -164,7 +168,7 @@ export class TransitRouterVpcAttachment extends pulumi.CustomResource {
      */
     public readonly vpcOwnerId!: pulumi.Output<string>;
     /**
-     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
      * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      */
     public readonly zoneMappings!: pulumi.Output<outputs.cen.TransitRouterVpcAttachmentZoneMapping[]>;
@@ -300,7 +304,7 @@ export interface TransitRouterVpcAttachmentState {
      */
     vpcOwnerId?: pulumi.Input<string>;
     /**
-     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
      * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      */
     zoneMappings?: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;
@@ -367,7 +371,7 @@ export interface TransitRouterVpcAttachmentArgs {
      */
     vpcOwnerId?: pulumi.Input<string>;
     /**
-     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
      * > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      */
     zoneMappings: pulumi.Input<pulumi.Input<inputs.cen.TransitRouterVpcAttachmentZoneMapping>[]>;

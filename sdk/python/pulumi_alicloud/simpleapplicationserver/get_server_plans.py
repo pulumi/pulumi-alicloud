@@ -179,16 +179,16 @@ def get_server_plans(bandwidth: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:simpleapplicationserver/getServerPlans:getServerPlans', __args__, opts=opts, typ=GetServerPlansResult).value
 
     return AwaitableGetServerPlansResult(
-        bandwidth=__ret__.bandwidth,
-        core=__ret__.core,
-        disk_size=__ret__.disk_size,
-        flow=__ret__.flow,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        memory=__ret__.memory,
-        output_file=__ret__.output_file,
-        plans=__ret__.plans,
-        platform=__ret__.platform)
+        bandwidth=pulumi.get(__ret__, 'bandwidth'),
+        core=pulumi.get(__ret__, 'core'),
+        disk_size=pulumi.get(__ret__, 'disk_size'),
+        flow=pulumi.get(__ret__, 'flow'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        memory=pulumi.get(__ret__, 'memory'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        plans=pulumi.get(__ret__, 'plans'),
+        platform=pulumi.get(__ret__, 'platform'))
 
 
 @_utilities.lift_output_func(get_server_plans)

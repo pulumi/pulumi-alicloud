@@ -142,12 +142,12 @@ def get_dynamic_tag_groups(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cms/getDynamicTagGroups:getDynamicTagGroups', __args__, opts=opts, typ=GetDynamicTagGroupsResult).value
 
     return AwaitableGetDynamicTagGroupsResult(
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        tag_key=__ret__.tag_key)
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        tag_key=pulumi.get(__ret__, 'tag_key'))
 
 
 @_utilities.lift_output_func(get_dynamic_tag_groups)

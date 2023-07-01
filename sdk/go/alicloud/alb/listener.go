@@ -13,9 +13,9 @@ import (
 
 // Provides a Application Load Balancer (ALB) Listener resource.
 //
-// For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/doc-detail/214348.htm).
+// For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createlistener).
 //
-// > **NOTE:** Available in v1.133.0+.
+// > **NOTE:** Available since v1.133.0.
 //
 // ## Import
 //
@@ -33,15 +33,15 @@ type Listener struct {
 	//
 	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolOutput `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
-	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
+	// Xtrace Configuration Information. See `accessLogTracingConfig` below for details.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrOutput `pulumi:"accessLogTracingConfig"`
-	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+	// The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
 	//
 	// Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
 	AclConfig ListenerAclConfigOutput `pulumi:"aclConfig"`
-	// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+	// The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
 	Certificates ListenerCertificatesPtrOutput `pulumi:"certificates"`
-	// The Default Rule Action List. See the following `Block defaultActions`.
+	// The Default Rule Action List. See `defaultActions` below for details.
 	DefaultActions ListenerDefaultActionArrayOutput `pulumi:"defaultActions"`
 	// The dry run.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
@@ -61,7 +61,7 @@ type Listener struct {
 	ListenerProtocol pulumi.StringOutput `pulumi:"listenerProtocol"`
 	// The ALB Instance Id.
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
-	// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
+	// Configuration Associated with the QuIC Listening. See `quicConfig` below for details.
 	QuicConfig ListenerQuicConfigOutput `pulumi:"quicConfig"`
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntOutput `pulumi:"requestTimeout"`
@@ -71,7 +71,7 @@ type Listener struct {
 	SecurityPolicyId pulumi.StringOutput `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+	// The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	XForwardedForConfig ListenerXForwardedForConfigOutput `pulumi:"xForwardedForConfig"`
 }
 
@@ -117,15 +117,15 @@ type listenerState struct {
 	//
 	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled *bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
-	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
+	// Xtrace Configuration Information. See `accessLogTracingConfig` below for details.
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
-	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+	// The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
 	//
 	// Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
 	AclConfig *ListenerAclConfig `pulumi:"aclConfig"`
-	// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+	// The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
 	Certificates *ListenerCertificates `pulumi:"certificates"`
-	// The Default Rule Action List. See the following `Block defaultActions`.
+	// The Default Rule Action List. See `defaultActions` below for details.
 	DefaultActions []ListenerDefaultAction `pulumi:"defaultActions"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
@@ -145,7 +145,7 @@ type listenerState struct {
 	ListenerProtocol *string `pulumi:"listenerProtocol"`
 	// The ALB Instance Id.
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
-	// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
+	// Configuration Associated with the QuIC Listening. See `quicConfig` below for details.
 	QuicConfig *ListenerQuicConfig `pulumi:"quicConfig"`
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout *int `pulumi:"requestTimeout"`
@@ -155,7 +155,7 @@ type listenerState struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status *string `pulumi:"status"`
-	// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+	// The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	XForwardedForConfig *ListenerXForwardedForConfig `pulumi:"xForwardedForConfig"`
 }
 
@@ -164,15 +164,15 @@ type ListenerState struct {
 	//
 	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolPtrInput
-	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
+	// Xtrace Configuration Information. See `accessLogTracingConfig` below for details.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
-	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+	// The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
 	//
 	// Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
 	AclConfig ListenerAclConfigPtrInput
-	// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+	// The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
 	Certificates ListenerCertificatesPtrInput
-	// The Default Rule Action List. See the following `Block defaultActions`.
+	// The Default Rule Action List. See `defaultActions` below for details.
 	DefaultActions ListenerDefaultActionArrayInput
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
@@ -192,7 +192,7 @@ type ListenerState struct {
 	ListenerProtocol pulumi.StringPtrInput
 	// The ALB Instance Id.
 	LoadBalancerId pulumi.StringPtrInput
-	// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
+	// Configuration Associated with the QuIC Listening. See `quicConfig` below for details.
 	QuicConfig ListenerQuicConfigPtrInput
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntPtrInput
@@ -202,7 +202,7 @@ type ListenerState struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringPtrInput
-	// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+	// The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	XForwardedForConfig ListenerXForwardedForConfigPtrInput
 }
 
@@ -215,15 +215,15 @@ type listenerArgs struct {
 	//
 	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled *bool `pulumi:"accessLogRecordCustomizedHeadersEnabled"`
-	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
+	// Xtrace Configuration Information. See `accessLogTracingConfig` below for details.
 	AccessLogTracingConfig *ListenerAccessLogTracingConfig `pulumi:"accessLogTracingConfig"`
-	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+	// The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
 	//
 	// Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
 	AclConfig *ListenerAclConfig `pulumi:"aclConfig"`
-	// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+	// The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
 	Certificates *ListenerCertificates `pulumi:"certificates"`
-	// The Default Rule Action List. See the following `Block defaultActions`.
+	// The Default Rule Action List. See `defaultActions` below for details.
 	DefaultActions []ListenerDefaultAction `pulumi:"defaultActions"`
 	// The dry run.
 	DryRun *bool `pulumi:"dryRun"`
@@ -243,7 +243,7 @@ type listenerArgs struct {
 	ListenerProtocol string `pulumi:"listenerProtocol"`
 	// The ALB Instance Id.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
-	// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
+	// Configuration Associated with the QuIC Listening. See `quicConfig` below for details.
 	QuicConfig *ListenerQuicConfig `pulumi:"quicConfig"`
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout *int `pulumi:"requestTimeout"`
@@ -253,7 +253,7 @@ type listenerArgs struct {
 	SecurityPolicyId *string `pulumi:"securityPolicyId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status *string `pulumi:"status"`
-	// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+	// The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	XForwardedForConfig *ListenerXForwardedForConfig `pulumi:"xForwardedForConfig"`
 }
 
@@ -263,15 +263,15 @@ type ListenerArgs struct {
 	//
 	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 	AccessLogRecordCustomizedHeadersEnabled pulumi.BoolPtrInput
-	// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
+	// Xtrace Configuration Information. See `accessLogTracingConfig` below for details.
 	AccessLogTracingConfig ListenerAccessLogTracingConfigPtrInput
-	// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+	// The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
 	//
 	// Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
 	AclConfig ListenerAclConfigPtrInput
-	// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+	// The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
 	Certificates ListenerCertificatesPtrInput
-	// The Default Rule Action List. See the following `Block defaultActions`.
+	// The Default Rule Action List. See `defaultActions` below for details.
 	DefaultActions ListenerDefaultActionArrayInput
 	// The dry run.
 	DryRun pulumi.BoolPtrInput
@@ -291,7 +291,7 @@ type ListenerArgs struct {
 	ListenerProtocol pulumi.StringInput
 	// The ALB Instance Id.
 	LoadBalancerId pulumi.StringInput
-	// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
+	// Configuration Associated with the QuIC Listening. See `quicConfig` below for details.
 	QuicConfig ListenerQuicConfigPtrInput
 	// The Specified Request Timeout Time. Value: `1` to `180`. Unit: Seconds. Default Value: `60`. If the Timeout Time Within the Back-End Server Has Not Answered the ALB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
 	RequestTimeout pulumi.IntPtrInput
@@ -301,7 +301,7 @@ type ListenerArgs struct {
 	SecurityPolicyId pulumi.StringPtrInput
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringPtrInput
-	// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+	// The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 	XForwardedForConfig ListenerXForwardedForConfigPtrInput
 }
 
@@ -399,24 +399,24 @@ func (o ListenerOutput) AccessLogRecordCustomizedHeadersEnabled() pulumi.BoolOut
 	return o.ApplyT(func(v *Listener) pulumi.BoolOutput { return v.AccessLogRecordCustomizedHeadersEnabled }).(pulumi.BoolOutput)
 }
 
-// Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
+// Xtrace Configuration Information. See `accessLogTracingConfig` below for details.
 func (o ListenerOutput) AccessLogTracingConfig() ListenerAccessLogTracingConfigPtrOutput {
 	return o.ApplyT(func(v *Listener) ListenerAccessLogTracingConfigPtrOutput { return v.AccessLogTracingConfig }).(ListenerAccessLogTracingConfigPtrOutput)
 }
 
-// The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
+// The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
 //
 // Deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
 func (o ListenerOutput) AclConfig() ListenerAclConfigOutput {
 	return o.ApplyT(func(v *Listener) ListenerAclConfigOutput { return v.AclConfig }).(ListenerAclConfigOutput)
 }
 
-// The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+// The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
 func (o ListenerOutput) Certificates() ListenerCertificatesPtrOutput {
 	return o.ApplyT(func(v *Listener) ListenerCertificatesPtrOutput { return v.Certificates }).(ListenerCertificatesPtrOutput)
 }
 
-// The Default Rule Action List. See the following `Block defaultActions`.
+// The Default Rule Action List. See `defaultActions` below for details.
 func (o ListenerOutput) DefaultActions() ListenerDefaultActionArrayOutput {
 	return o.ApplyT(func(v *Listener) ListenerDefaultActionArrayOutput { return v.DefaultActions }).(ListenerDefaultActionArrayOutput)
 }
@@ -463,7 +463,7 @@ func (o ListenerOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
-// Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
+// Configuration Associated with the QuIC Listening. See `quicConfig` below for details.
 func (o ListenerOutput) QuicConfig() ListenerQuicConfigOutput {
 	return o.ApplyT(func(v *Listener) ListenerQuicConfigOutput { return v.QuicConfig }).(ListenerQuicConfigOutput)
 }
@@ -485,7 +485,7 @@ func (o ListenerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+// The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
 func (o ListenerOutput) XForwardedForConfig() ListenerXForwardedForConfigOutput {
 	return o.ApplyT(func(v *Listener) ListenerXForwardedForConfigOutput { return v.XForwardedForConfig }).(ListenerXForwardedForConfigOutput)
 }

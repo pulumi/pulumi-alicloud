@@ -160,15 +160,15 @@ def get_ots_backup_plans(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:hbr/getOtsBackupPlans:getOtsBackupPlans', __args__, opts=opts, typ=GetOtsBackupPlansResult).value
 
     return AwaitableGetOtsBackupPlansResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        plan_id=__ret__.plan_id,
-        plan_name=__ret__.plan_name,
-        plans=__ret__.plans,
-        vault_id=__ret__.vault_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        plan_id=pulumi.get(__ret__, 'plan_id'),
+        plan_name=pulumi.get(__ret__, 'plan_name'),
+        plans=pulumi.get(__ret__, 'plans'),
+        vault_id=pulumi.get(__ret__, 'vault_id'))
 
 
 @_utilities.lift_output_func(get_ots_backup_plans)

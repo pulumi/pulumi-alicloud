@@ -128,12 +128,12 @@ def get_domain_extensions(frontend_port: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:slb/getDomainExtensions:getDomainExtensions', __args__, opts=opts, typ=GetDomainExtensionsResult).value
 
     return AwaitableGetDomainExtensionsResult(
-        extensions=__ret__.extensions,
-        frontend_port=__ret__.frontend_port,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        load_balancer_id=__ret__.load_balancer_id,
-        output_file=__ret__.output_file)
+        extensions=pulumi.get(__ret__, 'extensions'),
+        frontend_port=pulumi.get(__ret__, 'frontend_port'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        load_balancer_id=pulumi.get(__ret__, 'load_balancer_id'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_domain_extensions)

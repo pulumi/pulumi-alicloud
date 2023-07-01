@@ -140,13 +140,13 @@ def get_instance_members(current_page: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers', __args__, opts=opts, typ=GetInstanceMembersResult).value
 
     return AwaitableGetInstanceMembersResult(
-        current_page=__ret__.current_page,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        members=__ret__.members,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size)
+        current_page=pulumi.get(__ret__, 'current_page'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        members=pulumi.get(__ret__, 'members'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'))
 
 
 @_utilities.lift_output_func(get_instance_members)

@@ -178,16 +178,16 @@ def get_image_caches(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eci/getImageCaches:getImageCaches', __args__, opts=opts, typ=GetImageCachesResult).value
 
     return AwaitableGetImageCachesResult(
-        caches=__ret__.caches,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        image=__ret__.image,
-        image_cache_name=__ret__.image_cache_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        snapshot_id=__ret__.snapshot_id,
-        status=__ret__.status)
+        caches=pulumi.get(__ret__, 'caches'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        image=pulumi.get(__ret__, 'image'),
+        image_cache_name=pulumi.get(__ret__, 'image_cache_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        snapshot_id=pulumi.get(__ret__, 'snapshot_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_image_caches)

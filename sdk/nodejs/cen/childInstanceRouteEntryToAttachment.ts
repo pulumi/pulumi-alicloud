@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Cen Child Instance Route Entry To Attachment and how to use it, see [What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment).
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -19,11 +19,62 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.cen.ChildInstanceRouteEntryToAttachment("default", {
- *     cenId: "cen-3sgjn0u745c3i0o3dk",
- *     childInstanceRouteTableId: "vtb-t4nt0z5xxbti85c78nkzy",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.cen.getTransitRouterAvailableResources({});
+ * const masterZone = _default.then(_default => _default.resources?.[0]?.masterZones?.[0]);
+ * const slaveZone = _default.then(_default => _default.resources?.[0]?.slaveZones?.[1]);
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const exampleMaster = new alicloud.vpc.Switch("exampleMaster", {
+ *     vswitchName: name,
+ *     cidrBlock: "192.168.1.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: masterZone,
+ * });
+ * const exampleSlave = new alicloud.vpc.Switch("exampleSlave", {
+ *     vswitchName: name,
+ *     cidrBlock: "192.168.2.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: slaveZone,
+ * });
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: name,
+ *     protectionLevel: "REDUCED",
+ * });
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ *     transitRouterName: name,
+ *     cenId: exampleInstance.id,
+ * });
+ * const exampleTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", {
+ *     cenId: exampleInstance.id,
+ *     transitRouterId: exampleTransitRouter.transitRouterId,
+ *     vpcId: exampleNetwork.id,
+ *     zoneMappings: [
+ *         {
+ *             zoneId: masterZone,
+ *             vswitchId: exampleMaster.id,
+ *         },
+ *         {
+ *             zoneId: slaveZone,
+ *             vswitchId: exampleSlave.id,
+ *         },
+ *     ],
+ *     transitRouterAttachmentName: name,
+ *     transitRouterAttachmentDescription: name,
+ * });
+ * const exampleRouteTable = new alicloud.vpc.RouteTable("exampleRouteTable", {
+ *     vpcId: exampleNetwork.id,
+ *     routeTableName: name,
+ *     description: name,
+ * });
+ * const exampleChildInstanceRouteEntryToAttachment = new alicloud.cen.ChildInstanceRouteEntryToAttachment("exampleChildInstanceRouteEntryToAttachment", {
+ *     transitRouterAttachmentId: exampleTransitRouterVpcAttachment.transitRouterAttachmentId,
+ *     cenId: exampleInstance.id,
  *     destinationCidrBlock: "10.0.0.0/24",
- *     transitRouterAttachmentId: "tr-attach-f1fd1y50rql00emvej",
+ *     childInstanceRouteTableId: exampleRouteTable.id,
  * });
  * ```
  *

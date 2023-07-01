@@ -91,9 +91,9 @@ def get_replication_vault_regions(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions', __args__, opts=opts, typ=GetReplicationVaultRegionsResult).value
 
     return AwaitableGetReplicationVaultRegionsResult(
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        regions=__ret__.regions)
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        regions=pulumi.get(__ret__, 'regions'))
 
 
 @_utilities.lift_output_func(get_replication_vault_regions)

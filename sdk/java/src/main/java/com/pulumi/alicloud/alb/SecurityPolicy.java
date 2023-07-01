@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a ALB Security Policy resource.
  * 
- * For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/doc-detail/213607.htm).
+ * For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createsecuritypolicy).
  * 
- * &gt; **NOTE:** Available in v1.130.0+.
+ * &gt; **NOTE:** Available since v1.130.0.
  * 
  * ## Example Usage
  * 
@@ -49,14 +49,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;testAccSecurityPolicy&#34;);
  *         var default_ = new SecurityPolicy(&#34;default&#34;, SecurityPolicyArgs.builder()        
- *             .securityPolicyName(name)
- *             .tlsVersions(&#34;TLSv1.0&#34;)
  *             .ciphers(            
  *                 &#34;ECDHE-ECDSA-AES128-SHA&#34;,
  *                 &#34;AES256-SHA&#34;)
+ *             .securityPolicyName(&#34;tf_example&#34;)
+ *             .tlsVersions(&#34;TLSv1.0&#34;)
  *             .build());
  * 
  *     }

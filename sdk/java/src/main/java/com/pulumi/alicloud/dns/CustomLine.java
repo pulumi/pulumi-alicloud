@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Alidns Custom Line and how to use it, see [What is Custom Line](https://www.alibabacloud.com/help/en/doc-detail/145059.html).
  * 
- * &gt; **NOTE:** Available in v1.151.0+.
+ * &gt; **NOTE:** Available since v1.151.0.
  * 
  * ## Example Usage
  * 
@@ -49,8 +49,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new CustomLine(&#34;default&#34;, CustomLineArgs.builder()        
- *             .customLineName(&#34;tf-testacc&#34;)
- *             .domainName(&#34;your_domain_name&#34;)
+ *             .customLineName(&#34;tf-example&#34;)
+ *             .domainName(&#34;alicloud-provider.com&#34;)
  *             .ipSegmentLists(CustomLineIpSegmentListArgs.builder()
  *                 .endIp(&#34;192.0.2.125&#34;)
  *                 .startIp(&#34;192.0.2.123&#34;)
@@ -101,14 +101,14 @@ public class CustomLine extends com.pulumi.resources.CustomResource {
         return this.domainName;
     }
     /**
-     * The IP segment list. See the following `Block ip_segment_list`.
+     * The IP segment list. See `ip_segment_list` below for details.
      * 
      */
     @Export(name="ipSegmentLists", type=List.class, parameters={CustomLineIpSegmentList.class})
     private Output<List<CustomLineIpSegmentList>> ipSegmentLists;
 
     /**
-     * @return The IP segment list. See the following `Block ip_segment_list`.
+     * @return The IP segment list. See `ip_segment_list` below for details.
      * 
      */
     public Output<List<CustomLineIpSegmentList>> ipSegmentLists() {

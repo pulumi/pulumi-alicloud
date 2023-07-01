@@ -154,14 +154,14 @@ def get_zones(engine: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:kvstore/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        engine=__ret__.engine,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_charge_type=__ret__.instance_charge_type,
-        multi=__ret__.multi,
-        output_file=__ret__.output_file,
-        product_type=__ret__.product_type,
-        zones=__ret__.zones)
+        engine=pulumi.get(__ret__, 'engine'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_charge_type=pulumi.get(__ret__, 'instance_charge_type'),
+        multi=pulumi.get(__ret__, 'multi'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        product_type=pulumi.get(__ret__, 'product_type'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_zones)

@@ -150,14 +150,14 @@ def get_prefix_lists(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getPrefixLists:getPrefixLists', __args__, opts=opts, typ=GetPrefixListsResult).value
 
     return AwaitableGetPrefixListsResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        lists=__ret__.lists,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        prefix_list_name=__ret__.prefix_list_name)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        lists=pulumi.get(__ret__, 'lists'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        prefix_list_name=pulumi.get(__ret__, 'prefix_list_name'))
 
 
 @_utilities.lift_output_func(get_prefix_lists)

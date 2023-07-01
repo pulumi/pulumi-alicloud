@@ -217,18 +217,18 @@ def get_records(domain_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dns/getRecords:getRecords', __args__, opts=opts, typ=GetRecordsResult).value
 
     return AwaitableGetRecordsResult(
-        domain_name=__ret__.domain_name,
-        host_record_regex=__ret__.host_record_regex,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        is_locked=__ret__.is_locked,
-        line=__ret__.line,
-        output_file=__ret__.output_file,
-        records=__ret__.records,
-        status=__ret__.status,
-        type=__ret__.type,
-        urls=__ret__.urls,
-        value_regex=__ret__.value_regex)
+        domain_name=pulumi.get(__ret__, 'domain_name'),
+        host_record_regex=pulumi.get(__ret__, 'host_record_regex'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        is_locked=pulumi.get(__ret__, 'is_locked'),
+        line=pulumi.get(__ret__, 'line'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        records=pulumi.get(__ret__, 'records'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'),
+        urls=pulumi.get(__ret__, 'urls'),
+        value_regex=pulumi.get(__ret__, 'value_regex'))
 
 
 @_utilities.lift_output_func(get_records)

@@ -161,15 +161,15 @@ def get_ecs_invocations(command_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getEcsInvocations:getEcsInvocations', __args__, opts=opts, typ=GetEcsInvocationsResult).value
 
     return AwaitableGetEcsInvocationsResult(
-        command_id=__ret__.command_id,
-        content_encoding=__ret__.content_encoding,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        invocations=__ret__.invocations,
-        invoke_status=__ret__.invoke_status,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size)
+        command_id=pulumi.get(__ret__, 'command_id'),
+        content_encoding=pulumi.get(__ret__, 'content_encoding'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        invocations=pulumi.get(__ret__, 'invocations'),
+        invoke_status=pulumi.get(__ret__, 'invoke_status'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'))
 
 
 @_utilities.lift_output_func(get_ecs_invocations)

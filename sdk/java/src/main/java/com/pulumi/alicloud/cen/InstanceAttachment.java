@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
  * 
- * -&gt;**NOTE:** Available in 1.42.0+
+ * &gt; **NOTE:** Available since v1.42.0.
  * 
  * ## Example Usage
  * 
@@ -29,10 +29,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.cen.Instance;
- * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.InstanceAttachment;
  * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
  * import java.util.List;
@@ -48,21 +50,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccCenInstanceAttachmentBasic&#34;);
- *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.builder()        
- *             .description(&#34;terraform01&#34;)
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
  *             .build());
  * 
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf_example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build());
  * 
- *         var foo = new InstanceAttachment(&#34;foo&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(cen.id())
- *             .childInstanceId(vpc.id())
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
+ *             .build());
+ * 
+ *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(exampleInstance.id())
+ *             .childInstanceId(exampleNetwork.id())
  *             .childInstanceType(&#34;VPC&#34;)
- *             .childInstanceRegionId(&#34;cn-beijing&#34;)
+ *             .childInstanceRegionId(default_.regions()[0].id())
  *             .build());
  * 
  *     }

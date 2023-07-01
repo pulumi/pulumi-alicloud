@@ -188,17 +188,17 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
     __ret__ = pulumi.runtime.invoke('alicloud:quotas/getQuotaApplications:getQuotaApplications', __args__, opts=opts, typ=GetQuotaApplicationsResult).value
 
     return AwaitableGetQuotaApplicationsResult(
-        applications=__ret__.applications,
-        dimensions=__ret__.dimensions,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        key_word=__ret__.key_word,
-        output_file=__ret__.output_file,
-        product_code=__ret__.product_code,
-        quota_action_code=__ret__.quota_action_code,
-        quota_category=__ret__.quota_category,
-        status=__ret__.status)
+        applications=pulumi.get(__ret__, 'applications'),
+        dimensions=pulumi.get(__ret__, 'dimensions'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        key_word=pulumi.get(__ret__, 'key_word'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        product_code=pulumi.get(__ret__, 'product_code'),
+        quota_action_code=pulumi.get(__ret__, 'quota_action_code'),
+        quota_category=pulumi.get(__ret__, 'quota_category'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_quota_applications)

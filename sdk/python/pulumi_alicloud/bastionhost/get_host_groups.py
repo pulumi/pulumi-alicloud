@@ -155,14 +155,14 @@ def get_host_groups(host_group_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:bastionhost/getHostGroups:getHostGroups', __args__, opts=opts, typ=GetHostGroupsResult).value
 
     return AwaitableGetHostGroupsResult(
-        groups=__ret__.groups,
-        host_group_name=__ret__.host_group_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        groups=pulumi.get(__ret__, 'groups'),
+        host_group_name=pulumi.get(__ret__, 'host_group_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_host_groups)

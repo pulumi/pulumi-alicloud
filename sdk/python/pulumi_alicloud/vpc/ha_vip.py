@@ -84,6 +84,9 @@ class HAVipArgs:
         """
         The name of the HaVip instance.
         """
+        warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
+
         return pulumi.get(self, "havip_name")
 
     @havip_name.setter
@@ -253,6 +256,9 @@ class _HAVipState:
         """
         The name of the HaVip instance.
         """
+        warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
+
         return pulumi.get(self, "havip_name")
 
     @havip_name.setter
@@ -556,6 +562,9 @@ class HAVip(pulumi.CustomResource):
         """
         The name of the HaVip instance.
         """
+        warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
+
         return pulumi.get(self, "havip_name")
 
     @property

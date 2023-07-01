@@ -56,9 +56,11 @@ class K8sApplicationArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] envs: Deployment environment variables, the format must conform to the JSON object array, such as: `{"name":"x","value":"y"},{"name":"x2","value":"y2"}`, If you want to cancel the configuration, you need to set an empty JSON array "" to indicate no configuration.
         :param pulumi.Input[str] image_url: Mirror address. When the package_type is set to 'Image', this parameter item is required.
         :param pulumi.Input[str] internet_slb_id: Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
-        :param pulumi.Input[int] internet_slb_port: The public network SLB front-end port, range 1~65535.
-        :param pulumi.Input[str] internet_slb_protocol: The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+               It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
+        :param pulumi.Input[int] internet_slb_port: The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
+        :param pulumi.Input[str] internet_slb_protocol: The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         :param pulumi.Input[int] internet_target_port: The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+               It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         :param pulumi.Input[str] jdk: The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
         :param pulumi.Input[int] limit_m_cpu: The CPU quota of the application instance during application operation. Unit: Number of millcores, set to 0 means unlimited, similar to request_cpu.
         :param pulumi.Input[int] limit_mem: The memory limit of the application instance during application operation, unit: M.
@@ -253,7 +255,11 @@ class K8sApplicationArgs:
     def internet_slb_id(self) -> Optional[pulumi.Input[str]]:
         """
         Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+        It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_slb_id is deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_slb_id")
 
     @internet_slb_id.setter
@@ -264,8 +270,11 @@ class K8sApplicationArgs:
     @pulumi.getter(name="internetSlbPort")
     def internet_slb_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The public network SLB front-end port, range 1~65535.
+        The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_slb_port is deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_slb_port")
 
     @internet_slb_port.setter
@@ -276,8 +285,11 @@ class K8sApplicationArgs:
     @pulumi.getter(name="internetSlbProtocol")
     def internet_slb_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+        The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_slb_protocol is deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_slb_protocol")
 
     @internet_slb_protocol.setter
@@ -289,7 +301,11 @@ class K8sApplicationArgs:
     def internet_target_port(self) -> Optional[pulumi.Input[int]]:
         """
         The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+        It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_target_port is deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_target_port")
 
     @internet_target_port.setter
@@ -570,9 +586,11 @@ class _K8sApplicationState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] envs: Deployment environment variables, the format must conform to the JSON object array, such as: `{"name":"x","value":"y"},{"name":"x2","value":"y2"}`, If you want to cancel the configuration, you need to set an empty JSON array "" to indicate no configuration.
         :param pulumi.Input[str] image_url: Mirror address. When the package_type is set to 'Image', this parameter item is required.
         :param pulumi.Input[str] internet_slb_id: Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
-        :param pulumi.Input[int] internet_slb_port: The public network SLB front-end port, range 1~65535.
-        :param pulumi.Input[str] internet_slb_protocol: The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+               It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
+        :param pulumi.Input[int] internet_slb_port: The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
+        :param pulumi.Input[str] internet_slb_protocol: The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         :param pulumi.Input[int] internet_target_port: The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+               It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         :param pulumi.Input[str] jdk: The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
         :param pulumi.Input[int] limit_m_cpu: The CPU quota of the application instance during application operation. Unit: Number of millcores, set to 0 means unlimited, similar to request_cpu.
         :param pulumi.Input[int] limit_mem: The memory limit of the application instance during application operation, unit: M.
@@ -769,7 +787,11 @@ class _K8sApplicationState:
     def internet_slb_id(self) -> Optional[pulumi.Input[str]]:
         """
         Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+        It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_slb_id is deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_slb_id")
 
     @internet_slb_id.setter
@@ -780,8 +802,11 @@ class _K8sApplicationState:
     @pulumi.getter(name="internetSlbPort")
     def internet_slb_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The public network SLB front-end port, range 1~65535.
+        The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_slb_port is deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_slb_port")
 
     @internet_slb_port.setter
@@ -792,8 +817,11 @@ class _K8sApplicationState:
     @pulumi.getter(name="internetSlbProtocol")
     def internet_slb_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+        The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_slb_protocol is deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_slb_protocol")
 
     @internet_slb_protocol.setter
@@ -805,7 +833,11 @@ class _K8sApplicationState:
     def internet_target_port(self) -> Optional[pulumi.Input[int]]:
         """
         The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+        It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_target_port is deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_target_port")
 
     @internet_target_port.setter
@@ -1081,7 +1113,7 @@ class K8sApplication(pulumi.CustomResource):
         """
         Create an EDAS k8s application.For information about EDAS K8s Application and how to use it, see [What is EDAS K8s Application](https://www.alibabacloud.com/help/doc-detail/85029.htm).
 
-        > **NOTE:** Available in 1.105.0+
+        > **NOTE:** Available since v1.105.0
 
         ## Import
 
@@ -1102,9 +1134,11 @@ class K8sApplication(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] envs: Deployment environment variables, the format must conform to the JSON object array, such as: `{"name":"x","value":"y"},{"name":"x2","value":"y2"}`, If you want to cancel the configuration, you need to set an empty JSON array "" to indicate no configuration.
         :param pulumi.Input[str] image_url: Mirror address. When the package_type is set to 'Image', this parameter item is required.
         :param pulumi.Input[str] internet_slb_id: Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
-        :param pulumi.Input[int] internet_slb_port: The public network SLB front-end port, range 1~65535.
-        :param pulumi.Input[str] internet_slb_protocol: The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+               It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
+        :param pulumi.Input[int] internet_slb_port: The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
+        :param pulumi.Input[str] internet_slb_protocol: The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         :param pulumi.Input[int] internet_target_port: The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+               It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         :param pulumi.Input[str] jdk: The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
         :param pulumi.Input[int] limit_m_cpu: The CPU quota of the application instance during application operation. Unit: Number of millcores, set to 0 means unlimited, similar to request_cpu.
         :param pulumi.Input[int] limit_mem: The memory limit of the application instance during application operation, unit: M.
@@ -1134,7 +1168,7 @@ class K8sApplication(pulumi.CustomResource):
         """
         Create an EDAS k8s application.For information about EDAS K8s Application and how to use it, see [What is EDAS K8s Application](https://www.alibabacloud.com/help/doc-detail/85029.htm).
 
-        > **NOTE:** Available in 1.105.0+
+        > **NOTE:** Available since v1.105.0
 
         ## Import
 
@@ -1303,9 +1337,11 @@ class K8sApplication(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] envs: Deployment environment variables, the format must conform to the JSON object array, such as: `{"name":"x","value":"y"},{"name":"x2","value":"y2"}`, If you want to cancel the configuration, you need to set an empty JSON array "" to indicate no configuration.
         :param pulumi.Input[str] image_url: Mirror address. When the package_type is set to 'Image', this parameter item is required.
         :param pulumi.Input[str] internet_slb_id: Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
-        :param pulumi.Input[int] internet_slb_port: The public network SLB front-end port, range 1~65535.
-        :param pulumi.Input[str] internet_slb_protocol: The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+               It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
+        :param pulumi.Input[int] internet_slb_port: The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
+        :param pulumi.Input[str] internet_slb_protocol: The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         :param pulumi.Input[int] internet_target_port: The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+               It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         :param pulumi.Input[str] jdk: The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
         :param pulumi.Input[int] limit_m_cpu: The CPU quota of the application instance during application operation. Unit: Number of millcores, set to 0 means unlimited, similar to request_cpu.
         :param pulumi.Input[int] limit_mem: The memory limit of the application instance during application operation, unit: M.
@@ -1432,23 +1468,33 @@ class K8sApplication(pulumi.CustomResource):
     def internet_slb_id(self) -> pulumi.Output[Optional[str]]:
         """
         Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+        It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_slb_id is deprecated: Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_slb_id")
 
     @property
     @pulumi.getter(name="internetSlbPort")
     def internet_slb_port(self) -> pulumi.Output[Optional[int]]:
         """
-        The public network SLB front-end port, range 1~65535.
+        The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_slb_port is deprecated: Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_slb_port")
 
     @property
     @pulumi.getter(name="internetSlbProtocol")
     def internet_slb_protocol(self) -> pulumi.Output[Optional[str]]:
         """
-        The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+        The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_slb_protocol is deprecated: Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_slb_protocol")
 
     @property
@@ -1456,7 +1502,11 @@ class K8sApplication(pulumi.CustomResource):
     def internet_target_port(self) -> pulumi.Output[Optional[int]]:
         """
         The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+        It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
         """
+        warnings.warn("""Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""", DeprecationWarning)
+        pulumi.log.warn("""internet_target_port is deprecated: Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it""")
+
         return pulumi.get(self, "internet_target_port")
 
     @property

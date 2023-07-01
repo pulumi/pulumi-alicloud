@@ -15,7 +15,7 @@ import (
 //
 // For information about Alidns Custom Line and how to use it, see [What is Custom Line](https://www.alibabacloud.com/help/en/doc-detail/145059.html).
 //
-// > **NOTE:** Available in v1.151.0+.
+// > **NOTE:** Available since v1.151.0.
 //
 // ## Example Usage
 //
@@ -34,8 +34,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dns.NewCustomLine(ctx, "default", &dns.CustomLineArgs{
-//				CustomLineName: pulumi.String("tf-testacc"),
-//				DomainName:     pulumi.String("your_domain_name"),
+//				CustomLineName: pulumi.String("tf-example"),
+//				DomainName:     pulumi.String("alicloud-provider.com"),
 //				IpSegmentLists: dns.CustomLineIpSegmentListArray{
 //					&dns.CustomLineIpSegmentListArgs{
 //						EndIp:   pulumi.String("192.0.2.125"),
@@ -68,7 +68,7 @@ type CustomLine struct {
 	CustomLineName pulumi.StringOutput `pulumi:"customLineName"`
 	// The Domain name.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// The IP segment list. See the following `Block ipSegmentList`.
+	// The IP segment list. See `ipSegmentList` below for details.
 	IpSegmentLists CustomLineIpSegmentListArrayOutput `pulumi:"ipSegmentLists"`
 	// The lang.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
@@ -116,7 +116,7 @@ type customLineState struct {
 	CustomLineName *string `pulumi:"customLineName"`
 	// The Domain name.
 	DomainName *string `pulumi:"domainName"`
-	// The IP segment list. See the following `Block ipSegmentList`.
+	// The IP segment list. See `ipSegmentList` below for details.
 	IpSegmentLists []CustomLineIpSegmentList `pulumi:"ipSegmentLists"`
 	// The lang.
 	Lang *string `pulumi:"lang"`
@@ -127,7 +127,7 @@ type CustomLineState struct {
 	CustomLineName pulumi.StringPtrInput
 	// The Domain name.
 	DomainName pulumi.StringPtrInput
-	// The IP segment list. See the following `Block ipSegmentList`.
+	// The IP segment list. See `ipSegmentList` below for details.
 	IpSegmentLists CustomLineIpSegmentListArrayInput
 	// The lang.
 	Lang pulumi.StringPtrInput
@@ -142,7 +142,7 @@ type customLineArgs struct {
 	CustomLineName string `pulumi:"customLineName"`
 	// The Domain name.
 	DomainName string `pulumi:"domainName"`
-	// The IP segment list. See the following `Block ipSegmentList`.
+	// The IP segment list. See `ipSegmentList` below for details.
 	IpSegmentLists []CustomLineIpSegmentList `pulumi:"ipSegmentLists"`
 	// The lang.
 	Lang *string `pulumi:"lang"`
@@ -154,7 +154,7 @@ type CustomLineArgs struct {
 	CustomLineName pulumi.StringInput
 	// The Domain name.
 	DomainName pulumi.StringInput
-	// The IP segment list. See the following `Block ipSegmentList`.
+	// The IP segment list. See `ipSegmentList` below for details.
 	IpSegmentLists CustomLineIpSegmentListArrayInput
 	// The lang.
 	Lang pulumi.StringPtrInput
@@ -257,7 +257,7 @@ func (o CustomLineOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomLine) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// The IP segment list. See the following `Block ipSegmentList`.
+// The IP segment list. See `ipSegmentList` below for details.
 func (o CustomLineOutput) IpSegmentLists() CustomLineIpSegmentListArrayOutput {
 	return o.ApplyT(func(v *CustomLine) CustomLineIpSegmentListArrayOutput { return v.IpSegmentLists }).(CustomLineIpSegmentListArrayOutput)
 }

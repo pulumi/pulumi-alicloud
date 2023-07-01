@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Dns
     /// <summary>
     /// Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.84.0+.
+    /// &gt; **NOTE:** Available since v1.84.0.
     /// 
     /// ## Example Usage
     /// 
@@ -24,10 +24,9 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Add a new Alinds Domain Group.
-    ///     var example = new AliCloud.Dns.DomainGroup("example", new()
+    ///     var @default = new AliCloud.Dns.DomainGroup("default", new()
     ///     {
-    ///         DomainGroupName = "tf-testDG",
+    ///         DomainGroupName = "tf-example",
     ///     });
     /// 
     /// });

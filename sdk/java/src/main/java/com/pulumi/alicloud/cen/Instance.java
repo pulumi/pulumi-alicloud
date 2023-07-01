@@ -19,7 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
  * 
- * For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/doc-detail/59870.htm).
+ * For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcen).
+ * 
+ * &gt; **NOTE:** Available since v1.15.0.
  * 
  * ## Example Usage
  * 
@@ -46,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf_test_foo&#34;)
+ *             .cenInstanceName(&#34;tf_example&#34;)
  *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 

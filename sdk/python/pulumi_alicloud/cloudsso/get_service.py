@@ -98,9 +98,9 @@ def get_service(enable: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudsso/getService:getService', __args__, opts=opts, typ=GetServiceResult).value
 
     return AwaitableGetServiceResult(
-        enable=__ret__.enable,
-        id=__ret__.id,
-        status=__ret__.status)
+        enable=pulumi.get(__ret__, 'enable'),
+        id=pulumi.get(__ret__, 'id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_service)

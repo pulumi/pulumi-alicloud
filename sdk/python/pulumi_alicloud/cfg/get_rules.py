@@ -25,10 +25,6 @@ class GetRulesResult:
     def __init__(__self__, config_rule_state=None, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None, risk_level=None, rule_name=None, rules=None, status=None):
         if config_rule_state and not isinstance(config_rule_state, str):
             raise TypeError("Expected argument 'config_rule_state' to be a str")
-        if config_rule_state is not None:
-            warnings.warn("""Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.""", DeprecationWarning)
-            pulumi.log.warn("""config_rule_state is deprecated: Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.""")
-
         pulumi.set(__self__, "config_rule_state", config_rule_state)
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
@@ -67,6 +63,9 @@ class GetRulesResult:
         """
         The state of the Config Rule.
         """
+        warnings.warn("""Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_rule_state is deprecated: Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.""")
+
         return pulumi.get(self, "config_rule_state")
 
     @property
@@ -210,17 +209,17 @@ def get_rules(config_rule_state: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cfg/getRules:getRules', __args__, opts=opts, typ=GetRulesResult).value
 
     return AwaitableGetRulesResult(
-        config_rule_state=__ret__.config_rule_state,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        risk_level=__ret__.risk_level,
-        rule_name=__ret__.rule_name,
-        rules=__ret__.rules,
-        status=__ret__.status)
+        config_rule_state=pulumi.get(__ret__, 'config_rule_state'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        risk_level=pulumi.get(__ret__, 'risk_level'),
+        rule_name=pulumi.get(__ret__, 'rule_name'),
+        rules=pulumi.get(__ret__, 'rules'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_rules)

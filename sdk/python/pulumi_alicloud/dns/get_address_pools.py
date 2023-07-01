@@ -155,14 +155,14 @@ def get_address_pools(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dns/getAddressPools:getAddressPools', __args__, opts=opts, typ=GetAddressPoolsResult).value
 
     return AwaitableGetAddressPoolsResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        pools=__ret__.pools)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        pools=pulumi.get(__ret__, 'pools'))
 
 
 @_utilities.lift_output_func(get_address_pools)

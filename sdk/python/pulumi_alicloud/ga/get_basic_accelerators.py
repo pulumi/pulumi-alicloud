@@ -181,16 +181,16 @@ def get_basic_accelerators(accelerator_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getBasicAccelerators:getBasicAccelerators', __args__, opts=opts, typ=GetBasicAcceleratorsResult).value
 
     return AwaitableGetBasicAcceleratorsResult(
-        accelerator_id=__ret__.accelerator_id,
-        accelerators=__ret__.accelerators,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        status=__ret__.status)
+        accelerator_id=pulumi.get(__ret__, 'accelerator_id'),
+        accelerators=pulumi.get(__ret__, 'accelerators'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_basic_accelerators)

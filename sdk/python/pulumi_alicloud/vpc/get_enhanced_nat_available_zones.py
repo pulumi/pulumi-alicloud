@@ -83,10 +83,10 @@ def get_enhanced_nat_available_zones(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getEnhancedNatAvailableZones:getEnhancedNatAvailableZones', __args__, opts=opts, typ=GetEnhancedNatAvailableZonesResult).value
 
     return AwaitableGetEnhancedNatAvailableZonesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        zones=__ret__.zones)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_enhanced_nat_available_zones)

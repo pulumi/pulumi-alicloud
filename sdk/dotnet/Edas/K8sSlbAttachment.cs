@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// For information about EDAS k8s slb attachment and how to use it, see [What is k8s slb attachment](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/bindk8sslb).
     /// 
-    /// &gt; **NOTE:** Available in v1.194.0+.
+    /// &gt; **NOTE:** Available since v1.194.0.
     /// 
     /// ## Example Usage
     /// 
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Edas
         public Output<string> AppId { get; private set; } = null!;
 
         /// <summary>
-        /// The configurations of SLB attachment, which is supported for multiple configurations.
+        /// The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         /// </summary>
         [Output("slbConfigs")]
         public Output<ImmutableArray<Outputs.K8sSlbAttachmentSlbConfig>> SlbConfigs { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Edas
         private InputList<Inputs.K8sSlbAttachmentSlbConfigArgs>? _slbConfigs;
 
         /// <summary>
-        /// The configurations of SLB attachment, which is supported for multiple configurations.
+        /// The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         /// </summary>
         public InputList<Inputs.K8sSlbAttachmentSlbConfigArgs> SlbConfigs
         {
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Edas
         private InputList<Inputs.K8sSlbAttachmentSlbConfigGetArgs>? _slbConfigs;
 
         /// <summary>
-        /// The configurations of SLB attachment, which is supported for multiple configurations.
+        /// The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         /// </summary>
         public InputList<Inputs.K8sSlbAttachmentSlbConfigGetArgs> SlbConfigs
         {

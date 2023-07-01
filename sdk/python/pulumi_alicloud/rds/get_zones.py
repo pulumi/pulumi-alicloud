@@ -189,18 +189,18 @@ def get_zones(category: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        category=__ret__.category,
-        db_instance_class=__ret__.db_instance_class,
-        db_instance_storage_type=__ret__.db_instance_storage_type,
-        engine=__ret__.engine,
-        engine_version=__ret__.engine_version,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_charge_type=__ret__.instance_charge_type,
-        multi=__ret__.multi,
-        multi_zone=__ret__.multi_zone,
-        output_file=__ret__.output_file,
-        zones=__ret__.zones)
+        category=pulumi.get(__ret__, 'category'),
+        db_instance_class=pulumi.get(__ret__, 'db_instance_class'),
+        db_instance_storage_type=pulumi.get(__ret__, 'db_instance_storage_type'),
+        engine=pulumi.get(__ret__, 'engine'),
+        engine_version=pulumi.get(__ret__, 'engine_version'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_charge_type=pulumi.get(__ret__, 'instance_charge_type'),
+        multi=pulumi.get(__ret__, 'multi'),
+        multi_zone=pulumi.get(__ret__, 'multi_zone'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_zones)

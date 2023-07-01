@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Creates an EDAS ecs application on EDAS. The application will be deployed when `group_id` and `war_url` are given.
  * 
- * &gt; **NOTE:** Available in 1.82.0+
+ * &gt; **NOTE:** Available since v1.82.0
  * 
  * ## Example Usage
  * 

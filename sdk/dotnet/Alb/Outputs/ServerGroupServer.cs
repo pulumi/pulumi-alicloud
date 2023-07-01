@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string ServerType;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the backend server. Valid values:
         /// </summary>
         public readonly string? Status;
         /// <summary>

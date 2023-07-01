@@ -149,14 +149,14 @@ def get_vpc_endpoint_connections(endpoint_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections', __args__, opts=opts, typ=GetVpcEndpointConnectionsResult).value
 
     return AwaitableGetVpcEndpointConnectionsResult(
-        connections=__ret__.connections,
-        endpoint_id=__ret__.endpoint_id,
-        endpoint_owner_id=__ret__.endpoint_owner_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        service_id=__ret__.service_id,
-        status=__ret__.status)
+        connections=pulumi.get(__ret__, 'connections'),
+        endpoint_id=pulumi.get(__ret__, 'endpoint_id'),
+        endpoint_owner_id=pulumi.get(__ret__, 'endpoint_owner_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        service_id=pulumi.get(__ret__, 'service_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_vpc_endpoint_connections)

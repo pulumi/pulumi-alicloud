@@ -210,6 +210,9 @@ class BackupPolicyArgs:
         """
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         """
+        warnings.warn("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""", DeprecationWarning)
+        pulumi.log.warn("""backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
+
         return pulumi.get(self, "backup_periods")
 
     @backup_periods.setter
@@ -234,6 +237,9 @@ class BackupPolicyArgs:
         """
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         """
+        warnings.warn("""Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""", DeprecationWarning)
+        pulumi.log.warn("""backup_time is deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""")
+
         return pulumi.get(self, "backup_time")
 
     @backup_time.setter
@@ -319,6 +325,9 @@ class BackupPolicyArgs:
         """
         It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         """
+        warnings.warn("""Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""", DeprecationWarning)
+        pulumi.log.warn("""log_backup is deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""")
+
         return pulumi.get(self, "log_backup")
 
     @log_backup.setter
@@ -355,6 +364,9 @@ class BackupPolicyArgs:
         """
         It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         """
+        warnings.warn("""Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""", DeprecationWarning)
+        pulumi.log.warn("""log_retention_period is deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""")
+
         return pulumi.get(self, "log_retention_period")
 
     @log_retention_period.setter
@@ -406,6 +418,9 @@ class BackupPolicyArgs:
         """
         It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
+        warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
+        pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
+
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
@@ -601,6 +616,9 @@ class _BackupPolicyState:
         """
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         """
+        warnings.warn("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""", DeprecationWarning)
+        pulumi.log.warn("""backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
+
         return pulumi.get(self, "backup_periods")
 
     @backup_periods.setter
@@ -625,6 +643,9 @@ class _BackupPolicyState:
         """
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         """
+        warnings.warn("""Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""", DeprecationWarning)
+        pulumi.log.warn("""backup_time is deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""")
+
         return pulumi.get(self, "backup_time")
 
     @backup_time.setter
@@ -722,6 +743,9 @@ class _BackupPolicyState:
         """
         It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         """
+        warnings.warn("""Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""", DeprecationWarning)
+        pulumi.log.warn("""log_backup is deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""")
+
         return pulumi.get(self, "log_backup")
 
     @log_backup.setter
@@ -758,6 +782,9 @@ class _BackupPolicyState:
         """
         It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         """
+        warnings.warn("""Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""", DeprecationWarning)
+        pulumi.log.warn("""log_retention_period is deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""")
+
         return pulumi.get(self, "log_retention_period")
 
     @log_retention_period.setter
@@ -809,6 +836,9 @@ class _BackupPolicyState:
         """
         It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
+        warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
+        pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
+
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
@@ -1216,6 +1246,9 @@ class BackupPolicy(pulumi.CustomResource):
         """
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         """
+        warnings.warn("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""", DeprecationWarning)
+        pulumi.log.warn("""backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
+
         return pulumi.get(self, "backup_periods")
 
     @property
@@ -1232,6 +1265,9 @@ class BackupPolicy(pulumi.CustomResource):
         """
         It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         """
+        warnings.warn("""Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""", DeprecationWarning)
+        pulumi.log.warn("""backup_time is deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""")
+
         return pulumi.get(self, "backup_time")
 
     @property
@@ -1297,6 +1333,9 @@ class BackupPolicy(pulumi.CustomResource):
         """
         It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         """
+        warnings.warn("""Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""", DeprecationWarning)
+        pulumi.log.warn("""log_backup is deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""")
+
         return pulumi.get(self, "log_backup")
 
     @property
@@ -1321,6 +1360,9 @@ class BackupPolicy(pulumi.CustomResource):
         """
         It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         """
+        warnings.warn("""Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""", DeprecationWarning)
+        pulumi.log.warn("""log_retention_period is deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""")
+
         return pulumi.get(self, "log_retention_period")
 
     @property
@@ -1356,5 +1398,8 @@ class BackupPolicy(pulumi.CustomResource):
         """
         It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
+        warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
+        pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
+
         return pulumi.get(self, "retention_period")
 

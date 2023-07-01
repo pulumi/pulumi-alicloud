@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Edas
     /// <summary>
     /// This operation is provided to scale out an EDAS application.
     /// 
-    /// &gt; **NOTE:** Available in 1.82.0+
+    /// &gt; **NOTE:** Available since v1.82.0
     /// 
     /// ## Example Usage
     /// 

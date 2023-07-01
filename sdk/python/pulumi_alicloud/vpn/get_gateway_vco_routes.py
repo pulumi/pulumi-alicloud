@@ -226,15 +226,15 @@ def get_gateway_vco_routes(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes', __args__, opts=opts, typ=GetGatewayVcoRoutesResult).value
 
     return AwaitableGetGatewayVcoRoutesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        route_entry_type=__ret__.route_entry_type,
-        routes=__ret__.routes,
-        status=__ret__.status,
-        vpn_connection_id=__ret__.vpn_connection_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        route_entry_type=pulumi.get(__ret__, 'route_entry_type'),
+        routes=pulumi.get(__ret__, 'routes'),
+        status=pulumi.get(__ret__, 'status'),
+        vpn_connection_id=pulumi.get(__ret__, 'vpn_connection_id'))
 
 
 @_utilities.lift_output_func(get_gateway_vco_routes)

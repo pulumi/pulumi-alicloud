@@ -114,11 +114,11 @@ def get_buckets(name_regex: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:oss/getBuckets:getBuckets', __args__, opts=opts, typ=GetBucketsResult).value
 
     return AwaitableGetBucketsResult(
-        buckets=__ret__.buckets,
-        id=__ret__.id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        buckets=pulumi.get(__ret__, 'buckets'),
+        id=pulumi.get(__ret__, 'id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_buckets)

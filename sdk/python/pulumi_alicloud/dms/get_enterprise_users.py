@@ -184,16 +184,16 @@ def get_enterprise_users(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dms/getEnterpriseUsers:getEnterpriseUsers', __args__, opts=opts, typ=GetEnterpriseUsersResult).value
 
     return AwaitableGetEnterpriseUsersResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        role=__ret__.role,
-        search_key=__ret__.search_key,
-        status=__ret__.status,
-        tid=__ret__.tid,
-        users=__ret__.users)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        role=pulumi.get(__ret__, 'role'),
+        search_key=pulumi.get(__ret__, 'search_key'),
+        status=pulumi.get(__ret__, 'status'),
+        tid=pulumi.get(__ret__, 'tid'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_enterprise_users)

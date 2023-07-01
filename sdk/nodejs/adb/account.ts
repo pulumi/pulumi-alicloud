@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a [ADB](https://www.alibabacloud.com/help/product/92664.htm) account resource and used to manage databases.
+ * Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount) account resource and used to manage databases.
  *
- * > **NOTE:** Available in v1.71.0+.
+ * > **NOTE:** Available since v1.71.0.
  *
  * ## Example Usage
  *
@@ -16,31 +16,46 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const creation = config.get("creation") || "ADB";
- * const name = config.get("name") || "adbaccountmysql";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: creation,
+ * const name = config.get("name") || "tf_example";
+ * const defaultZones = alicloud.adb.getZones({});
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ *     status: "OK",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
+ * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
  * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
  *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
+ *     cidrBlock: "10.4.0.0/24",
  *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     vswitchName: name,
  * });
- * const cluster = new alicloud.adb.Cluster("cluster", {
- *     dbClusterVersion: "3.0",
+ * const defaultDBCluster = new alicloud.adb.DBCluster("defaultDBCluster", {
  *     dbClusterCategory: "Cluster",
  *     dbNodeClass: "C8",
- *     dbNodeCount: 2,
- *     dbNodeStorage: 200,
- *     payType: "PostPaid",
+ *     dbNodeCount: 4,
+ *     dbNodeStorage: 400,
+ *     mode: "reserver",
+ *     dbClusterVersion: "3.0",
+ *     paymentType: "PayAsYouGo",
  *     vswitchId: defaultSwitch.id,
  *     description: name,
+ *     maintainTime: "23:00Z-00:00Z",
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     securityIps: [
+ *         "10.168.1.12",
+ *         "10.168.1.11",
+ *     ],
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
  * });
- * const account = new alicloud.adb.Account("account", {
- *     dbClusterId: cluster.id,
- *     accountName: "tftestnormal",
- *     accountPassword: "Test12345",
+ * const defaultAccount = new alicloud.adb.Account("defaultAccount", {
+ *     dbClusterId: defaultDBCluster.id,
+ *     accountName: name,
+ *     accountPassword: "tf_example123",
  *     accountDescription: name,
  * });
  * ```

@@ -13,7 +13,7 @@ import (
 
 // Creates an EDAS ecs application on EDAS. The application will be deployed when `groupId` and `warUrl` are given.
 //
-// > **NOTE:** Available in 1.82.0+
+// > **NOTE:** Available since v1.82.0
 //
 // ## Import
 //

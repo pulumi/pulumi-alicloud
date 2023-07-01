@@ -18,9 +18,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a [ADB](https://www.alibabacloud.com/help/product/92664.htm) account resource and used to manage databases.
+ * Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount) account resource and used to manage databases.
  * 
- * &gt; **NOTE:** Available in v1.71.0+.
+ * &gt; **NOTE:** Available since v1.71.0.
  * 
  * ## Example Usage
  * ```java
@@ -29,14 +29,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.adb.AdbFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.adb.Cluster;
- * import com.pulumi.alicloud.adb.ClusterArgs;
+ * import com.pulumi.alicloud.adb.DBCluster;
+ * import com.pulumi.alicloud.adb.DBClusterArgs;
  * import com.pulumi.alicloud.adb.Account;
  * import com.pulumi.alicloud.adb.AccountArgs;
  * import java.util.List;
@@ -53,37 +55,50 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;ADB&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;adbaccountmysql&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(creation)
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var defaultZones = AdbFunctions.getZones();
+ * 
+ *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *             .status(&#34;OK&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vswitchName(name)
  *             .build());
  * 
- *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
- *             .dbClusterVersion(&#34;3.0&#34;)
+ *         var defaultDBCluster = new DBCluster(&#34;defaultDBCluster&#34;, DBClusterArgs.builder()        
  *             .dbClusterCategory(&#34;Cluster&#34;)
  *             .dbNodeClass(&#34;C8&#34;)
- *             .dbNodeCount(2)
- *             .dbNodeStorage(200)
- *             .payType(&#34;PostPaid&#34;)
+ *             .dbNodeCount(&#34;4&#34;)
+ *             .dbNodeStorage(&#34;400&#34;)
+ *             .mode(&#34;reserver&#34;)
+ *             .dbClusterVersion(&#34;3.0&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .vswitchId(defaultSwitch.id())
  *             .description(name)
+ *             .maintainTime(&#34;23:00Z-00:00Z&#34;)
+ *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .securityIps(            
+ *                 &#34;10.168.1.12&#34;,
+ *                 &#34;10.168.1.11&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
  *             .build());
  * 
- *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
- *             .dbClusterId(cluster.id())
- *             .accountName(&#34;tftestnormal&#34;)
- *             .accountPassword(&#34;Test12345&#34;)
+ *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+ *             .dbClusterId(defaultDBCluster.id())
+ *             .accountName(name)
+ *             .accountPassword(&#34;tf_example123&#34;)
  *             .accountDescription(name)
  *             .build());
  * 

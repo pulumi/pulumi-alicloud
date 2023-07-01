@@ -62,20 +62,52 @@ import (
 //				return err
 //			}
 //			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
-//				Document:    pulumi.String("		{\n		  \"Statement\": [\n			{\n			  \"Action\": \"sts:AssumeRole\",\n			  \"Effect\": \"Allow\",\n			  \"Principal\": {\n				\"Service\": [\n				  \"oss.aliyuncs.com\"\n				]\n			  }\n			}\n		  ],\n		  \"Version\": \"1\"\n		}\n"),
-//				Description: pulumi.String("this is a test"),
-//				Force:       pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
+//				Document: pulumi.String(`		{
+//			  "Statement": [
+//				{
+//				  "Action": "sts:AssumeRole",
+//				  "Effect": "Allow",
+//				  "Principal": {
+//					"Service": [
+//					  "oss.aliyuncs.com"
+//					]
+//				  }
+//				}
+//			  ],
+//			  "Version": "1"
 //			}
-//			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//				PolicyName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-policy-%v", result), nil
-//				}).(pulumi.StringOutput),
-//				PolicyDocument: pulumi.String("		{\n		  \"Statement\": [\n			{\n			  \"Action\": [\n				\"*\"\n			  ],\n			  \"Effect\": \"Allow\",\n			  \"Resource\": [\n				\"*\"\n			  ]\n			}\n		  ],\n			\"Version\": \"1\"\n		}\n"),
-//				Description:    pulumi.String("this is a policy test"),
-//				Force:          pulumi.Bool(true),
+//
+// `),
+//
+//		Description: pulumi.String("this is a test"),
+//		Force:       pulumi.Bool(true),
+//	})
+//	if err != nil {
+//		return err
+//	}
+//	policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//		PolicyName: _default.Result.ApplyT(func(result int) (string, error) {
+//			return fmt.Sprintf("example-policy-%v", result), nil
+//		}).(pulumi.StringOutput),
+//		PolicyDocument: pulumi.String(`		{
+//	  "Statement": [
+//		{
+//		  "Action": [
+//			"*"
+//		  ],
+//		  "Effect": "Allow",
+//		  "Resource": [
+//			"*"
+//		  ]
+//		}
+//	  ],
+//		"Version": "1"
+//	}
+//
+// `),
+//
+//				Description: pulumi.String("this is a policy test"),
+//				Force:       pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

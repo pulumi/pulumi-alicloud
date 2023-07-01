@@ -88,10 +88,6 @@ class GetLoadBalancersResult:
         pulumi.set(__self__, "slave_zone_id", slave_zone_id)
         if slbs and not isinstance(slbs, list):
             raise TypeError("Expected argument 'slbs' to be a list")
-        if slbs is not None:
-            warnings.warn("""Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.""", DeprecationWarning)
-            pulumi.log.warn("""slbs is deprecated: Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.""")
-
         pulumi.set(__self__, "slbs", slbs)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
@@ -235,6 +231,9 @@ class GetLoadBalancersResult:
         """
         A list of SLBs. Each element contains the following attributes:
         """
+        warnings.warn("""Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.""", DeprecationWarning)
+        pulumi.log.warn("""slbs is deprecated: Field 'slbs' has deprecated from v1.123.1 and replace by 'balancers'.""")
+
         return pulumi.get(self, "slbs")
 
     @property
@@ -397,33 +396,33 @@ def get_load_balancers(address: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:slb/getLoadBalancers:getLoadBalancers', __args__, opts=opts, typ=GetLoadBalancersResult).value
 
     return AwaitableGetLoadBalancersResult(
-        address=__ret__.address,
-        address_ip_version=__ret__.address_ip_version,
-        address_type=__ret__.address_type,
-        balancers=__ret__.balancers,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        internet_charge_type=__ret__.internet_charge_type,
-        load_balancer_name=__ret__.load_balancer_name,
-        master_zone_id=__ret__.master_zone_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        network_type=__ret__.network_type,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        payment_type=__ret__.payment_type,
-        resource_group_id=__ret__.resource_group_id,
-        server_id=__ret__.server_id,
-        server_intranet_address=__ret__.server_intranet_address,
-        slave_zone_id=__ret__.slave_zone_id,
-        slbs=__ret__.slbs,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        total_count=__ret__.total_count,
-        vpc_id=__ret__.vpc_id,
-        vswitch_id=__ret__.vswitch_id)
+        address=pulumi.get(__ret__, 'address'),
+        address_ip_version=pulumi.get(__ret__, 'address_ip_version'),
+        address_type=pulumi.get(__ret__, 'address_type'),
+        balancers=pulumi.get(__ret__, 'balancers'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        internet_charge_type=pulumi.get(__ret__, 'internet_charge_type'),
+        load_balancer_name=pulumi.get(__ret__, 'load_balancer_name'),
+        master_zone_id=pulumi.get(__ret__, 'master_zone_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        network_type=pulumi.get(__ret__, 'network_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        payment_type=pulumi.get(__ret__, 'payment_type'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        server_id=pulumi.get(__ret__, 'server_id'),
+        server_intranet_address=pulumi.get(__ret__, 'server_intranet_address'),
+        slave_zone_id=pulumi.get(__ret__, 'slave_zone_id'),
+        slbs=pulumi.get(__ret__, 'slbs'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        total_count=pulumi.get(__ret__, 'total_count'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'),
+        vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
 
 
 @_utilities.lift_output_func(get_load_balancers)

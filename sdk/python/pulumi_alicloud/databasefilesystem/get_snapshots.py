@@ -140,13 +140,13 @@ def get_snapshots(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:databasefilesystem/getSnapshots:getSnapshots', __args__, opts=opts, typ=GetSnapshotsResult).value
 
     return AwaitableGetSnapshotsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        snapshots=__ret__.snapshots,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        snapshots=pulumi.get(__ret__, 'snapshots'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_snapshots)

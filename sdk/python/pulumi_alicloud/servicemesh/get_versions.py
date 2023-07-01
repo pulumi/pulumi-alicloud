@@ -115,11 +115,11 @@ def get_versions(edition: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:servicemesh/getVersions:getVersions', __args__, opts=opts, typ=GetVersionsResult).value
 
     return AwaitableGetVersionsResult(
-        edition=__ret__.edition,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        versions=__ret__.versions)
+        edition=pulumi.get(__ret__, 'edition'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        versions=pulumi.get(__ret__, 'versions'))
 
 
 @_utilities.lift_output_func(get_versions)

@@ -14,9 +14,9 @@ namespace Pulumi.AliCloud.Cen
     /// You can use the route map function to filter routes and modify route attributes.
     /// By doing so, you can manage the communication between networks attached to a CEN.
     /// 
-    /// For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/doc-detail/124157.htm).
+    /// For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenroutemap).
     /// 
-    /// &gt; **NOTE:** Available in 1.82.0+
+    /// &gt; **NOTE:** Available since v1.82.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,81 +30,89 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a cen Route map resource and use it.
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance");
-    /// 
-    ///     var vpc00Region = new AliCloud.Provider("vpc00Region", new()
+    ///     var config = new Config();
+    ///     var sourceRegion = config.Get("sourceRegion") ?? "cn-hangzhou";
+    ///     var destinationRegion = config.Get("destinationRegion") ?? "cn-shanghai";
+    ///     var hz = new AliCloud.Provider("hz", new()
     ///     {
-    ///         Region = "cn-hangzhou",
+    ///         Region = sourceRegion,
     ///     });
     /// 
-    ///     var vpc01Region = new AliCloud.Provider("vpc01Region", new()
+    ///     var sh = new AliCloud.Provider("sh", new()
     ///     {
-    ///         Region = "cn-shanghai",
+    ///         Region = destinationRegion,
     ///     });
     /// 
-    ///     var vpc00 = new AliCloud.Vpc.Network("vpc00", new()
+    ///     var exampleHzNetwork = new AliCloud.Vpc.Network("exampleHzNetwork", new()
     ///     {
+    ///         VpcName = "tf_example",
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Hz,
+    ///     });
+    /// 
+    ///     var exampleShNetwork = new AliCloud.Vpc.Network("exampleShNetwork", new()
+    ///     {
+    ///         VpcName = "tf_example",
     ///         CidrBlock = "172.16.0.0/12",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Vpc00_region,
+    ///         Provider = alicloud.Sh,
     ///     });
     /// 
-    ///     var vpc01 = new AliCloud.Vpc.Network("vpc01", new()
+    ///     var example = new AliCloud.Cen.Instance("example", new()
     ///     {
-    ///         CidrBlock = "172.16.0.0/12",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Vpc01_region,
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var default00 = new AliCloud.Cen.InstanceAttachment("default00", new()
+    ///     var exampleHzInstanceAttachment = new AliCloud.Cen.InstanceAttachment("exampleHzInstanceAttachment", new()
     ///     {
-    ///         InstanceId = defaultInstance.Id,
-    ///         ChildInstanceId = vpc00.Id,
+    ///         InstanceId = example.Id,
+    ///         ChildInstanceId = exampleHzNetwork.Id,
     ///         ChildInstanceType = "VPC",
-    ///         ChildInstanceRegionId = "cn-hangzhou",
+    ///         ChildInstanceRegionId = sourceRegion,
     ///     });
     /// 
-    ///     var default01 = new AliCloud.Cen.InstanceAttachment("default01", new()
+    ///     var exampleShInstanceAttachment = new AliCloud.Cen.InstanceAttachment("exampleShInstanceAttachment", new()
     ///     {
-    ///         InstanceId = defaultInstance.Id,
-    ///         ChildInstanceId = vpc01.Id,
+    ///         InstanceId = example.Id,
+    ///         ChildInstanceId = exampleShNetwork.Id,
     ///         ChildInstanceType = "VPC",
-    ///         ChildInstanceRegionId = "cn-shanghai",
+    ///         ChildInstanceRegionId = destinationRegion,
     ///     });
     /// 
-    ///     var defaultRouteMap = new AliCloud.Cen.RouteMap("defaultRouteMap", new()
+    ///     var @default = new AliCloud.Cen.RouteMap("default", new()
     ///     {
-    ///         CenRegionId = "cn-hangzhou",
-    ///         CenId = alicloud_cen_instance.Cen.Id,
-    ///         Description = "test-desc",
+    ///         CenRegionId = sourceRegion,
+    ///         CenId = example.Id,
+    ///         Description = "tf_example",
     ///         Priority = 1,
     ///         TransmitDirection = "RegionIn",
     ///         MapResult = "Permit",
     ///         NextPriority = 1,
     ///         SourceRegionIds = new[]
     ///         {
-    ///             "cn-hangzhou",
+    ///             sourceRegion,
     ///         },
     ///         SourceInstanceIds = new[]
     ///         {
-    ///             vpc00.Id,
+    ///             exampleHzInstanceAttachment.ChildInstanceId,
     ///         },
     ///         SourceInstanceIdsReverseMatch = false,
     ///         DestinationInstanceIds = new[]
     ///         {
-    ///             vpc01.Id,
+    ///             exampleShInstanceAttachment.ChildInstanceId,
     ///         },
     ///         DestinationInstanceIdsReverseMatch = false,
     ///         SourceRouteTableIds = new[]
     ///         {
-    ///             vpc00.RouteTableId,
+    ///             exampleHzNetwork.RouteTableId,
     ///         },
     ///         DestinationRouteTableIds = new[]
     ///         {
-    ///             vpc01.RouteTableId,
+    ///             exampleShNetwork.RouteTableId,
     ///         },
     ///         SourceChildInstanceTypes = new[]
     ///         {
@@ -116,7 +124,7 @@ namespace Pulumi.AliCloud.Cen
     ///         },
     ///         DestinationCidrBlocks = new[]
     ///         {
-    ///             vpc01.CidrBlock,
+    ///             exampleShNetwork.CidrBlock,
     ///         },
     ///         CidrMatchMode = "Include",
     ///         RouteTypes = new[]
@@ -142,13 +150,6 @@ namespace Pulumi.AliCloud.Cen
     ///         PrependAsPaths = new[]
     ///         {
     ///             "65501",
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             default00,
-    ///             default01,
     ///         },
     ///     });
     /// 

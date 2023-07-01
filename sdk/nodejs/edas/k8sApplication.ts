@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Create an EDAS k8s application.For information about EDAS K8s Application and how to use it, see [What is EDAS K8s Application](https://www.alibabacloud.com/help/doc-detail/85029.htm).
  *
- * > **NOTE:** Available in 1.105.0+
+ * > **NOTE:** Available since v1.105.0
  *
  * ## Import
  *
@@ -79,24 +79,26 @@ export class K8sApplication extends pulumi.CustomResource {
     public readonly imageUrl!: pulumi.Output<string | undefined>;
     /**
      * Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+     * It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
     public readonly internetSlbId!: pulumi.Output<string | undefined>;
     /**
-     * The public network SLB front-end port, range 1~65535.
+     * The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
     public readonly internetSlbPort!: pulumi.Output<number | undefined>;
     /**
-     * The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+     * The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
     public readonly internetSlbProtocol!: pulumi.Output<string | undefined>;
     /**
      * The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+     * It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
@@ -305,24 +307,26 @@ export interface K8sApplicationState {
     imageUrl?: pulumi.Input<string>;
     /**
      * Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+     * It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
     internetSlbId?: pulumi.Input<string>;
     /**
-     * The public network SLB front-end port, range 1~65535.
+     * The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
     internetSlbPort?: pulumi.Input<number>;
     /**
-     * The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+     * The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
     internetSlbProtocol?: pulumi.Input<string>;
     /**
      * The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+     * It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
@@ -443,24 +447,26 @@ export interface K8sApplicationArgs {
     imageUrl?: pulumi.Input<string>;
     /**
      * Public network SLB ID. If not configured, EDAS will automatically purchase a new SLB for the user.
+     * It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
     internetSlbId?: pulumi.Input<string>;
     /**
-     * The public network SLB front-end port, range 1~65535.
+     * The public network SLB front-end port, range 1~65535. It has been deprecated and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
     internetSlbPort?: pulumi.Input<number>;
     /**
-     * The public network SLB protocol supports TCP, HTTP and HTTPS protocols.
+     * The public network SLB protocol supports TCP, HTTP and HTTPS protocols. It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */
     internetSlbProtocol?: pulumi.Input<string>;
     /**
      * The private SLB back-end port, is also the service port of the application, ranging from 1 to 65535.
+     * It has been deprecated, and new resource 'alicloud_edas_k8s_slb_attachment' replaces it.
      *
      * @deprecated Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it
      */

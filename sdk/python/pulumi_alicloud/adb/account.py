@@ -230,9 +230,9 @@ class Account(pulumi.CustomResource):
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
-        Provides a [ADB](https://www.alibabacloud.com/help/product/92664.htm) account resource and used to manage databases.
+        Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount) account resource and used to manage databases.
 
-        > **NOTE:** Available in v1.71.0+.
+        > **NOTE:** Available since v1.71.0.
 
         ## Example Usage
 
@@ -241,31 +241,43 @@ class Account(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "ADB"
         name = config.get("name")
         if name is None:
-            name = "adbaccountmysql"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+            name = "tf_example"
+        default_zones = alicloud.adb.get_zones()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        cluster = alicloud.adb.Cluster("cluster",
-            db_cluster_version="3.0",
+            cidr_block="10.4.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
             db_cluster_category="Cluster",
             db_node_class="C8",
-            db_node_count=2,
-            db_node_storage=200,
-            pay_type="PostPaid",
+            db_node_count=4,
+            db_node_storage=400,
+            mode="reserver",
+            db_cluster_version="3.0",
+            payment_type="PayAsYouGo",
             vswitch_id=default_switch.id,
-            description=name)
-        account = alicloud.adb.Account("account",
-            db_cluster_id=cluster.id,
-            account_name="tftestnormal",
-            account_password="Test12345",
+            description=name,
+            maintain_time="23:00Z-00:00Z",
+            resource_group_id=default_resource_groups.ids[0],
+            security_ips=[
+                "10.168.1.12",
+                "10.168.1.11",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_account = alicloud.adb.Account("defaultAccount",
+            db_cluster_id=default_db_cluster.id,
+            account_name=name,
+            account_password="tf_example123",
             account_description=name)
         ```
 
@@ -293,9 +305,9 @@ class Account(pulumi.CustomResource):
                  args: AccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [ADB](https://www.alibabacloud.com/help/product/92664.htm) account resource and used to manage databases.
+        Provides a [ADB](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createaccount) account resource and used to manage databases.
 
-        > **NOTE:** Available in v1.71.0+.
+        > **NOTE:** Available since v1.71.0.
 
         ## Example Usage
 
@@ -304,31 +316,43 @@ class Account(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
-        creation = config.get("creation")
-        if creation is None:
-            creation = "ADB"
         name = config.get("name")
         if name is None:
-            name = "adbaccountmysql"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
+            name = "tf_example"
+        default_zones = alicloud.adb.get_zones()
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("defaultNetwork",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
         default_switch = alicloud.vpc.Switch("defaultSwitch",
             vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id)
-        cluster = alicloud.adb.Cluster("cluster",
-            db_cluster_version="3.0",
+            cidr_block="10.4.0.0/24",
+            zone_id=default_zones.zones[0].id,
+            vswitch_name=name)
+        default_db_cluster = alicloud.adb.DBCluster("defaultDBCluster",
             db_cluster_category="Cluster",
             db_node_class="C8",
-            db_node_count=2,
-            db_node_storage=200,
-            pay_type="PostPaid",
+            db_node_count=4,
+            db_node_storage=400,
+            mode="reserver",
+            db_cluster_version="3.0",
+            payment_type="PayAsYouGo",
             vswitch_id=default_switch.id,
-            description=name)
-        account = alicloud.adb.Account("account",
-            db_cluster_id=cluster.id,
-            account_name="tftestnormal",
-            account_password="Test12345",
+            description=name,
+            maintain_time="23:00Z-00:00Z",
+            resource_group_id=default_resource_groups.ids[0],
+            security_ips=[
+                "10.168.1.12",
+                "10.168.1.11",
+            ],
+            tags={
+                "Created": "TF",
+                "For": "example",
+            })
+        default_account = alicloud.adb.Account("defaultAccount",
+            db_cluster_id=default_db_cluster.id,
+            account_name=name,
+            account_password="tf_example123",
             account_description=name)
         ```
 

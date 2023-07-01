@@ -11,91 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an ALIKAFKA instance resource.
-//
-// For information about ALIKAFKA instance and how to use it, see [What is ALIKAFKA instance](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-startinstance).
-//
-// > **NOTE:** Available in 1.59.0+
-//
-// > **NOTE:** Creation or modification may took about 10-40 minutes.
-//
-// > **NOTE:** Only the following regions support create alikafka pre paid instance.
-// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-//
-// > **NOTE:** Only the following regions support create alikafka post paid instance.
-// [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alikafka"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceName := "alikafkaInstanceName"
-//			if param := cfg.Get("instanceName"); param != "" {
-//				instanceName = param
-//			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:     defaultNetwork.ID(),
-//				CidrBlock: pulumi.String("172.16.0.0/24"),
-//				ZoneId:    *pulumi.String(defaultZones.Zones[0].Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: defaultNetwork.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alikafka.NewInstance(ctx, "defaultInstance", &alikafka.InstanceArgs{
-//				PartitionNum:  pulumi.Int(50),
-//				DiskType:      pulumi.Int(1),
-//				DiskSize:      pulumi.Int(500),
-//				DeployType:    pulumi.Int(4),
-//				IoMax:         pulumi.Int(20),
-//				VswitchId:     defaultSwitch.ID(),
-//				SecurityGroup: defaultSecurityGroup.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// ALIKAFKA TOPIC can be imported using the id, e.g.
+// ALIKAFKA instance can be imported using the id, e.g.
 //
 // ```sh
 //
@@ -160,9 +78,11 @@ type Instance struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The max num of topic can be creation of the instance.
-	// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
+	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
+	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
 	TopicQuota pulumi.IntOutput `pulumi:"topicQuota"`
 	// The VPC ID of the instance.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
@@ -268,9 +188,11 @@ type instanceState struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The max num of topic can be creation of the instance.
-	// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
+	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
+	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
 	TopicQuota *int `pulumi:"topicQuota"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
@@ -336,9 +258,11 @@ type InstanceState struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The max num of topic can be creation of the instance.
-	// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
+	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
+	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
 	TopicQuota pulumi.IntPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
@@ -400,9 +324,11 @@ type instanceArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The max num of topic can be creation of the instance.
-	// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
+	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
+	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
 	TopicQuota *int `pulumi:"topicQuota"`
 	// The VPC ID of the instance.
 	VpcId *string `pulumi:"vpcId"`
@@ -461,9 +387,11 @@ type InstanceArgs struct {
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
 	// The max num of topic can be creation of the instance.
-	// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
+	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
+	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 	//
-	// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+	// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
 	TopicQuota pulumi.IntPtrInput
 	// The VPC ID of the instance.
 	VpcId pulumi.StringPtrInput
@@ -669,9 +597,11 @@ func (o InstanceOutput) Tags() pulumi.MapOutput {
 }
 
 // The max num of topic can be creation of the instance.
-// It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
+// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
+// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
 //
-// Deprecated: Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+// Deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
 func (o InstanceOutput) TopicQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.TopicQuota }).(pulumi.IntOutput)
 }

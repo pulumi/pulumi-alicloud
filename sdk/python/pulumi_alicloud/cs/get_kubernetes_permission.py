@@ -100,9 +100,9 @@ def get_kubernetes_permission(permissions: Optional[Sequence[pulumi.InputType['G
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getKubernetesPermission:getKubernetesPermission', __args__, opts=opts, typ=GetKubernetesPermissionResult).value
 
     return AwaitableGetKubernetesPermissionResult(
-        id=__ret__.id,
-        permissions=__ret__.permissions,
-        uid=__ret__.uid)
+        id=pulumi.get(__ret__, 'id'),
+        permissions=pulumi.get(__ret__, 'permissions'),
+        uid=pulumi.get(__ret__, 'uid'))
 
 
 @_utilities.lift_output_func(get_kubernetes_permission)

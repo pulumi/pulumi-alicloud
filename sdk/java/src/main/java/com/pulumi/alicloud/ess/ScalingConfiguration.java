@@ -86,6 +86,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 

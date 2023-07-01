@@ -75,5 +75,5 @@ def get_global_events_storage_region(opts: Optional[pulumi.InvokeOptions] = None
     __ret__ = pulumi.runtime.invoke('alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion', __args__, opts=opts, typ=GetGlobalEventsStorageRegionResult).value
 
     return AwaitableGetGlobalEventsStorageRegionResult(
-        id=__ret__.id,
-        storage_region=__ret__.storage_region)
+        id=pulumi.get(__ret__, 'id'),
+        storage_region=pulumi.get(__ret__, 'storage_region'))

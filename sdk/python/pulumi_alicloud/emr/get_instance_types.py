@@ -201,17 +201,17 @@ def get_instance_types(cluster_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:emr/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult).value
 
     return AwaitableGetInstanceTypesResult(
-        cluster_type=__ret__.cluster_type,
-        destination_resource=__ret__.destination_resource,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_charge_type=__ret__.instance_charge_type,
-        instance_type=__ret__.instance_type,
-        output_file=__ret__.output_file,
-        support_local_storage=__ret__.support_local_storage,
-        support_node_types=__ret__.support_node_types,
-        types=__ret__.types,
-        zone_id=__ret__.zone_id)
+        cluster_type=pulumi.get(__ret__, 'cluster_type'),
+        destination_resource=pulumi.get(__ret__, 'destination_resource'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_charge_type=pulumi.get(__ret__, 'instance_charge_type'),
+        instance_type=pulumi.get(__ret__, 'instance_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        support_local_storage=pulumi.get(__ret__, 'support_local_storage'),
+        support_node_types=pulumi.get(__ret__, 'support_node_types'),
+        types=pulumi.get(__ret__, 'types'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_instance_types)

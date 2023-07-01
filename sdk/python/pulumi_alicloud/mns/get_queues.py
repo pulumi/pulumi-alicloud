@@ -116,11 +116,11 @@ def get_queues(name_prefix: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:mns/getQueues:getQueues', __args__, opts=opts, typ=GetQueuesResult).value
 
     return AwaitableGetQueuesResult(
-        id=__ret__.id,
-        name_prefix=__ret__.name_prefix,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        queues=__ret__.queues)
+        id=pulumi.get(__ret__, 'id'),
+        name_prefix=pulumi.get(__ret__, 'name_prefix'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        queues=pulumi.get(__ret__, 'queues'))
 
 
 @_utilities.lift_output_func(get_queues)

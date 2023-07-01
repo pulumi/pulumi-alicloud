@@ -110,6 +110,9 @@ class EnterpriseUserArgs:
         """
         It has been deprecated from 1.100.0 and use `user_name` instead.
         """
+        warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
+
         return pulumi.get(self, "nick_name")
 
     @nick_name.setter
@@ -253,6 +256,9 @@ class _EnterpriseUserState:
         """
         It has been deprecated from 1.100.0 and use `user_name` instead.
         """
+        warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
+
         return pulumi.get(self, "nick_name")
 
     @nick_name.setter
@@ -533,6 +539,9 @@ class EnterpriseUser(pulumi.CustomResource):
         """
         It has been deprecated from 1.100.0 and use `user_name` instead.
         """
+        warnings.warn("""Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""nick_name is deprecated: Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.""")
+
         return pulumi.get(self, "nick_name")
 
     @property

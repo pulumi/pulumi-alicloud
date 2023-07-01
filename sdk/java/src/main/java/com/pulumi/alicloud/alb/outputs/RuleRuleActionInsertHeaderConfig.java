@@ -17,7 +17,7 @@ public final class RuleRuleActionInsertHeaderConfig {
      */
     private @Nullable String key;
     /**
-     * @return The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+     * @return The value of the values list.
      * 
      */
     private @Nullable String value;
@@ -36,7 +36,7 @@ public final class RuleRuleActionInsertHeaderConfig {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | &lt; &gt; &amp;.
+     * @return The value of the values list.
      * 
      */
     public Optional<String> value() {

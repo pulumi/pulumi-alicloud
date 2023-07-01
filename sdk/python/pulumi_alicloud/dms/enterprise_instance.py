@@ -323,6 +323,9 @@ class EnterpriseInstanceArgs:
         """
         Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
         """
+        warnings.warn("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""")
+
         return pulumi.get(self, "instance_alias")
 
     @instance_alias.setter
@@ -705,6 +708,9 @@ class _EnterpriseInstanceState:
         """
         Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
         """
+        warnings.warn("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""")
+
         return pulumi.get(self, "instance_alias")
 
     @instance_alias.setter
@@ -849,6 +855,9 @@ class _EnterpriseInstanceState:
         """
         It has been deprecated from provider version 1.100.0 and 'status' instead.
         """
+        warnings.warn("""Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""", DeprecationWarning)
+        pulumi.log.warn("""state is deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""")
+
         return pulumi.get(self, "state")
 
     @state.setter
@@ -1368,6 +1377,9 @@ class EnterpriseInstance(pulumi.CustomResource):
         """
         Field `instance_alias` has been deprecated from version 1.100.0. Use `instance_name` instead.
         """
+        warnings.warn("""Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_alias is deprecated: Field 'instance_alias' has been deprecated from version 1.100.0. Use 'instance_name' instead.""")
+
         return pulumi.get(self, "instance_alias")
 
     @property
@@ -1464,6 +1476,9 @@ class EnterpriseInstance(pulumi.CustomResource):
         """
         It has been deprecated from provider version 1.100.0 and 'status' instead.
         """
+        warnings.warn("""Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""", DeprecationWarning)
+        pulumi.log.warn("""state is deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""")
+
         return pulumi.get(self, "state")
 
     @property

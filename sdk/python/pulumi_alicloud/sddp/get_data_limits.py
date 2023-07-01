@@ -127,12 +127,12 @@ def get_data_limits(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:sddp/getDataLimits:getDataLimits', __args__, opts=opts, typ=GetDataLimitsResult).value
 
     return AwaitableGetDataLimitsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        limits=__ret__.limits,
-        output_file=__ret__.output_file,
-        parent_id=__ret__.parent_id,
-        resource_type=__ret__.resource_type)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        limits=pulumi.get(__ret__, 'limits'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        parent_id=pulumi.get(__ret__, 'parent_id'),
+        resource_type=pulumi.get(__ret__, 'resource_type'))
 
 
 @_utilities.lift_output_func(get_data_limits)

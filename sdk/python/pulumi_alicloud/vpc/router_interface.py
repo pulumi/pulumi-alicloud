@@ -182,6 +182,9 @@ class RouterInterfaceArgs:
         """
         It has been deprecated from version 1.11.0.
         """
+        warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
+        pulumi.log.warn("""opposite_access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")
+
         return pulumi.get(self, "opposite_access_point_id")
 
     @opposite_access_point_id.setter
@@ -315,6 +318,9 @@ class _RouterInterfaceState:
         """
         It has been deprecated from version 1.11.0.
         """
+        warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
+        pulumi.log.warn("""access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")
+
         return pulumi.get(self, "access_point_id")
 
     @access_point_id.setter
@@ -388,6 +394,9 @@ class _RouterInterfaceState:
         """
         It has been deprecated from version 1.11.0.
         """
+        warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
+        pulumi.log.warn("""opposite_access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")
+
         return pulumi.get(self, "opposite_access_point_id")
 
     @opposite_access_point_id.setter
@@ -400,6 +409,9 @@ class _RouterInterfaceState:
         """
         It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         """
+        warnings.warn("""Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""opposite_interface_id is deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.""")
+
         return pulumi.get(self, "opposite_interface_id")
 
     @opposite_interface_id.setter
@@ -412,6 +424,9 @@ class _RouterInterfaceState:
         """
         It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
         """
+        warnings.warn("""Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""opposite_interface_owner_id is deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.""")
+
         return pulumi.get(self, "opposite_interface_owner_id")
 
     @opposite_interface_owner_id.setter
@@ -436,6 +451,9 @@ class _RouterInterfaceState:
         """
         It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         """
+        warnings.warn("""Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""opposite_router_id is deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.""")
+
         return pulumi.get(self, "opposite_router_id")
 
     @opposite_router_id.setter
@@ -448,6 +466,9 @@ class _RouterInterfaceState:
         """
         It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
         """
+        warnings.warn("""Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""opposite_router_type is deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.""")
+
         return pulumi.get(self, "opposite_router_type")
 
     @opposite_router_type.setter
@@ -774,6 +795,9 @@ class RouterInterface(pulumi.CustomResource):
         """
         It has been deprecated from version 1.11.0.
         """
+        warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
+        pulumi.log.warn("""access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")
+
         return pulumi.get(self, "access_point_id")
 
     @property
@@ -823,6 +847,9 @@ class RouterInterface(pulumi.CustomResource):
         """
         It has been deprecated from version 1.11.0.
         """
+        warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
+        pulumi.log.warn("""opposite_access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")
+
         return pulumi.get(self, "opposite_access_point_id")
 
     @property
@@ -831,6 +858,9 @@ class RouterInterface(pulumi.CustomResource):
         """
         It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         """
+        warnings.warn("""Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""opposite_interface_id is deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.""")
+
         return pulumi.get(self, "opposite_interface_id")
 
     @property
@@ -839,6 +869,9 @@ class RouterInterface(pulumi.CustomResource):
         """
         It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
         """
+        warnings.warn("""Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""opposite_interface_owner_id is deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.""")
+
         return pulumi.get(self, "opposite_interface_owner_id")
 
     @property
@@ -855,6 +888,9 @@ class RouterInterface(pulumi.CustomResource):
         """
         It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         """
+        warnings.warn("""Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""opposite_router_id is deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.""")
+
         return pulumi.get(self, "opposite_router_id")
 
     @property
@@ -863,6 +899,9 @@ class RouterInterface(pulumi.CustomResource):
         """
         It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
         """
+        warnings.warn("""Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""opposite_router_type is deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.""")
+
         return pulumi.get(self, "opposite_router_type")
 
     @property

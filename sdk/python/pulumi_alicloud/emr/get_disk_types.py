@@ -169,15 +169,15 @@ def get_disk_types(cluster_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:emr/getDiskTypes:getDiskTypes', __args__, opts=opts, typ=GetDiskTypesResult).value
 
     return AwaitableGetDiskTypesResult(
-        cluster_type=__ret__.cluster_type,
-        destination_resource=__ret__.destination_resource,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_charge_type=__ret__.instance_charge_type,
-        instance_type=__ret__.instance_type,
-        output_file=__ret__.output_file,
-        types=__ret__.types,
-        zone_id=__ret__.zone_id)
+        cluster_type=pulumi.get(__ret__, 'cluster_type'),
+        destination_resource=pulumi.get(__ret__, 'destination_resource'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_charge_type=pulumi.get(__ret__, 'instance_charge_type'),
+        instance_type=pulumi.get(__ret__, 'instance_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        types=pulumi.get(__ret__, 'types'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_disk_types)

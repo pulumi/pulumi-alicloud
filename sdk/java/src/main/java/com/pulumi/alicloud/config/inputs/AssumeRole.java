@@ -12,12 +12,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AssumeRole {
+    private @Nullable String externalId;
     private @Nullable String policy;
     private String roleArn;
     private @Nullable Integer sessionExpiration;
     private @Nullable String sessionName;
 
     private AssumeRole() {}
+    public Optional<String> externalId() {
+        return Optional.ofNullable(this.externalId);
+    }
     public Optional<String> policy() {
         return Optional.ofNullable(this.policy);
     }
@@ -40,6 +44,7 @@ public final class AssumeRole {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String externalId;
         private @Nullable String policy;
         private String roleArn;
         private @Nullable Integer sessionExpiration;
@@ -47,12 +52,18 @@ public final class AssumeRole {
         public Builder() {}
         public Builder(AssumeRole defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.externalId = defaults.externalId;
     	      this.policy = defaults.policy;
     	      this.roleArn = defaults.roleArn;
     	      this.sessionExpiration = defaults.sessionExpiration;
     	      this.sessionName = defaults.sessionName;
         }
 
+        @CustomType.Setter
+        public Builder externalId(@Nullable String externalId) {
+            this.externalId = externalId;
+            return this;
+        }
         @CustomType.Setter
         public Builder policy(@Nullable String policy) {
             this.policy = policy;
@@ -75,6 +86,7 @@ public final class AssumeRole {
         }
         public AssumeRole build() {
             final var o = new AssumeRole();
+            o.externalId = externalId;
             o.policy = policy;
             o.roleArn = roleArn;
             o.sessionExpiration = sessionExpiration;

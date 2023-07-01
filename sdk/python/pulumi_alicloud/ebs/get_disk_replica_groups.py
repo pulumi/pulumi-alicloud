@@ -103,10 +103,10 @@ def get_disk_replica_groups(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ebs/getDiskReplicaGroups:getDiskReplicaGroups', __args__, opts=opts, typ=GetDiskReplicaGroupsResult).value
 
     return AwaitableGetDiskReplicaGroupsResult(
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file)
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_disk_replica_groups)

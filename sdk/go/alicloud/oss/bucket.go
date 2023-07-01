@@ -396,7 +396,16 @@ import (
 //				Bucket: _default.Result.ApplyT(func(result int) (string, error) {
 //					return fmt.Sprintf("example-policy-%v", result), nil
 //				}).(pulumi.StringOutput),
-//				Policy: pulumi.String("  {\"Statement\":\n      [{\"Action\":\n          [\"oss:PutObject\", \"oss:GetObject\", \"oss:DeleteBucket\"],\n        \"Effect\":\"Allow\",\n        \"Resource\":\n            [\"acs:oss:*:*:*\"]}],\n   \"Version\":\"1\"}\n  \n"),
+//				Policy: pulumi.String(`  {"Statement":
+//	      [{"Action":
+//	          ["oss:PutObject", "oss:GetObject", "oss:DeleteBucket"],
+//	        "Effect":"Allow",
+//	        "Resource":
+//	            ["acs:oss:*:*:*"]}],
+//	   "Version":"1"}
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err

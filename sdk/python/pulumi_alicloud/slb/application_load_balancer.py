@@ -262,6 +262,9 @@ class ApplicationLoadBalancerArgs:
         """
         Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -322,6 +325,9 @@ class ApplicationLoadBalancerArgs:
         """
         Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         """
+        warnings.warn("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""", DeprecationWarning)
+        pulumi.log.warn("""specification is deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
+
         return pulumi.get(self, "specification")
 
     @specification.setter
@@ -616,6 +622,9 @@ class _ApplicationLoadBalancerState:
         """
         Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -676,6 +685,9 @@ class _ApplicationLoadBalancerState:
         """
         Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         """
+        warnings.warn("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""", DeprecationWarning)
+        pulumi.log.warn("""specification is deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
+
         return pulumi.get(self, "specification")
 
     @specification.setter
@@ -1062,6 +1074,9 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         """
         Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead""")
+
         return pulumi.get(self, "name")
 
     @property
@@ -1102,6 +1117,9 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         """
         Field `specification` has been deprecated from provider version 1.123.1 New field `load_balancer_spec` instead.
         """
+        warnings.warn("""Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""", DeprecationWarning)
+        pulumi.log.warn("""specification is deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead""")
+
         return pulumi.get(self, "specification")
 
     @property

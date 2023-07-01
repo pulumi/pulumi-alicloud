@@ -84,6 +84,9 @@ class TopicArgs:
         """
         This attribute has been deprecated.
         """
+        warnings.warn("""Attribute perm has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""perm is deprecated: Attribute perm has been deprecated and suggest removing it from your template.""")
+
         return pulumi.get(self, "perm")
 
     @perm.setter
@@ -124,6 +127,9 @@ class TopicArgs:
         """
         Replaced by `topic_name` after version 1.97.0.
         """
+        warnings.warn("""Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""topic is deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""")
+
         return pulumi.get(self, "topic")
 
     @topic.setter
@@ -218,6 +224,9 @@ class _TopicState:
         """
         This attribute has been deprecated.
         """
+        warnings.warn("""Attribute perm has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""perm is deprecated: Attribute perm has been deprecated and suggest removing it from your template.""")
+
         return pulumi.get(self, "perm")
 
     @perm.setter
@@ -258,6 +267,9 @@ class _TopicState:
         """
         Replaced by `topic_name` after version 1.97.0.
         """
+        warnings.warn("""Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""topic is deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""")
+
         return pulumi.get(self, "topic")
 
     @topic.setter
@@ -505,6 +517,9 @@ class Topic(pulumi.CustomResource):
         """
         This attribute has been deprecated.
         """
+        warnings.warn("""Attribute perm has been deprecated and suggest removing it from your template.""", DeprecationWarning)
+        pulumi.log.warn("""perm is deprecated: Attribute perm has been deprecated and suggest removing it from your template.""")
+
         return pulumi.get(self, "perm")
 
     @property
@@ -533,6 +548,9 @@ class Topic(pulumi.CustomResource):
         """
         Replaced by `topic_name` after version 1.97.0.
         """
+        warnings.warn("""Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""topic is deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""")
+
         return pulumi.get(self, "topic")
 
     @property

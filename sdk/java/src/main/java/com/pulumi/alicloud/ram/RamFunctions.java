@@ -3595,11 +3595,11 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .groupName(&#34;group1&#34;)
-     *             .nameRegex(&#34;^user&#34;)
      *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(&#34;group1&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(&#34;^user&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
@@ -3637,11 +3637,11 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .groupName(&#34;group1&#34;)
-     *             .nameRegex(&#34;^user&#34;)
      *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(&#34;group1&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(&#34;^user&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
@@ -3679,11 +3679,11 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .groupName(&#34;group1&#34;)
-     *             .nameRegex(&#34;^user&#34;)
      *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(&#34;group1&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(&#34;^user&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
@@ -3721,11 +3721,11 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .groupName(&#34;group1&#34;)
-     *             .nameRegex(&#34;^user&#34;)
      *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(&#34;group1&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(&#34;^user&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
@@ -3763,11 +3763,11 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .groupName(&#34;group1&#34;)
-     *             .nameRegex(&#34;^user&#34;)
      *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(&#34;group1&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(&#34;^user&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
@@ -3805,11 +3805,11 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .groupName(&#34;group1&#34;)
-     *             .nameRegex(&#34;^user&#34;)
      *             .outputFile(&#34;users.txt&#34;)
+     *             .groupName(&#34;group1&#34;)
      *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
      *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex(&#34;^user&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));

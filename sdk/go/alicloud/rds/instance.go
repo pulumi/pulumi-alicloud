@@ -39,7 +39,7 @@ type Instance struct {
 	//
 	// See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
 	AutoUpgradeMinorVersion pulumi.StringOutput `pulumi:"autoUpgradeMinorVersion"`
-	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
 	//
 	// > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishConfigs InstanceBabelfishConfigArrayOutput `pulumi:"babelfishConfigs"`
@@ -117,7 +117,7 @@ type Instance struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
@@ -187,12 +187,12 @@ type Instance struct {
 	ModifyMode pulumi.StringPtrOutput `pulumi:"modifyMode"`
 	// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntOutput `pulumi:"monitoringPeriod"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs InstancePgHbaConfArrayOutput `pulumi:"pgHbaConfs"`
 	// The private port of the database service. If you want to update public port, please use resource rds.Connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
@@ -229,7 +229,7 @@ type Instance struct {
 	ServerCert pulumi.StringOutput `pulumi:"serverCert"`
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey pulumi.StringOutput `pulumi:"serverKey"`
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
 	ServerlessConfigs InstanceServerlessConfigArrayOutput `pulumi:"serverlessConfigs"`
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue pulumi.IntPtrOutput `pulumi:"sqlCollectorConfigValue"`
@@ -381,7 +381,7 @@ type instanceState struct {
 	//
 	// See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
 	AutoUpgradeMinorVersion *string `pulumi:"autoUpgradeMinorVersion"`
-	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
 	//
 	// > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishConfigs []InstanceBabelfishConfig `pulumi:"babelfishConfigs"`
@@ -459,7 +459,7 @@ type instanceState struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	EffectiveTime *string `pulumi:"effectiveTime"`
@@ -529,12 +529,12 @@ type instanceState struct {
 	ModifyMode *string `pulumi:"modifyMode"`
 	// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
 	MonitoringPeriod *int `pulumi:"monitoringPeriod"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs []InstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The private port of the database service. If you want to update public port, please use resource rds.Connection port.
 	Port *string `pulumi:"port"`
@@ -571,7 +571,7 @@ type instanceState struct {
 	ServerCert *string `pulumi:"serverCert"`
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey *string `pulumi:"serverKey"`
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
 	ServerlessConfigs []InstanceServerlessConfig `pulumi:"serverlessConfigs"`
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue *int `pulumi:"sqlCollectorConfigValue"`
@@ -683,7 +683,7 @@ type InstanceState struct {
 	//
 	// See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
 	AutoUpgradeMinorVersion pulumi.StringPtrInput
-	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
 	//
 	// > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishConfigs InstanceBabelfishConfigArrayInput
@@ -761,7 +761,7 @@ type InstanceState struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
-	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	EffectiveTime pulumi.StringPtrInput
@@ -831,12 +831,12 @@ type InstanceState struct {
 	ModifyMode pulumi.StringPtrInput
 	// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntPtrInput
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs InstancePgHbaConfArrayInput
 	// The private port of the database service. If you want to update public port, please use resource rds.Connection port.
 	Port pulumi.StringPtrInput
@@ -873,7 +873,7 @@ type InstanceState struct {
 	ServerCert pulumi.StringPtrInput
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey pulumi.StringPtrInput
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
 	ServerlessConfigs InstanceServerlessConfigArrayInput
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue pulumi.IntPtrInput
@@ -989,7 +989,7 @@ type instanceArgs struct {
 	//
 	// See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
 	AutoUpgradeMinorVersion *string `pulumi:"autoUpgradeMinorVersion"`
-	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
 	//
 	// > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishConfigs []InstanceBabelfishConfig `pulumi:"babelfishConfigs"`
@@ -1061,7 +1061,7 @@ type instanceArgs struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	EffectiveTime *string `pulumi:"effectiveTime"`
@@ -1131,12 +1131,12 @@ type instanceArgs struct {
 	ModifyMode *string `pulumi:"modifyMode"`
 	// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
 	MonitoringPeriod *int `pulumi:"monitoringPeriod"`
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs []InstancePgHbaConf `pulumi:"pgHbaConfs"`
 	// The private port of the database service. If you want to update public port, please use resource rds.Connection port.
 	Port *string `pulumi:"port"`
@@ -1173,7 +1173,7 @@ type instanceArgs struct {
 	ServerCert *string `pulumi:"serverCert"`
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey *string `pulumi:"serverKey"`
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
 	ServerlessConfigs []InstanceServerlessConfig `pulumi:"serverlessConfigs"`
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue *int `pulumi:"sqlCollectorConfigValue"`
@@ -1282,7 +1282,7 @@ type InstanceArgs struct {
 	//
 	// See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
 	AutoUpgradeMinorVersion pulumi.StringPtrInput
-	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+	// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
 	//
 	// > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 	BabelfishConfigs InstanceBabelfishConfigArrayInput
@@ -1354,7 +1354,7 @@ type InstanceArgs struct {
 	//
 	// > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
-	// The method to update the engine version.  Default value: Immediate. Valid values:
+	// The method to update the engine version and change.  Default value: Immediate. Valid values:
 	// - Immediate: The change immediately takes effect.
 	// - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 	EffectiveTime pulumi.StringPtrInput
@@ -1424,12 +1424,12 @@ type InstanceArgs struct {
 	ModifyMode pulumi.StringPtrInput
 	// The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
 	MonitoringPeriod pulumi.IntPtrInput
-	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+	// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 	Parameters InstanceParameterArrayInput
 	// The duration that you will buy DB instance (in month). It is valid when instanceChargeType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
-	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+	// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 	PgHbaConfs InstancePgHbaConfArrayInput
 	// The private port of the database service. If you want to update public port, please use resource rds.Connection port.
 	Port pulumi.StringPtrInput
@@ -1466,7 +1466,7 @@ type InstanceArgs struct {
 	ServerCert pulumi.StringPtrInput
 	// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
 	ServerKey pulumi.StringPtrInput
-	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+	// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
 	ServerlessConfigs InstanceServerlessConfigArrayInput
 	// The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
 	SqlCollectorConfigValue pulumi.IntPtrInput
@@ -1672,7 +1672,7 @@ func (o InstanceOutput) AutoUpgradeMinorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AutoUpgradeMinorVersion }).(pulumi.StringOutput)
 }
 
-// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+// The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
 //
 // > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
 func (o InstanceOutput) BabelfishConfigs() InstanceBabelfishConfigArrayOutput {
@@ -1804,7 +1804,7 @@ func (o InstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
-// The method to update the engine version.  Default value: Immediate. Valid values:
+// The method to update the engine version and change.  Default value: Immediate. Valid values:
 // - Immediate: The change immediately takes effect.
 // - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
 func (o InstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
@@ -1919,7 +1919,7 @@ func (o InstanceOutput) MonitoringPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.MonitoringPeriod }).(pulumi.IntOutput)
 }
 
-// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+// Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
 func (o InstanceOutput) Parameters() InstanceParameterArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceParameterArrayOutput { return v.Parameters }).(InstanceParameterArrayOutput)
 }
@@ -1930,7 +1930,7 @@ func (o InstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+// The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
 func (o InstanceOutput) PgHbaConfs() InstancePgHbaConfArrayOutput {
 	return o.ApplyT(func(v *Instance) InstancePgHbaConfArrayOutput { return v.PgHbaConfs }).(InstancePgHbaConfArrayOutput)
 }
@@ -2006,7 +2006,7 @@ func (o InstanceOutput) ServerKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServerKey }).(pulumi.StringOutput)
 }
 
-// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+// The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
 func (o InstanceOutput) ServerlessConfigs() InstanceServerlessConfigArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceServerlessConfigArrayOutput { return v.ServerlessConfigs }).(InstanceServerlessConfigArrayOutput)
 }

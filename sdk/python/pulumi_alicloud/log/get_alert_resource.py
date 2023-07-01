@@ -107,10 +107,10 @@ def get_alert_resource(lang: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:log/getAlertResource:getAlertResource', __args__, opts=opts, typ=GetAlertResourceResult).value
 
     return AwaitableGetAlertResourceResult(
-        id=__ret__.id,
-        lang=__ret__.lang,
-        project=__ret__.project,
-        type=__ret__.type)
+        id=pulumi.get(__ret__, 'id'),
+        lang=pulumi.get(__ret__, 'lang'),
+        project=pulumi.get(__ret__, 'project'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_alert_resource)

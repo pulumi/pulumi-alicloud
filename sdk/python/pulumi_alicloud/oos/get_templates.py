@@ -269,23 +269,23 @@ def get_templates(category: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:oos/getTemplates:getTemplates', __args__, opts=opts, typ=GetTemplatesResult).value
 
     return AwaitableGetTemplatesResult(
-        category=__ret__.category,
-        created_by=__ret__.created_by,
-        created_date=__ret__.created_date,
-        created_date_after=__ret__.created_date_after,
-        has_trigger=__ret__.has_trigger,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        share_type=__ret__.share_type,
-        sort_field=__ret__.sort_field,
-        sort_order=__ret__.sort_order,
-        tags=__ret__.tags,
-        template_format=__ret__.template_format,
-        template_type=__ret__.template_type,
-        templates=__ret__.templates)
+        category=pulumi.get(__ret__, 'category'),
+        created_by=pulumi.get(__ret__, 'created_by'),
+        created_date=pulumi.get(__ret__, 'created_date'),
+        created_date_after=pulumi.get(__ret__, 'created_date_after'),
+        has_trigger=pulumi.get(__ret__, 'has_trigger'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        share_type=pulumi.get(__ret__, 'share_type'),
+        sort_field=pulumi.get(__ret__, 'sort_field'),
+        sort_order=pulumi.get(__ret__, 'sort_order'),
+        tags=pulumi.get(__ret__, 'tags'),
+        template_format=pulumi.get(__ret__, 'template_format'),
+        template_type=pulumi.get(__ret__, 'template_type'),
+        templates=pulumi.get(__ret__, 'templates'))
 
 
 @_utilities.lift_output_func(get_templates)

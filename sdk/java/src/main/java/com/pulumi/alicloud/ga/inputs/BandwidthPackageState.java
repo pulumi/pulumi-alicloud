@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,8 +21,6 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
 
     /**
      * Whether to pay automatically. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
      * 
      */
     @Import(name="autoPay")
@@ -28,8 +28,6 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Whether to pay automatically. Valid values:
-     * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-     * `true`: Enable automatic payment, automatic payment order.
      * 
      */
     public Optional<Output<Boolean>> autoPay() {
@@ -52,14 +50,14 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+     * Whether use vouchers. Default value: `false`. Valid values:
      * 
      */
     @Import(name="autoUseCoupon")
     private @Nullable Output<Boolean> autoUseCoupon;
 
     /**
-     * @return Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+     * @return Whether use vouchers. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoUseCoupon() {
@@ -98,7 +96,6 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
 
     /**
      * The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-     * 
      * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      * 
      */
@@ -107,7 +104,6 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-     * 
      * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      * 
      */
@@ -131,14 +127,14 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+     * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
      * 
      */
     @Import(name="cbnGeographicRegionIda")
     private @Nullable Output<String> cbnGeographicRegionIda;
 
     /**
-     * @return Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+     * @return Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
      * 
      */
     public Optional<Output<String>> cbnGeographicRegionIda() {
@@ -146,14 +142,14 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+     * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
      * 
      */
     @Import(name="cbnGeographicRegionIdb")
     private @Nullable Output<String> cbnGeographicRegionIdb;
 
     /**
-     * @return Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+     * @return Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
      * 
      */
     public Optional<Output<String>> cbnGeographicRegionIdb() {
@@ -191,14 +187,14 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+     * The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+     * @return The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -206,14 +202,14 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+     * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
      * 
      */
     @Import(name="ratio")
     private @Nullable Output<Integer> ratio;
 
     /**
-     * @return The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+     * @return The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
      * 
      */
     public Optional<Output<Integer>> ratio() {
@@ -236,18 +232,33 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The status of the bandwidth plan.
+     * The status of the Bandwidth Package.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the bandwidth plan.
+     * @return The status of the Bandwidth Package.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     /**
@@ -283,6 +294,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         this.ratio = $.ratio;
         this.renewalStatus = $.renewalStatus;
         this.status = $.status;
+        this.tags = $.tags;
         this.type = $.type;
     }
 
@@ -306,8 +318,6 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param autoPay Whether to pay automatically. Valid values:
-         * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-         * `true`: Enable automatic payment, automatic payment order.
          * 
          * @return builder
          * 
@@ -319,8 +329,6 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param autoPay Whether to pay automatically. Valid values:
-         * `false`: If automatic payment is not enabled, you need to go to the order center to complete the payment after the order is generated.
-         * `true`: Enable automatic payment, automatic payment order.
          * 
          * @return builder
          * 
@@ -351,7 +359,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoUseCoupon Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+         * @param autoUseCoupon Whether use vouchers. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -362,7 +370,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoUseCoupon Whether use vouchers. Default value is `false`. Valid values: `false`: Not used, `true`: Use.
+         * @param autoUseCoupon Whether use vouchers. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -415,7 +423,6 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param bandwidthType The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-         * 
          * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
          * 
          * @return builder
@@ -428,7 +435,6 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param bandwidthType The bandwidth type of the bandwidth. Valid values: `Advanced`, `Basic`, `Enhanced`. If `type` is set to `Basic`, this parameter is required.
-         * 
          * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
          * 
          * @return builder
@@ -460,7 +466,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cbnGeographicRegionIda Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+         * @param cbnGeographicRegionIda Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
          * 
          * @return builder
          * 
@@ -471,7 +477,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cbnGeographicRegionIda Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value is `China-mainland`.
+         * @param cbnGeographicRegionIda Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
          * 
          * @return builder
          * 
@@ -481,7 +487,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cbnGeographicRegionIdb Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+         * @param cbnGeographicRegionIdb Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
          * 
          * @return builder
          * 
@@ -492,7 +498,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cbnGeographicRegionIdb Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value is `Global`.
+         * @param cbnGeographicRegionIdb Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
          * 
          * @return builder
          * 
@@ -544,7 +550,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paymentType The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+         * @param paymentType The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
          * 
          * @return builder
          * 
@@ -555,7 +561,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param paymentType The payment type of the bandwidth. Valid values: `PayAsYouGo`, `Subscription`. Default value is `Subscription`.
+         * @param paymentType The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
          * 
          * @return builder
          * 
@@ -565,7 +571,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
          * 
          * @return builder
          * 
@@ -576,7 +582,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: 30 to 100.
+         * @param ratio The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
          * 
          * @return builder
          * 
@@ -607,7 +613,7 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the bandwidth plan.
+         * @param status The status of the Bandwidth Package.
          * 
          * @return builder
          * 
@@ -618,13 +624,34 @@ public final class BandwidthPackageState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status The status of the bandwidth plan.
+         * @param status The status of the Bandwidth Package.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

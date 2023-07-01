@@ -162,15 +162,15 @@ def get_peer_connections(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getPeerConnections:getPeerConnections', __args__, opts=opts, typ=GetPeerConnectionsResult).value
 
     return AwaitableGetPeerConnectionsResult(
-        connections=__ret__.connections,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        peer_connection_name=__ret__.peer_connection_name,
-        status=__ret__.status,
-        vpc_id=__ret__.vpc_id)
+        connections=pulumi.get(__ret__, 'connections'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        peer_connection_name=pulumi.get(__ret__, 'peer_connection_name'),
+        status=pulumi.get(__ret__, 'status'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 
 
 @_utilities.lift_output_func(get_peer_connections)

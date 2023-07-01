@@ -118,11 +118,11 @@ def get_configs(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:sddp/getConfigs:getConfigs', __args__, opts=opts, typ=GetConfigsResult).value
 
     return AwaitableGetConfigsResult(
-        configs=__ret__.configs,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        lang=__ret__.lang,
-        output_file=__ret__.output_file)
+        configs=pulumi.get(__ret__, 'configs'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        lang=pulumi.get(__ret__, 'lang'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_configs)

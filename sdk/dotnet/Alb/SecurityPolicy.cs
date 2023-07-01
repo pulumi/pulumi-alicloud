@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Alb
     /// <summary>
     /// Provides a ALB Security Policy resource.
     /// 
-    /// For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/doc-detail/213607.htm).
+    /// For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createsecuritypolicy).
     /// 
-    /// &gt; **NOTE:** Available in v1.130.0+.
+    /// &gt; **NOTE:** Available since v1.130.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,19 +28,17 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "testAccSecurityPolicy";
     ///     var @default = new AliCloud.Alb.SecurityPolicy("default", new()
     ///     {
-    ///         SecurityPolicyName = name,
-    ///         TlsVersions = new[]
-    ///         {
-    ///             "TLSv1.0",
-    ///         },
     ///         Ciphers = new[]
     ///         {
     ///             "ECDHE-ECDSA-AES128-SHA",
     ///             "AES256-SHA",
+    ///         },
+    ///         SecurityPolicyName = "tf_example",
+    ///         TlsVersions = new[]
+    ///         {
+    ///             "TLSv1.0",
     ///         },
     ///     });
     /// 

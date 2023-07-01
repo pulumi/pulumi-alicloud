@@ -75,6 +75,9 @@ class SecurityGroupArgs:
         """
         Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         """
+        warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
+
         return pulumi.get(self, "inner_access")
 
     @inner_access.setter
@@ -222,6 +225,9 @@ class _SecurityGroupState:
         """
         Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         """
+        warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
+
         return pulumi.get(self, "inner_access")
 
     @inner_access.setter
@@ -531,6 +537,9 @@ class SecurityGroup(pulumi.CustomResource):
         """
         Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         """
+        warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
+
         return pulumi.get(self, "inner_access")
 
     @property

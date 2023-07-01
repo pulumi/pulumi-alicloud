@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://help.aliyun.com/document_detail/261358.html)
+// Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervpcattachment)
 //
-// > **NOTE:** Available in 1.126.0+
+// > **NOTE:** Available since v1.126.0.
 //
 // ## Example Usage
 //
@@ -34,72 +34,71 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			transitRouterAttachmentName := "sdk_rebot_cen_tr_yaochi"
-//			if param := cfg.Get("transitRouterAttachmentName"); param != "" {
-//				transitRouterAttachmentName = param
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
 //			}
-//			transitRouterAttachmentDescription := "sdk_rebot_cen_tr_yaochi"
-//			if param := cfg.Get("transitRouterAttachmentDescription"); param != "" {
-//				transitRouterAttachmentDescription = param
-//			}
-//			defaultTransitRouterAvailableResources, err := cen.GetTransitRouterAvailableResources(ctx, nil, nil)
+//			_default, err := cen.GetTransitRouterAvailableResources(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("sdk_rebot_cen_tr_yaochi"),
+//			masterZone := _default.Resources[0].MasterZones[0]
+//			slaveZone := _default.Resources[0].SlaveZones[1]
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultMaster, err := vpc.NewSwitch(ctx, "defaultMaster", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("sdk_rebot_cen_tr_yaochi"),
-//				VpcId:       defaultNetwork.ID(),
+//			exampleMaster, err := vpc.NewSwitch(ctx, "exampleMaster", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
-//				ZoneId:      *pulumi.String(defaultTransitRouterAvailableResources.Resources[0].MasterZones[0]),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(masterZone),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSlave, err := vpc.NewSwitch(ctx, "defaultSlave", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("sdk_rebot_cen_tr_yaochi"),
-//				VpcId:       defaultNetwork.ID(),
+//			exampleSlave, err := vpc.NewSwitch(ctx, "exampleSlave", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
-//				ZoneId:      *pulumi.String(defaultTransitRouterAvailableResources.Resources[0].SlaveZones[0]),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(slaveZone),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("sdk_rebot_cen_tr_yaochi"),
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
-//				CenId: defaultInstance.ID(),
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//				TransitRouterName: pulumi.String(name),
+//				CenId:             exampleInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterVpcAttachment(ctx, "defaultTransitRouterVpcAttachment", &cen.TransitRouterVpcAttachmentArgs{
-//				CenId:           defaultInstance.ID(),
-//				TransitRouterId: defaultTransitRouter.TransitRouterId,
-//				VpcId:           defaultNetwork.ID(),
+//			_, err = cen.NewTransitRouterVpcAttachment(ctx, "exampleTransitRouterVpcAttachment", &cen.TransitRouterVpcAttachmentArgs{
+//				CenId:           exampleInstance.ID(),
+//				TransitRouterId: exampleTransitRouter.TransitRouterId,
+//				VpcId:           exampleNetwork.ID(),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
-//						ZoneId:    *pulumi.String(defaultTransitRouterAvailableResources.Resources[0].MasterZones[0]),
-//						VswitchId: defaultMaster.ID(),
+//						ZoneId:    *pulumi.String(masterZone),
+//						VswitchId: exampleMaster.ID(),
 //					},
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
-//						ZoneId:    *pulumi.String(defaultTransitRouterAvailableResources.Resources[0].SlaveZones[1]),
-//						VswitchId: defaultSlave.ID(),
+//						ZoneId:    *pulumi.String(slaveZone),
+//						VswitchId: exampleSlave.ID(),
 //					},
 //				},
-//				TransitRouterAttachmentName:        pulumi.String(transitRouterAttachmentName),
-//				TransitRouterAttachmentDescription: pulumi.String(transitRouterAttachmentDescription),
+//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -156,7 +155,7 @@ type TransitRouterVpcAttachment struct {
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The owner id of vpc.
 	VpcOwnerId pulumi.StringOutput `pulumi:"vpcOwnerId"`
-	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
 	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	ZoneMappings TransitRouterVpcAttachmentZoneMappingArrayOutput `pulumi:"zoneMappings"`
 }
@@ -233,7 +232,7 @@ type transitRouterVpcAttachmentState struct {
 	VpcId *string `pulumi:"vpcId"`
 	// The owner id of vpc.
 	VpcOwnerId *string `pulumi:"vpcOwnerId"`
-	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
 	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	ZoneMappings []TransitRouterVpcAttachmentZoneMapping `pulumi:"zoneMappings"`
 }
@@ -273,7 +272,7 @@ type TransitRouterVpcAttachmentState struct {
 	VpcId pulumi.StringPtrInput
 	// The owner id of vpc.
 	VpcOwnerId pulumi.StringPtrInput
-	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
 	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	ZoneMappings TransitRouterVpcAttachmentZoneMappingArrayInput
 }
@@ -313,7 +312,7 @@ type transitRouterVpcAttachmentArgs struct {
 	VpcId string `pulumi:"vpcId"`
 	// The owner id of vpc.
 	VpcOwnerId *string `pulumi:"vpcOwnerId"`
-	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
 	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	ZoneMappings []TransitRouterVpcAttachmentZoneMapping `pulumi:"zoneMappings"`
 }
@@ -350,7 +349,7 @@ type TransitRouterVpcAttachmentArgs struct {
 	VpcId pulumi.StringInput
 	// The owner id of vpc.
 	VpcOwnerId pulumi.StringPtrInput
-	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+	// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
 	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	ZoneMappings TransitRouterVpcAttachmentZoneMappingArrayInput
 }
@@ -523,7 +522,7 @@ func (o TransitRouterVpcAttachmentOutput) VpcOwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVpcAttachment) pulumi.StringOutput { return v.VpcOwnerId }).(pulumi.StringOutput)
 }
 
-// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified.
+// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zoneMappings` can be modified. See `zoneMappings` below.
 // > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 func (o TransitRouterVpcAttachmentOutput) ZoneMappings() TransitRouterVpcAttachmentZoneMappingArrayOutput {
 	return o.ApplyT(func(v *TransitRouterVpcAttachment) TransitRouterVpcAttachmentZoneMappingArrayOutput {

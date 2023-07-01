@@ -109,22 +109,23 @@ class EndpointGroupEndpointConfigurationArgs:
                  endpoint: pulumi.Input[str],
                  type: pulumi.Input[str],
                  weight: pulumi.Input[int],
-                 enable_clientip_preservation: Optional[pulumi.Input[bool]] = None):
+                 enable_clientip_preservation: Optional[pulumi.Input[bool]] = None,
+                 enable_proxy_protocol: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] endpoint: The IP address or domain name of Endpoint N in the endpoint group.
-        :param pulumi.Input[str] type: The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-               
-               > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
-        :param pulumi.Input[int] weight: The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-               
+        :param pulumi.Input[str] type: The type of Endpoint N in the endpoint group. Valid values:
+        :param pulumi.Input[int] weight: The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
                > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
-        :param pulumi.Input[bool] enable_clientip_preservation: Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+        :param pulumi.Input[bool] enable_clientip_preservation: Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
+        :param pulumi.Input[bool] enable_proxy_protocol: Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "weight", weight)
         if enable_clientip_preservation is not None:
             pulumi.set(__self__, "enable_clientip_preservation", enable_clientip_preservation)
+        if enable_proxy_protocol is not None:
+            pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
 
     @property
     @pulumi.getter
@@ -142,9 +143,7 @@ class EndpointGroupEndpointConfigurationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-
-        > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+        The type of Endpoint N in the endpoint group. Valid values:
         """
         return pulumi.get(self, "type")
 
@@ -156,8 +155,7 @@ class EndpointGroupEndpointConfigurationArgs:
     @pulumi.getter
     def weight(self) -> pulumi.Input[int]:
         """
-        The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-
+        The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
         > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         """
         return pulumi.get(self, "weight")
@@ -170,13 +168,25 @@ class EndpointGroupEndpointConfigurationArgs:
     @pulumi.getter(name="enableClientipPreservation")
     def enable_clientip_preservation(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+        Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_clientip_preservation")
 
     @enable_clientip_preservation.setter
     def enable_clientip_preservation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_clientip_preservation", value)
+
+    @property
+    @pulumi.getter(name="enableProxyProtocol")
+    def enable_proxy_protocol(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enable_proxy_protocol")
+
+    @enable_proxy_protocol.setter
+    def enable_proxy_protocol(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_proxy_protocol", value)
 
 
 @pulumi.input_type

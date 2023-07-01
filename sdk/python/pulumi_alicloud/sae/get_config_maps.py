@@ -152,13 +152,13 @@ def get_config_maps(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:sae/getConfigMaps:getConfigMaps', __args__, opts=opts, typ=GetConfigMapsResult).value
 
     return AwaitableGetConfigMapsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        maps=__ret__.maps,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        namespace_id=__ret__.namespace_id,
-        output_file=__ret__.output_file)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        maps=pulumi.get(__ret__, 'maps'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        namespace_id=pulumi.get(__ret__, 'namespace_id'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_config_maps)

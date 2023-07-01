@@ -142,7 +142,7 @@ class DdrInstanceArgs:
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] effective_time: The method to update the engine version.  Default value: Immediate. Valid values:
+        :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -165,10 +165,10 @@ class DdrInstanceArgs:
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
-        :param pulumi.Input[Sequence[pulumi.Input['DdrInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input['DdrInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['DdrInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['DdrInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
@@ -191,7 +191,6 @@ class DdrInstanceArgs:
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] source_db_instance_name: The ID of the source instance if you want to restore data to a point in time.
-               #### Block pg_hba_conf
         :param pulumi.Input[str] source_region: The region ID of the source instance if you want to restore data to a point in time.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
@@ -671,7 +670,7 @@ class DdrInstanceArgs:
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The method to update the engine version.  Default value: Immediate. Valid values:
+        The method to update the engine version and change.  Default value: Immediate. Valid values:
         - Immediate: The change immediately takes effect.
         - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         """
@@ -804,7 +803,7 @@ class DdrInstanceArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DdrInstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -829,7 +828,7 @@ class DdrInstanceArgs:
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DdrInstancePgHbaConfArgs']]]]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 
@@ -995,7 +994,6 @@ class DdrInstanceArgs:
     def source_db_instance_name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the source instance if you want to restore data to a point in time.
-        #### Block pg_hba_conf
         """
         return pulumi.get(self, "source_db_instance_name")
 
@@ -1383,7 +1381,7 @@ class _DdrInstanceState:
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] effective_time: The method to update the engine version.  Default value: Immediate. Valid values:
+        :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -1416,11 +1414,11 @@ class _DdrInstanceState:
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
-        :param pulumi.Input[Sequence[pulumi.Input['DdrInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input['DdrInstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[str] payment_type: Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['DdrInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['DdrInstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
@@ -1446,7 +1444,6 @@ class _DdrInstanceState:
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] source_db_instance_name: The ID of the source instance if you want to restore data to a point in time.
-               #### Block pg_hba_conf
         :param pulumi.Input[str] source_region: The region ID of the source instance if you want to restore data to a point in time.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
@@ -1889,7 +1886,7 @@ class _DdrInstanceState:
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The method to update the engine version.  Default value: Immediate. Valid values:
+        The method to update the engine version and change.  Default value: Immediate. Valid values:
         - Immediate: The change immediately takes effect.
         - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         """
@@ -2076,7 +2073,7 @@ class _DdrInstanceState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DdrInstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -2113,7 +2110,7 @@ class _DdrInstanceState:
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DdrInstancePgHbaConfArgs']]]]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 
@@ -2293,7 +2290,6 @@ class _DdrInstanceState:
     def source_db_instance_name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the source instance if you want to restore data to a point in time.
-        #### Block pg_hba_conf
         """
         return pulumi.get(self, "source_db_instance_name")
 
@@ -2722,7 +2718,7 @@ class DdrInstance(pulumi.CustomResource):
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] effective_time: The method to update the engine version.  Default value: Immediate. Valid values:
+        :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -2755,11 +2751,11 @@ class DdrInstance(pulumi.CustomResource):
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DdrInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DdrInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[str] payment_type: Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DdrInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DdrInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
@@ -2785,7 +2781,6 @@ class DdrInstance(pulumi.CustomResource):
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] source_db_instance_name: The ID of the source instance if you want to restore data to a point in time.
-               #### Block pg_hba_conf
         :param pulumi.Input[str] source_region: The region ID of the source instance if you want to restore data to a point in time.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
@@ -3166,7 +3161,7 @@ class DdrInstance(pulumi.CustomResource):
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] effective_time: The method to update the engine version.  Default value: Immediate. Valid values:
+        :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -3199,11 +3194,11 @@ class DdrInstance(pulumi.CustomResource):
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DdrInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DdrInstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[str] payment_type: Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when payment_type is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DdrInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DdrInstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
@@ -3229,7 +3224,6 @@ class DdrInstance(pulumi.CustomResource):
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] source_db_instance_name: The ID of the source instance if you want to restore data to a point in time.
-               #### Block pg_hba_conf
         :param pulumi.Input[str] source_region: The region ID of the source instance if you want to restore data to a point in time.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
@@ -3539,7 +3533,7 @@ class DdrInstance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> pulumi.Output[Optional[str]]:
         """
-        The method to update the engine version.  Default value: Immediate. Valid values:
+        The method to update the engine version and change.  Default value: Immediate. Valid values:
         - Immediate: The change immediately takes effect.
         - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         """
@@ -3670,7 +3664,7 @@ class DdrInstance(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.DdrInstanceParameter']]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -3695,7 +3689,7 @@ class DdrInstance(pulumi.CustomResource):
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> pulumi.Output[Sequence['outputs.DdrInstancePgHbaConf']]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 
@@ -3819,7 +3813,6 @@ class DdrInstance(pulumi.CustomResource):
     def source_db_instance_name(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the source instance if you want to restore data to a point in time.
-        #### Block pg_hba_conf
         """
         return pulumi.get(self, "source_db_instance_name")
 

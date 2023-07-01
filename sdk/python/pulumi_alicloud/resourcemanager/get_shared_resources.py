@@ -128,12 +128,12 @@ def get_shared_resources(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getSharedResources:getSharedResources', __args__, opts=opts, typ=GetSharedResourcesResult).value
 
     return AwaitableGetSharedResourcesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        resource_share_id=__ret__.resource_share_id,
-        resources=__ret__.resources,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_share_id=pulumi.get(__ret__, 'resource_share_id'),
+        resources=pulumi.get(__ret__, 'resources'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_shared_resources)

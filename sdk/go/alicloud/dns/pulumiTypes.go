@@ -11,9 +11,9 @@ import (
 )
 
 type AccessStrategyDefaultAddrPool struct {
-	// The ID of the address pool in the secondary address pool group.
+	// The ID of the address pool in the primary address pool group.
 	AddrPoolId string `pulumi:"addrPoolId"`
-	// The weight of the address pool in the secondary address pool group.
+	// The weight of the address pool in the primary address pool group.
 	LbaWeight *int `pulumi:"lbaWeight"`
 }
 
@@ -29,9 +29,9 @@ type AccessStrategyDefaultAddrPoolInput interface {
 }
 
 type AccessStrategyDefaultAddrPoolArgs struct {
-	// The ID of the address pool in the secondary address pool group.
+	// The ID of the address pool in the primary address pool group.
 	AddrPoolId pulumi.StringInput `pulumi:"addrPoolId"`
-	// The weight of the address pool in the secondary address pool group.
+	// The weight of the address pool in the primary address pool group.
 	LbaWeight pulumi.IntPtrInput `pulumi:"lbaWeight"`
 }
 
@@ -86,12 +86,12 @@ func (o AccessStrategyDefaultAddrPoolOutput) ToAccessStrategyDefaultAddrPoolOutp
 	return o
 }
 
-// The ID of the address pool in the secondary address pool group.
+// The ID of the address pool in the primary address pool group.
 func (o AccessStrategyDefaultAddrPoolOutput) AddrPoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessStrategyDefaultAddrPool) string { return v.AddrPoolId }).(pulumi.StringOutput)
 }
 
-// The weight of the address pool in the secondary address pool group.
+// The weight of the address pool in the primary address pool group.
 func (o AccessStrategyDefaultAddrPoolOutput) LbaWeight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AccessStrategyDefaultAddrPool) *int { return v.LbaWeight }).(pulumi.IntPtrOutput)
 }
@@ -320,7 +320,7 @@ func (o AccessStrategyLineArrayOutput) Index(i pulumi.IntInput) AccessStrategyLi
 }
 
 type AddressPoolAddress struct {
-	// The address lists of the Address Pool. See the following `Block address`.
+	// The address that you want to add to the address pool.
 	Address string `pulumi:"address"`
 	// The source region of the address. expressed as a JSON string. The structure is as follows:
 	AttributeInfo string `pulumi:"attributeInfo"`
@@ -344,7 +344,7 @@ type AddressPoolAddressInput interface {
 }
 
 type AddressPoolAddressArgs struct {
-	// The address lists of the Address Pool. See the following `Block address`.
+	// The address that you want to add to the address pool.
 	Address pulumi.StringInput `pulumi:"address"`
 	// The source region of the address. expressed as a JSON string. The structure is as follows:
 	AttributeInfo pulumi.StringInput `pulumi:"attributeInfo"`
@@ -407,7 +407,7 @@ func (o AddressPoolAddressOutput) ToAddressPoolAddressOutputWithContext(ctx cont
 	return o
 }
 
-// The address lists of the Address Pool. See the following `Block address`.
+// The address that you want to add to the address pool.
 func (o AddressPoolAddressOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v AddressPoolAddress) string { return v.Address }).(pulumi.StringOutput)
 }

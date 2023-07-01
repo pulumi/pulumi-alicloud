@@ -162,15 +162,15 @@ def get_agents(agent_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:chatbot/getAgents:getAgents', __args__, opts=opts, typ=GetAgentsResult).value
 
     return AwaitableGetAgentsResult(
-        agent_name=__ret__.agent_name,
-        agents=__ret__.agents,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size)
+        agent_name=pulumi.get(__ret__, 'agent_name'),
+        agents=pulumi.get(__ret__, 'agents'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'))
 
 
 @_utilities.lift_output_func(get_agents)

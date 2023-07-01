@@ -119,11 +119,11 @@ def get_static_accounts(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:amqp/getStaticAccounts:getStaticAccounts', __args__, opts=opts, typ=GetStaticAccountsResult).value
 
     return AwaitableGetStaticAccountsResult(
-        accounts=__ret__.accounts,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        output_file=__ret__.output_file)
+        accounts=pulumi.get(__ret__, 'accounts'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_static_accounts)

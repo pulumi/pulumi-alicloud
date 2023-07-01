@@ -34,8 +34,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := arms.NewRemoteWrite(ctx, "default", &arms.RemoteWriteArgs{
-//				ClusterId:       pulumi.String("your_cluster_id"),
-//				RemoteWriteYaml: pulumi.String("remote_write:\n- name: ArmsRemoteWrite\n  url: http://47.96.227.137:8080/prometheus/xxx/yyy/cn-hangzhou/api/v3/write\n  basic_auth: {username: 666, password: '******'}\n  write_relabel_configs:\n  - source_labels: [instance_id]\n    separator: ;\n    regex: si-6e2ca86444db4e55a7c1\n    replacement: $1\n    action: keep\n\n"),
+//				ClusterId: pulumi.String("your_cluster_id"),
+//				RemoteWriteYaml: pulumi.String(`remote_write:
+//   - name: ArmsRemoteWrite
+//     url: http://47.96.227.137:8080/prometheus/xxx/yyy/cn-hangzhou/api/v3/write
+//     basic_auth: {username: 666, password: '******'}
+//     write_relabel_configs:
+//   - source_labels: [instance_id]
+//     separator: ;
+//     regex: si-6e2ca86444db4e55a7c1
+//     replacement: $1
+//     action: keep
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err

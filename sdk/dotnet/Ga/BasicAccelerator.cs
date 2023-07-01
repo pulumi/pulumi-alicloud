@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        /// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         /// </summary>
         [Output("autoRenewDuration")]
         public Output<int?> AutoRenewDuration { get; private set; } = null!;
@@ -114,6 +114,12 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
 
         /// <summary>
@@ -174,7 +180,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        /// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
@@ -217,6 +223,18 @@ namespace Pulumi.AliCloud.Ga
         [Input("pricingCycle")]
         public Input<string>? PricingCycle { get; set; }
 
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
+
         public BasicAcceleratorArgs()
         {
         }
@@ -238,7 +256,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        /// The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         /// </summary>
         [Input("autoRenewDuration")]
         public Input<int>? AutoRenewDuration { get; set; }
@@ -286,6 +304,18 @@ namespace Pulumi.AliCloud.Ga
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// A mapping of tags to assign to the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         public BasicAcceleratorState()
         {

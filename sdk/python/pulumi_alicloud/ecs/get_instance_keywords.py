@@ -116,11 +116,11 @@ def get_instance_keywords(key: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getInstanceKeywords:getInstanceKeywords', __args__, opts=opts, typ=GetInstanceKeywordsResult).value
 
     return AwaitableGetInstanceKeywordsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        key=__ret__.key,
-        keywords=__ret__.keywords,
-        output_file=__ret__.output_file)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        key=pulumi.get(__ret__, 'key'),
+        keywords=pulumi.get(__ret__, 'keywords'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_instance_keywords)

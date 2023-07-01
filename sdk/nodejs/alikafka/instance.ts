@@ -5,53 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides an ALIKAFKA instance resource.
- *
- * For information about ALIKAFKA instance and how to use it, see [What is ALIKAFKA instance](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-startinstance).
- *
- * > **NOTE:** Available in 1.59.0+
- *
- * > **NOTE:** Creation or modification may took about 10-40 minutes.
- *
- * > **NOTE:** Only the following regions support create alikafka pre paid instance.
- * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
- *
- * > **NOTE:** Only the following regions support create alikafka post paid instance.
- * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const instanceName = config.get("instanceName") || "alikafkaInstanceName";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultInstance = new alicloud.alikafka.Instance("defaultInstance", {
- *     partitionNum: 50,
- *     diskType: 1,
- *     diskSize: 500,
- *     deployType: 4,
- *     ioMax: 20,
- *     vswitchId: defaultSwitch.id,
- *     securityGroup: defaultSecurityGroup.id,
- * });
- * ```
- *
  * ## Import
  *
- * ALIKAFKA TOPIC can be imported using the id, e.g.
+ * ALIKAFKA instance can be imported using the id, e.g.
  *
  * ```sh
  *  $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
@@ -176,10 +132,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The max num of topic can be creation of the instance. 
-     * It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+     * The max num of topic can be creation of the instance.
+     * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
+     * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
+     * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      *
-     * @deprecated Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+     * @deprecated Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
      */
     public readonly topicQuota!: pulumi.Output<number>;
     /**
@@ -367,10 +325,12 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The max num of topic can be creation of the instance. 
-     * It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+     * The max num of topic can be creation of the instance.
+     * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
+     * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
+     * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      *
-     * @deprecated Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+     * @deprecated Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
      */
     topicQuota?: pulumi.Input<number>;
     /**
@@ -470,10 +430,12 @@ export interface InstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The max num of topic can be creation of the instance. 
-     * It has been deprecated from version 1.194.0 and using `partitionNum` instead.
+     * The max num of topic can be creation of the instance.
+     * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
+     * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
+     * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
      *
-     * @deprecated Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
+     * @deprecated Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.
      */
     topicQuota?: pulumi.Input<number>;
     /**

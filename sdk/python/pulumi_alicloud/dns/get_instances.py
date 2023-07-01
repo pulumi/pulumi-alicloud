@@ -142,13 +142,13 @@ def get_instances(domain_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dns/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
-        domain_type=__ret__.domain_type,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        lang=__ret__.lang,
-        output_file=__ret__.output_file,
-        user_client_ip=__ret__.user_client_ip)
+        domain_type=pulumi.get(__ret__, 'domain_type'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        lang=pulumi.get(__ret__, 'lang'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        user_client_ip=pulumi.get(__ret__, 'user_client_ip'))
 
 
 @_utilities.lift_output_func(get_instances)

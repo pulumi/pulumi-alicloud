@@ -70,6 +70,9 @@ class CaCertificateArgs:
         """
         Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -161,6 +164,9 @@ class _CaCertificateState:
         """
         Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -435,6 +441,9 @@ class CaCertificate(pulumi.CustomResource):
         """
         Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")
+
         return pulumi.get(self, "name")
 
     @property

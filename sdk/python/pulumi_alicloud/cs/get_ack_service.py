@@ -107,10 +107,10 @@ def get_ack_service(enable: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getAckService:getAckService', __args__, opts=opts, typ=GetAckServiceResult).value
 
     return AwaitableGetAckServiceResult(
-        enable=__ret__.enable,
-        id=__ret__.id,
-        status=__ret__.status,
-        type=__ret__.type)
+        enable=pulumi.get(__ret__, 'enable'),
+        id=pulumi.get(__ret__, 'id'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_ack_service)

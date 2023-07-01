@@ -136,14 +136,12 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     public readonly endpointGroupRegion!: pulumi.Output<string>;
     /**
-     * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-     *
+     * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
      */
     public readonly endpointGroupType!: pulumi.Output<string>;
     /**
-     * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-     *
+     * The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
      * > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      */
     public readonly endpointRequestProtocol!: pulumi.Output<string | undefined>;
@@ -173,7 +171,6 @@ export class EndpointGroup extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
-     *
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
     public readonly portOverrides!: pulumi.Output<outputs.ga.EndpointGroupPortOverrides | undefined>;
@@ -182,9 +179,13 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+     * A mapping of tags to assign to the resource.
      */
-    public readonly thresholdCount!: pulumi.Output<number | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
+     */
+    public readonly thresholdCount!: pulumi.Output<number>;
     /**
      * The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
      */
@@ -217,6 +218,7 @@ export class EndpointGroup extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["portOverrides"] = state ? state.portOverrides : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["thresholdCount"] = state ? state.thresholdCount : undefined;
             resourceInputs["trafficPercentage"] = state ? state.trafficPercentage : undefined;
         } else {
@@ -246,6 +248,7 @@ export class EndpointGroup extends pulumi.CustomResource {
             resourceInputs["listenerId"] = args ? args.listenerId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["portOverrides"] = args ? args.portOverrides : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["thresholdCount"] = args ? args.thresholdCount : undefined;
             resourceInputs["trafficPercentage"] = args ? args.trafficPercentage : undefined;
             resourceInputs["status"] = undefined /*out*/;
@@ -276,14 +279,12 @@ export interface EndpointGroupState {
      */
     endpointGroupRegion?: pulumi.Input<string>;
     /**
-     * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-     *
+     * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
      */
     endpointGroupType?: pulumi.Input<string>;
     /**
-     * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-     *
+     * The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
      * > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      */
     endpointRequestProtocol?: pulumi.Input<string>;
@@ -313,7 +314,6 @@ export interface EndpointGroupState {
     name?: pulumi.Input<string>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
-     *
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
     portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
@@ -322,7 +322,11 @@ export interface EndpointGroupState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
      */
     thresholdCount?: pulumi.Input<number>;
     /**
@@ -352,14 +356,12 @@ export interface EndpointGroupArgs {
      */
     endpointGroupRegion: pulumi.Input<string>;
     /**
-     * The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-     *
+     * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
      * > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
      */
     endpointGroupType?: pulumi.Input<string>;
     /**
-     * The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-     *
+     * The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
      * > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
      */
     endpointRequestProtocol?: pulumi.Input<string>;
@@ -389,12 +391,15 @@ export interface EndpointGroupArgs {
     name?: pulumi.Input<string>;
     /**
      * Mapping between listening port and forwarding port of boarding point. See `portOverrides` below.
-     *
      * > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
      */
     portOverrides?: pulumi.Input<inputs.ga.EndpointGroupPortOverrides>;
     /**
-     * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
      */
     thresholdCount?: pulumi.Input<number>;
     /**

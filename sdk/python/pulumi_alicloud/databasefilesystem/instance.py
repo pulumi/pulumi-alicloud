@@ -138,6 +138,9 @@ class InstanceArgs:
         """
         The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         """
+        warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
+        pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
+
         return pulumi.get(self, "ecs_lists")
 
     @ecs_lists.setter
@@ -325,6 +328,9 @@ class _InstanceState:
         """
         The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         """
+        warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
+        pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
+
         return pulumi.get(self, "ecs_lists")
 
     @ecs_lists.setter
@@ -713,6 +719,9 @@ class Instance(pulumi.CustomResource):
         """
         The collection of ECS instances mounted to the Database file system. See the following `Block ecs_list`. **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
         """
+        warnings.warn("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""", DeprecationWarning)
+        pulumi.log.warn("""ecs_lists is deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
+
         return pulumi.get(self, "ecs_lists")
 
     @property

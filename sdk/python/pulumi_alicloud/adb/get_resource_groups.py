@@ -135,12 +135,12 @@ def get_resource_groups(db_cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:adb/getResourceGroups:getResourceGroups', __args__, opts=opts, typ=GetResourceGroupsResult).value
 
     return AwaitableGetResourceGroupsResult(
-        db_cluster_id=__ret__.db_cluster_id,
-        group_name=__ret__.group_name,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file)
+        db_cluster_id=pulumi.get(__ret__, 'db_cluster_id'),
+        group_name=pulumi.get(__ret__, 'group_name'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_resource_groups)

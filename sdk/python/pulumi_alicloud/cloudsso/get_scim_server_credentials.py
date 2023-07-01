@@ -133,12 +133,12 @@ def get_scim_server_credentials(directory_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials', __args__, opts=opts, typ=GetScimServerCredentialsResult).value
 
     return AwaitableGetScimServerCredentialsResult(
-        credentials=__ret__.credentials,
-        directory_id=__ret__.directory_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        credentials=pulumi.get(__ret__, 'credentials'),
+        directory_id=pulumi.get(__ret__, 'directory_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_scim_server_credentials)

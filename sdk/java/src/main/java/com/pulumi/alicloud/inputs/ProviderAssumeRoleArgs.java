@@ -16,6 +16,13 @@ public final class ProviderAssumeRoleArgs extends com.pulumi.resources.ResourceA
 
     public static final ProviderAssumeRoleArgs Empty = new ProviderAssumeRoleArgs();
 
+    @Import(name="externalId")
+    private @Nullable Output<String> externalId;
+
+    public Optional<Output<String>> externalId() {
+        return Optional.ofNullable(this.externalId);
+    }
+
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
@@ -47,6 +54,7 @@ public final class ProviderAssumeRoleArgs extends com.pulumi.resources.ResourceA
     private ProviderAssumeRoleArgs() {}
 
     private ProviderAssumeRoleArgs(ProviderAssumeRoleArgs $) {
+        this.externalId = $.externalId;
         this.policy = $.policy;
         this.roleArn = $.roleArn;
         this.sessionExpiration = $.sessionExpiration;
@@ -69,6 +77,15 @@ public final class ProviderAssumeRoleArgs extends com.pulumi.resources.ResourceA
 
         public Builder(ProviderAssumeRoleArgs defaults) {
             $ = new ProviderAssumeRoleArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder externalId(@Nullable Output<String> externalId) {
+            $.externalId = externalId;
+            return this;
+        }
+
+        public Builder externalId(String externalId) {
+            return externalId(Output.of(externalId));
         }
 
         public Builder policy(@Nullable Output<String> policy) {

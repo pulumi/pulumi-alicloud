@@ -197,16 +197,16 @@ def get_security_group_rules(direction: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules', __args__, opts=opts, typ=GetSecurityGroupRulesResult).value
 
     return AwaitableGetSecurityGroupRulesResult(
-        direction=__ret__.direction,
-        group_desc=__ret__.group_desc,
-        group_id=__ret__.group_id,
-        group_name=__ret__.group_name,
-        id=__ret__.id,
-        ip_protocol=__ret__.ip_protocol,
-        nic_type=__ret__.nic_type,
-        output_file=__ret__.output_file,
-        policy=__ret__.policy,
-        rules=__ret__.rules)
+        direction=pulumi.get(__ret__, 'direction'),
+        group_desc=pulumi.get(__ret__, 'group_desc'),
+        group_id=pulumi.get(__ret__, 'group_id'),
+        group_name=pulumi.get(__ret__, 'group_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_protocol=pulumi.get(__ret__, 'ip_protocol'),
+        nic_type=pulumi.get(__ret__, 'nic_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policy=pulumi.get(__ret__, 'policy'),
+        rules=pulumi.get(__ret__, 'rules'))
 
 
 @_utilities.lift_output_func(get_security_group_rules)

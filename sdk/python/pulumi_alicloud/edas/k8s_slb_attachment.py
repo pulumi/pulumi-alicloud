@@ -21,7 +21,7 @@ class K8sSlbAttachmentArgs:
         """
         The set of arguments for constructing a K8sSlbAttachment resource.
         :param pulumi.Input[str] app_id: The ID of the EDAS k8s application to which you want to bind SLB instances.
-        :param pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
         pulumi.set(__self__, "app_id", app_id)
         if slb_configs is not None:
@@ -43,7 +43,7 @@ class K8sSlbAttachmentArgs:
     @pulumi.getter(name="slbConfigs")
     def slb_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]]:
         """
-        The configurations of SLB attachment, which is supported for multiple configurations.
+        The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
         return pulumi.get(self, "slb_configs")
 
@@ -60,7 +60,7 @@ class _K8sSlbAttachmentState:
         """
         Input properties used for looking up and filtering K8sSlbAttachment resources.
         :param pulumi.Input[str] app_id: The ID of the EDAS k8s application to which you want to bind SLB instances.
-        :param pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations.
+        :param pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -83,7 +83,7 @@ class _K8sSlbAttachmentState:
     @pulumi.getter(name="slbConfigs")
     def slb_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]]:
         """
-        The configurations of SLB attachment, which is supported for multiple configurations.
+        The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
         return pulumi.get(self, "slb_configs")
 
@@ -105,7 +105,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
 
         For information about EDAS k8s slb attachment and how to use it, see [What is k8s slb attachment](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/bindk8sslb).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
 
         ## Example Usage
 
@@ -148,7 +148,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The ID of the EDAS k8s application to which you want to bind SLB instances.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['K8sSlbAttachmentSlbConfigArgs']]]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['K8sSlbAttachmentSlbConfigArgs']]]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
         ...
     @overload
@@ -161,7 +161,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
 
         For information about EDAS k8s slb attachment and how to use it, see [What is k8s slb attachment](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/bindk8sslb).
 
-        > **NOTE:** Available in v1.194.0+.
+        > **NOTE:** Available since v1.194.0.
 
         ## Example Usage
 
@@ -251,7 +251,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The ID of the EDAS k8s application to which you want to bind SLB instances.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['K8sSlbAttachmentSlbConfigArgs']]]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['K8sSlbAttachmentSlbConfigArgs']]]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -273,7 +273,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
     @pulumi.getter(name="slbConfigs")
     def slb_configs(self) -> pulumi.Output[Sequence['outputs.K8sSlbAttachmentSlbConfig']]:
         """
-        The configurations of SLB attachment, which is supported for multiple configurations.
+        The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
         return pulumi.get(self, "slb_configs")
 

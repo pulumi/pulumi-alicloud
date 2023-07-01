@@ -219,20 +219,20 @@ def get_quotas(dimensions: Optional[Sequence[pulumi.InputType['GetQuotasDimensio
     __ret__ = pulumi.runtime.invoke('alicloud:quotas/getQuotas:getQuotas', __args__, opts=opts, typ=GetQuotasResult).value
 
     return AwaitableGetQuotasResult(
-        dimensions=__ret__.dimensions,
-        group_code=__ret__.group_code,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        key_word=__ret__.key_word,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        product_code=__ret__.product_code,
-        quota_action_code=__ret__.quota_action_code,
-        quota_category=__ret__.quota_category,
-        quotas=__ret__.quotas,
-        sort_field=__ret__.sort_field,
-        sort_order=__ret__.sort_order)
+        dimensions=pulumi.get(__ret__, 'dimensions'),
+        group_code=pulumi.get(__ret__, 'group_code'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        key_word=pulumi.get(__ret__, 'key_word'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        product_code=pulumi.get(__ret__, 'product_code'),
+        quota_action_code=pulumi.get(__ret__, 'quota_action_code'),
+        quota_category=pulumi.get(__ret__, 'quota_category'),
+        quotas=pulumi.get(__ret__, 'quotas'),
+        sort_field=pulumi.get(__ret__, 'sort_field'),
+        sort_order=pulumi.get(__ret__, 'sort_order'))
 
 
 @_utilities.lift_output_func(get_quotas)

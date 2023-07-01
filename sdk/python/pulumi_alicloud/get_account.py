@@ -62,4 +62,4 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
     __ret__ = pulumi.runtime.invoke('alicloud:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        id=__ret__.id)
+        id=pulumi.get(__ret__, 'id'))

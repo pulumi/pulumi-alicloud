@@ -148,14 +148,14 @@ def get_ecs_prefix_lists(address_family: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists', __args__, opts=opts, typ=GetEcsPrefixListsResult).value
 
     return AwaitableGetEcsPrefixListsResult(
-        address_family=__ret__.address_family,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        lists=__ret__.lists,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        address_family=pulumi.get(__ret__, 'address_family'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        lists=pulumi.get(__ret__, 'lists'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_ecs_prefix_lists)

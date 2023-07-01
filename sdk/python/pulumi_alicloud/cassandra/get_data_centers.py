@@ -147,13 +147,13 @@ def get_data_centers(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cassandra/getDataCenters:getDataCenters', __args__, opts=opts, typ=GetDataCentersResult).value
 
     return AwaitableGetDataCentersResult(
-        centers=__ret__.centers,
-        cluster_id=__ret__.cluster_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        centers=pulumi.get(__ret__, 'centers'),
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_data_centers)

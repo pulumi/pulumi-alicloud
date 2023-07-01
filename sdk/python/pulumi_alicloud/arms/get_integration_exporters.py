@@ -138,12 +138,12 @@ def get_integration_exporters(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:arms/getIntegrationExporters:getIntegrationExporters', __args__, opts=opts, typ=GetIntegrationExportersResult).value
 
     return AwaitableGetIntegrationExportersResult(
-        cluster_id=__ret__.cluster_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        integration_exporters=__ret__.integration_exporters,
-        integration_type=__ret__.integration_type,
-        output_file=__ret__.output_file)
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        integration_exporters=pulumi.get(__ret__, 'integration_exporters'),
+        integration_type=pulumi.get(__ret__, 'integration_type'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_integration_exporters)

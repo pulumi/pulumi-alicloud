@@ -15,7 +15,7 @@ public final class GetUsersUser {
      */
     private String createDate;
     /**
-     * @return The original id is user name, but it is user id in 1.37.0+.
+     * @return The original id is user&#39;s name, but it is user id in 1.37.0+.
      * 
      */
     private String id;
@@ -39,7 +39,7 @@ public final class GetUsersUser {
         return this.createDate;
     }
     /**
-     * @return The original id is user name, but it is user id in 1.37.0+.
+     * @return The original id is user&#39;s name, but it is user id in 1.37.0+.
      * 
      */
     public String id() {

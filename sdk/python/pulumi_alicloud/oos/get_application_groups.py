@@ -155,14 +155,14 @@ def get_application_groups(application_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:oos/getApplicationGroups:getApplicationGroups', __args__, opts=opts, typ=GetApplicationGroupsResult).value
 
     return AwaitableGetApplicationGroupsResult(
-        application_name=__ret__.application_name,
-        deploy_region_id=__ret__.deploy_region_id,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        application_name=pulumi.get(__ret__, 'application_name'),
+        deploy_region_id=pulumi.get(__ret__, 'deploy_region_id'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_application_groups)

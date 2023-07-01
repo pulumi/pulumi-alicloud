@@ -223,16 +223,15 @@ func (o CustomRoutingEndpointTrafficPolicyPortRangeArrayOutput) Index(i pulumi.I
 }
 
 type EndpointGroupEndpointConfiguration struct {
-	// Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+	// Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
 	EnableClientipPreservation *bool `pulumi:"enableClientipPreservation"`
+	// Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint string `pulumi:"endpoint"`
-	// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-	//
-	// > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+	// The type of Endpoint N in the endpoint group. Valid values:
 	Type string `pulumi:"type"`
-	// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-	//
+	// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
 	// > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 	Weight int `pulumi:"weight"`
 }
@@ -249,16 +248,15 @@ type EndpointGroupEndpointConfigurationInput interface {
 }
 
 type EndpointGroupEndpointConfigurationArgs struct {
-	// Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+	// Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
 	EnableClientipPreservation pulumi.BoolPtrInput `pulumi:"enableClientipPreservation"`
+	// Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+	EnableProxyProtocol pulumi.BoolPtrInput `pulumi:"enableProxyProtocol"`
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-	//
-	// > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+	// The type of Endpoint N in the endpoint group. Valid values:
 	Type pulumi.StringInput `pulumi:"type"`
-	// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-	//
+	// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
 	// > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 	Weight pulumi.IntInput `pulumi:"weight"`
 }
@@ -314,9 +312,14 @@ func (o EndpointGroupEndpointConfigurationOutput) ToEndpointGroupEndpointConfigu
 	return o
 }
 
-// Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+// Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
 func (o EndpointGroupEndpointConfigurationOutput) EnableClientipPreservation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *bool { return v.EnableClientipPreservation }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+func (o EndpointGroupEndpointConfigurationOutput) EnableProxyProtocol() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *bool { return v.EnableProxyProtocol }).(pulumi.BoolPtrOutput)
 }
 
 // The IP address or domain name of Endpoint N in the endpoint group.
@@ -324,15 +327,12 @@ func (o EndpointGroupEndpointConfigurationOutput) Endpoint() pulumi.StringOutput
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-//
-// > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+// The type of Endpoint N in the endpoint group. Valid values:
 func (o EndpointGroupEndpointConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-//
+// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
 // > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 func (o EndpointGroupEndpointConfigurationOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) int { return v.Weight }).(pulumi.IntOutput)

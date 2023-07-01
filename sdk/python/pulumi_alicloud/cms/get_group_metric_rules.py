@@ -209,19 +209,19 @@ def get_group_metric_rules(dimensions: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cms/getGroupMetricRules:getGroupMetricRules', __args__, opts=opts, typ=GetGroupMetricRulesResult).value
 
     return AwaitableGetGroupMetricRulesResult(
-        dimensions=__ret__.dimensions,
-        enable_state=__ret__.enable_state,
-        group_id=__ret__.group_id,
-        group_metric_rule_name=__ret__.group_metric_rule_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        metric_name=__ret__.metric_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        namespace=__ret__.namespace,
-        output_file=__ret__.output_file,
-        rules=__ret__.rules,
-        status=__ret__.status)
+        dimensions=pulumi.get(__ret__, 'dimensions'),
+        enable_state=pulumi.get(__ret__, 'enable_state'),
+        group_id=pulumi.get(__ret__, 'group_id'),
+        group_metric_rule_name=pulumi.get(__ret__, 'group_metric_rule_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        metric_name=pulumi.get(__ret__, 'metric_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        namespace=pulumi.get(__ret__, 'namespace'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rules=pulumi.get(__ret__, 'rules'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_group_metric_rules)

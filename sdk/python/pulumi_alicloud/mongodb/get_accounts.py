@@ -116,11 +116,11 @@ def get_accounts(account_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:mongodb/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult).value
 
     return AwaitableGetAccountsResult(
-        account_name=__ret__.account_name,
-        accounts=__ret__.accounts,
-        id=__ret__.id,
-        instance_id=__ret__.instance_id,
-        output_file=__ret__.output_file)
+        account_name=pulumi.get(__ret__, 'account_name'),
+        accounts=pulumi.get(__ret__, 'accounts'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_accounts)

@@ -112,11 +112,11 @@ def get_backup_plans(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cassandra/getBackupPlans:getBackupPlans', __args__, opts=opts, typ=GetBackupPlansResult).value
 
     return AwaitableGetBackupPlansResult(
-        cluster_id=__ret__.cluster_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        plans=__ret__.plans)
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        plans=pulumi.get(__ret__, 'plans'))
 
 
 @_utilities.lift_output_func(get_backup_plans)

@@ -172,16 +172,16 @@ def get_smartag_flow_logs(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs', __args__, opts=opts, typ=GetSmartagFlowLogsResult).value
 
     return AwaitableGetSmartagFlowLogsResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        logs=__ret__.logs,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        status=__ret__.status)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        logs=pulumi.get(__ret__, 'logs'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_smartag_flow_logs)

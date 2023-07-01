@@ -206,17 +206,17 @@ def get_flowlogs(cen_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getFlowlogs:getFlowlogs', __args__, opts=opts, typ=GetFlowlogsResult).value
 
     return AwaitableGetFlowlogsResult(
-        cen_id=__ret__.cen_id,
-        description=__ret__.description,
-        flowlogs=__ret__.flowlogs,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        log_store_name=__ret__.log_store_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        project_name=__ret__.project_name,
-        status=__ret__.status)
+        cen_id=pulumi.get(__ret__, 'cen_id'),
+        description=pulumi.get(__ret__, 'description'),
+        flowlogs=pulumi.get(__ret__, 'flowlogs'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        log_store_name=pulumi.get(__ret__, 'log_store_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        project_name=pulumi.get(__ret__, 'project_name'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_flowlogs)

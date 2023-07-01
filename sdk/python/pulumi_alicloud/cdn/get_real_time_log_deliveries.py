@@ -115,11 +115,11 @@ def get_real_time_log_deliveries(domain: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries', __args__, opts=opts, typ=GetRealTimeLogDeliveriesResult).value
 
     return AwaitableGetRealTimeLogDeliveriesResult(
-        deliveries=__ret__.deliveries,
-        domain=__ret__.domain,
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        deliveries=pulumi.get(__ret__, 'deliveries'),
+        domain=pulumi.get(__ret__, 'domain'),
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_real_time_log_deliveries)

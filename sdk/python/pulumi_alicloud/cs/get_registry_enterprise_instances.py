@@ -144,13 +144,13 @@ def get_registry_enterprise_instances(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances', __args__, opts=opts, typ=GetRegistryEnterpriseInstancesResult).value
 
     return AwaitableGetRegistryEnterpriseInstancesResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_registry_enterprise_instances)

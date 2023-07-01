@@ -182,17 +182,17 @@ def get_transit_router_route_tables(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables', __args__, opts=opts, typ=GetTransitRouterRouteTablesResult).value
 
     return AwaitableGetTransitRouterRouteTablesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        tables=__ret__.tables,
-        transit_router_id=__ret__.transit_router_id,
-        transit_router_route_table_ids=__ret__.transit_router_route_table_ids,
-        transit_router_route_table_names=__ret__.transit_router_route_table_names,
-        transit_router_route_table_status=__ret__.transit_router_route_table_status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        tables=pulumi.get(__ret__, 'tables'),
+        transit_router_id=pulumi.get(__ret__, 'transit_router_id'),
+        transit_router_route_table_ids=pulumi.get(__ret__, 'transit_router_route_table_ids'),
+        transit_router_route_table_names=pulumi.get(__ret__, 'transit_router_route_table_names'),
+        transit_router_route_table_status=pulumi.get(__ret__, 'transit_router_route_table_status'))
 
 
 @_utilities.lift_output_func(get_transit_router_route_tables)

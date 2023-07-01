@@ -15,7 +15,97 @@ import (
 //
 // For information about Alidns Address Pool and how to use it, see [What is Address Pool](https://www.alibabacloud.com/help/doc-detail/189621.html).
 //
-// > **NOTE:** Available in v1.152.0+.
+// > **NOTE:** Available since v1.152.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cms"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf_example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			domainName := "alicloud-provider.com"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
+//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//				AlarmContactGroupName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGtmInstance, err := dns.NewGtmInstance(ctx, "defaultGtmInstance", &dns.GtmInstanceArgs{
+//				InstanceName:         pulumi.String(name),
+//				PaymentType:          pulumi.String("Subscription"),
+//				Period:               pulumi.Int(1),
+//				RenewalStatus:        pulumi.String("ManualRenewal"),
+//				PackageEdition:       pulumi.String("standard"),
+//				HealthCheckTaskCount: pulumi.Int(100),
+//				SmsNotificationCount: pulumi.Int(1000),
+//				PublicCnameMode:      pulumi.String("SYSTEM_ASSIGN"),
+//				Ttl:                  pulumi.Int(60),
+//				CnameType:            pulumi.String("PUBLIC"),
+//				ResourceGroupId:      *pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				AlertGroups: pulumi.StringArray{
+//					defaultAlarmContactGroup.AlarmContactGroupName,
+//				},
+//				PublicUserDomainName: pulumi.String(domainName),
+//				AlertConfigs: dns.GtmInstanceAlertConfigArray{
+//					&dns.GtmInstanceAlertConfigArgs{
+//						SmsNotice:      pulumi.Bool(true),
+//						NoticeType:     pulumi.String("ADDR_ALERT"),
+//						EmailNotice:    pulumi.Bool(true),
+//						DingtalkNotice: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewAddressPool(ctx, "defaultAddressPool", &dns.AddressPoolArgs{
+//				AddressPoolName: pulumi.String(name),
+//				InstanceId:      defaultGtmInstance.ID(),
+//				LbaStrategy:     pulumi.String("RATIO"),
+//				Type:            pulumi.String("IPV4"),
+//				Addresses: dns.AddressPoolAddressArray{
+//					&dns.AddressPoolAddressArgs{
+//						AttributeInfo: pulumi.String("{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}"),
+//						Remark:        pulumi.String("address_remark"),
+//						Address:       pulumi.String("1.1.1.1"),
+//						Mode:          pulumi.String("SMART"),
+//						LbaWeight:     pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -31,7 +121,7 @@ type AddressPool struct {
 
 	// The name of the address pool.
 	AddressPoolName pulumi.StringOutput `pulumi:"addressPoolName"`
-	// The address lists of the Address Pool. See the following `Block address`.
+	// The address lists of the Address Pool. See `address` below for details.
 	Addresses AddressPoolAddressArrayOutput `pulumi:"addresses"`
 	// The ID of the instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -87,7 +177,7 @@ func GetAddressPool(ctx *pulumi.Context,
 type addressPoolState struct {
 	// The name of the address pool.
 	AddressPoolName *string `pulumi:"addressPoolName"`
-	// The address lists of the Address Pool. See the following `Block address`.
+	// The address lists of the Address Pool. See `address` below for details.
 	Addresses []AddressPoolAddress `pulumi:"addresses"`
 	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
@@ -100,7 +190,7 @@ type addressPoolState struct {
 type AddressPoolState struct {
 	// The name of the address pool.
 	AddressPoolName pulumi.StringPtrInput
-	// The address lists of the Address Pool. See the following `Block address`.
+	// The address lists of the Address Pool. See `address` below for details.
 	Addresses AddressPoolAddressArrayInput
 	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
@@ -117,7 +207,7 @@ func (AddressPoolState) ElementType() reflect.Type {
 type addressPoolArgs struct {
 	// The name of the address pool.
 	AddressPoolName string `pulumi:"addressPoolName"`
-	// The address lists of the Address Pool. See the following `Block address`.
+	// The address lists of the Address Pool. See `address` below for details.
 	Addresses []AddressPoolAddress `pulumi:"addresses"`
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -131,7 +221,7 @@ type addressPoolArgs struct {
 type AddressPoolArgs struct {
 	// The name of the address pool.
 	AddressPoolName pulumi.StringInput
-	// The address lists of the Address Pool. See the following `Block address`.
+	// The address lists of the Address Pool. See `address` below for details.
 	Addresses AddressPoolAddressArrayInput
 	// The ID of the instance.
 	InstanceId pulumi.StringInput
@@ -233,7 +323,7 @@ func (o AddressPoolOutput) AddressPoolName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressPool) pulumi.StringOutput { return v.AddressPoolName }).(pulumi.StringOutput)
 }
 
-// The address lists of the Address Pool. See the following `Block address`.
+// The address lists of the Address Pool. See `address` below for details.
 func (o AddressPoolOutput) Addresses() AddressPoolAddressArrayOutput {
 	return o.ApplyT(func(v *AddressPool) AddressPoolAddressArrayOutput { return v.Addresses }).(AddressPoolAddressArrayOutput)
 }

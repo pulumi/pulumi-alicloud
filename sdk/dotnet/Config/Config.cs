@@ -258,6 +258,7 @@ namespace Pulumi.AliCloud
 
              public class AssumeRole
              {
+                public string? ExternalId { get; set; } = null!;
                 public string? Policy { get; set; } = null!;
                 public string RoleArn { get; set; }
                 public int? SessionExpiration { get; set; }

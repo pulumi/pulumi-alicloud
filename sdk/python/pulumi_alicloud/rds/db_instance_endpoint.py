@@ -27,7 +27,7 @@ class DbInstanceEndpointArgs:
         The set of arguments for constructing a DbInstanceEndpoint resource.
         :param pulumi.Input[str] connection_string_prefix: The IP address of the internal endpoint.
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input['DbInstanceEndpointNodeItemArgs']]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+        :param pulumi.Input[Sequence[pulumi.Input['DbInstanceEndpointNodeItemArgs']]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         :param pulumi.Input[str] port: The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the internal endpoint.
         :param pulumi.Input[str] vswitch_id: The vSwitch ID of the internal endpoint.
@@ -70,7 +70,7 @@ class DbInstanceEndpointArgs:
     @pulumi.getter(name="nodeItems")
     def node_items(self) -> pulumi.Input[Sequence[pulumi.Input['DbInstanceEndpointNodeItemArgs']]]:
         """
-        The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+        The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         """
         return pulumi.get(self, "node_items")
 
@@ -151,7 +151,7 @@ class _DbInstanceEndpointState:
         :param pulumi.Input[str] db_instance_endpoint_type: The type of the endpoint.
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] ip_type: The type of the IP address.
-        :param pulumi.Input[Sequence[pulumi.Input['DbInstanceEndpointNodeItemArgs']]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+        :param pulumi.Input[Sequence[pulumi.Input['DbInstanceEndpointNodeItemArgs']]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         :param pulumi.Input[str] port: The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
         :param pulumi.Input[str] private_ip_address: The IP address of the internal endpoint.
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the internal endpoint.
@@ -270,7 +270,7 @@ class _DbInstanceEndpointState:
     @pulumi.getter(name="nodeItems")
     def node_items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceEndpointNodeItemArgs']]]]:
         """
-        The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+        The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         """
         return pulumi.get(self, "node_items")
 
@@ -342,14 +342,8 @@ class DbInstanceEndpoint(pulumi.CustomResource):
                  __props__=None):
         """
         Provide RDS cluster instance endpoint connection resources.
-        > **NOTE:** Available in 1.203.0+.
 
-        ## Block node_items
-
-        The node_items mapping supports the following:
-
-        * `node_id` - (Required) The ID of the node.
-        * `weight` - (Required) The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+        > **NOTE:** Available since v1.203.0+.
 
         ## Import
 
@@ -364,7 +358,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] connection_string_prefix: The IP address of the internal endpoint.
         :param pulumi.Input[str] db_instance_endpoint_description: The user-defined description of the endpoint.
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceEndpointNodeItemArgs']]]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceEndpointNodeItemArgs']]]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         :param pulumi.Input[str] port: The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the internal endpoint.
         :param pulumi.Input[str] vswitch_id: The vSwitch ID of the internal endpoint.
@@ -377,14 +371,8 @@ class DbInstanceEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provide RDS cluster instance endpoint connection resources.
-        > **NOTE:** Available in 1.203.0+.
 
-        ## Block node_items
-
-        The node_items mapping supports the following:
-
-        * `node_id` - (Required) The ID of the node.
-        * `weight` - (Required) The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+        > **NOTE:** Available since v1.203.0+.
 
         ## Import
 
@@ -485,7 +473,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] db_instance_endpoint_type: The type of the endpoint.
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] ip_type: The type of the IP address.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceEndpointNodeItemArgs']]]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbInstanceEndpointNodeItemArgs']]]] node_items: The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         :param pulumi.Input[str] port: The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
         :param pulumi.Input[str] private_ip_address: The IP address of the internal endpoint.
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the internal endpoint.
@@ -569,7 +557,7 @@ class DbInstanceEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="nodeItems")
     def node_items(self) -> pulumi.Output[Sequence['outputs.DbInstanceEndpointNodeItem']]:
         """
-        The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+        The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         """
         return pulumi.get(self, "node_items")
 

@@ -138,13 +138,13 @@ def get_ad_connector_office_sites(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eds/getAdConnectorOfficeSites:getAdConnectorOfficeSites', __args__, opts=opts, typ=GetAdConnectorOfficeSitesResult).value
 
     return AwaitableGetAdConnectorOfficeSitesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        sites=__ret__.sites,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        sites=pulumi.get(__ret__, 'sites'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_ad_connector_office_sites)

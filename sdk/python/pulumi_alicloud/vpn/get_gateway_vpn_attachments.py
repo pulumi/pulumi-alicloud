@@ -52,10 +52,6 @@ class GetGatewayVpnAttachmentsResult:
         pulumi.set(__self__, "status", status)
         if vpn_gateway_id and not isinstance(vpn_gateway_id, str):
             raise TypeError("Expected argument 'vpn_gateway_id' to be a str")
-        if vpn_gateway_id is not None:
-            warnings.warn("""The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.""", DeprecationWarning)
-            pulumi.log.warn("""vpn_gateway_id is deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.""")
-
         pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
 
     @property
@@ -109,6 +105,9 @@ class GetGatewayVpnAttachmentsResult:
     @property
     @pulumi.getter(name="vpnGatewayId")
     def vpn_gateway_id(self) -> Optional[str]:
+        warnings.warn("""The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.""", DeprecationWarning)
+        pulumi.log.warn("""vpn_gateway_id is deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.""")
+
         return pulumi.get(self, "vpn_gateway_id")
 
 
@@ -178,16 +177,16 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments', __args__, opts=opts, typ=GetGatewayVpnAttachmentsResult).value
 
     return AwaitableGetGatewayVpnAttachmentsResult(
-        attachments=__ret__.attachments,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        status=__ret__.status,
-        vpn_gateway_id=__ret__.vpn_gateway_id)
+        attachments=pulumi.get(__ret__, 'attachments'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        status=pulumi.get(__ret__, 'status'),
+        vpn_gateway_id=pulumi.get(__ret__, 'vpn_gateway_id'))
 
 
 @_utilities.lift_output_func(get_gateway_vpn_attachments)

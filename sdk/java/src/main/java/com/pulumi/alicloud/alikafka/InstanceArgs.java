@@ -289,25 +289,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The max num of topic can be creation of the instance.
-     * It has been deprecated from version 1.194.0 and using `partition_num` instead.
+     * It has been deprecated since version 1.194.0 and using `partition_num` instead.
+     * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
+     * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
      * 
      * @deprecated
-     * Attribute &#39;topic_quota&#39; has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+     * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
      * 
      */
-    @Deprecated /* Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+    @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
     @Import(name="topicQuota")
     private @Nullable Output<Integer> topicQuota;
 
     /**
      * @return The max num of topic can be creation of the instance.
-     * It has been deprecated from version 1.194.0 and using `partition_num` instead.
+     * It has been deprecated since version 1.194.0 and using `partition_num` instead.
+     * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
+     * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
      * 
      * @deprecated
-     * Attribute &#39;topic_quota&#39; has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+     * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
      * 
      */
-    @Deprecated /* Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+    @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
     public Optional<Output<Integer>> topicQuota() {
         return Optional.ofNullable(this.topicQuota);
     }
@@ -786,15 +790,17 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param topicQuota The max num of topic can be creation of the instance.
-         * It has been deprecated from version 1.194.0 and using `partition_num` instead.
+         * It has been deprecated since version 1.194.0 and using `partition_num` instead.
+         * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
+         * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
          * 
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;topic_quota&#39; has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+         * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
          * 
          */
-        @Deprecated /* Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+        @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
         public Builder topicQuota(@Nullable Output<Integer> topicQuota) {
             $.topicQuota = topicQuota;
             return this;
@@ -802,15 +808,17 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param topicQuota The max num of topic can be creation of the instance.
-         * It has been deprecated from version 1.194.0 and using `partition_num` instead.
+         * It has been deprecated since version 1.194.0 and using `partition_num` instead.
+         * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
+         * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
          * 
          * @return builder
          * 
          * @deprecated
-         * Attribute &#39;topic_quota&#39; has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+         * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
          * 
          */
-        @Deprecated /* Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+        @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
         public Builder topicQuota(Integer topicQuota) {
             return topicQuota(Output.of(topicQuota));
         }

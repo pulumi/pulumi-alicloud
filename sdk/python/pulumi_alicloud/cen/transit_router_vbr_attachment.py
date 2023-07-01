@@ -33,6 +33,8 @@ class TransitRouterVbrAttachmentArgs:
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled.Default value is `false`.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+               
+               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -40,8 +42,6 @@ class TransitRouterVbrAttachmentArgs:
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
-               
-               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "vbr_id", vbr_id)
@@ -119,6 +119,8 @@ class TransitRouterVbrAttachmentArgs:
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
         The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+
+        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "resource_type")
 
@@ -203,8 +205,6 @@ class TransitRouterVbrAttachmentArgs:
     def vbr_owner_id(self) -> Optional[pulumi.Input[str]]:
         """
         The owner id of the transit router vbr attachment.
-
-        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "vbr_owner_id")
 
@@ -236,6 +236,8 @@ class _TransitRouterVbrAttachmentState:
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+               
+               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[str] status: The associating status of the network.
@@ -246,8 +248,6 @@ class _TransitRouterVbrAttachmentState:
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
         :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
-               
-               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         if auto_publish_route_enabled is not None:
             pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
@@ -319,6 +319,8 @@ class _TransitRouterVbrAttachmentState:
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
         The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+
+        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "resource_type")
 
@@ -439,8 +441,6 @@ class _TransitRouterVbrAttachmentState:
     def vbr_owner_id(self) -> Optional[pulumi.Input[str]]:
         """
         The owner id of the transit router vbr attachment.
-
-        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "vbr_owner_id")
 
@@ -468,9 +468,51 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
                  vbr_owner_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://help.aliyun.com/document_detail/261361.html)
+        Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervbrattachment)
 
-        > **NOTE:** Available in 1.126.0+
+        > **NOTE:** Available since v1.126.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
+            protection_level="REDUCED")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name=name,
+            cen_id=example_instance.id)
+        name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=name_regex.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=vlan_id.id,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10)
+        example_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment",
+            vbr_id=example_virtual_border_router.id,
+            cen_id=example_instance.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            auto_publish_route_enabled=True,
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
+        ```
 
         ## Import
 
@@ -486,6 +528,8 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+               
+               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -494,8 +538,6 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
         :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
-               
-               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         ...
     @overload
@@ -504,9 +546,51 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
                  args: TransitRouterVbrAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://help.aliyun.com/document_detail/261361.html)
+        Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervbrattachment)
 
-        > **NOTE:** Available in 1.126.0+
+        > **NOTE:** Available since v1.126.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example_instance = alicloud.cen.Instance("exampleInstance",
+            cen_instance_name=name,
+            protection_level="REDUCED")
+        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+            transit_router_name=name,
+            cen_id=example_instance.id)
+        name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        vlan_id = random.RandomInteger("vlanId",
+            max=2999,
+            min=1)
+        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+            local_gateway_ip="10.0.0.1",
+            peer_gateway_ip="10.0.0.2",
+            peering_subnet_mask="255.255.255.252",
+            physical_connection_id=name_regex.connections[0].id,
+            virtual_border_router_name=name,
+            vlan_id=vlan_id.id,
+            min_rx_interval=1000,
+            min_tx_interval=1000,
+            detect_multiplier=10)
+        example_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment",
+            vbr_id=example_virtual_border_router.id,
+            cen_id=example_instance.id,
+            transit_router_id=example_transit_router.transit_router_id,
+            auto_publish_route_enabled=True,
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
+        ```
 
         ## Import
 
@@ -605,6 +689,8 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+               
+               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[str] status: The associating status of the network.
@@ -615,8 +701,6 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
         :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
-               
-               ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -667,6 +751,8 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
     def resource_type(self) -> pulumi.Output[Optional[str]]:
         """
         The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+
+        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "resource_type")
 
@@ -747,8 +833,6 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
     def vbr_owner_id(self) -> pulumi.Output[str]:
         """
         The owner id of the transit router vbr attachment.
-
-        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "vbr_owner_id")
 

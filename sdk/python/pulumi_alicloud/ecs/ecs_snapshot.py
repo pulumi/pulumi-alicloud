@@ -144,6 +144,9 @@ class EcsSnapshotArgs:
         """
         Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -339,6 +342,9 @@ class _EcsSnapshotState:
         """
         Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -749,6 +755,9 @@ class EcsSnapshot(pulumi.CustomResource):
         """
         Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property

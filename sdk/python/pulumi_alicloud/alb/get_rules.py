@@ -174,16 +174,16 @@ def get_rules(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:alb/getRules:getRules', __args__, opts=opts, typ=GetRulesResult).value
 
     return AwaitableGetRulesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        listener_ids=__ret__.listener_ids,
-        load_balancer_ids=__ret__.load_balancer_ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        rule_ids=__ret__.rule_ids,
-        rules=__ret__.rules,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        listener_ids=pulumi.get(__ret__, 'listener_ids'),
+        load_balancer_ids=pulumi.get(__ret__, 'load_balancer_ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rule_ids=pulumi.get(__ret__, 'rule_ids'),
+        rules=pulumi.get(__ret__, 'rules'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_rules)

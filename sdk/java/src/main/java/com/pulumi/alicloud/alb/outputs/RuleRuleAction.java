@@ -21,22 +21,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleAction {
     /**
-     * @return Request forwarding based on CORS. See the following `Block cors_config`.
+     * @return Request forwarding based on CORS. See `cors_config` below for details.
      * 
      */
     private @Nullable RuleRuleActionCorsConfig corsConfig;
     /**
-     * @return The configuration of the fixed response. See the following `Block fixed_response_config`.
+     * @return The configuration of the fixed response. See `fixed_response_config` below for details.
      * 
      */
     private @Nullable RuleRuleActionFixedResponseConfig fixedResponseConfig;
     /**
-     * @return The forward response action within ALB. See the following `Block forward_group_config`.
+     * @return The forward response action within ALB. See `forward_group_config` below for details.
      * 
      */
     private @Nullable RuleRuleActionForwardGroupConfig forwardGroupConfig;
     /**
-     * @return The configuration of the inserted header field. See the following `Block insert_header_config`.
+     * @return The configuration of the inserted header field. See `insert_header_config` below for details.
      * 
      */
     private @Nullable RuleRuleActionInsertHeaderConfig insertHeaderConfig;
@@ -46,27 +46,27 @@ public final class RuleRuleAction {
      */
     private Integer order;
     /**
-     * @return The configuration of the external redirect action. See the following `Block redirect_config`.
+     * @return The configuration of the external redirect action. See `redirect_config` below for details.
      * 
      */
     private @Nullable RuleRuleActionRedirectConfig redirectConfig;
     /**
-     * @return The redirect action within ALB. See the following `Block rewrite_config`.
+     * @return The redirect action within ALB. See `rewrite_config` below for details.
      * 
      */
     private @Nullable RuleRuleActionRewriteConfig rewriteConfig;
     /**
-     * @return The Flow speed limit. See the following `Block traffic_limit_config`.
+     * @return The Flow speed limit. See `traffic_limit_config` below for details.
      * 
      */
     private @Nullable RuleRuleActionTrafficLimitConfig trafficLimitConfig;
     /**
-     * @return The Traffic mirroring. See the following `Block traffic_mirror_config`.
+     * @return The Traffic mirroring. See `traffic_mirror_config` below for details.
      * 
      */
     private @Nullable RuleRuleActionTrafficMirrorConfig trafficMirrorConfig;
     /**
-     * @return The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+     * @return The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
      * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
      * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
      * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
@@ -76,28 +76,28 @@ public final class RuleRuleAction {
 
     private RuleRuleAction() {}
     /**
-     * @return Request forwarding based on CORS. See the following `Block cors_config`.
+     * @return Request forwarding based on CORS. See `cors_config` below for details.
      * 
      */
     public Optional<RuleRuleActionCorsConfig> corsConfig() {
         return Optional.ofNullable(this.corsConfig);
     }
     /**
-     * @return The configuration of the fixed response. See the following `Block fixed_response_config`.
+     * @return The configuration of the fixed response. See `fixed_response_config` below for details.
      * 
      */
     public Optional<RuleRuleActionFixedResponseConfig> fixedResponseConfig() {
         return Optional.ofNullable(this.fixedResponseConfig);
     }
     /**
-     * @return The forward response action within ALB. See the following `Block forward_group_config`.
+     * @return The forward response action within ALB. See `forward_group_config` below for details.
      * 
      */
     public Optional<RuleRuleActionForwardGroupConfig> forwardGroupConfig() {
         return Optional.ofNullable(this.forwardGroupConfig);
     }
     /**
-     * @return The configuration of the inserted header field. See the following `Block insert_header_config`.
+     * @return The configuration of the inserted header field. See `insert_header_config` below for details.
      * 
      */
     public Optional<RuleRuleActionInsertHeaderConfig> insertHeaderConfig() {
@@ -111,35 +111,35 @@ public final class RuleRuleAction {
         return this.order;
     }
     /**
-     * @return The configuration of the external redirect action. See the following `Block redirect_config`.
+     * @return The configuration of the external redirect action. See `redirect_config` below for details.
      * 
      */
     public Optional<RuleRuleActionRedirectConfig> redirectConfig() {
         return Optional.ofNullable(this.redirectConfig);
     }
     /**
-     * @return The redirect action within ALB. See the following `Block rewrite_config`.
+     * @return The redirect action within ALB. See `rewrite_config` below for details.
      * 
      */
     public Optional<RuleRuleActionRewriteConfig> rewriteConfig() {
         return Optional.ofNullable(this.rewriteConfig);
     }
     /**
-     * @return The Flow speed limit. See the following `Block traffic_limit_config`.
+     * @return The Flow speed limit. See `traffic_limit_config` below for details.
      * 
      */
     public Optional<RuleRuleActionTrafficLimitConfig> trafficLimitConfig() {
         return Optional.ofNullable(this.trafficLimitConfig);
     }
     /**
-     * @return The Traffic mirroring. See the following `Block traffic_mirror_config`.
+     * @return The Traffic mirroring. See `traffic_mirror_config` below for details.
      * 
      */
     public Optional<RuleRuleActionTrafficMirrorConfig> trafficMirrorConfig() {
         return Optional.ofNullable(this.trafficMirrorConfig);
     }
     /**
-     * @return The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
+     * @return The action. Valid values: `ForwardGroup`, `Redirect`, `FixedResponse`, `Rewrite`, `InsertHeader`, `TrafficLimit`, `TrafficMirror` and `Cors`.
      * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
      * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
      * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.

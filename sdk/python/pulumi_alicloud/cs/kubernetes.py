@@ -487,6 +487,9 @@ class KubernetesArgs:
         """
         (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         """
+        warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""")
+
         return pulumi.get(self, "cpu_policy")
 
     @cpu_policy.setter
@@ -535,6 +538,9 @@ class KubernetesArgs:
         """
         (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         """
+        warnings.warn("""Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+        pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
+
         return pulumi.get(self, "exclude_autoscaler_nodes")
 
     @exclude_autoscaler_nodes.setter
@@ -619,6 +625,9 @@ class KubernetesArgs:
         """
         The path of kube config, like `~/.kube/config`.
         """
+        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
@@ -760,6 +769,9 @@ class KubernetesArgs:
     @property
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""", DeprecationWarning)
+        pulumi.log.warn("""name_prefix is deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
+
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
@@ -808,6 +820,9 @@ class KubernetesArgs:
         """
         (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         """
+        warnings.warn("""Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+        pulumi.log.warn("""node_port_range is deprecated: Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
+
         return pulumi.get(self, "node_port_range")
 
     @node_port_range.setter
@@ -1000,6 +1015,9 @@ class KubernetesArgs:
         """
         (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         """
+        warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""")
+
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -1036,6 +1054,9 @@ class KubernetesArgs:
         """
         (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         """
+        warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""")
+
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -1060,6 +1081,9 @@ class KubernetesArgs:
         """
         (Optional) Enable worker payment auto-renew, defaults to false.
         """
+        warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew")
 
     @worker_auto_renew.setter
@@ -1072,6 +1096,9 @@ class KubernetesArgs:
         """
         (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
+        warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew_period")
 
     @worker_auto_renew_period.setter
@@ -1084,6 +1111,9 @@ class KubernetesArgs:
         """
         The data disk category of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_category")
 
     @worker_data_disk_category.setter
@@ -1096,6 +1126,9 @@ class KubernetesArgs:
         """
         The data disk size of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_size")
 
     @worker_data_disk_size.setter
@@ -1108,6 +1141,9 @@ class KubernetesArgs:
         """
         (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
         """
+        warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""")
+
         return pulumi.get(self, "worker_data_disks")
 
     @worker_data_disks.setter
@@ -1120,6 +1156,9 @@ class KubernetesArgs:
         """
         (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
+        warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""")
+
         return pulumi.get(self, "worker_disk_category")
 
     @worker_disk_category.setter
@@ -1132,6 +1171,9 @@ class KubernetesArgs:
         """
         (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
+        warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""")
+
         return pulumi.get(self, "worker_disk_performance_level")
 
     @worker_disk_performance_level.setter
@@ -1144,6 +1186,9 @@ class KubernetesArgs:
         """
         (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         """
+        warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""")
+
         return pulumi.get(self, "worker_disk_size")
 
     @worker_disk_size.setter
@@ -1156,6 +1201,9 @@ class KubernetesArgs:
         """
         (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
         """
+        warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
+
         return pulumi.get(self, "worker_disk_snapshot_policy_id")
 
     @worker_disk_snapshot_policy_id.setter
@@ -1168,6 +1216,9 @@ class KubernetesArgs:
         """
         (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         """
+        warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""")
+
         return pulumi.get(self, "worker_instance_charge_type")
 
     @worker_instance_charge_type.setter
@@ -1180,6 +1231,9 @@ class KubernetesArgs:
         """
         (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         """
+        warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""")
+
         return pulumi.get(self, "worker_instance_types")
 
     @worker_instance_types.setter
@@ -1192,6 +1246,9 @@ class KubernetesArgs:
         """
         (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         """
+        warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""")
+
         return pulumi.get(self, "worker_number")
 
     @worker_number.setter
@@ -1204,6 +1261,9 @@ class KubernetesArgs:
         """
         (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         """
+        warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""")
+
         return pulumi.get(self, "worker_period")
 
     @worker_period.setter
@@ -1216,6 +1276,9 @@ class KubernetesArgs:
         """
         (Optional) Worker payment period unit, the valid value is `Month`.
         """
+        warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""")
+
         return pulumi.get(self, "worker_period_unit")
 
     @worker_period_unit.setter
@@ -1228,6 +1291,9 @@ class KubernetesArgs:
         """
         (Optional) The vswitches used by workers.
         """
+        warnings.warn("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""")
+
         return pulumi.get(self, "worker_vswitch_ids")
 
     @worker_vswitch_ids.setter
@@ -1757,6 +1823,9 @@ class _KubernetesState:
         """
         (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         """
+        warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""")
+
         return pulumi.get(self, "cpu_policy")
 
     @cpu_policy.setter
@@ -1805,6 +1874,9 @@ class _KubernetesState:
         """
         (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         """
+        warnings.warn("""Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+        pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
+
         return pulumi.get(self, "exclude_autoscaler_nodes")
 
     @exclude_autoscaler_nodes.setter
@@ -1889,6 +1961,9 @@ class _KubernetesState:
         """
         The path of kube config, like `~/.kube/config`.
         """
+        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
@@ -2066,6 +2141,9 @@ class _KubernetesState:
     @property
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""", DeprecationWarning)
+        pulumi.log.warn("""name_prefix is deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
+
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
@@ -2126,6 +2204,9 @@ class _KubernetesState:
         """
         (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         """
+        warnings.warn("""Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+        pulumi.log.warn("""node_port_range is deprecated: Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
+
         return pulumi.get(self, "node_port_range")
 
     @node_port_range.setter
@@ -2291,6 +2372,9 @@ class _KubernetesState:
         """
         The ID of load balancer.
         """
+        warnings.warn("""Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""slb_id is deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""")
+
         return pulumi.get(self, "slb_id")
 
     @slb_id.setter
@@ -2354,6 +2438,9 @@ class _KubernetesState:
         """
         (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         """
+        warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""")
+
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -2390,6 +2477,9 @@ class _KubernetesState:
         """
         (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         """
+        warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""")
+
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -2426,6 +2516,9 @@ class _KubernetesState:
         """
         (Optional) Enable worker payment auto-renew, defaults to false.
         """
+        warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew")
 
     @worker_auto_renew.setter
@@ -2438,6 +2531,9 @@ class _KubernetesState:
         """
         (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
+        warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew_period")
 
     @worker_auto_renew_period.setter
@@ -2450,6 +2546,9 @@ class _KubernetesState:
         """
         The data disk category of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_category")
 
     @worker_data_disk_category.setter
@@ -2462,6 +2561,9 @@ class _KubernetesState:
         """
         The data disk size of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_size")
 
     @worker_data_disk_size.setter
@@ -2474,6 +2576,9 @@ class _KubernetesState:
         """
         (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
         """
+        warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""")
+
         return pulumi.get(self, "worker_data_disks")
 
     @worker_data_disks.setter
@@ -2486,6 +2591,9 @@ class _KubernetesState:
         """
         (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
+        warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""")
+
         return pulumi.get(self, "worker_disk_category")
 
     @worker_disk_category.setter
@@ -2498,6 +2606,9 @@ class _KubernetesState:
         """
         (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
+        warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""")
+
         return pulumi.get(self, "worker_disk_performance_level")
 
     @worker_disk_performance_level.setter
@@ -2510,6 +2621,9 @@ class _KubernetesState:
         """
         (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         """
+        warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""")
+
         return pulumi.get(self, "worker_disk_size")
 
     @worker_disk_size.setter
@@ -2522,6 +2636,9 @@ class _KubernetesState:
         """
         (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
         """
+        warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
+
         return pulumi.get(self, "worker_disk_snapshot_policy_id")
 
     @worker_disk_snapshot_policy_id.setter
@@ -2534,6 +2651,9 @@ class _KubernetesState:
         """
         (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         """
+        warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""")
+
         return pulumi.get(self, "worker_instance_charge_type")
 
     @worker_instance_charge_type.setter
@@ -2546,6 +2666,9 @@ class _KubernetesState:
         """
         (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         """
+        warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""")
+
         return pulumi.get(self, "worker_instance_types")
 
     @worker_instance_types.setter
@@ -2558,6 +2681,9 @@ class _KubernetesState:
         """
         (Deprecated from version 1.177.0)List of cluster worker nodes.
         """
+        warnings.warn("""Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+        pulumi.log.warn("""worker_nodes is deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
+
         return pulumi.get(self, "worker_nodes")
 
     @worker_nodes.setter
@@ -2570,6 +2696,9 @@ class _KubernetesState:
         """
         (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         """
+        warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""")
+
         return pulumi.get(self, "worker_number")
 
     @worker_number.setter
@@ -2582,6 +2711,9 @@ class _KubernetesState:
         """
         (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         """
+        warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""")
+
         return pulumi.get(self, "worker_period")
 
     @worker_period.setter
@@ -2594,6 +2726,9 @@ class _KubernetesState:
         """
         (Optional) Worker payment period unit, the valid value is `Month`.
         """
+        warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""")
+
         return pulumi.get(self, "worker_period_unit")
 
     @worker_period_unit.setter
@@ -2618,6 +2753,9 @@ class _KubernetesState:
         """
         (Optional) The vswitches used by workers.
         """
+        warnings.warn("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""")
+
         return pulumi.get(self, "worker_vswitch_ids")
 
     @worker_vswitch_ids.setter
@@ -3460,6 +3598,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         """
+        warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""")
+
         return pulumi.get(self, "cpu_policy")
 
     @property
@@ -3492,6 +3633,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
         """
+        warnings.warn("""Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+        pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
+
         return pulumi.get(self, "exclude_autoscaler_nodes")
 
     @property
@@ -3548,6 +3692,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         The path of kube config, like `~/.kube/config`.
         """
+        warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
+        pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
+
         return pulumi.get(self, "kube_config")
 
     @property
@@ -3665,6 +3812,9 @@ class Kubernetes(pulumi.CustomResource):
     @property
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""", DeprecationWarning)
+        pulumi.log.warn("""name_prefix is deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
+
         return pulumi.get(self, "name_prefix")
 
     @property
@@ -3705,6 +3855,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
         """
+        warnings.warn("""Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+        pulumi.log.warn("""node_port_range is deprecated: Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
+
         return pulumi.get(self, "node_port_range")
 
     @property
@@ -3814,6 +3967,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         The ID of load balancer.
         """
+        warnings.warn("""Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""slb_id is deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""")
+
         return pulumi.get(self, "slb_id")
 
     @property
@@ -3857,6 +4013,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
         """
+        warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""")
+
         return pulumi.get(self, "taints")
 
     @property
@@ -3881,6 +4040,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         """
+        warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""")
+
         return pulumi.get(self, "user_data")
 
     @property
@@ -3905,6 +4067,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional) Enable worker payment auto-renew, defaults to false.
         """
+        warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew")
 
     @property
@@ -3913,6 +4078,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
+        warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
+
         return pulumi.get(self, "worker_auto_renew_period")
 
     @property
@@ -3921,6 +4089,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         The data disk category of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_category")
 
     @property
@@ -3929,6 +4100,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         The data disk size of worker, use `worker_data_disks` to instead it.
         """
+        warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""")
+
         return pulumi.get(self, "worker_data_disk_size")
 
     @property
@@ -3937,6 +4111,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size.
         """
+        warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""")
+
         return pulumi.get(self, "worker_data_disks")
 
     @property
@@ -3945,6 +4122,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
         """
+        warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""")
+
         return pulumi.get(self, "worker_disk_category")
 
     @property
@@ -3953,6 +4133,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
+        warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""")
+
         return pulumi.get(self, "worker_disk_performance_level")
 
     @property
@@ -3961,6 +4144,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
         """
+        warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""")
+
         return pulumi.get(self, "worker_disk_size")
 
     @property
@@ -3969,6 +4155,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
         """
+        warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
+
         return pulumi.get(self, "worker_disk_snapshot_policy_id")
 
     @property
@@ -3977,6 +4166,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional, Force new resource) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         """
+        warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""")
+
         return pulumi.get(self, "worker_instance_charge_type")
 
     @property
@@ -3985,6 +4177,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
         """
+        warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""")
+
         return pulumi.get(self, "worker_instance_types")
 
     @property
@@ -3993,6 +4188,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Deprecated from version 1.177.0)List of cluster worker nodes.
         """
+        warnings.warn("""Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
+        pulumi.log.warn("""worker_nodes is deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
+
         return pulumi.get(self, "worker_nodes")
 
     @property
@@ -4001,6 +4199,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         """
+        warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""")
+
         return pulumi.get(self, "worker_number")
 
     @property
@@ -4009,6 +4210,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         """
+        warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""")
+
         return pulumi.get(self, "worker_period")
 
     @property
@@ -4017,6 +4221,9 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional) Worker payment period unit, the valid value is `Month`.
         """
+        warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""")
+
         return pulumi.get(self, "worker_period_unit")
 
     @property
@@ -4033,5 +4240,8 @@ class Kubernetes(pulumi.CustomResource):
         """
         (Optional) The vswitches used by workers.
         """
+        warnings.warn("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""", DeprecationWarning)
+        pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""")
+
         return pulumi.get(self, "worker_vswitch_ids")
 

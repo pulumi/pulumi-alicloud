@@ -109,6 +109,9 @@ class TrailArgs:
         """
         Field `mns_topic_arn` has been deprecated from version 1.118.0.
         """
+        warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
+        pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
+
         return pulumi.get(self, "mns_topic_arn")
 
     @mns_topic_arn.setter
@@ -121,6 +124,9 @@ class TrailArgs:
         """
         Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -169,6 +175,9 @@ class TrailArgs:
         """
         Field `name` has been deprecated from version 1.118.0.
         """
+        warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
+        pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
+
         return pulumi.get(self, "role_name")
 
     @role_name.setter
@@ -334,6 +343,9 @@ class _TrailState:
         """
         Field `mns_topic_arn` has been deprecated from version 1.118.0.
         """
+        warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
+        pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
+
         return pulumi.get(self, "mns_topic_arn")
 
     @mns_topic_arn.setter
@@ -346,6 +358,9 @@ class _TrailState:
         """
         Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -394,6 +409,9 @@ class _TrailState:
         """
         Field `name` has been deprecated from version 1.118.0.
         """
+        warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
+        pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
+
         return pulumi.get(self, "role_name")
 
     @role_name.setter
@@ -710,6 +728,9 @@ class Trail(pulumi.CustomResource):
         """
         Field `mns_topic_arn` has been deprecated from version 1.118.0.
         """
+        warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
+        pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
+
         return pulumi.get(self, "mns_topic_arn")
 
     @property
@@ -718,6 +739,9 @@ class Trail(pulumi.CustomResource):
         """
         Field `name` has been deprecated from version 1.95.0. Use `trail_name` instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property
@@ -750,6 +774,9 @@ class Trail(pulumi.CustomResource):
         """
         Field `name` has been deprecated from version 1.118.0.
         """
+        warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
+        pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
+
         return pulumi.get(self, "role_name")
 
     @property

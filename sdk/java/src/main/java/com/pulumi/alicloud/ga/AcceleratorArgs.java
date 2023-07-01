@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -48,14 +50,14 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+     * Use coupons to pay bills automatically. Default value: `false`. Valid values:
      * 
      */
     @Import(name="autoUseCoupon")
     private @Nullable Output<Boolean> autoUseCoupon;
 
     /**
-     * @return Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+     * @return Use coupons to pay bills automatically. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoUseCoupon() {
@@ -93,7 +95,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+     * The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
      * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
      * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      * 
@@ -102,7 +104,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
     private Output<Integer> duration;
 
     /**
-     * @return The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+     * @return The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
      * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
      * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      * 
@@ -112,14 +114,14 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+     * The billing cycle of the GA instance. Default value: `Month`. Valid values:
      * 
      */
     @Import(name="pricingCycle")
     private @Nullable Output<String> pricingCycle;
 
     /**
-     * @return The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+     * @return The billing cycle of the GA instance. Default value: `Month`. Valid values:
      * 
      */
     public Optional<Output<String>> pricingCycle() {
@@ -127,14 +129,14 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to renew an accelerator automatically or not. Default to &#34;Normal&#34;. Valid values:
+     * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
      * 
      */
     @Import(name="renewalStatus")
     private @Nullable Output<String> renewalStatus;
 
     /**
-     * @return Whether to renew an accelerator automatically or not. Default to &#34;Normal&#34;. Valid values:
+     * @return Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
      * 
      */
     public Optional<Output<String>> renewalStatus() {
@@ -142,30 +144,33 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The instance type of the GA instance. Specification of global acceleration instance, value:
-     * `1`: Small 1.
-     * `2`: Small 2.
-     * `3`: Small 3.
-     * `5`: Medium 1.
-     * `8`: Medium 2.
-     * `10`: Medium 3.
+     * The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      * 
      */
     @Import(name="spec", required=true)
     private Output<String> spec;
 
     /**
-     * @return The instance type of the GA instance. Specification of global acceleration instance, value:
-     * `1`: Small 1.
-     * `2`: Small 2.
-     * `3`: Small 3.
-     * `5`: Medium 1.
-     * `8`: Medium 2.
-     * `10`: Medium 3.
+     * @return The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      * 
      */
     public Output<String> spec() {
         return this.spec;
+    }
+
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
     }
 
     private AcceleratorArgs() {}
@@ -180,6 +185,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         this.pricingCycle = $.pricingCycle;
         this.renewalStatus = $.renewalStatus;
         this.spec = $.spec;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -243,7 +249,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUseCoupon Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+         * @param autoUseCoupon Use coupons to pay bills automatically. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -254,7 +260,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoUseCoupon Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+         * @param autoUseCoupon Use coupons to pay bills automatically. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -306,7 +312,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param duration The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+         * @param duration The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
          * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
          * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
          * 
@@ -319,7 +325,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param duration The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricing_cycle` are both required.
+         * @param duration The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricing_cycle` are both required.
          * * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
          * * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
          * 
@@ -331,7 +337,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pricingCycle The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+         * @param pricingCycle The billing cycle of the GA instance. Default value: `Month`. Valid values:
          * 
          * @return builder
          * 
@@ -342,7 +348,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pricingCycle The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+         * @param pricingCycle The billing cycle of the GA instance. Default value: `Month`. Valid values:
          * 
          * @return builder
          * 
@@ -352,7 +358,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Whether to renew an accelerator automatically or not. Default to &#34;Normal&#34;. Valid values:
+         * @param renewalStatus Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
          * 
          * @return builder
          * 
@@ -363,7 +369,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Whether to renew an accelerator automatically or not. Default to &#34;Normal&#34;. Valid values:
+         * @param renewalStatus Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
          * 
          * @return builder
          * 
@@ -373,13 +379,7 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The instance type of the GA instance. Specification of global acceleration instance, value:
-         * `1`: Small 1.
-         * `2`: Small 2.
-         * `3`: Small 3.
-         * `5`: Medium 1.
-         * `8`: Medium 2.
-         * `10`: Medium 3.
+         * @param spec The instance type of the GA instance. Specification of global acceleration instance. Valid values:
          * 
          * @return builder
          * 
@@ -390,19 +390,34 @@ public final class AcceleratorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The instance type of the GA instance. Specification of global acceleration instance, value:
-         * `1`: Small 1.
-         * `2`: Small 2.
-         * `3`: Small 3.
-         * `5`: Medium 1.
-         * `8`: Medium 2.
-         * `10`: Medium 3.
+         * @param spec The instance type of the GA instance. Specification of global acceleration instance. Valid values:
          * 
          * @return builder
          * 
          */
         public Builder spec(String spec) {
             return spec(Output.of(spec));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public AcceleratorArgs build() {

@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -48,14 +50,14 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+     * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
      * 
      */
     @Import(name="autoRenewDuration")
     private @Nullable Output<Integer> autoRenewDuration;
 
     /**
-     * @return The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+     * @return The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
      * 
      */
     public Optional<Output<Integer>> autoRenewDuration() {
@@ -156,6 +158,21 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.pricingCycle);
     }
 
+    /**
+     * A mapping of tags to assign to the resource.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return A mapping of tags to assign to the resource.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private BasicAcceleratorArgs() {}
 
     private BasicAcceleratorArgs(BasicAcceleratorArgs $) {
@@ -168,6 +185,7 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
         this.description = $.description;
         this.duration = $.duration;
         this.pricingCycle = $.pricingCycle;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -231,7 +249,7 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
          * 
          * @return builder
          * 
@@ -242,7 +260,7 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autoRenewDuration The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+         * @param autoRenewDuration The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
          * 
          * @return builder
          * 
@@ -379,6 +397,27 @@ public final class BasicAcceleratorArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder pricingCycle(String pricingCycle) {
             return pricingCycle(Output.of(pricingCycle));
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A mapping of tags to assign to the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
         }
 
         public BasicAcceleratorArgs build() {

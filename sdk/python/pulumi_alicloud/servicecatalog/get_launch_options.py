@@ -37,10 +37,6 @@ class GetLaunchOptionsResult:
         pulumi.set(__self__, "name_regex", name_regex)
         if options and not isinstance(options, list):
             raise TypeError("Expected argument 'options' to be a list")
-        if options is not None:
-            warnings.warn("""Field 'options' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
-            pulumi.log.warn("""options is deprecated: Field 'options' has been deprecated from provider version 1.197.0.""")
-
         pulumi.set(__self__, "options", options)
         if output_file and not isinstance(output_file, str):
             raise TypeError("Expected argument 'output_file' to be a str")
@@ -78,6 +74,9 @@ class GetLaunchOptionsResult:
     @property
     @pulumi.getter
     def options(self) -> Sequence['outputs.GetLaunchOptionsOptionResult']:
+        warnings.warn("""Field 'options' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
+        pulumi.log.warn("""options is deprecated: Field 'options' has been deprecated from provider version 1.197.0.""")
+
         return pulumi.get(self, "options")
 
     @property
@@ -141,13 +140,13 @@ def get_launch_options(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:servicecatalog/getLaunchOptions:getLaunchOptions', __args__, opts=opts, typ=GetLaunchOptionsResult).value
 
     return AwaitableGetLaunchOptionsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        launch_options=__ret__.launch_options,
-        name_regex=__ret__.name_regex,
-        options=__ret__.options,
-        output_file=__ret__.output_file,
-        product_id=__ret__.product_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        launch_options=pulumi.get(__ret__, 'launch_options'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        options=pulumi.get(__ret__, 'options'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        product_id=pulumi.get(__ret__, 'product_id'))
 
 
 @_utilities.lift_output_func(get_launch_options)

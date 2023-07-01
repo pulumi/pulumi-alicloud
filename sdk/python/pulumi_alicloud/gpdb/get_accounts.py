@@ -155,14 +155,14 @@ def get_accounts(db_instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:gpdb/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult).value
 
     return AwaitableGetAccountsResult(
-        accounts=__ret__.accounts,
-        db_instance_id=__ret__.db_instance_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        accounts=pulumi.get(__ret__, 'accounts'),
+        db_instance_id=pulumi.get(__ret__, 'db_instance_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_accounts)

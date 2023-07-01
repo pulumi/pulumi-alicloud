@@ -161,15 +161,15 @@ def get_domains(accelerator_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult).value
 
     return AwaitableGetDomainsResult(
-        accelerator_id=__ret__.accelerator_id,
-        domain=__ret__.domain,
-        domains=__ret__.domains,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        status=__ret__.status)
+        accelerator_id=pulumi.get(__ret__, 'accelerator_id'),
+        domain=pulumi.get(__ret__, 'domain'),
+        domains=pulumi.get(__ret__, 'domains'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_domains)

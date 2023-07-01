@@ -33,10 +33,28 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//				Description:    pulumi.String("this is a policy test"),
-//				Force:          pulumi.Bool(true),
-//				PolicyDocument: pulumi.String("  {\n    \"Statement\": [\n      {\n        \"Action\": [\n          \"oss:ListObjects\",\n          \"oss:GetObject\"\n        ],\n        \"Effect\": \"Allow\",\n        \"Resource\": [\n          \"acs:oss:*:*:mybucket\",\n          \"acs:oss:*:*:mybucket/*\"\n        ]\n      }\n    ],\n      \"Version\": \"1\"\n  }\n  \n"),
-//				PolicyName:     pulumi.String("policyName"),
+//				Description: pulumi.String("this is a policy test"),
+//				Force:       pulumi.Bool(true),
+//				PolicyDocument: pulumi.String(`  {
+//	    "Statement": [
+//	      {
+//	        "Action": [
+//	          "oss:ListObjects",
+//	          "oss:GetObject"
+//	        ],
+//	        "Effect": "Allow",
+//	        "Resource": [
+//	          "acs:oss:*:*:mybucket",
+//	          "acs:oss:*:*:mybucket/*"
+//	        ]
+//	      }
+//	    ],
+//	      "Version": "1"
+//	  }
+//
+// `),
+//
+//				PolicyName: pulumi.String("policyName"),
 //			})
 //			if err != nil {
 //				return err

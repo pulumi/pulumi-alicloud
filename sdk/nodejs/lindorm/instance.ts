@@ -7,11 +7,11 @@ import * as utilities from "../utilities";
 /**
  * Provides a Lindorm Instance resource.
  *
- * For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/zh/doc-detail/174640.html).
+ * For information about Lindorm Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/lindorm/latest/product-introduction-overview).
  *
  * > **NOTE:** Available since v1.132.0.
  *
- * > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines or the number of nodes at the same time.
+ * > **NOTE:**  The Lindorm Instance does not support updating the specifications of multiple different engines, or the number of nodes at the same time.
  *
  * ## Import
  *
@@ -62,7 +62,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly archVersion!: pulumi.Output<string | undefined>;
     /**
-     * The cold storage capacity of the instance. Unit: GB.
+     * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      */
     public readonly coldStorage!: pulumi.Output<number>;
     /**
@@ -395,7 +395,7 @@ export interface InstanceState {
      */
     archVersion?: pulumi.Input<string>;
     /**
-     * The cold storage capacity of the instance. Unit: GB.
+     * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      */
     coldStorage?: pulumi.Input<number>;
     /**
@@ -601,7 +601,7 @@ export interface InstanceArgs {
      */
     archVersion?: pulumi.Input<string>;
     /**
-     * The cold storage capacity of the instance. Unit: GB.
+     * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      */
     coldStorage?: pulumi.Input<number>;
     /**

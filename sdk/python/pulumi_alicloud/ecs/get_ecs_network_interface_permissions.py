@@ -159,15 +159,15 @@ def get_ecs_network_interface_permissions(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions', __args__, opts=opts, typ=GetEcsNetworkInterfacePermissionsResult).value
 
     return AwaitableGetEcsNetworkInterfacePermissionsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        network_interface_id=__ret__.network_interface_id,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        permissions=__ret__.permissions,
-        status=__ret__.status,
-        total_count=__ret__.total_count)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        network_interface_id=pulumi.get(__ret__, 'network_interface_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        permissions=pulumi.get(__ret__, 'permissions'),
+        status=pulumi.get(__ret__, 'status'),
+        total_count=pulumi.get(__ret__, 'total_count'))
 
 
 @_utilities.lift_output_func(get_ecs_network_interface_permissions)

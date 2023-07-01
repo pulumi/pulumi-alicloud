@@ -94,9 +94,9 @@ def get_physical_connection_service(enable: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService', __args__, opts=opts, typ=GetPhysicalConnectionServiceResult).value
 
     return AwaitableGetPhysicalConnectionServiceResult(
-        enable=__ret__.enable,
-        id=__ret__.id,
-        status=__ret__.status)
+        enable=pulumi.get(__ret__, 'enable'),
+        id=pulumi.get(__ret__, 'id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_physical_connection_service)

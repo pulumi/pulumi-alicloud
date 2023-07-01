@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/doc-detail/29772.htm).
  *
- * > **NOTE:** Available in v1.85.0+.
+ * > **NOTE:** Available since v1.85.0.
  *
  * > **NOTE:** When the site is an international site, the `type` neither supports `REDIRECT_URL` nor `REDIRECT_URL`
  *
@@ -17,14 +17,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a new Domain Record
+ * const defaultDomainGroup = new alicloud.dns.DomainGroup("defaultDomainGroup", {domainGroupName: "tf-example"});
+ * const defaultAlidnsDomain = new alicloud.dns.AlidnsDomain("defaultAlidnsDomain", {
+ *     domainName: "starmove.com",
+ *     groupId: defaultDomainGroup.id,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ * });
  * const record = new alicloud.dns.AlidnsRecord("record", {
- *     domainName: "domainname",
- *     remark: "Test new alidns record.",
- *     rr: "@",
+ *     domainName: defaultAlidnsDomain.domainName,
+ *     rr: "alimail",
+ *     type: "CNAME",
+ *     value: "mail.mxhichin.com",
+ *     remark: "tf-example",
  *     status: "ENABLE",
- *     type: "A",
- *     value: "192.168.99.99",
  * });
  * ```
  *

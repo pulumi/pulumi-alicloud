@@ -19,45 +19,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a Alb Ascript resource.
  * 
- * For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/what-is-application-load-balancer).
+ * For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createascripts).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
- * 
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.alb.AScript;
- * import com.pulumi.alicloud.alb.AScriptArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new AScript(&#34;default&#34;, AScriptArgs.builder()        
- *             .scriptContent(&#34;time()&#34;)
- *             .position(&#34;RequestHead&#34;)
- *             .ascriptName(&#34;test&#34;)
- *             .enabled(true)
- *             .listenerId(var_.listenerId())
- *             .build());
- * 
- *     }
- * }
- * ```
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Import
  * 
@@ -113,14 +77,14 @@ public class AScript extends com.pulumi.resources.CustomResource {
         return this.extAttributeEnabled;
     }
     /**
-     * Extended attribute list. See the following `Block ExtAttributes`.
+     * Extended attribute list. See `ext_attributes` below for details.
      * 
      */
     @Export(name="extAttributes", type=List.class, parameters={AScriptExtAttribute.class})
     private Output<List<AScriptExtAttribute>> extAttributes;
 
     /**
-     * @return Extended attribute list. See the following `Block ExtAttributes`.
+     * @return Extended attribute list. See `ext_attributes` below for details.
      * 
      */
     public Output<List<AScriptExtAttribute>> extAttributes() {

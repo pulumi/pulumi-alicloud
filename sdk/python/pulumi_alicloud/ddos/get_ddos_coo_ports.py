@@ -140,13 +140,13 @@ def get_ddos_coo_ports(frontend_port: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ddos/getDdosCooPorts:getDdosCooPorts', __args__, opts=opts, typ=GetDdosCooPortsResult).value
 
     return AwaitableGetDdosCooPortsResult(
-        frontend_port=__ret__.frontend_port,
-        frontend_protocol=__ret__.frontend_protocol,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        output_file=__ret__.output_file,
-        ports=__ret__.ports)
+        frontend_port=pulumi.get(__ret__, 'frontend_port'),
+        frontend_protocol=pulumi.get(__ret__, 'frontend_protocol'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        ports=pulumi.get(__ret__, 'ports'))
 
 
 @_utilities.lift_output_func(get_ddos_coo_ports)

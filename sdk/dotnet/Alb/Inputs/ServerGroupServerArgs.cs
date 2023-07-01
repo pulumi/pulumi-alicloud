@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string> ServerType { get; set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the backend server. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
     /// 
-    /// &gt; **NOTE:** Available in v1.153.0+.
+    /// &gt; **NOTE:** Available since v1.153.0.
     /// 
     /// ## Example Usage
     /// 
@@ -29,8 +29,8 @@ namespace Pulumi.AliCloud.Dns
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testacc";
-    ///     var domainName = config.Get("domainName") ?? "your_domain_name";
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var domainName = config.Get("domainName") ?? "alicloud-provider.com";
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Dns
     ///         PaymentType = "Subscription",
     ///         Period = 1,
     ///         RenewalStatus = "ManualRenewal",
-    ///         PackageEdition = "ultimate",
+    ///         PackageEdition = "standard",
     ///         HealthCheckTaskCount = 100,
     ///         SmsNotificationCount = 1000,
     ///         PublicCnameMode = "SYSTEM_ASSIGN",
@@ -94,11 +94,14 @@ namespace Pulumi.AliCloud.Dns
     ///         Interval = 60,
     ///         Timeout = 5000,
     ///         ProtocolType = "TCP",
-    ///         MonitorExtendInfo = "{\"failureRate\"=50,\"port\"=80}",
-    ///         IspCityNodes = 
+    ///         MonitorExtendInfo = "{\"failureRate\":50,\"port\":80}",
+    ///         IspCityNodes = new[]
     ///         {
-    ///             { "cityCode", "503" },
-    ///             { "ispCode", "465" },
+    ///             new AliCloud.Dns.Inputs.MonitorConfigIspCityNodeArgs
+    ///             {
+    ///                 CityCode = "503",
+    ///                 IspCode = "465",
+    ///             },
     ///         },
     ///     });
     /// 
@@ -135,7 +138,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<int> Interval { get; private set; } = null!;
 
         /// <summary>
-        /// The Monitoring node. See the following `Block isp_city_node`.
+        /// The Monitoring node. See `isp_city_node` below for details.
         /// </summary>
         [Output("ispCityNodes")]
         public Output<ImmutableArray<Outputs.MonitorConfigIspCityNode>> IspCityNodes { get; private set; } = null!;
@@ -232,7 +235,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.MonitorConfigIspCityNodeArgs>? _ispCityNodes;
 
         /// <summary>
-        /// The Monitoring node. See the following `Block isp_city_node`.
+        /// The Monitoring node. See `isp_city_node` below for details.
         /// </summary>
         public InputList<Inputs.MonitorConfigIspCityNodeArgs> IspCityNodes
         {
@@ -294,7 +297,7 @@ namespace Pulumi.AliCloud.Dns
         private InputList<Inputs.MonitorConfigIspCityNodeGetArgs>? _ispCityNodes;
 
         /// <summary>
-        /// The Monitoring node. See the following `Block isp_city_node`.
+        /// The Monitoring node. See `isp_city_node` below for details.
         /// </summary>
         public InputList<Inputs.MonitorConfigIspCityNodeGetArgs> IspCityNodes
         {

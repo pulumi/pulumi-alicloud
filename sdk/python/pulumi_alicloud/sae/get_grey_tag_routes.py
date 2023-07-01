@@ -137,13 +137,13 @@ def get_grey_tag_routes(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:sae/getGreyTagRoutes:getGreyTagRoutes', __args__, opts=opts, typ=GetGreyTagRoutesResult).value
 
     return AwaitableGetGreyTagRoutesResult(
-        app_id=__ret__.app_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        routes=__ret__.routes)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        routes=pulumi.get(__ret__, 'routes'))
 
 
 @_utilities.lift_output_func(get_grey_tag_routes)

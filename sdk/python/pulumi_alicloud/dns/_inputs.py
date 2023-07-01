@@ -25,8 +25,8 @@ class AccessStrategyDefaultAddrPoolArgs:
                  addr_pool_id: pulumi.Input[str],
                  lba_weight: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the secondary address pool group.
-        :param pulumi.Input[int] lba_weight: The weight of the address pool in the secondary address pool group.
+        :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the primary address pool group.
+        :param pulumi.Input[int] lba_weight: The weight of the address pool in the primary address pool group.
         """
         pulumi.set(__self__, "addr_pool_id", addr_pool_id)
         if lba_weight is not None:
@@ -36,7 +36,7 @@ class AccessStrategyDefaultAddrPoolArgs:
     @pulumi.getter(name="addrPoolId")
     def addr_pool_id(self) -> pulumi.Input[str]:
         """
-        The ID of the address pool in the secondary address pool group.
+        The ID of the address pool in the primary address pool group.
         """
         return pulumi.get(self, "addr_pool_id")
 
@@ -48,7 +48,7 @@ class AccessStrategyDefaultAddrPoolArgs:
     @pulumi.getter(name="lbaWeight")
     def lba_weight(self) -> Optional[pulumi.Input[int]]:
         """
-        The weight of the address pool in the secondary address pool group.
+        The weight of the address pool in the primary address pool group.
         """
         return pulumi.get(self, "lba_weight")
 
@@ -128,7 +128,7 @@ class AddressPoolAddressArgs:
                  lba_weight: Optional[pulumi.Input[int]] = None,
                  remark: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] address: The address lists of the Address Pool. See the following `Block address`.
+        :param pulumi.Input[str] address: The address that you want to add to the address pool.
         :param pulumi.Input[str] attribute_info: The source region of the address. expressed as a JSON string. The structure is as follows:
         :param pulumi.Input[str] mode: The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
         :param pulumi.Input[int] lba_weight: The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
@@ -146,7 +146,7 @@ class AddressPoolAddressArgs:
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
         """
-        The address lists of the Address Pool. See the following `Block address`.
+        The address that you want to add to the address pool.
         """
         return pulumi.get(self, "address")
 

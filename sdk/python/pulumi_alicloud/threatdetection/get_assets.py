@@ -196,17 +196,17 @@ def get_assets(criteria: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:threatdetection/getAssets:getAssets', __args__, opts=opts, typ=GetAssetsResult).value
 
     return AwaitableGetAssetsResult(
-        assets=__ret__.assets,
-        criteria=__ret__.criteria,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        importance=__ret__.importance,
-        logical_exp=__ret__.logical_exp,
-        machine_types=__ret__.machine_types,
-        no_group_trace=__ret__.no_group_trace,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size)
+        assets=pulumi.get(__ret__, 'assets'),
+        criteria=pulumi.get(__ret__, 'criteria'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        importance=pulumi.get(__ret__, 'importance'),
+        logical_exp=pulumi.get(__ret__, 'logical_exp'),
+        machine_types=pulumi.get(__ret__, 'machine_types'),
+        no_group_trace=pulumi.get(__ret__, 'no_group_trace'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'))
 
 
 @_utilities.lift_output_func(get_assets)

@@ -174,16 +174,16 @@ def get_instances(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:lindorm/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult).value
 
     return AwaitableGetInstancesResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        query_str=__ret__.query_str,
-        status=__ret__.status,
-        support_engine=__ret__.support_engine)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        query_str=pulumi.get(__ret__, 'query_str'),
+        status=pulumi.get(__ret__, 'status'),
+        support_engine=pulumi.get(__ret__, 'support_engine'))
 
 
 @_utilities.lift_output_func(get_instances)

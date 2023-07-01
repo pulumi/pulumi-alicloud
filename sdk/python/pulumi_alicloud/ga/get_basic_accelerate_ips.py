@@ -167,14 +167,14 @@ def get_basic_accelerate_ips(accelerate_ip_address: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps', __args__, opts=opts, typ=GetBasicAccelerateIpsResult).value
 
     return AwaitableGetBasicAccelerateIpsResult(
-        accelerate_ip_address=__ret__.accelerate_ip_address,
-        accelerate_ip_id=__ret__.accelerate_ip_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        ip_set_id=__ret__.ip_set_id,
-        ips=__ret__.ips,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        accelerate_ip_address=pulumi.get(__ret__, 'accelerate_ip_address'),
+        accelerate_ip_id=pulumi.get(__ret__, 'accelerate_ip_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        ip_set_id=pulumi.get(__ret__, 'ip_set_id'),
+        ips=pulumi.get(__ret__, 'ips'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_basic_accelerate_ips)

@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * 
  * For information about CEN and how to use it, see [Cross-region interconnection bandwidth](https://www.alibabacloud.com/help/doc-detail/65983.htm)
  * 
+ * &gt; **NOTE:** Available since v1.18.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -37,12 +39,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.InstanceAttachment;
+ * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
  * import com.pulumi.alicloud.cen.BandwidthPackage;
  * import com.pulumi.alicloud.cen.BandwidthPackageArgs;
  * import com.pulumi.alicloud.cen.BandwidthPackageAttachment;
  * import com.pulumi.alicloud.cen.BandwidthPackageAttachmentArgs;
- * import com.pulumi.alicloud.cen.InstanceAttachment;
- * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
  * import com.pulumi.alicloud.cen.BandwidthLimit;
  * import com.pulumi.alicloud.cen.BandwidthLimitArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -60,69 +62,72 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccCenBandwidthLimitConfig&#34;);
- *         var fra = new Provider(&#34;fra&#34;, ProviderArgs.builder()        
- *             .region(&#34;eu-central-1&#34;)
+ *         final var region1 = config.get(&#34;region1&#34;).orElse(&#34;eu-central-1&#34;);
+ *         final var region2 = config.get(&#34;region2&#34;).orElse(&#34;ap-southeast-1&#34;);
+ *         var ec = new Provider(&#34;ec&#34;, ProviderArgs.builder()        
+ *             .region(region1)
  *             .build());
  * 
- *         var sh = new Provider(&#34;sh&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-shanghai&#34;)
+ *         var as = new Provider(&#34;as&#34;, ProviderArgs.builder()        
+ *             .region(region2)
  *             .build());
  * 
  *         var vpc1 = new Network(&#34;vpc1&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
+ *             .vpcName(&#34;tf-example&#34;)
  *             .cidrBlock(&#34;192.168.0.0/16&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.fra())
+ *                 .provider(alicloud.ec())
  *                 .build());
  * 
  *         var vpc2 = new Network(&#34;vpc2&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;tf-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.sh())
+ *                 .provider(alicloud.as())
  *                 .build());
  * 
- *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.builder()        
- *             .description(&#34;tf-testAccCenBandwidthLimitConfigDescription&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
  *             .build());
  * 
- *         var bwp = new BandwidthPackage(&#34;bwp&#34;, BandwidthPackageArgs.builder()        
- *             .bandwidth(5)
- *             .geographicRegionIds(            
- *                 &#34;Europe&#34;,
- *                 &#34;China&#34;)
- *             .build());
- * 
- *         var bwpAttach = new BandwidthPackageAttachment(&#34;bwpAttach&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .instanceId(cen.id())
- *             .bandwidthPackageId(bwp.id())
- *             .build());
- * 
- *         var vpcAttach1 = new InstanceAttachment(&#34;vpcAttach1&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(cen.id())
+ *         var example1 = new InstanceAttachment(&#34;example1&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(exampleInstance.id())
  *             .childInstanceId(vpc1.id())
  *             .childInstanceType(&#34;VPC&#34;)
- *             .childInstanceRegionId(&#34;eu-central-1&#34;)
+ *             .childInstanceRegionId(region1)
  *             .build());
  * 
- *         var vpcAttach2 = new InstanceAttachment(&#34;vpcAttach2&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(cen.id())
+ *         var example2 = new InstanceAttachment(&#34;example2&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(exampleInstance.id())
  *             .childInstanceId(vpc2.id())
  *             .childInstanceType(&#34;VPC&#34;)
- *             .childInstanceRegionId(&#34;cn-shanghai&#34;)
+ *             .childInstanceRegionId(region2)
  *             .build());
  * 
- *         var foo = new BandwidthLimit(&#34;foo&#34;, BandwidthLimitArgs.builder()        
- *             .instanceId(cen.id())
+ *         var exampleBandwidthPackage = new BandwidthPackage(&#34;exampleBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *             .bandwidth(5)
+ *             .cenBandwidthPackageName(&#34;tf_example&#34;)
+ *             .geographicRegionAId(&#34;Europe&#34;)
+ *             .geographicRegionBId(&#34;Asia-Pacific&#34;)
+ *             .build());
+ * 
+ *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *             .instanceId(exampleInstance.id())
+ *             .bandwidthPackageId(exampleBandwidthPackage.id())
+ *             .build());
+ * 
+ *         var exampleBandwidthLimit = new BandwidthLimit(&#34;exampleBandwidthLimit&#34;, BandwidthLimitArgs.builder()        
+ *             .instanceId(exampleInstance.id())
  *             .regionIds(            
- *                 &#34;eu-central-1&#34;,
- *                 &#34;cn-shanghai&#34;)
+ *                 region1,
+ *                 region2)
  *             .bandwidthLimit(4)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
- *                     bwpAttach,
- *                     vpcAttach1,
- *                     vpcAttach2)
+ *                     exampleBandwidthPackageAttachment,
+ *                     example2,
+ *                     example1)
  *                 .build());
  * 
  *     }

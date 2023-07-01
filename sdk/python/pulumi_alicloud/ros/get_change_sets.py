@@ -174,16 +174,16 @@ def get_change_sets(change_set_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ros/getChangeSets:getChangeSets', __args__, opts=opts, typ=GetChangeSetsResult).value
 
     return AwaitableGetChangeSetsResult(
-        change_set_name=__ret__.change_set_name,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        sets=__ret__.sets,
-        stack_id=__ret__.stack_id,
-        status=__ret__.status)
+        change_set_name=pulumi.get(__ret__, 'change_set_name'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        sets=pulumi.get(__ret__, 'sets'),
+        stack_id=pulumi.get(__ret__, 'stack_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_change_sets)

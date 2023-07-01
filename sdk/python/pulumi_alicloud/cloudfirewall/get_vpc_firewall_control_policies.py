@@ -249,22 +249,22 @@ def get_vpc_firewall_control_policies(acl_action: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies', __args__, opts=opts, typ=GetVpcFirewallControlPoliciesResult).value
 
     return AwaitableGetVpcFirewallControlPoliciesResult(
-        acl_action=__ret__.acl_action,
-        acl_uuid=__ret__.acl_uuid,
-        description=__ret__.description,
-        destination=__ret__.destination,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        lang=__ret__.lang,
-        member_uid=__ret__.member_uid,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        policies=__ret__.policies,
-        proto=__ret__.proto,
-        release=__ret__.release,
-        source=__ret__.source,
-        vpc_firewall_id=__ret__.vpc_firewall_id)
+        acl_action=pulumi.get(__ret__, 'acl_action'),
+        acl_uuid=pulumi.get(__ret__, 'acl_uuid'),
+        description=pulumi.get(__ret__, 'description'),
+        destination=pulumi.get(__ret__, 'destination'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        lang=pulumi.get(__ret__, 'lang'),
+        member_uid=pulumi.get(__ret__, 'member_uid'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        policies=pulumi.get(__ret__, 'policies'),
+        proto=pulumi.get(__ret__, 'proto'),
+        release=pulumi.get(__ret__, 'release'),
+        source=pulumi.get(__ret__, 'source'),
+        vpc_firewall_id=pulumi.get(__ret__, 'vpc_firewall_id'))
 
 
 @_utilities.lift_output_func(get_vpc_firewall_control_policies)

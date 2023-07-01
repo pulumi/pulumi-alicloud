@@ -105,10 +105,10 @@ def get_collation_time_zones(collation_time_zones: Optional[Sequence[pulumi.Inpu
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getCollationTimeZones:getCollationTimeZones', __args__, opts=opts, typ=GetCollationTimeZonesResult).value
 
     return AwaitableGetCollationTimeZonesResult(
-        collation_time_zones=__ret__.collation_time_zones,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file)
+        collation_time_zones=pulumi.get(__ret__, 'collation_time_zones'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_collation_time_zones)

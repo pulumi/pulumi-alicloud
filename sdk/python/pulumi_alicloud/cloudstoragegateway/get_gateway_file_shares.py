@@ -143,13 +143,13 @@ def get_gateway_file_shares(gateway_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares', __args__, opts=opts, typ=GetGatewayFileSharesResult).value
 
     return AwaitableGetGatewayFileSharesResult(
-        gateway_id=__ret__.gateway_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        shares=__ret__.shares)
+        gateway_id=pulumi.get(__ret__, 'gateway_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        shares=pulumi.get(__ret__, 'shares'))
 
 
 @_utilities.lift_output_func(get_gateway_file_shares)

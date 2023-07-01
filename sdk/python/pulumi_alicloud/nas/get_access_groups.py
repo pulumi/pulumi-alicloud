@@ -55,10 +55,6 @@ class GetAccessGroupsResult:
         pulumi.set(__self__, "output_file", output_file)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
-        if type is not None:
-            warnings.warn("""Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.""", DeprecationWarning)
-            pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.""")
-
         pulumi.set(__self__, "type", type)
         if useutc_date_time and not isinstance(useutc_date_time, bool):
             raise TypeError("Expected argument 'useutc_date_time' to be a bool")
@@ -141,6 +137,9 @@ class GetAccessGroupsResult:
         """
         (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `access_group_type` after version 1.95.0.
         """
+        warnings.warn("""Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.""")
+
         return pulumi.get(self, "type")
 
     @property
@@ -218,18 +217,18 @@ def get_access_groups(access_group_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:nas/getAccessGroups:getAccessGroups', __args__, opts=opts, typ=GetAccessGroupsResult).value
 
     return AwaitableGetAccessGroupsResult(
-        access_group_name=__ret__.access_group_name,
-        access_group_type=__ret__.access_group_type,
-        description=__ret__.description,
-        file_system_type=__ret__.file_system_type,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        type=__ret__.type,
-        useutc_date_time=__ret__.useutc_date_time)
+        access_group_name=pulumi.get(__ret__, 'access_group_name'),
+        access_group_type=pulumi.get(__ret__, 'access_group_type'),
+        description=pulumi.get(__ret__, 'description'),
+        file_system_type=pulumi.get(__ret__, 'file_system_type'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        type=pulumi.get(__ret__, 'type'),
+        useutc_date_time=pulumi.get(__ret__, 'useutc_date_time'))
 
 
 @_utilities.lift_output_func(get_access_groups)

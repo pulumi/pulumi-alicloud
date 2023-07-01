@@ -181,16 +181,16 @@ def get_host_accounts(host_account_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:bastionhost/getHostAccounts:getHostAccounts', __args__, opts=opts, typ=GetHostAccountsResult).value
 
     return AwaitableGetHostAccountsResult(
-        accounts=__ret__.accounts,
-        host_account_name=__ret__.host_account_name,
-        host_id=__ret__.host_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        protocol_name=__ret__.protocol_name)
+        accounts=pulumi.get(__ret__, 'accounts'),
+        host_account_name=pulumi.get(__ret__, 'host_account_name'),
+        host_id=pulumi.get(__ret__, 'host_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        protocol_name=pulumi.get(__ret__, 'protocol_name'))
 
 
 @_utilities.lift_output_func(get_host_accounts)

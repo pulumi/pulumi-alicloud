@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class ListenerDefaultActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configurations of the actions. This parameter is required if Type is set to FowardGroup.
+        /// The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
         /// </summary>
         [Input("forwardGroupConfig", required: true)]
         public Input<Inputs.ListenerDefaultActionForwardGroupConfigArgs> ForwardGroupConfig { get; set; } = null!;

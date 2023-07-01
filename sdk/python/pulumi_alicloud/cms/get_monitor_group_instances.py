@@ -96,11 +96,11 @@ def get_monitor_group_instances(ids: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances', __args__, opts=opts, typ=GetMonitorGroupInstancesResult).value
 
     return AwaitableGetMonitorGroupInstancesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instances=__ret__.instances,
-        keyword=__ret__.keyword,
-        output_file=__ret__.output_file)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instances=pulumi.get(__ret__, 'instances'),
+        keyword=pulumi.get(__ret__, 'keyword'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_monitor_group_instances)

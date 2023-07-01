@@ -192,14 +192,14 @@ def get_backup_jobs(filters: Optional[Sequence[pulumi.InputType['GetBackupJobsFi
     __ret__ = pulumi.runtime.invoke('alicloud:hbr/getBackupJobs:getBackupJobs', __args__, opts=opts, typ=GetBackupJobsResult).value
 
     return AwaitableGetBackupJobsResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        jobs=__ret__.jobs,
-        output_file=__ret__.output_file,
-        sort_direction=__ret__.sort_direction,
-        source_type=__ret__.source_type,
-        status=__ret__.status)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        jobs=pulumi.get(__ret__, 'jobs'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        sort_direction=pulumi.get(__ret__, 'sort_direction'),
+        source_type=pulumi.get(__ret__, 'source_type'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_backup_jobs)

@@ -15,9 +15,9 @@ import (
 // PrivateZone is a VPC-based resolution and management service for private domain names.
 // After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
 //
-// For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/doc-detail/106693.htm).
+// For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-routeprivatezoneincentovpc).
 //
-// > **NOTE:** Available in 1.83.0+
+// > **NOTE:** Available since v1.83.0.
 //
 // ## Example Usage
 //
@@ -28,6 +28,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -36,37 +37,41 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
+//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("test_name"),
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "defaultInstanceAttachment", &cen.InstanceAttachmentArgs{
-//				InstanceId:            defaultInstance.ID(),
-//				ChildInstanceId:       defaultNetwork.ID(),
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            exampleInstance.ID(),
+//				ChildInstanceId:       exampleNetwork.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				defaultInstance,
-//				defaultNetwork,
-//			}))
+//				ChildInstanceRegionId: *pulumi.String(defaultRegions.Regions[0].Id),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cen.NewPrivateZone(ctx, "defaultPrivateZone", &cen.PrivateZoneArgs{
-//				AccessRegionId: pulumi.String("cn-hangzhou"),
-//				CenId:          defaultInstance.ID(),
-//				HostRegionId:   pulumi.String("cn-hangzhou"),
-//				HostVpcId:      defaultNetwork.ID(),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				defaultInstanceAttachment,
-//			}))
+//				AccessRegionId: *pulumi.String(defaultRegions.Regions[0].Id),
+//				CenId:          exampleInstanceAttachment.InstanceId,
+//				HostRegionId:   *pulumi.String(defaultRegions.Regions[0].Id),
+//				HostVpcId:      exampleNetwork.ID(),
+//			})
 //			if err != nil {
 //				return err
 //			}

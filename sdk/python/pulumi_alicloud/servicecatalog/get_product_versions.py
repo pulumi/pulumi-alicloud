@@ -49,10 +49,6 @@ class GetProductVersionsResult:
         pulumi.set(__self__, "product_versions", product_versions)
         if versions and not isinstance(versions, list):
             raise TypeError("Expected argument 'versions' to be a list")
-        if versions is not None:
-            warnings.warn("""Field 'versions' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
-            pulumi.log.warn("""versions is deprecated: Field 'versions' has been deprecated from provider version 1.197.0.""")
-
         pulumi.set(__self__, "versions", versions)
 
     @property
@@ -110,6 +106,9 @@ class GetProductVersionsResult:
     @property
     @pulumi.getter
     def versions(self) -> Sequence['outputs.GetProductVersionsVersionResult']:
+        warnings.warn("""Field 'versions' has been deprecated from provider version 1.197.0.""", DeprecationWarning)
+        pulumi.log.warn("""versions is deprecated: Field 'versions' has been deprecated from provider version 1.197.0.""")
+
         return pulumi.get(self, "versions")
 
 
@@ -168,15 +167,15 @@ def get_product_versions(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:servicecatalog/getProductVersions:getProductVersions', __args__, opts=opts, typ=GetProductVersionsResult).value
 
     return AwaitableGetProductVersionsResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        product_id=__ret__.product_id,
-        product_versions=__ret__.product_versions,
-        versions=__ret__.versions)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        product_id=pulumi.get(__ret__, 'product_id'),
+        product_versions=pulumi.get(__ret__, 'product_versions'),
+        versions=pulumi.get(__ret__, 'versions'))
 
 
 @_utilities.lift_output_func(get_product_versions)

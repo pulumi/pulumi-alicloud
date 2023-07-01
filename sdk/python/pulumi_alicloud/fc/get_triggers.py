@@ -155,14 +155,14 @@ def get_triggers(function_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:fc/getTriggers:getTriggers', __args__, opts=opts, typ=GetTriggersResult).value
 
     return AwaitableGetTriggersResult(
-        function_name=__ret__.function_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        service_name=__ret__.service_name,
-        triggers=__ret__.triggers)
+        function_name=pulumi.get(__ret__, 'function_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        triggers=pulumi.get(__ret__, 'triggers'))
 
 
 @_utilities.lift_output_func(get_triggers)

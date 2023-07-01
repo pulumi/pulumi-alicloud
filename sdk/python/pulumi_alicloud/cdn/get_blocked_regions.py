@@ -90,9 +90,9 @@ def get_blocked_regions(language: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cdn/getBlockedRegions:getBlockedRegions', __args__, opts=opts, typ=GetBlockedRegionsResult).value
 
     return AwaitableGetBlockedRegionsResult(
-        id=__ret__.id,
-        language=__ret__.language,
-        regions=__ret__.regions)
+        id=pulumi.get(__ret__, 'id'),
+        language=pulumi.get(__ret__, 'language'),
+        regions=pulumi.get(__ret__, 'regions'))
 
 
 @_utilities.lift_output_func(get_blocked_regions)

@@ -131,12 +131,12 @@ def get_disk_replica_pairs(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs', __args__, opts=opts, typ=GetDiskReplicaPairsResult).value
 
     return AwaitableGetDiskReplicaPairsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        pairs=__ret__.pairs,
-        replica_group_id=__ret__.replica_group_id,
-        site=__ret__.site)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        pairs=pulumi.get(__ret__, 'pairs'),
+        replica_group_id=pulumi.get(__ret__, 'replica_group_id'),
+        site=pulumi.get(__ret__, 'site'))
 
 
 @_utilities.lift_output_func(get_disk_replica_pairs)

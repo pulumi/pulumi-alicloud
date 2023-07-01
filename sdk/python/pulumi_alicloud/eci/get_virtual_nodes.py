@@ -201,18 +201,18 @@ def get_virtual_nodes(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eci/getVirtualNodes:getVirtualNodes', __args__, opts=opts, typ=GetVirtualNodesResult).value
 
     return AwaitableGetVirtualNodesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        nodes=__ret__.nodes,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        security_group_id=__ret__.security_group_id,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        virtual_node_name=__ret__.virtual_node_name,
-        vswitch_id=__ret__.vswitch_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        nodes=pulumi.get(__ret__, 'nodes'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        security_group_id=pulumi.get(__ret__, 'security_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        virtual_node_name=pulumi.get(__ret__, 'virtual_node_name'),
+        vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
 
 
 @_utilities.lift_output_func(get_virtual_nodes)

@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Cen Child Instance Route Entry To Attachment and how to use it, see [What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment).
  * 
- * &gt; **NOTE:** Available in v1.195.0+.
+ * &gt; **NOTE:** Available since v1.195.0.
  * 
  * ## Example Usage
  * 
@@ -31,6 +31,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.CenFunctions;
+ * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
+ * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
+ * import com.pulumi.alicloud.vpc.RouteTable;
+ * import com.pulumi.alicloud.vpc.RouteTableArgs;
  * import com.pulumi.alicloud.cen.ChildInstanceRouteEntryToAttachment;
  * import com.pulumi.alicloud.cen.ChildInstanceRouteEntryToAttachmentArgs;
  * import java.util.List;
@@ -46,11 +61,71 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ChildInstanceRouteEntryToAttachment(&#34;default&#34;, ChildInstanceRouteEntryToAttachmentArgs.builder()        
- *             .cenId(&#34;cen-3sgjn0u745c3i0o3dk&#34;)
- *             .childInstanceRouteTableId(&#34;vtb-t4nt0z5xxbti85c78nkzy&#34;)
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var default = CenFunctions.getTransitRouterAvailableResources();
+ * 
+ *         final var masterZone = default_.resources()[0].masterZones()[0];
+ * 
+ *         final var slaveZone = default_.resources()[0].slaveZones()[1];
+ * 
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
+ *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var exampleMaster = new Switch(&#34;exampleMaster&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;192.168.1.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(masterZone)
+ *             .build());
+ * 
+ *         var exampleSlave = new Switch(&#34;exampleSlave&#34;, SwitchArgs.builder()        
+ *             .vswitchName(name)
+ *             .cidrBlock(&#34;192.168.2.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(slaveZone)
+ *             .build());
+ * 
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(name)
+ *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .build());
+ * 
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(name)
+ *             .cenId(exampleInstance.id())
+ *             .build());
+ * 
+ *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;exampleTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
+ *             .cenId(exampleInstance.id())
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneMappings(            
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .zoneId(masterZone)
+ *                     .vswitchId(exampleMaster.id())
+ *                     .build(),
+ *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
+ *                     .zoneId(slaveZone)
+ *                     .vswitchId(exampleSlave.id())
+ *                     .build())
+ *             .transitRouterAttachmentName(name)
+ *             .transitRouterAttachmentDescription(name)
+ *             .build());
+ * 
+ *         var exampleRouteTable = new RouteTable(&#34;exampleRouteTable&#34;, RouteTableArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .routeTableName(name)
+ *             .description(name)
+ *             .build());
+ * 
+ *         var exampleChildInstanceRouteEntryToAttachment = new ChildInstanceRouteEntryToAttachment(&#34;exampleChildInstanceRouteEntryToAttachment&#34;, ChildInstanceRouteEntryToAttachmentArgs.builder()        
+ *             .transitRouterAttachmentId(exampleTransitRouterVpcAttachment.transitRouterAttachmentId())
+ *             .cenId(exampleInstance.id())
  *             .destinationCidrBlock(&#34;10.0.0.0/24&#34;)
- *             .transitRouterAttachmentId(&#34;tr-attach-f1fd1y50rql00emvej&#34;)
+ *             .childInstanceRouteTableId(exampleRouteTable.id())
  *             .build());
  * 
  *     }

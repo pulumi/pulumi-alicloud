@@ -142,7 +142,7 @@ export class DdrInstance extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean>;
     /**
-     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      */
@@ -217,7 +217,7 @@ export class DdrInstance extends pulumi.CustomResource {
      */
     public readonly monitoringPeriod!: pulumi.Output<number>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      */
     public readonly parameters!: pulumi.Output<outputs.rds.DdrInstanceParameter[]>;
     /**
@@ -230,7 +230,7 @@ export class DdrInstance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
     public readonly pgHbaConfs!: pulumi.Output<outputs.rds.DdrInstancePgHbaConf[]>;
     /**
@@ -298,7 +298,6 @@ export class DdrInstance extends pulumi.CustomResource {
     public readonly serverKey!: pulumi.Output<string>;
     /**
      * The ID of the source instance if you want to restore data to a point in time.
-     * #### Block pg_hba_conf
      */
     public readonly sourceDbInstanceName!: pulumi.Output<string | undefined>;
     /**
@@ -709,7 +708,7 @@ export interface DdrInstanceState {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      */
@@ -784,7 +783,7 @@ export interface DdrInstanceState {
      */
     monitoringPeriod?: pulumi.Input<number>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.DdrInstanceParameter>[]>;
     /**
@@ -797,7 +796,7 @@ export interface DdrInstanceState {
      */
     period?: pulumi.Input<number>;
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
     pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.DdrInstancePgHbaConf>[]>;
     /**
@@ -865,7 +864,6 @@ export interface DdrInstanceState {
     serverKey?: pulumi.Input<string>;
     /**
      * The ID of the source instance if you want to restore data to a point in time.
-     * #### Block pg_hba_conf
      */
     sourceDbInstanceName?: pulumi.Input<string>;
     /**
@@ -1090,7 +1088,7 @@ export interface DdrInstanceArgs {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      */
@@ -1165,7 +1163,7 @@ export interface DdrInstanceArgs {
      */
     monitoringPeriod?: pulumi.Input<number>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.DdrInstanceParameter>[]>;
     /**
@@ -1178,7 +1176,7 @@ export interface DdrInstanceArgs {
      */
     period?: pulumi.Input<number>;
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
     pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.DdrInstancePgHbaConf>[]>;
     /**
@@ -1246,7 +1244,6 @@ export interface DdrInstanceArgs {
     serverKey?: pulumi.Input<string>;
     /**
      * The ID of the source instance if you want to restore data to a point in time.
-     * #### Block pg_hba_conf
      */
     sourceDbInstanceName?: pulumi.Input<string>;
     /**

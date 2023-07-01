@@ -89,9 +89,9 @@ def get_account_aliases(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ram/getAccountAliases:getAccountAliases', __args__, opts=opts, typ=GetAccountAliasesResult).value
 
     return AwaitableGetAccountAliasesResult(
-        account_alias=__ret__.account_alias,
-        id=__ret__.id,
-        output_file=__ret__.output_file)
+        account_alias=pulumi.get(__ret__, 'account_alias'),
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_account_aliases)

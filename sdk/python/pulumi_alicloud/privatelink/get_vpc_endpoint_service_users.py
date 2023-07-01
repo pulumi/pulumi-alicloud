@@ -124,12 +124,12 @@ def get_vpc_endpoint_service_users(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:privatelink/getVpcEndpointServiceUsers:getVpcEndpointServiceUsers', __args__, opts=opts, typ=GetVpcEndpointServiceUsersResult).value
 
     return AwaitableGetVpcEndpointServiceUsersResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        service_id=__ret__.service_id,
-        user_id=__ret__.user_id,
-        users=__ret__.users)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        service_id=pulumi.get(__ret__, 'service_id'),
+        user_id=pulumi.get(__ret__, 'user_id'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_vpc_endpoint_service_users)

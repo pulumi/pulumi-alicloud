@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about DNS Access Strategy and how to use it, see [What is Access Strategy](https://www.alibabacloud.com/help/doc-detail/189620.html).
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0.
  *
  * ## Import
  *
@@ -58,7 +58,7 @@ export class AccessStrategy extends pulumi.CustomResource {
      */
     public readonly defaultAddrPoolType!: pulumi.Output<string>;
     /**
-     * List of primary address pool collections. See the following `Block defaultAddrPools`.
+     * List of primary address pool collections. See `defaultAddrPools` below for details.
      */
     public readonly defaultAddrPools!: pulumi.Output<outputs.dns.AccessStrategyDefaultAddrPool[]>;
     /**
@@ -82,7 +82,7 @@ export class AccessStrategy extends pulumi.CustomResource {
      */
     public readonly failoverAddrPoolType!: pulumi.Output<string | undefined>;
     /**
-     * List of backup address pool sets. See the following `Block failoverAddrPools`.
+     * List of backup address pool sets. See `failoverAddrPools` below for details.
      */
     public readonly failoverAddrPools!: pulumi.Output<outputs.dns.AccessStrategyFailoverAddrPool[] | undefined>;
     /**
@@ -110,7 +110,7 @@ export class AccessStrategy extends pulumi.CustomResource {
      */
     public readonly lang!: pulumi.Output<string | undefined>;
     /**
-     * The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
+     * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
      */
     public readonly lines!: pulumi.Output<outputs.dns.AccessStrategyLine[] | undefined>;
     /**
@@ -210,7 +210,7 @@ export interface AccessStrategyState {
      */
     defaultAddrPoolType?: pulumi.Input<string>;
     /**
-     * List of primary address pool collections. See the following `Block defaultAddrPools`.
+     * List of primary address pool collections. See `defaultAddrPools` below for details.
      */
     defaultAddrPools?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyDefaultAddrPool>[]>;
     /**
@@ -234,7 +234,7 @@ export interface AccessStrategyState {
      */
     failoverAddrPoolType?: pulumi.Input<string>;
     /**
-     * List of backup address pool sets. See the following `Block failoverAddrPools`.
+     * List of backup address pool sets. See `failoverAddrPools` below for details.
      */
     failoverAddrPools?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyFailoverAddrPool>[]>;
     /**
@@ -262,7 +262,7 @@ export interface AccessStrategyState {
      */
     lang?: pulumi.Input<string>;
     /**
-     * The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
+     * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
      */
     lines?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyLine>[]>;
     /**
@@ -288,7 +288,7 @@ export interface AccessStrategyArgs {
      */
     defaultAddrPoolType: pulumi.Input<string>;
     /**
-     * List of primary address pool collections. See the following `Block defaultAddrPools`.
+     * List of primary address pool collections. See `defaultAddrPools` below for details.
      */
     defaultAddrPools: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyDefaultAddrPool>[]>;
     /**
@@ -312,7 +312,7 @@ export interface AccessStrategyArgs {
      */
     failoverAddrPoolType?: pulumi.Input<string>;
     /**
-     * List of backup address pool sets. See the following `Block failoverAddrPools`.
+     * List of backup address pool sets. See `failoverAddrPools` below for details.
      */
     failoverAddrPools?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyFailoverAddrPool>[]>;
     /**
@@ -340,7 +340,7 @@ export interface AccessStrategyArgs {
      */
     lang?: pulumi.Input<string>;
     /**
-     * The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
+     * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
      */
     lines?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyLine>[]>;
     /**

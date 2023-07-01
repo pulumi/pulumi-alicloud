@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Edas
     /// <summary>
     /// Binds SLB to an EDAS application.
     /// 
-    /// &gt; **NOTE:** Available in 1.82.0+
+    /// &gt; **NOTE:** Available since v1.82.0.
     /// 
     /// ## Example Usage
     /// 

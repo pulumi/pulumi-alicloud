@@ -260,21 +260,21 @@ def get_subnets(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eflo/getSubnets:getSubnets', __args__, opts=opts, typ=GetSubnetsResult).value
 
     return AwaitableGetSubnetsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status,
-        subnet_id=__ret__.subnet_id,
-        subnet_name=__ret__.subnet_name,
-        subnets=__ret__.subnets,
-        type=__ret__.type,
-        vpd_id=__ret__.vpd_id,
-        zone_id=__ret__.zone_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        subnet_id=pulumi.get(__ret__, 'subnet_id'),
+        subnet_name=pulumi.get(__ret__, 'subnet_name'),
+        subnets=pulumi.get(__ret__, 'subnets'),
+        type=pulumi.get(__ret__, 'type'),
+        vpd_id=pulumi.get(__ret__, 'vpd_id'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_subnets)

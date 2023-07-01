@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Dns.Inputs
     public sealed class AddressPoolAddressGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address lists of the Address Pool. See the following `Block address`.
+        /// The address that you want to add to the address pool.
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;

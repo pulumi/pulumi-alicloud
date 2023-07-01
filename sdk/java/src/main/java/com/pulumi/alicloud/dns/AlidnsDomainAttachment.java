@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides bind the domain name to the Alidns instance resource.
  * 
- * &gt; **NOTE:** Available in v1.99.0+.
+ * &gt; **NOTE:** Available since v1.99.0.
  * 
  * ## Example Usage
  * ```java
@@ -26,6 +26,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.dns.DomainGroup;
+ * import com.pulumi.alicloud.dns.DomainGroupArgs;
+ * import com.pulumi.alicloud.dns.AlidnsDomain;
+ * import com.pulumi.alicloud.dns.AlidnsDomainArgs;
+ * import com.pulumi.alicloud.dns.AlidnsInstance;
+ * import com.pulumi.alicloud.dns.AlidnsInstanceArgs;
  * import com.pulumi.alicloud.dns.AlidnsDomainAttachment;
  * import com.pulumi.alicloud.dns.AlidnsDomainAttachmentArgs;
  * import java.util.List;
@@ -41,11 +47,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dns = new AlidnsDomainAttachment(&#34;dns&#34;, AlidnsDomainAttachmentArgs.builder()        
- *             .domainNames(            
- *                 &#34;test111.abc&#34;,
- *                 &#34;test222.abc&#34;)
- *             .instanceId(&#34;dns-cn-mp91lyq9xxxx&#34;)
+ *         var defaultDomainGroup = new DomainGroup(&#34;defaultDomainGroup&#34;, DomainGroupArgs.builder()        
+ *             .domainGroupName(&#34;tf-example&#34;)
+ *             .build());
+ * 
+ *         var defaultAlidnsDomain = new AlidnsDomain(&#34;defaultAlidnsDomain&#34;, AlidnsDomainArgs.builder()        
+ *             .domainName(&#34;starmove.com&#34;)
+ *             .groupId(defaultDomainGroup.id())
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
+ *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *             ))
+ *             .build());
+ * 
+ *         var defaultAlidnsInstance = new AlidnsInstance(&#34;defaultAlidnsInstance&#34;, AlidnsInstanceArgs.builder()        
+ *             .dnsSecurity(&#34;basic&#34;)
+ *             .domainNumbers(3)
+ *             .versionCode(&#34;version_personal&#34;)
+ *             .period(1)
+ *             .renewalStatus(&#34;ManualRenewal&#34;)
+ *             .build());
+ * 
+ *         var defaultAlidnsDomainAttachment = new AlidnsDomainAttachment(&#34;defaultAlidnsDomainAttachment&#34;, AlidnsDomainAttachmentArgs.builder()        
+ *             .instanceId(defaultAlidnsInstance.id())
+ *             .domainNames(defaultAlidnsDomain.domainName())
  *             .build());
  * 
  *     }

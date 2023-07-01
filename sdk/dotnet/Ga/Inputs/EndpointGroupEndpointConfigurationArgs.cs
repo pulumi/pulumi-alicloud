@@ -13,10 +13,16 @@ namespace Pulumi.AliCloud.Ga.Inputs
     public sealed class EndpointGroupEndpointConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+        /// Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
         /// </summary>
         [Input("enableClientipPreservation")]
         public Input<bool>? EnableClientipPreservation { get; set; }
+
+        /// <summary>
+        /// Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+        /// </summary>
+        [Input("enableProxyProtocol")]
+        public Input<bool>? EnableProxyProtocol { get; set; }
 
         /// <summary>
         /// The IP address or domain name of Endpoint N in the endpoint group.
@@ -25,16 +31,13 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public Input<string> Endpoint { get; set; } = null!;
 
         /// <summary>
-        /// The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-        /// 
-        /// &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+        /// The type of Endpoint N in the endpoint group. Valid values:
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-        /// 
+        /// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
         /// &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         /// </summary>
         [Input("weight", required: true)]

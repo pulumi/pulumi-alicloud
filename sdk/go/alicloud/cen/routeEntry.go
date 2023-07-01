@@ -15,6 +15,8 @@ import (
 //
 // For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
 //
+// > **NOTE:** Available since v1.20.0.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -29,115 +31,104 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-hangzhou"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cfg := config.New(ctx, "")
-//			name := "tf-testAccCenRouteEntryConfig"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("Instance"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(exampleZones.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(1),
 //				MemorySize:       pulumi.Float64Ref(2),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
-//				MostRecent: pulumi.BoolRef(true),
-//				Owners:     pulumi.StringRef("system"),
+//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			}, pulumi.Provider(alicloud.Hz))
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       vpc.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      *pulumi.String(defaultZones.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
-//			}, pulumi.Provider(alicloud.Hz))
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      *pulumi.String(exampleZones.Zones[0].Id),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
-//				Description: pulumi.String("foo"),
-//				VpcId:       vpc.ID(),
-//			}, pulumi.Provider(alicloud.Hz))
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//				VpcId: exampleNetwork.ID(),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				VswitchId:               defaultSwitch.ID(),
-//				ImageId:                 *pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:            *pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-//				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
-//				InternetChargeType:      pulumi.String("PayByTraffic"),
-//				InternetMaxBandwidthOut: pulumi.Int(5),
+//			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
+//				AvailabilityZone: *pulumi.String(exampleZones.Zones[0].Id),
+//				InstanceName:     pulumi.String("terraform-example"),
+//				ImageId:          *pulumi.String(exampleImages.Images[0].Id),
+//				InstanceType:     *pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
-//					defaultSecurityGroup.ID(),
+//					exampleSecurityGroup.ID(),
 //				},
-//				InstanceName: pulumi.String(name),
-//			}, pulumi.Provider(alicloud.Hz))
+//				VswitchId:               exampleSwitch.ID(),
+//				InternetMaxBandwidthOut: pulumi.Int(5),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			cen, err := cen.NewInstance(ctx, "cen", nil)
+//			_, err = cen.NewInstance(ctx, "exampleCen/instanceInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			attach, err := cen.NewInstanceAttachment(ctx, "attach", &cen.InstanceAttachmentArgs{
-//				InstanceId:            cen.ID(),
-//				ChildInstanceId:       vpc.ID(),
+//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            exampleCen / instanceInstance.Id,
+//				ChildInstanceId:       exampleNetwork.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				defaultSwitch,
-//			}))
+//				ChildInstanceRegionId: *pulumi.String(_default.Regions[0].Id),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			route, err := vpc.NewRouteEntry(ctx, "route", &vpc.RouteEntryArgs{
-//				RouteTableId:         vpc.RouteTableId,
+//			exampleRouteEntry, err := vpc.NewRouteEntry(ctx, "exampleRouteEntry", &vpc.RouteEntryArgs{
+//				RouteTableId:         exampleNetwork.RouteTableId,
 //				DestinationCidrblock: pulumi.String("11.0.0.0/16"),
 //				NexthopType:          pulumi.String("Instance"),
-//				NexthopId:            defaultInstance.ID(),
-//			}, pulumi.Provider(alicloud.Hz))
+//				NexthopId:            exampleInstance.ID(),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewRouteEntry(ctx, "foo", &cen.RouteEntryArgs{
-//				InstanceId:   cen.ID(),
-//				RouteTableId: vpc.RouteTableId,
-//				CidrBlock:    route.DestinationCidrblock,
-//			}, pulumi.Provider(alicloud.Hz), pulumi.DependsOn([]pulumi.Resource{
-//				attach,
-//			}))
+//			_, err = cen.NewRouteEntry(ctx, "exampleCen/routeEntryRouteEntry", &cen.RouteEntryArgs{
+//				InstanceId:   exampleInstanceAttachment.InstanceId,
+//				RouteTableId: exampleNetwork.RouteTableId,
+//				CidrBlock:    exampleRouteEntry.DestinationCidrblock,
+//			})
 //			if err != nil {
 //				return err
 //			}

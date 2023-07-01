@@ -142,13 +142,13 @@ def get_functions(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:fc/getFunctions:getFunctions', __args__, opts=opts, typ=GetFunctionsResult).value
 
     return AwaitableGetFunctionsResult(
-        functions=__ret__.functions,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        service_name=__ret__.service_name)
+        functions=pulumi.get(__ret__, 'functions'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        service_name=pulumi.get(__ret__, 'service_name'))
 
 
 @_utilities.lift_output_func(get_functions)

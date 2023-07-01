@@ -129,12 +129,12 @@ def get_regions(current: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:index/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult).value
 
     return AwaitableGetRegionsResult(
-        current=__ret__.current,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name=__ret__.name,
-        output_file=__ret__.output_file,
-        regions=__ret__.regions)
+        current=pulumi.get(__ret__, 'current'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name=pulumi.get(__ret__, 'name'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        regions=pulumi.get(__ret__, 'regions'))
 
 
 @_utilities.lift_output_func(get_regions)

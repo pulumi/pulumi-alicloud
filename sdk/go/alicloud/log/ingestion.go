@@ -70,7 +70,31 @@ import (
 //				Interval:       pulumi.String("30m"),
 //				RunImmediately: pulumi.Bool(true),
 //				TimeZone:       pulumi.String("+0800"),
-//				Source:         pulumi.String("        {\n          \"bucket\": \"bucket_name\",\n          \"compressionCodec\": \"none\",\n          \"encoding\": \"UTF-8\",\n          \"endpoint\": \"oss-cn-hangzhou-internal.aliyuncs.com\",\n          \"format\": {\n            \"escapeChar\": \"\\\\\",\n            \"fieldDelimiter\": \",\",\n            \"fieldNames\": [],\n            \"firstRowAsHeader\": true,\n            \"maxLines\": 1,\n            \"quoteChar\": \"\\\"\",\n            \"skipLeadingRows\": 0,\n            \"timeField\": \"\",\n            \"type\": \"DelimitedText\"\n          },\n          \"pattern\": \"\",\n          \"prefix\": \"test-prefix/\",\n          \"restoreObjectEnabled\": false,\n          \"roleARN\": \"acs:ram::1049446484210612:role/aliyunlogimportossrole\",\n          \"type\": \"AliyunOSS\"\n        }\n"),
+//				Source: pulumi.String(`        {
+//	          "bucket": "bucket_name",
+//	          "compressionCodec": "none",
+//	          "encoding": "UTF-8",
+//	          "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
+//	          "format": {
+//	            "escapeChar": "\\",
+//	            "fieldDelimiter": ",",
+//	            "fieldNames": [],
+//	            "firstRowAsHeader": true,
+//	            "maxLines": 1,
+//	            "quoteChar": "\"",
+//	            "skipLeadingRows": 0,
+//	            "timeField": "",
+//	            "type": "DelimitedText"
+//	          },
+//	          "pattern": "",
+//	          "prefix": "test-prefix/",
+//	          "restoreObjectEnabled": false,
+//	          "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
+//	          "type": "AliyunOSS"
+//	        }
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err

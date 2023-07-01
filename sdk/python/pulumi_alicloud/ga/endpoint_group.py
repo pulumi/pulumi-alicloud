@@ -29,6 +29,7 @@ class EndpointGroupArgs:
                  health_check_protocol: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_overrides: Optional[pulumi.Input['EndpointGroupPortOverridesArgs']] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  threshold_count: Optional[pulumi.Input[int]] = None,
                  traffic_percentage: Optional[pulumi.Input[int]] = None):
         """
@@ -38,11 +39,9 @@ class EndpointGroupArgs:
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] description: The description of the endpoint group.
-        :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-               
+        :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
                > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
-        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-               
+        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
@@ -50,9 +49,9 @@ class EndpointGroupArgs:
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-               
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
-        :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
         """
         pulumi.set(__self__, "accelerator_id", accelerator_id)
@@ -77,6 +76,8 @@ class EndpointGroupArgs:
             pulumi.set(__self__, "name", name)
         if port_overrides is not None:
             pulumi.set(__self__, "port_overrides", port_overrides)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if threshold_count is not None:
             pulumi.set(__self__, "threshold_count", threshold_count)
         if traffic_percentage is not None:
@@ -146,8 +147,7 @@ class EndpointGroupArgs:
     @pulumi.getter(name="endpointGroupType")
     def endpoint_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-
+        The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
         > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         """
         return pulumi.get(self, "endpoint_group_type")
@@ -160,8 +160,7 @@ class EndpointGroupArgs:
     @pulumi.getter(name="endpointRequestProtocol")
     def endpoint_request_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-
+        The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
         > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         """
         return pulumi.get(self, "endpoint_request_protocol")
@@ -235,7 +234,6 @@ class EndpointGroupArgs:
     def port_overrides(self) -> Optional[pulumi.Input['EndpointGroupPortOverridesArgs']]:
         """
         Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-
         > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         """
         return pulumi.get(self, "port_overrides")
@@ -245,10 +243,22 @@ class EndpointGroupArgs:
         pulumi.set(self, "port_overrides", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="thresholdCount")
     def threshold_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         """
         return pulumi.get(self, "threshold_count")
 
@@ -286,6 +296,7 @@ class _EndpointGroupState:
                  name: Optional[pulumi.Input[str]] = None,
                  port_overrides: Optional[pulumi.Input['EndpointGroupPortOverridesArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  threshold_count: Optional[pulumi.Input[int]] = None,
                  traffic_percentage: Optional[pulumi.Input[int]] = None):
         """
@@ -294,11 +305,9 @@ class _EndpointGroupState:
         :param pulumi.Input[str] description: The description of the endpoint group.
         :param pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
-        :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-               
+        :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
                > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
-        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-               
+        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
@@ -307,10 +316,10 @@ class _EndpointGroupState:
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-               
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         :param pulumi.Input[str] status: The status of the endpoint group.
-        :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
         """
         if accelerator_id is not None:
@@ -341,6 +350,8 @@ class _EndpointGroupState:
             pulumi.set(__self__, "port_overrides", port_overrides)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if threshold_count is not None:
             pulumi.set(__self__, "threshold_count", threshold_count)
         if traffic_percentage is not None:
@@ -398,8 +409,7 @@ class _EndpointGroupState:
     @pulumi.getter(name="endpointGroupType")
     def endpoint_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-
+        The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
         > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         """
         return pulumi.get(self, "endpoint_group_type")
@@ -412,8 +422,7 @@ class _EndpointGroupState:
     @pulumi.getter(name="endpointRequestProtocol")
     def endpoint_request_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-
+        The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
         > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         """
         return pulumi.get(self, "endpoint_request_protocol")
@@ -499,7 +508,6 @@ class _EndpointGroupState:
     def port_overrides(self) -> Optional[pulumi.Input['EndpointGroupPortOverridesArgs']]:
         """
         Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-
         > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         """
         return pulumi.get(self, "port_overrides")
@@ -521,10 +529,22 @@ class _EndpointGroupState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="thresholdCount")
     def threshold_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         """
         return pulumi.get(self, "threshold_count")
 
@@ -563,6 +583,7 @@ class EndpointGroup(pulumi.CustomResource):
                  listener_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_overrides: Optional[pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  threshold_count: Optional[pulumi.Input[int]] = None,
                  traffic_percentage: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -652,11 +673,9 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the endpoint group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
-        :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-               
+        :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
                > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
-        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-               
+        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
@@ -665,9 +684,9 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-               
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
-        :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
         """
         ...
@@ -784,6 +803,7 @@ class EndpointGroup(pulumi.CustomResource):
                  listener_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  port_overrides: Optional[pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  threshold_count: Optional[pulumi.Input[int]] = None,
                  traffic_percentage: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -816,6 +836,7 @@ class EndpointGroup(pulumi.CustomResource):
             __props__.__dict__["listener_id"] = listener_id
             __props__.__dict__["name"] = name
             __props__.__dict__["port_overrides"] = port_overrides
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["threshold_count"] = threshold_count
             __props__.__dict__["traffic_percentage"] = traffic_percentage
             __props__.__dict__["status"] = None
@@ -843,6 +864,7 @@ class EndpointGroup(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             port_overrides: Optional[pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             threshold_count: Optional[pulumi.Input[int]] = None,
             traffic_percentage: Optional[pulumi.Input[int]] = None) -> 'EndpointGroup':
         """
@@ -856,11 +878,9 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the endpoint group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
-        :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-               
+        :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
                > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
-        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-               
+        :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
@@ -869,10 +889,10 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-               
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         :param pulumi.Input[str] status: The status of the endpoint group.
-        :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
+        :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -893,6 +913,7 @@ class EndpointGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["port_overrides"] = port_overrides
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["threshold_count"] = threshold_count
         __props__.__dict__["traffic_percentage"] = traffic_percentage
         return EndpointGroup(resource_name, opts=opts, __props__=__props__)
@@ -933,8 +954,7 @@ class EndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="endpointGroupType")
     def endpoint_group_type(self) -> pulumi.Output[str]:
         """
-        The endpoint group type. Valid values: `default`, `virtual`. Default value is `default`.
-
+        The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
         > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
         """
         return pulumi.get(self, "endpoint_group_type")
@@ -943,8 +963,7 @@ class EndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="endpointRequestProtocol")
     def endpoint_request_protocol(self) -> pulumi.Output[Optional[str]]:
         """
-        The endpoint request protocol. Valid value: `HTTP`, `HTTPS`.
-
+        The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
         > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         """
         return pulumi.get(self, "endpoint_request_protocol")
@@ -1002,7 +1021,6 @@ class EndpointGroup(pulumi.CustomResource):
     def port_overrides(self) -> pulumi.Output[Optional['outputs.EndpointGroupPortOverrides']]:
         """
         Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
-
         > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
         """
         return pulumi.get(self, "port_overrides")
@@ -1016,10 +1034,18 @@ class EndpointGroup(pulumi.CustomResource):
         return pulumi.get(self, "status")
 
     @property
-    @pulumi.getter(name="thresholdCount")
-    def threshold_count(self) -> pulumi.Output[Optional[int]]:
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
         """
-        The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value is `3`.
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="thresholdCount")
+    def threshold_count(self) -> pulumi.Output[int]:
+        """
+        The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         """
         return pulumi.get(self, "threshold_count")
 

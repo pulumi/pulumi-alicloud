@@ -183,16 +183,16 @@ def get_service_subscriptions(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:message/getServiceSubscriptions:getServiceSubscriptions', __args__, opts=opts, typ=GetServiceSubscriptionsResult).value
 
     return AwaitableGetServiceSubscriptionsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        subscription_name=__ret__.subscription_name,
-        subscriptions=__ret__.subscriptions,
-        topic_name=__ret__.topic_name)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        subscription_name=pulumi.get(__ret__, 'subscription_name'),
+        subscriptions=pulumi.get(__ret__, 'subscriptions'),
+        topic_name=pulumi.get(__ret__, 'topic_name'))
 
 
 @_utilities.lift_output_func(get_service_subscriptions)

@@ -240,20 +240,20 @@ def get_enterprise_instances(env_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dms/getEnterpriseInstances:getEnterpriseInstances', __args__, opts=opts, typ=GetEnterpriseInstancesResult).value
 
     return AwaitableGetEnterpriseInstancesResult(
-        env_type=__ret__.env_type,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_alias_regex=__ret__.instance_alias_regex,
-        instance_source=__ret__.instance_source,
-        instance_type=__ret__.instance_type,
-        instances=__ret__.instances,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        net_type=__ret__.net_type,
-        output_file=__ret__.output_file,
-        search_key=__ret__.search_key,
-        status=__ret__.status,
-        tid=__ret__.tid)
+        env_type=pulumi.get(__ret__, 'env_type'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_alias_regex=pulumi.get(__ret__, 'instance_alias_regex'),
+        instance_source=pulumi.get(__ret__, 'instance_source'),
+        instance_type=pulumi.get(__ret__, 'instance_type'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        net_type=pulumi.get(__ret__, 'net_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        search_key=pulumi.get(__ret__, 'search_key'),
+        status=pulumi.get(__ret__, 'status'),
+        tid=pulumi.get(__ret__, 'tid'))
 
 
 @_utilities.lift_output_func(get_enterprise_instances)

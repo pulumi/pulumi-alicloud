@@ -307,7 +307,7 @@ class AlidnsDomain(pulumi.CustomResource):
 
         > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
 
-        > **NOTE:** Available in v1.95.0+.
+        > **NOTE:** Available since v1.95.0.
 
         ## Example Usage
 
@@ -315,13 +315,13 @@ class AlidnsDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Add a new Domain.
-        dns = alicloud.dns.AlidnsDomain("dns",
+        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
             domain_name="starmove.com",
-            group_id="85ab8713-4a30-4de4-9d20-155ff830****",
+            group_id=default_domain_group.id,
             tags={
-                "Created": "Terraform",
-                "Environment": "test",
+                "Created": "TF",
+                "For": "example",
             })
         ```
 
@@ -355,7 +355,7 @@ class AlidnsDomain(pulumi.CustomResource):
 
         > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
 
-        > **NOTE:** Available in v1.95.0+.
+        > **NOTE:** Available since v1.95.0.
 
         ## Example Usage
 
@@ -363,13 +363,13 @@ class AlidnsDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Add a new Domain.
-        dns = alicloud.dns.AlidnsDomain("dns",
+        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
             domain_name="starmove.com",
-            group_id="85ab8713-4a30-4de4-9d20-155ff830****",
+            group_id=default_domain_group.id,
             tags={
-                "Created": "Terraform",
-                "Environment": "test",
+                "Created": "TF",
+                "For": "example",
             })
         ```
 

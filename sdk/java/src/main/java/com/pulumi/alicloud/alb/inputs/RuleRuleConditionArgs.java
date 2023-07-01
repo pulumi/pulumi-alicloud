@@ -23,14 +23,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     public static final RuleRuleConditionArgs Empty = new RuleRuleConditionArgs();
 
     /**
-     * The configuration of the cookie. See the following `Block cookie_config`.
+     * The configuration of the cookie. See See `cookie_config` below for details.
      * 
      */
     @Import(name="cookieConfig")
     private @Nullable Output<RuleRuleConditionCookieConfigArgs> cookieConfig;
 
     /**
-     * @return The configuration of the cookie. See the following `Block cookie_config`.
+     * @return The configuration of the cookie. See See `cookie_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleConditionCookieConfigArgs>> cookieConfig() {
@@ -38,14 +38,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the header field. See the following `Block header_config`.
+     * The configuration of the header field. See `header_config` below for details.
      * 
      */
     @Import(name="headerConfig")
     private @Nullable Output<RuleRuleConditionHeaderConfigArgs> headerConfig;
 
     /**
-     * @return The configuration of the header field. See the following `Block header_config`.
+     * @return The configuration of the header field. See `header_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleConditionHeaderConfigArgs>> headerConfig() {
@@ -53,14 +53,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the host field. See the following `Block host_config`.
+     * The configuration of the host field. See `host_config` below for details.
      * 
      */
     @Import(name="hostConfig")
     private @Nullable Output<RuleRuleConditionHostConfigArgs> hostConfig;
 
     /**
-     * @return The configuration of the host field. See the following `Block host_config`.
+     * @return The configuration of the host field. See `host_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleConditionHostConfigArgs>> hostConfig() {
@@ -68,14 +68,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the request method. See the following `Block method_config`.
+     * The configuration of the request method. See `method_config` below for details.
      * 
      */
     @Import(name="methodConfig")
     private @Nullable Output<RuleRuleConditionMethodConfigArgs> methodConfig;
 
     /**
-     * @return The configuration of the request method. See the following `Block method_config`.
+     * @return The configuration of the request method. See `method_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleConditionMethodConfigArgs>> methodConfig() {
@@ -83,14 +83,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the path for the request to be forwarded. See the following `Block path_config`.
+     * The configuration of the path for the request to be forwarded. See `path_config` below for details.
      * 
      */
     @Import(name="pathConfig")
     private @Nullable Output<RuleRuleConditionPathConfigArgs> pathConfig;
 
     /**
-     * @return The configuration of the path for the request to be forwarded. See the following `Block path_config`.
+     * @return The configuration of the path for the request to be forwarded. See `path_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleConditionPathConfigArgs>> pathConfig() {
@@ -98,14 +98,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration of the query string. See the following `Block query_string_config`.
+     * The configuration of the query string. See `query_string_config` below for details.
      * 
      */
     @Import(name="queryStringConfig")
     private @Nullable Output<RuleRuleConditionQueryStringConfigArgs> queryStringConfig;
 
     /**
-     * @return The configuration of the query string. See the following `Block query_string_config`.
+     * @return The configuration of the query string. See `query_string_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleConditionQueryStringConfigArgs>> queryStringConfig() {
@@ -113,14 +113,14 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
+     * The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below for details.
      * 
      */
     @Import(name="sourceIpConfig")
     private @Nullable Output<RuleRuleConditionSourceIpConfigArgs> sourceIpConfig;
 
     /**
-     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
+     * @return The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below for details.
      * 
      */
     public Optional<Output<RuleRuleConditionSourceIpConfigArgs>> sourceIpConfig() {
@@ -129,9 +129,6 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
-     * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-     * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-     * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
      * 
      */
     @Import(name="type", required=true)
@@ -139,9 +136,6 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
-     * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-     * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-     * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
      * 
      */
     public Output<String> type() {
@@ -180,7 +174,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cookieConfig The configuration of the cookie. See the following `Block cookie_config`.
+         * @param cookieConfig The configuration of the cookie. See See `cookie_config` below for details.
          * 
          * @return builder
          * 
@@ -191,7 +185,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cookieConfig The configuration of the cookie. See the following `Block cookie_config`.
+         * @param cookieConfig The configuration of the cookie. See See `cookie_config` below for details.
          * 
          * @return builder
          * 
@@ -201,7 +195,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param headerConfig The configuration of the header field. See the following `Block header_config`.
+         * @param headerConfig The configuration of the header field. See `header_config` below for details.
          * 
          * @return builder
          * 
@@ -212,7 +206,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param headerConfig The configuration of the header field. See the following `Block header_config`.
+         * @param headerConfig The configuration of the header field. See `header_config` below for details.
          * 
          * @return builder
          * 
@@ -222,7 +216,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hostConfig The configuration of the host field. See the following `Block host_config`.
+         * @param hostConfig The configuration of the host field. See `host_config` below for details.
          * 
          * @return builder
          * 
@@ -233,7 +227,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hostConfig The configuration of the host field. See the following `Block host_config`.
+         * @param hostConfig The configuration of the host field. See `host_config` below for details.
          * 
          * @return builder
          * 
@@ -243,7 +237,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param methodConfig The configuration of the request method. See the following `Block method_config`.
+         * @param methodConfig The configuration of the request method. See `method_config` below for details.
          * 
          * @return builder
          * 
@@ -254,7 +248,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param methodConfig The configuration of the request method. See the following `Block method_config`.
+         * @param methodConfig The configuration of the request method. See `method_config` below for details.
          * 
          * @return builder
          * 
@@ -264,7 +258,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param pathConfig The configuration of the path for the request to be forwarded. See the following `Block path_config`.
+         * @param pathConfig The configuration of the path for the request to be forwarded. See `path_config` below for details.
          * 
          * @return builder
          * 
@@ -275,7 +269,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param pathConfig The configuration of the path for the request to be forwarded. See the following `Block path_config`.
+         * @param pathConfig The configuration of the path for the request to be forwarded. See `path_config` below for details.
          * 
          * @return builder
          * 
@@ -285,7 +279,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryStringConfig The configuration of the query string. See the following `Block query_string_config`.
+         * @param queryStringConfig The configuration of the query string. See `query_string_config` below for details.
          * 
          * @return builder
          * 
@@ -296,7 +290,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param queryStringConfig The configuration of the query string. See the following `Block query_string_config`.
+         * @param queryStringConfig The configuration of the query string. See `query_string_config` below for details.
          * 
          * @return builder
          * 
@@ -306,7 +300,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceIpConfig The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
+         * @param sourceIpConfig The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below for details.
          * 
          * @return builder
          * 
@@ -317,7 +311,7 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sourceIpConfig The Based on source IP traffic matching. Required and valid when Type is SourceIP. See the following `Block source_ip_config`.
+         * @param sourceIpConfig The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below for details.
          * 
          * @return builder
          * 
@@ -328,9 +322,6 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
-         * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-         * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-         * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
          * 
          * @return builder
          * 
@@ -342,9 +333,6 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type The type of the forwarding rule. Valid values: `Header`, `Host`, `Path`,  `Cookie`, `QueryString`, `Method` and `SourceIp`.
-         * **Note:**  The preceding actions can be classified into two types:  `FinalType`: A forwarding rule can contain only one `FinalType` action, which is executed last. This type of action can contain only one `ForwardGroup`, `Redirect` or `FixedResponse` action. `ExtType`: A forwarding rule can contain one or more `ExtType` actions, which are executed before `FinalType` actions and need to coexist with the `FinalType` actions. This type of action can contain multiple `InsertHeader` actions or one `Rewrite` action.
-         * **NOTE:** The `TrafficLimit` and `TrafficMirror` option is available in 1.162.0+.
-         * **NOTE:** From version 1.205.0+, `type` can be set to `Cors`.
          * 
          * @return builder
          * 

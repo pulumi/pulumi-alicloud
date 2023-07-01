@@ -235,19 +235,19 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[str]] 
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getCapacityReservations:getCapacityReservations', __args__, opts=opts, typ=GetCapacityReservationsResult).value
 
     return AwaitableGetCapacityReservationsResult(
-        capacity_reservation_ids=__ret__.capacity_reservation_ids,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_type=__ret__.instance_type,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        payment_type=__ret__.payment_type,
-        platform=__ret__.platform,
-        reservations=__ret__.reservations,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status,
-        tags=__ret__.tags)
+        capacity_reservation_ids=pulumi.get(__ret__, 'capacity_reservation_ids'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_type=pulumi.get(__ret__, 'instance_type'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        payment_type=pulumi.get(__ret__, 'payment_type'),
+        platform=pulumi.get(__ret__, 'platform'),
+        reservations=pulumi.get(__ret__, 'reservations'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_capacity_reservations)

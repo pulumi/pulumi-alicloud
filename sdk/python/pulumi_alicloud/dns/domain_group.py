@@ -51,6 +51,9 @@ class DomainGroupArgs:
         """
         The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         """
+        warnings.warn("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
+
         return pulumi.get(self, "group_name")
 
     @group_name.setter
@@ -110,6 +113,9 @@ class _DomainGroupState:
         """
         The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         """
+        warnings.warn("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
+
         return pulumi.get(self, "group_name")
 
     @group_name.setter
@@ -141,7 +147,7 @@ class DomainGroup(pulumi.CustomResource):
         """
         Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).
 
-        > **NOTE:** Available in v1.84.0+.
+        > **NOTE:** Available since v1.84.0.
 
         ## Example Usage
 
@@ -149,8 +155,7 @@ class DomainGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Add a new Alinds Domain Group.
-        example = alicloud.dns.DomainGroup("example", domain_group_name="tf-testDG")
+        default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
         ```
 
         ## Import
@@ -176,7 +181,7 @@ class DomainGroup(pulumi.CustomResource):
         """
         Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).
 
-        > **NOTE:** Available in v1.84.0+.
+        > **NOTE:** Available since v1.84.0.
 
         ## Example Usage
 
@@ -184,8 +189,7 @@ class DomainGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Add a new Alinds Domain Group.
-        example = alicloud.dns.DomainGroup("example", domain_group_name="tf-testDG")
+        default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
         ```
 
         ## Import
@@ -276,6 +280,9 @@ class DomainGroup(pulumi.CustomResource):
         """
         The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         """
+        warnings.warn("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""group_name is deprecated: Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
+
         return pulumi.get(self, "group_name")
 
     @property

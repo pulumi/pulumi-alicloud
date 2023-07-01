@@ -37,7 +37,7 @@ class AccessStrategyArgs:
         """
         The set of arguments for constructing a AccessStrategy resource.
         :param pulumi.Input[str] default_addr_pool_type: The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyDefaultAddrPoolArgs']]] default_addr_pools: List of primary address pool collections. See the following `Block default_addr_pools`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyDefaultAddrPoolArgs']]] default_addr_pools: List of primary address pool collections. See `default_addr_pools` below for details.
         :param pulumi.Input[int] default_min_available_addr_num: The minimum number of available addresses for the primary address pool set.
         :param pulumi.Input[str] instance_id: The Id of the associated instance.
         :param pulumi.Input[str] strategy_mode: The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
@@ -47,13 +47,13 @@ class AccessStrategyArgs:
         :param pulumi.Input[str] default_lba_strategy: The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
         :param pulumi.Input[int] default_max_return_addr_num: The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
         :param pulumi.Input[str] failover_addr_pool_type: The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyFailoverAddrPoolArgs']]] failover_addr_pools: List of backup address pool sets. See the following `Block failover_addr_pools`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyFailoverAddrPoolArgs']]] failover_addr_pools: List of backup address pool sets. See `failover_addr_pools` below for details.
         :param pulumi.Input[str] failover_latency_optimization: Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
         :param pulumi.Input[str] failover_lba_strategy: The load balancing policy of the secondary address pool group. Valid values: `ALL_RR`, `RATIO`.
         :param pulumi.Input[int] failover_max_return_addr_num: The maximum number of returned addresses in the standby address pool.
         :param pulumi.Input[int] failover_min_available_addr_num: The minimum number of available addresses in the standby address pool.
         :param pulumi.Input[str] lang: The lang.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]] lines: The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]] lines: The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
         """
         pulumi.set(__self__, "default_addr_pool_type", default_addr_pool_type)
         pulumi.set(__self__, "default_addr_pools", default_addr_pools)
@@ -102,7 +102,7 @@ class AccessStrategyArgs:
     @pulumi.getter(name="defaultAddrPools")
     def default_addr_pools(self) -> pulumi.Input[Sequence[pulumi.Input['AccessStrategyDefaultAddrPoolArgs']]]:
         """
-        List of primary address pool collections. See the following `Block default_addr_pools`.
+        List of primary address pool collections. See `default_addr_pools` below for details.
         """
         return pulumi.get(self, "default_addr_pools")
 
@@ -222,7 +222,7 @@ class AccessStrategyArgs:
     @pulumi.getter(name="failoverAddrPools")
     def failover_addr_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyFailoverAddrPoolArgs']]]]:
         """
-        List of backup address pool sets. See the following `Block failover_addr_pools`.
+        List of backup address pool sets. See `failover_addr_pools` below for details.
         """
         return pulumi.get(self, "failover_addr_pools")
 
@@ -294,7 +294,7 @@ class AccessStrategyArgs:
     @pulumi.getter
     def lines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]]]:
         """
-        The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
         """
         return pulumi.get(self, "lines")
 
@@ -328,20 +328,20 @@ class _AccessStrategyState:
         Input properties used for looking up and filtering AccessStrategy resources.
         :param pulumi.Input[str] access_mode: The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
         :param pulumi.Input[str] default_addr_pool_type: The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyDefaultAddrPoolArgs']]] default_addr_pools: List of primary address pool collections. See the following `Block default_addr_pools`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyDefaultAddrPoolArgs']]] default_addr_pools: List of primary address pool collections. See `default_addr_pools` below for details.
         :param pulumi.Input[str] default_latency_optimization: Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
         :param pulumi.Input[str] default_lba_strategy: The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
         :param pulumi.Input[int] default_max_return_addr_num: The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
         :param pulumi.Input[int] default_min_available_addr_num: The minimum number of available addresses for the primary address pool set.
         :param pulumi.Input[str] failover_addr_pool_type: The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyFailoverAddrPoolArgs']]] failover_addr_pools: List of backup address pool sets. See the following `Block failover_addr_pools`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyFailoverAddrPoolArgs']]] failover_addr_pools: List of backup address pool sets. See `failover_addr_pools` below for details.
         :param pulumi.Input[str] failover_latency_optimization: Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
         :param pulumi.Input[str] failover_lba_strategy: The load balancing policy of the secondary address pool group. Valid values: `ALL_RR`, `RATIO`.
         :param pulumi.Input[int] failover_max_return_addr_num: The maximum number of returned addresses in the standby address pool.
         :param pulumi.Input[int] failover_min_available_addr_num: The minimum number of available addresses in the standby address pool.
         :param pulumi.Input[str] instance_id: The Id of the associated instance.
         :param pulumi.Input[str] lang: The lang.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]] lines: The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]] lines: The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
         :param pulumi.Input[str] strategy_mode: The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
         :param pulumi.Input[str] strategy_name: The name of the access policy.
         """
@@ -410,7 +410,7 @@ class _AccessStrategyState:
     @pulumi.getter(name="defaultAddrPools")
     def default_addr_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyDefaultAddrPoolArgs']]]]:
         """
-        List of primary address pool collections. See the following `Block default_addr_pools`.
+        List of primary address pool collections. See `default_addr_pools` below for details.
         """
         return pulumi.get(self, "default_addr_pools")
 
@@ -482,7 +482,7 @@ class _AccessStrategyState:
     @pulumi.getter(name="failoverAddrPools")
     def failover_addr_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyFailoverAddrPoolArgs']]]]:
         """
-        List of backup address pool sets. See the following `Block failover_addr_pools`.
+        List of backup address pool sets. See `failover_addr_pools` below for details.
         """
         return pulumi.get(self, "failover_addr_pools")
 
@@ -566,7 +566,7 @@ class _AccessStrategyState:
     @pulumi.getter
     def lines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessStrategyLineArgs']]]]:
         """
-        The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
         """
         return pulumi.get(self, "lines")
 
@@ -628,7 +628,7 @@ class AccessStrategy(pulumi.CustomResource):
 
         For information about DNS Access Strategy and how to use it, see [What is Access Strategy](https://www.alibabacloud.com/help/doc-detail/189620.html).
 
-        > **NOTE:** Available in v1.152.0+.
+        > **NOTE:** Available since v1.152.0.
 
         ## Import
 
@@ -642,20 +642,20 @@ class AccessStrategy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
         :param pulumi.Input[str] default_addr_pool_type: The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyDefaultAddrPoolArgs']]]] default_addr_pools: List of primary address pool collections. See the following `Block default_addr_pools`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyDefaultAddrPoolArgs']]]] default_addr_pools: List of primary address pool collections. See `default_addr_pools` below for details.
         :param pulumi.Input[str] default_latency_optimization: Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
         :param pulumi.Input[str] default_lba_strategy: The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
         :param pulumi.Input[int] default_max_return_addr_num: The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
         :param pulumi.Input[int] default_min_available_addr_num: The minimum number of available addresses for the primary address pool set.
         :param pulumi.Input[str] failover_addr_pool_type: The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyFailoverAddrPoolArgs']]]] failover_addr_pools: List of backup address pool sets. See the following `Block failover_addr_pools`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyFailoverAddrPoolArgs']]]] failover_addr_pools: List of backup address pool sets. See `failover_addr_pools` below for details.
         :param pulumi.Input[str] failover_latency_optimization: Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
         :param pulumi.Input[str] failover_lba_strategy: The load balancing policy of the secondary address pool group. Valid values: `ALL_RR`, `RATIO`.
         :param pulumi.Input[int] failover_max_return_addr_num: The maximum number of returned addresses in the standby address pool.
         :param pulumi.Input[int] failover_min_available_addr_num: The minimum number of available addresses in the standby address pool.
         :param pulumi.Input[str] instance_id: The Id of the associated instance.
         :param pulumi.Input[str] lang: The lang.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyLineArgs']]]] lines: The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyLineArgs']]]] lines: The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
         :param pulumi.Input[str] strategy_mode: The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
         :param pulumi.Input[str] strategy_name: The name of the access policy.
         """
@@ -670,7 +670,7 @@ class AccessStrategy(pulumi.CustomResource):
 
         For information about DNS Access Strategy and how to use it, see [What is Access Strategy](https://www.alibabacloud.com/help/doc-detail/189620.html).
 
-        > **NOTE:** Available in v1.152.0+.
+        > **NOTE:** Available since v1.152.0.
 
         ## Import
 
@@ -789,20 +789,20 @@ class AccessStrategy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_mode: The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
         :param pulumi.Input[str] default_addr_pool_type: The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyDefaultAddrPoolArgs']]]] default_addr_pools: List of primary address pool collections. See the following `Block default_addr_pools`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyDefaultAddrPoolArgs']]]] default_addr_pools: List of primary address pool collections. See `default_addr_pools` below for details.
         :param pulumi.Input[str] default_latency_optimization: Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
         :param pulumi.Input[str] default_lba_strategy: The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `default_lba_strategy` is required under the condition that `strategy_mode` is `GEO`.
         :param pulumi.Input[int] default_max_return_addr_num: The maximum number of addresses returned by the primary address pool set. **NOTE:** The `default_max_return_addr_num` is required under the condition that `strategy_mode` is `LATENCY`.
         :param pulumi.Input[int] default_min_available_addr_num: The minimum number of available addresses for the primary address pool set.
         :param pulumi.Input[str] failover_addr_pool_type: The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyFailoverAddrPoolArgs']]]] failover_addr_pools: List of backup address pool sets. See the following `Block failover_addr_pools`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyFailoverAddrPoolArgs']]]] failover_addr_pools: List of backup address pool sets. See `failover_addr_pools` below for details.
         :param pulumi.Input[str] failover_latency_optimization: Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
         :param pulumi.Input[str] failover_lba_strategy: The load balancing policy of the secondary address pool group. Valid values: `ALL_RR`, `RATIO`.
         :param pulumi.Input[int] failover_max_return_addr_num: The maximum number of returned addresses in the standby address pool.
         :param pulumi.Input[int] failover_min_available_addr_num: The minimum number of available addresses in the standby address pool.
         :param pulumi.Input[str] instance_id: The Id of the associated instance.
         :param pulumi.Input[str] lang: The lang.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyLineArgs']]]] lines: The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessStrategyLineArgs']]]] lines: The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
         :param pulumi.Input[str] strategy_mode: The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
         :param pulumi.Input[str] strategy_name: The name of the access policy.
         """
@@ -850,7 +850,7 @@ class AccessStrategy(pulumi.CustomResource):
     @pulumi.getter(name="defaultAddrPools")
     def default_addr_pools(self) -> pulumi.Output[Sequence['outputs.AccessStrategyDefaultAddrPool']]:
         """
-        List of primary address pool collections. See the following `Block default_addr_pools`.
+        List of primary address pool collections. See `default_addr_pools` below for details.
         """
         return pulumi.get(self, "default_addr_pools")
 
@@ -898,7 +898,7 @@ class AccessStrategy(pulumi.CustomResource):
     @pulumi.getter(name="failoverAddrPools")
     def failover_addr_pools(self) -> pulumi.Output[Optional[Sequence['outputs.AccessStrategyFailoverAddrPool']]]:
         """
-        List of backup address pool sets. See the following `Block failover_addr_pools`.
+        List of backup address pool sets. See `failover_addr_pools` below for details.
         """
         return pulumi.get(self, "failover_addr_pools")
 
@@ -954,7 +954,7 @@ class AccessStrategy(pulumi.CustomResource):
     @pulumi.getter
     def lines(self) -> pulumi.Output[Optional[Sequence['outputs.AccessStrategyLine']]]:
         """
-        The source regions. See the following `Block lines`. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
+        The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategy_mode` is `GEO`.
         """
         return pulumi.get(self, "lines")
 

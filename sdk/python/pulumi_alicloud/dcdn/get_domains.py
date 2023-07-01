@@ -222,20 +222,20 @@ def get_domains(change_end_time: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dcdn/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult).value
 
     return AwaitableGetDomainsResult(
-        change_end_time=__ret__.change_end_time,
-        change_start_time=__ret__.change_start_time,
-        check_domain_show=__ret__.check_domain_show,
-        domain_search_type=__ret__.domain_search_type,
-        domains=__ret__.domains,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        security_token=__ret__.security_token,
-        status=__ret__.status)
+        change_end_time=pulumi.get(__ret__, 'change_end_time'),
+        change_start_time=pulumi.get(__ret__, 'change_start_time'),
+        check_domain_show=pulumi.get(__ret__, 'check_domain_show'),
+        domain_search_type=pulumi.get(__ret__, 'domain_search_type'),
+        domains=pulumi.get(__ret__, 'domains'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        security_token=pulumi.get(__ret__, 'security_token'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_domains)

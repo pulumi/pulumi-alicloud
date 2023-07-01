@@ -150,14 +150,14 @@ def get_dispatch_rules(dispatch_rule_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:arms/getDispatchRules:getDispatchRules', __args__, opts=opts, typ=GetDispatchRulesResult).value
 
     return AwaitableGetDispatchRulesResult(
-        dispatch_rule_name=__ret__.dispatch_rule_name,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        rules=__ret__.rules)
+        dispatch_rule_name=pulumi.get(__ret__, 'dispatch_rule_name'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rules=pulumi.get(__ret__, 'rules'))
 
 
 @_utilities.lift_output_func(get_dispatch_rules)

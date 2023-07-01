@@ -80,6 +80,9 @@ class ZoneArgs:
         """
         The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -261,6 +264,9 @@ class _ZoneState:
         """
         The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -572,6 +578,9 @@ class Zone(pulumi.CustomResource):
         """
         The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property

@@ -18,9 +18,89 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://help.aliyun.com/document_detail/261361.html)
+ * Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervbrattachment)
  * 
- * &gt; **NOTE:** Available in 1.126.0+
+ * &gt; **NOTE:** Available since v1.126.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
+ * import com.pulumi.alicloud.cen.TransitRouter;
+ * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+ * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
+ * import com.pulumi.random.RandomInteger;
+ * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
+ * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterVbrAttachment;
+ * import com.pulumi.alicloud.cen.TransitRouterVbrAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(name)
+ *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .build());
+ * 
+ *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *             .transitRouterName(name)
+ *             .cenId(exampleInstance.id())
+ *             .build());
+ * 
+ *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *             .nameRegex(&#34;^preserved-NODELETING&#34;)
+ *             .build());
+ * 
+ *         var vlanId = new RandomInteger(&#34;vlanId&#34;, RandomIntegerArgs.builder()        
+ *             .max(2999)
+ *             .min(1)
+ *             .build());
+ * 
+ *         var exampleVirtualBorderRouter = new VirtualBorderRouter(&#34;exampleVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
+ *             .localGatewayIp(&#34;10.0.0.1&#34;)
+ *             .peerGatewayIp(&#34;10.0.0.2&#34;)
+ *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
+ *             .physicalConnectionId(nameRegex.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
+ *             .virtualBorderRouterName(name)
+ *             .vlanId(vlanId.id())
+ *             .minRxInterval(1000)
+ *             .minTxInterval(1000)
+ *             .detectMultiplier(10)
+ *             .build());
+ * 
+ *         var exampleTransitRouterVbrAttachment = new TransitRouterVbrAttachment(&#34;exampleTransitRouterVbrAttachment&#34;, TransitRouterVbrAttachmentArgs.builder()        
+ *             .vbrId(exampleVirtualBorderRouter.id())
+ *             .cenId(exampleInstance.id())
+ *             .transitRouterId(exampleTransitRouter.transitRouterId())
+ *             .autoPublishRouteEnabled(true)
+ *             .transitRouterAttachmentName(name)
+ *             .transitRouterAttachmentDescription(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -78,12 +158,16 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
     /**
      * The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
      * 
+     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+     * 
      */
     @Export(name="resourceType", type=String.class, parameters={})
     private Output</* @Nullable */ String> resourceType;
 
     /**
      * @return The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+     * 
+     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
      * 
      */
     public Output<Optional<String>> resourceType() {
@@ -218,16 +302,12 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
     /**
      * The owner id of the transit router vbr attachment.
      * 
-     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
-     * 
      */
     @Export(name="vbrOwnerId", type=String.class, parameters={})
     private Output<String> vbrOwnerId;
 
     /**
      * @return The owner id of the transit router vbr attachment.
-     * 
-     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
      * 
      */
     public Output<String> vbrOwnerId() {

@@ -104,10 +104,10 @@ def get_zones(file_system_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:nas/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        file_system_type=__ret__.file_system_type,
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        zones=__ret__.zones)
+        file_system_type=pulumi.get(__ret__, 'file_system_type'),
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_zones)

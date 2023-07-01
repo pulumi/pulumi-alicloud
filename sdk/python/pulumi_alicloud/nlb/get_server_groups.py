@@ -186,17 +186,17 @@ def get_server_groups(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:nlb/getServerGroups:getServerGroups', __args__, opts=opts, typ=GetServerGroupsResult).value
 
     return AwaitableGetServerGroupsResult(
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        server_group_names=__ret__.server_group_names,
-        server_group_type=__ret__.server_group_type,
-        status=__ret__.status,
-        tags=__ret__.tags)
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        server_group_names=pulumi.get(__ret__, 'server_group_names'),
+        server_group_type=pulumi.get(__ret__, 'server_group_type'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_server_groups)

@@ -204,17 +204,17 @@ def get_custom_routing_endpoint_traffic_policies(accelerator_id: Optional[str] =
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies', __args__, opts=opts, typ=GetCustomRoutingEndpointTrafficPoliciesResult).value
 
     return AwaitableGetCustomRoutingEndpointTrafficPoliciesResult(
-        accelerator_id=__ret__.accelerator_id,
-        address=__ret__.address,
-        custom_routing_endpoint_traffic_policies=__ret__.custom_routing_endpoint_traffic_policies,
-        endpoint_group_id=__ret__.endpoint_group_id,
-        endpoint_id=__ret__.endpoint_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        listener_id=__ret__.listener_id,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size)
+        accelerator_id=pulumi.get(__ret__, 'accelerator_id'),
+        address=pulumi.get(__ret__, 'address'),
+        custom_routing_endpoint_traffic_policies=pulumi.get(__ret__, 'custom_routing_endpoint_traffic_policies'),
+        endpoint_group_id=pulumi.get(__ret__, 'endpoint_group_id'),
+        endpoint_id=pulumi.get(__ret__, 'endpoint_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        listener_id=pulumi.get(__ret__, 'listener_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'))
 
 
 @_utilities.lift_output_func(get_custom_routing_endpoint_traffic_policies)

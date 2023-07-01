@@ -170,15 +170,15 @@ def get_resolution_lines(domain_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dns/getResolutionLines:getResolutionLines', __args__, opts=opts, typ=GetResolutionLinesResult).value
 
     return AwaitableGetResolutionLinesResult(
-        domain_name=__ret__.domain_name,
-        id=__ret__.id,
-        lang=__ret__.lang,
-        line_codes=__ret__.line_codes,
-        line_display_names=__ret__.line_display_names,
-        line_names=__ret__.line_names,
-        lines=__ret__.lines,
-        output_file=__ret__.output_file,
-        user_client_ip=__ret__.user_client_ip)
+        domain_name=pulumi.get(__ret__, 'domain_name'),
+        id=pulumi.get(__ret__, 'id'),
+        lang=pulumi.get(__ret__, 'lang'),
+        line_codes=pulumi.get(__ret__, 'line_codes'),
+        line_display_names=pulumi.get(__ret__, 'line_display_names'),
+        line_names=pulumi.get(__ret__, 'line_names'),
+        lines=pulumi.get(__ret__, 'lines'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        user_client_ip=pulumi.get(__ret__, 'user_client_ip'))
 
 
 @_utilities.lift_output_func(get_resolution_lines)

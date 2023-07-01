@@ -13,6 +13,8 @@ import (
 
 // Provides a CEN bandwidth package attachment resource. The resource can be used to bind a bandwidth package to a specified CEN instance.
 //
+// > **NOTE:** Available since v1.18.0.
+//
 // ## Example Usage
 //
 // # Basic Usage
@@ -29,25 +31,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
-//				Description: pulumi.String("tf-testAccCenBandwidthPackageAttachmentDescription"),
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			bwp, err := cen.NewBandwidthPackage(ctx, "bwp", &cen.BandwidthPackageArgs{
-//				Bandwidth: pulumi.Int(20),
-//				GeographicRegionIds: pulumi.StringArray{
-//					pulumi.String("China"),
-//					pulumi.String("Asia-Pacific"),
-//				},
+//			exampleBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &cen.BandwidthPackageArgs{
+//				Bandwidth:               pulumi.Int(5),
+//				CenBandwidthPackageName: pulumi.String("tf_example"),
+//				GeographicRegionAId:     pulumi.String("China"),
+//				GeographicRegionBId:     pulumi.String("China"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewBandwidthPackageAttachment(ctx, "foo", &cen.BandwidthPackageAttachmentArgs{
-//				InstanceId:         cen.ID(),
-//				BandwidthPackageId: bwp.ID(),
+//			_, err = cen.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &cen.BandwidthPackageAttachmentArgs{
+//				InstanceId:         exampleInstance.ID(),
+//				BandwidthPackageId: exampleBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err

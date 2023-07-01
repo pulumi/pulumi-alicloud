@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://help.aliyun.com/document_detail/261358.html)
+    /// Provides a CEN transit router VPC attachment resource that associate the VPC with the CEN instance. [What is Cen Transit Router VPC Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervpcattachment)
     /// 
-    /// &gt; **NOTE:** Available in 1.126.0+
+    /// &gt; **NOTE:** Available since v1.126.0.
     /// 
     /// ## Example Usage
     /// 
@@ -27,63 +27,67 @@ namespace Pulumi.AliCloud.Cen
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var transitRouterAttachmentName = config.Get("transitRouterAttachmentName") ?? "sdk_rebot_cen_tr_yaochi";
-    ///     var transitRouterAttachmentDescription = config.Get("transitRouterAttachmentDescription") ?? "sdk_rebot_cen_tr_yaochi";
-    ///     var defaultTransitRouterAvailableResources = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var masterZone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]));
+    /// 
+    ///     var slaveZone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[1]));
+    /// 
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         VpcName = "sdk_rebot_cen_tr_yaochi",
+    ///         VpcName = name,
     ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var defaultMaster = new AliCloud.Vpc.Switch("defaultMaster", new()
+    ///     var exampleMaster = new AliCloud.Vpc.Switch("exampleMaster", new()
     ///     {
-    ///         VswitchName = "sdk_rebot_cen_tr_yaochi",
-    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchName = name,
     ///         CidrBlock = "192.168.1.0/24",
-    ///         ZoneId = defaultTransitRouterAvailableResources.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]),
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = masterZone,
     ///     });
     /// 
-    ///     var defaultSlave = new AliCloud.Vpc.Switch("defaultSlave", new()
+    ///     var exampleSlave = new AliCloud.Vpc.Switch("exampleSlave", new()
     ///     {
-    ///         VswitchName = "sdk_rebot_cen_tr_yaochi",
-    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchName = name,
     ///         CidrBlock = "192.168.2.0/24",
-    ///         ZoneId = defaultTransitRouterAvailableResources.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[0]),
+    ///         VpcId = exampleNetwork.Id,
+    ///         ZoneId = slaveZone,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         CenInstanceName = "sdk_rebot_cen_tr_yaochi",
+    ///         CenInstanceName = name,
     ///         ProtectionLevel = "REDUCED",
     ///     });
     /// 
-    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("defaultTransitRouter", new()
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
+    ///         TransitRouterName = name,
+    ///         CenId = exampleInstance.Id,
     ///     });
     /// 
-    ///     var defaultTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", new()
+    ///     var exampleTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", new()
     ///     {
-    ///         CenId = defaultInstance.Id,
-    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
-    ///         VpcId = defaultNetwork.Id,
+    ///         CenId = exampleInstance.Id,
+    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
+    ///         VpcId = exampleNetwork.Id,
     ///         ZoneMappings = new[]
     ///         {
     ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
     ///             {
-    ///                 ZoneId = defaultTransitRouterAvailableResources.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]),
-    ///                 VswitchId = defaultMaster.Id,
+    ///                 ZoneId = masterZone,
+    ///                 VswitchId = exampleMaster.Id,
     ///             },
     ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
     ///             {
-    ///                 ZoneId = defaultTransitRouterAvailableResources.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[1]),
-    ///                 VswitchId = defaultSlave.Id,
+    ///                 ZoneId = slaveZone,
+    ///                 VswitchId = exampleSlave.Id,
     ///             },
     ///         },
-    ///         TransitRouterAttachmentName = transitRouterAttachmentName,
-    ///         TransitRouterAttachmentDescription = transitRouterAttachmentDescription,
+    ///         TransitRouterAttachmentName = name,
+    ///         TransitRouterAttachmentDescription = name,
     ///     });
     /// 
     /// });
@@ -191,7 +195,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> VpcOwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
         /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         /// </summary>
         [Output("zoneMappings")]
@@ -331,7 +335,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
         /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingArgs> ZoneMappings
@@ -448,7 +452,7 @@ namespace Pulumi.AliCloud.Cen
         private InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+        /// The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
         /// &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
         /// </summary>
         public InputList<Inputs.TransitRouterVpcAttachmentZoneMappingGetArgs> ZoneMappings

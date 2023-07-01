@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
  * You can use the route map function to filter routes and modify route attributes.
  * By doing so, you can manage the communication between networks attached to a CEN.
  *
- * For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/doc-detail/124157.htm).
+ * For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenroutemap).
  *
- * > **NOTE:** Available in 1.82.0+
+ * > **NOTE:** Available since v1.82.0.
  *
  * ## Example Usage
  *
@@ -21,46 +21,57 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Create a cen Route map resource and use it.
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {});
- * const vpc00Region = new alicloud.Provider("vpc00Region", {region: "cn-hangzhou"});
- * const vpc01Region = new alicloud.Provider("vpc01Region", {region: "cn-shanghai"});
- * const vpc00 = new alicloud.vpc.Network("vpc00", {cidrBlock: "172.16.0.0/12"}, {
- *     provider: alicloud.vpc00_region,
+ * const config = new pulumi.Config();
+ * const sourceRegion = config.get("sourceRegion") || "cn-hangzhou";
+ * const destinationRegion = config.get("destinationRegion") || "cn-shanghai";
+ * const hz = new alicloud.Provider("hz", {region: sourceRegion});
+ * const sh = new alicloud.Provider("sh", {region: destinationRegion});
+ * const exampleHzNetwork = new alicloud.vpc.Network("exampleHzNetwork", {
+ *     vpcName: "tf_example",
+ *     cidrBlock: "192.168.0.0/16",
+ * }, {
+ *     provider: alicloud.hz,
  * });
- * const vpc01 = new alicloud.vpc.Network("vpc01", {cidrBlock: "172.16.0.0/12"}, {
- *     provider: alicloud.vpc01_region,
+ * const exampleShNetwork = new alicloud.vpc.Network("exampleShNetwork", {
+ *     vpcName: "tf_example",
+ *     cidrBlock: "172.16.0.0/12",
+ * }, {
+ *     provider: alicloud.sh,
  * });
- * const default00 = new alicloud.cen.InstanceAttachment("default00", {
- *     instanceId: defaultInstance.id,
- *     childInstanceId: vpc00.id,
+ * const example = new alicloud.cen.Instance("example", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleHzInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleHzInstanceAttachment", {
+ *     instanceId: example.id,
+ *     childInstanceId: exampleHzNetwork.id,
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: "cn-hangzhou",
+ *     childInstanceRegionId: sourceRegion,
  * });
- * const default01 = new alicloud.cen.InstanceAttachment("default01", {
- *     instanceId: defaultInstance.id,
- *     childInstanceId: vpc01.id,
+ * const exampleShInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleShInstanceAttachment", {
+ *     instanceId: example.id,
+ *     childInstanceId: exampleShNetwork.id,
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: "cn-shanghai",
+ *     childInstanceRegionId: destinationRegion,
  * });
- * const defaultRouteMap = new alicloud.cen.RouteMap("defaultRouteMap", {
- *     cenRegionId: "cn-hangzhou",
- *     cenId: alicloud_cen_instance.cen.id,
- *     description: "test-desc",
+ * const _default = new alicloud.cen.RouteMap("default", {
+ *     cenRegionId: sourceRegion,
+ *     cenId: example.id,
+ *     description: "tf_example",
  *     priority: 1,
  *     transmitDirection: "RegionIn",
  *     mapResult: "Permit",
  *     nextPriority: 1,
- *     sourceRegionIds: ["cn-hangzhou"],
- *     sourceInstanceIds: [vpc00.id],
+ *     sourceRegionIds: [sourceRegion],
+ *     sourceInstanceIds: [exampleHzInstanceAttachment.childInstanceId],
  *     sourceInstanceIdsReverseMatch: false,
- *     destinationInstanceIds: [vpc01.id],
+ *     destinationInstanceIds: [exampleShInstanceAttachment.childInstanceId],
  *     destinationInstanceIdsReverseMatch: false,
- *     sourceRouteTableIds: [vpc00.routeTableId],
- *     destinationRouteTableIds: [vpc01.routeTableId],
+ *     sourceRouteTableIds: [exampleHzNetwork.routeTableId],
+ *     destinationRouteTableIds: [exampleShNetwork.routeTableId],
  *     sourceChildInstanceTypes: ["VPC"],
  *     destinationChildInstanceTypes: ["VPC"],
- *     destinationCidrBlocks: [vpc01.cidrBlock],
+ *     destinationCidrBlocks: [exampleShNetwork.cidrBlock],
  *     cidrMatchMode: "Include",
  *     routeTypes: ["System"],
  *     matchAsns: ["65501"],
@@ -71,11 +82,6 @@ import * as utilities from "../utilities";
  *     operateCommunitySets: ["65501:1"],
  *     preference: 20,
  *     prependAsPaths: ["65501"],
- * }, {
- *     dependsOn: [
- *         default00,
- *         default01,
- *     ],
  * });
  * ```
  *

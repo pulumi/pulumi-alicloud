@@ -138,12 +138,12 @@ def get_main_versions(cluster_types: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:emr/getMainVersions:getMainVersions', __args__, opts=opts, typ=GetMainVersionsResult).value
 
     return AwaitableGetMainVersionsResult(
-        cluster_types=__ret__.cluster_types,
-        emr_version=__ret__.emr_version,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        main_versions=__ret__.main_versions,
-        output_file=__ret__.output_file)
+        cluster_types=pulumi.get(__ret__, 'cluster_types'),
+        emr_version=pulumi.get(__ret__, 'emr_version'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        main_versions=pulumi.get(__ret__, 'main_versions'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_main_versions)

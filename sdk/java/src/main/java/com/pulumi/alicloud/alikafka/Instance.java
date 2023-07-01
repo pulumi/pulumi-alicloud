@@ -19,88 +19,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an ALIKAFKA instance resource.
- * 
- * For information about ALIKAFKA instance and how to use it, see [What is ALIKAFKA instance](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-startinstance).
- * 
- * &gt; **NOTE:** Available in 1.59.0+
- * 
- * &gt; **NOTE:** Creation or modification may took about 10-40 minutes.
- * 
- * &gt; **NOTE:** Only the following regions support create alikafka pre paid instance.
- * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
- * 
- * &gt; **NOTE:** Only the following regions support create alikafka post paid instance.
- * [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
- * ## Example Usage
- * 
- * Basic Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.ecs.SecurityGroup;
- * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.alicloud.alikafka.Instance;
- * import com.pulumi.alicloud.alikafka.InstanceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
- *             .build());
- * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
- *             .build());
- * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build());
- * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(defaultNetwork.id())
- *             .build());
- * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .partitionNum(&#34;50&#34;)
- *             .diskType(&#34;1&#34;)
- *             .diskSize(&#34;500&#34;)
- *             .deployType(&#34;4&#34;)
- *             .ioMax(&#34;20&#34;)
- *             .vswitchId(defaultSwitch.id())
- *             .securityGroup(defaultSecurityGroup.id())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
- * ALIKAFKA TOPIC can be imported using the id, e.g.
+ * ALIKAFKA instance can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:alikafka/instance:Instance instance alikafka_post-cn-123455abc
@@ -399,19 +320,23 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The max num of topic can be creation of the instance.
-     * It has been deprecated from version 1.194.0 and using `partition_num` instead.
+     * It has been deprecated since version 1.194.0 and using `partition_num` instead.
+     * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
+     * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
      * 
      * @deprecated
-     * Attribute &#39;topic_quota&#39; has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
+     * Attribute &#39;topic_quota&#39; has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute &#39;partition_num&#39; instead.
      * 
      */
-    @Deprecated /* Attribute 'topic_quota' has been deprecated from 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
+    @Deprecated /* Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead. */
     @Export(name="topicQuota", type=Integer.class, parameters={})
     private Output<Integer> topicQuota;
 
     /**
      * @return The max num of topic can be creation of the instance.
-     * It has been deprecated from version 1.194.0 and using `partition_num` instead.
+     * It has been deprecated since version 1.194.0 and using `partition_num` instead.
+     * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
+     * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
      * 
      */
     public Output<Integer> topicQuota() {

@@ -94,9 +94,9 @@ def get_transit_router_service(enable: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getTransitRouterService:getTransitRouterService', __args__, opts=opts, typ=GetTransitRouterServiceResult).value
 
     return AwaitableGetTransitRouterServiceResult(
-        enable=__ret__.enable,
-        id=__ret__.id,
-        status=__ret__.status)
+        enable=pulumi.get(__ret__, 'enable'),
+        id=pulumi.get(__ret__, 'id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_transit_router_service)

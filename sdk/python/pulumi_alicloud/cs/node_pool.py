@@ -576,6 +576,9 @@ class NodePoolArgs:
         """
         The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         """
+        warnings.warn("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""", DeprecationWarning)
+        pulumi.log.warn("""node_count is deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
+
         return pulumi.get(self, "node_count")
 
     @node_count.setter
@@ -636,6 +639,9 @@ class NodePoolArgs:
         """
         The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         """
+        warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""", DeprecationWarning)
+        pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
+
         return pulumi.get(self, "platform")
 
     @platform.setter
@@ -696,6 +702,9 @@ class NodePoolArgs:
         """
         Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         """
+        warnings.warn("""Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""", DeprecationWarning)
+        pulumi.log.warn("""rollout_policy is deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""")
+
         return pulumi.get(self, "rollout_policy")
 
     @rollout_policy.setter
@@ -756,6 +765,9 @@ class NodePoolArgs:
         """
         The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         """
+        warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""", DeprecationWarning)
+        pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""")
+
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -1506,6 +1518,9 @@ class _NodePoolState:
         """
         The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         """
+        warnings.warn("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""", DeprecationWarning)
+        pulumi.log.warn("""node_count is deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
+
         return pulumi.get(self, "node_count")
 
     @node_count.setter
@@ -1566,6 +1581,9 @@ class _NodePoolState:
         """
         The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         """
+        warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""", DeprecationWarning)
+        pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
+
         return pulumi.get(self, "platform")
 
     @platform.setter
@@ -1626,6 +1644,9 @@ class _NodePoolState:
         """
         Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         """
+        warnings.warn("""Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""", DeprecationWarning)
+        pulumi.log.warn("""rollout_policy is deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""")
+
         return pulumi.get(self, "rollout_policy")
 
     @rollout_policy.setter
@@ -1698,6 +1719,9 @@ class _NodePoolState:
         """
         The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         """
+        warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""", DeprecationWarning)
+        pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""")
+
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -3204,6 +3228,9 @@ class NodePool(pulumi.CustomResource):
         """
         The worker node number of the node pool. From version 1.111.0, `node_count` is not required.
         """
+        warnings.warn("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""", DeprecationWarning)
+        pulumi.log.warn("""node_count is deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
+
         return pulumi.get(self, "node_count")
 
     @property
@@ -3244,6 +3271,9 @@ class NodePool(pulumi.CustomResource):
         """
         The platform. One of `AliyunLinux`, `Windows`, `CentOS`, `WindowsCore`. If you select `Windows` or `WindowsCore`, the `passord` is required. Field `platform` has been deprecated from provider version 1.145.0. New field `image_type` instead.
         """
+        warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""", DeprecationWarning)
+        pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
+
         return pulumi.get(self, "platform")
 
     @property
@@ -3284,6 +3314,9 @@ class NodePool(pulumi.CustomResource):
         """
         Rollout policy is used to specify the strategy when the node pool is rolling update. This field works when node pool updating. Please use `rolling_policy` to instead it from provider version 1.185.0.
         """
+        warnings.warn("""Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""", DeprecationWarning)
+        pulumi.log.warn("""rollout_policy is deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""")
+
         return pulumi.get(self, "rollout_policy")
 
     @property
@@ -3332,6 +3365,9 @@ class NodePool(pulumi.CustomResource):
         """
         The security group id for worker node. Field `security_group_id` has been deprecated from provider version 1.145.0. New field `security_group_ids` instead.
         """
+        warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""", DeprecationWarning)
+        pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""")
+
         return pulumi.get(self, "security_group_id")
 
     @property

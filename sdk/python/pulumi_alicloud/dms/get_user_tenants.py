@@ -134,12 +134,12 @@ def get_user_tenants(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dms/getUserTenants:getUserTenants', __args__, opts=opts, typ=GetUserTenantsResult).value
 
     return AwaitableGetUserTenantsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        tenants=__ret__.tenants)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        tenants=pulumi.get(__ret__, 'tenants'))
 
 
 @_utilities.lift_output_func(get_user_tenants)

@@ -136,12 +136,12 @@ def get_route_entries(cidr_block: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getRouteEntries:getRouteEntries', __args__, opts=opts, typ=GetRouteEntriesResult).value
 
     return AwaitableGetRouteEntriesResult(
-        cidr_block=__ret__.cidr_block,
-        entries=__ret__.entries,
-        id=__ret__.id,
-        instance_id=__ret__.instance_id,
-        output_file=__ret__.output_file,
-        route_table_id=__ret__.route_table_id)
+        cidr_block=pulumi.get(__ret__, 'cidr_block'),
+        entries=pulumi.get(__ret__, 'entries'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        route_table_id=pulumi.get(__ret__, 'route_table_id'))
 
 
 @_utilities.lift_output_func(get_route_entries)

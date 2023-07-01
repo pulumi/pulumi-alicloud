@@ -101,10 +101,10 @@ def get_cross_regions(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getCrossRegions:getCrossRegions', __args__, opts=opts, typ=GetCrossRegionsResult).value
 
     return AwaitableGetCrossRegionsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        regions=__ret__.regions)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        regions=pulumi.get(__ret__, 'regions'))
 
 
 @_utilities.lift_output_func(get_cross_regions)

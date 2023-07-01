@@ -16,41 +16,41 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// <summary>
         /// Category of data disk.
         /// </summary>
-        public readonly string? Category;
+        public readonly string Category;
         /// <summary>
         /// Delete_with_instance attribute of data disk.
         /// </summary>
-        public readonly bool? DeleteWithInstance;
+        public readonly bool DeleteWithInstance;
         /// <summary>
         /// Device attribute of data disk.
         /// </summary>
-        public readonly string? Device;
+        public readonly string Device;
         /// <summary>
         /// The performance level of the ESSD used as data disk.
         /// </summary>
-        public readonly string? PerformanceLevel;
+        public readonly string PerformanceLevel;
         /// <summary>
         /// Size of data disk.
         /// </summary>
-        public readonly int? Size;
+        public readonly int Size;
         /// <summary>
         /// Size of data disk.
         /// </summary>
-        public readonly string? SnapshotId;
+        public readonly string SnapshotId;
 
         [OutputConstructor]
         private GetScalingConfigurationsConfigurationDataDiskResult(
-            string? category,
+            string category,
 
-            bool? deleteWithInstance,
+            bool deleteWithInstance,
 
-            string? device,
+            string device,
 
-            string? performanceLevel,
+            string performanceLevel,
 
-            int? size,
+            int size,
 
-            string? snapshotId)
+            string snapshotId)
         {
             Category = category;
             DeleteWithInstance = deleteWithInstance;

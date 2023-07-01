@@ -15,9 +15,9 @@ import (
 // You can use the route map function to filter routes and modify route attributes.
 // By doing so, you can manage the communication between networks attached to a CEN.
 //
-// For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/doc-detail/124157.htm).
+// For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenroutemap).
 //
-// > **NOTE:** Available in 1.82.0+
+// > **NOTE:** Available since v1.82.0.
 //
 // ## Example Usage
 //
@@ -32,81 +32,96 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", nil)
-//			if err != nil {
-//				return err
+//			cfg := config.New(ctx, "")
+//			sourceRegion := "cn-hangzhou"
+//			if param := cfg.Get("sourceRegion"); param != "" {
+//				sourceRegion = param
 //			}
-//			_, err = alicloud.NewProvider(ctx, "vpc00Region", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-hangzhou"),
+//			destinationRegion := "cn-shanghai"
+//			if param := cfg.Get("destinationRegion"); param != "" {
+//				destinationRegion = param
+//			}
+//			_, err := alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
+//				Region: pulumi.String(sourceRegion),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alicloud.NewProvider(ctx, "vpc01Region", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-shanghai"),
+//			_, err = alicloud.NewProvider(ctx, "sh", &alicloud.ProviderArgs{
+//				Region: pulumi.String(destinationRegion),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			vpc00, err := vpc.NewNetwork(ctx, "vpc00", &vpc.NetworkArgs{
+//			exampleHzNetwork, err := vpc.NewNetwork(ctx, "exampleHzNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_example"),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			}, pulumi.Provider(alicloud.Hz))
+//			if err != nil {
+//				return err
+//			}
+//			exampleShNetwork, err := vpc.NewNetwork(ctx, "exampleShNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			}, pulumi.Provider(alicloud.Vpc00_region))
+//			}, pulumi.Provider(alicloud.Sh))
 //			if err != nil {
 //				return err
 //			}
-//			vpc01, err := vpc.NewNetwork(ctx, "vpc01", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			}, pulumi.Provider(alicloud.Vpc01_region))
-//			if err != nil {
-//				return err
-//			}
-//			default00, err := cen.NewInstanceAttachment(ctx, "default00", &cen.InstanceAttachmentArgs{
-//				InstanceId:            defaultInstance.ID(),
-//				ChildInstanceId:       vpc00.ID(),
-//				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String("cn-hangzhou"),
+//			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			default01, err := cen.NewInstanceAttachment(ctx, "default01", &cen.InstanceAttachmentArgs{
-//				InstanceId:            defaultInstance.ID(),
-//				ChildInstanceId:       vpc01.ID(),
+//			exampleHzInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleHzInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            example.ID(),
+//				ChildInstanceId:       exampleHzNetwork.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String("cn-shanghai"),
+//				ChildInstanceRegionId: pulumi.String(sourceRegion),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewRouteMap(ctx, "defaultRouteMap", &cen.RouteMapArgs{
-//				CenRegionId:       pulumi.String("cn-hangzhou"),
-//				CenId:             pulumi.Any(alicloud_cen_instance.Cen.Id),
-//				Description:       pulumi.String("test-desc"),
+//			exampleShInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleShInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            example.ID(),
+//				ChildInstanceId:       exampleShNetwork.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: pulumi.String(destinationRegion),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewRouteMap(ctx, "default", &cen.RouteMapArgs{
+//				CenRegionId:       pulumi.String(sourceRegion),
+//				CenId:             example.ID(),
+//				Description:       pulumi.String("tf_example"),
 //				Priority:          pulumi.Int(1),
 //				TransmitDirection: pulumi.String("RegionIn"),
 //				MapResult:         pulumi.String("Permit"),
 //				NextPriority:      pulumi.Int(1),
 //				SourceRegionIds: pulumi.StringArray{
-//					pulumi.String("cn-hangzhou"),
+//					pulumi.String(sourceRegion),
 //				},
 //				SourceInstanceIds: pulumi.StringArray{
-//					vpc00.ID(),
+//					exampleHzInstanceAttachment.ChildInstanceId,
 //				},
 //				SourceInstanceIdsReverseMatch: pulumi.Bool(false),
 //				DestinationInstanceIds: pulumi.StringArray{
-//					vpc01.ID(),
+//					exampleShInstanceAttachment.ChildInstanceId,
 //				},
 //				DestinationInstanceIdsReverseMatch: pulumi.Bool(false),
 //				SourceRouteTableIds: pulumi.StringArray{
-//					vpc00.RouteTableId,
+//					exampleHzNetwork.RouteTableId,
 //				},
 //				DestinationRouteTableIds: pulumi.StringArray{
-//					vpc01.RouteTableId,
+//					exampleShNetwork.RouteTableId,
 //				},
 //				SourceChildInstanceTypes: pulumi.StringArray{
 //					pulumi.String("VPC"),
@@ -115,7 +130,7 @@ import (
 //					pulumi.String("VPC"),
 //				},
 //				DestinationCidrBlocks: pulumi.StringArray{
-//					vpc01.CidrBlock,
+//					exampleShNetwork.CidrBlock,
 //				},
 //				CidrMatchMode: pulumi.String("Include"),
 //				RouteTypes: pulumi.StringArray{
@@ -137,10 +152,7 @@ import (
 //				PrependAsPaths: pulumi.StringArray{
 //					pulumi.String("65501"),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				default00,
-//				default01,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}

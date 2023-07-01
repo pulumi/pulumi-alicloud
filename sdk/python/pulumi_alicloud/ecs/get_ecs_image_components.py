@@ -174,16 +174,16 @@ def get_ecs_image_components(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getEcsImageComponents:getEcsImageComponents', __args__, opts=opts, typ=GetEcsImageComponentsResult).value
 
     return AwaitableGetEcsImageComponentsResult(
-        components=__ret__.components,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        image_component_name=__ret__.image_component_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        owner=__ret__.owner,
-        resource_group_id=__ret__.resource_group_id,
-        tags=__ret__.tags)
+        components=pulumi.get(__ret__, 'components'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        image_component_name=pulumi.get(__ret__, 'image_component_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        owner=pulumi.get(__ret__, 'owner'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_ecs_image_components)

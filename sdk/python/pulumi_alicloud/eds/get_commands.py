@@ -183,14 +183,14 @@ def get_commands(command_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eds/getCommands:getCommands', __args__, opts=opts, typ=GetCommandsResult).value
 
     return AwaitableGetCommandsResult(
-        command_type=__ret__.command_type,
-        commands=__ret__.commands,
-        content_encoding=__ret__.content_encoding,
-        desktop_id=__ret__.desktop_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        command_type=pulumi.get(__ret__, 'command_type'),
+        commands=pulumi.get(__ret__, 'commands'),
+        content_encoding=pulumi.get(__ret__, 'content_encoding'),
+        desktop_id=pulumi.get(__ret__, 'desktop_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_commands)

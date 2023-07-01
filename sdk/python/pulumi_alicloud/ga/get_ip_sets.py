@@ -128,12 +128,12 @@ def get_ip_sets(accelerator_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getIpSets:getIpSets', __args__, opts=opts, typ=GetIpSetsResult).value
 
     return AwaitableGetIpSetsResult(
-        accelerator_id=__ret__.accelerator_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        sets=__ret__.sets,
-        status=__ret__.status)
+        accelerator_id=pulumi.get(__ret__, 'accelerator_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        sets=pulumi.get(__ret__, 'sets'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_ip_sets)

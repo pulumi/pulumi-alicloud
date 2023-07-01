@@ -110,10 +110,10 @@ def get_endpoints(db_cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:polardb/getEndpoints:getEndpoints', __args__, opts=opts, typ=GetEndpointsResult).value
 
     return AwaitableGetEndpointsResult(
-        db_cluster_id=__ret__.db_cluster_id,
-        db_endpoint_id=__ret__.db_endpoint_id,
-        endpoints=__ret__.endpoints,
-        id=__ret__.id)
+        db_cluster_id=pulumi.get(__ret__, 'db_cluster_id'),
+        db_endpoint_id=pulumi.get(__ret__, 'db_endpoint_id'),
+        endpoints=pulumi.get(__ret__, 'endpoints'),
+        id=pulumi.get(__ret__, 'id'))
 
 
 @_utilities.lift_output_func(get_endpoints)

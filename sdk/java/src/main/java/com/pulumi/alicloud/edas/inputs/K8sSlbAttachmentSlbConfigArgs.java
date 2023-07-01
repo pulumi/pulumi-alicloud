@@ -33,14 +33,14 @@ public final class K8sSlbAttachmentSlbConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The port configuration for SLB instance, which is supported for multiple configurations.
+     * The port configuration for SLB instance, which is supported for multiple configurations. See `port_mappings` below.
      * 
      */
     @Import(name="portMappings", required=true)
     private Output<List<K8sSlbAttachmentSlbConfigPortMappingArgs>> portMappings;
 
     /**
-     * @return The port configuration for SLB instance, which is supported for multiple configurations.
+     * @return The port configuration for SLB instance, which is supported for multiple configurations. See `port_mappings` below.
      * 
      */
     public Output<List<K8sSlbAttachmentSlbConfigPortMappingArgs>> portMappings() {
@@ -158,7 +158,7 @@ public final class K8sSlbAttachmentSlbConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param portMappings The port configuration for SLB instance, which is supported for multiple configurations.
+         * @param portMappings The port configuration for SLB instance, which is supported for multiple configurations. See `port_mappings` below.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class K8sSlbAttachmentSlbConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param portMappings The port configuration for SLB instance, which is supported for multiple configurations.
+         * @param portMappings The port configuration for SLB instance, which is supported for multiple configurations. See `port_mappings` below.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class K8sSlbAttachmentSlbConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param portMappings The port configuration for SLB instance, which is supported for multiple configurations.
+         * @param portMappings The port configuration for SLB instance, which is supported for multiple configurations. See `port_mappings` below.
          * 
          * @return builder
          * 

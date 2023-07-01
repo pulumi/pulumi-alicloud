@@ -68,8 +68,8 @@ class AccessStrategyDefaultAddrPool(dict):
                  addr_pool_id: str,
                  lba_weight: Optional[int] = None):
         """
-        :param str addr_pool_id: The ID of the address pool in the secondary address pool group.
-        :param int lba_weight: The weight of the address pool in the secondary address pool group.
+        :param str addr_pool_id: The ID of the address pool in the primary address pool group.
+        :param int lba_weight: The weight of the address pool in the primary address pool group.
         """
         pulumi.set(__self__, "addr_pool_id", addr_pool_id)
         if lba_weight is not None:
@@ -79,7 +79,7 @@ class AccessStrategyDefaultAddrPool(dict):
     @pulumi.getter(name="addrPoolId")
     def addr_pool_id(self) -> str:
         """
-        The ID of the address pool in the secondary address pool group.
+        The ID of the address pool in the primary address pool group.
         """
         return pulumi.get(self, "addr_pool_id")
 
@@ -87,7 +87,7 @@ class AccessStrategyDefaultAddrPool(dict):
     @pulumi.getter(name="lbaWeight")
     def lba_weight(self) -> Optional[int]:
         """
-        The weight of the address pool in the secondary address pool group.
+        The weight of the address pool in the primary address pool group.
         """
         return pulumi.get(self, "lba_weight")
 
@@ -206,7 +206,7 @@ class AddressPoolAddress(dict):
                  lba_weight: Optional[int] = None,
                  remark: Optional[str] = None):
         """
-        :param str address: The address lists of the Address Pool. See the following `Block address`.
+        :param str address: The address that you want to add to the address pool.
         :param str attribute_info: The source region of the address. expressed as a JSON string. The structure is as follows:
         :param str mode: The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
         :param int lba_weight: The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
@@ -224,7 +224,7 @@ class AddressPoolAddress(dict):
     @pulumi.getter
     def address(self) -> str:
         """
-        The address lists of the Address Pool. See the following `Block address`.
+        The address that you want to add to the address pool.
         """
         return pulumi.get(self, "address")
 

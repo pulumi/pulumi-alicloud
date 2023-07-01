@@ -177,15 +177,15 @@ def get_honey_pots(honeypot_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:threatdetection/getHoneyPots:getHoneyPots', __args__, opts=opts, typ=GetHoneyPotsResult).value
 
     return AwaitableGetHoneyPotsResult(
-        honeypot_id=__ret__.honeypot_id,
-        honeypot_name=__ret__.honeypot_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        node_id=__ret__.node_id,
-        node_name=__ret__.node_name,
-        output_file=__ret__.output_file,
-        pots=__ret__.pots)
+        honeypot_id=pulumi.get(__ret__, 'honeypot_id'),
+        honeypot_name=pulumi.get(__ret__, 'honeypot_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        node_id=pulumi.get(__ret__, 'node_id'),
+        node_name=pulumi.get(__ret__, 'node_name'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        pots=pulumi.get(__ret__, 'pots'))
 
 
 @_utilities.lift_output_func(get_honey_pots)

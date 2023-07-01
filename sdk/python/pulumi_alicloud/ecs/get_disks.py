@@ -32,10 +32,6 @@ class GetDisksResult:
         pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
-        if availability_zone is not None:
-            warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
-            pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
-
         pulumi.set(__self__, "availability_zone", availability_zone)
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
@@ -123,10 +119,6 @@ class GetDisksResult:
         pulumi.set(__self__, "total_count", total_count)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
-        if type is not None:
-            warnings.warn("""Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.""", DeprecationWarning)
-            pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.""")
-
         pulumi.set(__self__, "type", type)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
@@ -148,6 +140,9 @@ class GetDisksResult:
         """
         Availability zone of the disk.
         """
+        warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
+        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
+
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -323,6 +318,9 @@ class GetDisksResult:
         """
         Disk type. Possible values: `system` and `data`.
         """
+        warnings.warn("""Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.""")
+
         return pulumi.get(self, "type")
 
     @property
@@ -474,39 +472,39 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getDisks:getDisks', __args__, opts=opts, typ=GetDisksResult).value
 
     return AwaitableGetDisksResult(
-        additional_attributes=__ret__.additional_attributes,
-        auto_snapshot_policy_id=__ret__.auto_snapshot_policy_id,
-        availability_zone=__ret__.availability_zone,
-        category=__ret__.category,
-        delete_auto_snapshot=__ret__.delete_auto_snapshot,
-        delete_with_instance=__ret__.delete_with_instance,
-        disk_name=__ret__.disk_name,
-        disk_type=__ret__.disk_type,
-        disks=__ret__.disks,
-        dry_run=__ret__.dry_run,
-        enable_auto_snapshot=__ret__.enable_auto_snapshot,
-        enable_automated_snapshot_policy=__ret__.enable_automated_snapshot_policy,
-        enable_shared=__ret__.enable_shared,
-        encrypted=__ret__.encrypted,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        kms_key_id=__ret__.kms_key_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        operation_locks=__ret__.operation_locks,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        payment_type=__ret__.payment_type,
-        portable=__ret__.portable,
-        resource_group_id=__ret__.resource_group_id,
-        snapshot_id=__ret__.snapshot_id,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        total_count=__ret__.total_count,
-        type=__ret__.type,
-        zone_id=__ret__.zone_id)
+        additional_attributes=pulumi.get(__ret__, 'additional_attributes'),
+        auto_snapshot_policy_id=pulumi.get(__ret__, 'auto_snapshot_policy_id'),
+        availability_zone=pulumi.get(__ret__, 'availability_zone'),
+        category=pulumi.get(__ret__, 'category'),
+        delete_auto_snapshot=pulumi.get(__ret__, 'delete_auto_snapshot'),
+        delete_with_instance=pulumi.get(__ret__, 'delete_with_instance'),
+        disk_name=pulumi.get(__ret__, 'disk_name'),
+        disk_type=pulumi.get(__ret__, 'disk_type'),
+        disks=pulumi.get(__ret__, 'disks'),
+        dry_run=pulumi.get(__ret__, 'dry_run'),
+        enable_auto_snapshot=pulumi.get(__ret__, 'enable_auto_snapshot'),
+        enable_automated_snapshot_policy=pulumi.get(__ret__, 'enable_automated_snapshot_policy'),
+        enable_shared=pulumi.get(__ret__, 'enable_shared'),
+        encrypted=pulumi.get(__ret__, 'encrypted'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        kms_key_id=pulumi.get(__ret__, 'kms_key_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        operation_locks=pulumi.get(__ret__, 'operation_locks'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        payment_type=pulumi.get(__ret__, 'payment_type'),
+        portable=pulumi.get(__ret__, 'portable'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        snapshot_id=pulumi.get(__ret__, 'snapshot_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        total_count=pulumi.get(__ret__, 'total_count'),
+        type=pulumi.get(__ret__, 'type'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_disks)

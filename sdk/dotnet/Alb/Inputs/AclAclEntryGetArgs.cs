@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? Entry { get; set; }
 
         /// <summary>
-        /// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        /// The status of the ACL entry. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

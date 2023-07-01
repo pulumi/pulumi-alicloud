@@ -43,10 +43,6 @@ class GetLoadBalancersResult:
         pulumi.set(__self__, "load_balancer_business_status", load_balancer_business_status)
         if load_balancer_bussiness_status and not isinstance(load_balancer_bussiness_status, str):
             raise TypeError("Expected argument 'load_balancer_bussiness_status' to be a str")
-        if load_balancer_bussiness_status is not None:
-            warnings.warn("""Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.""", DeprecationWarning)
-            pulumi.log.warn("""load_balancer_bussiness_status is deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.""")
-
         pulumi.set(__self__, "load_balancer_bussiness_status", load_balancer_bussiness_status)
         if load_balancer_ids and not isinstance(load_balancer_ids, list):
             raise TypeError("Expected argument 'load_balancer_ids' to be a list")
@@ -118,6 +114,9 @@ class GetLoadBalancersResult:
     @property
     @pulumi.getter(name="loadBalancerBussinessStatus")
     def load_balancer_bussiness_status(self) -> Optional[str]:
+        warnings.warn("""Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.""", DeprecationWarning)
+        pulumi.log.warn("""load_balancer_bussiness_status is deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.""")
+
         return pulumi.get(self, "load_balancer_bussiness_status")
 
     @property
@@ -274,24 +273,24 @@ def get_load_balancers(address_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:alb/getLoadBalancers:getLoadBalancers', __args__, opts=opts, typ=GetLoadBalancersResult).value
 
     return AwaitableGetLoadBalancersResult(
-        address_type=__ret__.address_type,
-        balancers=__ret__.balancers,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        load_balancer_business_status=__ret__.load_balancer_business_status,
-        load_balancer_bussiness_status=__ret__.load_balancer_bussiness_status,
-        load_balancer_ids=__ret__.load_balancer_ids,
-        load_balancer_name=__ret__.load_balancer_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        vpc_id=__ret__.vpc_id,
-        vpc_ids=__ret__.vpc_ids,
-        zone_id=__ret__.zone_id)
+        address_type=pulumi.get(__ret__, 'address_type'),
+        balancers=pulumi.get(__ret__, 'balancers'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        load_balancer_business_status=pulumi.get(__ret__, 'load_balancer_business_status'),
+        load_balancer_bussiness_status=pulumi.get(__ret__, 'load_balancer_bussiness_status'),
+        load_balancer_ids=pulumi.get(__ret__, 'load_balancer_ids'),
+        load_balancer_name=pulumi.get(__ret__, 'load_balancer_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'),
+        vpc_ids=pulumi.get(__ret__, 'vpc_ids'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_load_balancers)

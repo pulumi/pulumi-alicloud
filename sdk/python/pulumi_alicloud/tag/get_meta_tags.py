@@ -103,10 +103,10 @@ def get_meta_tags(key_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:tag/getMetaTags:getMetaTags', __args__, opts=opts, typ=GetMetaTagsResult).value
 
     return AwaitableGetMetaTagsResult(
-        id=__ret__.id,
-        key_name=__ret__.key_name,
-        output_file=__ret__.output_file,
-        tags=__ret__.tags)
+        id=pulumi.get(__ret__, 'id'),
+        key_name=pulumi.get(__ret__, 'key_name'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_meta_tags)

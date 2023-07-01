@@ -98,6 +98,9 @@ class SwitchArgs:
         """
         Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         """
+        warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
+
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -148,6 +151,9 @@ class SwitchArgs:
         """
         Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -266,6 +272,9 @@ class _SwitchState:
         """
         Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         """
+        warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
+
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -352,6 +361,9 @@ class _SwitchState:
         """
         Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -744,6 +756,9 @@ class Switch(pulumi.CustomResource):
         """
         Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         """
+        warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
+
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -802,6 +817,9 @@ class Switch(pulumi.CustomResource):
         """
         Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property

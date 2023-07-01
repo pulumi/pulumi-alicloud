@@ -81,14 +81,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The actions of the forwarding rules. See the following `Block rule_actions`.
+     * The actions of the forwarding rules. See `rule_actions` below for details.
      * 
      */
     @Import(name="ruleActions")
     private @Nullable Output<List<RuleRuleActionArgs>> ruleActions;
 
     /**
-     * @return The actions of the forwarding rules. See the following `Block rule_actions`.
+     * @return The actions of the forwarding rules. See `rule_actions` below for details.
      * 
      */
     public Optional<Output<List<RuleRuleActionArgs>>> ruleActions() {
@@ -96,14 +96,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The conditions of the forwarding rule. See the following `Block rule_conditions`.
+     * The conditions of the forwarding rule. See `rule_conditions` below for details.
      * 
      */
     @Import(name="ruleConditions")
     private @Nullable Output<List<RuleRuleConditionArgs>> ruleConditions;
 
     /**
-     * @return The conditions of the forwarding rule. See the following `Block rule_conditions`.
+     * @return The conditions of the forwarding rule. See `rule_conditions` below for details.
      * 
      */
     public Optional<Output<List<RuleRuleConditionArgs>>> ruleConditions() {
@@ -256,7 +256,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleActions The actions of the forwarding rules. See the following `Block rule_actions`.
+         * @param ruleActions The actions of the forwarding rules. See `rule_actions` below for details.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleActions The actions of the forwarding rules. See the following `Block rule_actions`.
+         * @param ruleActions The actions of the forwarding rules. See `rule_actions` below for details.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleActions The actions of the forwarding rules. See the following `Block rule_actions`.
+         * @param ruleActions The actions of the forwarding rules. See `rule_actions` below for details.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleConditions The conditions of the forwarding rule. See the following `Block rule_conditions`.
+         * @param ruleConditions The conditions of the forwarding rule. See `rule_conditions` below for details.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleConditions The conditions of the forwarding rule. See the following `Block rule_conditions`.
+         * @param ruleConditions The conditions of the forwarding rule. See `rule_conditions` below for details.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleConditions The conditions of the forwarding rule. See the following `Block rule_conditions`.
+         * @param ruleConditions The conditions of the forwarding rule. See `rule_conditions` below for details.
          * 
          * @return builder
          * 

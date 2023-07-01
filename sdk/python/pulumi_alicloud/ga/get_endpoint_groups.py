@@ -174,16 +174,16 @@ def get_endpoint_groups(accelerator_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getEndpointGroups:getEndpointGroups', __args__, opts=opts, typ=GetEndpointGroupsResult).value
 
     return AwaitableGetEndpointGroupsResult(
-        accelerator_id=__ret__.accelerator_id,
-        endpoint_group_type=__ret__.endpoint_group_type,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        listener_id=__ret__.listener_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        accelerator_id=pulumi.get(__ret__, 'accelerator_id'),
+        endpoint_group_type=pulumi.get(__ret__, 'endpoint_group_type'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        listener_id=pulumi.get(__ret__, 'listener_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_endpoint_groups)

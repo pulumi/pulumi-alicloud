@@ -389,7 +389,7 @@ class GetRolesRoleResult(dict):
         :param str create_date: Creation date of the role.
         :param str description: Description of the role.
         :param str document: Authorization strategy of the role.
-        :param str id: Id of the role.
+        :param str id: ID of the role.
         :param str name: Name of the role.
         :param str update_date: Update date of the role.
         """
@@ -446,7 +446,7 @@ class GetRolesRoleResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        Id of the role.
+        ID of the role.
         """
         return pulumi.get(self, "id")
 
@@ -549,7 +549,7 @@ class GetUsersUserResult(dict):
                  name: str):
         """
         :param str create_date: Creation date of the user.
-        :param str id: The original id is user name, but it is user id in 1.37.0+.
+        :param str id: The original id is user's name, but it is user id in 1.37.0+.
         :param str last_login_date: Last login date of the user. Removed from version 1.79.0.
         :param str name: Name of the user.
         """
@@ -570,7 +570,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The original id is user name, but it is user id in 1.37.0+.
+        The original id is user's name, but it is user id in 1.37.0+.
         """
         return pulumi.get(self, "id")
 

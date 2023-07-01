@@ -202,18 +202,18 @@ def get_portfolios(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:servicecatalog/getPortfolios:getPortfolios', __args__, opts=opts, typ=GetPortfoliosResult).value
 
     return AwaitableGetPortfoliosResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        portfolios=__ret__.portfolios,
-        product_id=__ret__.product_id,
-        scope=__ret__.scope,
-        sort_by=__ret__.sort_by,
-        sort_order=__ret__.sort_order)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        portfolios=pulumi.get(__ret__, 'portfolios'),
+        product_id=pulumi.get(__ret__, 'product_id'),
+        scope=pulumi.get(__ret__, 'scope'),
+        sort_by=pulumi.get(__ret__, 'sort_by'),
+        sort_order=pulumi.get(__ret__, 'sort_order'))
 
 
 @_utilities.lift_output_func(get_portfolios)

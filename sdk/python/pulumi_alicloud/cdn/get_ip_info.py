@@ -125,13 +125,13 @@ def get_ip_info(ip: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cdn/getIpInfo:getIpInfo', __args__, opts=opts, typ=GetIpInfoResult).value
 
     return AwaitableGetIpInfoResult(
-        cdn_ip=__ret__.cdn_ip,
-        id=__ret__.id,
-        ip=__ret__.ip,
-        isp=__ret__.isp,
-        isp_ename=__ret__.isp_ename,
-        region=__ret__.region,
-        region_ename=__ret__.region_ename)
+        cdn_ip=pulumi.get(__ret__, 'cdn_ip'),
+        id=pulumi.get(__ret__, 'id'),
+        ip=pulumi.get(__ret__, 'ip'),
+        isp=pulumi.get(__ret__, 'isp'),
+        isp_ename=pulumi.get(__ret__, 'isp_ename'),
+        region=pulumi.get(__ret__, 'region'),
+        region_ename=pulumi.get(__ret__, 'region_ename'))
 
 
 @_utilities.lift_output_func(get_ip_info)

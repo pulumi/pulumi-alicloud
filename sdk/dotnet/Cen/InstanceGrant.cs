@@ -12,7 +12,9 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a CEN child instance grant resource, which allow you to authorize a VPC or VBR to a CEN of a different account.
     /// 
-    /// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/doc-detail/73645.htm).
+    /// For more information about how to use it, see [Attach a network in a different account](https://www.alibabacloud.com/help/zh/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-attachcenchildinstance).
+    /// 
+    /// &gt; **NOTE:** Available since v1.37.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,59 +28,67 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a new instance-grant and use it to grant one child instance of account1 to a new CEN of account 2.
-    ///     var account1 = new AliCloud.Provider("account1", new()
-    ///     {
-    ///         AccessKey = "access123",
-    ///         SecretKey = "secret123",
-    ///     });
-    /// 
-    ///     var account2 = new AliCloud.Provider("account2", new()
-    ///     {
-    ///         AccessKey = "access456",
-    ///         SecretKey = "secret456",
-    ///     });
-    /// 
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAccCenInstanceGrantBasic";
-    ///     var cen = new AliCloud.Cen.Instance("cen", new()
+    ///     var childAccountAk = config.Get("childAccountAk") ?? "example-ak";
+    ///     var childAccountSk = config.Get("childAccountSk") ?? "example-sk";
+    ///     var yourAccount = new AliCloud.Provider("yourAccount");
+    /// 
+    ///     var childAccount = new AliCloud.Provider("childAccount", new()
     ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Account2,
+    ///         AccessKey = childAccountAk,
+    ///         SecretKey = childAccountSk,
     ///     });
     /// 
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     var yourAccountAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var childAccountAccount = AliCloud.GetAccount.Invoke();
+    /// 
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         CidrBlock = "192.168.0.0/16",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Account1,
+    ///         Current = true,
     ///     });
     /// 
-    ///     var fooInstanceGrant = new AliCloud.Cen.InstanceGrant("fooInstanceGrant", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         CenId = cen.Id,
-    ///         ChildInstanceId = vpc.Id,
-    ///         CenOwnerId = "uid2",
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Account1,
+    ///         Provider = alicloud.Your_account,
     ///     });
     /// 
-    ///     var fooInstanceAttachment = new AliCloud.Cen.InstanceAttachment("fooInstanceAttachment", new()
+    ///     var childAccountNetwork = new AliCloud.Vpc.Network("childAccountNetwork", new()
     ///     {
-    ///         InstanceId = cen.Id,
-    ///         ChildInstanceId = vpc.Id,
+    ///         VpcName = "terraform-example",
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Child_account,
+    ///     });
+    /// 
+    ///     var childAccountInstanceGrant = new AliCloud.Cen.InstanceGrant("childAccountInstanceGrant", new()
+    ///     {
+    ///         CenId = exampleInstance.Id,
+    ///         ChildInstanceId = childAccountNetwork.Id,
+    ///         CenOwnerId = yourAccountAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = alicloud.Child_account,
+    ///     });
+    /// 
+    ///     var exampleInstanceAttachment = new AliCloud.Cen.InstanceAttachment("exampleInstanceAttachment", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
+    ///         ChildInstanceId = childAccountNetwork.Id,
     ///         ChildInstanceType = "VPC",
-    ///         ChildInstanceRegionId = "cn-qingdao",
-    ///         ChildInstanceOwnerId = "uid1",
+    ///         ChildInstanceRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
+    ///         ChildInstanceOwnerId = childAccountAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = alicloud.Account2,
+    ///         Provider = alicloud.Your_account,
     ///         DependsOn = new[]
     ///         {
-    ///             fooInstanceGrant,
+    ///             childAccountInstanceGrant,
     ///         },
     ///     });
     /// 

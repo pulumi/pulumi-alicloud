@@ -15,7 +15,7 @@ import (
 //
 // > **NOTE:** The domain name which you want to add must be already registered and had not added by another account. Every domain name can only exist in a unique group.
 //
-// > **NOTE:** Available in v1.95.0+.
+// > **NOTE:** Available since v1.95.0.
 //
 // ## Example Usage
 //
@@ -31,12 +31,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dns.NewAlidnsDomain(ctx, "dns", &dns.AlidnsDomainArgs{
+//			defaultDomainGroup, err := dns.NewDomainGroup(ctx, "defaultDomainGroup", &dns.DomainGroupArgs{
+//				DomainGroupName: pulumi.String("tf-example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewAlidnsDomain(ctx, "defaultAlidnsDomain", &dns.AlidnsDomainArgs{
 //				DomainName: pulumi.String("starmove.com"),
-//				GroupId:    pulumi.String("85ab8713-4a30-4de4-9d20-155ff830****"),
+//				GroupId:    defaultDomainGroup.ID(),
 //				Tags: pulumi.AnyMap{
-//					"Created":     pulumi.Any("Terraform"),
-//					"Environment": pulumi.Any("test"),
+//					"Created": pulumi.Any("TF"),
+//					"For":     pulumi.Any("example"),
 //				},
 //			})
 //			if err != nil {

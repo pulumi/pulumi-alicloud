@@ -153,14 +153,14 @@ def get_search_indexes(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ots/getSearchIndexes:getSearchIndexes', __args__, opts=opts, typ=GetSearchIndexesResult).value
 
     return AwaitableGetSearchIndexesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        indexes=__ret__.indexes,
-        instance_name=__ret__.instance_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        table_name=__ret__.table_name)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        indexes=pulumi.get(__ret__, 'indexes'),
+        instance_name=pulumi.get(__ret__, 'instance_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        table_name=pulumi.get(__ret__, 'table_name'))
 
 
 @_utilities.lift_output_func(get_search_indexes)

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Cen
     /// <summary>
     /// Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
     /// 
-    /// -&gt;**NOTE:** Available in 1.42.0+
+    /// &gt; **NOTE:** Available since v1.42.0.
     /// 
     /// ## Example Usage
     /// 
@@ -26,24 +26,29 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-testAccCenInstanceAttachmentBasic";
-    ///     var cen = new AliCloud.Cen.Instance("cen", new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
-    ///         Description = "terraform01",
+    ///         Current = true,
     ///     });
     /// 
-    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
     ///     {
-    ///         CidrBlock = "192.168.0.0/16",
+    ///         VpcName = "tf_example",
+    ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var foo = new AliCloud.Cen.InstanceAttachment("foo", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
     ///     {
-    ///         InstanceId = cen.Id,
-    ///         ChildInstanceId = vpc.Id,
+    ///         CenInstanceName = "tf_example",
+    ///         Description = "an example for cen",
+    ///     });
+    /// 
+    ///     var exampleInstanceAttachment = new AliCloud.Cen.InstanceAttachment("exampleInstanceAttachment", new()
+    ///     {
+    ///         InstanceId = exampleInstance.Id,
+    ///         ChildInstanceId = exampleNetwork.Id,
     ///         ChildInstanceType = "VPC",
-    ///         ChildInstanceRegionId = "cn-beijing",
+    ///         ChildInstanceRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///     });
     /// 
     /// });

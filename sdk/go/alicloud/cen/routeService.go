@@ -13,9 +13,9 @@ import (
 
 // Provides a CEN Route Service resource. The virtual border routers (VBRs) and Cloud Connect Network (CCN) instances attached to Cloud Enterprise Network (CEN) instances can access the cloud services deployed in VPCs through the CEN instances.
 //
-// For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/doc-detail/106671.htm).
+// For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-resolveandrouteserviceincen).
 //
-// > **NOTE:** Available in v1.99.0+.
+// > **NOTE:** Available since v1.99.0.
 //
 // > **NOTE:** Ensure that at least one VPC in the selected region is attached to the CEN instance.
 //
@@ -28,44 +28,49 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-test"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			exampleNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				IsDefault: pulumi.BoolRef(true),
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", nil)
-//			if err != nil {
-//				return err
-//			}
-//			vpc, err := cen.NewInstanceAttachment(ctx, "vpc", &cen.InstanceAttachmentArgs{
-//				InstanceId:            exampleInstance.ID(),
-//				ChildInstanceId:       *pulumi.String(exampleNetworks.Vpcs[0].Id),
-//				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: *pulumi.String(exampleNetworks.Vpcs[0].RegionId),
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("tf_example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewRouteService(ctx, "this", &cen.RouteServiceArgs{
-//				AccessRegionId: *pulumi.String(exampleNetworks.Vpcs[0].RegionId),
-//				HostRegionId:   *pulumi.String(exampleNetworks.Vpcs[0].RegionId),
-//				HostVpcId:      *pulumi.String(exampleNetworks.Vpcs[0].Id),
-//				CenId:          vpc.InstanceId,
+//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String("tf_example"),
+//				Description:     pulumi.String("an example for cen"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
+//				InstanceId:            exampleInstance.ID(),
+//				ChildInstanceId:       exampleNetwork.ID(),
+//				ChildInstanceType:     pulumi.String("VPC"),
+//				ChildInstanceRegionId: *pulumi.String(_default.Regions[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewRouteService(ctx, "exampleRouteService", &cen.RouteServiceArgs{
+//				AccessRegionId: *pulumi.String(_default.Regions[0].Id),
+//				HostRegionId:   *pulumi.String(_default.Regions[0].Id),
+//				HostVpcId:      exampleNetwork.ID(),
+//				CenId:          exampleInstanceAttachment.InstanceId,
 //				Host:           pulumi.String("100.118.28.52/32"),
 //			})
 //			if err != nil {

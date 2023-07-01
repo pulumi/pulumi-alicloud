@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a ALB Security Policy resource.
  *
- * For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/doc-detail/213607.htm).
+ * For information about ALB Security Policy and how to use it, see [What is Security Policy](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createsecuritypolicy).
  *
- * > **NOTE:** Available in v1.130.0+.
+ * > **NOTE:** Available since v1.130.0.
  *
  * ## Example Usage
  *
@@ -19,15 +19,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "testAccSecurityPolicy";
  * const _default = new alicloud.alb.SecurityPolicy("default", {
- *     securityPolicyName: name,
- *     tlsVersions: ["TLSv1.0"],
  *     ciphers: [
  *         "ECDHE-ECDSA-AES128-SHA",
  *         "AES256-SHA",
  *     ],
+ *     securityPolicyName: "tf_example",
+ *     tlsVersions: ["TLSv1.0"],
  * });
  * ```
  *

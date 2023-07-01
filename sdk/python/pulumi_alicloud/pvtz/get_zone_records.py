@@ -197,17 +197,17 @@ def get_zone_records(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:pvtz/getZoneRecords:getZoneRecords', __args__, opts=opts, typ=GetZoneRecordsResult).value
 
     return AwaitableGetZoneRecordsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        keyword=__ret__.keyword,
-        lang=__ret__.lang,
-        output_file=__ret__.output_file,
-        records=__ret__.records,
-        search_mode=__ret__.search_mode,
-        status=__ret__.status,
-        tag=__ret__.tag,
-        user_client_ip=__ret__.user_client_ip,
-        zone_id=__ret__.zone_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        keyword=pulumi.get(__ret__, 'keyword'),
+        lang=pulumi.get(__ret__, 'lang'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        records=pulumi.get(__ret__, 'records'),
+        search_mode=pulumi.get(__ret__, 'search_mode'),
+        status=pulumi.get(__ret__, 'status'),
+        tag=pulumi.get(__ret__, 'tag'),
+        user_client_ip=pulumi.get(__ret__, 'user_client_ip'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_zone_records)

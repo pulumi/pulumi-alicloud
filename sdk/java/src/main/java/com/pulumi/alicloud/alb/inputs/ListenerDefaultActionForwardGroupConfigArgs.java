@@ -15,14 +15,14 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
     public static final ListenerDefaultActionForwardGroupConfigArgs Empty = new ListenerDefaultActionForwardGroupConfigArgs();
 
     /**
-     * The destination server group to which requests are forwarded.
+     * The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
      * 
      */
     @Import(name="serverGroupTuples", required=true)
     private Output<List<ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
     /**
-     * @return The destination server group to which requests are forwarded.
+     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
      * 
      */
     public Output<List<ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples() {
@@ -54,7 +54,7 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
          * 
          * @return builder
          * 
@@ -75,7 +75,7 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
         }
 
         /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded.
+         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
          * 
          * @return builder
          * 

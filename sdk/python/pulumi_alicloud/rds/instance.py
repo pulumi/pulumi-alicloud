@@ -131,7 +131,7 @@ class InstanceArgs:
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
                
                See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
                
                > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
@@ -157,7 +157,7 @@ class InstanceArgs:
         :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
-        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
@@ -183,12 +183,12 @@ class InstanceArgs:
                > **NOTE:**
                - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
                - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] effective_time: The method to update the engine version.  Default value: Immediate. Valid values:
+        :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -212,10 +212,10 @@ class InstanceArgs:
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
@@ -237,7 +237,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
@@ -584,7 +584,7 @@ class InstanceArgs:
     @pulumi.getter(name="babelfishConfigs")
     def babelfish_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]]:
         """
-        The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
 
         > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         """
@@ -698,7 +698,7 @@ class InstanceArgs:
     @pulumi.getter(name="connectionStringPrefix")
     def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
         > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
@@ -790,7 +790,7 @@ class InstanceArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        The switch of delete protection. Valid values: 
+        The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
 
@@ -806,7 +806,7 @@ class InstanceArgs:
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The method to update the engine version.  Default value: Immediate. Valid values:
+        The method to update the engine version and change.  Default value: Immediate. Valid values:
         - Immediate: The change immediately takes effect.
         - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         """
@@ -951,7 +951,7 @@ class InstanceArgs:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -976,7 +976,7 @@ class InstanceArgs:
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 
@@ -1059,6 +1059,9 @@ class InstanceArgs:
         """
         It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         """
+        warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
+        pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
+
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -1141,7 +1144,7 @@ class InstanceArgs:
     @pulumi.getter(name="serverlessConfigs")
     def serverless_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]]]:
         """
-        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         """
         return pulumi.get(self, "serverless_configs")
 
@@ -1333,6 +1336,9 @@ class InstanceArgs:
         - true: upgrade
         - false: not to upgrade
         """
+        warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
+        pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
+
         return pulumi.get(self, "upgrade_db_instance_kernel_version")
 
     @upgrade_db_instance_kernel_version.setter
@@ -1529,7 +1535,7 @@ class _InstanceState:
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
                
                See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
                
                > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
@@ -1556,7 +1562,7 @@ class _InstanceState:
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
-        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] create_time: (Available in 1.204.1+) The creation time of db instance.
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
@@ -1584,12 +1590,12 @@ class _InstanceState:
                > **NOTE:**
                - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
                - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] effective_time: The method to update the engine version.  Default value: Immediate. Valid values:
+        :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -1644,10 +1650,10 @@ class _InstanceState:
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
@@ -1669,7 +1675,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
@@ -1957,7 +1963,7 @@ class _InstanceState:
     @pulumi.getter(name="babelfishConfigs")
     def babelfish_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]]:
         """
-        The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
 
         > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         """
@@ -2083,7 +2089,7 @@ class _InstanceState:
     @pulumi.getter(name="connectionStringPrefix")
     def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
         > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
@@ -2199,7 +2205,7 @@ class _InstanceState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        The switch of delete protection. Valid values: 
+        The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
 
@@ -2215,7 +2221,7 @@ class _InstanceState:
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The method to update the engine version.  Default value: Immediate. Valid values:
+        The method to update the engine version and change.  Default value: Immediate. Valid values:
         - Immediate: The change immediately takes effect.
         - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         """
@@ -2435,7 +2441,7 @@ class _InstanceState:
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -2460,7 +2466,7 @@ class _InstanceState:
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 
@@ -2543,6 +2549,9 @@ class _InstanceState:
         """
         It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         """
+        warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
+        pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
+
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -2625,7 +2634,7 @@ class _InstanceState:
     @pulumi.getter(name="serverlessConfigs")
     def serverless_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]]]:
         """
-        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         """
         return pulumi.get(self, "serverless_configs")
 
@@ -2841,6 +2850,9 @@ class _InstanceState:
         - true: upgrade
         - false: not to upgrade
         """
+        warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
+        pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
+
         return pulumi.get(self, "upgrade_db_instance_kernel_version")
 
     @upgrade_db_instance_kernel_version.setter
@@ -3044,7 +3056,7 @@ class Instance(pulumi.CustomResource):
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
                
                See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
                
                > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
@@ -3070,7 +3082,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] client_crl_enabled: Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
                - 1: enables the CRL
                - 0: disables the CRL
-        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
                
@@ -3096,12 +3108,12 @@ class Instance(pulumi.CustomResource):
                > **NOTE:**
                - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
                - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] effective_time: The method to update the engine version.  Default value: Immediate. Valid values:
+        :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -3156,10 +3168,10 @@ class Instance(pulumi.CustomResource):
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
@@ -3181,7 +3193,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
@@ -3552,7 +3564,7 @@ class Instance(pulumi.CustomResource):
                - Manual: Instances are forcibly upgraded to a higher minor version when the current version is unpublished.
                
                See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBabelfishConfigArgs']]]] babelfish_configs: The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
                
                > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
@@ -3579,7 +3591,7 @@ class Instance(pulumi.CustomResource):
                - 1: enables the CRL
                - 0: disables the CRL
         :param pulumi.Input[str] connection_string: RDS database connection string.
-        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        :param pulumi.Input[str] connection_string_prefix: The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
                > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         :param pulumi.Input[str] create_time: (Available in 1.204.1+) The creation time of db instance.
         :param pulumi.Input[str] db_instance_ip_array_attribute: The attribute of the IP address whitelist. By default, this parameter is empty.
@@ -3607,12 +3619,12 @@ class Instance(pulumi.CustomResource):
                > **NOTE:**
                - You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
                - If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
                > **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
-        :param pulumi.Input[str] effective_time: The method to update the engine version.  Default value: Immediate. Valid values:
+        :param pulumi.Input[str] effective_time: The method to update the engine version and change.  Default value: Immediate. Valid values:
                - Immediate: The change immediately takes effect.
                - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         :param pulumi.Input[str] encryption_key: The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
@@ -3667,10 +3679,10 @@ class Instance(pulumi.CustomResource):
                - Append: Add the IP addresses and CIDR blocks that are specified in the SecurityIps parameter to the IP address whitelist.
                - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
         :param pulumi.Input[int] monitoring_period: The monitoring frequency in seconds. Valid values are 5, 10, 60, 300. Defaults to 300.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePgHbaConfArgs']]]] pg_hba_confs: The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         :param pulumi.Input[str] port: The private port of the database service. If you want to update public port, please use resource rds.Connection port.
         :param pulumi.Input[str] private_ip_address: The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files after the instance is released. Valid values:
@@ -3692,7 +3704,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
         :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerlessConfigArgs']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
@@ -3888,7 +3900,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="babelfishConfigs")
     def babelfish_configs(self) -> pulumi.Output[Sequence['outputs.InstanceBabelfishConfig']]:
         """
-        The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+        The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
 
         > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
         """
@@ -3978,7 +3990,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="connectionStringPrefix")
     def connection_string_prefix(self) -> pulumi.Output[str]:
         """
-        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix. 
+        The private connection string prefix. If you want to update public connection string prefix, please use resource rds.Connection connection_prefix.
         > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\\|{};:'",<>/?
         """
         return pulumi.get(self, "connection_string_prefix")
@@ -4062,7 +4074,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        The switch of delete protection. Valid values: 
+        The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
 
@@ -4074,7 +4086,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> pulumi.Output[Optional[str]]:
         """
-        The method to update the engine version.  Default value: Immediate. Valid values:
+        The method to update the engine version and change.  Default value: Immediate. Valid values:
         - Immediate: The change immediately takes effect.
         - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         """
@@ -4234,7 +4246,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.InstanceParameter']]:
         """
-        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+        Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
@@ -4251,7 +4263,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="pgHbaConfs")
     def pg_hba_confs(self) -> pulumi.Output[Sequence['outputs.InstancePgHbaConf']]:
         """
-        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+        The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
         """
         return pulumi.get(self, "pg_hba_confs")
 
@@ -4310,6 +4322,9 @@ class Instance(pulumi.CustomResource):
         """
         It has been deprecated from 1.69.0 and use `security_group_ids` instead.
         """
+        warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
+        pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
+
         return pulumi.get(self, "security_group_id")
 
     @property
@@ -4364,7 +4379,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serverlessConfigs")
     def serverless_configs(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceServerlessConfig']]]:
         """
-        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+        The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         """
         return pulumi.get(self, "serverless_configs")
 
@@ -4520,6 +4535,9 @@ class Instance(pulumi.CustomResource):
         - true: upgrade
         - false: not to upgrade
         """
+        warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
+        pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
+
         return pulumi.get(self, "upgrade_db_instance_kernel_version")
 
     @property

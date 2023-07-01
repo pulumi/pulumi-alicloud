@@ -128,12 +128,12 @@ def get_modify_parameter_logs(db_instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getModifyParameterLogs:getModifyParameterLogs', __args__, opts=opts, typ=GetModifyParameterLogsResult).value
 
     return AwaitableGetModifyParameterLogsResult(
-        db_instance_id=__ret__.db_instance_id,
-        end_time=__ret__.end_time,
-        id=__ret__.id,
-        logs=__ret__.logs,
-        output_file=__ret__.output_file,
-        start_time=__ret__.start_time)
+        db_instance_id=pulumi.get(__ret__, 'db_instance_id'),
+        end_time=pulumi.get(__ret__, 'end_time'),
+        id=pulumi.get(__ret__, 'id'),
+        logs=pulumi.get(__ret__, 'logs'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        start_time=pulumi.get(__ret__, 'start_time'))
 
 
 @_utilities.lift_output_func(get_modify_parameter_logs)

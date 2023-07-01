@@ -146,14 +146,14 @@ def get_activations(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecs/getActivations:getActivations', __args__, opts=opts, typ=GetActivationsResult).value
 
     return AwaitableGetActivationsResult(
-        activations=__ret__.activations,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_name=__ret__.instance_name,
-        output_file=__ret__.output_file,
-        page_number=__ret__.page_number,
-        page_size=__ret__.page_size,
-        total_count=__ret__.total_count)
+        activations=pulumi.get(__ret__, 'activations'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_name=pulumi.get(__ret__, 'instance_name'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        page_number=pulumi.get(__ret__, 'page_number'),
+        page_size=pulumi.get(__ret__, 'page_size'),
+        total_count=pulumi.get(__ret__, 'total_count'))
 
 
 @_utilities.lift_output_func(get_activations)

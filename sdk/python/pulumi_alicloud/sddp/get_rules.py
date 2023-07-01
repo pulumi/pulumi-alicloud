@@ -249,22 +249,22 @@ def get_rules(category: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:sddp/getRules:getRules', __args__, opts=opts, typ=GetRulesResult).value
 
     return AwaitableGetRulesResult(
-        category=__ret__.category,
-        content_category=__ret__.content_category,
-        custom_type=__ret__.custom_type,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        product_id=__ret__.product_id,
-        risk_level_id=__ret__.risk_level_id,
-        rule_type=__ret__.rule_type,
-        rules=__ret__.rules,
-        status=__ret__.status,
-        warn_level=__ret__.warn_level)
+        category=pulumi.get(__ret__, 'category'),
+        content_category=pulumi.get(__ret__, 'content_category'),
+        custom_type=pulumi.get(__ret__, 'custom_type'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        product_id=pulumi.get(__ret__, 'product_id'),
+        risk_level_id=pulumi.get(__ret__, 'risk_level_id'),
+        rule_type=pulumi.get(__ret__, 'rule_type'),
+        rules=pulumi.get(__ret__, 'rules'),
+        status=pulumi.get(__ret__, 'status'),
+        warn_level=pulumi.get(__ret__, 'warn_level'))
 
 
 @_utilities.lift_output_func(get_rules)

@@ -150,14 +150,14 @@ def get_event_buses(event_bus_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eventbridge/getEventBuses:getEventBuses', __args__, opts=opts, typ=GetEventBusesResult).value
 
     return AwaitableGetEventBusesResult(
-        buses=__ret__.buses,
-        event_bus_type=__ret__.event_bus_type,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_prefix=__ret__.name_prefix,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        buses=pulumi.get(__ret__, 'buses'),
+        event_bus_type=pulumi.get(__ret__, 'event_bus_type'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_prefix=pulumi.get(__ret__, 'name_prefix'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_event_buses)

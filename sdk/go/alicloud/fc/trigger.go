@@ -76,7 +76,23 @@ import (
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
-//				Document:    pulumi.String("  {\n      \"Statement\": [\n        {\n          \"Action\": \"sts:AssumeRole\",\n          \"Effect\": \"Allow\",\n          \"Principal\": {\n            \"Service\": [\n              \"fc.aliyuncs.com\"\n            ]\n          }\n        }\n      ],\n      \"Version\": \"1\"\n  }\n"),
+//				Document: pulumi.String(`  {
+//	      "Statement": [
+//	        {
+//	          "Action": "sts:AssumeRole",
+//	          "Effect": "Allow",
+//	          "Principal": {
+//	            "Service": [
+//	              "fc.aliyuncs.com"
+//	            ]
+//	          }
+//	        }
+//	      ],
+//	      "Version": "1"
+//	  }
+//
+// `),
+//
 //				Description: pulumi.String("this is a example"),
 //				Force:       pulumi.Bool(true),
 //			})
@@ -221,7 +237,23 @@ import (
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
-//				Document:    pulumi.String("  {\n      \"Statement\": [\n        {\n          \"Action\": \"sts:AssumeRole\",\n          \"Effect\": \"Allow\",\n          \"Principal\": {\n            \"Service\": [\n              \"mns.aliyuncs.com\"\n            ]\n          }\n        }\n      ],\n      \"Version\": \"1\"\n  }\n"),
+//				Document: pulumi.String(`  {
+//	      "Statement": [
+//	        {
+//	          "Action": "sts:AssumeRole",
+//	          "Effect": "Allow",
+//	          "Principal": {
+//	            "Service": [
+//	              "mns.aliyuncs.com"
+//	            ]
+//	          }
+//	        }
+//	      ],
+//	      "Version": "1"
+//	  }
+//
+// `),
+//
 //				Description: pulumi.String("this is a example"),
 //				Force:       pulumi.Bool(true),
 //			})
@@ -278,8 +310,15 @@ import (
 //				SourceArn: defaultTopic.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("acs:mns:%v:%v:/topics/%v", defaultRegions.Regions[0].Id, defaultAccount.Id, name), nil
 //				}).(pulumi.StringOutput),
-//				Type:      pulumi.String("mns_topic"),
-//				ConfigMns: pulumi.String("  {\n    \"filterTag\":\"exampleTag\",\n    \"notifyContentFormat\":\"STREAM\",\n    \"notifyStrategy\":\"BACKOFF_RETRY\"\n  }\n"),
+//				Type: pulumi.String("mns_topic"),
+//				ConfigMns: pulumi.String(`  {
+//	    "filterTag":"exampleTag",
+//	    "notifyContentFormat":"STREAM",
+//	    "notifyStrategy":"BACKOFF_RETRY"
+//	  }
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -349,7 +388,23 @@ import (
 //				return err
 //			}
 //			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
-//				Document:    pulumi.String("    {\n      \"Statement\": [\n        {\n          \"Action\": \"sts:AssumeRole\",\n          \"Effect\": \"Allow\",\n          \"Principal\": {\n            \"Service\": [\n              \"cdn.aliyuncs.com\"\n            ]\n          }\n        }\n      ],\n      \"Version\": \"1\"\n  }\n"),
+//				Document: pulumi.String(`    {
+//	      "Statement": [
+//	        {
+//	          "Action": "sts:AssumeRole",
+//	          "Effect": "Allow",
+//	          "Principal": {
+//	            "Service": [
+//	              "cdn.aliyuncs.com"
+//	            ]
+//	          }
+//	        }
+//	      ],
+//	      "Version": "1"
+//	  }
+//
+// `),
+//
 //				Description: pulumi.String("this is a example"),
 //				Force:       pulumi.Bool(true),
 //			})
@@ -536,7 +591,17 @@ import (
 //				Service:  defaultService.Name,
 //				Function: defaultFunction.Name,
 //				Type:     pulumi.String("eventbridge"),
-//				Config:   pulumi.String("    {\n        \"triggerEnable\": false,\n        \"asyncInvocationType\": false,\n        \"eventRuleFilterPattern\": \"{\\\"source\\\":[\\\"acs.oss\\\"],\\\"type\\\":[\\\"oss:BucketCreated:PutBucket\\\"]}\",\n        \"eventSourceConfig\": {\n            \"eventSourceType\": \"Default\"\n        }\n    }\n"),
+//				Config: pulumi.String(`    {
+//	        "triggerEnable": false,
+//	        "asyncInvocationType": false,
+//	        "eventRuleFilterPattern": "{\"source\":[\"acs.oss\"],\"type\":[\"oss:BucketCreated:PutBucket\"]}",
+//	        "eventSourceConfig": {
+//	            "eventSourceType": "Default"
+//	        }
+//	    }
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -545,7 +610,24 @@ import (
 //				Service:  defaultService.Name,
 //				Function: defaultFunction.Name,
 //				Type:     pulumi.String("eventbridge"),
-//				Config:   pulumi.String("    {\n        \"triggerEnable\": false,\n        \"asyncInvocationType\": false,\n        \"eventRuleFilterPattern\": \"{}\",\n        \"eventSourceConfig\": {\n            \"eventSourceType\": \"MNS\",\n            \"eventSourceParameters\": {\n                \"sourceMNSParameters\": {\n                    \"RegionId\": \"cn-hangzhou\",\n                    \"QueueName\": \"mns-queue\",\n                    \"IsBase64Decode\": true\n                }\n            }\n        }\n    }\n"),
+//				Config: pulumi.String(`    {
+//	        "triggerEnable": false,
+//	        "asyncInvocationType": false,
+//	        "eventRuleFilterPattern": "{}",
+//	        "eventSourceConfig": {
+//	            "eventSourceType": "MNS",
+//	            "eventSourceParameters": {
+//	                "sourceMNSParameters": {
+//	                    "RegionId": "cn-hangzhou",
+//	                    "QueueName": "mns-queue",
+//	                    "IsBase64Decode": true
+//	                }
+//	            }
+//	        }
+//	    }
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err

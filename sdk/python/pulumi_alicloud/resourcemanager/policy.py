@@ -65,6 +65,9 @@ class PolicyArgs:
         """
         The version of the policy. Default to v1.
         """
+        warnings.warn("""Field 'default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
+        pulumi.log.warn("""default_version is deprecated: Field 'default_version' has been deprecated from provider version 1.90.0""")
+
         return pulumi.get(self, "default_version")
 
     @default_version.setter
@@ -120,6 +123,9 @@ class _PolicyState:
         """
         The version of the policy. Default to v1.
         """
+        warnings.warn("""Field 'default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
+        pulumi.log.warn("""default_version is deprecated: Field 'default_version' has been deprecated from provider version 1.90.0""")
+
         return pulumi.get(self, "default_version")
 
     @default_version.setter
@@ -355,6 +361,9 @@ class Policy(pulumi.CustomResource):
         """
         The version of the policy. Default to v1.
         """
+        warnings.warn("""Field 'default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
+        pulumi.log.warn("""default_version is deprecated: Field 'default_version' has been deprecated from provider version 1.90.0""")
+
         return pulumi.get(self, "default_version")
 
     @property

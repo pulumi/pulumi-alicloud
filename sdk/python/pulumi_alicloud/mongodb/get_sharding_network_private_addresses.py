@@ -115,12 +115,12 @@ def get_sharding_network_private_addresses(db_instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses', __args__, opts=opts, typ=GetShardingNetworkPrivateAddressesResult).value
 
     return AwaitableGetShardingNetworkPrivateAddressesResult(
-        addresses=__ret__.addresses,
-        db_instance_id=__ret__.db_instance_id,
-        id=__ret__.id,
-        node_id=__ret__.node_id,
-        output_file=__ret__.output_file,
-        role=__ret__.role)
+        addresses=pulumi.get(__ret__, 'addresses'),
+        db_instance_id=pulumi.get(__ret__, 'db_instance_id'),
+        id=pulumi.get(__ret__, 'id'),
+        node_id=pulumi.get(__ret__, 'node_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        role=pulumi.get(__ret__, 'role'))
 
 
 @_utilities.lift_output_func(get_sharding_network_private_addresses)

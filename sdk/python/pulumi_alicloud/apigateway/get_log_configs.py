@@ -117,11 +117,11 @@ def get_log_configs(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:apigateway/getLogConfigs:getLogConfigs', __args__, opts=opts, typ=GetLogConfigsResult).value
 
     return AwaitableGetLogConfigsResult(
-        configs=__ret__.configs,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        log_type=__ret__.log_type,
-        output_file=__ret__.output_file)
+        configs=pulumi.get(__ret__, 'configs'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        log_type=pulumi.get(__ret__, 'log_type'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_log_configs)

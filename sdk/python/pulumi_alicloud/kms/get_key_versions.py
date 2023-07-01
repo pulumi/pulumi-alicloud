@@ -123,11 +123,11 @@ def get_key_versions(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:kms/getKeyVersions:getKeyVersions', __args__, opts=opts, typ=GetKeyVersionsResult).value
 
     return AwaitableGetKeyVersionsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        key_id=__ret__.key_id,
-        output_file=__ret__.output_file,
-        versions=__ret__.versions)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        key_id=pulumi.get(__ret__, 'key_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        versions=pulumi.get(__ret__, 'versions'))
 
 
 @_utilities.lift_output_func(get_key_versions)

@@ -11,14 +11,8 @@ namespace Pulumi.AliCloud.Rds
 {
     /// <summary>
     /// Provide RDS cluster instance endpoint connection resources.
-    /// &gt; **NOTE:** Available in 1.203.0+.
     /// 
-    /// ## Block node_items
-    /// 
-    /// The node_items mapping supports the following:
-    /// 
-    /// * `node_id` - (Required) The ID of the node.
-    /// * `weight` - (Required) The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+    /// &gt; **NOTE:** Available since v1.203.0+.
     /// 
     /// ## Import
     /// 
@@ -74,7 +68,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> IpType { get; private set; } = null!;
 
         /// <summary>
-        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         /// </summary>
         [Output("nodeItems")]
         public Output<ImmutableArray<Outputs.DbInstanceEndpointNodeItem>> NodeItems { get; private set; } = null!;
@@ -171,7 +165,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DbInstanceEndpointNodeItemArgs>? _nodeItems;
 
         /// <summary>
-        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         /// </summary>
         public InputList<Inputs.DbInstanceEndpointNodeItemArgs> NodeItems
         {
@@ -251,7 +245,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<Inputs.DbInstanceEndpointNodeItemGetArgs>? _nodeItems;
 
         /// <summary>
-        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+        /// The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
         /// </summary>
         public InputList<Inputs.DbInstanceEndpointNodeItemGetArgs> NodeItems
         {

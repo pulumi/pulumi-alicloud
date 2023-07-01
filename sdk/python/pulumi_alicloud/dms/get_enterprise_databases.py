@@ -135,12 +135,12 @@ def get_enterprise_databases(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases', __args__, opts=opts, typ=GetEnterpriseDatabasesResult).value
 
     return AwaitableGetEnterpriseDatabasesResult(
-        databases=__ret__.databases,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        name_regex=__ret__.name_regex,
-        output_file=__ret__.output_file)
+        databases=pulumi.get(__ret__, 'databases'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_enterprise_databases)

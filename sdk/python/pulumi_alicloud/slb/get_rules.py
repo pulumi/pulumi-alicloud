@@ -183,14 +183,14 @@ def get_rules(frontend_port: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:slb/getRules:getRules', __args__, opts=opts, typ=GetRulesResult).value
 
     return AwaitableGetRulesResult(
-        frontend_port=__ret__.frontend_port,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        load_balancer_id=__ret__.load_balancer_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        slb_rules=__ret__.slb_rules)
+        frontend_port=pulumi.get(__ret__, 'frontend_port'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        load_balancer_id=pulumi.get(__ret__, 'load_balancer_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        slb_rules=pulumi.get(__ret__, 'slb_rules'))
 
 
 @_utilities.lift_output_func(get_rules)

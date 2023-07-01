@@ -228,19 +228,19 @@ def get_server_groups(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:alb/getServerGroups:getServerGroups', __args__, opts=opts, typ=GetServerGroupsResult).value
 
     return AwaitableGetServerGroupsResult(
-        enable_details=__ret__.enable_details,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        server_group_ids=__ret__.server_group_ids,
-        server_group_name=__ret__.server_group_name,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        vpc_id=__ret__.vpc_id)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        server_group_ids=pulumi.get(__ret__, 'server_group_ids'),
+        server_group_name=pulumi.get(__ret__, 'server_group_name'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 
 
 @_utilities.lift_output_func(get_server_groups)

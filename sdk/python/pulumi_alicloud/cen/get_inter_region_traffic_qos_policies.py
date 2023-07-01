@@ -217,18 +217,18 @@ def get_inter_region_traffic_qos_policies(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies', __args__, opts=opts, typ=GetInterRegionTrafficQosPoliciesResult).value
 
     return AwaitableGetInterRegionTrafficQosPoliciesResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        policies=__ret__.policies,
-        status=__ret__.status,
-        traffic_qos_policy_description=__ret__.traffic_qos_policy_description,
-        traffic_qos_policy_id=__ret__.traffic_qos_policy_id,
-        traffic_qos_policy_name=__ret__.traffic_qos_policy_name,
-        transit_router_attachment_id=__ret__.transit_router_attachment_id,
-        transit_router_id=__ret__.transit_router_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policies=pulumi.get(__ret__, 'policies'),
+        status=pulumi.get(__ret__, 'status'),
+        traffic_qos_policy_description=pulumi.get(__ret__, 'traffic_qos_policy_description'),
+        traffic_qos_policy_id=pulumi.get(__ret__, 'traffic_qos_policy_id'),
+        traffic_qos_policy_name=pulumi.get(__ret__, 'traffic_qos_policy_name'),
+        transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
+        transit_router_id=pulumi.get(__ret__, 'transit_router_id'))
 
 
 @_utilities.lift_output_func(get_inter_region_traffic_qos_policies)

@@ -121,11 +121,11 @@ def get_server_backup_plans(filters: Optional[Sequence[pulumi.InputType['GetServ
     __ret__ = pulumi.runtime.invoke('alicloud:hbr/getServerBackupPlans:getServerBackupPlans', __args__, opts=opts, typ=GetServerBackupPlansResult).value
 
     return AwaitableGetServerBackupPlansResult(
-        filters=__ret__.filters,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        plans=__ret__.plans)
+        filters=pulumi.get(__ret__, 'filters'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        plans=pulumi.get(__ret__, 'plans'))
 
 
 @_utilities.lift_output_func(get_server_backup_plans)

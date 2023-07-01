@@ -15,7 +15,7 @@ import (
 //
 // For information about Alidns Gtm Instance and how to use it, see [What is Gtm Instance](https://www.alibabacloud.com/help/en/doc-detail/204852.html).
 //
-// > **NOTE:** Available in v1.151.0+.
+// > **NOTE:** Available since v1.151.0.
 //
 // ## Example Usage
 //
@@ -30,23 +30,29 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dns"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			domainName := "alicloud-provider.com"
+//			if param := cfg.Get("domainName"); param != "" {
+//				domainName = param
+//			}
 //			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
-//				AlarmContactGroupName: pulumi.Any(_var.Name),
+//				AlarmContactGroupName: pulumi.String("tf_example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dns.NewGtmInstance(ctx, "defaultGtmInstance", &dns.GtmInstanceArgs{
-//				InstanceName:         pulumi.Any(_var.Name),
+//				InstanceName:         pulumi.String("tf_example"),
 //				PaymentType:          pulumi.String("Subscription"),
 //				Period:               pulumi.Int(1),
 //				RenewalStatus:        pulumi.String("ManualRenewal"),
@@ -60,7 +66,7 @@ import (
 //				AlertGroups: pulumi.StringArray{
 //					defaultAlarmContactGroup.AlarmContactGroupName,
 //				},
-//				PublicUserDomainName: pulumi.Any(_var.Domain_name),
+//				PublicUserDomainName: pulumi.String(domainName),
 //				AlertConfigs: dns.GtmInstanceAlertConfigArray{
 //					&dns.GtmInstanceAlertConfigArgs{
 //						SmsNotice:      pulumi.Bool(true),
@@ -91,7 +97,7 @@ import (
 type GtmInstance struct {
 	pulumi.CustomResourceState
 
-	// The alert notification methods. See the following `Block alertConfig`.
+	// The alert notification methods. See `alertConfig` below for details.
 	AlertConfigs GtmInstanceAlertConfigArrayOutput `pulumi:"alertConfigs"`
 	// The alert group.
 	AlertGroups pulumi.StringArrayOutput `pulumi:"alertGroups"`
@@ -180,7 +186,7 @@ func GetGtmInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GtmInstance resources.
 type gtmInstanceState struct {
-	// The alert notification methods. See the following `Block alertConfig`.
+	// The alert notification methods. See `alertConfig` below for details.
 	AlertConfigs []GtmInstanceAlertConfig `pulumi:"alertConfigs"`
 	// The alert group.
 	AlertGroups []string `pulumi:"alertGroups"`
@@ -223,7 +229,7 @@ type gtmInstanceState struct {
 }
 
 type GtmInstanceState struct {
-	// The alert notification methods. See the following `Block alertConfig`.
+	// The alert notification methods. See `alertConfig` below for details.
 	AlertConfigs GtmInstanceAlertConfigArrayInput
 	// The alert group.
 	AlertGroups pulumi.StringArrayInput
@@ -270,7 +276,7 @@ func (GtmInstanceState) ElementType() reflect.Type {
 }
 
 type gtmInstanceArgs struct {
-	// The alert notification methods. See the following `Block alertConfig`.
+	// The alert notification methods. See `alertConfig` below for details.
 	AlertConfigs []GtmInstanceAlertConfig `pulumi:"alertConfigs"`
 	// The alert group.
 	AlertGroups []string `pulumi:"alertGroups"`
@@ -314,7 +320,7 @@ type gtmInstanceArgs struct {
 
 // The set of arguments for constructing a GtmInstance resource.
 type GtmInstanceArgs struct {
-	// The alert notification methods. See the following `Block alertConfig`.
+	// The alert notification methods. See `alertConfig` below for details.
 	AlertConfigs GtmInstanceAlertConfigArrayInput
 	// The alert group.
 	AlertGroups pulumi.StringArrayInput
@@ -443,7 +449,7 @@ func (o GtmInstanceOutput) ToGtmInstanceOutputWithContext(ctx context.Context) G
 	return o
 }
 
-// The alert notification methods. See the following `Block alertConfig`.
+// The alert notification methods. See `alertConfig` below for details.
 func (o GtmInstanceOutput) AlertConfigs() GtmInstanceAlertConfigArrayOutput {
 	return o.ApplyT(func(v *GtmInstance) GtmInstanceAlertConfigArrayOutput { return v.AlertConfigs }).(GtmInstanceAlertConfigArrayOutput)
 }

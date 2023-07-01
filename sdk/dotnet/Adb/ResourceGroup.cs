@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Adb
     /// <summary>
     /// Provides a Adb Resource Group resource.
     /// 
-    /// For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/create-db-resource-group).
+    /// For information about Adb Resource Group and how to use it, see [What is Adb Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2019-03-15-api-doc-createdbresourcegroup).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,12 +28,64 @@ namespace Pulumi.AliCloud.Adb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Adb.ResourceGroup("default", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var defaultZones = AliCloud.Adb.GetZones.Invoke();
+    /// 
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
-    ///         DbClusterId = "am-bp1a16357gty69185",
-    ///         GroupName = "TESTOPENAPI",
+    ///         Status = "OK",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     {
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VswitchName = name,
+    ///     });
+    /// 
+    ///     var defaultDBCluster = new AliCloud.Adb.DBCluster("defaultDBCluster", new()
+    ///     {
+    ///         ComputeResource = "48Core192GBNEW",
+    ///         DbClusterCategory = "MixedStorage",
+    ///         DbClusterVersion = "3.0",
+    ///         DbNodeClass = "E32",
+    ///         DbNodeCount = 1,
+    ///         DbNodeStorage = 100,
+    ///         Description = name,
+    ///         ElasticIoResource = 1,
+    ///         MaintainTime = "04:00Z-05:00Z",
+    ///         Mode = "flexible",
+    ///         PaymentType = "PayAsYouGo",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         SecurityIps = new[]
+    ///         {
+    ///             "10.168.1.12",
+    ///             "10.168.1.11",
+    ///         },
+    ///         VpcId = defaultNetwork.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultResourceGroup = new AliCloud.Adb.ResourceGroup("defaultResourceGroup", new()
+    ///     {
+    ///         GroupName = "TF_EXAMPLE",
     ///         GroupType = "batch",
-    ///         NodeNum = 0,
+    ///         NodeNum = 1,
+    ///         DbClusterId = defaultDBCluster.Id,
     ///     });
     /// 
     /// });

@@ -249,21 +249,21 @@ def get_snapshots(bucket: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:hbr/getSnapshots:getSnapshots', __args__, opts=opts, typ=GetSnapshotsResult).value
 
     return AwaitableGetSnapshotsResult(
-        bucket=__ret__.bucket,
-        complete_time=__ret__.complete_time,
-        complete_time_checker=__ret__.complete_time_checker,
-        create_time=__ret__.create_time,
-        file_system_id=__ret__.file_system_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        limit=__ret__.limit,
-        output_file=__ret__.output_file,
-        query=__ret__.query,
-        snapshots=__ret__.snapshots,
-        source_type=__ret__.source_type,
-        status=__ret__.status,
-        vault_id=__ret__.vault_id)
+        bucket=pulumi.get(__ret__, 'bucket'),
+        complete_time=pulumi.get(__ret__, 'complete_time'),
+        complete_time_checker=pulumi.get(__ret__, 'complete_time_checker'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        file_system_id=pulumi.get(__ret__, 'file_system_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        limit=pulumi.get(__ret__, 'limit'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        query=pulumi.get(__ret__, 'query'),
+        snapshots=pulumi.get(__ret__, 'snapshots'),
+        source_type=pulumi.get(__ret__, 'source_type'),
+        status=pulumi.get(__ret__, 'status'),
+        vault_id=pulumi.get(__ret__, 'vault_id'))
 
 
 @_utilities.lift_output_func(get_snapshots)

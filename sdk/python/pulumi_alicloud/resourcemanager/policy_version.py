@@ -65,6 +65,9 @@ class PolicyVersionArgs:
 
         > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         """
+        warnings.warn("""Field 'is_default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
+        pulumi.log.warn("""is_default_version is deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0""")
+
         return pulumi.get(self, "is_default_version")
 
     @is_default_version.setter
@@ -104,6 +107,9 @@ class _PolicyVersionState:
 
         > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         """
+        warnings.warn("""Field 'is_default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
+        pulumi.log.warn("""is_default_version is deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0""")
+
         return pulumi.get(self, "is_default_version")
 
     @is_default_version.setter
@@ -334,6 +340,9 @@ class PolicyVersion(pulumi.CustomResource):
 
         > **NOTE:** If set to default version, the resource cannot be deleted. You need to set the other version as the default version in policy before you delete this resource.
         """
+        warnings.warn("""Field 'is_default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
+        pulumi.log.warn("""is_default_version is deprecated: Field 'is_default_version' has been deprecated from provider version 1.90.0""")
+
         return pulumi.get(self, "is_default_version")
 
     @property

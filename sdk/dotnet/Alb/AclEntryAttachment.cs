@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb
 {
     /// <summary>
-    /// &gt; **NOTE:** Available in v1.166.0+.
+    /// &gt; **NOTE:** Available since v1.166.0.
     /// 
     /// For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addentriestoacl).
     /// 
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Alb
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraformalbaclconfig";
+    ///     var name = config.Get("name") ?? "tf_example";
     ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var defaultAcl = new AliCloud.Alb.Acl("defaultAcl", new()

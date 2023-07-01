@@ -137,13 +137,13 @@ def get_flows(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:fnf/getFlows:getFlows', __args__, opts=opts, typ=GetFlowsResult).value
 
     return AwaitableGetFlowsResult(
-        flows=__ret__.flows,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        limit=__ret__.limit,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        flows=pulumi.get(__ret__, 'flows'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        limit=pulumi.get(__ret__, 'limit'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_flows)

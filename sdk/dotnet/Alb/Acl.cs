@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Alb
     /// <summary>
     /// Provides a Application Load Balancer (ALB) Acl resource.
     /// 
-    /// For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/200280.html).
+    /// For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createacl).
     /// 
-    /// &gt; **NOTE:** Available in v1.133.0+.
+    /// &gt; **NOTE:** Available since v1.133.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,17 +28,12 @@ namespace Pulumi.AliCloud.Alb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Alb.Acl("example", new()
+    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    /// 
+    ///     var defaultAcl = new AliCloud.Alb.Acl("defaultAcl", new()
     ///     {
-    ///         AclEntries = new[]
-    ///         {
-    ///             new AliCloud.Alb.Inputs.AclAclEntryArgs
-    ///             {
-    ///                 Description = "example_value",
-    ///                 Entry = "10.0.0.0/24",
-    ///             },
-    ///         },
-    ///         AclName = "example_value",
+    ///         AclName = "tf_example",
+    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
     ///     });
     /// 
     /// });
@@ -56,7 +51,8 @@ namespace Pulumi.AliCloud.Alb
     public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+        /// The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+        /// **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         /// </summary>
         [Output("aclEntries")]
         public Output<ImmutableArray<Outputs.AclAclEntry>> AclEntries { get; private set; } = null!;
@@ -80,7 +76,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        /// The status of the ACL entry. Valid values:
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -141,7 +137,8 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AclAclEntryArgs>? _aclEntries;
 
         /// <summary>
-        /// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+        /// The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+        /// **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         /// </summary>
         [Obsolete(@"Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.")]
         public InputList<Inputs.AclAclEntryArgs> AclEntries
@@ -192,7 +189,8 @@ namespace Pulumi.AliCloud.Alb
         private InputList<Inputs.AclAclEntryGetArgs>? _aclEntries;
 
         /// <summary>
-        /// The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+        /// The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+        /// **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         /// </summary>
         [Obsolete(@"Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.")]
         public InputList<Inputs.AclAclEntryGetArgs> AclEntries
@@ -220,7 +218,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        /// The status of the ACL entry. Valid values:
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

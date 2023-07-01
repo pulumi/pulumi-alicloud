@@ -150,6 +150,8 @@ class RouteEntry(pulumi.CustomResource):
 
         For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
 
+        > **NOTE:** Available since v1.20.0.
+
         ## Example Usage
 
         Basic Usage
@@ -158,63 +160,47 @@ class RouteEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a cen_route_entry resource and use it to publish a route entry pointing to an ECS.
-        hz = alicloud.Provider("hz", region="cn-hangzhou")
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccCenRouteEntryConfig"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default = alicloud.get_regions(current=True)
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
-            description="foo",
-            vpc_id=vpc.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            vswitch_id=default_switch.id,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            system_disk_category="cloud_efficiency",
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=5,
-            security_groups=[default_security_group.id],
-            instance_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        cen = alicloud.cen.Instance("cen")
-        attach = alicloud.cen.InstanceAttachment("attach",
-            instance_id=cen.id,
-            child_instance_id=vpc.id,
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            availability_zone=example_zones.zones[0].id,
+            instance_name="terraform-example",
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            security_groups=[example_security_group.id],
+            vswitch_id=example_switch.id,
+            internet_max_bandwidth_out=5)
+        example_cen_instance_instance = alicloud.cen.Instance("exampleCen/instanceInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_cen / instance_instance["id"],
+            child_instance_id=example_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-hangzhou",
-            opts=pulumi.ResourceOptions(depends_on=[default_switch]))
-        route = alicloud.vpc.RouteEntry("route",
-            route_table_id=vpc.route_table_id,
+            child_instance_region_id=default.regions[0].id)
+        example_route_entry = alicloud.vpc.RouteEntry("exampleRouteEntry",
+            route_table_id=example_network.route_table_id,
             destination_cidrblock="11.0.0.0/16",
             nexthop_type="Instance",
-            nexthop_id=default_instance.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        foo = alicloud.cen.RouteEntry("foo",
-            instance_id=cen.id,
-            route_table_id=vpc.route_table_id,
-            cidr_block=route.destination_cidrblock,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"],
-                depends_on=[attach]))
+            nexthop_id=example_instance.id)
+        example_cen_route_entry_route_entry = alicloud.cen.RouteEntry("exampleCen/routeEntryRouteEntry",
+            instance_id=example_instance_attachment.instance_id,
+            route_table_id=example_network.route_table_id,
+            cidr_block=example_route_entry.destination_cidrblock)
         ```
 
         ## Import
@@ -246,6 +232,8 @@ class RouteEntry(pulumi.CustomResource):
 
         For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
 
+        > **NOTE:** Available since v1.20.0.
+
         ## Example Usage
 
         Basic Usage
@@ -254,63 +242,47 @@ class RouteEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a cen_route_entry resource and use it to publish a route entry pointing to an ECS.
-        hz = alicloud.Provider("hz", region="cn-hangzhou")
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-testAccCenRouteEntryConfig"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
-            available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default = alicloud.get_regions(current=True)
+        example_zones = alicloud.get_zones(available_resource_creation="Instance")
+        example_instance_types = alicloud.ecs.get_instance_types(availability_zone=example_zones.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
+        example_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        vpc = alicloud.vpc.Network("vpc",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            vpc_id=vpc.id,
-            cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
-            vswitch_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
-            description="foo",
-            vpc_id=vpc.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            vswitch_id=default_switch.id,
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
-            system_disk_category="cloud_efficiency",
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=5,
-            security_groups=[default_security_group.id],
-            instance_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        cen = alicloud.cen.Instance("cen")
-        attach = alicloud.cen.InstanceAttachment("attach",
-            instance_id=cen.id,
-            child_instance_id=vpc.id,
+        example_network = alicloud.vpc.Network("exampleNetwork",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("exampleSwitch",
+            vswitch_name="terraform-example",
+            cidr_block="172.17.3.0/24",
+            vpc_id=example_network.id,
+            zone_id=example_zones.zones[0].id)
+        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
+        example_instance = alicloud.ecs.Instance("exampleInstance",
+            availability_zone=example_zones.zones[0].id,
+            instance_name="terraform-example",
+            image_id=example_images.images[0].id,
+            instance_type=example_instance_types.instance_types[0].id,
+            security_groups=[example_security_group.id],
+            vswitch_id=example_switch.id,
+            internet_max_bandwidth_out=5)
+        example_cen_instance_instance = alicloud.cen.Instance("exampleCen/instanceInstance",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+            instance_id=example_cen / instance_instance["id"],
+            child_instance_id=example_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-hangzhou",
-            opts=pulumi.ResourceOptions(depends_on=[default_switch]))
-        route = alicloud.vpc.RouteEntry("route",
-            route_table_id=vpc.route_table_id,
+            child_instance_region_id=default.regions[0].id)
+        example_route_entry = alicloud.vpc.RouteEntry("exampleRouteEntry",
+            route_table_id=example_network.route_table_id,
             destination_cidrblock="11.0.0.0/16",
             nexthop_type="Instance",
-            nexthop_id=default_instance.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        foo = alicloud.cen.RouteEntry("foo",
-            instance_id=cen.id,
-            route_table_id=vpc.route_table_id,
-            cidr_block=route.destination_cidrblock,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"],
-                depends_on=[attach]))
+            nexthop_id=example_instance.id)
+        example_cen_route_entry_route_entry = alicloud.cen.RouteEntry("exampleCen/routeEntryRouteEntry",
+            instance_id=example_instance_attachment.instance_id,
+            route_table_id=example_network.route_table_id,
+            cidr_block=example_route_entry.destination_cidrblock)
         ```
 
         ## Import

@@ -134,6 +134,9 @@ class AccountArgs:
         """
         Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         """
+        warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
+
         return pulumi.get(self, "description")
 
     @description.setter
@@ -146,6 +149,9 @@ class AccountArgs:
         """
         The Id of instance in which account belongs.
         """
+        warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
+
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -182,6 +188,9 @@ class AccountArgs:
         """
         Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -194,6 +203,9 @@ class AccountArgs:
         """
         Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         """
+        warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
+        pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
+
         return pulumi.get(self, "password")
 
     @password.setter
@@ -219,6 +231,9 @@ class AccountArgs:
 
         Default to Normal.
         """
+        warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
+
         return pulumi.get(self, "type")
 
     @type.setter
@@ -352,6 +367,9 @@ class _AccountState:
         """
         Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         """
+        warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
+
         return pulumi.get(self, "description")
 
     @description.setter
@@ -364,6 +382,9 @@ class _AccountState:
         """
         The Id of instance in which account belongs.
         """
+        warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
+
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -400,6 +421,9 @@ class _AccountState:
         """
         Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -412,6 +436,9 @@ class _AccountState:
         """
         Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         """
+        warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
+        pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
+
         return pulumi.get(self, "password")
 
     @password.setter
@@ -446,6 +473,9 @@ class _AccountState:
 
         Default to Normal.
         """
+        warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
+
         return pulumi.get(self, "type")
 
     @type.setter
@@ -748,6 +778,9 @@ class Account(pulumi.CustomResource):
         """
         Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         """
+        warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
+
         return pulumi.get(self, "description")
 
     @property
@@ -756,6 +789,9 @@ class Account(pulumi.CustomResource):
         """
         The Id of instance in which account belongs.
         """
+        warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
+
         return pulumi.get(self, "instance_id")
 
     @property
@@ -780,6 +816,9 @@ class Account(pulumi.CustomResource):
         """
         Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property
@@ -788,6 +827,9 @@ class Account(pulumi.CustomResource):
         """
         Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters. You have to specify one of `password` and `kms_encrypted_password` fields.
         """
+        warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
+        pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
+
         return pulumi.get(self, "password")
 
     @property
@@ -810,5 +852,8 @@ class Account(pulumi.CustomResource):
 
         Default to Normal.
         """
+        warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
+
         return pulumi.get(self, "type")
 

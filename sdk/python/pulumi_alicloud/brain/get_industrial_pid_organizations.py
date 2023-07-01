@@ -137,13 +137,13 @@ def get_industrial_pid_organizations(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations', __args__, opts=opts, typ=GetIndustrialPidOrganizationsResult).value
 
     return AwaitableGetIndustrialPidOrganizationsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        organizations=__ret__.organizations,
-        output_file=__ret__.output_file,
-        parent_organization_id=__ret__.parent_organization_id)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        organizations=pulumi.get(__ret__, 'organizations'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        parent_organization_id=pulumi.get(__ret__, 'parent_organization_id'))
 
 
 @_utilities.lift_output_func(get_industrial_pid_organizations)

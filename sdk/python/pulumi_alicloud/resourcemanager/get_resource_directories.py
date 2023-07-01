@@ -92,9 +92,9 @@ def get_resource_directories(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getResourceDirectories:getResourceDirectories', __args__, opts=opts, typ=GetResourceDirectoriesResult).value
 
     return AwaitableGetResourceDirectoriesResult(
-        directories=__ret__.directories,
-        id=__ret__.id,
-        output_file=__ret__.output_file)
+        directories=pulumi.get(__ret__, 'directories'),
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_resource_directories)

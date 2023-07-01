@@ -28,10 +28,6 @@ class GetGatewaysResult:
         pulumi.set(__self__, "business_status", business_status)
         if enable_ipsec and not isinstance(enable_ipsec, bool):
             raise TypeError("Expected argument 'enable_ipsec' to be a bool")
-        if enable_ipsec is not None:
-            warnings.warn("""Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.""", DeprecationWarning)
-            pulumi.log.warn("""enable_ipsec is deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.""")
-
         pulumi.set(__self__, "enable_ipsec", enable_ipsec)
         if gateways and not isinstance(gateways, list):
             raise TypeError("Expected argument 'gateways' to be a list")
@@ -75,6 +71,9 @@ class GetGatewaysResult:
         """
         Whether the ipsec function is enabled.
         """
+        warnings.warn("""Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.""", DeprecationWarning)
+        pulumi.log.warn("""enable_ipsec is deprecated: Field 'enable_ipsec' has been deprecated from provider version 1.193.0 and it will be removed in the future version.""")
+
         return pulumi.get(self, "enable_ipsec")
 
     @property
@@ -213,17 +212,17 @@ def get_gateways(business_status: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpn/getGateways:getGateways', __args__, opts=opts, typ=GetGatewaysResult).value
 
     return AwaitableGetGatewaysResult(
-        business_status=__ret__.business_status,
-        enable_ipsec=__ret__.enable_ipsec,
-        gateways=__ret__.gateways,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        include_reservation_data=__ret__.include_reservation_data,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        vpc_id=__ret__.vpc_id)
+        business_status=pulumi.get(__ret__, 'business_status'),
+        enable_ipsec=pulumi.get(__ret__, 'enable_ipsec'),
+        gateways=pulumi.get(__ret__, 'gateways'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        include_reservation_data=pulumi.get(__ret__, 'include_reservation_data'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 
 
 @_utilities.lift_output_func(get_gateways)

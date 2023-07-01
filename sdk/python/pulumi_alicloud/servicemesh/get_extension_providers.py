@@ -166,14 +166,14 @@ def get_extension_providers(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:servicemesh/getExtensionProviders:getExtensionProviders', __args__, opts=opts, typ=GetExtensionProvidersResult).value
 
     return AwaitableGetExtensionProvidersResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        providers=__ret__.providers,
-        service_mesh_id=__ret__.service_mesh_id,
-        type=__ret__.type)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        providers=pulumi.get(__ret__, 'providers'),
+        service_mesh_id=pulumi.get(__ret__, 'service_mesh_id'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_extension_providers)

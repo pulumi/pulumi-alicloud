@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Application Load Balancer (ALB) Rule resource.
  *
- * For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/doc-detail/214375.htm).
+ * For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createrule).
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * > **NOTE:** This version only supports forwarding rules in the request direction.
  *
@@ -68,11 +68,11 @@ export class Rule extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
-     * The actions of the forwarding rules. See the following `Block ruleActions`.
+     * The actions of the forwarding rules. See `ruleActions` below for details.
      */
     public readonly ruleActions!: pulumi.Output<outputs.alb.RuleRuleAction[]>;
     /**
-     * The conditions of the forwarding rule. See the following `Block ruleConditions`.
+     * The conditions of the forwarding rule. See `ruleConditions` below for details.
      */
     public readonly ruleConditions!: pulumi.Output<outputs.alb.RuleRuleCondition[]>;
     /**
@@ -157,11 +157,11 @@ export interface RuleState {
      */
     priority?: pulumi.Input<number>;
     /**
-     * The actions of the forwarding rules. See the following `Block ruleActions`.
+     * The actions of the forwarding rules. See `ruleActions` below for details.
      */
     ruleActions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleAction>[]>;
     /**
-     * The conditions of the forwarding rule. See the following `Block ruleConditions`.
+     * The conditions of the forwarding rule. See `ruleConditions` below for details.
      */
     ruleConditions?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleCondition>[]>;
     /**
@@ -195,11 +195,11 @@ export interface RuleArgs {
      */
     priority: pulumi.Input<number>;
     /**
-     * The actions of the forwarding rules. See the following `Block ruleActions`.
+     * The actions of the forwarding rules. See `ruleActions` below for details.
      */
     ruleActions: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleAction>[]>;
     /**
-     * The conditions of the forwarding rule. See the following `Block ruleConditions`.
+     * The conditions of the forwarding rule. See `ruleConditions` below for details.
      */
     ruleConditions: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleCondition>[]>;
     /**

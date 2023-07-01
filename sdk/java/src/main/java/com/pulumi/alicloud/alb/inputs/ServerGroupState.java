@@ -38,14 +38,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of health checks.
+     * The configuration of health checks. See `health_check_config` below for details.
      * 
      */
     @Import(name="healthCheckConfig")
     private @Nullable Output<ServerGroupHealthCheckConfigArgs> healthCheckConfig;
 
     /**
-     * @return The configuration of health checks.
+     * @return The configuration of health checks. See `health_check_config` below for details.
      * 
      */
     public Optional<Output<ServerGroupHealthCheckConfigArgs>> healthCheckConfig() {
@@ -128,14 +128,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The backend server.
+     * The backend server. See `servers` below for details.
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<ServerGroupServerArgs>> servers;
 
     /**
-     * @return The backend server.
+     * @return The backend server. See `servers` below for details.
      * 
      */
     public Optional<Output<List<ServerGroupServerArgs>>> servers() {
@@ -143,14 +143,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource.
+     * The status of the backend server. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the backend server. Valid values:
      * 
      */
     public Optional<Output<String>> status() {
@@ -158,14 +158,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of the sticky session.
+     * The configuration of the sticky session. See `sticky_session_config` below for details.
      * 
      */
     @Import(name="stickySessionConfig")
     private @Nullable Output<ServerGroupStickySessionConfigArgs> stickySessionConfig;
 
     /**
-     * @return The configuration of the sticky session.
+     * @return The configuration of the sticky session. See `sticky_session_config` below for details.
      * 
      */
     public Optional<Output<ServerGroupStickySessionConfigArgs>> stickySessionConfig() {
@@ -259,7 +259,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig The configuration of health checks.
+         * @param healthCheckConfig The configuration of health checks. See `health_check_config` below for details.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckConfig The configuration of health checks.
+         * @param healthCheckConfig The configuration of health checks. See `health_check_config` below for details.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend server.
+         * @param servers The backend server. See `servers` below for details.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend server.
+         * @param servers The backend server. See `servers` below for details.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The backend server.
+         * @param servers The backend server. See `servers` below for details.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the backend server. Valid values:
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the backend server. Valid values:
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionConfig The configuration of the sticky session.
+         * @param stickySessionConfig The configuration of the sticky session. See `sticky_session_config` below for details.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessionConfig The configuration of the sticky session.
+         * @param stickySessionConfig The configuration of the sticky session. See `sticky_session_config` below for details.
          * 
          * @return builder
          * 

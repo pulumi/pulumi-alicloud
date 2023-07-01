@@ -91,9 +91,9 @@ def get_instance_types(output_file: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecp/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult).value
 
     return AwaitableGetInstanceTypesResult(
-        id=__ret__.id,
-        instance_types=__ret__.instance_types,
-        output_file=__ret__.output_file)
+        id=pulumi.get(__ret__, 'id'),
+        instance_types=pulumi.get(__ret__, 'instance_types'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_instance_types)

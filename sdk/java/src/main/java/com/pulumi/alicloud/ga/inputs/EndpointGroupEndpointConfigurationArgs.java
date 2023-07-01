@@ -18,18 +18,33 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
     public static final EndpointGroupEndpointConfigurationArgs Empty = new EndpointGroupEndpointConfigurationArgs();
 
     /**
-     * Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+     * Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
      * 
      */
     @Import(name="enableClientipPreservation")
     private @Nullable Output<Boolean> enableClientipPreservation;
 
     /**
-     * @return Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+     * @return Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> enableClientipPreservation() {
         return Optional.ofNullable(this.enableClientipPreservation);
+    }
+
+    /**
+     * Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+     * 
+     */
+    @Import(name="enableProxyProtocol")
+    private @Nullable Output<Boolean> enableProxyProtocol;
+
+    /**
+     * @return Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> enableProxyProtocol() {
+        return Optional.ofNullable(this.enableProxyProtocol);
     }
 
     /**
@@ -48,18 +63,14 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
     }
 
     /**
-     * The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-     * 
-     * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+     * The type of Endpoint N in the endpoint group. Valid values:
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-     * 
-     * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+     * @return The type of Endpoint N in the endpoint group. Valid values:
      * 
      */
     public Output<String> type() {
@@ -67,8 +78,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
     }
 
     /**
-     * The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-     * 
+     * The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
      * &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
      * 
      */
@@ -76,8 +86,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
     private Output<Integer> weight;
 
     /**
-     * @return The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-     * 
+     * @return The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
      * &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
      * 
      */
@@ -89,6 +98,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
     private EndpointGroupEndpointConfigurationArgs(EndpointGroupEndpointConfigurationArgs $) {
         this.enableClientipPreservation = $.enableClientipPreservation;
+        this.enableProxyProtocol = $.enableProxyProtocol;
         this.endpoint = $.endpoint;
         this.type = $.type;
         this.weight = $.weight;
@@ -113,7 +123,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param enableClientipPreservation Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+         * @param enableClientipPreservation Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -124,13 +134,34 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param enableClientipPreservation Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+         * @param enableClientipPreservation Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
          * 
          * @return builder
          * 
          */
         public Builder enableClientipPreservation(Boolean enableClientipPreservation) {
             return enableClientipPreservation(Output.of(enableClientipPreservation));
+        }
+
+        /**
+         * @param enableProxyProtocol Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableProxyProtocol(@Nullable Output<Boolean> enableProxyProtocol) {
+            $.enableProxyProtocol = enableProxyProtocol;
+            return this;
+        }
+
+        /**
+         * @param enableProxyProtocol Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableProxyProtocol(Boolean enableProxyProtocol) {
+            return enableProxyProtocol(Output.of(enableProxyProtocol));
         }
 
         /**
@@ -155,9 +186,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param type The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-         * 
-         * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+         * @param type The type of Endpoint N in the endpoint group. Valid values:
          * 
          * @return builder
          * 
@@ -168,9 +197,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param type The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-         * 
-         * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+         * @param type The type of Endpoint N in the endpoint group. Valid values:
          * 
          * @return builder
          * 
@@ -180,8 +207,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param weight The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-         * 
+         * @param weight The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
          * &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
          * 
          * @return builder
@@ -193,8 +219,7 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
         }
 
         /**
-         * @param weight The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-         * 
+         * @param weight The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
          * &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
          * 
          * @return builder

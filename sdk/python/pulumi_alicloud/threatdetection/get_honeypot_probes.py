@@ -193,15 +193,15 @@ def get_honeypot_probes(display_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes', __args__, opts=opts, typ=GetHoneypotProbesResult).value
 
     return AwaitableGetHoneypotProbesResult(
-        display_name=__ret__.display_name,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        output_file=__ret__.output_file,
-        probe_status=__ret__.probe_status,
-        probe_type=__ret__.probe_type,
-        probes=__ret__.probes)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        probe_status=pulumi.get(__ret__, 'probe_status'),
+        probe_type=pulumi.get(__ret__, 'probe_type'),
+        probes=pulumi.get(__ret__, 'probes'))
 
 
 @_utilities.lift_output_func(get_honeypot_probes)

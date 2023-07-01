@@ -170,16 +170,16 @@ def get_access_groups(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:dfs/getAccessGroups:getAccessGroups', __args__, opts=opts, typ=GetAccessGroupsResult).value
 
     return AwaitableGetAccessGroupsResult(
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        limit=__ret__.limit,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        order_by=__ret__.order_by,
-        order_type=__ret__.order_type,
-        output_file=__ret__.output_file,
-        start_offset=__ret__.start_offset)
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        limit=pulumi.get(__ret__, 'limit'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        order_by=pulumi.get(__ret__, 'order_by'),
+        order_type=pulumi.get(__ret__, 'order_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        start_offset=pulumi.get(__ret__, 'start_offset'))
 
 
 @_utilities.lift_output_func(get_access_groups)

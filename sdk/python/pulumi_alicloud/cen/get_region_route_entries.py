@@ -114,11 +114,11 @@ def get_region_route_entries(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getRegionRouteEntries:getRegionRouteEntries', __args__, opts=opts, typ=GetRegionRouteEntriesResult).value
 
     return AwaitableGetRegionRouteEntriesResult(
-        entries=__ret__.entries,
-        id=__ret__.id,
-        instance_id=__ret__.instance_id,
-        output_file=__ret__.output_file,
-        region_id=__ret__.region_id)
+        entries=pulumi.get(__ret__, 'entries'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        region_id=pulumi.get(__ret__, 'region_id'))
 
 
 @_utilities.lift_output_func(get_region_route_entries)

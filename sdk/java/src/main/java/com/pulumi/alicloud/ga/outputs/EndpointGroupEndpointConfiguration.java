@@ -14,25 +14,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EndpointGroupEndpointConfiguration {
     /**
-     * @return Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+     * @return Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
      * 
      */
     private @Nullable Boolean enableClientipPreservation;
+    /**
+     * @return Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+     * 
+     */
+    private @Nullable Boolean enableProxyProtocol;
     /**
      * @return The IP address or domain name of Endpoint N in the endpoint group.
      * 
      */
     private String endpoint;
     /**
-     * @return The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-     * 
-     * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+     * @return The type of Endpoint N in the endpoint group. Valid values:
      * 
      */
     private String type;
     /**
-     * @return The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-     * 
+     * @return The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
      * &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
      * 
      */
@@ -40,11 +42,18 @@ public final class EndpointGroupEndpointConfiguration {
 
     private EndpointGroupEndpointConfiguration() {}
     /**
-     * @return Indicates whether client IP addresses are reserved. Valid values: `true`: Client IP addresses are reserved, `false`: Client IP addresses are not reserved. Default value is `false`.
+     * @return Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
      * 
      */
     public Optional<Boolean> enableClientipPreservation() {
         return Optional.ofNullable(this.enableClientipPreservation);
+    }
+    /**
+     * @return Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+     * 
+     */
+    public Optional<Boolean> enableProxyProtocol() {
+        return Optional.ofNullable(this.enableProxyProtocol);
     }
     /**
      * @return The IP address or domain name of Endpoint N in the endpoint group.
@@ -54,17 +63,14 @@ public final class EndpointGroupEndpointConfiguration {
         return this.endpoint;
     }
     /**
-     * @return The type of Endpoint N in the endpoint group. Valid values: `Domain`: a custom domain name, `Ip`: a custom IP address, `PublicIp`: an Alibaba Cloud public IP address, `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance, `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-     * 
-     * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+     * @return The type of Endpoint N in the endpoint group. Valid values:
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return The weight of Endpoint N in the endpoint group. Valid value is 0 to 255.
-     * 
+     * @return The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
      * &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
      * 
      */
@@ -82,6 +88,7 @@ public final class EndpointGroupEndpointConfiguration {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableClientipPreservation;
+        private @Nullable Boolean enableProxyProtocol;
         private String endpoint;
         private String type;
         private Integer weight;
@@ -89,6 +96,7 @@ public final class EndpointGroupEndpointConfiguration {
         public Builder(EndpointGroupEndpointConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableClientipPreservation = defaults.enableClientipPreservation;
+    	      this.enableProxyProtocol = defaults.enableProxyProtocol;
     	      this.endpoint = defaults.endpoint;
     	      this.type = defaults.type;
     	      this.weight = defaults.weight;
@@ -97,6 +105,11 @@ public final class EndpointGroupEndpointConfiguration {
         @CustomType.Setter
         public Builder enableClientipPreservation(@Nullable Boolean enableClientipPreservation) {
             this.enableClientipPreservation = enableClientipPreservation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableProxyProtocol(@Nullable Boolean enableProxyProtocol) {
+            this.enableProxyProtocol = enableProxyProtocol;
             return this;
         }
         @CustomType.Setter
@@ -117,6 +130,7 @@ public final class EndpointGroupEndpointConfiguration {
         public EndpointGroupEndpointConfiguration build() {
             final var o = new EndpointGroupEndpointConfiguration();
             o.enableClientipPreservation = enableClientipPreservation;
+            o.enableProxyProtocol = enableProxyProtocol;
             o.endpoint = endpoint;
             o.type = type;
             o.weight = weight;

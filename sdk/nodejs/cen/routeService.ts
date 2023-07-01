@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a CEN Route Service resource. The virtual border routers (VBRs) and Cloud Connect Network (CCN) instances attached to Cloud Enterprise Network (CEN) instances can access the cloud services deployed in VPCs through the CEN instances.
  *
- * For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/doc-detail/106671.htm).
+ * For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-resolveandrouteserviceincen).
  *
- * > **NOTE:** Available in v1.99.0+.
+ * > **NOTE:** Available since v1.99.0.
  *
  * > **NOTE:** Ensure that at least one VPC in the selected region is attached to the CEN instance.
  *
@@ -21,23 +21,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-test";
- * const exampleNetworks = alicloud.vpc.getNetworks({
- *     isDefault: true,
+ * const default = alicloud.getRegions({
+ *     current: true,
  * });
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {});
- * const vpc = new alicloud.cen.InstanceAttachment("vpc", {
+ * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ *     vpcName: "tf_example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ *     cenInstanceName: "tf_example",
+ *     description: "an example for cen",
+ * });
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
  *     instanceId: exampleInstance.id,
- *     childInstanceId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?.[0]?.id),
+ *     childInstanceId: exampleNetwork.id,
  *     childInstanceType: "VPC",
- *     childInstanceRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?.[0]?.regionId),
+ *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
  * });
- * const _this = new alicloud.cen.RouteService("this", {
- *     accessRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?.[0]?.regionId),
- *     hostRegionId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?.[0]?.regionId),
- *     hostVpcId: exampleNetworks.then(exampleNetworks => exampleNetworks.vpcs?.[0]?.id),
- *     cenId: vpc.instanceId,
+ * const exampleRouteService = new alicloud.cen.RouteService("exampleRouteService", {
+ *     accessRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     hostRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     hostVpcId: exampleNetwork.id,
+ *     cenId: exampleInstanceAttachment.instanceId,
  *     host: "100.118.28.52/32",
  * });
  * ```

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about EDAS k8s slb attachment and how to use it, see [What is k8s slb attachment](https://www.alibabacloud.com/help/en/enterprise-distributed-application-service/latest/bindk8sslb).
  *
- * > **NOTE:** Available in v1.194.0+.
+ * > **NOTE:** Available since v1.194.0.
  *
  * ## Example Usage
  *
@@ -85,7 +85,7 @@ export class K8sSlbAttachment extends pulumi.CustomResource {
      */
     public readonly appId!: pulumi.Output<string>;
     /**
-     * The configurations of SLB attachment, which is supported for multiple configurations.
+     * The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
      */
     public readonly slbConfigs!: pulumi.Output<outputs.edas.K8sSlbAttachmentSlbConfig[]>;
 
@@ -126,7 +126,7 @@ export interface K8sSlbAttachmentState {
      */
     appId?: pulumi.Input<string>;
     /**
-     * The configurations of SLB attachment, which is supported for multiple configurations.
+     * The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
      */
     slbConfigs?: pulumi.Input<pulumi.Input<inputs.edas.K8sSlbAttachmentSlbConfig>[]>;
 }
@@ -140,7 +140,7 @@ export interface K8sSlbAttachmentArgs {
      */
     appId: pulumi.Input<string>;
     /**
-     * The configurations of SLB attachment, which is supported for multiple configurations.
+     * The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
      */
     slbConfigs?: pulumi.Input<pulumi.Input<inputs.edas.K8sSlbAttachmentSlbConfig>[]>;
 }

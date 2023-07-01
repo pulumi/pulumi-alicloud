@@ -129,12 +129,12 @@ def get_history_delivery_jobs(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs', __args__, opts=opts, typ=GetHistoryDeliveryJobsResult).value
 
     return AwaitableGetHistoryDeliveryJobsResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        jobs=__ret__.jobs,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        jobs=pulumi.get(__ret__, 'jobs'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_history_delivery_jobs)

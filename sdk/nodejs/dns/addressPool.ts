@@ -11,7 +11,56 @@ import * as utilities from "../utilities";
  *
  * For information about Alidns Address Pool and how to use it, see [What is Address Pool](https://www.alibabacloud.com/help/doc-detail/189621.html).
  *
- * > **NOTE:** Available in v1.152.0+.
+ * > **NOTE:** Available since v1.152.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf_example";
+ * const domainName = config.get("domainName") || "alicloud-provider.com";
+ * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {alarmContactGroupName: name});
+ * const defaultGtmInstance = new alicloud.dns.GtmInstance("defaultGtmInstance", {
+ *     instanceName: name,
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     renewalStatus: "ManualRenewal",
+ *     packageEdition: "standard",
+ *     healthCheckTaskCount: 100,
+ *     smsNotificationCount: 1000,
+ *     publicCnameMode: "SYSTEM_ASSIGN",
+ *     ttl: 60,
+ *     cnameType: "PUBLIC",
+ *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     alertGroups: [defaultAlarmContactGroup.alarmContactGroupName],
+ *     publicUserDomainName: domainName,
+ *     alertConfigs: [{
+ *         smsNotice: true,
+ *         noticeType: "ADDR_ALERT",
+ *         emailNotice: true,
+ *         dingtalkNotice: true,
+ *     }],
+ * });
+ * const defaultAddressPool = new alicloud.dns.AddressPool("defaultAddressPool", {
+ *     addressPoolName: name,
+ *     instanceId: defaultGtmInstance.id,
+ *     lbaStrategy: "RATIO",
+ *     type: "IPV4",
+ *     addresses: [{
+ *         attributeInfo: "{\"lineCodeRectifyType\":\"RECTIFIED\",\"lineCodes\":[\"os_namerica_us\"]}",
+ *         remark: "address_remark",
+ *         address: "1.1.1.1",
+ *         mode: "SMART",
+ *         lbaWeight: 1,
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -54,7 +103,7 @@ export class AddressPool extends pulumi.CustomResource {
      */
     public readonly addressPoolName!: pulumi.Output<string>;
     /**
-     * The address lists of the Address Pool. See the following `Block address`.
+     * The address lists of the Address Pool. See `address` below for details.
      */
     public readonly addresses!: pulumi.Output<outputs.dns.AddressPoolAddress[]>;
     /**
@@ -125,7 +174,7 @@ export interface AddressPoolState {
      */
     addressPoolName?: pulumi.Input<string>;
     /**
-     * The address lists of the Address Pool. See the following `Block address`.
+     * The address lists of the Address Pool. See `address` below for details.
      */
     addresses?: pulumi.Input<pulumi.Input<inputs.dns.AddressPoolAddress>[]>;
     /**
@@ -151,7 +200,7 @@ export interface AddressPoolArgs {
      */
     addressPoolName: pulumi.Input<string>;
     /**
-     * The address lists of the Address Pool. See the following `Block address`.
+     * The address lists of the Address Pool. See `address` below for details.
      */
     addresses: pulumi.Input<pulumi.Input<inputs.dns.AddressPoolAddress>[]>;
     /**

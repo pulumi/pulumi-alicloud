@@ -50,7 +50,7 @@ export class Accelerator extends pulumi.CustomResource {
      */
     public readonly autoRenewDuration!: pulumi.Output<number | undefined>;
     /**
-     * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+     * Use coupons to pay bills automatically. Default value: `false`. Valid values:
      */
     public readonly autoUseCoupon!: pulumi.Output<boolean | undefined>;
     /**
@@ -62,33 +62,31 @@ export class Accelerator extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+     * The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
      * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
      * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      */
     public readonly duration!: pulumi.Output<number>;
     /**
-     * The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+     * The billing cycle of the GA instance. Default value: `Month`. Valid values:
      */
     public readonly pricingCycle!: pulumi.Output<string>;
     /**
-     * Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+     * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
      */
     public readonly renewalStatus!: pulumi.Output<string>;
     /**
-     * The instance type of the GA instance. Specification of global acceleration instance, value:
-     * `1`: Small 1.
-     * `2`: Small 2.
-     * `3`: Small 3.
-     * `5`: Medium 1.
-     * `8`: Medium 2.
-     * `10`: Medium 3.
+     * The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      */
     public readonly spec!: pulumi.Output<string>;
     /**
      * The status of the GA instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a Accelerator resource with the given unique name, arguments, and options.
@@ -113,6 +111,7 @@ export class Accelerator extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as AcceleratorArgs | undefined;
             if ((!args || args.duration === undefined) && !opts.urn) {
@@ -130,6 +129,7 @@ export class Accelerator extends pulumi.CustomResource {
             resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -150,7 +150,7 @@ export interface AcceleratorState {
      */
     autoRenewDuration?: pulumi.Input<number>;
     /**
-     * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+     * Use coupons to pay bills automatically. Default value: `false`. Valid values:
      */
     autoUseCoupon?: pulumi.Input<boolean>;
     /**
@@ -162,33 +162,31 @@ export interface AcceleratorState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+     * The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
      * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
      * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      */
     duration?: pulumi.Input<number>;
     /**
-     * The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+     * The billing cycle of the GA instance. Default value: `Month`. Valid values:
      */
     pricingCycle?: pulumi.Input<string>;
     /**
-     * Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+     * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
      */
     renewalStatus?: pulumi.Input<string>;
     /**
-     * The instance type of the GA instance. Specification of global acceleration instance, value:
-     * `1`: Small 1.
-     * `2`: Small 2.
-     * `3`: Small 3.
-     * `5`: Medium 1.
-     * `8`: Medium 2.
-     * `10`: Medium 3.
+     * The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      */
     spec?: pulumi.Input<string>;
     /**
      * The status of the GA instance.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -204,7 +202,7 @@ export interface AcceleratorArgs {
      */
     autoRenewDuration?: pulumi.Input<number>;
     /**
-     * Use coupons to pay bills automatically. Default value is `false`. Valid value: `true`: Use, `false`: Not used.
+     * Use coupons to pay bills automatically. Default value: `false`. Valid values:
      */
     autoUseCoupon?: pulumi.Input<boolean>;
     /**
@@ -216,27 +214,25 @@ export interface AcceleratorArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The subscription duration. **NOTE:** Starting from v1.150.0+, the `duration` and  `pricingCycle` are both required.
+     * The subscription duration. **NOTE:** Starting from v1.150.0, the `duration` and  `pricingCycle` are both required.
      * * If the `pricingCycle` parameter is set to `Month`, the valid values for the `duration` parameter are 1 to 9.
      * * If the `pricingCycle` parameter is set to `Year`, the valid values for the `duration` parameter are 1 to 3.
      */
     duration: pulumi.Input<number>;
     /**
-     * The billing cycle of the GA instance. Valid values: `Month`,`Year`. The default value: `Month`.
+     * The billing cycle of the GA instance. Default value: `Month`. Valid values:
      */
     pricingCycle?: pulumi.Input<string>;
     /**
-     * Whether to renew an accelerator automatically or not. Default to "Normal". Valid values:
+     * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
      */
     renewalStatus?: pulumi.Input<string>;
     /**
-     * The instance type of the GA instance. Specification of global acceleration instance, value:
-     * `1`: Small 1.
-     * `2`: Small 2.
-     * `3`: Small 3.
-     * `5`: Medium 1.
-     * `8`: Medium 2.
-     * `10`: Medium 3.
+     * The instance type of the GA instance. Specification of global acceleration instance. Valid values:
      */
     spec: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

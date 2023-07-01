@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Rds.Outputs
     [OutputType]
     public sealed class DbInstanceEndpointNodeItem
     {
+        /// <summary>
+        /// The ID of the node.
+        /// </summary>
         public readonly string NodeId;
+        /// <summary>
+        /// The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+        /// </summary>
         public readonly int Weight;
 
         [OutputConstructor]

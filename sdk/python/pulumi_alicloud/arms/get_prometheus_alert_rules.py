@@ -178,16 +178,16 @@ def get_prometheus_alert_rules(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules', __args__, opts=opts, typ=GetPrometheusAlertRulesResult).value
 
     return AwaitableGetPrometheusAlertRulesResult(
-        cluster_id=__ret__.cluster_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        match_expressions=__ret__.match_expressions,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        rules=__ret__.rules,
-        status=__ret__.status,
-        type=__ret__.type)
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        match_expressions=pulumi.get(__ret__, 'match_expressions'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rules=pulumi.get(__ret__, 'rules'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_prometheus_alert_rules)

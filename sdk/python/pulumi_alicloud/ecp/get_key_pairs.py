@@ -138,13 +138,13 @@ def get_key_pairs(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ecp/getKeyPairs:getKeyPairs', __args__, opts=opts, typ=GetKeyPairsResult).value
 
     return AwaitableGetKeyPairsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        key_pair_finger_print=__ret__.key_pair_finger_print,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        pairs=__ret__.pairs)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        key_pair_finger_print=pulumi.get(__ret__, 'key_pair_finger_print'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        pairs=pulumi.get(__ret__, 'pairs'))
 
 
 @_utilities.lift_output_func(get_key_pairs)

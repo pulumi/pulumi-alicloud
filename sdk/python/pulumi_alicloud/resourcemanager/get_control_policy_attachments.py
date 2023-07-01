@@ -136,13 +136,13 @@ def get_control_policy_attachments(language: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments', __args__, opts=opts, typ=GetControlPolicyAttachmentsResult).value
 
     return AwaitableGetControlPolicyAttachmentsResult(
-        attachments=__ret__.attachments,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        language=__ret__.language,
-        output_file=__ret__.output_file,
-        policy_type=__ret__.policy_type,
-        target_id=__ret__.target_id)
+        attachments=pulumi.get(__ret__, 'attachments'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        language=pulumi.get(__ret__, 'language'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        policy_type=pulumi.get(__ret__, 'policy_type'),
+        target_id=pulumi.get(__ret__, 'target_id'))
 
 
 @_utilities.lift_output_func(get_control_policy_attachments)

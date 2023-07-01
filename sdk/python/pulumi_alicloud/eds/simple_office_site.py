@@ -85,6 +85,9 @@ class SimpleOfficeSiteArgs:
         """
         The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         """
+        warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
+        pulumi.log.warn("""bandwidth is deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
+
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
@@ -157,6 +160,9 @@ class SimpleOfficeSiteArgs:
         """
         Whether the Open Internet Access Function.
         """
+        warnings.warn("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
+        pulumi.log.warn("""enable_internet_access is deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
+
         return pulumi.get(self, "enable_internet_access")
 
     @enable_internet_access.setter
@@ -267,6 +273,9 @@ class _SimpleOfficeSiteState:
         """
         The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         """
+        warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
+        pulumi.log.warn("""bandwidth is deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
+
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
@@ -351,6 +360,9 @@ class _SimpleOfficeSiteState:
         """
         Whether the Open Internet Access Function.
         """
+        warnings.warn("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
+        pulumi.log.warn("""enable_internet_access is deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
+
         return pulumi.get(self, "enable_internet_access")
 
     @enable_internet_access.setter
@@ -624,6 +636,9 @@ class SimpleOfficeSite(pulumi.CustomResource):
         """
         The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         """
+        warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
+        pulumi.log.warn("""bandwidth is deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
+
         return pulumi.get(self, "bandwidth")
 
     @property
@@ -680,6 +695,9 @@ class SimpleOfficeSite(pulumi.CustomResource):
         """
         Whether the Open Internet Access Function.
         """
+        warnings.warn("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
+        pulumi.log.warn("""enable_internet_access is deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
+
         return pulumi.get(self, "enable_internet_access")
 
     @property

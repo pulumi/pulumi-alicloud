@@ -108,10 +108,10 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage', __args__, opts=opts, typ=GetMscSubContactVerificationMessageResult).value
 
     return AwaitableGetMscSubContactVerificationMessageResult(
-        contact_id=__ret__.contact_id,
-        id=__ret__.id,
-        status=__ret__.status,
-        type=__ret__.type)
+        contact_id=pulumi.get(__ret__, 'contact_id'),
+        id=pulumi.get(__ret__, 'id'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_msc_sub_contact_verification_message)

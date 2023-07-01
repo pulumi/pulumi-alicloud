@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
     /**
-     * @return The destination server group to which requests are forwarded.
+     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
      * 
      */
     private @Nullable List<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple> serverGroupTuples;
 
     private RuleRuleActionTrafficMirrorConfigMirrorGroupConfig() {}
     /**
-     * @return The destination server group to which requests are forwarded.
+     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
      * 
      */
     public List<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple> serverGroupTuples() {

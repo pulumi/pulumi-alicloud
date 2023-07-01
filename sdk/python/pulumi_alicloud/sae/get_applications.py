@@ -227,18 +227,18 @@ def get_applications(app_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:sae/getApplications:getApplications', __args__, opts=opts, typ=GetApplicationsResult).value
 
     return AwaitableGetApplicationsResult(
-        app_name=__ret__.app_name,
-        applications=__ret__.applications,
-        enable_details=__ret__.enable_details,
-        field_type=__ret__.field_type,
-        field_value=__ret__.field_value,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        namespace_id=__ret__.namespace_id,
-        order_by=__ret__.order_by,
-        output_file=__ret__.output_file,
-        reverse=__ret__.reverse,
-        status=__ret__.status)
+        app_name=pulumi.get(__ret__, 'app_name'),
+        applications=pulumi.get(__ret__, 'applications'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        field_type=pulumi.get(__ret__, 'field_type'),
+        field_value=pulumi.get(__ret__, 'field_value'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        namespace_id=pulumi.get(__ret__, 'namespace_id'),
+        order_by=pulumi.get(__ret__, 'order_by'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        reverse=pulumi.get(__ret__, 'reverse'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_applications)

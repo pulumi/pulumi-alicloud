@@ -9,9 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Application Load Balancer (ALB) Listener resource.
  *
- * For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/doc-detail/214348.htm).
+ * For information about Application Load Balancer (ALB) Listener and how to use it, see [What is Listener](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createlistener).
  *
- * > **NOTE:** Available in v1.133.0+.
+ * > **NOTE:** Available since v1.133.0.
  *
  * ## Import
  *
@@ -56,21 +56,21 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly accessLogRecordCustomizedHeadersEnabled!: pulumi.Output<boolean>;
     /**
-     * Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
+     * Xtrace Configuration Information. See `accessLogTracingConfig` below for details.
      */
     public readonly accessLogTracingConfig!: pulumi.Output<outputs.alb.ListenerAccessLogTracingConfig | undefined>;
     /**
-     * The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+     * The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      *
      * @deprecated Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
      */
     public readonly aclConfig!: pulumi.Output<outputs.alb.ListenerAclConfig>;
     /**
-     * The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+     * The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
      */
     public readonly certificates!: pulumi.Output<outputs.alb.ListenerCertificates | undefined>;
     /**
-     * The Default Rule Action List. See the following `Block defaultActions`.
+     * The Default Rule Action List. See `defaultActions` below for details.
      */
     public readonly defaultActions!: pulumi.Output<outputs.alb.ListenerDefaultAction[] | undefined>;
     /**
@@ -108,7 +108,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly loadBalancerId!: pulumi.Output<string>;
     /**
-     * Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
+     * Configuration Associated with the QuIC Listening. See `quicConfig` below for details.
      */
     public readonly quicConfig!: pulumi.Output<outputs.alb.ListenerQuicConfig>;
     /**
@@ -126,7 +126,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+     * The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
     public readonly xForwardedForConfig!: pulumi.Output<outputs.alb.ListenerXForwardedForConfig>;
 
@@ -207,21 +207,21 @@ export interface ListenerState {
      */
     accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
     /**
-     * Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
+     * Xtrace Configuration Information. See `accessLogTracingConfig` below for details.
      */
     accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig>;
     /**
-     * The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+     * The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      *
      * @deprecated Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
      */
     aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
     /**
-     * The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+     * The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
      */
     certificates?: pulumi.Input<inputs.alb.ListenerCertificates>;
     /**
-     * The Default Rule Action List. See the following `Block defaultActions`.
+     * The Default Rule Action List. See `defaultActions` below for details.
      */
     defaultActions?: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultAction>[]>;
     /**
@@ -259,7 +259,7 @@ export interface ListenerState {
      */
     loadBalancerId?: pulumi.Input<string>;
     /**
-     * Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
+     * Configuration Associated with the QuIC Listening. See `quicConfig` below for details.
      */
     quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
     /**
@@ -277,7 +277,7 @@ export interface ListenerState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+     * The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
     xForwardedForConfig?: pulumi.Input<inputs.alb.ListenerXForwardedForConfig>;
 }
@@ -293,21 +293,21 @@ export interface ListenerArgs {
      */
     accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
     /**
-     * Xtrace Configuration Information. See the following `Block accessLogTracingConfig`.
+     * Xtrace Configuration Information. See `accessLogTracingConfig` below for details.
      */
     accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig>;
     /**
-     * The configurations of the access control lists (ACLs). See the following `Block aclConfig`. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
+     * The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      *
      * @deprecated Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
      */
     aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
     /**
-     * The default certificate of the Listener. See the following `Block certificates`. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
+     * The default certificate of the Listener. See `certificates` below for details. **NOTE:** When `listenerProtocol` is `HTTPS`, The default certificate must be set one。
      */
     certificates?: pulumi.Input<inputs.alb.ListenerCertificates>;
     /**
-     * The Default Rule Action List. See the following `Block defaultActions`.
+     * The Default Rule Action List. See `defaultActions` below for details.
      */
     defaultActions?: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultAction>[]>;
     /**
@@ -345,7 +345,7 @@ export interface ListenerArgs {
      */
     loadBalancerId: pulumi.Input<string>;
     /**
-     * Configuration Associated with the QuIC Listening. See the following `Block quicConfig`.
+     * Configuration Associated with the QuIC Listening. See `quicConfig` below for details.
      */
     quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
     /**
@@ -363,7 +363,7 @@ export interface ListenerArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The `xForwardFor` Related Attribute Configuration. See the following `Block xForwardedForConfig`. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
+     * The `xForwardFor` Related Attribute Configuration. See `xForwardedForConfig` below for details. **NOTE:** The attribute is valid when the attribute `listenerProtocol` is `HTTPS`.
      */
     xForwardedForConfig?: pulumi.Input<inputs.alb.ListenerXForwardedForConfig>;
 }

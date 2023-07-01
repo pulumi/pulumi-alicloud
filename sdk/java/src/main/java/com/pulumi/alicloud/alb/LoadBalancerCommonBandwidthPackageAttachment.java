@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Alb Load Balancer Common Bandwidth Package Attachment and how to use it, see [What is Load Balancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/attachcommonbandwidthpackagetoloadbalancer).
  * 
- * &gt; **NOTE:** Available in v1.200.0+.
+ * &gt; **NOTE:** Available since v1.200.0.
  * 
  * ## Import
  * 

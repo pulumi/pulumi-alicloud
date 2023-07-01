@@ -157,13 +157,13 @@ def get_private_zones(cen_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getPrivateZones:getPrivateZones', __args__, opts=opts, typ=GetPrivateZonesResult).value
 
     return AwaitableGetPrivateZonesResult(
-        cen_id=__ret__.cen_id,
-        host_region_id=__ret__.host_region_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status,
-        zones=__ret__.zones)
+        cen_id=pulumi.get(__ret__, 'cen_id'),
+        host_region_id=pulumi.get(__ret__, 'host_region_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'),
+        zones=pulumi.get(__ret__, 'zones'))
 
 
 @_utilities.lift_output_func(get_private_zones)

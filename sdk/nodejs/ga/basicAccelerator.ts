@@ -75,7 +75,7 @@ export class BasicAccelerator extends pulumi.CustomResource {
      */
     public readonly autoRenew!: pulumi.Output<boolean | undefined>;
     /**
-     * The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
+     * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
      */
     public readonly autoRenewDuration!: pulumi.Output<number | undefined>;
     /**
@@ -108,6 +108,10 @@ export class BasicAccelerator extends pulumi.CustomResource {
      * The status of the Basic Accelerator instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
 
     /**
      * Create a BasicAccelerator resource with the given unique name, arguments, and options.
@@ -132,6 +136,7 @@ export class BasicAccelerator extends pulumi.CustomResource {
             resourceInputs["duration"] = state ? state.duration : undefined;
             resourceInputs["pricingCycle"] = state ? state.pricingCycle : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as BasicAcceleratorArgs | undefined;
             resourceInputs["autoPay"] = args ? args.autoPay : undefined;
@@ -143,6 +148,7 @@ export class BasicAccelerator extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["duration"] = args ? args.duration : undefined;
             resourceInputs["pricingCycle"] = args ? args.pricingCycle : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -163,7 +169,7 @@ export interface BasicAcceleratorState {
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
+     * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
      */
     autoRenewDuration?: pulumi.Input<number>;
     /**
@@ -196,6 +202,10 @@ export interface BasicAcceleratorState {
      * The status of the Basic Accelerator instance.
      */
     status?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }
 
 /**
@@ -211,7 +221,7 @@ export interface BasicAcceleratorArgs {
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
+     * The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `autoRenew` is set to `true`.
      */
     autoRenewDuration?: pulumi.Input<number>;
     /**
@@ -240,4 +250,8 @@ export interface BasicAcceleratorArgs {
      * The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
      */
     pricingCycle?: pulumi.Input<string>;
+    /**
+     * A mapping of tags to assign to the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
 }

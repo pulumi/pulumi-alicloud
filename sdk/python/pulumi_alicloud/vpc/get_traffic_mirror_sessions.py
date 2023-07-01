@@ -231,19 +231,19 @@ def get_traffic_mirror_sessions(enabled: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions', __args__, opts=opts, typ=GetTrafficMirrorSessionsResult).value
 
     return AwaitableGetTrafficMirrorSessionsResult(
-        enabled=__ret__.enabled,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        priority=__ret__.priority,
-        sessions=__ret__.sessions,
-        status=__ret__.status,
-        traffic_mirror_filter_id=__ret__.traffic_mirror_filter_id,
-        traffic_mirror_session_name=__ret__.traffic_mirror_session_name,
-        traffic_mirror_source_id=__ret__.traffic_mirror_source_id,
-        traffic_mirror_target_id=__ret__.traffic_mirror_target_id)
+        enabled=pulumi.get(__ret__, 'enabled'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        priority=pulumi.get(__ret__, 'priority'),
+        sessions=pulumi.get(__ret__, 'sessions'),
+        status=pulumi.get(__ret__, 'status'),
+        traffic_mirror_filter_id=pulumi.get(__ret__, 'traffic_mirror_filter_id'),
+        traffic_mirror_session_name=pulumi.get(__ret__, 'traffic_mirror_session_name'),
+        traffic_mirror_source_id=pulumi.get(__ret__, 'traffic_mirror_source_id'),
+        traffic_mirror_target_id=pulumi.get(__ret__, 'traffic_mirror_target_id'))
 
 
 @_utilities.lift_output_func(get_traffic_mirror_sessions)

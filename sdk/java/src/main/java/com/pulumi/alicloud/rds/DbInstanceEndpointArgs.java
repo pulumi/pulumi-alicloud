@@ -63,14 +63,14 @@ public final class DbInstanceEndpointArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+     * The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
      * 
      */
     @Import(name="nodeItems", required=true)
     private Output<List<DbInstanceEndpointNodeItemArgs>> nodeItems;
 
     /**
-     * @return The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+     * @return The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
      * 
      */
     public Output<List<DbInstanceEndpointNodeItemArgs>> nodeItems() {
@@ -216,7 +216,7 @@ public final class DbInstanceEndpointArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class DbInstanceEndpointArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class DbInstanceEndpointArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight).
+         * @param nodeItems The information about the node that is configured for the endpoint.  It contains two sub-fields(node_id and weight). See `node_items` below.
          * 
          * @return builder
          * 

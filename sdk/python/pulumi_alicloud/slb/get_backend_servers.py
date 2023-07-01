@@ -113,11 +113,11 @@ def get_backend_servers(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:slb/getBackendServers:getBackendServers', __args__, opts=opts, typ=GetBackendServersResult).value
 
     return AwaitableGetBackendServersResult(
-        backend_servers=__ret__.backend_servers,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        load_balancer_id=__ret__.load_balancer_id,
-        output_file=__ret__.output_file)
+        backend_servers=pulumi.get(__ret__, 'backend_servers'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        load_balancer_id=pulumi.get(__ret__, 'load_balancer_id'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_backend_servers)

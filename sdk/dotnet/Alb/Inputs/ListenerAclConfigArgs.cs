@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         private InputList<Inputs.ListenerAclConfigAclRelationArgs>? _aclRelations;
 
         /// <summary>
-        /// The ACLs that are associated with the listener.
+        /// The ACLs that are associated with the listener. See `acl_relations` below for details.
         /// </summary>
         public InputList<Inputs.ListenerAclConfigAclRelationArgs> AclRelations
         {

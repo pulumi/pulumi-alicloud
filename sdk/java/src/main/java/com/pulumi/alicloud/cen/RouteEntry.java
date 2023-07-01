@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * 
  * For information about CEN route entries publishment and how to use it, see [Manage network routes](https://www.alibabacloud.com/help/doc-detail/86980.htm).
  * 
+ * &gt; **NOTE:** Available since v1.20.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -27,9 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
@@ -43,13 +44,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.InstanceAttachment;
  * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
  * import com.pulumi.alicloud.vpc.RouteEntry;
  * import com.pulumi.alicloud.vpc.RouteEntryArgs;
  * import com.pulumi.alicloud.cen.RouteEntry;
  * import com.pulumi.alicloud.cen.RouteEntryArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -63,93 +64,75 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-hangzhou&#34;)
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
  *             .build());
  * 
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccCenRouteEntryConfig&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *         final var exampleZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation(&#34;Instance&#34;)
  *             .build());
  * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var exampleInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
- *             .mostRecent(true)
+ *         final var exampleImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(vpc.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(name)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .vpcId(exampleNetwork.id())
+ *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .description(&#34;foo&#34;)
- *             .vpcId(vpc.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .vpcId(exampleNetwork.id())
+ *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .vswitchId(defaultSwitch.id())
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *             .availabilityZone(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .instanceName(&#34;terraform-example&#34;)
+ *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroups(exampleSecurityGroup.id())
+ *             .vswitchId(exampleSwitch.id())
  *             .internetMaxBandwidthOut(5)
- *             .securityGroups(defaultSecurityGroup.id())
- *             .instanceName(name)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
- *         var cen = new Instance(&#34;cen&#34;);
+ *         var exampleCen_instanceInstance = new Instance(&#34;exampleCen/instanceInstance&#34;, InstanceArgs.builder()        
+ *             .cenInstanceName(&#34;tf_example&#34;)
+ *             .description(&#34;an example for cen&#34;)
+ *             .build());
  * 
- *         var attach = new InstanceAttachment(&#34;attach&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(cen.id())
- *             .childInstanceId(vpc.id())
+ *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *             .instanceId(exampleCen / instanceInstance.id())
+ *             .childInstanceId(exampleNetwork.id())
  *             .childInstanceType(&#34;VPC&#34;)
- *             .childInstanceRegionId(&#34;cn-hangzhou&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(defaultSwitch)
- *                 .build());
+ *             .childInstanceRegionId(default_.regions()[0].id())
+ *             .build());
  * 
- *         var route = new RouteEntry(&#34;route&#34;, RouteEntryArgs.builder()        
- *             .routeTableId(vpc.routeTableId())
+ *         var exampleRouteEntry = new RouteEntry(&#34;exampleRouteEntry&#34;, RouteEntryArgs.builder()        
+ *             .routeTableId(exampleNetwork.routeTableId())
  *             .destinationCidrblock(&#34;11.0.0.0/16&#34;)
  *             .nexthopType(&#34;Instance&#34;)
- *             .nexthopId(defaultInstance.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .nexthopId(exampleInstance.id())
+ *             .build());
  * 
- *         var foo = new RouteEntry(&#34;foo&#34;, RouteEntryArgs.builder()        
- *             .instanceId(cen.id())
- *             .routeTableId(vpc.routeTableId())
- *             .cidrBlock(route.destinationCidrblock())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .dependsOn(attach)
- *                 .build());
+ *         var exampleCen_routeEntryRouteEntry = new RouteEntry(&#34;exampleCen/routeEntryRouteEntry&#34;, RouteEntryArgs.builder()        
+ *             .instanceId(exampleInstanceAttachment.instanceId())
+ *             .routeTableId(exampleNetwork.routeTableId())
+ *             .cidrBlock(exampleRouteEntry.destinationCidrblock())
+ *             .build());
  * 
  *     }
  * }

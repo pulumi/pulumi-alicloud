@@ -162,15 +162,15 @@ def get_rules(event_bus_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eventbridge/getRules:getRules', __args__, opts=opts, typ=GetRulesResult).value
 
     return AwaitableGetRulesResult(
-        event_bus_name=__ret__.event_bus_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        rule_name_prefix=__ret__.rule_name_prefix,
-        rules=__ret__.rules,
-        status=__ret__.status)
+        event_bus_name=pulumi.get(__ret__, 'event_bus_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rule_name_prefix=pulumi.get(__ret__, 'rule_name_prefix'),
+        rules=pulumi.get(__ret__, 'rules'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_rules)

@@ -65,6 +65,9 @@ class KeyPairAttachmentArgs:
         """
         The name of key pair used to bind.
         """
+        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -136,6 +139,9 @@ class _KeyPairAttachmentState:
         """
         The name of key pair used to bind.
         """
+        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -282,6 +288,9 @@ class KeyPairAttachment(pulumi.CustomResource):
         """
         The name of key pair used to bind.
         """
+        warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+
         return pulumi.get(self, "key_name")
 
     @property

@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class DbInstanceEndpointNodeItem {
+    /**
+     * @return The ID of the node.
+     * 
+     */
     private String nodeId;
+    /**
+     * @return The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+     * 
+     */
     private Integer weight;
 
     private DbInstanceEndpointNodeItem() {}
+    /**
+     * @return The ID of the node.
+     * 
+     */
     public String nodeId() {
         return this.nodeId;
     }
+    /**
+     * @return The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
+     * 
+     */
     public Integer weight() {
         return this.weight;
     }

@@ -27,11 +27,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			usersDs, err := ram.GetUsers(ctx, &ram.GetUsersArgs{
-//				GroupName:  pulumi.StringRef("group1"),
-//				NameRegex:  pulumi.StringRef("^user"),
 //				OutputFile: pulumi.StringRef("users.txt"),
+//				GroupName:  pulumi.StringRef("group1"),
 //				PolicyName: pulumi.StringRef("AliyunACSDefaultAccess"),
 //				PolicyType: pulumi.StringRef("Custom"),
+//				NameRegex:  pulumi.StringRef("^user"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -75,7 +75,7 @@ type GetUsersResult struct {
 	// A list of ram user IDs.
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
-	// A list of ram user names.
+	// A list of ram user's name.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
 	PolicyName *string  `pulumi:"policyName"`
@@ -150,7 +150,7 @@ func (o GetUsersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of ram user names.
+// A list of ram user's name.
 func (o GetUsersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

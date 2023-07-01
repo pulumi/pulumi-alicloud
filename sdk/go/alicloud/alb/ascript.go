@@ -13,41 +13,9 @@ import (
 
 // Provides a Alb Ascript resource.
 //
-// For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/what-is-application-load-balancer).
+// For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createascripts).
 //
-// > **NOTE:** Available in v1.195.0+.
-//
-// ## Example Usage
-//
-// # Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := alb.NewAScript(ctx, "default", &alb.AScriptArgs{
-//				ScriptContent: pulumi.String("time()"),
-//				Position:      pulumi.String("RequestHead"),
-//				AscriptName:   pulumi.String("test"),
-//				Enabled:       pulumi.Bool(true),
-//				ListenerId:    pulumi.Any(_var.ListenerId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Import
 //
@@ -67,7 +35,7 @@ type AScript struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Whether extension parameters are enabled.
 	ExtAttributeEnabled pulumi.BoolOutput `pulumi:"extAttributeEnabled"`
-	// Extended attribute list. See the following `Block ExtAttributes`.
+	// Extended attribute list. See `extAttributes` below for details.
 	ExtAttributes AScriptExtAttributeArrayOutput `pulumi:"extAttributes"`
 	// Listener ID of script attribution
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
@@ -131,7 +99,7 @@ type ascriptState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Whether extension parameters are enabled.
 	ExtAttributeEnabled *bool `pulumi:"extAttributeEnabled"`
-	// Extended attribute list. See the following `Block ExtAttributes`.
+	// Extended attribute list. See `extAttributes` below for details.
 	ExtAttributes []AScriptExtAttribute `pulumi:"extAttributes"`
 	// Listener ID of script attribution
 	ListenerId *string `pulumi:"listenerId"`
@@ -152,7 +120,7 @@ type AScriptState struct {
 	Enabled pulumi.BoolPtrInput
 	// Whether extension parameters are enabled.
 	ExtAttributeEnabled pulumi.BoolPtrInput
-	// Extended attribute list. See the following `Block ExtAttributes`.
+	// Extended attribute list. See `extAttributes` below for details.
 	ExtAttributes AScriptExtAttributeArrayInput
 	// Listener ID of script attribution
 	ListenerId pulumi.StringPtrInput
@@ -177,7 +145,7 @@ type ascriptArgs struct {
 	Enabled bool `pulumi:"enabled"`
 	// Whether extension parameters are enabled.
 	ExtAttributeEnabled *bool `pulumi:"extAttributeEnabled"`
-	// Extended attribute list. See the following `Block ExtAttributes`.
+	// Extended attribute list. See `extAttributes` below for details.
 	ExtAttributes []AScriptExtAttribute `pulumi:"extAttributes"`
 	// Listener ID of script attribution
 	ListenerId string `pulumi:"listenerId"`
@@ -195,7 +163,7 @@ type AScriptArgs struct {
 	Enabled pulumi.BoolInput
 	// Whether extension parameters are enabled.
 	ExtAttributeEnabled pulumi.BoolPtrInput
-	// Extended attribute list. See the following `Block ExtAttributes`.
+	// Extended attribute list. See `extAttributes` below for details.
 	ExtAttributes AScriptExtAttributeArrayInput
 	// Listener ID of script attribution
 	ListenerId pulumi.StringInput
@@ -307,7 +275,7 @@ func (o AScriptOutput) ExtAttributeEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AScript) pulumi.BoolOutput { return v.ExtAttributeEnabled }).(pulumi.BoolOutput)
 }
 
-// Extended attribute list. See the following `Block ExtAttributes`.
+// Extended attribute list. See `extAttributes` below for details.
 func (o AScriptOutput) ExtAttributes() AScriptExtAttributeArrayOutput {
 	return o.ApplyT(func(v *AScript) AScriptExtAttributeArrayOutput { return v.ExtAttributes }).(AScriptExtAttributeArrayOutput)
 }

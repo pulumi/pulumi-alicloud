@@ -131,12 +131,12 @@ def get_bgp_networks(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getBgpNetworks:getBgpNetworks', __args__, opts=opts, typ=GetBgpNetworksResult).value
 
     return AwaitableGetBgpNetworksResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        networks=__ret__.networks,
-        output_file=__ret__.output_file,
-        router_id=__ret__.router_id,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        networks=pulumi.get(__ret__, 'networks'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        router_id=pulumi.get(__ret__, 'router_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_bgp_networks)

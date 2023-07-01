@@ -227,20 +227,20 @@ def get_hosts(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:bastionhost/getHosts:getHosts', __args__, opts=opts, typ=GetHostsResult).value
 
     return AwaitableGetHostsResult(
-        enable_details=__ret__.enable_details,
-        host_address=__ret__.host_address,
-        host_name=__ret__.host_name,
-        hosts=__ret__.hosts,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        instance_id=__ret__.instance_id,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        os_type=__ret__.os_type,
-        output_file=__ret__.output_file,
-        source=__ret__.source,
-        source_instance_id=__ret__.source_instance_id,
-        source_instance_state=__ret__.source_instance_state)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        host_address=pulumi.get(__ret__, 'host_address'),
+        host_name=pulumi.get(__ret__, 'host_name'),
+        hosts=pulumi.get(__ret__, 'hosts'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        os_type=pulumi.get(__ret__, 'os_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        source=pulumi.get(__ret__, 'source'),
+        source_instance_id=pulumi.get(__ret__, 'source_instance_id'),
+        source_instance_state=pulumi.get(__ret__, 'source_instance_state'))
 
 
 @_utilities.lift_output_func(get_hosts)

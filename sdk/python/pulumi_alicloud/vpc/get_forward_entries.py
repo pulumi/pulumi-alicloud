@@ -277,20 +277,20 @@ def get_forward_entries(external_ip: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:vpc/getForwardEntries:getForwardEntries', __args__, opts=opts, typ=GetForwardEntriesResult).value
 
     return AwaitableGetForwardEntriesResult(
-        entries=__ret__.entries,
-        external_ip=__ret__.external_ip,
-        external_port=__ret__.external_port,
-        forward_entry_name=__ret__.forward_entry_name,
-        forward_table_id=__ret__.forward_table_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        internal_ip=__ret__.internal_ip,
-        internal_port=__ret__.internal_port,
-        ip_protocol=__ret__.ip_protocol,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        entries=pulumi.get(__ret__, 'entries'),
+        external_ip=pulumi.get(__ret__, 'external_ip'),
+        external_port=pulumi.get(__ret__, 'external_port'),
+        forward_entry_name=pulumi.get(__ret__, 'forward_entry_name'),
+        forward_table_id=pulumi.get(__ret__, 'forward_table_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        internal_ip=pulumi.get(__ret__, 'internal_ip'),
+        internal_port=pulumi.get(__ret__, 'internal_port'),
+        ip_protocol=pulumi.get(__ret__, 'ip_protocol'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_forward_entries)

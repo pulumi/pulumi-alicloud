@@ -22,12 +22,13 @@ class BasicAcceleratorArgs:
                  basic_accelerator_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
-                 pricing_cycle: Optional[pulumi.Input[str]] = None):
+                 pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a BasicAccelerator resource.
         :param pulumi.Input[bool] auto_pay: Specifies whether to enable automatic payment. Default value: `false`. Valid values:
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
-        :param pulumi.Input[int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        :param pulumi.Input[int] auto_renew_duration: The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         :param pulumi.Input[str] auto_use_coupon: Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
         :param pulumi.Input[str] basic_accelerator_name: The name of the Global Accelerator Basic Accelerator instance.
@@ -36,6 +37,7 @@ class BasicAcceleratorArgs:
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
@@ -55,6 +57,8 @@ class BasicAcceleratorArgs:
             pulumi.set(__self__, "duration", duration)
         if pricing_cycle is not None:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -84,7 +88,7 @@ class BasicAcceleratorArgs:
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         """
         return pulumi.get(self, "auto_renew_duration")
 
@@ -166,6 +170,18 @@ class BasicAcceleratorArgs:
     def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pricing_cycle", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _BasicAcceleratorState:
@@ -179,12 +195,13 @@ class _BasicAcceleratorState:
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering BasicAccelerator resources.
         :param pulumi.Input[bool] auto_pay: Specifies whether to enable automatic payment. Default value: `false`. Valid values:
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
-        :param pulumi.Input[int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        :param pulumi.Input[int] auto_renew_duration: The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         :param pulumi.Input[str] auto_use_coupon: Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
         :param pulumi.Input[str] basic_accelerator_name: The name of the Global Accelerator Basic Accelerator instance.
@@ -194,6 +211,7 @@ class _BasicAcceleratorState:
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] status: The status of the Basic Accelerator instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
@@ -215,6 +233,8 @@ class _BasicAcceleratorState:
             pulumi.set(__self__, "pricing_cycle", pricing_cycle)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -244,7 +264,7 @@ class _BasicAcceleratorState:
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         """
         return pulumi.get(self, "auto_renew_duration")
 
@@ -338,6 +358,18 @@ class _BasicAcceleratorState:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
 
 class BasicAccelerator(pulumi.CustomResource):
     @overload
@@ -353,6 +385,7 @@ class BasicAccelerator(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Basic Accelerator resource.
@@ -391,7 +424,7 @@ class BasicAccelerator(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_pay: Specifies whether to enable automatic payment. Default value: `false`. Valid values:
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
-        :param pulumi.Input[int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        :param pulumi.Input[int] auto_renew_duration: The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         :param pulumi.Input[str] auto_use_coupon: Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
         :param pulumi.Input[str] basic_accelerator_name: The name of the Global Accelerator Basic Accelerator instance.
@@ -400,6 +433,7 @@ class BasicAccelerator(pulumi.CustomResource):
                * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -464,6 +498,7 @@ class BasicAccelerator(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[int]] = None,
                  pricing_cycle: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -482,6 +517,7 @@ class BasicAccelerator(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["duration"] = duration
             __props__.__dict__["pricing_cycle"] = pricing_cycle
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["status"] = None
         super(BasicAccelerator, __self__).__init__(
             'alicloud:ga/basicAccelerator:BasicAccelerator',
@@ -502,7 +538,8 @@ class BasicAccelerator(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             duration: Optional[pulumi.Input[int]] = None,
             pricing_cycle: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[str]] = None) -> 'BasicAccelerator':
+            status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'BasicAccelerator':
         """
         Get an existing BasicAccelerator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -512,7 +549,7 @@ class BasicAccelerator(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_pay: Specifies whether to enable automatic payment. Default value: `false`. Valid values:
         :param pulumi.Input[bool] auto_renew: Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
-        :param pulumi.Input[int] auto_renew_duration: The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        :param pulumi.Input[int] auto_renew_duration: The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         :param pulumi.Input[str] auto_use_coupon: Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
         :param pulumi.Input[str] bandwidth_billing_type: The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
         :param pulumi.Input[str] basic_accelerator_name: The name of the Global Accelerator Basic Accelerator instance.
@@ -522,6 +559,7 @@ class BasicAccelerator(pulumi.CustomResource):
                * If the `pricing_cycle` parameter is set to `Year`, the valid values for the `duration` parameter are `1` to `3`.
         :param pulumi.Input[str] pricing_cycle: The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] status: The status of the Basic Accelerator instance.
+        :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -537,6 +575,7 @@ class BasicAccelerator(pulumi.CustomResource):
         __props__.__dict__["duration"] = duration
         __props__.__dict__["pricing_cycle"] = pricing_cycle
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         return BasicAccelerator(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -559,7 +598,7 @@ class BasicAccelerator(pulumi.CustomResource):
     @pulumi.getter(name="autoRenewDuration")
     def auto_renew_duration(self) -> pulumi.Output[Optional[int]]:
         """
-        The auto-renewal period. Unit: months. Valid values: `1` to `12`. Default value: `1`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
+        The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         """
         return pulumi.get(self, "auto_renew_duration")
 
@@ -620,4 +659,12 @@ class BasicAccelerator(pulumi.CustomResource):
         The status of the Basic Accelerator instance.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        A mapping of tags to assign to the resource.
+        """
+        return pulumi.get(self, "tags")
 

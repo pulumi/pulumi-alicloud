@@ -164,6 +164,9 @@ class GetCertificatesCertificateResult(dict):
         """
         The cert's name.
         """
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property
@@ -365,6 +368,9 @@ class GetServiceCertificatesCertificateResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        warnings.warn("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property

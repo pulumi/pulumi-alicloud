@@ -68,7 +68,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly autoUpgradeMinorVersion!: pulumi.Output<string>;
     /**
-     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
      *
      * > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      */
@@ -122,7 +122,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
-     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
      * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
      */
     public readonly connectionStringPrefix!: pulumi.Output<string>;
@@ -174,7 +174,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbTimeZone!: pulumi.Output<string>;
     /**
-     * The switch of delete protection. Valid values: 
+     * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
      *
@@ -182,7 +182,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      */
@@ -282,7 +282,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly monitoringPeriod!: pulumi.Output<number>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      */
     public readonly parameters!: pulumi.Output<outputs.rds.InstanceParameter[]>;
     /**
@@ -291,7 +291,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
     public readonly pgHbaConfs!: pulumi.Output<outputs.rds.InstancePgHbaConf[]>;
     /**
@@ -354,7 +354,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly serverKey!: pulumi.Output<string>;
     /**
-     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
      */
     public readonly serverlessConfigs!: pulumi.Output<outputs.rds.InstanceServerlessConfig[] | undefined>;
     /**
@@ -707,7 +707,7 @@ export interface InstanceState {
      */
     autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
-     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
      *
      * > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      */
@@ -761,7 +761,7 @@ export interface InstanceState {
      */
     connectionString?: pulumi.Input<string>;
     /**
-     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
      * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
      */
     connectionStringPrefix?: pulumi.Input<string>;
@@ -813,7 +813,7 @@ export interface InstanceState {
      */
     dbTimeZone?: pulumi.Input<string>;
     /**
-     * The switch of delete protection. Valid values: 
+     * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
      *
@@ -821,7 +821,7 @@ export interface InstanceState {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      */
@@ -921,7 +921,7 @@ export interface InstanceState {
      */
     monitoringPeriod?: pulumi.Input<number>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
     /**
@@ -930,7 +930,7 @@ export interface InstanceState {
      */
     period?: pulumi.Input<number>;
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
     pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.InstancePgHbaConf>[]>;
     /**
@@ -993,7 +993,7 @@ export interface InstanceState {
      */
     serverKey?: pulumi.Input<string>;
     /**
-     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
      */
     serverlessConfigs?: pulumi.Input<pulumi.Input<inputs.rds.InstanceServerlessConfig>[]>;
     /**
@@ -1164,7 +1164,7 @@ export interface InstanceArgs {
      */
     autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
-     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. (documented below).
+     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
      *
      * > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      */
@@ -1214,7 +1214,7 @@ export interface InstanceArgs {
      */
     clientCrlEnabled?: pulumi.Input<number>;
     /**
-     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix. 
+     * The private connection string prefix. If you want to update public connection string prefix, please use resource alicloud.rds.Connection connection_prefix.
      * > **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&*=+\|{};:'",<>/?
      */
     connectionStringPrefix?: pulumi.Input<string>;
@@ -1258,7 +1258,7 @@ export interface InstanceArgs {
      */
     dbTimeZone?: pulumi.Input<string>;
     /**
-     * The switch of delete protection. Valid values: 
+     * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
      *
@@ -1266,7 +1266,7 @@ export interface InstanceArgs {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * The method to update the engine version.  Default value: Immediate. Valid values:
+     * The method to update the engine version and change.  Default value: Immediate. Valid values:
      * - Immediate: The change immediately takes effect.
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      */
@@ -1366,7 +1366,7 @@ export interface InstanceArgs {
      */
     monitoringPeriod?: pulumi.Input<number>;
     /**
-     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) .
+     * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.rds.InstanceParameter>[]>;
     /**
@@ -1375,7 +1375,7 @@ export interface InstanceArgs {
      */
     period?: pulumi.Input<number>;
     /**
-     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) (documented below).
+     * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pgHbaConf` below.
      */
     pgHbaConfs?: pulumi.Input<pulumi.Input<inputs.rds.InstancePgHbaConf>[]>;
     /**
@@ -1438,7 +1438,7 @@ export interface InstanceArgs {
      */
     serverKey?: pulumi.Input<string>;
     /**
-     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance.
+     * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverlessConfig` below.
      */
     serverlessConfigs?: pulumi.Input<pulumi.Input<inputs.rds.InstanceServerlessConfig>[]>;
     /**

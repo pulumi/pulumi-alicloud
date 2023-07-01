@@ -105,6 +105,9 @@ class BandwidthPackageArgs:
         """
         Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         """
+        warnings.warn("""Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""", DeprecationWarning)
+        pulumi.log.warn("""charge_type is deprecated: Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""")
+
         return pulumi.get(self, "charge_type")
 
     @charge_type.setter
@@ -153,6 +156,9 @@ class BandwidthPackageArgs:
         """
         Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         """
+        warnings.warn("""Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""geographic_region_ids is deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""")
+
         return pulumi.get(self, "geographic_region_ids")
 
     @geographic_region_ids.setter
@@ -165,6 +171,9 @@ class BandwidthPackageArgs:
         """
         Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -300,6 +309,9 @@ class _BandwidthPackageState:
         """
         Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         """
+        warnings.warn("""Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""", DeprecationWarning)
+        pulumi.log.warn("""charge_type is deprecated: Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""")
+
         return pulumi.get(self, "charge_type")
 
     @charge_type.setter
@@ -360,6 +372,9 @@ class _BandwidthPackageState:
         """
         Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         """
+        warnings.warn("""Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""geographic_region_ids is deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""")
+
         return pulumi.get(self, "geographic_region_ids")
 
     @geographic_region_ids.setter
@@ -372,6 +387,9 @@ class _BandwidthPackageState:
         """
         Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -622,6 +640,9 @@ class BandwidthPackage(pulumi.CustomResource):
         """
         Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         """
+        warnings.warn("""Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""", DeprecationWarning)
+        pulumi.log.warn("""charge_type is deprecated: Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""")
+
         return pulumi.get(self, "charge_type")
 
     @property
@@ -662,6 +683,9 @@ class BandwidthPackage(pulumi.CustomResource):
         """
         Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         """
+        warnings.warn("""Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""geographic_region_ids is deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""")
+
         return pulumi.get(self, "geographic_region_ids")
 
     @property
@@ -670,6 +694,9 @@ class BandwidthPackage(pulumi.CustomResource):
         """
         Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         """
+        warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""")
+
         return pulumi.get(self, "name")
 
     @property

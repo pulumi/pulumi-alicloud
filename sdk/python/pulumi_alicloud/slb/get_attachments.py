@@ -114,11 +114,11 @@ def get_attachments(instance_ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:slb/getAttachments:getAttachments', __args__, opts=opts, typ=GetAttachmentsResult).value
 
     return AwaitableGetAttachmentsResult(
-        id=__ret__.id,
-        instance_ids=__ret__.instance_ids,
-        load_balancer_id=__ret__.load_balancer_id,
-        output_file=__ret__.output_file,
-        slb_attachments=__ret__.slb_attachments)
+        id=pulumi.get(__ret__, 'id'),
+        instance_ids=pulumi.get(__ret__, 'instance_ids'),
+        load_balancer_id=pulumi.get(__ret__, 'load_balancer_id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        slb_attachments=pulumi.get(__ret__, 'slb_attachments'))
 
 
 @_utilities.lift_output_func(get_attachments)

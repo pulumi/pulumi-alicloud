@@ -146,13 +146,13 @@ def get_instance_attachments(instance_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:oss/getInstanceAttachments:getInstanceAttachments', __args__, opts=opts, typ=GetInstanceAttachmentsResult).value
 
     return AwaitableGetInstanceAttachmentsResult(
-        attachments=__ret__.attachments,
-        id=__ret__.id,
-        instance_name=__ret__.instance_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        vpc_ids=__ret__.vpc_ids)
+        attachments=pulumi.get(__ret__, 'attachments'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_name=pulumi.get(__ret__, 'instance_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        vpc_ids=pulumi.get(__ret__, 'vpc_ids'))
 
 
 @_utilities.lift_output_func(get_instance_attachments)

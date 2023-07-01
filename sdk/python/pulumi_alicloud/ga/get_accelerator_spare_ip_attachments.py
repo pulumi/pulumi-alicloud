@@ -131,12 +131,12 @@ def get_accelerator_spare_ip_attachments(accelerator_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments', __args__, opts=opts, typ=GetAcceleratorSpareIpAttachmentsResult).value
 
     return AwaitableGetAcceleratorSpareIpAttachmentsResult(
-        accelerator_id=__ret__.accelerator_id,
-        attachments=__ret__.attachments,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        accelerator_id=pulumi.get(__ret__, 'accelerator_id'),
+        attachments=pulumi.get(__ret__, 'attachments'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_accelerator_spare_ip_attachments)

@@ -134,12 +134,12 @@ def get_handshakes(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getHandshakes:getHandshakes', __args__, opts=opts, typ=GetHandshakesResult).value
 
     return AwaitableGetHandshakesResult(
-        enable_details=__ret__.enable_details,
-        handshakes=__ret__.handshakes,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        handshakes=pulumi.get(__ret__, 'handshakes'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_handshakes)

@@ -126,12 +126,12 @@ def get_express_syncs(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs', __args__, opts=opts, typ=GetExpressSyncsResult).value
 
     return AwaitableGetExpressSyncsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        syncs=__ret__.syncs)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        syncs=pulumi.get(__ret__, 'syncs'))
 
 
 @_utilities.lift_output_func(get_express_syncs)

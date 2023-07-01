@@ -151,14 +151,14 @@ def get_vbr_health_checks(cen_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cen/getVbrHealthChecks:getVbrHealthChecks', __args__, opts=opts, typ=GetVbrHealthChecksResult).value
 
     return AwaitableGetVbrHealthChecksResult(
-        cen_id=__ret__.cen_id,
-        checks=__ret__.checks,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        vbr_instance_id=__ret__.vbr_instance_id,
-        vbr_instance_owner_id=__ret__.vbr_instance_owner_id,
-        vbr_instance_region_id=__ret__.vbr_instance_region_id)
+        cen_id=pulumi.get(__ret__, 'cen_id'),
+        checks=pulumi.get(__ret__, 'checks'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        vbr_instance_id=pulumi.get(__ret__, 'vbr_instance_id'),
+        vbr_instance_owner_id=pulumi.get(__ret__, 'vbr_instance_owner_id'),
+        vbr_instance_region_id=pulumi.get(__ret__, 'vbr_instance_region_id'))
 
 
 @_utilities.lift_output_func(get_vbr_health_checks)

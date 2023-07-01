@@ -222,19 +222,19 @@ def get_virtual_physical_connections(business_status: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections', __args__, opts=opts, typ=GetVirtualPhysicalConnectionsResult).value
 
     return AwaitableGetVirtualPhysicalConnectionsResult(
-        business_status=__ret__.business_status,
-        connections=__ret__.connections,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        is_confirmed=__ret__.is_confirmed,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        parent_physical_connection_id=__ret__.parent_physical_connection_id,
-        virtual_physical_connection_ids=__ret__.virtual_physical_connection_ids,
-        virtual_physical_connection_status=__ret__.virtual_physical_connection_status,
-        vlan_ids=__ret__.vlan_ids,
-        vpconn_ali_uid=__ret__.vpconn_ali_uid)
+        business_status=pulumi.get(__ret__, 'business_status'),
+        connections=pulumi.get(__ret__, 'connections'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        is_confirmed=pulumi.get(__ret__, 'is_confirmed'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        parent_physical_connection_id=pulumi.get(__ret__, 'parent_physical_connection_id'),
+        virtual_physical_connection_ids=pulumi.get(__ret__, 'virtual_physical_connection_ids'),
+        virtual_physical_connection_status=pulumi.get(__ret__, 'virtual_physical_connection_status'),
+        vlan_ids=pulumi.get(__ret__, 'vlan_ids'),
+        vpconn_ali_uid=pulumi.get(__ret__, 'vpconn_ali_uid'))
 
 
 @_utilities.lift_output_func(get_virtual_physical_connections)

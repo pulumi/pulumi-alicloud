@@ -15,7 +15,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **NOTE:** Available in v1.166.0+.
+ * &gt; **NOTE:** Available since v1.166.0.
  * 
  * For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addentriestoacl).
  * 
@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraformalbaclconfig&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        

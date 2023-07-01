@@ -65,6 +65,9 @@ class GetSlotsResult:
     @property
     @pulumi.getter
     def slots(self) -> Sequence['outputs.GetSlotsSlotResult']:
+        """
+        A list of Rds Replication Slots. Each element contains the following attributes:
+        """
         return pulumi.get(self, "slots")
 
 
@@ -88,7 +91,7 @@ def get_slots(db_instance_id: Optional[str] = None,
     """
     This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.204.0+.
+    > **NOTE:** Available since v1.204.0+.
 
     ## Example Usage
 
@@ -115,11 +118,11 @@ def get_slots(db_instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getSlots:getSlots', __args__, opts=opts, typ=GetSlotsResult).value
 
     return AwaitableGetSlotsResult(
-        db_instance_id=__ret__.db_instance_id,
-        id=__ret__.id,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        slots=__ret__.slots)
+        db_instance_id=pulumi.get(__ret__, 'db_instance_id'),
+        id=pulumi.get(__ret__, 'id'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        slots=pulumi.get(__ret__, 'slots'))
 
 
 @_utilities.lift_output_func(get_slots)
@@ -130,7 +133,7 @@ def get_slots_output(db_instance_id: Optional[pulumi.Input[str]] = None,
     """
     This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.204.0+.
+    > **NOTE:** Available since v1.204.0+.
 
     ## Example Usage
 

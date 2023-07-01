@@ -127,12 +127,12 @@ def get_shared_targets(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:resourcemanager/getSharedTargets:getSharedTargets', __args__, opts=opts, typ=GetSharedTargetsResult).value
 
     return AwaitableGetSharedTargetsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        resource_share_id=__ret__.resource_share_id,
-        status=__ret__.status,
-        targets=__ret__.targets)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_share_id=pulumi.get(__ret__, 'resource_share_id'),
+        status=pulumi.get(__ret__, 'status'),
+        targets=pulumi.get(__ret__, 'targets'))
 
 
 @_utilities.lift_output_func(get_shared_targets)

@@ -146,12 +146,12 @@ def get_gateway_smb_users(gateway_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers', __args__, opts=opts, typ=GetGatewaySmbUsersResult).value
 
     return AwaitableGetGatewaySmbUsersResult(
-        gateway_id=__ret__.gateway_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        output_file=__ret__.output_file,
-        users=__ret__.users)
+        gateway_id=pulumi.get(__ret__, 'gateway_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_gateway_smb_users)

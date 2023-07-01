@@ -19,8 +19,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     public static final ServerGroupHealthCheckConfigArgs Empty = new ServerGroupHealthCheckConfigArgs();
 
     /**
-     * The status code for a successful health check. Multiple status codes can be specified as a
-     * list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
+     * The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
      * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
@@ -28,8 +27,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     private @Nullable Output<List<String>> healthCheckCodes;
 
     /**
-     * @return The status code for a successful health check. Multiple status codes can be specified as a
-     * list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
+     * @return The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
      * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
@@ -38,16 +36,14 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * The port of the backend server that is used for health checks. Valid values: `0`
-     * to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+     * The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
      * 
      */
     @Import(name="healthCheckConnectPort")
     private @Nullable Output<Integer> healthCheckConnectPort;
 
     /**
-     * @return The port of the backend server that is used for health checks. Valid values: `0`
-     * to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+     * @return The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
      * 
      */
     public Optional<Output<Integer>> healthCheckConnectPort() {
@@ -55,16 +51,14 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-     * value: `true`.
+     * Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
      * 
      */
     @Import(name="healthCheckEnabled")
     private @Nullable Output<Boolean> healthCheckEnabled;
 
     /**
-     * @return Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-     * value: `true`.
+     * @return Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
      * 
      */
     public Optional<Output<Boolean>> healthCheckEnabled() {
@@ -87,16 +81,14 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-     * . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     @Import(name="healthCheckHttpVersion")
     private @Nullable Output<String> healthCheckHttpVersion;
 
     /**
-     * @return HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-     * . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     public Optional<Output<String>> healthCheckHttpVersion() {
@@ -104,16 +96,14 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-     * to `50`. Default value: `2`.
+     * The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
      * 
      */
     @Import(name="healthCheckInterval")
     private @Nullable Output<Integer> healthCheckInterval;
 
     /**
-     * @return The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-     * to `50`. Default value: `2`.
+     * @return The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
      * 
      */
     public Optional<Output<Integer>> healthCheckInterval() {
@@ -121,16 +111,14 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-     * exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     @Import(name="healthCheckMethod")
     private @Nullable Output<String> healthCheckMethod;
 
     /**
-     * @return Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-     * exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     public Optional<Output<String>> healthCheckMethod() {
@@ -138,16 +126,14 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * The forwarding rule path of health checks. **NOTE:** This parameter exists if
-     * the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     @Import(name="healthCheckPath")
     private @Nullable Output<String> healthCheckPath;
 
     /**
-     * @return The forwarding rule path of health checks. **NOTE:** This parameter exists if
-     * the `HealthCheckProtocol` parameter is set to `HTTP`.
+     * @return The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
      * 
      */
     public Optional<Output<String>> healthCheckPath() {
@@ -170,22 +156,14 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-     * instance does not send an expected response within the specified period of time, the ECS instance is considered
-     * unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-     * parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-     * is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+     * The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
      * 
      */
     @Import(name="healthCheckTimeout")
     private @Nullable Output<Integer> healthCheckTimeout;
 
     /**
-     * @return The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-     * instance does not send an expected response within the specified period of time, the ECS instance is considered
-     * unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-     * parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-     * is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+     * @return The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
      * 
      */
     public Optional<Output<Integer>> healthCheckTimeout() {
@@ -193,18 +171,14 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * The number of health checks that an unhealthy backend server must pass consecutively before it
-     * is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-     * Default value: 3.
+     * The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
      * 
      */
     @Import(name="healthyThreshold")
     private @Nullable Output<Integer> healthyThreshold;
 
     /**
-     * @return The number of health checks that an unhealthy backend server must pass consecutively before it
-     * is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-     * Default value: 3.
+     * @return The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
      * 
      */
     public Optional<Output<Integer>> healthyThreshold() {
@@ -212,18 +186,14 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * The number of consecutive health checks that a healthy backend server must consecutively fail
-     * before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-     * values: `2` to `10`. Default value: `3`.
+     * The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
      * 
      */
     @Import(name="unhealthyThreshold")
     private @Nullable Output<Integer> unhealthyThreshold;
 
     /**
-     * @return The number of consecutive health checks that a healthy backend server must consecutively fail
-     * before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-     * values: `2` to `10`. Default value: `3`.
+     * @return The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
      * 
      */
     public Optional<Output<Integer>> unhealthyThreshold() {
@@ -266,8 +236,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckCodes The status code for a successful health check. Multiple status codes can be specified as a
-         * list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
+         * @param healthCheckCodes The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
          * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          * 
          * @return builder
@@ -279,8 +248,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckCodes The status code for a successful health check. Multiple status codes can be specified as a
-         * list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
+         * @param healthCheckCodes The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
          * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          * 
          * @return builder
@@ -291,8 +259,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckCodes The status code for a successful health check. Multiple status codes can be specified as a
-         * list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
+         * @param healthCheckCodes The status code for a successful health check.  Multiple status codes can be specified as a list. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. Default value: `http_2xx`. **NOTE:** This
          * parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          * 
          * @return builder
@@ -303,8 +270,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckConnectPort The port of the backend server that is used for health checks. Valid values: `0`
-         * to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+         * @param healthCheckConnectPort The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
          * 
          * @return builder
          * 
@@ -315,8 +281,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckConnectPort The port of the backend server that is used for health checks. Valid values: `0`
-         * to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
+         * @param healthCheckConnectPort The port of the backend server that is used for health checks. Valid values: `0` to `65535`. Default value: `0`. A value of 0 indicates that a backend server port is used for health checks.
          * 
          * @return builder
          * 
@@ -326,8 +291,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckEnabled Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-         * value: `true`.
+         * @param healthCheckEnabled Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
          * 
          * @return builder
          * 
@@ -338,8 +302,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckEnabled Indicates whether health checks are enabled. Valid values: `true`, `false`. Default
-         * value: `true`.
+         * @param healthCheckEnabled Indicates whether health checks are enabled. Valid values: `true`, `false`. Default value: `true`.
          * 
          * @return builder
          * 
@@ -370,8 +333,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckHttpVersion HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-         * . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * @param healthCheckHttpVersion HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -382,8 +344,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckHttpVersion HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`
-         * . **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * @param healthCheckHttpVersion HTTP protocol version. Valid values: `HTTP1.0` and `HTTP1.1`. Default value: `HTTP1.1`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -393,8 +354,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckInterval The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-         * to `50`. Default value: `2`.
+         * @param healthCheckInterval The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
          * 
          * @return builder
          * 
@@ -405,8 +365,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckInterval The time interval between two consecutive health checks. Unit: seconds. Valid values: `1`
-         * to `50`. Default value: `2`.
+         * @param healthCheckInterval The time interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `2`.
          * 
          * @return builder
          * 
@@ -416,8 +375,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckMethod Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-         * exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * @param healthCheckMethod Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -428,8 +386,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckMethod Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter
-         * exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * @param healthCheckMethod Health check method. Valid values: `GET` and `HEAD`. Default: `GET`. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -439,8 +396,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckPath The forwarding rule path of health checks. **NOTE:** This parameter exists if
-         * the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * @param healthCheckPath The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -451,8 +407,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckPath The forwarding rule path of health checks. **NOTE:** This parameter exists if
-         * the `HealthCheckProtocol` parameter is set to `HTTP`.
+         * @param healthCheckPath The forwarding rule path of health checks. **NOTE:** This parameter exists if the `HealthCheckProtocol` parameter is set to `HTTP`.
          * 
          * @return builder
          * 
@@ -483,11 +438,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckTimeout The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-         * instance does not send an expected response within the specified period of time, the ECS instance is considered
-         * unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-         * parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-         * is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+         * @param healthCheckTimeout The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
          * 
          * @return builder
          * 
@@ -498,11 +449,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthCheckTimeout The timeout period of a health check response. If a backend Elastic Compute Service (ECS)
-         * instance does not send an expected response within the specified period of time, the ECS instance is considered
-         * unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout`
-         * parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter
-         * is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
+         * @param healthCheckTimeout The timeout period of a health check response. If a backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the ECS instance is considered unhealthy. Unit: seconds. Valid values: 1 to 300. Default value: 5. **NOTE:** If the value of the `HealthCHeckTimeout` parameter is smaller than that of the `HealthCheckInterval` parameter, the value of the `HealthCHeckTimeout` parameter is ignored and the value of the `HealthCheckInterval` parameter is regarded as the timeout period.
          * 
          * @return builder
          * 
@@ -512,9 +459,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthyThreshold The number of health checks that an unhealthy backend server must pass consecutively before it
-         * is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-         * Default value: 3.
+         * @param healthyThreshold The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
          * 
          * @return builder
          * 
@@ -525,9 +470,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param healthyThreshold The number of health checks that an unhealthy backend server must pass consecutively before it
-         * is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10.
-         * Default value: 3.
+         * @param healthyThreshold The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
          * 
          * @return builder
          * 
@@ -537,9 +480,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param unhealthyThreshold The number of consecutive health checks that a healthy backend server must consecutively fail
-         * before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-         * values: `2` to `10`. Default value: `3`.
+         * @param unhealthyThreshold The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
          * 
          * @return builder
          * 
@@ -550,9 +491,7 @@ public final class ServerGroupHealthCheckConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param unhealthyThreshold The number of consecutive health checks that a healthy backend server must consecutively fail
-         * before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid
-         * values: `2` to `10`. Default value: `3`.
+         * @param unhealthyThreshold The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
          * 
          * @return builder
          * 

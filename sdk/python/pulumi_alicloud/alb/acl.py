@@ -24,7 +24,8 @@ class AclArgs:
         """
         The set of arguments for constructing a Acl resource.
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
-        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+               **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -58,8 +59,12 @@ class AclArgs:
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
-        The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+        The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+        **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         """
+        warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""", DeprecationWarning)
+        pulumi.log.warn("""acl_entries is deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")
+
         return pulumi.get(self, "acl_entries")
 
     @acl_entries.setter
@@ -114,11 +119,12 @@ class _AclState:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
-        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+        :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+               **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] status: The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        :param pulumi.Input[str] status: The status of the ACL entry. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if acl_entries is not None:
@@ -141,8 +147,12 @@ class _AclState:
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]:
         """
-        The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+        The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+        **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         """
+        warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""", DeprecationWarning)
+        pulumi.log.warn("""acl_entries is deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")
+
         return pulumi.get(self, "acl_entries")
 
     @acl_entries.setter
@@ -189,7 +199,7 @@ class _AclState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        The status of the ACL entry. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -224,9 +234,9 @@ class Acl(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Acl resource.
 
-        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/200280.html).
+        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createacl).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -236,12 +246,10 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.alb.Acl("example",
-            acl_entries=[alicloud.alb.AclAclEntryArgs(
-                description="example_value",
-                entry="10.0.0.0/24",
-            )],
-            acl_name="example_value")
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_acl = alicloud.alb.Acl("defaultAcl",
+            acl_name="tf_example",
+            resource_group_id=default_resource_groups.groups[0].id)
         ```
 
         ## Import
@@ -254,7 +262,8 @@ class Acl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+               **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
@@ -269,9 +278,9 @@ class Acl(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Acl resource.
 
-        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/doc-detail/200280.html).
+        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createacl).
 
-        > **NOTE:** Available in v1.133.0+.
+        > **NOTE:** Available since v1.133.0.
 
         ## Example Usage
 
@@ -281,12 +290,10 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.alb.Acl("example",
-            acl_entries=[alicloud.alb.AclAclEntryArgs(
-                description="example_value",
-                entry="10.0.0.0/24",
-            )],
-            acl_name="example_value")
+        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_acl = alicloud.alb.Acl("defaultAcl",
+            acl_name="tf_example",
+            resource_group_id=default_resource_groups.groups[0].id)
         ```
 
         ## Import
@@ -360,11 +367,12 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AclAclEntryArgs']]]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+               **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] status: The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        :param pulumi.Input[str] status: The status of the ACL entry. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -383,8 +391,12 @@ class Acl(pulumi.CustomResource):
     @pulumi.getter(name="aclEntries")
     def acl_entries(self) -> pulumi.Output[Sequence['outputs.AclAclEntry']]:
         """
-        The list of the ACL entries. You can add up to `20` entries in each call.  **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+        The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
+        **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
         """
+        warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""", DeprecationWarning)
+        pulumi.log.warn("""acl_entries is deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")
+
         return pulumi.get(self, "acl_entries")
 
     @property
@@ -415,7 +427,7 @@ class Acl(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        The status of the ACL entry. Valid values:
         """
         return pulumi.get(self, "status")
 

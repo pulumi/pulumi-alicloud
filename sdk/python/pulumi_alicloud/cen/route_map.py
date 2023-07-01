@@ -989,9 +989,9 @@ class RouteMap(pulumi.CustomResource):
         You can use the route map function to filter routes and modify route attributes.
         By doing so, you can manage the communication between networks attached to a CEN.
 
-        For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/doc-detail/124157.htm).
+        For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenroutemap).
 
-        > **NOTE:** Available in 1.82.0+
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -1001,42 +1001,54 @@ class RouteMap(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a cen Route map resource and use it.
-        default_instance = alicloud.cen.Instance("defaultInstance")
-        vpc00_region = alicloud.Provider("vpc00Region", region="cn-hangzhou")
-        vpc01_region = alicloud.Provider("vpc01Region", region="cn-shanghai")
-        vpc00 = alicloud.vpc.Network("vpc00", cidr_block="172.16.0.0/12",
-        opts=pulumi.ResourceOptions(provider=alicloud["vpc00_region"]))
-        vpc01 = alicloud.vpc.Network("vpc01", cidr_block="172.16.0.0/12",
-        opts=pulumi.ResourceOptions(provider=alicloud["vpc01_region"]))
-        default00 = alicloud.cen.InstanceAttachment("default00",
-            instance_id=default_instance.id,
-            child_instance_id=vpc00.id,
+        config = pulumi.Config()
+        source_region = config.get("sourceRegion")
+        if source_region is None:
+            source_region = "cn-hangzhou"
+        destination_region = config.get("destinationRegion")
+        if destination_region is None:
+            destination_region = "cn-shanghai"
+        hz = alicloud.Provider("hz", region=source_region)
+        sh = alicloud.Provider("sh", region=destination_region)
+        example_hz_network = alicloud.vpc.Network("exampleHzNetwork",
+            vpc_name="tf_example",
+            cidr_block="192.168.0.0/16",
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        example_sh_network = alicloud.vpc.Network("exampleShNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.16.0.0/12",
+            opts=pulumi.ResourceOptions(provider=alicloud["sh"]))
+        example = alicloud.cen.Instance("example",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_hz_instance_attachment = alicloud.cen.InstanceAttachment("exampleHzInstanceAttachment",
+            instance_id=example.id,
+            child_instance_id=example_hz_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-hangzhou")
-        default01 = alicloud.cen.InstanceAttachment("default01",
-            instance_id=default_instance.id,
-            child_instance_id=vpc01.id,
+            child_instance_region_id=source_region)
+        example_sh_instance_attachment = alicloud.cen.InstanceAttachment("exampleShInstanceAttachment",
+            instance_id=example.id,
+            child_instance_id=example_sh_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-shanghai")
-        default_route_map = alicloud.cen.RouteMap("defaultRouteMap",
-            cen_region_id="cn-hangzhou",
-            cen_id=alicloud_cen_instance["cen"]["id"],
-            description="test-desc",
+            child_instance_region_id=destination_region)
+        default = alicloud.cen.RouteMap("default",
+            cen_region_id=source_region,
+            cen_id=example.id,
+            description="tf_example",
             priority=1,
             transmit_direction="RegionIn",
             map_result="Permit",
             next_priority=1,
-            source_region_ids=["cn-hangzhou"],
-            source_instance_ids=[vpc00.id],
+            source_region_ids=[source_region],
+            source_instance_ids=[example_hz_instance_attachment.child_instance_id],
             source_instance_ids_reverse_match=False,
-            destination_instance_ids=[vpc01.id],
+            destination_instance_ids=[example_sh_instance_attachment.child_instance_id],
             destination_instance_ids_reverse_match=False,
-            source_route_table_ids=[vpc00.route_table_id],
-            destination_route_table_ids=[vpc01.route_table_id],
+            source_route_table_ids=[example_hz_network.route_table_id],
+            destination_route_table_ids=[example_sh_network.route_table_id],
             source_child_instance_types=["VPC"],
             destination_child_instance_types=["VPC"],
-            destination_cidr_blocks=[vpc01.cidr_block],
+            destination_cidr_blocks=[example_sh_network.cidr_block],
             cidr_match_mode="Include",
             route_types=["System"],
             match_asns=["65501"],
@@ -1046,11 +1058,7 @@ class RouteMap(pulumi.CustomResource):
             community_operate_mode="Additive",
             operate_community_sets=["65501:1"],
             preference=20,
-            prepend_as_paths=["65501"],
-            opts=pulumi.ResourceOptions(depends_on=[
-                    default00,
-                    default01,
-                ]))
+            prepend_as_paths=["65501"])
         ```
 
         ## Import
@@ -1103,9 +1111,9 @@ class RouteMap(pulumi.CustomResource):
         You can use the route map function to filter routes and modify route attributes.
         By doing so, you can manage the communication between networks attached to a CEN.
 
-        For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/doc-detail/124157.htm).
+        For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenroutemap).
 
-        > **NOTE:** Available in 1.82.0+
+        > **NOTE:** Available since v1.82.0.
 
         ## Example Usage
 
@@ -1115,42 +1123,54 @@ class RouteMap(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        # Create a cen Route map resource and use it.
-        default_instance = alicloud.cen.Instance("defaultInstance")
-        vpc00_region = alicloud.Provider("vpc00Region", region="cn-hangzhou")
-        vpc01_region = alicloud.Provider("vpc01Region", region="cn-shanghai")
-        vpc00 = alicloud.vpc.Network("vpc00", cidr_block="172.16.0.0/12",
-        opts=pulumi.ResourceOptions(provider=alicloud["vpc00_region"]))
-        vpc01 = alicloud.vpc.Network("vpc01", cidr_block="172.16.0.0/12",
-        opts=pulumi.ResourceOptions(provider=alicloud["vpc01_region"]))
-        default00 = alicloud.cen.InstanceAttachment("default00",
-            instance_id=default_instance.id,
-            child_instance_id=vpc00.id,
+        config = pulumi.Config()
+        source_region = config.get("sourceRegion")
+        if source_region is None:
+            source_region = "cn-hangzhou"
+        destination_region = config.get("destinationRegion")
+        if destination_region is None:
+            destination_region = "cn-shanghai"
+        hz = alicloud.Provider("hz", region=source_region)
+        sh = alicloud.Provider("sh", region=destination_region)
+        example_hz_network = alicloud.vpc.Network("exampleHzNetwork",
+            vpc_name="tf_example",
+            cidr_block="192.168.0.0/16",
+            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+        example_sh_network = alicloud.vpc.Network("exampleShNetwork",
+            vpc_name="tf_example",
+            cidr_block="172.16.0.0/12",
+            opts=pulumi.ResourceOptions(provider=alicloud["sh"]))
+        example = alicloud.cen.Instance("example",
+            cen_instance_name="tf_example",
+            description="an example for cen")
+        example_hz_instance_attachment = alicloud.cen.InstanceAttachment("exampleHzInstanceAttachment",
+            instance_id=example.id,
+            child_instance_id=example_hz_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-hangzhou")
-        default01 = alicloud.cen.InstanceAttachment("default01",
-            instance_id=default_instance.id,
-            child_instance_id=vpc01.id,
+            child_instance_region_id=source_region)
+        example_sh_instance_attachment = alicloud.cen.InstanceAttachment("exampleShInstanceAttachment",
+            instance_id=example.id,
+            child_instance_id=example_sh_network.id,
             child_instance_type="VPC",
-            child_instance_region_id="cn-shanghai")
-        default_route_map = alicloud.cen.RouteMap("defaultRouteMap",
-            cen_region_id="cn-hangzhou",
-            cen_id=alicloud_cen_instance["cen"]["id"],
-            description="test-desc",
+            child_instance_region_id=destination_region)
+        default = alicloud.cen.RouteMap("default",
+            cen_region_id=source_region,
+            cen_id=example.id,
+            description="tf_example",
             priority=1,
             transmit_direction="RegionIn",
             map_result="Permit",
             next_priority=1,
-            source_region_ids=["cn-hangzhou"],
-            source_instance_ids=[vpc00.id],
+            source_region_ids=[source_region],
+            source_instance_ids=[example_hz_instance_attachment.child_instance_id],
             source_instance_ids_reverse_match=False,
-            destination_instance_ids=[vpc01.id],
+            destination_instance_ids=[example_sh_instance_attachment.child_instance_id],
             destination_instance_ids_reverse_match=False,
-            source_route_table_ids=[vpc00.route_table_id],
-            destination_route_table_ids=[vpc01.route_table_id],
+            source_route_table_ids=[example_hz_network.route_table_id],
+            destination_route_table_ids=[example_sh_network.route_table_id],
             source_child_instance_types=["VPC"],
             destination_child_instance_types=["VPC"],
-            destination_cidr_blocks=[vpc01.cidr_block],
+            destination_cidr_blocks=[example_sh_network.cidr_block],
             cidr_match_mode="Include",
             route_types=["System"],
             match_asns=["65501"],
@@ -1160,11 +1180,7 @@ class RouteMap(pulumi.CustomResource):
             community_operate_mode="Additive",
             operate_community_sets=["65501:1"],
             preference=20,
-            prepend_as_paths=["65501"],
-            opts=pulumi.ResourceOptions(depends_on=[
-                    default00,
-                    default01,
-                ]))
+            prepend_as_paths=["65501"])
         ```
 
         ## Import

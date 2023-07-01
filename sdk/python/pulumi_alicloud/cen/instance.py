@@ -71,6 +71,9 @@ class InstanceArgs:
         """
         Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
         """
+        warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -166,6 +169,9 @@ class _InstanceState:
         """
         Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
         """
+        warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @name.setter
@@ -223,7 +229,9 @@ class Instance(pulumi.CustomResource):
         """
         Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
 
-        For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/doc-detail/59870.htm).
+        For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcen).
+
+        > **NOTE:** Available since v1.15.0.
 
         ## Example Usage
 
@@ -234,7 +242,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cen.Instance("example",
-            cen_instance_name="tf_test_foo",
+            cen_instance_name="tf_example",
             description="an example for cen")
         ```
 
@@ -263,7 +271,9 @@ class Instance(pulumi.CustomResource):
         """
         Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
 
-        For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/doc-detail/59870.htm).
+        For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcen).
+
+        > **NOTE:** Available since v1.15.0.
 
         ## Example Usage
 
@@ -274,7 +284,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cen.Instance("example",
-            cen_instance_name="tf_test_foo",
+            cen_instance_name="tf_example",
             description="an example for cen")
         ```
 
@@ -388,6 +398,9 @@ class Instance(pulumi.CustomResource):
         """
         Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
         """
+        warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+
         return pulumi.get(self, "name")
 
     @property

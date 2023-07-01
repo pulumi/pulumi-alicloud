@@ -12,6 +12,9 @@ namespace Pulumi.AliCloud.Inputs
 
     public sealed class ProviderAssumeRoleArgs : global::Pulumi.ResourceArgs
     {
+        [Input("externalId")]
+        public Input<string>? ExternalId { get; set; }
+
         [Input("policy")]
         public Input<string>? Policy { get; set; }
 

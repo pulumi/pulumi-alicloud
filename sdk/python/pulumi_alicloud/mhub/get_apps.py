@@ -171,15 +171,15 @@ def get_apps(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:mhub/getApps:getApps', __args__, opts=opts, typ=GetAppsResult).value
 
     return AwaitableGetAppsResult(
-        apps=__ret__.apps,
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        os_type=__ret__.os_type,
-        output_file=__ret__.output_file,
-        product_id=__ret__.product_id)
+        apps=pulumi.get(__ret__, 'apps'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        os_type=pulumi.get(__ret__, 'os_type'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        product_id=pulumi.get(__ret__, 'product_id'))
 
 
 @_utilities.lift_output_func(get_apps)

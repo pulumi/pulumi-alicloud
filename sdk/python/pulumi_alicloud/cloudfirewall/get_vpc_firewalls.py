@@ -236,19 +236,19 @@ def get_vpc_firewalls(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls', __args__, opts=opts, typ=GetVpcFirewallsResult).value
 
     return AwaitableGetVpcFirewallsResult(
-        firewalls=__ret__.firewalls,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        lang=__ret__.lang,
-        member_uid=__ret__.member_uid,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        region_no=__ret__.region_no,
-        status=__ret__.status,
-        vpc_firewall_id=__ret__.vpc_firewall_id,
-        vpc_firewall_name=__ret__.vpc_firewall_name,
-        vpc_id=__ret__.vpc_id)
+        firewalls=pulumi.get(__ret__, 'firewalls'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        lang=pulumi.get(__ret__, 'lang'),
+        member_uid=pulumi.get(__ret__, 'member_uid'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        region_no=pulumi.get(__ret__, 'region_no'),
+        status=pulumi.get(__ret__, 'status'),
+        vpc_firewall_id=pulumi.get(__ret__, 'vpc_firewall_id'),
+        vpc_firewall_name=pulumi.get(__ret__, 'vpc_firewall_name'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 
 
 @_utilities.lift_output_func(get_vpc_firewalls)

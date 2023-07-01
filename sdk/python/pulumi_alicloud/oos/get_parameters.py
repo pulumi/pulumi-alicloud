@@ -217,19 +217,19 @@ def get_parameters(enable_details: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:oos/getParameters:getParameters', __args__, opts=opts, typ=GetParametersResult).value
 
     return AwaitableGetParametersResult(
-        enable_details=__ret__.enable_details,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        parameter_name=__ret__.parameter_name,
-        parameters=__ret__.parameters,
-        resource_group_id=__ret__.resource_group_id,
-        sort_field=__ret__.sort_field,
-        sort_order=__ret__.sort_order,
-        tags=__ret__.tags,
-        type=__ret__.type)
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        parameter_name=pulumi.get(__ret__, 'parameter_name'),
+        parameters=pulumi.get(__ret__, 'parameters'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        sort_field=pulumi.get(__ret__, 'sort_field'),
+        sort_order=pulumi.get(__ret__, 'sort_order'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_parameters)

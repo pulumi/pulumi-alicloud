@@ -209,6 +209,9 @@ class InstanceArgs:
         """
         Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         """
+        warnings.warn("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
+
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -271,6 +274,9 @@ class InstanceArgs:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
+        warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
+
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -420,6 +426,9 @@ class InstanceArgs:
         """
         Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """
+        warnings.warn("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""", DeprecationWarning)
+        pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
+
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
@@ -690,6 +699,9 @@ class _InstanceState:
         """
         Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         """
+        warnings.warn("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
+
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -800,6 +812,9 @@ class _InstanceState:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
+        warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
+
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
@@ -961,6 +976,9 @@ class _InstanceState:
         """
         Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """
+        warnings.warn("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""", DeprecationWarning)
+        pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
+
         return pulumi.get(self, "security_ip_lists")
 
     @security_ip_lists.setter
@@ -1447,6 +1465,9 @@ class Instance(pulumi.CustomResource):
         """
         Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         """
+        warnings.warn("""Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""", DeprecationWarning)
+        pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from version 1.187.0. Use 'zone_id' instead.""")
+
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -1521,6 +1542,9 @@ class Instance(pulumi.CustomResource):
         """
         Field `instance_charge_type` has been deprecated from provider version 1.187.0. New field `payment_type` instead.
         """
+        warnings.warn("""Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""", DeprecationWarning)
+        pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated from version 1.187.0. Use 'payment_type' instead.""")
+
         return pulumi.get(self, "instance_charge_type")
 
     @property
@@ -1630,6 +1654,9 @@ class Instance(pulumi.CustomResource):
         """
         Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
         """
+        warnings.warn("""Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""", DeprecationWarning)
+        pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
+
         return pulumi.get(self, "security_ip_lists")
 
     @property

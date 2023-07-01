@@ -119,11 +119,11 @@ def get_application_scaling_rules(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:sae/getApplicationScalingRules:getApplicationScalingRules', __args__, opts=opts, typ=GetApplicationScalingRulesResult).value
 
     return AwaitableGetApplicationScalingRulesResult(
-        app_id=__ret__.app_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        output_file=__ret__.output_file,
-        rules=__ret__.rules)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        rules=pulumi.get(__ret__, 'rules'))
 
 
 @_utilities.lift_output_func(get_application_scaling_rules)

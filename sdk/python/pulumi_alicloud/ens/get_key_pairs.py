@@ -146,14 +146,14 @@ def get_key_pairs(key_pair_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:ens/getKeyPairs:getKeyPairs', __args__, opts=opts, typ=GetKeyPairsResult).value
 
     return AwaitableGetKeyPairsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        key_pair_name=__ret__.key_pair_name,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        pairs=__ret__.pairs,
-        version=__ret__.version)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        key_pair_name=pulumi.get(__ret__, 'key_pair_name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        pairs=pulumi.get(__ret__, 'pairs'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_key_pairs)

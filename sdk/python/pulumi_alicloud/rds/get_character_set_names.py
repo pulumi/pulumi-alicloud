@@ -99,10 +99,10 @@ def get_character_set_names(engine: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:rds/getCharacterSetNames:getCharacterSetNames', __args__, opts=opts, typ=GetCharacterSetNamesResult).value
 
     return AwaitableGetCharacterSetNamesResult(
-        engine=__ret__.engine,
-        id=__ret__.id,
-        names=__ret__.names,
-        output_file=__ret__.output_file)
+        engine=pulumi.get(__ret__, 'engine'),
+        id=pulumi.get(__ret__, 'id'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'))
 
 
 @_utilities.lift_output_func(get_character_set_names)

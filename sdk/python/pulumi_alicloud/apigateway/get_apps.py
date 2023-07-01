@@ -141,13 +141,13 @@ def get_apps(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:apigateway/getApps:getApps', __args__, opts=opts, typ=GetAppsResult).value
 
     return AwaitableGetAppsResult(
-        apps=__ret__.apps,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        tags=__ret__.tags)
+        apps=pulumi.get(__ret__, 'apps'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_apps)

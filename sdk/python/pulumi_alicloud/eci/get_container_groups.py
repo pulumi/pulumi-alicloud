@@ -231,21 +231,21 @@ def get_container_groups(container_group_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:eci/getContainerGroups:getContainerGroups', __args__, opts=opts, typ=GetContainerGroupsResult).value
 
     return AwaitableGetContainerGroupsResult(
-        container_group_name=__ret__.container_group_name,
-        enable_details=__ret__.enable_details,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        limit=__ret__.limit,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        resource_group_id=__ret__.resource_group_id,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        vswitch_id=__ret__.vswitch_id,
-        with_event=__ret__.with_event,
-        zone_id=__ret__.zone_id)
+        container_group_name=pulumi.get(__ret__, 'container_group_name'),
+        enable_details=pulumi.get(__ret__, 'enable_details'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        limit=pulumi.get(__ret__, 'limit'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        vswitch_id=pulumi.get(__ret__, 'vswitch_id'),
+        with_event=pulumi.get(__ret__, 'with_event'),
+        zone_id=pulumi.get(__ret__, 'zone_id'))
 
 
 @_utilities.lift_output_func(get_container_groups)

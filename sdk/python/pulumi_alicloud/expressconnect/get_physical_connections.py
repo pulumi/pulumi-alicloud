@@ -150,14 +150,14 @@ def get_physical_connections(ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections', __args__, opts=opts, typ=GetPhysicalConnectionsResult).value
 
     return AwaitableGetPhysicalConnectionsResult(
-        connections=__ret__.connections,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        include_reservation_data=__ret__.include_reservation_data,
-        name_regex=__ret__.name_regex,
-        names=__ret__.names,
-        output_file=__ret__.output_file,
-        status=__ret__.status)
+        connections=pulumi.get(__ret__, 'connections'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        include_reservation_data=pulumi.get(__ret__, 'include_reservation_data'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        names=pulumi.get(__ret__, 'names'),
+        output_file=pulumi.get(__ret__, 'output_file'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_physical_connections)

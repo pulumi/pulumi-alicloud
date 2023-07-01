@@ -65,6 +65,9 @@ class ServerCertificateArgs:
     @property
     @pulumi.getter(name="alicloudCertifacteId")
     def alicloud_certifacte_id(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""alicloud_certifacte_id is deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
+
         return pulumi.get(self, "alicloud_certifacte_id")
 
     @alicloud_certifacte_id.setter
@@ -74,6 +77,9 @@ class ServerCertificateArgs:
     @property
     @pulumi.getter(name="alicloudCertifacteName")
     def alicloud_certifacte_name(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""alicloud_certifacte_name is deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""")
+
         return pulumi.get(self, "alicloud_certifacte_name")
 
     @alicloud_certifacte_name.setter
@@ -231,6 +237,9 @@ class _ServerCertificateState:
     @property
     @pulumi.getter(name="alicloudCertifacteId")
     def alicloud_certifacte_id(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""alicloud_certifacte_id is deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
+
         return pulumi.get(self, "alicloud_certifacte_id")
 
     @alicloud_certifacte_id.setter
@@ -240,6 +249,9 @@ class _ServerCertificateState:
     @property
     @pulumi.getter(name="alicloudCertifacteName")
     def alicloud_certifacte_name(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""alicloud_certifacte_name is deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""")
+
         return pulumi.get(self, "alicloud_certifacte_name")
 
     @alicloud_certifacte_name.setter
@@ -623,11 +635,17 @@ class ServerCertificate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="alicloudCertifacteId")
     def alicloud_certifacte_id(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""alicloud_certifacte_id is deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
+
         return pulumi.get(self, "alicloud_certifacte_id")
 
     @property
     @pulumi.getter(name="alicloudCertifacteName")
     def alicloud_certifacte_name(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""", DeprecationWarning)
+        pulumi.log.warn("""alicloud_certifacte_name is deprecated: Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""")
+
         return pulumi.get(self, "alicloud_certifacte_name")
 
     @property
